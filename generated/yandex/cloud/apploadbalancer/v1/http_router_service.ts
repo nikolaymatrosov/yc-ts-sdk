@@ -1,0 +1,1764 @@
+/* eslint-disable */
+import { FieldMask } from '../../../../google/protobuf/field_mask';
+import { HttpRouter } from '../../../../yandex/cloud/apploadbalancer/v1/http_router';
+import { VirtualHost } from '../../../../yandex/cloud/apploadbalancer/v1/virtual_host';
+import { Operation } from '../../../../yandex/cloud/operation/operation';
+import {
+    makeGenericClientConstructor,
+    ChannelCredentials,
+    ChannelOptions,
+    UntypedServiceImplementation,
+    handleUnaryCall,
+    Client,
+    ClientUnaryCall,
+    Metadata,
+    CallOptions,
+    ServiceError,
+} from '@grpc/grpc-js';
+import Long from 'long';
+import _m0 from 'protobufjs/minimal';
+
+export const protobufPackage = 'yandex.cloud.apploadbalancer.v1';
+
+export interface GetHttpRouterRequest {
+    httpRouterId: string;
+}
+
+export interface ListHttpRoutersRequest {
+    folderId: string;
+    pageSize: number;
+    pageToken: string;
+    filter: string;
+}
+
+export interface ListHttpRoutersResponse {
+    httpRouters: HttpRouter[];
+    nextPageToken: string;
+}
+
+export interface DeleteHttpRouterRequest {
+    httpRouterId: string;
+}
+
+export interface DeleteHttpRouterMetadata {
+    httpRouterId: string;
+}
+
+export interface UpdateHttpRouterRequest {
+    httpRouterId: string;
+    updateMask: FieldMask | undefined;
+    name: string;
+    description: string;
+    labels: { [key: string]: string };
+    virtualHosts: VirtualHost[];
+    httpsRedirect: boolean;
+}
+
+export interface UpdateHttpRouterRequest_LabelsEntry {
+    key: string;
+    value: string;
+}
+
+export interface UpdateHttpRouterMetadata {
+    httpRouterId: string;
+}
+
+export interface CreateHttpRouterRequest {
+    folderId: string;
+    name: string;
+    description: string;
+    labels: { [key: string]: string };
+    virtualHosts: VirtualHost[];
+    httpsRedirect: boolean;
+}
+
+export interface CreateHttpRouterRequest_LabelsEntry {
+    key: string;
+    value: string;
+}
+
+export interface CreateHttpRouterMetadata {
+    httpRouterId: string;
+}
+
+export interface ListHttpRouterOperationsRequest {
+    /**
+     * ID of the http router to get operations for.
+     *
+     * To get the http router ID, use a [HttpRouterService.List] request.
+     */
+    httpRouterId: string;
+    /**
+     * The maximum number of results per page that should be returned. If the number of available
+     * results is larger than [page_size], the service returns a [ListHttpRouterOperationsResponse.next_page_token]
+     * that can be used to get the next page of results in subsequent list requests.
+     * Default value: 100.
+     */
+    pageSize: number;
+    /**
+     * Page token. To get the next page of results, set [page_token] to the
+     * [ListHttpRouterOperationsResponse.next_page_token] returned by a previous list request.
+     */
+    pageToken: string;
+}
+
+export interface ListHttpRouterOperationsResponse {
+    /** List of operations for the specified target group. */
+    operations: Operation[];
+    /**
+     * This token allows you to get the next page of results for list requests. If the number of results
+     * is larger than [ListHttpRouterOperationsRequest.page_size], use the [next_page_token] as the value
+     * for the [ListHttpRouterOperationsRequest.page_token] query parameter in the next list request.
+     * Each subsequent list request will have its own [next_page_token] to continue paging through the results.
+     */
+    nextPageToken: string;
+}
+
+const baseGetHttpRouterRequest: object = { httpRouterId: '' };
+
+export const GetHttpRouterRequest = {
+    encode(
+        message: GetHttpRouterRequest,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        if (message.httpRouterId !== '') {
+            writer.uint32(10).string(message.httpRouterId);
+        }
+        return writer;
+    },
+
+    decode(
+        input: _m0.Reader | Uint8Array,
+        length?: number
+    ): GetHttpRouterRequest {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = { ...baseGetHttpRouterRequest } as GetHttpRouterRequest;
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.httpRouterId = reader.string();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): GetHttpRouterRequest {
+        const message = { ...baseGetHttpRouterRequest } as GetHttpRouterRequest;
+        if (object.httpRouterId !== undefined && object.httpRouterId !== null) {
+            message.httpRouterId = String(object.httpRouterId);
+        } else {
+            message.httpRouterId = '';
+        }
+        return message;
+    },
+
+    toJSON(message: GetHttpRouterRequest): unknown {
+        const obj: any = {};
+        message.httpRouterId !== undefined &&
+            (obj.httpRouterId = message.httpRouterId);
+        return obj;
+    },
+
+    fromPartial(
+        object: DeepPartial<GetHttpRouterRequest>
+    ): GetHttpRouterRequest {
+        const message = { ...baseGetHttpRouterRequest } as GetHttpRouterRequest;
+        if (object.httpRouterId !== undefined && object.httpRouterId !== null) {
+            message.httpRouterId = object.httpRouterId;
+        } else {
+            message.httpRouterId = '';
+        }
+        return message;
+    },
+};
+
+const baseListHttpRoutersRequest: object = {
+    folderId: '',
+    pageSize: 0,
+    pageToken: '',
+    filter: '',
+};
+
+export const ListHttpRoutersRequest = {
+    encode(
+        message: ListHttpRoutersRequest,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        if (message.folderId !== '') {
+            writer.uint32(10).string(message.folderId);
+        }
+        if (message.pageSize !== 0) {
+            writer.uint32(16).int64(message.pageSize);
+        }
+        if (message.pageToken !== '') {
+            writer.uint32(26).string(message.pageToken);
+        }
+        if (message.filter !== '') {
+            writer.uint32(34).string(message.filter);
+        }
+        return writer;
+    },
+
+    decode(
+        input: _m0.Reader | Uint8Array,
+        length?: number
+    ): ListHttpRoutersRequest {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = {
+            ...baseListHttpRoutersRequest,
+        } as ListHttpRoutersRequest;
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.folderId = reader.string();
+                    break;
+                case 2:
+                    message.pageSize = longToNumber(reader.int64() as Long);
+                    break;
+                case 3:
+                    message.pageToken = reader.string();
+                    break;
+                case 4:
+                    message.filter = reader.string();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): ListHttpRoutersRequest {
+        const message = {
+            ...baseListHttpRoutersRequest,
+        } as ListHttpRoutersRequest;
+        if (object.folderId !== undefined && object.folderId !== null) {
+            message.folderId = String(object.folderId);
+        } else {
+            message.folderId = '';
+        }
+        if (object.pageSize !== undefined && object.pageSize !== null) {
+            message.pageSize = Number(object.pageSize);
+        } else {
+            message.pageSize = 0;
+        }
+        if (object.pageToken !== undefined && object.pageToken !== null) {
+            message.pageToken = String(object.pageToken);
+        } else {
+            message.pageToken = '';
+        }
+        if (object.filter !== undefined && object.filter !== null) {
+            message.filter = String(object.filter);
+        } else {
+            message.filter = '';
+        }
+        return message;
+    },
+
+    toJSON(message: ListHttpRoutersRequest): unknown {
+        const obj: any = {};
+        message.folderId !== undefined && (obj.folderId = message.folderId);
+        message.pageSize !== undefined && (obj.pageSize = message.pageSize);
+        message.pageToken !== undefined && (obj.pageToken = message.pageToken);
+        message.filter !== undefined && (obj.filter = message.filter);
+        return obj;
+    },
+
+    fromPartial(
+        object: DeepPartial<ListHttpRoutersRequest>
+    ): ListHttpRoutersRequest {
+        const message = {
+            ...baseListHttpRoutersRequest,
+        } as ListHttpRoutersRequest;
+        if (object.folderId !== undefined && object.folderId !== null) {
+            message.folderId = object.folderId;
+        } else {
+            message.folderId = '';
+        }
+        if (object.pageSize !== undefined && object.pageSize !== null) {
+            message.pageSize = object.pageSize;
+        } else {
+            message.pageSize = 0;
+        }
+        if (object.pageToken !== undefined && object.pageToken !== null) {
+            message.pageToken = object.pageToken;
+        } else {
+            message.pageToken = '';
+        }
+        if (object.filter !== undefined && object.filter !== null) {
+            message.filter = object.filter;
+        } else {
+            message.filter = '';
+        }
+        return message;
+    },
+};
+
+const baseListHttpRoutersResponse: object = { nextPageToken: '' };
+
+export const ListHttpRoutersResponse = {
+    encode(
+        message: ListHttpRoutersResponse,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        for (const v of message.httpRouters) {
+            HttpRouter.encode(v!, writer.uint32(10).fork()).ldelim();
+        }
+        if (message.nextPageToken !== '') {
+            writer.uint32(18).string(message.nextPageToken);
+        }
+        return writer;
+    },
+
+    decode(
+        input: _m0.Reader | Uint8Array,
+        length?: number
+    ): ListHttpRoutersResponse {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = {
+            ...baseListHttpRoutersResponse,
+        } as ListHttpRoutersResponse;
+        message.httpRouters = [];
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.httpRouters.push(
+                        HttpRouter.decode(reader, reader.uint32())
+                    );
+                    break;
+                case 2:
+                    message.nextPageToken = reader.string();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): ListHttpRoutersResponse {
+        const message = {
+            ...baseListHttpRoutersResponse,
+        } as ListHttpRoutersResponse;
+        message.httpRouters = [];
+        if (object.httpRouters !== undefined && object.httpRouters !== null) {
+            for (const e of object.httpRouters) {
+                message.httpRouters.push(HttpRouter.fromJSON(e));
+            }
+        }
+        if (
+            object.nextPageToken !== undefined &&
+            object.nextPageToken !== null
+        ) {
+            message.nextPageToken = String(object.nextPageToken);
+        } else {
+            message.nextPageToken = '';
+        }
+        return message;
+    },
+
+    toJSON(message: ListHttpRoutersResponse): unknown {
+        const obj: any = {};
+        if (message.httpRouters) {
+            obj.httpRouters = message.httpRouters.map((e) =>
+                e ? HttpRouter.toJSON(e) : undefined
+            );
+        } else {
+            obj.httpRouters = [];
+        }
+        message.nextPageToken !== undefined &&
+            (obj.nextPageToken = message.nextPageToken);
+        return obj;
+    },
+
+    fromPartial(
+        object: DeepPartial<ListHttpRoutersResponse>
+    ): ListHttpRoutersResponse {
+        const message = {
+            ...baseListHttpRoutersResponse,
+        } as ListHttpRoutersResponse;
+        message.httpRouters = [];
+        if (object.httpRouters !== undefined && object.httpRouters !== null) {
+            for (const e of object.httpRouters) {
+                message.httpRouters.push(HttpRouter.fromPartial(e));
+            }
+        }
+        if (
+            object.nextPageToken !== undefined &&
+            object.nextPageToken !== null
+        ) {
+            message.nextPageToken = object.nextPageToken;
+        } else {
+            message.nextPageToken = '';
+        }
+        return message;
+    },
+};
+
+const baseDeleteHttpRouterRequest: object = { httpRouterId: '' };
+
+export const DeleteHttpRouterRequest = {
+    encode(
+        message: DeleteHttpRouterRequest,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        if (message.httpRouterId !== '') {
+            writer.uint32(10).string(message.httpRouterId);
+        }
+        return writer;
+    },
+
+    decode(
+        input: _m0.Reader | Uint8Array,
+        length?: number
+    ): DeleteHttpRouterRequest {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = {
+            ...baseDeleteHttpRouterRequest,
+        } as DeleteHttpRouterRequest;
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.httpRouterId = reader.string();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): DeleteHttpRouterRequest {
+        const message = {
+            ...baseDeleteHttpRouterRequest,
+        } as DeleteHttpRouterRequest;
+        if (object.httpRouterId !== undefined && object.httpRouterId !== null) {
+            message.httpRouterId = String(object.httpRouterId);
+        } else {
+            message.httpRouterId = '';
+        }
+        return message;
+    },
+
+    toJSON(message: DeleteHttpRouterRequest): unknown {
+        const obj: any = {};
+        message.httpRouterId !== undefined &&
+            (obj.httpRouterId = message.httpRouterId);
+        return obj;
+    },
+
+    fromPartial(
+        object: DeepPartial<DeleteHttpRouterRequest>
+    ): DeleteHttpRouterRequest {
+        const message = {
+            ...baseDeleteHttpRouterRequest,
+        } as DeleteHttpRouterRequest;
+        if (object.httpRouterId !== undefined && object.httpRouterId !== null) {
+            message.httpRouterId = object.httpRouterId;
+        } else {
+            message.httpRouterId = '';
+        }
+        return message;
+    },
+};
+
+const baseDeleteHttpRouterMetadata: object = { httpRouterId: '' };
+
+export const DeleteHttpRouterMetadata = {
+    encode(
+        message: DeleteHttpRouterMetadata,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        if (message.httpRouterId !== '') {
+            writer.uint32(10).string(message.httpRouterId);
+        }
+        return writer;
+    },
+
+    decode(
+        input: _m0.Reader | Uint8Array,
+        length?: number
+    ): DeleteHttpRouterMetadata {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = {
+            ...baseDeleteHttpRouterMetadata,
+        } as DeleteHttpRouterMetadata;
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.httpRouterId = reader.string();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): DeleteHttpRouterMetadata {
+        const message = {
+            ...baseDeleteHttpRouterMetadata,
+        } as DeleteHttpRouterMetadata;
+        if (object.httpRouterId !== undefined && object.httpRouterId !== null) {
+            message.httpRouterId = String(object.httpRouterId);
+        } else {
+            message.httpRouterId = '';
+        }
+        return message;
+    },
+
+    toJSON(message: DeleteHttpRouterMetadata): unknown {
+        const obj: any = {};
+        message.httpRouterId !== undefined &&
+            (obj.httpRouterId = message.httpRouterId);
+        return obj;
+    },
+
+    fromPartial(
+        object: DeepPartial<DeleteHttpRouterMetadata>
+    ): DeleteHttpRouterMetadata {
+        const message = {
+            ...baseDeleteHttpRouterMetadata,
+        } as DeleteHttpRouterMetadata;
+        if (object.httpRouterId !== undefined && object.httpRouterId !== null) {
+            message.httpRouterId = object.httpRouterId;
+        } else {
+            message.httpRouterId = '';
+        }
+        return message;
+    },
+};
+
+const baseUpdateHttpRouterRequest: object = {
+    httpRouterId: '',
+    name: '',
+    description: '',
+    httpsRedirect: false,
+};
+
+export const UpdateHttpRouterRequest = {
+    encode(
+        message: UpdateHttpRouterRequest,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        if (message.httpRouterId !== '') {
+            writer.uint32(10).string(message.httpRouterId);
+        }
+        if (message.updateMask !== undefined) {
+            FieldMask.encode(
+                message.updateMask,
+                writer.uint32(18).fork()
+            ).ldelim();
+        }
+        if (message.name !== '') {
+            writer.uint32(26).string(message.name);
+        }
+        if (message.description !== '') {
+            writer.uint32(34).string(message.description);
+        }
+        Object.entries(message.labels).forEach(([key, value]) => {
+            UpdateHttpRouterRequest_LabelsEntry.encode(
+                { key: key as any, value },
+                writer.uint32(42).fork()
+            ).ldelim();
+        });
+        for (const v of message.virtualHosts) {
+            VirtualHost.encode(v!, writer.uint32(50).fork()).ldelim();
+        }
+        if (message.httpsRedirect === true) {
+            writer.uint32(56).bool(message.httpsRedirect);
+        }
+        return writer;
+    },
+
+    decode(
+        input: _m0.Reader | Uint8Array,
+        length?: number
+    ): UpdateHttpRouterRequest {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = {
+            ...baseUpdateHttpRouterRequest,
+        } as UpdateHttpRouterRequest;
+        message.labels = {};
+        message.virtualHosts = [];
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.httpRouterId = reader.string();
+                    break;
+                case 2:
+                    message.updateMask = FieldMask.decode(
+                        reader,
+                        reader.uint32()
+                    );
+                    break;
+                case 3:
+                    message.name = reader.string();
+                    break;
+                case 4:
+                    message.description = reader.string();
+                    break;
+                case 5:
+                    const entry5 = UpdateHttpRouterRequest_LabelsEntry.decode(
+                        reader,
+                        reader.uint32()
+                    );
+                    if (entry5.value !== undefined) {
+                        message.labels[entry5.key] = entry5.value;
+                    }
+                    break;
+                case 6:
+                    message.virtualHosts.push(
+                        VirtualHost.decode(reader, reader.uint32())
+                    );
+                    break;
+                case 7:
+                    message.httpsRedirect = reader.bool();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): UpdateHttpRouterRequest {
+        const message = {
+            ...baseUpdateHttpRouterRequest,
+        } as UpdateHttpRouterRequest;
+        message.labels = {};
+        message.virtualHosts = [];
+        if (object.httpRouterId !== undefined && object.httpRouterId !== null) {
+            message.httpRouterId = String(object.httpRouterId);
+        } else {
+            message.httpRouterId = '';
+        }
+        if (object.updateMask !== undefined && object.updateMask !== null) {
+            message.updateMask = FieldMask.fromJSON(object.updateMask);
+        } else {
+            message.updateMask = undefined;
+        }
+        if (object.name !== undefined && object.name !== null) {
+            message.name = String(object.name);
+        } else {
+            message.name = '';
+        }
+        if (object.description !== undefined && object.description !== null) {
+            message.description = String(object.description);
+        } else {
+            message.description = '';
+        }
+        if (object.labels !== undefined && object.labels !== null) {
+            Object.entries(object.labels).forEach(([key, value]) => {
+                message.labels[key] = String(value);
+            });
+        }
+        if (object.virtualHosts !== undefined && object.virtualHosts !== null) {
+            for (const e of object.virtualHosts) {
+                message.virtualHosts.push(VirtualHost.fromJSON(e));
+            }
+        }
+        if (
+            object.httpsRedirect !== undefined &&
+            object.httpsRedirect !== null
+        ) {
+            message.httpsRedirect = Boolean(object.httpsRedirect);
+        } else {
+            message.httpsRedirect = false;
+        }
+        return message;
+    },
+
+    toJSON(message: UpdateHttpRouterRequest): unknown {
+        const obj: any = {};
+        message.httpRouterId !== undefined &&
+            (obj.httpRouterId = message.httpRouterId);
+        message.updateMask !== undefined &&
+            (obj.updateMask = message.updateMask
+                ? FieldMask.toJSON(message.updateMask)
+                : undefined);
+        message.name !== undefined && (obj.name = message.name);
+        message.description !== undefined &&
+            (obj.description = message.description);
+        obj.labels = {};
+        if (message.labels) {
+            Object.entries(message.labels).forEach(([k, v]) => {
+                obj.labels[k] = v;
+            });
+        }
+        if (message.virtualHosts) {
+            obj.virtualHosts = message.virtualHosts.map((e) =>
+                e ? VirtualHost.toJSON(e) : undefined
+            );
+        } else {
+            obj.virtualHosts = [];
+        }
+        message.httpsRedirect !== undefined &&
+            (obj.httpsRedirect = message.httpsRedirect);
+        return obj;
+    },
+
+    fromPartial(
+        object: DeepPartial<UpdateHttpRouterRequest>
+    ): UpdateHttpRouterRequest {
+        const message = {
+            ...baseUpdateHttpRouterRequest,
+        } as UpdateHttpRouterRequest;
+        message.labels = {};
+        message.virtualHosts = [];
+        if (object.httpRouterId !== undefined && object.httpRouterId !== null) {
+            message.httpRouterId = object.httpRouterId;
+        } else {
+            message.httpRouterId = '';
+        }
+        if (object.updateMask !== undefined && object.updateMask !== null) {
+            message.updateMask = FieldMask.fromPartial(object.updateMask);
+        } else {
+            message.updateMask = undefined;
+        }
+        if (object.name !== undefined && object.name !== null) {
+            message.name = object.name;
+        } else {
+            message.name = '';
+        }
+        if (object.description !== undefined && object.description !== null) {
+            message.description = object.description;
+        } else {
+            message.description = '';
+        }
+        if (object.labels !== undefined && object.labels !== null) {
+            Object.entries(object.labels).forEach(([key, value]) => {
+                if (value !== undefined) {
+                    message.labels[key] = String(value);
+                }
+            });
+        }
+        if (object.virtualHosts !== undefined && object.virtualHosts !== null) {
+            for (const e of object.virtualHosts) {
+                message.virtualHosts.push(VirtualHost.fromPartial(e));
+            }
+        }
+        if (
+            object.httpsRedirect !== undefined &&
+            object.httpsRedirect !== null
+        ) {
+            message.httpsRedirect = object.httpsRedirect;
+        } else {
+            message.httpsRedirect = false;
+        }
+        return message;
+    },
+};
+
+const baseUpdateHttpRouterRequest_LabelsEntry: object = { key: '', value: '' };
+
+export const UpdateHttpRouterRequest_LabelsEntry = {
+    encode(
+        message: UpdateHttpRouterRequest_LabelsEntry,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        if (message.key !== '') {
+            writer.uint32(10).string(message.key);
+        }
+        if (message.value !== '') {
+            writer.uint32(18).string(message.value);
+        }
+        return writer;
+    },
+
+    decode(
+        input: _m0.Reader | Uint8Array,
+        length?: number
+    ): UpdateHttpRouterRequest_LabelsEntry {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = {
+            ...baseUpdateHttpRouterRequest_LabelsEntry,
+        } as UpdateHttpRouterRequest_LabelsEntry;
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.key = reader.string();
+                    break;
+                case 2:
+                    message.value = reader.string();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): UpdateHttpRouterRequest_LabelsEntry {
+        const message = {
+            ...baseUpdateHttpRouterRequest_LabelsEntry,
+        } as UpdateHttpRouterRequest_LabelsEntry;
+        if (object.key !== undefined && object.key !== null) {
+            message.key = String(object.key);
+        } else {
+            message.key = '';
+        }
+        if (object.value !== undefined && object.value !== null) {
+            message.value = String(object.value);
+        } else {
+            message.value = '';
+        }
+        return message;
+    },
+
+    toJSON(message: UpdateHttpRouterRequest_LabelsEntry): unknown {
+        const obj: any = {};
+        message.key !== undefined && (obj.key = message.key);
+        message.value !== undefined && (obj.value = message.value);
+        return obj;
+    },
+
+    fromPartial(
+        object: DeepPartial<UpdateHttpRouterRequest_LabelsEntry>
+    ): UpdateHttpRouterRequest_LabelsEntry {
+        const message = {
+            ...baseUpdateHttpRouterRequest_LabelsEntry,
+        } as UpdateHttpRouterRequest_LabelsEntry;
+        if (object.key !== undefined && object.key !== null) {
+            message.key = object.key;
+        } else {
+            message.key = '';
+        }
+        if (object.value !== undefined && object.value !== null) {
+            message.value = object.value;
+        } else {
+            message.value = '';
+        }
+        return message;
+    },
+};
+
+const baseUpdateHttpRouterMetadata: object = { httpRouterId: '' };
+
+export const UpdateHttpRouterMetadata = {
+    encode(
+        message: UpdateHttpRouterMetadata,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        if (message.httpRouterId !== '') {
+            writer.uint32(10).string(message.httpRouterId);
+        }
+        return writer;
+    },
+
+    decode(
+        input: _m0.Reader | Uint8Array,
+        length?: number
+    ): UpdateHttpRouterMetadata {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = {
+            ...baseUpdateHttpRouterMetadata,
+        } as UpdateHttpRouterMetadata;
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.httpRouterId = reader.string();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): UpdateHttpRouterMetadata {
+        const message = {
+            ...baseUpdateHttpRouterMetadata,
+        } as UpdateHttpRouterMetadata;
+        if (object.httpRouterId !== undefined && object.httpRouterId !== null) {
+            message.httpRouterId = String(object.httpRouterId);
+        } else {
+            message.httpRouterId = '';
+        }
+        return message;
+    },
+
+    toJSON(message: UpdateHttpRouterMetadata): unknown {
+        const obj: any = {};
+        message.httpRouterId !== undefined &&
+            (obj.httpRouterId = message.httpRouterId);
+        return obj;
+    },
+
+    fromPartial(
+        object: DeepPartial<UpdateHttpRouterMetadata>
+    ): UpdateHttpRouterMetadata {
+        const message = {
+            ...baseUpdateHttpRouterMetadata,
+        } as UpdateHttpRouterMetadata;
+        if (object.httpRouterId !== undefined && object.httpRouterId !== null) {
+            message.httpRouterId = object.httpRouterId;
+        } else {
+            message.httpRouterId = '';
+        }
+        return message;
+    },
+};
+
+const baseCreateHttpRouterRequest: object = {
+    folderId: '',
+    name: '',
+    description: '',
+    httpsRedirect: false,
+};
+
+export const CreateHttpRouterRequest = {
+    encode(
+        message: CreateHttpRouterRequest,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        if (message.folderId !== '') {
+            writer.uint32(10).string(message.folderId);
+        }
+        if (message.name !== '') {
+            writer.uint32(18).string(message.name);
+        }
+        if (message.description !== '') {
+            writer.uint32(26).string(message.description);
+        }
+        Object.entries(message.labels).forEach(([key, value]) => {
+            CreateHttpRouterRequest_LabelsEntry.encode(
+                { key: key as any, value },
+                writer.uint32(34).fork()
+            ).ldelim();
+        });
+        for (const v of message.virtualHosts) {
+            VirtualHost.encode(v!, writer.uint32(42).fork()).ldelim();
+        }
+        if (message.httpsRedirect === true) {
+            writer.uint32(48).bool(message.httpsRedirect);
+        }
+        return writer;
+    },
+
+    decode(
+        input: _m0.Reader | Uint8Array,
+        length?: number
+    ): CreateHttpRouterRequest {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = {
+            ...baseCreateHttpRouterRequest,
+        } as CreateHttpRouterRequest;
+        message.labels = {};
+        message.virtualHosts = [];
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.folderId = reader.string();
+                    break;
+                case 2:
+                    message.name = reader.string();
+                    break;
+                case 3:
+                    message.description = reader.string();
+                    break;
+                case 4:
+                    const entry4 = CreateHttpRouterRequest_LabelsEntry.decode(
+                        reader,
+                        reader.uint32()
+                    );
+                    if (entry4.value !== undefined) {
+                        message.labels[entry4.key] = entry4.value;
+                    }
+                    break;
+                case 5:
+                    message.virtualHosts.push(
+                        VirtualHost.decode(reader, reader.uint32())
+                    );
+                    break;
+                case 6:
+                    message.httpsRedirect = reader.bool();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): CreateHttpRouterRequest {
+        const message = {
+            ...baseCreateHttpRouterRequest,
+        } as CreateHttpRouterRequest;
+        message.labels = {};
+        message.virtualHosts = [];
+        if (object.folderId !== undefined && object.folderId !== null) {
+            message.folderId = String(object.folderId);
+        } else {
+            message.folderId = '';
+        }
+        if (object.name !== undefined && object.name !== null) {
+            message.name = String(object.name);
+        } else {
+            message.name = '';
+        }
+        if (object.description !== undefined && object.description !== null) {
+            message.description = String(object.description);
+        } else {
+            message.description = '';
+        }
+        if (object.labels !== undefined && object.labels !== null) {
+            Object.entries(object.labels).forEach(([key, value]) => {
+                message.labels[key] = String(value);
+            });
+        }
+        if (object.virtualHosts !== undefined && object.virtualHosts !== null) {
+            for (const e of object.virtualHosts) {
+                message.virtualHosts.push(VirtualHost.fromJSON(e));
+            }
+        }
+        if (
+            object.httpsRedirect !== undefined &&
+            object.httpsRedirect !== null
+        ) {
+            message.httpsRedirect = Boolean(object.httpsRedirect);
+        } else {
+            message.httpsRedirect = false;
+        }
+        return message;
+    },
+
+    toJSON(message: CreateHttpRouterRequest): unknown {
+        const obj: any = {};
+        message.folderId !== undefined && (obj.folderId = message.folderId);
+        message.name !== undefined && (obj.name = message.name);
+        message.description !== undefined &&
+            (obj.description = message.description);
+        obj.labels = {};
+        if (message.labels) {
+            Object.entries(message.labels).forEach(([k, v]) => {
+                obj.labels[k] = v;
+            });
+        }
+        if (message.virtualHosts) {
+            obj.virtualHosts = message.virtualHosts.map((e) =>
+                e ? VirtualHost.toJSON(e) : undefined
+            );
+        } else {
+            obj.virtualHosts = [];
+        }
+        message.httpsRedirect !== undefined &&
+            (obj.httpsRedirect = message.httpsRedirect);
+        return obj;
+    },
+
+    fromPartial(
+        object: DeepPartial<CreateHttpRouterRequest>
+    ): CreateHttpRouterRequest {
+        const message = {
+            ...baseCreateHttpRouterRequest,
+        } as CreateHttpRouterRequest;
+        message.labels = {};
+        message.virtualHosts = [];
+        if (object.folderId !== undefined && object.folderId !== null) {
+            message.folderId = object.folderId;
+        } else {
+            message.folderId = '';
+        }
+        if (object.name !== undefined && object.name !== null) {
+            message.name = object.name;
+        } else {
+            message.name = '';
+        }
+        if (object.description !== undefined && object.description !== null) {
+            message.description = object.description;
+        } else {
+            message.description = '';
+        }
+        if (object.labels !== undefined && object.labels !== null) {
+            Object.entries(object.labels).forEach(([key, value]) => {
+                if (value !== undefined) {
+                    message.labels[key] = String(value);
+                }
+            });
+        }
+        if (object.virtualHosts !== undefined && object.virtualHosts !== null) {
+            for (const e of object.virtualHosts) {
+                message.virtualHosts.push(VirtualHost.fromPartial(e));
+            }
+        }
+        if (
+            object.httpsRedirect !== undefined &&
+            object.httpsRedirect !== null
+        ) {
+            message.httpsRedirect = object.httpsRedirect;
+        } else {
+            message.httpsRedirect = false;
+        }
+        return message;
+    },
+};
+
+const baseCreateHttpRouterRequest_LabelsEntry: object = { key: '', value: '' };
+
+export const CreateHttpRouterRequest_LabelsEntry = {
+    encode(
+        message: CreateHttpRouterRequest_LabelsEntry,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        if (message.key !== '') {
+            writer.uint32(10).string(message.key);
+        }
+        if (message.value !== '') {
+            writer.uint32(18).string(message.value);
+        }
+        return writer;
+    },
+
+    decode(
+        input: _m0.Reader | Uint8Array,
+        length?: number
+    ): CreateHttpRouterRequest_LabelsEntry {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = {
+            ...baseCreateHttpRouterRequest_LabelsEntry,
+        } as CreateHttpRouterRequest_LabelsEntry;
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.key = reader.string();
+                    break;
+                case 2:
+                    message.value = reader.string();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): CreateHttpRouterRequest_LabelsEntry {
+        const message = {
+            ...baseCreateHttpRouterRequest_LabelsEntry,
+        } as CreateHttpRouterRequest_LabelsEntry;
+        if (object.key !== undefined && object.key !== null) {
+            message.key = String(object.key);
+        } else {
+            message.key = '';
+        }
+        if (object.value !== undefined && object.value !== null) {
+            message.value = String(object.value);
+        } else {
+            message.value = '';
+        }
+        return message;
+    },
+
+    toJSON(message: CreateHttpRouterRequest_LabelsEntry): unknown {
+        const obj: any = {};
+        message.key !== undefined && (obj.key = message.key);
+        message.value !== undefined && (obj.value = message.value);
+        return obj;
+    },
+
+    fromPartial(
+        object: DeepPartial<CreateHttpRouterRequest_LabelsEntry>
+    ): CreateHttpRouterRequest_LabelsEntry {
+        const message = {
+            ...baseCreateHttpRouterRequest_LabelsEntry,
+        } as CreateHttpRouterRequest_LabelsEntry;
+        if (object.key !== undefined && object.key !== null) {
+            message.key = object.key;
+        } else {
+            message.key = '';
+        }
+        if (object.value !== undefined && object.value !== null) {
+            message.value = object.value;
+        } else {
+            message.value = '';
+        }
+        return message;
+    },
+};
+
+const baseCreateHttpRouterMetadata: object = { httpRouterId: '' };
+
+export const CreateHttpRouterMetadata = {
+    encode(
+        message: CreateHttpRouterMetadata,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        if (message.httpRouterId !== '') {
+            writer.uint32(10).string(message.httpRouterId);
+        }
+        return writer;
+    },
+
+    decode(
+        input: _m0.Reader | Uint8Array,
+        length?: number
+    ): CreateHttpRouterMetadata {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = {
+            ...baseCreateHttpRouterMetadata,
+        } as CreateHttpRouterMetadata;
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.httpRouterId = reader.string();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): CreateHttpRouterMetadata {
+        const message = {
+            ...baseCreateHttpRouterMetadata,
+        } as CreateHttpRouterMetadata;
+        if (object.httpRouterId !== undefined && object.httpRouterId !== null) {
+            message.httpRouterId = String(object.httpRouterId);
+        } else {
+            message.httpRouterId = '';
+        }
+        return message;
+    },
+
+    toJSON(message: CreateHttpRouterMetadata): unknown {
+        const obj: any = {};
+        message.httpRouterId !== undefined &&
+            (obj.httpRouterId = message.httpRouterId);
+        return obj;
+    },
+
+    fromPartial(
+        object: DeepPartial<CreateHttpRouterMetadata>
+    ): CreateHttpRouterMetadata {
+        const message = {
+            ...baseCreateHttpRouterMetadata,
+        } as CreateHttpRouterMetadata;
+        if (object.httpRouterId !== undefined && object.httpRouterId !== null) {
+            message.httpRouterId = object.httpRouterId;
+        } else {
+            message.httpRouterId = '';
+        }
+        return message;
+    },
+};
+
+const baseListHttpRouterOperationsRequest: object = {
+    httpRouterId: '',
+    pageSize: 0,
+    pageToken: '',
+};
+
+export const ListHttpRouterOperationsRequest = {
+    encode(
+        message: ListHttpRouterOperationsRequest,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        if (message.httpRouterId !== '') {
+            writer.uint32(10).string(message.httpRouterId);
+        }
+        if (message.pageSize !== 0) {
+            writer.uint32(16).int64(message.pageSize);
+        }
+        if (message.pageToken !== '') {
+            writer.uint32(26).string(message.pageToken);
+        }
+        return writer;
+    },
+
+    decode(
+        input: _m0.Reader | Uint8Array,
+        length?: number
+    ): ListHttpRouterOperationsRequest {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = {
+            ...baseListHttpRouterOperationsRequest,
+        } as ListHttpRouterOperationsRequest;
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.httpRouterId = reader.string();
+                    break;
+                case 2:
+                    message.pageSize = longToNumber(reader.int64() as Long);
+                    break;
+                case 3:
+                    message.pageToken = reader.string();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): ListHttpRouterOperationsRequest {
+        const message = {
+            ...baseListHttpRouterOperationsRequest,
+        } as ListHttpRouterOperationsRequest;
+        if (object.httpRouterId !== undefined && object.httpRouterId !== null) {
+            message.httpRouterId = String(object.httpRouterId);
+        } else {
+            message.httpRouterId = '';
+        }
+        if (object.pageSize !== undefined && object.pageSize !== null) {
+            message.pageSize = Number(object.pageSize);
+        } else {
+            message.pageSize = 0;
+        }
+        if (object.pageToken !== undefined && object.pageToken !== null) {
+            message.pageToken = String(object.pageToken);
+        } else {
+            message.pageToken = '';
+        }
+        return message;
+    },
+
+    toJSON(message: ListHttpRouterOperationsRequest): unknown {
+        const obj: any = {};
+        message.httpRouterId !== undefined &&
+            (obj.httpRouterId = message.httpRouterId);
+        message.pageSize !== undefined && (obj.pageSize = message.pageSize);
+        message.pageToken !== undefined && (obj.pageToken = message.pageToken);
+        return obj;
+    },
+
+    fromPartial(
+        object: DeepPartial<ListHttpRouterOperationsRequest>
+    ): ListHttpRouterOperationsRequest {
+        const message = {
+            ...baseListHttpRouterOperationsRequest,
+        } as ListHttpRouterOperationsRequest;
+        if (object.httpRouterId !== undefined && object.httpRouterId !== null) {
+            message.httpRouterId = object.httpRouterId;
+        } else {
+            message.httpRouterId = '';
+        }
+        if (object.pageSize !== undefined && object.pageSize !== null) {
+            message.pageSize = object.pageSize;
+        } else {
+            message.pageSize = 0;
+        }
+        if (object.pageToken !== undefined && object.pageToken !== null) {
+            message.pageToken = object.pageToken;
+        } else {
+            message.pageToken = '';
+        }
+        return message;
+    },
+};
+
+const baseListHttpRouterOperationsResponse: object = { nextPageToken: '' };
+
+export const ListHttpRouterOperationsResponse = {
+    encode(
+        message: ListHttpRouterOperationsResponse,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        for (const v of message.operations) {
+            Operation.encode(v!, writer.uint32(10).fork()).ldelim();
+        }
+        if (message.nextPageToken !== '') {
+            writer.uint32(18).string(message.nextPageToken);
+        }
+        return writer;
+    },
+
+    decode(
+        input: _m0.Reader | Uint8Array,
+        length?: number
+    ): ListHttpRouterOperationsResponse {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = {
+            ...baseListHttpRouterOperationsResponse,
+        } as ListHttpRouterOperationsResponse;
+        message.operations = [];
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.operations.push(
+                        Operation.decode(reader, reader.uint32())
+                    );
+                    break;
+                case 2:
+                    message.nextPageToken = reader.string();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): ListHttpRouterOperationsResponse {
+        const message = {
+            ...baseListHttpRouterOperationsResponse,
+        } as ListHttpRouterOperationsResponse;
+        message.operations = [];
+        if (object.operations !== undefined && object.operations !== null) {
+            for (const e of object.operations) {
+                message.operations.push(Operation.fromJSON(e));
+            }
+        }
+        if (
+            object.nextPageToken !== undefined &&
+            object.nextPageToken !== null
+        ) {
+            message.nextPageToken = String(object.nextPageToken);
+        } else {
+            message.nextPageToken = '';
+        }
+        return message;
+    },
+
+    toJSON(message: ListHttpRouterOperationsResponse): unknown {
+        const obj: any = {};
+        if (message.operations) {
+            obj.operations = message.operations.map((e) =>
+                e ? Operation.toJSON(e) : undefined
+            );
+        } else {
+            obj.operations = [];
+        }
+        message.nextPageToken !== undefined &&
+            (obj.nextPageToken = message.nextPageToken);
+        return obj;
+    },
+
+    fromPartial(
+        object: DeepPartial<ListHttpRouterOperationsResponse>
+    ): ListHttpRouterOperationsResponse {
+        const message = {
+            ...baseListHttpRouterOperationsResponse,
+        } as ListHttpRouterOperationsResponse;
+        message.operations = [];
+        if (object.operations !== undefined && object.operations !== null) {
+            for (const e of object.operations) {
+                message.operations.push(Operation.fromPartial(e));
+            }
+        }
+        if (
+            object.nextPageToken !== undefined &&
+            object.nextPageToken !== null
+        ) {
+            message.nextPageToken = object.nextPageToken;
+        } else {
+            message.nextPageToken = '';
+        }
+        return message;
+    },
+};
+
+export const HttpRouterServiceService = {
+    get: {
+        path: '/yandex.cloud.apploadbalancer.v1.HttpRouterService/Get',
+        requestStream: false,
+        responseStream: false,
+        requestSerialize: (value: GetHttpRouterRequest) =>
+            Buffer.from(GetHttpRouterRequest.encode(value).finish()),
+        requestDeserialize: (value: Buffer) =>
+            GetHttpRouterRequest.decode(value),
+        responseSerialize: (value: HttpRouter) =>
+            Buffer.from(HttpRouter.encode(value).finish()),
+        responseDeserialize: (value: Buffer) => HttpRouter.decode(value),
+    },
+    list: {
+        path: '/yandex.cloud.apploadbalancer.v1.HttpRouterService/List',
+        requestStream: false,
+        responseStream: false,
+        requestSerialize: (value: ListHttpRoutersRequest) =>
+            Buffer.from(ListHttpRoutersRequest.encode(value).finish()),
+        requestDeserialize: (value: Buffer) =>
+            ListHttpRoutersRequest.decode(value),
+        responseSerialize: (value: ListHttpRoutersResponse) =>
+            Buffer.from(ListHttpRoutersResponse.encode(value).finish()),
+        responseDeserialize: (value: Buffer) =>
+            ListHttpRoutersResponse.decode(value),
+    },
+    create: {
+        path: '/yandex.cloud.apploadbalancer.v1.HttpRouterService/Create',
+        requestStream: false,
+        responseStream: false,
+        requestSerialize: (value: CreateHttpRouterRequest) =>
+            Buffer.from(CreateHttpRouterRequest.encode(value).finish()),
+        requestDeserialize: (value: Buffer) =>
+            CreateHttpRouterRequest.decode(value),
+        responseSerialize: (value: Operation) =>
+            Buffer.from(Operation.encode(value).finish()),
+        responseDeserialize: (value: Buffer) => Operation.decode(value),
+    },
+    update: {
+        path: '/yandex.cloud.apploadbalancer.v1.HttpRouterService/Update',
+        requestStream: false,
+        responseStream: false,
+        requestSerialize: (value: UpdateHttpRouterRequest) =>
+            Buffer.from(UpdateHttpRouterRequest.encode(value).finish()),
+        requestDeserialize: (value: Buffer) =>
+            UpdateHttpRouterRequest.decode(value),
+        responseSerialize: (value: Operation) =>
+            Buffer.from(Operation.encode(value).finish()),
+        responseDeserialize: (value: Buffer) => Operation.decode(value),
+    },
+    delete: {
+        path: '/yandex.cloud.apploadbalancer.v1.HttpRouterService/Delete',
+        requestStream: false,
+        responseStream: false,
+        requestSerialize: (value: DeleteHttpRouterRequest) =>
+            Buffer.from(DeleteHttpRouterRequest.encode(value).finish()),
+        requestDeserialize: (value: Buffer) =>
+            DeleteHttpRouterRequest.decode(value),
+        responseSerialize: (value: Operation) =>
+            Buffer.from(Operation.encode(value).finish()),
+        responseDeserialize: (value: Buffer) => Operation.decode(value),
+    },
+    /** Lists operations for the specified http router. */
+    listOperations: {
+        path: '/yandex.cloud.apploadbalancer.v1.HttpRouterService/ListOperations',
+        requestStream: false,
+        responseStream: false,
+        requestSerialize: (value: ListHttpRouterOperationsRequest) =>
+            Buffer.from(ListHttpRouterOperationsRequest.encode(value).finish()),
+        requestDeserialize: (value: Buffer) =>
+            ListHttpRouterOperationsRequest.decode(value),
+        responseSerialize: (value: ListHttpRouterOperationsResponse) =>
+            Buffer.from(
+                ListHttpRouterOperationsResponse.encode(value).finish()
+            ),
+        responseDeserialize: (value: Buffer) =>
+            ListHttpRouterOperationsResponse.decode(value),
+    },
+} as const;
+
+export interface HttpRouterServiceServer extends UntypedServiceImplementation {
+    get: handleUnaryCall<GetHttpRouterRequest, HttpRouter>;
+    list: handleUnaryCall<ListHttpRoutersRequest, ListHttpRoutersResponse>;
+    create: handleUnaryCall<CreateHttpRouterRequest, Operation>;
+    update: handleUnaryCall<UpdateHttpRouterRequest, Operation>;
+    delete: handleUnaryCall<DeleteHttpRouterRequest, Operation>;
+    /** Lists operations for the specified http router. */
+    listOperations: handleUnaryCall<
+        ListHttpRouterOperationsRequest,
+        ListHttpRouterOperationsResponse
+    >;
+}
+
+export interface HttpRouterServiceClient extends Client {
+    get(
+        request: GetHttpRouterRequest,
+        callback: (error: ServiceError | null, response: HttpRouter) => void
+    ): ClientUnaryCall;
+    get(
+        request: GetHttpRouterRequest,
+        metadata: Metadata,
+        callback: (error: ServiceError | null, response: HttpRouter) => void
+    ): ClientUnaryCall;
+    get(
+        request: GetHttpRouterRequest,
+        metadata: Metadata,
+        options: Partial<CallOptions>,
+        callback: (error: ServiceError | null, response: HttpRouter) => void
+    ): ClientUnaryCall;
+    list(
+        request: ListHttpRoutersRequest,
+        callback: (
+            error: ServiceError | null,
+            response: ListHttpRoutersResponse
+        ) => void
+    ): ClientUnaryCall;
+    list(
+        request: ListHttpRoutersRequest,
+        metadata: Metadata,
+        callback: (
+            error: ServiceError | null,
+            response: ListHttpRoutersResponse
+        ) => void
+    ): ClientUnaryCall;
+    list(
+        request: ListHttpRoutersRequest,
+        metadata: Metadata,
+        options: Partial<CallOptions>,
+        callback: (
+            error: ServiceError | null,
+            response: ListHttpRoutersResponse
+        ) => void
+    ): ClientUnaryCall;
+    create(
+        request: CreateHttpRouterRequest,
+        callback: (error: ServiceError | null, response: Operation) => void
+    ): ClientUnaryCall;
+    create(
+        request: CreateHttpRouterRequest,
+        metadata: Metadata,
+        callback: (error: ServiceError | null, response: Operation) => void
+    ): ClientUnaryCall;
+    create(
+        request: CreateHttpRouterRequest,
+        metadata: Metadata,
+        options: Partial<CallOptions>,
+        callback: (error: ServiceError | null, response: Operation) => void
+    ): ClientUnaryCall;
+    update(
+        request: UpdateHttpRouterRequest,
+        callback: (error: ServiceError | null, response: Operation) => void
+    ): ClientUnaryCall;
+    update(
+        request: UpdateHttpRouterRequest,
+        metadata: Metadata,
+        callback: (error: ServiceError | null, response: Operation) => void
+    ): ClientUnaryCall;
+    update(
+        request: UpdateHttpRouterRequest,
+        metadata: Metadata,
+        options: Partial<CallOptions>,
+        callback: (error: ServiceError | null, response: Operation) => void
+    ): ClientUnaryCall;
+    delete(
+        request: DeleteHttpRouterRequest,
+        callback: (error: ServiceError | null, response: Operation) => void
+    ): ClientUnaryCall;
+    delete(
+        request: DeleteHttpRouterRequest,
+        metadata: Metadata,
+        callback: (error: ServiceError | null, response: Operation) => void
+    ): ClientUnaryCall;
+    delete(
+        request: DeleteHttpRouterRequest,
+        metadata: Metadata,
+        options: Partial<CallOptions>,
+        callback: (error: ServiceError | null, response: Operation) => void
+    ): ClientUnaryCall;
+    /** Lists operations for the specified http router. */
+    listOperations(
+        request: ListHttpRouterOperationsRequest,
+        callback: (
+            error: ServiceError | null,
+            response: ListHttpRouterOperationsResponse
+        ) => void
+    ): ClientUnaryCall;
+    listOperations(
+        request: ListHttpRouterOperationsRequest,
+        metadata: Metadata,
+        callback: (
+            error: ServiceError | null,
+            response: ListHttpRouterOperationsResponse
+        ) => void
+    ): ClientUnaryCall;
+    listOperations(
+        request: ListHttpRouterOperationsRequest,
+        metadata: Metadata,
+        options: Partial<CallOptions>,
+        callback: (
+            error: ServiceError | null,
+            response: ListHttpRouterOperationsResponse
+        ) => void
+    ): ClientUnaryCall;
+}
+
+export const HttpRouterServiceClient = makeGenericClientConstructor(
+    HttpRouterServiceService,
+    'yandex.cloud.apploadbalancer.v1.HttpRouterService'
+) as unknown as {
+    new (
+        address: string,
+        credentials: ChannelCredentials,
+        options?: Partial<ChannelOptions>
+    ): HttpRouterServiceClient;
+};
+
+declare var self: any | undefined;
+declare var window: any | undefined;
+var globalThis: any = (() => {
+    if (typeof globalThis !== 'undefined') return globalThis;
+    if (typeof self !== 'undefined') return self;
+    if (typeof window !== 'undefined') return window;
+    if (typeof global !== 'undefined') return global;
+    throw 'Unable to locate global object';
+})();
+
+type Builtin =
+    | Date
+    | Function
+    | Uint8Array
+    | string
+    | number
+    | boolean
+    | undefined;
+export type DeepPartial<T> = T extends Builtin
+    ? T
+    : T extends Array<infer U>
+    ? Array<DeepPartial<U>>
+    : T extends ReadonlyArray<infer U>
+    ? ReadonlyArray<DeepPartial<U>>
+    : T extends {}
+    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    : Partial<T>;
+
+function longToNumber(long: Long): number {
+    if (long.gt(Number.MAX_SAFE_INTEGER)) {
+        throw new globalThis.Error(
+            'Value is larger than Number.MAX_SAFE_INTEGER'
+        );
+    }
+    return long.toNumber();
+}
+
+if (_m0.util.Long !== Long) {
+    _m0.util.Long = Long as any;
+    _m0.configure();
+}

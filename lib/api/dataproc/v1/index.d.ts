@@ -1,0 +1,14 @@
+import { ClusterServiceService } from '../../../generated/yandex/cloud/dataproc/v1/cluster_service';
+import { JobServiceService } from '../../../generated/yandex/cloud/dataproc/v1/job_service';
+import { ResourcePresetServiceService } from '../../../generated/yandex/cloud/dataproc/v1/resource_preset_service';
+import { SubclusterServiceService } from '../../../generated/yandex/cloud/dataproc/v1/subcluster_service';
+import { Client } from 'nice-grpc';
+import { SdkServiceDefinition, Session } from 'src';
+export declare const ClusterServiceDef: SdkServiceDefinition<typeof ClusterServiceService>;
+export declare function ClusterService(session?: Session): Client<typeof ClusterServiceService, {}>;
+export declare const JobServiceDef: SdkServiceDefinition<typeof JobServiceService>;
+export declare function JobService(session?: Session): Client<typeof JobServiceService, {}>;
+export declare const ResourcePresetServiceDef: SdkServiceDefinition<typeof ResourcePresetServiceService>;
+export declare function ResourcePresetService(session?: Session): Client<typeof ResourcePresetServiceService, {}>;
+export declare const SubclusterServiceDef: SdkServiceDefinition<typeof SubclusterServiceService>;
+export declare function SubclusterService(session?: Session): Client<typeof SubclusterServiceService, {}>;

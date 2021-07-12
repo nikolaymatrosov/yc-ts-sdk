@@ -1,0 +1,17 @@
+import { ImageServiceService } from '../../../generated/yandex/cloud/containerregistry/v1/image_service';
+import { LifecyclePolicyServiceService } from '../../../generated/yandex/cloud/containerregistry/v1/lifecycle_policy_service';
+import { RegistryServiceService } from '../../../generated/yandex/cloud/containerregistry/v1/registry_service';
+import { RepositoryServiceService } from '../../../generated/yandex/cloud/containerregistry/v1/repository_service';
+import { ScannerServiceService } from '../../../generated/yandex/cloud/containerregistry/v1/scanner_service';
+import { Client } from 'nice-grpc';
+import { SdkServiceDefinition, Session } from 'src';
+export declare const ImageServiceDef: SdkServiceDefinition<typeof ImageServiceService>;
+export declare function ImageService(session?: Session): Client<typeof ImageServiceService, {}>;
+export declare const LifecyclePolicyServiceDef: SdkServiceDefinition<typeof LifecyclePolicyServiceService>;
+export declare function LifecyclePolicyService(session?: Session): Client<typeof LifecyclePolicyServiceService, {}>;
+export declare const RegistryServiceDef: SdkServiceDefinition<typeof RegistryServiceService>;
+export declare function RegistryService(session?: Session): Client<typeof RegistryServiceService, {}>;
+export declare const RepositoryServiceDef: SdkServiceDefinition<typeof RepositoryServiceService>;
+export declare function RepositoryService(session?: Session): Client<typeof RepositoryServiceService, {}>;
+export declare const ScannerServiceDef: SdkServiceDefinition<typeof ScannerServiceService>;
+export declare function ScannerService(session?: Session): Client<typeof ScannerServiceService, {}>;

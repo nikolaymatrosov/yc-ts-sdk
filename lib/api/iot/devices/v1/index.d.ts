@@ -1,0 +1,11 @@
+import { DeviceDataServiceService } from '../../../../generated/yandex/cloud/iot/devices/v1/device_data_service';
+import { RegistryDataServiceService } from '../../../../generated/yandex/cloud/iot/devices/v1/registry_data_service';
+import { RegistryServiceService } from '../../../../generated/yandex/cloud/iot/devices/v1/registry_service';
+import { Client } from 'nice-grpc';
+import { SdkServiceDefinition, Session } from 'src';
+export declare const RegistryServiceDef: SdkServiceDefinition<typeof RegistryServiceService>;
+export declare function RegistryService(session?: Session): Client<typeof RegistryServiceService, {}>;
+export declare const DeviceDataServiceDef: SdkServiceDefinition<typeof DeviceDataServiceService>;
+export declare function DeviceDataService(session?: Session): Client<typeof DeviceDataServiceService, {}>;
+export declare const RegistryDataServiceDef: SdkServiceDefinition<typeof RegistryDataServiceService>;
+export declare function RegistryDataService(session?: Session): Client<typeof RegistryDataServiceService, {}>;

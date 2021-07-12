@@ -1,0 +1,113 @@
+/* eslint-disable */
+import Long from 'long';
+import _m0 from 'protobufjs/minimal';
+
+export const protobufPackage = 'yandex.cloud.iam.v1';
+
+/** A Role resource. For more information, see [Roles](/docs/iam/concepts/access-control/roles). */
+export interface Role {
+    /** ID of the role. */
+    id: string;
+    /** Description of the role. 0-256 characters long. */
+    description: string;
+}
+
+const baseRole: object = { id: '', description: '' };
+
+export const Role = {
+    encode(
+        message: Role,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        if (message.id !== '') {
+            writer.uint32(10).string(message.id);
+        }
+        if (message.description !== '') {
+            writer.uint32(18).string(message.description);
+        }
+        return writer;
+    },
+
+    decode(input: _m0.Reader | Uint8Array, length?: number): Role {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = { ...baseRole } as Role;
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.id = reader.string();
+                    break;
+                case 2:
+                    message.description = reader.string();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): Role {
+        const message = { ...baseRole } as Role;
+        if (object.id !== undefined && object.id !== null) {
+            message.id = String(object.id);
+        } else {
+            message.id = '';
+        }
+        if (object.description !== undefined && object.description !== null) {
+            message.description = String(object.description);
+        } else {
+            message.description = '';
+        }
+        return message;
+    },
+
+    toJSON(message: Role): unknown {
+        const obj: any = {};
+        message.id !== undefined && (obj.id = message.id);
+        message.description !== undefined &&
+            (obj.description = message.description);
+        return obj;
+    },
+
+    fromPartial(object: DeepPartial<Role>): Role {
+        const message = { ...baseRole } as Role;
+        if (object.id !== undefined && object.id !== null) {
+            message.id = object.id;
+        } else {
+            message.id = '';
+        }
+        if (object.description !== undefined && object.description !== null) {
+            message.description = object.description;
+        } else {
+            message.description = '';
+        }
+        return message;
+    },
+};
+
+type Builtin =
+    | Date
+    | Function
+    | Uint8Array
+    | string
+    | number
+    | boolean
+    | undefined;
+export type DeepPartial<T> = T extends Builtin
+    ? T
+    : T extends Array<infer U>
+    ? Array<DeepPartial<U>>
+    : T extends ReadonlyArray<infer U>
+    ? ReadonlyArray<DeepPartial<U>>
+    : T extends {}
+    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    : Partial<T>;
+
+if (_m0.util.Long !== Long) {
+    _m0.util.Long = Long as any;
+    _m0.configure();
+}

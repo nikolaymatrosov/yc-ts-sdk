@@ -1,0 +1,1899 @@
+/* eslint-disable */
+import { FieldMask } from '../../../../google/protobuf/field_mask';
+import {
+    Disk,
+    DiskPlacementPolicy,
+} from '../../../../yandex/cloud/compute/v1/disk';
+import { Operation } from '../../../../yandex/cloud/operation/operation';
+import {
+    makeGenericClientConstructor,
+    ChannelCredentials,
+    ChannelOptions,
+    UntypedServiceImplementation,
+    handleUnaryCall,
+    Client,
+    ClientUnaryCall,
+    Metadata,
+    CallOptions,
+    ServiceError,
+} from '@grpc/grpc-js';
+import Long from 'long';
+import _m0 from 'protobufjs/minimal';
+
+export const protobufPackage = 'yandex.cloud.compute.v1';
+
+export interface GetDiskRequest {
+    /**
+     * ID of the Disk resource to return.
+     * To get the disk ID use a [DiskService.List] request.
+     */
+    diskId: string;
+}
+
+export interface ListDisksRequest {
+    /**
+     * ID of the folder to list disks in.
+     * To get the folder ID use a [yandex.cloud.resourcemanager.v1.FolderService.List] request.
+     */
+    folderId: string;
+    /**
+     * The maximum number of results per page to return. If the number of available
+     * results is larger than [page_size],
+     * the service returns a [ListDisksResponse.next_page_token]
+     * that can be used to get the next page of results in subsequent list requests.
+     */
+    pageSize: number;
+    /**
+     * Page token. To get the next page of results, set [page_token] to the
+     * [ListDisksResponse.next_page_token] returned by a previous list request.
+     */
+    pageToken: string;
+    /**
+     * A filter expression that filters resources listed in the response.
+     * The expression must specify:
+     * 1. The field name. Currently you can use filtering only on the [Disk.name] field.
+     * 2. An operator. Can be either `=` or `!=` for single values, `IN` or `NOT IN` for lists of values.
+     * 3. The value. Must be 3-63 characters long and match the regular expression `^[a-z]([-a-z0-9]{,61}[a-z0-9])?$`.
+     */
+    filter: string;
+}
+
+export interface ListDisksResponse {
+    /** List of Disk resources. */
+    disks: Disk[];
+    /**
+     * This token allows you to get the next page of results for list requests. If the number of results
+     * is larger than [ListDisksRequest.page_size], use
+     * the [next_page_token] as the value
+     * for the [ListDisksRequest.page_token] query parameter
+     * in the next list request. Each subsequent list request will have its own
+     * [next_page_token] to continue paging through the results.
+     */
+    nextPageToken: string;
+}
+
+export interface CreateDiskRequest {
+    /**
+     * ID of the folder to create a disk in.
+     * To get the folder ID use a [yandex.cloud.resourcemanager.v1.FolderService.List] request.
+     */
+    folderId: string;
+    /** Name of the disk. */
+    name: string;
+    /** Description of the disk. */
+    description: string;
+    /** Resource labels as `key:value` pairs. */
+    labels: { [key: string]: string };
+    /**
+     * ID of the disk type.
+     * To get a list of available disk types use the [yandex.cloud.compute.v1.DiskTypeService.List] request.
+     */
+    typeId: string;
+    /**
+     * ID of the availability zone where the disk resides.
+     * To get a list of available zones use the [yandex.cloud.compute.v1.ZoneService.List] request.
+     */
+    zoneId: string;
+    /**
+     * Size of the disk, specified in bytes.
+     * If the disk was created from a image, this value should be more than the
+     * [yandex.cloud.compute.v1.Image.min_disk_size] value.
+     */
+    size: number;
+    /** ID of the image to create the disk from. */
+    imageId: string | undefined;
+    /** ID of the snapshot to restore the disk from. */
+    snapshotId: string | undefined;
+    /** Block size used for disk, specified in bytes. The default is 4096. */
+    blockSize: number;
+    /** Placement policy configuration. */
+    diskPlacementPolicy: DiskPlacementPolicy | undefined;
+}
+
+export interface CreateDiskRequest_LabelsEntry {
+    key: string;
+    value: string;
+}
+
+export interface CreateDiskMetadata {
+    /** ID of the disk that is being created. */
+    diskId: string;
+}
+
+export interface UpdateDiskRequest {
+    /**
+     * ID of the Disk resource to update.
+     * To get the disk ID use a [DiskService.List] request.
+     */
+    diskId: string;
+    /** Field mask that specifies which fields of the Disk resource are going to be updated. */
+    updateMask: FieldMask | undefined;
+    /** Name of the disk. */
+    name: string;
+    /** Description of the disk. */
+    description: string;
+    /**
+     * Resource labels as `key:value` pairs.
+     *
+     * Existing set of `labels` is completely replaced by the provided set.
+     */
+    labels: { [key: string]: string };
+    /** Size of the disk, specified in bytes. */
+    size: number;
+    /** Placement policy configuration. */
+    diskPlacementPolicy: DiskPlacementPolicy | undefined;
+}
+
+export interface UpdateDiskRequest_LabelsEntry {
+    key: string;
+    value: string;
+}
+
+export interface UpdateDiskMetadata {
+    /** ID of the Disk resource that is being updated. */
+    diskId: string;
+}
+
+export interface DeleteDiskRequest {
+    /**
+     * ID of the disk to delete.
+     * To get the disk ID use a [DiskService.List] request.
+     */
+    diskId: string;
+}
+
+export interface DeleteDiskMetadata {
+    /** ID of the disk that is being deleted. */
+    diskId: string;
+}
+
+export interface ListDiskOperationsRequest {
+    /** ID of the Disk resource to list operations for. */
+    diskId: string;
+    /**
+     * The maximum number of results per page to return. If the number of available
+     * results is larger than [page_size], the service returns a [ListDiskOperationsResponse.next_page_token]
+     * that can be used to get the next page of results in subsequent list requests.
+     */
+    pageSize: number;
+    /**
+     * Page token. To get the next page of results, set [page_token] to the
+     * [ListDiskOperationsResponse.next_page_token] returned by a previous list request.
+     */
+    pageToken: string;
+}
+
+export interface ListDiskOperationsResponse {
+    /** List of operations for the specified disk. */
+    operations: Operation[];
+    /**
+     * This token allows you to get the next page of results for list requests. If the number of results
+     * is larger than [ListDiskOperationsRequest.page_size], use the [next_page_token] as the value
+     * for the [ListDiskOperationsRequest.page_token] query parameter in the next list request.
+     * Each subsequent list request will have its own [next_page_token] to continue paging through the results.
+     */
+    nextPageToken: string;
+}
+
+const baseGetDiskRequest: object = { diskId: '' };
+
+export const GetDiskRequest = {
+    encode(
+        message: GetDiskRequest,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        if (message.diskId !== '') {
+            writer.uint32(10).string(message.diskId);
+        }
+        return writer;
+    },
+
+    decode(input: _m0.Reader | Uint8Array, length?: number): GetDiskRequest {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = { ...baseGetDiskRequest } as GetDiskRequest;
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.diskId = reader.string();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): GetDiskRequest {
+        const message = { ...baseGetDiskRequest } as GetDiskRequest;
+        if (object.diskId !== undefined && object.diskId !== null) {
+            message.diskId = String(object.diskId);
+        } else {
+            message.diskId = '';
+        }
+        return message;
+    },
+
+    toJSON(message: GetDiskRequest): unknown {
+        const obj: any = {};
+        message.diskId !== undefined && (obj.diskId = message.diskId);
+        return obj;
+    },
+
+    fromPartial(object: DeepPartial<GetDiskRequest>): GetDiskRequest {
+        const message = { ...baseGetDiskRequest } as GetDiskRequest;
+        if (object.diskId !== undefined && object.diskId !== null) {
+            message.diskId = object.diskId;
+        } else {
+            message.diskId = '';
+        }
+        return message;
+    },
+};
+
+const baseListDisksRequest: object = {
+    folderId: '',
+    pageSize: 0,
+    pageToken: '',
+    filter: '',
+};
+
+export const ListDisksRequest = {
+    encode(
+        message: ListDisksRequest,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        if (message.folderId !== '') {
+            writer.uint32(10).string(message.folderId);
+        }
+        if (message.pageSize !== 0) {
+            writer.uint32(16).int64(message.pageSize);
+        }
+        if (message.pageToken !== '') {
+            writer.uint32(26).string(message.pageToken);
+        }
+        if (message.filter !== '') {
+            writer.uint32(34).string(message.filter);
+        }
+        return writer;
+    },
+
+    decode(input: _m0.Reader | Uint8Array, length?: number): ListDisksRequest {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = { ...baseListDisksRequest } as ListDisksRequest;
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.folderId = reader.string();
+                    break;
+                case 2:
+                    message.pageSize = longToNumber(reader.int64() as Long);
+                    break;
+                case 3:
+                    message.pageToken = reader.string();
+                    break;
+                case 4:
+                    message.filter = reader.string();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): ListDisksRequest {
+        const message = { ...baseListDisksRequest } as ListDisksRequest;
+        if (object.folderId !== undefined && object.folderId !== null) {
+            message.folderId = String(object.folderId);
+        } else {
+            message.folderId = '';
+        }
+        if (object.pageSize !== undefined && object.pageSize !== null) {
+            message.pageSize = Number(object.pageSize);
+        } else {
+            message.pageSize = 0;
+        }
+        if (object.pageToken !== undefined && object.pageToken !== null) {
+            message.pageToken = String(object.pageToken);
+        } else {
+            message.pageToken = '';
+        }
+        if (object.filter !== undefined && object.filter !== null) {
+            message.filter = String(object.filter);
+        } else {
+            message.filter = '';
+        }
+        return message;
+    },
+
+    toJSON(message: ListDisksRequest): unknown {
+        const obj: any = {};
+        message.folderId !== undefined && (obj.folderId = message.folderId);
+        message.pageSize !== undefined && (obj.pageSize = message.pageSize);
+        message.pageToken !== undefined && (obj.pageToken = message.pageToken);
+        message.filter !== undefined && (obj.filter = message.filter);
+        return obj;
+    },
+
+    fromPartial(object: DeepPartial<ListDisksRequest>): ListDisksRequest {
+        const message = { ...baseListDisksRequest } as ListDisksRequest;
+        if (object.folderId !== undefined && object.folderId !== null) {
+            message.folderId = object.folderId;
+        } else {
+            message.folderId = '';
+        }
+        if (object.pageSize !== undefined && object.pageSize !== null) {
+            message.pageSize = object.pageSize;
+        } else {
+            message.pageSize = 0;
+        }
+        if (object.pageToken !== undefined && object.pageToken !== null) {
+            message.pageToken = object.pageToken;
+        } else {
+            message.pageToken = '';
+        }
+        if (object.filter !== undefined && object.filter !== null) {
+            message.filter = object.filter;
+        } else {
+            message.filter = '';
+        }
+        return message;
+    },
+};
+
+const baseListDisksResponse: object = { nextPageToken: '' };
+
+export const ListDisksResponse = {
+    encode(
+        message: ListDisksResponse,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        for (const v of message.disks) {
+            Disk.encode(v!, writer.uint32(10).fork()).ldelim();
+        }
+        if (message.nextPageToken !== '') {
+            writer.uint32(18).string(message.nextPageToken);
+        }
+        return writer;
+    },
+
+    decode(input: _m0.Reader | Uint8Array, length?: number): ListDisksResponse {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = { ...baseListDisksResponse } as ListDisksResponse;
+        message.disks = [];
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.disks.push(Disk.decode(reader, reader.uint32()));
+                    break;
+                case 2:
+                    message.nextPageToken = reader.string();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): ListDisksResponse {
+        const message = { ...baseListDisksResponse } as ListDisksResponse;
+        message.disks = [];
+        if (object.disks !== undefined && object.disks !== null) {
+            for (const e of object.disks) {
+                message.disks.push(Disk.fromJSON(e));
+            }
+        }
+        if (
+            object.nextPageToken !== undefined &&
+            object.nextPageToken !== null
+        ) {
+            message.nextPageToken = String(object.nextPageToken);
+        } else {
+            message.nextPageToken = '';
+        }
+        return message;
+    },
+
+    toJSON(message: ListDisksResponse): unknown {
+        const obj: any = {};
+        if (message.disks) {
+            obj.disks = message.disks.map((e) =>
+                e ? Disk.toJSON(e) : undefined
+            );
+        } else {
+            obj.disks = [];
+        }
+        message.nextPageToken !== undefined &&
+            (obj.nextPageToken = message.nextPageToken);
+        return obj;
+    },
+
+    fromPartial(object: DeepPartial<ListDisksResponse>): ListDisksResponse {
+        const message = { ...baseListDisksResponse } as ListDisksResponse;
+        message.disks = [];
+        if (object.disks !== undefined && object.disks !== null) {
+            for (const e of object.disks) {
+                message.disks.push(Disk.fromPartial(e));
+            }
+        }
+        if (
+            object.nextPageToken !== undefined &&
+            object.nextPageToken !== null
+        ) {
+            message.nextPageToken = object.nextPageToken;
+        } else {
+            message.nextPageToken = '';
+        }
+        return message;
+    },
+};
+
+const baseCreateDiskRequest: object = {
+    folderId: '',
+    name: '',
+    description: '',
+    typeId: '',
+    zoneId: '',
+    size: 0,
+    blockSize: 0,
+};
+
+export const CreateDiskRequest = {
+    encode(
+        message: CreateDiskRequest,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        if (message.folderId !== '') {
+            writer.uint32(10).string(message.folderId);
+        }
+        if (message.name !== '') {
+            writer.uint32(18).string(message.name);
+        }
+        if (message.description !== '') {
+            writer.uint32(26).string(message.description);
+        }
+        Object.entries(message.labels).forEach(([key, value]) => {
+            CreateDiskRequest_LabelsEntry.encode(
+                { key: key as any, value },
+                writer.uint32(34).fork()
+            ).ldelim();
+        });
+        if (message.typeId !== '') {
+            writer.uint32(42).string(message.typeId);
+        }
+        if (message.zoneId !== '') {
+            writer.uint32(50).string(message.zoneId);
+        }
+        if (message.size !== 0) {
+            writer.uint32(56).int64(message.size);
+        }
+        if (message.imageId !== undefined) {
+            writer.uint32(66).string(message.imageId);
+        }
+        if (message.snapshotId !== undefined) {
+            writer.uint32(74).string(message.snapshotId);
+        }
+        if (message.blockSize !== 0) {
+            writer.uint32(80).int64(message.blockSize);
+        }
+        if (message.diskPlacementPolicy !== undefined) {
+            DiskPlacementPolicy.encode(
+                message.diskPlacementPolicy,
+                writer.uint32(90).fork()
+            ).ldelim();
+        }
+        return writer;
+    },
+
+    decode(input: _m0.Reader | Uint8Array, length?: number): CreateDiskRequest {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = { ...baseCreateDiskRequest } as CreateDiskRequest;
+        message.labels = {};
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.folderId = reader.string();
+                    break;
+                case 2:
+                    message.name = reader.string();
+                    break;
+                case 3:
+                    message.description = reader.string();
+                    break;
+                case 4:
+                    const entry4 = CreateDiskRequest_LabelsEntry.decode(
+                        reader,
+                        reader.uint32()
+                    );
+                    if (entry4.value !== undefined) {
+                        message.labels[entry4.key] = entry4.value;
+                    }
+                    break;
+                case 5:
+                    message.typeId = reader.string();
+                    break;
+                case 6:
+                    message.zoneId = reader.string();
+                    break;
+                case 7:
+                    message.size = longToNumber(reader.int64() as Long);
+                    break;
+                case 8:
+                    message.imageId = reader.string();
+                    break;
+                case 9:
+                    message.snapshotId = reader.string();
+                    break;
+                case 10:
+                    message.blockSize = longToNumber(reader.int64() as Long);
+                    break;
+                case 11:
+                    message.diskPlacementPolicy = DiskPlacementPolicy.decode(
+                        reader,
+                        reader.uint32()
+                    );
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): CreateDiskRequest {
+        const message = { ...baseCreateDiskRequest } as CreateDiskRequest;
+        message.labels = {};
+        if (object.folderId !== undefined && object.folderId !== null) {
+            message.folderId = String(object.folderId);
+        } else {
+            message.folderId = '';
+        }
+        if (object.name !== undefined && object.name !== null) {
+            message.name = String(object.name);
+        } else {
+            message.name = '';
+        }
+        if (object.description !== undefined && object.description !== null) {
+            message.description = String(object.description);
+        } else {
+            message.description = '';
+        }
+        if (object.labels !== undefined && object.labels !== null) {
+            Object.entries(object.labels).forEach(([key, value]) => {
+                message.labels[key] = String(value);
+            });
+        }
+        if (object.typeId !== undefined && object.typeId !== null) {
+            message.typeId = String(object.typeId);
+        } else {
+            message.typeId = '';
+        }
+        if (object.zoneId !== undefined && object.zoneId !== null) {
+            message.zoneId = String(object.zoneId);
+        } else {
+            message.zoneId = '';
+        }
+        if (object.size !== undefined && object.size !== null) {
+            message.size = Number(object.size);
+        } else {
+            message.size = 0;
+        }
+        if (object.imageId !== undefined && object.imageId !== null) {
+            message.imageId = String(object.imageId);
+        } else {
+            message.imageId = undefined;
+        }
+        if (object.snapshotId !== undefined && object.snapshotId !== null) {
+            message.snapshotId = String(object.snapshotId);
+        } else {
+            message.snapshotId = undefined;
+        }
+        if (object.blockSize !== undefined && object.blockSize !== null) {
+            message.blockSize = Number(object.blockSize);
+        } else {
+            message.blockSize = 0;
+        }
+        if (
+            object.diskPlacementPolicy !== undefined &&
+            object.diskPlacementPolicy !== null
+        ) {
+            message.diskPlacementPolicy = DiskPlacementPolicy.fromJSON(
+                object.diskPlacementPolicy
+            );
+        } else {
+            message.diskPlacementPolicy = undefined;
+        }
+        return message;
+    },
+
+    toJSON(message: CreateDiskRequest): unknown {
+        const obj: any = {};
+        message.folderId !== undefined && (obj.folderId = message.folderId);
+        message.name !== undefined && (obj.name = message.name);
+        message.description !== undefined &&
+            (obj.description = message.description);
+        obj.labels = {};
+        if (message.labels) {
+            Object.entries(message.labels).forEach(([k, v]) => {
+                obj.labels[k] = v;
+            });
+        }
+        message.typeId !== undefined && (obj.typeId = message.typeId);
+        message.zoneId !== undefined && (obj.zoneId = message.zoneId);
+        message.size !== undefined && (obj.size = message.size);
+        message.imageId !== undefined && (obj.imageId = message.imageId);
+        message.snapshotId !== undefined &&
+            (obj.snapshotId = message.snapshotId);
+        message.blockSize !== undefined && (obj.blockSize = message.blockSize);
+        message.diskPlacementPolicy !== undefined &&
+            (obj.diskPlacementPolicy = message.diskPlacementPolicy
+                ? DiskPlacementPolicy.toJSON(message.diskPlacementPolicy)
+                : undefined);
+        return obj;
+    },
+
+    fromPartial(object: DeepPartial<CreateDiskRequest>): CreateDiskRequest {
+        const message = { ...baseCreateDiskRequest } as CreateDiskRequest;
+        message.labels = {};
+        if (object.folderId !== undefined && object.folderId !== null) {
+            message.folderId = object.folderId;
+        } else {
+            message.folderId = '';
+        }
+        if (object.name !== undefined && object.name !== null) {
+            message.name = object.name;
+        } else {
+            message.name = '';
+        }
+        if (object.description !== undefined && object.description !== null) {
+            message.description = object.description;
+        } else {
+            message.description = '';
+        }
+        if (object.labels !== undefined && object.labels !== null) {
+            Object.entries(object.labels).forEach(([key, value]) => {
+                if (value !== undefined) {
+                    message.labels[key] = String(value);
+                }
+            });
+        }
+        if (object.typeId !== undefined && object.typeId !== null) {
+            message.typeId = object.typeId;
+        } else {
+            message.typeId = '';
+        }
+        if (object.zoneId !== undefined && object.zoneId !== null) {
+            message.zoneId = object.zoneId;
+        } else {
+            message.zoneId = '';
+        }
+        if (object.size !== undefined && object.size !== null) {
+            message.size = object.size;
+        } else {
+            message.size = 0;
+        }
+        if (object.imageId !== undefined && object.imageId !== null) {
+            message.imageId = object.imageId;
+        } else {
+            message.imageId = undefined;
+        }
+        if (object.snapshotId !== undefined && object.snapshotId !== null) {
+            message.snapshotId = object.snapshotId;
+        } else {
+            message.snapshotId = undefined;
+        }
+        if (object.blockSize !== undefined && object.blockSize !== null) {
+            message.blockSize = object.blockSize;
+        } else {
+            message.blockSize = 0;
+        }
+        if (
+            object.diskPlacementPolicy !== undefined &&
+            object.diskPlacementPolicy !== null
+        ) {
+            message.diskPlacementPolicy = DiskPlacementPolicy.fromPartial(
+                object.diskPlacementPolicy
+            );
+        } else {
+            message.diskPlacementPolicy = undefined;
+        }
+        return message;
+    },
+};
+
+const baseCreateDiskRequest_LabelsEntry: object = { key: '', value: '' };
+
+export const CreateDiskRequest_LabelsEntry = {
+    encode(
+        message: CreateDiskRequest_LabelsEntry,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        if (message.key !== '') {
+            writer.uint32(10).string(message.key);
+        }
+        if (message.value !== '') {
+            writer.uint32(18).string(message.value);
+        }
+        return writer;
+    },
+
+    decode(
+        input: _m0.Reader | Uint8Array,
+        length?: number
+    ): CreateDiskRequest_LabelsEntry {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = {
+            ...baseCreateDiskRequest_LabelsEntry,
+        } as CreateDiskRequest_LabelsEntry;
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.key = reader.string();
+                    break;
+                case 2:
+                    message.value = reader.string();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): CreateDiskRequest_LabelsEntry {
+        const message = {
+            ...baseCreateDiskRequest_LabelsEntry,
+        } as CreateDiskRequest_LabelsEntry;
+        if (object.key !== undefined && object.key !== null) {
+            message.key = String(object.key);
+        } else {
+            message.key = '';
+        }
+        if (object.value !== undefined && object.value !== null) {
+            message.value = String(object.value);
+        } else {
+            message.value = '';
+        }
+        return message;
+    },
+
+    toJSON(message: CreateDiskRequest_LabelsEntry): unknown {
+        const obj: any = {};
+        message.key !== undefined && (obj.key = message.key);
+        message.value !== undefined && (obj.value = message.value);
+        return obj;
+    },
+
+    fromPartial(
+        object: DeepPartial<CreateDiskRequest_LabelsEntry>
+    ): CreateDiskRequest_LabelsEntry {
+        const message = {
+            ...baseCreateDiskRequest_LabelsEntry,
+        } as CreateDiskRequest_LabelsEntry;
+        if (object.key !== undefined && object.key !== null) {
+            message.key = object.key;
+        } else {
+            message.key = '';
+        }
+        if (object.value !== undefined && object.value !== null) {
+            message.value = object.value;
+        } else {
+            message.value = '';
+        }
+        return message;
+    },
+};
+
+const baseCreateDiskMetadata: object = { diskId: '' };
+
+export const CreateDiskMetadata = {
+    encode(
+        message: CreateDiskMetadata,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        if (message.diskId !== '') {
+            writer.uint32(10).string(message.diskId);
+        }
+        return writer;
+    },
+
+    decode(
+        input: _m0.Reader | Uint8Array,
+        length?: number
+    ): CreateDiskMetadata {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = { ...baseCreateDiskMetadata } as CreateDiskMetadata;
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.diskId = reader.string();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): CreateDiskMetadata {
+        const message = { ...baseCreateDiskMetadata } as CreateDiskMetadata;
+        if (object.diskId !== undefined && object.diskId !== null) {
+            message.diskId = String(object.diskId);
+        } else {
+            message.diskId = '';
+        }
+        return message;
+    },
+
+    toJSON(message: CreateDiskMetadata): unknown {
+        const obj: any = {};
+        message.diskId !== undefined && (obj.diskId = message.diskId);
+        return obj;
+    },
+
+    fromPartial(object: DeepPartial<CreateDiskMetadata>): CreateDiskMetadata {
+        const message = { ...baseCreateDiskMetadata } as CreateDiskMetadata;
+        if (object.diskId !== undefined && object.diskId !== null) {
+            message.diskId = object.diskId;
+        } else {
+            message.diskId = '';
+        }
+        return message;
+    },
+};
+
+const baseUpdateDiskRequest: object = {
+    diskId: '',
+    name: '',
+    description: '',
+    size: 0,
+};
+
+export const UpdateDiskRequest = {
+    encode(
+        message: UpdateDiskRequest,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        if (message.diskId !== '') {
+            writer.uint32(10).string(message.diskId);
+        }
+        if (message.updateMask !== undefined) {
+            FieldMask.encode(
+                message.updateMask,
+                writer.uint32(18).fork()
+            ).ldelim();
+        }
+        if (message.name !== '') {
+            writer.uint32(26).string(message.name);
+        }
+        if (message.description !== '') {
+            writer.uint32(34).string(message.description);
+        }
+        Object.entries(message.labels).forEach(([key, value]) => {
+            UpdateDiskRequest_LabelsEntry.encode(
+                { key: key as any, value },
+                writer.uint32(42).fork()
+            ).ldelim();
+        });
+        if (message.size !== 0) {
+            writer.uint32(48).int64(message.size);
+        }
+        if (message.diskPlacementPolicy !== undefined) {
+            DiskPlacementPolicy.encode(
+                message.diskPlacementPolicy,
+                writer.uint32(58).fork()
+            ).ldelim();
+        }
+        return writer;
+    },
+
+    decode(input: _m0.Reader | Uint8Array, length?: number): UpdateDiskRequest {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = { ...baseUpdateDiskRequest } as UpdateDiskRequest;
+        message.labels = {};
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.diskId = reader.string();
+                    break;
+                case 2:
+                    message.updateMask = FieldMask.decode(
+                        reader,
+                        reader.uint32()
+                    );
+                    break;
+                case 3:
+                    message.name = reader.string();
+                    break;
+                case 4:
+                    message.description = reader.string();
+                    break;
+                case 5:
+                    const entry5 = UpdateDiskRequest_LabelsEntry.decode(
+                        reader,
+                        reader.uint32()
+                    );
+                    if (entry5.value !== undefined) {
+                        message.labels[entry5.key] = entry5.value;
+                    }
+                    break;
+                case 6:
+                    message.size = longToNumber(reader.int64() as Long);
+                    break;
+                case 7:
+                    message.diskPlacementPolicy = DiskPlacementPolicy.decode(
+                        reader,
+                        reader.uint32()
+                    );
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): UpdateDiskRequest {
+        const message = { ...baseUpdateDiskRequest } as UpdateDiskRequest;
+        message.labels = {};
+        if (object.diskId !== undefined && object.diskId !== null) {
+            message.diskId = String(object.diskId);
+        } else {
+            message.diskId = '';
+        }
+        if (object.updateMask !== undefined && object.updateMask !== null) {
+            message.updateMask = FieldMask.fromJSON(object.updateMask);
+        } else {
+            message.updateMask = undefined;
+        }
+        if (object.name !== undefined && object.name !== null) {
+            message.name = String(object.name);
+        } else {
+            message.name = '';
+        }
+        if (object.description !== undefined && object.description !== null) {
+            message.description = String(object.description);
+        } else {
+            message.description = '';
+        }
+        if (object.labels !== undefined && object.labels !== null) {
+            Object.entries(object.labels).forEach(([key, value]) => {
+                message.labels[key] = String(value);
+            });
+        }
+        if (object.size !== undefined && object.size !== null) {
+            message.size = Number(object.size);
+        } else {
+            message.size = 0;
+        }
+        if (
+            object.diskPlacementPolicy !== undefined &&
+            object.diskPlacementPolicy !== null
+        ) {
+            message.diskPlacementPolicy = DiskPlacementPolicy.fromJSON(
+                object.diskPlacementPolicy
+            );
+        } else {
+            message.diskPlacementPolicy = undefined;
+        }
+        return message;
+    },
+
+    toJSON(message: UpdateDiskRequest): unknown {
+        const obj: any = {};
+        message.diskId !== undefined && (obj.diskId = message.diskId);
+        message.updateMask !== undefined &&
+            (obj.updateMask = message.updateMask
+                ? FieldMask.toJSON(message.updateMask)
+                : undefined);
+        message.name !== undefined && (obj.name = message.name);
+        message.description !== undefined &&
+            (obj.description = message.description);
+        obj.labels = {};
+        if (message.labels) {
+            Object.entries(message.labels).forEach(([k, v]) => {
+                obj.labels[k] = v;
+            });
+        }
+        message.size !== undefined && (obj.size = message.size);
+        message.diskPlacementPolicy !== undefined &&
+            (obj.diskPlacementPolicy = message.diskPlacementPolicy
+                ? DiskPlacementPolicy.toJSON(message.diskPlacementPolicy)
+                : undefined);
+        return obj;
+    },
+
+    fromPartial(object: DeepPartial<UpdateDiskRequest>): UpdateDiskRequest {
+        const message = { ...baseUpdateDiskRequest } as UpdateDiskRequest;
+        message.labels = {};
+        if (object.diskId !== undefined && object.diskId !== null) {
+            message.diskId = object.diskId;
+        } else {
+            message.diskId = '';
+        }
+        if (object.updateMask !== undefined && object.updateMask !== null) {
+            message.updateMask = FieldMask.fromPartial(object.updateMask);
+        } else {
+            message.updateMask = undefined;
+        }
+        if (object.name !== undefined && object.name !== null) {
+            message.name = object.name;
+        } else {
+            message.name = '';
+        }
+        if (object.description !== undefined && object.description !== null) {
+            message.description = object.description;
+        } else {
+            message.description = '';
+        }
+        if (object.labels !== undefined && object.labels !== null) {
+            Object.entries(object.labels).forEach(([key, value]) => {
+                if (value !== undefined) {
+                    message.labels[key] = String(value);
+                }
+            });
+        }
+        if (object.size !== undefined && object.size !== null) {
+            message.size = object.size;
+        } else {
+            message.size = 0;
+        }
+        if (
+            object.diskPlacementPolicy !== undefined &&
+            object.diskPlacementPolicy !== null
+        ) {
+            message.diskPlacementPolicy = DiskPlacementPolicy.fromPartial(
+                object.diskPlacementPolicy
+            );
+        } else {
+            message.diskPlacementPolicy = undefined;
+        }
+        return message;
+    },
+};
+
+const baseUpdateDiskRequest_LabelsEntry: object = { key: '', value: '' };
+
+export const UpdateDiskRequest_LabelsEntry = {
+    encode(
+        message: UpdateDiskRequest_LabelsEntry,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        if (message.key !== '') {
+            writer.uint32(10).string(message.key);
+        }
+        if (message.value !== '') {
+            writer.uint32(18).string(message.value);
+        }
+        return writer;
+    },
+
+    decode(
+        input: _m0.Reader | Uint8Array,
+        length?: number
+    ): UpdateDiskRequest_LabelsEntry {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = {
+            ...baseUpdateDiskRequest_LabelsEntry,
+        } as UpdateDiskRequest_LabelsEntry;
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.key = reader.string();
+                    break;
+                case 2:
+                    message.value = reader.string();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): UpdateDiskRequest_LabelsEntry {
+        const message = {
+            ...baseUpdateDiskRequest_LabelsEntry,
+        } as UpdateDiskRequest_LabelsEntry;
+        if (object.key !== undefined && object.key !== null) {
+            message.key = String(object.key);
+        } else {
+            message.key = '';
+        }
+        if (object.value !== undefined && object.value !== null) {
+            message.value = String(object.value);
+        } else {
+            message.value = '';
+        }
+        return message;
+    },
+
+    toJSON(message: UpdateDiskRequest_LabelsEntry): unknown {
+        const obj: any = {};
+        message.key !== undefined && (obj.key = message.key);
+        message.value !== undefined && (obj.value = message.value);
+        return obj;
+    },
+
+    fromPartial(
+        object: DeepPartial<UpdateDiskRequest_LabelsEntry>
+    ): UpdateDiskRequest_LabelsEntry {
+        const message = {
+            ...baseUpdateDiskRequest_LabelsEntry,
+        } as UpdateDiskRequest_LabelsEntry;
+        if (object.key !== undefined && object.key !== null) {
+            message.key = object.key;
+        } else {
+            message.key = '';
+        }
+        if (object.value !== undefined && object.value !== null) {
+            message.value = object.value;
+        } else {
+            message.value = '';
+        }
+        return message;
+    },
+};
+
+const baseUpdateDiskMetadata: object = { diskId: '' };
+
+export const UpdateDiskMetadata = {
+    encode(
+        message: UpdateDiskMetadata,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        if (message.diskId !== '') {
+            writer.uint32(10).string(message.diskId);
+        }
+        return writer;
+    },
+
+    decode(
+        input: _m0.Reader | Uint8Array,
+        length?: number
+    ): UpdateDiskMetadata {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = { ...baseUpdateDiskMetadata } as UpdateDiskMetadata;
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.diskId = reader.string();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): UpdateDiskMetadata {
+        const message = { ...baseUpdateDiskMetadata } as UpdateDiskMetadata;
+        if (object.diskId !== undefined && object.diskId !== null) {
+            message.diskId = String(object.diskId);
+        } else {
+            message.diskId = '';
+        }
+        return message;
+    },
+
+    toJSON(message: UpdateDiskMetadata): unknown {
+        const obj: any = {};
+        message.diskId !== undefined && (obj.diskId = message.diskId);
+        return obj;
+    },
+
+    fromPartial(object: DeepPartial<UpdateDiskMetadata>): UpdateDiskMetadata {
+        const message = { ...baseUpdateDiskMetadata } as UpdateDiskMetadata;
+        if (object.diskId !== undefined && object.diskId !== null) {
+            message.diskId = object.diskId;
+        } else {
+            message.diskId = '';
+        }
+        return message;
+    },
+};
+
+const baseDeleteDiskRequest: object = { diskId: '' };
+
+export const DeleteDiskRequest = {
+    encode(
+        message: DeleteDiskRequest,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        if (message.diskId !== '') {
+            writer.uint32(10).string(message.diskId);
+        }
+        return writer;
+    },
+
+    decode(input: _m0.Reader | Uint8Array, length?: number): DeleteDiskRequest {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = { ...baseDeleteDiskRequest } as DeleteDiskRequest;
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.diskId = reader.string();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): DeleteDiskRequest {
+        const message = { ...baseDeleteDiskRequest } as DeleteDiskRequest;
+        if (object.diskId !== undefined && object.diskId !== null) {
+            message.diskId = String(object.diskId);
+        } else {
+            message.diskId = '';
+        }
+        return message;
+    },
+
+    toJSON(message: DeleteDiskRequest): unknown {
+        const obj: any = {};
+        message.diskId !== undefined && (obj.diskId = message.diskId);
+        return obj;
+    },
+
+    fromPartial(object: DeepPartial<DeleteDiskRequest>): DeleteDiskRequest {
+        const message = { ...baseDeleteDiskRequest } as DeleteDiskRequest;
+        if (object.diskId !== undefined && object.diskId !== null) {
+            message.diskId = object.diskId;
+        } else {
+            message.diskId = '';
+        }
+        return message;
+    },
+};
+
+const baseDeleteDiskMetadata: object = { diskId: '' };
+
+export const DeleteDiskMetadata = {
+    encode(
+        message: DeleteDiskMetadata,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        if (message.diskId !== '') {
+            writer.uint32(10).string(message.diskId);
+        }
+        return writer;
+    },
+
+    decode(
+        input: _m0.Reader | Uint8Array,
+        length?: number
+    ): DeleteDiskMetadata {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = { ...baseDeleteDiskMetadata } as DeleteDiskMetadata;
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.diskId = reader.string();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): DeleteDiskMetadata {
+        const message = { ...baseDeleteDiskMetadata } as DeleteDiskMetadata;
+        if (object.diskId !== undefined && object.diskId !== null) {
+            message.diskId = String(object.diskId);
+        } else {
+            message.diskId = '';
+        }
+        return message;
+    },
+
+    toJSON(message: DeleteDiskMetadata): unknown {
+        const obj: any = {};
+        message.diskId !== undefined && (obj.diskId = message.diskId);
+        return obj;
+    },
+
+    fromPartial(object: DeepPartial<DeleteDiskMetadata>): DeleteDiskMetadata {
+        const message = { ...baseDeleteDiskMetadata } as DeleteDiskMetadata;
+        if (object.diskId !== undefined && object.diskId !== null) {
+            message.diskId = object.diskId;
+        } else {
+            message.diskId = '';
+        }
+        return message;
+    },
+};
+
+const baseListDiskOperationsRequest: object = {
+    diskId: '',
+    pageSize: 0,
+    pageToken: '',
+};
+
+export const ListDiskOperationsRequest = {
+    encode(
+        message: ListDiskOperationsRequest,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        if (message.diskId !== '') {
+            writer.uint32(10).string(message.diskId);
+        }
+        if (message.pageSize !== 0) {
+            writer.uint32(16).int64(message.pageSize);
+        }
+        if (message.pageToken !== '') {
+            writer.uint32(26).string(message.pageToken);
+        }
+        return writer;
+    },
+
+    decode(
+        input: _m0.Reader | Uint8Array,
+        length?: number
+    ): ListDiskOperationsRequest {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = {
+            ...baseListDiskOperationsRequest,
+        } as ListDiskOperationsRequest;
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.diskId = reader.string();
+                    break;
+                case 2:
+                    message.pageSize = longToNumber(reader.int64() as Long);
+                    break;
+                case 3:
+                    message.pageToken = reader.string();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): ListDiskOperationsRequest {
+        const message = {
+            ...baseListDiskOperationsRequest,
+        } as ListDiskOperationsRequest;
+        if (object.diskId !== undefined && object.diskId !== null) {
+            message.diskId = String(object.diskId);
+        } else {
+            message.diskId = '';
+        }
+        if (object.pageSize !== undefined && object.pageSize !== null) {
+            message.pageSize = Number(object.pageSize);
+        } else {
+            message.pageSize = 0;
+        }
+        if (object.pageToken !== undefined && object.pageToken !== null) {
+            message.pageToken = String(object.pageToken);
+        } else {
+            message.pageToken = '';
+        }
+        return message;
+    },
+
+    toJSON(message: ListDiskOperationsRequest): unknown {
+        const obj: any = {};
+        message.diskId !== undefined && (obj.diskId = message.diskId);
+        message.pageSize !== undefined && (obj.pageSize = message.pageSize);
+        message.pageToken !== undefined && (obj.pageToken = message.pageToken);
+        return obj;
+    },
+
+    fromPartial(
+        object: DeepPartial<ListDiskOperationsRequest>
+    ): ListDiskOperationsRequest {
+        const message = {
+            ...baseListDiskOperationsRequest,
+        } as ListDiskOperationsRequest;
+        if (object.diskId !== undefined && object.diskId !== null) {
+            message.diskId = object.diskId;
+        } else {
+            message.diskId = '';
+        }
+        if (object.pageSize !== undefined && object.pageSize !== null) {
+            message.pageSize = object.pageSize;
+        } else {
+            message.pageSize = 0;
+        }
+        if (object.pageToken !== undefined && object.pageToken !== null) {
+            message.pageToken = object.pageToken;
+        } else {
+            message.pageToken = '';
+        }
+        return message;
+    },
+};
+
+const baseListDiskOperationsResponse: object = { nextPageToken: '' };
+
+export const ListDiskOperationsResponse = {
+    encode(
+        message: ListDiskOperationsResponse,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        for (const v of message.operations) {
+            Operation.encode(v!, writer.uint32(10).fork()).ldelim();
+        }
+        if (message.nextPageToken !== '') {
+            writer.uint32(18).string(message.nextPageToken);
+        }
+        return writer;
+    },
+
+    decode(
+        input: _m0.Reader | Uint8Array,
+        length?: number
+    ): ListDiskOperationsResponse {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = {
+            ...baseListDiskOperationsResponse,
+        } as ListDiskOperationsResponse;
+        message.operations = [];
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.operations.push(
+                        Operation.decode(reader, reader.uint32())
+                    );
+                    break;
+                case 2:
+                    message.nextPageToken = reader.string();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): ListDiskOperationsResponse {
+        const message = {
+            ...baseListDiskOperationsResponse,
+        } as ListDiskOperationsResponse;
+        message.operations = [];
+        if (object.operations !== undefined && object.operations !== null) {
+            for (const e of object.operations) {
+                message.operations.push(Operation.fromJSON(e));
+            }
+        }
+        if (
+            object.nextPageToken !== undefined &&
+            object.nextPageToken !== null
+        ) {
+            message.nextPageToken = String(object.nextPageToken);
+        } else {
+            message.nextPageToken = '';
+        }
+        return message;
+    },
+
+    toJSON(message: ListDiskOperationsResponse): unknown {
+        const obj: any = {};
+        if (message.operations) {
+            obj.operations = message.operations.map((e) =>
+                e ? Operation.toJSON(e) : undefined
+            );
+        } else {
+            obj.operations = [];
+        }
+        message.nextPageToken !== undefined &&
+            (obj.nextPageToken = message.nextPageToken);
+        return obj;
+    },
+
+    fromPartial(
+        object: DeepPartial<ListDiskOperationsResponse>
+    ): ListDiskOperationsResponse {
+        const message = {
+            ...baseListDiskOperationsResponse,
+        } as ListDiskOperationsResponse;
+        message.operations = [];
+        if (object.operations !== undefined && object.operations !== null) {
+            for (const e of object.operations) {
+                message.operations.push(Operation.fromPartial(e));
+            }
+        }
+        if (
+            object.nextPageToken !== undefined &&
+            object.nextPageToken !== null
+        ) {
+            message.nextPageToken = object.nextPageToken;
+        } else {
+            message.nextPageToken = '';
+        }
+        return message;
+    },
+};
+
+/** A set of methods for managing Disk resources. */
+export const DiskServiceService = {
+    /**
+     * Returns the specified Disk resource.
+     *
+     * To get the list of available Disk resources, make a [List] request.
+     */
+    get: {
+        path: '/yandex.cloud.compute.v1.DiskService/Get',
+        requestStream: false,
+        responseStream: false,
+        requestSerialize: (value: GetDiskRequest) =>
+            Buffer.from(GetDiskRequest.encode(value).finish()),
+        requestDeserialize: (value: Buffer) => GetDiskRequest.decode(value),
+        responseSerialize: (value: Disk) =>
+            Buffer.from(Disk.encode(value).finish()),
+        responseDeserialize: (value: Buffer) => Disk.decode(value),
+    },
+    /** Retrieves the list of Disk resources in the specified folder. */
+    list: {
+        path: '/yandex.cloud.compute.v1.DiskService/List',
+        requestStream: false,
+        responseStream: false,
+        requestSerialize: (value: ListDisksRequest) =>
+            Buffer.from(ListDisksRequest.encode(value).finish()),
+        requestDeserialize: (value: Buffer) => ListDisksRequest.decode(value),
+        responseSerialize: (value: ListDisksResponse) =>
+            Buffer.from(ListDisksResponse.encode(value).finish()),
+        responseDeserialize: (value: Buffer) => ListDisksResponse.decode(value),
+    },
+    /**
+     * Creates a disk in the specified folder.
+     *
+     * You can create an empty disk or restore it from a snapshot or an image.
+     * Method starts an asynchronous operation that can be cancelled while it is in progress.
+     */
+    create: {
+        path: '/yandex.cloud.compute.v1.DiskService/Create',
+        requestStream: false,
+        responseStream: false,
+        requestSerialize: (value: CreateDiskRequest) =>
+            Buffer.from(CreateDiskRequest.encode(value).finish()),
+        requestDeserialize: (value: Buffer) => CreateDiskRequest.decode(value),
+        responseSerialize: (value: Operation) =>
+            Buffer.from(Operation.encode(value).finish()),
+        responseDeserialize: (value: Buffer) => Operation.decode(value),
+    },
+    /** Updates the specified disk. */
+    update: {
+        path: '/yandex.cloud.compute.v1.DiskService/Update',
+        requestStream: false,
+        responseStream: false,
+        requestSerialize: (value: UpdateDiskRequest) =>
+            Buffer.from(UpdateDiskRequest.encode(value).finish()),
+        requestDeserialize: (value: Buffer) => UpdateDiskRequest.decode(value),
+        responseSerialize: (value: Operation) =>
+            Buffer.from(Operation.encode(value).finish()),
+        responseDeserialize: (value: Buffer) => Operation.decode(value),
+    },
+    /**
+     * Deletes the specified disk.
+     *
+     * Deleting a disk removes its data permanently and is irreversible. However, deleting a disk does not delete
+     * any snapshots or images previously made from the disk. You must delete snapshots and images separately.
+     *
+     * It is not possible to delete a disk that is attached to an instance.
+     */
+    delete: {
+        path: '/yandex.cloud.compute.v1.DiskService/Delete',
+        requestStream: false,
+        responseStream: false,
+        requestSerialize: (value: DeleteDiskRequest) =>
+            Buffer.from(DeleteDiskRequest.encode(value).finish()),
+        requestDeserialize: (value: Buffer) => DeleteDiskRequest.decode(value),
+        responseSerialize: (value: Operation) =>
+            Buffer.from(Operation.encode(value).finish()),
+        responseDeserialize: (value: Buffer) => Operation.decode(value),
+    },
+    /** Lists operations for the specified disk. */
+    listOperations: {
+        path: '/yandex.cloud.compute.v1.DiskService/ListOperations',
+        requestStream: false,
+        responseStream: false,
+        requestSerialize: (value: ListDiskOperationsRequest) =>
+            Buffer.from(ListDiskOperationsRequest.encode(value).finish()),
+        requestDeserialize: (value: Buffer) =>
+            ListDiskOperationsRequest.decode(value),
+        responseSerialize: (value: ListDiskOperationsResponse) =>
+            Buffer.from(ListDiskOperationsResponse.encode(value).finish()),
+        responseDeserialize: (value: Buffer) =>
+            ListDiskOperationsResponse.decode(value),
+    },
+} as const;
+
+export interface DiskServiceServer extends UntypedServiceImplementation {
+    /**
+     * Returns the specified Disk resource.
+     *
+     * To get the list of available Disk resources, make a [List] request.
+     */
+    get: handleUnaryCall<GetDiskRequest, Disk>;
+    /** Retrieves the list of Disk resources in the specified folder. */
+    list: handleUnaryCall<ListDisksRequest, ListDisksResponse>;
+    /**
+     * Creates a disk in the specified folder.
+     *
+     * You can create an empty disk or restore it from a snapshot or an image.
+     * Method starts an asynchronous operation that can be cancelled while it is in progress.
+     */
+    create: handleUnaryCall<CreateDiskRequest, Operation>;
+    /** Updates the specified disk. */
+    update: handleUnaryCall<UpdateDiskRequest, Operation>;
+    /**
+     * Deletes the specified disk.
+     *
+     * Deleting a disk removes its data permanently and is irreversible. However, deleting a disk does not delete
+     * any snapshots or images previously made from the disk. You must delete snapshots and images separately.
+     *
+     * It is not possible to delete a disk that is attached to an instance.
+     */
+    delete: handleUnaryCall<DeleteDiskRequest, Operation>;
+    /** Lists operations for the specified disk. */
+    listOperations: handleUnaryCall<
+        ListDiskOperationsRequest,
+        ListDiskOperationsResponse
+    >;
+}
+
+export interface DiskServiceClient extends Client {
+    /**
+     * Returns the specified Disk resource.
+     *
+     * To get the list of available Disk resources, make a [List] request.
+     */
+    get(
+        request: GetDiskRequest,
+        callback: (error: ServiceError | null, response: Disk) => void
+    ): ClientUnaryCall;
+    get(
+        request: GetDiskRequest,
+        metadata: Metadata,
+        callback: (error: ServiceError | null, response: Disk) => void
+    ): ClientUnaryCall;
+    get(
+        request: GetDiskRequest,
+        metadata: Metadata,
+        options: Partial<CallOptions>,
+        callback: (error: ServiceError | null, response: Disk) => void
+    ): ClientUnaryCall;
+    /** Retrieves the list of Disk resources in the specified folder. */
+    list(
+        request: ListDisksRequest,
+        callback: (
+            error: ServiceError | null,
+            response: ListDisksResponse
+        ) => void
+    ): ClientUnaryCall;
+    list(
+        request: ListDisksRequest,
+        metadata: Metadata,
+        callback: (
+            error: ServiceError | null,
+            response: ListDisksResponse
+        ) => void
+    ): ClientUnaryCall;
+    list(
+        request: ListDisksRequest,
+        metadata: Metadata,
+        options: Partial<CallOptions>,
+        callback: (
+            error: ServiceError | null,
+            response: ListDisksResponse
+        ) => void
+    ): ClientUnaryCall;
+    /**
+     * Creates a disk in the specified folder.
+     *
+     * You can create an empty disk or restore it from a snapshot or an image.
+     * Method starts an asynchronous operation that can be cancelled while it is in progress.
+     */
+    create(
+        request: CreateDiskRequest,
+        callback: (error: ServiceError | null, response: Operation) => void
+    ): ClientUnaryCall;
+    create(
+        request: CreateDiskRequest,
+        metadata: Metadata,
+        callback: (error: ServiceError | null, response: Operation) => void
+    ): ClientUnaryCall;
+    create(
+        request: CreateDiskRequest,
+        metadata: Metadata,
+        options: Partial<CallOptions>,
+        callback: (error: ServiceError | null, response: Operation) => void
+    ): ClientUnaryCall;
+    /** Updates the specified disk. */
+    update(
+        request: UpdateDiskRequest,
+        callback: (error: ServiceError | null, response: Operation) => void
+    ): ClientUnaryCall;
+    update(
+        request: UpdateDiskRequest,
+        metadata: Metadata,
+        callback: (error: ServiceError | null, response: Operation) => void
+    ): ClientUnaryCall;
+    update(
+        request: UpdateDiskRequest,
+        metadata: Metadata,
+        options: Partial<CallOptions>,
+        callback: (error: ServiceError | null, response: Operation) => void
+    ): ClientUnaryCall;
+    /**
+     * Deletes the specified disk.
+     *
+     * Deleting a disk removes its data permanently and is irreversible. However, deleting a disk does not delete
+     * any snapshots or images previously made from the disk. You must delete snapshots and images separately.
+     *
+     * It is not possible to delete a disk that is attached to an instance.
+     */
+    delete(
+        request: DeleteDiskRequest,
+        callback: (error: ServiceError | null, response: Operation) => void
+    ): ClientUnaryCall;
+    delete(
+        request: DeleteDiskRequest,
+        metadata: Metadata,
+        callback: (error: ServiceError | null, response: Operation) => void
+    ): ClientUnaryCall;
+    delete(
+        request: DeleteDiskRequest,
+        metadata: Metadata,
+        options: Partial<CallOptions>,
+        callback: (error: ServiceError | null, response: Operation) => void
+    ): ClientUnaryCall;
+    /** Lists operations for the specified disk. */
+    listOperations(
+        request: ListDiskOperationsRequest,
+        callback: (
+            error: ServiceError | null,
+            response: ListDiskOperationsResponse
+        ) => void
+    ): ClientUnaryCall;
+    listOperations(
+        request: ListDiskOperationsRequest,
+        metadata: Metadata,
+        callback: (
+            error: ServiceError | null,
+            response: ListDiskOperationsResponse
+        ) => void
+    ): ClientUnaryCall;
+    listOperations(
+        request: ListDiskOperationsRequest,
+        metadata: Metadata,
+        options: Partial<CallOptions>,
+        callback: (
+            error: ServiceError | null,
+            response: ListDiskOperationsResponse
+        ) => void
+    ): ClientUnaryCall;
+}
+
+export const DiskServiceClient = makeGenericClientConstructor(
+    DiskServiceService,
+    'yandex.cloud.compute.v1.DiskService'
+) as unknown as {
+    new (
+        address: string,
+        credentials: ChannelCredentials,
+        options?: Partial<ChannelOptions>
+    ): DiskServiceClient;
+};
+
+declare var self: any | undefined;
+declare var window: any | undefined;
+var globalThis: any = (() => {
+    if (typeof globalThis !== 'undefined') return globalThis;
+    if (typeof self !== 'undefined') return self;
+    if (typeof window !== 'undefined') return window;
+    if (typeof global !== 'undefined') return global;
+    throw 'Unable to locate global object';
+})();
+
+type Builtin =
+    | Date
+    | Function
+    | Uint8Array
+    | string
+    | number
+    | boolean
+    | undefined;
+export type DeepPartial<T> = T extends Builtin
+    ? T
+    : T extends Array<infer U>
+    ? Array<DeepPartial<U>>
+    : T extends ReadonlyArray<infer U>
+    ? ReadonlyArray<DeepPartial<U>>
+    : T extends {}
+    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    : Partial<T>;
+
+function longToNumber(long: Long): number {
+    if (long.gt(Number.MAX_SAFE_INTEGER)) {
+        throw new globalThis.Error(
+            'Value is larger than Number.MAX_SAFE_INTEGER'
+        );
+    }
+    return long.toNumber();
+}
+
+if (_m0.util.Long !== Long) {
+    _m0.util.Long = Long as any;
+    _m0.configure();
+}

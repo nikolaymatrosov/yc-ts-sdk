@@ -1,0 +1,138 @@
+/* eslint-disable */
+import Long from 'long';
+import _m0 from 'protobufjs/minimal';
+
+export const protobufPackage = 'yandex.cloud.compute.v1';
+
+export interface DiskType {
+    /** ID of the disk type. */
+    id: string;
+    /** Description of the disk type. 0-256 characters long. */
+    description: string;
+    /** Array of availability zones where the disk type is available. */
+    zoneIds: string[];
+}
+
+const baseDiskType: object = { id: '', description: '', zoneIds: '' };
+
+export const DiskType = {
+    encode(
+        message: DiskType,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        if (message.id !== '') {
+            writer.uint32(10).string(message.id);
+        }
+        if (message.description !== '') {
+            writer.uint32(18).string(message.description);
+        }
+        for (const v of message.zoneIds) {
+            writer.uint32(26).string(v!);
+        }
+        return writer;
+    },
+
+    decode(input: _m0.Reader | Uint8Array, length?: number): DiskType {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = { ...baseDiskType } as DiskType;
+        message.zoneIds = [];
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.id = reader.string();
+                    break;
+                case 2:
+                    message.description = reader.string();
+                    break;
+                case 3:
+                    message.zoneIds.push(reader.string());
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): DiskType {
+        const message = { ...baseDiskType } as DiskType;
+        message.zoneIds = [];
+        if (object.id !== undefined && object.id !== null) {
+            message.id = String(object.id);
+        } else {
+            message.id = '';
+        }
+        if (object.description !== undefined && object.description !== null) {
+            message.description = String(object.description);
+        } else {
+            message.description = '';
+        }
+        if (object.zoneIds !== undefined && object.zoneIds !== null) {
+            for (const e of object.zoneIds) {
+                message.zoneIds.push(String(e));
+            }
+        }
+        return message;
+    },
+
+    toJSON(message: DiskType): unknown {
+        const obj: any = {};
+        message.id !== undefined && (obj.id = message.id);
+        message.description !== undefined &&
+            (obj.description = message.description);
+        if (message.zoneIds) {
+            obj.zoneIds = message.zoneIds.map((e) => e);
+        } else {
+            obj.zoneIds = [];
+        }
+        return obj;
+    },
+
+    fromPartial(object: DeepPartial<DiskType>): DiskType {
+        const message = { ...baseDiskType } as DiskType;
+        message.zoneIds = [];
+        if (object.id !== undefined && object.id !== null) {
+            message.id = object.id;
+        } else {
+            message.id = '';
+        }
+        if (object.description !== undefined && object.description !== null) {
+            message.description = object.description;
+        } else {
+            message.description = '';
+        }
+        if (object.zoneIds !== undefined && object.zoneIds !== null) {
+            for (const e of object.zoneIds) {
+                message.zoneIds.push(e);
+            }
+        }
+        return message;
+    },
+};
+
+type Builtin =
+    | Date
+    | Function
+    | Uint8Array
+    | string
+    | number
+    | boolean
+    | undefined;
+export type DeepPartial<T> = T extends Builtin
+    ? T
+    : T extends Array<infer U>
+    ? Array<DeepPartial<U>>
+    : T extends ReadonlyArray<infer U>
+    ? ReadonlyArray<DeepPartial<U>>
+    : T extends {}
+    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    : Partial<T>;
+
+if (_m0.util.Long !== Long) {
+    _m0.util.Long = Long as any;
+    _m0.configure();
+}

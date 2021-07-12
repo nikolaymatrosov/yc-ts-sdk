@@ -1,0 +1,1458 @@
+/* eslint-disable */
+import { FieldMask } from '../../../../google/protobuf/field_mask';
+import {
+    Key_Algorithm,
+    Key,
+    key_AlgorithmFromJSON,
+    key_AlgorithmToJSON,
+} from '../../../../yandex/cloud/iam/v1/key';
+import { Operation } from '../../../../yandex/cloud/operation/operation';
+import {
+    makeGenericClientConstructor,
+    ChannelCredentials,
+    ChannelOptions,
+    UntypedServiceImplementation,
+    handleUnaryCall,
+    Client,
+    ClientUnaryCall,
+    Metadata,
+    CallOptions,
+    ServiceError,
+} from '@grpc/grpc-js';
+import Long from 'long';
+import _m0 from 'protobufjs/minimal';
+
+export const protobufPackage = 'yandex.cloud.iam.v1';
+
+export enum KeyFormat {
+    /** PEM_FILE - Privacy-Enhanced Mail (PEM) format. Default value. */
+    PEM_FILE = 0,
+    UNRECOGNIZED = -1,
+}
+
+export function keyFormatFromJSON(object: any): KeyFormat {
+    switch (object) {
+        case 0:
+        case 'PEM_FILE':
+            return KeyFormat.PEM_FILE;
+        case -1:
+        case 'UNRECOGNIZED':
+        default:
+            return KeyFormat.UNRECOGNIZED;
+    }
+}
+
+export function keyFormatToJSON(object: KeyFormat): string {
+    switch (object) {
+        case KeyFormat.PEM_FILE:
+            return 'PEM_FILE';
+        default:
+            return 'UNKNOWN';
+    }
+}
+
+export interface GetKeyRequest {
+    /**
+     * ID of the Key resource to return.
+     * To get the ID use a [KeyService.List] request.
+     */
+    keyId: string;
+    /** Output format of the key. */
+    format: KeyFormat;
+}
+
+export interface ListKeysRequest {
+    /** Output format of the key. */
+    format: KeyFormat;
+    /**
+     * ID of the service account to list key pairs for.
+     * To get the service account ID, use a [yandex.cloud.iam.v1.ServiceAccountService.List] request.
+     * If not specified, it defaults to the subject that made the request.
+     */
+    serviceAccountId: string;
+    /**
+     * The maximum number of results per page to return. If the number of available
+     * results is larger than [page_size],
+     * the service returns a [ListKeysResponse.next_page_token]
+     * that can be used to get the next page of results in subsequent list requests.
+     * Default value: 100.
+     */
+    pageSize: number;
+    /**
+     * Page token. To get the next page of results, set [page_token] to the
+     * [ListKeysResponse.next_page_token] returned by a previous list request.
+     */
+    pageToken: string;
+}
+
+export interface ListKeysResponse {
+    /** List of Key resources. */
+    keys: Key[];
+    /**
+     * This token allows you to get the next page of results for list requests. If the number of results
+     * is larger than [ListKeysRequest.page_size], use
+     * the [next_page_token] as the value
+     * for the [ListKeysRequest.page_token] query parameter
+     * in the next list request. Each subsequent list request will have its own
+     * [next_page_token] to continue paging through the results.
+     */
+    nextPageToken: string;
+}
+
+export interface CreateKeyRequest {
+    /**
+     * ID of the service account to create a key pair for.
+     * To get the service account ID, use a [yandex.cloud.iam.v1.ServiceAccountService.List] request.
+     * If not specified, it defaults to the subject that made the request.
+     */
+    serviceAccountId: string;
+    /** Description of the key pair. */
+    description: string;
+    /** Output format of the key. */
+    format: KeyFormat;
+    /** An algorithm used to generate a key pair of the Key resource. */
+    keyAlgorithm: Key_Algorithm;
+}
+
+export interface CreateKeyResponse {
+    /** Key resource. */
+    key: Key | undefined;
+    /**
+     * A private key of the Key resource.
+     * This key must be stored securely.
+     */
+    privateKey: string;
+}
+
+export interface UpdateKeyRequest {
+    /**
+     * ID of the Key resource to update.
+     * To get key pair ID, use a [KeyService.List] request.
+     */
+    keyId: string;
+    /** Field mask that specifies which fields of the Key resource are going to be updated. */
+    updateMask: FieldMask | undefined;
+    /** Description of the key pair. */
+    description: string;
+}
+
+export interface UpdateKeyMetadata {
+    /** ID of the Key resource that is being updated. */
+    keyId: string;
+}
+
+export interface DeleteKeyRequest {
+    /**
+     * ID of the key to delete.
+     * To get key ID use a [KeyService.List] request.
+     */
+    keyId: string;
+}
+
+export interface DeleteKeyMetadata {
+    /** ID of the key that is being deleted. */
+    keyId: string;
+}
+
+export interface ListKeyOperationsRequest {
+    /** ID of the key to list operations for. */
+    keyId: string;
+    /**
+     * The maximum number of results per page to return. If the number of available
+     * results is larger than [page_size],
+     * the service returns a [ListKeyOperationsResponse.next_page_token]
+     * that can be used to get the next page of results in subsequent list requests.
+     * Default value: 100.
+     */
+    pageSize: number;
+    /**
+     * Page token. To get the next page of results, set [page_token] to the
+     * [ListKeyOperationsResponse.next_page_token] returned by a previous list request.
+     */
+    pageToken: string;
+}
+
+export interface ListKeyOperationsResponse {
+    /** List of operations for the specified key. */
+    operations: Operation[];
+    /**
+     * This token allows you to get the next page of results for list requests. If the number of results
+     * is larger than [ListKeyOperationsRequest.page_size], use the [next_page_token] as the value
+     * for the [ListKeyOperationsRequest.page_token] query parameter in the next list request.
+     * Each subsequent list request will have its own [next_page_token] to continue paging through the results.
+     */
+    nextPageToken: string;
+}
+
+const baseGetKeyRequest: object = { keyId: '', format: 0 };
+
+export const GetKeyRequest = {
+    encode(
+        message: GetKeyRequest,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        if (message.keyId !== '') {
+            writer.uint32(10).string(message.keyId);
+        }
+        if (message.format !== 0) {
+            writer.uint32(16).int32(message.format);
+        }
+        return writer;
+    },
+
+    decode(input: _m0.Reader | Uint8Array, length?: number): GetKeyRequest {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = { ...baseGetKeyRequest } as GetKeyRequest;
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.keyId = reader.string();
+                    break;
+                case 2:
+                    message.format = reader.int32() as any;
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): GetKeyRequest {
+        const message = { ...baseGetKeyRequest } as GetKeyRequest;
+        if (object.keyId !== undefined && object.keyId !== null) {
+            message.keyId = String(object.keyId);
+        } else {
+            message.keyId = '';
+        }
+        if (object.format !== undefined && object.format !== null) {
+            message.format = keyFormatFromJSON(object.format);
+        } else {
+            message.format = 0;
+        }
+        return message;
+    },
+
+    toJSON(message: GetKeyRequest): unknown {
+        const obj: any = {};
+        message.keyId !== undefined && (obj.keyId = message.keyId);
+        message.format !== undefined &&
+            (obj.format = keyFormatToJSON(message.format));
+        return obj;
+    },
+
+    fromPartial(object: DeepPartial<GetKeyRequest>): GetKeyRequest {
+        const message = { ...baseGetKeyRequest } as GetKeyRequest;
+        if (object.keyId !== undefined && object.keyId !== null) {
+            message.keyId = object.keyId;
+        } else {
+            message.keyId = '';
+        }
+        if (object.format !== undefined && object.format !== null) {
+            message.format = object.format;
+        } else {
+            message.format = 0;
+        }
+        return message;
+    },
+};
+
+const baseListKeysRequest: object = {
+    format: 0,
+    serviceAccountId: '',
+    pageSize: 0,
+    pageToken: '',
+};
+
+export const ListKeysRequest = {
+    encode(
+        message: ListKeysRequest,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        if (message.format !== 0) {
+            writer.uint32(8).int32(message.format);
+        }
+        if (message.serviceAccountId !== '') {
+            writer.uint32(18).string(message.serviceAccountId);
+        }
+        if (message.pageSize !== 0) {
+            writer.uint32(24).int64(message.pageSize);
+        }
+        if (message.pageToken !== '') {
+            writer.uint32(34).string(message.pageToken);
+        }
+        return writer;
+    },
+
+    decode(input: _m0.Reader | Uint8Array, length?: number): ListKeysRequest {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = { ...baseListKeysRequest } as ListKeysRequest;
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.format = reader.int32() as any;
+                    break;
+                case 2:
+                    message.serviceAccountId = reader.string();
+                    break;
+                case 3:
+                    message.pageSize = longToNumber(reader.int64() as Long);
+                    break;
+                case 4:
+                    message.pageToken = reader.string();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): ListKeysRequest {
+        const message = { ...baseListKeysRequest } as ListKeysRequest;
+        if (object.format !== undefined && object.format !== null) {
+            message.format = keyFormatFromJSON(object.format);
+        } else {
+            message.format = 0;
+        }
+        if (
+            object.serviceAccountId !== undefined &&
+            object.serviceAccountId !== null
+        ) {
+            message.serviceAccountId = String(object.serviceAccountId);
+        } else {
+            message.serviceAccountId = '';
+        }
+        if (object.pageSize !== undefined && object.pageSize !== null) {
+            message.pageSize = Number(object.pageSize);
+        } else {
+            message.pageSize = 0;
+        }
+        if (object.pageToken !== undefined && object.pageToken !== null) {
+            message.pageToken = String(object.pageToken);
+        } else {
+            message.pageToken = '';
+        }
+        return message;
+    },
+
+    toJSON(message: ListKeysRequest): unknown {
+        const obj: any = {};
+        message.format !== undefined &&
+            (obj.format = keyFormatToJSON(message.format));
+        message.serviceAccountId !== undefined &&
+            (obj.serviceAccountId = message.serviceAccountId);
+        message.pageSize !== undefined && (obj.pageSize = message.pageSize);
+        message.pageToken !== undefined && (obj.pageToken = message.pageToken);
+        return obj;
+    },
+
+    fromPartial(object: DeepPartial<ListKeysRequest>): ListKeysRequest {
+        const message = { ...baseListKeysRequest } as ListKeysRequest;
+        if (object.format !== undefined && object.format !== null) {
+            message.format = object.format;
+        } else {
+            message.format = 0;
+        }
+        if (
+            object.serviceAccountId !== undefined &&
+            object.serviceAccountId !== null
+        ) {
+            message.serviceAccountId = object.serviceAccountId;
+        } else {
+            message.serviceAccountId = '';
+        }
+        if (object.pageSize !== undefined && object.pageSize !== null) {
+            message.pageSize = object.pageSize;
+        } else {
+            message.pageSize = 0;
+        }
+        if (object.pageToken !== undefined && object.pageToken !== null) {
+            message.pageToken = object.pageToken;
+        } else {
+            message.pageToken = '';
+        }
+        return message;
+    },
+};
+
+const baseListKeysResponse: object = { nextPageToken: '' };
+
+export const ListKeysResponse = {
+    encode(
+        message: ListKeysResponse,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        for (const v of message.keys) {
+            Key.encode(v!, writer.uint32(10).fork()).ldelim();
+        }
+        if (message.nextPageToken !== '') {
+            writer.uint32(18).string(message.nextPageToken);
+        }
+        return writer;
+    },
+
+    decode(input: _m0.Reader | Uint8Array, length?: number): ListKeysResponse {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = { ...baseListKeysResponse } as ListKeysResponse;
+        message.keys = [];
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.keys.push(Key.decode(reader, reader.uint32()));
+                    break;
+                case 2:
+                    message.nextPageToken = reader.string();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): ListKeysResponse {
+        const message = { ...baseListKeysResponse } as ListKeysResponse;
+        message.keys = [];
+        if (object.keys !== undefined && object.keys !== null) {
+            for (const e of object.keys) {
+                message.keys.push(Key.fromJSON(e));
+            }
+        }
+        if (
+            object.nextPageToken !== undefined &&
+            object.nextPageToken !== null
+        ) {
+            message.nextPageToken = String(object.nextPageToken);
+        } else {
+            message.nextPageToken = '';
+        }
+        return message;
+    },
+
+    toJSON(message: ListKeysResponse): unknown {
+        const obj: any = {};
+        if (message.keys) {
+            obj.keys = message.keys.map((e) => (e ? Key.toJSON(e) : undefined));
+        } else {
+            obj.keys = [];
+        }
+        message.nextPageToken !== undefined &&
+            (obj.nextPageToken = message.nextPageToken);
+        return obj;
+    },
+
+    fromPartial(object: DeepPartial<ListKeysResponse>): ListKeysResponse {
+        const message = { ...baseListKeysResponse } as ListKeysResponse;
+        message.keys = [];
+        if (object.keys !== undefined && object.keys !== null) {
+            for (const e of object.keys) {
+                message.keys.push(Key.fromPartial(e));
+            }
+        }
+        if (
+            object.nextPageToken !== undefined &&
+            object.nextPageToken !== null
+        ) {
+            message.nextPageToken = object.nextPageToken;
+        } else {
+            message.nextPageToken = '';
+        }
+        return message;
+    },
+};
+
+const baseCreateKeyRequest: object = {
+    serviceAccountId: '',
+    description: '',
+    format: 0,
+    keyAlgorithm: 0,
+};
+
+export const CreateKeyRequest = {
+    encode(
+        message: CreateKeyRequest,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        if (message.serviceAccountId !== '') {
+            writer.uint32(10).string(message.serviceAccountId);
+        }
+        if (message.description !== '') {
+            writer.uint32(18).string(message.description);
+        }
+        if (message.format !== 0) {
+            writer.uint32(24).int32(message.format);
+        }
+        if (message.keyAlgorithm !== 0) {
+            writer.uint32(32).int32(message.keyAlgorithm);
+        }
+        return writer;
+    },
+
+    decode(input: _m0.Reader | Uint8Array, length?: number): CreateKeyRequest {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = { ...baseCreateKeyRequest } as CreateKeyRequest;
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.serviceAccountId = reader.string();
+                    break;
+                case 2:
+                    message.description = reader.string();
+                    break;
+                case 3:
+                    message.format = reader.int32() as any;
+                    break;
+                case 4:
+                    message.keyAlgorithm = reader.int32() as any;
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): CreateKeyRequest {
+        const message = { ...baseCreateKeyRequest } as CreateKeyRequest;
+        if (
+            object.serviceAccountId !== undefined &&
+            object.serviceAccountId !== null
+        ) {
+            message.serviceAccountId = String(object.serviceAccountId);
+        } else {
+            message.serviceAccountId = '';
+        }
+        if (object.description !== undefined && object.description !== null) {
+            message.description = String(object.description);
+        } else {
+            message.description = '';
+        }
+        if (object.format !== undefined && object.format !== null) {
+            message.format = keyFormatFromJSON(object.format);
+        } else {
+            message.format = 0;
+        }
+        if (object.keyAlgorithm !== undefined && object.keyAlgorithm !== null) {
+            message.keyAlgorithm = key_AlgorithmFromJSON(object.keyAlgorithm);
+        } else {
+            message.keyAlgorithm = 0;
+        }
+        return message;
+    },
+
+    toJSON(message: CreateKeyRequest): unknown {
+        const obj: any = {};
+        message.serviceAccountId !== undefined &&
+            (obj.serviceAccountId = message.serviceAccountId);
+        message.description !== undefined &&
+            (obj.description = message.description);
+        message.format !== undefined &&
+            (obj.format = keyFormatToJSON(message.format));
+        message.keyAlgorithm !== undefined &&
+            (obj.keyAlgorithm = key_AlgorithmToJSON(message.keyAlgorithm));
+        return obj;
+    },
+
+    fromPartial(object: DeepPartial<CreateKeyRequest>): CreateKeyRequest {
+        const message = { ...baseCreateKeyRequest } as CreateKeyRequest;
+        if (
+            object.serviceAccountId !== undefined &&
+            object.serviceAccountId !== null
+        ) {
+            message.serviceAccountId = object.serviceAccountId;
+        } else {
+            message.serviceAccountId = '';
+        }
+        if (object.description !== undefined && object.description !== null) {
+            message.description = object.description;
+        } else {
+            message.description = '';
+        }
+        if (object.format !== undefined && object.format !== null) {
+            message.format = object.format;
+        } else {
+            message.format = 0;
+        }
+        if (object.keyAlgorithm !== undefined && object.keyAlgorithm !== null) {
+            message.keyAlgorithm = object.keyAlgorithm;
+        } else {
+            message.keyAlgorithm = 0;
+        }
+        return message;
+    },
+};
+
+const baseCreateKeyResponse: object = { privateKey: '' };
+
+export const CreateKeyResponse = {
+    encode(
+        message: CreateKeyResponse,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        if (message.key !== undefined) {
+            Key.encode(message.key, writer.uint32(10).fork()).ldelim();
+        }
+        if (message.privateKey !== '') {
+            writer.uint32(18).string(message.privateKey);
+        }
+        return writer;
+    },
+
+    decode(input: _m0.Reader | Uint8Array, length?: number): CreateKeyResponse {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = { ...baseCreateKeyResponse } as CreateKeyResponse;
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.key = Key.decode(reader, reader.uint32());
+                    break;
+                case 2:
+                    message.privateKey = reader.string();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): CreateKeyResponse {
+        const message = { ...baseCreateKeyResponse } as CreateKeyResponse;
+        if (object.key !== undefined && object.key !== null) {
+            message.key = Key.fromJSON(object.key);
+        } else {
+            message.key = undefined;
+        }
+        if (object.privateKey !== undefined && object.privateKey !== null) {
+            message.privateKey = String(object.privateKey);
+        } else {
+            message.privateKey = '';
+        }
+        return message;
+    },
+
+    toJSON(message: CreateKeyResponse): unknown {
+        const obj: any = {};
+        message.key !== undefined &&
+            (obj.key = message.key ? Key.toJSON(message.key) : undefined);
+        message.privateKey !== undefined &&
+            (obj.privateKey = message.privateKey);
+        return obj;
+    },
+
+    fromPartial(object: DeepPartial<CreateKeyResponse>): CreateKeyResponse {
+        const message = { ...baseCreateKeyResponse } as CreateKeyResponse;
+        if (object.key !== undefined && object.key !== null) {
+            message.key = Key.fromPartial(object.key);
+        } else {
+            message.key = undefined;
+        }
+        if (object.privateKey !== undefined && object.privateKey !== null) {
+            message.privateKey = object.privateKey;
+        } else {
+            message.privateKey = '';
+        }
+        return message;
+    },
+};
+
+const baseUpdateKeyRequest: object = { keyId: '', description: '' };
+
+export const UpdateKeyRequest = {
+    encode(
+        message: UpdateKeyRequest,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        if (message.keyId !== '') {
+            writer.uint32(10).string(message.keyId);
+        }
+        if (message.updateMask !== undefined) {
+            FieldMask.encode(
+                message.updateMask,
+                writer.uint32(18).fork()
+            ).ldelim();
+        }
+        if (message.description !== '') {
+            writer.uint32(26).string(message.description);
+        }
+        return writer;
+    },
+
+    decode(input: _m0.Reader | Uint8Array, length?: number): UpdateKeyRequest {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = { ...baseUpdateKeyRequest } as UpdateKeyRequest;
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.keyId = reader.string();
+                    break;
+                case 2:
+                    message.updateMask = FieldMask.decode(
+                        reader,
+                        reader.uint32()
+                    );
+                    break;
+                case 3:
+                    message.description = reader.string();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): UpdateKeyRequest {
+        const message = { ...baseUpdateKeyRequest } as UpdateKeyRequest;
+        if (object.keyId !== undefined && object.keyId !== null) {
+            message.keyId = String(object.keyId);
+        } else {
+            message.keyId = '';
+        }
+        if (object.updateMask !== undefined && object.updateMask !== null) {
+            message.updateMask = FieldMask.fromJSON(object.updateMask);
+        } else {
+            message.updateMask = undefined;
+        }
+        if (object.description !== undefined && object.description !== null) {
+            message.description = String(object.description);
+        } else {
+            message.description = '';
+        }
+        return message;
+    },
+
+    toJSON(message: UpdateKeyRequest): unknown {
+        const obj: any = {};
+        message.keyId !== undefined && (obj.keyId = message.keyId);
+        message.updateMask !== undefined &&
+            (obj.updateMask = message.updateMask
+                ? FieldMask.toJSON(message.updateMask)
+                : undefined);
+        message.description !== undefined &&
+            (obj.description = message.description);
+        return obj;
+    },
+
+    fromPartial(object: DeepPartial<UpdateKeyRequest>): UpdateKeyRequest {
+        const message = { ...baseUpdateKeyRequest } as UpdateKeyRequest;
+        if (object.keyId !== undefined && object.keyId !== null) {
+            message.keyId = object.keyId;
+        } else {
+            message.keyId = '';
+        }
+        if (object.updateMask !== undefined && object.updateMask !== null) {
+            message.updateMask = FieldMask.fromPartial(object.updateMask);
+        } else {
+            message.updateMask = undefined;
+        }
+        if (object.description !== undefined && object.description !== null) {
+            message.description = object.description;
+        } else {
+            message.description = '';
+        }
+        return message;
+    },
+};
+
+const baseUpdateKeyMetadata: object = { keyId: '' };
+
+export const UpdateKeyMetadata = {
+    encode(
+        message: UpdateKeyMetadata,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        if (message.keyId !== '') {
+            writer.uint32(10).string(message.keyId);
+        }
+        return writer;
+    },
+
+    decode(input: _m0.Reader | Uint8Array, length?: number): UpdateKeyMetadata {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = { ...baseUpdateKeyMetadata } as UpdateKeyMetadata;
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.keyId = reader.string();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): UpdateKeyMetadata {
+        const message = { ...baseUpdateKeyMetadata } as UpdateKeyMetadata;
+        if (object.keyId !== undefined && object.keyId !== null) {
+            message.keyId = String(object.keyId);
+        } else {
+            message.keyId = '';
+        }
+        return message;
+    },
+
+    toJSON(message: UpdateKeyMetadata): unknown {
+        const obj: any = {};
+        message.keyId !== undefined && (obj.keyId = message.keyId);
+        return obj;
+    },
+
+    fromPartial(object: DeepPartial<UpdateKeyMetadata>): UpdateKeyMetadata {
+        const message = { ...baseUpdateKeyMetadata } as UpdateKeyMetadata;
+        if (object.keyId !== undefined && object.keyId !== null) {
+            message.keyId = object.keyId;
+        } else {
+            message.keyId = '';
+        }
+        return message;
+    },
+};
+
+const baseDeleteKeyRequest: object = { keyId: '' };
+
+export const DeleteKeyRequest = {
+    encode(
+        message: DeleteKeyRequest,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        if (message.keyId !== '') {
+            writer.uint32(10).string(message.keyId);
+        }
+        return writer;
+    },
+
+    decode(input: _m0.Reader | Uint8Array, length?: number): DeleteKeyRequest {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = { ...baseDeleteKeyRequest } as DeleteKeyRequest;
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.keyId = reader.string();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): DeleteKeyRequest {
+        const message = { ...baseDeleteKeyRequest } as DeleteKeyRequest;
+        if (object.keyId !== undefined && object.keyId !== null) {
+            message.keyId = String(object.keyId);
+        } else {
+            message.keyId = '';
+        }
+        return message;
+    },
+
+    toJSON(message: DeleteKeyRequest): unknown {
+        const obj: any = {};
+        message.keyId !== undefined && (obj.keyId = message.keyId);
+        return obj;
+    },
+
+    fromPartial(object: DeepPartial<DeleteKeyRequest>): DeleteKeyRequest {
+        const message = { ...baseDeleteKeyRequest } as DeleteKeyRequest;
+        if (object.keyId !== undefined && object.keyId !== null) {
+            message.keyId = object.keyId;
+        } else {
+            message.keyId = '';
+        }
+        return message;
+    },
+};
+
+const baseDeleteKeyMetadata: object = { keyId: '' };
+
+export const DeleteKeyMetadata = {
+    encode(
+        message: DeleteKeyMetadata,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        if (message.keyId !== '') {
+            writer.uint32(10).string(message.keyId);
+        }
+        return writer;
+    },
+
+    decode(input: _m0.Reader | Uint8Array, length?: number): DeleteKeyMetadata {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = { ...baseDeleteKeyMetadata } as DeleteKeyMetadata;
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.keyId = reader.string();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): DeleteKeyMetadata {
+        const message = { ...baseDeleteKeyMetadata } as DeleteKeyMetadata;
+        if (object.keyId !== undefined && object.keyId !== null) {
+            message.keyId = String(object.keyId);
+        } else {
+            message.keyId = '';
+        }
+        return message;
+    },
+
+    toJSON(message: DeleteKeyMetadata): unknown {
+        const obj: any = {};
+        message.keyId !== undefined && (obj.keyId = message.keyId);
+        return obj;
+    },
+
+    fromPartial(object: DeepPartial<DeleteKeyMetadata>): DeleteKeyMetadata {
+        const message = { ...baseDeleteKeyMetadata } as DeleteKeyMetadata;
+        if (object.keyId !== undefined && object.keyId !== null) {
+            message.keyId = object.keyId;
+        } else {
+            message.keyId = '';
+        }
+        return message;
+    },
+};
+
+const baseListKeyOperationsRequest: object = {
+    keyId: '',
+    pageSize: 0,
+    pageToken: '',
+};
+
+export const ListKeyOperationsRequest = {
+    encode(
+        message: ListKeyOperationsRequest,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        if (message.keyId !== '') {
+            writer.uint32(10).string(message.keyId);
+        }
+        if (message.pageSize !== 0) {
+            writer.uint32(16).int64(message.pageSize);
+        }
+        if (message.pageToken !== '') {
+            writer.uint32(26).string(message.pageToken);
+        }
+        return writer;
+    },
+
+    decode(
+        input: _m0.Reader | Uint8Array,
+        length?: number
+    ): ListKeyOperationsRequest {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = {
+            ...baseListKeyOperationsRequest,
+        } as ListKeyOperationsRequest;
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.keyId = reader.string();
+                    break;
+                case 2:
+                    message.pageSize = longToNumber(reader.int64() as Long);
+                    break;
+                case 3:
+                    message.pageToken = reader.string();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): ListKeyOperationsRequest {
+        const message = {
+            ...baseListKeyOperationsRequest,
+        } as ListKeyOperationsRequest;
+        if (object.keyId !== undefined && object.keyId !== null) {
+            message.keyId = String(object.keyId);
+        } else {
+            message.keyId = '';
+        }
+        if (object.pageSize !== undefined && object.pageSize !== null) {
+            message.pageSize = Number(object.pageSize);
+        } else {
+            message.pageSize = 0;
+        }
+        if (object.pageToken !== undefined && object.pageToken !== null) {
+            message.pageToken = String(object.pageToken);
+        } else {
+            message.pageToken = '';
+        }
+        return message;
+    },
+
+    toJSON(message: ListKeyOperationsRequest): unknown {
+        const obj: any = {};
+        message.keyId !== undefined && (obj.keyId = message.keyId);
+        message.pageSize !== undefined && (obj.pageSize = message.pageSize);
+        message.pageToken !== undefined && (obj.pageToken = message.pageToken);
+        return obj;
+    },
+
+    fromPartial(
+        object: DeepPartial<ListKeyOperationsRequest>
+    ): ListKeyOperationsRequest {
+        const message = {
+            ...baseListKeyOperationsRequest,
+        } as ListKeyOperationsRequest;
+        if (object.keyId !== undefined && object.keyId !== null) {
+            message.keyId = object.keyId;
+        } else {
+            message.keyId = '';
+        }
+        if (object.pageSize !== undefined && object.pageSize !== null) {
+            message.pageSize = object.pageSize;
+        } else {
+            message.pageSize = 0;
+        }
+        if (object.pageToken !== undefined && object.pageToken !== null) {
+            message.pageToken = object.pageToken;
+        } else {
+            message.pageToken = '';
+        }
+        return message;
+    },
+};
+
+const baseListKeyOperationsResponse: object = { nextPageToken: '' };
+
+export const ListKeyOperationsResponse = {
+    encode(
+        message: ListKeyOperationsResponse,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        for (const v of message.operations) {
+            Operation.encode(v!, writer.uint32(10).fork()).ldelim();
+        }
+        if (message.nextPageToken !== '') {
+            writer.uint32(18).string(message.nextPageToken);
+        }
+        return writer;
+    },
+
+    decode(
+        input: _m0.Reader | Uint8Array,
+        length?: number
+    ): ListKeyOperationsResponse {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = {
+            ...baseListKeyOperationsResponse,
+        } as ListKeyOperationsResponse;
+        message.operations = [];
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.operations.push(
+                        Operation.decode(reader, reader.uint32())
+                    );
+                    break;
+                case 2:
+                    message.nextPageToken = reader.string();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): ListKeyOperationsResponse {
+        const message = {
+            ...baseListKeyOperationsResponse,
+        } as ListKeyOperationsResponse;
+        message.operations = [];
+        if (object.operations !== undefined && object.operations !== null) {
+            for (const e of object.operations) {
+                message.operations.push(Operation.fromJSON(e));
+            }
+        }
+        if (
+            object.nextPageToken !== undefined &&
+            object.nextPageToken !== null
+        ) {
+            message.nextPageToken = String(object.nextPageToken);
+        } else {
+            message.nextPageToken = '';
+        }
+        return message;
+    },
+
+    toJSON(message: ListKeyOperationsResponse): unknown {
+        const obj: any = {};
+        if (message.operations) {
+            obj.operations = message.operations.map((e) =>
+                e ? Operation.toJSON(e) : undefined
+            );
+        } else {
+            obj.operations = [];
+        }
+        message.nextPageToken !== undefined &&
+            (obj.nextPageToken = message.nextPageToken);
+        return obj;
+    },
+
+    fromPartial(
+        object: DeepPartial<ListKeyOperationsResponse>
+    ): ListKeyOperationsResponse {
+        const message = {
+            ...baseListKeyOperationsResponse,
+        } as ListKeyOperationsResponse;
+        message.operations = [];
+        if (object.operations !== undefined && object.operations !== null) {
+            for (const e of object.operations) {
+                message.operations.push(Operation.fromPartial(e));
+            }
+        }
+        if (
+            object.nextPageToken !== undefined &&
+            object.nextPageToken !== null
+        ) {
+            message.nextPageToken = object.nextPageToken;
+        } else {
+            message.nextPageToken = '';
+        }
+        return message;
+    },
+};
+
+/** A set of methods for managing Key resources. */
+export const KeyServiceService = {
+    /**
+     * Returns the specified Key resource.
+     *
+     * To get the list of available Key resources, make a [List] request.
+     */
+    get: {
+        path: '/yandex.cloud.iam.v1.KeyService/Get',
+        requestStream: false,
+        responseStream: false,
+        requestSerialize: (value: GetKeyRequest) =>
+            Buffer.from(GetKeyRequest.encode(value).finish()),
+        requestDeserialize: (value: Buffer) => GetKeyRequest.decode(value),
+        responseSerialize: (value: Key) =>
+            Buffer.from(Key.encode(value).finish()),
+        responseDeserialize: (value: Buffer) => Key.decode(value),
+    },
+    /** Retrieves the list of Key resources for the specified service account. */
+    list: {
+        path: '/yandex.cloud.iam.v1.KeyService/List',
+        requestStream: false,
+        responseStream: false,
+        requestSerialize: (value: ListKeysRequest) =>
+            Buffer.from(ListKeysRequest.encode(value).finish()),
+        requestDeserialize: (value: Buffer) => ListKeysRequest.decode(value),
+        responseSerialize: (value: ListKeysResponse) =>
+            Buffer.from(ListKeysResponse.encode(value).finish()),
+        responseDeserialize: (value: Buffer) => ListKeysResponse.decode(value),
+    },
+    /** Creates a key pair for the specified service account. */
+    create: {
+        path: '/yandex.cloud.iam.v1.KeyService/Create',
+        requestStream: false,
+        responseStream: false,
+        requestSerialize: (value: CreateKeyRequest) =>
+            Buffer.from(CreateKeyRequest.encode(value).finish()),
+        requestDeserialize: (value: Buffer) => CreateKeyRequest.decode(value),
+        responseSerialize: (value: CreateKeyResponse) =>
+            Buffer.from(CreateKeyResponse.encode(value).finish()),
+        responseDeserialize: (value: Buffer) => CreateKeyResponse.decode(value),
+    },
+    /** Updates the specified key pair. */
+    update: {
+        path: '/yandex.cloud.iam.v1.KeyService/Update',
+        requestStream: false,
+        responseStream: false,
+        requestSerialize: (value: UpdateKeyRequest) =>
+            Buffer.from(UpdateKeyRequest.encode(value).finish()),
+        requestDeserialize: (value: Buffer) => UpdateKeyRequest.decode(value),
+        responseSerialize: (value: Operation) =>
+            Buffer.from(Operation.encode(value).finish()),
+        responseDeserialize: (value: Buffer) => Operation.decode(value),
+    },
+    /** Deletes the specified key pair. */
+    delete: {
+        path: '/yandex.cloud.iam.v1.KeyService/Delete',
+        requestStream: false,
+        responseStream: false,
+        requestSerialize: (value: DeleteKeyRequest) =>
+            Buffer.from(DeleteKeyRequest.encode(value).finish()),
+        requestDeserialize: (value: Buffer) => DeleteKeyRequest.decode(value),
+        responseSerialize: (value: Operation) =>
+            Buffer.from(Operation.encode(value).finish()),
+        responseDeserialize: (value: Buffer) => Operation.decode(value),
+    },
+    /** Lists operations for the specified key. */
+    listOperations: {
+        path: '/yandex.cloud.iam.v1.KeyService/ListOperations',
+        requestStream: false,
+        responseStream: false,
+        requestSerialize: (value: ListKeyOperationsRequest) =>
+            Buffer.from(ListKeyOperationsRequest.encode(value).finish()),
+        requestDeserialize: (value: Buffer) =>
+            ListKeyOperationsRequest.decode(value),
+        responseSerialize: (value: ListKeyOperationsResponse) =>
+            Buffer.from(ListKeyOperationsResponse.encode(value).finish()),
+        responseDeserialize: (value: Buffer) =>
+            ListKeyOperationsResponse.decode(value),
+    },
+} as const;
+
+export interface KeyServiceServer extends UntypedServiceImplementation {
+    /**
+     * Returns the specified Key resource.
+     *
+     * To get the list of available Key resources, make a [List] request.
+     */
+    get: handleUnaryCall<GetKeyRequest, Key>;
+    /** Retrieves the list of Key resources for the specified service account. */
+    list: handleUnaryCall<ListKeysRequest, ListKeysResponse>;
+    /** Creates a key pair for the specified service account. */
+    create: handleUnaryCall<CreateKeyRequest, CreateKeyResponse>;
+    /** Updates the specified key pair. */
+    update: handleUnaryCall<UpdateKeyRequest, Operation>;
+    /** Deletes the specified key pair. */
+    delete: handleUnaryCall<DeleteKeyRequest, Operation>;
+    /** Lists operations for the specified key. */
+    listOperations: handleUnaryCall<
+        ListKeyOperationsRequest,
+        ListKeyOperationsResponse
+    >;
+}
+
+export interface KeyServiceClient extends Client {
+    /**
+     * Returns the specified Key resource.
+     *
+     * To get the list of available Key resources, make a [List] request.
+     */
+    get(
+        request: GetKeyRequest,
+        callback: (error: ServiceError | null, response: Key) => void
+    ): ClientUnaryCall;
+    get(
+        request: GetKeyRequest,
+        metadata: Metadata,
+        callback: (error: ServiceError | null, response: Key) => void
+    ): ClientUnaryCall;
+    get(
+        request: GetKeyRequest,
+        metadata: Metadata,
+        options: Partial<CallOptions>,
+        callback: (error: ServiceError | null, response: Key) => void
+    ): ClientUnaryCall;
+    /** Retrieves the list of Key resources for the specified service account. */
+    list(
+        request: ListKeysRequest,
+        callback: (
+            error: ServiceError | null,
+            response: ListKeysResponse
+        ) => void
+    ): ClientUnaryCall;
+    list(
+        request: ListKeysRequest,
+        metadata: Metadata,
+        callback: (
+            error: ServiceError | null,
+            response: ListKeysResponse
+        ) => void
+    ): ClientUnaryCall;
+    list(
+        request: ListKeysRequest,
+        metadata: Metadata,
+        options: Partial<CallOptions>,
+        callback: (
+            error: ServiceError | null,
+            response: ListKeysResponse
+        ) => void
+    ): ClientUnaryCall;
+    /** Creates a key pair for the specified service account. */
+    create(
+        request: CreateKeyRequest,
+        callback: (
+            error: ServiceError | null,
+            response: CreateKeyResponse
+        ) => void
+    ): ClientUnaryCall;
+    create(
+        request: CreateKeyRequest,
+        metadata: Metadata,
+        callback: (
+            error: ServiceError | null,
+            response: CreateKeyResponse
+        ) => void
+    ): ClientUnaryCall;
+    create(
+        request: CreateKeyRequest,
+        metadata: Metadata,
+        options: Partial<CallOptions>,
+        callback: (
+            error: ServiceError | null,
+            response: CreateKeyResponse
+        ) => void
+    ): ClientUnaryCall;
+    /** Updates the specified key pair. */
+    update(
+        request: UpdateKeyRequest,
+        callback: (error: ServiceError | null, response: Operation) => void
+    ): ClientUnaryCall;
+    update(
+        request: UpdateKeyRequest,
+        metadata: Metadata,
+        callback: (error: ServiceError | null, response: Operation) => void
+    ): ClientUnaryCall;
+    update(
+        request: UpdateKeyRequest,
+        metadata: Metadata,
+        options: Partial<CallOptions>,
+        callback: (error: ServiceError | null, response: Operation) => void
+    ): ClientUnaryCall;
+    /** Deletes the specified key pair. */
+    delete(
+        request: DeleteKeyRequest,
+        callback: (error: ServiceError | null, response: Operation) => void
+    ): ClientUnaryCall;
+    delete(
+        request: DeleteKeyRequest,
+        metadata: Metadata,
+        callback: (error: ServiceError | null, response: Operation) => void
+    ): ClientUnaryCall;
+    delete(
+        request: DeleteKeyRequest,
+        metadata: Metadata,
+        options: Partial<CallOptions>,
+        callback: (error: ServiceError | null, response: Operation) => void
+    ): ClientUnaryCall;
+    /** Lists operations for the specified key. */
+    listOperations(
+        request: ListKeyOperationsRequest,
+        callback: (
+            error: ServiceError | null,
+            response: ListKeyOperationsResponse
+        ) => void
+    ): ClientUnaryCall;
+    listOperations(
+        request: ListKeyOperationsRequest,
+        metadata: Metadata,
+        callback: (
+            error: ServiceError | null,
+            response: ListKeyOperationsResponse
+        ) => void
+    ): ClientUnaryCall;
+    listOperations(
+        request: ListKeyOperationsRequest,
+        metadata: Metadata,
+        options: Partial<CallOptions>,
+        callback: (
+            error: ServiceError | null,
+            response: ListKeyOperationsResponse
+        ) => void
+    ): ClientUnaryCall;
+}
+
+export const KeyServiceClient = makeGenericClientConstructor(
+    KeyServiceService,
+    'yandex.cloud.iam.v1.KeyService'
+) as unknown as {
+    new (
+        address: string,
+        credentials: ChannelCredentials,
+        options?: Partial<ChannelOptions>
+    ): KeyServiceClient;
+};
+
+declare var self: any | undefined;
+declare var window: any | undefined;
+var globalThis: any = (() => {
+    if (typeof globalThis !== 'undefined') return globalThis;
+    if (typeof self !== 'undefined') return self;
+    if (typeof window !== 'undefined') return window;
+    if (typeof global !== 'undefined') return global;
+    throw 'Unable to locate global object';
+})();
+
+type Builtin =
+    | Date
+    | Function
+    | Uint8Array
+    | string
+    | number
+    | boolean
+    | undefined;
+export type DeepPartial<T> = T extends Builtin
+    ? T
+    : T extends Array<infer U>
+    ? Array<DeepPartial<U>>
+    : T extends ReadonlyArray<infer U>
+    ? ReadonlyArray<DeepPartial<U>>
+    : T extends {}
+    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    : Partial<T>;
+
+function longToNumber(long: Long): number {
+    if (long.gt(Number.MAX_SAFE_INTEGER)) {
+        throw new globalThis.Error(
+            'Value is larger than Number.MAX_SAFE_INTEGER'
+        );
+    }
+    return long.toNumber();
+}
+
+if (_m0.util.Long !== Long) {
+    _m0.util.Long = Long as any;
+    _m0.configure();
+}

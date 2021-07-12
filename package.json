@@ -1,0 +1,78 @@
+{
+  "name": "yc-ts-sdk",
+  "version": "1.0.0",
+  "description": "Yandex Cloud SDK rewritten in TypeScript",
+  "keywords": [
+    "yandex-cloud",
+    "cloud",
+    "sdk",
+    "typescript"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nikolaymatrosov/yc-ts-sdk.git"
+  },
+  "author": "Nikolay Matrosov",
+  "license": "MIT",
+  "main": "src/index.js",
+  "types": "lib/index.d.ts",
+  "bugs": {
+    "url": "https://github.com/nikolaymatrosov/yc-ts-sdk/issues"
+  },
+  "homepage": "https://github.com/nikolaymatrosov/yc-ts-sdk#readme",
+  "dependencies": {
+    "@grpc/grpc-js": "^1.3.2",
+    "@types/pino": "^6.3.9",
+    "aws-sdk": ">= 2.0.9",
+    "grpc": "^1.17.0",
+    "jsonwebtoken": "^8.5.1",
+    "long": "^3.2.0",
+    "luxon": "^1.27.0",
+    "nice-grpc": "^0.1.5",
+    "node-fetch": "^2.6.0",
+    "protobufjs": "^6.11.2",
+    "ydb-sdk": "^1.5.1"
+  },
+  "devDependencies": {
+    "@trivago/prettier-plugin-sort-imports": "^2.0.2",
+    "@types/jest": "^26.0.23",
+    "@types/jsonwebtoken": "^8.5.3",
+    "@types/lodash": "^4.14.170",
+    "@types/long": "^4.0.1",
+    "@types/luxon": "^1.27.0",
+    "@types/node": "^15.12.1",
+    "@types/node-fetch": "^2.5.10",
+    "@types/protobufjs": "^6.0.0",
+    "google-protobuf": "^3.17.3",
+    "grpc-tools": "^1.11.1",
+    "jest": "^27.0.4",
+    "lodash": "^4.17.21",
+    "prettier": "^2.3.1",
+    "ts-jest": "^27.0.3",
+    "ts-proto": "^1.81.3",
+    "tsc-alias": "^1.3.7",
+    "tslint": "^6.1.3",
+    "tslint-config-prettier": "^1.18.0",
+    "typescript": "^4.3.2",
+    "yaml": "^1.10.2"
+  },
+  "scripts": {
+    "prepare": "npm run generate && npm run build",
+    "prepublishOnly": "npm test && npm run lint",
+    "preversion": "npm run lint",
+    "version": "npm run format && git add -A src",
+    "postversion": "git push && git push --tags",
+    "test": "jest --config jestconfig.json",
+    "build": "tsc --project tsconfig.json && tsc-alias -p tsconfig.json",
+    "generate": "scripts/generate.sh",
+    "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
+    "lint": "tslint -p tsconfig.json",
+    "prettier": "prettier --config .prettierrc.json --write index.js src/**/*.js"
+  },
+  "files": [
+    "src/**/*"
+  ],
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}

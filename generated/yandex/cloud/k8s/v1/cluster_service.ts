@@ -1,0 +1,4032 @@
+/* eslint-disable */
+import { FieldMask } from '../../../../google/protobuf/field_mask';
+import {
+    ReleaseChannel,
+    Cluster,
+    NetworkPolicy,
+    MasterMaintenancePolicy,
+    IPAllocationPolicy,
+    KMSProvider,
+    Cilium,
+    releaseChannelFromJSON,
+    releaseChannelToJSON,
+} from '../../../../yandex/cloud/k8s/v1/cluster';
+import { Node } from '../../../../yandex/cloud/k8s/v1/node';
+import { NodeGroup } from '../../../../yandex/cloud/k8s/v1/node_group';
+import { UpdateVersionSpec } from '../../../../yandex/cloud/k8s/v1/version';
+import { Operation } from '../../../../yandex/cloud/operation/operation';
+import {
+    makeGenericClientConstructor,
+    ChannelCredentials,
+    ChannelOptions,
+    UntypedServiceImplementation,
+    handleUnaryCall,
+    Client,
+    ClientUnaryCall,
+    Metadata,
+    CallOptions,
+    ServiceError,
+} from '@grpc/grpc-js';
+import Long from 'long';
+import _m0 from 'protobufjs/minimal';
+
+export const protobufPackage = 'yandex.cloud.k8s.v1';
+
+export interface GetClusterRequest {
+    /** ID of the Kubernetes cluster to return. */
+    clusterId: string;
+}
+
+export interface ListClustersRequest {
+    /**
+     * ID of the folder to list Kubernetes cluster in.
+     * To get the folder ID use a [yandex.cloud.resourcemanager.v1.FolderService.List] request.
+     */
+    folderId: string;
+    /**
+     * The maximum number of results per page to return. If the number of available
+     * results is larger than [page_size],
+     * the service returns a [ListClustersResponse.next_page_token]
+     * that can be used to get the next page of results in subsequent list requests.
+     * Default value: 100.
+     */
+    pageSize: number;
+    /**
+     * Page token. To get the next page of results, set `page_token` to the
+     * [ListClustersResponse.next_page_token] returned by a previous list request.
+     */
+    pageToken: string;
+    /**
+     * A filter expression that filters resources listed in the response.
+     * The expression must specify:
+     * 1. The field name. Currently you can use filtering only on [Cluster.name] field.
+     * 2. An operator. Can be either `=` or `!=` for single values, `IN` or `NOT IN` for lists of values.
+     * 3. The value. Must be 1-61 characters long and match the regular expression `|[a-z][-a-z0-9]{1,61}[a-z0-9]`.
+     */
+    filter: string;
+}
+
+export interface ListClustersResponse {
+    /** List of Kubernetes cluster. */
+    clusters: Cluster[];
+    /**
+     * This token allows you to get the next page of results for list requests. If the number of results
+     * is larger than [ListClustersRequest.page_size], use
+     * the `next_page_token` as the value
+     * for the [ListClustersRequest.page_token] query parameter
+     * in the next list request. Each subsequent list request will have its own
+     * `next_page_token` to continue paging through the results.
+     */
+    nextPageToken: string;
+}
+
+export interface DeleteClusterRequest {
+    /**
+     * ID of the Kubernetes cluster to delete.
+     * To get Kubernetes cluster ID use a [ClusterService.List] request.
+     */
+    clusterId: string;
+}
+
+export interface DeleteClusterMetadata {
+    /** ID of the Kubernetes cluster that is being deleted. */
+    clusterId: string;
+}
+
+export interface StopClusterRequest {
+    /**
+     * ID of the Kubernetes cluster to stop.
+     * To get Kubernetes cluster ID use a [ClusterService.List] request.
+     */
+    clusterId: string;
+}
+
+export interface StopClusterMetadata {
+    /** ID of the Kubernetes cluster that is being stopped. */
+    clusterId: string;
+}
+
+export interface StartClusterRequest {
+    /**
+     * ID of the Kubernetes cluster to start.
+     * To get Kubernetes cluster ID use a [ClusterService.List] request.
+     */
+    clusterId: string;
+}
+
+export interface StartClusterMetadata {
+    /** ID of the Kubernetes cluster that is being started. */
+    clusterId: string;
+}
+
+export interface UpdateClusterRequest {
+    /**
+     * ID of the Kubernetes cluster to update.
+     * To get the Kubernetes cluster ID use a [ClusterService.List] request.
+     */
+    clusterId: string;
+    updateMask: FieldMask | undefined;
+    /**
+     * Name of the Kubernetes cluster.
+     * The name must be unique within the folder.
+     */
+    name: string;
+    /** Description of the Kubernetes cluster. */
+    description: string;
+    /**
+     * Resource labels as `key:value` pairs.
+     *
+     * Existing set of `labels` is completely replaced by the provided set.
+     */
+    labels: { [key: string]: string };
+    /** Gateway IPv4 address. */
+    gatewayIpv4Address: string | undefined;
+    /** Specification of the master update. */
+    masterSpec: MasterUpdateSpec | undefined;
+    /**
+     * Service account to be used for provisioning Compute Cloud and VPC resources for Kubernetes cluster.
+     * Selected service account should have `edit` role on the folder where the Kubernetes cluster will be
+     * located and on the folder where selected network resides.
+     */
+    serviceAccountId: string;
+    /**
+     * Service account to be used by the worker nodes of the Kubernetes cluster to access Container Registry
+     * or to push node logs and metrics.
+     */
+    nodeServiceAccountId: string;
+    networkPolicy: NetworkPolicy | undefined;
+}
+
+export interface UpdateClusterRequest_LabelsEntry {
+    key: string;
+    value: string;
+}
+
+export interface MasterUpdateSpec {
+    /** Specification of the master update. */
+    version: UpdateVersionSpec | undefined;
+    /** Maintenance policy of the master. */
+    maintenancePolicy: MasterMaintenancePolicy | undefined;
+    /** Master security groups. */
+    securityGroupIds: string[];
+}
+
+export interface UpdateClusterMetadata {
+    /** ID of the Kubernetes cluster that is being updated. */
+    clusterId: string;
+}
+
+export interface CreateClusterRequest {
+    /**
+     * ID of the folder to create a Kubernetes cluster in.
+     * To get the folder ID use a [yandex.cloud.resourcemanager.v1.FolderService.List] request.
+     */
+    folderId: string;
+    /**
+     * Name of the Kubernetes cluster.
+     * The name must be unique within the folder.
+     */
+    name: string;
+    /** Description of the Kubernetes cluster. */
+    description: string;
+    /** Resource labels as `key:value` pairs. */
+    labels: { [key: string]: string };
+    /** ID of the network. */
+    networkId: string;
+    /** IP allocation policy of the Kubernetes cluster. */
+    masterSpec: MasterSpec | undefined;
+    /** IP allocation policy of the Kubernetes cluster. */
+    ipAllocationPolicy: IPAllocationPolicy | undefined;
+    /** Gateway IPv4 address. */
+    gatewayIpv4Address: string | undefined;
+    /**
+     * Service account to be used for provisioning Compute Cloud and VPC resources for Kubernetes cluster.
+     * Selected service account should have `edit` role on the folder where the Kubernetes cluster will be
+     * located and on the folder where selected network resides.
+     */
+    serviceAccountId: string;
+    /** Service account to be used by the worker nodes of the Kubernetes cluster to access Container Registry or to push node logs and metrics. */
+    nodeServiceAccountId: string;
+    /** Release channel for the master. */
+    releaseChannel: ReleaseChannel;
+    networkPolicy: NetworkPolicy | undefined;
+    /** KMS provider configuration. */
+    kmsProvider: KMSProvider | undefined;
+    cilium: Cilium | undefined;
+}
+
+export interface CreateClusterRequest_LabelsEntry {
+    key: string;
+    value: string;
+}
+
+export interface CreateClusterMetadata {
+    /** ID of the Kubernetes cluster that is being created. */
+    clusterId: string;
+}
+
+export interface AutoUpgradeMasterMetadata {
+    /** ID of the Kubernetes cluster that is being auto upgraded. */
+    clusterId: string;
+}
+
+export interface ListClusterOperationsRequest {
+    /** ID of the Kubernetes cluster to list operations for. */
+    clusterId: string;
+    /**
+     * The maximum number of results per page that should be returned. If the number of available
+     * results is larger than [page_size], the service returns a [ListClusterOperationsResponse.next_page_token]
+     * that can be used to get the next page of results in subsequent list requests.
+     * Default value: 100.
+     */
+    pageSize: number;
+    /**
+     * Page token. To get the next page of results, set `page_token` to the
+     * [ListClusterOperationsResponse.next_page_token] returned by a previous list request.
+     */
+    pageToken: string;
+    /**
+     * A filter expression that filters resources listed in the response.
+     * Currently you can use filtering only on [Cluster.name] field.
+     */
+    filter: string;
+}
+
+export interface ListClusterOperationsResponse {
+    /** List of operations for the specified Kubernetes cluster. */
+    operations: Operation[];
+    /**
+     * This token allows you to get the next page of results for list requests. If the number of results
+     * is larger than [ListClusterOperationsRequest.page_size], use the `next_page_token` as the value
+     * for the [ListClusterOperationsRequest.page_token] query parameter in the next list request.
+     * Each subsequent list request will have its own `next_page_token` to continue paging through the results.
+     */
+    nextPageToken: string;
+}
+
+export interface ListClusterNodeGroupsRequest {
+    /**
+     * ID of the Kubernetes cluster to list node groups in.
+     * To get the Kubernetes cluster ID use a [ClusterService.List] request.
+     */
+    clusterId: string;
+    /**
+     * The maximum number of results per page to return. If the number of available
+     * results is larger than [page_size],
+     * the service returns a [ListClusterNodeGroupsResponse.next_page_token]
+     * that can be used to get the next page of results in subsequent list requests.
+     * Default value: 100.
+     */
+    pageSize: number;
+    /**
+     * Page token. To get the next page of results, set `page_token` to the
+     * [ListClusterNodeGroupsResponse.next_page_token] returned by a previous list request.
+     */
+    pageToken: string;
+    /**
+     * A filter expression that filters resources listed in the response.
+     * Currently you can use filtering only on [Cluster.name] field.
+     */
+    filter: string;
+}
+
+export interface ListClusterNodeGroupsResponse {
+    /** List of node groups for the specified Kubernetes cluster. */
+    nodeGroups: NodeGroup[];
+    /**
+     * This token allows you to get the next page of results for list requests. If the number of results
+     * is larger than [ListClusterNodeGroupsRequest.page_size], use
+     * the `next_page_token` as the value
+     * for the [ListClusterNodeGroupsRequest.page_token] query parameter
+     * in the next list request. Each subsequent list request will have its own
+     * `next_page_token` to continue paging through the results.
+     */
+    nextPageToken: string;
+}
+
+export interface ListClusterNodesRequest {
+    /**
+     * ID of the Kubernetes cluster to list nodes in.
+     * To get the Kubernetes cluster ID use a [ClusterService.List] request.
+     */
+    clusterId: string;
+    /**
+     * The maximum number of results per page to return. If the number of available
+     * results is larger than [page_size],
+     * the service returns a [ListClusterNodesResponse.next_page_token]
+     * that can be used to get the next page of results in subsequent list requests.
+     * Default value: 100.
+     */
+    pageSize: number;
+    /**
+     * Page token. To get the next page of results, set `page_token` to the
+     * [ListClusterNodeGroupsResponse.next_page_token] returned by a previous list request.
+     */
+    pageToken: string;
+}
+
+export interface ListClusterNodesResponse {
+    /** List of nodes for the specified Kubernetes cluster. */
+    nodes: Node[];
+    /**
+     * This token allows you to get the next page of results for list requests. If the number of results
+     * is larger than [ListClusterNodesRequest.page_size], use
+     * the `next_page_token` as the value
+     * for the [ListClusterNodesRequest.page_token] query parameter
+     * in the next list request. Each subsequent list request will have its own
+     * `next_page_token` to continue paging through the results.
+     */
+    nextPageToken: string;
+}
+
+export interface MasterSpec {
+    /** Specification of the zonal master. */
+    zonalMasterSpec: ZonalMasterSpec | undefined;
+    /** Specification of the regional master. */
+    regionalMasterSpec: RegionalMasterSpec | undefined;
+    /** Version of Kubernetes components that runs on the master. */
+    version: string;
+    /** Maintenance policy of the master. */
+    maintenancePolicy: MasterMaintenancePolicy | undefined;
+    /** Master security groups. */
+    securityGroupIds: string[];
+}
+
+export interface ZonalMasterSpec {
+    /** ID of the availability zone. */
+    zoneId: string;
+    /** Specification of parameters for internal IPv4 networking. */
+    internalV4AddressSpec: InternalAddressSpec | undefined;
+    /** Specification of parameters for external IPv4 networking. */
+    externalV4AddressSpec: ExternalAddressSpec | undefined;
+}
+
+export interface RegionalMasterSpec {
+    /** ID of the availability zone where the master resides. */
+    regionId: string;
+    /** List of locations where the master will be allocated. */
+    locations: MasterLocation[];
+    /** Specify to allocate a static public IP for the master. */
+    externalV4AddressSpec: ExternalAddressSpec | undefined;
+}
+
+export interface InternalAddressSpec {
+    /** ID of the subnet. If no ID is specified, and there only one subnet in specified zone, an address in this subnet will be allocated. */
+    subnetId: string;
+}
+
+export interface ExternalAddressSpec {}
+
+export interface MasterLocation {
+    /** ID of the availability zone. */
+    zoneId: string;
+    /**
+     * If not specified and there is a single subnet in specified zone, address
+     * in this subnet will be allocated.
+     */
+    internalV4AddressSpec: InternalAddressSpec | undefined;
+}
+
+const baseGetClusterRequest: object = { clusterId: '' };
+
+export const GetClusterRequest = {
+    encode(
+        message: GetClusterRequest,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        if (message.clusterId !== '') {
+            writer.uint32(10).string(message.clusterId);
+        }
+        return writer;
+    },
+
+    decode(input: _m0.Reader | Uint8Array, length?: number): GetClusterRequest {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = { ...baseGetClusterRequest } as GetClusterRequest;
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.clusterId = reader.string();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): GetClusterRequest {
+        const message = { ...baseGetClusterRequest } as GetClusterRequest;
+        if (object.clusterId !== undefined && object.clusterId !== null) {
+            message.clusterId = String(object.clusterId);
+        } else {
+            message.clusterId = '';
+        }
+        return message;
+    },
+
+    toJSON(message: GetClusterRequest): unknown {
+        const obj: any = {};
+        message.clusterId !== undefined && (obj.clusterId = message.clusterId);
+        return obj;
+    },
+
+    fromPartial(object: DeepPartial<GetClusterRequest>): GetClusterRequest {
+        const message = { ...baseGetClusterRequest } as GetClusterRequest;
+        if (object.clusterId !== undefined && object.clusterId !== null) {
+            message.clusterId = object.clusterId;
+        } else {
+            message.clusterId = '';
+        }
+        return message;
+    },
+};
+
+const baseListClustersRequest: object = {
+    folderId: '',
+    pageSize: 0,
+    pageToken: '',
+    filter: '',
+};
+
+export const ListClustersRequest = {
+    encode(
+        message: ListClustersRequest,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        if (message.folderId !== '') {
+            writer.uint32(10).string(message.folderId);
+        }
+        if (message.pageSize !== 0) {
+            writer.uint32(16).int64(message.pageSize);
+        }
+        if (message.pageToken !== '') {
+            writer.uint32(26).string(message.pageToken);
+        }
+        if (message.filter !== '') {
+            writer.uint32(34).string(message.filter);
+        }
+        return writer;
+    },
+
+    decode(
+        input: _m0.Reader | Uint8Array,
+        length?: number
+    ): ListClustersRequest {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = { ...baseListClustersRequest } as ListClustersRequest;
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.folderId = reader.string();
+                    break;
+                case 2:
+                    message.pageSize = longToNumber(reader.int64() as Long);
+                    break;
+                case 3:
+                    message.pageToken = reader.string();
+                    break;
+                case 4:
+                    message.filter = reader.string();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): ListClustersRequest {
+        const message = { ...baseListClustersRequest } as ListClustersRequest;
+        if (object.folderId !== undefined && object.folderId !== null) {
+            message.folderId = String(object.folderId);
+        } else {
+            message.folderId = '';
+        }
+        if (object.pageSize !== undefined && object.pageSize !== null) {
+            message.pageSize = Number(object.pageSize);
+        } else {
+            message.pageSize = 0;
+        }
+        if (object.pageToken !== undefined && object.pageToken !== null) {
+            message.pageToken = String(object.pageToken);
+        } else {
+            message.pageToken = '';
+        }
+        if (object.filter !== undefined && object.filter !== null) {
+            message.filter = String(object.filter);
+        } else {
+            message.filter = '';
+        }
+        return message;
+    },
+
+    toJSON(message: ListClustersRequest): unknown {
+        const obj: any = {};
+        message.folderId !== undefined && (obj.folderId = message.folderId);
+        message.pageSize !== undefined && (obj.pageSize = message.pageSize);
+        message.pageToken !== undefined && (obj.pageToken = message.pageToken);
+        message.filter !== undefined && (obj.filter = message.filter);
+        return obj;
+    },
+
+    fromPartial(object: DeepPartial<ListClustersRequest>): ListClustersRequest {
+        const message = { ...baseListClustersRequest } as ListClustersRequest;
+        if (object.folderId !== undefined && object.folderId !== null) {
+            message.folderId = object.folderId;
+        } else {
+            message.folderId = '';
+        }
+        if (object.pageSize !== undefined && object.pageSize !== null) {
+            message.pageSize = object.pageSize;
+        } else {
+            message.pageSize = 0;
+        }
+        if (object.pageToken !== undefined && object.pageToken !== null) {
+            message.pageToken = object.pageToken;
+        } else {
+            message.pageToken = '';
+        }
+        if (object.filter !== undefined && object.filter !== null) {
+            message.filter = object.filter;
+        } else {
+            message.filter = '';
+        }
+        return message;
+    },
+};
+
+const baseListClustersResponse: object = { nextPageToken: '' };
+
+export const ListClustersResponse = {
+    encode(
+        message: ListClustersResponse,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        for (const v of message.clusters) {
+            Cluster.encode(v!, writer.uint32(10).fork()).ldelim();
+        }
+        if (message.nextPageToken !== '') {
+            writer.uint32(18).string(message.nextPageToken);
+        }
+        return writer;
+    },
+
+    decode(
+        input: _m0.Reader | Uint8Array,
+        length?: number
+    ): ListClustersResponse {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = { ...baseListClustersResponse } as ListClustersResponse;
+        message.clusters = [];
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.clusters.push(
+                        Cluster.decode(reader, reader.uint32())
+                    );
+                    break;
+                case 2:
+                    message.nextPageToken = reader.string();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): ListClustersResponse {
+        const message = { ...baseListClustersResponse } as ListClustersResponse;
+        message.clusters = [];
+        if (object.clusters !== undefined && object.clusters !== null) {
+            for (const e of object.clusters) {
+                message.clusters.push(Cluster.fromJSON(e));
+            }
+        }
+        if (
+            object.nextPageToken !== undefined &&
+            object.nextPageToken !== null
+        ) {
+            message.nextPageToken = String(object.nextPageToken);
+        } else {
+            message.nextPageToken = '';
+        }
+        return message;
+    },
+
+    toJSON(message: ListClustersResponse): unknown {
+        const obj: any = {};
+        if (message.clusters) {
+            obj.clusters = message.clusters.map((e) =>
+                e ? Cluster.toJSON(e) : undefined
+            );
+        } else {
+            obj.clusters = [];
+        }
+        message.nextPageToken !== undefined &&
+            (obj.nextPageToken = message.nextPageToken);
+        return obj;
+    },
+
+    fromPartial(
+        object: DeepPartial<ListClustersResponse>
+    ): ListClustersResponse {
+        const message = { ...baseListClustersResponse } as ListClustersResponse;
+        message.clusters = [];
+        if (object.clusters !== undefined && object.clusters !== null) {
+            for (const e of object.clusters) {
+                message.clusters.push(Cluster.fromPartial(e));
+            }
+        }
+        if (
+            object.nextPageToken !== undefined &&
+            object.nextPageToken !== null
+        ) {
+            message.nextPageToken = object.nextPageToken;
+        } else {
+            message.nextPageToken = '';
+        }
+        return message;
+    },
+};
+
+const baseDeleteClusterRequest: object = { clusterId: '' };
+
+export const DeleteClusterRequest = {
+    encode(
+        message: DeleteClusterRequest,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        if (message.clusterId !== '') {
+            writer.uint32(10).string(message.clusterId);
+        }
+        return writer;
+    },
+
+    decode(
+        input: _m0.Reader | Uint8Array,
+        length?: number
+    ): DeleteClusterRequest {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = { ...baseDeleteClusterRequest } as DeleteClusterRequest;
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.clusterId = reader.string();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): DeleteClusterRequest {
+        const message = { ...baseDeleteClusterRequest } as DeleteClusterRequest;
+        if (object.clusterId !== undefined && object.clusterId !== null) {
+            message.clusterId = String(object.clusterId);
+        } else {
+            message.clusterId = '';
+        }
+        return message;
+    },
+
+    toJSON(message: DeleteClusterRequest): unknown {
+        const obj: any = {};
+        message.clusterId !== undefined && (obj.clusterId = message.clusterId);
+        return obj;
+    },
+
+    fromPartial(
+        object: DeepPartial<DeleteClusterRequest>
+    ): DeleteClusterRequest {
+        const message = { ...baseDeleteClusterRequest } as DeleteClusterRequest;
+        if (object.clusterId !== undefined && object.clusterId !== null) {
+            message.clusterId = object.clusterId;
+        } else {
+            message.clusterId = '';
+        }
+        return message;
+    },
+};
+
+const baseDeleteClusterMetadata: object = { clusterId: '' };
+
+export const DeleteClusterMetadata = {
+    encode(
+        message: DeleteClusterMetadata,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        if (message.clusterId !== '') {
+            writer.uint32(10).string(message.clusterId);
+        }
+        return writer;
+    },
+
+    decode(
+        input: _m0.Reader | Uint8Array,
+        length?: number
+    ): DeleteClusterMetadata {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = {
+            ...baseDeleteClusterMetadata,
+        } as DeleteClusterMetadata;
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.clusterId = reader.string();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): DeleteClusterMetadata {
+        const message = {
+            ...baseDeleteClusterMetadata,
+        } as DeleteClusterMetadata;
+        if (object.clusterId !== undefined && object.clusterId !== null) {
+            message.clusterId = String(object.clusterId);
+        } else {
+            message.clusterId = '';
+        }
+        return message;
+    },
+
+    toJSON(message: DeleteClusterMetadata): unknown {
+        const obj: any = {};
+        message.clusterId !== undefined && (obj.clusterId = message.clusterId);
+        return obj;
+    },
+
+    fromPartial(
+        object: DeepPartial<DeleteClusterMetadata>
+    ): DeleteClusterMetadata {
+        const message = {
+            ...baseDeleteClusterMetadata,
+        } as DeleteClusterMetadata;
+        if (object.clusterId !== undefined && object.clusterId !== null) {
+            message.clusterId = object.clusterId;
+        } else {
+            message.clusterId = '';
+        }
+        return message;
+    },
+};
+
+const baseStopClusterRequest: object = { clusterId: '' };
+
+export const StopClusterRequest = {
+    encode(
+        message: StopClusterRequest,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        if (message.clusterId !== '') {
+            writer.uint32(10).string(message.clusterId);
+        }
+        return writer;
+    },
+
+    decode(
+        input: _m0.Reader | Uint8Array,
+        length?: number
+    ): StopClusterRequest {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = { ...baseStopClusterRequest } as StopClusterRequest;
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.clusterId = reader.string();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): StopClusterRequest {
+        const message = { ...baseStopClusterRequest } as StopClusterRequest;
+        if (object.clusterId !== undefined && object.clusterId !== null) {
+            message.clusterId = String(object.clusterId);
+        } else {
+            message.clusterId = '';
+        }
+        return message;
+    },
+
+    toJSON(message: StopClusterRequest): unknown {
+        const obj: any = {};
+        message.clusterId !== undefined && (obj.clusterId = message.clusterId);
+        return obj;
+    },
+
+    fromPartial(object: DeepPartial<StopClusterRequest>): StopClusterRequest {
+        const message = { ...baseStopClusterRequest } as StopClusterRequest;
+        if (object.clusterId !== undefined && object.clusterId !== null) {
+            message.clusterId = object.clusterId;
+        } else {
+            message.clusterId = '';
+        }
+        return message;
+    },
+};
+
+const baseStopClusterMetadata: object = { clusterId: '' };
+
+export const StopClusterMetadata = {
+    encode(
+        message: StopClusterMetadata,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        if (message.clusterId !== '') {
+            writer.uint32(10).string(message.clusterId);
+        }
+        return writer;
+    },
+
+    decode(
+        input: _m0.Reader | Uint8Array,
+        length?: number
+    ): StopClusterMetadata {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = { ...baseStopClusterMetadata } as StopClusterMetadata;
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.clusterId = reader.string();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): StopClusterMetadata {
+        const message = { ...baseStopClusterMetadata } as StopClusterMetadata;
+        if (object.clusterId !== undefined && object.clusterId !== null) {
+            message.clusterId = String(object.clusterId);
+        } else {
+            message.clusterId = '';
+        }
+        return message;
+    },
+
+    toJSON(message: StopClusterMetadata): unknown {
+        const obj: any = {};
+        message.clusterId !== undefined && (obj.clusterId = message.clusterId);
+        return obj;
+    },
+
+    fromPartial(object: DeepPartial<StopClusterMetadata>): StopClusterMetadata {
+        const message = { ...baseStopClusterMetadata } as StopClusterMetadata;
+        if (object.clusterId !== undefined && object.clusterId !== null) {
+            message.clusterId = object.clusterId;
+        } else {
+            message.clusterId = '';
+        }
+        return message;
+    },
+};
+
+const baseStartClusterRequest: object = { clusterId: '' };
+
+export const StartClusterRequest = {
+    encode(
+        message: StartClusterRequest,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        if (message.clusterId !== '') {
+            writer.uint32(10).string(message.clusterId);
+        }
+        return writer;
+    },
+
+    decode(
+        input: _m0.Reader | Uint8Array,
+        length?: number
+    ): StartClusterRequest {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = { ...baseStartClusterRequest } as StartClusterRequest;
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.clusterId = reader.string();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): StartClusterRequest {
+        const message = { ...baseStartClusterRequest } as StartClusterRequest;
+        if (object.clusterId !== undefined && object.clusterId !== null) {
+            message.clusterId = String(object.clusterId);
+        } else {
+            message.clusterId = '';
+        }
+        return message;
+    },
+
+    toJSON(message: StartClusterRequest): unknown {
+        const obj: any = {};
+        message.clusterId !== undefined && (obj.clusterId = message.clusterId);
+        return obj;
+    },
+
+    fromPartial(object: DeepPartial<StartClusterRequest>): StartClusterRequest {
+        const message = { ...baseStartClusterRequest } as StartClusterRequest;
+        if (object.clusterId !== undefined && object.clusterId !== null) {
+            message.clusterId = object.clusterId;
+        } else {
+            message.clusterId = '';
+        }
+        return message;
+    },
+};
+
+const baseStartClusterMetadata: object = { clusterId: '' };
+
+export const StartClusterMetadata = {
+    encode(
+        message: StartClusterMetadata,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        if (message.clusterId !== '') {
+            writer.uint32(10).string(message.clusterId);
+        }
+        return writer;
+    },
+
+    decode(
+        input: _m0.Reader | Uint8Array,
+        length?: number
+    ): StartClusterMetadata {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = { ...baseStartClusterMetadata } as StartClusterMetadata;
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.clusterId = reader.string();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): StartClusterMetadata {
+        const message = { ...baseStartClusterMetadata } as StartClusterMetadata;
+        if (object.clusterId !== undefined && object.clusterId !== null) {
+            message.clusterId = String(object.clusterId);
+        } else {
+            message.clusterId = '';
+        }
+        return message;
+    },
+
+    toJSON(message: StartClusterMetadata): unknown {
+        const obj: any = {};
+        message.clusterId !== undefined && (obj.clusterId = message.clusterId);
+        return obj;
+    },
+
+    fromPartial(
+        object: DeepPartial<StartClusterMetadata>
+    ): StartClusterMetadata {
+        const message = { ...baseStartClusterMetadata } as StartClusterMetadata;
+        if (object.clusterId !== undefined && object.clusterId !== null) {
+            message.clusterId = object.clusterId;
+        } else {
+            message.clusterId = '';
+        }
+        return message;
+    },
+};
+
+const baseUpdateClusterRequest: object = {
+    clusterId: '',
+    name: '',
+    description: '',
+    serviceAccountId: '',
+    nodeServiceAccountId: '',
+};
+
+export const UpdateClusterRequest = {
+    encode(
+        message: UpdateClusterRequest,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        if (message.clusterId !== '') {
+            writer.uint32(10).string(message.clusterId);
+        }
+        if (message.updateMask !== undefined) {
+            FieldMask.encode(
+                message.updateMask,
+                writer.uint32(18).fork()
+            ).ldelim();
+        }
+        if (message.name !== '') {
+            writer.uint32(26).string(message.name);
+        }
+        if (message.description !== '') {
+            writer.uint32(34).string(message.description);
+        }
+        Object.entries(message.labels).forEach(([key, value]) => {
+            UpdateClusterRequest_LabelsEntry.encode(
+                { key: key as any, value },
+                writer.uint32(42).fork()
+            ).ldelim();
+        });
+        if (message.gatewayIpv4Address !== undefined) {
+            writer.uint32(50).string(message.gatewayIpv4Address);
+        }
+        if (message.masterSpec !== undefined) {
+            MasterUpdateSpec.encode(
+                message.masterSpec,
+                writer.uint32(58).fork()
+            ).ldelim();
+        }
+        if (message.serviceAccountId !== '') {
+            writer.uint32(74).string(message.serviceAccountId);
+        }
+        if (message.nodeServiceAccountId !== '') {
+            writer.uint32(66).string(message.nodeServiceAccountId);
+        }
+        if (message.networkPolicy !== undefined) {
+            NetworkPolicy.encode(
+                message.networkPolicy,
+                writer.uint32(82).fork()
+            ).ldelim();
+        }
+        return writer;
+    },
+
+    decode(
+        input: _m0.Reader | Uint8Array,
+        length?: number
+    ): UpdateClusterRequest {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = { ...baseUpdateClusterRequest } as UpdateClusterRequest;
+        message.labels = {};
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.clusterId = reader.string();
+                    break;
+                case 2:
+                    message.updateMask = FieldMask.decode(
+                        reader,
+                        reader.uint32()
+                    );
+                    break;
+                case 3:
+                    message.name = reader.string();
+                    break;
+                case 4:
+                    message.description = reader.string();
+                    break;
+                case 5:
+                    const entry5 = UpdateClusterRequest_LabelsEntry.decode(
+                        reader,
+                        reader.uint32()
+                    );
+                    if (entry5.value !== undefined) {
+                        message.labels[entry5.key] = entry5.value;
+                    }
+                    break;
+                case 6:
+                    message.gatewayIpv4Address = reader.string();
+                    break;
+                case 7:
+                    message.masterSpec = MasterUpdateSpec.decode(
+                        reader,
+                        reader.uint32()
+                    );
+                    break;
+                case 9:
+                    message.serviceAccountId = reader.string();
+                    break;
+                case 8:
+                    message.nodeServiceAccountId = reader.string();
+                    break;
+                case 10:
+                    message.networkPolicy = NetworkPolicy.decode(
+                        reader,
+                        reader.uint32()
+                    );
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): UpdateClusterRequest {
+        const message = { ...baseUpdateClusterRequest } as UpdateClusterRequest;
+        message.labels = {};
+        if (object.clusterId !== undefined && object.clusterId !== null) {
+            message.clusterId = String(object.clusterId);
+        } else {
+            message.clusterId = '';
+        }
+        if (object.updateMask !== undefined && object.updateMask !== null) {
+            message.updateMask = FieldMask.fromJSON(object.updateMask);
+        } else {
+            message.updateMask = undefined;
+        }
+        if (object.name !== undefined && object.name !== null) {
+            message.name = String(object.name);
+        } else {
+            message.name = '';
+        }
+        if (object.description !== undefined && object.description !== null) {
+            message.description = String(object.description);
+        } else {
+            message.description = '';
+        }
+        if (object.labels !== undefined && object.labels !== null) {
+            Object.entries(object.labels).forEach(([key, value]) => {
+                message.labels[key] = String(value);
+            });
+        }
+        if (
+            object.gatewayIpv4Address !== undefined &&
+            object.gatewayIpv4Address !== null
+        ) {
+            message.gatewayIpv4Address = String(object.gatewayIpv4Address);
+        } else {
+            message.gatewayIpv4Address = undefined;
+        }
+        if (object.masterSpec !== undefined && object.masterSpec !== null) {
+            message.masterSpec = MasterUpdateSpec.fromJSON(object.masterSpec);
+        } else {
+            message.masterSpec = undefined;
+        }
+        if (
+            object.serviceAccountId !== undefined &&
+            object.serviceAccountId !== null
+        ) {
+            message.serviceAccountId = String(object.serviceAccountId);
+        } else {
+            message.serviceAccountId = '';
+        }
+        if (
+            object.nodeServiceAccountId !== undefined &&
+            object.nodeServiceAccountId !== null
+        ) {
+            message.nodeServiceAccountId = String(object.nodeServiceAccountId);
+        } else {
+            message.nodeServiceAccountId = '';
+        }
+        if (
+            object.networkPolicy !== undefined &&
+            object.networkPolicy !== null
+        ) {
+            message.networkPolicy = NetworkPolicy.fromJSON(
+                object.networkPolicy
+            );
+        } else {
+            message.networkPolicy = undefined;
+        }
+        return message;
+    },
+
+    toJSON(message: UpdateClusterRequest): unknown {
+        const obj: any = {};
+        message.clusterId !== undefined && (obj.clusterId = message.clusterId);
+        message.updateMask !== undefined &&
+            (obj.updateMask = message.updateMask
+                ? FieldMask.toJSON(message.updateMask)
+                : undefined);
+        message.name !== undefined && (obj.name = message.name);
+        message.description !== undefined &&
+            (obj.description = message.description);
+        obj.labels = {};
+        if (message.labels) {
+            Object.entries(message.labels).forEach(([k, v]) => {
+                obj.labels[k] = v;
+            });
+        }
+        message.gatewayIpv4Address !== undefined &&
+            (obj.gatewayIpv4Address = message.gatewayIpv4Address);
+        message.masterSpec !== undefined &&
+            (obj.masterSpec = message.masterSpec
+                ? MasterUpdateSpec.toJSON(message.masterSpec)
+                : undefined);
+        message.serviceAccountId !== undefined &&
+            (obj.serviceAccountId = message.serviceAccountId);
+        message.nodeServiceAccountId !== undefined &&
+            (obj.nodeServiceAccountId = message.nodeServiceAccountId);
+        message.networkPolicy !== undefined &&
+            (obj.networkPolicy = message.networkPolicy
+                ? NetworkPolicy.toJSON(message.networkPolicy)
+                : undefined);
+        return obj;
+    },
+
+    fromPartial(
+        object: DeepPartial<UpdateClusterRequest>
+    ): UpdateClusterRequest {
+        const message = { ...baseUpdateClusterRequest } as UpdateClusterRequest;
+        message.labels = {};
+        if (object.clusterId !== undefined && object.clusterId !== null) {
+            message.clusterId = object.clusterId;
+        } else {
+            message.clusterId = '';
+        }
+        if (object.updateMask !== undefined && object.updateMask !== null) {
+            message.updateMask = FieldMask.fromPartial(object.updateMask);
+        } else {
+            message.updateMask = undefined;
+        }
+        if (object.name !== undefined && object.name !== null) {
+            message.name = object.name;
+        } else {
+            message.name = '';
+        }
+        if (object.description !== undefined && object.description !== null) {
+            message.description = object.description;
+        } else {
+            message.description = '';
+        }
+        if (object.labels !== undefined && object.labels !== null) {
+            Object.entries(object.labels).forEach(([key, value]) => {
+                if (value !== undefined) {
+                    message.labels[key] = String(value);
+                }
+            });
+        }
+        if (
+            object.gatewayIpv4Address !== undefined &&
+            object.gatewayIpv4Address !== null
+        ) {
+            message.gatewayIpv4Address = object.gatewayIpv4Address;
+        } else {
+            message.gatewayIpv4Address = undefined;
+        }
+        if (object.masterSpec !== undefined && object.masterSpec !== null) {
+            message.masterSpec = MasterUpdateSpec.fromPartial(
+                object.masterSpec
+            );
+        } else {
+            message.masterSpec = undefined;
+        }
+        if (
+            object.serviceAccountId !== undefined &&
+            object.serviceAccountId !== null
+        ) {
+            message.serviceAccountId = object.serviceAccountId;
+        } else {
+            message.serviceAccountId = '';
+        }
+        if (
+            object.nodeServiceAccountId !== undefined &&
+            object.nodeServiceAccountId !== null
+        ) {
+            message.nodeServiceAccountId = object.nodeServiceAccountId;
+        } else {
+            message.nodeServiceAccountId = '';
+        }
+        if (
+            object.networkPolicy !== undefined &&
+            object.networkPolicy !== null
+        ) {
+            message.networkPolicy = NetworkPolicy.fromPartial(
+                object.networkPolicy
+            );
+        } else {
+            message.networkPolicy = undefined;
+        }
+        return message;
+    },
+};
+
+const baseUpdateClusterRequest_LabelsEntry: object = { key: '', value: '' };
+
+export const UpdateClusterRequest_LabelsEntry = {
+    encode(
+        message: UpdateClusterRequest_LabelsEntry,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        if (message.key !== '') {
+            writer.uint32(10).string(message.key);
+        }
+        if (message.value !== '') {
+            writer.uint32(18).string(message.value);
+        }
+        return writer;
+    },
+
+    decode(
+        input: _m0.Reader | Uint8Array,
+        length?: number
+    ): UpdateClusterRequest_LabelsEntry {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = {
+            ...baseUpdateClusterRequest_LabelsEntry,
+        } as UpdateClusterRequest_LabelsEntry;
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.key = reader.string();
+                    break;
+                case 2:
+                    message.value = reader.string();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): UpdateClusterRequest_LabelsEntry {
+        const message = {
+            ...baseUpdateClusterRequest_LabelsEntry,
+        } as UpdateClusterRequest_LabelsEntry;
+        if (object.key !== undefined && object.key !== null) {
+            message.key = String(object.key);
+        } else {
+            message.key = '';
+        }
+        if (object.value !== undefined && object.value !== null) {
+            message.value = String(object.value);
+        } else {
+            message.value = '';
+        }
+        return message;
+    },
+
+    toJSON(message: UpdateClusterRequest_LabelsEntry): unknown {
+        const obj: any = {};
+        message.key !== undefined && (obj.key = message.key);
+        message.value !== undefined && (obj.value = message.value);
+        return obj;
+    },
+
+    fromPartial(
+        object: DeepPartial<UpdateClusterRequest_LabelsEntry>
+    ): UpdateClusterRequest_LabelsEntry {
+        const message = {
+            ...baseUpdateClusterRequest_LabelsEntry,
+        } as UpdateClusterRequest_LabelsEntry;
+        if (object.key !== undefined && object.key !== null) {
+            message.key = object.key;
+        } else {
+            message.key = '';
+        }
+        if (object.value !== undefined && object.value !== null) {
+            message.value = object.value;
+        } else {
+            message.value = '';
+        }
+        return message;
+    },
+};
+
+const baseMasterUpdateSpec: object = { securityGroupIds: '' };
+
+export const MasterUpdateSpec = {
+    encode(
+        message: MasterUpdateSpec,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        if (message.version !== undefined) {
+            UpdateVersionSpec.encode(
+                message.version,
+                writer.uint32(10).fork()
+            ).ldelim();
+        }
+        if (message.maintenancePolicy !== undefined) {
+            MasterMaintenancePolicy.encode(
+                message.maintenancePolicy,
+                writer.uint32(18).fork()
+            ).ldelim();
+        }
+        for (const v of message.securityGroupIds) {
+            writer.uint32(26).string(v!);
+        }
+        return writer;
+    },
+
+    decode(input: _m0.Reader | Uint8Array, length?: number): MasterUpdateSpec {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = { ...baseMasterUpdateSpec } as MasterUpdateSpec;
+        message.securityGroupIds = [];
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.version = UpdateVersionSpec.decode(
+                        reader,
+                        reader.uint32()
+                    );
+                    break;
+                case 2:
+                    message.maintenancePolicy = MasterMaintenancePolicy.decode(
+                        reader,
+                        reader.uint32()
+                    );
+                    break;
+                case 3:
+                    message.securityGroupIds.push(reader.string());
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): MasterUpdateSpec {
+        const message = { ...baseMasterUpdateSpec } as MasterUpdateSpec;
+        message.securityGroupIds = [];
+        if (object.version !== undefined && object.version !== null) {
+            message.version = UpdateVersionSpec.fromJSON(object.version);
+        } else {
+            message.version = undefined;
+        }
+        if (
+            object.maintenancePolicy !== undefined &&
+            object.maintenancePolicy !== null
+        ) {
+            message.maintenancePolicy = MasterMaintenancePolicy.fromJSON(
+                object.maintenancePolicy
+            );
+        } else {
+            message.maintenancePolicy = undefined;
+        }
+        if (
+            object.securityGroupIds !== undefined &&
+            object.securityGroupIds !== null
+        ) {
+            for (const e of object.securityGroupIds) {
+                message.securityGroupIds.push(String(e));
+            }
+        }
+        return message;
+    },
+
+    toJSON(message: MasterUpdateSpec): unknown {
+        const obj: any = {};
+        message.version !== undefined &&
+            (obj.version = message.version
+                ? UpdateVersionSpec.toJSON(message.version)
+                : undefined);
+        message.maintenancePolicy !== undefined &&
+            (obj.maintenancePolicy = message.maintenancePolicy
+                ? MasterMaintenancePolicy.toJSON(message.maintenancePolicy)
+                : undefined);
+        if (message.securityGroupIds) {
+            obj.securityGroupIds = message.securityGroupIds.map((e) => e);
+        } else {
+            obj.securityGroupIds = [];
+        }
+        return obj;
+    },
+
+    fromPartial(object: DeepPartial<MasterUpdateSpec>): MasterUpdateSpec {
+        const message = { ...baseMasterUpdateSpec } as MasterUpdateSpec;
+        message.securityGroupIds = [];
+        if (object.version !== undefined && object.version !== null) {
+            message.version = UpdateVersionSpec.fromPartial(object.version);
+        } else {
+            message.version = undefined;
+        }
+        if (
+            object.maintenancePolicy !== undefined &&
+            object.maintenancePolicy !== null
+        ) {
+            message.maintenancePolicy = MasterMaintenancePolicy.fromPartial(
+                object.maintenancePolicy
+            );
+        } else {
+            message.maintenancePolicy = undefined;
+        }
+        if (
+            object.securityGroupIds !== undefined &&
+            object.securityGroupIds !== null
+        ) {
+            for (const e of object.securityGroupIds) {
+                message.securityGroupIds.push(e);
+            }
+        }
+        return message;
+    },
+};
+
+const baseUpdateClusterMetadata: object = { clusterId: '' };
+
+export const UpdateClusterMetadata = {
+    encode(
+        message: UpdateClusterMetadata,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        if (message.clusterId !== '') {
+            writer.uint32(10).string(message.clusterId);
+        }
+        return writer;
+    },
+
+    decode(
+        input: _m0.Reader | Uint8Array,
+        length?: number
+    ): UpdateClusterMetadata {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = {
+            ...baseUpdateClusterMetadata,
+        } as UpdateClusterMetadata;
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.clusterId = reader.string();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): UpdateClusterMetadata {
+        const message = {
+            ...baseUpdateClusterMetadata,
+        } as UpdateClusterMetadata;
+        if (object.clusterId !== undefined && object.clusterId !== null) {
+            message.clusterId = String(object.clusterId);
+        } else {
+            message.clusterId = '';
+        }
+        return message;
+    },
+
+    toJSON(message: UpdateClusterMetadata): unknown {
+        const obj: any = {};
+        message.clusterId !== undefined && (obj.clusterId = message.clusterId);
+        return obj;
+    },
+
+    fromPartial(
+        object: DeepPartial<UpdateClusterMetadata>
+    ): UpdateClusterMetadata {
+        const message = {
+            ...baseUpdateClusterMetadata,
+        } as UpdateClusterMetadata;
+        if (object.clusterId !== undefined && object.clusterId !== null) {
+            message.clusterId = object.clusterId;
+        } else {
+            message.clusterId = '';
+        }
+        return message;
+    },
+};
+
+const baseCreateClusterRequest: object = {
+    folderId: '',
+    name: '',
+    description: '',
+    networkId: '',
+    serviceAccountId: '',
+    nodeServiceAccountId: '',
+    releaseChannel: 0,
+};
+
+export const CreateClusterRequest = {
+    encode(
+        message: CreateClusterRequest,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        if (message.folderId !== '') {
+            writer.uint32(10).string(message.folderId);
+        }
+        if (message.name !== '') {
+            writer.uint32(18).string(message.name);
+        }
+        if (message.description !== '') {
+            writer.uint32(26).string(message.description);
+        }
+        Object.entries(message.labels).forEach(([key, value]) => {
+            CreateClusterRequest_LabelsEntry.encode(
+                { key: key as any, value },
+                writer.uint32(34).fork()
+            ).ldelim();
+        });
+        if (message.networkId !== '') {
+            writer.uint32(42).string(message.networkId);
+        }
+        if (message.masterSpec !== undefined) {
+            MasterSpec.encode(
+                message.masterSpec,
+                writer.uint32(50).fork()
+            ).ldelim();
+        }
+        if (message.ipAllocationPolicy !== undefined) {
+            IPAllocationPolicy.encode(
+                message.ipAllocationPolicy,
+                writer.uint32(58).fork()
+            ).ldelim();
+        }
+        if (message.gatewayIpv4Address !== undefined) {
+            writer.uint32(66).string(message.gatewayIpv4Address);
+        }
+        if (message.serviceAccountId !== '') {
+            writer.uint32(74).string(message.serviceAccountId);
+        }
+        if (message.nodeServiceAccountId !== '') {
+            writer.uint32(82).string(message.nodeServiceAccountId);
+        }
+        if (message.releaseChannel !== 0) {
+            writer.uint32(88).int32(message.releaseChannel);
+        }
+        if (message.networkPolicy !== undefined) {
+            NetworkPolicy.encode(
+                message.networkPolicy,
+                writer.uint32(98).fork()
+            ).ldelim();
+        }
+        if (message.kmsProvider !== undefined) {
+            KMSProvider.encode(
+                message.kmsProvider,
+                writer.uint32(106).fork()
+            ).ldelim();
+        }
+        if (message.cilium !== undefined) {
+            Cilium.encode(message.cilium, writer.uint32(114).fork()).ldelim();
+        }
+        return writer;
+    },
+
+    decode(
+        input: _m0.Reader | Uint8Array,
+        length?: number
+    ): CreateClusterRequest {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = { ...baseCreateClusterRequest } as CreateClusterRequest;
+        message.labels = {};
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.folderId = reader.string();
+                    break;
+                case 2:
+                    message.name = reader.string();
+                    break;
+                case 3:
+                    message.description = reader.string();
+                    break;
+                case 4:
+                    const entry4 = CreateClusterRequest_LabelsEntry.decode(
+                        reader,
+                        reader.uint32()
+                    );
+                    if (entry4.value !== undefined) {
+                        message.labels[entry4.key] = entry4.value;
+                    }
+                    break;
+                case 5:
+                    message.networkId = reader.string();
+                    break;
+                case 6:
+                    message.masterSpec = MasterSpec.decode(
+                        reader,
+                        reader.uint32()
+                    );
+                    break;
+                case 7:
+                    message.ipAllocationPolicy = IPAllocationPolicy.decode(
+                        reader,
+                        reader.uint32()
+                    );
+                    break;
+                case 8:
+                    message.gatewayIpv4Address = reader.string();
+                    break;
+                case 9:
+                    message.serviceAccountId = reader.string();
+                    break;
+                case 10:
+                    message.nodeServiceAccountId = reader.string();
+                    break;
+                case 11:
+                    message.releaseChannel = reader.int32() as any;
+                    break;
+                case 12:
+                    message.networkPolicy = NetworkPolicy.decode(
+                        reader,
+                        reader.uint32()
+                    );
+                    break;
+                case 13:
+                    message.kmsProvider = KMSProvider.decode(
+                        reader,
+                        reader.uint32()
+                    );
+                    break;
+                case 14:
+                    message.cilium = Cilium.decode(reader, reader.uint32());
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): CreateClusterRequest {
+        const message = { ...baseCreateClusterRequest } as CreateClusterRequest;
+        message.labels = {};
+        if (object.folderId !== undefined && object.folderId !== null) {
+            message.folderId = String(object.folderId);
+        } else {
+            message.folderId = '';
+        }
+        if (object.name !== undefined && object.name !== null) {
+            message.name = String(object.name);
+        } else {
+            message.name = '';
+        }
+        if (object.description !== undefined && object.description !== null) {
+            message.description = String(object.description);
+        } else {
+            message.description = '';
+        }
+        if (object.labels !== undefined && object.labels !== null) {
+            Object.entries(object.labels).forEach(([key, value]) => {
+                message.labels[key] = String(value);
+            });
+        }
+        if (object.networkId !== undefined && object.networkId !== null) {
+            message.networkId = String(object.networkId);
+        } else {
+            message.networkId = '';
+        }
+        if (object.masterSpec !== undefined && object.masterSpec !== null) {
+            message.masterSpec = MasterSpec.fromJSON(object.masterSpec);
+        } else {
+            message.masterSpec = undefined;
+        }
+        if (
+            object.ipAllocationPolicy !== undefined &&
+            object.ipAllocationPolicy !== null
+        ) {
+            message.ipAllocationPolicy = IPAllocationPolicy.fromJSON(
+                object.ipAllocationPolicy
+            );
+        } else {
+            message.ipAllocationPolicy = undefined;
+        }
+        if (
+            object.gatewayIpv4Address !== undefined &&
+            object.gatewayIpv4Address !== null
+        ) {
+            message.gatewayIpv4Address = String(object.gatewayIpv4Address);
+        } else {
+            message.gatewayIpv4Address = undefined;
+        }
+        if (
+            object.serviceAccountId !== undefined &&
+            object.serviceAccountId !== null
+        ) {
+            message.serviceAccountId = String(object.serviceAccountId);
+        } else {
+            message.serviceAccountId = '';
+        }
+        if (
+            object.nodeServiceAccountId !== undefined &&
+            object.nodeServiceAccountId !== null
+        ) {
+            message.nodeServiceAccountId = String(object.nodeServiceAccountId);
+        } else {
+            message.nodeServiceAccountId = '';
+        }
+        if (
+            object.releaseChannel !== undefined &&
+            object.releaseChannel !== null
+        ) {
+            message.releaseChannel = releaseChannelFromJSON(
+                object.releaseChannel
+            );
+        } else {
+            message.releaseChannel = 0;
+        }
+        if (
+            object.networkPolicy !== undefined &&
+            object.networkPolicy !== null
+        ) {
+            message.networkPolicy = NetworkPolicy.fromJSON(
+                object.networkPolicy
+            );
+        } else {
+            message.networkPolicy = undefined;
+        }
+        if (object.kmsProvider !== undefined && object.kmsProvider !== null) {
+            message.kmsProvider = KMSProvider.fromJSON(object.kmsProvider);
+        } else {
+            message.kmsProvider = undefined;
+        }
+        if (object.cilium !== undefined && object.cilium !== null) {
+            message.cilium = Cilium.fromJSON(object.cilium);
+        } else {
+            message.cilium = undefined;
+        }
+        return message;
+    },
+
+    toJSON(message: CreateClusterRequest): unknown {
+        const obj: any = {};
+        message.folderId !== undefined && (obj.folderId = message.folderId);
+        message.name !== undefined && (obj.name = message.name);
+        message.description !== undefined &&
+            (obj.description = message.description);
+        obj.labels = {};
+        if (message.labels) {
+            Object.entries(message.labels).forEach(([k, v]) => {
+                obj.labels[k] = v;
+            });
+        }
+        message.networkId !== undefined && (obj.networkId = message.networkId);
+        message.masterSpec !== undefined &&
+            (obj.masterSpec = message.masterSpec
+                ? MasterSpec.toJSON(message.masterSpec)
+                : undefined);
+        message.ipAllocationPolicy !== undefined &&
+            (obj.ipAllocationPolicy = message.ipAllocationPolicy
+                ? IPAllocationPolicy.toJSON(message.ipAllocationPolicy)
+                : undefined);
+        message.gatewayIpv4Address !== undefined &&
+            (obj.gatewayIpv4Address = message.gatewayIpv4Address);
+        message.serviceAccountId !== undefined &&
+            (obj.serviceAccountId = message.serviceAccountId);
+        message.nodeServiceAccountId !== undefined &&
+            (obj.nodeServiceAccountId = message.nodeServiceAccountId);
+        message.releaseChannel !== undefined &&
+            (obj.releaseChannel = releaseChannelToJSON(message.releaseChannel));
+        message.networkPolicy !== undefined &&
+            (obj.networkPolicy = message.networkPolicy
+                ? NetworkPolicy.toJSON(message.networkPolicy)
+                : undefined);
+        message.kmsProvider !== undefined &&
+            (obj.kmsProvider = message.kmsProvider
+                ? KMSProvider.toJSON(message.kmsProvider)
+                : undefined);
+        message.cilium !== undefined &&
+            (obj.cilium = message.cilium
+                ? Cilium.toJSON(message.cilium)
+                : undefined);
+        return obj;
+    },
+
+    fromPartial(
+        object: DeepPartial<CreateClusterRequest>
+    ): CreateClusterRequest {
+        const message = { ...baseCreateClusterRequest } as CreateClusterRequest;
+        message.labels = {};
+        if (object.folderId !== undefined && object.folderId !== null) {
+            message.folderId = object.folderId;
+        } else {
+            message.folderId = '';
+        }
+        if (object.name !== undefined && object.name !== null) {
+            message.name = object.name;
+        } else {
+            message.name = '';
+        }
+        if (object.description !== undefined && object.description !== null) {
+            message.description = object.description;
+        } else {
+            message.description = '';
+        }
+        if (object.labels !== undefined && object.labels !== null) {
+            Object.entries(object.labels).forEach(([key, value]) => {
+                if (value !== undefined) {
+                    message.labels[key] = String(value);
+                }
+            });
+        }
+        if (object.networkId !== undefined && object.networkId !== null) {
+            message.networkId = object.networkId;
+        } else {
+            message.networkId = '';
+        }
+        if (object.masterSpec !== undefined && object.masterSpec !== null) {
+            message.masterSpec = MasterSpec.fromPartial(object.masterSpec);
+        } else {
+            message.masterSpec = undefined;
+        }
+        if (
+            object.ipAllocationPolicy !== undefined &&
+            object.ipAllocationPolicy !== null
+        ) {
+            message.ipAllocationPolicy = IPAllocationPolicy.fromPartial(
+                object.ipAllocationPolicy
+            );
+        } else {
+            message.ipAllocationPolicy = undefined;
+        }
+        if (
+            object.gatewayIpv4Address !== undefined &&
+            object.gatewayIpv4Address !== null
+        ) {
+            message.gatewayIpv4Address = object.gatewayIpv4Address;
+        } else {
+            message.gatewayIpv4Address = undefined;
+        }
+        if (
+            object.serviceAccountId !== undefined &&
+            object.serviceAccountId !== null
+        ) {
+            message.serviceAccountId = object.serviceAccountId;
+        } else {
+            message.serviceAccountId = '';
+        }
+        if (
+            object.nodeServiceAccountId !== undefined &&
+            object.nodeServiceAccountId !== null
+        ) {
+            message.nodeServiceAccountId = object.nodeServiceAccountId;
+        } else {
+            message.nodeServiceAccountId = '';
+        }
+        if (
+            object.releaseChannel !== undefined &&
+            object.releaseChannel !== null
+        ) {
+            message.releaseChannel = object.releaseChannel;
+        } else {
+            message.releaseChannel = 0;
+        }
+        if (
+            object.networkPolicy !== undefined &&
+            object.networkPolicy !== null
+        ) {
+            message.networkPolicy = NetworkPolicy.fromPartial(
+                object.networkPolicy
+            );
+        } else {
+            message.networkPolicy = undefined;
+        }
+        if (object.kmsProvider !== undefined && object.kmsProvider !== null) {
+            message.kmsProvider = KMSProvider.fromPartial(object.kmsProvider);
+        } else {
+            message.kmsProvider = undefined;
+        }
+        if (object.cilium !== undefined && object.cilium !== null) {
+            message.cilium = Cilium.fromPartial(object.cilium);
+        } else {
+            message.cilium = undefined;
+        }
+        return message;
+    },
+};
+
+const baseCreateClusterRequest_LabelsEntry: object = { key: '', value: '' };
+
+export const CreateClusterRequest_LabelsEntry = {
+    encode(
+        message: CreateClusterRequest_LabelsEntry,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        if (message.key !== '') {
+            writer.uint32(10).string(message.key);
+        }
+        if (message.value !== '') {
+            writer.uint32(18).string(message.value);
+        }
+        return writer;
+    },
+
+    decode(
+        input: _m0.Reader | Uint8Array,
+        length?: number
+    ): CreateClusterRequest_LabelsEntry {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = {
+            ...baseCreateClusterRequest_LabelsEntry,
+        } as CreateClusterRequest_LabelsEntry;
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.key = reader.string();
+                    break;
+                case 2:
+                    message.value = reader.string();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): CreateClusterRequest_LabelsEntry {
+        const message = {
+            ...baseCreateClusterRequest_LabelsEntry,
+        } as CreateClusterRequest_LabelsEntry;
+        if (object.key !== undefined && object.key !== null) {
+            message.key = String(object.key);
+        } else {
+            message.key = '';
+        }
+        if (object.value !== undefined && object.value !== null) {
+            message.value = String(object.value);
+        } else {
+            message.value = '';
+        }
+        return message;
+    },
+
+    toJSON(message: CreateClusterRequest_LabelsEntry): unknown {
+        const obj: any = {};
+        message.key !== undefined && (obj.key = message.key);
+        message.value !== undefined && (obj.value = message.value);
+        return obj;
+    },
+
+    fromPartial(
+        object: DeepPartial<CreateClusterRequest_LabelsEntry>
+    ): CreateClusterRequest_LabelsEntry {
+        const message = {
+            ...baseCreateClusterRequest_LabelsEntry,
+        } as CreateClusterRequest_LabelsEntry;
+        if (object.key !== undefined && object.key !== null) {
+            message.key = object.key;
+        } else {
+            message.key = '';
+        }
+        if (object.value !== undefined && object.value !== null) {
+            message.value = object.value;
+        } else {
+            message.value = '';
+        }
+        return message;
+    },
+};
+
+const baseCreateClusterMetadata: object = { clusterId: '' };
+
+export const CreateClusterMetadata = {
+    encode(
+        message: CreateClusterMetadata,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        if (message.clusterId !== '') {
+            writer.uint32(10).string(message.clusterId);
+        }
+        return writer;
+    },
+
+    decode(
+        input: _m0.Reader | Uint8Array,
+        length?: number
+    ): CreateClusterMetadata {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = {
+            ...baseCreateClusterMetadata,
+        } as CreateClusterMetadata;
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.clusterId = reader.string();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): CreateClusterMetadata {
+        const message = {
+            ...baseCreateClusterMetadata,
+        } as CreateClusterMetadata;
+        if (object.clusterId !== undefined && object.clusterId !== null) {
+            message.clusterId = String(object.clusterId);
+        } else {
+            message.clusterId = '';
+        }
+        return message;
+    },
+
+    toJSON(message: CreateClusterMetadata): unknown {
+        const obj: any = {};
+        message.clusterId !== undefined && (obj.clusterId = message.clusterId);
+        return obj;
+    },
+
+    fromPartial(
+        object: DeepPartial<CreateClusterMetadata>
+    ): CreateClusterMetadata {
+        const message = {
+            ...baseCreateClusterMetadata,
+        } as CreateClusterMetadata;
+        if (object.clusterId !== undefined && object.clusterId !== null) {
+            message.clusterId = object.clusterId;
+        } else {
+            message.clusterId = '';
+        }
+        return message;
+    },
+};
+
+const baseAutoUpgradeMasterMetadata: object = { clusterId: '' };
+
+export const AutoUpgradeMasterMetadata = {
+    encode(
+        message: AutoUpgradeMasterMetadata,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        if (message.clusterId !== '') {
+            writer.uint32(10).string(message.clusterId);
+        }
+        return writer;
+    },
+
+    decode(
+        input: _m0.Reader | Uint8Array,
+        length?: number
+    ): AutoUpgradeMasterMetadata {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = {
+            ...baseAutoUpgradeMasterMetadata,
+        } as AutoUpgradeMasterMetadata;
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.clusterId = reader.string();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): AutoUpgradeMasterMetadata {
+        const message = {
+            ...baseAutoUpgradeMasterMetadata,
+        } as AutoUpgradeMasterMetadata;
+        if (object.clusterId !== undefined && object.clusterId !== null) {
+            message.clusterId = String(object.clusterId);
+        } else {
+            message.clusterId = '';
+        }
+        return message;
+    },
+
+    toJSON(message: AutoUpgradeMasterMetadata): unknown {
+        const obj: any = {};
+        message.clusterId !== undefined && (obj.clusterId = message.clusterId);
+        return obj;
+    },
+
+    fromPartial(
+        object: DeepPartial<AutoUpgradeMasterMetadata>
+    ): AutoUpgradeMasterMetadata {
+        const message = {
+            ...baseAutoUpgradeMasterMetadata,
+        } as AutoUpgradeMasterMetadata;
+        if (object.clusterId !== undefined && object.clusterId !== null) {
+            message.clusterId = object.clusterId;
+        } else {
+            message.clusterId = '';
+        }
+        return message;
+    },
+};
+
+const baseListClusterOperationsRequest: object = {
+    clusterId: '',
+    pageSize: 0,
+    pageToken: '',
+    filter: '',
+};
+
+export const ListClusterOperationsRequest = {
+    encode(
+        message: ListClusterOperationsRequest,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        if (message.clusterId !== '') {
+            writer.uint32(10).string(message.clusterId);
+        }
+        if (message.pageSize !== 0) {
+            writer.uint32(16).int64(message.pageSize);
+        }
+        if (message.pageToken !== '') {
+            writer.uint32(26).string(message.pageToken);
+        }
+        if (message.filter !== '') {
+            writer.uint32(34).string(message.filter);
+        }
+        return writer;
+    },
+
+    decode(
+        input: _m0.Reader | Uint8Array,
+        length?: number
+    ): ListClusterOperationsRequest {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = {
+            ...baseListClusterOperationsRequest,
+        } as ListClusterOperationsRequest;
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.clusterId = reader.string();
+                    break;
+                case 2:
+                    message.pageSize = longToNumber(reader.int64() as Long);
+                    break;
+                case 3:
+                    message.pageToken = reader.string();
+                    break;
+                case 4:
+                    message.filter = reader.string();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): ListClusterOperationsRequest {
+        const message = {
+            ...baseListClusterOperationsRequest,
+        } as ListClusterOperationsRequest;
+        if (object.clusterId !== undefined && object.clusterId !== null) {
+            message.clusterId = String(object.clusterId);
+        } else {
+            message.clusterId = '';
+        }
+        if (object.pageSize !== undefined && object.pageSize !== null) {
+            message.pageSize = Number(object.pageSize);
+        } else {
+            message.pageSize = 0;
+        }
+        if (object.pageToken !== undefined && object.pageToken !== null) {
+            message.pageToken = String(object.pageToken);
+        } else {
+            message.pageToken = '';
+        }
+        if (object.filter !== undefined && object.filter !== null) {
+            message.filter = String(object.filter);
+        } else {
+            message.filter = '';
+        }
+        return message;
+    },
+
+    toJSON(message: ListClusterOperationsRequest): unknown {
+        const obj: any = {};
+        message.clusterId !== undefined && (obj.clusterId = message.clusterId);
+        message.pageSize !== undefined && (obj.pageSize = message.pageSize);
+        message.pageToken !== undefined && (obj.pageToken = message.pageToken);
+        message.filter !== undefined && (obj.filter = message.filter);
+        return obj;
+    },
+
+    fromPartial(
+        object: DeepPartial<ListClusterOperationsRequest>
+    ): ListClusterOperationsRequest {
+        const message = {
+            ...baseListClusterOperationsRequest,
+        } as ListClusterOperationsRequest;
+        if (object.clusterId !== undefined && object.clusterId !== null) {
+            message.clusterId = object.clusterId;
+        } else {
+            message.clusterId = '';
+        }
+        if (object.pageSize !== undefined && object.pageSize !== null) {
+            message.pageSize = object.pageSize;
+        } else {
+            message.pageSize = 0;
+        }
+        if (object.pageToken !== undefined && object.pageToken !== null) {
+            message.pageToken = object.pageToken;
+        } else {
+            message.pageToken = '';
+        }
+        if (object.filter !== undefined && object.filter !== null) {
+            message.filter = object.filter;
+        } else {
+            message.filter = '';
+        }
+        return message;
+    },
+};
+
+const baseListClusterOperationsResponse: object = { nextPageToken: '' };
+
+export const ListClusterOperationsResponse = {
+    encode(
+        message: ListClusterOperationsResponse,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        for (const v of message.operations) {
+            Operation.encode(v!, writer.uint32(10).fork()).ldelim();
+        }
+        if (message.nextPageToken !== '') {
+            writer.uint32(18).string(message.nextPageToken);
+        }
+        return writer;
+    },
+
+    decode(
+        input: _m0.Reader | Uint8Array,
+        length?: number
+    ): ListClusterOperationsResponse {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = {
+            ...baseListClusterOperationsResponse,
+        } as ListClusterOperationsResponse;
+        message.operations = [];
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.operations.push(
+                        Operation.decode(reader, reader.uint32())
+                    );
+                    break;
+                case 2:
+                    message.nextPageToken = reader.string();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): ListClusterOperationsResponse {
+        const message = {
+            ...baseListClusterOperationsResponse,
+        } as ListClusterOperationsResponse;
+        message.operations = [];
+        if (object.operations !== undefined && object.operations !== null) {
+            for (const e of object.operations) {
+                message.operations.push(Operation.fromJSON(e));
+            }
+        }
+        if (
+            object.nextPageToken !== undefined &&
+            object.nextPageToken !== null
+        ) {
+            message.nextPageToken = String(object.nextPageToken);
+        } else {
+            message.nextPageToken = '';
+        }
+        return message;
+    },
+
+    toJSON(message: ListClusterOperationsResponse): unknown {
+        const obj: any = {};
+        if (message.operations) {
+            obj.operations = message.operations.map((e) =>
+                e ? Operation.toJSON(e) : undefined
+            );
+        } else {
+            obj.operations = [];
+        }
+        message.nextPageToken !== undefined &&
+            (obj.nextPageToken = message.nextPageToken);
+        return obj;
+    },
+
+    fromPartial(
+        object: DeepPartial<ListClusterOperationsResponse>
+    ): ListClusterOperationsResponse {
+        const message = {
+            ...baseListClusterOperationsResponse,
+        } as ListClusterOperationsResponse;
+        message.operations = [];
+        if (object.operations !== undefined && object.operations !== null) {
+            for (const e of object.operations) {
+                message.operations.push(Operation.fromPartial(e));
+            }
+        }
+        if (
+            object.nextPageToken !== undefined &&
+            object.nextPageToken !== null
+        ) {
+            message.nextPageToken = object.nextPageToken;
+        } else {
+            message.nextPageToken = '';
+        }
+        return message;
+    },
+};
+
+const baseListClusterNodeGroupsRequest: object = {
+    clusterId: '',
+    pageSize: 0,
+    pageToken: '',
+    filter: '',
+};
+
+export const ListClusterNodeGroupsRequest = {
+    encode(
+        message: ListClusterNodeGroupsRequest,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        if (message.clusterId !== '') {
+            writer.uint32(10).string(message.clusterId);
+        }
+        if (message.pageSize !== 0) {
+            writer.uint32(16).int64(message.pageSize);
+        }
+        if (message.pageToken !== '') {
+            writer.uint32(26).string(message.pageToken);
+        }
+        if (message.filter !== '') {
+            writer.uint32(34).string(message.filter);
+        }
+        return writer;
+    },
+
+    decode(
+        input: _m0.Reader | Uint8Array,
+        length?: number
+    ): ListClusterNodeGroupsRequest {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = {
+            ...baseListClusterNodeGroupsRequest,
+        } as ListClusterNodeGroupsRequest;
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.clusterId = reader.string();
+                    break;
+                case 2:
+                    message.pageSize = longToNumber(reader.int64() as Long);
+                    break;
+                case 3:
+                    message.pageToken = reader.string();
+                    break;
+                case 4:
+                    message.filter = reader.string();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): ListClusterNodeGroupsRequest {
+        const message = {
+            ...baseListClusterNodeGroupsRequest,
+        } as ListClusterNodeGroupsRequest;
+        if (object.clusterId !== undefined && object.clusterId !== null) {
+            message.clusterId = String(object.clusterId);
+        } else {
+            message.clusterId = '';
+        }
+        if (object.pageSize !== undefined && object.pageSize !== null) {
+            message.pageSize = Number(object.pageSize);
+        } else {
+            message.pageSize = 0;
+        }
+        if (object.pageToken !== undefined && object.pageToken !== null) {
+            message.pageToken = String(object.pageToken);
+        } else {
+            message.pageToken = '';
+        }
+        if (object.filter !== undefined && object.filter !== null) {
+            message.filter = String(object.filter);
+        } else {
+            message.filter = '';
+        }
+        return message;
+    },
+
+    toJSON(message: ListClusterNodeGroupsRequest): unknown {
+        const obj: any = {};
+        message.clusterId !== undefined && (obj.clusterId = message.clusterId);
+        message.pageSize !== undefined && (obj.pageSize = message.pageSize);
+        message.pageToken !== undefined && (obj.pageToken = message.pageToken);
+        message.filter !== undefined && (obj.filter = message.filter);
+        return obj;
+    },
+
+    fromPartial(
+        object: DeepPartial<ListClusterNodeGroupsRequest>
+    ): ListClusterNodeGroupsRequest {
+        const message = {
+            ...baseListClusterNodeGroupsRequest,
+        } as ListClusterNodeGroupsRequest;
+        if (object.clusterId !== undefined && object.clusterId !== null) {
+            message.clusterId = object.clusterId;
+        } else {
+            message.clusterId = '';
+        }
+        if (object.pageSize !== undefined && object.pageSize !== null) {
+            message.pageSize = object.pageSize;
+        } else {
+            message.pageSize = 0;
+        }
+        if (object.pageToken !== undefined && object.pageToken !== null) {
+            message.pageToken = object.pageToken;
+        } else {
+            message.pageToken = '';
+        }
+        if (object.filter !== undefined && object.filter !== null) {
+            message.filter = object.filter;
+        } else {
+            message.filter = '';
+        }
+        return message;
+    },
+};
+
+const baseListClusterNodeGroupsResponse: object = { nextPageToken: '' };
+
+export const ListClusterNodeGroupsResponse = {
+    encode(
+        message: ListClusterNodeGroupsResponse,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        for (const v of message.nodeGroups) {
+            NodeGroup.encode(v!, writer.uint32(10).fork()).ldelim();
+        }
+        if (message.nextPageToken !== '') {
+            writer.uint32(18).string(message.nextPageToken);
+        }
+        return writer;
+    },
+
+    decode(
+        input: _m0.Reader | Uint8Array,
+        length?: number
+    ): ListClusterNodeGroupsResponse {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = {
+            ...baseListClusterNodeGroupsResponse,
+        } as ListClusterNodeGroupsResponse;
+        message.nodeGroups = [];
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.nodeGroups.push(
+                        NodeGroup.decode(reader, reader.uint32())
+                    );
+                    break;
+                case 2:
+                    message.nextPageToken = reader.string();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): ListClusterNodeGroupsResponse {
+        const message = {
+            ...baseListClusterNodeGroupsResponse,
+        } as ListClusterNodeGroupsResponse;
+        message.nodeGroups = [];
+        if (object.nodeGroups !== undefined && object.nodeGroups !== null) {
+            for (const e of object.nodeGroups) {
+                message.nodeGroups.push(NodeGroup.fromJSON(e));
+            }
+        }
+        if (
+            object.nextPageToken !== undefined &&
+            object.nextPageToken !== null
+        ) {
+            message.nextPageToken = String(object.nextPageToken);
+        } else {
+            message.nextPageToken = '';
+        }
+        return message;
+    },
+
+    toJSON(message: ListClusterNodeGroupsResponse): unknown {
+        const obj: any = {};
+        if (message.nodeGroups) {
+            obj.nodeGroups = message.nodeGroups.map((e) =>
+                e ? NodeGroup.toJSON(e) : undefined
+            );
+        } else {
+            obj.nodeGroups = [];
+        }
+        message.nextPageToken !== undefined &&
+            (obj.nextPageToken = message.nextPageToken);
+        return obj;
+    },
+
+    fromPartial(
+        object: DeepPartial<ListClusterNodeGroupsResponse>
+    ): ListClusterNodeGroupsResponse {
+        const message = {
+            ...baseListClusterNodeGroupsResponse,
+        } as ListClusterNodeGroupsResponse;
+        message.nodeGroups = [];
+        if (object.nodeGroups !== undefined && object.nodeGroups !== null) {
+            for (const e of object.nodeGroups) {
+                message.nodeGroups.push(NodeGroup.fromPartial(e));
+            }
+        }
+        if (
+            object.nextPageToken !== undefined &&
+            object.nextPageToken !== null
+        ) {
+            message.nextPageToken = object.nextPageToken;
+        } else {
+            message.nextPageToken = '';
+        }
+        return message;
+    },
+};
+
+const baseListClusterNodesRequest: object = {
+    clusterId: '',
+    pageSize: 0,
+    pageToken: '',
+};
+
+export const ListClusterNodesRequest = {
+    encode(
+        message: ListClusterNodesRequest,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        if (message.clusterId !== '') {
+            writer.uint32(10).string(message.clusterId);
+        }
+        if (message.pageSize !== 0) {
+            writer.uint32(16).int64(message.pageSize);
+        }
+        if (message.pageToken !== '') {
+            writer.uint32(26).string(message.pageToken);
+        }
+        return writer;
+    },
+
+    decode(
+        input: _m0.Reader | Uint8Array,
+        length?: number
+    ): ListClusterNodesRequest {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = {
+            ...baseListClusterNodesRequest,
+        } as ListClusterNodesRequest;
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.clusterId = reader.string();
+                    break;
+                case 2:
+                    message.pageSize = longToNumber(reader.int64() as Long);
+                    break;
+                case 3:
+                    message.pageToken = reader.string();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): ListClusterNodesRequest {
+        const message = {
+            ...baseListClusterNodesRequest,
+        } as ListClusterNodesRequest;
+        if (object.clusterId !== undefined && object.clusterId !== null) {
+            message.clusterId = String(object.clusterId);
+        } else {
+            message.clusterId = '';
+        }
+        if (object.pageSize !== undefined && object.pageSize !== null) {
+            message.pageSize = Number(object.pageSize);
+        } else {
+            message.pageSize = 0;
+        }
+        if (object.pageToken !== undefined && object.pageToken !== null) {
+            message.pageToken = String(object.pageToken);
+        } else {
+            message.pageToken = '';
+        }
+        return message;
+    },
+
+    toJSON(message: ListClusterNodesRequest): unknown {
+        const obj: any = {};
+        message.clusterId !== undefined && (obj.clusterId = message.clusterId);
+        message.pageSize !== undefined && (obj.pageSize = message.pageSize);
+        message.pageToken !== undefined && (obj.pageToken = message.pageToken);
+        return obj;
+    },
+
+    fromPartial(
+        object: DeepPartial<ListClusterNodesRequest>
+    ): ListClusterNodesRequest {
+        const message = {
+            ...baseListClusterNodesRequest,
+        } as ListClusterNodesRequest;
+        if (object.clusterId !== undefined && object.clusterId !== null) {
+            message.clusterId = object.clusterId;
+        } else {
+            message.clusterId = '';
+        }
+        if (object.pageSize !== undefined && object.pageSize !== null) {
+            message.pageSize = object.pageSize;
+        } else {
+            message.pageSize = 0;
+        }
+        if (object.pageToken !== undefined && object.pageToken !== null) {
+            message.pageToken = object.pageToken;
+        } else {
+            message.pageToken = '';
+        }
+        return message;
+    },
+};
+
+const baseListClusterNodesResponse: object = { nextPageToken: '' };
+
+export const ListClusterNodesResponse = {
+    encode(
+        message: ListClusterNodesResponse,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        for (const v of message.nodes) {
+            Node.encode(v!, writer.uint32(10).fork()).ldelim();
+        }
+        if (message.nextPageToken !== '') {
+            writer.uint32(18).string(message.nextPageToken);
+        }
+        return writer;
+    },
+
+    decode(
+        input: _m0.Reader | Uint8Array,
+        length?: number
+    ): ListClusterNodesResponse {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = {
+            ...baseListClusterNodesResponse,
+        } as ListClusterNodesResponse;
+        message.nodes = [];
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.nodes.push(Node.decode(reader, reader.uint32()));
+                    break;
+                case 2:
+                    message.nextPageToken = reader.string();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): ListClusterNodesResponse {
+        const message = {
+            ...baseListClusterNodesResponse,
+        } as ListClusterNodesResponse;
+        message.nodes = [];
+        if (object.nodes !== undefined && object.nodes !== null) {
+            for (const e of object.nodes) {
+                message.nodes.push(Node.fromJSON(e));
+            }
+        }
+        if (
+            object.nextPageToken !== undefined &&
+            object.nextPageToken !== null
+        ) {
+            message.nextPageToken = String(object.nextPageToken);
+        } else {
+            message.nextPageToken = '';
+        }
+        return message;
+    },
+
+    toJSON(message: ListClusterNodesResponse): unknown {
+        const obj: any = {};
+        if (message.nodes) {
+            obj.nodes = message.nodes.map((e) =>
+                e ? Node.toJSON(e) : undefined
+            );
+        } else {
+            obj.nodes = [];
+        }
+        message.nextPageToken !== undefined &&
+            (obj.nextPageToken = message.nextPageToken);
+        return obj;
+    },
+
+    fromPartial(
+        object: DeepPartial<ListClusterNodesResponse>
+    ): ListClusterNodesResponse {
+        const message = {
+            ...baseListClusterNodesResponse,
+        } as ListClusterNodesResponse;
+        message.nodes = [];
+        if (object.nodes !== undefined && object.nodes !== null) {
+            for (const e of object.nodes) {
+                message.nodes.push(Node.fromPartial(e));
+            }
+        }
+        if (
+            object.nextPageToken !== undefined &&
+            object.nextPageToken !== null
+        ) {
+            message.nextPageToken = object.nextPageToken;
+        } else {
+            message.nextPageToken = '';
+        }
+        return message;
+    },
+};
+
+const baseMasterSpec: object = { version: '', securityGroupIds: '' };
+
+export const MasterSpec = {
+    encode(
+        message: MasterSpec,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        if (message.zonalMasterSpec !== undefined) {
+            ZonalMasterSpec.encode(
+                message.zonalMasterSpec,
+                writer.uint32(10).fork()
+            ).ldelim();
+        }
+        if (message.regionalMasterSpec !== undefined) {
+            RegionalMasterSpec.encode(
+                message.regionalMasterSpec,
+                writer.uint32(18).fork()
+            ).ldelim();
+        }
+        if (message.version !== '') {
+            writer.uint32(26).string(message.version);
+        }
+        if (message.maintenancePolicy !== undefined) {
+            MasterMaintenancePolicy.encode(
+                message.maintenancePolicy,
+                writer.uint32(34).fork()
+            ).ldelim();
+        }
+        for (const v of message.securityGroupIds) {
+            writer.uint32(50).string(v!);
+        }
+        return writer;
+    },
+
+    decode(input: _m0.Reader | Uint8Array, length?: number): MasterSpec {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = { ...baseMasterSpec } as MasterSpec;
+        message.securityGroupIds = [];
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.zonalMasterSpec = ZonalMasterSpec.decode(
+                        reader,
+                        reader.uint32()
+                    );
+                    break;
+                case 2:
+                    message.regionalMasterSpec = RegionalMasterSpec.decode(
+                        reader,
+                        reader.uint32()
+                    );
+                    break;
+                case 3:
+                    message.version = reader.string();
+                    break;
+                case 4:
+                    message.maintenancePolicy = MasterMaintenancePolicy.decode(
+                        reader,
+                        reader.uint32()
+                    );
+                    break;
+                case 6:
+                    message.securityGroupIds.push(reader.string());
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): MasterSpec {
+        const message = { ...baseMasterSpec } as MasterSpec;
+        message.securityGroupIds = [];
+        if (
+            object.zonalMasterSpec !== undefined &&
+            object.zonalMasterSpec !== null
+        ) {
+            message.zonalMasterSpec = ZonalMasterSpec.fromJSON(
+                object.zonalMasterSpec
+            );
+        } else {
+            message.zonalMasterSpec = undefined;
+        }
+        if (
+            object.regionalMasterSpec !== undefined &&
+            object.regionalMasterSpec !== null
+        ) {
+            message.regionalMasterSpec = RegionalMasterSpec.fromJSON(
+                object.regionalMasterSpec
+            );
+        } else {
+            message.regionalMasterSpec = undefined;
+        }
+        if (object.version !== undefined && object.version !== null) {
+            message.version = String(object.version);
+        } else {
+            message.version = '';
+        }
+        if (
+            object.maintenancePolicy !== undefined &&
+            object.maintenancePolicy !== null
+        ) {
+            message.maintenancePolicy = MasterMaintenancePolicy.fromJSON(
+                object.maintenancePolicy
+            );
+        } else {
+            message.maintenancePolicy = undefined;
+        }
+        if (
+            object.securityGroupIds !== undefined &&
+            object.securityGroupIds !== null
+        ) {
+            for (const e of object.securityGroupIds) {
+                message.securityGroupIds.push(String(e));
+            }
+        }
+        return message;
+    },
+
+    toJSON(message: MasterSpec): unknown {
+        const obj: any = {};
+        message.zonalMasterSpec !== undefined &&
+            (obj.zonalMasterSpec = message.zonalMasterSpec
+                ? ZonalMasterSpec.toJSON(message.zonalMasterSpec)
+                : undefined);
+        message.regionalMasterSpec !== undefined &&
+            (obj.regionalMasterSpec = message.regionalMasterSpec
+                ? RegionalMasterSpec.toJSON(message.regionalMasterSpec)
+                : undefined);
+        message.version !== undefined && (obj.version = message.version);
+        message.maintenancePolicy !== undefined &&
+            (obj.maintenancePolicy = message.maintenancePolicy
+                ? MasterMaintenancePolicy.toJSON(message.maintenancePolicy)
+                : undefined);
+        if (message.securityGroupIds) {
+            obj.securityGroupIds = message.securityGroupIds.map((e) => e);
+        } else {
+            obj.securityGroupIds = [];
+        }
+        return obj;
+    },
+
+    fromPartial(object: DeepPartial<MasterSpec>): MasterSpec {
+        const message = { ...baseMasterSpec } as MasterSpec;
+        message.securityGroupIds = [];
+        if (
+            object.zonalMasterSpec !== undefined &&
+            object.zonalMasterSpec !== null
+        ) {
+            message.zonalMasterSpec = ZonalMasterSpec.fromPartial(
+                object.zonalMasterSpec
+            );
+        } else {
+            message.zonalMasterSpec = undefined;
+        }
+        if (
+            object.regionalMasterSpec !== undefined &&
+            object.regionalMasterSpec !== null
+        ) {
+            message.regionalMasterSpec = RegionalMasterSpec.fromPartial(
+                object.regionalMasterSpec
+            );
+        } else {
+            message.regionalMasterSpec = undefined;
+        }
+        if (object.version !== undefined && object.version !== null) {
+            message.version = object.version;
+        } else {
+            message.version = '';
+        }
+        if (
+            object.maintenancePolicy !== undefined &&
+            object.maintenancePolicy !== null
+        ) {
+            message.maintenancePolicy = MasterMaintenancePolicy.fromPartial(
+                object.maintenancePolicy
+            );
+        } else {
+            message.maintenancePolicy = undefined;
+        }
+        if (
+            object.securityGroupIds !== undefined &&
+            object.securityGroupIds !== null
+        ) {
+            for (const e of object.securityGroupIds) {
+                message.securityGroupIds.push(e);
+            }
+        }
+        return message;
+    },
+};
+
+const baseZonalMasterSpec: object = { zoneId: '' };
+
+export const ZonalMasterSpec = {
+    encode(
+        message: ZonalMasterSpec,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        if (message.zoneId !== '') {
+            writer.uint32(10).string(message.zoneId);
+        }
+        if (message.internalV4AddressSpec !== undefined) {
+            InternalAddressSpec.encode(
+                message.internalV4AddressSpec,
+                writer.uint32(18).fork()
+            ).ldelim();
+        }
+        if (message.externalV4AddressSpec !== undefined) {
+            ExternalAddressSpec.encode(
+                message.externalV4AddressSpec,
+                writer.uint32(26).fork()
+            ).ldelim();
+        }
+        return writer;
+    },
+
+    decode(input: _m0.Reader | Uint8Array, length?: number): ZonalMasterSpec {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = { ...baseZonalMasterSpec } as ZonalMasterSpec;
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.zoneId = reader.string();
+                    break;
+                case 2:
+                    message.internalV4AddressSpec = InternalAddressSpec.decode(
+                        reader,
+                        reader.uint32()
+                    );
+                    break;
+                case 3:
+                    message.externalV4AddressSpec = ExternalAddressSpec.decode(
+                        reader,
+                        reader.uint32()
+                    );
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): ZonalMasterSpec {
+        const message = { ...baseZonalMasterSpec } as ZonalMasterSpec;
+        if (object.zoneId !== undefined && object.zoneId !== null) {
+            message.zoneId = String(object.zoneId);
+        } else {
+            message.zoneId = '';
+        }
+        if (
+            object.internalV4AddressSpec !== undefined &&
+            object.internalV4AddressSpec !== null
+        ) {
+            message.internalV4AddressSpec = InternalAddressSpec.fromJSON(
+                object.internalV4AddressSpec
+            );
+        } else {
+            message.internalV4AddressSpec = undefined;
+        }
+        if (
+            object.externalV4AddressSpec !== undefined &&
+            object.externalV4AddressSpec !== null
+        ) {
+            message.externalV4AddressSpec = ExternalAddressSpec.fromJSON(
+                object.externalV4AddressSpec
+            );
+        } else {
+            message.externalV4AddressSpec = undefined;
+        }
+        return message;
+    },
+
+    toJSON(message: ZonalMasterSpec): unknown {
+        const obj: any = {};
+        message.zoneId !== undefined && (obj.zoneId = message.zoneId);
+        message.internalV4AddressSpec !== undefined &&
+            (obj.internalV4AddressSpec = message.internalV4AddressSpec
+                ? InternalAddressSpec.toJSON(message.internalV4AddressSpec)
+                : undefined);
+        message.externalV4AddressSpec !== undefined &&
+            (obj.externalV4AddressSpec = message.externalV4AddressSpec
+                ? ExternalAddressSpec.toJSON(message.externalV4AddressSpec)
+                : undefined);
+        return obj;
+    },
+
+    fromPartial(object: DeepPartial<ZonalMasterSpec>): ZonalMasterSpec {
+        const message = { ...baseZonalMasterSpec } as ZonalMasterSpec;
+        if (object.zoneId !== undefined && object.zoneId !== null) {
+            message.zoneId = object.zoneId;
+        } else {
+            message.zoneId = '';
+        }
+        if (
+            object.internalV4AddressSpec !== undefined &&
+            object.internalV4AddressSpec !== null
+        ) {
+            message.internalV4AddressSpec = InternalAddressSpec.fromPartial(
+                object.internalV4AddressSpec
+            );
+        } else {
+            message.internalV4AddressSpec = undefined;
+        }
+        if (
+            object.externalV4AddressSpec !== undefined &&
+            object.externalV4AddressSpec !== null
+        ) {
+            message.externalV4AddressSpec = ExternalAddressSpec.fromPartial(
+                object.externalV4AddressSpec
+            );
+        } else {
+            message.externalV4AddressSpec = undefined;
+        }
+        return message;
+    },
+};
+
+const baseRegionalMasterSpec: object = { regionId: '' };
+
+export const RegionalMasterSpec = {
+    encode(
+        message: RegionalMasterSpec,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        if (message.regionId !== '') {
+            writer.uint32(10).string(message.regionId);
+        }
+        for (const v of message.locations) {
+            MasterLocation.encode(v!, writer.uint32(18).fork()).ldelim();
+        }
+        if (message.externalV4AddressSpec !== undefined) {
+            ExternalAddressSpec.encode(
+                message.externalV4AddressSpec,
+                writer.uint32(26).fork()
+            ).ldelim();
+        }
+        return writer;
+    },
+
+    decode(
+        input: _m0.Reader | Uint8Array,
+        length?: number
+    ): RegionalMasterSpec {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = { ...baseRegionalMasterSpec } as RegionalMasterSpec;
+        message.locations = [];
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.regionId = reader.string();
+                    break;
+                case 2:
+                    message.locations.push(
+                        MasterLocation.decode(reader, reader.uint32())
+                    );
+                    break;
+                case 3:
+                    message.externalV4AddressSpec = ExternalAddressSpec.decode(
+                        reader,
+                        reader.uint32()
+                    );
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): RegionalMasterSpec {
+        const message = { ...baseRegionalMasterSpec } as RegionalMasterSpec;
+        message.locations = [];
+        if (object.regionId !== undefined && object.regionId !== null) {
+            message.regionId = String(object.regionId);
+        } else {
+            message.regionId = '';
+        }
+        if (object.locations !== undefined && object.locations !== null) {
+            for (const e of object.locations) {
+                message.locations.push(MasterLocation.fromJSON(e));
+            }
+        }
+        if (
+            object.externalV4AddressSpec !== undefined &&
+            object.externalV4AddressSpec !== null
+        ) {
+            message.externalV4AddressSpec = ExternalAddressSpec.fromJSON(
+                object.externalV4AddressSpec
+            );
+        } else {
+            message.externalV4AddressSpec = undefined;
+        }
+        return message;
+    },
+
+    toJSON(message: RegionalMasterSpec): unknown {
+        const obj: any = {};
+        message.regionId !== undefined && (obj.regionId = message.regionId);
+        if (message.locations) {
+            obj.locations = message.locations.map((e) =>
+                e ? MasterLocation.toJSON(e) : undefined
+            );
+        } else {
+            obj.locations = [];
+        }
+        message.externalV4AddressSpec !== undefined &&
+            (obj.externalV4AddressSpec = message.externalV4AddressSpec
+                ? ExternalAddressSpec.toJSON(message.externalV4AddressSpec)
+                : undefined);
+        return obj;
+    },
+
+    fromPartial(object: DeepPartial<RegionalMasterSpec>): RegionalMasterSpec {
+        const message = { ...baseRegionalMasterSpec } as RegionalMasterSpec;
+        message.locations = [];
+        if (object.regionId !== undefined && object.regionId !== null) {
+            message.regionId = object.regionId;
+        } else {
+            message.regionId = '';
+        }
+        if (object.locations !== undefined && object.locations !== null) {
+            for (const e of object.locations) {
+                message.locations.push(MasterLocation.fromPartial(e));
+            }
+        }
+        if (
+            object.externalV4AddressSpec !== undefined &&
+            object.externalV4AddressSpec !== null
+        ) {
+            message.externalV4AddressSpec = ExternalAddressSpec.fromPartial(
+                object.externalV4AddressSpec
+            );
+        } else {
+            message.externalV4AddressSpec = undefined;
+        }
+        return message;
+    },
+};
+
+const baseInternalAddressSpec: object = { subnetId: '' };
+
+export const InternalAddressSpec = {
+    encode(
+        message: InternalAddressSpec,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        if (message.subnetId !== '') {
+            writer.uint32(18).string(message.subnetId);
+        }
+        return writer;
+    },
+
+    decode(
+        input: _m0.Reader | Uint8Array,
+        length?: number
+    ): InternalAddressSpec {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = { ...baseInternalAddressSpec } as InternalAddressSpec;
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 2:
+                    message.subnetId = reader.string();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): InternalAddressSpec {
+        const message = { ...baseInternalAddressSpec } as InternalAddressSpec;
+        if (object.subnetId !== undefined && object.subnetId !== null) {
+            message.subnetId = String(object.subnetId);
+        } else {
+            message.subnetId = '';
+        }
+        return message;
+    },
+
+    toJSON(message: InternalAddressSpec): unknown {
+        const obj: any = {};
+        message.subnetId !== undefined && (obj.subnetId = message.subnetId);
+        return obj;
+    },
+
+    fromPartial(object: DeepPartial<InternalAddressSpec>): InternalAddressSpec {
+        const message = { ...baseInternalAddressSpec } as InternalAddressSpec;
+        if (object.subnetId !== undefined && object.subnetId !== null) {
+            message.subnetId = object.subnetId;
+        } else {
+            message.subnetId = '';
+        }
+        return message;
+    },
+};
+
+const baseExternalAddressSpec: object = {};
+
+export const ExternalAddressSpec = {
+    encode(
+        _: ExternalAddressSpec,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        return writer;
+    },
+
+    decode(
+        input: _m0.Reader | Uint8Array,
+        length?: number
+    ): ExternalAddressSpec {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = { ...baseExternalAddressSpec } as ExternalAddressSpec;
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(_: any): ExternalAddressSpec {
+        const message = { ...baseExternalAddressSpec } as ExternalAddressSpec;
+        return message;
+    },
+
+    toJSON(_: ExternalAddressSpec): unknown {
+        const obj: any = {};
+        return obj;
+    },
+
+    fromPartial(_: DeepPartial<ExternalAddressSpec>): ExternalAddressSpec {
+        const message = { ...baseExternalAddressSpec } as ExternalAddressSpec;
+        return message;
+    },
+};
+
+const baseMasterLocation: object = { zoneId: '' };
+
+export const MasterLocation = {
+    encode(
+        message: MasterLocation,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        if (message.zoneId !== '') {
+            writer.uint32(10).string(message.zoneId);
+        }
+        if (message.internalV4AddressSpec !== undefined) {
+            InternalAddressSpec.encode(
+                message.internalV4AddressSpec,
+                writer.uint32(18).fork()
+            ).ldelim();
+        }
+        return writer;
+    },
+
+    decode(input: _m0.Reader | Uint8Array, length?: number): MasterLocation {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = { ...baseMasterLocation } as MasterLocation;
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.zoneId = reader.string();
+                    break;
+                case 2:
+                    message.internalV4AddressSpec = InternalAddressSpec.decode(
+                        reader,
+                        reader.uint32()
+                    );
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): MasterLocation {
+        const message = { ...baseMasterLocation } as MasterLocation;
+        if (object.zoneId !== undefined && object.zoneId !== null) {
+            message.zoneId = String(object.zoneId);
+        } else {
+            message.zoneId = '';
+        }
+        if (
+            object.internalV4AddressSpec !== undefined &&
+            object.internalV4AddressSpec !== null
+        ) {
+            message.internalV4AddressSpec = InternalAddressSpec.fromJSON(
+                object.internalV4AddressSpec
+            );
+        } else {
+            message.internalV4AddressSpec = undefined;
+        }
+        return message;
+    },
+
+    toJSON(message: MasterLocation): unknown {
+        const obj: any = {};
+        message.zoneId !== undefined && (obj.zoneId = message.zoneId);
+        message.internalV4AddressSpec !== undefined &&
+            (obj.internalV4AddressSpec = message.internalV4AddressSpec
+                ? InternalAddressSpec.toJSON(message.internalV4AddressSpec)
+                : undefined);
+        return obj;
+    },
+
+    fromPartial(object: DeepPartial<MasterLocation>): MasterLocation {
+        const message = { ...baseMasterLocation } as MasterLocation;
+        if (object.zoneId !== undefined && object.zoneId !== null) {
+            message.zoneId = object.zoneId;
+        } else {
+            message.zoneId = '';
+        }
+        if (
+            object.internalV4AddressSpec !== undefined &&
+            object.internalV4AddressSpec !== null
+        ) {
+            message.internalV4AddressSpec = InternalAddressSpec.fromPartial(
+                object.internalV4AddressSpec
+            );
+        } else {
+            message.internalV4AddressSpec = undefined;
+        }
+        return message;
+    },
+};
+
+/** A set of methods for managing Kubernetes cluster. */
+export const ClusterServiceService = {
+    /**
+     * Returns the specified Kubernetes cluster.
+     *
+     * To get the list of available Kubernetes cluster, make a [List] request.
+     */
+    get: {
+        path: '/yandex.cloud.k8s.v1.ClusterService/Get',
+        requestStream: false,
+        responseStream: false,
+        requestSerialize: (value: GetClusterRequest) =>
+            Buffer.from(GetClusterRequest.encode(value).finish()),
+        requestDeserialize: (value: Buffer) => GetClusterRequest.decode(value),
+        responseSerialize: (value: Cluster) =>
+            Buffer.from(Cluster.encode(value).finish()),
+        responseDeserialize: (value: Buffer) => Cluster.decode(value),
+    },
+    /** Retrieves the list of Kubernetes cluster in the specified folder. */
+    list: {
+        path: '/yandex.cloud.k8s.v1.ClusterService/List',
+        requestStream: false,
+        responseStream: false,
+        requestSerialize: (value: ListClustersRequest) =>
+            Buffer.from(ListClustersRequest.encode(value).finish()),
+        requestDeserialize: (value: Buffer) =>
+            ListClustersRequest.decode(value),
+        responseSerialize: (value: ListClustersResponse) =>
+            Buffer.from(ListClustersResponse.encode(value).finish()),
+        responseDeserialize: (value: Buffer) =>
+            ListClustersResponse.decode(value),
+    },
+    /** Creates a Kubernetes cluster in the specified folder. */
+    create: {
+        path: '/yandex.cloud.k8s.v1.ClusterService/Create',
+        requestStream: false,
+        responseStream: false,
+        requestSerialize: (value: CreateClusterRequest) =>
+            Buffer.from(CreateClusterRequest.encode(value).finish()),
+        requestDeserialize: (value: Buffer) =>
+            CreateClusterRequest.decode(value),
+        responseSerialize: (value: Operation) =>
+            Buffer.from(Operation.encode(value).finish()),
+        responseDeserialize: (value: Buffer) => Operation.decode(value),
+    },
+    /** Updates the specified Kubernetes cluster. */
+    update: {
+        path: '/yandex.cloud.k8s.v1.ClusterService/Update',
+        requestStream: false,
+        responseStream: false,
+        requestSerialize: (value: UpdateClusterRequest) =>
+            Buffer.from(UpdateClusterRequest.encode(value).finish()),
+        requestDeserialize: (value: Buffer) =>
+            UpdateClusterRequest.decode(value),
+        responseSerialize: (value: Operation) =>
+            Buffer.from(Operation.encode(value).finish()),
+        responseDeserialize: (value: Buffer) => Operation.decode(value),
+    },
+    /** Deletes the specified Kubernetes cluster. */
+    delete: {
+        path: '/yandex.cloud.k8s.v1.ClusterService/Delete',
+        requestStream: false,
+        responseStream: false,
+        requestSerialize: (value: DeleteClusterRequest) =>
+            Buffer.from(DeleteClusterRequest.encode(value).finish()),
+        requestDeserialize: (value: Buffer) =>
+            DeleteClusterRequest.decode(value),
+        responseSerialize: (value: Operation) =>
+            Buffer.from(Operation.encode(value).finish()),
+        responseDeserialize: (value: Buffer) => Operation.decode(value),
+    },
+    /** Stops the specified Kubernetes cluster. */
+    stop: {
+        path: '/yandex.cloud.k8s.v1.ClusterService/Stop',
+        requestStream: false,
+        responseStream: false,
+        requestSerialize: (value: StopClusterRequest) =>
+            Buffer.from(StopClusterRequest.encode(value).finish()),
+        requestDeserialize: (value: Buffer) => StopClusterRequest.decode(value),
+        responseSerialize: (value: Operation) =>
+            Buffer.from(Operation.encode(value).finish()),
+        responseDeserialize: (value: Buffer) => Operation.decode(value),
+    },
+    /** Starts the specified Kubernetes cluster. */
+    start: {
+        path: '/yandex.cloud.k8s.v1.ClusterService/Start',
+        requestStream: false,
+        responseStream: false,
+        requestSerialize: (value: StartClusterRequest) =>
+            Buffer.from(StartClusterRequest.encode(value).finish()),
+        requestDeserialize: (value: Buffer) =>
+            StartClusterRequest.decode(value),
+        responseSerialize: (value: Operation) =>
+            Buffer.from(Operation.encode(value).finish()),
+        responseDeserialize: (value: Buffer) => Operation.decode(value),
+    },
+    /** Lists nodegroup for the specified Kubernetes cluster. */
+    listNodeGroups: {
+        path: '/yandex.cloud.k8s.v1.ClusterService/ListNodeGroups',
+        requestStream: false,
+        responseStream: false,
+        requestSerialize: (value: ListClusterNodeGroupsRequest) =>
+            Buffer.from(ListClusterNodeGroupsRequest.encode(value).finish()),
+        requestDeserialize: (value: Buffer) =>
+            ListClusterNodeGroupsRequest.decode(value),
+        responseSerialize: (value: ListClusterNodeGroupsResponse) =>
+            Buffer.from(ListClusterNodeGroupsResponse.encode(value).finish()),
+        responseDeserialize: (value: Buffer) =>
+            ListClusterNodeGroupsResponse.decode(value),
+    },
+    /** Lists operations for the specified Kubernetes cluster. */
+    listOperations: {
+        path: '/yandex.cloud.k8s.v1.ClusterService/ListOperations',
+        requestStream: false,
+        responseStream: false,
+        requestSerialize: (value: ListClusterOperationsRequest) =>
+            Buffer.from(ListClusterOperationsRequest.encode(value).finish()),
+        requestDeserialize: (value: Buffer) =>
+            ListClusterOperationsRequest.decode(value),
+        responseSerialize: (value: ListClusterOperationsResponse) =>
+            Buffer.from(ListClusterOperationsResponse.encode(value).finish()),
+        responseDeserialize: (value: Buffer) =>
+            ListClusterOperationsResponse.decode(value),
+    },
+    /** Lists cluster's nodes. */
+    listNodes: {
+        path: '/yandex.cloud.k8s.v1.ClusterService/ListNodes',
+        requestStream: false,
+        responseStream: false,
+        requestSerialize: (value: ListClusterNodesRequest) =>
+            Buffer.from(ListClusterNodesRequest.encode(value).finish()),
+        requestDeserialize: (value: Buffer) =>
+            ListClusterNodesRequest.decode(value),
+        responseSerialize: (value: ListClusterNodesResponse) =>
+            Buffer.from(ListClusterNodesResponse.encode(value).finish()),
+        responseDeserialize: (value: Buffer) =>
+            ListClusterNodesResponse.decode(value),
+    },
+} as const;
+
+export interface ClusterServiceServer extends UntypedServiceImplementation {
+    /**
+     * Returns the specified Kubernetes cluster.
+     *
+     * To get the list of available Kubernetes cluster, make a [List] request.
+     */
+    get: handleUnaryCall<GetClusterRequest, Cluster>;
+    /** Retrieves the list of Kubernetes cluster in the specified folder. */
+    list: handleUnaryCall<ListClustersRequest, ListClustersResponse>;
+    /** Creates a Kubernetes cluster in the specified folder. */
+    create: handleUnaryCall<CreateClusterRequest, Operation>;
+    /** Updates the specified Kubernetes cluster. */
+    update: handleUnaryCall<UpdateClusterRequest, Operation>;
+    /** Deletes the specified Kubernetes cluster. */
+    delete: handleUnaryCall<DeleteClusterRequest, Operation>;
+    /** Stops the specified Kubernetes cluster. */
+    stop: handleUnaryCall<StopClusterRequest, Operation>;
+    /** Starts the specified Kubernetes cluster. */
+    start: handleUnaryCall<StartClusterRequest, Operation>;
+    /** Lists nodegroup for the specified Kubernetes cluster. */
+    listNodeGroups: handleUnaryCall<
+        ListClusterNodeGroupsRequest,
+        ListClusterNodeGroupsResponse
+    >;
+    /** Lists operations for the specified Kubernetes cluster. */
+    listOperations: handleUnaryCall<
+        ListClusterOperationsRequest,
+        ListClusterOperationsResponse
+    >;
+    /** Lists cluster's nodes. */
+    listNodes: handleUnaryCall<
+        ListClusterNodesRequest,
+        ListClusterNodesResponse
+    >;
+}
+
+export interface ClusterServiceClient extends Client {
+    /**
+     * Returns the specified Kubernetes cluster.
+     *
+     * To get the list of available Kubernetes cluster, make a [List] request.
+     */
+    get(
+        request: GetClusterRequest,
+        callback: (error: ServiceError | null, response: Cluster) => void
+    ): ClientUnaryCall;
+    get(
+        request: GetClusterRequest,
+        metadata: Metadata,
+        callback: (error: ServiceError | null, response: Cluster) => void
+    ): ClientUnaryCall;
+    get(
+        request: GetClusterRequest,
+        metadata: Metadata,
+        options: Partial<CallOptions>,
+        callback: (error: ServiceError | null, response: Cluster) => void
+    ): ClientUnaryCall;
+    /** Retrieves the list of Kubernetes cluster in the specified folder. */
+    list(
+        request: ListClustersRequest,
+        callback: (
+            error: ServiceError | null,
+            response: ListClustersResponse
+        ) => void
+    ): ClientUnaryCall;
+    list(
+        request: ListClustersRequest,
+        metadata: Metadata,
+        callback: (
+            error: ServiceError | null,
+            response: ListClustersResponse
+        ) => void
+    ): ClientUnaryCall;
+    list(
+        request: ListClustersRequest,
+        metadata: Metadata,
+        options: Partial<CallOptions>,
+        callback: (
+            error: ServiceError | null,
+            response: ListClustersResponse
+        ) => void
+    ): ClientUnaryCall;
+    /** Creates a Kubernetes cluster in the specified folder. */
+    create(
+        request: CreateClusterRequest,
+        callback: (error: ServiceError | null, response: Operation) => void
+    ): ClientUnaryCall;
+    create(
+        request: CreateClusterRequest,
+        metadata: Metadata,
+        callback: (error: ServiceError | null, response: Operation) => void
+    ): ClientUnaryCall;
+    create(
+        request: CreateClusterRequest,
+        metadata: Metadata,
+        options: Partial<CallOptions>,
+        callback: (error: ServiceError | null, response: Operation) => void
+    ): ClientUnaryCall;
+    /** Updates the specified Kubernetes cluster. */
+    update(
+        request: UpdateClusterRequest,
+        callback: (error: ServiceError | null, response: Operation) => void
+    ): ClientUnaryCall;
+    update(
+        request: UpdateClusterRequest,
+        metadata: Metadata,
+        callback: (error: ServiceError | null, response: Operation) => void
+    ): ClientUnaryCall;
+    update(
+        request: UpdateClusterRequest,
+        metadata: Metadata,
+        options: Partial<CallOptions>,
+        callback: (error: ServiceError | null, response: Operation) => void
+    ): ClientUnaryCall;
+    /** Deletes the specified Kubernetes cluster. */
+    delete(
+        request: DeleteClusterRequest,
+        callback: (error: ServiceError | null, response: Operation) => void
+    ): ClientUnaryCall;
+    delete(
+        request: DeleteClusterRequest,
+        metadata: Metadata,
+        callback: (error: ServiceError | null, response: Operation) => void
+    ): ClientUnaryCall;
+    delete(
+        request: DeleteClusterRequest,
+        metadata: Metadata,
+        options: Partial<CallOptions>,
+        callback: (error: ServiceError | null, response: Operation) => void
+    ): ClientUnaryCall;
+    /** Stops the specified Kubernetes cluster. */
+    stop(
+        request: StopClusterRequest,
+        callback: (error: ServiceError | null, response: Operation) => void
+    ): ClientUnaryCall;
+    stop(
+        request: StopClusterRequest,
+        metadata: Metadata,
+        callback: (error: ServiceError | null, response: Operation) => void
+    ): ClientUnaryCall;
+    stop(
+        request: StopClusterRequest,
+        metadata: Metadata,
+        options: Partial<CallOptions>,
+        callback: (error: ServiceError | null, response: Operation) => void
+    ): ClientUnaryCall;
+    /** Starts the specified Kubernetes cluster. */
+    start(
+        request: StartClusterRequest,
+        callback: (error: ServiceError | null, response: Operation) => void
+    ): ClientUnaryCall;
+    start(
+        request: StartClusterRequest,
+        metadata: Metadata,
+        callback: (error: ServiceError | null, response: Operation) => void
+    ): ClientUnaryCall;
+    start(
+        request: StartClusterRequest,
+        metadata: Metadata,
+        options: Partial<CallOptions>,
+        callback: (error: ServiceError | null, response: Operation) => void
+    ): ClientUnaryCall;
+    /** Lists nodegroup for the specified Kubernetes cluster. */
+    listNodeGroups(
+        request: ListClusterNodeGroupsRequest,
+        callback: (
+            error: ServiceError | null,
+            response: ListClusterNodeGroupsResponse
+        ) => void
+    ): ClientUnaryCall;
+    listNodeGroups(
+        request: ListClusterNodeGroupsRequest,
+        metadata: Metadata,
+        callback: (
+            error: ServiceError | null,
+            response: ListClusterNodeGroupsResponse
+        ) => void
+    ): ClientUnaryCall;
+    listNodeGroups(
+        request: ListClusterNodeGroupsRequest,
+        metadata: Metadata,
+        options: Partial<CallOptions>,
+        callback: (
+            error: ServiceError | null,
+            response: ListClusterNodeGroupsResponse
+        ) => void
+    ): ClientUnaryCall;
+    /** Lists operations for the specified Kubernetes cluster. */
+    listOperations(
+        request: ListClusterOperationsRequest,
+        callback: (
+            error: ServiceError | null,
+            response: ListClusterOperationsResponse
+        ) => void
+    ): ClientUnaryCall;
+    listOperations(
+        request: ListClusterOperationsRequest,
+        metadata: Metadata,
+        callback: (
+            error: ServiceError | null,
+            response: ListClusterOperationsResponse
+        ) => void
+    ): ClientUnaryCall;
+    listOperations(
+        request: ListClusterOperationsRequest,
+        metadata: Metadata,
+        options: Partial<CallOptions>,
+        callback: (
+            error: ServiceError | null,
+            response: ListClusterOperationsResponse
+        ) => void
+    ): ClientUnaryCall;
+    /** Lists cluster's nodes. */
+    listNodes(
+        request: ListClusterNodesRequest,
+        callback: (
+            error: ServiceError | null,
+            response: ListClusterNodesResponse
+        ) => void
+    ): ClientUnaryCall;
+    listNodes(
+        request: ListClusterNodesRequest,
+        metadata: Metadata,
+        callback: (
+            error: ServiceError | null,
+            response: ListClusterNodesResponse
+        ) => void
+    ): ClientUnaryCall;
+    listNodes(
+        request: ListClusterNodesRequest,
+        metadata: Metadata,
+        options: Partial<CallOptions>,
+        callback: (
+            error: ServiceError | null,
+            response: ListClusterNodesResponse
+        ) => void
+    ): ClientUnaryCall;
+}
+
+export const ClusterServiceClient = makeGenericClientConstructor(
+    ClusterServiceService,
+    'yandex.cloud.k8s.v1.ClusterService'
+) as unknown as {
+    new (
+        address: string,
+        credentials: ChannelCredentials,
+        options?: Partial<ChannelOptions>
+    ): ClusterServiceClient;
+};
+
+declare var self: any | undefined;
+declare var window: any | undefined;
+var globalThis: any = (() => {
+    if (typeof globalThis !== 'undefined') return globalThis;
+    if (typeof self !== 'undefined') return self;
+    if (typeof window !== 'undefined') return window;
+    if (typeof global !== 'undefined') return global;
+    throw 'Unable to locate global object';
+})();
+
+type Builtin =
+    | Date
+    | Function
+    | Uint8Array
+    | string
+    | number
+    | boolean
+    | undefined;
+export type DeepPartial<T> = T extends Builtin
+    ? T
+    : T extends Array<infer U>
+    ? Array<DeepPartial<U>>
+    : T extends ReadonlyArray<infer U>
+    ? ReadonlyArray<DeepPartial<U>>
+    : T extends {}
+    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    : Partial<T>;
+
+function longToNumber(long: Long): number {
+    if (long.gt(Number.MAX_SAFE_INTEGER)) {
+        throw new globalThis.Error(
+            'Value is larger than Number.MAX_SAFE_INTEGER'
+        );
+    }
+    return long.toNumber();
+}
+
+if (_m0.util.Long !== Long) {
+    _m0.util.Long = Long as any;
+    _m0.configure();
+}

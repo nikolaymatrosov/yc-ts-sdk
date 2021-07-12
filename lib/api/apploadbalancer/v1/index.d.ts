@@ -1,0 +1,17 @@
+import { BackendGroupServiceService } from '../../../generated/yandex/cloud/apploadbalancer/v1/backend_group_service';
+import { HttpRouterServiceService } from '../../../generated/yandex/cloud/apploadbalancer/v1/http_router_service';
+import { LoadBalancerServiceService } from '../../../generated/yandex/cloud/apploadbalancer/v1/load_balancer_service';
+import { TargetGroupServiceService } from '../../../generated/yandex/cloud/apploadbalancer/v1/target_group_service';
+import { VirtualHostServiceService } from '../../../generated/yandex/cloud/apploadbalancer/v1/virtual_host_service';
+import { Client } from 'nice-grpc';
+import { SdkServiceDefinition, Session } from 'src';
+export declare const BackendGroupServiceDef: SdkServiceDefinition<typeof BackendGroupServiceService>;
+export declare function BackendGroupService(session?: Session): Client<typeof BackendGroupServiceService, {}>;
+export declare const HttpRouterServiceDef: SdkServiceDefinition<typeof HttpRouterServiceService>;
+export declare function HttpRouterService(session?: Session): Client<typeof HttpRouterServiceService, {}>;
+export declare const LoadBalancerServiceDef: SdkServiceDefinition<typeof LoadBalancerServiceService>;
+export declare function LoadBalancerService(session?: Session): Client<typeof LoadBalancerServiceService, {}>;
+export declare const TargetGroupServiceDef: SdkServiceDefinition<typeof TargetGroupServiceService>;
+export declare function TargetGroupService(session?: Session): Client<typeof TargetGroupServiceService, {}>;
+export declare const VirtualHostServiceDef: SdkServiceDefinition<typeof VirtualHostServiceService>;
+export declare function VirtualHostService(session?: Session): Client<typeof VirtualHostServiceService, {}>;

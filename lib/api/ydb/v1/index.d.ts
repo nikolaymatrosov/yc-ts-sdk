@@ -1,0 +1,17 @@
+import { BackupServiceService } from '../../../generated/yandex/cloud/ydb/v1/backup_service';
+import { DatabaseServiceService } from '../../../generated/yandex/cloud/ydb/v1/database_service';
+import { LocationServiceService } from '../../../generated/yandex/cloud/ydb/v1/location_service';
+import { ResourcePresetServiceService } from '../../../generated/yandex/cloud/ydb/v1/resource_preset_service';
+import { StorageTypeServiceService } from '../../../generated/yandex/cloud/ydb/v1/storage_type_service';
+import { Client } from 'nice-grpc';
+import { SdkServiceDefinition, Session } from 'src';
+export declare const BackupServiceDef: SdkServiceDefinition<typeof BackupServiceService>;
+export declare function BackupService(session?: Session): Client<typeof BackupServiceService, {}>;
+export declare const DatabaseServiceDef: SdkServiceDefinition<typeof DatabaseServiceService>;
+export declare function DatabaseService(session?: Session): Client<typeof DatabaseServiceService, {}>;
+export declare const LocationServiceDef: SdkServiceDefinition<typeof LocationServiceService>;
+export declare function LocationService(session?: Session): Client<typeof LocationServiceService, {}>;
+export declare const ResourcePresetServiceDef: SdkServiceDefinition<typeof ResourcePresetServiceService>;
+export declare function ResourcePresetService(session?: Session): Client<typeof ResourcePresetServiceService, {}>;
+export declare const StorageTypeServiceDef: SdkServiceDefinition<typeof StorageTypeServiceService>;
+export declare function StorageTypeService(session?: Session): Client<typeof StorageTypeServiceService, {}>;

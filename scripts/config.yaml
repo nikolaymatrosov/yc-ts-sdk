@@ -1,0 +1,340 @@
+---
+#
+# This configuration used to generate SDK
+#
+
+packages:
+  ai.stt.v2:
+    services:
+      SttService:
+        enpoint: ai-stt
+
+  ai.tts.v3:
+    services:
+      Synthesizer:
+        filename: tts_service
+        enpoint: ai-speechkit
+
+  ai.translate.v2:
+    services:
+      TranslationService:
+        endpoint: ai-translate
+
+  ai.vision.v1:
+    services:
+      VisionService:
+        endpoint: ai-vision
+
+  apploadbalancer.v1:
+    services:
+      BackendGroupService:
+        endpoint: alb
+      HttpRouterService:
+        endpoint: alb
+      LoadBalancerService:
+        endpoint: alb
+      TargetGroupService:
+        endpoint: alb
+      VirtualHostService:
+        endpoint: alb
+
+  certificatemanager.v1:
+    services:
+      CertificateContentService:
+        endpoint: certificate-manager-data
+      CertificateService:
+        endpoint: certificate-manager
+
+  compute.v1:
+    services:
+      DiskPlacementGroupService:
+        endpoint: compute
+      DiskService:
+        endpoint: compute
+      DiskTypeService:
+        endpoint: compute
+      HostGroupService:
+        endpoint: compute
+      HostTypeService:
+        endpoint: compute
+      ImageService:
+        endpoint: compute
+      InstanceService:
+        endpoint: compute
+      PlacementGroupService:
+        endpoint: compute
+      SnapshotService:
+        endpoint: compute
+      ZoneService:
+        endpoint: compute
+
+  compute.v1.instancegroup:
+    services:
+      InstanceGroupService:
+        endpoint: compute
+
+  containerregistry.v1:
+    services:
+      ImageService:
+        endpoint: container-registry
+      LifecyclePolicyService:
+        endpoint: container-registry
+      RegistryService:
+        endpoint: container-registry
+      RepositoryService:
+        endpoint: container-registry
+      ScannerService:
+        endpoint: container-registry
+
+  dataproc.v1:
+    services:
+      ClusterService:
+        endpoint: dataproc
+      JobService:
+        endpoint: dataproc
+      ResourcePresetService:
+        endpoint: dataproc
+      SubclusterService:
+        endpoint: dataproc
+
+  dataproc.manager.v1:
+    services:
+      JobService:
+        endpoint: dataproc-manager
+      DataprocManagerService:
+        filename: manager_service
+        endpoint: dataproc-manager
+
+  datasphere.v1:
+    services:
+      NodeService:
+        endpoint: datasphere
+      ProjectService:
+        endpoint: datasphere
+
+  dns.v1:
+    services:
+      DnsZoneService:
+        endpoint: dns
+
+  endpoint:
+    services:
+      ApiEndpointService:
+        endpoint: endpoint
+
+  iam.v1:
+    services:
+      ApiKeyService:
+        endpoint: iam
+      IamTokenService:
+        endpoint: iam
+      KeyService:
+        endpoint: iam
+      RoleService:
+        endpoint: iam
+      ServiceAccountService:
+        endpoint: iam
+      UserAccountService:
+        endpoint: iam
+      YandexPassportUserAccountService:
+        endpoint: iam
+
+  iam.v1.awscompatibility:
+    services:
+      AccessKeyService:
+        endpoint: iam
+
+  iot.devices.v1:
+    services:
+      RegistryService:
+        endpoint: iot-devices
+      DeviceDataService:
+        endpoint: iot-data
+      RegistryDataService:
+        endpoint: iot-data
+
+  k8s.v1:
+    services:
+      ClusterService:
+        endpoint: managed-kubernetes
+      NodeGroupService:
+        endpoint: managed-kubernetes
+      VersionService:
+        endpoint: managed-kubernetes
+
+  kms.v1:
+    services:
+      SymmetricCryptoService:
+        endpoint: kms-crypt
+      SymmetricKeyService:
+        endpoint: kms
+
+  loadbalancer.v1:
+    services:
+      NetworkLoadBalancerService:
+        endpoint: load-balancer
+      TargetGroupService:
+        endpoint: load-balancer
+
+  lockbox.v1:
+    services:
+      PayloadService:
+        endpoint: lockbox-payload
+      SecretService:
+        endpoint: lockbox
+
+  mdb.clickhouse.v1:
+    services:
+      BackupService:
+        endpoint: managed-clickhouse
+      ClusterService:
+        endpoint: managed-clickhouse
+      DatabaseService:
+        endpoint: managed-clickhouse
+      FormatSchemaService:
+        endpoint: managed-clickhouse
+      MlModelService:
+        endpoint: managed-clickhouse
+      ResourcePresetService:
+        endpoint: managed-clickhouse
+      UserService:
+        endpoint: managed-clickhouse
+      VersionsService:
+        endpoint: managed-clickhouse
+
+  mdb.elasticsearch.v1:
+    services:
+      AuthService:
+        endpoint: managed-elasticsearch
+      ClusterService:
+        endpoint: managed-elasticsearch
+      ResourcePresetService:
+        endpoint: managed-elasticsearch
+      UserService:
+        endpoint: managed-elasticsearch
+
+  mdb.kafka.v1:
+    services:
+      ClusterService:
+        endpoint: managed-kafka
+      ResourcePresetService:
+        endpoint: managed-kafka
+      TopicService:
+        endpoint: managed-kafka
+      UserService:
+        endpoint: managed-kafka
+
+  mdb.mongodb.v1:
+    services:
+      BackupService:
+        endpoint: managed-mongodb
+      ClusterService:
+        endpoint: managed-mongodb
+      DatabaseService:
+        endpoint: managed-mongodb
+      ResourcePresetService:
+        endpoint: managed-mongodb
+      UserService:
+        endpoint: managed-mongodb
+
+  mdb.mysql.v1:
+    services:
+      BackupService:
+        endpoint: managed-mysql
+      ClusterService:
+        endpoint: managed-mysql
+      DatabaseService:
+        endpoint: managed-mysql
+      ResourcePresetService:
+        endpoint: managed-mysql
+      UserService:
+        endpoint: managed-mysql
+
+  mdb.postgresql.v1:
+    services:
+      BackupService:
+        endpoint: managed-postgresql
+      ClusterService:
+        endpoint: managed-postgresql
+      DatabaseService:
+        endpoint: managed-postgresql
+      ResourcePresetService:
+        endpoint: managed-postgresql
+      UserService:
+        endpoint: managed-postgresql
+
+  mdb.redis.v1:
+    services:
+      BackupService:
+        endpoint: managed-redis
+      ClusterService:
+        endpoint: managed-redis
+      ResourcePresetService:
+        endpoint: managed-redis
+
+  mdb.sqlserver.v1:
+    services:
+      BackupService:
+        endpoint: managed-sqlserver
+      ClusterService:
+        endpoint: managed-sqlserver
+      DatabaseService:
+        endpoint: managed-sqlserver
+      ResourcePresetService:
+        endpoint: managed-sqlserver
+      UserService:
+        endpoint: managed-sqlserver
+
+  operation:
+    services:
+      OperationService:
+        endpoint: operation
+
+  serverless.apigateway.v1:
+    services:
+      ApiGatewayService:
+        filename: apigateway_service
+        endpoint: serverless-apigateway
+
+  serverless.functions.v1:
+    services:
+      FunctionService:
+        endpoint: serverless-functions
+
+  serverless.triggers.v1:
+    services:
+      TriggerService:
+        endpoint: serverless-triggers
+
+  resourcemanager.v1:
+    services:
+      CloudService:
+        endpoint: resource-manager
+      FolderService:
+        endpoint: resource-manager
+
+  vpc.v1:
+    services:
+      AddressService:
+        endpoint: vpc
+      NetworkService:
+        endpoint: vpc
+      RouteTableService:
+        endpoint: vpc
+      SecurityGroupService:
+        endpoint: vpc
+      SubnetService:
+        endpoint: vpc
+
+  ydb.v1:
+    services:
+      BackupService:
+        endpoint: ydb
+      DatabaseService:
+        endpoint: ydb
+      LocationService:
+        endpoint: ydb
+      ResourcePresetService:
+        endpoint: ydb
+      StorageTypeService:
+        endpoint: ydb

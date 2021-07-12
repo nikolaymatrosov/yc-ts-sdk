@@ -1,0 +1,11 @@
+import { BackupServiceService } from '../../../../generated/yandex/cloud/mdb/redis/v1/backup_service';
+import { ClusterServiceService } from '../../../../generated/yandex/cloud/mdb/redis/v1/cluster_service';
+import { ResourcePresetServiceService } from '../../../../generated/yandex/cloud/mdb/redis/v1/resource_preset_service';
+import { Client } from 'nice-grpc';
+import { SdkServiceDefinition, Session } from 'src';
+export declare const BackupServiceDef: SdkServiceDefinition<typeof BackupServiceService>;
+export declare function BackupService(session?: Session): Client<typeof BackupServiceService, {}>;
+export declare const ClusterServiceDef: SdkServiceDefinition<typeof ClusterServiceService>;
+export declare function ClusterService(session?: Session): Client<typeof ClusterServiceService, {}>;
+export declare const ResourcePresetServiceDef: SdkServiceDefinition<typeof ResourcePresetServiceService>;
+export declare function ResourcePresetService(session?: Session): Client<typeof ResourcePresetServiceService, {}>;
