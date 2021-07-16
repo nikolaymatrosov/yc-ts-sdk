@@ -2,7 +2,7 @@ import { ClusterServiceService } from 'cloud/k8s/v1/cluster_service';
 import { NodeGroupServiceService } from 'cloud/k8s/v1/node_group_service';
 import { VersionServiceService } from 'cloud/k8s/v1/version_service';
 import { Client } from 'nice-grpc';
-import { SdkServiceDefinition, Session } from 'src';
+import { SdkServiceDefinition, Session } from 'src/index';
 
 export const ClusterServiceDef: SdkServiceDefinition<
     typeof ClusterServiceService

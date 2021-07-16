@@ -1,0 +1,11 @@
+import { LogGroupServiceService } from '../../../generated/yandex/cloud/logging/v1/log_group_service';
+import { LogIngestionServiceService } from '../../../generated/yandex/cloud/logging/v1/log_ingestion_service';
+import { LogReadingServiceService } from '../../../generated/yandex/cloud/logging/v1/log_reading_service';
+import { Client } from 'nice-grpc';
+import { SdkServiceDefinition, Session } from '../../../src/index';
+export declare const LogGroupServiceDef: SdkServiceDefinition<typeof LogGroupServiceService>;
+export declare function LogGroupService(session?: Session): Client<typeof LogGroupServiceService, {}>;
+export declare const LogIngestionServiceDef: SdkServiceDefinition<typeof LogIngestionServiceService>;
+export declare function LogIngestionService(session?: Session): Client<typeof LogIngestionServiceService, {}>;
+export declare const LogReadingServiceDef: SdkServiceDefinition<typeof LogReadingServiceService>;
+export declare function LogReadingService(session?: Session): Client<typeof LogReadingServiceService, {}>;

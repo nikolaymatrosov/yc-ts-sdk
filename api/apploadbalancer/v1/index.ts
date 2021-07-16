@@ -4,7 +4,7 @@ import { LoadBalancerServiceService } from 'cloud/apploadbalancer/v1/load_balanc
 import { TargetGroupServiceService } from 'cloud/apploadbalancer/v1/target_group_service';
 import { VirtualHostServiceService } from 'cloud/apploadbalancer/v1/virtual_host_service';
 import { Client } from 'nice-grpc';
-import { SdkServiceDefinition, Session } from 'src';
+import { SdkServiceDefinition, Session } from 'src/index';
 
 export const BackendGroupServiceDef: SdkServiceDefinition<
     typeof BackendGroupServiceService

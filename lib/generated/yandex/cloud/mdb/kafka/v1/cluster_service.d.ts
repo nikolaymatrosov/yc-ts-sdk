@@ -83,6 +83,8 @@ export interface CreateClusterRequest {
     securityGroupIds: string[];
     /** Host groups to place VMs of cluster on. */
     hostGroupIds: string[];
+    /** Deletion Protection inhibits deletion of the cluster */
+    deletionProtection: boolean;
 }
 export interface CreateClusterRequest_LabelsEntry {
     key: string;
@@ -123,6 +125,8 @@ export interface UpdateClusterRequest {
     name: string;
     /** User security groups */
     securityGroupIds: string[];
+    /** Deletion Protection inhibits deletion of the cluster */
+    deletionProtection: boolean;
 }
 export interface UpdateClusterRequest_LabelsEntry {
     key: string;

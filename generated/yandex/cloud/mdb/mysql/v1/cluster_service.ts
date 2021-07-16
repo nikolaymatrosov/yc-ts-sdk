@@ -110,6 +110,8 @@ export interface CreateClusterRequest {
     networkId: string;
     /** User security groups */
     securityGroupIds: string[];
+    /** Deletion Protection inhibits deletion of the cluster */
+    deletionProtection: boolean;
 }
 
 export interface CreateClusterRequest_LabelsEntry {
@@ -148,6 +150,8 @@ export interface UpdateClusterRequest {
     maintenanceWindow: MaintenanceWindow | undefined;
     /** User security groups */
     securityGroupIds: string[];
+    /** Deletion Protection inhibits deletion of the cluster */
+    deletionProtection: boolean;
 }
 
 export interface UpdateClusterRequest_LabelsEntry {
@@ -687,11 +691,34 @@ export interface MoveClusterMetadata {
     destinationFolderId: string;
 }
 
+export interface UpdateClusterHostsRequest {
+    /**
+     * ID of the MySQL cluster to update hosts in.
+     * To get the MySQL cluster ID, use a [ClusterService.List] request.
+     */
+    clusterId: string;
+    /** New configurations to apply to hosts. */
+    updateHostSpecs: UpdateHostSpec[];
+}
+
 export interface UpdateClusterHostsMetadata {
     /** ID of the MySQL cluster to modify hosts in. */
     clusterId: string;
     /** Names of hosts that are being modified. */
     hostNames: string[];
+}
+
+export interface UpdateHostSpec {
+    /**
+     * Name of the host to update.
+     * To get the MySQL host name, use a [ClusterService.ListHosts] request.
+     */
+    hostName: string;
+    /**
+     * [Host.name] of the host to be used as the replication source (for cascading replication).
+     * To get the MySQL host name, use a [ClusterService.ListHosts] request.
+     */
+    replicationSource: string;
 }
 
 export interface HostSpec {
@@ -717,6 +744,8 @@ export interface HostSpec {
      * * true - the host should have a public IP address.
      */
     assignPublicIp: boolean;
+    /** [Host.name] of the host to be used as the replication source (for cascading replication). */
+    replicationSource: string;
 }
 
 export interface ConfigSpec {
@@ -1022,6 +1051,7 @@ const baseCreateClusterRequest: object = {
     environment: 0,
     networkId: '',
     securityGroupIds: '',
+    deletionProtection: false,
 };
 
 export const CreateClusterRequest = {
@@ -1067,6 +1097,9 @@ export const CreateClusterRequest = {
         }
         for (const v of message.securityGroupIds) {
             writer.uint32(90).string(v!);
+        }
+        if (message.deletionProtection === true) {
+            writer.uint32(96).bool(message.deletionProtection);
         }
         return writer;
     },
@@ -1134,6 +1167,9 @@ export const CreateClusterRequest = {
                     break;
                 case 11:
                     message.securityGroupIds.push(reader.string());
+                    break;
+                case 12:
+                    message.deletionProtection = reader.bool();
                     break;
                 default:
                     reader.skipType(tag & 7);
@@ -1213,6 +1249,14 @@ export const CreateClusterRequest = {
                 message.securityGroupIds.push(String(e));
             }
         }
+        if (
+            object.deletionProtection !== undefined &&
+            object.deletionProtection !== null
+        ) {
+            message.deletionProtection = Boolean(object.deletionProtection);
+        } else {
+            message.deletionProtection = false;
+        }
         return message;
     },
 
@@ -1261,6 +1305,8 @@ export const CreateClusterRequest = {
         } else {
             obj.securityGroupIds = [];
         }
+        message.deletionProtection !== undefined &&
+            (obj.deletionProtection = message.deletionProtection);
         return obj;
     },
 
@@ -1335,6 +1381,14 @@ export const CreateClusterRequest = {
             for (const e of object.securityGroupIds) {
                 message.securityGroupIds.push(e);
             }
+        }
+        if (
+            object.deletionProtection !== undefined &&
+            object.deletionProtection !== null
+        ) {
+            message.deletionProtection = object.deletionProtection;
+        } else {
+            message.deletionProtection = false;
         }
         return message;
     },
@@ -1502,6 +1556,7 @@ const baseUpdateClusterRequest: object = {
     description: '',
     name: '',
     securityGroupIds: '',
+    deletionProtection: false,
 };
 
 export const UpdateClusterRequest = {
@@ -1544,6 +1599,9 @@ export const UpdateClusterRequest = {
         }
         for (const v of message.securityGroupIds) {
             writer.uint32(66).string(v!);
+        }
+        if (message.deletionProtection === true) {
+            writer.uint32(72).bool(message.deletionProtection);
         }
         return writer;
     },
@@ -1599,6 +1657,9 @@ export const UpdateClusterRequest = {
                     break;
                 case 8:
                     message.securityGroupIds.push(reader.string());
+                    break;
+                case 9:
+                    message.deletionProtection = reader.bool();
                     break;
                 default:
                     reader.skipType(tag & 7);
@@ -1660,6 +1721,14 @@ export const UpdateClusterRequest = {
                 message.securityGroupIds.push(String(e));
             }
         }
+        if (
+            object.deletionProtection !== undefined &&
+            object.deletionProtection !== null
+        ) {
+            message.deletionProtection = Boolean(object.deletionProtection);
+        } else {
+            message.deletionProtection = false;
+        }
         return message;
     },
 
@@ -1692,6 +1761,8 @@ export const UpdateClusterRequest = {
         } else {
             obj.securityGroupIds = [];
         }
+        message.deletionProtection !== undefined &&
+            (obj.deletionProtection = message.deletionProtection);
         return obj;
     },
 
@@ -1750,6 +1821,14 @@ export const UpdateClusterRequest = {
             for (const e of object.securityGroupIds) {
                 message.securityGroupIds.push(e);
             }
+        }
+        if (
+            object.deletionProtection !== undefined &&
+            object.deletionProtection !== null
+        ) {
+            message.deletionProtection = object.deletionProtection;
+        } else {
+            message.deletionProtection = false;
         }
         return message;
     },
@@ -5318,6 +5397,110 @@ export const MoveClusterMetadata = {
     },
 };
 
+const baseUpdateClusterHostsRequest: object = { clusterId: '' };
+
+export const UpdateClusterHostsRequest = {
+    encode(
+        message: UpdateClusterHostsRequest,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        if (message.clusterId !== '') {
+            writer.uint32(10).string(message.clusterId);
+        }
+        for (const v of message.updateHostSpecs) {
+            UpdateHostSpec.encode(v!, writer.uint32(18).fork()).ldelim();
+        }
+        return writer;
+    },
+
+    decode(
+        input: _m0.Reader | Uint8Array,
+        length?: number
+    ): UpdateClusterHostsRequest {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = {
+            ...baseUpdateClusterHostsRequest,
+        } as UpdateClusterHostsRequest;
+        message.updateHostSpecs = [];
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.clusterId = reader.string();
+                    break;
+                case 2:
+                    message.updateHostSpecs.push(
+                        UpdateHostSpec.decode(reader, reader.uint32())
+                    );
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): UpdateClusterHostsRequest {
+        const message = {
+            ...baseUpdateClusterHostsRequest,
+        } as UpdateClusterHostsRequest;
+        message.updateHostSpecs = [];
+        if (object.clusterId !== undefined && object.clusterId !== null) {
+            message.clusterId = String(object.clusterId);
+        } else {
+            message.clusterId = '';
+        }
+        if (
+            object.updateHostSpecs !== undefined &&
+            object.updateHostSpecs !== null
+        ) {
+            for (const e of object.updateHostSpecs) {
+                message.updateHostSpecs.push(UpdateHostSpec.fromJSON(e));
+            }
+        }
+        return message;
+    },
+
+    toJSON(message: UpdateClusterHostsRequest): unknown {
+        const obj: any = {};
+        message.clusterId !== undefined && (obj.clusterId = message.clusterId);
+        if (message.updateHostSpecs) {
+            obj.updateHostSpecs = message.updateHostSpecs.map((e) =>
+                e ? UpdateHostSpec.toJSON(e) : undefined
+            );
+        } else {
+            obj.updateHostSpecs = [];
+        }
+        return obj;
+    },
+
+    fromPartial(
+        object: DeepPartial<UpdateClusterHostsRequest>
+    ): UpdateClusterHostsRequest {
+        const message = {
+            ...baseUpdateClusterHostsRequest,
+        } as UpdateClusterHostsRequest;
+        message.updateHostSpecs = [];
+        if (object.clusterId !== undefined && object.clusterId !== null) {
+            message.clusterId = object.clusterId;
+        } else {
+            message.clusterId = '';
+        }
+        if (
+            object.updateHostSpecs !== undefined &&
+            object.updateHostSpecs !== null
+        ) {
+            for (const e of object.updateHostSpecs) {
+                message.updateHostSpecs.push(UpdateHostSpec.fromPartial(e));
+            }
+        }
+        return message;
+    },
+};
+
 const baseUpdateClusterHostsMetadata: object = { clusterId: '', hostNames: '' };
 
 export const UpdateClusterHostsMetadata = {
@@ -5412,10 +5595,94 @@ export const UpdateClusterHostsMetadata = {
     },
 };
 
+const baseUpdateHostSpec: object = { hostName: '', replicationSource: '' };
+
+export const UpdateHostSpec = {
+    encode(
+        message: UpdateHostSpec,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        if (message.hostName !== '') {
+            writer.uint32(10).string(message.hostName);
+        }
+        if (message.replicationSource !== '') {
+            writer.uint32(18).string(message.replicationSource);
+        }
+        return writer;
+    },
+
+    decode(input: _m0.Reader | Uint8Array, length?: number): UpdateHostSpec {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = { ...baseUpdateHostSpec } as UpdateHostSpec;
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.hostName = reader.string();
+                    break;
+                case 2:
+                    message.replicationSource = reader.string();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): UpdateHostSpec {
+        const message = { ...baseUpdateHostSpec } as UpdateHostSpec;
+        if (object.hostName !== undefined && object.hostName !== null) {
+            message.hostName = String(object.hostName);
+        } else {
+            message.hostName = '';
+        }
+        if (
+            object.replicationSource !== undefined &&
+            object.replicationSource !== null
+        ) {
+            message.replicationSource = String(object.replicationSource);
+        } else {
+            message.replicationSource = '';
+        }
+        return message;
+    },
+
+    toJSON(message: UpdateHostSpec): unknown {
+        const obj: any = {};
+        message.hostName !== undefined && (obj.hostName = message.hostName);
+        message.replicationSource !== undefined &&
+            (obj.replicationSource = message.replicationSource);
+        return obj;
+    },
+
+    fromPartial(object: DeepPartial<UpdateHostSpec>): UpdateHostSpec {
+        const message = { ...baseUpdateHostSpec } as UpdateHostSpec;
+        if (object.hostName !== undefined && object.hostName !== null) {
+            message.hostName = object.hostName;
+        } else {
+            message.hostName = '';
+        }
+        if (
+            object.replicationSource !== undefined &&
+            object.replicationSource !== null
+        ) {
+            message.replicationSource = object.replicationSource;
+        } else {
+            message.replicationSource = '';
+        }
+        return message;
+    },
+};
+
 const baseHostSpec: object = {
     zoneId: '',
     subnetId: '',
     assignPublicIp: false,
+    replicationSource: '',
 };
 
 export const HostSpec = {
@@ -5431,6 +5698,9 @@ export const HostSpec = {
         }
         if (message.assignPublicIp === true) {
             writer.uint32(24).bool(message.assignPublicIp);
+        }
+        if (message.replicationSource !== '') {
+            writer.uint32(34).string(message.replicationSource);
         }
         return writer;
     },
@@ -5451,6 +5721,9 @@ export const HostSpec = {
                     break;
                 case 3:
                     message.assignPublicIp = reader.bool();
+                    break;
+                case 4:
+                    message.replicationSource = reader.string();
                     break;
                 default:
                     reader.skipType(tag & 7);
@@ -5480,6 +5753,14 @@ export const HostSpec = {
         } else {
             message.assignPublicIp = false;
         }
+        if (
+            object.replicationSource !== undefined &&
+            object.replicationSource !== null
+        ) {
+            message.replicationSource = String(object.replicationSource);
+        } else {
+            message.replicationSource = '';
+        }
         return message;
     },
 
@@ -5489,6 +5770,8 @@ export const HostSpec = {
         message.subnetId !== undefined && (obj.subnetId = message.subnetId);
         message.assignPublicIp !== undefined &&
             (obj.assignPublicIp = message.assignPublicIp);
+        message.replicationSource !== undefined &&
+            (obj.replicationSource = message.replicationSource);
         return obj;
     },
 
@@ -5511,6 +5794,14 @@ export const HostSpec = {
             message.assignPublicIp = object.assignPublicIp;
         } else {
             message.assignPublicIp = false;
+        }
+        if (
+            object.replicationSource !== undefined &&
+            object.replicationSource !== null
+        ) {
+            message.replicationSource = object.replicationSource;
+        } else {
+            message.replicationSource = '';
         }
         return message;
     },
@@ -5971,6 +6262,19 @@ export const ClusterServiceService = {
             Buffer.from(Operation.encode(value).finish()),
         responseDeserialize: (value: Buffer) => Operation.decode(value),
     },
+    /** Updates the specified hosts. */
+    updateHosts: {
+        path: '/yandex.cloud.mdb.mysql.v1.ClusterService/UpdateHosts',
+        requestStream: false,
+        responseStream: false,
+        requestSerialize: (value: UpdateClusterHostsRequest) =>
+            Buffer.from(UpdateClusterHostsRequest.encode(value).finish()),
+        requestDeserialize: (value: Buffer) =>
+            UpdateClusterHostsRequest.decode(value),
+        responseSerialize: (value: Operation) =>
+            Buffer.from(Operation.encode(value).finish()),
+        responseDeserialize: (value: Buffer) => Operation.decode(value),
+    },
     /** Deletes the specified hosts for a cluster. */
     deleteHosts: {
         path: '/yandex.cloud.mdb.mysql.v1.ClusterService/DeleteHosts',
@@ -6042,6 +6346,8 @@ export interface ClusterServiceServer extends UntypedServiceImplementation {
     >;
     /** Creates new hosts for a cluster. */
     addHosts: handleUnaryCall<AddClusterHostsRequest, Operation>;
+    /** Updates the specified hosts. */
+    updateHosts: handleUnaryCall<UpdateClusterHostsRequest, Operation>;
     /** Deletes the specified hosts for a cluster. */
     deleteHosts: handleUnaryCall<DeleteClusterHostsRequest, Operation>;
 }
@@ -6374,6 +6680,22 @@ export interface ClusterServiceClient extends Client {
     ): ClientUnaryCall;
     addHosts(
         request: AddClusterHostsRequest,
+        metadata: Metadata,
+        options: Partial<CallOptions>,
+        callback: (error: ServiceError | null, response: Operation) => void
+    ): ClientUnaryCall;
+    /** Updates the specified hosts. */
+    updateHosts(
+        request: UpdateClusterHostsRequest,
+        callback: (error: ServiceError | null, response: Operation) => void
+    ): ClientUnaryCall;
+    updateHosts(
+        request: UpdateClusterHostsRequest,
+        metadata: Metadata,
+        callback: (error: ServiceError | null, response: Operation) => void
+    ): ClientUnaryCall;
+    updateHosts(
+        request: UpdateClusterHostsRequest,
         metadata: Metadata,
         options: Partial<CallOptions>,
         callback: (error: ServiceError | null, response: Operation) => void

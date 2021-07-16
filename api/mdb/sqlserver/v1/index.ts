@@ -4,7 +4,7 @@ import { DatabaseServiceService } from 'cloud/mdb/sqlserver/v1/database_service'
 import { ResourcePresetServiceService } from 'cloud/mdb/sqlserver/v1/resource_preset_service';
 import { UserServiceService } from 'cloud/mdb/sqlserver/v1/user_service';
 import { Client } from 'nice-grpc';
-import { SdkServiceDefinition, Session } from 'src';
+import { SdkServiceDefinition, Session } from 'src/index';
 
 export const BackupServiceDef: SdkServiceDefinition<
     typeof BackupServiceService

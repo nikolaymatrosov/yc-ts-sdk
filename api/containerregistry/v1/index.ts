@@ -4,7 +4,7 @@ import { RegistryServiceService } from 'cloud/containerregistry/v1/registry_serv
 import { RepositoryServiceService } from 'cloud/containerregistry/v1/repository_service';
 import { ScannerServiceService } from 'cloud/containerregistry/v1/scanner_service';
 import { Client } from 'nice-grpc';
-import { SdkServiceDefinition, Session } from 'src';
+import { SdkServiceDefinition, Session } from 'src/index';
 
 export const ImageServiceDef: SdkServiceDefinition<typeof ImageServiceService> =
     {

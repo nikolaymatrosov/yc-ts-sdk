@@ -3,7 +3,7 @@ import { ClusterServiceService } from 'cloud/mdb/elasticsearch/v1/cluster_servic
 import { ResourcePresetServiceService } from 'cloud/mdb/elasticsearch/v1/resource_preset_service';
 import { UserServiceService } from 'cloud/mdb/elasticsearch/v1/user_service';
 import { Client } from 'nice-grpc';
-import { SdkServiceDefinition, Session } from 'src';
+import { SdkServiceDefinition, Session } from 'src/index';
 
 export const AuthServiceDef: SdkServiceDefinition<typeof AuthServiceService> = {
     ...AuthServiceService,

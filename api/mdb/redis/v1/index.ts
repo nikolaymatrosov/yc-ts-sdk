@@ -2,7 +2,7 @@ import { BackupServiceService } from 'cloud/mdb/redis/v1/backup_service';
 import { ClusterServiceService } from 'cloud/mdb/redis/v1/cluster_service';
 import { ResourcePresetServiceService } from 'cloud/mdb/redis/v1/resource_preset_service';
 import { Client } from 'nice-grpc';
-import { SdkServiceDefinition, Session } from 'src';
+import { SdkServiceDefinition, Session } from 'src/index';
 
 export const BackupServiceDef: SdkServiceDefinition<
     typeof BackupServiceService

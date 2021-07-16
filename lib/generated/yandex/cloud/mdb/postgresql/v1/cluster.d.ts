@@ -64,6 +64,8 @@ export interface Cluster {
     plannedOperation: MaintenanceOperation | undefined;
     /** User security groups */
     securityGroupIds: string[];
+    /** Deletion Protection inhibits deletion of the cluster */
+    deletionProtection: boolean;
 }
 export declare enum Cluster_Environment {
     ENVIRONMENT_UNSPECIFIED = 0,

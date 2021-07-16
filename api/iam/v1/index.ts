@@ -6,7 +6,7 @@ import { ServiceAccountServiceService } from 'cloud/iam/v1/service_account_servi
 import { UserAccountServiceService } from 'cloud/iam/v1/user_account_service';
 import { YandexPassportUserAccountServiceService } from 'cloud/iam/v1/yandex_passport_user_account_service';
 import { Client } from 'nice-grpc';
-import { SdkServiceDefinition, Session } from 'src';
+import { SdkServiceDefinition, Session } from 'src/index';
 
 export const ApiKeyServiceDef: SdkServiceDefinition<
     typeof ApiKeyServiceService

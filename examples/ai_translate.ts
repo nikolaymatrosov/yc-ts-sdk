@@ -7,8 +7,7 @@ import {
 } from '../generated/yandex/cloud/ai/translate/v2/translation_service';
 import { Session } from '../src';
 
-const run = require('./').run;
-
+import { run } from './';
 
 run(async (session: Session, _: any, folderId: string) => {
     const translationService = TranslationService(session);
@@ -17,11 +16,12 @@ run(async (session: Session, _: any, folderId: string) => {
     const response = await translationService.translate(TranslateRequest.fromPartial({
         targetLanguageCode: 'ru',
         format: TranslateRequest_Format.PLAIN_TEXT,
-        folderId: folderId,
-        texts: texts,
+        folderId,
+        texts,
     }));
 
     response.translations.forEach((text, idx) => {
+        // tslint:disable-next-line:no-console
         console.log(`translated '${texts[idx]}' => '${text.text}'`);
     });
 });

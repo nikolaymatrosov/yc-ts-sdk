@@ -7,7 +7,7 @@ import { ResourcePresetServiceService } from 'cloud/mdb/clickhouse/v1/resource_p
 import { UserServiceService } from 'cloud/mdb/clickhouse/v1/user_service';
 import { VersionsServiceService } from 'cloud/mdb/clickhouse/v1/versions_service';
 import { Client } from 'nice-grpc';
-import { SdkServiceDefinition, Session } from 'src';
+import { SdkServiceDefinition, Session } from 'src/index';
 
 export const BackupServiceDef: SdkServiceDefinition<
     typeof BackupServiceService

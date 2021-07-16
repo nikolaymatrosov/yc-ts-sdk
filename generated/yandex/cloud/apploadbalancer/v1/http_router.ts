@@ -6,20 +6,32 @@ import _m0 from 'protobufjs/minimal';
 
 export const protobufPackage = 'yandex.cloud.apploadbalancer.v1';
 
+/**
+ * An HTTP router resource.
+ * For details about the concept, see [documentation](/docs/application-load-balancer/concepts/http-router).
+ */
 export interface HttpRouter {
-    /** Output only. ID of the router. */
+    /** ID of the router. Generated at creation time. */
     id: string;
-    /** The name is unique within the folder. 3-63 characters long. */
+    /** Name of the router. The name is unique within the folder. */
     name: string;
-    /** Description of the router. 0-256 characters long. */
+    /** Description of the router. */
     description: string;
     /** ID of the folder that the router belongs to. */
     folderId: string;
-    /** Resource labels as `key:value` pairs. Maximum of 64 per resource. */
+    /**
+     * Router labels as `key:value` pairs.
+     * For details about the concept, see [documentation](/docs/overview/concepts/services#labels).
+     */
     labels: { [key: string]: string };
-    /** Only one virtual host with no authority (default match) can be specified. */
+    /**
+     * Virtual hosts that combine routes inside the router.
+     * For details about the concept, see [documentation](/docs/application-load-balancer/concepts/http-router#virtual-host).
+     *
+     * Only one virtual host with no authority (default match) can be specified.
+     */
     virtualHosts: VirtualHost[];
-    /** Creation timestamp for the http router. */
+    /** Creation timestamp. */
     createdAt: Date | undefined;
 }
 

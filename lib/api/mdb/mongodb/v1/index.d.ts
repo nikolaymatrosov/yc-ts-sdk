@@ -4,7 +4,7 @@ import { DatabaseServiceService } from '../../../../generated/yandex/cloud/mdb/m
 import { ResourcePresetServiceService } from '../../../../generated/yandex/cloud/mdb/mongodb/v1/resource_preset_service';
 import { UserServiceService } from '../../../../generated/yandex/cloud/mdb/mongodb/v1/user_service';
 import { Client } from 'nice-grpc';
-import { SdkServiceDefinition, Session } from 'src';
+import { SdkServiceDefinition, Session } from '../../../../src/index';
 export declare const BackupServiceDef: SdkServiceDefinition<typeof BackupServiceService>;
 export declare function BackupService(session?: Session): Client<typeof BackupServiceService, {}>;
 export declare const ClusterServiceDef: SdkServiceDefinition<typeof ClusterServiceService>;

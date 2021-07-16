@@ -1,7 +1,7 @@
 import { JobServiceService } from 'cloud/dataproc/manager/v1/job_service';
 import { DataprocManagerServiceService } from 'cloud/dataproc/manager/v1/manager_service';
 import { Client } from 'nice-grpc';
-import { SdkServiceDefinition, Session } from 'src';
+import { SdkServiceDefinition, Session } from 'src/index';
 
 export const JobServiceDef: SdkServiceDefinition<typeof JobServiceService> = {
     ...JobServiceService,

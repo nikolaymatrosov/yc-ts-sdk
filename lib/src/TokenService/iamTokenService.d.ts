@@ -1,10 +1,18 @@
 /// <reference types="node" />
 import { ITokenService } from './ITokenService';
+interface ServiceAccountJsonFileContents {
+    id: string;
+    created_at: string;
+    key_algorithm: string;
+    service_account_id: string;
+    private_key: string;
+    public_key: string;
+}
+export declare function fromServiceAccountJsonFile(data: ServiceAccountJsonFileContents): IIAmCredentials;
 export interface IIAmCredentials {
     serviceAccountId: string;
     accessKeyId: string;
-    privateKey: Buffer;
-    iamEndpoint: string;
+    privateKey: Buffer | string;
 }
 export interface ISslCredentials {
     rootCertificates?: Buffer;
@@ -19,7 +27,7 @@ export declare class IamTokenService implements ITokenService {
     private token;
     private tokenTimestamp;
     private readonly iamCredentials;
-    private __endpointResolver;
+    private endpointResolver;
     constructor(iamCredentials: IIAmCredentials, sslCredentials?: ISslCredentials);
     private get expired();
     getToken(): Promise<string>;
@@ -28,3 +36,4 @@ export declare class IamTokenService implements ITokenService {
     private initialize;
     private sendTokenRequest;
 }
+export {};

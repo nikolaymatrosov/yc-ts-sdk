@@ -1,6 +1,6 @@
 import { TranslationServiceService } from 'cloud/ai/translate/v2/translation_service';
 import { Client } from 'nice-grpc';
-import { SdkServiceDefinition, Session } from 'src';
+import { SdkServiceDefinition, Session } from 'src/index';
 
 export const TranslationServiceDef: SdkServiceDefinition<
     typeof TranslationServiceService

@@ -3,7 +3,7 @@ import { ResourcePresetServiceService } from '../../../../generated/yandex/cloud
 import { TopicServiceService } from '../../../../generated/yandex/cloud/mdb/kafka/v1/topic_service';
 import { UserServiceService } from '../../../../generated/yandex/cloud/mdb/kafka/v1/user_service';
 import { Client } from 'nice-grpc';
-import { SdkServiceDefinition, Session } from 'src';
+import { SdkServiceDefinition, Session } from '../../../../src/index';
 export declare const ClusterServiceDef: SdkServiceDefinition<typeof ClusterServiceService>;
 export declare function ClusterService(session?: Session): Client<typeof ClusterServiceService, {}>;
 export declare const ResourcePresetServiceDef: SdkServiceDefinition<typeof ResourcePresetServiceService>;

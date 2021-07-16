@@ -1,7 +1,8 @@
 import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.apploadbalancer.v1";
+/** A health check payload resource. */
 export interface Payload {
-    /** Text message. */
+    /** Payload text. */
     text: string | undefined;
 }
 export declare const Payload: {

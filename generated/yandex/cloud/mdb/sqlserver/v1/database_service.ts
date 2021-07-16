@@ -1,4 +1,5 @@
 /* eslint-disable */
+import { Timestamp } from '../../../../../google/protobuf/timestamp';
 import {
     Database,
     DatabaseSpec,
@@ -86,6 +87,17 @@ export interface CreateDatabaseMetadata {
     databaseName: string;
 }
 
+export interface RestoreDatabaseMetadata {
+    /** ID of the SQLServer cluster where a database is being created. */
+    clusterId: string;
+    /** Name of the SQLServer database that is being created. */
+    databaseName: string;
+    /** name of the database which backup will be used to restore the database */
+    fromDatabase: string;
+    /** ID of a backup to be used */
+    backupId: string;
+}
+
 export interface DeleteDatabaseRequest {
     /**
      * ID of the SQL Server cluster to delete a database in.
@@ -106,6 +118,22 @@ export interface DeleteDatabaseMetadata {
     clusterId: string;
     /** Name of the SQL Server database being deleted. */
     databaseName: string;
+}
+
+export interface RestoreDatabaseRequest {
+    /**
+     * Required. ID of the SQL Server cluster to restore a database in.
+     * To get the cluster ID, use a [ClusterService.List] request
+     */
+    clusterId: string;
+    /** Name of the SQLServer database that is being restored. */
+    databaseName: string;
+    /** name of the database which backup will be used to restore the database */
+    fromDatabase: string;
+    /** ID of a backup to be used */
+    backupId: string;
+    /** Timestamp which is used for Point-in-Time recovery */
+    time: Date | undefined;
 }
 
 const baseGetDatabaseRequest: object = { clusterId: '', databaseName: '' };
@@ -581,6 +609,134 @@ export const CreateDatabaseMetadata = {
     },
 };
 
+const baseRestoreDatabaseMetadata: object = {
+    clusterId: '',
+    databaseName: '',
+    fromDatabase: '',
+    backupId: '',
+};
+
+export const RestoreDatabaseMetadata = {
+    encode(
+        message: RestoreDatabaseMetadata,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        if (message.clusterId !== '') {
+            writer.uint32(10).string(message.clusterId);
+        }
+        if (message.databaseName !== '') {
+            writer.uint32(18).string(message.databaseName);
+        }
+        if (message.fromDatabase !== '') {
+            writer.uint32(26).string(message.fromDatabase);
+        }
+        if (message.backupId !== '') {
+            writer.uint32(34).string(message.backupId);
+        }
+        return writer;
+    },
+
+    decode(
+        input: _m0.Reader | Uint8Array,
+        length?: number
+    ): RestoreDatabaseMetadata {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = {
+            ...baseRestoreDatabaseMetadata,
+        } as RestoreDatabaseMetadata;
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.clusterId = reader.string();
+                    break;
+                case 2:
+                    message.databaseName = reader.string();
+                    break;
+                case 3:
+                    message.fromDatabase = reader.string();
+                    break;
+                case 4:
+                    message.backupId = reader.string();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): RestoreDatabaseMetadata {
+        const message = {
+            ...baseRestoreDatabaseMetadata,
+        } as RestoreDatabaseMetadata;
+        if (object.clusterId !== undefined && object.clusterId !== null) {
+            message.clusterId = String(object.clusterId);
+        } else {
+            message.clusterId = '';
+        }
+        if (object.databaseName !== undefined && object.databaseName !== null) {
+            message.databaseName = String(object.databaseName);
+        } else {
+            message.databaseName = '';
+        }
+        if (object.fromDatabase !== undefined && object.fromDatabase !== null) {
+            message.fromDatabase = String(object.fromDatabase);
+        } else {
+            message.fromDatabase = '';
+        }
+        if (object.backupId !== undefined && object.backupId !== null) {
+            message.backupId = String(object.backupId);
+        } else {
+            message.backupId = '';
+        }
+        return message;
+    },
+
+    toJSON(message: RestoreDatabaseMetadata): unknown {
+        const obj: any = {};
+        message.clusterId !== undefined && (obj.clusterId = message.clusterId);
+        message.databaseName !== undefined &&
+            (obj.databaseName = message.databaseName);
+        message.fromDatabase !== undefined &&
+            (obj.fromDatabase = message.fromDatabase);
+        message.backupId !== undefined && (obj.backupId = message.backupId);
+        return obj;
+    },
+
+    fromPartial(
+        object: DeepPartial<RestoreDatabaseMetadata>
+    ): RestoreDatabaseMetadata {
+        const message = {
+            ...baseRestoreDatabaseMetadata,
+        } as RestoreDatabaseMetadata;
+        if (object.clusterId !== undefined && object.clusterId !== null) {
+            message.clusterId = object.clusterId;
+        } else {
+            message.clusterId = '';
+        }
+        if (object.databaseName !== undefined && object.databaseName !== null) {
+            message.databaseName = object.databaseName;
+        } else {
+            message.databaseName = '';
+        }
+        if (object.fromDatabase !== undefined && object.fromDatabase !== null) {
+            message.fromDatabase = object.fromDatabase;
+        } else {
+            message.fromDatabase = '';
+        }
+        if (object.backupId !== undefined && object.backupId !== null) {
+            message.backupId = object.backupId;
+        } else {
+            message.backupId = '';
+        }
+        return message;
+    },
+};
+
 const baseDeleteDatabaseRequest: object = { clusterId: '', databaseName: '' };
 
 export const DeleteDatabaseRequest = {
@@ -757,6 +913,156 @@ export const DeleteDatabaseMetadata = {
     },
 };
 
+const baseRestoreDatabaseRequest: object = {
+    clusterId: '',
+    databaseName: '',
+    fromDatabase: '',
+    backupId: '',
+};
+
+export const RestoreDatabaseRequest = {
+    encode(
+        message: RestoreDatabaseRequest,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        if (message.clusterId !== '') {
+            writer.uint32(10).string(message.clusterId);
+        }
+        if (message.databaseName !== '') {
+            writer.uint32(18).string(message.databaseName);
+        }
+        if (message.fromDatabase !== '') {
+            writer.uint32(26).string(message.fromDatabase);
+        }
+        if (message.backupId !== '') {
+            writer.uint32(34).string(message.backupId);
+        }
+        if (message.time !== undefined) {
+            Timestamp.encode(
+                toTimestamp(message.time),
+                writer.uint32(50).fork()
+            ).ldelim();
+        }
+        return writer;
+    },
+
+    decode(
+        input: _m0.Reader | Uint8Array,
+        length?: number
+    ): RestoreDatabaseRequest {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = {
+            ...baseRestoreDatabaseRequest,
+        } as RestoreDatabaseRequest;
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.clusterId = reader.string();
+                    break;
+                case 2:
+                    message.databaseName = reader.string();
+                    break;
+                case 3:
+                    message.fromDatabase = reader.string();
+                    break;
+                case 4:
+                    message.backupId = reader.string();
+                    break;
+                case 6:
+                    message.time = fromTimestamp(
+                        Timestamp.decode(reader, reader.uint32())
+                    );
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): RestoreDatabaseRequest {
+        const message = {
+            ...baseRestoreDatabaseRequest,
+        } as RestoreDatabaseRequest;
+        if (object.clusterId !== undefined && object.clusterId !== null) {
+            message.clusterId = String(object.clusterId);
+        } else {
+            message.clusterId = '';
+        }
+        if (object.databaseName !== undefined && object.databaseName !== null) {
+            message.databaseName = String(object.databaseName);
+        } else {
+            message.databaseName = '';
+        }
+        if (object.fromDatabase !== undefined && object.fromDatabase !== null) {
+            message.fromDatabase = String(object.fromDatabase);
+        } else {
+            message.fromDatabase = '';
+        }
+        if (object.backupId !== undefined && object.backupId !== null) {
+            message.backupId = String(object.backupId);
+        } else {
+            message.backupId = '';
+        }
+        if (object.time !== undefined && object.time !== null) {
+            message.time = fromJsonTimestamp(object.time);
+        } else {
+            message.time = undefined;
+        }
+        return message;
+    },
+
+    toJSON(message: RestoreDatabaseRequest): unknown {
+        const obj: any = {};
+        message.clusterId !== undefined && (obj.clusterId = message.clusterId);
+        message.databaseName !== undefined &&
+            (obj.databaseName = message.databaseName);
+        message.fromDatabase !== undefined &&
+            (obj.fromDatabase = message.fromDatabase);
+        message.backupId !== undefined && (obj.backupId = message.backupId);
+        message.time !== undefined && (obj.time = message.time.toISOString());
+        return obj;
+    },
+
+    fromPartial(
+        object: DeepPartial<RestoreDatabaseRequest>
+    ): RestoreDatabaseRequest {
+        const message = {
+            ...baseRestoreDatabaseRequest,
+        } as RestoreDatabaseRequest;
+        if (object.clusterId !== undefined && object.clusterId !== null) {
+            message.clusterId = object.clusterId;
+        } else {
+            message.clusterId = '';
+        }
+        if (object.databaseName !== undefined && object.databaseName !== null) {
+            message.databaseName = object.databaseName;
+        } else {
+            message.databaseName = '';
+        }
+        if (object.fromDatabase !== undefined && object.fromDatabase !== null) {
+            message.fromDatabase = object.fromDatabase;
+        } else {
+            message.fromDatabase = '';
+        }
+        if (object.backupId !== undefined && object.backupId !== null) {
+            message.backupId = object.backupId;
+        } else {
+            message.backupId = '';
+        }
+        if (object.time !== undefined && object.time !== null) {
+            message.time = object.time;
+        } else {
+            message.time = undefined;
+        }
+        return message;
+    },
+};
+
 /** A set of methods for managing SQL Server databases. */
 export const DatabaseServiceService = {
     /**
@@ -802,6 +1108,19 @@ export const DatabaseServiceService = {
             Buffer.from(Operation.encode(value).finish()),
         responseDeserialize: (value: Buffer) => Operation.decode(value),
     },
+    /** Creates a new SQL Server database in the specified cluster from a backup */
+    restore: {
+        path: '/yandex.cloud.mdb.sqlserver.v1.DatabaseService/Restore',
+        requestStream: false,
+        responseStream: false,
+        requestSerialize: (value: RestoreDatabaseRequest) =>
+            Buffer.from(RestoreDatabaseRequest.encode(value).finish()),
+        requestDeserialize: (value: Buffer) =>
+            RestoreDatabaseRequest.decode(value),
+        responseSerialize: (value: Operation) =>
+            Buffer.from(Operation.encode(value).finish()),
+        responseDeserialize: (value: Buffer) => Operation.decode(value),
+    },
     /** Deletes the specified SQL Server database. */
     delete: {
         path: '/yandex.cloud.mdb.sqlserver.v1.DatabaseService/Delete',
@@ -828,6 +1147,8 @@ export interface DatabaseServiceServer extends UntypedServiceImplementation {
     list: handleUnaryCall<ListDatabasesRequest, ListDatabasesResponse>;
     /** Creates a new SQL Server database in the specified cluster. */
     create: handleUnaryCall<CreateDatabaseRequest, Operation>;
+    /** Creates a new SQL Server database in the specified cluster from a backup */
+    restore: handleUnaryCall<RestoreDatabaseRequest, Operation>;
     /** Deletes the specified SQL Server database. */
     delete: handleUnaryCall<DeleteDatabaseRequest, Operation>;
 }
@@ -894,6 +1215,22 @@ export interface DatabaseServiceClient extends Client {
         options: Partial<CallOptions>,
         callback: (error: ServiceError | null, response: Operation) => void
     ): ClientUnaryCall;
+    /** Creates a new SQL Server database in the specified cluster from a backup */
+    restore(
+        request: RestoreDatabaseRequest,
+        callback: (error: ServiceError | null, response: Operation) => void
+    ): ClientUnaryCall;
+    restore(
+        request: RestoreDatabaseRequest,
+        metadata: Metadata,
+        callback: (error: ServiceError | null, response: Operation) => void
+    ): ClientUnaryCall;
+    restore(
+        request: RestoreDatabaseRequest,
+        metadata: Metadata,
+        options: Partial<CallOptions>,
+        callback: (error: ServiceError | null, response: Operation) => void
+    ): ClientUnaryCall;
     /** Deletes the specified SQL Server database. */
     delete(
         request: DeleteDatabaseRequest,
@@ -950,6 +1287,28 @@ export type DeepPartial<T> = T extends Builtin
     : T extends {}
     ? { [K in keyof T]?: DeepPartial<T[K]> }
     : Partial<T>;
+
+function toTimestamp(date: Date): Timestamp {
+    const seconds = date.getTime() / 1_000;
+    const nanos = (date.getTime() % 1_000) * 1_000_000;
+    return { seconds, nanos };
+}
+
+function fromTimestamp(t: Timestamp): Date {
+    let millis = t.seconds * 1_000;
+    millis += t.nanos / 1_000_000;
+    return new Date(millis);
+}
+
+function fromJsonTimestamp(o: any): Date {
+    if (o instanceof Date) {
+        return o;
+    } else if (typeof o === 'string') {
+        return new Date(o);
+    } else {
+        return fromTimestamp(Timestamp.fromJSON(o));
+    }
+}
 
 function longToNumber(long: Long): number {
     if (long.gt(Number.MAX_SAFE_INTEGER)) {

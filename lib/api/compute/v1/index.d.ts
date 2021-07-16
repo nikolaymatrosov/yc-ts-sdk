@@ -9,7 +9,7 @@ import { PlacementGroupServiceService } from '../../../generated/yandex/cloud/co
 import { SnapshotServiceService } from '../../../generated/yandex/cloud/compute/v1/snapshot_service';
 import { ZoneServiceService } from '../../../generated/yandex/cloud/compute/v1/zone_service';
 import { Client } from 'nice-grpc';
-import { SdkServiceDefinition, Session } from 'src';
+import { SdkServiceDefinition, Session } from '../../../src/index';
 export declare const DiskPlacementGroupServiceDef: SdkServiceDefinition<typeof DiskPlacementGroupServiceService>;
 export declare function DiskPlacementGroupService(session?: Session): Client<typeof DiskPlacementGroupServiceService, {}>;
 export declare const DiskServiceDef: SdkServiceDefinition<typeof DiskServiceService>;

@@ -4,7 +4,7 @@ import { LocationServiceService } from 'cloud/ydb/v1/location_service';
 import { ResourcePresetServiceService } from 'cloud/ydb/v1/resource_preset_service';
 import { StorageTypeServiceService } from 'cloud/ydb/v1/storage_type_service';
 import { Client } from 'nice-grpc';
-import { SdkServiceDefinition, Session } from 'src';
+import { SdkServiceDefinition, Session } from 'src/index';
 
 export const BackupServiceDef: SdkServiceDefinition<
     typeof BackupServiceService

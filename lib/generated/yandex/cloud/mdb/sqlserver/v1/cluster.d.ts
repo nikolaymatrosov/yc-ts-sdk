@@ -44,6 +44,10 @@ export interface Cluster {
     status: Cluster_Status;
     /** User security groups */
     securityGroupIds: string[];
+    /** Deletion Protection inhibits deletion of the cluster */
+    deletionProtection: boolean;
+    /** SQL Server Collation */
+    sqlcollation: string;
 }
 export declare enum Cluster_Environment {
     ENVIRONMENT_UNSPECIFIED = 0,

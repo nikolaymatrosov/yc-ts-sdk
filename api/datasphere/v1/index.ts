@@ -1,7 +1,7 @@
 import { NodeServiceService } from 'cloud/datasphere/v1/node_service';
 import { ProjectServiceService } from 'cloud/datasphere/v1/project_service';
 import { Client } from 'nice-grpc';
-import { SdkServiceDefinition, Session } from 'src';
+import { SdkServiceDefinition, Session } from 'src/index';
 
 export const NodeServiceDef: SdkServiceDefinition<typeof NodeServiceService> = {
     ...NodeServiceService,

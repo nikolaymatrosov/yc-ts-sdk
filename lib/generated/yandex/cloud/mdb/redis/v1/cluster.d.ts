@@ -54,6 +54,8 @@ export interface Cluster {
     securityGroupIds: string[];
     /** TLS port and functionality on\off */
     tlsEnabled: boolean;
+    /** Deletion Protection inhibits deletion of the cluster */
+    deletionProtection: boolean;
 }
 export declare enum Cluster_Environment {
     ENVIRONMENT_UNSPECIFIED = 0,

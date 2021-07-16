@@ -113,6 +113,8 @@ export interface CreateClusterRequest {
     securityGroupIds: string[];
     /** ID of the service account used for access to Yandex Object Storage. */
     serviceAccountId: string;
+    /** Deletion Protection inhibits deletion of the cluster */
+    deletionProtection: boolean;
 }
 
 export interface CreateClusterRequest_LabelsEntry {
@@ -156,6 +158,8 @@ export interface UpdateClusterRequest {
     securityGroupIds: string[];
     /** ID of the service account used for access to Yandex Object Storage. */
     serviceAccountId: string;
+    /** Deletion Protection inhibits deletion of the cluster */
+    deletionProtection: boolean;
 }
 
 export interface UpdateClusterRequest_LabelsEntry {
@@ -881,6 +885,7 @@ const baseCreateClusterRequest: object = {
     networkId: '',
     securityGroupIds: '',
     serviceAccountId: '',
+    deletionProtection: false,
 };
 
 export const CreateClusterRequest = {
@@ -926,6 +931,9 @@ export const CreateClusterRequest = {
         }
         if (message.serviceAccountId !== '') {
             writer.uint32(98).string(message.serviceAccountId);
+        }
+        if (message.deletionProtection === true) {
+            writer.uint32(104).bool(message.deletionProtection);
         }
         return writer;
     },
@@ -990,6 +998,9 @@ export const CreateClusterRequest = {
                     break;
                 case 12:
                     message.serviceAccountId = reader.string();
+                    break;
+                case 13:
+                    message.deletionProtection = reader.bool();
                     break;
                 default:
                     reader.skipType(tag & 7);
@@ -1068,6 +1079,14 @@ export const CreateClusterRequest = {
         } else {
             message.serviceAccountId = '';
         }
+        if (
+            object.deletionProtection !== undefined &&
+            object.deletionProtection !== null
+        ) {
+            message.deletionProtection = Boolean(object.deletionProtection);
+        } else {
+            message.deletionProtection = false;
+        }
         return message;
     },
 
@@ -1111,6 +1130,8 @@ export const CreateClusterRequest = {
         }
         message.serviceAccountId !== undefined &&
             (obj.serviceAccountId = message.serviceAccountId);
+        message.deletionProtection !== undefined &&
+            (obj.deletionProtection = message.deletionProtection);
         return obj;
     },
 
@@ -1184,6 +1205,14 @@ export const CreateClusterRequest = {
             message.serviceAccountId = object.serviceAccountId;
         } else {
             message.serviceAccountId = '';
+        }
+        if (
+            object.deletionProtection !== undefined &&
+            object.deletionProtection !== null
+        ) {
+            message.deletionProtection = object.deletionProtection;
+        } else {
+            message.deletionProtection = false;
         }
         return message;
     },
@@ -1352,6 +1381,7 @@ const baseUpdateClusterRequest: object = {
     name: '',
     securityGroupIds: '',
     serviceAccountId: '',
+    deletionProtection: false,
 };
 
 export const UpdateClusterRequest = {
@@ -1391,6 +1421,9 @@ export const UpdateClusterRequest = {
         }
         if (message.serviceAccountId !== '') {
             writer.uint32(66).string(message.serviceAccountId);
+        }
+        if (message.deletionProtection === true) {
+            writer.uint32(72).bool(message.deletionProtection);
         }
         return writer;
     },
@@ -1443,6 +1476,9 @@ export const UpdateClusterRequest = {
                     break;
                 case 8:
                     message.serviceAccountId = reader.string();
+                    break;
+                case 9:
+                    message.deletionProtection = reader.bool();
                     break;
                 default:
                     reader.skipType(tag & 7);
@@ -1502,6 +1538,14 @@ export const UpdateClusterRequest = {
         } else {
             message.serviceAccountId = '';
         }
+        if (
+            object.deletionProtection !== undefined &&
+            object.deletionProtection !== null
+        ) {
+            message.deletionProtection = Boolean(object.deletionProtection);
+        } else {
+            message.deletionProtection = false;
+        }
         return message;
     },
 
@@ -1532,6 +1576,8 @@ export const UpdateClusterRequest = {
         }
         message.serviceAccountId !== undefined &&
             (obj.serviceAccountId = message.serviceAccountId);
+        message.deletionProtection !== undefined &&
+            (obj.deletionProtection = message.deletionProtection);
         return obj;
     },
 
@@ -1588,6 +1634,14 @@ export const UpdateClusterRequest = {
             message.serviceAccountId = object.serviceAccountId;
         } else {
             message.serviceAccountId = '';
+        }
+        if (
+            object.deletionProtection !== undefined &&
+            object.deletionProtection !== null
+        ) {
+            message.deletionProtection = object.deletionProtection;
+        } else {
+            message.deletionProtection = false;
         }
         return message;
     },

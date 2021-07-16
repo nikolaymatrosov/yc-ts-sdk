@@ -3,7 +3,7 @@ import { ClusterServiceService } from '../../../../generated/yandex/cloud/mdb/el
 import { ResourcePresetServiceService } from '../../../../generated/yandex/cloud/mdb/elasticsearch/v1/resource_preset_service';
 import { UserServiceService } from '../../../../generated/yandex/cloud/mdb/elasticsearch/v1/user_service';
 import { Client } from 'nice-grpc';
-import { SdkServiceDefinition, Session } from 'src';
+import { SdkServiceDefinition, Session } from '../../../../src/index';
 export declare const AuthServiceDef: SdkServiceDefinition<typeof AuthServiceService>;
 export declare function AuthService(session?: Session): Client<typeof AuthServiceService, {}>;
 export declare const ClusterServiceDef: SdkServiceDefinition<typeof ClusterServiceService>;

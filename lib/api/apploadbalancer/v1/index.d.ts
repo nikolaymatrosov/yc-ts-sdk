@@ -4,7 +4,7 @@ import { LoadBalancerServiceService } from '../../../generated/yandex/cloud/appl
 import { TargetGroupServiceService } from '../../../generated/yandex/cloud/apploadbalancer/v1/target_group_service';
 import { VirtualHostServiceService } from '../../../generated/yandex/cloud/apploadbalancer/v1/virtual_host_service';
 import { Client } from 'nice-grpc';
-import { SdkServiceDefinition, Session } from 'src';
+import { SdkServiceDefinition, Session } from '../../../src/index';
 export declare const BackendGroupServiceDef: SdkServiceDefinition<typeof BackendGroupServiceService>;
 export declare function BackendGroupService(session?: Session): Client<typeof BackendGroupServiceService, {}>;
 export declare const HttpRouterServiceDef: SdkServiceDefinition<typeof HttpRouterServiceService>;

@@ -33,6 +33,7 @@ export declare enum ContainerAudio_ContainerAudioType {
     CONTAINER_AUDIO_TYPE_UNSPECIFIED = 0,
     /** WAV - RIFF linear pcm with header audio file format. */
     WAV = 1,
+    OGG_OPUS = 2,
     UNRECOGNIZED = -1
 }
 export declare function containerAudio_ContainerAudioTypeFromJSON(object: any): ContainerAudio_ContainerAudioType;
@@ -86,6 +87,10 @@ export interface Hints {
     voice: string | undefined;
     /** Template for synthesizing. */
     audioTemplate: AudioTemplate | undefined;
+    /** hint to change speed */
+    speed: number | undefined;
+    /** hint to regulate volume */
+    volume: number | undefined;
 }
 export interface UtteranceSynthesisRequest {
     /**
@@ -100,7 +105,7 @@ export interface UtteranceSynthesisRequest {
     textTemplate: TextTemplate | undefined;
     /** Optional hints for synthesis. */
     hints: Hints[];
-    /** Optional. Default: 22050 Hz, linear 16-bit signed little-endian PCM. */
+    /** Optional. Default: 22050 Hz, linear 16-bit signed little-endian PCM, with WAV header */
     outputAudioSpec: AudioFormatOptions | undefined;
 }
 export declare const AudioContent: {

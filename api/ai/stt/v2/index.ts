@@ -1,6 +1,6 @@
 import { SttServiceService } from 'cloud/ai/stt/v2/stt_service';
 import { Client } from 'nice-grpc';
-import { SdkServiceDefinition, Session } from 'src';
+import { SdkServiceDefinition, Session } from 'src/index';
 
 export const SttServiceDef: SdkServiceDefinition<typeof SttServiceService> = {
     ...SttServiceService,

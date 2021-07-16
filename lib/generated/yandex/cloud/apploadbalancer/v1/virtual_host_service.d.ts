@@ -6,92 +6,249 @@ import { ChannelCredentials, ChannelOptions, UntypedServiceImplementation, handl
 import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.apploadbalancer.v1";
 export interface GetVirtualHostRequest {
-    /** ID of the HTTP Router that the virtual host belongs to. */
+    /**
+     * ID of the HTTP router that the virtual host belongs to.
+     *
+     * To get the HTTP router ID, make a [HttpRouterService.List] request.
+     */
     httpRouterId: string;
-    /** Name of the VirtualHost resource to return. */
+    /**
+     * Name of the virtual host to return.
+     *
+     * To get the virtual host name, make a [VirtualHostService.List] request.
+     */
     virtualHostName: string;
 }
 export interface ListVirtualHostsRequest {
-    /** ID of the HTTP Router that the virtual host belongs to. */
+    /**
+     * ID of the HTTP router to list virtual hosts in.
+     *
+     * To get the HTTP router ID, make a [HttpRouterService.List] request.
+     */
     httpRouterId: string;
+    /**
+     * The maximum number of results per page to return. If the number of available
+     * results is larger than `page_size`, the service returns a [ListVirtualHostsResponse.next_page_token]
+     * that can be used to get the next page of results in subsequent list requests.
+     * Default value: 100.
+     */
     pageSize: number;
+    /**
+     * Page token. To get the next page of results, set `page_token` to the
+     * [ListVirtualHostsResponse.next_page_token] returned by a previous list request.
+     */
     pageToken: string;
 }
 export interface ListVirtualHostsResponse {
-    /** List of virtual hosts. */
+    /** List of virtual hosts of the specified HTTP router. */
     virtualHosts: VirtualHost[];
+    /**
+     * Token for getting the next page of the list. If the number of results is greater than
+     * the specified [ListVirtualHostsRequest.page_size], use `next_page_token` as the value
+     * for the [ListVirtualHostsRequest.page_token] parameter in the next list request.
+     *
+     * Each subsequent page will have its own `next_page_token` to continue paging through the results.
+     */
     nextPageToken: string;
 }
 export interface CreateVirtualHostRequest {
-    /** ID of the HTTP Router that the virtual host belongs to. */
+    /**
+     * ID of the HTTP router to create a virtual host in.
+     *
+     * To get the HTTP router ID, make a [HttpRouterService.List] request.
+     */
     httpRouterId: string;
-    /** Configuration of the virtual host to create. */
+    /** Name of the virtual host. The name must be unique within the HTTP router and cannot be changed after creation. */
     name: string;
+    /**
+     * List of domains that are attributed to the virtual host.
+     *
+     * The host is selected to process the request received by the load balancer
+     * if the domain specified in the HTTP/1.1 `Host` header or the HTTP/2 `:authority` pseudo-header matches a domain
+     * specified in the host.
+     *
+     * A wildcard asterisk character (`*`) matches 0 or more characters.
+     *
+     * If not specified, all domains are attributed to the host, which is the same as specifying a `*` value.
+     * An HTTP router must not contain more than one virtual host to which all domains are attributed.
+     */
     authority: string[];
+    /**
+     * Routes of the virtual host.
+     *
+     * A route contains a set of conditions (predicates) that are used by the load balancer to select the route
+     * for the request and an action on the request.
+     * For details about the concept, see [documentation](/docs/application-load-balancer/concepts/http-router#routes).
+     *
+     * The order of routes matters: the first route whose predicate matches the request is selected.
+     * The most specific routes should be at the top of the list, so that they are not overridden.
+     * For example, if the first HTTP route is configured, via [HttpRoute.match], to match paths prefixed with just `/`,
+     * other routes are never matched.
+     */
     routes: Route[];
+    /** Modifications that are made to the headers of incoming HTTP requests before they are forwarded to backends. */
     modifyRequestHeaders: HeaderModification[];
+    /**
+     * Modifications that are made to the headers of HTTP responses received from backends
+     * before responses are forwarded to clients.
+     */
     modifyResponseHeaders: HeaderModification[];
 }
 export interface CreateVirtualHostMetadata {
-    /** ID of the HTTP Router that the virtual host is being created. */
+    /** ID of the HTTP router that the virtual host is being created in. */
     httpRouterId: string;
     /** Name of the virtual host that is being created. */
     virtualHostName: string;
 }
 export interface UpdateVirtualHostRequest {
-    /** ID of the HTTP Router that the virtual host belongs to. */
+    /**
+     * ID of the HTTP router to update a virtual host in.
+     *
+     * To get the HTTP router ID, make a [HttpRouterService.List] request.
+     */
     httpRouterId: string;
+    /**
+     * Name of the virtual host.
+     *
+     * Used only to refer to the virtual host. The name of a host cannot be changed.
+     *
+     * To get the virtual host name, make a [VirtualHostService.List] request.
+     */
     virtualHostName: string;
+    /** Field mask that specifies which attributes of the virtual host should be updated. */
     updateMask: FieldMask | undefined;
     /**
-     * Fields of the virtual host to update.
-     * Except name, that field used to address virtual host within the http router
-     * and cannot be changed after creation.
+     * New list of domains to attribute to the virtual host.
+     *
+     * The host is selected to process the request received by the load balancer
+     * if the domain specified in the HTTP/1.1 `Host` header or the HTTP/2 `:authority` pseudo-header matches a domain
+     * specified in the host.
+     *
+     * A wildcard asterisk character (`*`) matches 0 or more characters.
+     *
+     * Existing list of domains is completely replaced by the specified list.
+     *
+     * If not specified, all domains are attributed to the host, which is the same as specifying a `*` value.
+     * An HTTP router must not contain more than one virtual host to which all domains are attributed.
      */
     authority: string[];
+    /**
+     * New list of routes of the virtual host.
+     *
+     * A route contains a set of conditions (predicates) that are used by the load balancer to select the route
+     * for the request and an action on the request.
+     * For details about the concept, see [documentation](/docs/application-load-balancer/concepts/http-router#routes).
+     *
+     * The order of routes matters: the first route whose predicate matches the request is selected.
+     * The most specific routes should be at the top of the list, so that they are not overridden.
+     * For example, if the first HTTP route is configured, via [HttpRoute.match], to match paths prefixed with just `/`,
+     * other routes are never matched.
+     *
+     * Existing list of routes is completely replaced by the specified list, so if you just want to remove a route,
+     * make a [VirtualHostService.RemoveRoute] request.
+     */
     routes: Route[];
+    /**
+     * New list of modifications that are made to the headers of incoming HTTP requests
+     * before they are forwarded to backends.
+     *
+     * Existing list of modifications is completely replaced by the specified list.
+     */
     modifyRequestHeaders: HeaderModification[];
+    /**
+     * New list of modifications that are made to the headers of HTTP responses received from backends
+     * before responses are forwarded to clients.
+     *
+     * Existing list of modifications is completely replaced by the specified list.
+     */
     modifyResponseHeaders: HeaderModification[];
 }
 export interface UpdateVirtualHostMetadata {
-    /** ID of the HTTP Router where a virtual host is being updated. */
+    /** ID of the HTTP router that the virtual host is being updated in. */
     httpRouterId: string;
-    /** Name of the updated virtual host. */
+    /** Name of the virtual host that is being updated. */
     virtualHostName: string;
 }
 export interface DeleteVirtualHostRequest {
-    /** ID of the HTTP Router to delete a virtual host in. */
+    /**
+     * ID of the HTTP router to delete a virtual host from.
+     *
+     * To get the HTTP router ID, make a [HttpRouterService.List] request.
+     */
     httpRouterId: string;
-    /** Name of the virtual host to delete. */
+    /**
+     * Name of the virtual host to delete.
+     *
+     * To get the virtual host name, make a [VirtualHostService.List] request.
+     */
     virtualHostName: string;
 }
 export interface DeleteVirtualHostMetadata {
-    /** ID of the HTTP Router where a virtual host is being deleted. */
+    /** ID of the HTTP router that the virtual host is being deleted from. */
     httpRouterId: string;
     /** Name of the virtual host that is being deleted. */
     virtualHostName: string;
 }
 export interface RemoveRouteRequest {
+    /**
+     * ID of the HTTP router to delete a route from.
+     *
+     * To get the HTTP router ID, make a [HttpRouterService.List] request.
+     */
     httpRouterId: string;
+    /**
+     * Name of the virtual host to delete a route from.
+     *
+     * To get the virtual host name, make a [VirtualHostService.List] request.
+     */
     virtualHostName: string;
+    /**
+     * Name of the route to delete.
+     *
+     * To get the route name, make a [VirtualHostService.Get] request.
+     */
     routeName: string;
 }
 export interface RemoveRouteMetadata {
+    /** ID of the HTTP router that the route is being deleted from. */
     httpRouterId: string;
+    /** Name of the virtual host that the route is being deleted from. */
     virtualHostName: string;
+    /** Name of the route that is being deleted. */
     routeName: string;
 }
 export interface UpdateRouteRequest {
+    /**
+     * ID of the HTTP router to update a route in.
+     *
+     * To get the HTTP router ID, make a [HttpRouterService.List] request.
+     */
     httpRouterId: string;
+    /**
+     * Name of the virtual host to update a route in.
+     *
+     * To get the virtual host name, make a [VirtualHostService.List] request.
+     */
     virtualHostName: string;
+    /**
+     * Name of the route to update.
+     *
+     * To get the route name, make a [VirtualHostService.Get] request.
+     */
     routeName: string;
+    /** Field mask that specifies which attributes of the route should be updated. */
     updateMask: FieldMask | undefined;
+    /** New settings of the HTTP route. */
     http: HttpRoute | undefined;
+    /** New settings of the gRPC route. */
     grpc: GrpcRoute | undefined;
 }
 export interface UpdateRouteMetadata {
+    /** ID of the HTTP router that the route is being updated in. */
     httpRouterId: string;
+    /** Name of the virtual host that the route is being updated in. */
     virtualHostName: string;
+    /** Name of the route that is being updated. */
     routeName: string;
 }
 export declare const GetVirtualHostRequest: {
@@ -185,9 +342,13 @@ export declare const UpdateRouteMetadata: {
     toJSON(message: UpdateRouteMetadata): unknown;
     fromPartial(object: DeepPartial<UpdateRouteMetadata>): UpdateRouteMetadata;
 };
-/** A set of methods for managing virtual hosts of HTTP Router resource. */
+/** A set of methods for managing virtual hosts of HTTP routers. */
 export declare const VirtualHostServiceService: {
-    /** Returns the specified VirtualHost resource. */
+    /**
+     * Returns the specified virtual host.
+     *
+     * To get the list of all virtual hosts of an HTTP router, make a [List] request.
+     */
     readonly get: {
         readonly path: "/yandex.cloud.apploadbalancer.v1.VirtualHostService/Get";
         readonly requestStream: false;
@@ -197,7 +358,7 @@ export declare const VirtualHostServiceService: {
         readonly responseSerialize: (value: VirtualHost) => Buffer;
         readonly responseDeserialize: (value: Buffer) => VirtualHost;
     };
-    /** Retrieves the list of virtual hosts in the specified HTTP Router. */
+    /** Lists virtual hosts of the specified HTTP router. */
     readonly list: {
         readonly path: "/yandex.cloud.apploadbalancer.v1.VirtualHostService/List";
         readonly requestStream: false;
@@ -207,7 +368,7 @@ export declare const VirtualHostServiceService: {
         readonly responseSerialize: (value: ListVirtualHostsResponse) => Buffer;
         readonly responseDeserialize: (value: Buffer) => ListVirtualHostsResponse;
     };
-    /** Creates a new virtual host in the specified HTTP Router. */
+    /** Creates a virtual host in the specified HTTP router. */
     readonly create: {
         readonly path: "/yandex.cloud.apploadbalancer.v1.VirtualHostService/Create";
         readonly requestStream: false;
@@ -217,7 +378,7 @@ export declare const VirtualHostServiceService: {
         readonly responseSerialize: (value: Operation) => Buffer;
         readonly responseDeserialize: (value: Buffer) => Operation;
     };
-    /** Updates an existing VirtualHost in the specified HTTP Router. */
+    /** Updates the specified virtual host of the specified HTTP router. */
     readonly update: {
         readonly path: "/yandex.cloud.apploadbalancer.v1.VirtualHostService/Update";
         readonly requestStream: false;
@@ -237,6 +398,7 @@ export declare const VirtualHostServiceService: {
         readonly responseSerialize: (value: Operation) => Buffer;
         readonly responseDeserialize: (value: Buffer) => Operation;
     };
+    /** Deletes the specified route from the specified virtual host. */
     readonly removeRoute: {
         readonly path: "/yandex.cloud.apploadbalancer.v1.VirtualHostService/RemoveRoute";
         readonly requestStream: false;
@@ -246,6 +408,7 @@ export declare const VirtualHostServiceService: {
         readonly responseSerialize: (value: Operation) => Buffer;
         readonly responseDeserialize: (value: Buffer) => Operation;
     };
+    /** Updates the specified route of the specified virtual host. */
     readonly updateRoute: {
         readonly path: "/yandex.cloud.apploadbalancer.v1.VirtualHostService/UpdateRoute";
         readonly requestStream: false;
@@ -257,33 +420,43 @@ export declare const VirtualHostServiceService: {
     };
 };
 export interface VirtualHostServiceServer extends UntypedServiceImplementation {
-    /** Returns the specified VirtualHost resource. */
+    /**
+     * Returns the specified virtual host.
+     *
+     * To get the list of all virtual hosts of an HTTP router, make a [List] request.
+     */
     get: handleUnaryCall<GetVirtualHostRequest, VirtualHost>;
-    /** Retrieves the list of virtual hosts in the specified HTTP Router. */
+    /** Lists virtual hosts of the specified HTTP router. */
     list: handleUnaryCall<ListVirtualHostsRequest, ListVirtualHostsResponse>;
-    /** Creates a new virtual host in the specified HTTP Router. */
+    /** Creates a virtual host in the specified HTTP router. */
     create: handleUnaryCall<CreateVirtualHostRequest, Operation>;
-    /** Updates an existing VirtualHost in the specified HTTP Router. */
+    /** Updates the specified virtual host of the specified HTTP router. */
     update: handleUnaryCall<UpdateVirtualHostRequest, Operation>;
     /** Deletes the specified virtual host. */
     delete: handleUnaryCall<DeleteVirtualHostRequest, Operation>;
+    /** Deletes the specified route from the specified virtual host. */
     removeRoute: handleUnaryCall<RemoveRouteRequest, Operation>;
+    /** Updates the specified route of the specified virtual host. */
     updateRoute: handleUnaryCall<UpdateRouteRequest, Operation>;
 }
 export interface VirtualHostServiceClient extends Client {
-    /** Returns the specified VirtualHost resource. */
+    /**
+     * Returns the specified virtual host.
+     *
+     * To get the list of all virtual hosts of an HTTP router, make a [List] request.
+     */
     get(request: GetVirtualHostRequest, callback: (error: ServiceError | null, response: VirtualHost) => void): ClientUnaryCall;
     get(request: GetVirtualHostRequest, metadata: Metadata, callback: (error: ServiceError | null, response: VirtualHost) => void): ClientUnaryCall;
     get(request: GetVirtualHostRequest, metadata: Metadata, options: Partial<CallOptions>, callback: (error: ServiceError | null, response: VirtualHost) => void): ClientUnaryCall;
-    /** Retrieves the list of virtual hosts in the specified HTTP Router. */
+    /** Lists virtual hosts of the specified HTTP router. */
     list(request: ListVirtualHostsRequest, callback: (error: ServiceError | null, response: ListVirtualHostsResponse) => void): ClientUnaryCall;
     list(request: ListVirtualHostsRequest, metadata: Metadata, callback: (error: ServiceError | null, response: ListVirtualHostsResponse) => void): ClientUnaryCall;
     list(request: ListVirtualHostsRequest, metadata: Metadata, options: Partial<CallOptions>, callback: (error: ServiceError | null, response: ListVirtualHostsResponse) => void): ClientUnaryCall;
-    /** Creates a new virtual host in the specified HTTP Router. */
+    /** Creates a virtual host in the specified HTTP router. */
     create(request: CreateVirtualHostRequest, callback: (error: ServiceError | null, response: Operation) => void): ClientUnaryCall;
     create(request: CreateVirtualHostRequest, metadata: Metadata, callback: (error: ServiceError | null, response: Operation) => void): ClientUnaryCall;
     create(request: CreateVirtualHostRequest, metadata: Metadata, options: Partial<CallOptions>, callback: (error: ServiceError | null, response: Operation) => void): ClientUnaryCall;
-    /** Updates an existing VirtualHost in the specified HTTP Router. */
+    /** Updates the specified virtual host of the specified HTTP router. */
     update(request: UpdateVirtualHostRequest, callback: (error: ServiceError | null, response: Operation) => void): ClientUnaryCall;
     update(request: UpdateVirtualHostRequest, metadata: Metadata, callback: (error: ServiceError | null, response: Operation) => void): ClientUnaryCall;
     update(request: UpdateVirtualHostRequest, metadata: Metadata, options: Partial<CallOptions>, callback: (error: ServiceError | null, response: Operation) => void): ClientUnaryCall;
@@ -291,9 +464,11 @@ export interface VirtualHostServiceClient extends Client {
     delete(request: DeleteVirtualHostRequest, callback: (error: ServiceError | null, response: Operation) => void): ClientUnaryCall;
     delete(request: DeleteVirtualHostRequest, metadata: Metadata, callback: (error: ServiceError | null, response: Operation) => void): ClientUnaryCall;
     delete(request: DeleteVirtualHostRequest, metadata: Metadata, options: Partial<CallOptions>, callback: (error: ServiceError | null, response: Operation) => void): ClientUnaryCall;
+    /** Deletes the specified route from the specified virtual host. */
     removeRoute(request: RemoveRouteRequest, callback: (error: ServiceError | null, response: Operation) => void): ClientUnaryCall;
     removeRoute(request: RemoveRouteRequest, metadata: Metadata, callback: (error: ServiceError | null, response: Operation) => void): ClientUnaryCall;
     removeRoute(request: RemoveRouteRequest, metadata: Metadata, options: Partial<CallOptions>, callback: (error: ServiceError | null, response: Operation) => void): ClientUnaryCall;
+    /** Updates the specified route of the specified virtual host. */
     updateRoute(request: UpdateRouteRequest, callback: (error: ServiceError | null, response: Operation) => void): ClientUnaryCall;
     updateRoute(request: UpdateRouteRequest, metadata: Metadata, callback: (error: ServiceError | null, response: Operation) => void): ClientUnaryCall;
     updateRoute(request: UpdateRouteRequest, metadata: Metadata, options: Partial<CallOptions>, callback: (error: ServiceError | null, response: Operation) => void): ClientUnaryCall;

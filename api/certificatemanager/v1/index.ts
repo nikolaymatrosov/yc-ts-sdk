@@ -1,7 +1,7 @@
 import { CertificateContentServiceService } from 'cloud/certificatemanager/v1/certificate_content_service';
 import { CertificateServiceService } from 'cloud/certificatemanager/v1/certificate_service';
 import { Client } from 'nice-grpc';
-import { SdkServiceDefinition, Session } from 'src';
+import { SdkServiceDefinition, Session } from 'src/index';
 
 export const CertificateContentServiceDef: SdkServiceDefinition<
     typeof CertificateContentServiceService

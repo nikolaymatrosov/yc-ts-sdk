@@ -4,7 +4,7 @@ import { RegistryServiceService } from '../../../generated/yandex/cloud/containe
 import { RepositoryServiceService } from '../../../generated/yandex/cloud/containerregistry/v1/repository_service';
 import { ScannerServiceService } from '../../../generated/yandex/cloud/containerregistry/v1/scanner_service';
 import { Client } from 'nice-grpc';
-import { SdkServiceDefinition, Session } from 'src';
+import { SdkServiceDefinition, Session } from '../../../src/index';
 export declare const ImageServiceDef: SdkServiceDefinition<typeof ImageServiceService>;
 export declare function ImageService(session?: Session): Client<typeof ImageServiceService, {}>;
 export declare const LifecyclePolicyServiceDef: SdkServiceDefinition<typeof LifecyclePolicyServiceService>;

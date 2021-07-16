@@ -3,7 +3,7 @@ import { ResourcePresetServiceService } from 'cloud/mdb/kafka/v1/resource_preset
 import { TopicServiceService } from 'cloud/mdb/kafka/v1/topic_service';
 import { UserServiceService } from 'cloud/mdb/kafka/v1/user_service';
 import { Client } from 'nice-grpc';
-import { SdkServiceDefinition, Session } from 'src';
+import { SdkServiceDefinition, Session } from 'src/index';
 
 export const ClusterServiceDef: SdkServiceDefinition<
     typeof ClusterServiceService

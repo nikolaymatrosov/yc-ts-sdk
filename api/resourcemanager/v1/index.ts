@@ -1,7 +1,7 @@
 import { CloudServiceService } from 'cloud/resourcemanager/v1/cloud_service';
 import { FolderServiceService } from 'cloud/resourcemanager/v1/folder_service';
 import { Client } from 'nice-grpc';
-import { SdkServiceDefinition, Session } from 'src';
+import { SdkServiceDefinition, Session } from 'src/index';
 
 export const CloudServiceDef: SdkServiceDefinition<typeof CloudServiceService> =
     {

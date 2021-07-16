@@ -37,6 +37,8 @@ export interface Cluster {
     securityGroupIds: string[];
     /** Host groups hosting VMs of the cluster. */
     hostGroupIds: string[];
+    /** Deletion Protection inhibits deletion of the cluster */
+    deletionProtection: boolean;
 }
 export declare enum Cluster_Status {
     /** STATUS_UNKNOWN - Cluster state is unknown. */

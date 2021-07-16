@@ -84,6 +84,8 @@ export interface CreateClusterRequest {
     networkId: string;
     /** User security groups */
     securityGroupIds: string[];
+    /** Deletion Protection inhibits deletion of the cluster */
+    deletionProtection: boolean;
 }
 export interface CreateClusterRequest_LabelsEntry {
     key: string;
@@ -121,6 +123,8 @@ export interface UpdateClusterRequest {
     maintenanceWindow: MaintenanceWindow | undefined;
     /** User security groups */
     securityGroupIds: string[];
+    /** Deletion Protection inhibits deletion of the cluster */
+    deletionProtection: boolean;
 }
 export interface UpdateClusterRequest_LabelsEntry {
     key: string;
@@ -501,11 +505,32 @@ export interface MoveClusterMetadata {
     /** ID of the destnation folder. */
     destinationFolderId: string;
 }
+export interface UpdateClusterHostsRequest {
+    /**
+     * ID of the MySQL cluster to update hosts in.
+     * To get the MySQL cluster ID, use a [ClusterService.List] request.
+     */
+    clusterId: string;
+    /** New configurations to apply to hosts. */
+    updateHostSpecs: UpdateHostSpec[];
+}
 export interface UpdateClusterHostsMetadata {
     /** ID of the MySQL cluster to modify hosts in. */
     clusterId: string;
     /** Names of hosts that are being modified. */
     hostNames: string[];
+}
+export interface UpdateHostSpec {
+    /**
+     * Name of the host to update.
+     * To get the MySQL host name, use a [ClusterService.ListHosts] request.
+     */
+    hostName: string;
+    /**
+     * [Host.name] of the host to be used as the replication source (for cascading replication).
+     * To get the MySQL host name, use a [ClusterService.ListHosts] request.
+     */
+    replicationSource: string;
 }
 export interface HostSpec {
     /**
@@ -530,6 +555,8 @@ export interface HostSpec {
      * * true - the host should have a public IP address.
      */
     assignPublicIp: boolean;
+    /** [Host.name] of the host to be used as the replication source (for cascading replication). */
+    replicationSource: string;
 }
 export interface ConfigSpec {
     /**
@@ -844,12 +871,26 @@ export declare const MoveClusterMetadata: {
     toJSON(message: MoveClusterMetadata): unknown;
     fromPartial(object: DeepPartial<MoveClusterMetadata>): MoveClusterMetadata;
 };
+export declare const UpdateClusterHostsRequest: {
+    encode(message: UpdateClusterHostsRequest, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateClusterHostsRequest;
+    fromJSON(object: any): UpdateClusterHostsRequest;
+    toJSON(message: UpdateClusterHostsRequest): unknown;
+    fromPartial(object: DeepPartial<UpdateClusterHostsRequest>): UpdateClusterHostsRequest;
+};
 export declare const UpdateClusterHostsMetadata: {
     encode(message: UpdateClusterHostsMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateClusterHostsMetadata;
     fromJSON(object: any): UpdateClusterHostsMetadata;
     toJSON(message: UpdateClusterHostsMetadata): unknown;
     fromPartial(object: DeepPartial<UpdateClusterHostsMetadata>): UpdateClusterHostsMetadata;
+};
+export declare const UpdateHostSpec: {
+    encode(message: UpdateHostSpec, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateHostSpec;
+    fromJSON(object: any): UpdateHostSpec;
+    toJSON(message: UpdateHostSpec): unknown;
+    fromPartial(object: DeepPartial<UpdateHostSpec>): UpdateHostSpec;
 };
 export declare const HostSpec: {
     encode(message: HostSpec, writer?: _m0.Writer): _m0.Writer;
@@ -1051,6 +1092,16 @@ export declare const ClusterServiceService: {
         readonly responseSerialize: (value: Operation) => Buffer;
         readonly responseDeserialize: (value: Buffer) => Operation;
     };
+    /** Updates the specified hosts. */
+    readonly updateHosts: {
+        readonly path: "/yandex.cloud.mdb.mysql.v1.ClusterService/UpdateHosts";
+        readonly requestStream: false;
+        readonly responseStream: false;
+        readonly requestSerialize: (value: UpdateClusterHostsRequest) => Buffer;
+        readonly requestDeserialize: (value: Buffer) => UpdateClusterHostsRequest;
+        readonly responseSerialize: (value: Operation) => Buffer;
+        readonly responseDeserialize: (value: Buffer) => Operation;
+    };
     /** Deletes the specified hosts for a cluster. */
     readonly deleteHosts: {
         readonly path: "/yandex.cloud.mdb.mysql.v1.ClusterService/DeleteHosts";
@@ -1103,6 +1154,8 @@ export interface ClusterServiceServer extends UntypedServiceImplementation {
     listHosts: handleUnaryCall<ListClusterHostsRequest, ListClusterHostsResponse>;
     /** Creates new hosts for a cluster. */
     addHosts: handleUnaryCall<AddClusterHostsRequest, Operation>;
+    /** Updates the specified hosts. */
+    updateHosts: handleUnaryCall<UpdateClusterHostsRequest, Operation>;
     /** Deletes the specified hosts for a cluster. */
     deleteHosts: handleUnaryCall<DeleteClusterHostsRequest, Operation>;
 }
@@ -1182,6 +1235,10 @@ export interface ClusterServiceClient extends Client {
     addHosts(request: AddClusterHostsRequest, callback: (error: ServiceError | null, response: Operation) => void): ClientUnaryCall;
     addHosts(request: AddClusterHostsRequest, metadata: Metadata, callback: (error: ServiceError | null, response: Operation) => void): ClientUnaryCall;
     addHosts(request: AddClusterHostsRequest, metadata: Metadata, options: Partial<CallOptions>, callback: (error: ServiceError | null, response: Operation) => void): ClientUnaryCall;
+    /** Updates the specified hosts. */
+    updateHosts(request: UpdateClusterHostsRequest, callback: (error: ServiceError | null, response: Operation) => void): ClientUnaryCall;
+    updateHosts(request: UpdateClusterHostsRequest, metadata: Metadata, callback: (error: ServiceError | null, response: Operation) => void): ClientUnaryCall;
+    updateHosts(request: UpdateClusterHostsRequest, metadata: Metadata, options: Partial<CallOptions>, callback: (error: ServiceError | null, response: Operation) => void): ClientUnaryCall;
     /** Deletes the specified hosts for a cluster. */
     deleteHosts(request: DeleteClusterHostsRequest, callback: (error: ServiceError | null, response: Operation) => void): ClientUnaryCall;
     deleteHosts(request: DeleteClusterHostsRequest, metadata: Metadata, callback: (error: ServiceError | null, response: Operation) => void): ClientUnaryCall;

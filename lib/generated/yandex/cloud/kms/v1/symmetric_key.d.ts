@@ -10,6 +10,8 @@ export declare enum SymmetricAlgorithm {
     AES_192 = 2,
     /** AES_256 - AES algorithm with 256-bit keys. */
     AES_256 = 3,
+    /** AES_256_HSM - AES algorithm with 256-bit keys hosted by HSM */
+    AES_256_HSM = 4,
     UNRECOGNIZED = -1
 }
 export declare function symmetricAlgorithmFromJSON(object: any): SymmetricAlgorithm;
@@ -93,6 +95,8 @@ export interface SymmetricKeyVersion {
      * is `SCHEDULED_FOR_DESTRUCTION`.
      */
     destroyAt: Date | undefined;
+    /** Indication of the version that is hosted by HSM. */
+    hostedByHsm: boolean;
 }
 /** Possible version status. */
 export declare enum SymmetricKeyVersion_Status {

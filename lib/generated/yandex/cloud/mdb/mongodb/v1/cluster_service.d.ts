@@ -81,6 +81,8 @@ export interface CreateClusterRequest {
     networkId: string;
     /** User security groups */
     securityGroupIds: string[];
+    /** Deletion Protection inhibits deletion of the cluster */
+    deletionProtection: boolean;
 }
 export interface CreateClusterRequest_LabelsEntry {
     key: string;
@@ -118,6 +120,8 @@ export interface UpdateClusterRequest {
     maintenanceWindow: MaintenanceWindow | undefined;
     /** User security groups */
     securityGroupIds: string[];
+    /** Deletion Protection inhibits deletion of the cluster */
+    deletionProtection: boolean;
 }
 export interface UpdateClusterRequest_LabelsEntry {
     key: string;
@@ -588,6 +592,18 @@ export interface RestartHostsMetadata {
     /** Required. ID of the MongoDB cluster. */
     clusterId: string;
     /** Required. The name of hosts to restart. */
+    hostNames: string[];
+}
+export interface StepdownHostsRequest {
+    /** Required. ID of the MongoDB cluster. */
+    clusterId: string;
+    /** Required. Name of the hosts to resetup. */
+    hostNames: string[];
+}
+export interface StepdownHostsMetadata {
+    /** Required. ID of the MongoDB cluster. */
+    clusterId: string;
+    /** Required. The name of hosts to resetup. */
     hostNames: string[];
 }
 export interface HostSpec {
@@ -1185,6 +1201,20 @@ export declare const RestartHostsMetadata: {
     toJSON(message: RestartHostsMetadata): unknown;
     fromPartial(object: DeepPartial<RestartHostsMetadata>): RestartHostsMetadata;
 };
+export declare const StepdownHostsRequest: {
+    encode(message: StepdownHostsRequest, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number | undefined): StepdownHostsRequest;
+    fromJSON(object: any): StepdownHostsRequest;
+    toJSON(message: StepdownHostsRequest): unknown;
+    fromPartial(object: DeepPartial<StepdownHostsRequest>): StepdownHostsRequest;
+};
+export declare const StepdownHostsMetadata: {
+    encode(message: StepdownHostsMetadata, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number | undefined): StepdownHostsMetadata;
+    fromJSON(object: any): StepdownHostsMetadata;
+    toJSON(message: StepdownHostsMetadata): unknown;
+    fromPartial(object: DeepPartial<StepdownHostsMetadata>): StepdownHostsMetadata;
+};
 export declare const HostSpec: {
     encode(message: HostSpec, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): HostSpec;
@@ -1601,6 +1631,16 @@ export declare const ClusterServiceService: {
         readonly responseSerialize: (value: Operation) => Buffer;
         readonly responseDeserialize: (value: Buffer) => Operation;
     };
+    /** Stepdown hosts. */
+    readonly stepdownHosts: {
+        readonly path: "/yandex.cloud.mdb.mongodb.v1.ClusterService/StepdownHosts";
+        readonly requestStream: false;
+        readonly responseStream: false;
+        readonly requestSerialize: (value: StepdownHostsRequest) => Buffer;
+        readonly requestDeserialize: (value: Buffer) => StepdownHostsRequest;
+        readonly responseSerialize: (value: Operation) => Buffer;
+        readonly responseDeserialize: (value: Buffer) => Operation;
+    };
 };
 export interface ClusterServiceServer extends UntypedServiceImplementation {
     /**
@@ -1663,6 +1703,8 @@ export interface ClusterServiceServer extends UntypedServiceImplementation {
     resetupHosts: handleUnaryCall<ResetupHostsRequest, Operation>;
     /** Restarts hosts. */
     restartHosts: handleUnaryCall<RestartHostsRequest, Operation>;
+    /** Stepdown hosts. */
+    stepdownHosts: handleUnaryCall<StepdownHostsRequest, Operation>;
 }
 export interface ClusterServiceClient extends Client {
     /**
@@ -1774,6 +1816,10 @@ export interface ClusterServiceClient extends Client {
     restartHosts(request: RestartHostsRequest, callback: (error: ServiceError | null, response: Operation) => void): ClientUnaryCall;
     restartHosts(request: RestartHostsRequest, metadata: Metadata, callback: (error: ServiceError | null, response: Operation) => void): ClientUnaryCall;
     restartHosts(request: RestartHostsRequest, metadata: Metadata, options: Partial<CallOptions>, callback: (error: ServiceError | null, response: Operation) => void): ClientUnaryCall;
+    /** Stepdown hosts. */
+    stepdownHosts(request: StepdownHostsRequest, callback: (error: ServiceError | null, response: Operation) => void): ClientUnaryCall;
+    stepdownHosts(request: StepdownHostsRequest, metadata: Metadata, callback: (error: ServiceError | null, response: Operation) => void): ClientUnaryCall;
+    stepdownHosts(request: StepdownHostsRequest, metadata: Metadata, options: Partial<CallOptions>, callback: (error: ServiceError | null, response: Operation) => void): ClientUnaryCall;
 }
 export declare const ClusterServiceClient: new (address: string, credentials: ChannelCredentials, options?: Partial<ChannelOptions> | undefined) => ClusterServiceClient;
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;

@@ -1,6 +1,6 @@
 import { SynthesizerService } from 'cloud/ai/tts/v3/tts_service';
 import { Client } from 'nice-grpc';
-import { SdkServiceDefinition, Session } from 'src';
+import { SdkServiceDefinition, Session } from 'src/index';
 
 export const SynthesizerDef: SdkServiceDefinition<typeof SynthesizerService> = {
     ...SynthesizerService,

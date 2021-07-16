@@ -18,7 +18,7 @@ interface Config {
 const config: Config = yaml.parse(fs.readFileSync('./config.yaml', { encoding: 'utf-8' }));
 
 function appendCommonImports(content: string): string {
-    return content + `import { SdkServiceDefinition, Session } from 'src';
+    return content + `import { SdkServiceDefinition, Session } from 'src/index';
     import { Client } from 'nice-grpc';`;
 
 }
@@ -42,6 +42,7 @@ function appendService(content: string, serviceName: string, endpoint: string, p
 for (const [name, pack] of Object.entries(config.packages)) {
     const path = name.split('.');
     let content = appendCommonImports('');
+    // tslint:disable-next-line:no-console
     console.log(name, pack.services);
     for (const [serviceName, { endpoint, filename }] of Object.entries(pack.services)) {
         const filePath = [...path, filename ?? _.snakeCase(serviceName)];

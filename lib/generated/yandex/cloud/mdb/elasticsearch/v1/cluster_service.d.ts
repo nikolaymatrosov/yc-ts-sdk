@@ -85,6 +85,8 @@ export interface CreateClusterRequest {
     securityGroupIds: string[];
     /** ID of the service account used for access to Yandex Object Storage. */
     serviceAccountId: string;
+    /** Deletion Protection inhibits deletion of the cluster */
+    deletionProtection: boolean;
 }
 export interface CreateClusterRequest_LabelsEntry {
     key: string;
@@ -127,6 +129,8 @@ export interface UpdateClusterRequest {
     securityGroupIds: string[];
     /** ID of the service account used for access to Yandex Object Storage. */
     serviceAccountId: string;
+    /** Deletion Protection inhibits deletion of the cluster */
+    deletionProtection: boolean;
 }
 export interface UpdateClusterRequest_LabelsEntry {
     key: string;

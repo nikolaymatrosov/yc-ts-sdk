@@ -7,7 +7,7 @@ import { ResourcePresetServiceService } from '../../../../generated/yandex/cloud
 import { UserServiceService } from '../../../../generated/yandex/cloud/mdb/clickhouse/v1/user_service';
 import { VersionsServiceService } from '../../../../generated/yandex/cloud/mdb/clickhouse/v1/versions_service';
 import { Client } from 'nice-grpc';
-import { SdkServiceDefinition, Session } from 'src';
+import { SdkServiceDefinition, Session } from '../../../../src/index';
 export declare const BackupServiceDef: SdkServiceDefinition<typeof BackupServiceService>;
 export declare function BackupService(session?: Session): Client<typeof BackupServiceService, {}>;
 export declare const ClusterServiceDef: SdkServiceDefinition<typeof ClusterServiceService>;

@@ -399,41 +399,61 @@ export interface DetachInstanceDiskMetadata {
     diskId: string;
 }
 
+/** Enables One-to-one NAT on the network interface. */
 export interface AddInstanceOneToOneNatRequest {
+    /** ID of the instance to enable One-to-One NAT on. */
     instanceId: string;
+    /** The index of the network interface to enable One-to-One NAT on. */
     networkInterfaceIndex: string;
-    /** optional */
+    /** The network address that is assigned to the instance for this network interface. */
     internalAddress: string;
+    /**
+     * An external IP address configuration.
+     * If not specified, then this instance will have no external internet access.
+     */
     oneToOneNatSpec: OneToOneNatSpec | undefined;
 }
 
 export interface AddInstanceOneToOneNatMetadata {
+    /** ID of the instance. */
     instanceId: string;
 }
 
 export interface RemoveInstanceOneToOneNatRequest {
+    /** ID of the instance to remove One-to-one NAT. */
     instanceId: string;
+    /** The index of the network interface to remove One-to-One NAT from. */
     networkInterfaceIndex: string;
-    /** optional */
+    /** The network address that is assigned to the instance for this network interface. */
     internalAddress: string;
 }
 
 export interface RemoveInstanceOneToOneNatMetadata {
+    /** ID of the instance. */
     instanceId: string;
 }
 
 export interface UpdateInstanceNetworkInterfaceRequest {
+    /** ID of the network interface that is being updated. */
     instanceId: string;
+    /** The index of the network interface to be updated. */
     networkInterfaceIndex: string;
+    /** Field mask that specifies which attributes of the instance should be updated. */
     updateMask: FieldMask | undefined;
+    /** ID of the subnet. */
     subnetId: string;
+    /** Primary IPv4 address that will be assigned to the instance for this network interface. */
     primaryV4AddressSpec: PrimaryAddressSpec | undefined;
+    /** Primary IPv6 address that will be assigned to the instance for this network interface. IPv6 not available yet. */
     primaryV6AddressSpec: PrimaryAddressSpec | undefined;
+    /** ID's of security groups attached to the interface. */
     securityGroupIds: string[];
 }
 
 export interface UpdateInstanceNetworkInterfaceMetadata {
+    /** ID of the instant network interface that is being updated. */
     instanceId: string;
+    /** The index of the network interface. */
     networkInterfaceIndex: string;
 }
 
@@ -5838,6 +5858,7 @@ export const InstanceServiceService = {
             Buffer.from(Operation.encode(value).finish()),
         responseDeserialize: (value: Buffer) => Operation.decode(value),
     },
+    /** Enables One-to-one NAT on the network interface. */
     addOneToOneNat: {
         path: '/yandex.cloud.compute.v1.InstanceService/AddOneToOneNat',
         requestStream: false,
@@ -5850,6 +5871,7 @@ export const InstanceServiceService = {
             Buffer.from(Operation.encode(value).finish()),
         responseDeserialize: (value: Buffer) => Operation.decode(value),
     },
+    /** Removes One-to-one NAT from the network interface. */
     removeOneToOneNat: {
         path: '/yandex.cloud.compute.v1.InstanceService/RemoveOneToOneNat',
         requestStream: false,
@@ -5864,6 +5886,7 @@ export const InstanceServiceService = {
             Buffer.from(Operation.encode(value).finish()),
         responseDeserialize: (value: Buffer) => Operation.decode(value),
     },
+    /** Updates the specified instance network interface. */
     updateNetworkInterface: {
         path: '/yandex.cloud.compute.v1.InstanceService/UpdateNetworkInterface',
         requestStream: false,
@@ -5933,11 +5956,14 @@ export interface InstanceServiceServer extends UntypedServiceImplementation {
     attachDisk: handleUnaryCall<AttachInstanceDiskRequest, Operation>;
     /** Detaches the disk from the instance. */
     detachDisk: handleUnaryCall<DetachInstanceDiskRequest, Operation>;
+    /** Enables One-to-one NAT on the network interface. */
     addOneToOneNat: handleUnaryCall<AddInstanceOneToOneNatRequest, Operation>;
+    /** Removes One-to-one NAT from the network interface. */
     removeOneToOneNat: handleUnaryCall<
         RemoveInstanceOneToOneNatRequest,
         Operation
     >;
+    /** Updates the specified instance network interface. */
     updateNetworkInterface: handleUnaryCall<
         UpdateInstanceNetworkInterfaceRequest,
         Operation
@@ -6171,6 +6197,7 @@ export interface InstanceServiceClient extends Client {
         options: Partial<CallOptions>,
         callback: (error: ServiceError | null, response: Operation) => void
     ): ClientUnaryCall;
+    /** Enables One-to-one NAT on the network interface. */
     addOneToOneNat(
         request: AddInstanceOneToOneNatRequest,
         callback: (error: ServiceError | null, response: Operation) => void
@@ -6186,6 +6213,7 @@ export interface InstanceServiceClient extends Client {
         options: Partial<CallOptions>,
         callback: (error: ServiceError | null, response: Operation) => void
     ): ClientUnaryCall;
+    /** Removes One-to-one NAT from the network interface. */
     removeOneToOneNat(
         request: RemoveInstanceOneToOneNatRequest,
         callback: (error: ServiceError | null, response: Operation) => void
@@ -6201,6 +6229,7 @@ export interface InstanceServiceClient extends Client {
         options: Partial<CallOptions>,
         callback: (error: ServiceError | null, response: Operation) => void
     ): ClientUnaryCall;
+    /** Updates the specified instance network interface. */
     updateNetworkInterface(
         request: UpdateInstanceNetworkInterfaceRequest,
         callback: (error: ServiceError | null, response: Operation) => void

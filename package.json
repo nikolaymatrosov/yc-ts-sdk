@@ -64,6 +64,7 @@
     "postversion": "git push && git push --tags",
     "test": "jest --config jestconfig.json",
     "build": "tsc --project tsconfig.json && tsc-alias -p tsconfig.json",
+    "build:examples": "tsc --project examples/tsconfig.json && tsc-alias -p examples/tsconfig.json",
     "generate": "scripts/generate.sh",
     "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
     "lint": "tslint -p tsconfig.json",

@@ -6,49 +6,76 @@ import _m0 from 'protobufjs/minimal';
 
 export const protobufPackage = 'yandex.cloud.apploadbalancer.v1';
 
-/** A LoadBalancer resource. */
+/**
+ * An application load balancer resource.
+ * For details about the concept, see [documentation](/docs/application-load-balancer/concepts/application-load-balancer).
+ */
 export interface LoadBalancer {
-    /** Output only. ID of the load balancer. */
+    /** ID of the application load balancer. Generated at creation time. */
     id: string;
-    /** The name is unique within the folder. 3-63 characters long. */
+    /** Name of the application load balancer. The name is unique within the folder. */
     name: string;
-    /** Description of the load balancer. 0-256 characters long. */
+    /** Description of the application load balancer. */
     description: string;
-    /** ID of the folder that the load balancer belongs to. */
+    /** ID of the folder that the application load balancer belongs to. */
     folderId: string;
-    /** Resource labels as `key:value` pairs. Maximum of 64 per resource. */
+    /**
+     * Application load balancer labels as `key:value` pairs.
+     * For details about the concept, see [documentation](/docs/overview/concepts/services#labels).
+     */
     labels: { [key: string]: string };
     /** Status of the application load balancer. */
     status: LoadBalancer_Status;
-    /** ID of the region that the load balancer located at. */
+    /**
+     * ID of the region that the application load balancer is located at.
+     *
+     * Currently Yandex Cloud supports only `ru-central1` region.
+     */
     regionId: string;
-    /** ID of the network that the load balancer located at. */
+    /** ID of the network that the application load balancer belongs to. */
     networkId: string;
-    /** List of listeners for the application load balancer. */
+    /**
+     * Listeners that belong to the application load balancer.
+     *
+     * For details about the concept, see [documentation](/docs/application-load-balancer/concepts/application-load-balancer#listener).
+     */
     listeners: Listener[];
-    /** Allocation sites for application load balancer instances. */
+    /**
+     * Locality settings of the application load balancer.
+     *
+     * For details about the concept, see [documentation](/docs/application-load-balancer/concepts/application-load-balancer#lb-location).
+     */
     allocationPolicy: AllocationPolicy | undefined;
-    /** Cloud log group used by the load balancer to store access logs. */
+    /**
+     * ID of the log group that stores access logs of the application load balancer.
+     *
+     * The logs can be accessed using a Cloud Functions [trigger for Cloud Logs](/docs/functions/operations/trigger/cloudlogs-trigger-create).
+     */
     logGroupId: string;
-    /** ID's of security groups attached to the load balancer. */
+    /**
+     * ID's of the security groups attributed to the application load balancer.
+     *
+     * For details about the concept,
+     * see [documentation](/docs/application-load-balancer/concepts/application-load-balancer#security-groups).
+     */
     securityGroupIds: string[];
-    /** Creation timestamp for the load balancer. */
+    /** Creation timestamp. */
     createdAt: Date | undefined;
 }
 
 export enum LoadBalancer_Status {
     STATUS_UNSPECIFIED = 0,
-    /** CREATING - Application load balancer is being created. */
+    /** CREATING - The application load balancer is being created. */
     CREATING = 1,
-    /** STARTING - Application load balancer is being started. */
+    /** STARTING - The application load balancer is being started. */
     STARTING = 2,
-    /** ACTIVE - Application load balancer is active and sends traffic to the targets. */
+    /** ACTIVE - The application load balancer is active and sends traffic to the targets. */
     ACTIVE = 3,
-    /** STOPPING - Application load balancer is being stopped. */
+    /** STOPPING - The application load balancer is being stopped. */
     STOPPING = 4,
-    /** STOPPED - Application load balancer is stopped and doesn't send traffic to the targets. */
+    /** STOPPED - The application load balancer is stopped and doesn't send traffic to the targets. */
     STOPPED = 5,
-    /** DELETING - Application load balancer is being deleted. */
+    /** DELETING - The application load balancer is being deleted. */
     DELETING = 6,
     UNRECOGNIZED = -1,
 }
@@ -109,111 +136,217 @@ export interface LoadBalancer_LabelsEntry {
     value: string;
 }
 
+/** An endpoint address resource. */
 export interface Address {
+    /** Public IPv4 endpoint address. */
     externalIpv4Address: ExternalIpv4Address | undefined;
+    /**
+     * Internal IPv4 endpoint address.
+     *
+     * To enable the use of listeners with internal addresses, [contact support](https://console.cloud.yandex.ru/support).
+     */
     internalIpv4Address: InternalIpv4Address | undefined;
+    /** Public IPv6 endpoint address. */
     externalIpv6Address: ExternalIpv6Address | undefined;
 }
 
+/** A public (external) IPv4 endpoint address resource. */
 export interface ExternalIpv4Address {
+    /** IPv4 address. */
     address: string;
 }
 
+/** An internal IPv4 endpoint address resource. */
 export interface InternalIpv4Address {
+    /** IPv4 address. */
     address: string;
+    /** ID of the subnet that the address belongs to. */
     subnetId: string;
 }
 
+/** A public (external) IPv4 endpoint address resource. */
 export interface ExternalIpv6Address {
+    /** IPv6 address. */
     address: string;
 }
 
+/**
+ * An application load balancer location resource.
+ *
+ * For details about the concept, see [documentation](/docs/application-load-balancer/concepts/application-load-balancer#lb-location).
+ */
 export interface Location {
+    /**
+     * ID of the availability zone where the application load balancer resides.
+     *
+     * Each Yandex Cloud availability zone can only be specified once.
+     */
     zoneId: string;
+    /** ID of the subnet that the application load balancer belongs to. */
     subnetId: string;
-    /** If set, will disable all L7 instances in the zone for request handling. */
+    /**
+     * Disables the load balancer node in the specified availability zone.
+     *
+     * Backends in the availability zone are not directly affected by this setting.
+     * They still may receive traffic from the load balancer nodes in other availability zones,
+     * subject to [LoadBalancingConfig.locality_aware_routing_percent] and [LoadBalancingConfig.strict_locality] settings.
+     */
     disableTraffic: boolean;
 }
 
+/** A locality settings (allocation policy) resource. */
 export interface AllocationPolicy {
+    /** Availability zones and subnets that the application load balancer resides. */
     locations: Location[];
 }
 
-/** A Listener resource. */
+/**
+ * A listener resource.
+ *
+ * For details about the concept, see [documentation](/docs/application-load-balancer/concepts/application-load-balancer#listener).
+ */
 export interface Listener {
-    /** Name of the listener. The name must be unique for each listener on a single load balancer. 3-63 characters long. */
+    /**
+     * Name of the listener. The name is unique within the application load balancer.
+     * The string length in characters is 3-63.
+     */
     name: string;
-    /** Network endpoints (addresses and ports) of the listener. */
+    /**
+     * Endpoints of the listener.
+     *
+     * Endpoints are defined by their IP addresses and ports.
+     */
     endpoints: Endpoint[];
+    /** HTTP listener settings. */
     http: HttpListener | undefined;
+    /** HTTPS (HTTP over TLS) listener settings. */
     tls: TlsListener | undefined;
 }
 
+/** An endpoint resource. */
 export interface Endpoint {
+    /** Endpoint public (external) and internal addresses. */
     addresses: Address[];
+    /** Endpoint ports. */
     ports: number[];
 }
 
+/** An HTTP listener resource. */
 export interface HttpListener {
-    /** Sets plaintext HTTP router, optional. */
+    /**
+     * Settings for handling HTTP requests.
+     *
+     * Only one of `handler` and [redirects] can be specified.
+     */
     handler: HttpHandler | undefined;
     /**
-     * Shortcut for adding http -> https redirects,
-     * can be used instead of the HttpHandler above.
+     * Redirects settings.
+     *
+     * Only one of `redirects` and [handler] can be specified.
      */
     redirects: Redirects | undefined;
 }
 
+/** An HTTPS (HTTP over TLS) listener resource. */
 export interface TlsListener {
+    /**
+     * Settings for handling HTTPS requests by default,
+     * with Server Name Indication (SNI) not matching any of the [sni_handlers].
+     */
     defaultHandler: TlsHandler | undefined;
+    /**
+     * Settings for handling HTTPS requests with Server Name Indication (SNI)
+     * matching one of [SniMatch.server_names] values.
+     */
     sniHandlers: SniMatch[];
 }
 
+/** An HTTP/2 options resource. */
 export interface Http2Options {
+    /** Maximum number of concurrent HTTP/2 streams in a connection. */
     maxConcurrentStreams: number;
 }
 
+/** An HTTP handler resource. */
 export interface HttpHandler {
+    /**
+     * ID of the HTTP router processing requests.
+     *
+     * For details about the concept, see [documentation](/docs/application-load-balancer/concepts/http-router).
+     */
     httpRouterId: string;
-    /** If set, will enable HTTP2 protocol for the handler. */
+    /**
+     * HTTP/2 settings.
+     *
+     * If specified, incoming HTTP/2 requests are supported by the listener.
+     */
     http2Options: Http2Options | undefined;
-    /** If set, will enable only HTTP1 protocol with HTTP1.0 support. */
+    /** Enables support for incoming HTTP/1.0 and HTTP/1.1 requests and disables it for HTTP/2 requests. */
     allowHttp10: boolean | undefined;
 }
 
+/** A listener redirects resource. */
 export interface Redirects {
-    /** Adds "*" VirtualHost with a http -> https redirect. */
+    /**
+     * Redirects all unencrypted HTTP requests to the same URI with scheme changed to `https`.
+     *
+     * The setting has the same effect as a single, catch-all [HttpRoute]
+     * with [RedirectAction.replace_scheme] set to `https`.
+     */
     httpToHttps: boolean;
 }
 
+/** A SNI handler resource. */
 export interface SniMatch {
+    /** Name of the SNI handler. */
     name: string;
+    /** Server names that are matched by the SNI handler. */
     serverNames: string[];
+    /** Settings for handling requests with Server Name Indication (SNI) matching one of [server_names] values. */
     handler: TlsHandler | undefined;
 }
 
+/** An HTTPS (HTTP over TLS) handler resource. */
 export interface TlsHandler {
+    /** HTTP handler. */
     httpHandler: HttpHandler | undefined;
     /**
-     * Certificate IDs in the Certificate Manager.
-     * Multiple TLS certificates can be associated with the same context to allow
-     * both RSA and ECDSA certificates.
-     * Only the first certificate of each type will be used.
+     * ID's of the TLS server certificates from [Certificate Manager](/docs/certificate-manager/).
+     *
+     * RSA and ECDSA certificates are supported, and only the first certificate of each type is used.
      */
     certificateIds: string[];
 }
 
+/** A target state resource. */
 export interface TargetState {
-    /** Statuses of the target for all known zones. */
+    /** Health of the target, i.e. its statuses in all availability zones. */
     status: TargetState_HealthcheckStatus | undefined;
+    /** Target. */
     target: Target | undefined;
 }
 
+/** Supported target statuses. */
 export enum TargetState_Status {
     STATUS_UNSPECIFIED = 0,
+    /**
+     * HEALTHY - All of the health checks specified in [HttpBackend.healthchecks] or [GrpcBackend.healthchecks] are passed
+     * (the number depends on the [HealthCheck.healthy_threshold] setting) and the target is ready to receive traffic.
+     */
     HEALTHY = 1,
+    /**
+     * PARTIALLY_HEALTHY - Some of the health checks specified in [HttpBackend.healthchecks] or [GrpcBackend.healthchecks] failed
+     * (the number depends on the [HealthCheck.unhealthy_threshold] setting).
+     * The target is ready to receive traffic from the load balancer nodes which, based on their health checks,
+     * consider the target healthy.
+     */
     PARTIALLY_HEALTHY = 2,
+    /**
+     * UNHEALTHY - All of the health checks specified in [HttpBackend.healthchecks] or [GrpcBackend.healthchecks] failed
+     * (the number depends on the [HealthCheck.unhealthy_threshold] setting) and the target is not receiving traffic.
+     */
     UNHEALTHY = 3,
+    /** DRAINING - Target is being deleted and the application load balancer is no longer sending traffic to this target. */
     DRAINING = 4,
     TIMEOUT = 5,
     UNRECOGNIZED = -1,
@@ -265,15 +398,26 @@ export function targetState_StatusToJSON(object: TargetState_Status): string {
     }
 }
 
+/** Health of the target. */
 export interface TargetState_HealthcheckStatus {
+    /** Statuses of the target in its availability zones. */
     zoneStatuses: TargetState_ZoneHealthcheckStatus[];
 }
 
+/** Health of the target in the availability zone. */
 export interface TargetState_ZoneHealthcheckStatus {
+    /** ID of the availability zone. */
     zoneId: string;
-    /** Healthcheck status of target for the specific zone. */
+    /** Status of the target in the availability zone. */
     status: TargetState_Status;
-    /** Whether UNHEALTHY status was set due to failed active checks or not. */
+    /**
+     * Indicates whether the target has been marked `UNHEALTHY` due to failing active health checks,
+     * which determine target statuses as configured in [HttpBackend.healthchecks] or [GrpcBackend.healthchecks].
+     *
+     * Currently the only type of health checks is active, as described above.
+     * Passive health checks, which determine the health of a target based on its responses to production requests
+     * (HTTP 5xx status codes, connection errors etc.), are not implemented yet.
+     */
     failedActiveHc: boolean;
 }
 

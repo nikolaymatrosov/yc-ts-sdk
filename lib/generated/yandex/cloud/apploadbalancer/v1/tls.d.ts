@@ -1,9 +1,9 @@
 import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.apploadbalancer.v1";
+/** A TLS validation context resource. */
 export interface ValidationContext {
-    /** Trusted CA certificate ID in the Certificate Manager. */
     trustedCaId: string | undefined;
-    /** Trusted CA blob. */
+    /** X.509 certificate contents in PEM format. */
     trustedCaBytes: string | undefined;
 }
 export declare const ValidationContext: {

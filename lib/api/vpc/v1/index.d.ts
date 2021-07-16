@@ -4,7 +4,7 @@ import { RouteTableServiceService } from '../../../generated/yandex/cloud/vpc/v1
 import { SecurityGroupServiceService } from '../../../generated/yandex/cloud/vpc/v1/security_group_service';
 import { SubnetServiceService } from '../../../generated/yandex/cloud/vpc/v1/subnet_service';
 import { Client } from 'nice-grpc';
-import { SdkServiceDefinition, Session } from 'src';
+import { SdkServiceDefinition, Session } from '../../../src/index';
 export declare const AddressServiceDef: SdkServiceDefinition<typeof AddressServiceService>;
 export declare function AddressService(session?: Session): Client<typeof AddressServiceService, {}>;
 export declare const NetworkServiceDef: SdkServiceDefinition<typeof NetworkServiceService>;

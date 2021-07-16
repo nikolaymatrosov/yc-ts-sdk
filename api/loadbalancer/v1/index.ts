@@ -1,7 +1,7 @@
 import { NetworkLoadBalancerServiceService } from 'cloud/loadbalancer/v1/network_load_balancer_service';
 import { TargetGroupServiceService } from 'cloud/loadbalancer/v1/target_group_service';
 import { Client } from 'nice-grpc';
-import { SdkServiceDefinition, Session } from 'src';
+import { SdkServiceDefinition, Session } from 'src/index';
 
 export const NetworkLoadBalancerServiceDef: SdkServiceDefinition<
     typeof NetworkLoadBalancerServiceService

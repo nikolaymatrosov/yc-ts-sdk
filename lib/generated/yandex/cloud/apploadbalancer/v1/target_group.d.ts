@@ -1,30 +1,42 @@
 import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.apploadbalancer.v1";
+/**
+ * A target group resource.
+ * For details about the concept, see [documentation](/docs/application-load-balancer/concepts/target-group).
+ */
 export interface TargetGroup {
-    /** Output only. ID of the target group. */
+    /** ID of the target group. Generated at creation time. */
     id: string;
-    /** The name is unique within the folder. 3-63 characters long. */
+    /** Name of the target group. The name is unique within the folder. */
     name: string;
-    /** Description of the target group. 0-256 characters long. */
+    /** Description of the target group. */
     description: string;
     /** ID of the folder that the target group belongs to. */
     folderId: string;
-    /** Resource labels as `key:value` pairs. Maximum of 64 per resource. */
+    /**
+     * Target group labels as `key:value` pairs.
+     * For details about the concept, see [documentation](/docs/overview/concepts/services#labels).
+     */
     labels: {
         [key: string]: string;
     };
-    /** NOTE: all endpoints must use the same address_type - either ip or hostname. */
+    /** List of targets in the target group. */
     targets: Target[];
-    /** Creation timestamp for the target group. */
+    /** Creation timestamp. */
     createdAt: Date | undefined;
 }
 export interface TargetGroup_LabelsEntry {
     key: string;
     value: string;
 }
+/**
+ * A target resource.
+ * For details about the concept, see [documentation](/docs/application-load-balancer/concepts/target-group).
+ */
 export interface Target {
+    /** IP address of the target. */
     ipAddress: string | undefined;
-    /** ID of the subnet that target connected to. */
+    /** ID of the subnet that the target is connected to. */
     subnetId: string;
 }
 export declare const TargetGroup: {

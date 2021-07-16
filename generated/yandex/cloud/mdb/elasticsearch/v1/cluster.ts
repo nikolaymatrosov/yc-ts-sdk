@@ -48,6 +48,8 @@ export interface Cluster {
     securityGroupIds: string[];
     /** ID of the service account used for access to Yandex Object Storage. */
     serviceAccountId: string;
+    /** Deletion Protection inhibits deletion of the cluster */
+    deletionProtection: boolean;
 }
 
 export enum Cluster_Environment {
@@ -481,6 +483,7 @@ const baseCluster: object = {
     status: 0,
     securityGroupIds: '',
     serviceAccountId: '',
+    deletionProtection: false,
 };
 
 export const Cluster = {
@@ -538,6 +541,9 @@ export const Cluster = {
         }
         if (message.serviceAccountId !== '') {
             writer.uint32(114).string(message.serviceAccountId);
+        }
+        if (message.deletionProtection === true) {
+            writer.uint32(120).bool(message.deletionProtection);
         }
         return writer;
     },
@@ -607,6 +613,9 @@ export const Cluster = {
                     break;
                 case 14:
                     message.serviceAccountId = reader.string();
+                    break;
+                case 15:
+                    message.deletionProtection = reader.bool();
                     break;
                 default:
                     reader.skipType(tag & 7);
@@ -699,6 +708,14 @@ export const Cluster = {
         } else {
             message.serviceAccountId = '';
         }
+        if (
+            object.deletionProtection !== undefined &&
+            object.deletionProtection !== null
+        ) {
+            message.deletionProtection = Boolean(object.deletionProtection);
+        } else {
+            message.deletionProtection = false;
+        }
         return message;
     },
 
@@ -742,6 +759,8 @@ export const Cluster = {
         }
         message.serviceAccountId !== undefined &&
             (obj.serviceAccountId = message.serviceAccountId);
+        message.deletionProtection !== undefined &&
+            (obj.deletionProtection = message.deletionProtection);
         return obj;
     },
 
@@ -827,6 +846,14 @@ export const Cluster = {
             message.serviceAccountId = object.serviceAccountId;
         } else {
             message.serviceAccountId = '';
+        }
+        if (
+            object.deletionProtection !== undefined &&
+            object.deletionProtection !== null
+        ) {
+            message.deletionProtection = object.deletionProtection;
+        } else {
+            message.deletionProtection = false;
         }
         return message;
     },

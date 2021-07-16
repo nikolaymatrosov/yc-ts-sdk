@@ -1,6 +1,6 @@
 import { FunctionServiceService } from 'cloud/serverless/functions/v1/function_service';
 import { Client } from 'nice-grpc';
-import { SdkServiceDefinition, Session } from 'src';
+import { SdkServiceDefinition, Session } from 'src/index';
 
 export const FunctionServiceDef: SdkServiceDefinition<
     typeof FunctionServiceService

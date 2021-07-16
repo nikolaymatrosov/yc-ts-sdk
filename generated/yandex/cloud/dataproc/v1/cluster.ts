@@ -44,6 +44,8 @@ export interface Cluster {
     securityGroupIds: string[];
     /** Host groups hosting VMs of the cluster. */
     hostGroupIds: string[];
+    /** Deletion Protection inhibits deletion of the cluster */
+    deletionProtection: boolean;
 }
 
 export enum Cluster_Status {
@@ -285,6 +287,7 @@ const baseCluster: object = {
     uiProxy: false,
     securityGroupIds: '',
     hostGroupIds: '',
+    deletionProtection: false,
 };
 
 export const Cluster = {
@@ -348,6 +351,9 @@ export const Cluster = {
         }
         for (const v of message.hostGroupIds) {
             writer.uint32(130).string(v!);
+        }
+        if (message.deletionProtection === true) {
+            writer.uint32(136).bool(message.deletionProtection);
         }
         return writer;
     },
@@ -424,6 +430,9 @@ export const Cluster = {
                     break;
                 case 16:
                     message.hostGroupIds.push(reader.string());
+                    break;
+                case 17:
+                    message.deletionProtection = reader.bool();
                     break;
                 default:
                     reader.skipType(tag & 7);
@@ -525,6 +534,14 @@ export const Cluster = {
                 message.hostGroupIds.push(String(e));
             }
         }
+        if (
+            object.deletionProtection !== undefined &&
+            object.deletionProtection !== null
+        ) {
+            message.deletionProtection = Boolean(object.deletionProtection);
+        } else {
+            message.deletionProtection = false;
+        }
         return message;
     },
 
@@ -573,6 +590,8 @@ export const Cluster = {
         } else {
             obj.hostGroupIds = [];
         }
+        message.deletionProtection !== undefined &&
+            (obj.deletionProtection = message.deletionProtection);
         return obj;
     },
 
@@ -669,6 +688,14 @@ export const Cluster = {
             for (const e of object.hostGroupIds) {
                 message.hostGroupIds.push(e);
             }
+        }
+        if (
+            object.deletionProtection !== undefined &&
+            object.deletionProtection !== null
+        ) {
+            message.deletionProtection = object.deletionProtection;
+        } else {
+            message.deletionProtection = false;
         }
         return message;
     },

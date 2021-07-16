@@ -117,6 +117,10 @@ export interface CreateClusterRequest {
     networkId: string;
     /** User security groups */
     securityGroupIds: string[];
+    /** Deletion Protection inhibits deletion of the cluster */
+    deletionProtection: boolean;
+    /** name of SQL Collation that cluster will be created with */
+    sqlcollation: string;
 }
 
 export interface CreateClusterRequest_LabelsEntry {
@@ -155,6 +159,8 @@ export interface UpdateClusterRequest {
     name: string;
     /** User security groups */
     securityGroupIds: string[];
+    /** Deletion Protection inhibits deletion of the cluster */
+    deletionProtection: boolean;
 }
 
 export interface UpdateClusterRequest_LabelsEntry {
@@ -840,6 +846,8 @@ const baseCreateClusterRequest: object = {
     environment: 0,
     networkId: '',
     securityGroupIds: '',
+    deletionProtection: false,
+    sqlcollation: '',
 };
 
 export const CreateClusterRequest = {
@@ -885,6 +893,12 @@ export const CreateClusterRequest = {
         }
         for (const v of message.securityGroupIds) {
             writer.uint32(90).string(v!);
+        }
+        if (message.deletionProtection === true) {
+            writer.uint32(96).bool(message.deletionProtection);
+        }
+        if (message.sqlcollation !== '') {
+            writer.uint32(106).string(message.sqlcollation);
         }
         return writer;
     },
@@ -952,6 +966,12 @@ export const CreateClusterRequest = {
                     break;
                 case 11:
                     message.securityGroupIds.push(reader.string());
+                    break;
+                case 12:
+                    message.deletionProtection = reader.bool();
+                    break;
+                case 13:
+                    message.sqlcollation = reader.string();
                     break;
                 default:
                     reader.skipType(tag & 7);
@@ -1031,6 +1051,19 @@ export const CreateClusterRequest = {
                 message.securityGroupIds.push(String(e));
             }
         }
+        if (
+            object.deletionProtection !== undefined &&
+            object.deletionProtection !== null
+        ) {
+            message.deletionProtection = Boolean(object.deletionProtection);
+        } else {
+            message.deletionProtection = false;
+        }
+        if (object.sqlcollation !== undefined && object.sqlcollation !== null) {
+            message.sqlcollation = String(object.sqlcollation);
+        } else {
+            message.sqlcollation = '';
+        }
         return message;
     },
 
@@ -1079,6 +1112,10 @@ export const CreateClusterRequest = {
         } else {
             obj.securityGroupIds = [];
         }
+        message.deletionProtection !== undefined &&
+            (obj.deletionProtection = message.deletionProtection);
+        message.sqlcollation !== undefined &&
+            (obj.sqlcollation = message.sqlcollation);
         return obj;
     },
 
@@ -1153,6 +1190,19 @@ export const CreateClusterRequest = {
             for (const e of object.securityGroupIds) {
                 message.securityGroupIds.push(e);
             }
+        }
+        if (
+            object.deletionProtection !== undefined &&
+            object.deletionProtection !== null
+        ) {
+            message.deletionProtection = object.deletionProtection;
+        } else {
+            message.deletionProtection = false;
+        }
+        if (object.sqlcollation !== undefined && object.sqlcollation !== null) {
+            message.sqlcollation = object.sqlcollation;
+        } else {
+            message.sqlcollation = '';
         }
         return message;
     },
@@ -1320,6 +1370,7 @@ const baseUpdateClusterRequest: object = {
     description: '',
     name: '',
     securityGroupIds: '',
+    deletionProtection: false,
 };
 
 export const UpdateClusterRequest = {
@@ -1356,6 +1407,9 @@ export const UpdateClusterRequest = {
         }
         for (const v of message.securityGroupIds) {
             writer.uint32(58).string(v!);
+        }
+        if (message.deletionProtection === true) {
+            writer.uint32(64).bool(message.deletionProtection);
         }
         return writer;
     },
@@ -1405,6 +1459,9 @@ export const UpdateClusterRequest = {
                     break;
                 case 7:
                     message.securityGroupIds.push(reader.string());
+                    break;
+                case 8:
+                    message.deletionProtection = reader.bool();
                     break;
                 default:
                     reader.skipType(tag & 7);
@@ -1456,6 +1513,14 @@ export const UpdateClusterRequest = {
                 message.securityGroupIds.push(String(e));
             }
         }
+        if (
+            object.deletionProtection !== undefined &&
+            object.deletionProtection !== null
+        ) {
+            message.deletionProtection = Boolean(object.deletionProtection);
+        } else {
+            message.deletionProtection = false;
+        }
         return message;
     },
 
@@ -1484,6 +1549,8 @@ export const UpdateClusterRequest = {
         } else {
             obj.securityGroupIds = [];
         }
+        message.deletionProtection !== undefined &&
+            (obj.deletionProtection = message.deletionProtection);
         return obj;
     },
 
@@ -1532,6 +1599,14 @@ export const UpdateClusterRequest = {
             for (const e of object.securityGroupIds) {
                 message.securityGroupIds.push(e);
             }
+        }
+        if (
+            object.deletionProtection !== undefined &&
+            object.deletionProtection !== null
+        ) {
+            message.deletionProtection = object.deletionProtection;
+        } else {
+            message.deletionProtection = false;
         }
         return message;
     },

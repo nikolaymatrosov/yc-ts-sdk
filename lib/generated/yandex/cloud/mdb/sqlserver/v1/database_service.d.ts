@@ -64,6 +64,16 @@ export interface CreateDatabaseMetadata {
     /** Name of the SQL Server database being created. */
     databaseName: string;
 }
+export interface RestoreDatabaseMetadata {
+    /** ID of the SQLServer cluster where a database is being created. */
+    clusterId: string;
+    /** Name of the SQLServer database that is being created. */
+    databaseName: string;
+    /** name of the database which backup will be used to restore the database */
+    fromDatabase: string;
+    /** ID of a backup to be used */
+    backupId: string;
+}
 export interface DeleteDatabaseRequest {
     /**
      * ID of the SQL Server cluster to delete a database in.
@@ -83,6 +93,21 @@ export interface DeleteDatabaseMetadata {
     clusterId: string;
     /** Name of the SQL Server database being deleted. */
     databaseName: string;
+}
+export interface RestoreDatabaseRequest {
+    /**
+     * Required. ID of the SQL Server cluster to restore a database in.
+     * To get the cluster ID, use a [ClusterService.List] request
+     */
+    clusterId: string;
+    /** Name of the SQLServer database that is being restored. */
+    databaseName: string;
+    /** name of the database which backup will be used to restore the database */
+    fromDatabase: string;
+    /** ID of a backup to be used */
+    backupId: string;
+    /** Timestamp which is used for Point-in-Time recovery */
+    time: Date | undefined;
 }
 export declare const GetDatabaseRequest: {
     encode(message: GetDatabaseRequest, writer?: _m0.Writer): _m0.Writer;
@@ -119,6 +144,13 @@ export declare const CreateDatabaseMetadata: {
     toJSON(message: CreateDatabaseMetadata): unknown;
     fromPartial(object: DeepPartial<CreateDatabaseMetadata>): CreateDatabaseMetadata;
 };
+export declare const RestoreDatabaseMetadata: {
+    encode(message: RestoreDatabaseMetadata, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number | undefined): RestoreDatabaseMetadata;
+    fromJSON(object: any): RestoreDatabaseMetadata;
+    toJSON(message: RestoreDatabaseMetadata): unknown;
+    fromPartial(object: DeepPartial<RestoreDatabaseMetadata>): RestoreDatabaseMetadata;
+};
 export declare const DeleteDatabaseRequest: {
     encode(message: DeleteDatabaseRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteDatabaseRequest;
@@ -132,6 +164,13 @@ export declare const DeleteDatabaseMetadata: {
     fromJSON(object: any): DeleteDatabaseMetadata;
     toJSON(message: DeleteDatabaseMetadata): unknown;
     fromPartial(object: DeepPartial<DeleteDatabaseMetadata>): DeleteDatabaseMetadata;
+};
+export declare const RestoreDatabaseRequest: {
+    encode(message: RestoreDatabaseRequest, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number | undefined): RestoreDatabaseRequest;
+    fromJSON(object: any): RestoreDatabaseRequest;
+    toJSON(message: RestoreDatabaseRequest): unknown;
+    fromPartial(object: DeepPartial<RestoreDatabaseRequest>): RestoreDatabaseRequest;
 };
 /** A set of methods for managing SQL Server databases. */
 export declare const DatabaseServiceService: {
@@ -169,6 +208,16 @@ export declare const DatabaseServiceService: {
         readonly responseSerialize: (value: Operation) => Buffer;
         readonly responseDeserialize: (value: Buffer) => Operation;
     };
+    /** Creates a new SQL Server database in the specified cluster from a backup */
+    readonly restore: {
+        readonly path: "/yandex.cloud.mdb.sqlserver.v1.DatabaseService/Restore";
+        readonly requestStream: false;
+        readonly responseStream: false;
+        readonly requestSerialize: (value: RestoreDatabaseRequest) => Buffer;
+        readonly requestDeserialize: (value: Buffer) => RestoreDatabaseRequest;
+        readonly responseSerialize: (value: Operation) => Buffer;
+        readonly responseDeserialize: (value: Buffer) => Operation;
+    };
     /** Deletes the specified SQL Server database. */
     readonly delete: {
         readonly path: "/yandex.cloud.mdb.sqlserver.v1.DatabaseService/Delete";
@@ -191,6 +240,8 @@ export interface DatabaseServiceServer extends UntypedServiceImplementation {
     list: handleUnaryCall<ListDatabasesRequest, ListDatabasesResponse>;
     /** Creates a new SQL Server database in the specified cluster. */
     create: handleUnaryCall<CreateDatabaseRequest, Operation>;
+    /** Creates a new SQL Server database in the specified cluster from a backup */
+    restore: handleUnaryCall<RestoreDatabaseRequest, Operation>;
     /** Deletes the specified SQL Server database. */
     delete: handleUnaryCall<DeleteDatabaseRequest, Operation>;
 }
@@ -211,6 +262,10 @@ export interface DatabaseServiceClient extends Client {
     create(request: CreateDatabaseRequest, callback: (error: ServiceError | null, response: Operation) => void): ClientUnaryCall;
     create(request: CreateDatabaseRequest, metadata: Metadata, callback: (error: ServiceError | null, response: Operation) => void): ClientUnaryCall;
     create(request: CreateDatabaseRequest, metadata: Metadata, options: Partial<CallOptions>, callback: (error: ServiceError | null, response: Operation) => void): ClientUnaryCall;
+    /** Creates a new SQL Server database in the specified cluster from a backup */
+    restore(request: RestoreDatabaseRequest, callback: (error: ServiceError | null, response: Operation) => void): ClientUnaryCall;
+    restore(request: RestoreDatabaseRequest, metadata: Metadata, callback: (error: ServiceError | null, response: Operation) => void): ClientUnaryCall;
+    restore(request: RestoreDatabaseRequest, metadata: Metadata, options: Partial<CallOptions>, callback: (error: ServiceError | null, response: Operation) => void): ClientUnaryCall;
     /** Deletes the specified SQL Server database. */
     delete(request: DeleteDatabaseRequest, callback: (error: ServiceError | null, response: Operation) => void): ClientUnaryCall;
     delete(request: DeleteDatabaseRequest, metadata: Metadata, callback: (error: ServiceError | null, response: Operation) => void): ClientUnaryCall;

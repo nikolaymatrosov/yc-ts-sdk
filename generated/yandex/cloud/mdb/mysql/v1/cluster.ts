@@ -56,6 +56,8 @@ export interface Cluster {
     plannedOperation: MaintenanceOperation | undefined;
     /** User security groups */
     securityGroupIds: string[];
+    /** Deletion Protection inhibits deletion of the cluster */
+    deletionProtection: boolean;
 }
 
 export enum Cluster_Environment {
@@ -504,6 +506,7 @@ const baseCluster: object = {
     health: 0,
     status: 0,
     securityGroupIds: '',
+    deletionProtection: false,
 };
 
 export const Cluster = {
@@ -570,6 +573,9 @@ export const Cluster = {
         }
         for (const v of message.securityGroupIds) {
             writer.uint32(122).string(v!);
+        }
+        if (message.deletionProtection === true) {
+            writer.uint32(128).bool(message.deletionProtection);
         }
         return writer;
     },
@@ -648,6 +654,9 @@ export const Cluster = {
                     break;
                 case 15:
                     message.securityGroupIds.push(reader.string());
+                    break;
+                case 16:
+                    message.deletionProtection = reader.bool();
                     break;
                 default:
                     reader.skipType(tag & 7);
@@ -752,6 +761,14 @@ export const Cluster = {
                 message.securityGroupIds.push(String(e));
             }
         }
+        if (
+            object.deletionProtection !== undefined &&
+            object.deletionProtection !== null
+        ) {
+            message.deletionProtection = Boolean(object.deletionProtection);
+        } else {
+            message.deletionProtection = false;
+        }
         return message;
     },
 
@@ -801,6 +818,8 @@ export const Cluster = {
         } else {
             obj.securityGroupIds = [];
         }
+        message.deletionProtection !== undefined &&
+            (obj.deletionProtection = message.deletionProtection);
         return obj;
     },
 
@@ -898,6 +917,14 @@ export const Cluster = {
             for (const e of object.securityGroupIds) {
                 message.securityGroupIds.push(e);
             }
+        }
+        if (
+            object.deletionProtection !== undefined &&
+            object.deletionProtection !== null
+        ) {
+            message.deletionProtection = object.deletionProtection;
+        } else {
+            message.deletionProtection = false;
         }
         return message;
     },

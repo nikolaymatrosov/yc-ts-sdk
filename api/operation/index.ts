@@ -1,6 +1,6 @@
 import { OperationServiceService } from 'cloud/operation/operation_service';
 import { Client } from 'nice-grpc';
-import { SdkServiceDefinition, Session } from 'src';
+import { SdkServiceDefinition, Session } from 'src/index';
 
 export const OperationServiceDef: SdkServiceDefinition<
     typeof OperationServiceService

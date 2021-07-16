@@ -1,6 +1,6 @@
 import { DnsZoneServiceService } from 'cloud/dns/v1/dns_zone_service';
 import { Client } from 'nice-grpc';
-import { SdkServiceDefinition, Session } from 'src';
+import { SdkServiceDefinition, Session } from 'src/index';
 
 export const DnsZoneServiceDef: SdkServiceDefinition<
     typeof DnsZoneServiceService

@@ -11,30 +11,26 @@ export interface OAuthCredentialsConfig extends GenericConfig {
 export interface IamTokenCredentialsConfig extends GenericConfig {
     iamToken: string;
 }
+export interface ServiceAccountCredentialsConfig extends GenericConfig {
+    serviceAccountJson: IIAmCredentials;
+}
 export declare type SdkServiceDefinition<T> = ServiceDefinition<T> & {
     __endpointId: string;
 };
-interface TokenCreatorConfig {
-    iamToken?: string;
-    oauthToken?: string;
-    serviceAccountJson?: IIAmCredentials;
-    pollInterval: number;
-    metadataToken: boolean;
-}
+declare type SessionConfig = OAuthCredentialsConfig | IamTokenCredentialsConfig | ServiceAccountCredentialsConfig | GenericConfig;
 export declare type TokenCreator = () => Promise<string>;
-export interface SdkRestServiceImp<T> {
-    new (address: string, credentials: any, options: any, tokenCreator: TokenCreator): T;
-}
+export declare type SdkRestServiceImp<T> = new (address: string, credentials: any, options: any, tokenCreator: TokenCreator) => T;
 export declare type SdkRestServiceDefinition<T> = SdkRestServiceImp<T> & {
     __endpointId: string;
 };
 export declare class Session {
-    __config: TokenCreatorConfig;
-    private __endpointResolver;
-    private __channelCredentials;
-    private __tokenCreator;
-    constructor(config?: OAuthCredentialsConfig | IamTokenCredentialsConfig | GenericConfig);
+    private config;
+    private endpointResolver;
+    private channelCredentials;
+    constructor(config?: SessionConfig);
+    private _tokenCreator;
     get tokenCreator(): TokenCreator;
+    get pollInterval(): number | undefined;
     setEndpoint(newEndpoint: string): Promise<void>;
     client<Service extends ServiceDefinition<T>, T>(cls: SdkServiceDefinition<T>): Client<ServiceDefinition<T>>;
     restClient<T>(cls: SdkRestServiceDefinition<T>): T;

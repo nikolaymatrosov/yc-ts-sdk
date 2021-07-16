@@ -128,6 +128,8 @@ export interface CreateClusterRequest {
     networkId: string;
     /** User security groups */
     securityGroupIds: string[];
+    /** Deletion Protection inhibits deletion of the cluster */
+    deletionProtection: boolean;
 }
 
 export interface CreateClusterRequest_LabelsEntry {
@@ -166,6 +168,8 @@ export interface UpdateClusterRequest {
     maintenanceWindow: MaintenanceWindow | undefined;
     /** User security groups */
     securityGroupIds: string[];
+    /** Deletion Protection inhibits deletion of the cluster */
+    deletionProtection: boolean;
 }
 
 export interface UpdateClusterRequest_LabelsEntry {
@@ -802,6 +806,20 @@ export interface RestartHostsMetadata {
     hostNames: string[];
 }
 
+export interface StepdownHostsRequest {
+    /** Required. ID of the MongoDB cluster. */
+    clusterId: string;
+    /** Required. Name of the hosts to resetup. */
+    hostNames: string[];
+}
+
+export interface StepdownHostsMetadata {
+    /** Required. ID of the MongoDB cluster. */
+    clusterId: string;
+    /** Required. The name of hosts to resetup. */
+    hostNames: string[];
+}
+
 export interface HostSpec {
     /**
      * ID of the availability zone where the host resides.
@@ -1303,6 +1321,7 @@ const baseCreateClusterRequest: object = {
     environment: 0,
     networkId: '',
     securityGroupIds: '',
+    deletionProtection: false,
 };
 
 export const CreateClusterRequest = {
@@ -1348,6 +1367,9 @@ export const CreateClusterRequest = {
         }
         for (const v of message.securityGroupIds) {
             writer.uint32(90).string(v!);
+        }
+        if (message.deletionProtection === true) {
+            writer.uint32(96).bool(message.deletionProtection);
         }
         return writer;
     },
@@ -1415,6 +1437,9 @@ export const CreateClusterRequest = {
                     break;
                 case 11:
                     message.securityGroupIds.push(reader.string());
+                    break;
+                case 12:
+                    message.deletionProtection = reader.bool();
                     break;
                 default:
                     reader.skipType(tag & 7);
@@ -1494,6 +1519,14 @@ export const CreateClusterRequest = {
                 message.securityGroupIds.push(String(e));
             }
         }
+        if (
+            object.deletionProtection !== undefined &&
+            object.deletionProtection !== null
+        ) {
+            message.deletionProtection = Boolean(object.deletionProtection);
+        } else {
+            message.deletionProtection = false;
+        }
         return message;
     },
 
@@ -1542,6 +1575,8 @@ export const CreateClusterRequest = {
         } else {
             obj.securityGroupIds = [];
         }
+        message.deletionProtection !== undefined &&
+            (obj.deletionProtection = message.deletionProtection);
         return obj;
     },
 
@@ -1616,6 +1651,14 @@ export const CreateClusterRequest = {
             for (const e of object.securityGroupIds) {
                 message.securityGroupIds.push(e);
             }
+        }
+        if (
+            object.deletionProtection !== undefined &&
+            object.deletionProtection !== null
+        ) {
+            message.deletionProtection = object.deletionProtection;
+        } else {
+            message.deletionProtection = false;
         }
         return message;
     },
@@ -1783,6 +1826,7 @@ const baseUpdateClusterRequest: object = {
     description: '',
     name: '',
     securityGroupIds: '',
+    deletionProtection: false,
 };
 
 export const UpdateClusterRequest = {
@@ -1825,6 +1869,9 @@ export const UpdateClusterRequest = {
         }
         for (const v of message.securityGroupIds) {
             writer.uint32(66).string(v!);
+        }
+        if (message.deletionProtection === true) {
+            writer.uint32(72).bool(message.deletionProtection);
         }
         return writer;
     },
@@ -1880,6 +1927,9 @@ export const UpdateClusterRequest = {
                     break;
                 case 8:
                     message.securityGroupIds.push(reader.string());
+                    break;
+                case 9:
+                    message.deletionProtection = reader.bool();
                     break;
                 default:
                     reader.skipType(tag & 7);
@@ -1941,6 +1991,14 @@ export const UpdateClusterRequest = {
                 message.securityGroupIds.push(String(e));
             }
         }
+        if (
+            object.deletionProtection !== undefined &&
+            object.deletionProtection !== null
+        ) {
+            message.deletionProtection = Boolean(object.deletionProtection);
+        } else {
+            message.deletionProtection = false;
+        }
         return message;
     },
 
@@ -1973,6 +2031,8 @@ export const UpdateClusterRequest = {
         } else {
             obj.securityGroupIds = [];
         }
+        message.deletionProtection !== undefined &&
+            (obj.deletionProtection = message.deletionProtection);
         return obj;
     },
 
@@ -2031,6 +2091,14 @@ export const UpdateClusterRequest = {
             for (const e of object.securityGroupIds) {
                 message.securityGroupIds.push(e);
             }
+        }
+        if (
+            object.deletionProtection !== undefined &&
+            object.deletionProtection !== null
+        ) {
+            message.deletionProtection = object.deletionProtection;
+        } else {
+            message.deletionProtection = false;
         }
         return message;
     },
@@ -7030,6 +7098,188 @@ export const RestartHostsMetadata = {
     },
 };
 
+const baseStepdownHostsRequest: object = { clusterId: '', hostNames: '' };
+
+export const StepdownHostsRequest = {
+    encode(
+        message: StepdownHostsRequest,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        if (message.clusterId !== '') {
+            writer.uint32(10).string(message.clusterId);
+        }
+        for (const v of message.hostNames) {
+            writer.uint32(18).string(v!);
+        }
+        return writer;
+    },
+
+    decode(
+        input: _m0.Reader | Uint8Array,
+        length?: number
+    ): StepdownHostsRequest {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = { ...baseStepdownHostsRequest } as StepdownHostsRequest;
+        message.hostNames = [];
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.clusterId = reader.string();
+                    break;
+                case 2:
+                    message.hostNames.push(reader.string());
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): StepdownHostsRequest {
+        const message = { ...baseStepdownHostsRequest } as StepdownHostsRequest;
+        message.hostNames = [];
+        if (object.clusterId !== undefined && object.clusterId !== null) {
+            message.clusterId = String(object.clusterId);
+        } else {
+            message.clusterId = '';
+        }
+        if (object.hostNames !== undefined && object.hostNames !== null) {
+            for (const e of object.hostNames) {
+                message.hostNames.push(String(e));
+            }
+        }
+        return message;
+    },
+
+    toJSON(message: StepdownHostsRequest): unknown {
+        const obj: any = {};
+        message.clusterId !== undefined && (obj.clusterId = message.clusterId);
+        if (message.hostNames) {
+            obj.hostNames = message.hostNames.map((e) => e);
+        } else {
+            obj.hostNames = [];
+        }
+        return obj;
+    },
+
+    fromPartial(
+        object: DeepPartial<StepdownHostsRequest>
+    ): StepdownHostsRequest {
+        const message = { ...baseStepdownHostsRequest } as StepdownHostsRequest;
+        message.hostNames = [];
+        if (object.clusterId !== undefined && object.clusterId !== null) {
+            message.clusterId = object.clusterId;
+        } else {
+            message.clusterId = '';
+        }
+        if (object.hostNames !== undefined && object.hostNames !== null) {
+            for (const e of object.hostNames) {
+                message.hostNames.push(e);
+            }
+        }
+        return message;
+    },
+};
+
+const baseStepdownHostsMetadata: object = { clusterId: '', hostNames: '' };
+
+export const StepdownHostsMetadata = {
+    encode(
+        message: StepdownHostsMetadata,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        if (message.clusterId !== '') {
+            writer.uint32(10).string(message.clusterId);
+        }
+        for (const v of message.hostNames) {
+            writer.uint32(18).string(v!);
+        }
+        return writer;
+    },
+
+    decode(
+        input: _m0.Reader | Uint8Array,
+        length?: number
+    ): StepdownHostsMetadata {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = {
+            ...baseStepdownHostsMetadata,
+        } as StepdownHostsMetadata;
+        message.hostNames = [];
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.clusterId = reader.string();
+                    break;
+                case 2:
+                    message.hostNames.push(reader.string());
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): StepdownHostsMetadata {
+        const message = {
+            ...baseStepdownHostsMetadata,
+        } as StepdownHostsMetadata;
+        message.hostNames = [];
+        if (object.clusterId !== undefined && object.clusterId !== null) {
+            message.clusterId = String(object.clusterId);
+        } else {
+            message.clusterId = '';
+        }
+        if (object.hostNames !== undefined && object.hostNames !== null) {
+            for (const e of object.hostNames) {
+                message.hostNames.push(String(e));
+            }
+        }
+        return message;
+    },
+
+    toJSON(message: StepdownHostsMetadata): unknown {
+        const obj: any = {};
+        message.clusterId !== undefined && (obj.clusterId = message.clusterId);
+        if (message.hostNames) {
+            obj.hostNames = message.hostNames.map((e) => e);
+        } else {
+            obj.hostNames = [];
+        }
+        return obj;
+    },
+
+    fromPartial(
+        object: DeepPartial<StepdownHostsMetadata>
+    ): StepdownHostsMetadata {
+        const message = {
+            ...baseStepdownHostsMetadata,
+        } as StepdownHostsMetadata;
+        message.hostNames = [];
+        if (object.clusterId !== undefined && object.clusterId !== null) {
+            message.clusterId = object.clusterId;
+        } else {
+            message.clusterId = '';
+        }
+        if (object.hostNames !== undefined && object.hostNames !== null) {
+            for (const e of object.hostNames) {
+                message.hostNames.push(e);
+            }
+        }
+        return message;
+    },
+};
+
 const baseHostSpec: object = {
     zoneId: '',
     subnetId: '',
@@ -10222,6 +10472,19 @@ export const ClusterServiceService = {
             Buffer.from(Operation.encode(value).finish()),
         responseDeserialize: (value: Buffer) => Operation.decode(value),
     },
+    /** Stepdown hosts. */
+    stepdownHosts: {
+        path: '/yandex.cloud.mdb.mongodb.v1.ClusterService/StepdownHosts',
+        requestStream: false,
+        responseStream: false,
+        requestSerialize: (value: StepdownHostsRequest) =>
+            Buffer.from(StepdownHostsRequest.encode(value).finish()),
+        requestDeserialize: (value: Buffer) =>
+            StepdownHostsRequest.decode(value),
+        responseSerialize: (value: Operation) =>
+            Buffer.from(Operation.encode(value).finish()),
+        responseDeserialize: (value: Buffer) => Operation.decode(value),
+    },
 } as const;
 
 export interface ClusterServiceServer extends UntypedServiceImplementation {
@@ -10303,6 +10566,8 @@ export interface ClusterServiceServer extends UntypedServiceImplementation {
     resetupHosts: handleUnaryCall<ResetupHostsRequest, Operation>;
     /** Restarts hosts. */
     restartHosts: handleUnaryCall<RestartHostsRequest, Operation>;
+    /** Stepdown hosts. */
+    stepdownHosts: handleUnaryCall<StepdownHostsRequest, Operation>;
 }
 
 export interface ClusterServiceClient extends Client {
@@ -10760,6 +11025,22 @@ export interface ClusterServiceClient extends Client {
     ): ClientUnaryCall;
     restartHosts(
         request: RestartHostsRequest,
+        metadata: Metadata,
+        options: Partial<CallOptions>,
+        callback: (error: ServiceError | null, response: Operation) => void
+    ): ClientUnaryCall;
+    /** Stepdown hosts. */
+    stepdownHosts(
+        request: StepdownHostsRequest,
+        callback: (error: ServiceError | null, response: Operation) => void
+    ): ClientUnaryCall;
+    stepdownHosts(
+        request: StepdownHostsRequest,
+        metadata: Metadata,
+        callback: (error: ServiceError | null, response: Operation) => void
+    ): ClientUnaryCall;
+    stepdownHosts(
+        request: StepdownHostsRequest,
         metadata: Metadata,
         options: Partial<CallOptions>,
         callback: (error: ServiceError | null, response: Operation) => void

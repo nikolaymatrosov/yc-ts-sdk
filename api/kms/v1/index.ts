@@ -1,7 +1,7 @@
 import { SymmetricCryptoServiceService } from 'cloud/kms/v1/symmetric_crypto_service';
 import { SymmetricKeyServiceService } from 'cloud/kms/v1/symmetric_key_service';
 import { Client } from 'nice-grpc';
-import { SdkServiceDefinition, Session } from 'src';
+import { SdkServiceDefinition, Session } from 'src/index';
 
 export const SymmetricCryptoServiceDef: SdkServiceDefinition<
     typeof SymmetricCryptoServiceService

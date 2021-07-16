@@ -1,6 +1,6 @@
 import { TriggerServiceService } from 'cloud/serverless/triggers/v1/trigger_service';
 import { Client } from 'nice-grpc';
-import { SdkServiceDefinition, Session } from 'src';
+import { SdkServiceDefinition, Session } from 'src/index';
 
 export const TriggerServiceDef: SdkServiceDefinition<
     typeof TriggerServiceService

@@ -60,6 +60,8 @@ export interface Cluster {
     securityGroupIds: string[];
     /** TLS port and functionality on\off */
     tlsEnabled: boolean;
+    /** Deletion Protection inhibits deletion of the cluster */
+    deletionProtection: boolean;
 }
 
 export enum Cluster_Environment {
@@ -516,6 +518,7 @@ const baseCluster: object = {
     sharded: false,
     securityGroupIds: '',
     tlsEnabled: false,
+    deletionProtection: false,
 };
 
 export const Cluster = {
@@ -588,6 +591,9 @@ export const Cluster = {
         }
         if (message.tlsEnabled === true) {
             writer.uint32(136).bool(message.tlsEnabled);
+        }
+        if (message.deletionProtection === true) {
+            writer.uint32(144).bool(message.deletionProtection);
         }
         return writer;
     },
@@ -672,6 +678,9 @@ export const Cluster = {
                     break;
                 case 17:
                     message.tlsEnabled = reader.bool();
+                    break;
+                case 18:
+                    message.deletionProtection = reader.bool();
                     break;
                 default:
                     reader.skipType(tag & 7);
@@ -786,6 +795,14 @@ export const Cluster = {
         } else {
             message.tlsEnabled = false;
         }
+        if (
+            object.deletionProtection !== undefined &&
+            object.deletionProtection !== null
+        ) {
+            message.deletionProtection = Boolean(object.deletionProtection);
+        } else {
+            message.deletionProtection = false;
+        }
         return message;
     },
 
@@ -838,6 +855,8 @@ export const Cluster = {
         }
         message.tlsEnabled !== undefined &&
             (obj.tlsEnabled = message.tlsEnabled);
+        message.deletionProtection !== undefined &&
+            (obj.deletionProtection = message.deletionProtection);
         return obj;
     },
 
@@ -945,6 +964,14 @@ export const Cluster = {
             message.tlsEnabled = object.tlsEnabled;
         } else {
             message.tlsEnabled = false;
+        }
+        if (
+            object.deletionProtection !== undefined &&
+            object.deletionProtection !== null
+        ) {
+            message.deletionProtection = object.deletionProtection;
+        } else {
+            message.deletionProtection = false;
         }
         return message;
     },

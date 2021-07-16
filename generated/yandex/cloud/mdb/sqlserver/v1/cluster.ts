@@ -50,6 +50,10 @@ export interface Cluster {
     status: Cluster_Status;
     /** User security groups */
     securityGroupIds: string[];
+    /** Deletion Protection inhibits deletion of the cluster */
+    deletionProtection: boolean;
+    /** SQL Server Collation */
+    sqlcollation: string;
 }
 
 export enum Cluster_Environment {
@@ -485,6 +489,8 @@ const baseCluster: object = {
     health: 0,
     status: 0,
     securityGroupIds: '',
+    deletionProtection: false,
+    sqlcollation: '',
 };
 
 export const Cluster = {
@@ -539,6 +545,12 @@ export const Cluster = {
         }
         for (const v of message.securityGroupIds) {
             writer.uint32(106).string(v!);
+        }
+        if (message.deletionProtection === true) {
+            writer.uint32(112).bool(message.deletionProtection);
+        }
+        if (message.sqlcollation !== '') {
+            writer.uint32(122).string(message.sqlcollation);
         }
         return writer;
     },
@@ -605,6 +617,12 @@ export const Cluster = {
                     break;
                 case 13:
                     message.securityGroupIds.push(reader.string());
+                    break;
+                case 14:
+                    message.deletionProtection = reader.bool();
+                    break;
+                case 15:
+                    message.sqlcollation = reader.string();
                     break;
                 default:
                     reader.skipType(tag & 7);
@@ -689,6 +707,19 @@ export const Cluster = {
                 message.securityGroupIds.push(String(e));
             }
         }
+        if (
+            object.deletionProtection !== undefined &&
+            object.deletionProtection !== null
+        ) {
+            message.deletionProtection = Boolean(object.deletionProtection);
+        } else {
+            message.deletionProtection = false;
+        }
+        if (object.sqlcollation !== undefined && object.sqlcollation !== null) {
+            message.sqlcollation = String(object.sqlcollation);
+        } else {
+            message.sqlcollation = '';
+        }
         return message;
     },
 
@@ -730,6 +761,10 @@ export const Cluster = {
         } else {
             obj.securityGroupIds = [];
         }
+        message.deletionProtection !== undefined &&
+            (obj.deletionProtection = message.deletionProtection);
+        message.sqlcollation !== undefined &&
+            (obj.sqlcollation = message.sqlcollation);
         return obj;
     },
 
@@ -807,6 +842,19 @@ export const Cluster = {
             for (const e of object.securityGroupIds) {
                 message.securityGroupIds.push(e);
             }
+        }
+        if (
+            object.deletionProtection !== undefined &&
+            object.deletionProtection !== null
+        ) {
+            message.deletionProtection = object.deletionProtection;
+        } else {
+            message.deletionProtection = false;
+        }
+        if (object.sqlcollation !== undefined && object.sqlcollation !== null) {
+            message.sqlcollation = object.sqlcollation;
+        } else {
+            message.sqlcollation = '';
         }
         return message;
     },

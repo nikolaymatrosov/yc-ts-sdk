@@ -183,6 +183,15 @@ packages:
       SecretService:
         endpoint: lockbox
 
+  logging.v1:
+    services:
+      LogGroupService:
+        endpoint: logging
+      LogIngestionService:
+        endpoint: log-ingestion
+      LogReadingService:
+        endpoint: log-reading
+
   mdb.clickhouse.v1:
     services:
       BackupService:
@@ -300,6 +309,11 @@ packages:
     services:
       FunctionService:
         endpoint: serverless-functions
+
+  serverless.mdbproxy.v1:
+    services:
+      ProxyService:
+        endpoint: mdbproxy
 
   serverless.triggers.v1:
     services:

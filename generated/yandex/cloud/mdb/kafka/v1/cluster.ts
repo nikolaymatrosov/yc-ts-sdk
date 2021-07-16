@@ -53,6 +53,8 @@ export interface Cluster {
     securityGroupIds: string[];
     /** Host groups hosting VMs of the cluster. */
     hostGroupIds: string[];
+    /** Deletion Protection inhibits deletion of the cluster */
+    deletionProtection: boolean;
 }
 
 export enum Cluster_Environment {
@@ -259,6 +261,7 @@ export interface ConfigSpec_Kafka {
     resources: Resources | undefined;
     kafkaConfig21: Kafkaconfig21 | undefined;
     kafkaConfig26: Kafkaconfig26 | undefined;
+    kafkaConfig28: Kafkaconfig28 | undefined;
 }
 
 export interface ConfigSpec_Zookeeper {
@@ -416,6 +419,75 @@ export interface Kafkaconfig26 {
     defaultReplicationFactor: number | undefined;
 }
 
+/** Kafka version 2.8 broker configuration. */
+export interface Kafkaconfig28 {
+    /** Cluster topics compression type. */
+    compressionType: CompressionType;
+    /**
+     * The number of messages accumulated on a log partition before messages are flushed to disk.
+     *
+     * This is the global cluster-level setting that can be overridden on a topic level by using the [TopicConfig2_8.flush_messages] setting.
+     */
+    logFlushIntervalMessages: number | undefined;
+    /**
+     * The maximum time (in milliseconds) that a message in any topic is kept in memory before flushed to disk.
+     * If not set, the value of [log_flush_scheduler_interval_ms] is used.
+     *
+     * This is the global cluster-level setting that can be overridden on a topic level by using the [TopicConfig2_8.flush_ms] setting.
+     */
+    logFlushIntervalMs: number | undefined;
+    /**
+     * The frequency of checks (in milliseconds) for any logs that need to be flushed to disk.
+     * This check is done by the log flusher.
+     */
+    logFlushSchedulerIntervalMs: number | undefined;
+    /**
+     * Partition size limit; Kafka will discard old log segments to free up space if `delete` [TopicConfig2_8.cleanup_policy] is in effect.
+     * This setting is helpful if you need to control the size of a log due to limited disk space.
+     *
+     * This is the global cluster-level setting that can be overridden on a topic level by using the [TopicConfig2_8.retention_bytes] setting.
+     */
+    logRetentionBytes: number | undefined;
+    /** The number of hours to keep a log segment file before deleting it. */
+    logRetentionHours: number | undefined;
+    /**
+     * The number of minutes to keep a log segment file before deleting it.
+     *
+     * If not set, the value of [log_retention_hours] is used.
+     */
+    logRetentionMinutes: number | undefined;
+    /**
+     * The number of milliseconds to keep a log segment file before deleting it.
+     *
+     * If not set, the value of [log_retention_minutes] is used.
+     *
+     * This is the global cluster-level setting that can be overridden on a topic level by using the [TopicConfig2_8.retention_ms] setting.
+     */
+    logRetentionMs: number | undefined;
+    /**
+     * The maximum size of a single log file.
+     *
+     * This is the global cluster-level setting that can be overridden on a topic level by using the [TopicConfig2_8.segment_bytes] setting.
+     */
+    logSegmentBytes: number | undefined;
+    /**
+     * Should pre allocate file when create new segment?
+     *
+     * This is the global cluster-level setting that can be overridden on a topic level by using the [TopicConfig2_8.preallocate] setting.
+     */
+    logPreallocate: boolean | undefined;
+    /** The SO_SNDBUF buffer of the socket server sockets. If the value is -1, the OS default will be used. */
+    socketSendBufferBytes: number | undefined;
+    /** The SO_RCVBUF buffer of the socket server sockets. If the value is -1, the OS default will be used. */
+    socketReceiveBufferBytes: number | undefined;
+    /** Enable auto creation of topic on the server */
+    autoCreateTopicsEnable: boolean | undefined;
+    /** Default number of partitions per topic on the whole cluster */
+    numPartitions: number | undefined;
+    /** Default replication factor of the topic on the whole cluster */
+    defaultReplicationFactor: number | undefined;
+}
+
 /** Cluster host metadata. */
 export interface Host {
     /** Name of the host. */
@@ -539,6 +611,7 @@ const baseCluster: object = {
     status: 0,
     securityGroupIds: '',
     hostGroupIds: '',
+    deletionProtection: false,
 };
 
 export const Cluster = {
@@ -596,6 +669,9 @@ export const Cluster = {
         }
         for (const v of message.hostGroupIds) {
             writer.uint32(114).string(v!);
+        }
+        if (message.deletionProtection === true) {
+            writer.uint32(120).bool(message.deletionProtection);
         }
         return writer;
     },
@@ -663,6 +739,9 @@ export const Cluster = {
                     break;
                 case 14:
                     message.hostGroupIds.push(reader.string());
+                    break;
+                case 15:
+                    message.deletionProtection = reader.bool();
                     break;
                 default:
                     reader.skipType(tag & 7);
@@ -753,6 +832,14 @@ export const Cluster = {
                 message.hostGroupIds.push(String(e));
             }
         }
+        if (
+            object.deletionProtection !== undefined &&
+            object.deletionProtection !== null
+        ) {
+            message.deletionProtection = Boolean(object.deletionProtection);
+        } else {
+            message.deletionProtection = false;
+        }
         return message;
     },
 
@@ -799,6 +886,8 @@ export const Cluster = {
         } else {
             obj.hostGroupIds = [];
         }
+        message.deletionProtection !== undefined &&
+            (obj.deletionProtection = message.deletionProtection);
         return obj;
     },
 
@@ -882,6 +971,14 @@ export const Cluster = {
             for (const e of object.hostGroupIds) {
                 message.hostGroupIds.push(e);
             }
+        }
+        if (
+            object.deletionProtection !== undefined &&
+            object.deletionProtection !== null
+        ) {
+            message.deletionProtection = object.deletionProtection;
+        } else {
+            message.deletionProtection = false;
         }
         return message;
     },
@@ -1299,6 +1396,12 @@ export const ConfigSpec_Kafka = {
                 writer.uint32(26).fork()
             ).ldelim();
         }
+        if (message.kafkaConfig28 !== undefined) {
+            Kafkaconfig28.encode(
+                message.kafkaConfig28,
+                writer.uint32(34).fork()
+            ).ldelim();
+        }
         return writer;
     },
 
@@ -1324,6 +1427,12 @@ export const ConfigSpec_Kafka = {
                     break;
                 case 3:
                     message.kafkaConfig26 = Kafkaconfig26.decode(
+                        reader,
+                        reader.uint32()
+                    );
+                    break;
+                case 4:
+                    message.kafkaConfig28 = Kafkaconfig28.decode(
                         reader,
                         reader.uint32()
                     );
@@ -1363,6 +1472,16 @@ export const ConfigSpec_Kafka = {
         } else {
             message.kafkaConfig26 = undefined;
         }
+        if (
+            object.kafkaConfig28 !== undefined &&
+            object.kafkaConfig28 !== null
+        ) {
+            message.kafkaConfig28 = Kafkaconfig28.fromJSON(
+                object.kafkaConfig28
+            );
+        } else {
+            message.kafkaConfig28 = undefined;
+        }
         return message;
     },
 
@@ -1379,6 +1498,10 @@ export const ConfigSpec_Kafka = {
         message.kafkaConfig26 !== undefined &&
             (obj.kafkaConfig26 = message.kafkaConfig26
                 ? Kafkaconfig26.toJSON(message.kafkaConfig26)
+                : undefined);
+        message.kafkaConfig28 !== undefined &&
+            (obj.kafkaConfig28 = message.kafkaConfig28
+                ? Kafkaconfig28.toJSON(message.kafkaConfig28)
                 : undefined);
         return obj;
     },
@@ -1409,6 +1532,16 @@ export const ConfigSpec_Kafka = {
             );
         } else {
             message.kafkaConfig26 = undefined;
+        }
+        if (
+            object.kafkaConfig28 !== undefined &&
+            object.kafkaConfig28 !== null
+        ) {
+            message.kafkaConfig28 = Kafkaconfig28.fromPartial(
+                object.kafkaConfig28
+            );
+        } else {
+            message.kafkaConfig28 = undefined;
         }
         return message;
     },
@@ -2475,6 +2608,510 @@ export const Kafkaconfig26 = {
 
     fromPartial(object: DeepPartial<Kafkaconfig26>): Kafkaconfig26 {
         const message = { ...baseKafkaconfig26 } as Kafkaconfig26;
+        if (
+            object.compressionType !== undefined &&
+            object.compressionType !== null
+        ) {
+            message.compressionType = object.compressionType;
+        } else {
+            message.compressionType = 0;
+        }
+        if (
+            object.logFlushIntervalMessages !== undefined &&
+            object.logFlushIntervalMessages !== null
+        ) {
+            message.logFlushIntervalMessages = object.logFlushIntervalMessages;
+        } else {
+            message.logFlushIntervalMessages = undefined;
+        }
+        if (
+            object.logFlushIntervalMs !== undefined &&
+            object.logFlushIntervalMs !== null
+        ) {
+            message.logFlushIntervalMs = object.logFlushIntervalMs;
+        } else {
+            message.logFlushIntervalMs = undefined;
+        }
+        if (
+            object.logFlushSchedulerIntervalMs !== undefined &&
+            object.logFlushSchedulerIntervalMs !== null
+        ) {
+            message.logFlushSchedulerIntervalMs =
+                object.logFlushSchedulerIntervalMs;
+        } else {
+            message.logFlushSchedulerIntervalMs = undefined;
+        }
+        if (
+            object.logRetentionBytes !== undefined &&
+            object.logRetentionBytes !== null
+        ) {
+            message.logRetentionBytes = object.logRetentionBytes;
+        } else {
+            message.logRetentionBytes = undefined;
+        }
+        if (
+            object.logRetentionHours !== undefined &&
+            object.logRetentionHours !== null
+        ) {
+            message.logRetentionHours = object.logRetentionHours;
+        } else {
+            message.logRetentionHours = undefined;
+        }
+        if (
+            object.logRetentionMinutes !== undefined &&
+            object.logRetentionMinutes !== null
+        ) {
+            message.logRetentionMinutes = object.logRetentionMinutes;
+        } else {
+            message.logRetentionMinutes = undefined;
+        }
+        if (
+            object.logRetentionMs !== undefined &&
+            object.logRetentionMs !== null
+        ) {
+            message.logRetentionMs = object.logRetentionMs;
+        } else {
+            message.logRetentionMs = undefined;
+        }
+        if (
+            object.logSegmentBytes !== undefined &&
+            object.logSegmentBytes !== null
+        ) {
+            message.logSegmentBytes = object.logSegmentBytes;
+        } else {
+            message.logSegmentBytes = undefined;
+        }
+        if (
+            object.logPreallocate !== undefined &&
+            object.logPreallocate !== null
+        ) {
+            message.logPreallocate = object.logPreallocate;
+        } else {
+            message.logPreallocate = undefined;
+        }
+        if (
+            object.socketSendBufferBytes !== undefined &&
+            object.socketSendBufferBytes !== null
+        ) {
+            message.socketSendBufferBytes = object.socketSendBufferBytes;
+        } else {
+            message.socketSendBufferBytes = undefined;
+        }
+        if (
+            object.socketReceiveBufferBytes !== undefined &&
+            object.socketReceiveBufferBytes !== null
+        ) {
+            message.socketReceiveBufferBytes = object.socketReceiveBufferBytes;
+        } else {
+            message.socketReceiveBufferBytes = undefined;
+        }
+        if (
+            object.autoCreateTopicsEnable !== undefined &&
+            object.autoCreateTopicsEnable !== null
+        ) {
+            message.autoCreateTopicsEnable = object.autoCreateTopicsEnable;
+        } else {
+            message.autoCreateTopicsEnable = undefined;
+        }
+        if (
+            object.numPartitions !== undefined &&
+            object.numPartitions !== null
+        ) {
+            message.numPartitions = object.numPartitions;
+        } else {
+            message.numPartitions = undefined;
+        }
+        if (
+            object.defaultReplicationFactor !== undefined &&
+            object.defaultReplicationFactor !== null
+        ) {
+            message.defaultReplicationFactor = object.defaultReplicationFactor;
+        } else {
+            message.defaultReplicationFactor = undefined;
+        }
+        return message;
+    },
+};
+
+const baseKafkaconfig28: object = { compressionType: 0 };
+
+export const Kafkaconfig28 = {
+    encode(
+        message: Kafkaconfig28,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        if (message.compressionType !== 0) {
+            writer.uint32(8).int32(message.compressionType);
+        }
+        if (message.logFlushIntervalMessages !== undefined) {
+            Int64Value.encode(
+                { value: message.logFlushIntervalMessages! },
+                writer.uint32(18).fork()
+            ).ldelim();
+        }
+        if (message.logFlushIntervalMs !== undefined) {
+            Int64Value.encode(
+                { value: message.logFlushIntervalMs! },
+                writer.uint32(26).fork()
+            ).ldelim();
+        }
+        if (message.logFlushSchedulerIntervalMs !== undefined) {
+            Int64Value.encode(
+                { value: message.logFlushSchedulerIntervalMs! },
+                writer.uint32(34).fork()
+            ).ldelim();
+        }
+        if (message.logRetentionBytes !== undefined) {
+            Int64Value.encode(
+                { value: message.logRetentionBytes! },
+                writer.uint32(42).fork()
+            ).ldelim();
+        }
+        if (message.logRetentionHours !== undefined) {
+            Int64Value.encode(
+                { value: message.logRetentionHours! },
+                writer.uint32(50).fork()
+            ).ldelim();
+        }
+        if (message.logRetentionMinutes !== undefined) {
+            Int64Value.encode(
+                { value: message.logRetentionMinutes! },
+                writer.uint32(58).fork()
+            ).ldelim();
+        }
+        if (message.logRetentionMs !== undefined) {
+            Int64Value.encode(
+                { value: message.logRetentionMs! },
+                writer.uint32(66).fork()
+            ).ldelim();
+        }
+        if (message.logSegmentBytes !== undefined) {
+            Int64Value.encode(
+                { value: message.logSegmentBytes! },
+                writer.uint32(74).fork()
+            ).ldelim();
+        }
+        if (message.logPreallocate !== undefined) {
+            BoolValue.encode(
+                { value: message.logPreallocate! },
+                writer.uint32(82).fork()
+            ).ldelim();
+        }
+        if (message.socketSendBufferBytes !== undefined) {
+            Int64Value.encode(
+                { value: message.socketSendBufferBytes! },
+                writer.uint32(90).fork()
+            ).ldelim();
+        }
+        if (message.socketReceiveBufferBytes !== undefined) {
+            Int64Value.encode(
+                { value: message.socketReceiveBufferBytes! },
+                writer.uint32(98).fork()
+            ).ldelim();
+        }
+        if (message.autoCreateTopicsEnable !== undefined) {
+            BoolValue.encode(
+                { value: message.autoCreateTopicsEnable! },
+                writer.uint32(106).fork()
+            ).ldelim();
+        }
+        if (message.numPartitions !== undefined) {
+            Int64Value.encode(
+                { value: message.numPartitions! },
+                writer.uint32(114).fork()
+            ).ldelim();
+        }
+        if (message.defaultReplicationFactor !== undefined) {
+            Int64Value.encode(
+                { value: message.defaultReplicationFactor! },
+                writer.uint32(122).fork()
+            ).ldelim();
+        }
+        return writer;
+    },
+
+    decode(input: _m0.Reader | Uint8Array, length?: number): Kafkaconfig28 {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = { ...baseKafkaconfig28 } as Kafkaconfig28;
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.compressionType = reader.int32() as any;
+                    break;
+                case 2:
+                    message.logFlushIntervalMessages = Int64Value.decode(
+                        reader,
+                        reader.uint32()
+                    ).value;
+                    break;
+                case 3:
+                    message.logFlushIntervalMs = Int64Value.decode(
+                        reader,
+                        reader.uint32()
+                    ).value;
+                    break;
+                case 4:
+                    message.logFlushSchedulerIntervalMs = Int64Value.decode(
+                        reader,
+                        reader.uint32()
+                    ).value;
+                    break;
+                case 5:
+                    message.logRetentionBytes = Int64Value.decode(
+                        reader,
+                        reader.uint32()
+                    ).value;
+                    break;
+                case 6:
+                    message.logRetentionHours = Int64Value.decode(
+                        reader,
+                        reader.uint32()
+                    ).value;
+                    break;
+                case 7:
+                    message.logRetentionMinutes = Int64Value.decode(
+                        reader,
+                        reader.uint32()
+                    ).value;
+                    break;
+                case 8:
+                    message.logRetentionMs = Int64Value.decode(
+                        reader,
+                        reader.uint32()
+                    ).value;
+                    break;
+                case 9:
+                    message.logSegmentBytes = Int64Value.decode(
+                        reader,
+                        reader.uint32()
+                    ).value;
+                    break;
+                case 10:
+                    message.logPreallocate = BoolValue.decode(
+                        reader,
+                        reader.uint32()
+                    ).value;
+                    break;
+                case 11:
+                    message.socketSendBufferBytes = Int64Value.decode(
+                        reader,
+                        reader.uint32()
+                    ).value;
+                    break;
+                case 12:
+                    message.socketReceiveBufferBytes = Int64Value.decode(
+                        reader,
+                        reader.uint32()
+                    ).value;
+                    break;
+                case 13:
+                    message.autoCreateTopicsEnable = BoolValue.decode(
+                        reader,
+                        reader.uint32()
+                    ).value;
+                    break;
+                case 14:
+                    message.numPartitions = Int64Value.decode(
+                        reader,
+                        reader.uint32()
+                    ).value;
+                    break;
+                case 15:
+                    message.defaultReplicationFactor = Int64Value.decode(
+                        reader,
+                        reader.uint32()
+                    ).value;
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): Kafkaconfig28 {
+        const message = { ...baseKafkaconfig28 } as Kafkaconfig28;
+        if (
+            object.compressionType !== undefined &&
+            object.compressionType !== null
+        ) {
+            message.compressionType = compressionTypeFromJSON(
+                object.compressionType
+            );
+        } else {
+            message.compressionType = 0;
+        }
+        if (
+            object.logFlushIntervalMessages !== undefined &&
+            object.logFlushIntervalMessages !== null
+        ) {
+            message.logFlushIntervalMessages = Number(
+                object.logFlushIntervalMessages
+            );
+        } else {
+            message.logFlushIntervalMessages = undefined;
+        }
+        if (
+            object.logFlushIntervalMs !== undefined &&
+            object.logFlushIntervalMs !== null
+        ) {
+            message.logFlushIntervalMs = Number(object.logFlushIntervalMs);
+        } else {
+            message.logFlushIntervalMs = undefined;
+        }
+        if (
+            object.logFlushSchedulerIntervalMs !== undefined &&
+            object.logFlushSchedulerIntervalMs !== null
+        ) {
+            message.logFlushSchedulerIntervalMs = Number(
+                object.logFlushSchedulerIntervalMs
+            );
+        } else {
+            message.logFlushSchedulerIntervalMs = undefined;
+        }
+        if (
+            object.logRetentionBytes !== undefined &&
+            object.logRetentionBytes !== null
+        ) {
+            message.logRetentionBytes = Number(object.logRetentionBytes);
+        } else {
+            message.logRetentionBytes = undefined;
+        }
+        if (
+            object.logRetentionHours !== undefined &&
+            object.logRetentionHours !== null
+        ) {
+            message.logRetentionHours = Number(object.logRetentionHours);
+        } else {
+            message.logRetentionHours = undefined;
+        }
+        if (
+            object.logRetentionMinutes !== undefined &&
+            object.logRetentionMinutes !== null
+        ) {
+            message.logRetentionMinutes = Number(object.logRetentionMinutes);
+        } else {
+            message.logRetentionMinutes = undefined;
+        }
+        if (
+            object.logRetentionMs !== undefined &&
+            object.logRetentionMs !== null
+        ) {
+            message.logRetentionMs = Number(object.logRetentionMs);
+        } else {
+            message.logRetentionMs = undefined;
+        }
+        if (
+            object.logSegmentBytes !== undefined &&
+            object.logSegmentBytes !== null
+        ) {
+            message.logSegmentBytes = Number(object.logSegmentBytes);
+        } else {
+            message.logSegmentBytes = undefined;
+        }
+        if (
+            object.logPreallocate !== undefined &&
+            object.logPreallocate !== null
+        ) {
+            message.logPreallocate = Boolean(object.logPreallocate);
+        } else {
+            message.logPreallocate = undefined;
+        }
+        if (
+            object.socketSendBufferBytes !== undefined &&
+            object.socketSendBufferBytes !== null
+        ) {
+            message.socketSendBufferBytes = Number(
+                object.socketSendBufferBytes
+            );
+        } else {
+            message.socketSendBufferBytes = undefined;
+        }
+        if (
+            object.socketReceiveBufferBytes !== undefined &&
+            object.socketReceiveBufferBytes !== null
+        ) {
+            message.socketReceiveBufferBytes = Number(
+                object.socketReceiveBufferBytes
+            );
+        } else {
+            message.socketReceiveBufferBytes = undefined;
+        }
+        if (
+            object.autoCreateTopicsEnable !== undefined &&
+            object.autoCreateTopicsEnable !== null
+        ) {
+            message.autoCreateTopicsEnable = Boolean(
+                object.autoCreateTopicsEnable
+            );
+        } else {
+            message.autoCreateTopicsEnable = undefined;
+        }
+        if (
+            object.numPartitions !== undefined &&
+            object.numPartitions !== null
+        ) {
+            message.numPartitions = Number(object.numPartitions);
+        } else {
+            message.numPartitions = undefined;
+        }
+        if (
+            object.defaultReplicationFactor !== undefined &&
+            object.defaultReplicationFactor !== null
+        ) {
+            message.defaultReplicationFactor = Number(
+                object.defaultReplicationFactor
+            );
+        } else {
+            message.defaultReplicationFactor = undefined;
+        }
+        return message;
+    },
+
+    toJSON(message: Kafkaconfig28): unknown {
+        const obj: any = {};
+        message.compressionType !== undefined &&
+            (obj.compressionType = compressionTypeToJSON(
+                message.compressionType
+            ));
+        message.logFlushIntervalMessages !== undefined &&
+            (obj.logFlushIntervalMessages = message.logFlushIntervalMessages);
+        message.logFlushIntervalMs !== undefined &&
+            (obj.logFlushIntervalMs = message.logFlushIntervalMs);
+        message.logFlushSchedulerIntervalMs !== undefined &&
+            (obj.logFlushSchedulerIntervalMs =
+                message.logFlushSchedulerIntervalMs);
+        message.logRetentionBytes !== undefined &&
+            (obj.logRetentionBytes = message.logRetentionBytes);
+        message.logRetentionHours !== undefined &&
+            (obj.logRetentionHours = message.logRetentionHours);
+        message.logRetentionMinutes !== undefined &&
+            (obj.logRetentionMinutes = message.logRetentionMinutes);
+        message.logRetentionMs !== undefined &&
+            (obj.logRetentionMs = message.logRetentionMs);
+        message.logSegmentBytes !== undefined &&
+            (obj.logSegmentBytes = message.logSegmentBytes);
+        message.logPreallocate !== undefined &&
+            (obj.logPreallocate = message.logPreallocate);
+        message.socketSendBufferBytes !== undefined &&
+            (obj.socketSendBufferBytes = message.socketSendBufferBytes);
+        message.socketReceiveBufferBytes !== undefined &&
+            (obj.socketReceiveBufferBytes = message.socketReceiveBufferBytes);
+        message.autoCreateTopicsEnable !== undefined &&
+            (obj.autoCreateTopicsEnable = message.autoCreateTopicsEnable);
+        message.numPartitions !== undefined &&
+            (obj.numPartitions = message.numPartitions);
+        message.defaultReplicationFactor !== undefined &&
+            (obj.defaultReplicationFactor = message.defaultReplicationFactor);
+        return obj;
+    },
+
+    fromPartial(object: DeepPartial<Kafkaconfig28>): Kafkaconfig28 {
+        const message = { ...baseKafkaconfig28 } as Kafkaconfig28;
         if (
             object.compressionType !== undefined &&
             object.compressionType !== null

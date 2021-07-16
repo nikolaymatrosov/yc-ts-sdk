@@ -70,6 +70,7 @@ export enum ContainerAudio_ContainerAudioType {
     CONTAINER_AUDIO_TYPE_UNSPECIFIED = 0,
     /** WAV - RIFF linear pcm with header audio file format. */
     WAV = 1,
+    OGG_OPUS = 2,
     UNRECOGNIZED = -1,
 }
 
@@ -83,6 +84,9 @@ export function containerAudio_ContainerAudioTypeFromJSON(
         case 1:
         case 'WAV':
             return ContainerAudio_ContainerAudioType.WAV;
+        case 2:
+        case 'OGG_OPUS':
+            return ContainerAudio_ContainerAudioType.OGG_OPUS;
         case -1:
         case 'UNRECOGNIZED':
         default:
@@ -98,6 +102,8 @@ export function containerAudio_ContainerAudioTypeToJSON(
             return 'CONTAINER_AUDIO_TYPE_UNSPECIFIED';
         case ContainerAudio_ContainerAudioType.WAV:
             return 'WAV';
+        case ContainerAudio_ContainerAudioType.OGG_OPUS:
+            return 'OGG_OPUS';
         default:
             return 'UNKNOWN';
     }
@@ -158,6 +164,10 @@ export interface Hints {
     voice: string | undefined;
     /** Template for synthesizing. */
     audioTemplate: AudioTemplate | undefined;
+    /** hint to change speed */
+    speed: number | undefined;
+    /** hint to regulate volume */
+    volume: number | undefined;
 }
 
 export interface UtteranceSynthesisRequest {
@@ -173,7 +183,7 @@ export interface UtteranceSynthesisRequest {
     textTemplate: TextTemplate | undefined;
     /** Optional hints for synthesis. */
     hints: Hints[];
-    /** Optional. Default: 22050 Hz, linear 16-bit signed little-endian PCM. */
+    /** Optional. Default: 22050 Hz, linear 16-bit signed little-endian PCM, with WAV header */
     outputAudioSpec: AudioFormatOptions | undefined;
 }
 
@@ -1106,6 +1116,12 @@ export const Hints = {
                 writer.uint32(18).fork()
             ).ldelim();
         }
+        if (message.speed !== undefined) {
+            writer.uint32(25).double(message.speed);
+        }
+        if (message.volume !== undefined) {
+            writer.uint32(33).double(message.volume);
+        }
         return writer;
     },
 
@@ -1125,6 +1141,12 @@ export const Hints = {
                         reader,
                         reader.uint32()
                     );
+                    break;
+                case 3:
+                    message.speed = reader.double();
+                    break;
+                case 4:
+                    message.volume = reader.double();
                     break;
                 default:
                     reader.skipType(tag & 7);
@@ -1151,6 +1173,16 @@ export const Hints = {
         } else {
             message.audioTemplate = undefined;
         }
+        if (object.speed !== undefined && object.speed !== null) {
+            message.speed = Number(object.speed);
+        } else {
+            message.speed = undefined;
+        }
+        if (object.volume !== undefined && object.volume !== null) {
+            message.volume = Number(object.volume);
+        } else {
+            message.volume = undefined;
+        }
         return message;
     },
 
@@ -1161,6 +1193,8 @@ export const Hints = {
             (obj.audioTemplate = message.audioTemplate
                 ? AudioTemplate.toJSON(message.audioTemplate)
                 : undefined);
+        message.speed !== undefined && (obj.speed = message.speed);
+        message.volume !== undefined && (obj.volume = message.volume);
         return obj;
     },
 
@@ -1180,6 +1214,16 @@ export const Hints = {
             );
         } else {
             message.audioTemplate = undefined;
+        }
+        if (object.speed !== undefined && object.speed !== null) {
+            message.speed = object.speed;
+        } else {
+            message.speed = undefined;
+        }
+        if (object.volume !== undefined && object.volume !== null) {
+            message.volume = object.volume;
+        } else {
+            message.volume = undefined;
         }
         return message;
     },

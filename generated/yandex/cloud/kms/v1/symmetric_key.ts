@@ -15,6 +15,8 @@ export enum SymmetricAlgorithm {
     AES_192 = 2,
     /** AES_256 - AES algorithm with 256-bit keys. */
     AES_256 = 3,
+    /** AES_256_HSM - AES algorithm with 256-bit keys hosted by HSM */
+    AES_256_HSM = 4,
     UNRECOGNIZED = -1,
 }
 
@@ -32,6 +34,9 @@ export function symmetricAlgorithmFromJSON(object: any): SymmetricAlgorithm {
         case 3:
         case 'AES_256':
             return SymmetricAlgorithm.AES_256;
+        case 4:
+        case 'AES_256_HSM':
+            return SymmetricAlgorithm.AES_256_HSM;
         case -1:
         case 'UNRECOGNIZED':
         default:
@@ -49,6 +54,8 @@ export function symmetricAlgorithmToJSON(object: SymmetricAlgorithm): string {
             return 'AES_192';
         case SymmetricAlgorithm.AES_256:
             return 'AES_256';
+        case SymmetricAlgorithm.AES_256_HSM:
+            return 'AES_256_HSM';
         default:
             return 'UNKNOWN';
     }
@@ -168,6 +175,8 @@ export interface SymmetricKeyVersion {
      * is `SCHEDULED_FOR_DESTRUCTION`.
      */
     destroyAt: Date | undefined;
+    /** Indication of the version that is hosted by HSM. */
+    hostedByHsm: boolean;
 }
 
 /** Possible version status. */
@@ -659,6 +668,7 @@ const baseSymmetricKeyVersion: object = {
     status: 0,
     algorithm: 0,
     primary: false,
+    hostedByHsm: false,
 };
 
 export const SymmetricKeyVersion = {
@@ -692,6 +702,9 @@ export const SymmetricKeyVersion = {
                 toTimestamp(message.destroyAt),
                 writer.uint32(58).fork()
             ).ldelim();
+        }
+        if (message.hostedByHsm === true) {
+            writer.uint32(64).bool(message.hostedByHsm);
         }
         return writer;
     },
@@ -731,6 +744,9 @@ export const SymmetricKeyVersion = {
                     message.destroyAt = fromTimestamp(
                         Timestamp.decode(reader, reader.uint32())
                     );
+                    break;
+                case 8:
+                    message.hostedByHsm = reader.bool();
                     break;
                 default:
                     reader.skipType(tag & 7);
@@ -777,6 +793,11 @@ export const SymmetricKeyVersion = {
         } else {
             message.destroyAt = undefined;
         }
+        if (object.hostedByHsm !== undefined && object.hostedByHsm !== null) {
+            message.hostedByHsm = Boolean(object.hostedByHsm);
+        } else {
+            message.hostedByHsm = false;
+        }
         return message;
     },
 
@@ -793,6 +814,8 @@ export const SymmetricKeyVersion = {
         message.primary !== undefined && (obj.primary = message.primary);
         message.destroyAt !== undefined &&
             (obj.destroyAt = message.destroyAt.toISOString());
+        message.hostedByHsm !== undefined &&
+            (obj.hostedByHsm = message.hostedByHsm);
         return obj;
     },
 
@@ -832,6 +855,11 @@ export const SymmetricKeyVersion = {
             message.destroyAt = object.destroyAt;
         } else {
             message.destroyAt = undefined;
+        }
+        if (object.hostedByHsm !== undefined && object.hostedByHsm !== null) {
+            message.hostedByHsm = object.hostedByHsm;
+        } else {
+            message.hostedByHsm = false;
         }
         return message;
     },

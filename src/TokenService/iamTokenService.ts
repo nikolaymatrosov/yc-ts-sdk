@@ -6,20 +6,35 @@ import { ITokenService } from './ITokenService';
 import { Client, createChannel, createClient } from 'nice-grpc';
 import { credentials } from '@grpc/grpc-js';
 import { EndpointResolver } from '../endpoint';
-import { IamTokenServiceService } from 'cloud/iam/v1/iam_token_service';
-import { CreateIamTokenRequest, CreateIamTokenResponse } from 'cloud/iam/v1/iam_token_service';
+import { CreateIamTokenRequest, CreateIamTokenResponse, IamTokenServiceService } from 'cloud/iam/v1/iam_token_service';
+
+interface ServiceAccountJsonFileContents {
+    id: string;
+    created_at: string;
+    key_algorithm: string;
+    service_account_id: string;
+    private_key: string;
+    public_key: string;
+}
+
+export function fromServiceAccountJsonFile(data: ServiceAccountJsonFileContents): IIAmCredentials {
+    return {
+        accessKeyId: data.id,
+        privateKey: data.private_key,
+        serviceAccountId: data.service_account_id,
+    };
+}
 
 export interface IIAmCredentials {
-    serviceAccountId: string,
-    accessKeyId: string,
-    privateKey: Buffer,
-    iamEndpoint: string
+    serviceAccountId: string;
+    accessKeyId: string;
+    privateKey: Buffer | string;
 }
 
 export interface ISslCredentials {
-    rootCertificates?: Buffer,
-    clientPrivateKey?: Buffer,
-    clientCertChain?: Buffer
+    rootCertificates?: Buffer;
+    clientPrivateKey?: Buffer;
+    clientCertChain?: Buffer;
 }
 
 export class IamTokenService implements ITokenService {
@@ -30,7 +45,7 @@ export class IamTokenService implements ITokenService {
     private token: string = '';
     private tokenTimestamp: DateTime | null;
     private readonly iamCredentials: IIAmCredentials;
-    private __endpointResolver: EndpointResolver;
+    private endpointResolver: EndpointResolver;
 
 
     constructor(iamCredentials: IIAmCredentials, sslCredentials?: ISslCredentials) {
@@ -38,7 +53,7 @@ export class IamTokenService implements ITokenService {
         this.tokenTimestamp = null;
 
         this.sslCredentials = sslCredentials;
-        this.__endpointResolver = new EndpointResolver();
+        this.endpointResolver = new EndpointResolver();
     }
 
     private get expired() {
@@ -55,7 +70,7 @@ export class IamTokenService implements ITokenService {
     }
 
     private client(): Client<typeof IamTokenServiceService> {
-        const channel = createChannel(this.__endpointResolver.resolve('iam'), credentials.createSsl());
+        const channel = createChannel(this.endpointResolver.resolve('iam'), credentials.createSsl());
         return createClient(IamTokenServiceService as any, channel) as Client<typeof IamTokenServiceService>;
     }
 

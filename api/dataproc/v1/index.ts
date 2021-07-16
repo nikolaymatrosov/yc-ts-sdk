@@ -3,7 +3,7 @@ import { JobServiceService } from 'cloud/dataproc/v1/job_service';
 import { ResourcePresetServiceService } from 'cloud/dataproc/v1/resource_preset_service';
 import { SubclusterServiceService } from 'cloud/dataproc/v1/subcluster_service';
 import { Client } from 'nice-grpc';
-import { SdkServiceDefinition, Session } from 'src';
+import { SdkServiceDefinition, Session } from 'src/index';
 
 export const ClusterServiceDef: SdkServiceDefinition<
     typeof ClusterServiceService

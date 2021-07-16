@@ -45,6 +45,8 @@ export interface Cluster {
     securityGroupIds: string[];
     /** ID of the service account used for access to Yandex Object Storage. */
     serviceAccountId: string;
+    /** Deletion Protection inhibits deletion of the cluster */
+    deletionProtection: boolean;
 }
 export declare enum Cluster_Environment {
     ENVIRONMENT_UNSPECIFIED = 0,

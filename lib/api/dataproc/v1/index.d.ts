@@ -3,7 +3,7 @@ import { JobServiceService } from '../../../generated/yandex/cloud/dataproc/v1/j
 import { ResourcePresetServiceService } from '../../../generated/yandex/cloud/dataproc/v1/resource_preset_service';
 import { SubclusterServiceService } from '../../../generated/yandex/cloud/dataproc/v1/subcluster_service';
 import { Client } from 'nice-grpc';
-import { SdkServiceDefinition, Session } from 'src';
+import { SdkServiceDefinition, Session } from '../../../src/index';
 export declare const ClusterServiceDef: SdkServiceDefinition<typeof ClusterServiceService>;
 export declare function ClusterService(session?: Session): Client<typeof ClusterServiceService, {}>;
 export declare const JobServiceDef: SdkServiceDefinition<typeof JobServiceService>;

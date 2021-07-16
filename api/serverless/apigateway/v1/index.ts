@@ -1,6 +1,6 @@
 import { ApiGatewayServiceService } from 'cloud/serverless/apigateway/v1/apigateway_service';
 import { Client } from 'nice-grpc';
-import { SdkServiceDefinition, Session } from 'src';
+import { SdkServiceDefinition, Session } from 'src/index';
 
 export const ApiGatewayServiceDef: SdkServiceDefinition<
     typeof ApiGatewayServiceService

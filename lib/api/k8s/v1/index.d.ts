@@ -2,7 +2,7 @@ import { ClusterServiceService } from '../../../generated/yandex/cloud/k8s/v1/cl
 import { NodeGroupServiceService } from '../../../generated/yandex/cloud/k8s/v1/node_group_service';
 import { VersionServiceService } from '../../../generated/yandex/cloud/k8s/v1/version_service';
 import { Client } from 'nice-grpc';
-import { SdkServiceDefinition, Session } from 'src';
+import { SdkServiceDefinition, Session } from '../../../src/index';
 export declare const ClusterServiceDef: SdkServiceDefinition<typeof ClusterServiceService>;
 export declare function ClusterService(session?: Session): Client<typeof ClusterServiceService, {}>;
 export declare const NodeGroupServiceDef: SdkServiceDefinition<typeof NodeGroupServiceService>;

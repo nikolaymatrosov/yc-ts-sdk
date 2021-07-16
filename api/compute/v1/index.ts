@@ -9,7 +9,7 @@ import { PlacementGroupServiceService } from 'cloud/compute/v1/placement_group_s
 import { SnapshotServiceService } from 'cloud/compute/v1/snapshot_service';
 import { ZoneServiceService } from 'cloud/compute/v1/zone_service';
 import { Client } from 'nice-grpc';
-import { SdkServiceDefinition, Session } from 'src';
+import { SdkServiceDefinition, Session } from 'src/index';
 
 export const DiskPlacementGroupServiceDef: SdkServiceDefinition<
     typeof DiskPlacementGroupServiceService

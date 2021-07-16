@@ -2,7 +2,7 @@ import { DeviceDataServiceService } from 'cloud/iot/devices/v1/device_data_servi
 import { RegistryDataServiceService } from 'cloud/iot/devices/v1/registry_data_service';
 import { RegistryServiceService } from 'cloud/iot/devices/v1/registry_service';
 import { Client } from 'nice-grpc';
-import { SdkServiceDefinition, Session } from 'src';
+import { SdkServiceDefinition, Session } from 'src/index';
 
 export const RegistryServiceDef: SdkServiceDefinition<
     typeof RegistryServiceService

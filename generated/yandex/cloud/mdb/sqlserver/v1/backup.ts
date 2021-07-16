@@ -20,9 +20,16 @@ export interface Backup {
     sourceClusterId: string;
     /** Time when the backup operation was started. */
     startedAt: Date | undefined;
+    /** List databases included in the backup */
+    databases: string[];
 }
 
-const baseBackup: object = { id: '', folderId: '', sourceClusterId: '' };
+const baseBackup: object = {
+    id: '',
+    folderId: '',
+    sourceClusterId: '',
+    databases: '',
+};
 
 export const Backup = {
     encode(
@@ -50,6 +57,9 @@ export const Backup = {
                 writer.uint32(42).fork()
             ).ldelim();
         }
+        for (const v of message.databases) {
+            writer.uint32(50).string(v!);
+        }
         return writer;
     },
 
@@ -58,6 +68,7 @@ export const Backup = {
             input instanceof _m0.Reader ? input : new _m0.Reader(input);
         let end = length === undefined ? reader.len : reader.pos + length;
         const message = { ...baseBackup } as Backup;
+        message.databases = [];
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -80,6 +91,9 @@ export const Backup = {
                         Timestamp.decode(reader, reader.uint32())
                     );
                     break;
+                case 6:
+                    message.databases.push(reader.string());
+                    break;
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -90,6 +104,7 @@ export const Backup = {
 
     fromJSON(object: any): Backup {
         const message = { ...baseBackup } as Backup;
+        message.databases = [];
         if (object.id !== undefined && object.id !== null) {
             message.id = String(object.id);
         } else {
@@ -118,6 +133,11 @@ export const Backup = {
         } else {
             message.startedAt = undefined;
         }
+        if (object.databases !== undefined && object.databases !== null) {
+            for (const e of object.databases) {
+                message.databases.push(String(e));
+            }
+        }
         return message;
     },
 
@@ -131,11 +151,17 @@ export const Backup = {
             (obj.sourceClusterId = message.sourceClusterId);
         message.startedAt !== undefined &&
             (obj.startedAt = message.startedAt.toISOString());
+        if (message.databases) {
+            obj.databases = message.databases.map((e) => e);
+        } else {
+            obj.databases = [];
+        }
         return obj;
     },
 
     fromPartial(object: DeepPartial<Backup>): Backup {
         const message = { ...baseBackup } as Backup;
+        message.databases = [];
         if (object.id !== undefined && object.id !== null) {
             message.id = object.id;
         } else {
@@ -163,6 +189,11 @@ export const Backup = {
             message.startedAt = object.startedAt;
         } else {
             message.startedAt = undefined;
+        }
+        if (object.databases !== undefined && object.databases !== null) {
+            for (const e of object.databases) {
+                message.databases.push(e);
+            }
         }
         return message;
     },

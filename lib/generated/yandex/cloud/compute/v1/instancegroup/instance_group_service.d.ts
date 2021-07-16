@@ -264,7 +264,7 @@ export interface ListInstanceGroupInstancesRequest {
     pageToken: string;
     /**
      * A filter expression that filters resources listed in the response.
-     * Currently you can use filtering only on the [InstanceGroup.name] field.
+     * Currently you can use filtering only on the [ManagedInstance.name] field.
      */
     filter: string;
 }

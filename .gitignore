@@ -1,2 +1,11 @@
 node_modules
 .idea
+examples/build
+scripts/*.js
+scripts/*.d.ts
+src/**/*.js
+src/**/*.d.ts
+src/**/*.map
+api/**/*.js
+api/**/*.d.ts
+api/**/*.map

@@ -1,6 +1,6 @@
 import { InstanceGroupServiceService } from 'cloud/compute/v1/instancegroup/instance_group_service';
 import { Client } from 'nice-grpc';
-import { SdkServiceDefinition, Session } from 'src';
+import { SdkServiceDefinition, Session } from 'src/index';
 
 export const InstanceGroupServiceDef: SdkServiceDefinition<
     typeof InstanceGroupServiceService

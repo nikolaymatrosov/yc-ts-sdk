@@ -1,6 +1,6 @@
 import { AccessKeyServiceService } from 'cloud/iam/v1/awscompatibility/access_key_service';
 import { Client } from 'nice-grpc';
-import { SdkServiceDefinition, Session } from 'src';
+import { SdkServiceDefinition, Session } from 'src/index';
 
 export const AccessKeyServiceDef: SdkServiceDefinition<
     typeof AccessKeyServiceService

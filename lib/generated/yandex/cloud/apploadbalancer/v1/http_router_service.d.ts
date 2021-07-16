@@ -7,32 +7,105 @@ import { ChannelCredentials, ChannelOptions, UntypedServiceImplementation, handl
 import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.apploadbalancer.v1";
 export interface GetHttpRouterRequest {
+    /**
+     * ID of the HTTP router to return.
+     *
+     * To get the HTTP router ID, make a [HttpRouterService.List] request.
+     */
     httpRouterId: string;
 }
 export interface ListHttpRoutersRequest {
+    /**
+     * ID of the folder to list HTTP routers in.
+     *
+     * To get the folder ID, make a [yandex.cloud.resourcemanager.v1.FolderService.List] request.
+     */
     folderId: string;
+    /**
+     * The maximum number of results per page to return. If the number of available
+     * results is larger than `page_size`, the service returns a [ListHttpRoutersResponse.next_page_token]
+     * that can be used to get the next page of results in subsequent list requests.
+     * Default value: 100.
+     */
     pageSize: number;
+    /**
+     * Page token. To get the next page of results, set `page_token` to the
+     * [ListHttpRoutersResponse.next_page_token] returned by a previous list request.
+     */
     pageToken: string;
+    /**
+     * A filter expression that filters HTTP routers listed in the response.
+     *
+     * The expression must specify:
+     * 1. The field name. Currently you can use filtering only on [HttpRouter.name] field.
+     * 2. An operator. Can be either `=` or `!=` for single values, `IN` or `NOT IN` for lists of values.
+     * 3. The value. Must be 3-63 characters long and match the regular expression `^[a-z][-a-z0-9]{1,61}[a-z0-9]`.
+     * Example of a filter: `name=my-http-router`.
+     */
     filter: string;
 }
 export interface ListHttpRoutersResponse {
+    /** List of HTTP routers in the specified folder. */
     httpRouters: HttpRouter[];
+    /**
+     * Token for getting the next page of the list. If the number of results is greater than
+     * the specified [ListHttpRoutersRequest.page_size], use `next_page_token` as the value
+     * for the [ListHttpRoutersRequest.page_token] parameter in the next list request.
+     *
+     * Each subsequent page will have its own `next_page_token` to continue paging through the results.
+     */
     nextPageToken: string;
 }
 export interface DeleteHttpRouterRequest {
+    /**
+     * ID of the HTTP router to delete.
+     *
+     * To get the HTTP router ID, make a [HttpRouterService.List] request.
+     */
     httpRouterId: string;
 }
 export interface DeleteHttpRouterMetadata {
+    /** ID of the HTTP router that is being deleted. */
     httpRouterId: string;
 }
 export interface UpdateHttpRouterRequest {
+    /**
+     * ID of the HTTP router to update.
+     *
+     * To get the HTTP router ID, make a [HttpRouterService.List] request.
+     */
     httpRouterId: string;
+    /** Field mask that specifies which attributes of the HTTP router should be updated. */
     updateMask: FieldMask | undefined;
+    /**
+     * New name for the HTTP router.
+     * The name must be unique within the folder.
+     */
     name: string;
+    /** New description of the HTTP router. */
     description: string;
+    /**
+     * HTTP router labels as `key:value` pairs.
+     * For details about the concept, see [documentation](/docs/overview/concepts/services#labels).
+     *
+     * Existing set of labels is completely replaced by the provided set, so if you just want
+     * to add or remove a label:
+     * 1. Get the current set of labels with a [HttpRouterService.Get] request.
+     * 2. Add or remove a label in this set.
+     * 3. Send the new set in this field.
+     */
     labels: {
         [key: string]: string;
     };
+    /**
+     * New virtual hosts that combine routes inside the router.
+     * For details about the concept, see [documentation](/docs/application-load-balancer/concepts/http-router#virtual-host).
+     *
+     * Only one virtual host with no authority (default match) can be specified.
+     *
+     * Existing list of virtual hosts is completely replaced by the specified list, so if you just want to add or remove
+     * a virtual host, make a [VirtualHostService.Create] request or a [VirtualHostService.Delete] request.
+     */
     virtualHosts: VirtualHost[];
     httpsRedirect: boolean;
 }
@@ -41,15 +114,36 @@ export interface UpdateHttpRouterRequest_LabelsEntry {
     value: string;
 }
 export interface UpdateHttpRouterMetadata {
+    /** ID of the HTTP router that is being updated. */
     httpRouterId: string;
 }
 export interface CreateHttpRouterRequest {
+    /**
+     * ID of the folder to create an HTTP router in.
+     *
+     * To get the folder ID, make a [yandex.cloud.resourcemanager.v1.FolderService.List] request.
+     */
     folderId: string;
+    /**
+     * Name of the HTTP router.
+     * The name must be unique within the folder.
+     */
     name: string;
+    /** Description of the HTTP router. */
     description: string;
+    /**
+     * HTTP router labels as `key:value` pairs.
+     * For details about the concept, see [documentation](/docs/overview/concepts/services#labels).
+     */
     labels: {
         [key: string]: string;
     };
+    /**
+     * Virtual hosts that combine routes inside the router.
+     * For details about the concept, see [documentation](/docs/application-load-balancer/concepts/http-router#virtual-host).
+     *
+     * Only one virtual host with no authority (default match) can be specified.
+     */
     virtualHosts: VirtualHost[];
     httpsRedirect: boolean;
 }
@@ -58,13 +152,14 @@ export interface CreateHttpRouterRequest_LabelsEntry {
     value: string;
 }
 export interface CreateHttpRouterMetadata {
+    /** ID of the HTTP router that is being created. */
     httpRouterId: string;
 }
 export interface ListHttpRouterOperationsRequest {
     /**
-     * ID of the http router to get operations for.
+     * ID of the HTTP router to get operations for.
      *
-     * To get the http router ID, use a [HttpRouterService.List] request.
+     * To get the HTTP router ID, use a [HttpRouterService.List] request.
      */
     httpRouterId: string;
     /**
@@ -81,13 +176,14 @@ export interface ListHttpRouterOperationsRequest {
     pageToken: string;
 }
 export interface ListHttpRouterOperationsResponse {
-    /** List of operations for the specified target group. */
+    /** List of operations for the specified HTTP router. */
     operations: Operation[];
     /**
-     * This token allows you to get the next page of results for list requests. If the number of results
-     * is larger than [ListHttpRouterOperationsRequest.page_size], use the [next_page_token] as the value
-     * for the [ListHttpRouterOperationsRequest.page_token] query parameter in the next list request.
-     * Each subsequent list request will have its own [next_page_token] to continue paging through the results.
+     * Token for getting the next page of the list. If the number of results is greater than
+     * the specified [ListHttpRouterOperationsRequest.page_size], use `next_page_token` as the value
+     * for the [ListHttpRouterOperationsRequest.page_token] parameter in the next list request.
+     *
+     * Each subsequent page will have its own `next_page_token` to continue paging through the results.
      */
     nextPageToken: string;
 }
@@ -182,7 +278,13 @@ export declare const ListHttpRouterOperationsResponse: {
     toJSON(message: ListHttpRouterOperationsResponse): unknown;
     fromPartial(object: DeepPartial<ListHttpRouterOperationsResponse>): ListHttpRouterOperationsResponse;
 };
+/** A set of methods for managing HTTP routers. */
 export declare const HttpRouterServiceService: {
+    /**
+     * Returns the specified HTTP router.
+     *
+     * To get the list of all available HTTP routers, make a [List] request.
+     */
     readonly get: {
         readonly path: "/yandex.cloud.apploadbalancer.v1.HttpRouterService/Get";
         readonly requestStream: false;
@@ -192,6 +294,7 @@ export declare const HttpRouterServiceService: {
         readonly responseSerialize: (value: HttpRouter) => Buffer;
         readonly responseDeserialize: (value: Buffer) => HttpRouter;
     };
+    /** Lists HTTP routers in the specified folder. */
     readonly list: {
         readonly path: "/yandex.cloud.apploadbalancer.v1.HttpRouterService/List";
         readonly requestStream: false;
@@ -201,6 +304,7 @@ export declare const HttpRouterServiceService: {
         readonly responseSerialize: (value: ListHttpRoutersResponse) => Buffer;
         readonly responseDeserialize: (value: Buffer) => ListHttpRoutersResponse;
     };
+    /** Creates an HTTP router in the specified folder. */
     readonly create: {
         readonly path: "/yandex.cloud.apploadbalancer.v1.HttpRouterService/Create";
         readonly requestStream: false;
@@ -210,6 +314,7 @@ export declare const HttpRouterServiceService: {
         readonly responseSerialize: (value: Operation) => Buffer;
         readonly responseDeserialize: (value: Buffer) => Operation;
     };
+    /** Updates the specified HTTP router. */
     readonly update: {
         readonly path: "/yandex.cloud.apploadbalancer.v1.HttpRouterService/Update";
         readonly requestStream: false;
@@ -219,6 +324,7 @@ export declare const HttpRouterServiceService: {
         readonly responseSerialize: (value: Operation) => Buffer;
         readonly responseDeserialize: (value: Buffer) => Operation;
     };
+    /** Deletes the specified HTTP router. */
     readonly delete: {
         readonly path: "/yandex.cloud.apploadbalancer.v1.HttpRouterService/Delete";
         readonly requestStream: false;
@@ -228,7 +334,7 @@ export declare const HttpRouterServiceService: {
         readonly responseSerialize: (value: Operation) => Buffer;
         readonly responseDeserialize: (value: Buffer) => Operation;
     };
-    /** Lists operations for the specified http router. */
+    /** Lists operations for the specified HTTP router. */
     readonly listOperations: {
         readonly path: "/yandex.cloud.apploadbalancer.v1.HttpRouterService/ListOperations";
         readonly requestStream: false;
@@ -240,31 +346,49 @@ export declare const HttpRouterServiceService: {
     };
 };
 export interface HttpRouterServiceServer extends UntypedServiceImplementation {
+    /**
+     * Returns the specified HTTP router.
+     *
+     * To get the list of all available HTTP routers, make a [List] request.
+     */
     get: handleUnaryCall<GetHttpRouterRequest, HttpRouter>;
+    /** Lists HTTP routers in the specified folder. */
     list: handleUnaryCall<ListHttpRoutersRequest, ListHttpRoutersResponse>;
+    /** Creates an HTTP router in the specified folder. */
     create: handleUnaryCall<CreateHttpRouterRequest, Operation>;
+    /** Updates the specified HTTP router. */
     update: handleUnaryCall<UpdateHttpRouterRequest, Operation>;
+    /** Deletes the specified HTTP router. */
     delete: handleUnaryCall<DeleteHttpRouterRequest, Operation>;
-    /** Lists operations for the specified http router. */
+    /** Lists operations for the specified HTTP router. */
     listOperations: handleUnaryCall<ListHttpRouterOperationsRequest, ListHttpRouterOperationsResponse>;
 }
 export interface HttpRouterServiceClient extends Client {
+    /**
+     * Returns the specified HTTP router.
+     *
+     * To get the list of all available HTTP routers, make a [List] request.
+     */
     get(request: GetHttpRouterRequest, callback: (error: ServiceError | null, response: HttpRouter) => void): ClientUnaryCall;
     get(request: GetHttpRouterRequest, metadata: Metadata, callback: (error: ServiceError | null, response: HttpRouter) => void): ClientUnaryCall;
     get(request: GetHttpRouterRequest, metadata: Metadata, options: Partial<CallOptions>, callback: (error: ServiceError | null, response: HttpRouter) => void): ClientUnaryCall;
+    /** Lists HTTP routers in the specified folder. */
     list(request: ListHttpRoutersRequest, callback: (error: ServiceError | null, response: ListHttpRoutersResponse) => void): ClientUnaryCall;
     list(request: ListHttpRoutersRequest, metadata: Metadata, callback: (error: ServiceError | null, response: ListHttpRoutersResponse) => void): ClientUnaryCall;
     list(request: ListHttpRoutersRequest, metadata: Metadata, options: Partial<CallOptions>, callback: (error: ServiceError | null, response: ListHttpRoutersResponse) => void): ClientUnaryCall;
+    /** Creates an HTTP router in the specified folder. */
     create(request: CreateHttpRouterRequest, callback: (error: ServiceError | null, response: Operation) => void): ClientUnaryCall;
     create(request: CreateHttpRouterRequest, metadata: Metadata, callback: (error: ServiceError | null, response: Operation) => void): ClientUnaryCall;
     create(request: CreateHttpRouterRequest, metadata: Metadata, options: Partial<CallOptions>, callback: (error: ServiceError | null, response: Operation) => void): ClientUnaryCall;
+    /** Updates the specified HTTP router. */
     update(request: UpdateHttpRouterRequest, callback: (error: ServiceError | null, response: Operation) => void): ClientUnaryCall;
     update(request: UpdateHttpRouterRequest, metadata: Metadata, callback: (error: ServiceError | null, response: Operation) => void): ClientUnaryCall;
     update(request: UpdateHttpRouterRequest, metadata: Metadata, options: Partial<CallOptions>, callback: (error: ServiceError | null, response: Operation) => void): ClientUnaryCall;
+    /** Deletes the specified HTTP router. */
     delete(request: DeleteHttpRouterRequest, callback: (error: ServiceError | null, response: Operation) => void): ClientUnaryCall;
     delete(request: DeleteHttpRouterRequest, metadata: Metadata, callback: (error: ServiceError | null, response: Operation) => void): ClientUnaryCall;
     delete(request: DeleteHttpRouterRequest, metadata: Metadata, options: Partial<CallOptions>, callback: (error: ServiceError | null, response: Operation) => void): ClientUnaryCall;
-    /** Lists operations for the specified http router. */
+    /** Lists operations for the specified HTTP router. */
     listOperations(request: ListHttpRouterOperationsRequest, callback: (error: ServiceError | null, response: ListHttpRouterOperationsResponse) => void): ClientUnaryCall;
     listOperations(request: ListHttpRouterOperationsRequest, metadata: Metadata, callback: (error: ServiceError | null, response: ListHttpRouterOperationsResponse) => void): ClientUnaryCall;
     listOperations(request: ListHttpRouterOperationsRequest, metadata: Metadata, options: Partial<CallOptions>, callback: (error: ServiceError | null, response: ListHttpRouterOperationsResponse) => void): ClientUnaryCall;

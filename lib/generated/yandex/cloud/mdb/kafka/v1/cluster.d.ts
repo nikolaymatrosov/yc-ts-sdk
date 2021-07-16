@@ -45,6 +45,8 @@ export interface Cluster {
     securityGroupIds: string[];
     /** Host groups hosting VMs of the cluster. */
     hostGroupIds: string[];
+    /** Deletion Protection inhibits deletion of the cluster */
+    deletionProtection: boolean;
 }
 export declare enum Cluster_Environment {
     ENVIRONMENT_UNSPECIFIED = 0,
@@ -127,6 +129,7 @@ export interface ConfigSpec_Kafka {
     resources: Resources | undefined;
     kafkaConfig21: Kafkaconfig21 | undefined;
     kafkaConfig26: Kafkaconfig26 | undefined;
+    kafkaConfig28: Kafkaconfig28 | undefined;
 }
 export interface ConfigSpec_Zookeeper {
     /** Resources allocated to ZooKeeper hosts. */
@@ -279,6 +282,74 @@ export interface Kafkaconfig26 {
     /** Default replication factor of the topic on the whole cluster */
     defaultReplicationFactor: number | undefined;
 }
+/** Kafka version 2.8 broker configuration. */
+export interface Kafkaconfig28 {
+    /** Cluster topics compression type. */
+    compressionType: CompressionType;
+    /**
+     * The number of messages accumulated on a log partition before messages are flushed to disk.
+     *
+     * This is the global cluster-level setting that can be overridden on a topic level by using the [TopicConfig2_8.flush_messages] setting.
+     */
+    logFlushIntervalMessages: number | undefined;
+    /**
+     * The maximum time (in milliseconds) that a message in any topic is kept in memory before flushed to disk.
+     * If not set, the value of [log_flush_scheduler_interval_ms] is used.
+     *
+     * This is the global cluster-level setting that can be overridden on a topic level by using the [TopicConfig2_8.flush_ms] setting.
+     */
+    logFlushIntervalMs: number | undefined;
+    /**
+     * The frequency of checks (in milliseconds) for any logs that need to be flushed to disk.
+     * This check is done by the log flusher.
+     */
+    logFlushSchedulerIntervalMs: number | undefined;
+    /**
+     * Partition size limit; Kafka will discard old log segments to free up space if `delete` [TopicConfig2_8.cleanup_policy] is in effect.
+     * This setting is helpful if you need to control the size of a log due to limited disk space.
+     *
+     * This is the global cluster-level setting that can be overridden on a topic level by using the [TopicConfig2_8.retention_bytes] setting.
+     */
+    logRetentionBytes: number | undefined;
+    /** The number of hours to keep a log segment file before deleting it. */
+    logRetentionHours: number | undefined;
+    /**
+     * The number of minutes to keep a log segment file before deleting it.
+     *
+     * If not set, the value of [log_retention_hours] is used.
+     */
+    logRetentionMinutes: number | undefined;
+    /**
+     * The number of milliseconds to keep a log segment file before deleting it.
+     *
+     * If not set, the value of [log_retention_minutes] is used.
+     *
+     * This is the global cluster-level setting that can be overridden on a topic level by using the [TopicConfig2_8.retention_ms] setting.
+     */
+    logRetentionMs: number | undefined;
+    /**
+     * The maximum size of a single log file.
+     *
+     * This is the global cluster-level setting that can be overridden on a topic level by using the [TopicConfig2_8.segment_bytes] setting.
+     */
+    logSegmentBytes: number | undefined;
+    /**
+     * Should pre allocate file when create new segment?
+     *
+     * This is the global cluster-level setting that can be overridden on a topic level by using the [TopicConfig2_8.preallocate] setting.
+     */
+    logPreallocate: boolean | undefined;
+    /** The SO_SNDBUF buffer of the socket server sockets. If the value is -1, the OS default will be used. */
+    socketSendBufferBytes: number | undefined;
+    /** The SO_RCVBUF buffer of the socket server sockets. If the value is -1, the OS default will be used. */
+    socketReceiveBufferBytes: number | undefined;
+    /** Enable auto creation of topic on the server */
+    autoCreateTopicsEnable: boolean | undefined;
+    /** Default number of partitions per topic on the whole cluster */
+    numPartitions: number | undefined;
+    /** Default replication factor of the topic on the whole cluster */
+    defaultReplicationFactor: number | undefined;
+}
 /** Cluster host metadata. */
 export interface Host {
     /** Name of the host. */
@@ -387,6 +458,13 @@ export declare const Kafkaconfig26: {
     fromJSON(object: any): Kafkaconfig26;
     toJSON(message: Kafkaconfig26): unknown;
     fromPartial(object: DeepPartial<Kafkaconfig26>): Kafkaconfig26;
+};
+export declare const Kafkaconfig28: {
+    encode(message: Kafkaconfig28, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Kafkaconfig28;
+    fromJSON(object: any): Kafkaconfig28;
+    toJSON(message: Kafkaconfig28): unknown;
+    fromPartial(object: DeepPartial<Kafkaconfig28>): Kafkaconfig28;
 };
 export declare const Host: {
     encode(message: Host, writer?: _m0.Writer): _m0.Writer;

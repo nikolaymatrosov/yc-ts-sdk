@@ -4,7 +4,7 @@ import { RouteTableServiceService } from 'cloud/vpc/v1/route_table_service';
 import { SecurityGroupServiceService } from 'cloud/vpc/v1/security_group_service';
 import { SubnetServiceService } from 'cloud/vpc/v1/subnet_service';
 import { Client } from 'nice-grpc';
-import { SdkServiceDefinition, Session } from 'src';
+import { SdkServiceDefinition, Session } from 'src/index';
 
 export const AddressServiceDef: SdkServiceDefinition<
     typeof AddressServiceService

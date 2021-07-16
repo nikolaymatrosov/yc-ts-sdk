@@ -15,6 +15,8 @@ export interface Backup {
     sourceClusterId: string;
     /** Time when the backup operation was started. */
     startedAt: Date | undefined;
+    /** List databases included in the backup */
+    databases: string[];
 }
 export declare const Backup: {
     encode(message: Backup, writer?: _m0.Writer): _m0.Writer;

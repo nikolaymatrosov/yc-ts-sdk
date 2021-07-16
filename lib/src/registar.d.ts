@@ -1,5 +1,8 @@
-interface Registry {
-    [key: string]: Registry;
+export interface Cls {
+    decode(value: any): any;
+}
+export interface Registry {
+    [key: string]: Registry | Cls;
 }
 declare function register(pkg: string, root: Registry): void;
 declare function lookup(pkg: string): Registry;
