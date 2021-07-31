@@ -3,7 +3,7 @@ import { Driver, getCredentialsFromEnv, getLogger, IAuthService } from 'ydb-sdk'
 
 export function createDriver(database?: string, endpoint?: string, authService?: IAuthService) {
     if (!database) {
-        database = process.env['YDB_DATABASE'];
+        database = process.env.YDB_DATABASE;
     }
     if (!database) {
         throw new Error('Database not set');

@@ -2,8 +2,8 @@ import fetch from 'node-fetch';
 import { ITokenService } from './ITokenService';
 
 export class MetadataTokenService implements ITokenService {
-    private _url: string;
-    private _opts: { headers: { 'Metadata-Flavor': string } };
+    private readonly _url: string;
+    private readonly _opts: { headers: { 'Metadata-Flavor': string } };
     private _token?: string;
 
     constructor() {
@@ -55,8 +55,6 @@ export class MetadataTokenService implements ITokenService {
                 .then((token) => {
                     this._token = token;
                 })
-                .catch(() => {
-                });
         }, 30000);
     }
 }

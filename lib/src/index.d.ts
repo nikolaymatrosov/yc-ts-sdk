@@ -32,7 +32,7 @@ export declare class Session {
     get tokenCreator(): TokenCreator;
     get pollInterval(): number | undefined;
     setEndpoint(newEndpoint: string): Promise<void>;
-    client<Service extends ServiceDefinition<T>, T>(cls: SdkServiceDefinition<T>): Client<ServiceDefinition<T>>;
+    client<Service extends ServiceDefinition<T>, T>(cls: SdkServiceDefinition<T>): Client<ServiceDefinition<T>, {}>;
     restClient<T>(cls: SdkRestServiceDefinition<T>): T;
 }
 export {};

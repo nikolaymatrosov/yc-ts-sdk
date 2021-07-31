@@ -1,80 +1,24 @@
+// noinspection JSUnusedGlobalSymbols
+
 import { Session, TokenCreator } from 'src/index';
-import { Buffer } from 'buffer';
 
 import fetch from 'node-fetch';
-
-import fs from 'fs';
-
-class StorageObject {
-    private bucketName: string;
-    private objectName: string;
-    private bufferPromise: Promise<Buffer>;
-
-    constructor(bucketName: string, objectName: string, bufferPromise: Promise<Buffer>) {
-        this.bucketName = bucketName;
-        this.objectName = objectName;
-        this.bufferPromise = bufferPromise;
-    }
-
-    static fromFile(bucketName: string, objectName: string, fileName: string) {
-        return new this(
-            bucketName,
-            objectName,
-            new Promise((resolve, reject) => {
-                fs.readFile(fileName, (err: any, data: Buffer | PromiseLike<Buffer>) => {
-                    if (err) {
-                        return reject(err);
-                    }
-
-                    return resolve(data);
-                });
-            }),
-        );
-    }
-
-    static fromString(bucketName: string, objectName: string, content: string) {
-        return this.fromBuffer(
-            bucketName,
-            objectName,
-            Buffer.from(content, 'utf-8'),
-        );
-    }
-
-    static fromBuffer(bucketName: string, objectName: string, buffer: Buffer) {
-        return new this(
-            bucketName,
-            objectName,
-            new Promise((resolve) => {
-                resolve(buffer);
-            }),
-        );
-    }
-
-    async getData(encoding: BufferEncoding) {
-        encoding = encoding || 'utf-8';
-        let buffer = await this.bufferPromise;
-        return buffer.toString(encoding);
-    }
-}
-
-interface Object {
-    bucketName: string;
-    bufferPromise: Promise<Buffer>;
-    objectName: string;
-}
+import { IStorageObject, StorageObject } from 'src/storage/v1beta/storageObject';
 
 
 interface StorageService {
 
-    getObject(bucketName: string, objectName: string): Promise<StorageObject>;
+    getObject(bucketName: string, objectName: string): Promise<IStorageObject>;
 
-    putObject(object: Object): Promise<void>;
+    putObject(object: object): Promise<void>;
 }
 
 class StorageServiceImpl implements StorageService {
+    // tslint:disable-next-line:variable-name
     static __endpointId = 'storage';
-    private _address: string;
-    private _tokenCreator: TokenCreator;
+    private readonly _address: string;
+    private readonly _tokenCreator: TokenCreator;
+    // tslint:disable-next-line:variable-name
     private $method_definitions: {};
 
     constructor(address: string, credentials: any, options: any, tokenCreator: TokenCreator) {
@@ -112,7 +56,7 @@ class StorageServiceImpl implements StorageService {
             bucketName,
             bufferPromise,
             objectName,
-        }: Object) {
+        }: IStorageObject) {
         const token = await this._tokenCreator();
         const buffer = await bufferPromise;
 

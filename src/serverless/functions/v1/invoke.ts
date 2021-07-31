@@ -1,3 +1,4 @@
+/* tslint:disable:variable-name */
 import { Session, TokenCreator } from 'src/index';
 
 import fetch, { RequestInit, Response } from 'node-fetch';
@@ -10,8 +11,8 @@ async function mapException(response: Response) {
     const data = await response.text();
     try {
         const err = JSON.parse(data);
-        if (err['errorType'] && err['errorMessage']) {
-            return new Error(`${err['errorType']}: ${err['errorMessage']}`);
+        if (err.errorType && err.errorMessage) {
+            return new Error(`${err.errorType}: ${err.errorMessage}`);
         }
     } catch (e) {
         // do nothing
@@ -22,7 +23,7 @@ async function mapException(response: Response) {
 class InvokeServiceImpl {
     static __endpointId = 'serverless-functions';
     $method_definitions: {};
-    private _tokenCreator: any;
+    private readonly _tokenCreator: any;
 
     constructor(address: string, credentials: any, options: any, tokenCreator: TokenCreator) {
         this._tokenCreator = tokenCreator;

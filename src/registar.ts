@@ -7,11 +7,11 @@ export interface Registry {
 
 }
 
-const __registry: Registry = {};
+const REGISTRY: Registry = {};
 
 function register(pkg: string, root: Registry) {
     let parts = pkg.split('.');
-    let currentRoot = __registry;
+    let currentRoot = REGISTRY;
     while (parts.length > 1) {
         if (!currentRoot[parts[0]]) {
             currentRoot[parts[0]] = {} as Registry;
@@ -25,7 +25,7 @@ function register(pkg: string, root: Registry) {
 function lookup(pkg: string) {
     pkg = pkg.replace(/^yandex\.cloud\./, 'api.');
     let parts = pkg.split('.');
-    let currentRoot = __registry;
+    let currentRoot = REGISTRY;
     while (parts.length > 0) {
         currentRoot = currentRoot[parts[0]] as Registry;
         parts = parts.slice(1);

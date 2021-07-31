@@ -148,7 +148,7 @@ export class Session {
         await this.endpointResolver.updateEndpointList(newEndpoint);
     }
 
-    client<Service extends ServiceDefinition<T>, T>(cls: SdkServiceDefinition<T>): Client<ServiceDefinition<T>> {
+    client<Service extends ServiceDefinition<T>, T>(cls: SdkServiceDefinition<T>): Client<ServiceDefinition<T>, {}> {
         const channel = createChannel(this.endpointResolver.resolve(cls.__endpointId), this.channelCredentials);
 
         return createClient(cls as ServiceDefinition<T>, channel);
