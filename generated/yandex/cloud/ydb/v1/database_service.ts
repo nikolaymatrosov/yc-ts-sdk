@@ -13,6 +13,7 @@ import {
     RegionalDatabase,
     DedicatedDatabase,
     ServerlessDatabase,
+    MonitoringConfig,
 } from '../../../../yandex/cloud/ydb/v1/database';
 import {
     makeGenericClientConstructor,
@@ -131,6 +132,7 @@ export interface CreateDatabaseRequest {
     locationId: string;
     labels: { [key: string]: string };
     backupConfig: BackupConfig | undefined;
+    monitoringConfig: MonitoringConfig | undefined;
 }
 
 export interface CreateDatabaseRequest_LabelsEntry {
@@ -164,6 +166,7 @@ export interface UpdateDatabaseRequest {
     locationId: string;
     labels: { [key: string]: string };
     backupConfig: BackupConfig | undefined;
+    monitoringConfig: MonitoringConfig | undefined;
 }
 
 export interface UpdateDatabaseRequest_LabelsEntry {
@@ -1261,6 +1264,12 @@ export const CreateDatabaseRequest = {
                 writer.uint32(130).fork()
             ).ldelim();
         }
+        if (message.monitoringConfig !== undefined) {
+            MonitoringConfig.encode(
+                message.monitoringConfig,
+                writer.uint32(138).fork()
+            ).ldelim();
+        }
         return writer;
     },
 
@@ -1350,6 +1359,12 @@ export const CreateDatabaseRequest = {
                     break;
                 case 16:
                     message.backupConfig = BackupConfig.decode(
+                        reader,
+                        reader.uint32()
+                    );
+                    break;
+                case 17:
+                    message.monitoringConfig = MonitoringConfig.decode(
                         reader,
                         reader.uint32()
                     );
@@ -1479,6 +1494,16 @@ export const CreateDatabaseRequest = {
         } else {
             message.backupConfig = undefined;
         }
+        if (
+            object.monitoringConfig !== undefined &&
+            object.monitoringConfig !== null
+        ) {
+            message.monitoringConfig = MonitoringConfig.fromJSON(
+                object.monitoringConfig
+            );
+        } else {
+            message.monitoringConfig = undefined;
+        }
         return message;
     },
 
@@ -1533,6 +1558,10 @@ export const CreateDatabaseRequest = {
         message.backupConfig !== undefined &&
             (obj.backupConfig = message.backupConfig
                 ? BackupConfig.toJSON(message.backupConfig)
+                : undefined);
+        message.monitoringConfig !== undefined &&
+            (obj.monitoringConfig = message.monitoringConfig
+                ? MonitoringConfig.toJSON(message.monitoringConfig)
                 : undefined);
         return obj;
     },
@@ -1659,6 +1688,16 @@ export const CreateDatabaseRequest = {
             );
         } else {
             message.backupConfig = undefined;
+        }
+        if (
+            object.monitoringConfig !== undefined &&
+            object.monitoringConfig !== null
+        ) {
+            message.monitoringConfig = MonitoringConfig.fromPartial(
+                object.monitoringConfig
+            );
+        } else {
+            message.monitoringConfig = undefined;
         }
         return message;
     },
@@ -1938,6 +1977,12 @@ export const UpdateDatabaseRequest = {
                 writer.uint32(146).fork()
             ).ldelim();
         }
+        if (message.monitoringConfig !== undefined) {
+            MonitoringConfig.encode(
+                message.monitoringConfig,
+                writer.uint32(154).fork()
+            ).ldelim();
+        }
         return writer;
     },
 
@@ -2036,6 +2081,12 @@ export const UpdateDatabaseRequest = {
                     break;
                 case 18:
                     message.backupConfig = BackupConfig.decode(
+                        reader,
+                        reader.uint32()
+                    );
+                    break;
+                case 19:
+                    message.monitoringConfig = MonitoringConfig.decode(
                         reader,
                         reader.uint32()
                     );
@@ -2175,6 +2226,16 @@ export const UpdateDatabaseRequest = {
         } else {
             message.backupConfig = undefined;
         }
+        if (
+            object.monitoringConfig !== undefined &&
+            object.monitoringConfig !== null
+        ) {
+            message.monitoringConfig = MonitoringConfig.fromJSON(
+                object.monitoringConfig
+            );
+        } else {
+            message.monitoringConfig = undefined;
+        }
         return message;
     },
 
@@ -2235,6 +2296,10 @@ export const UpdateDatabaseRequest = {
         message.backupConfig !== undefined &&
             (obj.backupConfig = message.backupConfig
                 ? BackupConfig.toJSON(message.backupConfig)
+                : undefined);
+        message.monitoringConfig !== undefined &&
+            (obj.monitoringConfig = message.monitoringConfig
+                ? MonitoringConfig.toJSON(message.monitoringConfig)
                 : undefined);
         return obj;
     },
@@ -2371,6 +2436,16 @@ export const UpdateDatabaseRequest = {
             );
         } else {
             message.backupConfig = undefined;
+        }
+        if (
+            object.monitoringConfig !== undefined &&
+            object.monitoringConfig !== null
+        ) {
+            message.monitoringConfig = MonitoringConfig.fromPartial(
+                object.monitoringConfig
+            );
+        } else {
+            message.monitoringConfig = undefined;
         }
         return message;
     },

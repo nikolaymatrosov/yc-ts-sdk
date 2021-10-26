@@ -23,6 +23,8 @@ export interface Proxy_LabelsEntry {
     value: string;
 }
 export interface Target {
+    /** Clickhouse settings for proxy. */
+    clickhouse: Target_ClickHouse | undefined;
     /** PostgreSQL settings for proxy. */
     postgresql: Target_PostgreSQL | undefined;
 }
@@ -36,6 +38,18 @@ export interface Target_PostgreSQL {
     /** PostgreSQL database name. */
     db: string;
     /** PostgreSQL proxy-host for connection, output only field. */
+    endpoint: string;
+}
+export interface Target_ClickHouse {
+    /** Cluster identifier for clickhouse. */
+    clusterId: string;
+    /** Clickhouse user. */
+    user: string;
+    /** Clickhouse password, input only field. */
+    password: string;
+    /** Clickhouse database name. */
+    db: string;
+    /** Clickhouse proxy-host for connection, output only field. */
     endpoint: string;
 }
 export declare const Proxy: {
@@ -65,6 +79,13 @@ export declare const Target_PostgreSQL: {
     fromJSON(object: any): Target_PostgreSQL;
     toJSON(message: Target_PostgreSQL): unknown;
     fromPartial(object: DeepPartial<Target_PostgreSQL>): Target_PostgreSQL;
+};
+export declare const Target_ClickHouse: {
+    encode(message: Target_ClickHouse, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Target_ClickHouse;
+    fromJSON(object: any): Target_ClickHouse;
+    toJSON(message: Target_ClickHouse): unknown;
+    fromPartial(object: DeepPartial<Target_ClickHouse>): Target_ClickHouse;
 };
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {

@@ -1506,11 +1506,7 @@ export const FolderServiceService = {
             Buffer.from(Operation.encode(value).finish()),
         responseDeserialize: (value: Buffer) => Operation.decode(value),
     },
-    /**
-     * Deletes the specified folder.
-     *
-     * The method is temporarily unavailable.
-     */
+    /** Deletes the specified folder. */
     delete: {
         path: '/yandex.cloud.resourcemanager.v1.FolderService/Delete',
         requestStream: false,
@@ -1592,11 +1588,7 @@ export interface FolderServiceServer extends UntypedServiceImplementation {
     create: handleUnaryCall<CreateFolderRequest, Operation>;
     /** Updates the specified folder. */
     update: handleUnaryCall<UpdateFolderRequest, Operation>;
-    /**
-     * Deletes the specified folder.
-     *
-     * The method is temporarily unavailable.
-     */
+    /** Deletes the specified folder. */
     delete: handleUnaryCall<DeleteFolderRequest, Operation>;
     /** Lists operations for the specified folder. */
     listOperations: handleUnaryCall<
@@ -1695,11 +1687,7 @@ export interface FolderServiceClient extends Client {
         options: Partial<CallOptions>,
         callback: (error: ServiceError | null, response: Operation) => void
     ): ClientUnaryCall;
-    /**
-     * Deletes the specified folder.
-     *
-     * The method is temporarily unavailable.
-     */
+    /** Deletes the specified folder. */
     delete(
         request: DeleteFolderRequest,
         callback: (error: ServiceError | null, response: Operation) => void

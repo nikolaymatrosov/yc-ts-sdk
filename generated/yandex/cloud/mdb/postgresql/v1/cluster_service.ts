@@ -729,6 +729,10 @@ export interface UpdateHostSpec {
     priority: number | undefined;
     /** Configuration of a PostgreSQL server for the host. */
     configSpec: ConfigHostSpec | undefined;
+    /** Field mask that specifies which fields of the PostgreSQL host should be updated. */
+    updateMask: FieldMask | undefined;
+    /** Whether the host should get a public IP address on creation. */
+    assignPublicIp: boolean;
 }
 
 export interface HostSpec {
@@ -799,6 +803,8 @@ export interface ConfigSpec {
     autofailover: boolean | undefined;
     /** Time to start the daily backup, in the UTC timezone. */
     backupWindowStart: TimeOfDay | undefined;
+    /** Retention policy of automated backups. */
+    backupRetainPeriodDays: number | undefined;
     /** Access policy to DB */
     access: Access | undefined;
     /** Configuration of the performance diagnostics service. */
@@ -5676,7 +5682,11 @@ export const UpdateClusterHostsMetadata = {
     },
 };
 
-const baseUpdateHostSpec: object = { hostName: '', replicationSource: '' };
+const baseUpdateHostSpec: object = {
+    hostName: '',
+    replicationSource: '',
+    assignPublicIp: false,
+};
 
 export const UpdateHostSpec = {
     encode(
@@ -5700,6 +5710,15 @@ export const UpdateHostSpec = {
                 message.configSpec,
                 writer.uint32(34).fork()
             ).ldelim();
+        }
+        if (message.updateMask !== undefined) {
+            FieldMask.encode(
+                message.updateMask,
+                writer.uint32(42).fork()
+            ).ldelim();
+        }
+        if (message.assignPublicIp === true) {
+            writer.uint32(48).bool(message.assignPublicIp);
         }
         return writer;
     },
@@ -5729,6 +5748,15 @@ export const UpdateHostSpec = {
                         reader,
                         reader.uint32()
                     );
+                    break;
+                case 5:
+                    message.updateMask = FieldMask.decode(
+                        reader,
+                        reader.uint32()
+                    );
+                    break;
+                case 6:
+                    message.assignPublicIp = reader.bool();
                     break;
                 default:
                     reader.skipType(tag & 7);
@@ -5763,6 +5791,19 @@ export const UpdateHostSpec = {
         } else {
             message.configSpec = undefined;
         }
+        if (object.updateMask !== undefined && object.updateMask !== null) {
+            message.updateMask = FieldMask.fromJSON(object.updateMask);
+        } else {
+            message.updateMask = undefined;
+        }
+        if (
+            object.assignPublicIp !== undefined &&
+            object.assignPublicIp !== null
+        ) {
+            message.assignPublicIp = Boolean(object.assignPublicIp);
+        } else {
+            message.assignPublicIp = false;
+        }
         return message;
     },
 
@@ -5776,6 +5817,12 @@ export const UpdateHostSpec = {
             (obj.configSpec = message.configSpec
                 ? ConfigHostSpec.toJSON(message.configSpec)
                 : undefined);
+        message.updateMask !== undefined &&
+            (obj.updateMask = message.updateMask
+                ? FieldMask.toJSON(message.updateMask)
+                : undefined);
+        message.assignPublicIp !== undefined &&
+            (obj.assignPublicIp = message.assignPublicIp);
         return obj;
     },
 
@@ -5803,6 +5850,19 @@ export const UpdateHostSpec = {
             message.configSpec = ConfigHostSpec.fromPartial(object.configSpec);
         } else {
             message.configSpec = undefined;
+        }
+        if (object.updateMask !== undefined && object.updateMask !== null) {
+            message.updateMask = FieldMask.fromPartial(object.updateMask);
+        } else {
+            message.updateMask = undefined;
+        }
+        if (
+            object.assignPublicIp !== undefined &&
+            object.assignPublicIp !== null
+        ) {
+            message.assignPublicIp = object.assignPublicIp;
+        } else {
+            message.assignPublicIp = false;
         }
         return message;
     },
@@ -6068,6 +6128,12 @@ export const ConfigSpec = {
                 writer.uint32(66).fork()
             ).ldelim();
         }
+        if (message.backupRetainPeriodDays !== undefined) {
+            Int64Value.encode(
+                { value: message.backupRetainPeriodDays! },
+                writer.uint32(138).fork()
+            ).ldelim();
+        }
         if (message.access !== undefined) {
             Access.encode(message.access, writer.uint32(74).fork()).ldelim();
         }
@@ -6162,6 +6228,12 @@ export const ConfigSpec = {
                         reader,
                         reader.uint32()
                     );
+                    break;
+                case 17:
+                    message.backupRetainPeriodDays = Int64Value.decode(
+                        reader,
+                        reader.uint32()
+                    ).value;
                     break;
                 case 9:
                     message.access = Access.decode(reader, reader.uint32());
@@ -6292,6 +6364,16 @@ export const ConfigSpec = {
         } else {
             message.backupWindowStart = undefined;
         }
+        if (
+            object.backupRetainPeriodDays !== undefined &&
+            object.backupRetainPeriodDays !== null
+        ) {
+            message.backupRetainPeriodDays = Number(
+                object.backupRetainPeriodDays
+            );
+        } else {
+            message.backupRetainPeriodDays = undefined;
+        }
         if (object.access !== undefined && object.access !== null) {
             message.access = Access.fromJSON(object.access);
         } else {
@@ -6359,6 +6441,8 @@ export const ConfigSpec = {
             (obj.backupWindowStart = message.backupWindowStart
                 ? TimeOfDay.toJSON(message.backupWindowStart)
                 : undefined);
+        message.backupRetainPeriodDays !== undefined &&
+            (obj.backupRetainPeriodDays = message.backupRetainPeriodDays);
         message.access !== undefined &&
             (obj.access = message.access
                 ? Access.toJSON(message.access)
@@ -6483,6 +6567,14 @@ export const ConfigSpec = {
             );
         } else {
             message.backupWindowStart = undefined;
+        }
+        if (
+            object.backupRetainPeriodDays !== undefined &&
+            object.backupRetainPeriodDays !== null
+        ) {
+            message.backupRetainPeriodDays = object.backupRetainPeriodDays;
+        } else {
+            message.backupRetainPeriodDays = undefined;
         }
         if (object.access !== undefined && object.access !== null) {
             message.access = Access.fromPartial(object.access);

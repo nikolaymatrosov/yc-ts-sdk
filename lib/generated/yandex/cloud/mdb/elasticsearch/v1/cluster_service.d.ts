@@ -122,7 +122,7 @@ export interface UpdateClusterRequest {
      *
      * Use [update_mask] to prevent reverting all cluster settings that are not listed in `config_spec` to their default values.
      */
-    configSpec: ConfigSpec | undefined;
+    configSpec: ConfigSpecUpdate | undefined;
     /** New name for the Elasticsearch cluster. */
     name: string;
     /** User security groups */
@@ -444,6 +444,16 @@ export interface ConfigSpec {
     /** ElasticSearch admin password. */
     adminPassword: string;
 }
+export interface ConfigSpecUpdate {
+    /** Elasticsearch version. */
+    version: string;
+    /** Configuration and resource allocation for Elasticsearch nodes. */
+    elasticsearchSpec: ElasticsearchSpec | undefined;
+    /** ElasticSearch edition. */
+    edition: string;
+    /** ElasticSearch admin password. */
+    adminPassword: string;
+}
 export interface AddClusterHostsRequest {
     /**
      * ID of the Elasticsearch cluster.
@@ -699,6 +709,13 @@ export declare const ConfigSpec: {
     fromJSON(object: any): ConfigSpec;
     toJSON(message: ConfigSpec): unknown;
     fromPartial(object: DeepPartial<ConfigSpec>): ConfigSpec;
+};
+export declare const ConfigSpecUpdate: {
+    encode(message: ConfigSpecUpdate, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ConfigSpecUpdate;
+    fromJSON(object: any): ConfigSpecUpdate;
+    toJSON(message: ConfigSpecUpdate): unknown;
+    fromPartial(object: DeepPartial<ConfigSpecUpdate>): ConfigSpecUpdate;
 };
 export declare const AddClusterHostsRequest: {
     encode(message: AddClusterHostsRequest, writer?: _m0.Writer): _m0.Writer;

@@ -287,6 +287,8 @@ export interface ClusterConfig {
     autofailover: boolean | undefined;
     /** Time to start the daily backup, in the UTC timezone. */
     backupWindowStart: TimeOfDay | undefined;
+    /** Retention policy of automated backups. */
+    backupRetainPeriodDays: number | undefined;
     /** Access policy to DB */
     access: Access | undefined;
     /** Configuration of the performance diagnostics service. */
@@ -1364,6 +1366,12 @@ export const ClusterConfig = {
                 writer.uint32(58).fork()
             ).ldelim();
         }
+        if (message.backupRetainPeriodDays !== undefined) {
+            Int64Value.encode(
+                { value: message.backupRetainPeriodDays! },
+                writer.uint32(138).fork()
+            ).ldelim();
+        }
         if (message.access !== undefined) {
             Access.encode(message.access, writer.uint32(74).fork()).ldelim();
         }
@@ -1452,6 +1460,12 @@ export const ClusterConfig = {
                         reader,
                         reader.uint32()
                     );
+                    break;
+                case 17:
+                    message.backupRetainPeriodDays = Int64Value.decode(
+                        reader,
+                        reader.uint32()
+                    ).value;
                     break;
                 case 9:
                     message.access = Access.decode(reader, reader.uint32());
@@ -1582,6 +1596,16 @@ export const ClusterConfig = {
         } else {
             message.backupWindowStart = undefined;
         }
+        if (
+            object.backupRetainPeriodDays !== undefined &&
+            object.backupRetainPeriodDays !== null
+        ) {
+            message.backupRetainPeriodDays = Number(
+                object.backupRetainPeriodDays
+            );
+        } else {
+            message.backupRetainPeriodDays = undefined;
+        }
         if (object.access !== undefined && object.access !== null) {
             message.access = Access.fromJSON(object.access);
         } else {
@@ -1649,6 +1673,8 @@ export const ClusterConfig = {
             (obj.backupWindowStart = message.backupWindowStart
                 ? TimeOfDay.toJSON(message.backupWindowStart)
                 : undefined);
+        message.backupRetainPeriodDays !== undefined &&
+            (obj.backupRetainPeriodDays = message.backupRetainPeriodDays);
         message.access !== undefined &&
             (obj.access = message.access
                 ? Access.toJSON(message.access)
@@ -1773,6 +1799,14 @@ export const ClusterConfig = {
             );
         } else {
             message.backupWindowStart = undefined;
+        }
+        if (
+            object.backupRetainPeriodDays !== undefined &&
+            object.backupRetainPeriodDays !== null
+        ) {
+            message.backupRetainPeriodDays = object.backupRetainPeriodDays;
+        } else {
+            message.backupRetainPeriodDays = undefined;
         }
         if (object.access !== undefined && object.access !== null) {
             message.access = Access.fromPartial(object.access);

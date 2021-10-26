@@ -68,6 +68,14 @@ export interface CreateServiceAccountRequest {
     name: string;
     /** Description of the service account. */
     description: string;
+    /** Resource labels as `` key:value `` pairs. */
+    labels: {
+        [key: string]: string;
+    };
+}
+export interface CreateServiceAccountRequest_LabelsEntry {
+    key: string;
+    value: string;
 }
 export interface CreateServiceAccountMetadata {
     /** ID of the service account that is being created. */
@@ -88,6 +96,14 @@ export interface UpdateServiceAccountRequest {
     name: string;
     /** Description of the service account. */
     description: string;
+    /** Resource labels as `` key:value `` pairs. */
+    labels: {
+        [key: string]: string;
+    };
+}
+export interface UpdateServiceAccountRequest_LabelsEntry {
+    key: string;
+    value: string;
 }
 export interface UpdateServiceAccountMetadata {
     /** ID of the ServiceAccount resource that is being updated. */
@@ -160,6 +176,13 @@ export declare const CreateServiceAccountRequest: {
     toJSON(message: CreateServiceAccountRequest): unknown;
     fromPartial(object: DeepPartial<CreateServiceAccountRequest>): CreateServiceAccountRequest;
 };
+export declare const CreateServiceAccountRequest_LabelsEntry: {
+    encode(message: CreateServiceAccountRequest_LabelsEntry, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateServiceAccountRequest_LabelsEntry;
+    fromJSON(object: any): CreateServiceAccountRequest_LabelsEntry;
+    toJSON(message: CreateServiceAccountRequest_LabelsEntry): unknown;
+    fromPartial(object: DeepPartial<CreateServiceAccountRequest_LabelsEntry>): CreateServiceAccountRequest_LabelsEntry;
+};
 export declare const CreateServiceAccountMetadata: {
     encode(message: CreateServiceAccountMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateServiceAccountMetadata;
@@ -173,6 +196,13 @@ export declare const UpdateServiceAccountRequest: {
     fromJSON(object: any): UpdateServiceAccountRequest;
     toJSON(message: UpdateServiceAccountRequest): unknown;
     fromPartial(object: DeepPartial<UpdateServiceAccountRequest>): UpdateServiceAccountRequest;
+};
+export declare const UpdateServiceAccountRequest_LabelsEntry: {
+    encode(message: UpdateServiceAccountRequest_LabelsEntry, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateServiceAccountRequest_LabelsEntry;
+    fromJSON(object: any): UpdateServiceAccountRequest_LabelsEntry;
+    toJSON(message: UpdateServiceAccountRequest_LabelsEntry): unknown;
+    fromPartial(object: DeepPartial<UpdateServiceAccountRequest_LabelsEntry>): UpdateServiceAccountRequest_LabelsEntry;
 };
 export declare const UpdateServiceAccountMetadata: {
     encode(message: UpdateServiceAccountMetadata, writer?: _m0.Writer): _m0.Writer;

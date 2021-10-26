@@ -10,6 +10,84 @@ import _m0 from 'protobufjs/minimal';
 export const protobufPackage = 'yandex.cloud.apploadbalancer.v1';
 
 /**
+ * A load balancing mode resource.
+ * For details about the concept, see
+ * [documentation](/docs/application-load-balancer/concepts/backend-group#balancing-mode).
+ */
+export enum LoadBalancingMode {
+    /**
+     * ROUND_ROBIN - Round robin load balancing mode.
+     *
+     * All endpoints of the backend take their turns to receive requests attributed to the backend.
+     */
+    ROUND_ROBIN = 0,
+    /**
+     * RANDOM - Random load balancing mode. Default value.
+     *
+     * For a request attributed to the backend, an endpoint that receives it is picked at random.
+     */
+    RANDOM = 1,
+    /**
+     * LEAST_REQUEST - Least request load balancing mode.
+     *
+     * To pick an endpoint that receives a request attributed to the backend, the power of two choices algorithm is used;
+     * that is, two endpoints are picked at random, and the request is sent to the one which has the fewest active
+     * requests.
+     */
+    LEAST_REQUEST = 2,
+    /**
+     * MAGLEV_HASH - Maglev hashing load balancing mode, used only if session affinity is working for the backend group.
+     *
+     * Each endpoint is hashed, and a hash table with 65537 rows is filled accordingly, so that every endpoint occupies
+     * the same amount of rows. An attribute of each request, specified in session affinity configuration of the backend
+     * group, is also hashed by the same function. The row with the same number as the resulting value is looked up in the
+     * table to determine the endpoint that receives the request.
+     *
+     * If session affinity is not working for the backend group (i.e. it is not configured or the group contains more
+     * than one backend with positive weight), endpoints for backends with `MAGLEV_HASH` load balancing mode are picked at
+     * `RANDOM` instead.
+     */
+    MAGLEV_HASH = 3,
+    UNRECOGNIZED = -1,
+}
+
+export function loadBalancingModeFromJSON(object: any): LoadBalancingMode {
+    switch (object) {
+        case 0:
+        case 'ROUND_ROBIN':
+            return LoadBalancingMode.ROUND_ROBIN;
+        case 1:
+        case 'RANDOM':
+            return LoadBalancingMode.RANDOM;
+        case 2:
+        case 'LEAST_REQUEST':
+            return LoadBalancingMode.LEAST_REQUEST;
+        case 3:
+        case 'MAGLEV_HASH':
+            return LoadBalancingMode.MAGLEV_HASH;
+        case -1:
+        case 'UNRECOGNIZED':
+        default:
+            return LoadBalancingMode.UNRECOGNIZED;
+    }
+}
+
+export function loadBalancingModeToJSON(object: LoadBalancingMode): string {
+    switch (object) {
+        case LoadBalancingMode.ROUND_ROBIN:
+            return 'ROUND_ROBIN';
+        case LoadBalancingMode.RANDOM:
+            return 'RANDOM';
+        case LoadBalancingMode.LEAST_REQUEST:
+            return 'LEAST_REQUEST';
+        case LoadBalancingMode.MAGLEV_HASH:
+            return 'MAGLEV_HASH';
+        default:
+            return 'UNKNOWN';
+    }
+}
+
+/**
  * A backend group resource.
  * For details about the concept, see [documentation](/docs/application-load-balancer/concepts/backend-group).
  */
@@ -32,6 +110,8 @@ export interface BackendGroup {
     http: HttpBackendGroup | undefined;
     /** List of gRPC backends that the backend group consists of. */
     grpc: GrpcBackendGroup | undefined;
+    /** List of stream backends that the backend group consist of. */
+    stream: StreamBackendGroup | undefined;
     /** Creation timestamp. */
     createdAt: Date | undefined;
 }
@@ -41,29 +121,66 @@ export interface BackendGroup_LabelsEntry {
     value: string;
 }
 
+/** A Stream backend group resource. */
+export interface StreamBackendGroup {
+    backends: StreamBackend[];
+    connection: ConnectionSessionAffinity | undefined;
+}
+
 /** An HTTP backend group resource. */
 export interface HttpBackendGroup {
     /** List of HTTP backends. */
     backends: HttpBackend[];
+    /**
+     * Connection-based session affinity configuration.
+     *
+     * For now, a connection is defined only by an IP address of the client.
+     */
+    connection: ConnectionSessionAffinity | undefined;
+    /** HTTP-header-field-based session affinity configuration. */
+    header: HeaderSessionAffinity | undefined;
+    /** Cookie-based session affinity configuration. */
+    cookie: CookieSessionAffinity | undefined;
 }
 
 /** A gRPC backend group resource. */
 export interface GrpcBackendGroup {
     /** List of gRPC backends. */
     backends: GrpcBackend[];
+    /**
+     * Connection-based session affinity configuration.
+     *
+     * For now, a connection is defined only by an IP address of the client.
+     */
+    connection: ConnectionSessionAffinity | undefined;
+    /** HTTP-header-field-based session affinity configuration. */
+    header: HeaderSessionAffinity | undefined;
+    /** Cookie-based session affinity configuration. */
+    cookie: CookieSessionAffinity | undefined;
 }
 
+/** A resource for HTTP-header-field-based session affinity configuration. */
 export interface HeaderSessionAffinity {
+    /** Name of the HTTP header field that is used for session affinity. */
     headerName: string;
 }
 
+/** A resource for cookie-based session affinity configuration. */
 export interface CookieSessionAffinity {
+    /** Name of the cookie that is used for session affinity. */
     name: string;
-    /** If not set, session cookie will be used (not persisted between browser restarts). */
+    /**
+     * Maximum age of cookies that are generated for sessions (persistent cookies).
+     *
+     * If not set, session cookies are used, which are stored by clients in temporary memory and are deleted
+     * on client restarts.
+     */
     ttl: Duration | undefined;
 }
 
+/** A resource for connection-based session affinity configuration. */
 export interface ConnectionSessionAffinity {
+    /** Specifies whether an IP address of the client is used to define a connection for session affinity. */
     sourceIp: boolean;
 }
 
@@ -107,6 +224,26 @@ export interface LoadBalancingConfig {
      * Default value: `false`.
      */
     strictLocality: boolean;
+    /**
+     * Load balancing mode for the backend.
+     *
+     * For detals about load balancing modes, see
+     * [documentation](/docs/application-load-balancer/concepts/backend-group#balancing-mode).
+     */
+    mode: LoadBalancingMode;
+}
+
+/** A stream backend resource. */
+export interface StreamBackend {
+    name: string;
+    /** If not set, backend will be disabled. */
+    backendWeight: number | undefined;
+    loadBalancingConfig: LoadBalancingConfig | undefined;
+    /** Optional alternative port for all targets. */
+    port: number;
+    targetGroups: TargetGroupsBackend | undefined;
+    healthchecks: HealthCheck[];
+    tls: BackendTls | undefined;
 }
 
 /** An HTTP backend resource. */
@@ -119,15 +256,26 @@ export interface HttpBackend {
      * Weights must be set either for all backends in a group or for none of them.
      * Setting no weights is the same as setting equal non-zero weights for all backends.
      *
-     * If set to `0`, traffic is not sent to the backend.
+     * If the weight is non-positive, traffic is not sent to the backend.
      */
     backendWeight: number | undefined;
     /** Load balancing configuration for the backend. */
     loadBalancingConfig: LoadBalancingConfig | undefined;
     /** Port used by all targets to receive traffic. */
     port: number;
-    /** Target groups that belong to the backend. */
+    /**
+     * Target groups that belong to the backend. For details about target groups, see
+     * [documentation](/docs/application-load-balancer/concepts/target-group).
+     */
     targetGroups: TargetGroupsBackend | undefined;
+    /**
+     * Object Storage bucket to use as the backend. For details about buckets, see
+     * [documentation](/docs/storage/concepts/bucket).
+     *
+     * If a bucket is used as a backend, the list of bucket objects and the objects themselves must be publicly
+     * accessible. For instructions, see [documentation](/docs/storage/operations/buckets/bucket-availability).
+     */
+    storageBucket: StorageBucketBackend | undefined;
     /**
      * Health checks to perform on targets from target groups.
      * For details about health checking, see [documentation](/docs/application-load-balancer/concepts/backend-group#health-checks).
@@ -161,7 +309,7 @@ export interface GrpcBackend {
      * Weights must be set either for all backends of a group or for none of them.
      * Setting no weights is the same as setting equal non-zero weights for all backends.
      *
-     * If set to `0`, traffic is not sent to the backend.
+     * If the weight is non-positive, traffic is not sent to the backend.
      */
     backendWeight: number | undefined;
     /** Load balancing configuration for the backend. */
@@ -203,6 +351,15 @@ export interface BackendTls {
     sni: string;
     /** Validation context for TLS connections. */
     validationContext: ValidationContext | undefined;
+}
+
+/**
+ * A resource for Object Storage bucket used as a backend. For details about the concept,
+ * see [documentation](/docs/storage/concepts/bucket).
+ */
+export interface StorageBucketBackend {
+    /** Name of the bucket. */
+    bucket: string;
 }
 
 /**
@@ -342,6 +499,12 @@ export const BackendGroup = {
                 writer.uint32(58).fork()
             ).ldelim();
         }
+        if (message.stream !== undefined) {
+            StreamBackendGroup.encode(
+                message.stream,
+                writer.uint32(82).fork()
+            ).ldelim();
+        }
         if (message.createdAt !== undefined) {
             Timestamp.encode(
                 toTimestamp(message.createdAt),
@@ -389,6 +552,12 @@ export const BackendGroup = {
                     break;
                 case 7:
                     message.grpc = GrpcBackendGroup.decode(
+                        reader,
+                        reader.uint32()
+                    );
+                    break;
+                case 10:
+                    message.stream = StreamBackendGroup.decode(
                         reader,
                         reader.uint32()
                     );
@@ -444,6 +613,11 @@ export const BackendGroup = {
         } else {
             message.grpc = undefined;
         }
+        if (object.stream !== undefined && object.stream !== null) {
+            message.stream = StreamBackendGroup.fromJSON(object.stream);
+        } else {
+            message.stream = undefined;
+        }
         if (object.createdAt !== undefined && object.createdAt !== null) {
             message.createdAt = fromJsonTimestamp(object.createdAt);
         } else {
@@ -472,6 +646,10 @@ export const BackendGroup = {
         message.grpc !== undefined &&
             (obj.grpc = message.grpc
                 ? GrpcBackendGroup.toJSON(message.grpc)
+                : undefined);
+        message.stream !== undefined &&
+            (obj.stream = message.stream
+                ? StreamBackendGroup.toJSON(message.stream)
                 : undefined);
         message.createdAt !== undefined &&
             (obj.createdAt = message.createdAt.toISOString());
@@ -517,6 +695,11 @@ export const BackendGroup = {
             message.grpc = GrpcBackendGroup.fromPartial(object.grpc);
         } else {
             message.grpc = undefined;
+        }
+        if (object.stream !== undefined && object.stream !== null) {
+            message.stream = StreamBackendGroup.fromPartial(object.stream);
+        } else {
+            message.stream = undefined;
         }
         if (object.createdAt !== undefined && object.createdAt !== null) {
             message.createdAt = object.createdAt;
@@ -614,6 +797,109 @@ export const BackendGroup_LabelsEntry = {
     },
 };
 
+const baseStreamBackendGroup: object = {};
+
+export const StreamBackendGroup = {
+    encode(
+        message: StreamBackendGroup,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        for (const v of message.backends) {
+            StreamBackend.encode(v!, writer.uint32(10).fork()).ldelim();
+        }
+        if (message.connection !== undefined) {
+            ConnectionSessionAffinity.encode(
+                message.connection,
+                writer.uint32(18).fork()
+            ).ldelim();
+        }
+        return writer;
+    },
+
+    decode(
+        input: _m0.Reader | Uint8Array,
+        length?: number
+    ): StreamBackendGroup {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = { ...baseStreamBackendGroup } as StreamBackendGroup;
+        message.backends = [];
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.backends.push(
+                        StreamBackend.decode(reader, reader.uint32())
+                    );
+                    break;
+                case 2:
+                    message.connection = ConnectionSessionAffinity.decode(
+                        reader,
+                        reader.uint32()
+                    );
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): StreamBackendGroup {
+        const message = { ...baseStreamBackendGroup } as StreamBackendGroup;
+        message.backends = [];
+        if (object.backends !== undefined && object.backends !== null) {
+            for (const e of object.backends) {
+                message.backends.push(StreamBackend.fromJSON(e));
+            }
+        }
+        if (object.connection !== undefined && object.connection !== null) {
+            message.connection = ConnectionSessionAffinity.fromJSON(
+                object.connection
+            );
+        } else {
+            message.connection = undefined;
+        }
+        return message;
+    },
+
+    toJSON(message: StreamBackendGroup): unknown {
+        const obj: any = {};
+        if (message.backends) {
+            obj.backends = message.backends.map((e) =>
+                e ? StreamBackend.toJSON(e) : undefined
+            );
+        } else {
+            obj.backends = [];
+        }
+        message.connection !== undefined &&
+            (obj.connection = message.connection
+                ? ConnectionSessionAffinity.toJSON(message.connection)
+                : undefined);
+        return obj;
+    },
+
+    fromPartial(object: DeepPartial<StreamBackendGroup>): StreamBackendGroup {
+        const message = { ...baseStreamBackendGroup } as StreamBackendGroup;
+        message.backends = [];
+        if (object.backends !== undefined && object.backends !== null) {
+            for (const e of object.backends) {
+                message.backends.push(StreamBackend.fromPartial(e));
+            }
+        }
+        if (object.connection !== undefined && object.connection !== null) {
+            message.connection = ConnectionSessionAffinity.fromPartial(
+                object.connection
+            );
+        } else {
+            message.connection = undefined;
+        }
+        return message;
+    },
+};
+
 const baseHttpBackendGroup: object = {};
 
 export const HttpBackendGroup = {
@@ -623,6 +909,24 @@ export const HttpBackendGroup = {
     ): _m0.Writer {
         for (const v of message.backends) {
             HttpBackend.encode(v!, writer.uint32(10).fork()).ldelim();
+        }
+        if (message.connection !== undefined) {
+            ConnectionSessionAffinity.encode(
+                message.connection,
+                writer.uint32(18).fork()
+            ).ldelim();
+        }
+        if (message.header !== undefined) {
+            HeaderSessionAffinity.encode(
+                message.header,
+                writer.uint32(26).fork()
+            ).ldelim();
+        }
+        if (message.cookie !== undefined) {
+            CookieSessionAffinity.encode(
+                message.cookie,
+                writer.uint32(34).fork()
+            ).ldelim();
         }
         return writer;
     },
@@ -641,6 +945,24 @@ export const HttpBackendGroup = {
                         HttpBackend.decode(reader, reader.uint32())
                     );
                     break;
+                case 2:
+                    message.connection = ConnectionSessionAffinity.decode(
+                        reader,
+                        reader.uint32()
+                    );
+                    break;
+                case 3:
+                    message.header = HeaderSessionAffinity.decode(
+                        reader,
+                        reader.uint32()
+                    );
+                    break;
+                case 4:
+                    message.cookie = CookieSessionAffinity.decode(
+                        reader,
+                        reader.uint32()
+                    );
+                    break;
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -657,6 +979,23 @@ export const HttpBackendGroup = {
                 message.backends.push(HttpBackend.fromJSON(e));
             }
         }
+        if (object.connection !== undefined && object.connection !== null) {
+            message.connection = ConnectionSessionAffinity.fromJSON(
+                object.connection
+            );
+        } else {
+            message.connection = undefined;
+        }
+        if (object.header !== undefined && object.header !== null) {
+            message.header = HeaderSessionAffinity.fromJSON(object.header);
+        } else {
+            message.header = undefined;
+        }
+        if (object.cookie !== undefined && object.cookie !== null) {
+            message.cookie = CookieSessionAffinity.fromJSON(object.cookie);
+        } else {
+            message.cookie = undefined;
+        }
         return message;
     },
 
@@ -669,6 +1008,18 @@ export const HttpBackendGroup = {
         } else {
             obj.backends = [];
         }
+        message.connection !== undefined &&
+            (obj.connection = message.connection
+                ? ConnectionSessionAffinity.toJSON(message.connection)
+                : undefined);
+        message.header !== undefined &&
+            (obj.header = message.header
+                ? HeaderSessionAffinity.toJSON(message.header)
+                : undefined);
+        message.cookie !== undefined &&
+            (obj.cookie = message.cookie
+                ? CookieSessionAffinity.toJSON(message.cookie)
+                : undefined);
         return obj;
     },
 
@@ -679,6 +1030,23 @@ export const HttpBackendGroup = {
             for (const e of object.backends) {
                 message.backends.push(HttpBackend.fromPartial(e));
             }
+        }
+        if (object.connection !== undefined && object.connection !== null) {
+            message.connection = ConnectionSessionAffinity.fromPartial(
+                object.connection
+            );
+        } else {
+            message.connection = undefined;
+        }
+        if (object.header !== undefined && object.header !== null) {
+            message.header = HeaderSessionAffinity.fromPartial(object.header);
+        } else {
+            message.header = undefined;
+        }
+        if (object.cookie !== undefined && object.cookie !== null) {
+            message.cookie = CookieSessionAffinity.fromPartial(object.cookie);
+        } else {
+            message.cookie = undefined;
         }
         return message;
     },
@@ -693,6 +1061,24 @@ export const GrpcBackendGroup = {
     ): _m0.Writer {
         for (const v of message.backends) {
             GrpcBackend.encode(v!, writer.uint32(10).fork()).ldelim();
+        }
+        if (message.connection !== undefined) {
+            ConnectionSessionAffinity.encode(
+                message.connection,
+                writer.uint32(18).fork()
+            ).ldelim();
+        }
+        if (message.header !== undefined) {
+            HeaderSessionAffinity.encode(
+                message.header,
+                writer.uint32(26).fork()
+            ).ldelim();
+        }
+        if (message.cookie !== undefined) {
+            CookieSessionAffinity.encode(
+                message.cookie,
+                writer.uint32(34).fork()
+            ).ldelim();
         }
         return writer;
     },
@@ -711,6 +1097,24 @@ export const GrpcBackendGroup = {
                         GrpcBackend.decode(reader, reader.uint32())
                     );
                     break;
+                case 2:
+                    message.connection = ConnectionSessionAffinity.decode(
+                        reader,
+                        reader.uint32()
+                    );
+                    break;
+                case 3:
+                    message.header = HeaderSessionAffinity.decode(
+                        reader,
+                        reader.uint32()
+                    );
+                    break;
+                case 4:
+                    message.cookie = CookieSessionAffinity.decode(
+                        reader,
+                        reader.uint32()
+                    );
+                    break;
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -727,6 +1131,23 @@ export const GrpcBackendGroup = {
                 message.backends.push(GrpcBackend.fromJSON(e));
             }
         }
+        if (object.connection !== undefined && object.connection !== null) {
+            message.connection = ConnectionSessionAffinity.fromJSON(
+                object.connection
+            );
+        } else {
+            message.connection = undefined;
+        }
+        if (object.header !== undefined && object.header !== null) {
+            message.header = HeaderSessionAffinity.fromJSON(object.header);
+        } else {
+            message.header = undefined;
+        }
+        if (object.cookie !== undefined && object.cookie !== null) {
+            message.cookie = CookieSessionAffinity.fromJSON(object.cookie);
+        } else {
+            message.cookie = undefined;
+        }
         return message;
     },
 
@@ -739,6 +1160,18 @@ export const GrpcBackendGroup = {
         } else {
             obj.backends = [];
         }
+        message.connection !== undefined &&
+            (obj.connection = message.connection
+                ? ConnectionSessionAffinity.toJSON(message.connection)
+                : undefined);
+        message.header !== undefined &&
+            (obj.header = message.header
+                ? HeaderSessionAffinity.toJSON(message.header)
+                : undefined);
+        message.cookie !== undefined &&
+            (obj.cookie = message.cookie
+                ? CookieSessionAffinity.toJSON(message.cookie)
+                : undefined);
         return obj;
     },
 
@@ -749,6 +1182,23 @@ export const GrpcBackendGroup = {
             for (const e of object.backends) {
                 message.backends.push(GrpcBackend.fromPartial(e));
             }
+        }
+        if (object.connection !== undefined && object.connection !== null) {
+            message.connection = ConnectionSessionAffinity.fromPartial(
+                object.connection
+            );
+        } else {
+            message.connection = undefined;
+        }
+        if (object.header !== undefined && object.header !== null) {
+            message.header = HeaderSessionAffinity.fromPartial(object.header);
+        } else {
+            message.header = undefined;
+        }
+        if (object.cookie !== undefined && object.cookie !== null) {
+            message.cookie = CookieSessionAffinity.fromPartial(object.cookie);
+        } else {
+            message.cookie = undefined;
         }
         return message;
     },
@@ -987,6 +1437,7 @@ const baseLoadBalancingConfig: object = {
     panicThreshold: 0,
     localityAwareRoutingPercent: 0,
     strictLocality: false,
+    mode: 0,
 };
 
 export const LoadBalancingConfig = {
@@ -1002,6 +1453,9 @@ export const LoadBalancingConfig = {
         }
         if (message.strictLocality === true) {
             writer.uint32(24).bool(message.strictLocality);
+        }
+        if (message.mode !== 0) {
+            writer.uint32(32).int32(message.mode);
         }
         return writer;
     },
@@ -1029,6 +1483,9 @@ export const LoadBalancingConfig = {
                     break;
                 case 3:
                     message.strictLocality = reader.bool();
+                    break;
+                case 4:
+                    message.mode = reader.int32() as any;
                     break;
                 default:
                     reader.skipType(tag & 7);
@@ -1066,6 +1523,11 @@ export const LoadBalancingConfig = {
         } else {
             message.strictLocality = false;
         }
+        if (object.mode !== undefined && object.mode !== null) {
+            message.mode = loadBalancingModeFromJSON(object.mode);
+        } else {
+            message.mode = 0;
+        }
         return message;
     },
 
@@ -1078,6 +1540,8 @@ export const LoadBalancingConfig = {
                 message.localityAwareRoutingPercent);
         message.strictLocality !== undefined &&
             (obj.strictLocality = message.strictLocality);
+        message.mode !== undefined &&
+            (obj.mode = loadBalancingModeToJSON(message.mode));
         return obj;
     },
 
@@ -1107,6 +1571,231 @@ export const LoadBalancingConfig = {
             message.strictLocality = object.strictLocality;
         } else {
             message.strictLocality = false;
+        }
+        if (object.mode !== undefined && object.mode !== null) {
+            message.mode = object.mode;
+        } else {
+            message.mode = 0;
+        }
+        return message;
+    },
+};
+
+const baseStreamBackend: object = { name: '', port: 0 };
+
+export const StreamBackend = {
+    encode(
+        message: StreamBackend,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        if (message.name !== '') {
+            writer.uint32(10).string(message.name);
+        }
+        if (message.backendWeight !== undefined) {
+            Int64Value.encode(
+                { value: message.backendWeight! },
+                writer.uint32(18).fork()
+            ).ldelim();
+        }
+        if (message.loadBalancingConfig !== undefined) {
+            LoadBalancingConfig.encode(
+                message.loadBalancingConfig,
+                writer.uint32(26).fork()
+            ).ldelim();
+        }
+        if (message.port !== 0) {
+            writer.uint32(32).int64(message.port);
+        }
+        if (message.targetGroups !== undefined) {
+            TargetGroupsBackend.encode(
+                message.targetGroups,
+                writer.uint32(42).fork()
+            ).ldelim();
+        }
+        for (const v of message.healthchecks) {
+            HealthCheck.encode(v!, writer.uint32(50).fork()).ldelim();
+        }
+        if (message.tls !== undefined) {
+            BackendTls.encode(message.tls, writer.uint32(58).fork()).ldelim();
+        }
+        return writer;
+    },
+
+    decode(input: _m0.Reader | Uint8Array, length?: number): StreamBackend {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = { ...baseStreamBackend } as StreamBackend;
+        message.healthchecks = [];
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.name = reader.string();
+                    break;
+                case 2:
+                    message.backendWeight = Int64Value.decode(
+                        reader,
+                        reader.uint32()
+                    ).value;
+                    break;
+                case 3:
+                    message.loadBalancingConfig = LoadBalancingConfig.decode(
+                        reader,
+                        reader.uint32()
+                    );
+                    break;
+                case 4:
+                    message.port = longToNumber(reader.int64() as Long);
+                    break;
+                case 5:
+                    message.targetGroups = TargetGroupsBackend.decode(
+                        reader,
+                        reader.uint32()
+                    );
+                    break;
+                case 6:
+                    message.healthchecks.push(
+                        HealthCheck.decode(reader, reader.uint32())
+                    );
+                    break;
+                case 7:
+                    message.tls = BackendTls.decode(reader, reader.uint32());
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): StreamBackend {
+        const message = { ...baseStreamBackend } as StreamBackend;
+        message.healthchecks = [];
+        if (object.name !== undefined && object.name !== null) {
+            message.name = String(object.name);
+        } else {
+            message.name = '';
+        }
+        if (
+            object.backendWeight !== undefined &&
+            object.backendWeight !== null
+        ) {
+            message.backendWeight = Number(object.backendWeight);
+        } else {
+            message.backendWeight = undefined;
+        }
+        if (
+            object.loadBalancingConfig !== undefined &&
+            object.loadBalancingConfig !== null
+        ) {
+            message.loadBalancingConfig = LoadBalancingConfig.fromJSON(
+                object.loadBalancingConfig
+            );
+        } else {
+            message.loadBalancingConfig = undefined;
+        }
+        if (object.port !== undefined && object.port !== null) {
+            message.port = Number(object.port);
+        } else {
+            message.port = 0;
+        }
+        if (object.targetGroups !== undefined && object.targetGroups !== null) {
+            message.targetGroups = TargetGroupsBackend.fromJSON(
+                object.targetGroups
+            );
+        } else {
+            message.targetGroups = undefined;
+        }
+        if (object.healthchecks !== undefined && object.healthchecks !== null) {
+            for (const e of object.healthchecks) {
+                message.healthchecks.push(HealthCheck.fromJSON(e));
+            }
+        }
+        if (object.tls !== undefined && object.tls !== null) {
+            message.tls = BackendTls.fromJSON(object.tls);
+        } else {
+            message.tls = undefined;
+        }
+        return message;
+    },
+
+    toJSON(message: StreamBackend): unknown {
+        const obj: any = {};
+        message.name !== undefined && (obj.name = message.name);
+        message.backendWeight !== undefined &&
+            (obj.backendWeight = message.backendWeight);
+        message.loadBalancingConfig !== undefined &&
+            (obj.loadBalancingConfig = message.loadBalancingConfig
+                ? LoadBalancingConfig.toJSON(message.loadBalancingConfig)
+                : undefined);
+        message.port !== undefined && (obj.port = message.port);
+        message.targetGroups !== undefined &&
+            (obj.targetGroups = message.targetGroups
+                ? TargetGroupsBackend.toJSON(message.targetGroups)
+                : undefined);
+        if (message.healthchecks) {
+            obj.healthchecks = message.healthchecks.map((e) =>
+                e ? HealthCheck.toJSON(e) : undefined
+            );
+        } else {
+            obj.healthchecks = [];
+        }
+        message.tls !== undefined &&
+            (obj.tls = message.tls
+                ? BackendTls.toJSON(message.tls)
+                : undefined);
+        return obj;
+    },
+
+    fromPartial(object: DeepPartial<StreamBackend>): StreamBackend {
+        const message = { ...baseStreamBackend } as StreamBackend;
+        message.healthchecks = [];
+        if (object.name !== undefined && object.name !== null) {
+            message.name = object.name;
+        } else {
+            message.name = '';
+        }
+        if (
+            object.backendWeight !== undefined &&
+            object.backendWeight !== null
+        ) {
+            message.backendWeight = object.backendWeight;
+        } else {
+            message.backendWeight = undefined;
+        }
+        if (
+            object.loadBalancingConfig !== undefined &&
+            object.loadBalancingConfig !== null
+        ) {
+            message.loadBalancingConfig = LoadBalancingConfig.fromPartial(
+                object.loadBalancingConfig
+            );
+        } else {
+            message.loadBalancingConfig = undefined;
+        }
+        if (object.port !== undefined && object.port !== null) {
+            message.port = object.port;
+        } else {
+            message.port = 0;
+        }
+        if (object.targetGroups !== undefined && object.targetGroups !== null) {
+            message.targetGroups = TargetGroupsBackend.fromPartial(
+                object.targetGroups
+            );
+        } else {
+            message.targetGroups = undefined;
+        }
+        if (object.healthchecks !== undefined && object.healthchecks !== null) {
+            for (const e of object.healthchecks) {
+                message.healthchecks.push(HealthCheck.fromPartial(e));
+            }
+        }
+        if (object.tls !== undefined && object.tls !== null) {
+            message.tls = BackendTls.fromPartial(object.tls);
+        } else {
+            message.tls = undefined;
         }
         return message;
     },
@@ -1141,6 +1830,12 @@ export const HttpBackend = {
             TargetGroupsBackend.encode(
                 message.targetGroups,
                 writer.uint32(42).fork()
+            ).ldelim();
+        }
+        if (message.storageBucket !== undefined) {
+            StorageBucketBackend.encode(
+                message.storageBucket,
+                writer.uint32(74).fork()
             ).ldelim();
         }
         for (const v of message.healthchecks) {
@@ -1184,6 +1879,12 @@ export const HttpBackend = {
                     break;
                 case 5:
                     message.targetGroups = TargetGroupsBackend.decode(
+                        reader,
+                        reader.uint32()
+                    );
+                    break;
+                case 9:
+                    message.storageBucket = StorageBucketBackend.decode(
                         reader,
                         reader.uint32()
                     );
@@ -1245,6 +1946,16 @@ export const HttpBackend = {
         } else {
             message.targetGroups = undefined;
         }
+        if (
+            object.storageBucket !== undefined &&
+            object.storageBucket !== null
+        ) {
+            message.storageBucket = StorageBucketBackend.fromJSON(
+                object.storageBucket
+            );
+        } else {
+            message.storageBucket = undefined;
+        }
         if (object.healthchecks !== undefined && object.healthchecks !== null) {
             for (const e of object.healthchecks) {
                 message.healthchecks.push(HealthCheck.fromJSON(e));
@@ -1276,6 +1987,10 @@ export const HttpBackend = {
         message.targetGroups !== undefined &&
             (obj.targetGroups = message.targetGroups
                 ? TargetGroupsBackend.toJSON(message.targetGroups)
+                : undefined);
+        message.storageBucket !== undefined &&
+            (obj.storageBucket = message.storageBucket
+                ? StorageBucketBackend.toJSON(message.storageBucket)
                 : undefined);
         if (message.healthchecks) {
             obj.healthchecks = message.healthchecks.map((e) =>
@@ -1329,6 +2044,16 @@ export const HttpBackend = {
             );
         } else {
             message.targetGroups = undefined;
+        }
+        if (
+            object.storageBucket !== undefined &&
+            object.storageBucket !== null
+        ) {
+            message.storageBucket = StorageBucketBackend.fromPartial(
+                object.storageBucket
+            );
+        } else {
+            message.storageBucket = undefined;
         }
         if (object.healthchecks !== undefined && object.healthchecks !== null) {
             for (const e of object.healthchecks) {
@@ -1734,6 +2459,70 @@ export const BackendTls = {
             );
         } else {
             message.validationContext = undefined;
+        }
+        return message;
+    },
+};
+
+const baseStorageBucketBackend: object = { bucket: '' };
+
+export const StorageBucketBackend = {
+    encode(
+        message: StorageBucketBackend,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        if (message.bucket !== '') {
+            writer.uint32(10).string(message.bucket);
+        }
+        return writer;
+    },
+
+    decode(
+        input: _m0.Reader | Uint8Array,
+        length?: number
+    ): StorageBucketBackend {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = { ...baseStorageBucketBackend } as StorageBucketBackend;
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.bucket = reader.string();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): StorageBucketBackend {
+        const message = { ...baseStorageBucketBackend } as StorageBucketBackend;
+        if (object.bucket !== undefined && object.bucket !== null) {
+            message.bucket = String(object.bucket);
+        } else {
+            message.bucket = '';
+        }
+        return message;
+    },
+
+    toJSON(message: StorageBucketBackend): unknown {
+        const obj: any = {};
+        message.bucket !== undefined && (obj.bucket = message.bucket);
+        return obj;
+    },
+
+    fromPartial(
+        object: DeepPartial<StorageBucketBackend>
+    ): StorageBucketBackend {
+        const message = { ...baseStorageBucketBackend } as StorageBucketBackend;
+        if (object.bucket !== undefined && object.bucket !== null) {
+            message.bucket = object.bucket;
+        } else {
+            message.bucket = '';
         }
         return message;
     },

@@ -26,6 +26,8 @@ export interface Job {
     pysparkJob: PysparkJob | undefined;
     /** Specification for a Hive job. */
     hiveJob: HiveJob | undefined;
+    /** Attributes of YARN application. */
+    applicationInfo: ApplicationInfo | undefined;
 }
 export declare enum Job_Status {
     STATUS_UNSPECIFIED = 0,
@@ -43,6 +45,18 @@ export declare enum Job_Status {
 }
 export declare function job_StatusFromJSON(object: any): Job_Status;
 export declare function job_StatusToJSON(object: Job_Status): string;
+export interface ApplicationAttempt {
+    /** ID of YARN application attempt */
+    id: string;
+    /** ID of YARN Application Master container */
+    amContainerId: string;
+}
+export interface ApplicationInfo {
+    /** ID of YARN application */
+    id: string;
+    /** YARN application attempts */
+    applicationAttempts: ApplicationAttempt[];
+}
 export interface MapreduceJob {
     /** Optional arguments to pass to the driver. */
     args: string[];
@@ -88,6 +102,12 @@ export interface SparkJob {
     mainJarFileUri: string;
     /** The name of the driver class. */
     mainClass: string;
+    /** List of maven coordinates of jars to include on the driver and executor classpaths. */
+    packages: string[];
+    /** List of additional remote repositories to search for the maven coordinates given with --packages. */
+    repositories: string[];
+    /** List of groupId:artifactId, to exclude while resolving the dependencies provided in --packages to avoid dependency conflicts. */
+    excludePackages: string[];
 }
 export interface SparkJob_PropertiesEntry {
     key: string;
@@ -113,6 +133,12 @@ export interface PysparkJob {
     mainPythonFileUri: string;
     /** URIs of Python files to pass to the PySpark framework. */
     pythonFileUris: string[];
+    /** List of maven coordinates of jars to include on the driver and executor classpaths. */
+    packages: string[];
+    /** List of additional remote repositories to search for the maven coordinates given with --packages. */
+    repositories: string[];
+    /** List of groupId:artifactId, to exclude while resolving the dependencies provided in --packages to avoid dependency conflicts. */
+    excludePackages: string[];
 }
 export interface PysparkJob_PropertiesEntry {
     key: string;
@@ -154,6 +180,20 @@ export declare const Job: {
     fromJSON(object: any): Job;
     toJSON(message: Job): unknown;
     fromPartial(object: DeepPartial<Job>): Job;
+};
+export declare const ApplicationAttempt: {
+    encode(message: ApplicationAttempt, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ApplicationAttempt;
+    fromJSON(object: any): ApplicationAttempt;
+    toJSON(message: ApplicationAttempt): unknown;
+    fromPartial(object: DeepPartial<ApplicationAttempt>): ApplicationAttempt;
+};
+export declare const ApplicationInfo: {
+    encode(message: ApplicationInfo, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ApplicationInfo;
+    fromJSON(object: any): ApplicationInfo;
+    toJSON(message: ApplicationInfo): unknown;
+    fromPartial(object: DeepPartial<ApplicationInfo>): ApplicationInfo;
 };
 export declare const MapreduceJob: {
     encode(message: MapreduceJob, writer?: _m0.Writer): _m0.Writer;

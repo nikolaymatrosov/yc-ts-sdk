@@ -1,6 +1,5 @@
-import jsutil from 'util';
-
 import registar, { Cls } from './registar';
+import jsutil from 'util';
 
 export function pimpServiceInstance(instance: any) {
     for (const methodName of Object.keys(instance.$method_definitions)) {

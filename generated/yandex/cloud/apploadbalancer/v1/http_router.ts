@@ -1,6 +1,9 @@
 /* eslint-disable */
 import { Timestamp } from '../../../../google/protobuf/timestamp';
-import { VirtualHost } from '../../../../yandex/cloud/apploadbalancer/v1/virtual_host';
+import {
+    VirtualHost,
+    RouteOptions,
+} from '../../../../yandex/cloud/apploadbalancer/v1/virtual_host';
 import Long from 'long';
 import _m0 from 'protobufjs/minimal';
 
@@ -33,6 +36,7 @@ export interface HttpRouter {
     virtualHosts: VirtualHost[];
     /** Creation timestamp. */
     createdAt: Date | undefined;
+    routeOptions: RouteOptions | undefined;
 }
 
 export interface HttpRouter_LabelsEntry {
@@ -79,6 +83,12 @@ export const HttpRouter = {
                 writer.uint32(58).fork()
             ).ldelim();
         }
+        if (message.routeOptions !== undefined) {
+            RouteOptions.encode(
+                message.routeOptions,
+                writer.uint32(66).fork()
+            ).ldelim();
+        }
         return writer;
     },
 
@@ -121,6 +131,12 @@ export const HttpRouter = {
                 case 7:
                     message.createdAt = fromTimestamp(
                         Timestamp.decode(reader, reader.uint32())
+                    );
+                    break;
+                case 8:
+                    message.routeOptions = RouteOptions.decode(
+                        reader,
+                        reader.uint32()
                     );
                     break;
                 default:
@@ -170,6 +186,11 @@ export const HttpRouter = {
         } else {
             message.createdAt = undefined;
         }
+        if (object.routeOptions !== undefined && object.routeOptions !== null) {
+            message.routeOptions = RouteOptions.fromJSON(object.routeOptions);
+        } else {
+            message.routeOptions = undefined;
+        }
         return message;
     },
 
@@ -195,6 +216,10 @@ export const HttpRouter = {
         }
         message.createdAt !== undefined &&
             (obj.createdAt = message.createdAt.toISOString());
+        message.routeOptions !== undefined &&
+            (obj.routeOptions = message.routeOptions
+                ? RouteOptions.toJSON(message.routeOptions)
+                : undefined);
         return obj;
     },
 
@@ -238,6 +263,13 @@ export const HttpRouter = {
             message.createdAt = object.createdAt;
         } else {
             message.createdAt = undefined;
+        }
+        if (object.routeOptions !== undefined && object.routeOptions !== null) {
+            message.routeOptions = RouteOptions.fromPartial(
+                object.routeOptions
+            );
+        } else {
+            message.routeOptions = undefined;
         }
         return message;
     },

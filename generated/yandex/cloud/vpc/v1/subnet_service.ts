@@ -150,6 +150,38 @@ export interface UpdateSubnetMetadata {
     subnetId: string;
 }
 
+export interface AddSubnetCidrBlocksRequest {
+    /** ID of the Subnet resource that is being updated. */
+    subnetId: string;
+    /**
+     * CIDR block.
+     * The range of internal addresses that should be added to this subnet.
+     * For example, 10.0.0.0/22 or 192.168.0.0/24.
+     * Minimum subnet size is /28, maximum subnet size is /16.
+     */
+    v4CidrBlocks: string[];
+}
+
+export interface AddSubnetCidrBlocksMetadata {
+    /** ID of the Subnet resource that is being updated. */
+    subnetId: string;
+}
+
+export interface RemoveSubnetCidrBlocksRequest {
+    /** ID of the Subnet resource that is being updated. */
+    subnetId: string;
+    /**
+     * CIDR block.
+     * The range of internal addresses that are removed from this subnet.
+     */
+    v4CidrBlocks: string[];
+}
+
+export interface RemoveSubnetCidrBlocksMetadata {
+    /** ID of the Subnet resource that is being updated. */
+    subnetId: string;
+}
+
 export interface DeleteSubnetRequest {
     /**
      * ID of the subnet to delete.
@@ -1248,6 +1280,340 @@ export const UpdateSubnetMetadata = {
     },
 };
 
+const baseAddSubnetCidrBlocksRequest: object = {
+    subnetId: '',
+    v4CidrBlocks: '',
+};
+
+export const AddSubnetCidrBlocksRequest = {
+    encode(
+        message: AddSubnetCidrBlocksRequest,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        if (message.subnetId !== '') {
+            writer.uint32(10).string(message.subnetId);
+        }
+        for (const v of message.v4CidrBlocks) {
+            writer.uint32(18).string(v!);
+        }
+        return writer;
+    },
+
+    decode(
+        input: _m0.Reader | Uint8Array,
+        length?: number
+    ): AddSubnetCidrBlocksRequest {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = {
+            ...baseAddSubnetCidrBlocksRequest,
+        } as AddSubnetCidrBlocksRequest;
+        message.v4CidrBlocks = [];
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.subnetId = reader.string();
+                    break;
+                case 2:
+                    message.v4CidrBlocks.push(reader.string());
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): AddSubnetCidrBlocksRequest {
+        const message = {
+            ...baseAddSubnetCidrBlocksRequest,
+        } as AddSubnetCidrBlocksRequest;
+        message.v4CidrBlocks = [];
+        if (object.subnetId !== undefined && object.subnetId !== null) {
+            message.subnetId = String(object.subnetId);
+        } else {
+            message.subnetId = '';
+        }
+        if (object.v4CidrBlocks !== undefined && object.v4CidrBlocks !== null) {
+            for (const e of object.v4CidrBlocks) {
+                message.v4CidrBlocks.push(String(e));
+            }
+        }
+        return message;
+    },
+
+    toJSON(message: AddSubnetCidrBlocksRequest): unknown {
+        const obj: any = {};
+        message.subnetId !== undefined && (obj.subnetId = message.subnetId);
+        if (message.v4CidrBlocks) {
+            obj.v4CidrBlocks = message.v4CidrBlocks.map((e) => e);
+        } else {
+            obj.v4CidrBlocks = [];
+        }
+        return obj;
+    },
+
+    fromPartial(
+        object: DeepPartial<AddSubnetCidrBlocksRequest>
+    ): AddSubnetCidrBlocksRequest {
+        const message = {
+            ...baseAddSubnetCidrBlocksRequest,
+        } as AddSubnetCidrBlocksRequest;
+        message.v4CidrBlocks = [];
+        if (object.subnetId !== undefined && object.subnetId !== null) {
+            message.subnetId = object.subnetId;
+        } else {
+            message.subnetId = '';
+        }
+        if (object.v4CidrBlocks !== undefined && object.v4CidrBlocks !== null) {
+            for (const e of object.v4CidrBlocks) {
+                message.v4CidrBlocks.push(e);
+            }
+        }
+        return message;
+    },
+};
+
+const baseAddSubnetCidrBlocksMetadata: object = { subnetId: '' };
+
+export const AddSubnetCidrBlocksMetadata = {
+    encode(
+        message: AddSubnetCidrBlocksMetadata,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        if (message.subnetId !== '') {
+            writer.uint32(10).string(message.subnetId);
+        }
+        return writer;
+    },
+
+    decode(
+        input: _m0.Reader | Uint8Array,
+        length?: number
+    ): AddSubnetCidrBlocksMetadata {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = {
+            ...baseAddSubnetCidrBlocksMetadata,
+        } as AddSubnetCidrBlocksMetadata;
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.subnetId = reader.string();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): AddSubnetCidrBlocksMetadata {
+        const message = {
+            ...baseAddSubnetCidrBlocksMetadata,
+        } as AddSubnetCidrBlocksMetadata;
+        if (object.subnetId !== undefined && object.subnetId !== null) {
+            message.subnetId = String(object.subnetId);
+        } else {
+            message.subnetId = '';
+        }
+        return message;
+    },
+
+    toJSON(message: AddSubnetCidrBlocksMetadata): unknown {
+        const obj: any = {};
+        message.subnetId !== undefined && (obj.subnetId = message.subnetId);
+        return obj;
+    },
+
+    fromPartial(
+        object: DeepPartial<AddSubnetCidrBlocksMetadata>
+    ): AddSubnetCidrBlocksMetadata {
+        const message = {
+            ...baseAddSubnetCidrBlocksMetadata,
+        } as AddSubnetCidrBlocksMetadata;
+        if (object.subnetId !== undefined && object.subnetId !== null) {
+            message.subnetId = object.subnetId;
+        } else {
+            message.subnetId = '';
+        }
+        return message;
+    },
+};
+
+const baseRemoveSubnetCidrBlocksRequest: object = {
+    subnetId: '',
+    v4CidrBlocks: '',
+};
+
+export const RemoveSubnetCidrBlocksRequest = {
+    encode(
+        message: RemoveSubnetCidrBlocksRequest,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        if (message.subnetId !== '') {
+            writer.uint32(10).string(message.subnetId);
+        }
+        for (const v of message.v4CidrBlocks) {
+            writer.uint32(18).string(v!);
+        }
+        return writer;
+    },
+
+    decode(
+        input: _m0.Reader | Uint8Array,
+        length?: number
+    ): RemoveSubnetCidrBlocksRequest {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = {
+            ...baseRemoveSubnetCidrBlocksRequest,
+        } as RemoveSubnetCidrBlocksRequest;
+        message.v4CidrBlocks = [];
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.subnetId = reader.string();
+                    break;
+                case 2:
+                    message.v4CidrBlocks.push(reader.string());
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): RemoveSubnetCidrBlocksRequest {
+        const message = {
+            ...baseRemoveSubnetCidrBlocksRequest,
+        } as RemoveSubnetCidrBlocksRequest;
+        message.v4CidrBlocks = [];
+        if (object.subnetId !== undefined && object.subnetId !== null) {
+            message.subnetId = String(object.subnetId);
+        } else {
+            message.subnetId = '';
+        }
+        if (object.v4CidrBlocks !== undefined && object.v4CidrBlocks !== null) {
+            for (const e of object.v4CidrBlocks) {
+                message.v4CidrBlocks.push(String(e));
+            }
+        }
+        return message;
+    },
+
+    toJSON(message: RemoveSubnetCidrBlocksRequest): unknown {
+        const obj: any = {};
+        message.subnetId !== undefined && (obj.subnetId = message.subnetId);
+        if (message.v4CidrBlocks) {
+            obj.v4CidrBlocks = message.v4CidrBlocks.map((e) => e);
+        } else {
+            obj.v4CidrBlocks = [];
+        }
+        return obj;
+    },
+
+    fromPartial(
+        object: DeepPartial<RemoveSubnetCidrBlocksRequest>
+    ): RemoveSubnetCidrBlocksRequest {
+        const message = {
+            ...baseRemoveSubnetCidrBlocksRequest,
+        } as RemoveSubnetCidrBlocksRequest;
+        message.v4CidrBlocks = [];
+        if (object.subnetId !== undefined && object.subnetId !== null) {
+            message.subnetId = object.subnetId;
+        } else {
+            message.subnetId = '';
+        }
+        if (object.v4CidrBlocks !== undefined && object.v4CidrBlocks !== null) {
+            for (const e of object.v4CidrBlocks) {
+                message.v4CidrBlocks.push(e);
+            }
+        }
+        return message;
+    },
+};
+
+const baseRemoveSubnetCidrBlocksMetadata: object = { subnetId: '' };
+
+export const RemoveSubnetCidrBlocksMetadata = {
+    encode(
+        message: RemoveSubnetCidrBlocksMetadata,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        if (message.subnetId !== '') {
+            writer.uint32(10).string(message.subnetId);
+        }
+        return writer;
+    },
+
+    decode(
+        input: _m0.Reader | Uint8Array,
+        length?: number
+    ): RemoveSubnetCidrBlocksMetadata {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = {
+            ...baseRemoveSubnetCidrBlocksMetadata,
+        } as RemoveSubnetCidrBlocksMetadata;
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.subnetId = reader.string();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): RemoveSubnetCidrBlocksMetadata {
+        const message = {
+            ...baseRemoveSubnetCidrBlocksMetadata,
+        } as RemoveSubnetCidrBlocksMetadata;
+        if (object.subnetId !== undefined && object.subnetId !== null) {
+            message.subnetId = String(object.subnetId);
+        } else {
+            message.subnetId = '';
+        }
+        return message;
+    },
+
+    toJSON(message: RemoveSubnetCidrBlocksMetadata): unknown {
+        const obj: any = {};
+        message.subnetId !== undefined && (obj.subnetId = message.subnetId);
+        return obj;
+    },
+
+    fromPartial(
+        object: DeepPartial<RemoveSubnetCidrBlocksMetadata>
+    ): RemoveSubnetCidrBlocksMetadata {
+        const message = {
+            ...baseRemoveSubnetCidrBlocksMetadata,
+        } as RemoveSubnetCidrBlocksMetadata;
+        if (object.subnetId !== undefined && object.subnetId !== null) {
+            message.subnetId = object.subnetId;
+        } else {
+            message.subnetId = '';
+        }
+        return message;
+    },
+};
+
 const baseDeleteSubnetRequest: object = { subnetId: '' };
 
 export const DeleteSubnetRequest = {
@@ -2131,6 +2497,38 @@ export const SubnetServiceService = {
             Buffer.from(Operation.encode(value).finish()),
         responseDeserialize: (value: Buffer) => Operation.decode(value),
     },
+    /**
+     * Adds CIDR blocks to the specified subnet.
+     * Method starts an asynchronous operation that can be cancelled while it is in progress.
+     */
+    addCidrBlocks: {
+        path: '/yandex.cloud.vpc.v1.SubnetService/AddCidrBlocks',
+        requestStream: false,
+        responseStream: false,
+        requestSerialize: (value: AddSubnetCidrBlocksRequest) =>
+            Buffer.from(AddSubnetCidrBlocksRequest.encode(value).finish()),
+        requestDeserialize: (value: Buffer) =>
+            AddSubnetCidrBlocksRequest.decode(value),
+        responseSerialize: (value: Operation) =>
+            Buffer.from(Operation.encode(value).finish()),
+        responseDeserialize: (value: Buffer) => Operation.decode(value),
+    },
+    /**
+     * Removes CIDR blocks from the specified subnet.
+     * Method starts an asynchronous operation that can be cancelled while it is in progress.
+     */
+    removeCidrBlocks: {
+        path: '/yandex.cloud.vpc.v1.SubnetService/RemoveCidrBlocks',
+        requestStream: false,
+        responseStream: false,
+        requestSerialize: (value: RemoveSubnetCidrBlocksRequest) =>
+            Buffer.from(RemoveSubnetCidrBlocksRequest.encode(value).finish()),
+        requestDeserialize: (value: Buffer) =>
+            RemoveSubnetCidrBlocksRequest.decode(value),
+        responseSerialize: (value: Operation) =>
+            Buffer.from(Operation.encode(value).finish()),
+        responseDeserialize: (value: Buffer) => Operation.decode(value),
+    },
     /** Deletes the specified subnet. */
     delete: {
         path: '/yandex.cloud.vpc.v1.SubnetService/Delete',
@@ -2205,6 +2603,16 @@ export interface SubnetServiceServer extends UntypedServiceImplementation {
      * Method starts an asynchronous operation that can be cancelled while it is in progress.
      */
     update: handleUnaryCall<UpdateSubnetRequest, Operation>;
+    /**
+     * Adds CIDR blocks to the specified subnet.
+     * Method starts an asynchronous operation that can be cancelled while it is in progress.
+     */
+    addCidrBlocks: handleUnaryCall<AddSubnetCidrBlocksRequest, Operation>;
+    /**
+     * Removes CIDR blocks from the specified subnet.
+     * Method starts an asynchronous operation that can be cancelled while it is in progress.
+     */
+    removeCidrBlocks: handleUnaryCall<RemoveSubnetCidrBlocksRequest, Operation>;
     /** Deletes the specified subnet. */
     delete: handleUnaryCall<DeleteSubnetRequest, Operation>;
     /** List operations for the specified subnet. */
@@ -2301,6 +2709,44 @@ export interface SubnetServiceClient extends Client {
     ): ClientUnaryCall;
     update(
         request: UpdateSubnetRequest,
+        metadata: Metadata,
+        options: Partial<CallOptions>,
+        callback: (error: ServiceError | null, response: Operation) => void
+    ): ClientUnaryCall;
+    /**
+     * Adds CIDR blocks to the specified subnet.
+     * Method starts an asynchronous operation that can be cancelled while it is in progress.
+     */
+    addCidrBlocks(
+        request: AddSubnetCidrBlocksRequest,
+        callback: (error: ServiceError | null, response: Operation) => void
+    ): ClientUnaryCall;
+    addCidrBlocks(
+        request: AddSubnetCidrBlocksRequest,
+        metadata: Metadata,
+        callback: (error: ServiceError | null, response: Operation) => void
+    ): ClientUnaryCall;
+    addCidrBlocks(
+        request: AddSubnetCidrBlocksRequest,
+        metadata: Metadata,
+        options: Partial<CallOptions>,
+        callback: (error: ServiceError | null, response: Operation) => void
+    ): ClientUnaryCall;
+    /**
+     * Removes CIDR blocks from the specified subnet.
+     * Method starts an asynchronous operation that can be cancelled while it is in progress.
+     */
+    removeCidrBlocks(
+        request: RemoveSubnetCidrBlocksRequest,
+        callback: (error: ServiceError | null, response: Operation) => void
+    ): ClientUnaryCall;
+    removeCidrBlocks(
+        request: RemoveSubnetCidrBlocksRequest,
+        metadata: Metadata,
+        callback: (error: ServiceError | null, response: Operation) => void
+    ): ClientUnaryCall;
+    removeCidrBlocks(
+        request: RemoveSubnetCidrBlocksRequest,
         metadata: Metadata,
         options: Partial<CallOptions>,
         callback: (error: ServiceError | null, response: Operation) => void

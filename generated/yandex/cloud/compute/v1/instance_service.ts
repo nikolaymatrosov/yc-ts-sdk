@@ -162,6 +162,15 @@ export interface CreateInstanceRequest {
     /** Array of secondary disks to attach to the instance. */
     secondaryDiskSpecs: AttachedDiskSpec[];
     /**
+     * Array of filesystems to attach to the instance.
+     *
+     * The filesystems must reside in the same availability zone as the instance.
+     *
+     * To use the instance with an attached filesystem, the latter must be mounted.
+     * For details, see [documentation](/docs/compute/operations/filesystem/attach-to-vm).
+     */
+    filesystemSpecs: AttachedFilesystemSpec[];
+    /**
      * Network configuration for the instance. Specifies how the network interface is configured
      * to interact with other services on the internal network and on the internet.
      * Currently only one network interface is supported per instance.
@@ -399,6 +408,44 @@ export interface DetachInstanceDiskMetadata {
     diskId: string;
 }
 
+export interface AttachInstanceFilesystemRequest {
+    /**
+     * ID of the instance to attach the filesystem to.
+     *
+     * To get the instance ID, make a [InstanceService.List] request.
+     */
+    instanceId: string;
+    /** Filesystem to attach to the instance. */
+    attachedFilesystemSpec: AttachedFilesystemSpec | undefined;
+}
+
+export interface AttachInstanceFilesystemMetadata {
+    /** ID of the instance that the filesystem is being attached to. */
+    instanceId: string;
+    /** ID of the filesystem that is being attached to the instance. */
+    filesystemId: string;
+}
+
+export interface DetachInstanceFilesystemRequest {
+    /**
+     * ID of the instance to detach the filesystem from.
+     *
+     * To get the instance ID, make a [InstanceService.List] request.
+     */
+    instanceId: string;
+    /** ID of the filesystem that should be detached. */
+    filesystemId: string | undefined;
+    /** Name of the device used for mounting the filesystem that should be detached. */
+    deviceName: string | undefined;
+}
+
+export interface DetachInstanceFilesystemMetadata {
+    /** ID of the instance that the filesystem is being detached from. */
+    instanceId: string;
+    /** ID of the filesystem that is being detached from the instance. */
+    filesystemId: string;
+}
+
 /** Enables One-to-one NAT on the network interface. */
 export interface AddInstanceOneToOneNatRequest {
     /** ID of the instance to enable One-to-One NAT on. */
@@ -585,6 +632,66 @@ export interface AttachedDiskSpec_DiskSpec {
     imageId: string | undefined;
     /** ID of the snapshot to restore the disk from. */
     snapshotId: string | undefined;
+}
+
+export interface AttachedFilesystemSpec {
+    /** Mode of access to the filesystem that should be attached. */
+    mode: AttachedFilesystemSpec_Mode;
+    /**
+     * Name of the device representing the filesystem on the instance.
+     *
+     * The name should be used for referencing the filesystem from within the instance
+     * when it's being mounted, resized etc.
+     *
+     * If not specified, a random value will be generated.
+     */
+    deviceName: string;
+    /** ID of the filesystem that should be attached. */
+    filesystemId: string;
+}
+
+export enum AttachedFilesystemSpec_Mode {
+    MODE_UNSPECIFIED = 0,
+    /** READ_ONLY - Read-only access. */
+    READ_ONLY = 1,
+    /** READ_WRITE - Read/Write access. Default value. */
+    READ_WRITE = 2,
+    UNRECOGNIZED = -1,
+}
+
+export function attachedFilesystemSpec_ModeFromJSON(
+    object: any
+): AttachedFilesystemSpec_Mode {
+    switch (object) {
+        case 0:
+        case 'MODE_UNSPECIFIED':
+            return AttachedFilesystemSpec_Mode.MODE_UNSPECIFIED;
+        case 1:
+        case 'READ_ONLY':
+            return AttachedFilesystemSpec_Mode.READ_ONLY;
+        case 2:
+        case 'READ_WRITE':
+            return AttachedFilesystemSpec_Mode.READ_WRITE;
+        case -1:
+        case 'UNRECOGNIZED':
+        default:
+            return AttachedFilesystemSpec_Mode.UNRECOGNIZED;
+    }
+}
+
+export function attachedFilesystemSpec_ModeToJSON(
+    object: AttachedFilesystemSpec_Mode
+): string {
+    switch (object) {
+        case AttachedFilesystemSpec_Mode.MODE_UNSPECIFIED:
+            return 'MODE_UNSPECIFIED';
+        case AttachedFilesystemSpec_Mode.READ_ONLY:
+            return 'READ_ONLY';
+        case AttachedFilesystemSpec_Mode.READ_WRITE:
+            return 'READ_WRITE';
+        default:
+            return 'UNKNOWN';
+    }
 }
 
 export interface NetworkInterfaceSpec {
@@ -996,6 +1103,12 @@ export const CreateInstanceRequest = {
         for (const v of message.secondaryDiskSpecs) {
             AttachedDiskSpec.encode(v!, writer.uint32(82).fork()).ldelim();
         }
+        for (const v of message.filesystemSpecs) {
+            AttachedFilesystemSpec.encode(
+                v!,
+                writer.uint32(138).fork()
+            ).ldelim();
+        }
         for (const v of message.networkInterfaceSpecs) {
             NetworkInterfaceSpec.encode(v!, writer.uint32(90).fork()).ldelim();
         }
@@ -1039,6 +1152,7 @@ export const CreateInstanceRequest = {
         message.labels = {};
         message.metadata = {};
         message.secondaryDiskSpecs = [];
+        message.filesystemSpecs = [];
         message.networkInterfaceSpecs = [];
         while (reader.pos < end) {
             const tag = reader.uint32();
@@ -1093,6 +1207,11 @@ export const CreateInstanceRequest = {
                         AttachedDiskSpec.decode(reader, reader.uint32())
                     );
                     break;
+                case 17:
+                    message.filesystemSpecs.push(
+                        AttachedFilesystemSpec.decode(reader, reader.uint32())
+                    );
+                    break;
                 case 11:
                     message.networkInterfaceSpecs.push(
                         NetworkInterfaceSpec.decode(reader, reader.uint32())
@@ -1137,6 +1256,7 @@ export const CreateInstanceRequest = {
         message.labels = {};
         message.metadata = {};
         message.secondaryDiskSpecs = [];
+        message.filesystemSpecs = [];
         message.networkInterfaceSpecs = [];
         if (object.folderId !== undefined && object.folderId !== null) {
             message.folderId = String(object.folderId);
@@ -1196,6 +1316,16 @@ export const CreateInstanceRequest = {
         ) {
             for (const e of object.secondaryDiskSpecs) {
                 message.secondaryDiskSpecs.push(AttachedDiskSpec.fromJSON(e));
+            }
+        }
+        if (
+            object.filesystemSpecs !== undefined &&
+            object.filesystemSpecs !== null
+        ) {
+            for (const e of object.filesystemSpecs) {
+                message.filesystemSpecs.push(
+                    AttachedFilesystemSpec.fromJSON(e)
+                );
             }
         }
         if (
@@ -1290,6 +1420,13 @@ export const CreateInstanceRequest = {
         } else {
             obj.secondaryDiskSpecs = [];
         }
+        if (message.filesystemSpecs) {
+            obj.filesystemSpecs = message.filesystemSpecs.map((e) =>
+                e ? AttachedFilesystemSpec.toJSON(e) : undefined
+            );
+        } else {
+            obj.filesystemSpecs = [];
+        }
         if (message.networkInterfaceSpecs) {
             obj.networkInterfaceSpecs = message.networkInterfaceSpecs.map((e) =>
                 e ? NetworkInterfaceSpec.toJSON(e) : undefined
@@ -1324,6 +1461,7 @@ export const CreateInstanceRequest = {
         message.labels = {};
         message.metadata = {};
         message.secondaryDiskSpecs = [];
+        message.filesystemSpecs = [];
         message.networkInterfaceSpecs = [];
         if (object.folderId !== undefined && object.folderId !== null) {
             message.folderId = object.folderId;
@@ -1388,6 +1526,16 @@ export const CreateInstanceRequest = {
             for (const e of object.secondaryDiskSpecs) {
                 message.secondaryDiskSpecs.push(
                     AttachedDiskSpec.fromPartial(e)
+                );
+            }
+        }
+        if (
+            object.filesystemSpecs !== undefined &&
+            object.filesystemSpecs !== null
+        ) {
+            for (const e of object.filesystemSpecs) {
+                message.filesystemSpecs.push(
+                    AttachedFilesystemSpec.fromPartial(e)
                 );
             }
         }
@@ -3692,6 +3840,402 @@ export const DetachInstanceDiskMetadata = {
     },
 };
 
+const baseAttachInstanceFilesystemRequest: object = { instanceId: '' };
+
+export const AttachInstanceFilesystemRequest = {
+    encode(
+        message: AttachInstanceFilesystemRequest,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        if (message.instanceId !== '') {
+            writer.uint32(10).string(message.instanceId);
+        }
+        if (message.attachedFilesystemSpec !== undefined) {
+            AttachedFilesystemSpec.encode(
+                message.attachedFilesystemSpec,
+                writer.uint32(18).fork()
+            ).ldelim();
+        }
+        return writer;
+    },
+
+    decode(
+        input: _m0.Reader | Uint8Array,
+        length?: number
+    ): AttachInstanceFilesystemRequest {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = {
+            ...baseAttachInstanceFilesystemRequest,
+        } as AttachInstanceFilesystemRequest;
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.instanceId = reader.string();
+                    break;
+                case 2:
+                    message.attachedFilesystemSpec =
+                        AttachedFilesystemSpec.decode(reader, reader.uint32());
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): AttachInstanceFilesystemRequest {
+        const message = {
+            ...baseAttachInstanceFilesystemRequest,
+        } as AttachInstanceFilesystemRequest;
+        if (object.instanceId !== undefined && object.instanceId !== null) {
+            message.instanceId = String(object.instanceId);
+        } else {
+            message.instanceId = '';
+        }
+        if (
+            object.attachedFilesystemSpec !== undefined &&
+            object.attachedFilesystemSpec !== null
+        ) {
+            message.attachedFilesystemSpec = AttachedFilesystemSpec.fromJSON(
+                object.attachedFilesystemSpec
+            );
+        } else {
+            message.attachedFilesystemSpec = undefined;
+        }
+        return message;
+    },
+
+    toJSON(message: AttachInstanceFilesystemRequest): unknown {
+        const obj: any = {};
+        message.instanceId !== undefined &&
+            (obj.instanceId = message.instanceId);
+        message.attachedFilesystemSpec !== undefined &&
+            (obj.attachedFilesystemSpec = message.attachedFilesystemSpec
+                ? AttachedFilesystemSpec.toJSON(message.attachedFilesystemSpec)
+                : undefined);
+        return obj;
+    },
+
+    fromPartial(
+        object: DeepPartial<AttachInstanceFilesystemRequest>
+    ): AttachInstanceFilesystemRequest {
+        const message = {
+            ...baseAttachInstanceFilesystemRequest,
+        } as AttachInstanceFilesystemRequest;
+        if (object.instanceId !== undefined && object.instanceId !== null) {
+            message.instanceId = object.instanceId;
+        } else {
+            message.instanceId = '';
+        }
+        if (
+            object.attachedFilesystemSpec !== undefined &&
+            object.attachedFilesystemSpec !== null
+        ) {
+            message.attachedFilesystemSpec = AttachedFilesystemSpec.fromPartial(
+                object.attachedFilesystemSpec
+            );
+        } else {
+            message.attachedFilesystemSpec = undefined;
+        }
+        return message;
+    },
+};
+
+const baseAttachInstanceFilesystemMetadata: object = {
+    instanceId: '',
+    filesystemId: '',
+};
+
+export const AttachInstanceFilesystemMetadata = {
+    encode(
+        message: AttachInstanceFilesystemMetadata,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        if (message.instanceId !== '') {
+            writer.uint32(10).string(message.instanceId);
+        }
+        if (message.filesystemId !== '') {
+            writer.uint32(18).string(message.filesystemId);
+        }
+        return writer;
+    },
+
+    decode(
+        input: _m0.Reader | Uint8Array,
+        length?: number
+    ): AttachInstanceFilesystemMetadata {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = {
+            ...baseAttachInstanceFilesystemMetadata,
+        } as AttachInstanceFilesystemMetadata;
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.instanceId = reader.string();
+                    break;
+                case 2:
+                    message.filesystemId = reader.string();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): AttachInstanceFilesystemMetadata {
+        const message = {
+            ...baseAttachInstanceFilesystemMetadata,
+        } as AttachInstanceFilesystemMetadata;
+        if (object.instanceId !== undefined && object.instanceId !== null) {
+            message.instanceId = String(object.instanceId);
+        } else {
+            message.instanceId = '';
+        }
+        if (object.filesystemId !== undefined && object.filesystemId !== null) {
+            message.filesystemId = String(object.filesystemId);
+        } else {
+            message.filesystemId = '';
+        }
+        return message;
+    },
+
+    toJSON(message: AttachInstanceFilesystemMetadata): unknown {
+        const obj: any = {};
+        message.instanceId !== undefined &&
+            (obj.instanceId = message.instanceId);
+        message.filesystemId !== undefined &&
+            (obj.filesystemId = message.filesystemId);
+        return obj;
+    },
+
+    fromPartial(
+        object: DeepPartial<AttachInstanceFilesystemMetadata>
+    ): AttachInstanceFilesystemMetadata {
+        const message = {
+            ...baseAttachInstanceFilesystemMetadata,
+        } as AttachInstanceFilesystemMetadata;
+        if (object.instanceId !== undefined && object.instanceId !== null) {
+            message.instanceId = object.instanceId;
+        } else {
+            message.instanceId = '';
+        }
+        if (object.filesystemId !== undefined && object.filesystemId !== null) {
+            message.filesystemId = object.filesystemId;
+        } else {
+            message.filesystemId = '';
+        }
+        return message;
+    },
+};
+
+const baseDetachInstanceFilesystemRequest: object = { instanceId: '' };
+
+export const DetachInstanceFilesystemRequest = {
+    encode(
+        message: DetachInstanceFilesystemRequest,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        if (message.instanceId !== '') {
+            writer.uint32(10).string(message.instanceId);
+        }
+        if (message.filesystemId !== undefined) {
+            writer.uint32(18).string(message.filesystemId);
+        }
+        if (message.deviceName !== undefined) {
+            writer.uint32(26).string(message.deviceName);
+        }
+        return writer;
+    },
+
+    decode(
+        input: _m0.Reader | Uint8Array,
+        length?: number
+    ): DetachInstanceFilesystemRequest {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = {
+            ...baseDetachInstanceFilesystemRequest,
+        } as DetachInstanceFilesystemRequest;
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.instanceId = reader.string();
+                    break;
+                case 2:
+                    message.filesystemId = reader.string();
+                    break;
+                case 3:
+                    message.deviceName = reader.string();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): DetachInstanceFilesystemRequest {
+        const message = {
+            ...baseDetachInstanceFilesystemRequest,
+        } as DetachInstanceFilesystemRequest;
+        if (object.instanceId !== undefined && object.instanceId !== null) {
+            message.instanceId = String(object.instanceId);
+        } else {
+            message.instanceId = '';
+        }
+        if (object.filesystemId !== undefined && object.filesystemId !== null) {
+            message.filesystemId = String(object.filesystemId);
+        } else {
+            message.filesystemId = undefined;
+        }
+        if (object.deviceName !== undefined && object.deviceName !== null) {
+            message.deviceName = String(object.deviceName);
+        } else {
+            message.deviceName = undefined;
+        }
+        return message;
+    },
+
+    toJSON(message: DetachInstanceFilesystemRequest): unknown {
+        const obj: any = {};
+        message.instanceId !== undefined &&
+            (obj.instanceId = message.instanceId);
+        message.filesystemId !== undefined &&
+            (obj.filesystemId = message.filesystemId);
+        message.deviceName !== undefined &&
+            (obj.deviceName = message.deviceName);
+        return obj;
+    },
+
+    fromPartial(
+        object: DeepPartial<DetachInstanceFilesystemRequest>
+    ): DetachInstanceFilesystemRequest {
+        const message = {
+            ...baseDetachInstanceFilesystemRequest,
+        } as DetachInstanceFilesystemRequest;
+        if (object.instanceId !== undefined && object.instanceId !== null) {
+            message.instanceId = object.instanceId;
+        } else {
+            message.instanceId = '';
+        }
+        if (object.filesystemId !== undefined && object.filesystemId !== null) {
+            message.filesystemId = object.filesystemId;
+        } else {
+            message.filesystemId = undefined;
+        }
+        if (object.deviceName !== undefined && object.deviceName !== null) {
+            message.deviceName = object.deviceName;
+        } else {
+            message.deviceName = undefined;
+        }
+        return message;
+    },
+};
+
+const baseDetachInstanceFilesystemMetadata: object = {
+    instanceId: '',
+    filesystemId: '',
+};
+
+export const DetachInstanceFilesystemMetadata = {
+    encode(
+        message: DetachInstanceFilesystemMetadata,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        if (message.instanceId !== '') {
+            writer.uint32(10).string(message.instanceId);
+        }
+        if (message.filesystemId !== '') {
+            writer.uint32(18).string(message.filesystemId);
+        }
+        return writer;
+    },
+
+    decode(
+        input: _m0.Reader | Uint8Array,
+        length?: number
+    ): DetachInstanceFilesystemMetadata {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = {
+            ...baseDetachInstanceFilesystemMetadata,
+        } as DetachInstanceFilesystemMetadata;
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.instanceId = reader.string();
+                    break;
+                case 2:
+                    message.filesystemId = reader.string();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): DetachInstanceFilesystemMetadata {
+        const message = {
+            ...baseDetachInstanceFilesystemMetadata,
+        } as DetachInstanceFilesystemMetadata;
+        if (object.instanceId !== undefined && object.instanceId !== null) {
+            message.instanceId = String(object.instanceId);
+        } else {
+            message.instanceId = '';
+        }
+        if (object.filesystemId !== undefined && object.filesystemId !== null) {
+            message.filesystemId = String(object.filesystemId);
+        } else {
+            message.filesystemId = '';
+        }
+        return message;
+    },
+
+    toJSON(message: DetachInstanceFilesystemMetadata): unknown {
+        const obj: any = {};
+        message.instanceId !== undefined &&
+            (obj.instanceId = message.instanceId);
+        message.filesystemId !== undefined &&
+            (obj.filesystemId = message.filesystemId);
+        return obj;
+    },
+
+    fromPartial(
+        object: DeepPartial<DetachInstanceFilesystemMetadata>
+    ): DetachInstanceFilesystemMetadata {
+        const message = {
+            ...baseDetachInstanceFilesystemMetadata,
+        } as DetachInstanceFilesystemMetadata;
+        if (object.instanceId !== undefined && object.instanceId !== null) {
+            message.instanceId = object.instanceId;
+        } else {
+            message.instanceId = '';
+        }
+        if (object.filesystemId !== undefined && object.filesystemId !== null) {
+            message.filesystemId = object.filesystemId;
+        } else {
+            message.filesystemId = '';
+        }
+        return message;
+    },
+};
+
 const baseAddInstanceOneToOneNatRequest: object = {
     instanceId: '',
     networkInterfaceIndex: '',
@@ -5160,6 +5704,117 @@ export const AttachedDiskSpec_DiskSpec = {
     },
 };
 
+const baseAttachedFilesystemSpec: object = {
+    mode: 0,
+    deviceName: '',
+    filesystemId: '',
+};
+
+export const AttachedFilesystemSpec = {
+    encode(
+        message: AttachedFilesystemSpec,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        if (message.mode !== 0) {
+            writer.uint32(8).int32(message.mode);
+        }
+        if (message.deviceName !== '') {
+            writer.uint32(18).string(message.deviceName);
+        }
+        if (message.filesystemId !== '') {
+            writer.uint32(26).string(message.filesystemId);
+        }
+        return writer;
+    },
+
+    decode(
+        input: _m0.Reader | Uint8Array,
+        length?: number
+    ): AttachedFilesystemSpec {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = {
+            ...baseAttachedFilesystemSpec,
+        } as AttachedFilesystemSpec;
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.mode = reader.int32() as any;
+                    break;
+                case 2:
+                    message.deviceName = reader.string();
+                    break;
+                case 3:
+                    message.filesystemId = reader.string();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): AttachedFilesystemSpec {
+        const message = {
+            ...baseAttachedFilesystemSpec,
+        } as AttachedFilesystemSpec;
+        if (object.mode !== undefined && object.mode !== null) {
+            message.mode = attachedFilesystemSpec_ModeFromJSON(object.mode);
+        } else {
+            message.mode = 0;
+        }
+        if (object.deviceName !== undefined && object.deviceName !== null) {
+            message.deviceName = String(object.deviceName);
+        } else {
+            message.deviceName = '';
+        }
+        if (object.filesystemId !== undefined && object.filesystemId !== null) {
+            message.filesystemId = String(object.filesystemId);
+        } else {
+            message.filesystemId = '';
+        }
+        return message;
+    },
+
+    toJSON(message: AttachedFilesystemSpec): unknown {
+        const obj: any = {};
+        message.mode !== undefined &&
+            (obj.mode = attachedFilesystemSpec_ModeToJSON(message.mode));
+        message.deviceName !== undefined &&
+            (obj.deviceName = message.deviceName);
+        message.filesystemId !== undefined &&
+            (obj.filesystemId = message.filesystemId);
+        return obj;
+    },
+
+    fromPartial(
+        object: DeepPartial<AttachedFilesystemSpec>
+    ): AttachedFilesystemSpec {
+        const message = {
+            ...baseAttachedFilesystemSpec,
+        } as AttachedFilesystemSpec;
+        if (object.mode !== undefined && object.mode !== null) {
+            message.mode = object.mode;
+        } else {
+            message.mode = 0;
+        }
+        if (object.deviceName !== undefined && object.deviceName !== null) {
+            message.deviceName = object.deviceName;
+        } else {
+            message.deviceName = '';
+        }
+        if (object.filesystemId !== undefined && object.filesystemId !== null) {
+            message.filesystemId = object.filesystemId;
+        } else {
+            message.filesystemId = '';
+        }
+        return message;
+    },
+};
+
 const baseNetworkInterfaceSpec: object = { subnetId: '', securityGroupIds: '' };
 
 export const NetworkInterfaceSpec = {
@@ -5858,6 +6513,49 @@ export const InstanceServiceService = {
             Buffer.from(Operation.encode(value).finish()),
         responseDeserialize: (value: Buffer) => Operation.decode(value),
     },
+    /**
+     * Attaches the filesystem to the instance.
+     *
+     * The instance and the filesystem must reside in the same availability zone.
+     *
+     * To attach a filesystem, the instance must have a `STOPPED` status ([Instance.status]).
+     * To check the instance status, make a [InstanceService.Get] request.
+     * To stop the running instance, make a [InstanceService.Stop] request.
+     *
+     * To use the instance with an attached filesystem, the latter must be mounted.
+     * For details, see [documentation](/docs/compute/operations/filesystem/attach-to-vm).
+     */
+    attachFilesystem: {
+        path: '/yandex.cloud.compute.v1.InstanceService/AttachFilesystem',
+        requestStream: false,
+        responseStream: false,
+        requestSerialize: (value: AttachInstanceFilesystemRequest) =>
+            Buffer.from(AttachInstanceFilesystemRequest.encode(value).finish()),
+        requestDeserialize: (value: Buffer) =>
+            AttachInstanceFilesystemRequest.decode(value),
+        responseSerialize: (value: Operation) =>
+            Buffer.from(Operation.encode(value).finish()),
+        responseDeserialize: (value: Buffer) => Operation.decode(value),
+    },
+    /**
+     * Detaches the filesystem from the instance.
+     *
+     * To detach a filesystem, the instance must have a `STOPPED` status ([Instance.status]).
+     * To check the instance status, make a [InstanceService.Get] request.
+     * To stop the running instance, make a [InstanceService.Stop] request.
+     */
+    detachFilesystem: {
+        path: '/yandex.cloud.compute.v1.InstanceService/DetachFilesystem',
+        requestStream: false,
+        responseStream: false,
+        requestSerialize: (value: DetachInstanceFilesystemRequest) =>
+            Buffer.from(DetachInstanceFilesystemRequest.encode(value).finish()),
+        requestDeserialize: (value: Buffer) =>
+            DetachInstanceFilesystemRequest.decode(value),
+        responseSerialize: (value: Operation) =>
+            Buffer.from(Operation.encode(value).finish()),
+        responseDeserialize: (value: Buffer) => Operation.decode(value),
+    },
     /** Enables One-to-one NAT on the network interface. */
     addOneToOneNat: {
         path: '/yandex.cloud.compute.v1.InstanceService/AddOneToOneNat',
@@ -5956,6 +6654,33 @@ export interface InstanceServiceServer extends UntypedServiceImplementation {
     attachDisk: handleUnaryCall<AttachInstanceDiskRequest, Operation>;
     /** Detaches the disk from the instance. */
     detachDisk: handleUnaryCall<DetachInstanceDiskRequest, Operation>;
+    /**
+     * Attaches the filesystem to the instance.
+     *
+     * The instance and the filesystem must reside in the same availability zone.
+     *
+     * To attach a filesystem, the instance must have a `STOPPED` status ([Instance.status]).
+     * To check the instance status, make a [InstanceService.Get] request.
+     * To stop the running instance, make a [InstanceService.Stop] request.
+     *
+     * To use the instance with an attached filesystem, the latter must be mounted.
+     * For details, see [documentation](/docs/compute/operations/filesystem/attach-to-vm).
+     */
+    attachFilesystem: handleUnaryCall<
+        AttachInstanceFilesystemRequest,
+        Operation
+    >;
+    /**
+     * Detaches the filesystem from the instance.
+     *
+     * To detach a filesystem, the instance must have a `STOPPED` status ([Instance.status]).
+     * To check the instance status, make a [InstanceService.Get] request.
+     * To stop the running instance, make a [InstanceService.Stop] request.
+     */
+    detachFilesystem: handleUnaryCall<
+        DetachInstanceFilesystemRequest,
+        Operation
+    >;
     /** Enables One-to-one NAT on the network interface. */
     addOneToOneNat: handleUnaryCall<AddInstanceOneToOneNatRequest, Operation>;
     /** Removes One-to-one NAT from the network interface. */
@@ -6193,6 +6918,55 @@ export interface InstanceServiceClient extends Client {
     ): ClientUnaryCall;
     detachDisk(
         request: DetachInstanceDiskRequest,
+        metadata: Metadata,
+        options: Partial<CallOptions>,
+        callback: (error: ServiceError | null, response: Operation) => void
+    ): ClientUnaryCall;
+    /**
+     * Attaches the filesystem to the instance.
+     *
+     * The instance and the filesystem must reside in the same availability zone.
+     *
+     * To attach a filesystem, the instance must have a `STOPPED` status ([Instance.status]).
+     * To check the instance status, make a [InstanceService.Get] request.
+     * To stop the running instance, make a [InstanceService.Stop] request.
+     *
+     * To use the instance with an attached filesystem, the latter must be mounted.
+     * For details, see [documentation](/docs/compute/operations/filesystem/attach-to-vm).
+     */
+    attachFilesystem(
+        request: AttachInstanceFilesystemRequest,
+        callback: (error: ServiceError | null, response: Operation) => void
+    ): ClientUnaryCall;
+    attachFilesystem(
+        request: AttachInstanceFilesystemRequest,
+        metadata: Metadata,
+        callback: (error: ServiceError | null, response: Operation) => void
+    ): ClientUnaryCall;
+    attachFilesystem(
+        request: AttachInstanceFilesystemRequest,
+        metadata: Metadata,
+        options: Partial<CallOptions>,
+        callback: (error: ServiceError | null, response: Operation) => void
+    ): ClientUnaryCall;
+    /**
+     * Detaches the filesystem from the instance.
+     *
+     * To detach a filesystem, the instance must have a `STOPPED` status ([Instance.status]).
+     * To check the instance status, make a [InstanceService.Get] request.
+     * To stop the running instance, make a [InstanceService.Stop] request.
+     */
+    detachFilesystem(
+        request: DetachInstanceFilesystemRequest,
+        callback: (error: ServiceError | null, response: Operation) => void
+    ): ClientUnaryCall;
+    detachFilesystem(
+        request: DetachInstanceFilesystemRequest,
+        metadata: Metadata,
+        callback: (error: ServiceError | null, response: Operation) => void
+    ): ClientUnaryCall;
+    detachFilesystem(
+        request: DetachInstanceFilesystemRequest,
         metadata: Metadata,
         options: Partial<CallOptions>,
         callback: (error: ServiceError | null, response: Operation) => void

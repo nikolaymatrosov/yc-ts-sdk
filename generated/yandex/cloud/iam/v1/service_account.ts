@@ -20,6 +20,13 @@ export interface ServiceAccount {
     name: string;
     /** Description of the service account. 0-256 characters long. */
     description: string;
+    /** Resource labels as `` key:value `` pairs. Maximum of 64 per resource. */
+    labels: { [key: string]: string };
+}
+
+export interface ServiceAccount_LabelsEntry {
+    key: string;
+    value: string;
 }
 
 const baseServiceAccount: object = {
@@ -52,6 +59,12 @@ export const ServiceAccount = {
         if (message.description !== '') {
             writer.uint32(42).string(message.description);
         }
+        Object.entries(message.labels).forEach(([key, value]) => {
+            ServiceAccount_LabelsEntry.encode(
+                { key: key as any, value },
+                writer.uint32(50).fork()
+            ).ldelim();
+        });
         return writer;
     },
 
@@ -60,6 +73,7 @@ export const ServiceAccount = {
             input instanceof _m0.Reader ? input : new _m0.Reader(input);
         let end = length === undefined ? reader.len : reader.pos + length;
         const message = { ...baseServiceAccount } as ServiceAccount;
+        message.labels = {};
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -80,6 +94,15 @@ export const ServiceAccount = {
                 case 5:
                     message.description = reader.string();
                     break;
+                case 6:
+                    const entry6 = ServiceAccount_LabelsEntry.decode(
+                        reader,
+                        reader.uint32()
+                    );
+                    if (entry6.value !== undefined) {
+                        message.labels[entry6.key] = entry6.value;
+                    }
+                    break;
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -90,6 +113,7 @@ export const ServiceAccount = {
 
     fromJSON(object: any): ServiceAccount {
         const message = { ...baseServiceAccount } as ServiceAccount;
+        message.labels = {};
         if (object.id !== undefined && object.id !== null) {
             message.id = String(object.id);
         } else {
@@ -115,6 +139,11 @@ export const ServiceAccount = {
         } else {
             message.description = '';
         }
+        if (object.labels !== undefined && object.labels !== null) {
+            Object.entries(object.labels).forEach(([key, value]) => {
+                message.labels[key] = String(value);
+            });
+        }
         return message;
     },
 
@@ -127,11 +156,18 @@ export const ServiceAccount = {
         message.name !== undefined && (obj.name = message.name);
         message.description !== undefined &&
             (obj.description = message.description);
+        obj.labels = {};
+        if (message.labels) {
+            Object.entries(message.labels).forEach(([k, v]) => {
+                obj.labels[k] = v;
+            });
+        }
         return obj;
     },
 
     fromPartial(object: DeepPartial<ServiceAccount>): ServiceAccount {
         const message = { ...baseServiceAccount } as ServiceAccount;
+        message.labels = {};
         if (object.id !== undefined && object.id !== null) {
             message.id = object.id;
         } else {
@@ -156,6 +192,100 @@ export const ServiceAccount = {
             message.description = object.description;
         } else {
             message.description = '';
+        }
+        if (object.labels !== undefined && object.labels !== null) {
+            Object.entries(object.labels).forEach(([key, value]) => {
+                if (value !== undefined) {
+                    message.labels[key] = String(value);
+                }
+            });
+        }
+        return message;
+    },
+};
+
+const baseServiceAccount_LabelsEntry: object = { key: '', value: '' };
+
+export const ServiceAccount_LabelsEntry = {
+    encode(
+        message: ServiceAccount_LabelsEntry,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        if (message.key !== '') {
+            writer.uint32(10).string(message.key);
+        }
+        if (message.value !== '') {
+            writer.uint32(18).string(message.value);
+        }
+        return writer;
+    },
+
+    decode(
+        input: _m0.Reader | Uint8Array,
+        length?: number
+    ): ServiceAccount_LabelsEntry {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = {
+            ...baseServiceAccount_LabelsEntry,
+        } as ServiceAccount_LabelsEntry;
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.key = reader.string();
+                    break;
+                case 2:
+                    message.value = reader.string();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): ServiceAccount_LabelsEntry {
+        const message = {
+            ...baseServiceAccount_LabelsEntry,
+        } as ServiceAccount_LabelsEntry;
+        if (object.key !== undefined && object.key !== null) {
+            message.key = String(object.key);
+        } else {
+            message.key = '';
+        }
+        if (object.value !== undefined && object.value !== null) {
+            message.value = String(object.value);
+        } else {
+            message.value = '';
+        }
+        return message;
+    },
+
+    toJSON(message: ServiceAccount_LabelsEntry): unknown {
+        const obj: any = {};
+        message.key !== undefined && (obj.key = message.key);
+        message.value !== undefined && (obj.value = message.value);
+        return obj;
+    },
+
+    fromPartial(
+        object: DeepPartial<ServiceAccount_LabelsEntry>
+    ): ServiceAccount_LabelsEntry {
+        const message = {
+            ...baseServiceAccount_LabelsEntry,
+        } as ServiceAccount_LabelsEntry;
+        if (object.key !== undefined && object.key !== null) {
+            message.key = object.key;
+        } else {
+            message.key = '';
+        }
+        if (object.value !== undefined && object.value !== null) {
+            message.value = object.value;
+        } else {
+            message.value = '';
         }
         return message;
     },

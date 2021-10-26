@@ -1,5 +1,6 @@
 /* eslint-disable */
 import { Timestamp } from '../../../../google/protobuf/timestamp';
+import { Int64Value } from '../../../../google/protobuf/wrappers';
 import Long from 'long';
 import _m0 from 'protobufjs/minimal';
 
@@ -18,6 +19,8 @@ export interface Project {
     description: string;
     /** Settings of the project. */
     settings: Project_Settings | undefined;
+    /** Limits of the project. */
+    limits: Project_Limits | undefined;
 }
 
 export interface Project_Settings {
@@ -81,6 +84,13 @@ export function project_Settings_CommitModeToJSON(
     }
 }
 
+export interface Project_Limits {
+    /** The number of units that can be spent per hour. */
+    maxUnitsPerHour: number | undefined;
+    /** The number of units that can be spent on the one execution. */
+    maxUnitsPerExecution: number | undefined;
+}
+
 const baseProject: object = { id: '', folderId: '', name: '', description: '' };
 
 export const Project = {
@@ -110,6 +120,12 @@ export const Project = {
             Project_Settings.encode(
                 message.settings,
                 writer.uint32(50).fork()
+            ).ldelim();
+        }
+        if (message.limits !== undefined) {
+            Project_Limits.encode(
+                message.limits,
+                writer.uint32(58).fork()
             ).ldelim();
         }
         return writer;
@@ -142,6 +158,12 @@ export const Project = {
                     break;
                 case 6:
                     message.settings = Project_Settings.decode(
+                        reader,
+                        reader.uint32()
+                    );
+                    break;
+                case 7:
+                    message.limits = Project_Limits.decode(
                         reader,
                         reader.uint32()
                     );
@@ -186,6 +208,11 @@ export const Project = {
         } else {
             message.settings = undefined;
         }
+        if (object.limits !== undefined && object.limits !== null) {
+            message.limits = Project_Limits.fromJSON(object.limits);
+        } else {
+            message.limits = undefined;
+        }
         return message;
     },
 
@@ -201,6 +228,10 @@ export const Project = {
         message.settings !== undefined &&
             (obj.settings = message.settings
                 ? Project_Settings.toJSON(message.settings)
+                : undefined);
+        message.limits !== undefined &&
+            (obj.limits = message.limits
+                ? Project_Limits.toJSON(message.limits)
                 : undefined);
         return obj;
     },
@@ -236,6 +267,11 @@ export const Project = {
             message.settings = Project_Settings.fromPartial(object.settings);
         } else {
             message.settings = undefined;
+        }
+        if (object.limits !== undefined && object.limits !== null) {
+            message.limits = Project_Limits.fromPartial(object.limits);
+        } else {
+            message.limits = undefined;
         }
         return message;
     },
@@ -370,6 +406,108 @@ export const Project_Settings = {
             message.commitMode = object.commitMode;
         } else {
             message.commitMode = 0;
+        }
+        return message;
+    },
+};
+
+const baseProject_Limits: object = {};
+
+export const Project_Limits = {
+    encode(
+        message: Project_Limits,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        if (message.maxUnitsPerHour !== undefined) {
+            Int64Value.encode(
+                { value: message.maxUnitsPerHour! },
+                writer.uint32(18).fork()
+            ).ldelim();
+        }
+        if (message.maxUnitsPerExecution !== undefined) {
+            Int64Value.encode(
+                { value: message.maxUnitsPerExecution! },
+                writer.uint32(26).fork()
+            ).ldelim();
+        }
+        return writer;
+    },
+
+    decode(input: _m0.Reader | Uint8Array, length?: number): Project_Limits {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = { ...baseProject_Limits } as Project_Limits;
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 2:
+                    message.maxUnitsPerHour = Int64Value.decode(
+                        reader,
+                        reader.uint32()
+                    ).value;
+                    break;
+                case 3:
+                    message.maxUnitsPerExecution = Int64Value.decode(
+                        reader,
+                        reader.uint32()
+                    ).value;
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): Project_Limits {
+        const message = { ...baseProject_Limits } as Project_Limits;
+        if (
+            object.maxUnitsPerHour !== undefined &&
+            object.maxUnitsPerHour !== null
+        ) {
+            message.maxUnitsPerHour = Number(object.maxUnitsPerHour);
+        } else {
+            message.maxUnitsPerHour = undefined;
+        }
+        if (
+            object.maxUnitsPerExecution !== undefined &&
+            object.maxUnitsPerExecution !== null
+        ) {
+            message.maxUnitsPerExecution = Number(object.maxUnitsPerExecution);
+        } else {
+            message.maxUnitsPerExecution = undefined;
+        }
+        return message;
+    },
+
+    toJSON(message: Project_Limits): unknown {
+        const obj: any = {};
+        message.maxUnitsPerHour !== undefined &&
+            (obj.maxUnitsPerHour = message.maxUnitsPerHour);
+        message.maxUnitsPerExecution !== undefined &&
+            (obj.maxUnitsPerExecution = message.maxUnitsPerExecution);
+        return obj;
+    },
+
+    fromPartial(object: DeepPartial<Project_Limits>): Project_Limits {
+        const message = { ...baseProject_Limits } as Project_Limits;
+        if (
+            object.maxUnitsPerHour !== undefined &&
+            object.maxUnitsPerHour !== null
+        ) {
+            message.maxUnitsPerHour = object.maxUnitsPerHour;
+        } else {
+            message.maxUnitsPerHour = undefined;
+        }
+        if (
+            object.maxUnitsPerExecution !== undefined &&
+            object.maxUnitsPerExecution !== null
+        ) {
+            message.maxUnitsPerExecution = object.maxUnitsPerExecution;
+        } else {
+            message.maxUnitsPerExecution = undefined;
         }
         return message;
     },

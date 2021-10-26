@@ -46,6 +46,8 @@ export interface Cluster {
     hostGroupIds: string[];
     /** Deletion Protection inhibits deletion of the cluster */
     deletionProtection: boolean;
+    /** ID of the cloud logging log group to write logs. If not set, logs will not be sent to logging service */
+    logGroupId: string;
 }
 
 export enum Cluster_Status {
@@ -288,6 +290,7 @@ const baseCluster: object = {
     securityGroupIds: '',
     hostGroupIds: '',
     deletionProtection: false,
+    logGroupId: '',
 };
 
 export const Cluster = {
@@ -354,6 +357,9 @@ export const Cluster = {
         }
         if (message.deletionProtection === true) {
             writer.uint32(136).bool(message.deletionProtection);
+        }
+        if (message.logGroupId !== '') {
+            writer.uint32(146).string(message.logGroupId);
         }
         return writer;
     },
@@ -433,6 +439,9 @@ export const Cluster = {
                     break;
                 case 17:
                     message.deletionProtection = reader.bool();
+                    break;
+                case 18:
+                    message.logGroupId = reader.string();
                     break;
                 default:
                     reader.skipType(tag & 7);
@@ -542,6 +551,11 @@ export const Cluster = {
         } else {
             message.deletionProtection = false;
         }
+        if (object.logGroupId !== undefined && object.logGroupId !== null) {
+            message.logGroupId = String(object.logGroupId);
+        } else {
+            message.logGroupId = '';
+        }
         return message;
     },
 
@@ -592,6 +606,8 @@ export const Cluster = {
         }
         message.deletionProtection !== undefined &&
             (obj.deletionProtection = message.deletionProtection);
+        message.logGroupId !== undefined &&
+            (obj.logGroupId = message.logGroupId);
         return obj;
     },
 
@@ -696,6 +712,11 @@ export const Cluster = {
             message.deletionProtection = object.deletionProtection;
         } else {
             message.deletionProtection = false;
+        }
+        if (object.logGroupId !== undefined && object.logGroupId !== null) {
+            message.logGroupId = object.logGroupId;
+        } else {
+            message.logGroupId = '';
         }
         return message;
     },

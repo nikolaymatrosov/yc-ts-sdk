@@ -1,6 +1,8 @@
 /// <reference types="node" />
+import { Empty } from '../../../../google/protobuf/empty';
 import { FieldMask } from '../../../../google/protobuf/field_mask';
-import { Project_Settings, Project } from '../../../../yandex/cloud/datasphere/v1/project';
+import { Struct } from '../../../../google/protobuf/struct';
+import { Project_Settings, Project_Limits, Project } from '../../../../yandex/cloud/datasphere/v1/project';
 import { Operation } from '../../../../yandex/cloud/operation/operation';
 import { ChannelCredentials, ChannelOptions, UntypedServiceImplementation, handleUnaryCall, Client, ClientUnaryCall, Metadata, CallOptions, ServiceError } from '@grpc/grpc-js';
 import _m0 from 'protobufjs/minimal';
@@ -17,6 +19,8 @@ export interface CreateProjectRequest {
     description: string;
     /** Settings of the project. */
     settings: Project_Settings | undefined;
+    /** Limits of the project. */
+    limits: Project_Limits | undefined;
 }
 export interface CreateProjectMetadata {
     /** ID of the project that is being created. */
@@ -36,6 +40,8 @@ export interface UpdateProjectRequest {
     description: string;
     /** Settings of the project. */
     settings: Project_Settings | undefined;
+    /** Limits of the project. */
+    limits: Project_Limits | undefined;
 }
 export interface UpdateProjectMetadata {
     /** ID of the project that is being updated. */
@@ -112,6 +118,74 @@ export interface ListProjectsResponse {
      * [next_page_token] to continue paging through the results.
      */
     nextPageToken: string;
+}
+export interface GetUnitBalanceRequest {
+    /** ID of the project to return the unit balance for. */
+    projectId: string;
+}
+export interface GetUnitBalanceResponse {
+    /** The number of units available to the project. */
+    unitBalance: number | undefined;
+}
+export interface SetUnitBalanceRequest {
+    /** ID of the project to set the unit balance for. */
+    projectId: string;
+    /** The number of units available to the project. */
+    unitBalance: number | undefined;
+}
+export interface ProjectExecutionRequest {
+    /** ID of the project to execute notebook/cell in. */
+    projectId: string;
+    /** ID of the notebook to execute. */
+    notebookId: string | undefined;
+    /** ID of the cell to execute. */
+    cellId: string | undefined;
+    /** Values of input variables. */
+    inputVariables: Struct | undefined;
+    /** Names of output variables. */
+    outputVariableNames: string[];
+}
+export interface ProjectExecutionMetadata {
+    /** ID of the project in which notebook is being executed. */
+    projectId: string;
+    /** ID of the notebook that is being executed */
+    notebookId: string | undefined;
+    /** ID of the cell that is being executed */
+    cellId: string | undefined;
+}
+export interface ProjectExecutionResponse {
+    /** ID of the checkpoint resulting from the execution. */
+    checkpointId: string;
+    /** Values of output variables resulting from the execution. */
+    outputVariables: Struct | undefined;
+}
+export interface CellOutputsRequest {
+    /** ID of the project to return cell outputs for. */
+    projectId: string;
+    /** ID of the cell to return outputs for. */
+    cellId: string;
+    /** ID of the checkpoint to return cell outputs for. */
+    checkpointId: string;
+    /** Timestamp from which to return outputs. */
+    startAt: Date | undefined;
+}
+export interface CellOutputsResponse {
+    /** List of outputs. */
+    outputs: string[];
+}
+export interface GetStateVariablesRequest {
+    /** ID of the project, for which to return state variables. */
+    projectId: string;
+    /** ID of the notebook, for which to return state variables. */
+    notebookId: string;
+    /** Names of variables to return. */
+    variableNames: string[];
+    /** ID of the checkpoint, for which to return state variables. */
+    checkpointId: string;
+}
+export interface GetStateVariablesResponse {
+    /** Values of the specified variables. */
+    variables: Struct | undefined;
 }
 export declare const CreateProjectRequest: {
     encode(message: CreateProjectRequest, writer?: _m0.Writer): _m0.Writer;
@@ -197,6 +271,76 @@ export declare const ListProjectsResponse: {
     toJSON(message: ListProjectsResponse): unknown;
     fromPartial(object: DeepPartial<ListProjectsResponse>): ListProjectsResponse;
 };
+export declare const GetUnitBalanceRequest: {
+    encode(message: GetUnitBalanceRequest, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number | undefined): GetUnitBalanceRequest;
+    fromJSON(object: any): GetUnitBalanceRequest;
+    toJSON(message: GetUnitBalanceRequest): unknown;
+    fromPartial(object: DeepPartial<GetUnitBalanceRequest>): GetUnitBalanceRequest;
+};
+export declare const GetUnitBalanceResponse: {
+    encode(message: GetUnitBalanceResponse, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number | undefined): GetUnitBalanceResponse;
+    fromJSON(object: any): GetUnitBalanceResponse;
+    toJSON(message: GetUnitBalanceResponse): unknown;
+    fromPartial(object: DeepPartial<GetUnitBalanceResponse>): GetUnitBalanceResponse;
+};
+export declare const SetUnitBalanceRequest: {
+    encode(message: SetUnitBalanceRequest, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number | undefined): SetUnitBalanceRequest;
+    fromJSON(object: any): SetUnitBalanceRequest;
+    toJSON(message: SetUnitBalanceRequest): unknown;
+    fromPartial(object: DeepPartial<SetUnitBalanceRequest>): SetUnitBalanceRequest;
+};
+export declare const ProjectExecutionRequest: {
+    encode(message: ProjectExecutionRequest, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ProjectExecutionRequest;
+    fromJSON(object: any): ProjectExecutionRequest;
+    toJSON(message: ProjectExecutionRequest): unknown;
+    fromPartial(object: DeepPartial<ProjectExecutionRequest>): ProjectExecutionRequest;
+};
+export declare const ProjectExecutionMetadata: {
+    encode(message: ProjectExecutionMetadata, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ProjectExecutionMetadata;
+    fromJSON(object: any): ProjectExecutionMetadata;
+    toJSON(message: ProjectExecutionMetadata): unknown;
+    fromPartial(object: DeepPartial<ProjectExecutionMetadata>): ProjectExecutionMetadata;
+};
+export declare const ProjectExecutionResponse: {
+    encode(message: ProjectExecutionResponse, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ProjectExecutionResponse;
+    fromJSON(object: any): ProjectExecutionResponse;
+    toJSON(message: ProjectExecutionResponse): unknown;
+    fromPartial(object: DeepPartial<ProjectExecutionResponse>): ProjectExecutionResponse;
+};
+export declare const CellOutputsRequest: {
+    encode(message: CellOutputsRequest, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CellOutputsRequest;
+    fromJSON(object: any): CellOutputsRequest;
+    toJSON(message: CellOutputsRequest): unknown;
+    fromPartial(object: DeepPartial<CellOutputsRequest>): CellOutputsRequest;
+};
+export declare const CellOutputsResponse: {
+    encode(message: CellOutputsResponse, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CellOutputsResponse;
+    fromJSON(object: any): CellOutputsResponse;
+    toJSON(message: CellOutputsResponse): unknown;
+    fromPartial(object: DeepPartial<CellOutputsResponse>): CellOutputsResponse;
+};
+export declare const GetStateVariablesRequest: {
+    encode(message: GetStateVariablesRequest, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number | undefined): GetStateVariablesRequest;
+    fromJSON(object: any): GetStateVariablesRequest;
+    toJSON(message: GetStateVariablesRequest): unknown;
+    fromPartial(object: DeepPartial<GetStateVariablesRequest>): GetStateVariablesRequest;
+};
+export declare const GetStateVariablesResponse: {
+    encode(message: GetStateVariablesResponse, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number | undefined): GetStateVariablesResponse;
+    fromJSON(object: any): GetStateVariablesResponse;
+    toJSON(message: GetStateVariablesResponse): unknown;
+    fromPartial(object: DeepPartial<GetStateVariablesResponse>): GetStateVariablesResponse;
+};
 /** A set of methods for managing Project resources. */
 export declare const ProjectServiceService: {
     /** Creates a project in the specified folder. */
@@ -259,6 +403,56 @@ export declare const ProjectServiceService: {
         readonly responseSerialize: (value: ListProjectsResponse) => Buffer;
         readonly responseDeserialize: (value: Buffer) => ListProjectsResponse;
     };
+    /** Returns the unit balance of the specified project. */
+    readonly getUnitBalance: {
+        readonly path: "/yandex.cloud.datasphere.v1.ProjectService/GetUnitBalance";
+        readonly requestStream: false;
+        readonly responseStream: false;
+        readonly requestSerialize: (value: GetUnitBalanceRequest) => Buffer;
+        readonly requestDeserialize: (value: Buffer) => GetUnitBalanceRequest;
+        readonly responseSerialize: (value: GetUnitBalanceResponse) => Buffer;
+        readonly responseDeserialize: (value: Buffer) => GetUnitBalanceResponse;
+    };
+    /** Sets the unit balance of the specified project. */
+    readonly setUnitBalance: {
+        readonly path: "/yandex.cloud.datasphere.v1.ProjectService/SetUnitBalance";
+        readonly requestStream: false;
+        readonly responseStream: false;
+        readonly requestSerialize: (value: SetUnitBalanceRequest) => Buffer;
+        readonly requestDeserialize: (value: Buffer) => SetUnitBalanceRequest;
+        readonly responseSerialize: (value: Empty) => Buffer;
+        readonly responseDeserialize: (value: Buffer) => Empty;
+    };
+    /** Executes code in the specified cell or notebook. */
+    readonly execute: {
+        readonly path: "/yandex.cloud.datasphere.v1.ProjectService/Execute";
+        readonly requestStream: false;
+        readonly responseStream: false;
+        readonly requestSerialize: (value: ProjectExecutionRequest) => Buffer;
+        readonly requestDeserialize: (value: Buffer) => ProjectExecutionRequest;
+        readonly responseSerialize: (value: Operation) => Buffer;
+        readonly responseDeserialize: (value: Buffer) => Operation;
+    };
+    /** Returns outputs of the specified cell. */
+    readonly getCellOutputs: {
+        readonly path: "/yandex.cloud.datasphere.v1.ProjectService/GetCellOutputs";
+        readonly requestStream: false;
+        readonly responseStream: false;
+        readonly requestSerialize: (value: CellOutputsRequest) => Buffer;
+        readonly requestDeserialize: (value: Buffer) => CellOutputsRequest;
+        readonly responseSerialize: (value: CellOutputsResponse) => Buffer;
+        readonly responseDeserialize: (value: Buffer) => CellOutputsResponse;
+    };
+    /** Returns state variables of the specified notebook. */
+    readonly getStateVariables: {
+        readonly path: "/yandex.cloud.datasphere.v1.ProjectService/GetStateVariables";
+        readonly requestStream: false;
+        readonly responseStream: false;
+        readonly requestSerialize: (value: GetStateVariablesRequest) => Buffer;
+        readonly requestDeserialize: (value: Buffer) => GetStateVariablesRequest;
+        readonly responseSerialize: (value: GetStateVariablesResponse) => Buffer;
+        readonly responseDeserialize: (value: Buffer) => GetStateVariablesResponse;
+    };
 };
 export interface ProjectServiceServer extends UntypedServiceImplementation {
     /** Creates a project in the specified folder. */
@@ -273,6 +467,16 @@ export interface ProjectServiceServer extends UntypedServiceImplementation {
     get: handleUnaryCall<GetProjectRequest, Project>;
     /** Lists projects for the specified folder. */
     list: handleUnaryCall<ListProjectsRequest, ListProjectsResponse>;
+    /** Returns the unit balance of the specified project. */
+    getUnitBalance: handleUnaryCall<GetUnitBalanceRequest, GetUnitBalanceResponse>;
+    /** Sets the unit balance of the specified project. */
+    setUnitBalance: handleUnaryCall<SetUnitBalanceRequest, Empty>;
+    /** Executes code in the specified cell or notebook. */
+    execute: handleUnaryCall<ProjectExecutionRequest, Operation>;
+    /** Returns outputs of the specified cell. */
+    getCellOutputs: handleUnaryCall<CellOutputsRequest, CellOutputsResponse>;
+    /** Returns state variables of the specified notebook. */
+    getStateVariables: handleUnaryCall<GetStateVariablesRequest, GetStateVariablesResponse>;
 }
 export interface ProjectServiceClient extends Client {
     /** Creates a project in the specified folder. */
@@ -299,6 +503,26 @@ export interface ProjectServiceClient extends Client {
     list(request: ListProjectsRequest, callback: (error: ServiceError | null, response: ListProjectsResponse) => void): ClientUnaryCall;
     list(request: ListProjectsRequest, metadata: Metadata, callback: (error: ServiceError | null, response: ListProjectsResponse) => void): ClientUnaryCall;
     list(request: ListProjectsRequest, metadata: Metadata, options: Partial<CallOptions>, callback: (error: ServiceError | null, response: ListProjectsResponse) => void): ClientUnaryCall;
+    /** Returns the unit balance of the specified project. */
+    getUnitBalance(request: GetUnitBalanceRequest, callback: (error: ServiceError | null, response: GetUnitBalanceResponse) => void): ClientUnaryCall;
+    getUnitBalance(request: GetUnitBalanceRequest, metadata: Metadata, callback: (error: ServiceError | null, response: GetUnitBalanceResponse) => void): ClientUnaryCall;
+    getUnitBalance(request: GetUnitBalanceRequest, metadata: Metadata, options: Partial<CallOptions>, callback: (error: ServiceError | null, response: GetUnitBalanceResponse) => void): ClientUnaryCall;
+    /** Sets the unit balance of the specified project. */
+    setUnitBalance(request: SetUnitBalanceRequest, callback: (error: ServiceError | null, response: Empty) => void): ClientUnaryCall;
+    setUnitBalance(request: SetUnitBalanceRequest, metadata: Metadata, callback: (error: ServiceError | null, response: Empty) => void): ClientUnaryCall;
+    setUnitBalance(request: SetUnitBalanceRequest, metadata: Metadata, options: Partial<CallOptions>, callback: (error: ServiceError | null, response: Empty) => void): ClientUnaryCall;
+    /** Executes code in the specified cell or notebook. */
+    execute(request: ProjectExecutionRequest, callback: (error: ServiceError | null, response: Operation) => void): ClientUnaryCall;
+    execute(request: ProjectExecutionRequest, metadata: Metadata, callback: (error: ServiceError | null, response: Operation) => void): ClientUnaryCall;
+    execute(request: ProjectExecutionRequest, metadata: Metadata, options: Partial<CallOptions>, callback: (error: ServiceError | null, response: Operation) => void): ClientUnaryCall;
+    /** Returns outputs of the specified cell. */
+    getCellOutputs(request: CellOutputsRequest, callback: (error: ServiceError | null, response: CellOutputsResponse) => void): ClientUnaryCall;
+    getCellOutputs(request: CellOutputsRequest, metadata: Metadata, callback: (error: ServiceError | null, response: CellOutputsResponse) => void): ClientUnaryCall;
+    getCellOutputs(request: CellOutputsRequest, metadata: Metadata, options: Partial<CallOptions>, callback: (error: ServiceError | null, response: CellOutputsResponse) => void): ClientUnaryCall;
+    /** Returns state variables of the specified notebook. */
+    getStateVariables(request: GetStateVariablesRequest, callback: (error: ServiceError | null, response: GetStateVariablesResponse) => void): ClientUnaryCall;
+    getStateVariables(request: GetStateVariablesRequest, metadata: Metadata, callback: (error: ServiceError | null, response: GetStateVariablesResponse) => void): ClientUnaryCall;
+    getStateVariables(request: GetStateVariablesRequest, metadata: Metadata, options: Partial<CallOptions>, callback: (error: ServiceError | null, response: GetStateVariablesResponse) => void): ClientUnaryCall;
 }
 export declare const ProjectServiceClient: new (address: string, credentials: ChannelCredentials, options?: Partial<ChannelOptions> | undefined) => ProjectServiceClient;
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;

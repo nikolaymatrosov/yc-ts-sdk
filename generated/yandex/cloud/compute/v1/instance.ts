@@ -77,6 +77,8 @@ export interface Instance {
     bootDisk: AttachedDisk | undefined;
     /** Array of secondary disks that are attached to the instance. */
     secondaryDisks: AttachedDisk[];
+    /** Array of filesystems that are attached to the instance. */
+    filesystems: AttachedFilesystem[];
     /** Array of network interfaces that are attached to the instance. */
     networkInterfaces: NetworkInterface[];
     /**
@@ -268,6 +270,64 @@ export function attachedDisk_ModeToJSON(object: AttachedDisk_Mode): string {
         case AttachedDisk_Mode.READ_ONLY:
             return 'READ_ONLY';
         case AttachedDisk_Mode.READ_WRITE:
+            return 'READ_WRITE';
+        default:
+            return 'UNKNOWN';
+    }
+}
+
+export interface AttachedFilesystem {
+    /** Access mode to the filesystem. */
+    mode: AttachedFilesystem_Mode;
+    /**
+     * Name of the device representing the filesystem on the instance.
+     *
+     * The name should be used for referencing the filesystem from within the instance
+     * when it's being mounted, resized etc.
+     */
+    deviceName: string;
+    /** ID of the filesystem that is attached to the instance. */
+    filesystemId: string;
+}
+
+export enum AttachedFilesystem_Mode {
+    MODE_UNSPECIFIED = 0,
+    /** READ_ONLY - Read-only access. */
+    READ_ONLY = 1,
+    /** READ_WRITE - Read/Write access. */
+    READ_WRITE = 2,
+    UNRECOGNIZED = -1,
+}
+
+export function attachedFilesystem_ModeFromJSON(
+    object: any
+): AttachedFilesystem_Mode {
+    switch (object) {
+        case 0:
+        case 'MODE_UNSPECIFIED':
+            return AttachedFilesystem_Mode.MODE_UNSPECIFIED;
+        case 1:
+        case 'READ_ONLY':
+            return AttachedFilesystem_Mode.READ_ONLY;
+        case 2:
+        case 'READ_WRITE':
+            return AttachedFilesystem_Mode.READ_WRITE;
+        case -1:
+        case 'UNRECOGNIZED':
+        default:
+            return AttachedFilesystem_Mode.UNRECOGNIZED;
+    }
+}
+
+export function attachedFilesystem_ModeToJSON(
+    object: AttachedFilesystem_Mode
+): string {
+    switch (object) {
+        case AttachedFilesystem_Mode.MODE_UNSPECIFIED:
+            return 'MODE_UNSPECIFIED';
+        case AttachedFilesystem_Mode.READ_ONLY:
+            return 'READ_ONLY';
+        case AttachedFilesystem_Mode.READ_WRITE:
             return 'READ_WRITE';
         default:
             return 'UNKNOWN';
@@ -515,6 +575,9 @@ export const Instance = {
         for (const v of message.secondaryDisks) {
             AttachedDisk.encode(v!, writer.uint32(106).fork()).ldelim();
         }
+        for (const v of message.filesystems) {
+            AttachedFilesystem.encode(v!, writer.uint32(170).fork()).ldelim();
+        }
         for (const v of message.networkInterfaces) {
             NetworkInterface.encode(v!, writer.uint32(114).fork()).ldelim();
         }
@@ -553,6 +616,7 @@ export const Instance = {
         message.labels = {};
         message.metadata = {};
         message.secondaryDisks = [];
+        message.filesystems = [];
         message.networkInterfaces = [];
         while (reader.pos < end) {
             const tag = reader.uint32();
@@ -618,6 +682,11 @@ export const Instance = {
                         AttachedDisk.decode(reader, reader.uint32())
                     );
                     break;
+                case 21:
+                    message.filesystems.push(
+                        AttachedFilesystem.decode(reader, reader.uint32())
+                    );
+                    break;
                 case 14:
                     message.networkInterfaces.push(
                         NetworkInterface.decode(reader, reader.uint32())
@@ -660,6 +729,7 @@ export const Instance = {
         message.labels = {};
         message.metadata = {};
         message.secondaryDisks = [];
+        message.filesystems = [];
         message.networkInterfaces = [];
         if (object.id !== undefined && object.id !== null) {
             message.id = String(object.id);
@@ -727,6 +797,11 @@ export const Instance = {
         ) {
             for (const e of object.secondaryDisks) {
                 message.secondaryDisks.push(AttachedDisk.fromJSON(e));
+            }
+        }
+        if (object.filesystems !== undefined && object.filesystems !== null) {
+            for (const e of object.filesystems) {
+                message.filesystems.push(AttachedFilesystem.fromJSON(e));
             }
         }
         if (
@@ -824,6 +899,13 @@ export const Instance = {
         } else {
             obj.secondaryDisks = [];
         }
+        if (message.filesystems) {
+            obj.filesystems = message.filesystems.map((e) =>
+                e ? AttachedFilesystem.toJSON(e) : undefined
+            );
+        } else {
+            obj.filesystems = [];
+        }
         if (message.networkInterfaces) {
             obj.networkInterfaces = message.networkInterfaces.map((e) =>
                 e ? NetworkInterface.toJSON(e) : undefined
@@ -854,6 +936,7 @@ export const Instance = {
         message.labels = {};
         message.metadata = {};
         message.secondaryDisks = [];
+        message.filesystems = [];
         message.networkInterfaces = [];
         if (object.id !== undefined && object.id !== null) {
             message.id = object.id;
@@ -925,6 +1008,11 @@ export const Instance = {
         ) {
             for (const e of object.secondaryDisks) {
                 message.secondaryDisks.push(AttachedDisk.fromPartial(e));
+            }
+        }
+        if (object.filesystems !== undefined && object.filesystems !== null) {
+            for (const e of object.filesystems) {
+                message.filesystems.push(AttachedFilesystem.fromPartial(e));
             }
         }
         if (
@@ -1374,6 +1462,109 @@ export const AttachedDisk = {
             message.diskId = object.diskId;
         } else {
             message.diskId = '';
+        }
+        return message;
+    },
+};
+
+const baseAttachedFilesystem: object = {
+    mode: 0,
+    deviceName: '',
+    filesystemId: '',
+};
+
+export const AttachedFilesystem = {
+    encode(
+        message: AttachedFilesystem,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        if (message.mode !== 0) {
+            writer.uint32(8).int32(message.mode);
+        }
+        if (message.deviceName !== '') {
+            writer.uint32(18).string(message.deviceName);
+        }
+        if (message.filesystemId !== '') {
+            writer.uint32(26).string(message.filesystemId);
+        }
+        return writer;
+    },
+
+    decode(
+        input: _m0.Reader | Uint8Array,
+        length?: number
+    ): AttachedFilesystem {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = { ...baseAttachedFilesystem } as AttachedFilesystem;
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.mode = reader.int32() as any;
+                    break;
+                case 2:
+                    message.deviceName = reader.string();
+                    break;
+                case 3:
+                    message.filesystemId = reader.string();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): AttachedFilesystem {
+        const message = { ...baseAttachedFilesystem } as AttachedFilesystem;
+        if (object.mode !== undefined && object.mode !== null) {
+            message.mode = attachedFilesystem_ModeFromJSON(object.mode);
+        } else {
+            message.mode = 0;
+        }
+        if (object.deviceName !== undefined && object.deviceName !== null) {
+            message.deviceName = String(object.deviceName);
+        } else {
+            message.deviceName = '';
+        }
+        if (object.filesystemId !== undefined && object.filesystemId !== null) {
+            message.filesystemId = String(object.filesystemId);
+        } else {
+            message.filesystemId = '';
+        }
+        return message;
+    },
+
+    toJSON(message: AttachedFilesystem): unknown {
+        const obj: any = {};
+        message.mode !== undefined &&
+            (obj.mode = attachedFilesystem_ModeToJSON(message.mode));
+        message.deviceName !== undefined &&
+            (obj.deviceName = message.deviceName);
+        message.filesystemId !== undefined &&
+            (obj.filesystemId = message.filesystemId);
+        return obj;
+    },
+
+    fromPartial(object: DeepPartial<AttachedFilesystem>): AttachedFilesystem {
+        const message = { ...baseAttachedFilesystem } as AttachedFilesystem;
+        if (object.mode !== undefined && object.mode !== null) {
+            message.mode = object.mode;
+        } else {
+            message.mode = 0;
+        }
+        if (object.deviceName !== undefined && object.deviceName !== null) {
+            message.deviceName = object.deviceName;
+        } else {
+            message.deviceName = '';
+        }
+        if (object.filesystemId !== undefined && object.filesystemId !== null) {
+            message.filesystemId = object.filesystemId;
+        } else {
+            message.filesystemId = '';
         }
         return message;
     },

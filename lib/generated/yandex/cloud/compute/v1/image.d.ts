@@ -42,6 +42,8 @@ export interface Image {
     status: Image_Status;
     /** Operating system that is contained in the image. */
     os: Os | undefined;
+    /** When true, indicates there is an image pool for fast creation disks from the image. */
+    pooled: boolean;
 }
 export declare enum Image_Status {
     STATUS_UNSPECIFIED = 0,

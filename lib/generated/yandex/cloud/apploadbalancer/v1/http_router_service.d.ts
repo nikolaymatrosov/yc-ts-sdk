@@ -107,7 +107,6 @@ export interface UpdateHttpRouterRequest {
      * a virtual host, make a [VirtualHostService.Create] request or a [VirtualHostService.Delete] request.
      */
     virtualHosts: VirtualHost[];
-    httpsRedirect: boolean;
 }
 export interface UpdateHttpRouterRequest_LabelsEntry {
     key: string;
@@ -145,7 +144,6 @@ export interface CreateHttpRouterRequest {
      * Only one virtual host with no authority (default match) can be specified.
      */
     virtualHosts: VirtualHost[];
-    httpsRedirect: boolean;
 }
 export interface CreateHttpRouterRequest_LabelsEntry {
     key: string;

@@ -28,38 +28,91 @@ import _m0 from 'protobufjs/minimal';
 export const protobufPackage = 'yandex.cloud.logging.v1';
 
 export interface GetLogGroupRequest {
+    /**
+     * ID of the log group to return.
+     *
+     * To get a log group ID make a [LogGroupService.List] request.
+     */
     logGroupId: string;
 }
 
 export interface GetLogGroupStatsRequest {
+    /**
+     * ID of the log group to return stats for.
+     *
+     * To get a log group ID make a [LogGroupService.List] request.
+     */
     logGroupId: string;
 }
 
-export interface GetDefaultLogGroupRequest {
-    folderId: string;
-}
-
 export interface ListLogGroupsRequest {
+    /**
+     * Folder ID of the log groups to return.
+     *
+     * To get a folder ID make a [yandex.cloud.resourcemanager.v1.FolderService.List] request.
+     */
     folderId: string;
+    /**
+     * The maximum number of results per page to return. If the number of available
+     * results is larger than `page_size`, the service returns a [ListLogGroupsResponse.next_page_token]
+     * that can be used to get the next page of results in subsequent list requests.
+     *
+     * Default value: 100.
+     */
     pageSize: number;
+    /**
+     * Page token. To get the next page of results, set `page_token` to the
+     * [ListLogGroupsResponse.next_page_token] returned by a previous list request.
+     */
     pageToken: string;
     /**
-     * supported fields for filter:
-     * name
+     * A filter expression that filters log groups listed in the response.
+     *
+     * The expression must specify:
+     * 1. The field name. Currently filtering can only be applied to the [LogGroup.name] field.
+     * 2. A conditional operator. Can be either `=` or `!=` for single values, `IN` or `NOT IN` for lists of values.
+     * 3. The value. Must be 3-63 characters long and match the regular expression `^[a-z][-a-z0-9]{1,61}[a-z0-9]$`.
+     * Example of a filter: `name=my-log-group`.
      */
     filter: string;
 }
 
 export interface ListLogGroupsResponse {
+    /** List of log groups in the specified folder. */
     groups: LogGroup[];
+    /**
+     * Token for getting the next page of the list. If the number of results is greater than
+     * the specified [ListLogGroupsRequest.page_size], use `next_page_token` as the value
+     * for the [ListLogGroupsRequest.page_token] parameter in the next list request.
+     *
+     * Each subsequent page will have its own `next_page_token` to continue paging through the results.
+     */
     nextPageToken: string;
 }
 
 export interface CreateLogGroupRequest {
+    /**
+     * ID of the folder to create a log group in.
+     *
+     * To get a folder ID make a [yandex.cloud.resourcemanager.v1.FolderService.List] request.
+     */
     folderId: string;
+    /**
+     * Name of the log group.
+     * The name must be unique within the folder.
+     */
     name: string;
+    /** Description of the log group. */
     description: string;
+    /** Log group labels as `key:value` pairs. */
     labels: { [key: string]: string };
+    /**
+     * Log group entry retention period.
+     *
+     * Entries will be present in group during this period.
+     * If specified, must be non-negative.
+     * Empty or zero value is treated as no limit.
+     */
     retentionPeriod: Duration | undefined;
 }
 
@@ -69,15 +122,35 @@ export interface CreateLogGroupRequest_LabelsEntry {
 }
 
 export interface CreateLogGroupMetadata {
+    /** ID of the log group being created. */
     logGroupId: string;
 }
 
 export interface UpdateLogGroupRequest {
+    /**
+     * ID of the log group to update.
+     *
+     * To get a log group ID make a [LogGroupService.List] request.
+     */
     logGroupId: string;
+    /** Field mask that specifies which attributes of the function should be updated. */
     updateMask: FieldMask | undefined;
+    /**
+     * New name of the log group.
+     * The name must be unique within the folder.
+     */
     name: string;
+    /** New Description of the log group. */
     description: string;
+    /** New log group labels as `key:value` pairs. */
     labels: { [key: string]: string };
+    /**
+     * New log group entry retention period.
+     *
+     * Entries will be present in group during this period.
+     * If specified, must be non-negative.
+     * Empty or zero value is treated as no limit.
+     */
     retentionPeriod: Duration | undefined;
 }
 
@@ -87,49 +160,95 @@ export interface UpdateLogGroupRequest_LabelsEntry {
 }
 
 export interface UpdateLogGroupMetadata {
+    /** ID of the log group being updated. */
     logGroupId: string;
 }
 
 export interface DeleteLogGroupRequest {
+    /**
+     * ID of the log group to delete.
+     *
+     * To get a log group ID make a [LogGroupService.List] request.
+     */
     logGroupId: string;
 }
 
 export interface DeleteLogGroupMetadata {
+    /** ID of the log group being deleted. */
     logGroupId: string;
 }
 
 export interface ListResourcesRequest {
+    /**
+     * ID of the log group to list resources for.
+     *
+     * To get a log group ID make a [LogGroupService.List] request.
+     */
     logGroupId: string;
+    /**
+     * Resource type to return resources for.
+     *
+     * If not specified, [ListResourcesResponse] will contain information about all resource types.
+     */
     type: string;
 }
 
 export interface ListResourcesResponse {
+    /** List of resources present in log group. */
     resources: LogGroupResource[];
 }
 
 export interface ListOperationsRequest {
+    /**
+     * ID of the log group to list operations for.
+     *
+     * To get a log group ID make a [LogGroupService.List] request.
+     */
     logGroupId: string;
+    /**
+     * The maximum number of results per page to return. If the number of available
+     * results is larger than `page_size`, the service returns a [ListOperationsResponse.next_page_token]
+     * that can be used to get the next page of results in subsequent list requests.
+     *
+     * Default value: 100.
+     */
     pageSize: number;
+    /**
+     * Page token. To get the next page of results, set `page_token` to the
+     * [ListOperationsResponse.next_page_token] returned by a previous list request.
+     */
     pageToken: string;
     /**
-     * supported attributes:
-     * description
-     * created_at
-     * modified_at
-     * created_by
-     * done
+     * A filter expression that filters resources listed in the response.
+     *
+     * The expression must specify:
+     * 1. The field name. Currently filtering can be applied to the [operation.Operation.description], [operation.Operation.created_at], [operation.Operation.modified_at], [operation.Operation.created_by], [operation.Operation.done] fields.
+     * 2. A conditional operator. Can be either `=` or `!=` for single values, `IN` or `NOT IN` for lists of values.
+     * 3. The value. Must be 3-63 characters long and match the regular expression `^[a-z][-a-z0-9]{1,61}[a-z0-9]$`.
+     * Examples of a filter: `done=false`, `created_by='John.Doe'`.
      */
     filter: string;
 }
 
 export interface ListOperationsResponse {
+    /** List of operations for the specified log group. */
     operations: Operation[];
+    /**
+     * Token for getting the next page of the list. If the number of results is greater than
+     * the specified [ListOperationsRequest.page_size], use `next_page_token` as the value
+     * for the [ListOperationsRequest.page_token] parameter in the next list request.
+     *
+     * Each subsequent page will have its own `next_page_token` to continue paging through the results.
+     */
     nextPageToken: string;
 }
 
 export interface GetLogGroupStatsResponse {
+    /** Log group ID the stats are returned for. */
     logGroupId: string;
+    /** Size of data in log group in bytes. */
     bytes: number;
+    /** Amount of records in log group. */
     records: number;
 }
 
@@ -262,76 +381,6 @@ export const GetLogGroupStatsRequest = {
             message.logGroupId = object.logGroupId;
         } else {
             message.logGroupId = '';
-        }
-        return message;
-    },
-};
-
-const baseGetDefaultLogGroupRequest: object = { folderId: '' };
-
-export const GetDefaultLogGroupRequest = {
-    encode(
-        message: GetDefaultLogGroupRequest,
-        writer: _m0.Writer = _m0.Writer.create()
-    ): _m0.Writer {
-        if (message.folderId !== '') {
-            writer.uint32(10).string(message.folderId);
-        }
-        return writer;
-    },
-
-    decode(
-        input: _m0.Reader | Uint8Array,
-        length?: number
-    ): GetDefaultLogGroupRequest {
-        const reader =
-            input instanceof _m0.Reader ? input : new _m0.Reader(input);
-        let end = length === undefined ? reader.len : reader.pos + length;
-        const message = {
-            ...baseGetDefaultLogGroupRequest,
-        } as GetDefaultLogGroupRequest;
-        while (reader.pos < end) {
-            const tag = reader.uint32();
-            switch (tag >>> 3) {
-                case 1:
-                    message.folderId = reader.string();
-                    break;
-                default:
-                    reader.skipType(tag & 7);
-                    break;
-            }
-        }
-        return message;
-    },
-
-    fromJSON(object: any): GetDefaultLogGroupRequest {
-        const message = {
-            ...baseGetDefaultLogGroupRequest,
-        } as GetDefaultLogGroupRequest;
-        if (object.folderId !== undefined && object.folderId !== null) {
-            message.folderId = String(object.folderId);
-        } else {
-            message.folderId = '';
-        }
-        return message;
-    },
-
-    toJSON(message: GetDefaultLogGroupRequest): unknown {
-        const obj: any = {};
-        message.folderId !== undefined && (obj.folderId = message.folderId);
-        return obj;
-    },
-
-    fromPartial(
-        object: DeepPartial<GetDefaultLogGroupRequest>
-    ): GetDefaultLogGroupRequest {
-        const message = {
-            ...baseGetDefaultLogGroupRequest,
-        } as GetDefaultLogGroupRequest;
-        if (object.folderId !== undefined && object.folderId !== null) {
-            message.folderId = object.folderId;
-        } else {
-            message.folderId = '';
         }
         return message;
     },
@@ -1909,7 +1958,13 @@ export const GetLogGroupStatsResponse = {
     },
 };
 
+/** A set of methods for managing log groups. */
 export const LogGroupServiceService = {
+    /**
+     * Returns the specified log group.
+     *
+     * To get the list of all available log groups, make a [List] request.
+     */
     get: {
         path: '/yandex.cloud.logging.v1.LogGroupService/Get',
         requestStream: false,
@@ -1921,18 +1976,7 @@ export const LogGroupServiceService = {
             Buffer.from(LogGroup.encode(value).finish()),
         responseDeserialize: (value: Buffer) => LogGroup.decode(value),
     },
-    getDefault: {
-        path: '/yandex.cloud.logging.v1.LogGroupService/GetDefault',
-        requestStream: false,
-        responseStream: false,
-        requestSerialize: (value: GetDefaultLogGroupRequest) =>
-            Buffer.from(GetDefaultLogGroupRequest.encode(value).finish()),
-        requestDeserialize: (value: Buffer) =>
-            GetDefaultLogGroupRequest.decode(value),
-        responseSerialize: (value: LogGroup) =>
-            Buffer.from(LogGroup.encode(value).finish()),
-        responseDeserialize: (value: Buffer) => LogGroup.decode(value),
-    },
+    /** Returns stats for the specified log group. */
     stats: {
         path: '/yandex.cloud.logging.v1.LogGroupService/Stats',
         requestStream: false,
@@ -1946,6 +1990,7 @@ export const LogGroupServiceService = {
         responseDeserialize: (value: Buffer) =>
             GetLogGroupStatsResponse.decode(value),
     },
+    /** Retrieves the list of log groups in the specified folder. */
     list: {
         path: '/yandex.cloud.logging.v1.LogGroupService/List',
         requestStream: false,
@@ -1959,6 +2004,7 @@ export const LogGroupServiceService = {
         responseDeserialize: (value: Buffer) =>
             ListLogGroupsResponse.decode(value),
     },
+    /** Creates a log group in the specified folder. */
     create: {
         path: '/yandex.cloud.logging.v1.LogGroupService/Create',
         requestStream: false,
@@ -1971,6 +2017,7 @@ export const LogGroupServiceService = {
             Buffer.from(Operation.encode(value).finish()),
         responseDeserialize: (value: Buffer) => Operation.decode(value),
     },
+    /** Updates the specified log group. */
     update: {
         path: '/yandex.cloud.logging.v1.LogGroupService/Update',
         requestStream: false,
@@ -1983,6 +2030,7 @@ export const LogGroupServiceService = {
             Buffer.from(Operation.encode(value).finish()),
         responseDeserialize: (value: Buffer) => Operation.decode(value),
     },
+    /** Deletes the specified log group. */
     delete: {
         path: '/yandex.cloud.logging.v1.LogGroupService/Delete',
         requestStream: false,
@@ -1995,6 +2043,7 @@ export const LogGroupServiceService = {
             Buffer.from(Operation.encode(value).finish()),
         responseDeserialize: (value: Buffer) => Operation.decode(value),
     },
+    /** Retrieves the resources (type and IDs) in the specified log group. */
     listResources: {
         path: '/yandex.cloud.logging.v1.LogGroupService/ListResources',
         requestStream: false,
@@ -2008,6 +2057,7 @@ export const LogGroupServiceService = {
         responseDeserialize: (value: Buffer) =>
             ListResourcesResponse.decode(value),
     },
+    /** Lists operations for the specified log group. */
     listOperations: {
         path: '/yandex.cloud.logging.v1.LogGroupService/ListOperations',
         requestStream: false,
@@ -2021,6 +2071,7 @@ export const LogGroupServiceService = {
         responseDeserialize: (value: Buffer) =>
             ListOperationsResponse.decode(value),
     },
+    /** Lists existing access bindings for the specified log group. */
     listAccessBindings: {
         path: '/yandex.cloud.logging.v1.LogGroupService/ListAccessBindings',
         requestStream: false,
@@ -2034,6 +2085,7 @@ export const LogGroupServiceService = {
         responseDeserialize: (value: Buffer) =>
             ListAccessBindingsResponse.decode(value),
     },
+    /** Sets access bindings for the specified log group. */
     setAccessBindings: {
         path: '/yandex.cloud.logging.v1.LogGroupService/SetAccessBindings',
         requestStream: false,
@@ -2046,6 +2098,7 @@ export const LogGroupServiceService = {
             Buffer.from(Operation.encode(value).finish()),
         responseDeserialize: (value: Buffer) => Operation.decode(value),
     },
+    /** Updates access bindings for the specified log group. */
     updateAccessBindings: {
         path: '/yandex.cloud.logging.v1.LogGroupService/UpdateAccessBindings',
         requestStream: false,
@@ -2061,23 +2114,37 @@ export const LogGroupServiceService = {
 } as const;
 
 export interface LogGroupServiceServer extends UntypedServiceImplementation {
+    /**
+     * Returns the specified log group.
+     *
+     * To get the list of all available log groups, make a [List] request.
+     */
     get: handleUnaryCall<GetLogGroupRequest, LogGroup>;
-    getDefault: handleUnaryCall<GetDefaultLogGroupRequest, LogGroup>;
+    /** Returns stats for the specified log group. */
     stats: handleUnaryCall<GetLogGroupStatsRequest, GetLogGroupStatsResponse>;
+    /** Retrieves the list of log groups in the specified folder. */
     list: handleUnaryCall<ListLogGroupsRequest, ListLogGroupsResponse>;
+    /** Creates a log group in the specified folder. */
     create: handleUnaryCall<CreateLogGroupRequest, Operation>;
+    /** Updates the specified log group. */
     update: handleUnaryCall<UpdateLogGroupRequest, Operation>;
+    /** Deletes the specified log group. */
     delete: handleUnaryCall<DeleteLogGroupRequest, Operation>;
+    /** Retrieves the resources (type and IDs) in the specified log group. */
     listResources: handleUnaryCall<ListResourcesRequest, ListResourcesResponse>;
+    /** Lists operations for the specified log group. */
     listOperations: handleUnaryCall<
         ListOperationsRequest,
         ListOperationsResponse
     >;
+    /** Lists existing access bindings for the specified log group. */
     listAccessBindings: handleUnaryCall<
         ListAccessBindingsRequest,
         ListAccessBindingsResponse
     >;
+    /** Sets access bindings for the specified log group. */
     setAccessBindings: handleUnaryCall<SetAccessBindingsRequest, Operation>;
+    /** Updates access bindings for the specified log group. */
     updateAccessBindings: handleUnaryCall<
         UpdateAccessBindingsRequest,
         Operation
@@ -2085,6 +2152,11 @@ export interface LogGroupServiceServer extends UntypedServiceImplementation {
 }
 
 export interface LogGroupServiceClient extends Client {
+    /**
+     * Returns the specified log group.
+     *
+     * To get the list of all available log groups, make a [List] request.
+     */
     get(
         request: GetLogGroupRequest,
         callback: (error: ServiceError | null, response: LogGroup) => void
@@ -2100,21 +2172,7 @@ export interface LogGroupServiceClient extends Client {
         options: Partial<CallOptions>,
         callback: (error: ServiceError | null, response: LogGroup) => void
     ): ClientUnaryCall;
-    getDefault(
-        request: GetDefaultLogGroupRequest,
-        callback: (error: ServiceError | null, response: LogGroup) => void
-    ): ClientUnaryCall;
-    getDefault(
-        request: GetDefaultLogGroupRequest,
-        metadata: Metadata,
-        callback: (error: ServiceError | null, response: LogGroup) => void
-    ): ClientUnaryCall;
-    getDefault(
-        request: GetDefaultLogGroupRequest,
-        metadata: Metadata,
-        options: Partial<CallOptions>,
-        callback: (error: ServiceError | null, response: LogGroup) => void
-    ): ClientUnaryCall;
+    /** Returns stats for the specified log group. */
     stats(
         request: GetLogGroupStatsRequest,
         callback: (
@@ -2139,6 +2197,7 @@ export interface LogGroupServiceClient extends Client {
             response: GetLogGroupStatsResponse
         ) => void
     ): ClientUnaryCall;
+    /** Retrieves the list of log groups in the specified folder. */
     list(
         request: ListLogGroupsRequest,
         callback: (
@@ -2163,6 +2222,7 @@ export interface LogGroupServiceClient extends Client {
             response: ListLogGroupsResponse
         ) => void
     ): ClientUnaryCall;
+    /** Creates a log group in the specified folder. */
     create(
         request: CreateLogGroupRequest,
         callback: (error: ServiceError | null, response: Operation) => void
@@ -2178,6 +2238,7 @@ export interface LogGroupServiceClient extends Client {
         options: Partial<CallOptions>,
         callback: (error: ServiceError | null, response: Operation) => void
     ): ClientUnaryCall;
+    /** Updates the specified log group. */
     update(
         request: UpdateLogGroupRequest,
         callback: (error: ServiceError | null, response: Operation) => void
@@ -2193,6 +2254,7 @@ export interface LogGroupServiceClient extends Client {
         options: Partial<CallOptions>,
         callback: (error: ServiceError | null, response: Operation) => void
     ): ClientUnaryCall;
+    /** Deletes the specified log group. */
     delete(
         request: DeleteLogGroupRequest,
         callback: (error: ServiceError | null, response: Operation) => void
@@ -2208,6 +2270,7 @@ export interface LogGroupServiceClient extends Client {
         options: Partial<CallOptions>,
         callback: (error: ServiceError | null, response: Operation) => void
     ): ClientUnaryCall;
+    /** Retrieves the resources (type and IDs) in the specified log group. */
     listResources(
         request: ListResourcesRequest,
         callback: (
@@ -2232,6 +2295,7 @@ export interface LogGroupServiceClient extends Client {
             response: ListResourcesResponse
         ) => void
     ): ClientUnaryCall;
+    /** Lists operations for the specified log group. */
     listOperations(
         request: ListOperationsRequest,
         callback: (
@@ -2256,6 +2320,7 @@ export interface LogGroupServiceClient extends Client {
             response: ListOperationsResponse
         ) => void
     ): ClientUnaryCall;
+    /** Lists existing access bindings for the specified log group. */
     listAccessBindings(
         request: ListAccessBindingsRequest,
         callback: (
@@ -2280,6 +2345,7 @@ export interface LogGroupServiceClient extends Client {
             response: ListAccessBindingsResponse
         ) => void
     ): ClientUnaryCall;
+    /** Sets access bindings for the specified log group. */
     setAccessBindings(
         request: SetAccessBindingsRequest,
         callback: (error: ServiceError | null, response: Operation) => void
@@ -2295,6 +2361,7 @@ export interface LogGroupServiceClient extends Client {
         options: Partial<CallOptions>,
         callback: (error: ServiceError | null, response: Operation) => void
     ): ClientUnaryCall;
+    /** Updates access bindings for the specified log group. */
     updateAccessBindings(
         request: UpdateAccessBindingsRequest,
         callback: (error: ServiceError | null, response: Operation) => void

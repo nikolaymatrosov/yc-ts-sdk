@@ -1,0 +1,855 @@
+/* eslint-disable */
+import {
+    Customer,
+    CustomerPerson,
+} from '../../../../yandex/cloud/billing/v1/customer';
+import { Operation } from '../../../../yandex/cloud/operation/operation';
+import {
+    makeGenericClientConstructor,
+    ChannelCredentials,
+    ChannelOptions,
+    UntypedServiceImplementation,
+    handleUnaryCall,
+    Client,
+    ClientUnaryCall,
+    Metadata,
+    CallOptions,
+    ServiceError,
+} from '@grpc/grpc-js';
+import Long from 'long';
+import _m0 from 'protobufjs/minimal';
+
+export const protobufPackage = 'yandex.cloud.billing.v1';
+
+export interface ListCustomersRequest {
+    /** ID of the reseller. */
+    resellerId: string;
+    /**
+     * The maximum number of results per page to return. If the number of available
+     * results is larger than [page_size],
+     * the service returns a [ListCustomersResponse.next_page_token]
+     * that can be used to get the next page of results in subsequent list requests.
+     */
+    pageSize: number;
+    /**
+     * Page token. To get the next page of results,
+     * set [page_token] to the [ListCustomersResponse.next_page_token]
+     * returned by a previous list request.
+     */
+    pageToken: string;
+}
+
+export interface ListCustomersResponse {
+    /** List of customers. */
+    customers: Customer[];
+    /**
+     * This token allows you to get the next page of results for list requests. If the number of results
+     * is larger than [ListCustomersRequest.page_size], use
+     * [next_page_token] as the value
+     * for the [ListCustomersRequest.page_token] query parameter
+     * in the next list request. Each subsequent list request will have its own
+     * [next_page_token] to continue paging through the results.
+     */
+    nextPageToken: string;
+}
+
+export interface InviteCustomerRequest {
+    /** ID of the reseller that customer will be associated with. */
+    resellerId: string;
+    /** Name of the customer. */
+    name: string;
+    /** Customer email to send invitation to. */
+    invitationEmail: string;
+    /** Person of the customer. */
+    person: CustomerPerson | undefined;
+}
+
+export interface ActivateCustomerRequest {
+    /**
+     * ID of the customer.
+     * To get the customer ID, use [CustomerService.List] request.
+     */
+    customerId: string;
+}
+
+export interface SuspendCustomerRequest {
+    /**
+     * ID of the customer.
+     * To get the customer ID, use [CustomerService.List] request.
+     */
+    customerId: string;
+}
+
+export interface CustomerMetadata {
+    /** ID of the reseller. */
+    resellerId: string;
+    /** ID of the customer. */
+    customerId: string;
+}
+
+const baseListCustomersRequest: object = {
+    resellerId: '',
+    pageSize: 0,
+    pageToken: '',
+};
+
+export const ListCustomersRequest = {
+    encode(
+        message: ListCustomersRequest,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        if (message.resellerId !== '') {
+            writer.uint32(10).string(message.resellerId);
+        }
+        if (message.pageSize !== 0) {
+            writer.uint32(24).int64(message.pageSize);
+        }
+        if (message.pageToken !== '') {
+            writer.uint32(34).string(message.pageToken);
+        }
+        return writer;
+    },
+
+    decode(
+        input: _m0.Reader | Uint8Array,
+        length?: number
+    ): ListCustomersRequest {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = { ...baseListCustomersRequest } as ListCustomersRequest;
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.resellerId = reader.string();
+                    break;
+                case 3:
+                    message.pageSize = longToNumber(reader.int64() as Long);
+                    break;
+                case 4:
+                    message.pageToken = reader.string();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): ListCustomersRequest {
+        const message = { ...baseListCustomersRequest } as ListCustomersRequest;
+        if (object.resellerId !== undefined && object.resellerId !== null) {
+            message.resellerId = String(object.resellerId);
+        } else {
+            message.resellerId = '';
+        }
+        if (object.pageSize !== undefined && object.pageSize !== null) {
+            message.pageSize = Number(object.pageSize);
+        } else {
+            message.pageSize = 0;
+        }
+        if (object.pageToken !== undefined && object.pageToken !== null) {
+            message.pageToken = String(object.pageToken);
+        } else {
+            message.pageToken = '';
+        }
+        return message;
+    },
+
+    toJSON(message: ListCustomersRequest): unknown {
+        const obj: any = {};
+        message.resellerId !== undefined &&
+            (obj.resellerId = message.resellerId);
+        message.pageSize !== undefined && (obj.pageSize = message.pageSize);
+        message.pageToken !== undefined && (obj.pageToken = message.pageToken);
+        return obj;
+    },
+
+    fromPartial(
+        object: DeepPartial<ListCustomersRequest>
+    ): ListCustomersRequest {
+        const message = { ...baseListCustomersRequest } as ListCustomersRequest;
+        if (object.resellerId !== undefined && object.resellerId !== null) {
+            message.resellerId = object.resellerId;
+        } else {
+            message.resellerId = '';
+        }
+        if (object.pageSize !== undefined && object.pageSize !== null) {
+            message.pageSize = object.pageSize;
+        } else {
+            message.pageSize = 0;
+        }
+        if (object.pageToken !== undefined && object.pageToken !== null) {
+            message.pageToken = object.pageToken;
+        } else {
+            message.pageToken = '';
+        }
+        return message;
+    },
+};
+
+const baseListCustomersResponse: object = { nextPageToken: '' };
+
+export const ListCustomersResponse = {
+    encode(
+        message: ListCustomersResponse,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        for (const v of message.customers) {
+            Customer.encode(v!, writer.uint32(10).fork()).ldelim();
+        }
+        if (message.nextPageToken !== '') {
+            writer.uint32(18).string(message.nextPageToken);
+        }
+        return writer;
+    },
+
+    decode(
+        input: _m0.Reader | Uint8Array,
+        length?: number
+    ): ListCustomersResponse {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = {
+            ...baseListCustomersResponse,
+        } as ListCustomersResponse;
+        message.customers = [];
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.customers.push(
+                        Customer.decode(reader, reader.uint32())
+                    );
+                    break;
+                case 2:
+                    message.nextPageToken = reader.string();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): ListCustomersResponse {
+        const message = {
+            ...baseListCustomersResponse,
+        } as ListCustomersResponse;
+        message.customers = [];
+        if (object.customers !== undefined && object.customers !== null) {
+            for (const e of object.customers) {
+                message.customers.push(Customer.fromJSON(e));
+            }
+        }
+        if (
+            object.nextPageToken !== undefined &&
+            object.nextPageToken !== null
+        ) {
+            message.nextPageToken = String(object.nextPageToken);
+        } else {
+            message.nextPageToken = '';
+        }
+        return message;
+    },
+
+    toJSON(message: ListCustomersResponse): unknown {
+        const obj: any = {};
+        if (message.customers) {
+            obj.customers = message.customers.map((e) =>
+                e ? Customer.toJSON(e) : undefined
+            );
+        } else {
+            obj.customers = [];
+        }
+        message.nextPageToken !== undefined &&
+            (obj.nextPageToken = message.nextPageToken);
+        return obj;
+    },
+
+    fromPartial(
+        object: DeepPartial<ListCustomersResponse>
+    ): ListCustomersResponse {
+        const message = {
+            ...baseListCustomersResponse,
+        } as ListCustomersResponse;
+        message.customers = [];
+        if (object.customers !== undefined && object.customers !== null) {
+            for (const e of object.customers) {
+                message.customers.push(Customer.fromPartial(e));
+            }
+        }
+        if (
+            object.nextPageToken !== undefined &&
+            object.nextPageToken !== null
+        ) {
+            message.nextPageToken = object.nextPageToken;
+        } else {
+            message.nextPageToken = '';
+        }
+        return message;
+    },
+};
+
+const baseInviteCustomerRequest: object = {
+    resellerId: '',
+    name: '',
+    invitationEmail: '',
+};
+
+export const InviteCustomerRequest = {
+    encode(
+        message: InviteCustomerRequest,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        if (message.resellerId !== '') {
+            writer.uint32(10).string(message.resellerId);
+        }
+        if (message.name !== '') {
+            writer.uint32(18).string(message.name);
+        }
+        if (message.invitationEmail !== '') {
+            writer.uint32(26).string(message.invitationEmail);
+        }
+        if (message.person !== undefined) {
+            CustomerPerson.encode(
+                message.person,
+                writer.uint32(34).fork()
+            ).ldelim();
+        }
+        return writer;
+    },
+
+    decode(
+        input: _m0.Reader | Uint8Array,
+        length?: number
+    ): InviteCustomerRequest {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = {
+            ...baseInviteCustomerRequest,
+        } as InviteCustomerRequest;
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.resellerId = reader.string();
+                    break;
+                case 2:
+                    message.name = reader.string();
+                    break;
+                case 3:
+                    message.invitationEmail = reader.string();
+                    break;
+                case 4:
+                    message.person = CustomerPerson.decode(
+                        reader,
+                        reader.uint32()
+                    );
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): InviteCustomerRequest {
+        const message = {
+            ...baseInviteCustomerRequest,
+        } as InviteCustomerRequest;
+        if (object.resellerId !== undefined && object.resellerId !== null) {
+            message.resellerId = String(object.resellerId);
+        } else {
+            message.resellerId = '';
+        }
+        if (object.name !== undefined && object.name !== null) {
+            message.name = String(object.name);
+        } else {
+            message.name = '';
+        }
+        if (
+            object.invitationEmail !== undefined &&
+            object.invitationEmail !== null
+        ) {
+            message.invitationEmail = String(object.invitationEmail);
+        } else {
+            message.invitationEmail = '';
+        }
+        if (object.person !== undefined && object.person !== null) {
+            message.person = CustomerPerson.fromJSON(object.person);
+        } else {
+            message.person = undefined;
+        }
+        return message;
+    },
+
+    toJSON(message: InviteCustomerRequest): unknown {
+        const obj: any = {};
+        message.resellerId !== undefined &&
+            (obj.resellerId = message.resellerId);
+        message.name !== undefined && (obj.name = message.name);
+        message.invitationEmail !== undefined &&
+            (obj.invitationEmail = message.invitationEmail);
+        message.person !== undefined &&
+            (obj.person = message.person
+                ? CustomerPerson.toJSON(message.person)
+                : undefined);
+        return obj;
+    },
+
+    fromPartial(
+        object: DeepPartial<InviteCustomerRequest>
+    ): InviteCustomerRequest {
+        const message = {
+            ...baseInviteCustomerRequest,
+        } as InviteCustomerRequest;
+        if (object.resellerId !== undefined && object.resellerId !== null) {
+            message.resellerId = object.resellerId;
+        } else {
+            message.resellerId = '';
+        }
+        if (object.name !== undefined && object.name !== null) {
+            message.name = object.name;
+        } else {
+            message.name = '';
+        }
+        if (
+            object.invitationEmail !== undefined &&
+            object.invitationEmail !== null
+        ) {
+            message.invitationEmail = object.invitationEmail;
+        } else {
+            message.invitationEmail = '';
+        }
+        if (object.person !== undefined && object.person !== null) {
+            message.person = CustomerPerson.fromPartial(object.person);
+        } else {
+            message.person = undefined;
+        }
+        return message;
+    },
+};
+
+const baseActivateCustomerRequest: object = { customerId: '' };
+
+export const ActivateCustomerRequest = {
+    encode(
+        message: ActivateCustomerRequest,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        if (message.customerId !== '') {
+            writer.uint32(10).string(message.customerId);
+        }
+        return writer;
+    },
+
+    decode(
+        input: _m0.Reader | Uint8Array,
+        length?: number
+    ): ActivateCustomerRequest {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = {
+            ...baseActivateCustomerRequest,
+        } as ActivateCustomerRequest;
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.customerId = reader.string();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): ActivateCustomerRequest {
+        const message = {
+            ...baseActivateCustomerRequest,
+        } as ActivateCustomerRequest;
+        if (object.customerId !== undefined && object.customerId !== null) {
+            message.customerId = String(object.customerId);
+        } else {
+            message.customerId = '';
+        }
+        return message;
+    },
+
+    toJSON(message: ActivateCustomerRequest): unknown {
+        const obj: any = {};
+        message.customerId !== undefined &&
+            (obj.customerId = message.customerId);
+        return obj;
+    },
+
+    fromPartial(
+        object: DeepPartial<ActivateCustomerRequest>
+    ): ActivateCustomerRequest {
+        const message = {
+            ...baseActivateCustomerRequest,
+        } as ActivateCustomerRequest;
+        if (object.customerId !== undefined && object.customerId !== null) {
+            message.customerId = object.customerId;
+        } else {
+            message.customerId = '';
+        }
+        return message;
+    },
+};
+
+const baseSuspendCustomerRequest: object = { customerId: '' };
+
+export const SuspendCustomerRequest = {
+    encode(
+        message: SuspendCustomerRequest,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        if (message.customerId !== '') {
+            writer.uint32(10).string(message.customerId);
+        }
+        return writer;
+    },
+
+    decode(
+        input: _m0.Reader | Uint8Array,
+        length?: number
+    ): SuspendCustomerRequest {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = {
+            ...baseSuspendCustomerRequest,
+        } as SuspendCustomerRequest;
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.customerId = reader.string();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): SuspendCustomerRequest {
+        const message = {
+            ...baseSuspendCustomerRequest,
+        } as SuspendCustomerRequest;
+        if (object.customerId !== undefined && object.customerId !== null) {
+            message.customerId = String(object.customerId);
+        } else {
+            message.customerId = '';
+        }
+        return message;
+    },
+
+    toJSON(message: SuspendCustomerRequest): unknown {
+        const obj: any = {};
+        message.customerId !== undefined &&
+            (obj.customerId = message.customerId);
+        return obj;
+    },
+
+    fromPartial(
+        object: DeepPartial<SuspendCustomerRequest>
+    ): SuspendCustomerRequest {
+        const message = {
+            ...baseSuspendCustomerRequest,
+        } as SuspendCustomerRequest;
+        if (object.customerId !== undefined && object.customerId !== null) {
+            message.customerId = object.customerId;
+        } else {
+            message.customerId = '';
+        }
+        return message;
+    },
+};
+
+const baseCustomerMetadata: object = { resellerId: '', customerId: '' };
+
+export const CustomerMetadata = {
+    encode(
+        message: CustomerMetadata,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        if (message.resellerId !== '') {
+            writer.uint32(10).string(message.resellerId);
+        }
+        if (message.customerId !== '') {
+            writer.uint32(18).string(message.customerId);
+        }
+        return writer;
+    },
+
+    decode(input: _m0.Reader | Uint8Array, length?: number): CustomerMetadata {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = { ...baseCustomerMetadata } as CustomerMetadata;
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.resellerId = reader.string();
+                    break;
+                case 2:
+                    message.customerId = reader.string();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): CustomerMetadata {
+        const message = { ...baseCustomerMetadata } as CustomerMetadata;
+        if (object.resellerId !== undefined && object.resellerId !== null) {
+            message.resellerId = String(object.resellerId);
+        } else {
+            message.resellerId = '';
+        }
+        if (object.customerId !== undefined && object.customerId !== null) {
+            message.customerId = String(object.customerId);
+        } else {
+            message.customerId = '';
+        }
+        return message;
+    },
+
+    toJSON(message: CustomerMetadata): unknown {
+        const obj: any = {};
+        message.resellerId !== undefined &&
+            (obj.resellerId = message.resellerId);
+        message.customerId !== undefined &&
+            (obj.customerId = message.customerId);
+        return obj;
+    },
+
+    fromPartial(object: DeepPartial<CustomerMetadata>): CustomerMetadata {
+        const message = { ...baseCustomerMetadata } as CustomerMetadata;
+        if (object.resellerId !== undefined && object.resellerId !== null) {
+            message.resellerId = object.resellerId;
+        } else {
+            message.resellerId = '';
+        }
+        if (object.customerId !== undefined && object.customerId !== null) {
+            message.customerId = object.customerId;
+        } else {
+            message.customerId = '';
+        }
+        return message;
+    },
+};
+
+/** A set of methods for managing Customer resources. */
+export const CustomerServiceService = {
+    /** Retrieves the list of customers associated with the specified reseller. */
+    list: {
+        path: '/yandex.cloud.billing.v1.CustomerService/List',
+        requestStream: false,
+        responseStream: false,
+        requestSerialize: (value: ListCustomersRequest) =>
+            Buffer.from(ListCustomersRequest.encode(value).finish()),
+        requestDeserialize: (value: Buffer) =>
+            ListCustomersRequest.decode(value),
+        responseSerialize: (value: ListCustomersResponse) =>
+            Buffer.from(ListCustomersResponse.encode(value).finish()),
+        responseDeserialize: (value: Buffer) =>
+            ListCustomersResponse.decode(value),
+    },
+    /** Invites customer to the specified reseller. */
+    invite: {
+        path: '/yandex.cloud.billing.v1.CustomerService/Invite',
+        requestStream: false,
+        responseStream: false,
+        requestSerialize: (value: InviteCustomerRequest) =>
+            Buffer.from(InviteCustomerRequest.encode(value).finish()),
+        requestDeserialize: (value: Buffer) =>
+            InviteCustomerRequest.decode(value),
+        responseSerialize: (value: Operation) =>
+            Buffer.from(Operation.encode(value).finish()),
+        responseDeserialize: (value: Buffer) => Operation.decode(value),
+    },
+    /** Activates specified customer. After customer is activated, he can use resources associated with his billing account. */
+    activate: {
+        path: '/yandex.cloud.billing.v1.CustomerService/Activate',
+        requestStream: false,
+        responseStream: false,
+        requestSerialize: (value: ActivateCustomerRequest) =>
+            Buffer.from(ActivateCustomerRequest.encode(value).finish()),
+        requestDeserialize: (value: Buffer) =>
+            ActivateCustomerRequest.decode(value),
+        responseSerialize: (value: Operation) =>
+            Buffer.from(Operation.encode(value).finish()),
+        responseDeserialize: (value: Buffer) => Operation.decode(value),
+    },
+    /** Suspend specified customer. After customer is suspended, he can't use resources associated with his billing account. */
+    suspend: {
+        path: '/yandex.cloud.billing.v1.CustomerService/Suspend',
+        requestStream: false,
+        responseStream: false,
+        requestSerialize: (value: SuspendCustomerRequest) =>
+            Buffer.from(SuspendCustomerRequest.encode(value).finish()),
+        requestDeserialize: (value: Buffer) =>
+            SuspendCustomerRequest.decode(value),
+        responseSerialize: (value: Operation) =>
+            Buffer.from(Operation.encode(value).finish()),
+        responseDeserialize: (value: Buffer) => Operation.decode(value),
+    },
+} as const;
+
+export interface CustomerServiceServer extends UntypedServiceImplementation {
+    /** Retrieves the list of customers associated with the specified reseller. */
+    list: handleUnaryCall<ListCustomersRequest, ListCustomersResponse>;
+    /** Invites customer to the specified reseller. */
+    invite: handleUnaryCall<InviteCustomerRequest, Operation>;
+    /** Activates specified customer. After customer is activated, he can use resources associated with his billing account. */
+    activate: handleUnaryCall<ActivateCustomerRequest, Operation>;
+    /** Suspend specified customer. After customer is suspended, he can't use resources associated with his billing account. */
+    suspend: handleUnaryCall<SuspendCustomerRequest, Operation>;
+}
+
+export interface CustomerServiceClient extends Client {
+    /** Retrieves the list of customers associated with the specified reseller. */
+    list(
+        request: ListCustomersRequest,
+        callback: (
+            error: ServiceError | null,
+            response: ListCustomersResponse
+        ) => void
+    ): ClientUnaryCall;
+    list(
+        request: ListCustomersRequest,
+        metadata: Metadata,
+        callback: (
+            error: ServiceError | null,
+            response: ListCustomersResponse
+        ) => void
+    ): ClientUnaryCall;
+    list(
+        request: ListCustomersRequest,
+        metadata: Metadata,
+        options: Partial<CallOptions>,
+        callback: (
+            error: ServiceError | null,
+            response: ListCustomersResponse
+        ) => void
+    ): ClientUnaryCall;
+    /** Invites customer to the specified reseller. */
+    invite(
+        request: InviteCustomerRequest,
+        callback: (error: ServiceError | null, response: Operation) => void
+    ): ClientUnaryCall;
+    invite(
+        request: InviteCustomerRequest,
+        metadata: Metadata,
+        callback: (error: ServiceError | null, response: Operation) => void
+    ): ClientUnaryCall;
+    invite(
+        request: InviteCustomerRequest,
+        metadata: Metadata,
+        options: Partial<CallOptions>,
+        callback: (error: ServiceError | null, response: Operation) => void
+    ): ClientUnaryCall;
+    /** Activates specified customer. After customer is activated, he can use resources associated with his billing account. */
+    activate(
+        request: ActivateCustomerRequest,
+        callback: (error: ServiceError | null, response: Operation) => void
+    ): ClientUnaryCall;
+    activate(
+        request: ActivateCustomerRequest,
+        metadata: Metadata,
+        callback: (error: ServiceError | null, response: Operation) => void
+    ): ClientUnaryCall;
+    activate(
+        request: ActivateCustomerRequest,
+        metadata: Metadata,
+        options: Partial<CallOptions>,
+        callback: (error: ServiceError | null, response: Operation) => void
+    ): ClientUnaryCall;
+    /** Suspend specified customer. After customer is suspended, he can't use resources associated with his billing account. */
+    suspend(
+        request: SuspendCustomerRequest,
+        callback: (error: ServiceError | null, response: Operation) => void
+    ): ClientUnaryCall;
+    suspend(
+        request: SuspendCustomerRequest,
+        metadata: Metadata,
+        callback: (error: ServiceError | null, response: Operation) => void
+    ): ClientUnaryCall;
+    suspend(
+        request: SuspendCustomerRequest,
+        metadata: Metadata,
+        options: Partial<CallOptions>,
+        callback: (error: ServiceError | null, response: Operation) => void
+    ): ClientUnaryCall;
+}
+
+export const CustomerServiceClient = makeGenericClientConstructor(
+    CustomerServiceService,
+    'yandex.cloud.billing.v1.CustomerService'
+) as unknown as {
+    new (
+        address: string,
+        credentials: ChannelCredentials,
+        options?: Partial<ChannelOptions>
+    ): CustomerServiceClient;
+};
+
+declare var self: any | undefined;
+declare var window: any | undefined;
+var globalThis: any = (() => {
+    if (typeof globalThis !== 'undefined') return globalThis;
+    if (typeof self !== 'undefined') return self;
+    if (typeof window !== 'undefined') return window;
+    if (typeof global !== 'undefined') return global;
+    throw 'Unable to locate global object';
+})();
+
+type Builtin =
+    | Date
+    | Function
+    | Uint8Array
+    | string
+    | number
+    | boolean
+    | undefined;
+export type DeepPartial<T> = T extends Builtin
+    ? T
+    : T extends Array<infer U>
+    ? Array<DeepPartial<U>>
+    : T extends ReadonlyArray<infer U>
+    ? ReadonlyArray<DeepPartial<U>>
+    : T extends {}
+    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    : Partial<T>;
+
+function longToNumber(long: Long): number {
+    if (long.gt(Number.MAX_SAFE_INTEGER)) {
+        throw new globalThis.Error(
+            'Value is larger than Number.MAX_SAFE_INTEGER'
+        );
+    }
+    return long.toNumber();
+}
+
+if (_m0.util.Long !== Long) {
+    _m0.util.Long = Long as any;
+    _m0.configure();
+}

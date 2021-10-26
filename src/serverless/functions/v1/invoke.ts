@@ -1,7 +1,6 @@
 /* tslint:disable:variable-name */
-import { Session, TokenCreator } from 'src/index';
-
 import fetch, { RequestInit, Response } from 'node-fetch';
+import { Session, TokenCreator } from 'src/index';
 
 function invokeUrl(id: string) {
     return `https://functions.yandexcloud.net/${id}?integration=raw`;
@@ -17,7 +16,9 @@ async function mapException(response: Response) {
     } catch (e) {
         // do nothing
     }
-    return new Error(`function invocation failed with ${response.status}: ${data}`);
+    return new Error(
+        `function invocation failed with ${response.status}: ${data}`
+    );
 }
 
 class InvokeServiceImpl {
@@ -25,7 +26,12 @@ class InvokeServiceImpl {
     $method_definitions: {};
     private readonly _tokenCreator: any;
 
-    constructor(address: string, credentials: any, options: any, tokenCreator: TokenCreator) {
+    constructor(
+        address: string,
+        credentials: any,
+        options: any,
+        tokenCreator: TokenCreator
+    ) {
         this._tokenCreator = tokenCreator;
         this.$method_definitions = {};
     }

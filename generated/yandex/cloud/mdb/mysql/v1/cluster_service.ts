@@ -719,6 +719,12 @@ export interface UpdateHostSpec {
      * To get the MySQL host name, use a [ClusterService.ListHosts] request.
      */
     replicationSource: string;
+    /** Field mask that specifies which fields of the MySQL host should be updated. */
+    updateMask: FieldMask | undefined;
+    /** Host backup priority, where 1 is the lowest priority */
+    backupPriority: number;
+    /** Whether the host should get a public IP address on creation. */
+    assignPublicIp: boolean;
 }
 
 export interface HostSpec {
@@ -5595,7 +5601,12 @@ export const UpdateClusterHostsMetadata = {
     },
 };
 
-const baseUpdateHostSpec: object = { hostName: '', replicationSource: '' };
+const baseUpdateHostSpec: object = {
+    hostName: '',
+    replicationSource: '',
+    backupPriority: 0,
+    assignPublicIp: false,
+};
 
 export const UpdateHostSpec = {
     encode(
@@ -5607,6 +5618,18 @@ export const UpdateHostSpec = {
         }
         if (message.replicationSource !== '') {
             writer.uint32(18).string(message.replicationSource);
+        }
+        if (message.updateMask !== undefined) {
+            FieldMask.encode(
+                message.updateMask,
+                writer.uint32(26).fork()
+            ).ldelim();
+        }
+        if (message.backupPriority !== 0) {
+            writer.uint32(32).int64(message.backupPriority);
+        }
+        if (message.assignPublicIp === true) {
+            writer.uint32(40).bool(message.assignPublicIp);
         }
         return writer;
     },
@@ -5624,6 +5647,20 @@ export const UpdateHostSpec = {
                     break;
                 case 2:
                     message.replicationSource = reader.string();
+                    break;
+                case 3:
+                    message.updateMask = FieldMask.decode(
+                        reader,
+                        reader.uint32()
+                    );
+                    break;
+                case 4:
+                    message.backupPriority = longToNumber(
+                        reader.int64() as Long
+                    );
+                    break;
+                case 5:
+                    message.assignPublicIp = reader.bool();
                     break;
                 default:
                     reader.skipType(tag & 7);
@@ -5648,6 +5685,27 @@ export const UpdateHostSpec = {
         } else {
             message.replicationSource = '';
         }
+        if (object.updateMask !== undefined && object.updateMask !== null) {
+            message.updateMask = FieldMask.fromJSON(object.updateMask);
+        } else {
+            message.updateMask = undefined;
+        }
+        if (
+            object.backupPriority !== undefined &&
+            object.backupPriority !== null
+        ) {
+            message.backupPriority = Number(object.backupPriority);
+        } else {
+            message.backupPriority = 0;
+        }
+        if (
+            object.assignPublicIp !== undefined &&
+            object.assignPublicIp !== null
+        ) {
+            message.assignPublicIp = Boolean(object.assignPublicIp);
+        } else {
+            message.assignPublicIp = false;
+        }
         return message;
     },
 
@@ -5656,6 +5714,14 @@ export const UpdateHostSpec = {
         message.hostName !== undefined && (obj.hostName = message.hostName);
         message.replicationSource !== undefined &&
             (obj.replicationSource = message.replicationSource);
+        message.updateMask !== undefined &&
+            (obj.updateMask = message.updateMask
+                ? FieldMask.toJSON(message.updateMask)
+                : undefined);
+        message.backupPriority !== undefined &&
+            (obj.backupPriority = message.backupPriority);
+        message.assignPublicIp !== undefined &&
+            (obj.assignPublicIp = message.assignPublicIp);
         return obj;
     },
 
@@ -5673,6 +5739,27 @@ export const UpdateHostSpec = {
             message.replicationSource = object.replicationSource;
         } else {
             message.replicationSource = '';
+        }
+        if (object.updateMask !== undefined && object.updateMask !== null) {
+            message.updateMask = FieldMask.fromPartial(object.updateMask);
+        } else {
+            message.updateMask = undefined;
+        }
+        if (
+            object.backupPriority !== undefined &&
+            object.backupPriority !== null
+        ) {
+            message.backupPriority = object.backupPriority;
+        } else {
+            message.backupPriority = 0;
+        }
+        if (
+            object.assignPublicIp !== undefined &&
+            object.assignPublicIp !== null
+        ) {
+            message.assignPublicIp = object.assignPublicIp;
+        } else {
+            message.assignPublicIp = false;
         }
         return message;
     },

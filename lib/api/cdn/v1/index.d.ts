@@ -1,0 +1,14 @@
+import { CacheServiceService } from '../../../generated/yandex/cloud/cdn/v1/cache_service';
+import { OriginGroupServiceService } from '../../../generated/yandex/cloud/cdn/v1/origin_group_service';
+import { OriginServiceService } from '../../../generated/yandex/cloud/cdn/v1/origin_service';
+import { ResourceServiceService } from '../../../generated/yandex/cloud/cdn/v1/resource_service';
+import { Client } from 'nice-grpc';
+import { SdkServiceDefinition, Session } from '../../../src/index';
+export declare const CacheServiceDef: SdkServiceDefinition<typeof CacheServiceService>;
+export declare function CacheService(session?: Session): Client<typeof CacheServiceService, {}>;
+export declare const OriginGroupServiceDef: SdkServiceDefinition<typeof OriginGroupServiceService>;
+export declare function OriginGroupService(session?: Session): Client<typeof OriginGroupServiceService, {}>;
+export declare const OriginServiceDef: SdkServiceDefinition<typeof OriginServiceService>;
+export declare function OriginService(session?: Session): Client<typeof OriginServiceService, {}>;
+export declare const ResourceServiceDef: SdkServiceDefinition<typeof ResourceServiceService>;
+export declare function ResourceService(session?: Session): Client<typeof ResourceServiceService, {}>;

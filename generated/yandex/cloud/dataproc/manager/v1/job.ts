@@ -30,6 +30,8 @@ export interface Job {
     sparkJob: SparkJob | undefined;
     pysparkJob: PysparkJob | undefined;
     hiveJob: HiveJob | undefined;
+    /** Attributes of YARN application. */
+    applicationInfo: ApplicationInfo | undefined;
 }
 
 export enum Job_Status {
@@ -93,6 +95,20 @@ export function job_StatusToJSON(object: Job_Status): string {
     }
 }
 
+export interface ApplicationAttempt {
+    /** ID of YARN application attempt */
+    id: string;
+    /** ID of YARN Application Master container */
+    amContainerId: string;
+}
+
+export interface ApplicationInfo {
+    /** ID of YARN application */
+    id: string;
+    /** YARN application attempts */
+    applicationAttempts: ApplicationAttempt[];
+}
+
 export interface MapreduceJob {
     /** Optional arguments to the driver. */
     args: string[];
@@ -130,6 +146,12 @@ export interface SparkJob {
     mainJarFileUri: string;
     /** The name of the driver's main class. */
     mainClass: string;
+    /** List of maven coordinates of jars to include on the driver and executor classpaths. */
+    packages: string[];
+    /** List of additional remote repositories to search for the maven coordinates given with --packages. */
+    repositories: string[];
+    /** List of groupId:artifactId, to exclude while resolving the dependencies provided in --packages to avoid dependency conflicts. */
+    excludePackages: string[];
 }
 
 export interface SparkJob_PropertiesEntry {
@@ -152,6 +174,12 @@ export interface PysparkJob {
     mainPythonFileUri: string;
     /** URIs of Python files to pass to the PySpark framework. */
     pythonFileUris: string[];
+    /** List of maven coordinates of jars to include on the driver and executor classpaths. */
+    packages: string[];
+    /** List of additional remote repositories to search for the maven coordinates given with --packages. */
+    repositories: string[];
+    /** List of groupId:artifactId, to exclude while resolving the dependencies provided in --packages to avoid dependency conflicts. */
+    excludePackages: string[];
 }
 
 export interface PysparkJob_PropertiesEntry {
@@ -251,6 +279,12 @@ export const Job = {
         if (message.hiveJob !== undefined) {
             HiveJob.encode(message.hiveJob, writer.uint32(90).fork()).ldelim();
         }
+        if (message.applicationInfo !== undefined) {
+            ApplicationInfo.encode(
+                message.applicationInfo,
+                writer.uint32(106).fork()
+            ).ldelim();
+        }
         return writer;
     },
 
@@ -309,6 +343,12 @@ export const Job = {
                     break;
                 case 11:
                     message.hiveJob = HiveJob.decode(reader, reader.uint32());
+                    break;
+                case 13:
+                    message.applicationInfo = ApplicationInfo.decode(
+                        reader,
+                        reader.uint32()
+                    );
                     break;
                 default:
                     reader.skipType(tag & 7);
@@ -380,6 +420,16 @@ export const Job = {
         } else {
             message.hiveJob = undefined;
         }
+        if (
+            object.applicationInfo !== undefined &&
+            object.applicationInfo !== null
+        ) {
+            message.applicationInfo = ApplicationInfo.fromJSON(
+                object.applicationInfo
+            );
+        } else {
+            message.applicationInfo = undefined;
+        }
         return message;
     },
 
@@ -412,6 +462,10 @@ export const Job = {
         message.hiveJob !== undefined &&
             (obj.hiveJob = message.hiveJob
                 ? HiveJob.toJSON(message.hiveJob)
+                : undefined);
+        message.applicationInfo !== undefined &&
+            (obj.applicationInfo = message.applicationInfo
+                ? ApplicationInfo.toJSON(message.applicationInfo)
                 : undefined);
         return obj;
     },
@@ -479,6 +533,199 @@ export const Job = {
             message.hiveJob = HiveJob.fromPartial(object.hiveJob);
         } else {
             message.hiveJob = undefined;
+        }
+        if (
+            object.applicationInfo !== undefined &&
+            object.applicationInfo !== null
+        ) {
+            message.applicationInfo = ApplicationInfo.fromPartial(
+                object.applicationInfo
+            );
+        } else {
+            message.applicationInfo = undefined;
+        }
+        return message;
+    },
+};
+
+const baseApplicationAttempt: object = { id: '', amContainerId: '' };
+
+export const ApplicationAttempt = {
+    encode(
+        message: ApplicationAttempt,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        if (message.id !== '') {
+            writer.uint32(10).string(message.id);
+        }
+        if (message.amContainerId !== '') {
+            writer.uint32(18).string(message.amContainerId);
+        }
+        return writer;
+    },
+
+    decode(
+        input: _m0.Reader | Uint8Array,
+        length?: number
+    ): ApplicationAttempt {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = { ...baseApplicationAttempt } as ApplicationAttempt;
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.id = reader.string();
+                    break;
+                case 2:
+                    message.amContainerId = reader.string();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): ApplicationAttempt {
+        const message = { ...baseApplicationAttempt } as ApplicationAttempt;
+        if (object.id !== undefined && object.id !== null) {
+            message.id = String(object.id);
+        } else {
+            message.id = '';
+        }
+        if (
+            object.amContainerId !== undefined &&
+            object.amContainerId !== null
+        ) {
+            message.amContainerId = String(object.amContainerId);
+        } else {
+            message.amContainerId = '';
+        }
+        return message;
+    },
+
+    toJSON(message: ApplicationAttempt): unknown {
+        const obj: any = {};
+        message.id !== undefined && (obj.id = message.id);
+        message.amContainerId !== undefined &&
+            (obj.amContainerId = message.amContainerId);
+        return obj;
+    },
+
+    fromPartial(object: DeepPartial<ApplicationAttempt>): ApplicationAttempt {
+        const message = { ...baseApplicationAttempt } as ApplicationAttempt;
+        if (object.id !== undefined && object.id !== null) {
+            message.id = object.id;
+        } else {
+            message.id = '';
+        }
+        if (
+            object.amContainerId !== undefined &&
+            object.amContainerId !== null
+        ) {
+            message.amContainerId = object.amContainerId;
+        } else {
+            message.amContainerId = '';
+        }
+        return message;
+    },
+};
+
+const baseApplicationInfo: object = { id: '' };
+
+export const ApplicationInfo = {
+    encode(
+        message: ApplicationInfo,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        if (message.id !== '') {
+            writer.uint32(10).string(message.id);
+        }
+        for (const v of message.applicationAttempts) {
+            ApplicationAttempt.encode(v!, writer.uint32(18).fork()).ldelim();
+        }
+        return writer;
+    },
+
+    decode(input: _m0.Reader | Uint8Array, length?: number): ApplicationInfo {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = { ...baseApplicationInfo } as ApplicationInfo;
+        message.applicationAttempts = [];
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.id = reader.string();
+                    break;
+                case 2:
+                    message.applicationAttempts.push(
+                        ApplicationAttempt.decode(reader, reader.uint32())
+                    );
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): ApplicationInfo {
+        const message = { ...baseApplicationInfo } as ApplicationInfo;
+        message.applicationAttempts = [];
+        if (object.id !== undefined && object.id !== null) {
+            message.id = String(object.id);
+        } else {
+            message.id = '';
+        }
+        if (
+            object.applicationAttempts !== undefined &&
+            object.applicationAttempts !== null
+        ) {
+            for (const e of object.applicationAttempts) {
+                message.applicationAttempts.push(
+                    ApplicationAttempt.fromJSON(e)
+                );
+            }
+        }
+        return message;
+    },
+
+    toJSON(message: ApplicationInfo): unknown {
+        const obj: any = {};
+        message.id !== undefined && (obj.id = message.id);
+        if (message.applicationAttempts) {
+            obj.applicationAttempts = message.applicationAttempts.map((e) =>
+                e ? ApplicationAttempt.toJSON(e) : undefined
+            );
+        } else {
+            obj.applicationAttempts = [];
+        }
+        return obj;
+    },
+
+    fromPartial(object: DeepPartial<ApplicationInfo>): ApplicationInfo {
+        const message = { ...baseApplicationInfo } as ApplicationInfo;
+        message.applicationAttempts = [];
+        if (object.id !== undefined && object.id !== null) {
+            message.id = object.id;
+        } else {
+            message.id = '';
+        }
+        if (
+            object.applicationAttempts !== undefined &&
+            object.applicationAttempts !== null
+        ) {
+            for (const e of object.applicationAttempts) {
+                message.applicationAttempts.push(
+                    ApplicationAttempt.fromPartial(e)
+                );
+            }
         }
         return message;
     },
@@ -798,6 +1045,9 @@ const baseSparkJob: object = {
     archiveUris: '',
     mainJarFileUri: '',
     mainClass: '',
+    packages: '',
+    repositories: '',
+    excludePackages: '',
 };
 
 export const SparkJob = {
@@ -829,6 +1079,15 @@ export const SparkJob = {
         if (message.mainClass !== '') {
             writer.uint32(58).string(message.mainClass);
         }
+        for (const v of message.packages) {
+            writer.uint32(66).string(v!);
+        }
+        for (const v of message.repositories) {
+            writer.uint32(74).string(v!);
+        }
+        for (const v of message.excludePackages) {
+            writer.uint32(82).string(v!);
+        }
         return writer;
     },
 
@@ -842,6 +1101,9 @@ export const SparkJob = {
         message.fileUris = [];
         message.archiveUris = [];
         message.properties = {};
+        message.packages = [];
+        message.repositories = [];
+        message.excludePackages = [];
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -872,6 +1134,15 @@ export const SparkJob = {
                 case 7:
                     message.mainClass = reader.string();
                     break;
+                case 8:
+                    message.packages.push(reader.string());
+                    break;
+                case 9:
+                    message.repositories.push(reader.string());
+                    break;
+                case 10:
+                    message.excludePackages.push(reader.string());
+                    break;
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -887,6 +1158,9 @@ export const SparkJob = {
         message.fileUris = [];
         message.archiveUris = [];
         message.properties = {};
+        message.packages = [];
+        message.repositories = [];
+        message.excludePackages = [];
         if (object.args !== undefined && object.args !== null) {
             for (const e of object.args) {
                 message.args.push(String(e));
@@ -925,6 +1199,24 @@ export const SparkJob = {
         } else {
             message.mainClass = '';
         }
+        if (object.packages !== undefined && object.packages !== null) {
+            for (const e of object.packages) {
+                message.packages.push(String(e));
+            }
+        }
+        if (object.repositories !== undefined && object.repositories !== null) {
+            for (const e of object.repositories) {
+                message.repositories.push(String(e));
+            }
+        }
+        if (
+            object.excludePackages !== undefined &&
+            object.excludePackages !== null
+        ) {
+            for (const e of object.excludePackages) {
+                message.excludePackages.push(String(e));
+            }
+        }
         return message;
     },
 
@@ -959,6 +1251,21 @@ export const SparkJob = {
         message.mainJarFileUri !== undefined &&
             (obj.mainJarFileUri = message.mainJarFileUri);
         message.mainClass !== undefined && (obj.mainClass = message.mainClass);
+        if (message.packages) {
+            obj.packages = message.packages.map((e) => e);
+        } else {
+            obj.packages = [];
+        }
+        if (message.repositories) {
+            obj.repositories = message.repositories.map((e) => e);
+        } else {
+            obj.repositories = [];
+        }
+        if (message.excludePackages) {
+            obj.excludePackages = message.excludePackages.map((e) => e);
+        } else {
+            obj.excludePackages = [];
+        }
         return obj;
     },
 
@@ -969,6 +1276,9 @@ export const SparkJob = {
         message.fileUris = [];
         message.archiveUris = [];
         message.properties = {};
+        message.packages = [];
+        message.repositories = [];
+        message.excludePackages = [];
         if (object.args !== undefined && object.args !== null) {
             for (const e of object.args) {
                 message.args.push(e);
@@ -1008,6 +1318,24 @@ export const SparkJob = {
             message.mainClass = object.mainClass;
         } else {
             message.mainClass = '';
+        }
+        if (object.packages !== undefined && object.packages !== null) {
+            for (const e of object.packages) {
+                message.packages.push(e);
+            }
+        }
+        if (object.repositories !== undefined && object.repositories !== null) {
+            for (const e of object.repositories) {
+                message.repositories.push(e);
+            }
+        }
+        if (
+            object.excludePackages !== undefined &&
+            object.excludePackages !== null
+        ) {
+            for (const e of object.excludePackages) {
+                message.excludePackages.push(e);
+            }
         }
         return message;
     },
@@ -1107,6 +1435,9 @@ const basePysparkJob: object = {
     archiveUris: '',
     mainPythonFileUri: '',
     pythonFileUris: '',
+    packages: '',
+    repositories: '',
+    excludePackages: '',
 };
 
 export const PysparkJob = {
@@ -1138,6 +1469,15 @@ export const PysparkJob = {
         for (const v of message.pythonFileUris) {
             writer.uint32(58).string(v!);
         }
+        for (const v of message.packages) {
+            writer.uint32(66).string(v!);
+        }
+        for (const v of message.repositories) {
+            writer.uint32(74).string(v!);
+        }
+        for (const v of message.excludePackages) {
+            writer.uint32(82).string(v!);
+        }
         return writer;
     },
 
@@ -1152,6 +1492,9 @@ export const PysparkJob = {
         message.archiveUris = [];
         message.properties = {};
         message.pythonFileUris = [];
+        message.packages = [];
+        message.repositories = [];
+        message.excludePackages = [];
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -1182,6 +1525,15 @@ export const PysparkJob = {
                 case 7:
                     message.pythonFileUris.push(reader.string());
                     break;
+                case 8:
+                    message.packages.push(reader.string());
+                    break;
+                case 9:
+                    message.repositories.push(reader.string());
+                    break;
+                case 10:
+                    message.excludePackages.push(reader.string());
+                    break;
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -1198,6 +1550,9 @@ export const PysparkJob = {
         message.archiveUris = [];
         message.properties = {};
         message.pythonFileUris = [];
+        message.packages = [];
+        message.repositories = [];
+        message.excludePackages = [];
         if (object.args !== undefined && object.args !== null) {
             for (const e of object.args) {
                 message.args.push(String(e));
@@ -1239,6 +1594,24 @@ export const PysparkJob = {
                 message.pythonFileUris.push(String(e));
             }
         }
+        if (object.packages !== undefined && object.packages !== null) {
+            for (const e of object.packages) {
+                message.packages.push(String(e));
+            }
+        }
+        if (object.repositories !== undefined && object.repositories !== null) {
+            for (const e of object.repositories) {
+                message.repositories.push(String(e));
+            }
+        }
+        if (
+            object.excludePackages !== undefined &&
+            object.excludePackages !== null
+        ) {
+            for (const e of object.excludePackages) {
+                message.excludePackages.push(String(e));
+            }
+        }
         return message;
     },
 
@@ -1277,6 +1650,21 @@ export const PysparkJob = {
         } else {
             obj.pythonFileUris = [];
         }
+        if (message.packages) {
+            obj.packages = message.packages.map((e) => e);
+        } else {
+            obj.packages = [];
+        }
+        if (message.repositories) {
+            obj.repositories = message.repositories.map((e) => e);
+        } else {
+            obj.repositories = [];
+        }
+        if (message.excludePackages) {
+            obj.excludePackages = message.excludePackages.map((e) => e);
+        } else {
+            obj.excludePackages = [];
+        }
         return obj;
     },
 
@@ -1288,6 +1676,9 @@ export const PysparkJob = {
         message.archiveUris = [];
         message.properties = {};
         message.pythonFileUris = [];
+        message.packages = [];
+        message.repositories = [];
+        message.excludePackages = [];
         if (object.args !== undefined && object.args !== null) {
             for (const e of object.args) {
                 message.args.push(e);
@@ -1329,6 +1720,24 @@ export const PysparkJob = {
         ) {
             for (const e of object.pythonFileUris) {
                 message.pythonFileUris.push(e);
+            }
+        }
+        if (object.packages !== undefined && object.packages !== null) {
+            for (const e of object.packages) {
+                message.packages.push(e);
+            }
+        }
+        if (object.repositories !== undefined && object.repositories !== null) {
+            for (const e of object.repositories) {
+                message.repositories.push(e);
+            }
+        }
+        if (
+            object.excludePackages !== undefined &&
+            object.excludePackages !== null
+        ) {
+            for (const e of object.excludePackages) {
+                message.excludePackages.push(e);
             }
         }
         return message;

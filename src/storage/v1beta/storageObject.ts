@@ -12,7 +12,11 @@ export class StorageObject implements IStorageObject {
     objectName: string;
     bufferPromise: Promise<Buffer>;
 
-    constructor(bucketName: string, objectName: string, bufferPromise: Promise<Buffer>) {
+    constructor(
+        bucketName: string,
+        objectName: string,
+        bufferPromise: Promise<Buffer>
+    ) {
         this.bucketName = bucketName;
         this.objectName = objectName;
         this.bufferPromise = bufferPromise;
@@ -24,14 +28,17 @@ export class StorageObject implements IStorageObject {
             bucketName,
             objectName,
             new Promise((resolve, reject) => {
-                fs.readFile(fileName, (err: any, data: Buffer | PromiseLike<Buffer>) => {
-                    if (err) {
-                        return reject(err);
-                    }
+                fs.readFile(
+                    fileName,
+                    (err: any, data: Buffer | PromiseLike<Buffer>) => {
+                        if (err) {
+                            return reject(err);
+                        }
 
-                    return resolve(data);
-                });
-            }),
+                        return resolve(data);
+                    }
+                );
+            })
         );
     }
 
@@ -40,7 +47,7 @@ export class StorageObject implements IStorageObject {
         return this.fromBuffer(
             bucketName,
             objectName,
-            Buffer.from(content, 'utf-8'),
+            Buffer.from(content, 'utf-8')
         );
     }
 
@@ -50,7 +57,7 @@ export class StorageObject implements IStorageObject {
             objectName,
             new Promise((resolve) => {
                 resolve(buffer);
-            }),
+            })
         );
     }
 

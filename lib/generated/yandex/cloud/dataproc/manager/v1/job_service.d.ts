@@ -1,5 +1,5 @@
 /// <reference types="node" />
-import { Job_Status, Job } from '../../../../../yandex/cloud/dataproc/manager/v1/job';
+import { Job_Status, Job, ApplicationInfo } from '../../../../../yandex/cloud/dataproc/manager/v1/job';
 import { ChannelCredentials, ChannelOptions, UntypedServiceImplementation, handleUnaryCall, Client, ClientUnaryCall, Metadata, CallOptions, ServiceError } from '@grpc/grpc-js';
 import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.dataproc.manager.v1";
@@ -40,6 +40,8 @@ export interface UpdateJobStatusRequest {
     jobId: string;
     /** Required. New status of the job. */
     status: Job_Status;
+    /** Attributes of YARN application. */
+    applicationInfo: ApplicationInfo | undefined;
 }
 export interface UpdateJobStatusResponse {
 }

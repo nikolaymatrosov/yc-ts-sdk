@@ -151,7 +151,7 @@ export interface UpdateClusterRequest {
      *
      * Use [update_mask] to prevent reverting all cluster settings that are not listed in `config_spec` to their default values.
      */
-    configSpec: ConfigSpec | undefined;
+    configSpec: ConfigSpecUpdate | undefined;
     /** New name for the Elasticsearch cluster. */
     name: string;
     /** User security groups */
@@ -555,6 +555,17 @@ export interface ElasticsearchSpec_MasterNode {
 }
 
 export interface ConfigSpec {
+    /** Elasticsearch version. */
+    version: string;
+    /** Configuration and resource allocation for Elasticsearch nodes. */
+    elasticsearchSpec: ElasticsearchSpec | undefined;
+    /** ElasticSearch edition. */
+    edition: string;
+    /** ElasticSearch admin password. */
+    adminPassword: string;
+}
+
+export interface ConfigSpecUpdate {
     /** Elasticsearch version. */
     version: string;
     /** Configuration and resource allocation for Elasticsearch nodes. */
@@ -1408,7 +1419,7 @@ export const UpdateClusterRequest = {
             ).ldelim();
         });
         if (message.configSpec !== undefined) {
-            ConfigSpec.encode(
+            ConfigSpecUpdate.encode(
                 message.configSpec,
                 writer.uint32(42).fork()
             ).ldelim();
@@ -1463,7 +1474,7 @@ export const UpdateClusterRequest = {
                     }
                     break;
                 case 5:
-                    message.configSpec = ConfigSpec.decode(
+                    message.configSpec = ConfigSpecUpdate.decode(
                         reader,
                         reader.uint32()
                     );
@@ -1513,7 +1524,7 @@ export const UpdateClusterRequest = {
             });
         }
         if (object.configSpec !== undefined && object.configSpec !== null) {
-            message.configSpec = ConfigSpec.fromJSON(object.configSpec);
+            message.configSpec = ConfigSpecUpdate.fromJSON(object.configSpec);
         } else {
             message.configSpec = undefined;
         }
@@ -1566,7 +1577,7 @@ export const UpdateClusterRequest = {
         }
         message.configSpec !== undefined &&
             (obj.configSpec = message.configSpec
-                ? ConfigSpec.toJSON(message.configSpec)
+                ? ConfigSpecUpdate.toJSON(message.configSpec)
                 : undefined);
         message.name !== undefined && (obj.name = message.name);
         if (message.securityGroupIds) {
@@ -1610,7 +1621,9 @@ export const UpdateClusterRequest = {
             });
         }
         if (object.configSpec !== undefined && object.configSpec !== null) {
-            message.configSpec = ConfigSpec.fromPartial(object.configSpec);
+            message.configSpec = ConfigSpecUpdate.fromPartial(
+                object.configSpec
+            );
         } else {
             message.configSpec = undefined;
         }
@@ -4207,6 +4220,146 @@ export const ConfigSpec = {
 
     fromPartial(object: DeepPartial<ConfigSpec>): ConfigSpec {
         const message = { ...baseConfigSpec } as ConfigSpec;
+        if (object.version !== undefined && object.version !== null) {
+            message.version = object.version;
+        } else {
+            message.version = '';
+        }
+        if (
+            object.elasticsearchSpec !== undefined &&
+            object.elasticsearchSpec !== null
+        ) {
+            message.elasticsearchSpec = ElasticsearchSpec.fromPartial(
+                object.elasticsearchSpec
+            );
+        } else {
+            message.elasticsearchSpec = undefined;
+        }
+        if (object.edition !== undefined && object.edition !== null) {
+            message.edition = object.edition;
+        } else {
+            message.edition = '';
+        }
+        if (
+            object.adminPassword !== undefined &&
+            object.adminPassword !== null
+        ) {
+            message.adminPassword = object.adminPassword;
+        } else {
+            message.adminPassword = '';
+        }
+        return message;
+    },
+};
+
+const baseConfigSpecUpdate: object = {
+    version: '',
+    edition: '',
+    adminPassword: '',
+};
+
+export const ConfigSpecUpdate = {
+    encode(
+        message: ConfigSpecUpdate,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        if (message.version !== '') {
+            writer.uint32(10).string(message.version);
+        }
+        if (message.elasticsearchSpec !== undefined) {
+            ElasticsearchSpec.encode(
+                message.elasticsearchSpec,
+                writer.uint32(18).fork()
+            ).ldelim();
+        }
+        if (message.edition !== '') {
+            writer.uint32(26).string(message.edition);
+        }
+        if (message.adminPassword !== '') {
+            writer.uint32(34).string(message.adminPassword);
+        }
+        return writer;
+    },
+
+    decode(input: _m0.Reader | Uint8Array, length?: number): ConfigSpecUpdate {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = { ...baseConfigSpecUpdate } as ConfigSpecUpdate;
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.version = reader.string();
+                    break;
+                case 2:
+                    message.elasticsearchSpec = ElasticsearchSpec.decode(
+                        reader,
+                        reader.uint32()
+                    );
+                    break;
+                case 3:
+                    message.edition = reader.string();
+                    break;
+                case 4:
+                    message.adminPassword = reader.string();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): ConfigSpecUpdate {
+        const message = { ...baseConfigSpecUpdate } as ConfigSpecUpdate;
+        if (object.version !== undefined && object.version !== null) {
+            message.version = String(object.version);
+        } else {
+            message.version = '';
+        }
+        if (
+            object.elasticsearchSpec !== undefined &&
+            object.elasticsearchSpec !== null
+        ) {
+            message.elasticsearchSpec = ElasticsearchSpec.fromJSON(
+                object.elasticsearchSpec
+            );
+        } else {
+            message.elasticsearchSpec = undefined;
+        }
+        if (object.edition !== undefined && object.edition !== null) {
+            message.edition = String(object.edition);
+        } else {
+            message.edition = '';
+        }
+        if (
+            object.adminPassword !== undefined &&
+            object.adminPassword !== null
+        ) {
+            message.adminPassword = String(object.adminPassword);
+        } else {
+            message.adminPassword = '';
+        }
+        return message;
+    },
+
+    toJSON(message: ConfigSpecUpdate): unknown {
+        const obj: any = {};
+        message.version !== undefined && (obj.version = message.version);
+        message.elasticsearchSpec !== undefined &&
+            (obj.elasticsearchSpec = message.elasticsearchSpec
+                ? ElasticsearchSpec.toJSON(message.elasticsearchSpec)
+                : undefined);
+        message.edition !== undefined && (obj.edition = message.edition);
+        message.adminPassword !== undefined &&
+            (obj.adminPassword = message.adminPassword);
+        return obj;
+    },
+
+    fromPartial(object: DeepPartial<ConfigSpecUpdate>): ConfigSpecUpdate {
+        const message = { ...baseConfigSpecUpdate } as ConfigSpecUpdate;
         if (object.version !== undefined && object.version !== null) {
             message.version = object.version;
         } else {

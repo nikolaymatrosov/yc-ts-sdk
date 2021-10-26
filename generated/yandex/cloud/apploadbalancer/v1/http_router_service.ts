@@ -124,7 +124,6 @@ export interface UpdateHttpRouterRequest {
      * a virtual host, make a [VirtualHostService.Create] request or a [VirtualHostService.Delete] request.
      */
     virtualHosts: VirtualHost[];
-    httpsRedirect: boolean;
 }
 
 export interface UpdateHttpRouterRequest_LabelsEntry {
@@ -163,7 +162,6 @@ export interface CreateHttpRouterRequest {
      * Only one virtual host with no authority (default match) can be specified.
      */
     virtualHosts: VirtualHost[];
-    httpsRedirect: boolean;
 }
 
 export interface CreateHttpRouterRequest_LabelsEntry {
@@ -652,7 +650,6 @@ const baseUpdateHttpRouterRequest: object = {
     httpRouterId: '',
     name: '',
     description: '',
-    httpsRedirect: false,
 };
 
 export const UpdateHttpRouterRequest = {
@@ -683,9 +680,6 @@ export const UpdateHttpRouterRequest = {
         });
         for (const v of message.virtualHosts) {
             VirtualHost.encode(v!, writer.uint32(50).fork()).ldelim();
-        }
-        if (message.httpsRedirect === true) {
-            writer.uint32(56).bool(message.httpsRedirect);
         }
         return writer;
     },
@@ -734,9 +728,6 @@ export const UpdateHttpRouterRequest = {
                         VirtualHost.decode(reader, reader.uint32())
                     );
                     break;
-                case 7:
-                    message.httpsRedirect = reader.bool();
-                    break;
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -781,14 +772,6 @@ export const UpdateHttpRouterRequest = {
                 message.virtualHosts.push(VirtualHost.fromJSON(e));
             }
         }
-        if (
-            object.httpsRedirect !== undefined &&
-            object.httpsRedirect !== null
-        ) {
-            message.httpsRedirect = Boolean(object.httpsRedirect);
-        } else {
-            message.httpsRedirect = false;
-        }
         return message;
     },
 
@@ -816,8 +799,6 @@ export const UpdateHttpRouterRequest = {
         } else {
             obj.virtualHosts = [];
         }
-        message.httpsRedirect !== undefined &&
-            (obj.httpsRedirect = message.httpsRedirect);
         return obj;
     },
 
@@ -860,14 +841,6 @@ export const UpdateHttpRouterRequest = {
             for (const e of object.virtualHosts) {
                 message.virtualHosts.push(VirtualHost.fromPartial(e));
             }
-        }
-        if (
-            object.httpsRedirect !== undefined &&
-            object.httpsRedirect !== null
-        ) {
-            message.httpsRedirect = object.httpsRedirect;
-        } else {
-            message.httpsRedirect = false;
         }
         return message;
     },
@@ -1035,7 +1008,6 @@ const baseCreateHttpRouterRequest: object = {
     folderId: '',
     name: '',
     description: '',
-    httpsRedirect: false,
 };
 
 export const CreateHttpRouterRequest = {
@@ -1060,9 +1032,6 @@ export const CreateHttpRouterRequest = {
         });
         for (const v of message.virtualHosts) {
             VirtualHost.encode(v!, writer.uint32(42).fork()).ldelim();
-        }
-        if (message.httpsRedirect === true) {
-            writer.uint32(48).bool(message.httpsRedirect);
         }
         return writer;
     },
@@ -1105,9 +1074,6 @@ export const CreateHttpRouterRequest = {
                         VirtualHost.decode(reader, reader.uint32())
                     );
                     break;
-                case 6:
-                    message.httpsRedirect = reader.bool();
-                    break;
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -1147,14 +1113,6 @@ export const CreateHttpRouterRequest = {
                 message.virtualHosts.push(VirtualHost.fromJSON(e));
             }
         }
-        if (
-            object.httpsRedirect !== undefined &&
-            object.httpsRedirect !== null
-        ) {
-            message.httpsRedirect = Boolean(object.httpsRedirect);
-        } else {
-            message.httpsRedirect = false;
-        }
         return message;
     },
 
@@ -1177,8 +1135,6 @@ export const CreateHttpRouterRequest = {
         } else {
             obj.virtualHosts = [];
         }
-        message.httpsRedirect !== undefined &&
-            (obj.httpsRedirect = message.httpsRedirect);
         return obj;
     },
 
@@ -1216,14 +1172,6 @@ export const CreateHttpRouterRequest = {
             for (const e of object.virtualHosts) {
                 message.virtualHosts.push(VirtualHost.fromPartial(e));
             }
-        }
-        if (
-            object.httpsRedirect !== undefined &&
-            object.httpsRedirect !== null
-        ) {
-            message.httpsRedirect = object.httpsRedirect;
-        } else {
-            message.httpsRedirect = false;
         }
         return message;
     },

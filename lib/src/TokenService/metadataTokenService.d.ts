@@ -1,7 +1,7 @@
 import { ITokenService } from './ITokenService';
 export declare class MetadataTokenService implements ITokenService {
-    private _url;
-    private _opts;
+    private readonly _url;
+    private readonly _opts;
     private _token?;
     constructor();
     getToken(): Promise<string>;

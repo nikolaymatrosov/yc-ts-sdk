@@ -1,13 +1,12 @@
 // noinspection JSUnusedGlobalSymbols
-
-import { Session, TokenCreator } from 'src/index';
-
 import fetch from 'node-fetch';
-import { IStorageObject, StorageObject } from 'src/storage/v1beta/storageObject';
-
+import { Session, TokenCreator } from 'src/index';
+import {
+    IStorageObject,
+    StorageObject,
+} from 'src/storage/v1beta/storageObject';
 
 interface StorageService {
-
     getObject(bucketName: string, objectName: string): Promise<IStorageObject>;
 
     putObject(object: object): Promise<void>;
@@ -21,7 +20,12 @@ class StorageServiceImpl implements StorageService {
     // tslint:disable-next-line:variable-name
     private $method_definitions: {};
 
-    constructor(address: string, credentials: any, options: any, tokenCreator: TokenCreator) {
+    constructor(
+        address: string,
+        credentials: any,
+        options: any,
+        tokenCreator: TokenCreator
+    ) {
         this._address = address;
         this._tokenCreator = tokenCreator;
 
@@ -44,41 +48,32 @@ class StorageServiceImpl implements StorageService {
 
         if (!res.ok) {
             throw new Error(
-                `Storage replied with ${res.status}: ${res.statusText}`,
+                `Storage replied with ${res.status}: ${res.statusText}`
             );
         }
         const buf = await res.buffer();
         return StorageObject.fromBuffer(bucketName, objectName, buf);
     }
 
-    async putObject(
-        {
-            bucketName,
-            bufferPromise,
-            objectName,
-        }: IStorageObject) {
+    async putObject({ bucketName, bufferPromise, objectName }: IStorageObject) {
         const token = await this._tokenCreator();
         const buffer = await bufferPromise;
 
-        const res = await fetch(
-            this._url(bucketName, objectName),
-            {
-                method: 'PUT',
-                headers: {
-                    'X-YaCloud-SubjectToken': token,
-                },
-                body: buffer,
+        const res = await fetch(this._url(bucketName, objectName), {
+            method: 'PUT',
+            headers: {
+                'X-YaCloud-SubjectToken': token,
             },
-        );
+            body: buffer,
+        });
 
         if (!res.ok) {
             throw new Error(
-                `Storage replied with ${res.status}: ${res.statusText}`,
+                `Storage replied with ${res.status}: ${res.statusText}`
             );
         }
     }
 }
-
 
 export function StorageService(session: Session) {
     if (session === undefined) {

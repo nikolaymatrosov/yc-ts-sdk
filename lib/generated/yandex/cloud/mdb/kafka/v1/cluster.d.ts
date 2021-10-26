@@ -123,6 +123,8 @@ export interface ConfigSpec {
     assignPublicIp: boolean;
     /** Allows to manage topics via AdminAPI */
     unmanagedTopics: boolean;
+    /** Enables managed schema registry on cluster */
+    schemaRegistry: boolean;
 }
 export interface ConfigSpec_Kafka {
     /** Resources allocated to Kafka brokers. */

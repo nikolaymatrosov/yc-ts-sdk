@@ -531,6 +531,12 @@ export interface UpdateHostSpec {
      * To get the MySQL host name, use a [ClusterService.ListHosts] request.
      */
     replicationSource: string;
+    /** Field mask that specifies which fields of the MySQL host should be updated. */
+    updateMask: FieldMask | undefined;
+    /** Host backup priority, where 1 is the lowest priority */
+    backupPriority: number;
+    /** Whether the host should get a public IP address on creation. */
+    assignPublicIp: boolean;
 }
 export interface HostSpec {
     /**

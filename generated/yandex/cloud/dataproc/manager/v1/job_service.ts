@@ -2,6 +2,7 @@
 import {
     Job_Status,
     Job,
+    ApplicationInfo,
     job_StatusFromJSON,
     job_StatusToJSON,
 } from '../../../../../yandex/cloud/dataproc/manager/v1/job';
@@ -61,6 +62,8 @@ export interface UpdateJobStatusRequest {
     jobId: string;
     /** Required. New status of the job. */
     status: Job_Status;
+    /** Attributes of YARN application. */
+    applicationInfo: ApplicationInfo | undefined;
 }
 
 export interface UpdateJobStatusResponse {}
@@ -290,6 +293,12 @@ export const UpdateJobStatusRequest = {
         if (message.status !== 0) {
             writer.uint32(24).int32(message.status);
         }
+        if (message.applicationInfo !== undefined) {
+            ApplicationInfo.encode(
+                message.applicationInfo,
+                writer.uint32(34).fork()
+            ).ldelim();
+        }
         return writer;
     },
 
@@ -314,6 +323,12 @@ export const UpdateJobStatusRequest = {
                     break;
                 case 3:
                     message.status = reader.int32() as any;
+                    break;
+                case 4:
+                    message.applicationInfo = ApplicationInfo.decode(
+                        reader,
+                        reader.uint32()
+                    );
                     break;
                 default:
                     reader.skipType(tag & 7);
@@ -342,6 +357,16 @@ export const UpdateJobStatusRequest = {
         } else {
             message.status = 0;
         }
+        if (
+            object.applicationInfo !== undefined &&
+            object.applicationInfo !== null
+        ) {
+            message.applicationInfo = ApplicationInfo.fromJSON(
+                object.applicationInfo
+            );
+        } else {
+            message.applicationInfo = undefined;
+        }
         return message;
     },
 
@@ -351,6 +376,10 @@ export const UpdateJobStatusRequest = {
         message.jobId !== undefined && (obj.jobId = message.jobId);
         message.status !== undefined &&
             (obj.status = job_StatusToJSON(message.status));
+        message.applicationInfo !== undefined &&
+            (obj.applicationInfo = message.applicationInfo
+                ? ApplicationInfo.toJSON(message.applicationInfo)
+                : undefined);
         return obj;
     },
 
@@ -374,6 +403,16 @@ export const UpdateJobStatusRequest = {
             message.status = object.status;
         } else {
             message.status = 0;
+        }
+        if (
+            object.applicationInfo !== undefined &&
+            object.applicationInfo !== null
+        ) {
+            message.applicationInfo = ApplicationInfo.fromPartial(
+                object.applicationInfo
+            );
+        } else {
+            message.applicationInfo = undefined;
         }
         return message;
     },

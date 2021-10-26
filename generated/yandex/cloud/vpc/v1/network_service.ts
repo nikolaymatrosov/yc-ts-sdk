@@ -2,6 +2,8 @@
 import { FieldMask } from '../../../../google/protobuf/field_mask';
 import { Operation } from '../../../../yandex/cloud/operation/operation';
 import { Network } from '../../../../yandex/cloud/vpc/v1/network';
+import { RouteTable } from '../../../../yandex/cloud/vpc/v1/route_table';
+import { SecurityGroup } from '../../../../yandex/cloud/vpc/v1/security_group';
 import { Subnet } from '../../../../yandex/cloud/vpc/v1/subnet';
 import {
     makeGenericClientConstructor,
@@ -165,6 +167,70 @@ export interface ListNetworkSubnetsResponse {
      * is larger than [ListNetworkSubnetsRequest.page_size], use
      * the [next_page_token] as the value
      * for the [ListNetworkSubnetsRequest.page_token] query parameter
+     * in the next list request. Subsequent list requests will have their own
+     * [next_page_token] to continue paging through the results.
+     */
+    nextPageToken: string;
+}
+
+export interface ListNetworkSecurityGroupsRequest {
+    /** ID of the Network resource to list security groups for. */
+    networkId: string;
+    /**
+     * The maximum number of results per page that should be returned. If the number of available
+     * results is larger than [page_size],
+     * the service returns a [ListNetworkSecurityGroupsResponse.next_page_token]
+     * that can be used to get the next page of results in subsequent list requests. Default value: 100.
+     */
+    pageSize: number;
+    /**
+     * Page token. Set [page_token]
+     * to the [ListNetworkSecurityGroupsResponse.next_page_token]
+     * returned by a previous list request to get the next page of results.
+     */
+    pageToken: string;
+}
+
+export interface ListNetworkSecurityGroupsResponse {
+    /** List of security groups that belong to the network which is specified in the request. */
+    securityGroups: SecurityGroup[];
+    /**
+     * This token allows you to get the next page of results for list requests. If the number of results
+     * is larger than [ListNetworkSecurityGroupsRequest.page_size], use
+     * the [next_page_token] as the value
+     * for the [ListNetworkSecurityGroupsRequest.page_token] query parameter
+     * in the next list request. Subsequent list requests will have their own
+     * [next_page_token] to continue paging through the results.
+     */
+    nextPageToken: string;
+}
+
+export interface ListNetworkRouteTablesRequest {
+    /** ID of the Network resource to list route tables for. */
+    networkId: string;
+    /**
+     * The maximum number of results per page that should be returned. If the number of available
+     * results is larger than [page_size],
+     * the service returns a [ListNetworkRouteTablesResponse.next_page_token]
+     * that can be used to get the next page of results in subsequent list requests. Default value: 100.
+     */
+    pageSize: number;
+    /**
+     * Page token. Set [page_token]
+     * to the [ListNetworkRouteTablesResponse.next_page_token]
+     * returned by a previous list request to get the next page of results.
+     */
+    pageToken: string;
+}
+
+export interface ListNetworkRouteTablesResponse {
+    /** List of route tables that belong to the network which is specified in the request. */
+    routeTables: RouteTable[];
+    /**
+     * This token allows you to get the next page of results for list requests. If the number of results
+     * is larger than [ListNetworkRouteTablesRequest.page_size], use
+     * the [next_page_token] as the value
+     * for the [ListNetworkRouteTablesRequest.page_token] query parameter
      * in the next list request. Subsequent list requests will have their own
      * [next_page_token] to continue paging through the results.
      */
@@ -1452,6 +1518,438 @@ export const ListNetworkSubnetsResponse = {
     },
 };
 
+const baseListNetworkSecurityGroupsRequest: object = {
+    networkId: '',
+    pageSize: 0,
+    pageToken: '',
+};
+
+export const ListNetworkSecurityGroupsRequest = {
+    encode(
+        message: ListNetworkSecurityGroupsRequest,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        if (message.networkId !== '') {
+            writer.uint32(10).string(message.networkId);
+        }
+        if (message.pageSize !== 0) {
+            writer.uint32(16).int64(message.pageSize);
+        }
+        if (message.pageToken !== '') {
+            writer.uint32(26).string(message.pageToken);
+        }
+        return writer;
+    },
+
+    decode(
+        input: _m0.Reader | Uint8Array,
+        length?: number
+    ): ListNetworkSecurityGroupsRequest {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = {
+            ...baseListNetworkSecurityGroupsRequest,
+        } as ListNetworkSecurityGroupsRequest;
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.networkId = reader.string();
+                    break;
+                case 2:
+                    message.pageSize = longToNumber(reader.int64() as Long);
+                    break;
+                case 3:
+                    message.pageToken = reader.string();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): ListNetworkSecurityGroupsRequest {
+        const message = {
+            ...baseListNetworkSecurityGroupsRequest,
+        } as ListNetworkSecurityGroupsRequest;
+        if (object.networkId !== undefined && object.networkId !== null) {
+            message.networkId = String(object.networkId);
+        } else {
+            message.networkId = '';
+        }
+        if (object.pageSize !== undefined && object.pageSize !== null) {
+            message.pageSize = Number(object.pageSize);
+        } else {
+            message.pageSize = 0;
+        }
+        if (object.pageToken !== undefined && object.pageToken !== null) {
+            message.pageToken = String(object.pageToken);
+        } else {
+            message.pageToken = '';
+        }
+        return message;
+    },
+
+    toJSON(message: ListNetworkSecurityGroupsRequest): unknown {
+        const obj: any = {};
+        message.networkId !== undefined && (obj.networkId = message.networkId);
+        message.pageSize !== undefined && (obj.pageSize = message.pageSize);
+        message.pageToken !== undefined && (obj.pageToken = message.pageToken);
+        return obj;
+    },
+
+    fromPartial(
+        object: DeepPartial<ListNetworkSecurityGroupsRequest>
+    ): ListNetworkSecurityGroupsRequest {
+        const message = {
+            ...baseListNetworkSecurityGroupsRequest,
+        } as ListNetworkSecurityGroupsRequest;
+        if (object.networkId !== undefined && object.networkId !== null) {
+            message.networkId = object.networkId;
+        } else {
+            message.networkId = '';
+        }
+        if (object.pageSize !== undefined && object.pageSize !== null) {
+            message.pageSize = object.pageSize;
+        } else {
+            message.pageSize = 0;
+        }
+        if (object.pageToken !== undefined && object.pageToken !== null) {
+            message.pageToken = object.pageToken;
+        } else {
+            message.pageToken = '';
+        }
+        return message;
+    },
+};
+
+const baseListNetworkSecurityGroupsResponse: object = { nextPageToken: '' };
+
+export const ListNetworkSecurityGroupsResponse = {
+    encode(
+        message: ListNetworkSecurityGroupsResponse,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        for (const v of message.securityGroups) {
+            SecurityGroup.encode(v!, writer.uint32(10).fork()).ldelim();
+        }
+        if (message.nextPageToken !== '') {
+            writer.uint32(18).string(message.nextPageToken);
+        }
+        return writer;
+    },
+
+    decode(
+        input: _m0.Reader | Uint8Array,
+        length?: number
+    ): ListNetworkSecurityGroupsResponse {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = {
+            ...baseListNetworkSecurityGroupsResponse,
+        } as ListNetworkSecurityGroupsResponse;
+        message.securityGroups = [];
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.securityGroups.push(
+                        SecurityGroup.decode(reader, reader.uint32())
+                    );
+                    break;
+                case 2:
+                    message.nextPageToken = reader.string();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): ListNetworkSecurityGroupsResponse {
+        const message = {
+            ...baseListNetworkSecurityGroupsResponse,
+        } as ListNetworkSecurityGroupsResponse;
+        message.securityGroups = [];
+        if (
+            object.securityGroups !== undefined &&
+            object.securityGroups !== null
+        ) {
+            for (const e of object.securityGroups) {
+                message.securityGroups.push(SecurityGroup.fromJSON(e));
+            }
+        }
+        if (
+            object.nextPageToken !== undefined &&
+            object.nextPageToken !== null
+        ) {
+            message.nextPageToken = String(object.nextPageToken);
+        } else {
+            message.nextPageToken = '';
+        }
+        return message;
+    },
+
+    toJSON(message: ListNetworkSecurityGroupsResponse): unknown {
+        const obj: any = {};
+        if (message.securityGroups) {
+            obj.securityGroups = message.securityGroups.map((e) =>
+                e ? SecurityGroup.toJSON(e) : undefined
+            );
+        } else {
+            obj.securityGroups = [];
+        }
+        message.nextPageToken !== undefined &&
+            (obj.nextPageToken = message.nextPageToken);
+        return obj;
+    },
+
+    fromPartial(
+        object: DeepPartial<ListNetworkSecurityGroupsResponse>
+    ): ListNetworkSecurityGroupsResponse {
+        const message = {
+            ...baseListNetworkSecurityGroupsResponse,
+        } as ListNetworkSecurityGroupsResponse;
+        message.securityGroups = [];
+        if (
+            object.securityGroups !== undefined &&
+            object.securityGroups !== null
+        ) {
+            for (const e of object.securityGroups) {
+                message.securityGroups.push(SecurityGroup.fromPartial(e));
+            }
+        }
+        if (
+            object.nextPageToken !== undefined &&
+            object.nextPageToken !== null
+        ) {
+            message.nextPageToken = object.nextPageToken;
+        } else {
+            message.nextPageToken = '';
+        }
+        return message;
+    },
+};
+
+const baseListNetworkRouteTablesRequest: object = {
+    networkId: '',
+    pageSize: 0,
+    pageToken: '',
+};
+
+export const ListNetworkRouteTablesRequest = {
+    encode(
+        message: ListNetworkRouteTablesRequest,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        if (message.networkId !== '') {
+            writer.uint32(10).string(message.networkId);
+        }
+        if (message.pageSize !== 0) {
+            writer.uint32(16).int64(message.pageSize);
+        }
+        if (message.pageToken !== '') {
+            writer.uint32(26).string(message.pageToken);
+        }
+        return writer;
+    },
+
+    decode(
+        input: _m0.Reader | Uint8Array,
+        length?: number
+    ): ListNetworkRouteTablesRequest {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = {
+            ...baseListNetworkRouteTablesRequest,
+        } as ListNetworkRouteTablesRequest;
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.networkId = reader.string();
+                    break;
+                case 2:
+                    message.pageSize = longToNumber(reader.int64() as Long);
+                    break;
+                case 3:
+                    message.pageToken = reader.string();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): ListNetworkRouteTablesRequest {
+        const message = {
+            ...baseListNetworkRouteTablesRequest,
+        } as ListNetworkRouteTablesRequest;
+        if (object.networkId !== undefined && object.networkId !== null) {
+            message.networkId = String(object.networkId);
+        } else {
+            message.networkId = '';
+        }
+        if (object.pageSize !== undefined && object.pageSize !== null) {
+            message.pageSize = Number(object.pageSize);
+        } else {
+            message.pageSize = 0;
+        }
+        if (object.pageToken !== undefined && object.pageToken !== null) {
+            message.pageToken = String(object.pageToken);
+        } else {
+            message.pageToken = '';
+        }
+        return message;
+    },
+
+    toJSON(message: ListNetworkRouteTablesRequest): unknown {
+        const obj: any = {};
+        message.networkId !== undefined && (obj.networkId = message.networkId);
+        message.pageSize !== undefined && (obj.pageSize = message.pageSize);
+        message.pageToken !== undefined && (obj.pageToken = message.pageToken);
+        return obj;
+    },
+
+    fromPartial(
+        object: DeepPartial<ListNetworkRouteTablesRequest>
+    ): ListNetworkRouteTablesRequest {
+        const message = {
+            ...baseListNetworkRouteTablesRequest,
+        } as ListNetworkRouteTablesRequest;
+        if (object.networkId !== undefined && object.networkId !== null) {
+            message.networkId = object.networkId;
+        } else {
+            message.networkId = '';
+        }
+        if (object.pageSize !== undefined && object.pageSize !== null) {
+            message.pageSize = object.pageSize;
+        } else {
+            message.pageSize = 0;
+        }
+        if (object.pageToken !== undefined && object.pageToken !== null) {
+            message.pageToken = object.pageToken;
+        } else {
+            message.pageToken = '';
+        }
+        return message;
+    },
+};
+
+const baseListNetworkRouteTablesResponse: object = { nextPageToken: '' };
+
+export const ListNetworkRouteTablesResponse = {
+    encode(
+        message: ListNetworkRouteTablesResponse,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        for (const v of message.routeTables) {
+            RouteTable.encode(v!, writer.uint32(10).fork()).ldelim();
+        }
+        if (message.nextPageToken !== '') {
+            writer.uint32(18).string(message.nextPageToken);
+        }
+        return writer;
+    },
+
+    decode(
+        input: _m0.Reader | Uint8Array,
+        length?: number
+    ): ListNetworkRouteTablesResponse {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = {
+            ...baseListNetworkRouteTablesResponse,
+        } as ListNetworkRouteTablesResponse;
+        message.routeTables = [];
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.routeTables.push(
+                        RouteTable.decode(reader, reader.uint32())
+                    );
+                    break;
+                case 2:
+                    message.nextPageToken = reader.string();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): ListNetworkRouteTablesResponse {
+        const message = {
+            ...baseListNetworkRouteTablesResponse,
+        } as ListNetworkRouteTablesResponse;
+        message.routeTables = [];
+        if (object.routeTables !== undefined && object.routeTables !== null) {
+            for (const e of object.routeTables) {
+                message.routeTables.push(RouteTable.fromJSON(e));
+            }
+        }
+        if (
+            object.nextPageToken !== undefined &&
+            object.nextPageToken !== null
+        ) {
+            message.nextPageToken = String(object.nextPageToken);
+        } else {
+            message.nextPageToken = '';
+        }
+        return message;
+    },
+
+    toJSON(message: ListNetworkRouteTablesResponse): unknown {
+        const obj: any = {};
+        if (message.routeTables) {
+            obj.routeTables = message.routeTables.map((e) =>
+                e ? RouteTable.toJSON(e) : undefined
+            );
+        } else {
+            obj.routeTables = [];
+        }
+        message.nextPageToken !== undefined &&
+            (obj.nextPageToken = message.nextPageToken);
+        return obj;
+    },
+
+    fromPartial(
+        object: DeepPartial<ListNetworkRouteTablesResponse>
+    ): ListNetworkRouteTablesResponse {
+        const message = {
+            ...baseListNetworkRouteTablesResponse,
+        } as ListNetworkRouteTablesResponse;
+        message.routeTables = [];
+        if (object.routeTables !== undefined && object.routeTables !== null) {
+            for (const e of object.routeTables) {
+                message.routeTables.push(RouteTable.fromPartial(e));
+            }
+        }
+        if (
+            object.nextPageToken !== undefined &&
+            object.nextPageToken !== null
+        ) {
+            message.nextPageToken = object.nextPageToken;
+        } else {
+            message.nextPageToken = '';
+        }
+        return message;
+    },
+};
+
 const baseListNetworkOperationsRequest: object = {
     networkId: '',
     pageSize: 0,
@@ -1907,6 +2405,38 @@ export const NetworkServiceService = {
         responseDeserialize: (value: Buffer) =>
             ListNetworkSubnetsResponse.decode(value),
     },
+    /** Lists security groups from the specified network. */
+    listSecurityGroups: {
+        path: '/yandex.cloud.vpc.v1.NetworkService/ListSecurityGroups',
+        requestStream: false,
+        responseStream: false,
+        requestSerialize: (value: ListNetworkSecurityGroupsRequest) =>
+            Buffer.from(
+                ListNetworkSecurityGroupsRequest.encode(value).finish()
+            ),
+        requestDeserialize: (value: Buffer) =>
+            ListNetworkSecurityGroupsRequest.decode(value),
+        responseSerialize: (value: ListNetworkSecurityGroupsResponse) =>
+            Buffer.from(
+                ListNetworkSecurityGroupsResponse.encode(value).finish()
+            ),
+        responseDeserialize: (value: Buffer) =>
+            ListNetworkSecurityGroupsResponse.decode(value),
+    },
+    /** Lists route tables from the specified network. */
+    listRouteTables: {
+        path: '/yandex.cloud.vpc.v1.NetworkService/ListRouteTables',
+        requestStream: false,
+        responseStream: false,
+        requestSerialize: (value: ListNetworkRouteTablesRequest) =>
+            Buffer.from(ListNetworkRouteTablesRequest.encode(value).finish()),
+        requestDeserialize: (value: Buffer) =>
+            ListNetworkRouteTablesRequest.decode(value),
+        responseSerialize: (value: ListNetworkRouteTablesResponse) =>
+            Buffer.from(ListNetworkRouteTablesResponse.encode(value).finish()),
+        responseDeserialize: (value: Buffer) =>
+            ListNetworkRouteTablesResponse.decode(value),
+    },
     /** Lists operations for the specified network. */
     listOperations: {
         path: '/yandex.cloud.vpc.v1.NetworkService/ListOperations',
@@ -1960,6 +2490,16 @@ export interface NetworkServiceServer extends UntypedServiceImplementation {
     listSubnets: handleUnaryCall<
         ListNetworkSubnetsRequest,
         ListNetworkSubnetsResponse
+    >;
+    /** Lists security groups from the specified network. */
+    listSecurityGroups: handleUnaryCall<
+        ListNetworkSecurityGroupsRequest,
+        ListNetworkSecurityGroupsResponse
+    >;
+    /** Lists route tables from the specified network. */
+    listRouteTables: handleUnaryCall<
+        ListNetworkRouteTablesRequest,
+        ListNetworkRouteTablesResponse
     >;
     /** Lists operations for the specified network. */
     listOperations: handleUnaryCall<
@@ -2093,6 +2633,56 @@ export interface NetworkServiceClient extends Client {
         callback: (
             error: ServiceError | null,
             response: ListNetworkSubnetsResponse
+        ) => void
+    ): ClientUnaryCall;
+    /** Lists security groups from the specified network. */
+    listSecurityGroups(
+        request: ListNetworkSecurityGroupsRequest,
+        callback: (
+            error: ServiceError | null,
+            response: ListNetworkSecurityGroupsResponse
+        ) => void
+    ): ClientUnaryCall;
+    listSecurityGroups(
+        request: ListNetworkSecurityGroupsRequest,
+        metadata: Metadata,
+        callback: (
+            error: ServiceError | null,
+            response: ListNetworkSecurityGroupsResponse
+        ) => void
+    ): ClientUnaryCall;
+    listSecurityGroups(
+        request: ListNetworkSecurityGroupsRequest,
+        metadata: Metadata,
+        options: Partial<CallOptions>,
+        callback: (
+            error: ServiceError | null,
+            response: ListNetworkSecurityGroupsResponse
+        ) => void
+    ): ClientUnaryCall;
+    /** Lists route tables from the specified network. */
+    listRouteTables(
+        request: ListNetworkRouteTablesRequest,
+        callback: (
+            error: ServiceError | null,
+            response: ListNetworkRouteTablesResponse
+        ) => void
+    ): ClientUnaryCall;
+    listRouteTables(
+        request: ListNetworkRouteTablesRequest,
+        metadata: Metadata,
+        callback: (
+            error: ServiceError | null,
+            response: ListNetworkRouteTablesResponse
+        ) => void
+    ): ClientUnaryCall;
+    listRouteTables(
+        request: ListNetworkRouteTablesRequest,
+        metadata: Metadata,
+        options: Partial<CallOptions>,
+        callback: (
+            error: ServiceError | null,
+            response: ListNetworkRouteTablesResponse
         ) => void
     ): ClientUnaryCall;
     /** Lists operations for the specified network. */

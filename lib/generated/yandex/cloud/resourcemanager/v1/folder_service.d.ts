@@ -296,11 +296,7 @@ export declare const FolderServiceService: {
         readonly responseSerialize: (value: Operation) => Buffer;
         readonly responseDeserialize: (value: Buffer) => Operation;
     };
-    /**
-     * Deletes the specified folder.
-     *
-     * The method is temporarily unavailable.
-     */
+    /** Deletes the specified folder. */
     readonly delete: {
         readonly path: "/yandex.cloud.resourcemanager.v1.FolderService/Delete";
         readonly requestStream: false;
@@ -364,11 +360,7 @@ export interface FolderServiceServer extends UntypedServiceImplementation {
     create: handleUnaryCall<CreateFolderRequest, Operation>;
     /** Updates the specified folder. */
     update: handleUnaryCall<UpdateFolderRequest, Operation>;
-    /**
-     * Deletes the specified folder.
-     *
-     * The method is temporarily unavailable.
-     */
+    /** Deletes the specified folder. */
     delete: handleUnaryCall<DeleteFolderRequest, Operation>;
     /** Lists operations for the specified folder. */
     listOperations: handleUnaryCall<ListFolderOperationsRequest, ListFolderOperationsResponse>;
@@ -400,11 +392,7 @@ export interface FolderServiceClient extends Client {
     update(request: UpdateFolderRequest, callback: (error: ServiceError | null, response: Operation) => void): ClientUnaryCall;
     update(request: UpdateFolderRequest, metadata: Metadata, callback: (error: ServiceError | null, response: Operation) => void): ClientUnaryCall;
     update(request: UpdateFolderRequest, metadata: Metadata, options: Partial<CallOptions>, callback: (error: ServiceError | null, response: Operation) => void): ClientUnaryCall;
-    /**
-     * Deletes the specified folder.
-     *
-     * The method is temporarily unavailable.
-     */
+    /** Deletes the specified folder. */
     delete(request: DeleteFolderRequest, callback: (error: ServiceError | null, response: Operation) => void): ClientUnaryCall;
     delete(request: DeleteFolderRequest, metadata: Metadata, callback: (error: ServiceError | null, response: Operation) => void): ClientUnaryCall;
     delete(request: DeleteFolderRequest, metadata: Metadata, options: Partial<CallOptions>, callback: (error: ServiceError | null, response: Operation) => void): ClientUnaryCall;

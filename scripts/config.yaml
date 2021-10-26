@@ -38,6 +38,30 @@ packages:
       VirtualHostService:
         endpoint: alb
 
+  billing.v1:
+    services:
+      BillingAccountService:
+        endpoint: billing
+      BudgetService:
+        endpoint: billing
+      CustomerService:
+        endpoint: billing
+      ServiceService:
+        endpoint: billing
+      SkuService:
+        endpoint: billing
+
+  cdn.v1:
+    services:
+      CacheService:
+        endpoint: cdn
+      OriginGroupService:
+        endpoint: cdn
+      OriginService:
+        endpoint: cdn
+      ResourceService:
+        endpoint: cdn
+
   certificatemanager.v1:
     services:
       CertificateContentService:
@@ -52,6 +76,8 @@ packages:
       DiskService:
         endpoint: compute
       DiskTypeService:
+        endpoint: compute
+      FilesystemService:
         endpoint: compute
       HostGroupService:
         endpoint: compute
@@ -107,6 +133,8 @@ packages:
 
   datasphere.v1:
     services:
+      AppTokenService:
+        endpoint: datasphere
       NodeService:
         endpoint: datasphere
       ProjectService:
@@ -222,9 +250,16 @@ packages:
       UserService:
         endpoint: managed-elasticsearch
 
+  mdb.greenplum.v1:
+    services:
+      ClusterService:
+        endpoint: managed-greenplum
+
   mdb.kafka.v1:
     services:
       ClusterService:
+        endpoint: managed-kafka
+      ConnectorService:
         endpoint: managed-kafka
       ResourcePresetService:
         endpoint: managed-kafka
@@ -299,11 +334,37 @@ packages:
       OperationService:
         endpoint: operation
 
+  organizationmanager.v1:
+    services:
+      OrganizationService:
+        endpoint: organization-manager
+      UserService:
+        endpoint: organization-manager
+
+  organizationmanager.v1.saml:
+    services:
+      CertitficateService:
+        endpoint: organization-manager
+      FederationService:
+        endpoint: organization-manager
+
+  resourcemanager.v1:
+    services:
+      CloudService:
+        endpoint: resource-manager
+      FolderService:
+        endpoint: resource-manager
+
   serverless.apigateway.v1:
     services:
       ApiGatewayService:
         filename: apigateway_service
         endpoint: serverless-apigateway
+
+  serverless.containers.v1:
+    services:
+      ContainerService:
+        endpoint: serverless-containers
 
   serverless.functions.v1:
     services:
@@ -319,13 +380,6 @@ packages:
     services:
       TriggerService:
         endpoint: serverless-triggers
-
-  resourcemanager.v1:
-    services:
-      CloudService:
-        endpoint: resource-manager
-      FolderService:
-        endpoint: resource-manager
 
   vpc.v1:
     services:

@@ -143,6 +143,8 @@ export interface CreateClusterRequest {
     hostGroupIds: string[];
     /** Deletion Protection inhibits deletion of the cluster */
     deletionProtection: boolean;
+    /** ID of the cloud logging log group to write logs. If not set, logs will not be sent to logging service */
+    logGroupId: string;
 }
 export interface CreateClusterRequest_LabelsEntry {
     key: string;
@@ -183,6 +185,8 @@ export interface UpdateClusterRequest {
     securityGroupIds: string[];
     /** Deletion Protection inhibits deletion of the cluster */
     deletionProtection: boolean;
+    /** ID of the cloud logging log group to write logs. If not set, logs will not be sent to logging service */
+    logGroupId: string;
 }
 export interface UpdateClusterRequest_LabelsEntry {
     key: string;

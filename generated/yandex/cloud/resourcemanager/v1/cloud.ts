@@ -15,9 +15,23 @@ export interface Cloud {
     name: string;
     /** Description of the cloud. 0-256 characters long. */
     description: string;
+    /** ID of the organization that the cloud belongs to. */
+    organizationId: string;
+    /** Resource labels as `` key:value `` pairs. Maximum of 64 per resource. */
+    labels: { [key: string]: string };
 }
 
-const baseCloud: object = { id: '', name: '', description: '' };
+export interface Cloud_LabelsEntry {
+    key: string;
+    value: string;
+}
+
+const baseCloud: object = {
+    id: '',
+    name: '',
+    description: '',
+    organizationId: '',
+};
 
 export const Cloud = {
     encode(
@@ -39,6 +53,15 @@ export const Cloud = {
         if (message.description !== '') {
             writer.uint32(34).string(message.description);
         }
+        if (message.organizationId !== '') {
+            writer.uint32(50).string(message.organizationId);
+        }
+        Object.entries(message.labels).forEach(([key, value]) => {
+            Cloud_LabelsEntry.encode(
+                { key: key as any, value },
+                writer.uint32(58).fork()
+            ).ldelim();
+        });
         return writer;
     },
 
@@ -47,6 +70,7 @@ export const Cloud = {
             input instanceof _m0.Reader ? input : new _m0.Reader(input);
         let end = length === undefined ? reader.len : reader.pos + length;
         const message = { ...baseCloud } as Cloud;
+        message.labels = {};
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -64,6 +88,18 @@ export const Cloud = {
                 case 4:
                     message.description = reader.string();
                     break;
+                case 6:
+                    message.organizationId = reader.string();
+                    break;
+                case 7:
+                    const entry7 = Cloud_LabelsEntry.decode(
+                        reader,
+                        reader.uint32()
+                    );
+                    if (entry7.value !== undefined) {
+                        message.labels[entry7.key] = entry7.value;
+                    }
+                    break;
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -74,6 +110,7 @@ export const Cloud = {
 
     fromJSON(object: any): Cloud {
         const message = { ...baseCloud } as Cloud;
+        message.labels = {};
         if (object.id !== undefined && object.id !== null) {
             message.id = String(object.id);
         } else {
@@ -94,6 +131,19 @@ export const Cloud = {
         } else {
             message.description = '';
         }
+        if (
+            object.organizationId !== undefined &&
+            object.organizationId !== null
+        ) {
+            message.organizationId = String(object.organizationId);
+        } else {
+            message.organizationId = '';
+        }
+        if (object.labels !== undefined && object.labels !== null) {
+            Object.entries(object.labels).forEach(([key, value]) => {
+                message.labels[key] = String(value);
+            });
+        }
         return message;
     },
 
@@ -105,11 +155,20 @@ export const Cloud = {
         message.name !== undefined && (obj.name = message.name);
         message.description !== undefined &&
             (obj.description = message.description);
+        message.organizationId !== undefined &&
+            (obj.organizationId = message.organizationId);
+        obj.labels = {};
+        if (message.labels) {
+            Object.entries(message.labels).forEach(([k, v]) => {
+                obj.labels[k] = v;
+            });
+        }
         return obj;
     },
 
     fromPartial(object: DeepPartial<Cloud>): Cloud {
         const message = { ...baseCloud } as Cloud;
+        message.labels = {};
         if (object.id !== undefined && object.id !== null) {
             message.id = object.id;
         } else {
@@ -129,6 +188,97 @@ export const Cloud = {
             message.description = object.description;
         } else {
             message.description = '';
+        }
+        if (
+            object.organizationId !== undefined &&
+            object.organizationId !== null
+        ) {
+            message.organizationId = object.organizationId;
+        } else {
+            message.organizationId = '';
+        }
+        if (object.labels !== undefined && object.labels !== null) {
+            Object.entries(object.labels).forEach(([key, value]) => {
+                if (value !== undefined) {
+                    message.labels[key] = String(value);
+                }
+            });
+        }
+        return message;
+    },
+};
+
+const baseCloud_LabelsEntry: object = { key: '', value: '' };
+
+export const Cloud_LabelsEntry = {
+    encode(
+        message: Cloud_LabelsEntry,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        if (message.key !== '') {
+            writer.uint32(10).string(message.key);
+        }
+        if (message.value !== '') {
+            writer.uint32(18).string(message.value);
+        }
+        return writer;
+    },
+
+    decode(input: _m0.Reader | Uint8Array, length?: number): Cloud_LabelsEntry {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = { ...baseCloud_LabelsEntry } as Cloud_LabelsEntry;
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.key = reader.string();
+                    break;
+                case 2:
+                    message.value = reader.string();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): Cloud_LabelsEntry {
+        const message = { ...baseCloud_LabelsEntry } as Cloud_LabelsEntry;
+        if (object.key !== undefined && object.key !== null) {
+            message.key = String(object.key);
+        } else {
+            message.key = '';
+        }
+        if (object.value !== undefined && object.value !== null) {
+            message.value = String(object.value);
+        } else {
+            message.value = '';
+        }
+        return message;
+    },
+
+    toJSON(message: Cloud_LabelsEntry): unknown {
+        const obj: any = {};
+        message.key !== undefined && (obj.key = message.key);
+        message.value !== undefined && (obj.value = message.value);
+        return obj;
+    },
+
+    fromPartial(object: DeepPartial<Cloud_LabelsEntry>): Cloud_LabelsEntry {
+        const message = { ...baseCloud_LabelsEntry } as Cloud_LabelsEntry;
+        if (object.key !== undefined && object.key !== null) {
+            message.key = object.key;
+        } else {
+            message.key = '';
+        }
+        if (object.value !== undefined && object.value !== null) {
+            message.value = object.value;
+        } else {
+            message.value = '';
         }
         return message;
     },

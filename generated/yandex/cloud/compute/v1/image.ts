@@ -45,6 +45,8 @@ export interface Image {
     status: Image_Status;
     /** Operating system that is contained in the image. */
     os: Os | undefined;
+    /** When true, indicates there is an image pool for fast creation disks from the image. */
+    pooled: boolean;
 }
 
 export enum Image_Status {
@@ -165,6 +167,7 @@ const baseImage: object = {
     minDiskSize: 0,
     productIds: '',
     status: 0,
+    pooled: false,
 };
 
 export const Image = {
@@ -213,6 +216,9 @@ export const Image = {
         }
         if (message.os !== undefined) {
             Os.encode(message.os, writer.uint32(98).fork()).ldelim();
+        }
+        if (message.pooled === true) {
+            writer.uint32(104).bool(message.pooled);
         }
         return writer;
     },
@@ -270,6 +276,9 @@ export const Image = {
                     break;
                 case 12:
                     message.os = Os.decode(reader, reader.uint32());
+                    break;
+                case 13:
+                    message.pooled = reader.bool();
                     break;
                 default:
                     reader.skipType(tag & 7);
@@ -343,6 +352,11 @@ export const Image = {
         } else {
             message.os = undefined;
         }
+        if (object.pooled !== undefined && object.pooled !== null) {
+            message.pooled = Boolean(object.pooled);
+        } else {
+            message.pooled = false;
+        }
         return message;
     },
 
@@ -375,6 +389,7 @@ export const Image = {
             (obj.status = image_StatusToJSON(message.status));
         message.os !== undefined &&
             (obj.os = message.os ? Os.toJSON(message.os) : undefined);
+        message.pooled !== undefined && (obj.pooled = message.pooled);
         return obj;
     },
 
@@ -443,6 +458,11 @@ export const Image = {
             message.os = Os.fromPartial(object.os);
         } else {
             message.os = undefined;
+        }
+        if (object.pooled !== undefined && object.pooled !== null) {
+            message.pooled = object.pooled;
+        } else {
+            message.pooled = false;
         }
         return message;
     },

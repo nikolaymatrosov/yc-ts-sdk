@@ -90,6 +90,13 @@ export interface CreateServiceAccountRequest {
     name: string;
     /** Description of the service account. */
     description: string;
+    /** Resource labels as `` key:value `` pairs. */
+    labels: { [key: string]: string };
+}
+
+export interface CreateServiceAccountRequest_LabelsEntry {
+    key: string;
+    value: string;
 }
 
 export interface CreateServiceAccountMetadata {
@@ -112,6 +119,13 @@ export interface UpdateServiceAccountRequest {
     name: string;
     /** Description of the service account. */
     description: string;
+    /** Resource labels as `` key:value `` pairs. */
+    labels: { [key: string]: string };
+}
+
+export interface UpdateServiceAccountRequest_LabelsEntry {
+    key: string;
+    value: string;
 }
 
 export interface UpdateServiceAccountMetadata {
@@ -496,6 +510,12 @@ export const CreateServiceAccountRequest = {
         if (message.description !== '') {
             writer.uint32(26).string(message.description);
         }
+        Object.entries(message.labels).forEach(([key, value]) => {
+            CreateServiceAccountRequest_LabelsEntry.encode(
+                { key: key as any, value },
+                writer.uint32(34).fork()
+            ).ldelim();
+        });
         return writer;
     },
 
@@ -509,6 +529,7 @@ export const CreateServiceAccountRequest = {
         const message = {
             ...baseCreateServiceAccountRequest,
         } as CreateServiceAccountRequest;
+        message.labels = {};
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -520,6 +541,16 @@ export const CreateServiceAccountRequest = {
                     break;
                 case 3:
                     message.description = reader.string();
+                    break;
+                case 4:
+                    const entry4 =
+                        CreateServiceAccountRequest_LabelsEntry.decode(
+                            reader,
+                            reader.uint32()
+                        );
+                    if (entry4.value !== undefined) {
+                        message.labels[entry4.key] = entry4.value;
+                    }
                     break;
                 default:
                     reader.skipType(tag & 7);
@@ -533,6 +564,7 @@ export const CreateServiceAccountRequest = {
         const message = {
             ...baseCreateServiceAccountRequest,
         } as CreateServiceAccountRequest;
+        message.labels = {};
         if (object.folderId !== undefined && object.folderId !== null) {
             message.folderId = String(object.folderId);
         } else {
@@ -548,6 +580,11 @@ export const CreateServiceAccountRequest = {
         } else {
             message.description = '';
         }
+        if (object.labels !== undefined && object.labels !== null) {
+            Object.entries(object.labels).forEach(([key, value]) => {
+                message.labels[key] = String(value);
+            });
+        }
         return message;
     },
 
@@ -557,6 +594,12 @@ export const CreateServiceAccountRequest = {
         message.name !== undefined && (obj.name = message.name);
         message.description !== undefined &&
             (obj.description = message.description);
+        obj.labels = {};
+        if (message.labels) {
+            Object.entries(message.labels).forEach(([k, v]) => {
+                obj.labels[k] = v;
+            });
+        }
         return obj;
     },
 
@@ -566,6 +609,7 @@ export const CreateServiceAccountRequest = {
         const message = {
             ...baseCreateServiceAccountRequest,
         } as CreateServiceAccountRequest;
+        message.labels = {};
         if (object.folderId !== undefined && object.folderId !== null) {
             message.folderId = object.folderId;
         } else {
@@ -580,6 +624,103 @@ export const CreateServiceAccountRequest = {
             message.description = object.description;
         } else {
             message.description = '';
+        }
+        if (object.labels !== undefined && object.labels !== null) {
+            Object.entries(object.labels).forEach(([key, value]) => {
+                if (value !== undefined) {
+                    message.labels[key] = String(value);
+                }
+            });
+        }
+        return message;
+    },
+};
+
+const baseCreateServiceAccountRequest_LabelsEntry: object = {
+    key: '',
+    value: '',
+};
+
+export const CreateServiceAccountRequest_LabelsEntry = {
+    encode(
+        message: CreateServiceAccountRequest_LabelsEntry,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        if (message.key !== '') {
+            writer.uint32(10).string(message.key);
+        }
+        if (message.value !== '') {
+            writer.uint32(18).string(message.value);
+        }
+        return writer;
+    },
+
+    decode(
+        input: _m0.Reader | Uint8Array,
+        length?: number
+    ): CreateServiceAccountRequest_LabelsEntry {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = {
+            ...baseCreateServiceAccountRequest_LabelsEntry,
+        } as CreateServiceAccountRequest_LabelsEntry;
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.key = reader.string();
+                    break;
+                case 2:
+                    message.value = reader.string();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): CreateServiceAccountRequest_LabelsEntry {
+        const message = {
+            ...baseCreateServiceAccountRequest_LabelsEntry,
+        } as CreateServiceAccountRequest_LabelsEntry;
+        if (object.key !== undefined && object.key !== null) {
+            message.key = String(object.key);
+        } else {
+            message.key = '';
+        }
+        if (object.value !== undefined && object.value !== null) {
+            message.value = String(object.value);
+        } else {
+            message.value = '';
+        }
+        return message;
+    },
+
+    toJSON(message: CreateServiceAccountRequest_LabelsEntry): unknown {
+        const obj: any = {};
+        message.key !== undefined && (obj.key = message.key);
+        message.value !== undefined && (obj.value = message.value);
+        return obj;
+    },
+
+    fromPartial(
+        object: DeepPartial<CreateServiceAccountRequest_LabelsEntry>
+    ): CreateServiceAccountRequest_LabelsEntry {
+        const message = {
+            ...baseCreateServiceAccountRequest_LabelsEntry,
+        } as CreateServiceAccountRequest_LabelsEntry;
+        if (object.key !== undefined && object.key !== null) {
+            message.key = object.key;
+        } else {
+            message.key = '';
+        }
+        if (object.value !== undefined && object.value !== null) {
+            message.value = object.value;
+        } else {
+            message.value = '';
         }
         return message;
     },
@@ -688,6 +829,12 @@ export const UpdateServiceAccountRequest = {
         if (message.description !== '') {
             writer.uint32(34).string(message.description);
         }
+        Object.entries(message.labels).forEach(([key, value]) => {
+            UpdateServiceAccountRequest_LabelsEntry.encode(
+                { key: key as any, value },
+                writer.uint32(42).fork()
+            ).ldelim();
+        });
         return writer;
     },
 
@@ -701,6 +848,7 @@ export const UpdateServiceAccountRequest = {
         const message = {
             ...baseUpdateServiceAccountRequest,
         } as UpdateServiceAccountRequest;
+        message.labels = {};
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -719,6 +867,16 @@ export const UpdateServiceAccountRequest = {
                 case 4:
                     message.description = reader.string();
                     break;
+                case 5:
+                    const entry5 =
+                        UpdateServiceAccountRequest_LabelsEntry.decode(
+                            reader,
+                            reader.uint32()
+                        );
+                    if (entry5.value !== undefined) {
+                        message.labels[entry5.key] = entry5.value;
+                    }
+                    break;
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -731,6 +889,7 @@ export const UpdateServiceAccountRequest = {
         const message = {
             ...baseUpdateServiceAccountRequest,
         } as UpdateServiceAccountRequest;
+        message.labels = {};
         if (
             object.serviceAccountId !== undefined &&
             object.serviceAccountId !== null
@@ -754,6 +913,11 @@ export const UpdateServiceAccountRequest = {
         } else {
             message.description = '';
         }
+        if (object.labels !== undefined && object.labels !== null) {
+            Object.entries(object.labels).forEach(([key, value]) => {
+                message.labels[key] = String(value);
+            });
+        }
         return message;
     },
 
@@ -768,6 +932,12 @@ export const UpdateServiceAccountRequest = {
         message.name !== undefined && (obj.name = message.name);
         message.description !== undefined &&
             (obj.description = message.description);
+        obj.labels = {};
+        if (message.labels) {
+            Object.entries(message.labels).forEach(([k, v]) => {
+                obj.labels[k] = v;
+            });
+        }
         return obj;
     },
 
@@ -777,6 +947,7 @@ export const UpdateServiceAccountRequest = {
         const message = {
             ...baseUpdateServiceAccountRequest,
         } as UpdateServiceAccountRequest;
+        message.labels = {};
         if (
             object.serviceAccountId !== undefined &&
             object.serviceAccountId !== null
@@ -799,6 +970,103 @@ export const UpdateServiceAccountRequest = {
             message.description = object.description;
         } else {
             message.description = '';
+        }
+        if (object.labels !== undefined && object.labels !== null) {
+            Object.entries(object.labels).forEach(([key, value]) => {
+                if (value !== undefined) {
+                    message.labels[key] = String(value);
+                }
+            });
+        }
+        return message;
+    },
+};
+
+const baseUpdateServiceAccountRequest_LabelsEntry: object = {
+    key: '',
+    value: '',
+};
+
+export const UpdateServiceAccountRequest_LabelsEntry = {
+    encode(
+        message: UpdateServiceAccountRequest_LabelsEntry,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        if (message.key !== '') {
+            writer.uint32(10).string(message.key);
+        }
+        if (message.value !== '') {
+            writer.uint32(18).string(message.value);
+        }
+        return writer;
+    },
+
+    decode(
+        input: _m0.Reader | Uint8Array,
+        length?: number
+    ): UpdateServiceAccountRequest_LabelsEntry {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = {
+            ...baseUpdateServiceAccountRequest_LabelsEntry,
+        } as UpdateServiceAccountRequest_LabelsEntry;
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.key = reader.string();
+                    break;
+                case 2:
+                    message.value = reader.string();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): UpdateServiceAccountRequest_LabelsEntry {
+        const message = {
+            ...baseUpdateServiceAccountRequest_LabelsEntry,
+        } as UpdateServiceAccountRequest_LabelsEntry;
+        if (object.key !== undefined && object.key !== null) {
+            message.key = String(object.key);
+        } else {
+            message.key = '';
+        }
+        if (object.value !== undefined && object.value !== null) {
+            message.value = String(object.value);
+        } else {
+            message.value = '';
+        }
+        return message;
+    },
+
+    toJSON(message: UpdateServiceAccountRequest_LabelsEntry): unknown {
+        const obj: any = {};
+        message.key !== undefined && (obj.key = message.key);
+        message.value !== undefined && (obj.value = message.value);
+        return obj;
+    },
+
+    fromPartial(
+        object: DeepPartial<UpdateServiceAccountRequest_LabelsEntry>
+    ): UpdateServiceAccountRequest_LabelsEntry {
+        const message = {
+            ...baseUpdateServiceAccountRequest_LabelsEntry,
+        } as UpdateServiceAccountRequest_LabelsEntry;
+        if (object.key !== undefined && object.key !== null) {
+            message.key = object.key;
+        } else {
+            message.key = '';
+        }
+        if (object.value !== undefined && object.value !== null) {
+            message.value = object.value;
+        } else {
+            message.value = '';
         }
         return message;
     },

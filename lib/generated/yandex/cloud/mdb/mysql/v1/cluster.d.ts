@@ -157,6 +157,8 @@ export interface Host {
     subnetId: string;
     /** Flag showing public IP assignment status to this host. */
     assignPublicIp: boolean;
+    /** Name of the host to be used as the replication source for cascading replication. */
+    replicationSource: string;
 }
 export declare enum Host_Role {
     /** ROLE_UNKNOWN - Role of the host in the cluster is unknown. */

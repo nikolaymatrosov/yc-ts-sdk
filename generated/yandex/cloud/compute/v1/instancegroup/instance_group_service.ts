@@ -72,18 +72,34 @@ export function instanceGroupViewToJSON(object: InstanceGroupView): string {
 }
 
 export interface ResumeInstanceGroupProcessesRequest {
+    /**
+     * ID of the instance group to resume processes in.
+     *
+     * The instance group must have a `PAUSED` status ([InstanceGroup.status]).
+     *
+     * To get the instance group ID, make a [InstanceGroupService.List] request.
+     */
     instanceGroupId: string;
 }
 
 export interface ResumeInstanceGroupProcessMetadata {
+    /** ID of the instance group that processes are being resumed in. */
     instanceGroupId: string;
 }
 
 export interface PauseInstanceGroupProcessesRequest {
+    /**
+     * ID of the instance group to pause processes in.
+     *
+     * The instance group must have an `ACTIVE` status ([InstanceGroup.status]).
+     *
+     * To get the instance group ID, make a [InstanceGroupService.List] request.
+     */
     instanceGroupId: string;
 }
 
 export interface PauseInstanceGroupProcessMetadata {
+    /** ID of the instance group that processes are being paused in. */
     instanceGroupId: string;
 }
 
@@ -4409,7 +4425,10 @@ export const InstanceGroupServiceService = {
             Buffer.from(Operation.encode(value).finish()),
         responseDeserialize: (value: Buffer) => Operation.decode(value),
     },
-    /** Resume all process in instance group. */
+    /**
+     * Resumes all processes regarding management of the specified instance group,
+     * i.e. scaling, checking instances' health, auto-healing and updating them.
+     */
     resumeProcesses: {
         path: '/yandex.cloud.compute.v1.instancegroup.InstanceGroupService/ResumeProcesses',
         requestStream: false,
@@ -4424,7 +4443,10 @@ export const InstanceGroupServiceService = {
             Buffer.from(Operation.encode(value).finish()),
         responseDeserialize: (value: Buffer) => Operation.decode(value),
     },
-    /** Pause all process in instance group. */
+    /**
+     * Pauses all processes regarding management of the specified instance group,
+     * i.e. scaling, checking instances' health, auto-healing and updating them. Running instances are not stopped.
+     */
     pauseProcesses: {
         path: '/yandex.cloud.compute.v1.instancegroup.InstanceGroupService/PauseProcesses',
         requestStream: false,
@@ -4517,12 +4539,18 @@ export interface InstanceGroupServiceServer
         UpdateAccessBindingsRequest,
         Operation
     >;
-    /** Resume all process in instance group. */
+    /**
+     * Resumes all processes regarding management of the specified instance group,
+     * i.e. scaling, checking instances' health, auto-healing and updating them.
+     */
     resumeProcesses: handleUnaryCall<
         ResumeInstanceGroupProcessesRequest,
         Operation
     >;
-    /** Pause all process in instance group. */
+    /**
+     * Pauses all processes regarding management of the specified instance group,
+     * i.e. scaling, checking instances' health, auto-healing and updating them. Running instances are not stopped.
+     */
     pauseProcesses: handleUnaryCall<
         PauseInstanceGroupProcessesRequest,
         Operation
@@ -4863,7 +4891,10 @@ export interface InstanceGroupServiceClient extends Client {
         options: Partial<CallOptions>,
         callback: (error: ServiceError | null, response: Operation) => void
     ): ClientUnaryCall;
-    /** Resume all process in instance group. */
+    /**
+     * Resumes all processes regarding management of the specified instance group,
+     * i.e. scaling, checking instances' health, auto-healing and updating them.
+     */
     resumeProcesses(
         request: ResumeInstanceGroupProcessesRequest,
         callback: (error: ServiceError | null, response: Operation) => void
@@ -4879,7 +4910,10 @@ export interface InstanceGroupServiceClient extends Client {
         options: Partial<CallOptions>,
         callback: (error: ServiceError | null, response: Operation) => void
     ): ClientUnaryCall;
-    /** Pause all process in instance group. */
+    /**
+     * Pauses all processes regarding management of the specified instance group,
+     * i.e. scaling, checking instances' health, auto-healing and updating them. Running instances are not stopped.
+     */
     pauseProcesses(
         request: PauseInstanceGroupProcessesRequest,
         callback: (error: ServiceError | null, response: Operation) => void

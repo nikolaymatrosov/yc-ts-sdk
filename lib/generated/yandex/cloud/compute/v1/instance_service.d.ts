@@ -116,6 +116,15 @@ export interface CreateInstanceRequest {
     /** Array of secondary disks to attach to the instance. */
     secondaryDiskSpecs: AttachedDiskSpec[];
     /**
+     * Array of filesystems to attach to the instance.
+     *
+     * The filesystems must reside in the same availability zone as the instance.
+     *
+     * To use the instance with an attached filesystem, the latter must be mounted.
+     * For details, see [documentation](/docs/compute/operations/filesystem/attach-to-vm).
+     */
+    filesystemSpecs: AttachedFilesystemSpec[];
+    /**
      * Network configuration for the instance. Specifies how the network interface is configured
      * to interact with other services on the internal network and on the internet.
      * Currently only one network interface is supported per instance.
@@ -334,6 +343,40 @@ export interface DetachInstanceDiskMetadata {
     /** ID of the disk. */
     diskId: string;
 }
+export interface AttachInstanceFilesystemRequest {
+    /**
+     * ID of the instance to attach the filesystem to.
+     *
+     * To get the instance ID, make a [InstanceService.List] request.
+     */
+    instanceId: string;
+    /** Filesystem to attach to the instance. */
+    attachedFilesystemSpec: AttachedFilesystemSpec | undefined;
+}
+export interface AttachInstanceFilesystemMetadata {
+    /** ID of the instance that the filesystem is being attached to. */
+    instanceId: string;
+    /** ID of the filesystem that is being attached to the instance. */
+    filesystemId: string;
+}
+export interface DetachInstanceFilesystemRequest {
+    /**
+     * ID of the instance to detach the filesystem from.
+     *
+     * To get the instance ID, make a [InstanceService.List] request.
+     */
+    instanceId: string;
+    /** ID of the filesystem that should be detached. */
+    filesystemId: string | undefined;
+    /** Name of the device used for mounting the filesystem that should be detached. */
+    deviceName: string | undefined;
+}
+export interface DetachInstanceFilesystemMetadata {
+    /** ID of the instance that the filesystem is being detached from. */
+    instanceId: string;
+    /** ID of the filesystem that is being detached from the instance. */
+    filesystemId: string;
+}
 /** Enables One-to-one NAT on the network interface. */
 export interface AddInstanceOneToOneNatRequest {
     /** ID of the instance to enable One-to-One NAT on. */
@@ -477,6 +520,31 @@ export interface AttachedDiskSpec_DiskSpec {
     /** ID of the snapshot to restore the disk from. */
     snapshotId: string | undefined;
 }
+export interface AttachedFilesystemSpec {
+    /** Mode of access to the filesystem that should be attached. */
+    mode: AttachedFilesystemSpec_Mode;
+    /**
+     * Name of the device representing the filesystem on the instance.
+     *
+     * The name should be used for referencing the filesystem from within the instance
+     * when it's being mounted, resized etc.
+     *
+     * If not specified, a random value will be generated.
+     */
+    deviceName: string;
+    /** ID of the filesystem that should be attached. */
+    filesystemId: string;
+}
+export declare enum AttachedFilesystemSpec_Mode {
+    MODE_UNSPECIFIED = 0,
+    /** READ_ONLY - Read-only access. */
+    READ_ONLY = 1,
+    /** READ_WRITE - Read/Write access. Default value. */
+    READ_WRITE = 2,
+    UNRECOGNIZED = -1
+}
+export declare function attachedFilesystemSpec_ModeFromJSON(object: any): AttachedFilesystemSpec_Mode;
+export declare function attachedFilesystemSpec_ModeToJSON(object: AttachedFilesystemSpec_Mode): string;
 export interface NetworkInterfaceSpec {
     /** ID of the subnet. */
     subnetId: string;
@@ -715,6 +783,34 @@ export declare const DetachInstanceDiskMetadata: {
     toJSON(message: DetachInstanceDiskMetadata): unknown;
     fromPartial(object: DeepPartial<DetachInstanceDiskMetadata>): DetachInstanceDiskMetadata;
 };
+export declare const AttachInstanceFilesystemRequest: {
+    encode(message: AttachInstanceFilesystemRequest, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number | undefined): AttachInstanceFilesystemRequest;
+    fromJSON(object: any): AttachInstanceFilesystemRequest;
+    toJSON(message: AttachInstanceFilesystemRequest): unknown;
+    fromPartial(object: DeepPartial<AttachInstanceFilesystemRequest>): AttachInstanceFilesystemRequest;
+};
+export declare const AttachInstanceFilesystemMetadata: {
+    encode(message: AttachInstanceFilesystemMetadata, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number | undefined): AttachInstanceFilesystemMetadata;
+    fromJSON(object: any): AttachInstanceFilesystemMetadata;
+    toJSON(message: AttachInstanceFilesystemMetadata): unknown;
+    fromPartial(object: DeepPartial<AttachInstanceFilesystemMetadata>): AttachInstanceFilesystemMetadata;
+};
+export declare const DetachInstanceFilesystemRequest: {
+    encode(message: DetachInstanceFilesystemRequest, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DetachInstanceFilesystemRequest;
+    fromJSON(object: any): DetachInstanceFilesystemRequest;
+    toJSON(message: DetachInstanceFilesystemRequest): unknown;
+    fromPartial(object: DeepPartial<DetachInstanceFilesystemRequest>): DetachInstanceFilesystemRequest;
+};
+export declare const DetachInstanceFilesystemMetadata: {
+    encode(message: DetachInstanceFilesystemMetadata, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DetachInstanceFilesystemMetadata;
+    fromJSON(object: any): DetachInstanceFilesystemMetadata;
+    toJSON(message: DetachInstanceFilesystemMetadata): unknown;
+    fromPartial(object: DeepPartial<DetachInstanceFilesystemMetadata>): DetachInstanceFilesystemMetadata;
+};
 export declare const AddInstanceOneToOneNatRequest: {
     encode(message: AddInstanceOneToOneNatRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): AddInstanceOneToOneNatRequest;
@@ -791,6 +887,13 @@ export declare const AttachedDiskSpec_DiskSpec: {
     fromJSON(object: any): AttachedDiskSpec_DiskSpec;
     toJSON(message: AttachedDiskSpec_DiskSpec): unknown;
     fromPartial(object: DeepPartial<AttachedDiskSpec_DiskSpec>): AttachedDiskSpec_DiskSpec;
+};
+export declare const AttachedFilesystemSpec: {
+    encode(message: AttachedFilesystemSpec, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number | undefined): AttachedFilesystemSpec;
+    fromJSON(object: any): AttachedFilesystemSpec;
+    toJSON(message: AttachedFilesystemSpec): unknown;
+    fromPartial(object: DeepPartial<AttachedFilesystemSpec>): AttachedFilesystemSpec;
 };
 export declare const NetworkInterfaceSpec: {
     encode(message: NetworkInterfaceSpec, writer?: _m0.Writer): _m0.Writer;
@@ -953,6 +1056,43 @@ export declare const InstanceServiceService: {
         readonly responseSerialize: (value: Operation) => Buffer;
         readonly responseDeserialize: (value: Buffer) => Operation;
     };
+    /**
+     * Attaches the filesystem to the instance.
+     *
+     * The instance and the filesystem must reside in the same availability zone.
+     *
+     * To attach a filesystem, the instance must have a `STOPPED` status ([Instance.status]).
+     * To check the instance status, make a [InstanceService.Get] request.
+     * To stop the running instance, make a [InstanceService.Stop] request.
+     *
+     * To use the instance with an attached filesystem, the latter must be mounted.
+     * For details, see [documentation](/docs/compute/operations/filesystem/attach-to-vm).
+     */
+    readonly attachFilesystem: {
+        readonly path: "/yandex.cloud.compute.v1.InstanceService/AttachFilesystem";
+        readonly requestStream: false;
+        readonly responseStream: false;
+        readonly requestSerialize: (value: AttachInstanceFilesystemRequest) => Buffer;
+        readonly requestDeserialize: (value: Buffer) => AttachInstanceFilesystemRequest;
+        readonly responseSerialize: (value: Operation) => Buffer;
+        readonly responseDeserialize: (value: Buffer) => Operation;
+    };
+    /**
+     * Detaches the filesystem from the instance.
+     *
+     * To detach a filesystem, the instance must have a `STOPPED` status ([Instance.status]).
+     * To check the instance status, make a [InstanceService.Get] request.
+     * To stop the running instance, make a [InstanceService.Stop] request.
+     */
+    readonly detachFilesystem: {
+        readonly path: "/yandex.cloud.compute.v1.InstanceService/DetachFilesystem";
+        readonly requestStream: false;
+        readonly responseStream: false;
+        readonly requestSerialize: (value: DetachInstanceFilesystemRequest) => Buffer;
+        readonly requestDeserialize: (value: Buffer) => DetachInstanceFilesystemRequest;
+        readonly responseSerialize: (value: Operation) => Buffer;
+        readonly responseDeserialize: (value: Buffer) => Operation;
+    };
     /** Enables One-to-one NAT on the network interface. */
     readonly addOneToOneNat: {
         readonly path: "/yandex.cloud.compute.v1.InstanceService/AddOneToOneNat";
@@ -1030,6 +1170,27 @@ export interface InstanceServiceServer extends UntypedServiceImplementation {
     attachDisk: handleUnaryCall<AttachInstanceDiskRequest, Operation>;
     /** Detaches the disk from the instance. */
     detachDisk: handleUnaryCall<DetachInstanceDiskRequest, Operation>;
+    /**
+     * Attaches the filesystem to the instance.
+     *
+     * The instance and the filesystem must reside in the same availability zone.
+     *
+     * To attach a filesystem, the instance must have a `STOPPED` status ([Instance.status]).
+     * To check the instance status, make a [InstanceService.Get] request.
+     * To stop the running instance, make a [InstanceService.Stop] request.
+     *
+     * To use the instance with an attached filesystem, the latter must be mounted.
+     * For details, see [documentation](/docs/compute/operations/filesystem/attach-to-vm).
+     */
+    attachFilesystem: handleUnaryCall<AttachInstanceFilesystemRequest, Operation>;
+    /**
+     * Detaches the filesystem from the instance.
+     *
+     * To detach a filesystem, the instance must have a `STOPPED` status ([Instance.status]).
+     * To check the instance status, make a [InstanceService.Get] request.
+     * To stop the running instance, make a [InstanceService.Stop] request.
+     */
+    detachFilesystem: handleUnaryCall<DetachInstanceFilesystemRequest, Operation>;
     /** Enables One-to-one NAT on the network interface. */
     addOneToOneNat: handleUnaryCall<AddInstanceOneToOneNatRequest, Operation>;
     /** Removes One-to-one NAT from the network interface. */
@@ -1099,6 +1260,31 @@ export interface InstanceServiceClient extends Client {
     detachDisk(request: DetachInstanceDiskRequest, callback: (error: ServiceError | null, response: Operation) => void): ClientUnaryCall;
     detachDisk(request: DetachInstanceDiskRequest, metadata: Metadata, callback: (error: ServiceError | null, response: Operation) => void): ClientUnaryCall;
     detachDisk(request: DetachInstanceDiskRequest, metadata: Metadata, options: Partial<CallOptions>, callback: (error: ServiceError | null, response: Operation) => void): ClientUnaryCall;
+    /**
+     * Attaches the filesystem to the instance.
+     *
+     * The instance and the filesystem must reside in the same availability zone.
+     *
+     * To attach a filesystem, the instance must have a `STOPPED` status ([Instance.status]).
+     * To check the instance status, make a [InstanceService.Get] request.
+     * To stop the running instance, make a [InstanceService.Stop] request.
+     *
+     * To use the instance with an attached filesystem, the latter must be mounted.
+     * For details, see [documentation](/docs/compute/operations/filesystem/attach-to-vm).
+     */
+    attachFilesystem(request: AttachInstanceFilesystemRequest, callback: (error: ServiceError | null, response: Operation) => void): ClientUnaryCall;
+    attachFilesystem(request: AttachInstanceFilesystemRequest, metadata: Metadata, callback: (error: ServiceError | null, response: Operation) => void): ClientUnaryCall;
+    attachFilesystem(request: AttachInstanceFilesystemRequest, metadata: Metadata, options: Partial<CallOptions>, callback: (error: ServiceError | null, response: Operation) => void): ClientUnaryCall;
+    /**
+     * Detaches the filesystem from the instance.
+     *
+     * To detach a filesystem, the instance must have a `STOPPED` status ([Instance.status]).
+     * To check the instance status, make a [InstanceService.Get] request.
+     * To stop the running instance, make a [InstanceService.Stop] request.
+     */
+    detachFilesystem(request: DetachInstanceFilesystemRequest, callback: (error: ServiceError | null, response: Operation) => void): ClientUnaryCall;
+    detachFilesystem(request: DetachInstanceFilesystemRequest, metadata: Metadata, callback: (error: ServiceError | null, response: Operation) => void): ClientUnaryCall;
+    detachFilesystem(request: DetachInstanceFilesystemRequest, metadata: Metadata, options: Partial<CallOptions>, callback: (error: ServiceError | null, response: Operation) => void): ClientUnaryCall;
     /** Enables One-to-one NAT on the network interface. */
     addOneToOneNat(request: AddInstanceOneToOneNatRequest, callback: (error: ServiceError | null, response: Operation) => void): ClientUnaryCall;
     addOneToOneNat(request: AddInstanceOneToOneNatRequest, metadata: Metadata, callback: (error: ServiceError | null, response: Operation) => void): ClientUnaryCall;

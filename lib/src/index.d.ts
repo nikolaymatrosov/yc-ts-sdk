@@ -1,6 +1,6 @@
-import { ServiceDefinition } from '@grpc/grpc-js';
 import { IIAmCredentials } from './TokenService/iamTokenService';
 import './operation';
+import { ServiceDefinition } from '@grpc/grpc-js';
 import { Client } from 'nice-grpc';
 export interface GenericConfig {
     pollInterval?: number;

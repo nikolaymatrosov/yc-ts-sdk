@@ -175,7 +175,7 @@ export interface ListAddressOperationsRequest {
     /**
      * ID of the address to list operations for.
      *
-     * To get a address ID make a [tAddressService.List] request.
+     * To get a address ID make a [AddressService.List] request.
      */
     addressId: string;
     /**

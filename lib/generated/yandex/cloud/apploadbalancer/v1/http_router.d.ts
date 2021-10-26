@@ -1,4 +1,4 @@
-import { VirtualHost } from '../../../../yandex/cloud/apploadbalancer/v1/virtual_host';
+import { VirtualHost, RouteOptions } from '../../../../yandex/cloud/apploadbalancer/v1/virtual_host';
 import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.apploadbalancer.v1";
 /**
@@ -30,6 +30,7 @@ export interface HttpRouter {
     virtualHosts: VirtualHost[];
     /** Creation timestamp. */
     createdAt: Date | undefined;
+    routeOptions: RouteOptions | undefined;
 }
 export interface HttpRouter_LabelsEntry {
     key: string;

@@ -121,7 +121,7 @@ export interface AudioVariable {
     variableName: string;
     /** Start time of the variable in milliseconds. */
     variableStartMs: number;
-    /** Lenght of the variable in milliseconds. */
+    /** Length of the variable in milliseconds. */
     variableLengthMs: number;
 }
 
@@ -166,7 +166,7 @@ export interface Hints {
     audioTemplate: AudioTemplate | undefined;
     /** hint to change speed */
     speed: number | undefined;
-    /** hint to regulate volume */
+    /** hint to regulate volume. For LOUDNESS_NORMALIZATION_TYPE_UNSPECIFIED normalization will use MAX_PEAK, if volume in (0, 1], LUFS if volume in [-145, 0). */
     volume: number | undefined;
 }
 
@@ -174,17 +174,62 @@ export interface UtteranceSynthesisRequest {
     /**
      * The name of the model.
      *
-     * Currently avalible only `general`.
+     * Specifies basic synthesis functionality. Currently should be empty.
      */
     model: string;
     /** Raw text (e.g. "Hello, Alice"). */
     text: string | undefined;
-    /** Text template instalce, e.g. `{"Hello, {username}" with username="Alice"}`. */
+    /** Text template instance, e.g. `{"Hello, {username}" with username="Alice"}`. */
     textTemplate: TextTemplate | undefined;
     /** Optional hints for synthesis. */
     hints: Hints[];
     /** Optional. Default: 22050 Hz, linear 16-bit signed little-endian PCM, with WAV header */
     outputAudioSpec: AudioFormatOptions | undefined;
+    /** Optional. Default: LUFS, type of loudness normalization, default value -19. */
+    loudnessNormalizationType: UtteranceSynthesisRequest_LoudnessNormalizationType;
+}
+
+/** Normalization type */
+export enum UtteranceSynthesisRequest_LoudnessNormalizationType {
+    LOUDNESS_NORMALIZATION_TYPE_UNSPECIFIED = 0,
+    MAX_PEAK = 1,
+    LUFS = 2,
+    UNRECOGNIZED = -1,
+}
+
+export function utteranceSynthesisRequest_LoudnessNormalizationTypeFromJSON(
+    object: any
+): UtteranceSynthesisRequest_LoudnessNormalizationType {
+    switch (object) {
+        case 0:
+        case 'LOUDNESS_NORMALIZATION_TYPE_UNSPECIFIED':
+            return UtteranceSynthesisRequest_LoudnessNormalizationType.LOUDNESS_NORMALIZATION_TYPE_UNSPECIFIED;
+        case 1:
+        case 'MAX_PEAK':
+            return UtteranceSynthesisRequest_LoudnessNormalizationType.MAX_PEAK;
+        case 2:
+        case 'LUFS':
+            return UtteranceSynthesisRequest_LoudnessNormalizationType.LUFS;
+        case -1:
+        case 'UNRECOGNIZED':
+        default:
+            return UtteranceSynthesisRequest_LoudnessNormalizationType.UNRECOGNIZED;
+    }
+}
+
+export function utteranceSynthesisRequest_LoudnessNormalizationTypeToJSON(
+    object: UtteranceSynthesisRequest_LoudnessNormalizationType
+): string {
+    switch (object) {
+        case UtteranceSynthesisRequest_LoudnessNormalizationType.LOUDNESS_NORMALIZATION_TYPE_UNSPECIFIED:
+            return 'LOUDNESS_NORMALIZATION_TYPE_UNSPECIFIED';
+        case UtteranceSynthesisRequest_LoudnessNormalizationType.MAX_PEAK:
+            return 'MAX_PEAK';
+        case UtteranceSynthesisRequest_LoudnessNormalizationType.LUFS:
+            return 'LUFS';
+        default:
+            return 'UNKNOWN';
+    }
 }
 
 const baseAudioContent: object = {};
@@ -1229,7 +1274,10 @@ export const Hints = {
     },
 };
 
-const baseUtteranceSynthesisRequest: object = { model: '' };
+const baseUtteranceSynthesisRequest: object = {
+    model: '',
+    loudnessNormalizationType: 0,
+};
 
 export const UtteranceSynthesisRequest = {
     encode(
@@ -1256,6 +1304,9 @@ export const UtteranceSynthesisRequest = {
                 message.outputAudioSpec,
                 writer.uint32(42).fork()
             ).ldelim();
+        }
+        if (message.loudnessNormalizationType !== 0) {
+            writer.uint32(48).int32(message.loudnessNormalizationType);
         }
         return writer;
     },
@@ -1294,6 +1345,9 @@ export const UtteranceSynthesisRequest = {
                         reader,
                         reader.uint32()
                     );
+                    break;
+                case 6:
+                    message.loudnessNormalizationType = reader.int32() as any;
                     break;
                 default:
                     reader.skipType(tag & 7);
@@ -1338,6 +1392,17 @@ export const UtteranceSynthesisRequest = {
         } else {
             message.outputAudioSpec = undefined;
         }
+        if (
+            object.loudnessNormalizationType !== undefined &&
+            object.loudnessNormalizationType !== null
+        ) {
+            message.loudnessNormalizationType =
+                utteranceSynthesisRequest_LoudnessNormalizationTypeFromJSON(
+                    object.loudnessNormalizationType
+                );
+        } else {
+            message.loudnessNormalizationType = 0;
+        }
         return message;
     },
 
@@ -1360,6 +1425,11 @@ export const UtteranceSynthesisRequest = {
             (obj.outputAudioSpec = message.outputAudioSpec
                 ? AudioFormatOptions.toJSON(message.outputAudioSpec)
                 : undefined);
+        message.loudnessNormalizationType !== undefined &&
+            (obj.loudnessNormalizationType =
+                utteranceSynthesisRequest_LoudnessNormalizationTypeToJSON(
+                    message.loudnessNormalizationType
+                ));
         return obj;
     },
 
@@ -1401,6 +1471,15 @@ export const UtteranceSynthesisRequest = {
             );
         } else {
             message.outputAudioSpec = undefined;
+        }
+        if (
+            object.loudnessNormalizationType !== undefined &&
+            object.loudnessNormalizationType !== null
+        ) {
+            message.loudnessNormalizationType =
+                object.loudnessNormalizationType;
+        } else {
+            message.loudnessNormalizationType = 0;
         }
         return message;
     },

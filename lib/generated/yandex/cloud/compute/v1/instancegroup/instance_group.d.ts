@@ -78,7 +78,11 @@ export declare enum InstanceGroup_Status {
      * ACTIVE - Instance group is active.
      * In this state the group manages its instances and monitors their health,
      * creating, deleting, stopping, updating and starting instances as needed.
+     *
      * To stop the instance group, call [yandex.cloud.compute.v1.instancegroup.InstanceGroupService.Stop].
+     * To pause the processes in the instance group, i.e. scaling, checking instances' health,
+     * auto-healing and updating them, without stopping the instances,
+     * call [yandex.cloud.compute.v1.instancegroup.InstanceGroupService.PauseProcesses].
      */
     ACTIVE = 2,
     /**
@@ -94,7 +98,16 @@ export declare enum InstanceGroup_Status {
     STOPPED = 4,
     /** DELETING - Instance group is being deleted. */
     DELETING = 5,
-    /** PAUSED - Instance group is paused. */
+    /**
+     * PAUSED - Instance group is paused.
+     * In this state all the processes regarding the group management, i.e. scaling, checking instances' health,
+     * auto-healing and updating them, are paused. The instances that were running prior to pausing the group, however,
+     * may still be running.
+     *
+     * To resume the processes in the instance group,
+     * call [yandex.cloud.compute.v1.instancegroup.InstanceGroupService.ResumeProcesses].
+     * The group status will change to `ACTIVE`.
+     */
     PAUSED = 6,
     UNRECOGNIZED = -1
 }
@@ -166,7 +179,10 @@ export interface ScalePolicy_AutoScale {
      * 0 means maximum limit = 100.
      */
     maxSize: number;
-    /** Time in seconds allotted for averaging metrics. */
+    /**
+     * Time in seconds allotted for averaging metrics.
+     * 1 minute by default.
+     */
     measurementDuration: Duration | undefined;
     /**
      * The warmup time of the instance in seconds. During this time,
@@ -407,7 +423,26 @@ export interface InstanceTemplate_MetadataEntry {
 export interface PlacementPolicy {
     /** Identifier of placement group */
     placementGroupId: string;
+    /** List of affinity rules. Scheduler will attempt to allocate instances according to order of rules. */
+    hostAffinityRules: PlacementPolicy_HostAffinityRule[];
 }
+/** Affinitity definition */
+export interface PlacementPolicy_HostAffinityRule {
+    /** Affinity label or one of reserved values - 'yc.hostId', 'yc.hostGroupId' */
+    key: string;
+    /** Include or exclude action */
+    op: PlacementPolicy_HostAffinityRule_Operator;
+    /** Affinity value or host ID or host group ID */
+    values: string[];
+}
+export declare enum PlacementPolicy_HostAffinityRule_Operator {
+    OPERATOR_UNSPECIFIED = 0,
+    IN = 1,
+    NOT_IN = 2,
+    UNRECOGNIZED = -1
+}
+export declare function placementPolicy_HostAffinityRule_OperatorFromJSON(object: any): PlacementPolicy_HostAffinityRule_Operator;
+export declare function placementPolicy_HostAffinityRule_OperatorToJSON(object: PlacementPolicy_HostAffinityRule_Operator): string;
 export interface ResourcesSpec {
     /** The amount of memory available to the instance, specified in bytes. */
     memory: number;
@@ -857,6 +892,13 @@ export declare const PlacementPolicy: {
     fromJSON(object: any): PlacementPolicy;
     toJSON(message: PlacementPolicy): unknown;
     fromPartial(object: DeepPartial<PlacementPolicy>): PlacementPolicy;
+};
+export declare const PlacementPolicy_HostAffinityRule: {
+    encode(message: PlacementPolicy_HostAffinityRule, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number | undefined): PlacementPolicy_HostAffinityRule;
+    fromJSON(object: any): PlacementPolicy_HostAffinityRule;
+    toJSON(message: PlacementPolicy_HostAffinityRule): unknown;
+    fromPartial(object: DeepPartial<PlacementPolicy_HostAffinityRule>): PlacementPolicy_HostAffinityRule;
 };
 export declare const ResourcesSpec: {
     encode(message: ResourcesSpec, writer?: _m0.Writer): _m0.Writer;

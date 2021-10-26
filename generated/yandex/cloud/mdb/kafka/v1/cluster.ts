@@ -254,6 +254,8 @@ export interface ConfigSpec {
     assignPublicIp: boolean;
     /** Allows to manage topics via AdminAPI */
     unmanagedTopics: boolean;
+    /** Enables managed schema registry on cluster */
+    schemaRegistry: boolean;
 }
 
 export interface ConfigSpec_Kafka {
@@ -1162,6 +1164,7 @@ const baseConfigSpec: object = {
     zoneId: '',
     assignPublicIp: false,
     unmanagedTopics: false,
+    schemaRegistry: false,
 };
 
 export const ConfigSpec = {
@@ -1198,6 +1201,9 @@ export const ConfigSpec = {
         }
         if (message.unmanagedTopics === true) {
             writer.uint32(56).bool(message.unmanagedTopics);
+        }
+        if (message.schemaRegistry === true) {
+            writer.uint32(64).bool(message.schemaRegistry);
         }
         return writer;
     },
@@ -1240,6 +1246,9 @@ export const ConfigSpec = {
                     break;
                 case 7:
                     message.unmanagedTopics = reader.bool();
+                    break;
+                case 8:
+                    message.schemaRegistry = reader.bool();
                     break;
                 default:
                     reader.skipType(tag & 7);
@@ -1293,6 +1302,14 @@ export const ConfigSpec = {
         } else {
             message.unmanagedTopics = false;
         }
+        if (
+            object.schemaRegistry !== undefined &&
+            object.schemaRegistry !== null
+        ) {
+            message.schemaRegistry = Boolean(object.schemaRegistry);
+        } else {
+            message.schemaRegistry = false;
+        }
         return message;
     },
 
@@ -1318,6 +1335,8 @@ export const ConfigSpec = {
             (obj.assignPublicIp = message.assignPublicIp);
         message.unmanagedTopics !== undefined &&
             (obj.unmanagedTopics = message.unmanagedTopics);
+        message.schemaRegistry !== undefined &&
+            (obj.schemaRegistry = message.schemaRegistry);
         return obj;
     },
 
@@ -1366,6 +1385,14 @@ export const ConfigSpec = {
             message.unmanagedTopics = object.unmanagedTopics;
         } else {
             message.unmanagedTopics = false;
+        }
+        if (
+            object.schemaRegistry !== undefined &&
+            object.schemaRegistry !== null
+        ) {
+            message.schemaRegistry = object.schemaRegistry;
+        } else {
+            message.schemaRegistry = false;
         }
         return message;
     },

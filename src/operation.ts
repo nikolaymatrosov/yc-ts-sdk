@@ -1,15 +1,16 @@
-import * as operations from '../generated/yandex/cloud/operation/operation';
-
-import * as util from './util';
-import { Session } from './index';
 import { OperationService } from '../api/operation';
-
+import * as operations from '../generated/yandex/cloud/operation/operation';
+import { Session } from './index';
+import * as util from './util';
 
 export function timeSpent(op: operations.Operation): number {
     return new Date().getTime() - (op.createdAt?.getTime() ?? 0);
 }
 
-export function completion(op: operations.Operation, session: Session): Promise<operations.Operation> {
+export function completion(
+    op: operations.Operation,
+    session: Session
+): Promise<operations.Operation> {
     const operationService = OperationService(session);
     const currentState = op;
     return new Promise(async (resolve, reject) => {

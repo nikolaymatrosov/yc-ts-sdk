@@ -37,6 +37,11 @@ import {
     Mongocfgconfig44,
     Mongosconfig44,
 } from '../../../../../yandex/cloud/mdb/mongodb/v1/config/mongodb4_4';
+import {
+    Mongodconfig50,
+    Mongocfgconfig50,
+    Mongosconfig50,
+} from '../../../../../yandex/cloud/mdb/mongodb/v1/config/mongodb5_0';
 import { DatabaseSpec } from '../../../../../yandex/cloud/mdb/mongodb/v1/database';
 import { MaintenanceWindow } from '../../../../../yandex/cloud/mdb/mongodb/v1/maintenance';
 import { UserSpec } from '../../../../../yandex/cloud/mdb/mongodb/v1/user';
@@ -1009,8 +1014,48 @@ export interface Mongodbspec44_MongoInfra {
     resources: Resources | undefined;
 }
 
+export interface Mongodbspec50 {
+    /** Configuration and resource allocation for mongod 5.0 hosts. */
+    mongod: Mongodbspec50_Mongod | undefined;
+    /** Configuration and resource allocation for mongocfg 5.0 hosts. */
+    mongocfg: Mongodbspec50_MongoCfg | undefined;
+    /** Configuration and resource allocation for mongos 5.0 hosts. */
+    mongos: Mongodbspec50_Mongos | undefined;
+    /** Configuration and resource allocation for mongoinfra (mongos+mongocfg) 5.0 hosts. */
+    mongoinfra: Mongodbspec50_MongoInfra | undefined;
+}
+
+export interface Mongodbspec50_Mongod {
+    /** Configuration for mongod 5.0 hosts. */
+    config: Mongodconfig50 | undefined;
+    /** Resources allocated to each mongod host. */
+    resources: Resources | undefined;
+}
+
+export interface Mongodbspec50_MongoCfg {
+    /** Configuration for mongocfg 5.0 hosts. */
+    config: Mongocfgconfig50 | undefined;
+    /** Resources allocated to each mongocfg host. */
+    resources: Resources | undefined;
+}
+
+export interface Mongodbspec50_Mongos {
+    /** Configuration for mongos 5.0 hosts. */
+    config: Mongosconfig50 | undefined;
+    /** Resources allocated to each mongos host. */
+    resources: Resources | undefined;
+}
+
+export interface Mongodbspec50_MongoInfra {
+    /** Configuration for mongoinfra 5.0 hosts. */
+    configMongos: Mongosconfig50 | undefined;
+    configMongocfg: Mongocfgconfig50 | undefined;
+    /** Resources allocated to each mongoinfra (mongos+mongocfg) host. */
+    resources: Resources | undefined;
+}
+
 export interface ConfigSpec {
-    /** Version of MongoDB used in the cluster. Possible values: `3.6`, `4.0`, `4.2`, `4.4`. */
+    /** Version of MongoDB used in the cluster. Possible values: `3.6`, `4.0`, `4.2`, `4.4`, `5.0`. */
     version: string;
     /**
      * MongoDB feature compatibility version. See usage details in [MongoDB documentation](https://docs.mongodb.com/manual/reference/command/setFeatureCompatibilityVersion/).
@@ -1020,6 +1065,7 @@ export interface ConfigSpec {
      * * `4.0` - persist data compatibility for version 4.0. After setting this option the data will not be compatible with 3.6 or older.
      * * `4.2` - persist data compatibility for version 4.2. After setting this option the data will not be compatible with 4.0 or older.
      * * `4.4` - persist data compatibility for version 4.4. After setting this option the data will not be compatible with 4.2 or older.
+     * * `5.0` - persist data compatibility for version 5.0. After setting this option the data will not be compatible with 4.4 or older.
      */
     featureCompatibilityVersion: string;
     /** Configuration and resource allocation for a MongoDB 3.6 cluster. */
@@ -1030,6 +1076,8 @@ export interface ConfigSpec {
     mongodbSpec42: Mongodbspec42 | undefined;
     /** Configuration and resource allocation for a MongoDB 4.4 cluster. */
     mongodbSpec44: Mongodbspec44 | undefined;
+    /** Configuration and resource allocation for a MongoDB 5.0 cluster. */
+    mongodbSpec50: Mongodbspec50 | undefined;
     /** Time to start the daily backup, in the UTC timezone. */
     backupWindowStart: TimeOfDay | undefined;
     /** Retain period of automatically created backup in days */
@@ -9813,6 +9861,604 @@ export const Mongodbspec44_MongoInfra = {
     },
 };
 
+const baseMongodbspec50: object = {};
+
+export const Mongodbspec50 = {
+    encode(
+        message: Mongodbspec50,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        if (message.mongod !== undefined) {
+            Mongodbspec50_Mongod.encode(
+                message.mongod,
+                writer.uint32(10).fork()
+            ).ldelim();
+        }
+        if (message.mongocfg !== undefined) {
+            Mongodbspec50_MongoCfg.encode(
+                message.mongocfg,
+                writer.uint32(18).fork()
+            ).ldelim();
+        }
+        if (message.mongos !== undefined) {
+            Mongodbspec50_Mongos.encode(
+                message.mongos,
+                writer.uint32(26).fork()
+            ).ldelim();
+        }
+        if (message.mongoinfra !== undefined) {
+            Mongodbspec50_MongoInfra.encode(
+                message.mongoinfra,
+                writer.uint32(34).fork()
+            ).ldelim();
+        }
+        return writer;
+    },
+
+    decode(input: _m0.Reader | Uint8Array, length?: number): Mongodbspec50 {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = { ...baseMongodbspec50 } as Mongodbspec50;
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.mongod = Mongodbspec50_Mongod.decode(
+                        reader,
+                        reader.uint32()
+                    );
+                    break;
+                case 2:
+                    message.mongocfg = Mongodbspec50_MongoCfg.decode(
+                        reader,
+                        reader.uint32()
+                    );
+                    break;
+                case 3:
+                    message.mongos = Mongodbspec50_Mongos.decode(
+                        reader,
+                        reader.uint32()
+                    );
+                    break;
+                case 4:
+                    message.mongoinfra = Mongodbspec50_MongoInfra.decode(
+                        reader,
+                        reader.uint32()
+                    );
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): Mongodbspec50 {
+        const message = { ...baseMongodbspec50 } as Mongodbspec50;
+        if (object.mongod !== undefined && object.mongod !== null) {
+            message.mongod = Mongodbspec50_Mongod.fromJSON(object.mongod);
+        } else {
+            message.mongod = undefined;
+        }
+        if (object.mongocfg !== undefined && object.mongocfg !== null) {
+            message.mongocfg = Mongodbspec50_MongoCfg.fromJSON(object.mongocfg);
+        } else {
+            message.mongocfg = undefined;
+        }
+        if (object.mongos !== undefined && object.mongos !== null) {
+            message.mongos = Mongodbspec50_Mongos.fromJSON(object.mongos);
+        } else {
+            message.mongos = undefined;
+        }
+        if (object.mongoinfra !== undefined && object.mongoinfra !== null) {
+            message.mongoinfra = Mongodbspec50_MongoInfra.fromJSON(
+                object.mongoinfra
+            );
+        } else {
+            message.mongoinfra = undefined;
+        }
+        return message;
+    },
+
+    toJSON(message: Mongodbspec50): unknown {
+        const obj: any = {};
+        message.mongod !== undefined &&
+            (obj.mongod = message.mongod
+                ? Mongodbspec50_Mongod.toJSON(message.mongod)
+                : undefined);
+        message.mongocfg !== undefined &&
+            (obj.mongocfg = message.mongocfg
+                ? Mongodbspec50_MongoCfg.toJSON(message.mongocfg)
+                : undefined);
+        message.mongos !== undefined &&
+            (obj.mongos = message.mongos
+                ? Mongodbspec50_Mongos.toJSON(message.mongos)
+                : undefined);
+        message.mongoinfra !== undefined &&
+            (obj.mongoinfra = message.mongoinfra
+                ? Mongodbspec50_MongoInfra.toJSON(message.mongoinfra)
+                : undefined);
+        return obj;
+    },
+
+    fromPartial(object: DeepPartial<Mongodbspec50>): Mongodbspec50 {
+        const message = { ...baseMongodbspec50 } as Mongodbspec50;
+        if (object.mongod !== undefined && object.mongod !== null) {
+            message.mongod = Mongodbspec50_Mongod.fromPartial(object.mongod);
+        } else {
+            message.mongod = undefined;
+        }
+        if (object.mongocfg !== undefined && object.mongocfg !== null) {
+            message.mongocfg = Mongodbspec50_MongoCfg.fromPartial(
+                object.mongocfg
+            );
+        } else {
+            message.mongocfg = undefined;
+        }
+        if (object.mongos !== undefined && object.mongos !== null) {
+            message.mongos = Mongodbspec50_Mongos.fromPartial(object.mongos);
+        } else {
+            message.mongos = undefined;
+        }
+        if (object.mongoinfra !== undefined && object.mongoinfra !== null) {
+            message.mongoinfra = Mongodbspec50_MongoInfra.fromPartial(
+                object.mongoinfra
+            );
+        } else {
+            message.mongoinfra = undefined;
+        }
+        return message;
+    },
+};
+
+const baseMongodbspec50_Mongod: object = {};
+
+export const Mongodbspec50_Mongod = {
+    encode(
+        message: Mongodbspec50_Mongod,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        if (message.config !== undefined) {
+            Mongodconfig50.encode(
+                message.config,
+                writer.uint32(10).fork()
+            ).ldelim();
+        }
+        if (message.resources !== undefined) {
+            Resources.encode(
+                message.resources,
+                writer.uint32(18).fork()
+            ).ldelim();
+        }
+        return writer;
+    },
+
+    decode(
+        input: _m0.Reader | Uint8Array,
+        length?: number
+    ): Mongodbspec50_Mongod {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = { ...baseMongodbspec50_Mongod } as Mongodbspec50_Mongod;
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.config = Mongodconfig50.decode(
+                        reader,
+                        reader.uint32()
+                    );
+                    break;
+                case 2:
+                    message.resources = Resources.decode(
+                        reader,
+                        reader.uint32()
+                    );
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): Mongodbspec50_Mongod {
+        const message = { ...baseMongodbspec50_Mongod } as Mongodbspec50_Mongod;
+        if (object.config !== undefined && object.config !== null) {
+            message.config = Mongodconfig50.fromJSON(object.config);
+        } else {
+            message.config = undefined;
+        }
+        if (object.resources !== undefined && object.resources !== null) {
+            message.resources = Resources.fromJSON(object.resources);
+        } else {
+            message.resources = undefined;
+        }
+        return message;
+    },
+
+    toJSON(message: Mongodbspec50_Mongod): unknown {
+        const obj: any = {};
+        message.config !== undefined &&
+            (obj.config = message.config
+                ? Mongodconfig50.toJSON(message.config)
+                : undefined);
+        message.resources !== undefined &&
+            (obj.resources = message.resources
+                ? Resources.toJSON(message.resources)
+                : undefined);
+        return obj;
+    },
+
+    fromPartial(
+        object: DeepPartial<Mongodbspec50_Mongod>
+    ): Mongodbspec50_Mongod {
+        const message = { ...baseMongodbspec50_Mongod } as Mongodbspec50_Mongod;
+        if (object.config !== undefined && object.config !== null) {
+            message.config = Mongodconfig50.fromPartial(object.config);
+        } else {
+            message.config = undefined;
+        }
+        if (object.resources !== undefined && object.resources !== null) {
+            message.resources = Resources.fromPartial(object.resources);
+        } else {
+            message.resources = undefined;
+        }
+        return message;
+    },
+};
+
+const baseMongodbspec50_MongoCfg: object = {};
+
+export const Mongodbspec50_MongoCfg = {
+    encode(
+        message: Mongodbspec50_MongoCfg,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        if (message.config !== undefined) {
+            Mongocfgconfig50.encode(
+                message.config,
+                writer.uint32(10).fork()
+            ).ldelim();
+        }
+        if (message.resources !== undefined) {
+            Resources.encode(
+                message.resources,
+                writer.uint32(18).fork()
+            ).ldelim();
+        }
+        return writer;
+    },
+
+    decode(
+        input: _m0.Reader | Uint8Array,
+        length?: number
+    ): Mongodbspec50_MongoCfg {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = {
+            ...baseMongodbspec50_MongoCfg,
+        } as Mongodbspec50_MongoCfg;
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.config = Mongocfgconfig50.decode(
+                        reader,
+                        reader.uint32()
+                    );
+                    break;
+                case 2:
+                    message.resources = Resources.decode(
+                        reader,
+                        reader.uint32()
+                    );
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): Mongodbspec50_MongoCfg {
+        const message = {
+            ...baseMongodbspec50_MongoCfg,
+        } as Mongodbspec50_MongoCfg;
+        if (object.config !== undefined && object.config !== null) {
+            message.config = Mongocfgconfig50.fromJSON(object.config);
+        } else {
+            message.config = undefined;
+        }
+        if (object.resources !== undefined && object.resources !== null) {
+            message.resources = Resources.fromJSON(object.resources);
+        } else {
+            message.resources = undefined;
+        }
+        return message;
+    },
+
+    toJSON(message: Mongodbspec50_MongoCfg): unknown {
+        const obj: any = {};
+        message.config !== undefined &&
+            (obj.config = message.config
+                ? Mongocfgconfig50.toJSON(message.config)
+                : undefined);
+        message.resources !== undefined &&
+            (obj.resources = message.resources
+                ? Resources.toJSON(message.resources)
+                : undefined);
+        return obj;
+    },
+
+    fromPartial(
+        object: DeepPartial<Mongodbspec50_MongoCfg>
+    ): Mongodbspec50_MongoCfg {
+        const message = {
+            ...baseMongodbspec50_MongoCfg,
+        } as Mongodbspec50_MongoCfg;
+        if (object.config !== undefined && object.config !== null) {
+            message.config = Mongocfgconfig50.fromPartial(object.config);
+        } else {
+            message.config = undefined;
+        }
+        if (object.resources !== undefined && object.resources !== null) {
+            message.resources = Resources.fromPartial(object.resources);
+        } else {
+            message.resources = undefined;
+        }
+        return message;
+    },
+};
+
+const baseMongodbspec50_Mongos: object = {};
+
+export const Mongodbspec50_Mongos = {
+    encode(
+        message: Mongodbspec50_Mongos,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        if (message.config !== undefined) {
+            Mongosconfig50.encode(
+                message.config,
+                writer.uint32(10).fork()
+            ).ldelim();
+        }
+        if (message.resources !== undefined) {
+            Resources.encode(
+                message.resources,
+                writer.uint32(18).fork()
+            ).ldelim();
+        }
+        return writer;
+    },
+
+    decode(
+        input: _m0.Reader | Uint8Array,
+        length?: number
+    ): Mongodbspec50_Mongos {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = { ...baseMongodbspec50_Mongos } as Mongodbspec50_Mongos;
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.config = Mongosconfig50.decode(
+                        reader,
+                        reader.uint32()
+                    );
+                    break;
+                case 2:
+                    message.resources = Resources.decode(
+                        reader,
+                        reader.uint32()
+                    );
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): Mongodbspec50_Mongos {
+        const message = { ...baseMongodbspec50_Mongos } as Mongodbspec50_Mongos;
+        if (object.config !== undefined && object.config !== null) {
+            message.config = Mongosconfig50.fromJSON(object.config);
+        } else {
+            message.config = undefined;
+        }
+        if (object.resources !== undefined && object.resources !== null) {
+            message.resources = Resources.fromJSON(object.resources);
+        } else {
+            message.resources = undefined;
+        }
+        return message;
+    },
+
+    toJSON(message: Mongodbspec50_Mongos): unknown {
+        const obj: any = {};
+        message.config !== undefined &&
+            (obj.config = message.config
+                ? Mongosconfig50.toJSON(message.config)
+                : undefined);
+        message.resources !== undefined &&
+            (obj.resources = message.resources
+                ? Resources.toJSON(message.resources)
+                : undefined);
+        return obj;
+    },
+
+    fromPartial(
+        object: DeepPartial<Mongodbspec50_Mongos>
+    ): Mongodbspec50_Mongos {
+        const message = { ...baseMongodbspec50_Mongos } as Mongodbspec50_Mongos;
+        if (object.config !== undefined && object.config !== null) {
+            message.config = Mongosconfig50.fromPartial(object.config);
+        } else {
+            message.config = undefined;
+        }
+        if (object.resources !== undefined && object.resources !== null) {
+            message.resources = Resources.fromPartial(object.resources);
+        } else {
+            message.resources = undefined;
+        }
+        return message;
+    },
+};
+
+const baseMongodbspec50_MongoInfra: object = {};
+
+export const Mongodbspec50_MongoInfra = {
+    encode(
+        message: Mongodbspec50_MongoInfra,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        if (message.configMongos !== undefined) {
+            Mongosconfig50.encode(
+                message.configMongos,
+                writer.uint32(10).fork()
+            ).ldelim();
+        }
+        if (message.configMongocfg !== undefined) {
+            Mongocfgconfig50.encode(
+                message.configMongocfg,
+                writer.uint32(18).fork()
+            ).ldelim();
+        }
+        if (message.resources !== undefined) {
+            Resources.encode(
+                message.resources,
+                writer.uint32(26).fork()
+            ).ldelim();
+        }
+        return writer;
+    },
+
+    decode(
+        input: _m0.Reader | Uint8Array,
+        length?: number
+    ): Mongodbspec50_MongoInfra {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = {
+            ...baseMongodbspec50_MongoInfra,
+        } as Mongodbspec50_MongoInfra;
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.configMongos = Mongosconfig50.decode(
+                        reader,
+                        reader.uint32()
+                    );
+                    break;
+                case 2:
+                    message.configMongocfg = Mongocfgconfig50.decode(
+                        reader,
+                        reader.uint32()
+                    );
+                    break;
+                case 3:
+                    message.resources = Resources.decode(
+                        reader,
+                        reader.uint32()
+                    );
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): Mongodbspec50_MongoInfra {
+        const message = {
+            ...baseMongodbspec50_MongoInfra,
+        } as Mongodbspec50_MongoInfra;
+        if (object.configMongos !== undefined && object.configMongos !== null) {
+            message.configMongos = Mongosconfig50.fromJSON(object.configMongos);
+        } else {
+            message.configMongos = undefined;
+        }
+        if (
+            object.configMongocfg !== undefined &&
+            object.configMongocfg !== null
+        ) {
+            message.configMongocfg = Mongocfgconfig50.fromJSON(
+                object.configMongocfg
+            );
+        } else {
+            message.configMongocfg = undefined;
+        }
+        if (object.resources !== undefined && object.resources !== null) {
+            message.resources = Resources.fromJSON(object.resources);
+        } else {
+            message.resources = undefined;
+        }
+        return message;
+    },
+
+    toJSON(message: Mongodbspec50_MongoInfra): unknown {
+        const obj: any = {};
+        message.configMongos !== undefined &&
+            (obj.configMongos = message.configMongos
+                ? Mongosconfig50.toJSON(message.configMongos)
+                : undefined);
+        message.configMongocfg !== undefined &&
+            (obj.configMongocfg = message.configMongocfg
+                ? Mongocfgconfig50.toJSON(message.configMongocfg)
+                : undefined);
+        message.resources !== undefined &&
+            (obj.resources = message.resources
+                ? Resources.toJSON(message.resources)
+                : undefined);
+        return obj;
+    },
+
+    fromPartial(
+        object: DeepPartial<Mongodbspec50_MongoInfra>
+    ): Mongodbspec50_MongoInfra {
+        const message = {
+            ...baseMongodbspec50_MongoInfra,
+        } as Mongodbspec50_MongoInfra;
+        if (object.configMongos !== undefined && object.configMongos !== null) {
+            message.configMongos = Mongosconfig50.fromPartial(
+                object.configMongos
+            );
+        } else {
+            message.configMongos = undefined;
+        }
+        if (
+            object.configMongocfg !== undefined &&
+            object.configMongocfg !== null
+        ) {
+            message.configMongocfg = Mongocfgconfig50.fromPartial(
+                object.configMongocfg
+            );
+        } else {
+            message.configMongocfg = undefined;
+        }
+        if (object.resources !== undefined && object.resources !== null) {
+            message.resources = Resources.fromPartial(object.resources);
+        } else {
+            message.resources = undefined;
+        }
+        return message;
+    },
+};
+
 const baseConfigSpec: object = { version: '', featureCompatibilityVersion: '' };
 
 export const ConfigSpec = {
@@ -9848,6 +10494,12 @@ export const ConfigSpec = {
             Mongodbspec44.encode(
                 message.mongodbSpec44,
                 writer.uint32(66).fork()
+            ).ldelim();
+        }
+        if (message.mongodbSpec50 !== undefined) {
+            Mongodbspec50.encode(
+                message.mongodbSpec50,
+                writer.uint32(82).fork()
             ).ldelim();
         }
         if (message.backupWindowStart !== undefined) {
@@ -9902,6 +10554,12 @@ export const ConfigSpec = {
                     break;
                 case 8:
                     message.mongodbSpec44 = Mongodbspec44.decode(
+                        reader,
+                        reader.uint32()
+                    );
+                    break;
+                case 10:
+                    message.mongodbSpec50 = Mongodbspec50.decode(
                         reader,
                         reader.uint32()
                     );
@@ -9987,6 +10645,16 @@ export const ConfigSpec = {
             message.mongodbSpec44 = undefined;
         }
         if (
+            object.mongodbSpec50 !== undefined &&
+            object.mongodbSpec50 !== null
+        ) {
+            message.mongodbSpec50 = Mongodbspec50.fromJSON(
+                object.mongodbSpec50
+            );
+        } else {
+            message.mongodbSpec50 = undefined;
+        }
+        if (
             object.backupWindowStart !== undefined &&
             object.backupWindowStart !== null
         ) {
@@ -10035,6 +10703,10 @@ export const ConfigSpec = {
         message.mongodbSpec44 !== undefined &&
             (obj.mongodbSpec44 = message.mongodbSpec44
                 ? Mongodbspec44.toJSON(message.mongodbSpec44)
+                : undefined);
+        message.mongodbSpec50 !== undefined &&
+            (obj.mongodbSpec50 = message.mongodbSpec50
+                ? Mongodbspec50.toJSON(message.mongodbSpec50)
                 : undefined);
         message.backupWindowStart !== undefined &&
             (obj.backupWindowStart = message.backupWindowStart
@@ -10104,6 +10776,16 @@ export const ConfigSpec = {
             );
         } else {
             message.mongodbSpec44 = undefined;
+        }
+        if (
+            object.mongodbSpec50 !== undefined &&
+            object.mongodbSpec50 !== null
+        ) {
+            message.mongodbSpec50 = Mongodbspec50.fromPartial(
+                object.mongodbSpec50
+            );
+        } else {
+            message.mongodbSpec50 = undefined;
         }
         if (
             object.backupWindowStart !== undefined &&
