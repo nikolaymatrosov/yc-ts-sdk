@@ -115,6 +115,8 @@ export interface CreateImageRequest {
      * If not specified and you used the `image_id` or `disk_id` field to set the source, then the value can be inherited from the source resource.
      */
     os: Os | undefined;
+    /** When true, an image pool will be created for fast creation disks from the image. */
+    pooled: boolean;
 }
 export interface CreateImageRequest_LabelsEntry {
     key: string;

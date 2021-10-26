@@ -12,6 +12,7 @@ export interface Blob {
     digest: string;
     /** Size of the blob, specified in bytes. */
     size: number;
+    /** List of blob urls. */
     urls: string[];
 }
 

@@ -171,6 +171,8 @@ export interface CreateClusterRequest {
     hostGroupIds: string[];
     /** Deletion Protection inhibits deletion of the cluster */
     deletionProtection: boolean;
+    /** ID of the cloud logging log group to write logs. If not set, logs will not be sent to logging service */
+    logGroupId: string;
 }
 
 export interface CreateClusterRequest_LabelsEntry {
@@ -212,6 +214,8 @@ export interface UpdateClusterRequest {
     securityGroupIds: string[];
     /** Deletion Protection inhibits deletion of the cluster */
     deletionProtection: boolean;
+    /** ID of the cloud logging log group to write logs. If not set, logs will not be sent to logging service */
+    logGroupId: string;
 }
 
 export interface UpdateClusterRequest_LabelsEntry {
@@ -1269,6 +1273,7 @@ const baseCreateClusterRequest: object = {
     securityGroupIds: '',
     hostGroupIds: '',
     deletionProtection: false,
+    logGroupId: '',
 };
 
 export const CreateClusterRequest = {
@@ -1317,6 +1322,9 @@ export const CreateClusterRequest = {
         }
         if (message.deletionProtection === true) {
             writer.uint32(104).bool(message.deletionProtection);
+        }
+        if (message.logGroupId !== '') {
+            writer.uint32(114).string(message.logGroupId);
         }
         return writer;
     },
@@ -1379,6 +1387,9 @@ export const CreateClusterRequest = {
                     break;
                 case 13:
                     message.deletionProtection = reader.bool();
+                    break;
+                case 14:
+                    message.logGroupId = reader.string();
                     break;
                 default:
                     reader.skipType(tag & 7);
@@ -1464,6 +1475,11 @@ export const CreateClusterRequest = {
         } else {
             message.deletionProtection = false;
         }
+        if (object.logGroupId !== undefined && object.logGroupId !== null) {
+            message.logGroupId = String(object.logGroupId);
+        } else {
+            message.logGroupId = '';
+        }
         return message;
     },
 
@@ -1500,6 +1516,8 @@ export const CreateClusterRequest = {
         }
         message.deletionProtection !== undefined &&
             (obj.deletionProtection = message.deletionProtection);
+        message.logGroupId !== undefined &&
+            (obj.logGroupId = message.logGroupId);
         return obj;
     },
 
@@ -1582,6 +1600,11 @@ export const CreateClusterRequest = {
             message.deletionProtection = object.deletionProtection;
         } else {
             message.deletionProtection = false;
+        }
+        if (object.logGroupId !== undefined && object.logGroupId !== null) {
+            message.logGroupId = object.logGroupId;
+        } else {
+            message.logGroupId = '';
         }
         return message;
     },
@@ -1754,6 +1777,7 @@ const baseUpdateClusterRequest: object = {
     uiProxy: false,
     securityGroupIds: '',
     deletionProtection: false,
+    logGroupId: '',
 };
 
 export const UpdateClusterRequest = {
@@ -1805,6 +1829,9 @@ export const UpdateClusterRequest = {
         }
         if (message.deletionProtection === true) {
             writer.uint32(96).bool(message.deletionProtection);
+        }
+        if (message.logGroupId !== '') {
+            writer.uint32(106).string(message.logGroupId);
         }
         return writer;
     },
@@ -1871,6 +1898,9 @@ export const UpdateClusterRequest = {
                     break;
                 case 12:
                     message.deletionProtection = reader.bool();
+                    break;
+                case 13:
+                    message.logGroupId = reader.string();
                     break;
                 default:
                     reader.skipType(tag & 7);
@@ -1958,6 +1988,11 @@ export const UpdateClusterRequest = {
         } else {
             message.deletionProtection = false;
         }
+        if (object.logGroupId !== undefined && object.logGroupId !== null) {
+            message.logGroupId = String(object.logGroupId);
+        } else {
+            message.logGroupId = '';
+        }
         return message;
     },
 
@@ -1994,6 +2029,8 @@ export const UpdateClusterRequest = {
         }
         message.deletionProtection !== undefined &&
             (obj.deletionProtection = message.deletionProtection);
+        message.logGroupId !== undefined &&
+            (obj.logGroupId = message.logGroupId);
         return obj;
     },
 
@@ -2078,6 +2115,11 @@ export const UpdateClusterRequest = {
             message.deletionProtection = object.deletionProtection;
         } else {
             message.deletionProtection = false;
+        }
+        if (object.logGroupId !== undefined && object.logGroupId !== null) {
+            message.logGroupId = object.logGroupId;
+        } else {
+            message.logGroupId = '';
         }
         return message;
     },

@@ -15,11 +15,23 @@ export const protobufPackage = 'yandex.cloud.ydb.v1';
 export interface BackupSchedule {
     dailyBackupSchedule: DailyBackupSchedule | undefined;
     weeklyBackupSchedule: WeeklyBackupSchedule | undefined;
+    recurringBackupSchedule: RecurringBackupSchedule | undefined;
     /**
      * output only field: when next backup will be executed
      * using provided schedule.
      */
     nextExecuteTime: Date | undefined;
+}
+
+export interface RecurringBackupSchedule {
+    /** Timestamp of the first recurrence. */
+    startTime: Date | undefined;
+    /**
+     * An RRULE (https://tools.ietf.org/html/rfc5545#section-3.8.5.3) for how
+     * this backup reccurs.
+     * The FREQ values of MINUTELY, and SECONDLY are not supported.
+     */
+    recurrence: string;
 }
 
 export interface DaysOfWeekBackupSchedule {
@@ -57,6 +69,7 @@ export interface BackupSettings {
      */
     sourcePathsToExclude: string[];
     type: BackupSettings_Type;
+    storageClass: BackupSettings_StorageClass;
 }
 
 export enum BackupSettings_Type {
@@ -92,6 +105,84 @@ export function backupSettings_TypeToJSON(object: BackupSettings_Type): string {
             return 'SYSTEM';
         case BackupSettings_Type.USER:
             return 'USER';
+        default:
+            return 'UNKNOWN';
+    }
+}
+
+export enum BackupSettings_StorageClass {
+    STORAGE_CLASS_UNSPECIFIED = 0,
+    STANDARD = 1,
+    REDUCED_REDUNDANCY = 2,
+    STANDARD_IA = 3,
+    ONEZONE_IA = 4,
+    INTELLIGENT_TIERING = 5,
+    GLACIER = 6,
+    DEEP_ARCHIVE = 7,
+    OUTPOSTS = 8,
+    UNRECOGNIZED = -1,
+}
+
+export function backupSettings_StorageClassFromJSON(
+    object: any
+): BackupSettings_StorageClass {
+    switch (object) {
+        case 0:
+        case 'STORAGE_CLASS_UNSPECIFIED':
+            return BackupSettings_StorageClass.STORAGE_CLASS_UNSPECIFIED;
+        case 1:
+        case 'STANDARD':
+            return BackupSettings_StorageClass.STANDARD;
+        case 2:
+        case 'REDUCED_REDUNDANCY':
+            return BackupSettings_StorageClass.REDUCED_REDUNDANCY;
+        case 3:
+        case 'STANDARD_IA':
+            return BackupSettings_StorageClass.STANDARD_IA;
+        case 4:
+        case 'ONEZONE_IA':
+            return BackupSettings_StorageClass.ONEZONE_IA;
+        case 5:
+        case 'INTELLIGENT_TIERING':
+            return BackupSettings_StorageClass.INTELLIGENT_TIERING;
+        case 6:
+        case 'GLACIER':
+            return BackupSettings_StorageClass.GLACIER;
+        case 7:
+        case 'DEEP_ARCHIVE':
+            return BackupSettings_StorageClass.DEEP_ARCHIVE;
+        case 8:
+        case 'OUTPOSTS':
+            return BackupSettings_StorageClass.OUTPOSTS;
+        case -1:
+        case 'UNRECOGNIZED':
+        default:
+            return BackupSettings_StorageClass.UNRECOGNIZED;
+    }
+}
+
+export function backupSettings_StorageClassToJSON(
+    object: BackupSettings_StorageClass
+): string {
+    switch (object) {
+        case BackupSettings_StorageClass.STORAGE_CLASS_UNSPECIFIED:
+            return 'STORAGE_CLASS_UNSPECIFIED';
+        case BackupSettings_StorageClass.STANDARD:
+            return 'STANDARD';
+        case BackupSettings_StorageClass.REDUCED_REDUNDANCY:
+            return 'REDUCED_REDUNDANCY';
+        case BackupSettings_StorageClass.STANDARD_IA:
+            return 'STANDARD_IA';
+        case BackupSettings_StorageClass.ONEZONE_IA:
+            return 'ONEZONE_IA';
+        case BackupSettings_StorageClass.INTELLIGENT_TIERING:
+            return 'INTELLIGENT_TIERING';
+        case BackupSettings_StorageClass.GLACIER:
+            return 'GLACIER';
+        case BackupSettings_StorageClass.DEEP_ARCHIVE:
+            return 'DEEP_ARCHIVE';
+        case BackupSettings_StorageClass.OUTPOSTS:
+            return 'OUTPOSTS';
         default:
             return 'UNKNOWN';
     }
@@ -231,6 +322,12 @@ export const BackupSchedule = {
                 writer.uint32(18).fork()
             ).ldelim();
         }
+        if (message.recurringBackupSchedule !== undefined) {
+            RecurringBackupSchedule.encode(
+                message.recurringBackupSchedule,
+                writer.uint32(34).fork()
+            ).ldelim();
+        }
         if (message.nextExecuteTime !== undefined) {
             Timestamp.encode(
                 toTimestamp(message.nextExecuteTime),
@@ -259,6 +356,10 @@ export const BackupSchedule = {
                         reader,
                         reader.uint32()
                     );
+                    break;
+                case 4:
+                    message.recurringBackupSchedule =
+                        RecurringBackupSchedule.decode(reader, reader.uint32());
                     break;
                 case 3:
                     message.nextExecuteTime = fromTimestamp(
@@ -296,6 +397,16 @@ export const BackupSchedule = {
             message.weeklyBackupSchedule = undefined;
         }
         if (
+            object.recurringBackupSchedule !== undefined &&
+            object.recurringBackupSchedule !== null
+        ) {
+            message.recurringBackupSchedule = RecurringBackupSchedule.fromJSON(
+                object.recurringBackupSchedule
+            );
+        } else {
+            message.recurringBackupSchedule = undefined;
+        }
+        if (
             object.nextExecuteTime !== undefined &&
             object.nextExecuteTime !== null
         ) {
@@ -315,6 +426,12 @@ export const BackupSchedule = {
         message.weeklyBackupSchedule !== undefined &&
             (obj.weeklyBackupSchedule = message.weeklyBackupSchedule
                 ? WeeklyBackupSchedule.toJSON(message.weeklyBackupSchedule)
+                : undefined);
+        message.recurringBackupSchedule !== undefined &&
+            (obj.recurringBackupSchedule = message.recurringBackupSchedule
+                ? RecurringBackupSchedule.toJSON(
+                      message.recurringBackupSchedule
+                  )
                 : undefined);
         message.nextExecuteTime !== undefined &&
             (obj.nextExecuteTime = message.nextExecuteTime.toISOString());
@@ -344,12 +461,117 @@ export const BackupSchedule = {
             message.weeklyBackupSchedule = undefined;
         }
         if (
+            object.recurringBackupSchedule !== undefined &&
+            object.recurringBackupSchedule !== null
+        ) {
+            message.recurringBackupSchedule =
+                RecurringBackupSchedule.fromPartial(
+                    object.recurringBackupSchedule
+                );
+        } else {
+            message.recurringBackupSchedule = undefined;
+        }
+        if (
             object.nextExecuteTime !== undefined &&
             object.nextExecuteTime !== null
         ) {
             message.nextExecuteTime = object.nextExecuteTime;
         } else {
             message.nextExecuteTime = undefined;
+        }
+        return message;
+    },
+};
+
+const baseRecurringBackupSchedule: object = { recurrence: '' };
+
+export const RecurringBackupSchedule = {
+    encode(
+        message: RecurringBackupSchedule,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        if (message.startTime !== undefined) {
+            Timestamp.encode(
+                toTimestamp(message.startTime),
+                writer.uint32(10).fork()
+            ).ldelim();
+        }
+        if (message.recurrence !== '') {
+            writer.uint32(18).string(message.recurrence);
+        }
+        return writer;
+    },
+
+    decode(
+        input: _m0.Reader | Uint8Array,
+        length?: number
+    ): RecurringBackupSchedule {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = {
+            ...baseRecurringBackupSchedule,
+        } as RecurringBackupSchedule;
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.startTime = fromTimestamp(
+                        Timestamp.decode(reader, reader.uint32())
+                    );
+                    break;
+                case 2:
+                    message.recurrence = reader.string();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): RecurringBackupSchedule {
+        const message = {
+            ...baseRecurringBackupSchedule,
+        } as RecurringBackupSchedule;
+        if (object.startTime !== undefined && object.startTime !== null) {
+            message.startTime = fromJsonTimestamp(object.startTime);
+        } else {
+            message.startTime = undefined;
+        }
+        if (object.recurrence !== undefined && object.recurrence !== null) {
+            message.recurrence = String(object.recurrence);
+        } else {
+            message.recurrence = '';
+        }
+        return message;
+    },
+
+    toJSON(message: RecurringBackupSchedule): unknown {
+        const obj: any = {};
+        message.startTime !== undefined &&
+            (obj.startTime = message.startTime.toISOString());
+        message.recurrence !== undefined &&
+            (obj.recurrence = message.recurrence);
+        return obj;
+    },
+
+    fromPartial(
+        object: DeepPartial<RecurringBackupSchedule>
+    ): RecurringBackupSchedule {
+        const message = {
+            ...baseRecurringBackupSchedule,
+        } as RecurringBackupSchedule;
+        if (object.startTime !== undefined && object.startTime !== null) {
+            message.startTime = object.startTime;
+        } else {
+            message.startTime = undefined;
+        }
+        if (object.recurrence !== undefined && object.recurrence !== null) {
+            message.recurrence = object.recurrence;
+        } else {
+            message.recurrence = '';
         }
         return message;
     },
@@ -624,6 +846,7 @@ const baseBackupSettings: object = {
     sourcePaths: '',
     sourcePathsToExclude: '',
     type: 0,
+    storageClass: 0,
 };
 
 export const BackupSettings = {
@@ -657,6 +880,9 @@ export const BackupSettings = {
         }
         if (message.type !== 0) {
             writer.uint32(56).int32(message.type);
+        }
+        if (message.storageClass !== 0) {
+            writer.uint32(64).int32(message.storageClass);
         }
         return writer;
     },
@@ -697,6 +923,9 @@ export const BackupSettings = {
                     break;
                 case 7:
                     message.type = reader.int32() as any;
+                    break;
+                case 8:
+                    message.storageClass = reader.int32() as any;
                     break;
                 default:
                     reader.skipType(tag & 7);
@@ -758,6 +987,13 @@ export const BackupSettings = {
         } else {
             message.type = 0;
         }
+        if (object.storageClass !== undefined && object.storageClass !== null) {
+            message.storageClass = backupSettings_StorageClassFromJSON(
+                object.storageClass
+            );
+        } else {
+            message.storageClass = 0;
+        }
         return message;
     },
 
@@ -788,6 +1024,10 @@ export const BackupSettings = {
         }
         message.type !== undefined &&
             (obj.type = backupSettings_TypeToJSON(message.type));
+        message.storageClass !== undefined &&
+            (obj.storageClass = backupSettings_StorageClassToJSON(
+                message.storageClass
+            ));
         return obj;
     },
 
@@ -842,6 +1082,11 @@ export const BackupSettings = {
             message.type = object.type;
         } else {
             message.type = 0;
+        }
+        if (object.storageClass !== undefined && object.storageClass !== null) {
+            message.storageClass = object.storageClass;
+        } else {
+            message.storageClass = 0;
         }
         return message;
     },

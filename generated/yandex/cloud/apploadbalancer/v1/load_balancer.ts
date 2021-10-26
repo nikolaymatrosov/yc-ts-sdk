@@ -221,6 +221,8 @@ export interface Listener {
     http: HttpListener | undefined;
     /** HTTPS (HTTP over TLS) listener settings. */
     tls: TlsListener | undefined;
+    /** TCP listener settings. */
+    tcp: TcpListener | undefined;
 }
 
 /** An endpoint resource. */
@@ -261,10 +263,20 @@ export interface TlsListener {
     sniHandlers: SniMatch[];
 }
 
+/** A TCP listener resource. */
+export interface TcpListener {
+    handler: StreamHandler | undefined;
+}
+
 /** An HTTP/2 options resource. */
 export interface Http2Options {
     /** Maximum number of concurrent HTTP/2 streams in a connection. */
     maxConcurrentStreams: number;
+}
+
+/** A stream handler resource. */
+export interface StreamHandler {
+    backendGroupId: string;
 }
 
 /** An HTTP handler resource. */
@@ -310,6 +322,8 @@ export interface SniMatch {
 export interface TlsHandler {
     /** HTTP handler. */
     httpHandler: HttpHandler | undefined;
+    /** Stream handler */
+    streamHandler: StreamHandler | undefined;
     /**
      * ID's of the TLS server certificates from [Certificate Manager](/docs/certificate-manager/).
      *
@@ -1401,6 +1415,9 @@ export const Listener = {
         if (message.tls !== undefined) {
             TlsListener.encode(message.tls, writer.uint32(34).fork()).ldelim();
         }
+        if (message.tcp !== undefined) {
+            TcpListener.encode(message.tcp, writer.uint32(42).fork()).ldelim();
+        }
         return writer;
     },
 
@@ -1426,6 +1443,9 @@ export const Listener = {
                     break;
                 case 4:
                     message.tls = TlsListener.decode(reader, reader.uint32());
+                    break;
+                case 5:
+                    message.tcp = TcpListener.decode(reader, reader.uint32());
                     break;
                 default:
                     reader.skipType(tag & 7);
@@ -1458,6 +1478,11 @@ export const Listener = {
         } else {
             message.tls = undefined;
         }
+        if (object.tcp !== undefined && object.tcp !== null) {
+            message.tcp = TcpListener.fromJSON(object.tcp);
+        } else {
+            message.tcp = undefined;
+        }
         return message;
     },
 
@@ -1478,6 +1503,10 @@ export const Listener = {
         message.tls !== undefined &&
             (obj.tls = message.tls
                 ? TlsListener.toJSON(message.tls)
+                : undefined);
+        message.tcp !== undefined &&
+            (obj.tcp = message.tcp
+                ? TcpListener.toJSON(message.tcp)
                 : undefined);
         return obj;
     },
@@ -1504,6 +1533,11 @@ export const Listener = {
             message.tls = TlsListener.fromPartial(object.tls);
         } else {
             message.tls = undefined;
+        }
+        if (object.tcp !== undefined && object.tcp !== null) {
+            message.tcp = TcpListener.fromPartial(object.tcp);
+        } else {
+            message.tcp = undefined;
         }
         return message;
     },
@@ -1814,6 +1848,74 @@ export const TlsListener = {
     },
 };
 
+const baseTcpListener: object = {};
+
+export const TcpListener = {
+    encode(
+        message: TcpListener,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        if (message.handler !== undefined) {
+            StreamHandler.encode(
+                message.handler,
+                writer.uint32(10).fork()
+            ).ldelim();
+        }
+        return writer;
+    },
+
+    decode(input: _m0.Reader | Uint8Array, length?: number): TcpListener {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = { ...baseTcpListener } as TcpListener;
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.handler = StreamHandler.decode(
+                        reader,
+                        reader.uint32()
+                    );
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): TcpListener {
+        const message = { ...baseTcpListener } as TcpListener;
+        if (object.handler !== undefined && object.handler !== null) {
+            message.handler = StreamHandler.fromJSON(object.handler);
+        } else {
+            message.handler = undefined;
+        }
+        return message;
+    },
+
+    toJSON(message: TcpListener): unknown {
+        const obj: any = {};
+        message.handler !== undefined &&
+            (obj.handler = message.handler
+                ? StreamHandler.toJSON(message.handler)
+                : undefined);
+        return obj;
+    },
+
+    fromPartial(object: DeepPartial<TcpListener>): TcpListener {
+        const message = { ...baseTcpListener } as TcpListener;
+        if (object.handler !== undefined && object.handler !== null) {
+            message.handler = StreamHandler.fromPartial(object.handler);
+        } else {
+            message.handler = undefined;
+        }
+        return message;
+    },
+};
+
 const baseHttp2Options: object = { maxConcurrentStreams: 0 };
 
 export const Http2Options = {
@@ -1877,6 +1979,72 @@ export const Http2Options = {
             message.maxConcurrentStreams = object.maxConcurrentStreams;
         } else {
             message.maxConcurrentStreams = 0;
+        }
+        return message;
+    },
+};
+
+const baseStreamHandler: object = { backendGroupId: '' };
+
+export const StreamHandler = {
+    encode(
+        message: StreamHandler,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        if (message.backendGroupId !== '') {
+            writer.uint32(10).string(message.backendGroupId);
+        }
+        return writer;
+    },
+
+    decode(input: _m0.Reader | Uint8Array, length?: number): StreamHandler {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = { ...baseStreamHandler } as StreamHandler;
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.backendGroupId = reader.string();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): StreamHandler {
+        const message = { ...baseStreamHandler } as StreamHandler;
+        if (
+            object.backendGroupId !== undefined &&
+            object.backendGroupId !== null
+        ) {
+            message.backendGroupId = String(object.backendGroupId);
+        } else {
+            message.backendGroupId = '';
+        }
+        return message;
+    },
+
+    toJSON(message: StreamHandler): unknown {
+        const obj: any = {};
+        message.backendGroupId !== undefined &&
+            (obj.backendGroupId = message.backendGroupId);
+        return obj;
+    },
+
+    fromPartial(object: DeepPartial<StreamHandler>): StreamHandler {
+        const message = { ...baseStreamHandler } as StreamHandler;
+        if (
+            object.backendGroupId !== undefined &&
+            object.backendGroupId !== null
+        ) {
+            message.backendGroupId = object.backendGroupId;
+        } else {
+            message.backendGroupId = '';
         }
         return message;
     },
@@ -2170,6 +2338,12 @@ export const TlsHandler = {
                 writer.uint32(18).fork()
             ).ldelim();
         }
+        if (message.streamHandler !== undefined) {
+            StreamHandler.encode(
+                message.streamHandler,
+                writer.uint32(34).fork()
+            ).ldelim();
+        }
         for (const v of message.certificateIds) {
             writer.uint32(26).string(v!);
         }
@@ -2187,6 +2361,12 @@ export const TlsHandler = {
             switch (tag >>> 3) {
                 case 2:
                     message.httpHandler = HttpHandler.decode(
+                        reader,
+                        reader.uint32()
+                    );
+                    break;
+                case 4:
+                    message.streamHandler = StreamHandler.decode(
                         reader,
                         reader.uint32()
                     );
@@ -2211,6 +2391,16 @@ export const TlsHandler = {
             message.httpHandler = undefined;
         }
         if (
+            object.streamHandler !== undefined &&
+            object.streamHandler !== null
+        ) {
+            message.streamHandler = StreamHandler.fromJSON(
+                object.streamHandler
+            );
+        } else {
+            message.streamHandler = undefined;
+        }
+        if (
             object.certificateIds !== undefined &&
             object.certificateIds !== null
         ) {
@@ -2227,6 +2417,10 @@ export const TlsHandler = {
             (obj.httpHandler = message.httpHandler
                 ? HttpHandler.toJSON(message.httpHandler)
                 : undefined);
+        message.streamHandler !== undefined &&
+            (obj.streamHandler = message.streamHandler
+                ? StreamHandler.toJSON(message.streamHandler)
+                : undefined);
         if (message.certificateIds) {
             obj.certificateIds = message.certificateIds.map((e) => e);
         } else {
@@ -2242,6 +2436,16 @@ export const TlsHandler = {
             message.httpHandler = HttpHandler.fromPartial(object.httpHandler);
         } else {
             message.httpHandler = undefined;
+        }
+        if (
+            object.streamHandler !== undefined &&
+            object.streamHandler !== null
+        ) {
+            message.streamHandler = StreamHandler.fromPartial(
+                object.streamHandler
+            );
+        } else {
+            message.streamHandler = undefined;
         }
         if (
             object.certificateIds !== undefined &&

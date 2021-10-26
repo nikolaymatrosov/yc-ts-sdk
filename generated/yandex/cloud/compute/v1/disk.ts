@@ -24,7 +24,7 @@ export interface Disk {
     zoneId: string;
     /** Size of the disk, specified in bytes. */
     size: number;
-    /** Block size of the disk, specifiedin bytes. */
+    /** Block size of the disk, specified in bytes. */
     blockSize: number;
     /**
      * License IDs that indicate which licenses are attached to this resource.

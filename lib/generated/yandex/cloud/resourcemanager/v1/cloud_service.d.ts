@@ -50,6 +50,29 @@ export interface ListCloudsResponse {
      */
     nextPageToken: string;
 }
+export interface CreateCloudRequest {
+    /**
+     * ID of the organization to create a cloud in.
+     * To get the organization ID, use a [yandex.cloud.organizationmanager.v1.OrganizationService.List] request.
+     */
+    organizationId: string;
+    /** Name of the cloud. */
+    name: string;
+    /** Description of the cloud. */
+    description: string;
+    /** Resource labels as `` key:value `` pairs. */
+    labels: {
+        [key: string]: string;
+    };
+}
+export interface CreateCloudRequest_LabelsEntry {
+    key: string;
+    value: string;
+}
+export interface CreateCloudMetadata {
+    /** ID of the cloud that is being created. */
+    cloudId: string;
+}
 export interface ListCloudOperationsRequest {
     /** ID of the Cloud resource to list operations for. */
     cloudId: string;
@@ -90,6 +113,14 @@ export interface UpdateCloudRequest {
     name: string;
     /** Description of the cloud. */
     description: string;
+    /** Resource labels as `` key:value `` pairs. */
+    labels: {
+        [key: string]: string;
+    };
+}
+export interface UpdateCloudRequest_LabelsEntry {
+    key: string;
+    value: string;
 }
 export interface UpdateCloudMetadata {
     /** ID of the cloud that is being updated. */
@@ -138,6 +169,27 @@ export declare const ListCloudsResponse: {
     toJSON(message: ListCloudsResponse): unknown;
     fromPartial(object: DeepPartial<ListCloudsResponse>): ListCloudsResponse;
 };
+export declare const CreateCloudRequest: {
+    encode(message: CreateCloudRequest, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateCloudRequest;
+    fromJSON(object: any): CreateCloudRequest;
+    toJSON(message: CreateCloudRequest): unknown;
+    fromPartial(object: DeepPartial<CreateCloudRequest>): CreateCloudRequest;
+};
+export declare const CreateCloudRequest_LabelsEntry: {
+    encode(message: CreateCloudRequest_LabelsEntry, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateCloudRequest_LabelsEntry;
+    fromJSON(object: any): CreateCloudRequest_LabelsEntry;
+    toJSON(message: CreateCloudRequest_LabelsEntry): unknown;
+    fromPartial(object: DeepPartial<CreateCloudRequest_LabelsEntry>): CreateCloudRequest_LabelsEntry;
+};
+export declare const CreateCloudMetadata: {
+    encode(message: CreateCloudMetadata, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateCloudMetadata;
+    fromJSON(object: any): CreateCloudMetadata;
+    toJSON(message: CreateCloudMetadata): unknown;
+    fromPartial(object: DeepPartial<CreateCloudMetadata>): CreateCloudMetadata;
+};
 export declare const ListCloudOperationsRequest: {
     encode(message: ListCloudOperationsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListCloudOperationsRequest;
@@ -158,6 +210,13 @@ export declare const UpdateCloudRequest: {
     fromJSON(object: any): UpdateCloudRequest;
     toJSON(message: UpdateCloudRequest): unknown;
     fromPartial(object: DeepPartial<UpdateCloudRequest>): UpdateCloudRequest;
+};
+export declare const UpdateCloudRequest_LabelsEntry: {
+    encode(message: UpdateCloudRequest_LabelsEntry, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateCloudRequest_LabelsEntry;
+    fromJSON(object: any): UpdateCloudRequest_LabelsEntry;
+    toJSON(message: UpdateCloudRequest_LabelsEntry): unknown;
+    fromPartial(object: DeepPartial<UpdateCloudRequest_LabelsEntry>): UpdateCloudRequest_LabelsEntry;
 };
 export declare const UpdateCloudMetadata: {
     encode(message: UpdateCloudMetadata, writer?: _m0.Writer): _m0.Writer;
@@ -206,6 +265,16 @@ export declare const CloudServiceService: {
         readonly responseSerialize: (value: ListCloudsResponse) => Buffer;
         readonly responseDeserialize: (value: Buffer) => ListCloudsResponse;
     };
+    /** Creates a cloud in the specified organization. */
+    readonly create: {
+        readonly path: "/yandex.cloud.resourcemanager.v1.CloudService/Create";
+        readonly requestStream: false;
+        readonly responseStream: false;
+        readonly requestSerialize: (value: CreateCloudRequest) => Buffer;
+        readonly requestDeserialize: (value: Buffer) => CreateCloudRequest;
+        readonly responseSerialize: (value: Operation) => Buffer;
+        readonly responseDeserialize: (value: Buffer) => Operation;
+    };
     /** Updates the specified cloud. */
     readonly update: {
         readonly path: "/yandex.cloud.resourcemanager.v1.CloudService/Update";
@@ -216,11 +285,7 @@ export declare const CloudServiceService: {
         readonly responseSerialize: (value: Operation) => Buffer;
         readonly responseDeserialize: (value: Buffer) => Operation;
     };
-    /**
-     * Deletes the specified cloud.
-     *
-     * The method is temporarily unavailable.
-     */
+    /** Deletes the specified cloud. */
     readonly delete: {
         readonly path: "/yandex.cloud.resourcemanager.v1.CloudService/Delete";
         readonly requestStream: false;
@@ -280,13 +345,11 @@ export interface CloudServiceServer extends UntypedServiceImplementation {
     get: handleUnaryCall<GetCloudRequest, Cloud>;
     /** Retrieves the list of Cloud resources. */
     list: handleUnaryCall<ListCloudsRequest, ListCloudsResponse>;
+    /** Creates a cloud in the specified organization. */
+    create: handleUnaryCall<CreateCloudRequest, Operation>;
     /** Updates the specified cloud. */
     update: handleUnaryCall<UpdateCloudRequest, Operation>;
-    /**
-     * Deletes the specified cloud.
-     *
-     * The method is temporarily unavailable.
-     */
+    /** Deletes the specified cloud. */
     delete: handleUnaryCall<DeleteCloudRequest, Operation>;
     /** Lists operations for the specified cloud. */
     listOperations: handleUnaryCall<ListCloudOperationsRequest, ListCloudOperationsResponse>;
@@ -310,15 +373,15 @@ export interface CloudServiceClient extends Client {
     list(request: ListCloudsRequest, callback: (error: ServiceError | null, response: ListCloudsResponse) => void): ClientUnaryCall;
     list(request: ListCloudsRequest, metadata: Metadata, callback: (error: ServiceError | null, response: ListCloudsResponse) => void): ClientUnaryCall;
     list(request: ListCloudsRequest, metadata: Metadata, options: Partial<CallOptions>, callback: (error: ServiceError | null, response: ListCloudsResponse) => void): ClientUnaryCall;
+    /** Creates a cloud in the specified organization. */
+    create(request: CreateCloudRequest, callback: (error: ServiceError | null, response: Operation) => void): ClientUnaryCall;
+    create(request: CreateCloudRequest, metadata: Metadata, callback: (error: ServiceError | null, response: Operation) => void): ClientUnaryCall;
+    create(request: CreateCloudRequest, metadata: Metadata, options: Partial<CallOptions>, callback: (error: ServiceError | null, response: Operation) => void): ClientUnaryCall;
     /** Updates the specified cloud. */
     update(request: UpdateCloudRequest, callback: (error: ServiceError | null, response: Operation) => void): ClientUnaryCall;
     update(request: UpdateCloudRequest, metadata: Metadata, callback: (error: ServiceError | null, response: Operation) => void): ClientUnaryCall;
     update(request: UpdateCloudRequest, metadata: Metadata, options: Partial<CallOptions>, callback: (error: ServiceError | null, response: Operation) => void): ClientUnaryCall;
-    /**
-     * Deletes the specified cloud.
-     *
-     * The method is temporarily unavailable.
-     */
+    /** Deletes the specified cloud. */
     delete(request: DeleteCloudRequest, callback: (error: ServiceError | null, response: Operation) => void): ClientUnaryCall;
     delete(request: DeleteCloudRequest, metadata: Metadata, callback: (error: ServiceError | null, response: Operation) => void): ClientUnaryCall;
     delete(request: DeleteCloudRequest, metadata: Metadata, options: Partial<CallOptions>, callback: (error: ServiceError | null, response: Operation) => void): ClientUnaryCall;

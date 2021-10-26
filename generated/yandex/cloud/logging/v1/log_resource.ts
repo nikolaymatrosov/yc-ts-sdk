@@ -4,13 +4,27 @@ import _m0 from 'protobufjs/minimal';
 
 export const protobufPackage = 'yandex.cloud.logging.v1';
 
+/**
+ * Log entry resource specification.
+ *
+ * May be used either by services and by user.
+ */
 export interface LogEntryResource {
+    /** Resource type, i.e., `serverless.function` */
     type: string;
+    /** Resource ID, i.e., ID of the function producing logs. */
     id: string;
 }
 
+/** Log group resource. */
 export interface LogGroupResource {
+    /**
+     * Resource type.
+     *
+     * Collected from log entries inside log group.
+     */
     type: string;
+    /** List of resource IDs with the same resource type. */
     ids: string[];
 }
 

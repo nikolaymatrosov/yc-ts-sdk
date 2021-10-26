@@ -1,16 +1,34 @@
 /// <reference types="node" />
 import { Status } from '../../../../google/rpc/status';
-import { Destination, IncomingLogEntry } from '../../../../yandex/cloud/logging/v1/log_entry';
+import { Destination, IncomingLogEntry, LogEntryDefaults } from '../../../../yandex/cloud/logging/v1/log_entry';
 import { LogEntryResource } from '../../../../yandex/cloud/logging/v1/log_resource';
 import { ChannelCredentials, ChannelOptions, UntypedServiceImplementation, handleUnaryCall, Client, ClientUnaryCall, Metadata, CallOptions, ServiceError } from '@grpc/grpc-js';
 import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.logging.v1";
 export interface WriteRequest {
+    /**
+     * Log entries destination.
+     *
+     * See [Destination] for details.
+     */
     destination: Destination | undefined;
+    /** Common resource (type, ID) specification for log entries. */
     resource: LogEntryResource | undefined;
+    /** List of log entries. */
     entries: IncomingLogEntry[];
+    /**
+     * Log entries defaults.
+     *
+     * See [LogEntryDefaults] for details.
+     */
+    defaults: LogEntryDefaults | undefined;
 }
 export interface WriteResponse {
+    /**
+     * Map<idx, status> of ingest failures.
+     *
+     * If entry with idx N is absent, it was ingested successfully.
+     */
     errors: {
         [key: number]: Status;
     };
@@ -40,7 +58,9 @@ export declare const WriteResponse_ErrorsEntry: {
     toJSON(message: WriteResponse_ErrorsEntry): unknown;
     fromPartial(object: DeepPartial<WriteResponse_ErrorsEntry>): WriteResponse_ErrorsEntry;
 };
+/** A set of methods for writing to log groups. To make a request use `ingester.logging.yandexcloud.net`. */
 export declare const LogIngestionServiceService: {
+    /** Write log entries to specified destination. */
     readonly write: {
         readonly path: "/yandex.cloud.logging.v1.LogIngestionService/Write";
         readonly requestStream: false;
@@ -52,9 +72,11 @@ export declare const LogIngestionServiceService: {
     };
 };
 export interface LogIngestionServiceServer extends UntypedServiceImplementation {
+    /** Write log entries to specified destination. */
     write: handleUnaryCall<WriteRequest, WriteResponse>;
 }
 export interface LogIngestionServiceClient extends Client {
+    /** Write log entries to specified destination. */
     write(request: WriteRequest, callback: (error: ServiceError | null, response: WriteResponse) => void): ClientUnaryCall;
     write(request: WriteRequest, metadata: Metadata, callback: (error: ServiceError | null, response: WriteResponse) => void): ClientUnaryCall;
     write(request: WriteRequest, metadata: Metadata, options: Partial<CallOptions>, callback: (error: ServiceError | null, response: WriteResponse) => void): ClientUnaryCall;

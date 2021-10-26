@@ -2,7 +2,7 @@
 import { FieldMask } from '../../../../google/protobuf/field_mask';
 import { Operation } from '../../../../yandex/cloud/operation/operation';
 import { BackupSettings, BackupConfig } from '../../../../yandex/cloud/ydb/v1/backup';
-import { Database, StorageConfig, ScalePolicy, ZonalDatabase, RegionalDatabase, DedicatedDatabase, ServerlessDatabase } from '../../../../yandex/cloud/ydb/v1/database';
+import { Database, StorageConfig, ScalePolicy, ZonalDatabase, RegionalDatabase, DedicatedDatabase, ServerlessDatabase, MonitoringConfig } from '../../../../yandex/cloud/ydb/v1/database';
 import { ChannelCredentials, ChannelOptions, UntypedServiceImplementation, handleUnaryCall, Client, ClientUnaryCall, Metadata, CallOptions, ServiceError } from '@grpc/grpc-js';
 import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.ydb.v1";
@@ -97,6 +97,7 @@ export interface CreateDatabaseRequest {
         [key: string]: string;
     };
     backupConfig: BackupConfig | undefined;
+    monitoringConfig: MonitoringConfig | undefined;
 }
 export interface CreateDatabaseRequest_LabelsEntry {
     key: string;
@@ -129,6 +130,7 @@ export interface UpdateDatabaseRequest {
         [key: string]: string;
     };
     backupConfig: BackupConfig | undefined;
+    monitoringConfig: MonitoringConfig | undefined;
 }
 export interface UpdateDatabaseRequest_LabelsEntry {
     key: string;

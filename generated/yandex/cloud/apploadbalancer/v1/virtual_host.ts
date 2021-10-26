@@ -39,12 +39,17 @@ export interface VirtualHost {
      * other routes are never matched.
      */
     routes: Route[];
-    /** Modifications that are made to the headers of incoming HTTP requests before they are forwarded to backends. */
+    /** Deprecated, use route_options.modify_request_headers. */
     modifyRequestHeaders: HeaderModification[];
-    /**
-     * Modifications that are made to the headers of HTTP responses received from backends
-     * before responses are forwarded to clients.
-     */
+    /** Deprecated, use route_options.modify_response_headers. */
+    modifyResponseHeaders: HeaderModification[];
+    routeOptions: RouteOptions | undefined;
+}
+
+export interface RouteOptions {
+    /** Apply the following modifications to the request headers. */
+    modifyRequestHeaders: HeaderModification[];
+    /** Apply the following modifications to the response headers. */
     modifyResponseHeaders: HeaderModification[];
 }
 
@@ -68,7 +73,10 @@ export interface HeaderModification {
     replace: string | undefined;
     /** Removes the header. */
     remove: boolean | undefined;
-    /** Replaces the name of the header with the specified string. */
+    /**
+     * Replaces the name of the header with the specified string.
+     * This operation is only supported for ALB Virtual Hosts.
+     */
     rename: string | undefined;
 }
 
@@ -83,6 +91,7 @@ export interface Route {
     http: HttpRoute | undefined;
     /** gRPC route configuration. */
     grpc: GrpcRoute | undefined;
+    routeOptions: RouteOptions | undefined;
 }
 
 /** An HTTP route configuration resource. */
@@ -165,7 +174,7 @@ export interface RedirectAction {
     /** Replacement for the whole path. */
     replacePath: string | undefined;
     /**
-     * Replacement for the path prefix matched by [StringMatch.match].
+     * Replacement for the path prefix matched by [StringMatch].
      *
      * For instance, if [StringMatch.prefix_match] value is `/foo` and `replace_prefix` value is `/bar`,
      * a request with `https://example.com/foobaz` URI is redirected to `https://example.com/barbaz`.
@@ -363,7 +372,7 @@ export interface HttpRouteAction {
     /** Automatically replaces the host with that of the target. */
     autoHostRewrite: boolean | undefined;
     /**
-     * Replacement for the path prefix matched by [StringMatch.match].
+     * Replacement for the path prefix matched by [StringMatch].
      *
      * For instance, if [StringMatch.prefix_match] value is `/foo` and `replace_prefix` value is `/bar`,
      * a request with `/foobaz` path is forwarded with `/barbaz` path.
@@ -432,6 +441,12 @@ export const VirtualHost = {
         for (const v of message.modifyResponseHeaders) {
             HeaderModification.encode(v!, writer.uint32(42).fork()).ldelim();
         }
+        if (message.routeOptions !== undefined) {
+            RouteOptions.encode(
+                message.routeOptions,
+                writer.uint32(50).fork()
+            ).ldelim();
+        }
         return writer;
     },
 
@@ -464,6 +479,12 @@ export const VirtualHost = {
                 case 5:
                     message.modifyResponseHeaders.push(
                         HeaderModification.decode(reader, reader.uint32())
+                    );
+                    break;
+                case 6:
+                    message.routeOptions = RouteOptions.decode(
+                        reader,
+                        reader.uint32()
                     );
                     break;
                 default:
@@ -515,6 +536,11 @@ export const VirtualHost = {
                 );
             }
         }
+        if (object.routeOptions !== undefined && object.routeOptions !== null) {
+            message.routeOptions = RouteOptions.fromJSON(object.routeOptions);
+        } else {
+            message.routeOptions = undefined;
+        }
         return message;
     },
 
@@ -547,6 +573,10 @@ export const VirtualHost = {
         } else {
             obj.modifyResponseHeaders = [];
         }
+        message.routeOptions !== undefined &&
+            (obj.routeOptions = message.routeOptions
+                ? RouteOptions.toJSON(message.routeOptions)
+                : undefined);
         return obj;
     },
 
@@ -571,6 +601,131 @@ export const VirtualHost = {
                 message.routes.push(Route.fromPartial(e));
             }
         }
+        if (
+            object.modifyRequestHeaders !== undefined &&
+            object.modifyRequestHeaders !== null
+        ) {
+            for (const e of object.modifyRequestHeaders) {
+                message.modifyRequestHeaders.push(
+                    HeaderModification.fromPartial(e)
+                );
+            }
+        }
+        if (
+            object.modifyResponseHeaders !== undefined &&
+            object.modifyResponseHeaders !== null
+        ) {
+            for (const e of object.modifyResponseHeaders) {
+                message.modifyResponseHeaders.push(
+                    HeaderModification.fromPartial(e)
+                );
+            }
+        }
+        if (object.routeOptions !== undefined && object.routeOptions !== null) {
+            message.routeOptions = RouteOptions.fromPartial(
+                object.routeOptions
+            );
+        } else {
+            message.routeOptions = undefined;
+        }
+        return message;
+    },
+};
+
+const baseRouteOptions: object = {};
+
+export const RouteOptions = {
+    encode(
+        message: RouteOptions,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        for (const v of message.modifyRequestHeaders) {
+            HeaderModification.encode(v!, writer.uint32(10).fork()).ldelim();
+        }
+        for (const v of message.modifyResponseHeaders) {
+            HeaderModification.encode(v!, writer.uint32(18).fork()).ldelim();
+        }
+        return writer;
+    },
+
+    decode(input: _m0.Reader | Uint8Array, length?: number): RouteOptions {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = { ...baseRouteOptions } as RouteOptions;
+        message.modifyRequestHeaders = [];
+        message.modifyResponseHeaders = [];
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.modifyRequestHeaders.push(
+                        HeaderModification.decode(reader, reader.uint32())
+                    );
+                    break;
+                case 2:
+                    message.modifyResponseHeaders.push(
+                        HeaderModification.decode(reader, reader.uint32())
+                    );
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): RouteOptions {
+        const message = { ...baseRouteOptions } as RouteOptions;
+        message.modifyRequestHeaders = [];
+        message.modifyResponseHeaders = [];
+        if (
+            object.modifyRequestHeaders !== undefined &&
+            object.modifyRequestHeaders !== null
+        ) {
+            for (const e of object.modifyRequestHeaders) {
+                message.modifyRequestHeaders.push(
+                    HeaderModification.fromJSON(e)
+                );
+            }
+        }
+        if (
+            object.modifyResponseHeaders !== undefined &&
+            object.modifyResponseHeaders !== null
+        ) {
+            for (const e of object.modifyResponseHeaders) {
+                message.modifyResponseHeaders.push(
+                    HeaderModification.fromJSON(e)
+                );
+            }
+        }
+        return message;
+    },
+
+    toJSON(message: RouteOptions): unknown {
+        const obj: any = {};
+        if (message.modifyRequestHeaders) {
+            obj.modifyRequestHeaders = message.modifyRequestHeaders.map((e) =>
+                e ? HeaderModification.toJSON(e) : undefined
+            );
+        } else {
+            obj.modifyRequestHeaders = [];
+        }
+        if (message.modifyResponseHeaders) {
+            obj.modifyResponseHeaders = message.modifyResponseHeaders.map((e) =>
+                e ? HeaderModification.toJSON(e) : undefined
+            );
+        } else {
+            obj.modifyResponseHeaders = [];
+        }
+        return obj;
+    },
+
+    fromPartial(object: DeepPartial<RouteOptions>): RouteOptions {
+        const message = { ...baseRouteOptions } as RouteOptions;
+        message.modifyRequestHeaders = [];
+        message.modifyResponseHeaders = [];
         if (
             object.modifyRequestHeaders !== undefined &&
             object.modifyRequestHeaders !== null
@@ -741,6 +896,12 @@ export const Route = {
         if (message.grpc !== undefined) {
             GrpcRoute.encode(message.grpc, writer.uint32(26).fork()).ldelim();
         }
+        if (message.routeOptions !== undefined) {
+            RouteOptions.encode(
+                message.routeOptions,
+                writer.uint32(34).fork()
+            ).ldelim();
+        }
         return writer;
     },
 
@@ -760,6 +921,12 @@ export const Route = {
                     break;
                 case 3:
                     message.grpc = GrpcRoute.decode(reader, reader.uint32());
+                    break;
+                case 4:
+                    message.routeOptions = RouteOptions.decode(
+                        reader,
+                        reader.uint32()
+                    );
                     break;
                 default:
                     reader.skipType(tag & 7);
@@ -786,6 +953,11 @@ export const Route = {
         } else {
             message.grpc = undefined;
         }
+        if (object.routeOptions !== undefined && object.routeOptions !== null) {
+            message.routeOptions = RouteOptions.fromJSON(object.routeOptions);
+        } else {
+            message.routeOptions = undefined;
+        }
         return message;
     },
 
@@ -799,6 +971,10 @@ export const Route = {
         message.grpc !== undefined &&
             (obj.grpc = message.grpc
                 ? GrpcRoute.toJSON(message.grpc)
+                : undefined);
+        message.routeOptions !== undefined &&
+            (obj.routeOptions = message.routeOptions
+                ? RouteOptions.toJSON(message.routeOptions)
                 : undefined);
         return obj;
     },
@@ -819,6 +995,13 @@ export const Route = {
             message.grpc = GrpcRoute.fromPartial(object.grpc);
         } else {
             message.grpc = undefined;
+        }
+        if (object.routeOptions !== undefined && object.routeOptions !== null) {
+            message.routeOptions = RouteOptions.fromPartial(
+                object.routeOptions
+            );
+        } else {
+            message.routeOptions = undefined;
         }
         return message;
     },

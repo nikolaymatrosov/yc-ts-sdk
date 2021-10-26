@@ -225,6 +225,11 @@ export interface ScalingPolicy {
     /** Modification timestamp for the scaling policy */
     modifiedAt: Date | undefined;
     /**
+     * Minimum guaranteed provisioned instances count for all zones in total.
+     * Billed separately.
+     */
+    provisionedInstancesCount: number;
+    /**
      * Upper limit for instance count in each zone.
      * 0 means no limit.
      */
@@ -1407,6 +1412,7 @@ export const Connectivity = {
 const baseScalingPolicy: object = {
     functionId: '',
     tag: '',
+    provisionedInstancesCount: 0,
     zoneInstancesLimit: 0,
     zoneRequestsLimit: 0,
 };
@@ -1433,6 +1439,9 @@ export const ScalingPolicy = {
                 toTimestamp(message.modifiedAt),
                 writer.uint32(34).fork()
             ).ldelim();
+        }
+        if (message.provisionedInstancesCount !== 0) {
+            writer.uint32(48).int64(message.provisionedInstancesCount);
         }
         if (message.zoneInstancesLimit !== 0) {
             writer.uint32(56).int64(message.zoneInstancesLimit);
@@ -1465,6 +1474,11 @@ export const ScalingPolicy = {
                 case 4:
                     message.modifiedAt = fromTimestamp(
                         Timestamp.decode(reader, reader.uint32())
+                    );
+                    break;
+                case 6:
+                    message.provisionedInstancesCount = longToNumber(
+                        reader.int64() as Long
                     );
                     break;
                 case 7:
@@ -1508,6 +1522,16 @@ export const ScalingPolicy = {
             message.modifiedAt = undefined;
         }
         if (
+            object.provisionedInstancesCount !== undefined &&
+            object.provisionedInstancesCount !== null
+        ) {
+            message.provisionedInstancesCount = Number(
+                object.provisionedInstancesCount
+            );
+        } else {
+            message.provisionedInstancesCount = 0;
+        }
+        if (
             object.zoneInstancesLimit !== undefined &&
             object.zoneInstancesLimit !== null
         ) {
@@ -1535,6 +1559,8 @@ export const ScalingPolicy = {
             (obj.createdAt = message.createdAt.toISOString());
         message.modifiedAt !== undefined &&
             (obj.modifiedAt = message.modifiedAt.toISOString());
+        message.provisionedInstancesCount !== undefined &&
+            (obj.provisionedInstancesCount = message.provisionedInstancesCount);
         message.zoneInstancesLimit !== undefined &&
             (obj.zoneInstancesLimit = message.zoneInstancesLimit);
         message.zoneRequestsLimit !== undefined &&
@@ -1563,6 +1589,15 @@ export const ScalingPolicy = {
             message.modifiedAt = object.modifiedAt;
         } else {
             message.modifiedAt = undefined;
+        }
+        if (
+            object.provisionedInstancesCount !== undefined &&
+            object.provisionedInstancesCount !== null
+        ) {
+            message.provisionedInstancesCount =
+                object.provisionedInstancesCount;
+        } else {
+            message.provisionedInstancesCount = 0;
         }
         if (
             object.zoneInstancesLimit !== undefined &&

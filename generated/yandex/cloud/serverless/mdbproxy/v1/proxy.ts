@@ -28,6 +28,8 @@ export interface Proxy_LabelsEntry {
 }
 
 export interface Target {
+    /** Clickhouse settings for proxy. */
+    clickhouse: Target_ClickHouse | undefined;
     /** PostgreSQL settings for proxy. */
     postgresql: Target_PostgreSQL | undefined;
 }
@@ -42,6 +44,19 @@ export interface Target_PostgreSQL {
     /** PostgreSQL database name. */
     db: string;
     /** PostgreSQL proxy-host for connection, output only field. */
+    endpoint: string;
+}
+
+export interface Target_ClickHouse {
+    /** Cluster identifier for clickhouse. */
+    clusterId: string;
+    /** Clickhouse user. */
+    user: string;
+    /** Clickhouse password, input only field. */
+    password: string;
+    /** Clickhouse database name. */
+    db: string;
+    /** Clickhouse proxy-host for connection, output only field. */
     endpoint: string;
 }
 
@@ -318,6 +333,12 @@ export const Target = {
         message: Target,
         writer: _m0.Writer = _m0.Writer.create()
     ): _m0.Writer {
+        if (message.clickhouse !== undefined) {
+            Target_ClickHouse.encode(
+                message.clickhouse,
+                writer.uint32(10).fork()
+            ).ldelim();
+        }
         if (message.postgresql !== undefined) {
             Target_PostgreSQL.encode(
                 message.postgresql,
@@ -335,6 +356,12 @@ export const Target = {
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
+                case 1:
+                    message.clickhouse = Target_ClickHouse.decode(
+                        reader,
+                        reader.uint32()
+                    );
+                    break;
                 case 2:
                     message.postgresql = Target_PostgreSQL.decode(
                         reader,
@@ -351,6 +378,11 @@ export const Target = {
 
     fromJSON(object: any): Target {
         const message = { ...baseTarget } as Target;
+        if (object.clickhouse !== undefined && object.clickhouse !== null) {
+            message.clickhouse = Target_ClickHouse.fromJSON(object.clickhouse);
+        } else {
+            message.clickhouse = undefined;
+        }
         if (object.postgresql !== undefined && object.postgresql !== null) {
             message.postgresql = Target_PostgreSQL.fromJSON(object.postgresql);
         } else {
@@ -361,6 +393,10 @@ export const Target = {
 
     toJSON(message: Target): unknown {
         const obj: any = {};
+        message.clickhouse !== undefined &&
+            (obj.clickhouse = message.clickhouse
+                ? Target_ClickHouse.toJSON(message.clickhouse)
+                : undefined);
         message.postgresql !== undefined &&
             (obj.postgresql = message.postgresql
                 ? Target_PostgreSQL.toJSON(message.postgresql)
@@ -370,6 +406,13 @@ export const Target = {
 
     fromPartial(object: DeepPartial<Target>): Target {
         const message = { ...baseTarget } as Target;
+        if (object.clickhouse !== undefined && object.clickhouse !== null) {
+            message.clickhouse = Target_ClickHouse.fromPartial(
+                object.clickhouse
+            );
+        } else {
+            message.clickhouse = undefined;
+        }
         if (object.postgresql !== undefined && object.postgresql !== null) {
             message.postgresql = Target_PostgreSQL.fromPartial(
                 object.postgresql
@@ -485,6 +528,139 @@ export const Target_PostgreSQL = {
 
     fromPartial(object: DeepPartial<Target_PostgreSQL>): Target_PostgreSQL {
         const message = { ...baseTarget_PostgreSQL } as Target_PostgreSQL;
+        if (object.clusterId !== undefined && object.clusterId !== null) {
+            message.clusterId = object.clusterId;
+        } else {
+            message.clusterId = '';
+        }
+        if (object.user !== undefined && object.user !== null) {
+            message.user = object.user;
+        } else {
+            message.user = '';
+        }
+        if (object.password !== undefined && object.password !== null) {
+            message.password = object.password;
+        } else {
+            message.password = '';
+        }
+        if (object.db !== undefined && object.db !== null) {
+            message.db = object.db;
+        } else {
+            message.db = '';
+        }
+        if (object.endpoint !== undefined && object.endpoint !== null) {
+            message.endpoint = object.endpoint;
+        } else {
+            message.endpoint = '';
+        }
+        return message;
+    },
+};
+
+const baseTarget_ClickHouse: object = {
+    clusterId: '',
+    user: '',
+    password: '',
+    db: '',
+    endpoint: '',
+};
+
+export const Target_ClickHouse = {
+    encode(
+        message: Target_ClickHouse,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        if (message.clusterId !== '') {
+            writer.uint32(10).string(message.clusterId);
+        }
+        if (message.user !== '') {
+            writer.uint32(18).string(message.user);
+        }
+        if (message.password !== '') {
+            writer.uint32(26).string(message.password);
+        }
+        if (message.db !== '') {
+            writer.uint32(34).string(message.db);
+        }
+        if (message.endpoint !== '') {
+            writer.uint32(42).string(message.endpoint);
+        }
+        return writer;
+    },
+
+    decode(input: _m0.Reader | Uint8Array, length?: number): Target_ClickHouse {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = { ...baseTarget_ClickHouse } as Target_ClickHouse;
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.clusterId = reader.string();
+                    break;
+                case 2:
+                    message.user = reader.string();
+                    break;
+                case 3:
+                    message.password = reader.string();
+                    break;
+                case 4:
+                    message.db = reader.string();
+                    break;
+                case 5:
+                    message.endpoint = reader.string();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): Target_ClickHouse {
+        const message = { ...baseTarget_ClickHouse } as Target_ClickHouse;
+        if (object.clusterId !== undefined && object.clusterId !== null) {
+            message.clusterId = String(object.clusterId);
+        } else {
+            message.clusterId = '';
+        }
+        if (object.user !== undefined && object.user !== null) {
+            message.user = String(object.user);
+        } else {
+            message.user = '';
+        }
+        if (object.password !== undefined && object.password !== null) {
+            message.password = String(object.password);
+        } else {
+            message.password = '';
+        }
+        if (object.db !== undefined && object.db !== null) {
+            message.db = String(object.db);
+        } else {
+            message.db = '';
+        }
+        if (object.endpoint !== undefined && object.endpoint !== null) {
+            message.endpoint = String(object.endpoint);
+        } else {
+            message.endpoint = '';
+        }
+        return message;
+    },
+
+    toJSON(message: Target_ClickHouse): unknown {
+        const obj: any = {};
+        message.clusterId !== undefined && (obj.clusterId = message.clusterId);
+        message.user !== undefined && (obj.user = message.user);
+        message.password !== undefined && (obj.password = message.password);
+        message.db !== undefined && (obj.db = message.db);
+        message.endpoint !== undefined && (obj.endpoint = message.endpoint);
+        return obj;
+    },
+
+    fromPartial(object: DeepPartial<Target_ClickHouse>): Target_ClickHouse {
+        const message = { ...baseTarget_ClickHouse } as Target_ClickHouse;
         if (object.clusterId !== undefined && object.clusterId !== null) {
             message.clusterId = object.clusterId;
         } else {

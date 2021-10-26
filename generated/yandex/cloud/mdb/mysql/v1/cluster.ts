@@ -287,6 +287,8 @@ export interface Host {
     subnetId: string;
     /** Flag showing public IP assignment status to this host. */
     assignPublicIp: boolean;
+    /** Name of the host to be used as the replication source for cascading replication. */
+    replicationSource: string;
 }
 
 export enum Host_Role {
@@ -1324,6 +1326,7 @@ const baseHost: object = {
     health: 0,
     subnetId: '',
     assignPublicIp: false,
+    replicationSource: '',
 };
 
 export const Host = {
@@ -1360,6 +1363,9 @@ export const Host = {
         }
         if (message.assignPublicIp === true) {
             writer.uint32(72).bool(message.assignPublicIp);
+        }
+        if (message.replicationSource !== '') {
+            writer.uint32(82).string(message.replicationSource);
         }
         return writer;
     },
@@ -1404,6 +1410,9 @@ export const Host = {
                     break;
                 case 9:
                     message.assignPublicIp = reader.bool();
+                    break;
+                case 10:
+                    message.replicationSource = reader.string();
                     break;
                 default:
                     reader.skipType(tag & 7);
@@ -1464,6 +1473,14 @@ export const Host = {
         } else {
             message.assignPublicIp = false;
         }
+        if (
+            object.replicationSource !== undefined &&
+            object.replicationSource !== null
+        ) {
+            message.replicationSource = String(object.replicationSource);
+        } else {
+            message.replicationSource = '';
+        }
         return message;
     },
 
@@ -1490,6 +1507,8 @@ export const Host = {
         message.subnetId !== undefined && (obj.subnetId = message.subnetId);
         message.assignPublicIp !== undefined &&
             (obj.assignPublicIp = message.assignPublicIp);
+        message.replicationSource !== undefined &&
+            (obj.replicationSource = message.replicationSource);
         return obj;
     },
 
@@ -1543,6 +1562,14 @@ export const Host = {
             message.assignPublicIp = object.assignPublicIp;
         } else {
             message.assignPublicIp = false;
+        }
+        if (
+            object.replicationSource !== undefined &&
+            object.replicationSource !== null
+        ) {
+            message.replicationSource = object.replicationSource;
+        } else {
+            message.replicationSource = '';
         }
         return message;
     },

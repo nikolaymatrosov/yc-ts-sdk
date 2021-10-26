@@ -28,99 +28,216 @@ import _m0 from 'protobufjs/minimal';
 export const protobufPackage = 'yandex.cloud.containerregistry.v1';
 
 export interface GetLifecyclePolicyRequest {
+    /** ID of the lifecycle policy. */
     lifecyclePolicyId: string;
 }
 
 export interface ListLifecyclePoliciesRequest {
+    /** ID of the lifecycle policy. */
     registryId: string | undefined;
+    /** Repository of the lifecycle policy. */
     repositoryId: string | undefined;
+    /**
+     * The maximum number of results per page to return. If the number of available
+     * results is larger than `page_size`, the service returns
+     * a [ListLifecyclePoliciesResponse.next_page_token] that can be used to get the next page of results in subsequent list requests.
+     * Default value: 100.
+     */
     pageSize: number;
+    /**
+     * Page token. To get the next page of results, set `page_token` to the
+     * [ListLifecyclePoliciesResponse.next_page_token] returned by a previous list request.
+     */
     pageToken: string;
+    /**
+     * A filter expression that filters lifecycle policy resources listed in the response.
+     *
+     * The expression must specify:
+     * 1. The field name. Currently you can use filtering only on [LifecyclePolicy.name] field.
+     * 2. An operator. Can be either `=` or `!=` for single values, `IN` or `NOT IN` for lists of values.
+     * 3. The value. Must be 3-63 characters long and match the regular expression `^[a-z][-a-z0-9]{1,61}[a-z0-9]`.
+     */
     filter: string;
+    /**
+     * Sorting the list by [LifecyclePolicy.name], [LifecyclePolicy.created_at] and [LifecyclePolicy.status] fields.
+     * The default sorting order is ascending.
+     */
     orderBy: string;
 }
 
 export interface ListLifecyclePoliciesResponse {
+    /** List of lifecycle policies. */
     lifecyclePolicies: LifecyclePolicy[];
+    /**
+     * Token for getting the next page of the list. If the number of results is greater than
+     * the specified [ListLifecyclePoliciesRequest.page_size], use `next_page_token` as the value
+     * for the [ListLifecyclePoliciesRequest.page_token] parameter in the next list request.
+     *
+     * Each subsequent page will have its own `next_page_token` to continue paging through the results.
+     */
     nextPageToken: string;
 }
 
 export interface CreateLifecyclePolicyRequest {
+    /** ID of the lifecycle policy repository. */
     repositoryId: string;
+    /** Name of lifecycle policy. */
     name: string;
+    /** Description of lifecycle policy. */
     description: string;
+    /** Status of the lifecycle policy. */
     status: LifecyclePolicy_Status;
+    /** The rules of the lifecycle policy. */
     rules: LifecycleRule[];
 }
 
 export interface UpdateLifecyclePolicyRequest {
+    /** ID of the lifecycle policy. */
     lifecyclePolicyId: string;
+    /** Field mask that specifies which fields of the lifecycle policy resource are going to be updated. */
     updateMask: FieldMask | undefined;
+    /** Name of lifecycle policy. */
     name: string;
+    /** Description of lifecycle policy. */
     description: string;
+    /** Status of the lifecycle policy. */
     status: LifecyclePolicy_Status;
+    /** The rules of the lifecycle policy. */
     rules: LifecycleRule[];
 }
 
 export interface DeleteLifecyclePolicyRequest {
+    /** ID of the lifecycle policy. */
     lifecyclePolicyId: string;
 }
 
 export interface CreateLifecyclePolicyMetadata {
+    /** ID of the lifecycle policy resource that is being created. */
     lifecyclePolicyId: string;
 }
 
 export interface UpdateLifecyclePolicyMetadata {
+    /** ID of the lifecycle policy resource that is being updated. */
     lifecyclePolicyId: string;
 }
 
 export interface DeleteLifecyclePolicyMetadata {
+    /** ID of the lifecycle policy resource that is being deleted. */
     lifecyclePolicyId: string;
 }
 
 export interface DryRunLifecyclePolicyRequest {
+    /** ID of the lifecycle policy. */
     lifecyclePolicyId: string;
 }
 
 export interface DryRunLifecyclePolicyMetadata {
+    /** ID of the dry run result of the lifecycle policy. */
     dryRunLifecyclePolicyResultId: string;
+    /** ID of the lifecycle policy. */
     lifecyclePolicyId: string;
 }
 
 export interface DryRunLifecyclePolicyResult {
+    /** ID of the dry run result of the lifecycle policy. */
     dryRunLifecyclePolicyResultId: string;
+    /** ID of the lifecycle policy. */
     lifecyclePolicyId: string;
+    /** Time of the getting result. */
     runAt: Date | undefined;
+    /** Count of affected images. */
     affectedImagesCount: number;
 }
 
 export interface GetDryRunLifecyclePolicyResultRequest {
+    /** ID of the dry run result of the lifecycle policy. */
     dryRunLifecyclePolicyResultId: string;
 }
 
 export interface ListDryRunLifecyclePolicyResultsRequest {
+    /** ID of the lifecycle policy. */
     lifecyclePolicyId: string;
+    /**
+     * The maximum number of results per page to return. If the number of available
+     * results is larger than `page_size`, the service returns
+     * a [ListDryRunLifecyclePolicyResultsResponse.next_page_token] that can be used to get
+     * the next page of results in subsequent list requests.
+     */
     pageSize: number;
+    /**
+     * Page token. To get the next page of results, set `page_token` to the
+     * [ListDryRunLifecyclePolicyResultsResponse.next_page_token] returned by a previous list request.
+     */
     pageToken: string;
+    /**
+     * A filter expression that filters dry run results listed in the response.
+     *
+     * The expression must specify:
+     * 1. The field name. Currently you can use filtering only on [LifecyclePolicy.name] field.
+     * 2. An operator. Can be either `=` or `!=` for single values, `IN` or `NOT IN` for lists of values.
+     * 3. The value. Must be 3-63 characters long and match the regular expression `^[a-z][-a-z0-9]{1,61}[a-z0-9]`.
+     */
     filter: string;
+    /**
+     * Sorting the list by [DryRunLifecyclePolicyResult.run_at] and [DryRunLifecyclePolicyResult.affected_images_count] fields.
+     * The default sorting order is ascending.
+     */
     orderBy: string;
 }
 
 export interface ListDryRunLifecyclePolicyResultsResponse {
+    /** List of results of dry runs of a lifecycle policy. */
     dryRunLifecyclePolicyResults: DryRunLifecyclePolicyResult[];
+    /**
+     * Token for getting the next page of the list. If the number of results is greater than
+     * the specified [ListDryRunLifecyclePolicyResultsRequest.page_size] use `next_page_token` as the value
+     * for the [ListDryRunLifecyclePolicyResultsRequest.page_token] parameter in the next list request.
+     *
+     * Each subsequent page will have its own `next_page_token` to continue paging through the results.
+     */
     nextPageToken: string;
 }
 
 export interface ListDryRunLifecyclePolicyResultAffectedImagesRequest {
+    /** ID of the dry run result of the lifecycle policy */
     dryRunLifecyclePolicyResultId: string;
+    /**
+     * The maximum number of results per page to return. If the number of available
+     * results is larger than `page_size`, the service returns a [ListDryRunLifecyclePolicyResultAffectedImagesResponse.next_page_token]
+     * that can be used to get the next page of results in subsequent list requests.
+     */
     pageSize: number;
+    /**
+     * Page token. To get the next page of results, set `page_token` to the
+     * [ListDryRunLifecyclePolicyResultAffectedImagesResponse.next_page_token] returned by a previous list request.
+     */
     pageToken: string;
+    /**
+     * A filter expression that filters affected images listed in the response.
+     *
+     * The expression must specify:
+     * 1. The field name. Currently you can use filtering only on [LifecyclePolicy.name] field.
+     * 2. An operator. Can be either `=` or `!=` for single values, `IN` or `NOT IN` for lists of values.
+     * 3. The value. Must be 3-63 characters long and match the regular expression `^[a-z][-a-z0-9]{1,61}[a-z0-9]`.
+     */
     filter: string;
+    /**
+     * Sorting the list by [LifecyclePolicy.name] and [LifecyclePolicy.created_at] fields.
+     * The default sorting order is ascending.
+     */
     orderBy: string;
 }
 
 export interface ListDryRunLifecyclePolicyResultAffectedImagesResponse {
+    /** List of affected images. */
     affectedImages: Image[];
+    /**
+     * Token for getting the next page of the list. If the number of results is greater than
+     * the specified [ListDryRunLifecyclePolicyResultAffectedImagesRequest.page_size], use `next_page_token` as the value
+     * for the [ListDryRunLifecyclePolicyResultAffectedImagesRequest.page_token] parameter in the next list request.
+     *
+     * Each subsequent page will have its own `next_page_token` to continue paging through the results.
+     */
     nextPageToken: string;
 }
 
@@ -2105,7 +2222,13 @@ export const ListDryRunLifecyclePolicyResultAffectedImagesResponse = {
     },
 };
 
+/** A set of methods for managing Lifecycle policy resources. */
 export const LifecyclePolicyServiceService = {
+    /**
+     * Returns the specified lifecycle policy.
+     *
+     * To get the list of all available lifecycle policies, make a [List] request.
+     */
     get: {
         path: '/yandex.cloud.containerregistry.v1.LifecyclePolicyService/Get',
         requestStream: false,
@@ -2118,6 +2241,7 @@ export const LifecyclePolicyServiceService = {
             Buffer.from(LifecyclePolicy.encode(value).finish()),
         responseDeserialize: (value: Buffer) => LifecyclePolicy.decode(value),
     },
+    /** Retrieves the list of lifecycle policies in the specified repository. */
     list: {
         path: '/yandex.cloud.containerregistry.v1.LifecyclePolicyService/List',
         requestStream: false,
@@ -2131,6 +2255,7 @@ export const LifecyclePolicyServiceService = {
         responseDeserialize: (value: Buffer) =>
             ListLifecyclePoliciesResponse.decode(value),
     },
+    /** Creates a lifecycle policy in the specified repository. */
     create: {
         path: '/yandex.cloud.containerregistry.v1.LifecyclePolicyService/Create',
         requestStream: false,
@@ -2143,6 +2268,7 @@ export const LifecyclePolicyServiceService = {
             Buffer.from(Operation.encode(value).finish()),
         responseDeserialize: (value: Buffer) => Operation.decode(value),
     },
+    /** Updates the specified lifecycle policy. */
     update: {
         path: '/yandex.cloud.containerregistry.v1.LifecyclePolicyService/Update',
         requestStream: false,
@@ -2155,6 +2281,7 @@ export const LifecyclePolicyServiceService = {
             Buffer.from(Operation.encode(value).finish()),
         responseDeserialize: (value: Buffer) => Operation.decode(value),
     },
+    /** Deletes the specified lifecycle policy. */
     delete: {
         path: '/yandex.cloud.containerregistry.v1.LifecyclePolicyService/Delete',
         requestStream: false,
@@ -2167,6 +2294,7 @@ export const LifecyclePolicyServiceService = {
             Buffer.from(Operation.encode(value).finish()),
         responseDeserialize: (value: Buffer) => Operation.decode(value),
     },
+    /** Creates a request of a dry run of the lifecycle policy. */
     dryRun: {
         path: '/yandex.cloud.containerregistry.v1.LifecyclePolicyService/DryRun',
         requestStream: false,
@@ -2179,6 +2307,7 @@ export const LifecyclePolicyServiceService = {
             Buffer.from(Operation.encode(value).finish()),
         responseDeserialize: (value: Buffer) => Operation.decode(value),
     },
+    /** Returns the dry run result of the specified lifecycle policy. */
     getDryRunResult: {
         path: '/yandex.cloud.containerregistry.v1.LifecyclePolicyService/GetDryRunResult',
         requestStream: false,
@@ -2194,6 +2323,7 @@ export const LifecyclePolicyServiceService = {
         responseDeserialize: (value: Buffer) =>
             DryRunLifecyclePolicyResult.decode(value),
     },
+    /** Retrieves the list of the dry run results. */
     listDryRunResults: {
         path: '/yandex.cloud.containerregistry.v1.LifecyclePolicyService/ListDryRunResults',
         requestStream: false,
@@ -2211,6 +2341,7 @@ export const LifecyclePolicyServiceService = {
         responseDeserialize: (value: Buffer) =>
             ListDryRunLifecyclePolicyResultsResponse.decode(value),
     },
+    /** Retrieves the list of the affected images. */
     listDryRunResultAffectedImages: {
         path: '/yandex.cloud.containerregistry.v1.LifecyclePolicyService/ListDryRunResultAffectedImages',
         requestStream: false,
@@ -2240,23 +2371,36 @@ export const LifecyclePolicyServiceService = {
 
 export interface LifecyclePolicyServiceServer
     extends UntypedServiceImplementation {
+    /**
+     * Returns the specified lifecycle policy.
+     *
+     * To get the list of all available lifecycle policies, make a [List] request.
+     */
     get: handleUnaryCall<GetLifecyclePolicyRequest, LifecyclePolicy>;
+    /** Retrieves the list of lifecycle policies in the specified repository. */
     list: handleUnaryCall<
         ListLifecyclePoliciesRequest,
         ListLifecyclePoliciesResponse
     >;
+    /** Creates a lifecycle policy in the specified repository. */
     create: handleUnaryCall<CreateLifecyclePolicyRequest, Operation>;
+    /** Updates the specified lifecycle policy. */
     update: handleUnaryCall<UpdateLifecyclePolicyRequest, Operation>;
+    /** Deletes the specified lifecycle policy. */
     delete: handleUnaryCall<DeleteLifecyclePolicyRequest, Operation>;
+    /** Creates a request of a dry run of the lifecycle policy. */
     dryRun: handleUnaryCall<DryRunLifecyclePolicyRequest, Operation>;
+    /** Returns the dry run result of the specified lifecycle policy. */
     getDryRunResult: handleUnaryCall<
         GetDryRunLifecyclePolicyResultRequest,
         DryRunLifecyclePolicyResult
     >;
+    /** Retrieves the list of the dry run results. */
     listDryRunResults: handleUnaryCall<
         ListDryRunLifecyclePolicyResultsRequest,
         ListDryRunLifecyclePolicyResultsResponse
     >;
+    /** Retrieves the list of the affected images. */
     listDryRunResultAffectedImages: handleUnaryCall<
         ListDryRunLifecyclePolicyResultAffectedImagesRequest,
         ListDryRunLifecyclePolicyResultAffectedImagesResponse
@@ -2264,6 +2408,11 @@ export interface LifecyclePolicyServiceServer
 }
 
 export interface LifecyclePolicyServiceClient extends Client {
+    /**
+     * Returns the specified lifecycle policy.
+     *
+     * To get the list of all available lifecycle policies, make a [List] request.
+     */
     get(
         request: GetLifecyclePolicyRequest,
         callback: (
@@ -2288,6 +2437,7 @@ export interface LifecyclePolicyServiceClient extends Client {
             response: LifecyclePolicy
         ) => void
     ): ClientUnaryCall;
+    /** Retrieves the list of lifecycle policies in the specified repository. */
     list(
         request: ListLifecyclePoliciesRequest,
         callback: (
@@ -2312,6 +2462,7 @@ export interface LifecyclePolicyServiceClient extends Client {
             response: ListLifecyclePoliciesResponse
         ) => void
     ): ClientUnaryCall;
+    /** Creates a lifecycle policy in the specified repository. */
     create(
         request: CreateLifecyclePolicyRequest,
         callback: (error: ServiceError | null, response: Operation) => void
@@ -2327,6 +2478,7 @@ export interface LifecyclePolicyServiceClient extends Client {
         options: Partial<CallOptions>,
         callback: (error: ServiceError | null, response: Operation) => void
     ): ClientUnaryCall;
+    /** Updates the specified lifecycle policy. */
     update(
         request: UpdateLifecyclePolicyRequest,
         callback: (error: ServiceError | null, response: Operation) => void
@@ -2342,6 +2494,7 @@ export interface LifecyclePolicyServiceClient extends Client {
         options: Partial<CallOptions>,
         callback: (error: ServiceError | null, response: Operation) => void
     ): ClientUnaryCall;
+    /** Deletes the specified lifecycle policy. */
     delete(
         request: DeleteLifecyclePolicyRequest,
         callback: (error: ServiceError | null, response: Operation) => void
@@ -2357,6 +2510,7 @@ export interface LifecyclePolicyServiceClient extends Client {
         options: Partial<CallOptions>,
         callback: (error: ServiceError | null, response: Operation) => void
     ): ClientUnaryCall;
+    /** Creates a request of a dry run of the lifecycle policy. */
     dryRun(
         request: DryRunLifecyclePolicyRequest,
         callback: (error: ServiceError | null, response: Operation) => void
@@ -2372,6 +2526,7 @@ export interface LifecyclePolicyServiceClient extends Client {
         options: Partial<CallOptions>,
         callback: (error: ServiceError | null, response: Operation) => void
     ): ClientUnaryCall;
+    /** Returns the dry run result of the specified lifecycle policy. */
     getDryRunResult(
         request: GetDryRunLifecyclePolicyResultRequest,
         callback: (
@@ -2396,6 +2551,7 @@ export interface LifecyclePolicyServiceClient extends Client {
             response: DryRunLifecyclePolicyResult
         ) => void
     ): ClientUnaryCall;
+    /** Retrieves the list of the dry run results. */
     listDryRunResults(
         request: ListDryRunLifecyclePolicyResultsRequest,
         callback: (
@@ -2420,6 +2576,7 @@ export interface LifecyclePolicyServiceClient extends Client {
             response: ListDryRunLifecyclePolicyResultsResponse
         ) => void
     ): ClientUnaryCall;
+    /** Retrieves the list of the affected images. */
     listDryRunResultAffectedImages(
         request: ListDryRunLifecyclePolicyResultAffectedImagesRequest,
         callback: (

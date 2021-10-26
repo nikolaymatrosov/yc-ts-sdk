@@ -1,4 +1,5 @@
 import { Duration } from '../../../../../google/protobuf/duration';
+import { LogLevel_Level } from '../../../../../yandex/cloud/logging/v1/log_entry';
 import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.serverless.triggers.v1";
 export declare enum TriggerType {
@@ -17,6 +18,12 @@ export declare enum TriggerType {
     CONTAINER_REGISTRY = 6,
     /** CLOUD_LOGS - The trigger is activated by cloud log group events */
     CLOUD_LOGS = 7,
+    /** LOGGING - The trigger is activated by logging group events */
+    LOGGING = 8,
+    /** BILLING_BUDGET - The trigger is activated by billing events */
+    BILLING_BUDGET = 9,
+    /** YDS - The trigger is activated by YDS events */
+    YDS = 10,
     UNRECOGNIZED = -1
 }
 export declare function triggerTypeFromJSON(object: any): TriggerType;
@@ -84,6 +91,9 @@ export interface Trigger_Rule {
     objectStorage: Trigger_ObjectStorage | undefined;
     containerRegistry: Trigger_ContainerRegistry | undefined;
     cloudLogs: Trigger_CloudLogs | undefined;
+    logging: Trigger_Logging | undefined;
+    billingBudget: BillingBudget | undefined;
+    dataStream: DataStream | undefined;
 }
 /** Rule for activating a timed trigger. */
 export interface Trigger_Timer {
@@ -91,7 +101,10 @@ export interface Trigger_Timer {
     cronExpression: string;
     /** Instructions for invoking a function once. */
     invokeFunction: InvokeFunctionOnce | undefined;
+    /** Instructions for invoking a function with retry. */
     invokeFunctionWithRetry: InvokeFunctionWithRetry | undefined;
+    /** Instructions for invoking a container with retry. */
+    invokeContainerWithRetry: InvokeContainerWithRetry | undefined;
 }
 /** Rule for activating a message queue trigger. */
 export interface Trigger_MessageQueue {
@@ -105,6 +118,8 @@ export interface Trigger_MessageQueue {
     visibilityTimeout: Duration | undefined;
     /** Instructions for invoking a function once. */
     invokeFunction: InvokeFunctionOnce | undefined;
+    /** Instructions for invoking a container once. */
+    invokeContainer: InvokeContainerOnce | undefined;
 }
 /** Rule for activating a Yandex IoT Core trigger. */
 export interface Trigger_IoTMessage {
@@ -116,6 +131,8 @@ export interface Trigger_IoTMessage {
     mqttTopic: string;
     /** Instructions for invoking a function with retries as needed. */
     invokeFunction: InvokeFunctionWithRetry | undefined;
+    /** Instructions for invoking a container with retries as needed. */
+    invokeContainer: InvokeContainerWithRetry | undefined;
 }
 export interface Trigger_ObjectStorage {
     /** Type (name) of events, at least one value is required. */
@@ -126,7 +143,10 @@ export interface Trigger_ObjectStorage {
     prefix: string;
     /** Suffix of the object key. Filter, optional. */
     suffix: string;
+    /** Instructions for invoking a function with retries as needed. */
     invokeFunction: InvokeFunctionWithRetry | undefined;
+    /** Instructions for invoking a container with retries as needed. */
+    invokeContainer: InvokeContainerWithRetry | undefined;
 }
 export interface Trigger_ContainerRegistry {
     /** Type (name) of events, at least one value is required. */
@@ -137,14 +157,33 @@ export interface Trigger_ContainerRegistry {
     imageName: string;
     /** Docker-image tag. Filter, optional. */
     tag: string;
+    /** Instructions for invoking a function with retries as needed. */
     invokeFunction: InvokeFunctionWithRetry | undefined;
+    /** Instructions for invoking a container with retries as needed. */
+    invokeContainer: InvokeContainerWithRetry | undefined;
 }
 export interface Trigger_CloudLogs {
     /** Log group identifiers, at least one value is required. */
     logGroupId: string[];
     /** Batch settings for processing log events. */
     batchSettings: CloudLogsBatchSettings | undefined;
+    /** Instructions for invoking a function with retries as needed. */
     invokeFunction: InvokeFunctionWithRetry | undefined;
+    /** Instructions for invoking a container with retries as needed. */
+    invokeContainer: InvokeContainerWithRetry | undefined;
+}
+export interface Trigger_Logging {
+    /** Log events filter settings. */
+    logGroupId: string;
+    resourceType: string[];
+    resourceId: string[];
+    levels: LogLevel_Level[];
+    /** Batch settings for processing log events. */
+    batchSettings: LoggingBatchSettings | undefined;
+    /** Instructions for invoking a function with retries as needed. */
+    invokeFunction: InvokeFunctionWithRetry | undefined;
+    /** Instructions for invoking a container with retries as needed. */
+    invokeContainer: InvokeContainerWithRetry | undefined;
 }
 /** A single function invocation. */
 export interface InvokeFunctionOnce {
@@ -162,6 +201,28 @@ export interface InvokeFunctionWithRetry {
     /** Version tag of the function to execute. */
     functionTag: string;
     /** ID of the service account which has permission to invoke the function. */
+    serviceAccountId: string;
+    /** Retry policy. If the field is not specified, or the value is empty, no retries will be attempted. */
+    retrySettings: RetrySettings | undefined;
+    /** DLQ policy (no value means discarding a message). */
+    deadLetterQueue: PutQueueMessage | undefined;
+}
+/** A single container invocation. */
+export interface InvokeContainerOnce {
+    /** ID of the container to invoke. */
+    containerId: string;
+    /** Endpoint HTTP path to invoke. */
+    path: string;
+    /** ID of the service account which has permission to invoke the container. */
+    serviceAccountId: string;
+}
+/** A container invocation with retries. */
+export interface InvokeContainerWithRetry {
+    /** ID of the container to invoke. */
+    containerId: string;
+    /** Endpoint HTTP path to invoke. */
+    path: string;
+    /** ID of the service account which has permission to invoke the container. */
     serviceAccountId: string;
     /** Retry policy. If the field is not specified, or the value is empty, no retries will be attempted. */
     retrySettings: RetrySettings | undefined;
@@ -199,12 +260,56 @@ export interface CloudLogsBatchSettings {
      */
     cutoff: Duration | undefined;
 }
+export interface LoggingBatchSettings {
+    /**
+     * Batch size. Trigger will send the batch of messages to the associated function
+     * when the number of log events reaches this value, or the [cutoff] time has passed.
+     */
+    size: number;
+    /**
+     * Maximum wait time. Trigger will send the batch of messages the time since the last batch
+     * exceeds the `cutoff` value, regardless of the amount of log events.
+     */
+    cutoff: Duration | undefined;
+}
 /** Settings for retrying to invoke a function. */
 export interface RetrySettings {
     /** Maximum number of retries (extra invokes) before the action is considered failed. */
     retryAttempts: number;
     /** Time in seconds to wait between individual retries. */
     interval: Duration | undefined;
+}
+export interface BillingBudget {
+    billingAccountId: string;
+    budgetId: string;
+    invokeFunction: InvokeFunctionWithRetry | undefined;
+    invokeContainer: InvokeContainerWithRetry | undefined;
+}
+export interface DataStreamBatchSettings {
+    /**
+     * Batch size in bytes. Trigger will send the batch of messages to the associated function
+     * when size of log events reaches this value, or the [cutoff] time has passed.
+     */
+    size: number;
+    /**
+     * Maximum wait time. Trigger will send the batch of messages the time since the last batch
+     * exceeds the `cutoff` value, regardless of the amount of log events.
+     */
+    cutoff: Duration | undefined;
+}
+export interface DataStream {
+    /** Data stream endpoint. */
+    endpoint: string;
+    /** Data stream database. */
+    database: string;
+    /** Stream name. */
+    stream: string;
+    /** ID of the service account which has permission to read data stream. */
+    serviceAccountId: string;
+    /** Batch settings for processing events. */
+    batchSettings: DataStreamBatchSettings | undefined;
+    invokeFunction: InvokeFunctionWithRetry | undefined;
+    invokeContainer: InvokeContainerWithRetry | undefined;
 }
 export declare const Trigger: {
     encode(message: Trigger, writer?: _m0.Writer): _m0.Writer;
@@ -269,6 +374,13 @@ export declare const Trigger_CloudLogs: {
     toJSON(message: Trigger_CloudLogs): unknown;
     fromPartial(object: DeepPartial<Trigger_CloudLogs>): Trigger_CloudLogs;
 };
+export declare const Trigger_Logging: {
+    encode(message: Trigger_Logging, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Trigger_Logging;
+    fromJSON(object: any): Trigger_Logging;
+    toJSON(message: Trigger_Logging): unknown;
+    fromPartial(object: DeepPartial<Trigger_Logging>): Trigger_Logging;
+};
 export declare const InvokeFunctionOnce: {
     encode(message: InvokeFunctionOnce, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): InvokeFunctionOnce;
@@ -282,6 +394,20 @@ export declare const InvokeFunctionWithRetry: {
     fromJSON(object: any): InvokeFunctionWithRetry;
     toJSON(message: InvokeFunctionWithRetry): unknown;
     fromPartial(object: DeepPartial<InvokeFunctionWithRetry>): InvokeFunctionWithRetry;
+};
+export declare const InvokeContainerOnce: {
+    encode(message: InvokeContainerOnce, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number | undefined): InvokeContainerOnce;
+    fromJSON(object: any): InvokeContainerOnce;
+    toJSON(message: InvokeContainerOnce): unknown;
+    fromPartial(object: DeepPartial<InvokeContainerOnce>): InvokeContainerOnce;
+};
+export declare const InvokeContainerWithRetry: {
+    encode(message: InvokeContainerWithRetry, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number | undefined): InvokeContainerWithRetry;
+    fromJSON(object: any): InvokeContainerWithRetry;
+    toJSON(message: InvokeContainerWithRetry): unknown;
+    fromPartial(object: DeepPartial<InvokeContainerWithRetry>): InvokeContainerWithRetry;
 };
 export declare const PutQueueMessage: {
     encode(message: PutQueueMessage, writer?: _m0.Writer): _m0.Writer;
@@ -304,12 +430,40 @@ export declare const CloudLogsBatchSettings: {
     toJSON(message: CloudLogsBatchSettings): unknown;
     fromPartial(object: DeepPartial<CloudLogsBatchSettings>): CloudLogsBatchSettings;
 };
+export declare const LoggingBatchSettings: {
+    encode(message: LoggingBatchSettings, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number | undefined): LoggingBatchSettings;
+    fromJSON(object: any): LoggingBatchSettings;
+    toJSON(message: LoggingBatchSettings): unknown;
+    fromPartial(object: DeepPartial<LoggingBatchSettings>): LoggingBatchSettings;
+};
 export declare const RetrySettings: {
     encode(message: RetrySettings, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): RetrySettings;
     fromJSON(object: any): RetrySettings;
     toJSON(message: RetrySettings): unknown;
     fromPartial(object: DeepPartial<RetrySettings>): RetrySettings;
+};
+export declare const BillingBudget: {
+    encode(message: BillingBudget, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number | undefined): BillingBudget;
+    fromJSON(object: any): BillingBudget;
+    toJSON(message: BillingBudget): unknown;
+    fromPartial(object: DeepPartial<BillingBudget>): BillingBudget;
+};
+export declare const DataStreamBatchSettings: {
+    encode(message: DataStreamBatchSettings, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DataStreamBatchSettings;
+    fromJSON(object: any): DataStreamBatchSettings;
+    toJSON(message: DataStreamBatchSettings): unknown;
+    fromPartial(object: DeepPartial<DataStreamBatchSettings>): DataStreamBatchSettings;
+};
+export declare const DataStream: {
+    encode(message: DataStream, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DataStream;
+    fromJSON(object: any): DataStream;
+    toJSON(message: DataStream): unknown;
+    fromPartial(object: DeepPartial<DataStream>): DataStream;
 };
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {

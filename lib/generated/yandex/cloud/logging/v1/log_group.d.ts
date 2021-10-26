@@ -2,23 +2,50 @@ import { Duration } from '../../../../google/protobuf/duration';
 import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.logging.v1";
 export interface LogGroup {
+    /** Log group ID. */
     id: string;
+    /** Log group folder ID. */
     folderId: string;
+    /** Log group cloud ID. */
     cloudId: string;
+    /** Log group creation time. */
     createdAt: Date | undefined;
+    /** Log group name. */
     name: string;
+    /** Log group description. */
     description: string;
+    /** Log group labels. */
     labels: {
         [key: string]: string;
     };
+    /** Status of the log group. */
     status: LogGroup_Status;
+    /**
+     * Log group entry retention period.
+     *
+     * Entries will be present in group during this period.
+     */
     retentionPeriod: Duration | undefined;
 }
+/** Possible log group statuses. */
 export declare enum LogGroup_Status {
+    /**
+     * STATUS_UNSPECIFIED - Unknown status.
+     *
+     * Should never occur.
+     */
     STATUS_UNSPECIFIED = 0,
+    /** CREATING - Log group is creating. */
     CREATING = 1,
+    /** ACTIVE - Log group is ready to accept messages, */
     ACTIVE = 2,
+    /**
+     * DELETING - Log group is being deleted.
+     *
+     * No messages will be accepted.
+     */
     DELETING = 3,
+    /** ERROR - Log group is in failed state. */
     ERROR = 4,
     UNRECOGNIZED = -1
 }

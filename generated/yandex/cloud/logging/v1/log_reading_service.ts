@@ -24,25 +24,77 @@ import _m0 from 'protobufjs/minimal';
 export const protobufPackage = 'yandex.cloud.logging.v1';
 
 export interface ReadRequest {
+    /**
+     * Page token. To get the next page of results, set `page_token` to the
+     * [ReadResponse.next_page_token] or [ReadResponse.previous_page_token] returned by a previous read request.
+     */
     pageToken: string | undefined;
+    /**
+     * Read criteria.
+     *
+     * See [Criteria] for details.
+     */
     criteria: Criteria | undefined;
 }
 
 export interface ReadResponse {
+    /** Log group ID the read was performed from. */
     logGroupId: string;
+    /** List of matching log entries. */
     entries: LogEntry[];
+    /**
+     * Token for getting the next page of the log entries.
+     *
+     * After getting log entries initially with [Criteria], you can use `next_page_token` as the value
+     * for the [ReadRequest.page_token] parameter in the next read request.
+     *
+     * Each subsequent page will have its own `next_page_token` to continue paging through the results.
+     */
     nextPageToken: string;
+    /**
+     * Token for getting the previous page of the log entries.
+     *
+     * After getting log entries initially with [Criteria], you can use `previous_page_token` as the value
+     * for the [ReadRequest.page_token] parameter in the next read request.
+     *
+     * Each subsequent page will have its own `next_page_token` to continue paging through the results.
+     */
     previousPageToken: string;
 }
 
+/** Read criteria. Should be used in initial [ReadRequest]. */
 export interface Criteria {
+    /**
+     * ID of the log group to return.
+     *
+     * To get a log group ID make a [LogGroupService.List] request.
+     */
     logGroupId: string;
+    /**
+     * List of resource types to limit log entries to.
+     *
+     * Empty list disables filter.
+     */
     resourceTypes: string[];
+    /**
+     * List of resource IDs to limit log entries to.
+     *
+     * Empty list disables filter.
+     */
     resourceIds: string[];
+    /** Lower bound of log entries timestamps. */
     since: Date | undefined;
+    /** Upper bound of log entries timestamps. */
     until: Date | undefined;
+    /**
+     * List of log levels to limit log entries to.
+     *
+     * Empty list disables filter.
+     */
     levels: LogLevel_Level[];
+    /** Filter expression. For details about filtering, see [documentation](/docs/logging/concepts/filter). */
     filter: string;
+    /** The maximum number of results per page to return. */
     pageSize: number;
 }
 
@@ -502,7 +554,9 @@ export const Criteria = {
     },
 };
 
+/** A set of methods for reading from log groups. To make a request use `reader.logging.yandexcloud.net`. */
 export const LogReadingServiceService = {
+    /** Read log entries from the specified log group. */
     read: {
         path: '/yandex.cloud.logging.v1.LogReadingService/Read',
         requestStream: false,
@@ -517,10 +571,12 @@ export const LogReadingServiceService = {
 } as const;
 
 export interface LogReadingServiceServer extends UntypedServiceImplementation {
+    /** Read log entries from the specified log group. */
     read: handleUnaryCall<ReadRequest, ReadResponse>;
 }
 
 export interface LogReadingServiceClient extends Client {
+    /** Read log entries from the specified log group. */
     read(
         request: ReadRequest,
         callback: (error: ServiceError | null, response: ReadResponse) => void

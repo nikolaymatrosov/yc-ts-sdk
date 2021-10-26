@@ -60,7 +60,7 @@ export interface ListScanResultsRequest {
     /**
      * A filter expression that filters resources listed in the response.
      * The expression must specify:
-     * 1. The field name. Currently you can use filtering only on [ScanResult.status] and [ScanResult.scanned_at] fields.
+     * 1. The field name. Currently you can use filtering only on [ScanResult.status] field.
      * 2. An operator. Can be either `=` or `!=` for single values, `IN` or `NOT IN` for lists of values.
      * 3. Value or a list of values to compare against the values of the field.
      */
@@ -68,8 +68,8 @@ export interface ListScanResultsRequest {
     /**
      * An order expression that orders resources listed in the response.
      * The expression must specify:
-     * 1. The field name. Currently you can use filtering only on [ScanResult.status] and [ScanResult.scanned_at] fields.
-     * 2. Order selector. Can be either ASC or DESC.
+     * 1. The field name. Currently you can use filtering only on [ScanResult.status] field.
+     * 2. Order selector. Currently you can use ordering only on `ScanResult.status` field (critical first).
      */
     orderBy: string;
 }
@@ -107,7 +107,7 @@ export interface ListVulnerabilitiesRequest {
     /**
      * A filter expression that filters resources listed in the response.
      * The expression must specify:
-     * 1. The field name. Currently you can use filtering only on [Vulnerability.severity] and [Vulnerability.type] fields.
+     * 1. The field name. Currently you can use filtering only on [Vulnerability.severity] and [PackageVulnerability.name] fields.
      * 2. An operator. Can be either `=` or `!=` for single values, `IN` or `NOT IN` for lists of values.
      * 3. Value or a list of values to compare against the values of the field.
      */
@@ -115,8 +115,8 @@ export interface ListVulnerabilitiesRequest {
     /**
      * An order expression that orders resources listed in the response.
      * The expression must specify:
-     * 1. The field name. Currently you can use filtering only on [Vulnerability.severity] and [Vulnerability.type] fields.
-     * 2. Order selector. Can be either ASC or DESC.
+     * 1. The field name. Currently you can use filtering only on [Vulnerability.severity] and [PackageVulnerability.name] fields.
+     * 2. Order selector. Currently you can use ordering only on `Vulnerability.severity` field (recent first).
      */
     orderBy: string;
 }

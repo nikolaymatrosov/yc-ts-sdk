@@ -131,6 +131,8 @@ export interface CreateImageRequest {
      * If not specified and you used the `image_id` or `disk_id` field to set the source, then the value can be inherited from the source resource.
      */
     os: Os | undefined;
+    /** When true, an image pool will be created for fast creation disks from the image. */
+    pooled: boolean;
 }
 
 export interface CreateImageRequest_LabelsEntry {
@@ -582,6 +584,7 @@ const baseCreateImageRequest: object = {
     family: '',
     minDiskSize: 0,
     productIds: '',
+    pooled: false,
 };
 
 export const CreateImageRequest = {
@@ -627,6 +630,9 @@ export const CreateImageRequest = {
         }
         if (message.os !== undefined) {
             Os.encode(message.os, writer.uint32(98).fork()).ldelim();
+        }
+        if (message.pooled === true) {
+            writer.uint32(136).bool(message.pooled);
         }
         return writer;
     },
@@ -685,6 +691,9 @@ export const CreateImageRequest = {
                     break;
                 case 12:
                     message.os = Os.decode(reader, reader.uint32());
+                    break;
+                case 17:
+                    message.pooled = reader.bool();
                     break;
                 default:
                     reader.skipType(tag & 7);
@@ -758,6 +767,11 @@ export const CreateImageRequest = {
         } else {
             message.os = undefined;
         }
+        if (object.pooled !== undefined && object.pooled !== null) {
+            message.pooled = Boolean(object.pooled);
+        } else {
+            message.pooled = false;
+        }
         return message;
     },
 
@@ -788,6 +802,7 @@ export const CreateImageRequest = {
         message.uri !== undefined && (obj.uri = message.uri);
         message.os !== undefined &&
             (obj.os = message.os ? Os.toJSON(message.os) : undefined);
+        message.pooled !== undefined && (obj.pooled = message.pooled);
         return obj;
     },
 
@@ -856,6 +871,11 @@ export const CreateImageRequest = {
             message.os = Os.fromPartial(object.os);
         } else {
             message.os = undefined;
+        }
+        if (object.pooled !== undefined && object.pooled !== null) {
+            message.pooled = object.pooled;
+        } else {
+            message.pooled = false;
         }
         return message;
     },

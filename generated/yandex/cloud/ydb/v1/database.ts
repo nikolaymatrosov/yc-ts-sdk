@@ -6,6 +6,66 @@ import _m0 from 'protobufjs/minimal';
 
 export const protobufPackage = 'yandex.cloud.ydb.v1';
 
+export enum AlertEvaluationStatus {
+    ALERT_EVALUATION_STATUS_UNSPECIFIED = 0,
+    ALERT_EVALUATION_STATUS_OK = 1,
+    ALERT_EVALUATION_STATUS_NO_DATA = 2,
+    ALERT_EVALUATION_STATUS_ERROR = 3,
+    ALERT_EVALUATION_STATUS_ALARM = 4,
+    ALERT_EVALUATION_STATUS_WARN = 5,
+    UNRECOGNIZED = -1,
+}
+
+export function alertEvaluationStatusFromJSON(
+    object: any
+): AlertEvaluationStatus {
+    switch (object) {
+        case 0:
+        case 'ALERT_EVALUATION_STATUS_UNSPECIFIED':
+            return AlertEvaluationStatus.ALERT_EVALUATION_STATUS_UNSPECIFIED;
+        case 1:
+        case 'ALERT_EVALUATION_STATUS_OK':
+            return AlertEvaluationStatus.ALERT_EVALUATION_STATUS_OK;
+        case 2:
+        case 'ALERT_EVALUATION_STATUS_NO_DATA':
+            return AlertEvaluationStatus.ALERT_EVALUATION_STATUS_NO_DATA;
+        case 3:
+        case 'ALERT_EVALUATION_STATUS_ERROR':
+            return AlertEvaluationStatus.ALERT_EVALUATION_STATUS_ERROR;
+        case 4:
+        case 'ALERT_EVALUATION_STATUS_ALARM':
+            return AlertEvaluationStatus.ALERT_EVALUATION_STATUS_ALARM;
+        case 5:
+        case 'ALERT_EVALUATION_STATUS_WARN':
+            return AlertEvaluationStatus.ALERT_EVALUATION_STATUS_WARN;
+        case -1:
+        case 'UNRECOGNIZED':
+        default:
+            return AlertEvaluationStatus.UNRECOGNIZED;
+    }
+}
+
+export function alertEvaluationStatusToJSON(
+    object: AlertEvaluationStatus
+): string {
+    switch (object) {
+        case AlertEvaluationStatus.ALERT_EVALUATION_STATUS_UNSPECIFIED:
+            return 'ALERT_EVALUATION_STATUS_UNSPECIFIED';
+        case AlertEvaluationStatus.ALERT_EVALUATION_STATUS_OK:
+            return 'ALERT_EVALUATION_STATUS_OK';
+        case AlertEvaluationStatus.ALERT_EVALUATION_STATUS_NO_DATA:
+            return 'ALERT_EVALUATION_STATUS_NO_DATA';
+        case AlertEvaluationStatus.ALERT_EVALUATION_STATUS_ERROR:
+            return 'ALERT_EVALUATION_STATUS_ERROR';
+        case AlertEvaluationStatus.ALERT_EVALUATION_STATUS_ALARM:
+            return 'ALERT_EVALUATION_STATUS_ALARM';
+        case AlertEvaluationStatus.ALERT_EVALUATION_STATUS_WARN:
+            return 'ALERT_EVALUATION_STATUS_WARN';
+        default:
+            return 'UNKNOWN';
+    }
+}
+
 /** YDB database. */
 export interface Database {
     id: string;
@@ -32,6 +92,7 @@ export interface Database {
     backupConfig: BackupConfig | undefined;
     documentApiEndpoint: string;
     kinesisApiEndpoint: string;
+    monitoringConfig: MonitoringConfig | undefined;
 }
 
 export enum Database_Status {
@@ -107,6 +168,76 @@ export interface Database_LabelsEntry {
     value: string;
 }
 
+export interface AlertParameter {
+    doubleParameterValue: AlertParameter_DoubleParameterValue | undefined;
+    integerParameterValue: AlertParameter_IntegerParameterValue | undefined;
+    textParameterValue: AlertParameter_TextParameterValue | undefined;
+    textListParameterValue: AlertParameter_TextListParameterValue | undefined;
+    labelListParameterValue: AlertParameter_LabelListParameterValue | undefined;
+}
+
+export interface AlertParameter_DoubleParameterValue {
+    /** Required. Parameter name */
+    name: string;
+    /** Required. Parameter value */
+    value: number;
+}
+
+export interface AlertParameter_IntegerParameterValue {
+    /** Required. Parameter name */
+    name: string;
+    /** Required. Parameter value */
+    value: number;
+}
+
+export interface AlertParameter_TextParameterValue {
+    /** Required. Parameter name */
+    name: string;
+    /** Required. Parameter value */
+    value: string;
+}
+
+export interface AlertParameter_TextListParameterValue {
+    /** Required. Parameter name */
+    name: string;
+    /** Required. Parameter value */
+    values: string[];
+}
+
+export interface AlertParameter_LabelListParameterValue {
+    /** Required. Parameter name */
+    name: string;
+    /** Required. Parameter value */
+    values: string[];
+}
+
+export interface NotificationChannel {
+    notificationChannelId: string;
+    notifyAboutStatuses: AlertEvaluationStatus[];
+    repeateNotifyDelayMs: number;
+}
+
+export interface Alert {
+    /** output only field. */
+    alertId: string;
+    /** template of the alert. */
+    alertTemplateId: string;
+    /** name of the alert. */
+    name: string;
+    /** human readable description of the alert. */
+    description: string;
+    /** the notification channels of the alert. */
+    notificationChannels: NotificationChannel[];
+    /** alert parameters to override. */
+    alertParameters: AlertParameter[];
+    /** alert paratemers to override. */
+    alertThresholds: AlertParameter[];
+}
+
+export interface MonitoringConfig {
+    alerts: Alert[];
+}
+
 export interface DedicatedDatabase {
     resourcePresetId: string;
     storageConfig: StorageConfig | undefined;
@@ -116,7 +247,26 @@ export interface DedicatedDatabase {
     assignPublicIps: boolean;
 }
 
-export interface ServerlessDatabase {}
+export interface ServerlessDatabase {
+    /**
+     * Let's define 1 RU  - 1 request unit
+     * Let's define 1 RCU - 1 request capacity unit, which is 1 RU per second.
+     * If `enable_throttling_rcu_limit` flag is true, the database will be throttled using `throttling_rcu_limit` value.
+     * Otherwise, the database is throttled using the cloud quotas.
+     * If zero, all requests will be blocked until non zero value is set.
+     */
+    throttlingRcuLimit: number;
+    /** Specify serverless database storage size limit. If zero, default value is applied. */
+    storageSizeLimit: number;
+    /** If false, the database is throttled by cloud value. */
+    enableThrottlingRcuLimit: boolean;
+    /**
+     * Specify the number of provisioned RCUs to pay less if the database has predictable load.
+     * You will be charged for the provisioned capacity regularly even if this capacity is not fully consumed.
+     * You will be charged for the on-demand consumption only if provisioned capacity is consumed.
+     */
+    provisionedRcuLimit: number;
+}
 
 export interface ZonalDatabase {
     zoneId: string;
@@ -136,6 +286,8 @@ export interface ScalePolicy_FixedScale {
 
 export interface StorageConfig {
     storageOptions: StorageOption[];
+    /** output only field: storage size limit of dedicated database. */
+    storageSizeLimit: number;
 }
 
 export interface StorageOption {
@@ -257,6 +409,12 @@ export const Database = {
         if (message.kinesisApiEndpoint !== '') {
             writer.uint32(186).string(message.kinesisApiEndpoint);
         }
+        if (message.monitoringConfig !== undefined) {
+            MonitoringConfig.encode(
+                message.monitoringConfig,
+                writer.uint32(194).fork()
+            ).ldelim();
+        }
         return writer;
     },
 
@@ -364,6 +522,12 @@ export const Database = {
                     break;
                 case 23:
                     message.kinesisApiEndpoint = reader.string();
+                    break;
+                case 24:
+                    message.monitoringConfig = MonitoringConfig.decode(
+                        reader,
+                        reader.uint32()
+                    );
                     break;
                 default:
                     reader.skipType(tag & 7);
@@ -524,6 +688,16 @@ export const Database = {
         } else {
             message.kinesisApiEndpoint = '';
         }
+        if (
+            object.monitoringConfig !== undefined &&
+            object.monitoringConfig !== null
+        ) {
+            message.monitoringConfig = MonitoringConfig.fromJSON(
+                object.monitoringConfig
+            );
+        } else {
+            message.monitoringConfig = undefined;
+        }
         return message;
     },
 
@@ -589,6 +763,10 @@ export const Database = {
             (obj.documentApiEndpoint = message.documentApiEndpoint);
         message.kinesisApiEndpoint !== undefined &&
             (obj.kinesisApiEndpoint = message.kinesisApiEndpoint);
+        message.monitoringConfig !== undefined &&
+            (obj.monitoringConfig = message.monitoringConfig
+                ? MonitoringConfig.toJSON(message.monitoringConfig)
+                : undefined);
         return obj;
     },
 
@@ -747,6 +925,16 @@ export const Database = {
         } else {
             message.kinesisApiEndpoint = '';
         }
+        if (
+            object.monitoringConfig !== undefined &&
+            object.monitoringConfig !== null
+        ) {
+            message.monitoringConfig = MonitoringConfig.fromPartial(
+                object.monitoringConfig
+            );
+        } else {
+            message.monitoringConfig = undefined;
+        }
         return message;
     },
 };
@@ -827,6 +1015,1151 @@ export const Database_LabelsEntry = {
             message.value = object.value;
         } else {
             message.value = '';
+        }
+        return message;
+    },
+};
+
+const baseAlertParameter: object = {};
+
+export const AlertParameter = {
+    encode(
+        message: AlertParameter,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        if (message.doubleParameterValue !== undefined) {
+            AlertParameter_DoubleParameterValue.encode(
+                message.doubleParameterValue,
+                writer.uint32(10).fork()
+            ).ldelim();
+        }
+        if (message.integerParameterValue !== undefined) {
+            AlertParameter_IntegerParameterValue.encode(
+                message.integerParameterValue,
+                writer.uint32(18).fork()
+            ).ldelim();
+        }
+        if (message.textParameterValue !== undefined) {
+            AlertParameter_TextParameterValue.encode(
+                message.textParameterValue,
+                writer.uint32(26).fork()
+            ).ldelim();
+        }
+        if (message.textListParameterValue !== undefined) {
+            AlertParameter_TextListParameterValue.encode(
+                message.textListParameterValue,
+                writer.uint32(34).fork()
+            ).ldelim();
+        }
+        if (message.labelListParameterValue !== undefined) {
+            AlertParameter_LabelListParameterValue.encode(
+                message.labelListParameterValue,
+                writer.uint32(42).fork()
+            ).ldelim();
+        }
+        return writer;
+    },
+
+    decode(input: _m0.Reader | Uint8Array, length?: number): AlertParameter {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = { ...baseAlertParameter } as AlertParameter;
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.doubleParameterValue =
+                        AlertParameter_DoubleParameterValue.decode(
+                            reader,
+                            reader.uint32()
+                        );
+                    break;
+                case 2:
+                    message.integerParameterValue =
+                        AlertParameter_IntegerParameterValue.decode(
+                            reader,
+                            reader.uint32()
+                        );
+                    break;
+                case 3:
+                    message.textParameterValue =
+                        AlertParameter_TextParameterValue.decode(
+                            reader,
+                            reader.uint32()
+                        );
+                    break;
+                case 4:
+                    message.textListParameterValue =
+                        AlertParameter_TextListParameterValue.decode(
+                            reader,
+                            reader.uint32()
+                        );
+                    break;
+                case 5:
+                    message.labelListParameterValue =
+                        AlertParameter_LabelListParameterValue.decode(
+                            reader,
+                            reader.uint32()
+                        );
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): AlertParameter {
+        const message = { ...baseAlertParameter } as AlertParameter;
+        if (
+            object.doubleParameterValue !== undefined &&
+            object.doubleParameterValue !== null
+        ) {
+            message.doubleParameterValue =
+                AlertParameter_DoubleParameterValue.fromJSON(
+                    object.doubleParameterValue
+                );
+        } else {
+            message.doubleParameterValue = undefined;
+        }
+        if (
+            object.integerParameterValue !== undefined &&
+            object.integerParameterValue !== null
+        ) {
+            message.integerParameterValue =
+                AlertParameter_IntegerParameterValue.fromJSON(
+                    object.integerParameterValue
+                );
+        } else {
+            message.integerParameterValue = undefined;
+        }
+        if (
+            object.textParameterValue !== undefined &&
+            object.textParameterValue !== null
+        ) {
+            message.textParameterValue =
+                AlertParameter_TextParameterValue.fromJSON(
+                    object.textParameterValue
+                );
+        } else {
+            message.textParameterValue = undefined;
+        }
+        if (
+            object.textListParameterValue !== undefined &&
+            object.textListParameterValue !== null
+        ) {
+            message.textListParameterValue =
+                AlertParameter_TextListParameterValue.fromJSON(
+                    object.textListParameterValue
+                );
+        } else {
+            message.textListParameterValue = undefined;
+        }
+        if (
+            object.labelListParameterValue !== undefined &&
+            object.labelListParameterValue !== null
+        ) {
+            message.labelListParameterValue =
+                AlertParameter_LabelListParameterValue.fromJSON(
+                    object.labelListParameterValue
+                );
+        } else {
+            message.labelListParameterValue = undefined;
+        }
+        return message;
+    },
+
+    toJSON(message: AlertParameter): unknown {
+        const obj: any = {};
+        message.doubleParameterValue !== undefined &&
+            (obj.doubleParameterValue = message.doubleParameterValue
+                ? AlertParameter_DoubleParameterValue.toJSON(
+                      message.doubleParameterValue
+                  )
+                : undefined);
+        message.integerParameterValue !== undefined &&
+            (obj.integerParameterValue = message.integerParameterValue
+                ? AlertParameter_IntegerParameterValue.toJSON(
+                      message.integerParameterValue
+                  )
+                : undefined);
+        message.textParameterValue !== undefined &&
+            (obj.textParameterValue = message.textParameterValue
+                ? AlertParameter_TextParameterValue.toJSON(
+                      message.textParameterValue
+                  )
+                : undefined);
+        message.textListParameterValue !== undefined &&
+            (obj.textListParameterValue = message.textListParameterValue
+                ? AlertParameter_TextListParameterValue.toJSON(
+                      message.textListParameterValue
+                  )
+                : undefined);
+        message.labelListParameterValue !== undefined &&
+            (obj.labelListParameterValue = message.labelListParameterValue
+                ? AlertParameter_LabelListParameterValue.toJSON(
+                      message.labelListParameterValue
+                  )
+                : undefined);
+        return obj;
+    },
+
+    fromPartial(object: DeepPartial<AlertParameter>): AlertParameter {
+        const message = { ...baseAlertParameter } as AlertParameter;
+        if (
+            object.doubleParameterValue !== undefined &&
+            object.doubleParameterValue !== null
+        ) {
+            message.doubleParameterValue =
+                AlertParameter_DoubleParameterValue.fromPartial(
+                    object.doubleParameterValue
+                );
+        } else {
+            message.doubleParameterValue = undefined;
+        }
+        if (
+            object.integerParameterValue !== undefined &&
+            object.integerParameterValue !== null
+        ) {
+            message.integerParameterValue =
+                AlertParameter_IntegerParameterValue.fromPartial(
+                    object.integerParameterValue
+                );
+        } else {
+            message.integerParameterValue = undefined;
+        }
+        if (
+            object.textParameterValue !== undefined &&
+            object.textParameterValue !== null
+        ) {
+            message.textParameterValue =
+                AlertParameter_TextParameterValue.fromPartial(
+                    object.textParameterValue
+                );
+        } else {
+            message.textParameterValue = undefined;
+        }
+        if (
+            object.textListParameterValue !== undefined &&
+            object.textListParameterValue !== null
+        ) {
+            message.textListParameterValue =
+                AlertParameter_TextListParameterValue.fromPartial(
+                    object.textListParameterValue
+                );
+        } else {
+            message.textListParameterValue = undefined;
+        }
+        if (
+            object.labelListParameterValue !== undefined &&
+            object.labelListParameterValue !== null
+        ) {
+            message.labelListParameterValue =
+                AlertParameter_LabelListParameterValue.fromPartial(
+                    object.labelListParameterValue
+                );
+        } else {
+            message.labelListParameterValue = undefined;
+        }
+        return message;
+    },
+};
+
+const baseAlertParameter_DoubleParameterValue: object = { name: '', value: 0 };
+
+export const AlertParameter_DoubleParameterValue = {
+    encode(
+        message: AlertParameter_DoubleParameterValue,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        if (message.name !== '') {
+            writer.uint32(10).string(message.name);
+        }
+        if (message.value !== 0) {
+            writer.uint32(17).double(message.value);
+        }
+        return writer;
+    },
+
+    decode(
+        input: _m0.Reader | Uint8Array,
+        length?: number
+    ): AlertParameter_DoubleParameterValue {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = {
+            ...baseAlertParameter_DoubleParameterValue,
+        } as AlertParameter_DoubleParameterValue;
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.name = reader.string();
+                    break;
+                case 2:
+                    message.value = reader.double();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): AlertParameter_DoubleParameterValue {
+        const message = {
+            ...baseAlertParameter_DoubleParameterValue,
+        } as AlertParameter_DoubleParameterValue;
+        if (object.name !== undefined && object.name !== null) {
+            message.name = String(object.name);
+        } else {
+            message.name = '';
+        }
+        if (object.value !== undefined && object.value !== null) {
+            message.value = Number(object.value);
+        } else {
+            message.value = 0;
+        }
+        return message;
+    },
+
+    toJSON(message: AlertParameter_DoubleParameterValue): unknown {
+        const obj: any = {};
+        message.name !== undefined && (obj.name = message.name);
+        message.value !== undefined && (obj.value = message.value);
+        return obj;
+    },
+
+    fromPartial(
+        object: DeepPartial<AlertParameter_DoubleParameterValue>
+    ): AlertParameter_DoubleParameterValue {
+        const message = {
+            ...baseAlertParameter_DoubleParameterValue,
+        } as AlertParameter_DoubleParameterValue;
+        if (object.name !== undefined && object.name !== null) {
+            message.name = object.name;
+        } else {
+            message.name = '';
+        }
+        if (object.value !== undefined && object.value !== null) {
+            message.value = object.value;
+        } else {
+            message.value = 0;
+        }
+        return message;
+    },
+};
+
+const baseAlertParameter_IntegerParameterValue: object = { name: '', value: 0 };
+
+export const AlertParameter_IntegerParameterValue = {
+    encode(
+        message: AlertParameter_IntegerParameterValue,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        if (message.name !== '') {
+            writer.uint32(10).string(message.name);
+        }
+        if (message.value !== 0) {
+            writer.uint32(16).int64(message.value);
+        }
+        return writer;
+    },
+
+    decode(
+        input: _m0.Reader | Uint8Array,
+        length?: number
+    ): AlertParameter_IntegerParameterValue {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = {
+            ...baseAlertParameter_IntegerParameterValue,
+        } as AlertParameter_IntegerParameterValue;
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.name = reader.string();
+                    break;
+                case 2:
+                    message.value = longToNumber(reader.int64() as Long);
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): AlertParameter_IntegerParameterValue {
+        const message = {
+            ...baseAlertParameter_IntegerParameterValue,
+        } as AlertParameter_IntegerParameterValue;
+        if (object.name !== undefined && object.name !== null) {
+            message.name = String(object.name);
+        } else {
+            message.name = '';
+        }
+        if (object.value !== undefined && object.value !== null) {
+            message.value = Number(object.value);
+        } else {
+            message.value = 0;
+        }
+        return message;
+    },
+
+    toJSON(message: AlertParameter_IntegerParameterValue): unknown {
+        const obj: any = {};
+        message.name !== undefined && (obj.name = message.name);
+        message.value !== undefined && (obj.value = message.value);
+        return obj;
+    },
+
+    fromPartial(
+        object: DeepPartial<AlertParameter_IntegerParameterValue>
+    ): AlertParameter_IntegerParameterValue {
+        const message = {
+            ...baseAlertParameter_IntegerParameterValue,
+        } as AlertParameter_IntegerParameterValue;
+        if (object.name !== undefined && object.name !== null) {
+            message.name = object.name;
+        } else {
+            message.name = '';
+        }
+        if (object.value !== undefined && object.value !== null) {
+            message.value = object.value;
+        } else {
+            message.value = 0;
+        }
+        return message;
+    },
+};
+
+const baseAlertParameter_TextParameterValue: object = { name: '', value: '' };
+
+export const AlertParameter_TextParameterValue = {
+    encode(
+        message: AlertParameter_TextParameterValue,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        if (message.name !== '') {
+            writer.uint32(10).string(message.name);
+        }
+        if (message.value !== '') {
+            writer.uint32(18).string(message.value);
+        }
+        return writer;
+    },
+
+    decode(
+        input: _m0.Reader | Uint8Array,
+        length?: number
+    ): AlertParameter_TextParameterValue {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = {
+            ...baseAlertParameter_TextParameterValue,
+        } as AlertParameter_TextParameterValue;
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.name = reader.string();
+                    break;
+                case 2:
+                    message.value = reader.string();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): AlertParameter_TextParameterValue {
+        const message = {
+            ...baseAlertParameter_TextParameterValue,
+        } as AlertParameter_TextParameterValue;
+        if (object.name !== undefined && object.name !== null) {
+            message.name = String(object.name);
+        } else {
+            message.name = '';
+        }
+        if (object.value !== undefined && object.value !== null) {
+            message.value = String(object.value);
+        } else {
+            message.value = '';
+        }
+        return message;
+    },
+
+    toJSON(message: AlertParameter_TextParameterValue): unknown {
+        const obj: any = {};
+        message.name !== undefined && (obj.name = message.name);
+        message.value !== undefined && (obj.value = message.value);
+        return obj;
+    },
+
+    fromPartial(
+        object: DeepPartial<AlertParameter_TextParameterValue>
+    ): AlertParameter_TextParameterValue {
+        const message = {
+            ...baseAlertParameter_TextParameterValue,
+        } as AlertParameter_TextParameterValue;
+        if (object.name !== undefined && object.name !== null) {
+            message.name = object.name;
+        } else {
+            message.name = '';
+        }
+        if (object.value !== undefined && object.value !== null) {
+            message.value = object.value;
+        } else {
+            message.value = '';
+        }
+        return message;
+    },
+};
+
+const baseAlertParameter_TextListParameterValue: object = {
+    name: '',
+    values: '',
+};
+
+export const AlertParameter_TextListParameterValue = {
+    encode(
+        message: AlertParameter_TextListParameterValue,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        if (message.name !== '') {
+            writer.uint32(10).string(message.name);
+        }
+        for (const v of message.values) {
+            writer.uint32(18).string(v!);
+        }
+        return writer;
+    },
+
+    decode(
+        input: _m0.Reader | Uint8Array,
+        length?: number
+    ): AlertParameter_TextListParameterValue {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = {
+            ...baseAlertParameter_TextListParameterValue,
+        } as AlertParameter_TextListParameterValue;
+        message.values = [];
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.name = reader.string();
+                    break;
+                case 2:
+                    message.values.push(reader.string());
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): AlertParameter_TextListParameterValue {
+        const message = {
+            ...baseAlertParameter_TextListParameterValue,
+        } as AlertParameter_TextListParameterValue;
+        message.values = [];
+        if (object.name !== undefined && object.name !== null) {
+            message.name = String(object.name);
+        } else {
+            message.name = '';
+        }
+        if (object.values !== undefined && object.values !== null) {
+            for (const e of object.values) {
+                message.values.push(String(e));
+            }
+        }
+        return message;
+    },
+
+    toJSON(message: AlertParameter_TextListParameterValue): unknown {
+        const obj: any = {};
+        message.name !== undefined && (obj.name = message.name);
+        if (message.values) {
+            obj.values = message.values.map((e) => e);
+        } else {
+            obj.values = [];
+        }
+        return obj;
+    },
+
+    fromPartial(
+        object: DeepPartial<AlertParameter_TextListParameterValue>
+    ): AlertParameter_TextListParameterValue {
+        const message = {
+            ...baseAlertParameter_TextListParameterValue,
+        } as AlertParameter_TextListParameterValue;
+        message.values = [];
+        if (object.name !== undefined && object.name !== null) {
+            message.name = object.name;
+        } else {
+            message.name = '';
+        }
+        if (object.values !== undefined && object.values !== null) {
+            for (const e of object.values) {
+                message.values.push(e);
+            }
+        }
+        return message;
+    },
+};
+
+const baseAlertParameter_LabelListParameterValue: object = {
+    name: '',
+    values: '',
+};
+
+export const AlertParameter_LabelListParameterValue = {
+    encode(
+        message: AlertParameter_LabelListParameterValue,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        if (message.name !== '') {
+            writer.uint32(10).string(message.name);
+        }
+        for (const v of message.values) {
+            writer.uint32(18).string(v!);
+        }
+        return writer;
+    },
+
+    decode(
+        input: _m0.Reader | Uint8Array,
+        length?: number
+    ): AlertParameter_LabelListParameterValue {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = {
+            ...baseAlertParameter_LabelListParameterValue,
+        } as AlertParameter_LabelListParameterValue;
+        message.values = [];
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.name = reader.string();
+                    break;
+                case 2:
+                    message.values.push(reader.string());
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): AlertParameter_LabelListParameterValue {
+        const message = {
+            ...baseAlertParameter_LabelListParameterValue,
+        } as AlertParameter_LabelListParameterValue;
+        message.values = [];
+        if (object.name !== undefined && object.name !== null) {
+            message.name = String(object.name);
+        } else {
+            message.name = '';
+        }
+        if (object.values !== undefined && object.values !== null) {
+            for (const e of object.values) {
+                message.values.push(String(e));
+            }
+        }
+        return message;
+    },
+
+    toJSON(message: AlertParameter_LabelListParameterValue): unknown {
+        const obj: any = {};
+        message.name !== undefined && (obj.name = message.name);
+        if (message.values) {
+            obj.values = message.values.map((e) => e);
+        } else {
+            obj.values = [];
+        }
+        return obj;
+    },
+
+    fromPartial(
+        object: DeepPartial<AlertParameter_LabelListParameterValue>
+    ): AlertParameter_LabelListParameterValue {
+        const message = {
+            ...baseAlertParameter_LabelListParameterValue,
+        } as AlertParameter_LabelListParameterValue;
+        message.values = [];
+        if (object.name !== undefined && object.name !== null) {
+            message.name = object.name;
+        } else {
+            message.name = '';
+        }
+        if (object.values !== undefined && object.values !== null) {
+            for (const e of object.values) {
+                message.values.push(e);
+            }
+        }
+        return message;
+    },
+};
+
+const baseNotificationChannel: object = {
+    notificationChannelId: '',
+    notifyAboutStatuses: 0,
+    repeateNotifyDelayMs: 0,
+};
+
+export const NotificationChannel = {
+    encode(
+        message: NotificationChannel,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        if (message.notificationChannelId !== '') {
+            writer.uint32(10).string(message.notificationChannelId);
+        }
+        writer.uint32(18).fork();
+        for (const v of message.notifyAboutStatuses) {
+            writer.int32(v);
+        }
+        writer.ldelim();
+        if (message.repeateNotifyDelayMs !== 0) {
+            writer.uint32(24).int64(message.repeateNotifyDelayMs);
+        }
+        return writer;
+    },
+
+    decode(
+        input: _m0.Reader | Uint8Array,
+        length?: number
+    ): NotificationChannel {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = { ...baseNotificationChannel } as NotificationChannel;
+        message.notifyAboutStatuses = [];
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.notificationChannelId = reader.string();
+                    break;
+                case 2:
+                    if ((tag & 7) === 2) {
+                        const end2 = reader.uint32() + reader.pos;
+                        while (reader.pos < end2) {
+                            message.notifyAboutStatuses.push(
+                                reader.int32() as any
+                            );
+                        }
+                    } else {
+                        message.notifyAboutStatuses.push(reader.int32() as any);
+                    }
+                    break;
+                case 3:
+                    message.repeateNotifyDelayMs = longToNumber(
+                        reader.int64() as Long
+                    );
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): NotificationChannel {
+        const message = { ...baseNotificationChannel } as NotificationChannel;
+        message.notifyAboutStatuses = [];
+        if (
+            object.notificationChannelId !== undefined &&
+            object.notificationChannelId !== null
+        ) {
+            message.notificationChannelId = String(
+                object.notificationChannelId
+            );
+        } else {
+            message.notificationChannelId = '';
+        }
+        if (
+            object.notifyAboutStatuses !== undefined &&
+            object.notifyAboutStatuses !== null
+        ) {
+            for (const e of object.notifyAboutStatuses) {
+                message.notifyAboutStatuses.push(
+                    alertEvaluationStatusFromJSON(e)
+                );
+            }
+        }
+        if (
+            object.repeateNotifyDelayMs !== undefined &&
+            object.repeateNotifyDelayMs !== null
+        ) {
+            message.repeateNotifyDelayMs = Number(object.repeateNotifyDelayMs);
+        } else {
+            message.repeateNotifyDelayMs = 0;
+        }
+        return message;
+    },
+
+    toJSON(message: NotificationChannel): unknown {
+        const obj: any = {};
+        message.notificationChannelId !== undefined &&
+            (obj.notificationChannelId = message.notificationChannelId);
+        if (message.notifyAboutStatuses) {
+            obj.notifyAboutStatuses = message.notifyAboutStatuses.map((e) =>
+                alertEvaluationStatusToJSON(e)
+            );
+        } else {
+            obj.notifyAboutStatuses = [];
+        }
+        message.repeateNotifyDelayMs !== undefined &&
+            (obj.repeateNotifyDelayMs = message.repeateNotifyDelayMs);
+        return obj;
+    },
+
+    fromPartial(object: DeepPartial<NotificationChannel>): NotificationChannel {
+        const message = { ...baseNotificationChannel } as NotificationChannel;
+        message.notifyAboutStatuses = [];
+        if (
+            object.notificationChannelId !== undefined &&
+            object.notificationChannelId !== null
+        ) {
+            message.notificationChannelId = object.notificationChannelId;
+        } else {
+            message.notificationChannelId = '';
+        }
+        if (
+            object.notifyAboutStatuses !== undefined &&
+            object.notifyAboutStatuses !== null
+        ) {
+            for (const e of object.notifyAboutStatuses) {
+                message.notifyAboutStatuses.push(e);
+            }
+        }
+        if (
+            object.repeateNotifyDelayMs !== undefined &&
+            object.repeateNotifyDelayMs !== null
+        ) {
+            message.repeateNotifyDelayMs = object.repeateNotifyDelayMs;
+        } else {
+            message.repeateNotifyDelayMs = 0;
+        }
+        return message;
+    },
+};
+
+const baseAlert: object = {
+    alertId: '',
+    alertTemplateId: '',
+    name: '',
+    description: '',
+};
+
+export const Alert = {
+    encode(
+        message: Alert,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        if (message.alertId !== '') {
+            writer.uint32(10).string(message.alertId);
+        }
+        if (message.alertTemplateId !== '') {
+            writer.uint32(18).string(message.alertTemplateId);
+        }
+        if (message.name !== '') {
+            writer.uint32(26).string(message.name);
+        }
+        if (message.description !== '') {
+            writer.uint32(34).string(message.description);
+        }
+        for (const v of message.notificationChannels) {
+            NotificationChannel.encode(v!, writer.uint32(42).fork()).ldelim();
+        }
+        for (const v of message.alertParameters) {
+            AlertParameter.encode(v!, writer.uint32(50).fork()).ldelim();
+        }
+        for (const v of message.alertThresholds) {
+            AlertParameter.encode(v!, writer.uint32(58).fork()).ldelim();
+        }
+        return writer;
+    },
+
+    decode(input: _m0.Reader | Uint8Array, length?: number): Alert {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = { ...baseAlert } as Alert;
+        message.notificationChannels = [];
+        message.alertParameters = [];
+        message.alertThresholds = [];
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.alertId = reader.string();
+                    break;
+                case 2:
+                    message.alertTemplateId = reader.string();
+                    break;
+                case 3:
+                    message.name = reader.string();
+                    break;
+                case 4:
+                    message.description = reader.string();
+                    break;
+                case 5:
+                    message.notificationChannels.push(
+                        NotificationChannel.decode(reader, reader.uint32())
+                    );
+                    break;
+                case 6:
+                    message.alertParameters.push(
+                        AlertParameter.decode(reader, reader.uint32())
+                    );
+                    break;
+                case 7:
+                    message.alertThresholds.push(
+                        AlertParameter.decode(reader, reader.uint32())
+                    );
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): Alert {
+        const message = { ...baseAlert } as Alert;
+        message.notificationChannels = [];
+        message.alertParameters = [];
+        message.alertThresholds = [];
+        if (object.alertId !== undefined && object.alertId !== null) {
+            message.alertId = String(object.alertId);
+        } else {
+            message.alertId = '';
+        }
+        if (
+            object.alertTemplateId !== undefined &&
+            object.alertTemplateId !== null
+        ) {
+            message.alertTemplateId = String(object.alertTemplateId);
+        } else {
+            message.alertTemplateId = '';
+        }
+        if (object.name !== undefined && object.name !== null) {
+            message.name = String(object.name);
+        } else {
+            message.name = '';
+        }
+        if (object.description !== undefined && object.description !== null) {
+            message.description = String(object.description);
+        } else {
+            message.description = '';
+        }
+        if (
+            object.notificationChannels !== undefined &&
+            object.notificationChannels !== null
+        ) {
+            for (const e of object.notificationChannels) {
+                message.notificationChannels.push(
+                    NotificationChannel.fromJSON(e)
+                );
+            }
+        }
+        if (
+            object.alertParameters !== undefined &&
+            object.alertParameters !== null
+        ) {
+            for (const e of object.alertParameters) {
+                message.alertParameters.push(AlertParameter.fromJSON(e));
+            }
+        }
+        if (
+            object.alertThresholds !== undefined &&
+            object.alertThresholds !== null
+        ) {
+            for (const e of object.alertThresholds) {
+                message.alertThresholds.push(AlertParameter.fromJSON(e));
+            }
+        }
+        return message;
+    },
+
+    toJSON(message: Alert): unknown {
+        const obj: any = {};
+        message.alertId !== undefined && (obj.alertId = message.alertId);
+        message.alertTemplateId !== undefined &&
+            (obj.alertTemplateId = message.alertTemplateId);
+        message.name !== undefined && (obj.name = message.name);
+        message.description !== undefined &&
+            (obj.description = message.description);
+        if (message.notificationChannels) {
+            obj.notificationChannels = message.notificationChannels.map((e) =>
+                e ? NotificationChannel.toJSON(e) : undefined
+            );
+        } else {
+            obj.notificationChannels = [];
+        }
+        if (message.alertParameters) {
+            obj.alertParameters = message.alertParameters.map((e) =>
+                e ? AlertParameter.toJSON(e) : undefined
+            );
+        } else {
+            obj.alertParameters = [];
+        }
+        if (message.alertThresholds) {
+            obj.alertThresholds = message.alertThresholds.map((e) =>
+                e ? AlertParameter.toJSON(e) : undefined
+            );
+        } else {
+            obj.alertThresholds = [];
+        }
+        return obj;
+    },
+
+    fromPartial(object: DeepPartial<Alert>): Alert {
+        const message = { ...baseAlert } as Alert;
+        message.notificationChannels = [];
+        message.alertParameters = [];
+        message.alertThresholds = [];
+        if (object.alertId !== undefined && object.alertId !== null) {
+            message.alertId = object.alertId;
+        } else {
+            message.alertId = '';
+        }
+        if (
+            object.alertTemplateId !== undefined &&
+            object.alertTemplateId !== null
+        ) {
+            message.alertTemplateId = object.alertTemplateId;
+        } else {
+            message.alertTemplateId = '';
+        }
+        if (object.name !== undefined && object.name !== null) {
+            message.name = object.name;
+        } else {
+            message.name = '';
+        }
+        if (object.description !== undefined && object.description !== null) {
+            message.description = object.description;
+        } else {
+            message.description = '';
+        }
+        if (
+            object.notificationChannels !== undefined &&
+            object.notificationChannels !== null
+        ) {
+            for (const e of object.notificationChannels) {
+                message.notificationChannels.push(
+                    NotificationChannel.fromPartial(e)
+                );
+            }
+        }
+        if (
+            object.alertParameters !== undefined &&
+            object.alertParameters !== null
+        ) {
+            for (const e of object.alertParameters) {
+                message.alertParameters.push(AlertParameter.fromPartial(e));
+            }
+        }
+        if (
+            object.alertThresholds !== undefined &&
+            object.alertThresholds !== null
+        ) {
+            for (const e of object.alertThresholds) {
+                message.alertThresholds.push(AlertParameter.fromPartial(e));
+            }
+        }
+        return message;
+    },
+};
+
+const baseMonitoringConfig: object = {};
+
+export const MonitoringConfig = {
+    encode(
+        message: MonitoringConfig,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        for (const v of message.alerts) {
+            Alert.encode(v!, writer.uint32(10).fork()).ldelim();
+        }
+        return writer;
+    },
+
+    decode(input: _m0.Reader | Uint8Array, length?: number): MonitoringConfig {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = { ...baseMonitoringConfig } as MonitoringConfig;
+        message.alerts = [];
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.alerts.push(Alert.decode(reader, reader.uint32()));
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): MonitoringConfig {
+        const message = { ...baseMonitoringConfig } as MonitoringConfig;
+        message.alerts = [];
+        if (object.alerts !== undefined && object.alerts !== null) {
+            for (const e of object.alerts) {
+                message.alerts.push(Alert.fromJSON(e));
+            }
+        }
+        return message;
+    },
+
+    toJSON(message: MonitoringConfig): unknown {
+        const obj: any = {};
+        if (message.alerts) {
+            obj.alerts = message.alerts.map((e) =>
+                e ? Alert.toJSON(e) : undefined
+            );
+        } else {
+            obj.alerts = [];
+        }
+        return obj;
+    },
+
+    fromPartial(object: DeepPartial<MonitoringConfig>): MonitoringConfig {
+        const message = { ...baseMonitoringConfig } as MonitoringConfig;
+        message.alerts = [];
+        if (object.alerts !== undefined && object.alerts !== null) {
+            for (const e of object.alerts) {
+                message.alerts.push(Alert.fromPartial(e));
+            }
         }
         return message;
     },
@@ -1030,13 +2363,30 @@ export const DedicatedDatabase = {
     },
 };
 
-const baseServerlessDatabase: object = {};
+const baseServerlessDatabase: object = {
+    throttlingRcuLimit: 0,
+    storageSizeLimit: 0,
+    enableThrottlingRcuLimit: false,
+    provisionedRcuLimit: 0,
+};
 
 export const ServerlessDatabase = {
     encode(
-        _: ServerlessDatabase,
+        message: ServerlessDatabase,
         writer: _m0.Writer = _m0.Writer.create()
     ): _m0.Writer {
+        if (message.throttlingRcuLimit !== 0) {
+            writer.uint32(8).int64(message.throttlingRcuLimit);
+        }
+        if (message.storageSizeLimit !== 0) {
+            writer.uint32(16).int64(message.storageSizeLimit);
+        }
+        if (message.enableThrottlingRcuLimit === true) {
+            writer.uint32(24).bool(message.enableThrottlingRcuLimit);
+        }
+        if (message.provisionedRcuLimit !== 0) {
+            writer.uint32(32).int64(message.provisionedRcuLimit);
+        }
         return writer;
     },
 
@@ -1051,6 +2401,24 @@ export const ServerlessDatabase = {
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
+                case 1:
+                    message.throttlingRcuLimit = longToNumber(
+                        reader.int64() as Long
+                    );
+                    break;
+                case 2:
+                    message.storageSizeLimit = longToNumber(
+                        reader.int64() as Long
+                    );
+                    break;
+                case 3:
+                    message.enableThrottlingRcuLimit = reader.bool();
+                    break;
+                case 4:
+                    message.provisionedRcuLimit = longToNumber(
+                        reader.int64() as Long
+                    );
+                    break;
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -1059,18 +2427,92 @@ export const ServerlessDatabase = {
         return message;
     },
 
-    fromJSON(_: any): ServerlessDatabase {
+    fromJSON(object: any): ServerlessDatabase {
         const message = { ...baseServerlessDatabase } as ServerlessDatabase;
+        if (
+            object.throttlingRcuLimit !== undefined &&
+            object.throttlingRcuLimit !== null
+        ) {
+            message.throttlingRcuLimit = Number(object.throttlingRcuLimit);
+        } else {
+            message.throttlingRcuLimit = 0;
+        }
+        if (
+            object.storageSizeLimit !== undefined &&
+            object.storageSizeLimit !== null
+        ) {
+            message.storageSizeLimit = Number(object.storageSizeLimit);
+        } else {
+            message.storageSizeLimit = 0;
+        }
+        if (
+            object.enableThrottlingRcuLimit !== undefined &&
+            object.enableThrottlingRcuLimit !== null
+        ) {
+            message.enableThrottlingRcuLimit = Boolean(
+                object.enableThrottlingRcuLimit
+            );
+        } else {
+            message.enableThrottlingRcuLimit = false;
+        }
+        if (
+            object.provisionedRcuLimit !== undefined &&
+            object.provisionedRcuLimit !== null
+        ) {
+            message.provisionedRcuLimit = Number(object.provisionedRcuLimit);
+        } else {
+            message.provisionedRcuLimit = 0;
+        }
         return message;
     },
 
-    toJSON(_: ServerlessDatabase): unknown {
+    toJSON(message: ServerlessDatabase): unknown {
         const obj: any = {};
+        message.throttlingRcuLimit !== undefined &&
+            (obj.throttlingRcuLimit = message.throttlingRcuLimit);
+        message.storageSizeLimit !== undefined &&
+            (obj.storageSizeLimit = message.storageSizeLimit);
+        message.enableThrottlingRcuLimit !== undefined &&
+            (obj.enableThrottlingRcuLimit = message.enableThrottlingRcuLimit);
+        message.provisionedRcuLimit !== undefined &&
+            (obj.provisionedRcuLimit = message.provisionedRcuLimit);
         return obj;
     },
 
-    fromPartial(_: DeepPartial<ServerlessDatabase>): ServerlessDatabase {
+    fromPartial(object: DeepPartial<ServerlessDatabase>): ServerlessDatabase {
         const message = { ...baseServerlessDatabase } as ServerlessDatabase;
+        if (
+            object.throttlingRcuLimit !== undefined &&
+            object.throttlingRcuLimit !== null
+        ) {
+            message.throttlingRcuLimit = object.throttlingRcuLimit;
+        } else {
+            message.throttlingRcuLimit = 0;
+        }
+        if (
+            object.storageSizeLimit !== undefined &&
+            object.storageSizeLimit !== null
+        ) {
+            message.storageSizeLimit = object.storageSizeLimit;
+        } else {
+            message.storageSizeLimit = 0;
+        }
+        if (
+            object.enableThrottlingRcuLimit !== undefined &&
+            object.enableThrottlingRcuLimit !== null
+        ) {
+            message.enableThrottlingRcuLimit = object.enableThrottlingRcuLimit;
+        } else {
+            message.enableThrottlingRcuLimit = false;
+        }
+        if (
+            object.provisionedRcuLimit !== undefined &&
+            object.provisionedRcuLimit !== null
+        ) {
+            message.provisionedRcuLimit = object.provisionedRcuLimit;
+        } else {
+            message.provisionedRcuLimit = 0;
+        }
         return message;
     },
 };
@@ -1335,7 +2777,7 @@ export const ScalePolicy_FixedScale = {
     },
 };
 
-const baseStorageConfig: object = {};
+const baseStorageConfig: object = { storageSizeLimit: 0 };
 
 export const StorageConfig = {
     encode(
@@ -1344,6 +2786,9 @@ export const StorageConfig = {
     ): _m0.Writer {
         for (const v of message.storageOptions) {
             StorageOption.encode(v!, writer.uint32(10).fork()).ldelim();
+        }
+        if (message.storageSizeLimit !== 0) {
+            writer.uint32(16).int64(message.storageSizeLimit);
         }
         return writer;
     },
@@ -1360,6 +2805,11 @@ export const StorageConfig = {
                 case 1:
                     message.storageOptions.push(
                         StorageOption.decode(reader, reader.uint32())
+                    );
+                    break;
+                case 2:
+                    message.storageSizeLimit = longToNumber(
+                        reader.int64() as Long
                     );
                     break;
                 default:
@@ -1381,6 +2831,14 @@ export const StorageConfig = {
                 message.storageOptions.push(StorageOption.fromJSON(e));
             }
         }
+        if (
+            object.storageSizeLimit !== undefined &&
+            object.storageSizeLimit !== null
+        ) {
+            message.storageSizeLimit = Number(object.storageSizeLimit);
+        } else {
+            message.storageSizeLimit = 0;
+        }
         return message;
     },
 
@@ -1393,6 +2851,8 @@ export const StorageConfig = {
         } else {
             obj.storageOptions = [];
         }
+        message.storageSizeLimit !== undefined &&
+            (obj.storageSizeLimit = message.storageSizeLimit);
         return obj;
     },
 
@@ -1406,6 +2866,14 @@ export const StorageConfig = {
             for (const e of object.storageOptions) {
                 message.storageOptions.push(StorageOption.fromPartial(e));
             }
+        }
+        if (
+            object.storageSizeLimit !== undefined &&
+            object.storageSizeLimit !== null
+        ) {
+            message.storageSizeLimit = object.storageSizeLimit;
+        } else {
+            message.storageSizeLimit = 0;
         }
         return message;
     },

@@ -6,11 +6,22 @@ export declare const protobufPackage = "yandex.cloud.ydb.v1";
 export interface BackupSchedule {
     dailyBackupSchedule: DailyBackupSchedule | undefined;
     weeklyBackupSchedule: WeeklyBackupSchedule | undefined;
+    recurringBackupSchedule: RecurringBackupSchedule | undefined;
     /**
      * output only field: when next backup will be executed
      * using provided schedule.
      */
     nextExecuteTime: Date | undefined;
+}
+export interface RecurringBackupSchedule {
+    /** Timestamp of the first recurrence. */
+    startTime: Date | undefined;
+    /**
+     * An RRULE (https://tools.ietf.org/html/rfc5545#section-3.8.5.3) for how
+     * this backup reccurs.
+     * The FREQ values of MINUTELY, and SECONDLY are not supported.
+     */
+    recurrence: string;
 }
 export interface DaysOfWeekBackupSchedule {
     days: DayOfWeek[];
@@ -44,6 +55,7 @@ export interface BackupSettings {
      */
     sourcePathsToExclude: string[];
     type: BackupSettings_Type;
+    storageClass: BackupSettings_StorageClass;
 }
 export declare enum BackupSettings_Type {
     TYPE_UNSPECIFIED = 0,
@@ -53,6 +65,20 @@ export declare enum BackupSettings_Type {
 }
 export declare function backupSettings_TypeFromJSON(object: any): BackupSettings_Type;
 export declare function backupSettings_TypeToJSON(object: BackupSettings_Type): string;
+export declare enum BackupSettings_StorageClass {
+    STORAGE_CLASS_UNSPECIFIED = 0,
+    STANDARD = 1,
+    REDUCED_REDUNDANCY = 2,
+    STANDARD_IA = 3,
+    ONEZONE_IA = 4,
+    INTELLIGENT_TIERING = 5,
+    GLACIER = 6,
+    DEEP_ARCHIVE = 7,
+    OUTPOSTS = 8,
+    UNRECOGNIZED = -1
+}
+export declare function backupSettings_StorageClassFromJSON(object: any): BackupSettings_StorageClass;
+export declare function backupSettings_StorageClassToJSON(object: BackupSettings_StorageClass): string;
 export interface BackupConfig {
     backupSettings: BackupSettings[];
 }
@@ -102,6 +128,13 @@ export declare const BackupSchedule: {
     fromJSON(object: any): BackupSchedule;
     toJSON(message: BackupSchedule): unknown;
     fromPartial(object: DeepPartial<BackupSchedule>): BackupSchedule;
+};
+export declare const RecurringBackupSchedule: {
+    encode(message: RecurringBackupSchedule, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number | undefined): RecurringBackupSchedule;
+    fromJSON(object: any): RecurringBackupSchedule;
+    toJSON(message: RecurringBackupSchedule): unknown;
+    fromPartial(object: DeepPartial<RecurringBackupSchedule>): RecurringBackupSchedule;
 };
 export declare const DaysOfWeekBackupSchedule: {
     encode(message: DaysOfWeekBackupSchedule, writer?: _m0.Writer): _m0.Writer;

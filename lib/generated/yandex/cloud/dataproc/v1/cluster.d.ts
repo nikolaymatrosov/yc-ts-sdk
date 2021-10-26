@@ -39,6 +39,8 @@ export interface Cluster {
     hostGroupIds: string[];
     /** Deletion Protection inhibits deletion of the cluster */
     deletionProtection: boolean;
+    /** ID of the cloud logging log group to write logs. If not set, logs will not be sent to logging service */
+    logGroupId: string;
 }
 export declare enum Cluster_Status {
     /** STATUS_UNKNOWN - Cluster state is unknown. */

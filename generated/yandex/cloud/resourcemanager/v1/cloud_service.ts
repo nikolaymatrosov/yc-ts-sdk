@@ -73,6 +73,30 @@ export interface ListCloudsResponse {
     nextPageToken: string;
 }
 
+export interface CreateCloudRequest {
+    /**
+     * ID of the organization to create a cloud in.
+     * To get the organization ID, use a [yandex.cloud.organizationmanager.v1.OrganizationService.List] request.
+     */
+    organizationId: string;
+    /** Name of the cloud. */
+    name: string;
+    /** Description of the cloud. */
+    description: string;
+    /** Resource labels as `` key:value `` pairs. */
+    labels: { [key: string]: string };
+}
+
+export interface CreateCloudRequest_LabelsEntry {
+    key: string;
+    value: string;
+}
+
+export interface CreateCloudMetadata {
+    /** ID of the cloud that is being created. */
+    cloudId: string;
+}
+
 export interface ListCloudOperationsRequest {
     /** ID of the Cloud resource to list operations for. */
     cloudId: string;
@@ -115,6 +139,13 @@ export interface UpdateCloudRequest {
     name: string;
     /** Description of the cloud. */
     description: string;
+    /** Resource labels as `` key:value `` pairs. */
+    labels: { [key: string]: string };
+}
+
+export interface UpdateCloudRequest_LabelsEntry {
+    key: string;
+    value: string;
 }
 
 export interface UpdateCloudMetadata {
@@ -397,6 +428,299 @@ export const ListCloudsResponse = {
     },
 };
 
+const baseCreateCloudRequest: object = {
+    organizationId: '',
+    name: '',
+    description: '',
+};
+
+export const CreateCloudRequest = {
+    encode(
+        message: CreateCloudRequest,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        if (message.organizationId !== '') {
+            writer.uint32(10).string(message.organizationId);
+        }
+        if (message.name !== '') {
+            writer.uint32(18).string(message.name);
+        }
+        if (message.description !== '') {
+            writer.uint32(26).string(message.description);
+        }
+        Object.entries(message.labels).forEach(([key, value]) => {
+            CreateCloudRequest_LabelsEntry.encode(
+                { key: key as any, value },
+                writer.uint32(34).fork()
+            ).ldelim();
+        });
+        return writer;
+    },
+
+    decode(
+        input: _m0.Reader | Uint8Array,
+        length?: number
+    ): CreateCloudRequest {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = { ...baseCreateCloudRequest } as CreateCloudRequest;
+        message.labels = {};
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.organizationId = reader.string();
+                    break;
+                case 2:
+                    message.name = reader.string();
+                    break;
+                case 3:
+                    message.description = reader.string();
+                    break;
+                case 4:
+                    const entry4 = CreateCloudRequest_LabelsEntry.decode(
+                        reader,
+                        reader.uint32()
+                    );
+                    if (entry4.value !== undefined) {
+                        message.labels[entry4.key] = entry4.value;
+                    }
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): CreateCloudRequest {
+        const message = { ...baseCreateCloudRequest } as CreateCloudRequest;
+        message.labels = {};
+        if (
+            object.organizationId !== undefined &&
+            object.organizationId !== null
+        ) {
+            message.organizationId = String(object.organizationId);
+        } else {
+            message.organizationId = '';
+        }
+        if (object.name !== undefined && object.name !== null) {
+            message.name = String(object.name);
+        } else {
+            message.name = '';
+        }
+        if (object.description !== undefined && object.description !== null) {
+            message.description = String(object.description);
+        } else {
+            message.description = '';
+        }
+        if (object.labels !== undefined && object.labels !== null) {
+            Object.entries(object.labels).forEach(([key, value]) => {
+                message.labels[key] = String(value);
+            });
+        }
+        return message;
+    },
+
+    toJSON(message: CreateCloudRequest): unknown {
+        const obj: any = {};
+        message.organizationId !== undefined &&
+            (obj.organizationId = message.organizationId);
+        message.name !== undefined && (obj.name = message.name);
+        message.description !== undefined &&
+            (obj.description = message.description);
+        obj.labels = {};
+        if (message.labels) {
+            Object.entries(message.labels).forEach(([k, v]) => {
+                obj.labels[k] = v;
+            });
+        }
+        return obj;
+    },
+
+    fromPartial(object: DeepPartial<CreateCloudRequest>): CreateCloudRequest {
+        const message = { ...baseCreateCloudRequest } as CreateCloudRequest;
+        message.labels = {};
+        if (
+            object.organizationId !== undefined &&
+            object.organizationId !== null
+        ) {
+            message.organizationId = object.organizationId;
+        } else {
+            message.organizationId = '';
+        }
+        if (object.name !== undefined && object.name !== null) {
+            message.name = object.name;
+        } else {
+            message.name = '';
+        }
+        if (object.description !== undefined && object.description !== null) {
+            message.description = object.description;
+        } else {
+            message.description = '';
+        }
+        if (object.labels !== undefined && object.labels !== null) {
+            Object.entries(object.labels).forEach(([key, value]) => {
+                if (value !== undefined) {
+                    message.labels[key] = String(value);
+                }
+            });
+        }
+        return message;
+    },
+};
+
+const baseCreateCloudRequest_LabelsEntry: object = { key: '', value: '' };
+
+export const CreateCloudRequest_LabelsEntry = {
+    encode(
+        message: CreateCloudRequest_LabelsEntry,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        if (message.key !== '') {
+            writer.uint32(10).string(message.key);
+        }
+        if (message.value !== '') {
+            writer.uint32(18).string(message.value);
+        }
+        return writer;
+    },
+
+    decode(
+        input: _m0.Reader | Uint8Array,
+        length?: number
+    ): CreateCloudRequest_LabelsEntry {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = {
+            ...baseCreateCloudRequest_LabelsEntry,
+        } as CreateCloudRequest_LabelsEntry;
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.key = reader.string();
+                    break;
+                case 2:
+                    message.value = reader.string();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): CreateCloudRequest_LabelsEntry {
+        const message = {
+            ...baseCreateCloudRequest_LabelsEntry,
+        } as CreateCloudRequest_LabelsEntry;
+        if (object.key !== undefined && object.key !== null) {
+            message.key = String(object.key);
+        } else {
+            message.key = '';
+        }
+        if (object.value !== undefined && object.value !== null) {
+            message.value = String(object.value);
+        } else {
+            message.value = '';
+        }
+        return message;
+    },
+
+    toJSON(message: CreateCloudRequest_LabelsEntry): unknown {
+        const obj: any = {};
+        message.key !== undefined && (obj.key = message.key);
+        message.value !== undefined && (obj.value = message.value);
+        return obj;
+    },
+
+    fromPartial(
+        object: DeepPartial<CreateCloudRequest_LabelsEntry>
+    ): CreateCloudRequest_LabelsEntry {
+        const message = {
+            ...baseCreateCloudRequest_LabelsEntry,
+        } as CreateCloudRequest_LabelsEntry;
+        if (object.key !== undefined && object.key !== null) {
+            message.key = object.key;
+        } else {
+            message.key = '';
+        }
+        if (object.value !== undefined && object.value !== null) {
+            message.value = object.value;
+        } else {
+            message.value = '';
+        }
+        return message;
+    },
+};
+
+const baseCreateCloudMetadata: object = { cloudId: '' };
+
+export const CreateCloudMetadata = {
+    encode(
+        message: CreateCloudMetadata,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        if (message.cloudId !== '') {
+            writer.uint32(10).string(message.cloudId);
+        }
+        return writer;
+    },
+
+    decode(
+        input: _m0.Reader | Uint8Array,
+        length?: number
+    ): CreateCloudMetadata {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = { ...baseCreateCloudMetadata } as CreateCloudMetadata;
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.cloudId = reader.string();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): CreateCloudMetadata {
+        const message = { ...baseCreateCloudMetadata } as CreateCloudMetadata;
+        if (object.cloudId !== undefined && object.cloudId !== null) {
+            message.cloudId = String(object.cloudId);
+        } else {
+            message.cloudId = '';
+        }
+        return message;
+    },
+
+    toJSON(message: CreateCloudMetadata): unknown {
+        const obj: any = {};
+        message.cloudId !== undefined && (obj.cloudId = message.cloudId);
+        return obj;
+    },
+
+    fromPartial(object: DeepPartial<CreateCloudMetadata>): CreateCloudMetadata {
+        const message = { ...baseCreateCloudMetadata } as CreateCloudMetadata;
+        if (object.cloudId !== undefined && object.cloudId !== null) {
+            message.cloudId = object.cloudId;
+        } else {
+            message.cloudId = '';
+        }
+        return message;
+    },
+};
+
 const baseListCloudOperationsRequest: object = {
     cloudId: '',
     pageSize: 0,
@@ -636,6 +960,12 @@ export const UpdateCloudRequest = {
         if (message.description !== '') {
             writer.uint32(34).string(message.description);
         }
+        Object.entries(message.labels).forEach(([key, value]) => {
+            UpdateCloudRequest_LabelsEntry.encode(
+                { key: key as any, value },
+                writer.uint32(42).fork()
+            ).ldelim();
+        });
         return writer;
     },
 
@@ -647,6 +977,7 @@ export const UpdateCloudRequest = {
             input instanceof _m0.Reader ? input : new _m0.Reader(input);
         let end = length === undefined ? reader.len : reader.pos + length;
         const message = { ...baseUpdateCloudRequest } as UpdateCloudRequest;
+        message.labels = {};
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -665,6 +996,15 @@ export const UpdateCloudRequest = {
                 case 4:
                     message.description = reader.string();
                     break;
+                case 5:
+                    const entry5 = UpdateCloudRequest_LabelsEntry.decode(
+                        reader,
+                        reader.uint32()
+                    );
+                    if (entry5.value !== undefined) {
+                        message.labels[entry5.key] = entry5.value;
+                    }
+                    break;
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -675,6 +1015,7 @@ export const UpdateCloudRequest = {
 
     fromJSON(object: any): UpdateCloudRequest {
         const message = { ...baseUpdateCloudRequest } as UpdateCloudRequest;
+        message.labels = {};
         if (object.cloudId !== undefined && object.cloudId !== null) {
             message.cloudId = String(object.cloudId);
         } else {
@@ -695,6 +1036,11 @@ export const UpdateCloudRequest = {
         } else {
             message.description = '';
         }
+        if (object.labels !== undefined && object.labels !== null) {
+            Object.entries(object.labels).forEach(([key, value]) => {
+                message.labels[key] = String(value);
+            });
+        }
         return message;
     },
 
@@ -708,11 +1054,18 @@ export const UpdateCloudRequest = {
         message.name !== undefined && (obj.name = message.name);
         message.description !== undefined &&
             (obj.description = message.description);
+        obj.labels = {};
+        if (message.labels) {
+            Object.entries(message.labels).forEach(([k, v]) => {
+                obj.labels[k] = v;
+            });
+        }
         return obj;
     },
 
     fromPartial(object: DeepPartial<UpdateCloudRequest>): UpdateCloudRequest {
         const message = { ...baseUpdateCloudRequest } as UpdateCloudRequest;
+        message.labels = {};
         if (object.cloudId !== undefined && object.cloudId !== null) {
             message.cloudId = object.cloudId;
         } else {
@@ -732,6 +1085,100 @@ export const UpdateCloudRequest = {
             message.description = object.description;
         } else {
             message.description = '';
+        }
+        if (object.labels !== undefined && object.labels !== null) {
+            Object.entries(object.labels).forEach(([key, value]) => {
+                if (value !== undefined) {
+                    message.labels[key] = String(value);
+                }
+            });
+        }
+        return message;
+    },
+};
+
+const baseUpdateCloudRequest_LabelsEntry: object = { key: '', value: '' };
+
+export const UpdateCloudRequest_LabelsEntry = {
+    encode(
+        message: UpdateCloudRequest_LabelsEntry,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        if (message.key !== '') {
+            writer.uint32(10).string(message.key);
+        }
+        if (message.value !== '') {
+            writer.uint32(18).string(message.value);
+        }
+        return writer;
+    },
+
+    decode(
+        input: _m0.Reader | Uint8Array,
+        length?: number
+    ): UpdateCloudRequest_LabelsEntry {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = {
+            ...baseUpdateCloudRequest_LabelsEntry,
+        } as UpdateCloudRequest_LabelsEntry;
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.key = reader.string();
+                    break;
+                case 2:
+                    message.value = reader.string();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): UpdateCloudRequest_LabelsEntry {
+        const message = {
+            ...baseUpdateCloudRequest_LabelsEntry,
+        } as UpdateCloudRequest_LabelsEntry;
+        if (object.key !== undefined && object.key !== null) {
+            message.key = String(object.key);
+        } else {
+            message.key = '';
+        }
+        if (object.value !== undefined && object.value !== null) {
+            message.value = String(object.value);
+        } else {
+            message.value = '';
+        }
+        return message;
+    },
+
+    toJSON(message: UpdateCloudRequest_LabelsEntry): unknown {
+        const obj: any = {};
+        message.key !== undefined && (obj.key = message.key);
+        message.value !== undefined && (obj.value = message.value);
+        return obj;
+    },
+
+    fromPartial(
+        object: DeepPartial<UpdateCloudRequest_LabelsEntry>
+    ): UpdateCloudRequest_LabelsEntry {
+        const message = {
+            ...baseUpdateCloudRequest_LabelsEntry,
+        } as UpdateCloudRequest_LabelsEntry;
+        if (object.key !== undefined && object.key !== null) {
+            message.key = object.key;
+        } else {
+            message.key = '';
+        }
+        if (object.value !== undefined && object.value !== null) {
+            message.value = object.value;
+        } else {
+            message.value = '';
         }
         return message;
     },
@@ -1000,6 +1447,18 @@ export const CloudServiceService = {
         responseDeserialize: (value: Buffer) =>
             ListCloudsResponse.decode(value),
     },
+    /** Creates a cloud in the specified organization. */
+    create: {
+        path: '/yandex.cloud.resourcemanager.v1.CloudService/Create',
+        requestStream: false,
+        responseStream: false,
+        requestSerialize: (value: CreateCloudRequest) =>
+            Buffer.from(CreateCloudRequest.encode(value).finish()),
+        requestDeserialize: (value: Buffer) => CreateCloudRequest.decode(value),
+        responseSerialize: (value: Operation) =>
+            Buffer.from(Operation.encode(value).finish()),
+        responseDeserialize: (value: Buffer) => Operation.decode(value),
+    },
     /** Updates the specified cloud. */
     update: {
         path: '/yandex.cloud.resourcemanager.v1.CloudService/Update',
@@ -1012,11 +1471,7 @@ export const CloudServiceService = {
             Buffer.from(Operation.encode(value).finish()),
         responseDeserialize: (value: Buffer) => Operation.decode(value),
     },
-    /**
-     * Deletes the specified cloud.
-     *
-     * The method is temporarily unavailable.
-     */
+    /** Deletes the specified cloud. */
     delete: {
         path: '/yandex.cloud.resourcemanager.v1.CloudService/Delete',
         requestStream: false,
@@ -1093,13 +1548,11 @@ export interface CloudServiceServer extends UntypedServiceImplementation {
     get: handleUnaryCall<GetCloudRequest, Cloud>;
     /** Retrieves the list of Cloud resources. */
     list: handleUnaryCall<ListCloudsRequest, ListCloudsResponse>;
+    /** Creates a cloud in the specified organization. */
+    create: handleUnaryCall<CreateCloudRequest, Operation>;
     /** Updates the specified cloud. */
     update: handleUnaryCall<UpdateCloudRequest, Operation>;
-    /**
-     * Deletes the specified cloud.
-     *
-     * The method is temporarily unavailable.
-     */
+    /** Deletes the specified cloud. */
     delete: handleUnaryCall<DeleteCloudRequest, Operation>;
     /** Lists operations for the specified cloud. */
     listOperations: handleUnaryCall<
@@ -1166,6 +1619,22 @@ export interface CloudServiceClient extends Client {
             response: ListCloudsResponse
         ) => void
     ): ClientUnaryCall;
+    /** Creates a cloud in the specified organization. */
+    create(
+        request: CreateCloudRequest,
+        callback: (error: ServiceError | null, response: Operation) => void
+    ): ClientUnaryCall;
+    create(
+        request: CreateCloudRequest,
+        metadata: Metadata,
+        callback: (error: ServiceError | null, response: Operation) => void
+    ): ClientUnaryCall;
+    create(
+        request: CreateCloudRequest,
+        metadata: Metadata,
+        options: Partial<CallOptions>,
+        callback: (error: ServiceError | null, response: Operation) => void
+    ): ClientUnaryCall;
     /** Updates the specified cloud. */
     update(
         request: UpdateCloudRequest,
@@ -1182,11 +1651,7 @@ export interface CloudServiceClient extends Client {
         options: Partial<CallOptions>,
         callback: (error: ServiceError | null, response: Operation) => void
     ): ClientUnaryCall;
-    /**
-     * Deletes the specified cloud.
-     *
-     * The method is temporarily unavailable.
-     */
+    /** Deletes the specified cloud. */
     delete(
         request: DeleteCloudRequest,
         callback: (error: ServiceError | null, response: Operation) => void

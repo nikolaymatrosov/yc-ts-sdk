@@ -1,12 +1,16 @@
-import AbortController from 'node-abort-controller';
+import { EndpointResolver } from '../endpoint';
+import { ITokenService } from './ITokenService';
+import { credentials } from '@grpc/grpc-js';
 import { isAbortError } from 'abort-controller-x';
+import {
+    CreateIamTokenRequest,
+    CreateIamTokenResponse,
+    IamTokenServiceService,
+} from 'cloud/iam/v1/iam_token_service';
 import jwt from 'jsonwebtoken';
 import { DateTime } from 'luxon';
-import { ITokenService } from './ITokenService';
 import { Client, createChannel, createClient } from 'nice-grpc';
-import { credentials } from '@grpc/grpc-js';
-import { EndpointResolver } from '../endpoint';
-import { CreateIamTokenRequest, CreateIamTokenResponse, IamTokenServiceService } from 'cloud/iam/v1/iam_token_service';
+import AbortController from 'node-abort-controller';
 
 interface ServiceAccountJsonFileContents {
     id: string;
@@ -17,7 +21,9 @@ interface ServiceAccountJsonFileContents {
     public_key: string;
 }
 
-export function fromServiceAccountJsonFile(data: ServiceAccountJsonFileContents): IIAmCredentials {
+export function fromServiceAccountJsonFile(
+    data: ServiceAccountJsonFileContents
+): IIAmCredentials {
     return {
         accessKeyId: data.id,
         privateKey: data.private_key,
@@ -47,8 +53,10 @@ export class IamTokenService implements ITokenService {
     private readonly iamCredentials: IIAmCredentials;
     private endpointResolver: EndpointResolver;
 
-
-    constructor(iamCredentials: IIAmCredentials, sslCredentials?: ISslCredentials) {
+    constructor(
+        iamCredentials: IIAmCredentials,
+        sslCredentials?: ISslCredentials
+    ) {
         this.iamCredentials = iamCredentials;
         this.tokenTimestamp = null;
 
@@ -57,8 +65,10 @@ export class IamTokenService implements ITokenService {
     }
 
     private get expired() {
-        return !this.tokenTimestamp || (
-            DateTime.utc().diff(this.tokenTimestamp).valueOf() > this.tokenExpirationTimeout
+        return (
+            !this.tokenTimestamp ||
+            DateTime.utc().diff(this.tokenTimestamp).valueOf() >
+                this.tokenExpirationTimeout
         );
     }
 
@@ -70,18 +80,23 @@ export class IamTokenService implements ITokenService {
     }
 
     private client(): Client<typeof IamTokenServiceService> {
-        const channel = createChannel(this.endpointResolver.resolve('iam'), credentials.createSsl());
-        return createClient(IamTokenServiceService as any, channel) as Client<typeof IamTokenServiceService>;
+        const channel = createChannel(
+            this.endpointResolver.resolve('iam'),
+            credentials.createSsl()
+        );
+        return createClient(IamTokenServiceService as any, channel) as Client<
+            typeof IamTokenServiceService
+        >;
     }
 
     private getJwtRequest() {
         const now = DateTime.utc();
         const expires = now.plus({ milliseconds: this.jwtExpirationTimeout });
         const payload = {
-            'iss': this.iamCredentials.serviceAccountId,
-            'aud': 'https://iam.api.cloud.yandex.net/iam/v1/tokens',
-            'iat': Math.round(now.toSeconds()),
-            'exp': Math.round(expires.toSeconds()),
+            iss: this.iamCredentials.serviceAccountId,
+            aud: 'https://iam.api.cloud.yandex.net/iam/v1/tokens',
+            iat: Math.round(now.toSeconds()),
+            exp: Math.round(expires.toSeconds()),
         };
         const options: jwt.SignOptions = {
             algorithm: 'PS256',
@@ -107,10 +122,15 @@ export class IamTokenService implements ITokenService {
         }, this.tokenRequestTimeout);
 
         return this.client()
-            .create(CreateIamTokenRequest.fromPartial({ jwt: this.getJwtRequest() }), {
-                signal: abortController.signal,
-            })
-            .catch(error => {
+            .create(
+                CreateIamTokenRequest.fromPartial({
+                    jwt: this.getJwtRequest(),
+                }),
+                {
+                    signal: abortController.signal,
+                }
+            )
+            .catch((error) => {
                 if (isAbortError(error)) {
                     // aborted
                 } else {

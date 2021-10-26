@@ -487,6 +487,11 @@ export interface SetScalingPolicyRequest {
      */
     tag: string;
     /**
+     * Minimum guaranteed provisioned instances count for all zones in total.
+     * Billed separately.
+     */
+    provisionedInstancesCount: number;
+    /**
      * Upper limit for instance count in each zone.
      * 0 means no limit.
      */
@@ -4030,6 +4035,7 @@ export const ListScalingPoliciesResponse = {
 const baseSetScalingPolicyRequest: object = {
     functionId: '',
     tag: '',
+    provisionedInstancesCount: 0,
     zoneInstancesLimit: 0,
     zoneRequestsLimit: 0,
 };
@@ -4044,6 +4050,9 @@ export const SetScalingPolicyRequest = {
         }
         if (message.tag !== '') {
             writer.uint32(18).string(message.tag);
+        }
+        if (message.provisionedInstancesCount !== 0) {
+            writer.uint32(32).int64(message.provisionedInstancesCount);
         }
         if (message.zoneInstancesLimit !== 0) {
             writer.uint32(40).int64(message.zoneInstancesLimit);
@@ -4072,6 +4081,11 @@ export const SetScalingPolicyRequest = {
                     break;
                 case 2:
                     message.tag = reader.string();
+                    break;
+                case 4:
+                    message.provisionedInstancesCount = longToNumber(
+                        reader.int64() as Long
+                    );
                     break;
                 case 5:
                     message.zoneInstancesLimit = longToNumber(
@@ -4106,6 +4120,16 @@ export const SetScalingPolicyRequest = {
             message.tag = '';
         }
         if (
+            object.provisionedInstancesCount !== undefined &&
+            object.provisionedInstancesCount !== null
+        ) {
+            message.provisionedInstancesCount = Number(
+                object.provisionedInstancesCount
+            );
+        } else {
+            message.provisionedInstancesCount = 0;
+        }
+        if (
             object.zoneInstancesLimit !== undefined &&
             object.zoneInstancesLimit !== null
         ) {
@@ -4129,6 +4153,8 @@ export const SetScalingPolicyRequest = {
         message.functionId !== undefined &&
             (obj.functionId = message.functionId);
         message.tag !== undefined && (obj.tag = message.tag);
+        message.provisionedInstancesCount !== undefined &&
+            (obj.provisionedInstancesCount = message.provisionedInstancesCount);
         message.zoneInstancesLimit !== undefined &&
             (obj.zoneInstancesLimit = message.zoneInstancesLimit);
         message.zoneRequestsLimit !== undefined &&
@@ -4151,6 +4177,15 @@ export const SetScalingPolicyRequest = {
             message.tag = object.tag;
         } else {
             message.tag = '';
+        }
+        if (
+            object.provisionedInstancesCount !== undefined &&
+            object.provisionedInstancesCount !== null
+        ) {
+            message.provisionedInstancesCount =
+                object.provisionedInstancesCount;
+        } else {
+            message.provisionedInstancesCount = 0;
         }
         if (
             object.zoneInstancesLimit !== undefined &&

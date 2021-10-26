@@ -558,6 +558,10 @@ export interface UpdateHostSpec {
     priority: number | undefined;
     /** Configuration of a PostgreSQL server for the host. */
     configSpec: ConfigHostSpec | undefined;
+    /** Field mask that specifies which fields of the PostgreSQL host should be updated. */
+    updateMask: FieldMask | undefined;
+    /** Whether the host should get a public IP address on creation. */
+    assignPublicIp: boolean;
 }
 export interface HostSpec {
     /**
@@ -626,6 +630,8 @@ export interface ConfigSpec {
     autofailover: boolean | undefined;
     /** Time to start the daily backup, in the UTC timezone. */
     backupWindowStart: TimeOfDay | undefined;
+    /** Retention policy of automated backups. */
+    backupRetainPeriodDays: number | undefined;
     /** Access policy to DB */
     access: Access | undefined;
     /** Configuration of the performance diagnostics service. */

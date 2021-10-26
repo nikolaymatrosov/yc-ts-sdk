@@ -160,6 +160,8 @@ export interface Listener {
     http: HttpListener | undefined;
     /** HTTPS (HTTP over TLS) listener settings. */
     tls: TlsListener | undefined;
+    /** TCP listener settings. */
+    tcp: TcpListener | undefined;
 }
 /** An endpoint resource. */
 export interface Endpoint {
@@ -196,10 +198,18 @@ export interface TlsListener {
      */
     sniHandlers: SniMatch[];
 }
+/** A TCP listener resource. */
+export interface TcpListener {
+    handler: StreamHandler | undefined;
+}
 /** An HTTP/2 options resource. */
 export interface Http2Options {
     /** Maximum number of concurrent HTTP/2 streams in a connection. */
     maxConcurrentStreams: number;
+}
+/** A stream handler resource. */
+export interface StreamHandler {
+    backendGroupId: string;
 }
 /** An HTTP handler resource. */
 export interface HttpHandler {
@@ -241,6 +251,8 @@ export interface SniMatch {
 export interface TlsHandler {
     /** HTTP handler. */
     httpHandler: HttpHandler | undefined;
+    /** Stream handler */
+    streamHandler: StreamHandler | undefined;
     /**
      * ID's of the TLS server certificates from [Certificate Manager](/docs/certificate-manager/).
      *
@@ -387,12 +399,26 @@ export declare const TlsListener: {
     toJSON(message: TlsListener): unknown;
     fromPartial(object: DeepPartial<TlsListener>): TlsListener;
 };
+export declare const TcpListener: {
+    encode(message: TcpListener, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number | undefined): TcpListener;
+    fromJSON(object: any): TcpListener;
+    toJSON(message: TcpListener): unknown;
+    fromPartial(object: DeepPartial<TcpListener>): TcpListener;
+};
 export declare const Http2Options: {
     encode(message: Http2Options, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Http2Options;
     fromJSON(object: any): Http2Options;
     toJSON(message: Http2Options): unknown;
     fromPartial(object: DeepPartial<Http2Options>): Http2Options;
+};
+export declare const StreamHandler: {
+    encode(message: StreamHandler, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number | undefined): StreamHandler;
+    fromJSON(object: any): StreamHandler;
+    toJSON(message: StreamHandler): unknown;
+    fromPartial(object: DeepPartial<StreamHandler>): StreamHandler;
 };
 export declare const HttpHandler: {
     encode(message: HttpHandler, writer?: _m0.Writer): _m0.Writer;

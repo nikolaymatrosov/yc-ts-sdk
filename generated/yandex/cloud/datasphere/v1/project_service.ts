@@ -1,7 +1,12 @@
 /* eslint-disable */
+import { Empty } from '../../../../google/protobuf/empty';
 import { FieldMask } from '../../../../google/protobuf/field_mask';
+import { Struct } from '../../../../google/protobuf/struct';
+import { Timestamp } from '../../../../google/protobuf/timestamp';
+import { Int64Value } from '../../../../google/protobuf/wrappers';
 import {
     Project_Settings,
+    Project_Limits,
     Project,
 } from '../../../../yandex/cloud/datasphere/v1/project';
 import { Operation } from '../../../../yandex/cloud/operation/operation';
@@ -34,6 +39,8 @@ export interface CreateProjectRequest {
     description: string;
     /** Settings of the project. */
     settings: Project_Settings | undefined;
+    /** Limits of the project. */
+    limits: Project_Limits | undefined;
 }
 
 export interface CreateProjectMetadata {
@@ -55,6 +62,8 @@ export interface UpdateProjectRequest {
     description: string;
     /** Settings of the project. */
     settings: Project_Settings | undefined;
+    /** Limits of the project. */
+    limits: Project_Limits | undefined;
 }
 
 export interface UpdateProjectMetadata {
@@ -142,6 +151,84 @@ export interface ListProjectsResponse {
     nextPageToken: string;
 }
 
+export interface GetUnitBalanceRequest {
+    /** ID of the project to return the unit balance for. */
+    projectId: string;
+}
+
+export interface GetUnitBalanceResponse {
+    /** The number of units available to the project. */
+    unitBalance: number | undefined;
+}
+
+export interface SetUnitBalanceRequest {
+    /** ID of the project to set the unit balance for. */
+    projectId: string;
+    /** The number of units available to the project. */
+    unitBalance: number | undefined;
+}
+
+export interface ProjectExecutionRequest {
+    /** ID of the project to execute notebook/cell in. */
+    projectId: string;
+    /** ID of the notebook to execute. */
+    notebookId: string | undefined;
+    /** ID of the cell to execute. */
+    cellId: string | undefined;
+    /** Values of input variables. */
+    inputVariables: Struct | undefined;
+    /** Names of output variables. */
+    outputVariableNames: string[];
+}
+
+export interface ProjectExecutionMetadata {
+    /** ID of the project in which notebook is being executed. */
+    projectId: string;
+    /** ID of the notebook that is being executed */
+    notebookId: string | undefined;
+    /** ID of the cell that is being executed */
+    cellId: string | undefined;
+}
+
+export interface ProjectExecutionResponse {
+    /** ID of the checkpoint resulting from the execution. */
+    checkpointId: string;
+    /** Values of output variables resulting from the execution. */
+    outputVariables: Struct | undefined;
+}
+
+export interface CellOutputsRequest {
+    /** ID of the project to return cell outputs for. */
+    projectId: string;
+    /** ID of the cell to return outputs for. */
+    cellId: string;
+    /** ID of the checkpoint to return cell outputs for. */
+    checkpointId: string;
+    /** Timestamp from which to return outputs. */
+    startAt: Date | undefined;
+}
+
+export interface CellOutputsResponse {
+    /** List of outputs. */
+    outputs: string[];
+}
+
+export interface GetStateVariablesRequest {
+    /** ID of the project, for which to return state variables. */
+    projectId: string;
+    /** ID of the notebook, for which to return state variables. */
+    notebookId: string;
+    /** Names of variables to return. */
+    variableNames: string[];
+    /** ID of the checkpoint, for which to return state variables. */
+    checkpointId: string;
+}
+
+export interface GetStateVariablesResponse {
+    /** Values of the specified variables. */
+    variables: Struct | undefined;
+}
+
 const baseCreateProjectRequest: object = {
     folderId: '',
     name: '',
@@ -166,6 +253,12 @@ export const CreateProjectRequest = {
             Project_Settings.encode(
                 message.settings,
                 writer.uint32(34).fork()
+            ).ldelim();
+        }
+        if (message.limits !== undefined) {
+            Project_Limits.encode(
+                message.limits,
+                writer.uint32(42).fork()
             ).ldelim();
         }
         return writer;
@@ -193,6 +286,12 @@ export const CreateProjectRequest = {
                     break;
                 case 4:
                     message.settings = Project_Settings.decode(
+                        reader,
+                        reader.uint32()
+                    );
+                    break;
+                case 5:
+                    message.limits = Project_Limits.decode(
                         reader,
                         reader.uint32()
                     );
@@ -227,6 +326,11 @@ export const CreateProjectRequest = {
         } else {
             message.settings = undefined;
         }
+        if (object.limits !== undefined && object.limits !== null) {
+            message.limits = Project_Limits.fromJSON(object.limits);
+        } else {
+            message.limits = undefined;
+        }
         return message;
     },
 
@@ -239,6 +343,10 @@ export const CreateProjectRequest = {
         message.settings !== undefined &&
             (obj.settings = message.settings
                 ? Project_Settings.toJSON(message.settings)
+                : undefined);
+        message.limits !== undefined &&
+            (obj.limits = message.limits
+                ? Project_Limits.toJSON(message.limits)
                 : undefined);
         return obj;
     },
@@ -266,6 +374,11 @@ export const CreateProjectRequest = {
             message.settings = Project_Settings.fromPartial(object.settings);
         } else {
             message.settings = undefined;
+        }
+        if (object.limits !== undefined && object.limits !== null) {
+            message.limits = Project_Limits.fromPartial(object.limits);
+        } else {
+            message.limits = undefined;
         }
         return message;
     },
@@ -373,6 +486,12 @@ export const UpdateProjectRequest = {
                 writer.uint32(42).fork()
             ).ldelim();
         }
+        if (message.limits !== undefined) {
+            Project_Limits.encode(
+                message.limits,
+                writer.uint32(50).fork()
+            ).ldelim();
+        }
         return writer;
     },
 
@@ -404,6 +523,12 @@ export const UpdateProjectRequest = {
                     break;
                 case 5:
                     message.settings = Project_Settings.decode(
+                        reader,
+                        reader.uint32()
+                    );
+                    break;
+                case 6:
+                    message.limits = Project_Limits.decode(
                         reader,
                         reader.uint32()
                     );
@@ -443,6 +568,11 @@ export const UpdateProjectRequest = {
         } else {
             message.settings = undefined;
         }
+        if (object.limits !== undefined && object.limits !== null) {
+            message.limits = Project_Limits.fromJSON(object.limits);
+        } else {
+            message.limits = undefined;
+        }
         return message;
     },
 
@@ -459,6 +589,10 @@ export const UpdateProjectRequest = {
         message.settings !== undefined &&
             (obj.settings = message.settings
                 ? Project_Settings.toJSON(message.settings)
+                : undefined);
+        message.limits !== undefined &&
+            (obj.limits = message.limits
+                ? Project_Limits.toJSON(message.limits)
                 : undefined);
         return obj;
     },
@@ -491,6 +625,11 @@ export const UpdateProjectRequest = {
             message.settings = Project_Settings.fromPartial(object.settings);
         } else {
             message.settings = undefined;
+        }
+        if (object.limits !== undefined && object.limits !== null) {
+            message.limits = Project_Limits.fromPartial(object.limits);
+        } else {
+            message.limits = undefined;
         }
         return message;
     },
@@ -1163,6 +1302,1034 @@ export const ListProjectsResponse = {
     },
 };
 
+const baseGetUnitBalanceRequest: object = { projectId: '' };
+
+export const GetUnitBalanceRequest = {
+    encode(
+        message: GetUnitBalanceRequest,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        if (message.projectId !== '') {
+            writer.uint32(10).string(message.projectId);
+        }
+        return writer;
+    },
+
+    decode(
+        input: _m0.Reader | Uint8Array,
+        length?: number
+    ): GetUnitBalanceRequest {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = {
+            ...baseGetUnitBalanceRequest,
+        } as GetUnitBalanceRequest;
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.projectId = reader.string();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): GetUnitBalanceRequest {
+        const message = {
+            ...baseGetUnitBalanceRequest,
+        } as GetUnitBalanceRequest;
+        if (object.projectId !== undefined && object.projectId !== null) {
+            message.projectId = String(object.projectId);
+        } else {
+            message.projectId = '';
+        }
+        return message;
+    },
+
+    toJSON(message: GetUnitBalanceRequest): unknown {
+        const obj: any = {};
+        message.projectId !== undefined && (obj.projectId = message.projectId);
+        return obj;
+    },
+
+    fromPartial(
+        object: DeepPartial<GetUnitBalanceRequest>
+    ): GetUnitBalanceRequest {
+        const message = {
+            ...baseGetUnitBalanceRequest,
+        } as GetUnitBalanceRequest;
+        if (object.projectId !== undefined && object.projectId !== null) {
+            message.projectId = object.projectId;
+        } else {
+            message.projectId = '';
+        }
+        return message;
+    },
+};
+
+const baseGetUnitBalanceResponse: object = {};
+
+export const GetUnitBalanceResponse = {
+    encode(
+        message: GetUnitBalanceResponse,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        if (message.unitBalance !== undefined) {
+            Int64Value.encode(
+                { value: message.unitBalance! },
+                writer.uint32(10).fork()
+            ).ldelim();
+        }
+        return writer;
+    },
+
+    decode(
+        input: _m0.Reader | Uint8Array,
+        length?: number
+    ): GetUnitBalanceResponse {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = {
+            ...baseGetUnitBalanceResponse,
+        } as GetUnitBalanceResponse;
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.unitBalance = Int64Value.decode(
+                        reader,
+                        reader.uint32()
+                    ).value;
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): GetUnitBalanceResponse {
+        const message = {
+            ...baseGetUnitBalanceResponse,
+        } as GetUnitBalanceResponse;
+        if (object.unitBalance !== undefined && object.unitBalance !== null) {
+            message.unitBalance = Number(object.unitBalance);
+        } else {
+            message.unitBalance = undefined;
+        }
+        return message;
+    },
+
+    toJSON(message: GetUnitBalanceResponse): unknown {
+        const obj: any = {};
+        message.unitBalance !== undefined &&
+            (obj.unitBalance = message.unitBalance);
+        return obj;
+    },
+
+    fromPartial(
+        object: DeepPartial<GetUnitBalanceResponse>
+    ): GetUnitBalanceResponse {
+        const message = {
+            ...baseGetUnitBalanceResponse,
+        } as GetUnitBalanceResponse;
+        if (object.unitBalance !== undefined && object.unitBalance !== null) {
+            message.unitBalance = object.unitBalance;
+        } else {
+            message.unitBalance = undefined;
+        }
+        return message;
+    },
+};
+
+const baseSetUnitBalanceRequest: object = { projectId: '' };
+
+export const SetUnitBalanceRequest = {
+    encode(
+        message: SetUnitBalanceRequest,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        if (message.projectId !== '') {
+            writer.uint32(10).string(message.projectId);
+        }
+        if (message.unitBalance !== undefined) {
+            Int64Value.encode(
+                { value: message.unitBalance! },
+                writer.uint32(18).fork()
+            ).ldelim();
+        }
+        return writer;
+    },
+
+    decode(
+        input: _m0.Reader | Uint8Array,
+        length?: number
+    ): SetUnitBalanceRequest {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = {
+            ...baseSetUnitBalanceRequest,
+        } as SetUnitBalanceRequest;
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.projectId = reader.string();
+                    break;
+                case 2:
+                    message.unitBalance = Int64Value.decode(
+                        reader,
+                        reader.uint32()
+                    ).value;
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): SetUnitBalanceRequest {
+        const message = {
+            ...baseSetUnitBalanceRequest,
+        } as SetUnitBalanceRequest;
+        if (object.projectId !== undefined && object.projectId !== null) {
+            message.projectId = String(object.projectId);
+        } else {
+            message.projectId = '';
+        }
+        if (object.unitBalance !== undefined && object.unitBalance !== null) {
+            message.unitBalance = Number(object.unitBalance);
+        } else {
+            message.unitBalance = undefined;
+        }
+        return message;
+    },
+
+    toJSON(message: SetUnitBalanceRequest): unknown {
+        const obj: any = {};
+        message.projectId !== undefined && (obj.projectId = message.projectId);
+        message.unitBalance !== undefined &&
+            (obj.unitBalance = message.unitBalance);
+        return obj;
+    },
+
+    fromPartial(
+        object: DeepPartial<SetUnitBalanceRequest>
+    ): SetUnitBalanceRequest {
+        const message = {
+            ...baseSetUnitBalanceRequest,
+        } as SetUnitBalanceRequest;
+        if (object.projectId !== undefined && object.projectId !== null) {
+            message.projectId = object.projectId;
+        } else {
+            message.projectId = '';
+        }
+        if (object.unitBalance !== undefined && object.unitBalance !== null) {
+            message.unitBalance = object.unitBalance;
+        } else {
+            message.unitBalance = undefined;
+        }
+        return message;
+    },
+};
+
+const baseProjectExecutionRequest: object = {
+    projectId: '',
+    outputVariableNames: '',
+};
+
+export const ProjectExecutionRequest = {
+    encode(
+        message: ProjectExecutionRequest,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        if (message.projectId !== '') {
+            writer.uint32(10).string(message.projectId);
+        }
+        if (message.notebookId !== undefined) {
+            writer.uint32(18).string(message.notebookId);
+        }
+        if (message.cellId !== undefined) {
+            writer.uint32(26).string(message.cellId);
+        }
+        if (message.inputVariables !== undefined) {
+            Struct.encode(
+                message.inputVariables,
+                writer.uint32(34).fork()
+            ).ldelim();
+        }
+        for (const v of message.outputVariableNames) {
+            writer.uint32(42).string(v!);
+        }
+        return writer;
+    },
+
+    decode(
+        input: _m0.Reader | Uint8Array,
+        length?: number
+    ): ProjectExecutionRequest {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = {
+            ...baseProjectExecutionRequest,
+        } as ProjectExecutionRequest;
+        message.outputVariableNames = [];
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.projectId = reader.string();
+                    break;
+                case 2:
+                    message.notebookId = reader.string();
+                    break;
+                case 3:
+                    message.cellId = reader.string();
+                    break;
+                case 4:
+                    message.inputVariables = Struct.decode(
+                        reader,
+                        reader.uint32()
+                    );
+                    break;
+                case 5:
+                    message.outputVariableNames.push(reader.string());
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): ProjectExecutionRequest {
+        const message = {
+            ...baseProjectExecutionRequest,
+        } as ProjectExecutionRequest;
+        message.outputVariableNames = [];
+        if (object.projectId !== undefined && object.projectId !== null) {
+            message.projectId = String(object.projectId);
+        } else {
+            message.projectId = '';
+        }
+        if (object.notebookId !== undefined && object.notebookId !== null) {
+            message.notebookId = String(object.notebookId);
+        } else {
+            message.notebookId = undefined;
+        }
+        if (object.cellId !== undefined && object.cellId !== null) {
+            message.cellId = String(object.cellId);
+        } else {
+            message.cellId = undefined;
+        }
+        if (
+            object.inputVariables !== undefined &&
+            object.inputVariables !== null
+        ) {
+            message.inputVariables = Struct.fromJSON(object.inputVariables);
+        } else {
+            message.inputVariables = undefined;
+        }
+        if (
+            object.outputVariableNames !== undefined &&
+            object.outputVariableNames !== null
+        ) {
+            for (const e of object.outputVariableNames) {
+                message.outputVariableNames.push(String(e));
+            }
+        }
+        return message;
+    },
+
+    toJSON(message: ProjectExecutionRequest): unknown {
+        const obj: any = {};
+        message.projectId !== undefined && (obj.projectId = message.projectId);
+        message.notebookId !== undefined &&
+            (obj.notebookId = message.notebookId);
+        message.cellId !== undefined && (obj.cellId = message.cellId);
+        message.inputVariables !== undefined &&
+            (obj.inputVariables = message.inputVariables
+                ? Struct.toJSON(message.inputVariables)
+                : undefined);
+        if (message.outputVariableNames) {
+            obj.outputVariableNames = message.outputVariableNames.map((e) => e);
+        } else {
+            obj.outputVariableNames = [];
+        }
+        return obj;
+    },
+
+    fromPartial(
+        object: DeepPartial<ProjectExecutionRequest>
+    ): ProjectExecutionRequest {
+        const message = {
+            ...baseProjectExecutionRequest,
+        } as ProjectExecutionRequest;
+        message.outputVariableNames = [];
+        if (object.projectId !== undefined && object.projectId !== null) {
+            message.projectId = object.projectId;
+        } else {
+            message.projectId = '';
+        }
+        if (object.notebookId !== undefined && object.notebookId !== null) {
+            message.notebookId = object.notebookId;
+        } else {
+            message.notebookId = undefined;
+        }
+        if (object.cellId !== undefined && object.cellId !== null) {
+            message.cellId = object.cellId;
+        } else {
+            message.cellId = undefined;
+        }
+        if (
+            object.inputVariables !== undefined &&
+            object.inputVariables !== null
+        ) {
+            message.inputVariables = Struct.fromPartial(object.inputVariables);
+        } else {
+            message.inputVariables = undefined;
+        }
+        if (
+            object.outputVariableNames !== undefined &&
+            object.outputVariableNames !== null
+        ) {
+            for (const e of object.outputVariableNames) {
+                message.outputVariableNames.push(e);
+            }
+        }
+        return message;
+    },
+};
+
+const baseProjectExecutionMetadata: object = { projectId: '' };
+
+export const ProjectExecutionMetadata = {
+    encode(
+        message: ProjectExecutionMetadata,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        if (message.projectId !== '') {
+            writer.uint32(10).string(message.projectId);
+        }
+        if (message.notebookId !== undefined) {
+            writer.uint32(18).string(message.notebookId);
+        }
+        if (message.cellId !== undefined) {
+            writer.uint32(26).string(message.cellId);
+        }
+        return writer;
+    },
+
+    decode(
+        input: _m0.Reader | Uint8Array,
+        length?: number
+    ): ProjectExecutionMetadata {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = {
+            ...baseProjectExecutionMetadata,
+        } as ProjectExecutionMetadata;
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.projectId = reader.string();
+                    break;
+                case 2:
+                    message.notebookId = reader.string();
+                    break;
+                case 3:
+                    message.cellId = reader.string();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): ProjectExecutionMetadata {
+        const message = {
+            ...baseProjectExecutionMetadata,
+        } as ProjectExecutionMetadata;
+        if (object.projectId !== undefined && object.projectId !== null) {
+            message.projectId = String(object.projectId);
+        } else {
+            message.projectId = '';
+        }
+        if (object.notebookId !== undefined && object.notebookId !== null) {
+            message.notebookId = String(object.notebookId);
+        } else {
+            message.notebookId = undefined;
+        }
+        if (object.cellId !== undefined && object.cellId !== null) {
+            message.cellId = String(object.cellId);
+        } else {
+            message.cellId = undefined;
+        }
+        return message;
+    },
+
+    toJSON(message: ProjectExecutionMetadata): unknown {
+        const obj: any = {};
+        message.projectId !== undefined && (obj.projectId = message.projectId);
+        message.notebookId !== undefined &&
+            (obj.notebookId = message.notebookId);
+        message.cellId !== undefined && (obj.cellId = message.cellId);
+        return obj;
+    },
+
+    fromPartial(
+        object: DeepPartial<ProjectExecutionMetadata>
+    ): ProjectExecutionMetadata {
+        const message = {
+            ...baseProjectExecutionMetadata,
+        } as ProjectExecutionMetadata;
+        if (object.projectId !== undefined && object.projectId !== null) {
+            message.projectId = object.projectId;
+        } else {
+            message.projectId = '';
+        }
+        if (object.notebookId !== undefined && object.notebookId !== null) {
+            message.notebookId = object.notebookId;
+        } else {
+            message.notebookId = undefined;
+        }
+        if (object.cellId !== undefined && object.cellId !== null) {
+            message.cellId = object.cellId;
+        } else {
+            message.cellId = undefined;
+        }
+        return message;
+    },
+};
+
+const baseProjectExecutionResponse: object = { checkpointId: '' };
+
+export const ProjectExecutionResponse = {
+    encode(
+        message: ProjectExecutionResponse,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        if (message.checkpointId !== '') {
+            writer.uint32(10).string(message.checkpointId);
+        }
+        if (message.outputVariables !== undefined) {
+            Struct.encode(
+                message.outputVariables,
+                writer.uint32(18).fork()
+            ).ldelim();
+        }
+        return writer;
+    },
+
+    decode(
+        input: _m0.Reader | Uint8Array,
+        length?: number
+    ): ProjectExecutionResponse {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = {
+            ...baseProjectExecutionResponse,
+        } as ProjectExecutionResponse;
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.checkpointId = reader.string();
+                    break;
+                case 2:
+                    message.outputVariables = Struct.decode(
+                        reader,
+                        reader.uint32()
+                    );
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): ProjectExecutionResponse {
+        const message = {
+            ...baseProjectExecutionResponse,
+        } as ProjectExecutionResponse;
+        if (object.checkpointId !== undefined && object.checkpointId !== null) {
+            message.checkpointId = String(object.checkpointId);
+        } else {
+            message.checkpointId = '';
+        }
+        if (
+            object.outputVariables !== undefined &&
+            object.outputVariables !== null
+        ) {
+            message.outputVariables = Struct.fromJSON(object.outputVariables);
+        } else {
+            message.outputVariables = undefined;
+        }
+        return message;
+    },
+
+    toJSON(message: ProjectExecutionResponse): unknown {
+        const obj: any = {};
+        message.checkpointId !== undefined &&
+            (obj.checkpointId = message.checkpointId);
+        message.outputVariables !== undefined &&
+            (obj.outputVariables = message.outputVariables
+                ? Struct.toJSON(message.outputVariables)
+                : undefined);
+        return obj;
+    },
+
+    fromPartial(
+        object: DeepPartial<ProjectExecutionResponse>
+    ): ProjectExecutionResponse {
+        const message = {
+            ...baseProjectExecutionResponse,
+        } as ProjectExecutionResponse;
+        if (object.checkpointId !== undefined && object.checkpointId !== null) {
+            message.checkpointId = object.checkpointId;
+        } else {
+            message.checkpointId = '';
+        }
+        if (
+            object.outputVariables !== undefined &&
+            object.outputVariables !== null
+        ) {
+            message.outputVariables = Struct.fromPartial(
+                object.outputVariables
+            );
+        } else {
+            message.outputVariables = undefined;
+        }
+        return message;
+    },
+};
+
+const baseCellOutputsRequest: object = {
+    projectId: '',
+    cellId: '',
+    checkpointId: '',
+};
+
+export const CellOutputsRequest = {
+    encode(
+        message: CellOutputsRequest,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        if (message.projectId !== '') {
+            writer.uint32(10).string(message.projectId);
+        }
+        if (message.cellId !== '') {
+            writer.uint32(18).string(message.cellId);
+        }
+        if (message.checkpointId !== '') {
+            writer.uint32(26).string(message.checkpointId);
+        }
+        if (message.startAt !== undefined) {
+            Timestamp.encode(
+                toTimestamp(message.startAt),
+                writer.uint32(34).fork()
+            ).ldelim();
+        }
+        return writer;
+    },
+
+    decode(
+        input: _m0.Reader | Uint8Array,
+        length?: number
+    ): CellOutputsRequest {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = { ...baseCellOutputsRequest } as CellOutputsRequest;
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.projectId = reader.string();
+                    break;
+                case 2:
+                    message.cellId = reader.string();
+                    break;
+                case 3:
+                    message.checkpointId = reader.string();
+                    break;
+                case 4:
+                    message.startAt = fromTimestamp(
+                        Timestamp.decode(reader, reader.uint32())
+                    );
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): CellOutputsRequest {
+        const message = { ...baseCellOutputsRequest } as CellOutputsRequest;
+        if (object.projectId !== undefined && object.projectId !== null) {
+            message.projectId = String(object.projectId);
+        } else {
+            message.projectId = '';
+        }
+        if (object.cellId !== undefined && object.cellId !== null) {
+            message.cellId = String(object.cellId);
+        } else {
+            message.cellId = '';
+        }
+        if (object.checkpointId !== undefined && object.checkpointId !== null) {
+            message.checkpointId = String(object.checkpointId);
+        } else {
+            message.checkpointId = '';
+        }
+        if (object.startAt !== undefined && object.startAt !== null) {
+            message.startAt = fromJsonTimestamp(object.startAt);
+        } else {
+            message.startAt = undefined;
+        }
+        return message;
+    },
+
+    toJSON(message: CellOutputsRequest): unknown {
+        const obj: any = {};
+        message.projectId !== undefined && (obj.projectId = message.projectId);
+        message.cellId !== undefined && (obj.cellId = message.cellId);
+        message.checkpointId !== undefined &&
+            (obj.checkpointId = message.checkpointId);
+        message.startAt !== undefined &&
+            (obj.startAt = message.startAt.toISOString());
+        return obj;
+    },
+
+    fromPartial(object: DeepPartial<CellOutputsRequest>): CellOutputsRequest {
+        const message = { ...baseCellOutputsRequest } as CellOutputsRequest;
+        if (object.projectId !== undefined && object.projectId !== null) {
+            message.projectId = object.projectId;
+        } else {
+            message.projectId = '';
+        }
+        if (object.cellId !== undefined && object.cellId !== null) {
+            message.cellId = object.cellId;
+        } else {
+            message.cellId = '';
+        }
+        if (object.checkpointId !== undefined && object.checkpointId !== null) {
+            message.checkpointId = object.checkpointId;
+        } else {
+            message.checkpointId = '';
+        }
+        if (object.startAt !== undefined && object.startAt !== null) {
+            message.startAt = object.startAt;
+        } else {
+            message.startAt = undefined;
+        }
+        return message;
+    },
+};
+
+const baseCellOutputsResponse: object = { outputs: '' };
+
+export const CellOutputsResponse = {
+    encode(
+        message: CellOutputsResponse,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        for (const v of message.outputs) {
+            writer.uint32(10).string(v!);
+        }
+        return writer;
+    },
+
+    decode(
+        input: _m0.Reader | Uint8Array,
+        length?: number
+    ): CellOutputsResponse {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = { ...baseCellOutputsResponse } as CellOutputsResponse;
+        message.outputs = [];
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.outputs.push(reader.string());
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): CellOutputsResponse {
+        const message = { ...baseCellOutputsResponse } as CellOutputsResponse;
+        message.outputs = [];
+        if (object.outputs !== undefined && object.outputs !== null) {
+            for (const e of object.outputs) {
+                message.outputs.push(String(e));
+            }
+        }
+        return message;
+    },
+
+    toJSON(message: CellOutputsResponse): unknown {
+        const obj: any = {};
+        if (message.outputs) {
+            obj.outputs = message.outputs.map((e) => e);
+        } else {
+            obj.outputs = [];
+        }
+        return obj;
+    },
+
+    fromPartial(object: DeepPartial<CellOutputsResponse>): CellOutputsResponse {
+        const message = { ...baseCellOutputsResponse } as CellOutputsResponse;
+        message.outputs = [];
+        if (object.outputs !== undefined && object.outputs !== null) {
+            for (const e of object.outputs) {
+                message.outputs.push(e);
+            }
+        }
+        return message;
+    },
+};
+
+const baseGetStateVariablesRequest: object = {
+    projectId: '',
+    notebookId: '',
+    variableNames: '',
+    checkpointId: '',
+};
+
+export const GetStateVariablesRequest = {
+    encode(
+        message: GetStateVariablesRequest,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        if (message.projectId !== '') {
+            writer.uint32(10).string(message.projectId);
+        }
+        if (message.notebookId !== '') {
+            writer.uint32(18).string(message.notebookId);
+        }
+        for (const v of message.variableNames) {
+            writer.uint32(26).string(v!);
+        }
+        if (message.checkpointId !== '') {
+            writer.uint32(34).string(message.checkpointId);
+        }
+        return writer;
+    },
+
+    decode(
+        input: _m0.Reader | Uint8Array,
+        length?: number
+    ): GetStateVariablesRequest {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = {
+            ...baseGetStateVariablesRequest,
+        } as GetStateVariablesRequest;
+        message.variableNames = [];
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.projectId = reader.string();
+                    break;
+                case 2:
+                    message.notebookId = reader.string();
+                    break;
+                case 3:
+                    message.variableNames.push(reader.string());
+                    break;
+                case 4:
+                    message.checkpointId = reader.string();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): GetStateVariablesRequest {
+        const message = {
+            ...baseGetStateVariablesRequest,
+        } as GetStateVariablesRequest;
+        message.variableNames = [];
+        if (object.projectId !== undefined && object.projectId !== null) {
+            message.projectId = String(object.projectId);
+        } else {
+            message.projectId = '';
+        }
+        if (object.notebookId !== undefined && object.notebookId !== null) {
+            message.notebookId = String(object.notebookId);
+        } else {
+            message.notebookId = '';
+        }
+        if (
+            object.variableNames !== undefined &&
+            object.variableNames !== null
+        ) {
+            for (const e of object.variableNames) {
+                message.variableNames.push(String(e));
+            }
+        }
+        if (object.checkpointId !== undefined && object.checkpointId !== null) {
+            message.checkpointId = String(object.checkpointId);
+        } else {
+            message.checkpointId = '';
+        }
+        return message;
+    },
+
+    toJSON(message: GetStateVariablesRequest): unknown {
+        const obj: any = {};
+        message.projectId !== undefined && (obj.projectId = message.projectId);
+        message.notebookId !== undefined &&
+            (obj.notebookId = message.notebookId);
+        if (message.variableNames) {
+            obj.variableNames = message.variableNames.map((e) => e);
+        } else {
+            obj.variableNames = [];
+        }
+        message.checkpointId !== undefined &&
+            (obj.checkpointId = message.checkpointId);
+        return obj;
+    },
+
+    fromPartial(
+        object: DeepPartial<GetStateVariablesRequest>
+    ): GetStateVariablesRequest {
+        const message = {
+            ...baseGetStateVariablesRequest,
+        } as GetStateVariablesRequest;
+        message.variableNames = [];
+        if (object.projectId !== undefined && object.projectId !== null) {
+            message.projectId = object.projectId;
+        } else {
+            message.projectId = '';
+        }
+        if (object.notebookId !== undefined && object.notebookId !== null) {
+            message.notebookId = object.notebookId;
+        } else {
+            message.notebookId = '';
+        }
+        if (
+            object.variableNames !== undefined &&
+            object.variableNames !== null
+        ) {
+            for (const e of object.variableNames) {
+                message.variableNames.push(e);
+            }
+        }
+        if (object.checkpointId !== undefined && object.checkpointId !== null) {
+            message.checkpointId = object.checkpointId;
+        } else {
+            message.checkpointId = '';
+        }
+        return message;
+    },
+};
+
+const baseGetStateVariablesResponse: object = {};
+
+export const GetStateVariablesResponse = {
+    encode(
+        message: GetStateVariablesResponse,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        if (message.variables !== undefined) {
+            Struct.encode(message.variables, writer.uint32(10).fork()).ldelim();
+        }
+        return writer;
+    },
+
+    decode(
+        input: _m0.Reader | Uint8Array,
+        length?: number
+    ): GetStateVariablesResponse {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = {
+            ...baseGetStateVariablesResponse,
+        } as GetStateVariablesResponse;
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.variables = Struct.decode(reader, reader.uint32());
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): GetStateVariablesResponse {
+        const message = {
+            ...baseGetStateVariablesResponse,
+        } as GetStateVariablesResponse;
+        if (object.variables !== undefined && object.variables !== null) {
+            message.variables = Struct.fromJSON(object.variables);
+        } else {
+            message.variables = undefined;
+        }
+        return message;
+    },
+
+    toJSON(message: GetStateVariablesResponse): unknown {
+        const obj: any = {};
+        message.variables !== undefined &&
+            (obj.variables = message.variables
+                ? Struct.toJSON(message.variables)
+                : undefined);
+        return obj;
+    },
+
+    fromPartial(
+        object: DeepPartial<GetStateVariablesResponse>
+    ): GetStateVariablesResponse {
+        const message = {
+            ...baseGetStateVariablesResponse,
+        } as GetStateVariablesResponse;
+        if (object.variables !== undefined && object.variables !== null) {
+            message.variables = Struct.fromPartial(object.variables);
+        } else {
+            message.variables = undefined;
+        }
+        return message;
+    },
+};
+
 /** A set of methods for managing Project resources. */
 export const ProjectServiceService = {
     /** Creates a project in the specified folder. */
@@ -1242,6 +2409,73 @@ export const ProjectServiceService = {
         responseDeserialize: (value: Buffer) =>
             ListProjectsResponse.decode(value),
     },
+    /** Returns the unit balance of the specified project. */
+    getUnitBalance: {
+        path: '/yandex.cloud.datasphere.v1.ProjectService/GetUnitBalance',
+        requestStream: false,
+        responseStream: false,
+        requestSerialize: (value: GetUnitBalanceRequest) =>
+            Buffer.from(GetUnitBalanceRequest.encode(value).finish()),
+        requestDeserialize: (value: Buffer) =>
+            GetUnitBalanceRequest.decode(value),
+        responseSerialize: (value: GetUnitBalanceResponse) =>
+            Buffer.from(GetUnitBalanceResponse.encode(value).finish()),
+        responseDeserialize: (value: Buffer) =>
+            GetUnitBalanceResponse.decode(value),
+    },
+    /** Sets the unit balance of the specified project. */
+    setUnitBalance: {
+        path: '/yandex.cloud.datasphere.v1.ProjectService/SetUnitBalance',
+        requestStream: false,
+        responseStream: false,
+        requestSerialize: (value: SetUnitBalanceRequest) =>
+            Buffer.from(SetUnitBalanceRequest.encode(value).finish()),
+        requestDeserialize: (value: Buffer) =>
+            SetUnitBalanceRequest.decode(value),
+        responseSerialize: (value: Empty) =>
+            Buffer.from(Empty.encode(value).finish()),
+        responseDeserialize: (value: Buffer) => Empty.decode(value),
+    },
+    /** Executes code in the specified cell or notebook. */
+    execute: {
+        path: '/yandex.cloud.datasphere.v1.ProjectService/Execute',
+        requestStream: false,
+        responseStream: false,
+        requestSerialize: (value: ProjectExecutionRequest) =>
+            Buffer.from(ProjectExecutionRequest.encode(value).finish()),
+        requestDeserialize: (value: Buffer) =>
+            ProjectExecutionRequest.decode(value),
+        responseSerialize: (value: Operation) =>
+            Buffer.from(Operation.encode(value).finish()),
+        responseDeserialize: (value: Buffer) => Operation.decode(value),
+    },
+    /** Returns outputs of the specified cell. */
+    getCellOutputs: {
+        path: '/yandex.cloud.datasphere.v1.ProjectService/GetCellOutputs',
+        requestStream: false,
+        responseStream: false,
+        requestSerialize: (value: CellOutputsRequest) =>
+            Buffer.from(CellOutputsRequest.encode(value).finish()),
+        requestDeserialize: (value: Buffer) => CellOutputsRequest.decode(value),
+        responseSerialize: (value: CellOutputsResponse) =>
+            Buffer.from(CellOutputsResponse.encode(value).finish()),
+        responseDeserialize: (value: Buffer) =>
+            CellOutputsResponse.decode(value),
+    },
+    /** Returns state variables of the specified notebook. */
+    getStateVariables: {
+        path: '/yandex.cloud.datasphere.v1.ProjectService/GetStateVariables',
+        requestStream: false,
+        responseStream: false,
+        requestSerialize: (value: GetStateVariablesRequest) =>
+            Buffer.from(GetStateVariablesRequest.encode(value).finish()),
+        requestDeserialize: (value: Buffer) =>
+            GetStateVariablesRequest.decode(value),
+        responseSerialize: (value: GetStateVariablesResponse) =>
+            Buffer.from(GetStateVariablesResponse.encode(value).finish()),
+        responseDeserialize: (value: Buffer) =>
+            GetStateVariablesResponse.decode(value),
+    },
 } as const;
 
 export interface ProjectServiceServer extends UntypedServiceImplementation {
@@ -1257,6 +2491,22 @@ export interface ProjectServiceServer extends UntypedServiceImplementation {
     get: handleUnaryCall<GetProjectRequest, Project>;
     /** Lists projects for the specified folder. */
     list: handleUnaryCall<ListProjectsRequest, ListProjectsResponse>;
+    /** Returns the unit balance of the specified project. */
+    getUnitBalance: handleUnaryCall<
+        GetUnitBalanceRequest,
+        GetUnitBalanceResponse
+    >;
+    /** Sets the unit balance of the specified project. */
+    setUnitBalance: handleUnaryCall<SetUnitBalanceRequest, Empty>;
+    /** Executes code in the specified cell or notebook. */
+    execute: handleUnaryCall<ProjectExecutionRequest, Operation>;
+    /** Returns outputs of the specified cell. */
+    getCellOutputs: handleUnaryCall<CellOutputsRequest, CellOutputsResponse>;
+    /** Returns state variables of the specified notebook. */
+    getStateVariables: handleUnaryCall<
+        GetStateVariablesRequest,
+        GetStateVariablesResponse
+    >;
 }
 
 export interface ProjectServiceClient extends Client {
@@ -1365,6 +2615,113 @@ export interface ProjectServiceClient extends Client {
             response: ListProjectsResponse
         ) => void
     ): ClientUnaryCall;
+    /** Returns the unit balance of the specified project. */
+    getUnitBalance(
+        request: GetUnitBalanceRequest,
+        callback: (
+            error: ServiceError | null,
+            response: GetUnitBalanceResponse
+        ) => void
+    ): ClientUnaryCall;
+    getUnitBalance(
+        request: GetUnitBalanceRequest,
+        metadata: Metadata,
+        callback: (
+            error: ServiceError | null,
+            response: GetUnitBalanceResponse
+        ) => void
+    ): ClientUnaryCall;
+    getUnitBalance(
+        request: GetUnitBalanceRequest,
+        metadata: Metadata,
+        options: Partial<CallOptions>,
+        callback: (
+            error: ServiceError | null,
+            response: GetUnitBalanceResponse
+        ) => void
+    ): ClientUnaryCall;
+    /** Sets the unit balance of the specified project. */
+    setUnitBalance(
+        request: SetUnitBalanceRequest,
+        callback: (error: ServiceError | null, response: Empty) => void
+    ): ClientUnaryCall;
+    setUnitBalance(
+        request: SetUnitBalanceRequest,
+        metadata: Metadata,
+        callback: (error: ServiceError | null, response: Empty) => void
+    ): ClientUnaryCall;
+    setUnitBalance(
+        request: SetUnitBalanceRequest,
+        metadata: Metadata,
+        options: Partial<CallOptions>,
+        callback: (error: ServiceError | null, response: Empty) => void
+    ): ClientUnaryCall;
+    /** Executes code in the specified cell or notebook. */
+    execute(
+        request: ProjectExecutionRequest,
+        callback: (error: ServiceError | null, response: Operation) => void
+    ): ClientUnaryCall;
+    execute(
+        request: ProjectExecutionRequest,
+        metadata: Metadata,
+        callback: (error: ServiceError | null, response: Operation) => void
+    ): ClientUnaryCall;
+    execute(
+        request: ProjectExecutionRequest,
+        metadata: Metadata,
+        options: Partial<CallOptions>,
+        callback: (error: ServiceError | null, response: Operation) => void
+    ): ClientUnaryCall;
+    /** Returns outputs of the specified cell. */
+    getCellOutputs(
+        request: CellOutputsRequest,
+        callback: (
+            error: ServiceError | null,
+            response: CellOutputsResponse
+        ) => void
+    ): ClientUnaryCall;
+    getCellOutputs(
+        request: CellOutputsRequest,
+        metadata: Metadata,
+        callback: (
+            error: ServiceError | null,
+            response: CellOutputsResponse
+        ) => void
+    ): ClientUnaryCall;
+    getCellOutputs(
+        request: CellOutputsRequest,
+        metadata: Metadata,
+        options: Partial<CallOptions>,
+        callback: (
+            error: ServiceError | null,
+            response: CellOutputsResponse
+        ) => void
+    ): ClientUnaryCall;
+    /** Returns state variables of the specified notebook. */
+    getStateVariables(
+        request: GetStateVariablesRequest,
+        callback: (
+            error: ServiceError | null,
+            response: GetStateVariablesResponse
+        ) => void
+    ): ClientUnaryCall;
+    getStateVariables(
+        request: GetStateVariablesRequest,
+        metadata: Metadata,
+        callback: (
+            error: ServiceError | null,
+            response: GetStateVariablesResponse
+        ) => void
+    ): ClientUnaryCall;
+    getStateVariables(
+        request: GetStateVariablesRequest,
+        metadata: Metadata,
+        options: Partial<CallOptions>,
+        callback: (
+            error: ServiceError | null,
+            response: GetStateVariablesResponse
+        ) => void
+    ): ClientUnaryCall;
 }
 
 export const ProjectServiceClient = makeGenericClientConstructor(
@@ -1405,6 +2762,28 @@ export type DeepPartial<T> = T extends Builtin
     : T extends {}
     ? { [K in keyof T]?: DeepPartial<T[K]> }
     : Partial<T>;
+
+function toTimestamp(date: Date): Timestamp {
+    const seconds = date.getTime() / 1_000;
+    const nanos = (date.getTime() % 1_000) * 1_000_000;
+    return { seconds, nanos };
+}
+
+function fromTimestamp(t: Timestamp): Date {
+    let millis = t.seconds * 1_000;
+    millis += t.nanos / 1_000_000;
+    return new Date(millis);
+}
+
+function fromJsonTimestamp(o: any): Date {
+    if (o instanceof Date) {
+        return o;
+    } else if (typeof o === 'string') {
+        return new Date(o);
+    } else {
+        return fromTimestamp(Timestamp.fromJSON(o));
+    }
+}
 
 function longToNumber(long: Long): number {
     if (long.gt(Number.MAX_SAFE_INTEGER)) {

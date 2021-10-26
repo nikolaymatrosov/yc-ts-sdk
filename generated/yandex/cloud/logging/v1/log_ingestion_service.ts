@@ -3,6 +3,7 @@ import { Status } from '../../../../google/rpc/status';
 import {
     Destination,
     IncomingLogEntry,
+    LogEntryDefaults,
 } from '../../../../yandex/cloud/logging/v1/log_entry';
 import { LogEntryResource } from '../../../../yandex/cloud/logging/v1/log_resource';
 import {
@@ -23,12 +24,30 @@ import _m0 from 'protobufjs/minimal';
 export const protobufPackage = 'yandex.cloud.logging.v1';
 
 export interface WriteRequest {
+    /**
+     * Log entries destination.
+     *
+     * See [Destination] for details.
+     */
     destination: Destination | undefined;
+    /** Common resource (type, ID) specification for log entries. */
     resource: LogEntryResource | undefined;
+    /** List of log entries. */
     entries: IncomingLogEntry[];
+    /**
+     * Log entries defaults.
+     *
+     * See [LogEntryDefaults] for details.
+     */
+    defaults: LogEntryDefaults | undefined;
 }
 
 export interface WriteResponse {
+    /**
+     * Map<idx, status> of ingest failures.
+     *
+     * If entry with idx N is absent, it was ingested successfully.
+     */
     errors: { [key: number]: Status };
 }
 
@@ -59,6 +78,12 @@ export const WriteRequest = {
         for (const v of message.entries) {
             IncomingLogEntry.encode(v!, writer.uint32(26).fork()).ldelim();
         }
+        if (message.defaults !== undefined) {
+            LogEntryDefaults.encode(
+                message.defaults,
+                writer.uint32(34).fork()
+            ).ldelim();
+        }
         return writer;
     },
 
@@ -88,6 +113,12 @@ export const WriteRequest = {
                         IncomingLogEntry.decode(reader, reader.uint32())
                     );
                     break;
+                case 4:
+                    message.defaults = LogEntryDefaults.decode(
+                        reader,
+                        reader.uint32()
+                    );
+                    break;
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -114,6 +145,11 @@ export const WriteRequest = {
                 message.entries.push(IncomingLogEntry.fromJSON(e));
             }
         }
+        if (object.defaults !== undefined && object.defaults !== null) {
+            message.defaults = LogEntryDefaults.fromJSON(object.defaults);
+        } else {
+            message.defaults = undefined;
+        }
         return message;
     },
 
@@ -134,6 +170,10 @@ export const WriteRequest = {
         } else {
             obj.entries = [];
         }
+        message.defaults !== undefined &&
+            (obj.defaults = message.defaults
+                ? LogEntryDefaults.toJSON(message.defaults)
+                : undefined);
         return obj;
     },
 
@@ -154,6 +194,11 @@ export const WriteRequest = {
             for (const e of object.entries) {
                 message.entries.push(IncomingLogEntry.fromPartial(e));
             }
+        }
+        if (object.defaults !== undefined && object.defaults !== null) {
+            message.defaults = LogEntryDefaults.fromPartial(object.defaults);
+        } else {
+            message.defaults = undefined;
         }
         return message;
     },
@@ -327,7 +372,9 @@ export const WriteResponse_ErrorsEntry = {
     },
 };
 
+/** A set of methods for writing to log groups. To make a request use `ingester.logging.yandexcloud.net`. */
 export const LogIngestionServiceService = {
+    /** Write log entries to specified destination. */
     write: {
         path: '/yandex.cloud.logging.v1.LogIngestionService/Write',
         requestStream: false,
@@ -343,10 +390,12 @@ export const LogIngestionServiceService = {
 
 export interface LogIngestionServiceServer
     extends UntypedServiceImplementation {
+    /** Write log entries to specified destination. */
     write: handleUnaryCall<WriteRequest, WriteResponse>;
 }
 
 export interface LogIngestionServiceClient extends Client {
+    /** Write log entries to specified destination. */
     write(
         request: WriteRequest,
         callback: (error: ServiceError | null, response: WriteResponse) => void

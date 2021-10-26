@@ -112,7 +112,11 @@ export enum InstanceGroup_Status {
      * ACTIVE - Instance group is active.
      * In this state the group manages its instances and monitors their health,
      * creating, deleting, stopping, updating and starting instances as needed.
+     *
      * To stop the instance group, call [yandex.cloud.compute.v1.instancegroup.InstanceGroupService.Stop].
+     * To pause the processes in the instance group, i.e. scaling, checking instances' health,
+     * auto-healing and updating them, without stopping the instances,
+     * call [yandex.cloud.compute.v1.instancegroup.InstanceGroupService.PauseProcesses].
      */
     ACTIVE = 2,
     /**
@@ -128,7 +132,16 @@ export enum InstanceGroup_Status {
     STOPPED = 4,
     /** DELETING - Instance group is being deleted. */
     DELETING = 5,
-    /** PAUSED - Instance group is paused. */
+    /**
+     * PAUSED - Instance group is paused.
+     * In this state all the processes regarding the group management, i.e. scaling, checking instances' health,
+     * auto-healing and updating them, are paused. The instances that were running prior to pausing the group, however,
+     * may still be running.
+     *
+     * To resume the processes in the instance group,
+     * call [yandex.cloud.compute.v1.instancegroup.InstanceGroupService.ResumeProcesses].
+     * The group status will change to `ACTIVE`.
+     */
     PAUSED = 6,
     UNRECOGNIZED = -1,
 }
@@ -261,7 +274,10 @@ export interface ScalePolicy_AutoScale {
      * 0 means maximum limit = 100.
      */
     maxSize: number;
-    /** Time in seconds allotted for averaging metrics. */
+    /**
+     * Time in seconds allotted for averaging metrics.
+     * 1 minute by default.
+     */
     measurementDuration: Duration | undefined;
     /**
      * The warmup time of the instance in seconds. During this time,
@@ -609,6 +625,60 @@ export interface InstanceTemplate_MetadataEntry {
 export interface PlacementPolicy {
     /** Identifier of placement group */
     placementGroupId: string;
+    /** List of affinity rules. Scheduler will attempt to allocate instances according to order of rules. */
+    hostAffinityRules: PlacementPolicy_HostAffinityRule[];
+}
+
+/** Affinitity definition */
+export interface PlacementPolicy_HostAffinityRule {
+    /** Affinity label or one of reserved values - 'yc.hostId', 'yc.hostGroupId' */
+    key: string;
+    /** Include or exclude action */
+    op: PlacementPolicy_HostAffinityRule_Operator;
+    /** Affinity value or host ID or host group ID */
+    values: string[];
+}
+
+export enum PlacementPolicy_HostAffinityRule_Operator {
+    OPERATOR_UNSPECIFIED = 0,
+    IN = 1,
+    NOT_IN = 2,
+    UNRECOGNIZED = -1,
+}
+
+export function placementPolicy_HostAffinityRule_OperatorFromJSON(
+    object: any
+): PlacementPolicy_HostAffinityRule_Operator {
+    switch (object) {
+        case 0:
+        case 'OPERATOR_UNSPECIFIED':
+            return PlacementPolicy_HostAffinityRule_Operator.OPERATOR_UNSPECIFIED;
+        case 1:
+        case 'IN':
+            return PlacementPolicy_HostAffinityRule_Operator.IN;
+        case 2:
+        case 'NOT_IN':
+            return PlacementPolicy_HostAffinityRule_Operator.NOT_IN;
+        case -1:
+        case 'UNRECOGNIZED':
+        default:
+            return PlacementPolicy_HostAffinityRule_Operator.UNRECOGNIZED;
+    }
+}
+
+export function placementPolicy_HostAffinityRule_OperatorToJSON(
+    object: PlacementPolicy_HostAffinityRule_Operator
+): string {
+    switch (object) {
+        case PlacementPolicy_HostAffinityRule_Operator.OPERATOR_UNSPECIFIED:
+            return 'OPERATOR_UNSPECIFIED';
+        case PlacementPolicy_HostAffinityRule_Operator.IN:
+            return 'IN';
+        case PlacementPolicy_HostAffinityRule_Operator.NOT_IN:
+            return 'NOT_IN';
+        default:
+            return 'UNKNOWN';
+    }
 }
 
 export interface ResourcesSpec {
@@ -4313,6 +4383,12 @@ export const PlacementPolicy = {
         if (message.placementGroupId !== '') {
             writer.uint32(10).string(message.placementGroupId);
         }
+        for (const v of message.hostAffinityRules) {
+            PlacementPolicy_HostAffinityRule.encode(
+                v!,
+                writer.uint32(18).fork()
+            ).ldelim();
+        }
         return writer;
     },
 
@@ -4321,11 +4397,20 @@ export const PlacementPolicy = {
             input instanceof _m0.Reader ? input : new _m0.Reader(input);
         let end = length === undefined ? reader.len : reader.pos + length;
         const message = { ...basePlacementPolicy } as PlacementPolicy;
+        message.hostAffinityRules = [];
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
                 case 1:
                     message.placementGroupId = reader.string();
+                    break;
+                case 2:
+                    message.hostAffinityRules.push(
+                        PlacementPolicy_HostAffinityRule.decode(
+                            reader,
+                            reader.uint32()
+                        )
+                    );
                     break;
                 default:
                     reader.skipType(tag & 7);
@@ -4337,6 +4422,7 @@ export const PlacementPolicy = {
 
     fromJSON(object: any): PlacementPolicy {
         const message = { ...basePlacementPolicy } as PlacementPolicy;
+        message.hostAffinityRules = [];
         if (
             object.placementGroupId !== undefined &&
             object.placementGroupId !== null
@@ -4345,6 +4431,16 @@ export const PlacementPolicy = {
         } else {
             message.placementGroupId = '';
         }
+        if (
+            object.hostAffinityRules !== undefined &&
+            object.hostAffinityRules !== null
+        ) {
+            for (const e of object.hostAffinityRules) {
+                message.hostAffinityRules.push(
+                    PlacementPolicy_HostAffinityRule.fromJSON(e)
+                );
+            }
+        }
         return message;
     },
 
@@ -4352,11 +4448,19 @@ export const PlacementPolicy = {
         const obj: any = {};
         message.placementGroupId !== undefined &&
             (obj.placementGroupId = message.placementGroupId);
+        if (message.hostAffinityRules) {
+            obj.hostAffinityRules = message.hostAffinityRules.map((e) =>
+                e ? PlacementPolicy_HostAffinityRule.toJSON(e) : undefined
+            );
+        } else {
+            obj.hostAffinityRules = [];
+        }
         return obj;
     },
 
     fromPartial(object: DeepPartial<PlacementPolicy>): PlacementPolicy {
         const message = { ...basePlacementPolicy } as PlacementPolicy;
+        message.hostAffinityRules = [];
         if (
             object.placementGroupId !== undefined &&
             object.placementGroupId !== null
@@ -4364,6 +4468,136 @@ export const PlacementPolicy = {
             message.placementGroupId = object.placementGroupId;
         } else {
             message.placementGroupId = '';
+        }
+        if (
+            object.hostAffinityRules !== undefined &&
+            object.hostAffinityRules !== null
+        ) {
+            for (const e of object.hostAffinityRules) {
+                message.hostAffinityRules.push(
+                    PlacementPolicy_HostAffinityRule.fromPartial(e)
+                );
+            }
+        }
+        return message;
+    },
+};
+
+const basePlacementPolicy_HostAffinityRule: object = {
+    key: '',
+    op: 0,
+    values: '',
+};
+
+export const PlacementPolicy_HostAffinityRule = {
+    encode(
+        message: PlacementPolicy_HostAffinityRule,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        if (message.key !== '') {
+            writer.uint32(10).string(message.key);
+        }
+        if (message.op !== 0) {
+            writer.uint32(16).int32(message.op);
+        }
+        for (const v of message.values) {
+            writer.uint32(26).string(v!);
+        }
+        return writer;
+    },
+
+    decode(
+        input: _m0.Reader | Uint8Array,
+        length?: number
+    ): PlacementPolicy_HostAffinityRule {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = {
+            ...basePlacementPolicy_HostAffinityRule,
+        } as PlacementPolicy_HostAffinityRule;
+        message.values = [];
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.key = reader.string();
+                    break;
+                case 2:
+                    message.op = reader.int32() as any;
+                    break;
+                case 3:
+                    message.values.push(reader.string());
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): PlacementPolicy_HostAffinityRule {
+        const message = {
+            ...basePlacementPolicy_HostAffinityRule,
+        } as PlacementPolicy_HostAffinityRule;
+        message.values = [];
+        if (object.key !== undefined && object.key !== null) {
+            message.key = String(object.key);
+        } else {
+            message.key = '';
+        }
+        if (object.op !== undefined && object.op !== null) {
+            message.op = placementPolicy_HostAffinityRule_OperatorFromJSON(
+                object.op
+            );
+        } else {
+            message.op = 0;
+        }
+        if (object.values !== undefined && object.values !== null) {
+            for (const e of object.values) {
+                message.values.push(String(e));
+            }
+        }
+        return message;
+    },
+
+    toJSON(message: PlacementPolicy_HostAffinityRule): unknown {
+        const obj: any = {};
+        message.key !== undefined && (obj.key = message.key);
+        message.op !== undefined &&
+            (obj.op = placementPolicy_HostAffinityRule_OperatorToJSON(
+                message.op
+            ));
+        if (message.values) {
+            obj.values = message.values.map((e) => e);
+        } else {
+            obj.values = [];
+        }
+        return obj;
+    },
+
+    fromPartial(
+        object: DeepPartial<PlacementPolicy_HostAffinityRule>
+    ): PlacementPolicy_HostAffinityRule {
+        const message = {
+            ...basePlacementPolicy_HostAffinityRule,
+        } as PlacementPolicy_HostAffinityRule;
+        message.values = [];
+        if (object.key !== undefined && object.key !== null) {
+            message.key = object.key;
+        } else {
+            message.key = '';
+        }
+        if (object.op !== undefined && object.op !== null) {
+            message.op = object.op;
+        } else {
+            message.op = 0;
+        }
+        if (object.values !== undefined && object.values !== null) {
+            for (const e of object.values) {
+                message.values.push(e);
+            }
         }
         return message;
     },

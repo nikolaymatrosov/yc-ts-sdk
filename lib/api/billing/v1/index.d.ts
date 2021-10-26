@@ -1,0 +1,17 @@
+import { BillingAccountServiceService } from '../../../generated/yandex/cloud/billing/v1/billing_account_service';
+import { BudgetServiceService } from '../../../generated/yandex/cloud/billing/v1/budget_service';
+import { CustomerServiceService } from '../../../generated/yandex/cloud/billing/v1/customer_service';
+import { ServiceServiceService } from '../../../generated/yandex/cloud/billing/v1/service_service';
+import { SkuServiceService } from '../../../generated/yandex/cloud/billing/v1/sku_service';
+import { Client } from 'nice-grpc';
+import { SdkServiceDefinition, Session } from '../../../src/index';
+export declare const BillingAccountServiceDef: SdkServiceDefinition<typeof BillingAccountServiceService>;
+export declare function BillingAccountService(session?: Session): Client<typeof BillingAccountServiceService, {}>;
+export declare const BudgetServiceDef: SdkServiceDefinition<typeof BudgetServiceService>;
+export declare function BudgetService(session?: Session): Client<typeof BudgetServiceService, {}>;
+export declare const CustomerServiceDef: SdkServiceDefinition<typeof CustomerServiceService>;
+export declare function CustomerService(session?: Session): Client<typeof CustomerServiceService, {}>;
+export declare const ServiceServiceDef: SdkServiceDefinition<typeof ServiceServiceService>;
+export declare function ServiceService(session?: Session): Client<typeof ServiceServiceService, {}>;
+export declare const SkuServiceDef: SdkServiceDefinition<typeof SkuServiceService>;
+export declare function SkuService(session?: Session): Client<typeof SkuServiceService, {}>;

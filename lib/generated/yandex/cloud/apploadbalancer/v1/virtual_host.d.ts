@@ -35,12 +35,16 @@ export interface VirtualHost {
      * other routes are never matched.
      */
     routes: Route[];
-    /** Modifications that are made to the headers of incoming HTTP requests before they are forwarded to backends. */
+    /** Deprecated, use route_options.modify_request_headers. */
     modifyRequestHeaders: HeaderModification[];
-    /**
-     * Modifications that are made to the headers of HTTP responses received from backends
-     * before responses are forwarded to clients.
-     */
+    /** Deprecated, use route_options.modify_response_headers. */
+    modifyResponseHeaders: HeaderModification[];
+    routeOptions: RouteOptions | undefined;
+}
+export interface RouteOptions {
+    /** Apply the following modifications to the request headers. */
+    modifyRequestHeaders: HeaderModification[];
+    /** Apply the following modifications to the response headers. */
     modifyResponseHeaders: HeaderModification[];
 }
 /** A header modification resource. */
@@ -63,7 +67,10 @@ export interface HeaderModification {
     replace: string | undefined;
     /** Removes the header. */
     remove: boolean | undefined;
-    /** Replaces the name of the header with the specified string. */
+    /**
+     * Replaces the name of the header with the specified string.
+     * This operation is only supported for ALB Virtual Hosts.
+     */
     rename: string | undefined;
 }
 /**
@@ -77,6 +84,7 @@ export interface Route {
     http: HttpRoute | undefined;
     /** gRPC route configuration. */
     grpc: GrpcRoute | undefined;
+    routeOptions: RouteOptions | undefined;
 }
 /** An HTTP route configuration resource. */
 export interface HttpRoute {
@@ -153,7 +161,7 @@ export interface RedirectAction {
     /** Replacement for the whole path. */
     replacePath: string | undefined;
     /**
-     * Replacement for the path prefix matched by [StringMatch.match].
+     * Replacement for the path prefix matched by [StringMatch].
      *
      * For instance, if [StringMatch.prefix_match] value is `/foo` and `replace_prefix` value is `/bar`,
      * a request with `https://example.com/foobaz` URI is redirected to `https://example.com/barbaz`.
@@ -245,7 +253,7 @@ export interface HttpRouteAction {
     /** Automatically replaces the host with that of the target. */
     autoHostRewrite: boolean | undefined;
     /**
-     * Replacement for the path prefix matched by [StringMatch.match].
+     * Replacement for the path prefix matched by [StringMatch].
      *
      * For instance, if [StringMatch.prefix_match] value is `/foo` and `replace_prefix` value is `/bar`,
      * a request with `/foobaz` path is forwarded with `/barbaz` path.
@@ -296,6 +304,13 @@ export declare const VirtualHost: {
     fromJSON(object: any): VirtualHost;
     toJSON(message: VirtualHost): unknown;
     fromPartial(object: DeepPartial<VirtualHost>): VirtualHost;
+};
+export declare const RouteOptions: {
+    encode(message: RouteOptions, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number | undefined): RouteOptions;
+    fromJSON(object: any): RouteOptions;
+    toJSON(message: RouteOptions): unknown;
+    fromPartial(object: DeepPartial<RouteOptions>): RouteOptions;
 };
 export declare const HeaderModification: {
     encode(message: HeaderModification, writer?: _m0.Writer): _m0.Writer;

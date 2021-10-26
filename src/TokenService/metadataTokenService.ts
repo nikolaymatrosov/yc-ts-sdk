@@ -1,5 +1,5 @@
-import fetch from 'node-fetch';
 import { ITokenService } from './ITokenService';
+import fetch from 'node-fetch';
 
 export class MetadataTokenService implements ITokenService {
     private readonly _url: string;
@@ -25,7 +25,7 @@ export class MetadataTokenService implements ITokenService {
         const res = await fetch(this._url, this._opts);
         if (!res.ok) {
             throw new Error(
-                `failed to fetch token from metadata service: ${res.status} ${res.statusText}`,
+                `failed to fetch token from metadata service: ${res.status} ${res.statusText}`
             );
         }
         const data = await res.json();
@@ -47,14 +47,13 @@ export class MetadataTokenService implements ITokenService {
         }
         if (!this._token) {
             throw new Error(
-                `failed to fetch token from metadata service: ${lastError}`,
+                `failed to fetch token from metadata service: ${lastError}`
             );
         }
         setInterval(() => {
-            this._fetchToken()
-                .then((token) => {
-                    this._token = token;
-                })
+            this._fetchToken().then((token) => {
+                this._token = token;
+            });
         }, 30000);
     }
 }

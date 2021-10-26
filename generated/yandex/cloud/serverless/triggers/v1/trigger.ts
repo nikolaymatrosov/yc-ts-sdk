@@ -1,6 +1,11 @@
 /* eslint-disable */
 import { Duration } from '../../../../../google/protobuf/duration';
 import { Timestamp } from '../../../../../google/protobuf/timestamp';
+import {
+    LogLevel_Level,
+    logLevel_LevelFromJSON,
+    logLevel_LevelToJSON,
+} from '../../../../../yandex/cloud/logging/v1/log_entry';
 import Long from 'long';
 import _m0 from 'protobufjs/minimal';
 
@@ -22,6 +27,12 @@ export enum TriggerType {
     CONTAINER_REGISTRY = 6,
     /** CLOUD_LOGS - The trigger is activated by cloud log group events */
     CLOUD_LOGS = 7,
+    /** LOGGING - The trigger is activated by logging group events */
+    LOGGING = 8,
+    /** BILLING_BUDGET - The trigger is activated by billing events */
+    BILLING_BUDGET = 9,
+    /** YDS - The trigger is activated by YDS events */
+    YDS = 10,
     UNRECOGNIZED = -1,
 }
 
@@ -48,6 +59,15 @@ export function triggerTypeFromJSON(object: any): TriggerType {
         case 7:
         case 'CLOUD_LOGS':
             return TriggerType.CLOUD_LOGS;
+        case 8:
+        case 'LOGGING':
+            return TriggerType.LOGGING;
+        case 9:
+        case 'BILLING_BUDGET':
+            return TriggerType.BILLING_BUDGET;
+        case 10:
+        case 'YDS':
+            return TriggerType.YDS;
         case -1:
         case 'UNRECOGNIZED':
         default:
@@ -71,6 +91,12 @@ export function triggerTypeToJSON(object: TriggerType): string {
             return 'CONTAINER_REGISTRY';
         case TriggerType.CLOUD_LOGS:
             return 'CLOUD_LOGS';
+        case TriggerType.LOGGING:
+            return 'LOGGING';
+        case TriggerType.BILLING_BUDGET:
+            return 'BILLING_BUDGET';
+        case TriggerType.YDS:
+            return 'YDS';
         default:
             return 'UNKNOWN';
     }
@@ -252,6 +278,9 @@ export interface Trigger_Rule {
     objectStorage: Trigger_ObjectStorage | undefined;
     containerRegistry: Trigger_ContainerRegistry | undefined;
     cloudLogs: Trigger_CloudLogs | undefined;
+    logging: Trigger_Logging | undefined;
+    billingBudget: BillingBudget | undefined;
+    dataStream: DataStream | undefined;
 }
 
 /** Rule for activating a timed trigger. */
@@ -260,7 +289,10 @@ export interface Trigger_Timer {
     cronExpression: string;
     /** Instructions for invoking a function once. */
     invokeFunction: InvokeFunctionOnce | undefined;
+    /** Instructions for invoking a function with retry. */
     invokeFunctionWithRetry: InvokeFunctionWithRetry | undefined;
+    /** Instructions for invoking a container with retry. */
+    invokeContainerWithRetry: InvokeContainerWithRetry | undefined;
 }
 
 /** Rule for activating a message queue trigger. */
@@ -275,6 +307,8 @@ export interface Trigger_MessageQueue {
     visibilityTimeout: Duration | undefined;
     /** Instructions for invoking a function once. */
     invokeFunction: InvokeFunctionOnce | undefined;
+    /** Instructions for invoking a container once. */
+    invokeContainer: InvokeContainerOnce | undefined;
 }
 
 /** Rule for activating a Yandex IoT Core trigger. */
@@ -287,6 +321,8 @@ export interface Trigger_IoTMessage {
     mqttTopic: string;
     /** Instructions for invoking a function with retries as needed. */
     invokeFunction: InvokeFunctionWithRetry | undefined;
+    /** Instructions for invoking a container with retries as needed. */
+    invokeContainer: InvokeContainerWithRetry | undefined;
 }
 
 export interface Trigger_ObjectStorage {
@@ -298,7 +334,10 @@ export interface Trigger_ObjectStorage {
     prefix: string;
     /** Suffix of the object key. Filter, optional. */
     suffix: string;
+    /** Instructions for invoking a function with retries as needed. */
     invokeFunction: InvokeFunctionWithRetry | undefined;
+    /** Instructions for invoking a container with retries as needed. */
+    invokeContainer: InvokeContainerWithRetry | undefined;
 }
 
 export interface Trigger_ContainerRegistry {
@@ -310,7 +349,10 @@ export interface Trigger_ContainerRegistry {
     imageName: string;
     /** Docker-image tag. Filter, optional. */
     tag: string;
+    /** Instructions for invoking a function with retries as needed. */
     invokeFunction: InvokeFunctionWithRetry | undefined;
+    /** Instructions for invoking a container with retries as needed. */
+    invokeContainer: InvokeContainerWithRetry | undefined;
 }
 
 export interface Trigger_CloudLogs {
@@ -318,7 +360,24 @@ export interface Trigger_CloudLogs {
     logGroupId: string[];
     /** Batch settings for processing log events. */
     batchSettings: CloudLogsBatchSettings | undefined;
+    /** Instructions for invoking a function with retries as needed. */
     invokeFunction: InvokeFunctionWithRetry | undefined;
+    /** Instructions for invoking a container with retries as needed. */
+    invokeContainer: InvokeContainerWithRetry | undefined;
+}
+
+export interface Trigger_Logging {
+    /** Log events filter settings. */
+    logGroupId: string;
+    resourceType: string[];
+    resourceId: string[];
+    levels: LogLevel_Level[];
+    /** Batch settings for processing log events. */
+    batchSettings: LoggingBatchSettings | undefined;
+    /** Instructions for invoking a function with retries as needed. */
+    invokeFunction: InvokeFunctionWithRetry | undefined;
+    /** Instructions for invoking a container with retries as needed. */
+    invokeContainer: InvokeContainerWithRetry | undefined;
 }
 
 /** A single function invocation. */
@@ -338,6 +397,30 @@ export interface InvokeFunctionWithRetry {
     /** Version tag of the function to execute. */
     functionTag: string;
     /** ID of the service account which has permission to invoke the function. */
+    serviceAccountId: string;
+    /** Retry policy. If the field is not specified, or the value is empty, no retries will be attempted. */
+    retrySettings: RetrySettings | undefined;
+    /** DLQ policy (no value means discarding a message). */
+    deadLetterQueue: PutQueueMessage | undefined;
+}
+
+/** A single container invocation. */
+export interface InvokeContainerOnce {
+    /** ID of the container to invoke. */
+    containerId: string;
+    /** Endpoint HTTP path to invoke. */
+    path: string;
+    /** ID of the service account which has permission to invoke the container. */
+    serviceAccountId: string;
+}
+
+/** A container invocation with retries. */
+export interface InvokeContainerWithRetry {
+    /** ID of the container to invoke. */
+    containerId: string;
+    /** Endpoint HTTP path to invoke. */
+    path: string;
+    /** ID of the service account which has permission to invoke the container. */
     serviceAccountId: string;
     /** Retry policy. If the field is not specified, or the value is empty, no retries will be attempted. */
     retrySettings: RetrySettings | undefined;
@@ -379,12 +462,60 @@ export interface CloudLogsBatchSettings {
     cutoff: Duration | undefined;
 }
 
+export interface LoggingBatchSettings {
+    /**
+     * Batch size. Trigger will send the batch of messages to the associated function
+     * when the number of log events reaches this value, or the [cutoff] time has passed.
+     */
+    size: number;
+    /**
+     * Maximum wait time. Trigger will send the batch of messages the time since the last batch
+     * exceeds the `cutoff` value, regardless of the amount of log events.
+     */
+    cutoff: Duration | undefined;
+}
+
 /** Settings for retrying to invoke a function. */
 export interface RetrySettings {
     /** Maximum number of retries (extra invokes) before the action is considered failed. */
     retryAttempts: number;
     /** Time in seconds to wait between individual retries. */
     interval: Duration | undefined;
+}
+
+export interface BillingBudget {
+    billingAccountId: string;
+    budgetId: string;
+    invokeFunction: InvokeFunctionWithRetry | undefined;
+    invokeContainer: InvokeContainerWithRetry | undefined;
+}
+
+export interface DataStreamBatchSettings {
+    /**
+     * Batch size in bytes. Trigger will send the batch of messages to the associated function
+     * when size of log events reaches this value, or the [cutoff] time has passed.
+     */
+    size: number;
+    /**
+     * Maximum wait time. Trigger will send the batch of messages the time since the last batch
+     * exceeds the `cutoff` value, regardless of the amount of log events.
+     */
+    cutoff: Duration | undefined;
+}
+
+export interface DataStream {
+    /** Data stream endpoint. */
+    endpoint: string;
+    /** Data stream database. */
+    database: string;
+    /** Stream name. */
+    stream: string;
+    /** ID of the service account which has permission to read data stream. */
+    serviceAccountId: string;
+    /** Batch settings for processing events. */
+    batchSettings: DataStreamBatchSettings | undefined;
+    invokeFunction: InvokeFunctionWithRetry | undefined;
+    invokeContainer: InvokeContainerWithRetry | undefined;
 }
 
 const baseTrigger: object = {
@@ -726,6 +857,24 @@ export const Trigger_Rule = {
                 writer.uint32(74).fork()
             ).ldelim();
         }
+        if (message.logging !== undefined) {
+            Trigger_Logging.encode(
+                message.logging,
+                writer.uint32(82).fork()
+            ).ldelim();
+        }
+        if (message.billingBudget !== undefined) {
+            BillingBudget.encode(
+                message.billingBudget,
+                writer.uint32(90).fork()
+            ).ldelim();
+        }
+        if (message.dataStream !== undefined) {
+            DataStream.encode(
+                message.dataStream,
+                writer.uint32(98).fork()
+            ).ldelim();
+        }
         return writer;
     },
 
@@ -770,6 +919,24 @@ export const Trigger_Rule = {
                     break;
                 case 9:
                     message.cloudLogs = Trigger_CloudLogs.decode(
+                        reader,
+                        reader.uint32()
+                    );
+                    break;
+                case 10:
+                    message.logging = Trigger_Logging.decode(
+                        reader,
+                        reader.uint32()
+                    );
+                    break;
+                case 11:
+                    message.billingBudget = BillingBudget.decode(
+                        reader,
+                        reader.uint32()
+                    );
+                    break;
+                case 12:
+                    message.dataStream = DataStream.decode(
                         reader,
                         reader.uint32()
                     );
@@ -826,6 +993,26 @@ export const Trigger_Rule = {
         } else {
             message.cloudLogs = undefined;
         }
+        if (object.logging !== undefined && object.logging !== null) {
+            message.logging = Trigger_Logging.fromJSON(object.logging);
+        } else {
+            message.logging = undefined;
+        }
+        if (
+            object.billingBudget !== undefined &&
+            object.billingBudget !== null
+        ) {
+            message.billingBudget = BillingBudget.fromJSON(
+                object.billingBudget
+            );
+        } else {
+            message.billingBudget = undefined;
+        }
+        if (object.dataStream !== undefined && object.dataStream !== null) {
+            message.dataStream = DataStream.fromJSON(object.dataStream);
+        } else {
+            message.dataStream = undefined;
+        }
         return message;
     },
 
@@ -854,6 +1041,18 @@ export const Trigger_Rule = {
         message.cloudLogs !== undefined &&
             (obj.cloudLogs = message.cloudLogs
                 ? Trigger_CloudLogs.toJSON(message.cloudLogs)
+                : undefined);
+        message.logging !== undefined &&
+            (obj.logging = message.logging
+                ? Trigger_Logging.toJSON(message.logging)
+                : undefined);
+        message.billingBudget !== undefined &&
+            (obj.billingBudget = message.billingBudget
+                ? BillingBudget.toJSON(message.billingBudget)
+                : undefined);
+        message.dataStream !== undefined &&
+            (obj.dataStream = message.dataStream
+                ? DataStream.toJSON(message.dataStream)
                 : undefined);
         return obj;
     },
@@ -904,6 +1103,26 @@ export const Trigger_Rule = {
         } else {
             message.cloudLogs = undefined;
         }
+        if (object.logging !== undefined && object.logging !== null) {
+            message.logging = Trigger_Logging.fromPartial(object.logging);
+        } else {
+            message.logging = undefined;
+        }
+        if (
+            object.billingBudget !== undefined &&
+            object.billingBudget !== null
+        ) {
+            message.billingBudget = BillingBudget.fromPartial(
+                object.billingBudget
+            );
+        } else {
+            message.billingBudget = undefined;
+        }
+        if (object.dataStream !== undefined && object.dataStream !== null) {
+            message.dataStream = DataStream.fromPartial(object.dataStream);
+        } else {
+            message.dataStream = undefined;
+        }
         return message;
     },
 };
@@ -930,6 +1149,12 @@ export const Trigger_Timer = {
                 writer.uint32(826).fork()
             ).ldelim();
         }
+        if (message.invokeContainerWithRetry !== undefined) {
+            InvokeContainerWithRetry.encode(
+                message.invokeContainerWithRetry,
+                writer.uint32(834).fork()
+            ).ldelim();
+        }
         return writer;
     },
 
@@ -953,6 +1178,13 @@ export const Trigger_Timer = {
                 case 103:
                     message.invokeFunctionWithRetry =
                         InvokeFunctionWithRetry.decode(reader, reader.uint32());
+                    break;
+                case 104:
+                    message.invokeContainerWithRetry =
+                        InvokeContainerWithRetry.decode(
+                            reader,
+                            reader.uint32()
+                        );
                     break;
                 default:
                     reader.skipType(tag & 7);
@@ -992,6 +1224,17 @@ export const Trigger_Timer = {
         } else {
             message.invokeFunctionWithRetry = undefined;
         }
+        if (
+            object.invokeContainerWithRetry !== undefined &&
+            object.invokeContainerWithRetry !== null
+        ) {
+            message.invokeContainerWithRetry =
+                InvokeContainerWithRetry.fromJSON(
+                    object.invokeContainerWithRetry
+                );
+        } else {
+            message.invokeContainerWithRetry = undefined;
+        }
         return message;
     },
 
@@ -1007,6 +1250,12 @@ export const Trigger_Timer = {
             (obj.invokeFunctionWithRetry = message.invokeFunctionWithRetry
                 ? InvokeFunctionWithRetry.toJSON(
                       message.invokeFunctionWithRetry
+                  )
+                : undefined);
+        message.invokeContainerWithRetry !== undefined &&
+            (obj.invokeContainerWithRetry = message.invokeContainerWithRetry
+                ? InvokeContainerWithRetry.toJSON(
+                      message.invokeContainerWithRetry
                   )
                 : undefined);
         return obj;
@@ -1043,6 +1292,17 @@ export const Trigger_Timer = {
         } else {
             message.invokeFunctionWithRetry = undefined;
         }
+        if (
+            object.invokeContainerWithRetry !== undefined &&
+            object.invokeContainerWithRetry !== null
+        ) {
+            message.invokeContainerWithRetry =
+                InvokeContainerWithRetry.fromPartial(
+                    object.invokeContainerWithRetry
+                );
+        } else {
+            message.invokeContainerWithRetry = undefined;
+        }
         return message;
     },
 };
@@ -1076,6 +1336,12 @@ export const Trigger_MessageQueue = {
             InvokeFunctionOnce.encode(
                 message.invokeFunction,
                 writer.uint32(810).fork()
+            ).ldelim();
+        }
+        if (message.invokeContainer !== undefined) {
+            InvokeContainerOnce.encode(
+                message.invokeContainer,
+                writer.uint32(818).fork()
             ).ldelim();
         }
         return writer;
@@ -1112,6 +1378,12 @@ export const Trigger_MessageQueue = {
                     break;
                 case 101:
                     message.invokeFunction = InvokeFunctionOnce.decode(
+                        reader,
+                        reader.uint32()
+                    );
+                    break;
+                case 102:
+                    message.invokeContainer = InvokeContainerOnce.decode(
                         reader,
                         reader.uint32()
                     );
@@ -1169,6 +1441,16 @@ export const Trigger_MessageQueue = {
         } else {
             message.invokeFunction = undefined;
         }
+        if (
+            object.invokeContainer !== undefined &&
+            object.invokeContainer !== null
+        ) {
+            message.invokeContainer = InvokeContainerOnce.fromJSON(
+                object.invokeContainer
+            );
+        } else {
+            message.invokeContainer = undefined;
+        }
         return message;
     },
 
@@ -1188,6 +1470,10 @@ export const Trigger_MessageQueue = {
         message.invokeFunction !== undefined &&
             (obj.invokeFunction = message.invokeFunction
                 ? InvokeFunctionOnce.toJSON(message.invokeFunction)
+                : undefined);
+        message.invokeContainer !== undefined &&
+            (obj.invokeContainer = message.invokeContainer
+                ? InvokeContainerOnce.toJSON(message.invokeContainer)
                 : undefined);
         return obj;
     },
@@ -1239,6 +1525,16 @@ export const Trigger_MessageQueue = {
         } else {
             message.invokeFunction = undefined;
         }
+        if (
+            object.invokeContainer !== undefined &&
+            object.invokeContainer !== null
+        ) {
+            message.invokeContainer = InvokeContainerOnce.fromPartial(
+                object.invokeContainer
+            );
+        } else {
+            message.invokeContainer = undefined;
+        }
         return message;
     },
 };
@@ -1269,6 +1565,12 @@ export const Trigger_IoTMessage = {
                 writer.uint32(810).fork()
             ).ldelim();
         }
+        if (message.invokeContainer !== undefined) {
+            InvokeContainerWithRetry.encode(
+                message.invokeContainer,
+                writer.uint32(818).fork()
+            ).ldelim();
+        }
         return writer;
     },
 
@@ -1294,6 +1596,12 @@ export const Trigger_IoTMessage = {
                     break;
                 case 101:
                     message.invokeFunction = InvokeFunctionWithRetry.decode(
+                        reader,
+                        reader.uint32()
+                    );
+                    break;
+                case 102:
+                    message.invokeContainer = InvokeContainerWithRetry.decode(
                         reader,
                         reader.uint32()
                     );
@@ -1333,6 +1641,16 @@ export const Trigger_IoTMessage = {
         } else {
             message.invokeFunction = undefined;
         }
+        if (
+            object.invokeContainer !== undefined &&
+            object.invokeContainer !== null
+        ) {
+            message.invokeContainer = InvokeContainerWithRetry.fromJSON(
+                object.invokeContainer
+            );
+        } else {
+            message.invokeContainer = undefined;
+        }
         return message;
     },
 
@@ -1345,6 +1663,10 @@ export const Trigger_IoTMessage = {
         message.invokeFunction !== undefined &&
             (obj.invokeFunction = message.invokeFunction
                 ? InvokeFunctionWithRetry.toJSON(message.invokeFunction)
+                : undefined);
+        message.invokeContainer !== undefined &&
+            (obj.invokeContainer = message.invokeContainer
+                ? InvokeContainerWithRetry.toJSON(message.invokeContainer)
                 : undefined);
         return obj;
     },
@@ -1375,6 +1697,16 @@ export const Trigger_IoTMessage = {
             );
         } else {
             message.invokeFunction = undefined;
+        }
+        if (
+            object.invokeContainer !== undefined &&
+            object.invokeContainer !== null
+        ) {
+            message.invokeContainer = InvokeContainerWithRetry.fromPartial(
+                object.invokeContainer
+            );
+        } else {
+            message.invokeContainer = undefined;
         }
         return message;
     },
@@ -1410,6 +1742,12 @@ export const Trigger_ObjectStorage = {
             InvokeFunctionWithRetry.encode(
                 message.invokeFunction,
                 writer.uint32(810).fork()
+            ).ldelim();
+        }
+        if (message.invokeContainer !== undefined) {
+            InvokeContainerWithRetry.encode(
+                message.invokeContainer,
+                writer.uint32(818).fork()
             ).ldelim();
         }
         return writer;
@@ -1450,6 +1788,12 @@ export const Trigger_ObjectStorage = {
                     break;
                 case 101:
                     message.invokeFunction = InvokeFunctionWithRetry.decode(
+                        reader,
+                        reader.uint32()
+                    );
+                    break;
+                case 102:
+                    message.invokeContainer = InvokeContainerWithRetry.decode(
                         reader,
                         reader.uint32()
                     );
@@ -1499,6 +1843,16 @@ export const Trigger_ObjectStorage = {
         } else {
             message.invokeFunction = undefined;
         }
+        if (
+            object.invokeContainer !== undefined &&
+            object.invokeContainer !== null
+        ) {
+            message.invokeContainer = InvokeContainerWithRetry.fromJSON(
+                object.invokeContainer
+            );
+        } else {
+            message.invokeContainer = undefined;
+        }
         return message;
     },
 
@@ -1517,6 +1871,10 @@ export const Trigger_ObjectStorage = {
         message.invokeFunction !== undefined &&
             (obj.invokeFunction = message.invokeFunction
                 ? InvokeFunctionWithRetry.toJSON(message.invokeFunction)
+                : undefined);
+        message.invokeContainer !== undefined &&
+            (obj.invokeContainer = message.invokeContainer
+                ? InvokeContainerWithRetry.toJSON(message.invokeContainer)
                 : undefined);
         return obj;
     },
@@ -1558,6 +1916,16 @@ export const Trigger_ObjectStorage = {
         } else {
             message.invokeFunction = undefined;
         }
+        if (
+            object.invokeContainer !== undefined &&
+            object.invokeContainer !== null
+        ) {
+            message.invokeContainer = InvokeContainerWithRetry.fromPartial(
+                object.invokeContainer
+            );
+        } else {
+            message.invokeContainer = undefined;
+        }
         return message;
     },
 };
@@ -1592,6 +1960,12 @@ export const Trigger_ContainerRegistry = {
             InvokeFunctionWithRetry.encode(
                 message.invokeFunction,
                 writer.uint32(810).fork()
+            ).ldelim();
+        }
+        if (message.invokeContainer !== undefined) {
+            InvokeContainerWithRetry.encode(
+                message.invokeContainer,
+                writer.uint32(818).fork()
             ).ldelim();
         }
         return writer;
@@ -1632,6 +2006,12 @@ export const Trigger_ContainerRegistry = {
                     break;
                 case 101:
                     message.invokeFunction = InvokeFunctionWithRetry.decode(
+                        reader,
+                        reader.uint32()
+                    );
+                    break;
+                case 102:
+                    message.invokeContainer = InvokeContainerWithRetry.decode(
                         reader,
                         reader.uint32()
                     );
@@ -1681,6 +2061,16 @@ export const Trigger_ContainerRegistry = {
         } else {
             message.invokeFunction = undefined;
         }
+        if (
+            object.invokeContainer !== undefined &&
+            object.invokeContainer !== null
+        ) {
+            message.invokeContainer = InvokeContainerWithRetry.fromJSON(
+                object.invokeContainer
+            );
+        } else {
+            message.invokeContainer = undefined;
+        }
         return message;
     },
 
@@ -1700,6 +2090,10 @@ export const Trigger_ContainerRegistry = {
         message.invokeFunction !== undefined &&
             (obj.invokeFunction = message.invokeFunction
                 ? InvokeFunctionWithRetry.toJSON(message.invokeFunction)
+                : undefined);
+        message.invokeContainer !== undefined &&
+            (obj.invokeContainer = message.invokeContainer
+                ? InvokeContainerWithRetry.toJSON(message.invokeContainer)
                 : undefined);
         return obj;
     },
@@ -1741,6 +2135,16 @@ export const Trigger_ContainerRegistry = {
         } else {
             message.invokeFunction = undefined;
         }
+        if (
+            object.invokeContainer !== undefined &&
+            object.invokeContainer !== null
+        ) {
+            message.invokeContainer = InvokeContainerWithRetry.fromPartial(
+                object.invokeContainer
+            );
+        } else {
+            message.invokeContainer = undefined;
+        }
         return message;
     },
 };
@@ -1767,6 +2171,12 @@ export const Trigger_CloudLogs = {
                 writer.uint32(810).fork()
             ).ldelim();
         }
+        if (message.invokeContainer !== undefined) {
+            InvokeContainerWithRetry.encode(
+                message.invokeContainer,
+                writer.uint32(818).fork()
+            ).ldelim();
+        }
         return writer;
     },
 
@@ -1790,6 +2200,12 @@ export const Trigger_CloudLogs = {
                     break;
                 case 101:
                     message.invokeFunction = InvokeFunctionWithRetry.decode(
+                        reader,
+                        reader.uint32()
+                    );
+                    break;
+                case 102:
+                    message.invokeContainer = InvokeContainerWithRetry.decode(
                         reader,
                         reader.uint32()
                     );
@@ -1830,6 +2246,16 @@ export const Trigger_CloudLogs = {
         } else {
             message.invokeFunction = undefined;
         }
+        if (
+            object.invokeContainer !== undefined &&
+            object.invokeContainer !== null
+        ) {
+            message.invokeContainer = InvokeContainerWithRetry.fromJSON(
+                object.invokeContainer
+            );
+        } else {
+            message.invokeContainer = undefined;
+        }
         return message;
     },
 
@@ -1847,6 +2273,10 @@ export const Trigger_CloudLogs = {
         message.invokeFunction !== undefined &&
             (obj.invokeFunction = message.invokeFunction
                 ? InvokeFunctionWithRetry.toJSON(message.invokeFunction)
+                : undefined);
+        message.invokeContainer !== undefined &&
+            (obj.invokeContainer = message.invokeContainer
+                ? InvokeContainerWithRetry.toJSON(message.invokeContainer)
                 : undefined);
         return obj;
     },
@@ -1878,6 +2308,270 @@ export const Trigger_CloudLogs = {
             );
         } else {
             message.invokeFunction = undefined;
+        }
+        if (
+            object.invokeContainer !== undefined &&
+            object.invokeContainer !== null
+        ) {
+            message.invokeContainer = InvokeContainerWithRetry.fromPartial(
+                object.invokeContainer
+            );
+        } else {
+            message.invokeContainer = undefined;
+        }
+        return message;
+    },
+};
+
+const baseTrigger_Logging: object = {
+    logGroupId: '',
+    resourceType: '',
+    resourceId: '',
+    levels: 0,
+};
+
+export const Trigger_Logging = {
+    encode(
+        message: Trigger_Logging,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        if (message.logGroupId !== '') {
+            writer.uint32(10).string(message.logGroupId);
+        }
+        for (const v of message.resourceType) {
+            writer.uint32(26).string(v!);
+        }
+        for (const v of message.resourceId) {
+            writer.uint32(34).string(v!);
+        }
+        writer.uint32(42).fork();
+        for (const v of message.levels) {
+            writer.int32(v);
+        }
+        writer.ldelim();
+        if (message.batchSettings !== undefined) {
+            LoggingBatchSettings.encode(
+                message.batchSettings,
+                writer.uint32(50).fork()
+            ).ldelim();
+        }
+        if (message.invokeFunction !== undefined) {
+            InvokeFunctionWithRetry.encode(
+                message.invokeFunction,
+                writer.uint32(810).fork()
+            ).ldelim();
+        }
+        if (message.invokeContainer !== undefined) {
+            InvokeContainerWithRetry.encode(
+                message.invokeContainer,
+                writer.uint32(826).fork()
+            ).ldelim();
+        }
+        return writer;
+    },
+
+    decode(input: _m0.Reader | Uint8Array, length?: number): Trigger_Logging {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = { ...baseTrigger_Logging } as Trigger_Logging;
+        message.resourceType = [];
+        message.resourceId = [];
+        message.levels = [];
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.logGroupId = reader.string();
+                    break;
+                case 3:
+                    message.resourceType.push(reader.string());
+                    break;
+                case 4:
+                    message.resourceId.push(reader.string());
+                    break;
+                case 5:
+                    if ((tag & 7) === 2) {
+                        const end2 = reader.uint32() + reader.pos;
+                        while (reader.pos < end2) {
+                            message.levels.push(reader.int32() as any);
+                        }
+                    } else {
+                        message.levels.push(reader.int32() as any);
+                    }
+                    break;
+                case 6:
+                    message.batchSettings = LoggingBatchSettings.decode(
+                        reader,
+                        reader.uint32()
+                    );
+                    break;
+                case 101:
+                    message.invokeFunction = InvokeFunctionWithRetry.decode(
+                        reader,
+                        reader.uint32()
+                    );
+                    break;
+                case 103:
+                    message.invokeContainer = InvokeContainerWithRetry.decode(
+                        reader,
+                        reader.uint32()
+                    );
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): Trigger_Logging {
+        const message = { ...baseTrigger_Logging } as Trigger_Logging;
+        message.resourceType = [];
+        message.resourceId = [];
+        message.levels = [];
+        if (object.logGroupId !== undefined && object.logGroupId !== null) {
+            message.logGroupId = String(object.logGroupId);
+        } else {
+            message.logGroupId = '';
+        }
+        if (object.resourceType !== undefined && object.resourceType !== null) {
+            for (const e of object.resourceType) {
+                message.resourceType.push(String(e));
+            }
+        }
+        if (object.resourceId !== undefined && object.resourceId !== null) {
+            for (const e of object.resourceId) {
+                message.resourceId.push(String(e));
+            }
+        }
+        if (object.levels !== undefined && object.levels !== null) {
+            for (const e of object.levels) {
+                message.levels.push(logLevel_LevelFromJSON(e));
+            }
+        }
+        if (
+            object.batchSettings !== undefined &&
+            object.batchSettings !== null
+        ) {
+            message.batchSettings = LoggingBatchSettings.fromJSON(
+                object.batchSettings
+            );
+        } else {
+            message.batchSettings = undefined;
+        }
+        if (
+            object.invokeFunction !== undefined &&
+            object.invokeFunction !== null
+        ) {
+            message.invokeFunction = InvokeFunctionWithRetry.fromJSON(
+                object.invokeFunction
+            );
+        } else {
+            message.invokeFunction = undefined;
+        }
+        if (
+            object.invokeContainer !== undefined &&
+            object.invokeContainer !== null
+        ) {
+            message.invokeContainer = InvokeContainerWithRetry.fromJSON(
+                object.invokeContainer
+            );
+        } else {
+            message.invokeContainer = undefined;
+        }
+        return message;
+    },
+
+    toJSON(message: Trigger_Logging): unknown {
+        const obj: any = {};
+        message.logGroupId !== undefined &&
+            (obj.logGroupId = message.logGroupId);
+        if (message.resourceType) {
+            obj.resourceType = message.resourceType.map((e) => e);
+        } else {
+            obj.resourceType = [];
+        }
+        if (message.resourceId) {
+            obj.resourceId = message.resourceId.map((e) => e);
+        } else {
+            obj.resourceId = [];
+        }
+        if (message.levels) {
+            obj.levels = message.levels.map((e) => logLevel_LevelToJSON(e));
+        } else {
+            obj.levels = [];
+        }
+        message.batchSettings !== undefined &&
+            (obj.batchSettings = message.batchSettings
+                ? LoggingBatchSettings.toJSON(message.batchSettings)
+                : undefined);
+        message.invokeFunction !== undefined &&
+            (obj.invokeFunction = message.invokeFunction
+                ? InvokeFunctionWithRetry.toJSON(message.invokeFunction)
+                : undefined);
+        message.invokeContainer !== undefined &&
+            (obj.invokeContainer = message.invokeContainer
+                ? InvokeContainerWithRetry.toJSON(message.invokeContainer)
+                : undefined);
+        return obj;
+    },
+
+    fromPartial(object: DeepPartial<Trigger_Logging>): Trigger_Logging {
+        const message = { ...baseTrigger_Logging } as Trigger_Logging;
+        message.resourceType = [];
+        message.resourceId = [];
+        message.levels = [];
+        if (object.logGroupId !== undefined && object.logGroupId !== null) {
+            message.logGroupId = object.logGroupId;
+        } else {
+            message.logGroupId = '';
+        }
+        if (object.resourceType !== undefined && object.resourceType !== null) {
+            for (const e of object.resourceType) {
+                message.resourceType.push(e);
+            }
+        }
+        if (object.resourceId !== undefined && object.resourceId !== null) {
+            for (const e of object.resourceId) {
+                message.resourceId.push(e);
+            }
+        }
+        if (object.levels !== undefined && object.levels !== null) {
+            for (const e of object.levels) {
+                message.levels.push(e);
+            }
+        }
+        if (
+            object.batchSettings !== undefined &&
+            object.batchSettings !== null
+        ) {
+            message.batchSettings = LoggingBatchSettings.fromPartial(
+                object.batchSettings
+            );
+        } else {
+            message.batchSettings = undefined;
+        }
+        if (
+            object.invokeFunction !== undefined &&
+            object.invokeFunction !== null
+        ) {
+            message.invokeFunction = InvokeFunctionWithRetry.fromPartial(
+                object.invokeFunction
+            );
+        } else {
+            message.invokeFunction = undefined;
+        }
+        if (
+            object.invokeContainer !== undefined &&
+            object.invokeContainer !== null
+        ) {
+            message.invokeContainer = InvokeContainerWithRetry.fromPartial(
+                object.invokeContainer
+            );
+        } else {
+            message.invokeContainer = undefined;
         }
         return message;
     },
@@ -2181,6 +2875,302 @@ export const InvokeFunctionWithRetry = {
     },
 };
 
+const baseInvokeContainerOnce: object = {
+    containerId: '',
+    path: '',
+    serviceAccountId: '',
+};
+
+export const InvokeContainerOnce = {
+    encode(
+        message: InvokeContainerOnce,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        if (message.containerId !== '') {
+            writer.uint32(10).string(message.containerId);
+        }
+        if (message.path !== '') {
+            writer.uint32(26).string(message.path);
+        }
+        if (message.serviceAccountId !== '') {
+            writer.uint32(34).string(message.serviceAccountId);
+        }
+        return writer;
+    },
+
+    decode(
+        input: _m0.Reader | Uint8Array,
+        length?: number
+    ): InvokeContainerOnce {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = { ...baseInvokeContainerOnce } as InvokeContainerOnce;
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.containerId = reader.string();
+                    break;
+                case 3:
+                    message.path = reader.string();
+                    break;
+                case 4:
+                    message.serviceAccountId = reader.string();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): InvokeContainerOnce {
+        const message = { ...baseInvokeContainerOnce } as InvokeContainerOnce;
+        if (object.containerId !== undefined && object.containerId !== null) {
+            message.containerId = String(object.containerId);
+        } else {
+            message.containerId = '';
+        }
+        if (object.path !== undefined && object.path !== null) {
+            message.path = String(object.path);
+        } else {
+            message.path = '';
+        }
+        if (
+            object.serviceAccountId !== undefined &&
+            object.serviceAccountId !== null
+        ) {
+            message.serviceAccountId = String(object.serviceAccountId);
+        } else {
+            message.serviceAccountId = '';
+        }
+        return message;
+    },
+
+    toJSON(message: InvokeContainerOnce): unknown {
+        const obj: any = {};
+        message.containerId !== undefined &&
+            (obj.containerId = message.containerId);
+        message.path !== undefined && (obj.path = message.path);
+        message.serviceAccountId !== undefined &&
+            (obj.serviceAccountId = message.serviceAccountId);
+        return obj;
+    },
+
+    fromPartial(object: DeepPartial<InvokeContainerOnce>): InvokeContainerOnce {
+        const message = { ...baseInvokeContainerOnce } as InvokeContainerOnce;
+        if (object.containerId !== undefined && object.containerId !== null) {
+            message.containerId = object.containerId;
+        } else {
+            message.containerId = '';
+        }
+        if (object.path !== undefined && object.path !== null) {
+            message.path = object.path;
+        } else {
+            message.path = '';
+        }
+        if (
+            object.serviceAccountId !== undefined &&
+            object.serviceAccountId !== null
+        ) {
+            message.serviceAccountId = object.serviceAccountId;
+        } else {
+            message.serviceAccountId = '';
+        }
+        return message;
+    },
+};
+
+const baseInvokeContainerWithRetry: object = {
+    containerId: '',
+    path: '',
+    serviceAccountId: '',
+};
+
+export const InvokeContainerWithRetry = {
+    encode(
+        message: InvokeContainerWithRetry,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        if (message.containerId !== '') {
+            writer.uint32(10).string(message.containerId);
+        }
+        if (message.path !== '') {
+            writer.uint32(26).string(message.path);
+        }
+        if (message.serviceAccountId !== '') {
+            writer.uint32(34).string(message.serviceAccountId);
+        }
+        if (message.retrySettings !== undefined) {
+            RetrySettings.encode(
+                message.retrySettings,
+                writer.uint32(42).fork()
+            ).ldelim();
+        }
+        if (message.deadLetterQueue !== undefined) {
+            PutQueueMessage.encode(
+                message.deadLetterQueue,
+                writer.uint32(50).fork()
+            ).ldelim();
+        }
+        return writer;
+    },
+
+    decode(
+        input: _m0.Reader | Uint8Array,
+        length?: number
+    ): InvokeContainerWithRetry {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = {
+            ...baseInvokeContainerWithRetry,
+        } as InvokeContainerWithRetry;
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.containerId = reader.string();
+                    break;
+                case 3:
+                    message.path = reader.string();
+                    break;
+                case 4:
+                    message.serviceAccountId = reader.string();
+                    break;
+                case 5:
+                    message.retrySettings = RetrySettings.decode(
+                        reader,
+                        reader.uint32()
+                    );
+                    break;
+                case 6:
+                    message.deadLetterQueue = PutQueueMessage.decode(
+                        reader,
+                        reader.uint32()
+                    );
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): InvokeContainerWithRetry {
+        const message = {
+            ...baseInvokeContainerWithRetry,
+        } as InvokeContainerWithRetry;
+        if (object.containerId !== undefined && object.containerId !== null) {
+            message.containerId = String(object.containerId);
+        } else {
+            message.containerId = '';
+        }
+        if (object.path !== undefined && object.path !== null) {
+            message.path = String(object.path);
+        } else {
+            message.path = '';
+        }
+        if (
+            object.serviceAccountId !== undefined &&
+            object.serviceAccountId !== null
+        ) {
+            message.serviceAccountId = String(object.serviceAccountId);
+        } else {
+            message.serviceAccountId = '';
+        }
+        if (
+            object.retrySettings !== undefined &&
+            object.retrySettings !== null
+        ) {
+            message.retrySettings = RetrySettings.fromJSON(
+                object.retrySettings
+            );
+        } else {
+            message.retrySettings = undefined;
+        }
+        if (
+            object.deadLetterQueue !== undefined &&
+            object.deadLetterQueue !== null
+        ) {
+            message.deadLetterQueue = PutQueueMessage.fromJSON(
+                object.deadLetterQueue
+            );
+        } else {
+            message.deadLetterQueue = undefined;
+        }
+        return message;
+    },
+
+    toJSON(message: InvokeContainerWithRetry): unknown {
+        const obj: any = {};
+        message.containerId !== undefined &&
+            (obj.containerId = message.containerId);
+        message.path !== undefined && (obj.path = message.path);
+        message.serviceAccountId !== undefined &&
+            (obj.serviceAccountId = message.serviceAccountId);
+        message.retrySettings !== undefined &&
+            (obj.retrySettings = message.retrySettings
+                ? RetrySettings.toJSON(message.retrySettings)
+                : undefined);
+        message.deadLetterQueue !== undefined &&
+            (obj.deadLetterQueue = message.deadLetterQueue
+                ? PutQueueMessage.toJSON(message.deadLetterQueue)
+                : undefined);
+        return obj;
+    },
+
+    fromPartial(
+        object: DeepPartial<InvokeContainerWithRetry>
+    ): InvokeContainerWithRetry {
+        const message = {
+            ...baseInvokeContainerWithRetry,
+        } as InvokeContainerWithRetry;
+        if (object.containerId !== undefined && object.containerId !== null) {
+            message.containerId = object.containerId;
+        } else {
+            message.containerId = '';
+        }
+        if (object.path !== undefined && object.path !== null) {
+            message.path = object.path;
+        } else {
+            message.path = '';
+        }
+        if (
+            object.serviceAccountId !== undefined &&
+            object.serviceAccountId !== null
+        ) {
+            message.serviceAccountId = object.serviceAccountId;
+        } else {
+            message.serviceAccountId = '';
+        }
+        if (
+            object.retrySettings !== undefined &&
+            object.retrySettings !== null
+        ) {
+            message.retrySettings = RetrySettings.fromPartial(
+                object.retrySettings
+            );
+        } else {
+            message.retrySettings = undefined;
+        }
+        if (
+            object.deadLetterQueue !== undefined &&
+            object.deadLetterQueue !== null
+        ) {
+            message.deadLetterQueue = PutQueueMessage.fromPartial(
+                object.deadLetterQueue
+            );
+        } else {
+            message.deadLetterQueue = undefined;
+        }
+        return message;
+    },
+};
+
 const basePutQueueMessage: object = { queueId: '', serviceAccountId: '' };
 
 export const PutQueueMessage = {
@@ -2433,6 +3423,90 @@ export const CloudLogsBatchSettings = {
     },
 };
 
+const baseLoggingBatchSettings: object = { size: 0 };
+
+export const LoggingBatchSettings = {
+    encode(
+        message: LoggingBatchSettings,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        if (message.size !== 0) {
+            writer.uint32(8).int64(message.size);
+        }
+        if (message.cutoff !== undefined) {
+            Duration.encode(message.cutoff, writer.uint32(18).fork()).ldelim();
+        }
+        return writer;
+    },
+
+    decode(
+        input: _m0.Reader | Uint8Array,
+        length?: number
+    ): LoggingBatchSettings {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = { ...baseLoggingBatchSettings } as LoggingBatchSettings;
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.size = longToNumber(reader.int64() as Long);
+                    break;
+                case 2:
+                    message.cutoff = Duration.decode(reader, reader.uint32());
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): LoggingBatchSettings {
+        const message = { ...baseLoggingBatchSettings } as LoggingBatchSettings;
+        if (object.size !== undefined && object.size !== null) {
+            message.size = Number(object.size);
+        } else {
+            message.size = 0;
+        }
+        if (object.cutoff !== undefined && object.cutoff !== null) {
+            message.cutoff = Duration.fromJSON(object.cutoff);
+        } else {
+            message.cutoff = undefined;
+        }
+        return message;
+    },
+
+    toJSON(message: LoggingBatchSettings): unknown {
+        const obj: any = {};
+        message.size !== undefined && (obj.size = message.size);
+        message.cutoff !== undefined &&
+            (obj.cutoff = message.cutoff
+                ? Duration.toJSON(message.cutoff)
+                : undefined);
+        return obj;
+    },
+
+    fromPartial(
+        object: DeepPartial<LoggingBatchSettings>
+    ): LoggingBatchSettings {
+        const message = { ...baseLoggingBatchSettings } as LoggingBatchSettings;
+        if (object.size !== undefined && object.size !== null) {
+            message.size = object.size;
+        } else {
+            message.size = 0;
+        }
+        if (object.cutoff !== undefined && object.cutoff !== null) {
+            message.cutoff = Duration.fromPartial(object.cutoff);
+        } else {
+            message.cutoff = undefined;
+        }
+        return message;
+    },
+};
+
 const baseRetrySettings: object = { retryAttempts: 0 };
 
 export const RetrySettings = {
@@ -2519,6 +3593,481 @@ export const RetrySettings = {
             message.interval = Duration.fromPartial(object.interval);
         } else {
             message.interval = undefined;
+        }
+        return message;
+    },
+};
+
+const baseBillingBudget: object = { billingAccountId: '', budgetId: '' };
+
+export const BillingBudget = {
+    encode(
+        message: BillingBudget,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        if (message.billingAccountId !== '') {
+            writer.uint32(10).string(message.billingAccountId);
+        }
+        if (message.budgetId !== '') {
+            writer.uint32(18).string(message.budgetId);
+        }
+        if (message.invokeFunction !== undefined) {
+            InvokeFunctionWithRetry.encode(
+                message.invokeFunction,
+                writer.uint32(810).fork()
+            ).ldelim();
+        }
+        if (message.invokeContainer !== undefined) {
+            InvokeContainerWithRetry.encode(
+                message.invokeContainer,
+                writer.uint32(826).fork()
+            ).ldelim();
+        }
+        return writer;
+    },
+
+    decode(input: _m0.Reader | Uint8Array, length?: number): BillingBudget {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = { ...baseBillingBudget } as BillingBudget;
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.billingAccountId = reader.string();
+                    break;
+                case 2:
+                    message.budgetId = reader.string();
+                    break;
+                case 101:
+                    message.invokeFunction = InvokeFunctionWithRetry.decode(
+                        reader,
+                        reader.uint32()
+                    );
+                    break;
+                case 103:
+                    message.invokeContainer = InvokeContainerWithRetry.decode(
+                        reader,
+                        reader.uint32()
+                    );
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): BillingBudget {
+        const message = { ...baseBillingBudget } as BillingBudget;
+        if (
+            object.billingAccountId !== undefined &&
+            object.billingAccountId !== null
+        ) {
+            message.billingAccountId = String(object.billingAccountId);
+        } else {
+            message.billingAccountId = '';
+        }
+        if (object.budgetId !== undefined && object.budgetId !== null) {
+            message.budgetId = String(object.budgetId);
+        } else {
+            message.budgetId = '';
+        }
+        if (
+            object.invokeFunction !== undefined &&
+            object.invokeFunction !== null
+        ) {
+            message.invokeFunction = InvokeFunctionWithRetry.fromJSON(
+                object.invokeFunction
+            );
+        } else {
+            message.invokeFunction = undefined;
+        }
+        if (
+            object.invokeContainer !== undefined &&
+            object.invokeContainer !== null
+        ) {
+            message.invokeContainer = InvokeContainerWithRetry.fromJSON(
+                object.invokeContainer
+            );
+        } else {
+            message.invokeContainer = undefined;
+        }
+        return message;
+    },
+
+    toJSON(message: BillingBudget): unknown {
+        const obj: any = {};
+        message.billingAccountId !== undefined &&
+            (obj.billingAccountId = message.billingAccountId);
+        message.budgetId !== undefined && (obj.budgetId = message.budgetId);
+        message.invokeFunction !== undefined &&
+            (obj.invokeFunction = message.invokeFunction
+                ? InvokeFunctionWithRetry.toJSON(message.invokeFunction)
+                : undefined);
+        message.invokeContainer !== undefined &&
+            (obj.invokeContainer = message.invokeContainer
+                ? InvokeContainerWithRetry.toJSON(message.invokeContainer)
+                : undefined);
+        return obj;
+    },
+
+    fromPartial(object: DeepPartial<BillingBudget>): BillingBudget {
+        const message = { ...baseBillingBudget } as BillingBudget;
+        if (
+            object.billingAccountId !== undefined &&
+            object.billingAccountId !== null
+        ) {
+            message.billingAccountId = object.billingAccountId;
+        } else {
+            message.billingAccountId = '';
+        }
+        if (object.budgetId !== undefined && object.budgetId !== null) {
+            message.budgetId = object.budgetId;
+        } else {
+            message.budgetId = '';
+        }
+        if (
+            object.invokeFunction !== undefined &&
+            object.invokeFunction !== null
+        ) {
+            message.invokeFunction = InvokeFunctionWithRetry.fromPartial(
+                object.invokeFunction
+            );
+        } else {
+            message.invokeFunction = undefined;
+        }
+        if (
+            object.invokeContainer !== undefined &&
+            object.invokeContainer !== null
+        ) {
+            message.invokeContainer = InvokeContainerWithRetry.fromPartial(
+                object.invokeContainer
+            );
+        } else {
+            message.invokeContainer = undefined;
+        }
+        return message;
+    },
+};
+
+const baseDataStreamBatchSettings: object = { size: 0 };
+
+export const DataStreamBatchSettings = {
+    encode(
+        message: DataStreamBatchSettings,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        if (message.size !== 0) {
+            writer.uint32(8).int64(message.size);
+        }
+        if (message.cutoff !== undefined) {
+            Duration.encode(message.cutoff, writer.uint32(18).fork()).ldelim();
+        }
+        return writer;
+    },
+
+    decode(
+        input: _m0.Reader | Uint8Array,
+        length?: number
+    ): DataStreamBatchSettings {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = {
+            ...baseDataStreamBatchSettings,
+        } as DataStreamBatchSettings;
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.size = longToNumber(reader.int64() as Long);
+                    break;
+                case 2:
+                    message.cutoff = Duration.decode(reader, reader.uint32());
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): DataStreamBatchSettings {
+        const message = {
+            ...baseDataStreamBatchSettings,
+        } as DataStreamBatchSettings;
+        if (object.size !== undefined && object.size !== null) {
+            message.size = Number(object.size);
+        } else {
+            message.size = 0;
+        }
+        if (object.cutoff !== undefined && object.cutoff !== null) {
+            message.cutoff = Duration.fromJSON(object.cutoff);
+        } else {
+            message.cutoff = undefined;
+        }
+        return message;
+    },
+
+    toJSON(message: DataStreamBatchSettings): unknown {
+        const obj: any = {};
+        message.size !== undefined && (obj.size = message.size);
+        message.cutoff !== undefined &&
+            (obj.cutoff = message.cutoff
+                ? Duration.toJSON(message.cutoff)
+                : undefined);
+        return obj;
+    },
+
+    fromPartial(
+        object: DeepPartial<DataStreamBatchSettings>
+    ): DataStreamBatchSettings {
+        const message = {
+            ...baseDataStreamBatchSettings,
+        } as DataStreamBatchSettings;
+        if (object.size !== undefined && object.size !== null) {
+            message.size = object.size;
+        } else {
+            message.size = 0;
+        }
+        if (object.cutoff !== undefined && object.cutoff !== null) {
+            message.cutoff = Duration.fromPartial(object.cutoff);
+        } else {
+            message.cutoff = undefined;
+        }
+        return message;
+    },
+};
+
+const baseDataStream: object = {
+    endpoint: '',
+    database: '',
+    stream: '',
+    serviceAccountId: '',
+};
+
+export const DataStream = {
+    encode(
+        message: DataStream,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        if (message.endpoint !== '') {
+            writer.uint32(10).string(message.endpoint);
+        }
+        if (message.database !== '') {
+            writer.uint32(18).string(message.database);
+        }
+        if (message.stream !== '') {
+            writer.uint32(26).string(message.stream);
+        }
+        if (message.serviceAccountId !== '') {
+            writer.uint32(34).string(message.serviceAccountId);
+        }
+        if (message.batchSettings !== undefined) {
+            DataStreamBatchSettings.encode(
+                message.batchSettings,
+                writer.uint32(42).fork()
+            ).ldelim();
+        }
+        if (message.invokeFunction !== undefined) {
+            InvokeFunctionWithRetry.encode(
+                message.invokeFunction,
+                writer.uint32(106).fork()
+            ).ldelim();
+        }
+        if (message.invokeContainer !== undefined) {
+            InvokeContainerWithRetry.encode(
+                message.invokeContainer,
+                writer.uint32(122).fork()
+            ).ldelim();
+        }
+        return writer;
+    },
+
+    decode(input: _m0.Reader | Uint8Array, length?: number): DataStream {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = { ...baseDataStream } as DataStream;
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.endpoint = reader.string();
+                    break;
+                case 2:
+                    message.database = reader.string();
+                    break;
+                case 3:
+                    message.stream = reader.string();
+                    break;
+                case 4:
+                    message.serviceAccountId = reader.string();
+                    break;
+                case 5:
+                    message.batchSettings = DataStreamBatchSettings.decode(
+                        reader,
+                        reader.uint32()
+                    );
+                    break;
+                case 13:
+                    message.invokeFunction = InvokeFunctionWithRetry.decode(
+                        reader,
+                        reader.uint32()
+                    );
+                    break;
+                case 15:
+                    message.invokeContainer = InvokeContainerWithRetry.decode(
+                        reader,
+                        reader.uint32()
+                    );
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): DataStream {
+        const message = { ...baseDataStream } as DataStream;
+        if (object.endpoint !== undefined && object.endpoint !== null) {
+            message.endpoint = String(object.endpoint);
+        } else {
+            message.endpoint = '';
+        }
+        if (object.database !== undefined && object.database !== null) {
+            message.database = String(object.database);
+        } else {
+            message.database = '';
+        }
+        if (object.stream !== undefined && object.stream !== null) {
+            message.stream = String(object.stream);
+        } else {
+            message.stream = '';
+        }
+        if (
+            object.serviceAccountId !== undefined &&
+            object.serviceAccountId !== null
+        ) {
+            message.serviceAccountId = String(object.serviceAccountId);
+        } else {
+            message.serviceAccountId = '';
+        }
+        if (
+            object.batchSettings !== undefined &&
+            object.batchSettings !== null
+        ) {
+            message.batchSettings = DataStreamBatchSettings.fromJSON(
+                object.batchSettings
+            );
+        } else {
+            message.batchSettings = undefined;
+        }
+        if (
+            object.invokeFunction !== undefined &&
+            object.invokeFunction !== null
+        ) {
+            message.invokeFunction = InvokeFunctionWithRetry.fromJSON(
+                object.invokeFunction
+            );
+        } else {
+            message.invokeFunction = undefined;
+        }
+        if (
+            object.invokeContainer !== undefined &&
+            object.invokeContainer !== null
+        ) {
+            message.invokeContainer = InvokeContainerWithRetry.fromJSON(
+                object.invokeContainer
+            );
+        } else {
+            message.invokeContainer = undefined;
+        }
+        return message;
+    },
+
+    toJSON(message: DataStream): unknown {
+        const obj: any = {};
+        message.endpoint !== undefined && (obj.endpoint = message.endpoint);
+        message.database !== undefined && (obj.database = message.database);
+        message.stream !== undefined && (obj.stream = message.stream);
+        message.serviceAccountId !== undefined &&
+            (obj.serviceAccountId = message.serviceAccountId);
+        message.batchSettings !== undefined &&
+            (obj.batchSettings = message.batchSettings
+                ? DataStreamBatchSettings.toJSON(message.batchSettings)
+                : undefined);
+        message.invokeFunction !== undefined &&
+            (obj.invokeFunction = message.invokeFunction
+                ? InvokeFunctionWithRetry.toJSON(message.invokeFunction)
+                : undefined);
+        message.invokeContainer !== undefined &&
+            (obj.invokeContainer = message.invokeContainer
+                ? InvokeContainerWithRetry.toJSON(message.invokeContainer)
+                : undefined);
+        return obj;
+    },
+
+    fromPartial(object: DeepPartial<DataStream>): DataStream {
+        const message = { ...baseDataStream } as DataStream;
+        if (object.endpoint !== undefined && object.endpoint !== null) {
+            message.endpoint = object.endpoint;
+        } else {
+            message.endpoint = '';
+        }
+        if (object.database !== undefined && object.database !== null) {
+            message.database = object.database;
+        } else {
+            message.database = '';
+        }
+        if (object.stream !== undefined && object.stream !== null) {
+            message.stream = object.stream;
+        } else {
+            message.stream = '';
+        }
+        if (
+            object.serviceAccountId !== undefined &&
+            object.serviceAccountId !== null
+        ) {
+            message.serviceAccountId = object.serviceAccountId;
+        } else {
+            message.serviceAccountId = '';
+        }
+        if (
+            object.batchSettings !== undefined &&
+            object.batchSettings !== null
+        ) {
+            message.batchSettings = DataStreamBatchSettings.fromPartial(
+                object.batchSettings
+            );
+        } else {
+            message.batchSettings = undefined;
+        }
+        if (
+            object.invokeFunction !== undefined &&
+            object.invokeFunction !== null
+        ) {
+            message.invokeFunction = InvokeFunctionWithRetry.fromPartial(
+                object.invokeFunction
+            );
+        } else {
+            message.invokeFunction = undefined;
+        }
+        if (
+            object.invokeContainer !== undefined &&
+            object.invokeContainer !== null
+        ) {
+            message.invokeContainer = InvokeContainerWithRetry.fromPartial(
+                object.invokeContainer
+            );
+        } else {
+            message.invokeContainer = undefined;
         }
         return message;
     },

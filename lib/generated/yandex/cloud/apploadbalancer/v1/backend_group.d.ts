@@ -4,6 +4,49 @@ import { ValidationContext } from '../../../../yandex/cloud/apploadbalancer/v1/t
 import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.apploadbalancer.v1";
 /**
+ * A load balancing mode resource.
+ * For details about the concept, see
+ * [documentation](/docs/application-load-balancer/concepts/backend-group#balancing-mode).
+ */
+export declare enum LoadBalancingMode {
+    /**
+     * ROUND_ROBIN - Round robin load balancing mode.
+     *
+     * All endpoints of the backend take their turns to receive requests attributed to the backend.
+     */
+    ROUND_ROBIN = 0,
+    /**
+     * RANDOM - Random load balancing mode. Default value.
+     *
+     * For a request attributed to the backend, an endpoint that receives it is picked at random.
+     */
+    RANDOM = 1,
+    /**
+     * LEAST_REQUEST - Least request load balancing mode.
+     *
+     * To pick an endpoint that receives a request attributed to the backend, the power of two choices algorithm is used;
+     * that is, two endpoints are picked at random, and the request is sent to the one which has the fewest active
+     * requests.
+     */
+    LEAST_REQUEST = 2,
+    /**
+     * MAGLEV_HASH - Maglev hashing load balancing mode, used only if session affinity is working for the backend group.
+     *
+     * Each endpoint is hashed, and a hash table with 65537 rows is filled accordingly, so that every endpoint occupies
+     * the same amount of rows. An attribute of each request, specified in session affinity configuration of the backend
+     * group, is also hashed by the same function. The row with the same number as the resulting value is looked up in the
+     * table to determine the endpoint that receives the request.
+     *
+     * If session affinity is not working for the backend group (i.e. it is not configured or the group contains more
+     * than one backend with positive weight), endpoints for backends with `MAGLEV_HASH` load balancing mode are picked at
+     * `RANDOM` instead.
+     */
+    MAGLEV_HASH = 3,
+    UNRECOGNIZED = -1
+}
+export declare function loadBalancingModeFromJSON(object: any): LoadBalancingMode;
+export declare function loadBalancingModeToJSON(object: LoadBalancingMode): string;
+/**
  * A backend group resource.
  * For details about the concept, see [documentation](/docs/application-load-balancer/concepts/backend-group).
  */
@@ -28,6 +71,8 @@ export interface BackendGroup {
     http: HttpBackendGroup | undefined;
     /** List of gRPC backends that the backend group consists of. */
     grpc: GrpcBackendGroup | undefined;
+    /** List of stream backends that the backend group consist of. */
+    stream: StreamBackendGroup | undefined;
     /** Creation timestamp. */
     createdAt: Date | undefined;
 }
@@ -35,25 +80,61 @@ export interface BackendGroup_LabelsEntry {
     key: string;
     value: string;
 }
+/** A Stream backend group resource. */
+export interface StreamBackendGroup {
+    backends: StreamBackend[];
+    connection: ConnectionSessionAffinity | undefined;
+}
 /** An HTTP backend group resource. */
 export interface HttpBackendGroup {
     /** List of HTTP backends. */
     backends: HttpBackend[];
+    /**
+     * Connection-based session affinity configuration.
+     *
+     * For now, a connection is defined only by an IP address of the client.
+     */
+    connection: ConnectionSessionAffinity | undefined;
+    /** HTTP-header-field-based session affinity configuration. */
+    header: HeaderSessionAffinity | undefined;
+    /** Cookie-based session affinity configuration. */
+    cookie: CookieSessionAffinity | undefined;
 }
 /** A gRPC backend group resource. */
 export interface GrpcBackendGroup {
     /** List of gRPC backends. */
     backends: GrpcBackend[];
+    /**
+     * Connection-based session affinity configuration.
+     *
+     * For now, a connection is defined only by an IP address of the client.
+     */
+    connection: ConnectionSessionAffinity | undefined;
+    /** HTTP-header-field-based session affinity configuration. */
+    header: HeaderSessionAffinity | undefined;
+    /** Cookie-based session affinity configuration. */
+    cookie: CookieSessionAffinity | undefined;
 }
+/** A resource for HTTP-header-field-based session affinity configuration. */
 export interface HeaderSessionAffinity {
+    /** Name of the HTTP header field that is used for session affinity. */
     headerName: string;
 }
+/** A resource for cookie-based session affinity configuration. */
 export interface CookieSessionAffinity {
+    /** Name of the cookie that is used for session affinity. */
     name: string;
-    /** If not set, session cookie will be used (not persisted between browser restarts). */
+    /**
+     * Maximum age of cookies that are generated for sessions (persistent cookies).
+     *
+     * If not set, session cookies are used, which are stored by clients in temporary memory and are deleted
+     * on client restarts.
+     */
     ttl: Duration | undefined;
 }
+/** A resource for connection-based session affinity configuration. */
 export interface ConnectionSessionAffinity {
+    /** Specifies whether an IP address of the client is used to define a connection for session affinity. */
     sourceIp: boolean;
 }
 /** A load balancing configuration resource. */
@@ -96,6 +177,25 @@ export interface LoadBalancingConfig {
      * Default value: `false`.
      */
     strictLocality: boolean;
+    /**
+     * Load balancing mode for the backend.
+     *
+     * For detals about load balancing modes, see
+     * [documentation](/docs/application-load-balancer/concepts/backend-group#balancing-mode).
+     */
+    mode: LoadBalancingMode;
+}
+/** A stream backend resource. */
+export interface StreamBackend {
+    name: string;
+    /** If not set, backend will be disabled. */
+    backendWeight: number | undefined;
+    loadBalancingConfig: LoadBalancingConfig | undefined;
+    /** Optional alternative port for all targets. */
+    port: number;
+    targetGroups: TargetGroupsBackend | undefined;
+    healthchecks: HealthCheck[];
+    tls: BackendTls | undefined;
 }
 /** An HTTP backend resource. */
 export interface HttpBackend {
@@ -107,15 +207,26 @@ export interface HttpBackend {
      * Weights must be set either for all backends in a group or for none of them.
      * Setting no weights is the same as setting equal non-zero weights for all backends.
      *
-     * If set to `0`, traffic is not sent to the backend.
+     * If the weight is non-positive, traffic is not sent to the backend.
      */
     backendWeight: number | undefined;
     /** Load balancing configuration for the backend. */
     loadBalancingConfig: LoadBalancingConfig | undefined;
     /** Port used by all targets to receive traffic. */
     port: number;
-    /** Target groups that belong to the backend. */
+    /**
+     * Target groups that belong to the backend. For details about target groups, see
+     * [documentation](/docs/application-load-balancer/concepts/target-group).
+     */
     targetGroups: TargetGroupsBackend | undefined;
+    /**
+     * Object Storage bucket to use as the backend. For details about buckets, see
+     * [documentation](/docs/storage/concepts/bucket).
+     *
+     * If a bucket is used as a backend, the list of bucket objects and the objects themselves must be publicly
+     * accessible. For instructions, see [documentation](/docs/storage/operations/buckets/bucket-availability).
+     */
+    storageBucket: StorageBucketBackend | undefined;
     /**
      * Health checks to perform on targets from target groups.
      * For details about health checking, see [documentation](/docs/application-load-balancer/concepts/backend-group#health-checks).
@@ -148,7 +259,7 @@ export interface GrpcBackend {
      * Weights must be set either for all backends of a group or for none of them.
      * Setting no weights is the same as setting equal non-zero weights for all backends.
      *
-     * If set to `0`, traffic is not sent to the backend.
+     * If the weight is non-positive, traffic is not sent to the backend.
      */
     backendWeight: number | undefined;
     /** Load balancing configuration for the backend. */
@@ -188,6 +299,14 @@ export interface BackendTls {
     sni: string;
     /** Validation context for TLS connections. */
     validationContext: ValidationContext | undefined;
+}
+/**
+ * A resource for Object Storage bucket used as a backend. For details about the concept,
+ * see [documentation](/docs/storage/concepts/bucket).
+ */
+export interface StorageBucketBackend {
+    /** Name of the bucket. */
+    bucket: string;
 }
 /**
  * A health check resource.
@@ -294,6 +413,13 @@ export declare const BackendGroup_LabelsEntry: {
     toJSON(message: BackendGroup_LabelsEntry): unknown;
     fromPartial(object: DeepPartial<BackendGroup_LabelsEntry>): BackendGroup_LabelsEntry;
 };
+export declare const StreamBackendGroup: {
+    encode(message: StreamBackendGroup, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number | undefined): StreamBackendGroup;
+    fromJSON(object: any): StreamBackendGroup;
+    toJSON(message: StreamBackendGroup): unknown;
+    fromPartial(object: DeepPartial<StreamBackendGroup>): StreamBackendGroup;
+};
 export declare const HttpBackendGroup: {
     encode(message: HttpBackendGroup, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): HttpBackendGroup;
@@ -336,6 +462,13 @@ export declare const LoadBalancingConfig: {
     toJSON(message: LoadBalancingConfig): unknown;
     fromPartial(object: DeepPartial<LoadBalancingConfig>): LoadBalancingConfig;
 };
+export declare const StreamBackend: {
+    encode(message: StreamBackend, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number | undefined): StreamBackend;
+    fromJSON(object: any): StreamBackend;
+    toJSON(message: StreamBackend): unknown;
+    fromPartial(object: DeepPartial<StreamBackend>): StreamBackend;
+};
 export declare const HttpBackend: {
     encode(message: HttpBackend, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): HttpBackend;
@@ -363,6 +496,13 @@ export declare const BackendTls: {
     fromJSON(object: any): BackendTls;
     toJSON(message: BackendTls): unknown;
     fromPartial(object: DeepPartial<BackendTls>): BackendTls;
+};
+export declare const StorageBucketBackend: {
+    encode(message: StorageBucketBackend, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number | undefined): StorageBucketBackend;
+    fromJSON(object: any): StorageBucketBackend;
+    toJSON(message: StorageBucketBackend): unknown;
+    fromPartial(object: DeepPartial<StorageBucketBackend>): StorageBucketBackend;
 };
 export declare const HealthCheck: {
     encode(message: HealthCheck, writer?: _m0.Writer): _m0.Writer;

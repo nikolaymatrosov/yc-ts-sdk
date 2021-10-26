@@ -1,15 +1,23 @@
-import { ChannelCredentials, credentials, Metadata, ServiceDefinition } from '@grpc/grpc-js';
-import { EndpointResolver } from './endpoint';
-
-import { MetadataTokenService } from './TokenService/metadataTokenService';
-import { IamTokenService, IIAmCredentials } from './TokenService/iamTokenService';
-import { CreateIamTokenRequest, IamTokenServiceService } from '../generated/yandex/cloud/iam/v1/iam_token_service';
-
-import './operation';
-
 import * as iam from '../api/iam/v1';
-import { Client, createChannel, createClient } from 'nice-grpc';
+import {
+    CreateIamTokenRequest,
+    IamTokenServiceService,
+} from '../generated/yandex/cloud/iam/v1/iam_token_service';
 import { ITokenService } from './TokenService/ITokenService';
+import {
+    IamTokenService,
+    IIAmCredentials,
+} from './TokenService/iamTokenService';
+import { MetadataTokenService } from './TokenService/metadataTokenService';
+import { EndpointResolver } from './endpoint';
+import './operation';
+import {
+    ChannelCredentials,
+    credentials,
+    Metadata,
+    ServiceDefinition,
+} from '@grpc/grpc-js';
+import { Client, createChannel, createClient } from 'nice-grpc';
 
 export interface GenericConfig {
     pollInterval?: number;
@@ -29,7 +37,7 @@ export interface ServiceAccountCredentialsConfig extends GenericConfig {
 
 export type SdkServiceDefinition<T> = ServiceDefinition<T> & {
     __endpointId: string;
-}
+};
 
 async function createIamToken(iamEndpoint: string, req: any) {
     const channel = createChannel(iamEndpoint, credentials.createSsl());
@@ -38,25 +46,34 @@ async function createIamToken(iamEndpoint: string, req: any) {
     return resp.iamToken;
 }
 
-type SessionConfig = OAuthCredentialsConfig
+type SessionConfig =
+    | OAuthCredentialsConfig
     | IamTokenCredentialsConfig
     | ServiceAccountCredentialsConfig
     | GenericConfig;
 
-function isOAuthCredentialsConfig(config: SessionConfig): config is OAuthCredentialsConfig {
+function isOAuthCredentialsConfig(
+    config: SessionConfig
+): config is OAuthCredentialsConfig {
     return 'oauthToken' in config;
 }
 
-function isIamTokenCredentialsConfig(config: SessionConfig): config is IamTokenCredentialsConfig {
+function isIamTokenCredentialsConfig(
+    config: SessionConfig
+): config is IamTokenCredentialsConfig {
     return 'iamToken' in config;
 }
 
-function isServiceAccountCredentialsConfig(config: SessionConfig): config is ServiceAccountCredentialsConfig {
+function isServiceAccountCredentialsConfig(
+    config: SessionConfig
+): config is ServiceAccountCredentialsConfig {
     return 'serviceAccountJson' in config;
 }
 
-
-function newTokenCreator(config: SessionConfig, iamEndpoint: string): () => Promise<string> {
+function newTokenCreator(
+    config: SessionConfig,
+    iamEndpoint: string
+): () => Promise<string> {
     if (isOAuthCredentialsConfig(config)) {
         return () => {
             return createIamToken(iamEndpoint, {
@@ -86,7 +103,9 @@ function newChannelCredentials(tokenCreator: TokenCreator) {
     return credentials.combineChannelCredentials(
         credentials.createSsl(),
         credentials.createFromMetadataGenerator(
-            (params: { service_url: string }, callback: (error: any, result?: any) => void,
+            (
+                params: { service_url: string },
+                callback: (error: any, result?: any) => void
             ) => {
                 tokenCreator()
                     .then((token) => {
@@ -97,7 +116,8 @@ function newChannelCredentials(tokenCreator: TokenCreator) {
                     .catch((e) => {
                         return callback(e);
                     });
-            }),
+            }
+        )
     );
 }
 
@@ -107,21 +127,23 @@ const defaultConfig: SessionConfig = {
 
 export type TokenCreator = () => Promise<string>;
 
-
-export type SdkRestServiceImp<T> = new(address: string, credentials: any, options: any, tokenCreator: TokenCreator) => T;
+export type SdkRestServiceImp<T> = new (
+    address: string,
+    credentials: any,
+    options: any,
+    tokenCreator: TokenCreator
+) => T;
 
 export type SdkRestServiceDefinition<T> = SdkRestServiceImp<T> & {
     __endpointId: string;
-}
+};
 
 export class Session {
     private config: SessionConfig;
     private endpointResolver: EndpointResolver;
     private channelCredentials: ChannelCredentials;
 
-    constructor(
-        config?: SessionConfig,
-    ) {
+    constructor(config?: SessionConfig) {
         this.config = {
             ...defaultConfig,
             ...config,
@@ -129,7 +151,7 @@ export class Session {
         this.endpointResolver = new EndpointResolver();
         this._tokenCreator = newTokenCreator(
             this.config,
-            this.endpointResolver.resolve('iam'),
+            this.endpointResolver.resolve('iam')
         );
         this.channelCredentials = newChannelCredentials(this._tokenCreator);
     }
@@ -148,13 +170,23 @@ export class Session {
         await this.endpointResolver.updateEndpointList(newEndpoint);
     }
 
-    client<Service extends ServiceDefinition<T>, T>(cls: SdkServiceDefinition<T>): Client<ServiceDefinition<T>, {}> {
-        const channel = createChannel(this.endpointResolver.resolve(cls.__endpointId), this.channelCredentials);
+    client<Service extends ServiceDefinition<T>, T>(
+        cls: SdkServiceDefinition<T>
+    ): Client<ServiceDefinition<T>, {}> {
+        const channel = createChannel(
+            this.endpointResolver.resolve(cls.__endpointId),
+            this.channelCredentials
+        );
 
         return createClient(cls as ServiceDefinition<T>, channel);
     }
 
     restClient<T>(cls: SdkRestServiceDefinition<T>) {
-        return new cls(this.endpointResolver.resolve(cls.__endpointId), this.channelCredentials, this.config, this._tokenCreator);
+        return new cls(
+            this.endpointResolver.resolve(cls.__endpointId),
+            this.channelCredentials,
+            this.config,
+            this._tokenCreator
+        );
     }
 }

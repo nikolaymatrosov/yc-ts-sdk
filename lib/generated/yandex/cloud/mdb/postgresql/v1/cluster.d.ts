@@ -157,6 +157,8 @@ export interface ClusterConfig {
     autofailover: boolean | undefined;
     /** Time to start the daily backup, in the UTC timezone. */
     backupWindowStart: TimeOfDay | undefined;
+    /** Retention policy of automated backups. */
+    backupRetainPeriodDays: number | undefined;
     /** Access policy to DB */
     access: Access | undefined;
     /** Configuration of the performance diagnostics service. */

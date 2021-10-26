@@ -3,8 +3,7 @@ export interface Cls {
 }
 
 export interface Registry {
-    [key: string]: Registry | Cls
-
+    [key: string]: Registry | Cls;
 }
 
 const REGISTRY: Registry = {};

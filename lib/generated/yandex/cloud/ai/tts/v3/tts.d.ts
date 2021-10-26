@@ -49,7 +49,7 @@ export interface AudioVariable {
     variableName: string;
     /** Start time of the variable in milliseconds. */
     variableStartMs: number;
-    /** Lenght of the variable in milliseconds. */
+    /** Length of the variable in milliseconds. */
     variableLengthMs: number;
 }
 export interface UtteranceSynthesisResponse {
@@ -89,25 +89,36 @@ export interface Hints {
     audioTemplate: AudioTemplate | undefined;
     /** hint to change speed */
     speed: number | undefined;
-    /** hint to regulate volume */
+    /** hint to regulate volume. For LOUDNESS_NORMALIZATION_TYPE_UNSPECIFIED normalization will use MAX_PEAK, if volume in (0, 1], LUFS if volume in [-145, 0). */
     volume: number | undefined;
 }
 export interface UtteranceSynthesisRequest {
     /**
      * The name of the model.
      *
-     * Currently avalible only `general`.
+     * Specifies basic synthesis functionality. Currently should be empty.
      */
     model: string;
     /** Raw text (e.g. "Hello, Alice"). */
     text: string | undefined;
-    /** Text template instalce, e.g. `{"Hello, {username}" with username="Alice"}`. */
+    /** Text template instance, e.g. `{"Hello, {username}" with username="Alice"}`. */
     textTemplate: TextTemplate | undefined;
     /** Optional hints for synthesis. */
     hints: Hints[];
     /** Optional. Default: 22050 Hz, linear 16-bit signed little-endian PCM, with WAV header */
     outputAudioSpec: AudioFormatOptions | undefined;
+    /** Optional. Default: LUFS, type of loudness normalization, default value -19. */
+    loudnessNormalizationType: UtteranceSynthesisRequest_LoudnessNormalizationType;
 }
+/** Normalization type */
+export declare enum UtteranceSynthesisRequest_LoudnessNormalizationType {
+    LOUDNESS_NORMALIZATION_TYPE_UNSPECIFIED = 0,
+    MAX_PEAK = 1,
+    LUFS = 2,
+    UNRECOGNIZED = -1
+}
+export declare function utteranceSynthesisRequest_LoudnessNormalizationTypeFromJSON(object: any): UtteranceSynthesisRequest_LoudnessNormalizationType;
+export declare function utteranceSynthesisRequest_LoudnessNormalizationTypeToJSON(object: UtteranceSynthesisRequest_LoudnessNormalizationType): string;
 export declare const AudioContent: {
     encode(message: AudioContent, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): AudioContent;

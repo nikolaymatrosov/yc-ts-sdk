@@ -3,6 +3,7 @@ import { Mongodconfigset36, Mongocfgconfigset36, Mongosconfigset36 } from '../..
 import { Mongodconfigset40, Mongocfgconfigset40, Mongosconfigset40 } from '../../../../../yandex/cloud/mdb/mongodb/v1/config/mongodb4_0';
 import { Mongodconfigset42, Mongocfgconfigset42, Mongosconfigset42 } from '../../../../../yandex/cloud/mdb/mongodb/v1/config/mongodb4_2';
 import { Mongodconfigset44, Mongocfgconfigset44, Mongosconfigset44 } from '../../../../../yandex/cloud/mdb/mongodb/v1/config/mongodb4_4';
+import { Mongodconfigset50, Mongocfgconfigset50, Mongosconfigset50 } from '../../../../../yandex/cloud/mdb/mongodb/v1/config/mongodb5_0';
 import { MaintenanceWindow, MaintenanceOperation } from '../../../../../yandex/cloud/mdb/mongodb/v1/maintenance';
 import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.mdb.mongodb.v1";
@@ -116,7 +117,7 @@ export interface Monitoring {
     link: string;
 }
 export interface ClusterConfig {
-    /** Version of MongoDB server software. Possible values: `3.6`, `4.0`, `4.2`, `4.4`. */
+    /** Version of MongoDB server software. Possible values: `3.6`, `4.0`, `4.2`, `4.4`, `5.0`. */
     version: string;
     /**
      * MongoDB feature compatibility version. See usage details in [MongoDB documentation](https://docs.mongodb.com/manual/reference/command/setFeatureCompatibilityVersion/).
@@ -126,6 +127,7 @@ export interface ClusterConfig {
      * * `4.0` - persist data compatibility for version 4.0. After setting this option the data will not be compatible with 3.6 or lower.
      * * `4.2` - persist data compatibility for version 4.2. After setting this option the data will not be compatible with 4.0 or lower.
      * * `4.4` - persist data compatibility for version 4.4. After setting this option the data will not be compatible with 4.2 or lower.
+     * * `5.0` - persist data compatibility for version 5.0. After setting this option the data will not be compatible with 5.0 or lower.
      */
     featureCompatibilityVersion: string;
     /** Configuration and resource allocation for a MongoDB 3.6 cluster. */
@@ -136,6 +138,8 @@ export interface ClusterConfig {
     mongodb42: Mongodb42 | undefined;
     /** Configuration and resource allocation for a MongoDB 4.4 cluster. */
     mongodb44: Mongodb44 | undefined;
+    /** Configuration and resource allocation for a MongoDB 5.0 cluster. */
+    mongodb50: Mongodb50 | undefined;
     /** Time to start the daily backup, in the UTC timezone. */
     backupWindowStart: TimeOfDay | undefined;
     /** Retain period of automatically created backup in days */
@@ -274,6 +278,40 @@ export interface Mongodb44_Mongos {
 export interface Mongodb44_MongoInfra {
     configMongos: Mongosconfigset44 | undefined;
     configMongocfg: Mongocfgconfigset44 | undefined;
+    /** Resources allocated to mongoinfra (mongos+mongocfg) hosts. */
+    resources: Resources | undefined;
+}
+export interface Mongodb50 {
+    /** Configuration and resource allocation for mongod in a MongoDB 5.0 cluster. */
+    mongod: Mongodb50_Mongod | undefined;
+    /** Configuration and resource allocation for mongocfg in a MongoDB 5.0 cluster. */
+    mongocfg: Mongodb50_MongoCfg | undefined;
+    /** Configuration and resource allocation for mongos in a MongoDB 5.0 cluster. */
+    mongos: Mongodb50_Mongos | undefined;
+    /** Configuration and resource allocation for mongoinfra (mongos+mongocfg) in a MongoDB 5.0 cluster. */
+    mongoinfra: Mongodb50_MongoInfra | undefined;
+}
+export interface Mongodb50_Mongod {
+    /** Configuration for mongod 5.0 hosts. */
+    config: Mongodconfigset50 | undefined;
+    /** Resources allocated to mongod hosts. */
+    resources: Resources | undefined;
+}
+export interface Mongodb50_MongoCfg {
+    /** Configuration for mongocfg 5.0 hosts. */
+    config: Mongocfgconfigset50 | undefined;
+    /** Resources allocated to mongocfg hosts. */
+    resources: Resources | undefined;
+}
+export interface Mongodb50_Mongos {
+    /** Configuration for mongos 5.0 hosts. */
+    config: Mongosconfigset50 | undefined;
+    /** Resources allocated to mongos hosts. */
+    resources: Resources | undefined;
+}
+export interface Mongodb50_MongoInfra {
+    configMongos: Mongosconfigset50 | undefined;
+    configMongocfg: Mongocfgconfigset50 | undefined;
     /** Resources allocated to mongoinfra (mongos+mongocfg) hosts. */
     resources: Resources | undefined;
 }
@@ -567,6 +605,41 @@ export declare const Mongodb44_MongoInfra: {
     fromJSON(object: any): Mongodb44_MongoInfra;
     toJSON(message: Mongodb44_MongoInfra): unknown;
     fromPartial(object: DeepPartial<Mongodb44_MongoInfra>): Mongodb44_MongoInfra;
+};
+export declare const Mongodb50: {
+    encode(message: Mongodb50, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Mongodb50;
+    fromJSON(object: any): Mongodb50;
+    toJSON(message: Mongodb50): unknown;
+    fromPartial(object: DeepPartial<Mongodb50>): Mongodb50;
+};
+export declare const Mongodb50_Mongod: {
+    encode(message: Mongodb50_Mongod, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Mongodb50_Mongod;
+    fromJSON(object: any): Mongodb50_Mongod;
+    toJSON(message: Mongodb50_Mongod): unknown;
+    fromPartial(object: DeepPartial<Mongodb50_Mongod>): Mongodb50_Mongod;
+};
+export declare const Mongodb50_MongoCfg: {
+    encode(message: Mongodb50_MongoCfg, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Mongodb50_MongoCfg;
+    fromJSON(object: any): Mongodb50_MongoCfg;
+    toJSON(message: Mongodb50_MongoCfg): unknown;
+    fromPartial(object: DeepPartial<Mongodb50_MongoCfg>): Mongodb50_MongoCfg;
+};
+export declare const Mongodb50_Mongos: {
+    encode(message: Mongodb50_Mongos, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Mongodb50_Mongos;
+    fromJSON(object: any): Mongodb50_Mongos;
+    toJSON(message: Mongodb50_Mongos): unknown;
+    fromPartial(object: DeepPartial<Mongodb50_Mongos>): Mongodb50_Mongos;
+};
+export declare const Mongodb50_MongoInfra: {
+    encode(message: Mongodb50_MongoInfra, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Mongodb50_MongoInfra;
+    fromJSON(object: any): Mongodb50_MongoInfra;
+    toJSON(message: Mongodb50_MongoInfra): unknown;
+    fromPartial(object: DeepPartial<Mongodb50_MongoInfra>): Mongodb50_MongoInfra;
 };
 export declare const Shard: {
     encode(message: Shard, writer?: _m0.Writer): _m0.Writer;

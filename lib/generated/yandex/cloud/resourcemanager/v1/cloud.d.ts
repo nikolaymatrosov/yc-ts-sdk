@@ -10,6 +10,16 @@ export interface Cloud {
     name: string;
     /** Description of the cloud. 0-256 characters long. */
     description: string;
+    /** ID of the organization that the cloud belongs to. */
+    organizationId: string;
+    /** Resource labels as `` key:value `` pairs. Maximum of 64 per resource. */
+    labels: {
+        [key: string]: string;
+    };
+}
+export interface Cloud_LabelsEntry {
+    key: string;
+    value: string;
 }
 export declare const Cloud: {
     encode(message: Cloud, writer?: _m0.Writer): _m0.Writer;
@@ -17,6 +27,13 @@ export declare const Cloud: {
     fromJSON(object: any): Cloud;
     toJSON(message: Cloud): unknown;
     fromPartial(object: DeepPartial<Cloud>): Cloud;
+};
+export declare const Cloud_LabelsEntry: {
+    encode(message: Cloud_LabelsEntry, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Cloud_LabelsEntry;
+    fromJSON(object: any): Cloud_LabelsEntry;
+    toJSON(message: Cloud_LabelsEntry): unknown;
+    fromPartial(object: DeepPartial<Cloud_LabelsEntry>): Cloud_LabelsEntry;
 };
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {

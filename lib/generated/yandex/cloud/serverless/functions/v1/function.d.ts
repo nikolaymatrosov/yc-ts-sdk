@@ -148,6 +148,11 @@ export interface ScalingPolicy {
     /** Modification timestamp for the scaling policy */
     modifiedAt: Date | undefined;
     /**
+     * Minimum guaranteed provisioned instances count for all zones in total.
+     * Billed separately.
+     */
+    provisionedInstancesCount: number;
+    /**
      * Upper limit for instance count in each zone.
      * 0 means no limit.
      */

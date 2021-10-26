@@ -2,6 +2,8 @@
 import { FieldMask } from '../../../../google/protobuf/field_mask';
 import { Operation } from '../../../../yandex/cloud/operation/operation';
 import { Network } from '../../../../yandex/cloud/vpc/v1/network';
+import { RouteTable } from '../../../../yandex/cloud/vpc/v1/route_table';
+import { SecurityGroup } from '../../../../yandex/cloud/vpc/v1/security_group';
 import { Subnet } from '../../../../yandex/cloud/vpc/v1/subnet';
 import { ChannelCredentials, ChannelOptions, UntypedServiceImplementation, handleUnaryCall, Client, ClientUnaryCall, Metadata, CallOptions, ServiceError } from '@grpc/grpc-js';
 import _m0 from 'protobufjs/minimal';
@@ -148,6 +150,66 @@ export interface ListNetworkSubnetsResponse {
      */
     nextPageToken: string;
 }
+export interface ListNetworkSecurityGroupsRequest {
+    /** ID of the Network resource to list security groups for. */
+    networkId: string;
+    /**
+     * The maximum number of results per page that should be returned. If the number of available
+     * results is larger than [page_size],
+     * the service returns a [ListNetworkSecurityGroupsResponse.next_page_token]
+     * that can be used to get the next page of results in subsequent list requests. Default value: 100.
+     */
+    pageSize: number;
+    /**
+     * Page token. Set [page_token]
+     * to the [ListNetworkSecurityGroupsResponse.next_page_token]
+     * returned by a previous list request to get the next page of results.
+     */
+    pageToken: string;
+}
+export interface ListNetworkSecurityGroupsResponse {
+    /** List of security groups that belong to the network which is specified in the request. */
+    securityGroups: SecurityGroup[];
+    /**
+     * This token allows you to get the next page of results for list requests. If the number of results
+     * is larger than [ListNetworkSecurityGroupsRequest.page_size], use
+     * the [next_page_token] as the value
+     * for the [ListNetworkSecurityGroupsRequest.page_token] query parameter
+     * in the next list request. Subsequent list requests will have their own
+     * [next_page_token] to continue paging through the results.
+     */
+    nextPageToken: string;
+}
+export interface ListNetworkRouteTablesRequest {
+    /** ID of the Network resource to list route tables for. */
+    networkId: string;
+    /**
+     * The maximum number of results per page that should be returned. If the number of available
+     * results is larger than [page_size],
+     * the service returns a [ListNetworkRouteTablesResponse.next_page_token]
+     * that can be used to get the next page of results in subsequent list requests. Default value: 100.
+     */
+    pageSize: number;
+    /**
+     * Page token. Set [page_token]
+     * to the [ListNetworkRouteTablesResponse.next_page_token]
+     * returned by a previous list request to get the next page of results.
+     */
+    pageToken: string;
+}
+export interface ListNetworkRouteTablesResponse {
+    /** List of route tables that belong to the network which is specified in the request. */
+    routeTables: RouteTable[];
+    /**
+     * This token allows you to get the next page of results for list requests. If the number of results
+     * is larger than [ListNetworkRouteTablesRequest.page_size], use
+     * the [next_page_token] as the value
+     * for the [ListNetworkRouteTablesRequest.page_token] query parameter
+     * in the next list request. Subsequent list requests will have their own
+     * [next_page_token] to continue paging through the results.
+     */
+    nextPageToken: string;
+}
 export interface ListNetworkOperationsRequest {
     /** ID of the Network resource to list operations for. */
     networkId: string;
@@ -275,6 +337,34 @@ export declare const ListNetworkSubnetsResponse: {
     toJSON(message: ListNetworkSubnetsResponse): unknown;
     fromPartial(object: DeepPartial<ListNetworkSubnetsResponse>): ListNetworkSubnetsResponse;
 };
+export declare const ListNetworkSecurityGroupsRequest: {
+    encode(message: ListNetworkSecurityGroupsRequest, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListNetworkSecurityGroupsRequest;
+    fromJSON(object: any): ListNetworkSecurityGroupsRequest;
+    toJSON(message: ListNetworkSecurityGroupsRequest): unknown;
+    fromPartial(object: DeepPartial<ListNetworkSecurityGroupsRequest>): ListNetworkSecurityGroupsRequest;
+};
+export declare const ListNetworkSecurityGroupsResponse: {
+    encode(message: ListNetworkSecurityGroupsResponse, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListNetworkSecurityGroupsResponse;
+    fromJSON(object: any): ListNetworkSecurityGroupsResponse;
+    toJSON(message: ListNetworkSecurityGroupsResponse): unknown;
+    fromPartial(object: DeepPartial<ListNetworkSecurityGroupsResponse>): ListNetworkSecurityGroupsResponse;
+};
+export declare const ListNetworkRouteTablesRequest: {
+    encode(message: ListNetworkRouteTablesRequest, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListNetworkRouteTablesRequest;
+    fromJSON(object: any): ListNetworkRouteTablesRequest;
+    toJSON(message: ListNetworkRouteTablesRequest): unknown;
+    fromPartial(object: DeepPartial<ListNetworkRouteTablesRequest>): ListNetworkRouteTablesRequest;
+};
+export declare const ListNetworkRouteTablesResponse: {
+    encode(message: ListNetworkRouteTablesResponse, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListNetworkRouteTablesResponse;
+    fromJSON(object: any): ListNetworkRouteTablesResponse;
+    toJSON(message: ListNetworkRouteTablesResponse): unknown;
+    fromPartial(object: DeepPartial<ListNetworkRouteTablesResponse>): ListNetworkRouteTablesResponse;
+};
 export declare const ListNetworkOperationsRequest: {
     encode(message: ListNetworkOperationsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListNetworkOperationsRequest;
@@ -375,6 +465,26 @@ export declare const NetworkServiceService: {
         readonly responseSerialize: (value: ListNetworkSubnetsResponse) => Buffer;
         readonly responseDeserialize: (value: Buffer) => ListNetworkSubnetsResponse;
     };
+    /** Lists security groups from the specified network. */
+    readonly listSecurityGroups: {
+        readonly path: "/yandex.cloud.vpc.v1.NetworkService/ListSecurityGroups";
+        readonly requestStream: false;
+        readonly responseStream: false;
+        readonly requestSerialize: (value: ListNetworkSecurityGroupsRequest) => Buffer;
+        readonly requestDeserialize: (value: Buffer) => ListNetworkSecurityGroupsRequest;
+        readonly responseSerialize: (value: ListNetworkSecurityGroupsResponse) => Buffer;
+        readonly responseDeserialize: (value: Buffer) => ListNetworkSecurityGroupsResponse;
+    };
+    /** Lists route tables from the specified network. */
+    readonly listRouteTables: {
+        readonly path: "/yandex.cloud.vpc.v1.NetworkService/ListRouteTables";
+        readonly requestStream: false;
+        readonly responseStream: false;
+        readonly requestSerialize: (value: ListNetworkRouteTablesRequest) => Buffer;
+        readonly requestDeserialize: (value: Buffer) => ListNetworkRouteTablesRequest;
+        readonly responseSerialize: (value: ListNetworkRouteTablesResponse) => Buffer;
+        readonly responseDeserialize: (value: Buffer) => ListNetworkRouteTablesResponse;
+    };
     /** Lists operations for the specified network. */
     readonly listOperations: {
         readonly path: "/yandex.cloud.vpc.v1.NetworkService/ListOperations";
@@ -419,6 +529,10 @@ export interface NetworkServiceServer extends UntypedServiceImplementation {
     delete: handleUnaryCall<DeleteNetworkRequest, Operation>;
     /** Lists subnets from the specified network. */
     listSubnets: handleUnaryCall<ListNetworkSubnetsRequest, ListNetworkSubnetsResponse>;
+    /** Lists security groups from the specified network. */
+    listSecurityGroups: handleUnaryCall<ListNetworkSecurityGroupsRequest, ListNetworkSecurityGroupsResponse>;
+    /** Lists route tables from the specified network. */
+    listRouteTables: handleUnaryCall<ListNetworkRouteTablesRequest, ListNetworkRouteTablesResponse>;
     /** Lists operations for the specified network. */
     listOperations: handleUnaryCall<ListNetworkOperationsRequest, ListNetworkOperationsResponse>;
     /** Move network to another folder. */
@@ -459,6 +573,14 @@ export interface NetworkServiceClient extends Client {
     listSubnets(request: ListNetworkSubnetsRequest, callback: (error: ServiceError | null, response: ListNetworkSubnetsResponse) => void): ClientUnaryCall;
     listSubnets(request: ListNetworkSubnetsRequest, metadata: Metadata, callback: (error: ServiceError | null, response: ListNetworkSubnetsResponse) => void): ClientUnaryCall;
     listSubnets(request: ListNetworkSubnetsRequest, metadata: Metadata, options: Partial<CallOptions>, callback: (error: ServiceError | null, response: ListNetworkSubnetsResponse) => void): ClientUnaryCall;
+    /** Lists security groups from the specified network. */
+    listSecurityGroups(request: ListNetworkSecurityGroupsRequest, callback: (error: ServiceError | null, response: ListNetworkSecurityGroupsResponse) => void): ClientUnaryCall;
+    listSecurityGroups(request: ListNetworkSecurityGroupsRequest, metadata: Metadata, callback: (error: ServiceError | null, response: ListNetworkSecurityGroupsResponse) => void): ClientUnaryCall;
+    listSecurityGroups(request: ListNetworkSecurityGroupsRequest, metadata: Metadata, options: Partial<CallOptions>, callback: (error: ServiceError | null, response: ListNetworkSecurityGroupsResponse) => void): ClientUnaryCall;
+    /** Lists route tables from the specified network. */
+    listRouteTables(request: ListNetworkRouteTablesRequest, callback: (error: ServiceError | null, response: ListNetworkRouteTablesResponse) => void): ClientUnaryCall;
+    listRouteTables(request: ListNetworkRouteTablesRequest, metadata: Metadata, callback: (error: ServiceError | null, response: ListNetworkRouteTablesResponse) => void): ClientUnaryCall;
+    listRouteTables(request: ListNetworkRouteTablesRequest, metadata: Metadata, options: Partial<CallOptions>, callback: (error: ServiceError | null, response: ListNetworkRouteTablesResponse) => void): ClientUnaryCall;
     /** Lists operations for the specified network. */
     listOperations(request: ListNetworkOperationsRequest, callback: (error: ServiceError | null, response: ListNetworkOperationsResponse) => void): ClientUnaryCall;
     listOperations(request: ListNetworkOperationsRequest, metadata: Metadata, callback: (error: ServiceError | null, response: ListNetworkOperationsResponse) => void): ClientUnaryCall;

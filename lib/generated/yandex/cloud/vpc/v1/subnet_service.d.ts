@@ -125,6 +125,34 @@ export interface UpdateSubnetMetadata {
     /** ID of the Subnet resource that is being updated. */
     subnetId: string;
 }
+export interface AddSubnetCidrBlocksRequest {
+    /** ID of the Subnet resource that is being updated. */
+    subnetId: string;
+    /**
+     * CIDR block.
+     * The range of internal addresses that should be added to this subnet.
+     * For example, 10.0.0.0/22 or 192.168.0.0/24.
+     * Minimum subnet size is /28, maximum subnet size is /16.
+     */
+    v4CidrBlocks: string[];
+}
+export interface AddSubnetCidrBlocksMetadata {
+    /** ID of the Subnet resource that is being updated. */
+    subnetId: string;
+}
+export interface RemoveSubnetCidrBlocksRequest {
+    /** ID of the Subnet resource that is being updated. */
+    subnetId: string;
+    /**
+     * CIDR block.
+     * The range of internal addresses that are removed from this subnet.
+     */
+    v4CidrBlocks: string[];
+}
+export interface RemoveSubnetCidrBlocksMetadata {
+    /** ID of the Subnet resource that is being updated. */
+    subnetId: string;
+}
 export interface DeleteSubnetRequest {
     /**
      * ID of the subnet to delete.
@@ -250,6 +278,34 @@ export declare const UpdateSubnetMetadata: {
     toJSON(message: UpdateSubnetMetadata): unknown;
     fromPartial(object: DeepPartial<UpdateSubnetMetadata>): UpdateSubnetMetadata;
 };
+export declare const AddSubnetCidrBlocksRequest: {
+    encode(message: AddSubnetCidrBlocksRequest, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number | undefined): AddSubnetCidrBlocksRequest;
+    fromJSON(object: any): AddSubnetCidrBlocksRequest;
+    toJSON(message: AddSubnetCidrBlocksRequest): unknown;
+    fromPartial(object: DeepPartial<AddSubnetCidrBlocksRequest>): AddSubnetCidrBlocksRequest;
+};
+export declare const AddSubnetCidrBlocksMetadata: {
+    encode(message: AddSubnetCidrBlocksMetadata, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number | undefined): AddSubnetCidrBlocksMetadata;
+    fromJSON(object: any): AddSubnetCidrBlocksMetadata;
+    toJSON(message: AddSubnetCidrBlocksMetadata): unknown;
+    fromPartial(object: DeepPartial<AddSubnetCidrBlocksMetadata>): AddSubnetCidrBlocksMetadata;
+};
+export declare const RemoveSubnetCidrBlocksRequest: {
+    encode(message: RemoveSubnetCidrBlocksRequest, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number | undefined): RemoveSubnetCidrBlocksRequest;
+    fromJSON(object: any): RemoveSubnetCidrBlocksRequest;
+    toJSON(message: RemoveSubnetCidrBlocksRequest): unknown;
+    fromPartial(object: DeepPartial<RemoveSubnetCidrBlocksRequest>): RemoveSubnetCidrBlocksRequest;
+};
+export declare const RemoveSubnetCidrBlocksMetadata: {
+    encode(message: RemoveSubnetCidrBlocksMetadata, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number | undefined): RemoveSubnetCidrBlocksMetadata;
+    fromJSON(object: any): RemoveSubnetCidrBlocksMetadata;
+    toJSON(message: RemoveSubnetCidrBlocksMetadata): unknown;
+    fromPartial(object: DeepPartial<RemoveSubnetCidrBlocksMetadata>): RemoveSubnetCidrBlocksMetadata;
+};
 export declare const DeleteSubnetRequest: {
     encode(message: DeleteSubnetRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteSubnetRequest;
@@ -365,6 +421,32 @@ export declare const SubnetServiceService: {
         readonly responseSerialize: (value: Operation) => Buffer;
         readonly responseDeserialize: (value: Buffer) => Operation;
     };
+    /**
+     * Adds CIDR blocks to the specified subnet.
+     * Method starts an asynchronous operation that can be cancelled while it is in progress.
+     */
+    readonly addCidrBlocks: {
+        readonly path: "/yandex.cloud.vpc.v1.SubnetService/AddCidrBlocks";
+        readonly requestStream: false;
+        readonly responseStream: false;
+        readonly requestSerialize: (value: AddSubnetCidrBlocksRequest) => Buffer;
+        readonly requestDeserialize: (value: Buffer) => AddSubnetCidrBlocksRequest;
+        readonly responseSerialize: (value: Operation) => Buffer;
+        readonly responseDeserialize: (value: Buffer) => Operation;
+    };
+    /**
+     * Removes CIDR blocks from the specified subnet.
+     * Method starts an asynchronous operation that can be cancelled while it is in progress.
+     */
+    readonly removeCidrBlocks: {
+        readonly path: "/yandex.cloud.vpc.v1.SubnetService/RemoveCidrBlocks";
+        readonly requestStream: false;
+        readonly responseStream: false;
+        readonly requestSerialize: (value: RemoveSubnetCidrBlocksRequest) => Buffer;
+        readonly requestDeserialize: (value: Buffer) => RemoveSubnetCidrBlocksRequest;
+        readonly responseSerialize: (value: Operation) => Buffer;
+        readonly responseDeserialize: (value: Buffer) => Operation;
+    };
     /** Deletes the specified subnet. */
     readonly delete: {
         readonly path: "/yandex.cloud.vpc.v1.SubnetService/Delete";
@@ -425,6 +507,16 @@ export interface SubnetServiceServer extends UntypedServiceImplementation {
      * Method starts an asynchronous operation that can be cancelled while it is in progress.
      */
     update: handleUnaryCall<UpdateSubnetRequest, Operation>;
+    /**
+     * Adds CIDR blocks to the specified subnet.
+     * Method starts an asynchronous operation that can be cancelled while it is in progress.
+     */
+    addCidrBlocks: handleUnaryCall<AddSubnetCidrBlocksRequest, Operation>;
+    /**
+     * Removes CIDR blocks from the specified subnet.
+     * Method starts an asynchronous operation that can be cancelled while it is in progress.
+     */
+    removeCidrBlocks: handleUnaryCall<RemoveSubnetCidrBlocksRequest, Operation>;
     /** Deletes the specified subnet. */
     delete: handleUnaryCall<DeleteSubnetRequest, Operation>;
     /** List operations for the specified subnet. */
@@ -461,6 +553,20 @@ export interface SubnetServiceClient extends Client {
     update(request: UpdateSubnetRequest, callback: (error: ServiceError | null, response: Operation) => void): ClientUnaryCall;
     update(request: UpdateSubnetRequest, metadata: Metadata, callback: (error: ServiceError | null, response: Operation) => void): ClientUnaryCall;
     update(request: UpdateSubnetRequest, metadata: Metadata, options: Partial<CallOptions>, callback: (error: ServiceError | null, response: Operation) => void): ClientUnaryCall;
+    /**
+     * Adds CIDR blocks to the specified subnet.
+     * Method starts an asynchronous operation that can be cancelled while it is in progress.
+     */
+    addCidrBlocks(request: AddSubnetCidrBlocksRequest, callback: (error: ServiceError | null, response: Operation) => void): ClientUnaryCall;
+    addCidrBlocks(request: AddSubnetCidrBlocksRequest, metadata: Metadata, callback: (error: ServiceError | null, response: Operation) => void): ClientUnaryCall;
+    addCidrBlocks(request: AddSubnetCidrBlocksRequest, metadata: Metadata, options: Partial<CallOptions>, callback: (error: ServiceError | null, response: Operation) => void): ClientUnaryCall;
+    /**
+     * Removes CIDR blocks from the specified subnet.
+     * Method starts an asynchronous operation that can be cancelled while it is in progress.
+     */
+    removeCidrBlocks(request: RemoveSubnetCidrBlocksRequest, callback: (error: ServiceError | null, response: Operation) => void): ClientUnaryCall;
+    removeCidrBlocks(request: RemoveSubnetCidrBlocksRequest, metadata: Metadata, callback: (error: ServiceError | null, response: Operation) => void): ClientUnaryCall;
+    removeCidrBlocks(request: RemoveSubnetCidrBlocksRequest, metadata: Metadata, options: Partial<CallOptions>, callback: (error: ServiceError | null, response: Operation) => void): ClientUnaryCall;
     /** Deletes the specified subnet. */
     delete(request: DeleteSubnetRequest, callback: (error: ServiceError | null, response: Operation) => void): ClientUnaryCall;
     delete(request: DeleteSubnetRequest, metadata: Metadata, callback: (error: ServiceError | null, response: Operation) => void): ClientUnaryCall;

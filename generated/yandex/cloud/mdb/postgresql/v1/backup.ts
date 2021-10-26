@@ -10,7 +10,7 @@ export const protobufPackage = 'yandex.cloud.mdb.postgresql.v1';
  * the [Developer's Guide](/docs/managed-postgresql/concepts/backup).
  */
 export interface Backup {
-    /** ID of the backup. */
+    /** Required. ID of the backup. */
     id: string;
     /** ID of the folder that the backup belongs to. */
     folderId: string;
@@ -23,9 +23,106 @@ export interface Backup {
     sourceClusterId: string;
     /** Time when the backup operation was started. */
     startedAt: Date | undefined;
+    /** Size of backup in bytes */
+    size: number;
+    /** How this backup was created (manual/automatic/etc...) */
+    type: Backup_BackupCreationType;
+    /** Method of backup creation */
+    method: Backup_BackupMethod;
 }
 
-const baseBackup: object = { id: '', folderId: '', sourceClusterId: '' };
+export enum Backup_BackupMethod {
+    BACKUP_METHOD_UNSPECIFIED = 0,
+    /** BASE - Base backup */
+    BASE = 1,
+    /** INCREMENTAL - Delta (incremental) PostgreSQL backup */
+    INCREMENTAL = 2,
+    UNRECOGNIZED = -1,
+}
+
+export function backup_BackupMethodFromJSON(object: any): Backup_BackupMethod {
+    switch (object) {
+        case 0:
+        case 'BACKUP_METHOD_UNSPECIFIED':
+            return Backup_BackupMethod.BACKUP_METHOD_UNSPECIFIED;
+        case 1:
+        case 'BASE':
+            return Backup_BackupMethod.BASE;
+        case 2:
+        case 'INCREMENTAL':
+            return Backup_BackupMethod.INCREMENTAL;
+        case -1:
+        case 'UNRECOGNIZED':
+        default:
+            return Backup_BackupMethod.UNRECOGNIZED;
+    }
+}
+
+export function backup_BackupMethodToJSON(object: Backup_BackupMethod): string {
+    switch (object) {
+        case Backup_BackupMethod.BACKUP_METHOD_UNSPECIFIED:
+            return 'BACKUP_METHOD_UNSPECIFIED';
+        case Backup_BackupMethod.BASE:
+            return 'BASE';
+        case Backup_BackupMethod.INCREMENTAL:
+            return 'INCREMENTAL';
+        default:
+            return 'UNKNOWN';
+    }
+}
+
+export enum Backup_BackupCreationType {
+    BACKUP_CREATION_TYPE_UNSPECIFIED = 0,
+    /** AUTOMATED - Backup created by automated daily schedule */
+    AUTOMATED = 1,
+    /** MANUAL - Backup created by user request */
+    MANUAL = 2,
+    UNRECOGNIZED = -1,
+}
+
+export function backup_BackupCreationTypeFromJSON(
+    object: any
+): Backup_BackupCreationType {
+    switch (object) {
+        case 0:
+        case 'BACKUP_CREATION_TYPE_UNSPECIFIED':
+            return Backup_BackupCreationType.BACKUP_CREATION_TYPE_UNSPECIFIED;
+        case 1:
+        case 'AUTOMATED':
+            return Backup_BackupCreationType.AUTOMATED;
+        case 2:
+        case 'MANUAL':
+            return Backup_BackupCreationType.MANUAL;
+        case -1:
+        case 'UNRECOGNIZED':
+        default:
+            return Backup_BackupCreationType.UNRECOGNIZED;
+    }
+}
+
+export function backup_BackupCreationTypeToJSON(
+    object: Backup_BackupCreationType
+): string {
+    switch (object) {
+        case Backup_BackupCreationType.BACKUP_CREATION_TYPE_UNSPECIFIED:
+            return 'BACKUP_CREATION_TYPE_UNSPECIFIED';
+        case Backup_BackupCreationType.AUTOMATED:
+            return 'AUTOMATED';
+        case Backup_BackupCreationType.MANUAL:
+            return 'MANUAL';
+        default:
+            return 'UNKNOWN';
+    }
+}
+
+const baseBackup: object = {
+    id: '',
+    folderId: '',
+    sourceClusterId: '',
+    size: 0,
+    type: 0,
+    method: 0,
+};
 
 export const Backup = {
     encode(
@@ -52,6 +149,15 @@ export const Backup = {
                 toTimestamp(message.startedAt),
                 writer.uint32(42).fork()
             ).ldelim();
+        }
+        if (message.size !== 0) {
+            writer.uint32(48).int64(message.size);
+        }
+        if (message.type !== 0) {
+            writer.uint32(56).int32(message.type);
+        }
+        if (message.method !== 0) {
+            writer.uint32(64).int32(message.method);
         }
         return writer;
     },
@@ -82,6 +188,15 @@ export const Backup = {
                     message.startedAt = fromTimestamp(
                         Timestamp.decode(reader, reader.uint32())
                     );
+                    break;
+                case 6:
+                    message.size = longToNumber(reader.int64() as Long);
+                    break;
+                case 7:
+                    message.type = reader.int32() as any;
+                    break;
+                case 8:
+                    message.method = reader.int32() as any;
                     break;
                 default:
                     reader.skipType(tag & 7);
@@ -121,6 +236,21 @@ export const Backup = {
         } else {
             message.startedAt = undefined;
         }
+        if (object.size !== undefined && object.size !== null) {
+            message.size = Number(object.size);
+        } else {
+            message.size = 0;
+        }
+        if (object.type !== undefined && object.type !== null) {
+            message.type = backup_BackupCreationTypeFromJSON(object.type);
+        } else {
+            message.type = 0;
+        }
+        if (object.method !== undefined && object.method !== null) {
+            message.method = backup_BackupMethodFromJSON(object.method);
+        } else {
+            message.method = 0;
+        }
         return message;
     },
 
@@ -134,6 +264,11 @@ export const Backup = {
             (obj.sourceClusterId = message.sourceClusterId);
         message.startedAt !== undefined &&
             (obj.startedAt = message.startedAt.toISOString());
+        message.size !== undefined && (obj.size = message.size);
+        message.type !== undefined &&
+            (obj.type = backup_BackupCreationTypeToJSON(message.type));
+        message.method !== undefined &&
+            (obj.method = backup_BackupMethodToJSON(message.method));
         return obj;
     },
 
@@ -167,9 +302,34 @@ export const Backup = {
         } else {
             message.startedAt = undefined;
         }
+        if (object.size !== undefined && object.size !== null) {
+            message.size = object.size;
+        } else {
+            message.size = 0;
+        }
+        if (object.type !== undefined && object.type !== null) {
+            message.type = object.type;
+        } else {
+            message.type = 0;
+        }
+        if (object.method !== undefined && object.method !== null) {
+            message.method = object.method;
+        } else {
+            message.method = 0;
+        }
         return message;
     },
 };
+
+declare var self: any | undefined;
+declare var window: any | undefined;
+var globalThis: any = (() => {
+    if (typeof globalThis !== 'undefined') return globalThis;
+    if (typeof self !== 'undefined') return self;
+    if (typeof window !== 'undefined') return window;
+    if (typeof global !== 'undefined') return global;
+    throw 'Unable to locate global object';
+})();
 
 type Builtin =
     | Date
@@ -209,6 +369,15 @@ function fromJsonTimestamp(o: any): Date {
     } else {
         return fromTimestamp(Timestamp.fromJSON(o));
     }
+}
+
+function longToNumber(long: Long): number {
+    if (long.gt(Number.MAX_SAFE_INTEGER)) {
+        throw new globalThis.Error(
+            'Value is larger than Number.MAX_SAFE_INTEGER'
+        );
+    }
+    return long.toNumber();
 }
 
 if (_m0.util.Long !== Long) {

@@ -1,11 +1,9 @@
 /* tslint:disable:variable-name */
 // noinspection JSUnusedGlobalSymbols
-
-import { Session, TokenCreator } from 'src/index';
 import AWS, { DynamoDB } from 'aws-sdk';
 import { DocumentClient } from 'aws-sdk/lib/dynamodb/document_client';
+import { Session, TokenCreator } from 'src/index';
 import { DocAPIServiceSettings } from 'src/slydb/docapi/docAPIServiceSettings';
-
 
 class DocAPIService {
     private readonly _tokenCreator: TokenCreator;
@@ -29,15 +27,22 @@ class DocAPIService {
             */
             accessKeyId: 'fakeMyKeyId',
             secretAccessKey: 'fakeSecretAccessKey',
-
         });
         this.dynamoDb = new DynamoDB();
         this.documentClient = new DynamoDB.DocumentClient();
     }
 
-    async createTable(params: DynamoDB.CreateTableInput | ((err: AWS.AWSError, data: DynamoDB.CreateTableOutput) => void) | undefined) {
+    async createTable(
+        params:
+            | DynamoDB.CreateTableInput
+            | ((err: AWS.AWSError, data: DynamoDB.CreateTableOutput) => void)
+            | undefined
+    ) {
         const token = await this._tokenCreator();
-        return this.sendRequest(this.dynamoDb.createTable(params as DynamoDB.CreateTableInput), token);
+        return this.sendRequest(
+            this.dynamoDb.createTable(params as DynamoDB.CreateTableInput),
+            token
+        );
     }
 
     async deleteTable(params: DynamoDB.DeleteTableInput) {
@@ -54,7 +59,6 @@ class DocAPIService {
         const token = await this._tokenCreator();
         return this.sendRequest(this.dynamoDb.listTables(params), token);
     }
-
 
     async batchGetItem(params: DynamoDB.DocumentClient.BatchGetItemInput) {
         const token = await this._tokenCreator();
@@ -91,14 +95,21 @@ class DocAPIService {
         return this.sendRequest(this.documentClient.scan(params), token);
     }
 
-    async transactGetItems(params: DynamoDB.DocumentClient.TransactGetItemsInput) {
+    async transactGetItems(
+        params: DynamoDB.DocumentClient.TransactGetItemsInput
+    ) {
         const token = await this._tokenCreator();
         return this.sendRequest(this.documentClient.transactGet(params), token);
     }
 
-    async transactWriteItems(params: DynamoDB.DocumentClient.TransactWriteItemsInput) {
+    async transactWriteItems(
+        params: DynamoDB.DocumentClient.TransactWriteItemsInput
+    ) {
         const token = await this._tokenCreator();
-        return this.sendRequest(this.documentClient.transactWrite(params), token);
+        return this.sendRequest(
+            this.documentClient.transactWrite(params),
+            token
+        );
     }
 
     async updateItem(params: DynamoDB.DocumentClient.UpdateItemInput) {
@@ -106,12 +117,13 @@ class DocAPIService {
         return this.sendRequest(this.documentClient.update(params), token);
     }
 
-    sendRequest<T>(
-        request: AWS.Request<T, AWS.AWSError>,
-        token: string) {
-        request.on('sign', (req: { httpRequest: { headers: { [x: string]: string; }; }; }) => {
-            req.httpRequest.headers.Authorization = 'Bearer ' + token;
-        });
+    sendRequest<T>(request: AWS.Request<T, AWS.AWSError>, token: string) {
+        request.on(
+            'sign',
+            (req: { httpRequest: { headers: { [x: string]: string } } }) => {
+                req.httpRequest.headers.Authorization = 'Bearer ' + token;
+            }
+        );
         return new Promise((resolve, reject) => {
             request.send((err, out) => {
                 if (err) reject(err);
@@ -124,6 +136,3 @@ class DocAPIService {
 module.exports = {
     DocAPIService,
 };
-
-
-

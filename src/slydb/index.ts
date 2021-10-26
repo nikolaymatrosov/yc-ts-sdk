@@ -1,7 +1,15 @@
-import { Driver, getCredentialsFromEnv, getLogger, IAuthService } from 'ydb-sdk';
+import {
+    Driver,
+    getCredentialsFromEnv,
+    getLogger,
+    IAuthService,
+} from 'ydb-sdk';
 
-
-export function createDriver(database?: string, endpoint?: string, authService?: IAuthService) {
+export function createDriver(
+    database?: string,
+    endpoint?: string,
+    authService?: IAuthService
+) {
     if (!database) {
         database = process.env.YDB_DATABASE;
     }
@@ -15,7 +23,7 @@ export function createDriver(database?: string, endpoint?: string, authService?:
         authService = getCredentialsFromEnv(
             endpoint,
             database,
-            getLogger({ level: 'debug' }),
+            getLogger({ level: 'debug' })
         );
     }
     return new Driver(endpoint, database, authService);

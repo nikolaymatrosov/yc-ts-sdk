@@ -15,6 +15,14 @@ export interface ServiceAccount {
     name: string;
     /** Description of the service account. 0-256 characters long. */
     description: string;
+    /** Resource labels as `` key:value `` pairs. Maximum of 64 per resource. */
+    labels: {
+        [key: string]: string;
+    };
+}
+export interface ServiceAccount_LabelsEntry {
+    key: string;
+    value: string;
 }
 export declare const ServiceAccount: {
     encode(message: ServiceAccount, writer?: _m0.Writer): _m0.Writer;
@@ -22,6 +30,13 @@ export declare const ServiceAccount: {
     fromJSON(object: any): ServiceAccount;
     toJSON(message: ServiceAccount): unknown;
     fromPartial(object: DeepPartial<ServiceAccount>): ServiceAccount;
+};
+export declare const ServiceAccount_LabelsEntry: {
+    encode(message: ServiceAccount_LabelsEntry, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ServiceAccount_LabelsEntry;
+    fromJSON(object: any): ServiceAccount_LabelsEntry;
+    toJSON(message: ServiceAccount_LabelsEntry): unknown;
+    fromPartial(object: DeepPartial<ServiceAccount_LabelsEntry>): ServiceAccount_LabelsEntry;
 };
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
