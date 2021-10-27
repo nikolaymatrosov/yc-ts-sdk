@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "target": "es2019",
-    "module":"es2015",
+    "module": "commonjs",
     "moduleResolution": "Node",
     "declaration": true,
     "outDir": "./lib",
@@ -10,11 +10,21 @@
     "esModuleInterop": true,
     "baseUrl": ".",
     "paths": {
-      "cloud/*": ["generated/yandex/cloud/*"],
-      "src/*": ["src/*"]
+      "cloud/*": [
+        "generated/yandex/cloud/*"
+      ],
+      "src/*": [
+        "src/*"
+      ]
     }
   },
-
-  "include": ["src", "generated", "api"],
-  "exclude": ["node_modules", "**/__tests__/*"]
+  "include": [
+    "src",
+    "generated",
+    "api"
+  ],
+  "exclude": [
+    "node_modules",
+    "**/__tests__/*"
+  ]
 }
