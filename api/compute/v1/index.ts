@@ -1,6 +1,7 @@
 import { DiskPlacementGroupServiceService } from 'cloud/compute/v1/disk_placement_group_service';
 import { DiskServiceService } from 'cloud/compute/v1/disk_service';
 import { DiskTypeServiceService } from 'cloud/compute/v1/disk_type_service';
+import { FilesystemServiceService } from 'cloud/compute/v1/filesystem_service';
 import { HostGroupServiceService } from 'cloud/compute/v1/host_group_service';
 import { HostTypeServiceService } from 'cloud/compute/v1/host_type_service';
 import { ImageServiceService } from 'cloud/compute/v1/image_service';
@@ -55,6 +56,22 @@ export function DiskTypeService(
         session = new Session();
     }
     return session.client(DiskTypeServiceDef);
+}
+
+export const FilesystemServiceDef: SdkServiceDefinition<
+    typeof FilesystemServiceService
+> = {
+    ...FilesystemServiceService,
+    __endpointId: 'compute',
+};
+
+export function FilesystemService(
+    session?: Session
+): Client<typeof FilesystemServiceService, {}> {
+    if (session === undefined) {
+        session = new Session();
+    }
+    return session.client(FilesystemServiceDef);
 }
 
 export const HostGroupServiceDef: SdkServiceDefinition<

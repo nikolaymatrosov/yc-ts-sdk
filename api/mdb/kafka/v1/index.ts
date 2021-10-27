@@ -1,4 +1,5 @@
 import { ClusterServiceService } from 'cloud/mdb/kafka/v1/cluster_service';
+import { ConnectorServiceService } from 'cloud/mdb/kafka/v1/connector_service';
 import { ResourcePresetServiceService } from 'cloud/mdb/kafka/v1/resource_preset_service';
 import { TopicServiceService } from 'cloud/mdb/kafka/v1/topic_service';
 import { UserServiceService } from 'cloud/mdb/kafka/v1/user_service';
@@ -19,6 +20,22 @@ export function ClusterService(
         session = new Session();
     }
     return session.client(ClusterServiceDef);
+}
+
+export const ConnectorServiceDef: SdkServiceDefinition<
+    typeof ConnectorServiceService
+> = {
+    ...ConnectorServiceService,
+    __endpointId: 'managed-kafka',
+};
+
+export function ConnectorService(
+    session?: Session
+): Client<typeof ConnectorServiceService, {}> {
+    if (session === undefined) {
+        session = new Session();
+    }
+    return session.client(ConnectorServiceDef);
 }
 
 export const ResourcePresetServiceDef: SdkServiceDefinition<

@@ -1,7 +1,7 @@
 import { Session, TokenCreator } from '../../../index';
 declare class InvokeServiceImpl {
     static __endpointId: string;
-    $method_definitions: {};
+    $method_definitions: unknown;
     private readonly _tokenCreator;
     constructor(address: string, credentials: any, options: any, tokenCreator: TokenCreator);
     invoke(functionId: string, payload?: any): Promise<object | string>;

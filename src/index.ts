@@ -82,6 +82,7 @@ function newTokenCreator(
         };
     } else if (isIamTokenCredentialsConfig(config)) {
         const iamToken = config.iamToken;
+        // eslint-disable-next-line @typescript-eslint/require-await
         return async () => {
             return iamToken;
         };
@@ -104,6 +105,7 @@ function newChannelCredentials(tokenCreator: TokenCreator) {
         credentials.createSsl(),
         credentials.createFromMetadataGenerator(
             (
+                // eslint-disable-next-line @typescript-eslint/naming-convention
                 params: { service_url: string },
                 callback: (error: any, result?: any) => void
             ) => {
@@ -129,12 +131,14 @@ export type TokenCreator = () => Promise<string>;
 
 export type SdkRestServiceImp<T> = new (
     address: string,
+    // eslint-disable-next-line no-shadow
     credentials: any,
     options: any,
     tokenCreator: TokenCreator
 ) => T;
 
 export type SdkRestServiceDefinition<T> = SdkRestServiceImp<T> & {
+    // eslint-disable-next-line @typescript-eslint/naming-convention
     __endpointId: string;
 };
 
@@ -172,7 +176,7 @@ export class Session {
 
     client<Service extends ServiceDefinition<T>, T>(
         cls: SdkServiceDefinition<T>
-    ): Client<ServiceDefinition<T>, {}> {
+    ): Client<ServiceDefinition<T>, any> {
         const channel = createChannel(
             this.endpointResolver.resolve(cls.__endpointId),
             this.channelCredentials

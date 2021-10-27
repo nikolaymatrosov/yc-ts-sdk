@@ -14,10 +14,15 @@ import AbortController from 'node-abort-controller';
 
 interface ServiceAccountJsonFileContents {
     id: string;
+    // eslint-disable-next-line @typescript-eslint/naming-convention
     created_at: string;
+    // eslint-disable-next-line @typescript-eslint/naming-convention
     key_algorithm: string;
+    // eslint-disable-next-line @typescript-eslint/naming-convention
     service_account_id: string;
+    // eslint-disable-next-line @typescript-eslint/naming-convention
     private_key: string;
+    // eslint-disable-next-line @typescript-eslint/naming-convention
     public_key: string;
 }
 
@@ -48,7 +53,7 @@ export class IamTokenService implements ITokenService {
     private jwtExpirationTimeout = 3600 * 1000;
     private tokenExpirationTimeout = 120 * 1000;
     private tokenRequestTimeout = 10 * 1000;
-    private token: string = '';
+    private token = '';
     private tokenTimestamp: DateTime | null;
     private readonly iamCredentials: IIAmCredentials;
     private endpointResolver: EndpointResolver;

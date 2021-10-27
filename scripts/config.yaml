@@ -343,7 +343,7 @@ packages:
 
   organizationmanager.v1.saml:
     services:
-      CertitficateService:
+      CertificateService:
         endpoint: organization-manager
       FederationService:
         endpoint: organization-manager

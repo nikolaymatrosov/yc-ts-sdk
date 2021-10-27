@@ -13,12 +13,12 @@ interface StorageService {
 }
 
 class StorageServiceImpl implements StorageService {
-    // tslint:disable-next-line:variable-name
+    // eslint-disable-next-line @typescript-eslint/naming-convention,no-underscore-dangle,id-denylist,id-match
     static __endpointId = 'storage';
     private readonly _address: string;
     private readonly _tokenCreator: TokenCreator;
-    // tslint:disable-next-line:variable-name
-    private $method_definitions: {};
+    // eslint-disable-next-line @typescript-eslint/naming-convention,no-underscore-dangle,id-denylist,id-match
+    private $method_definitions: unknown;
 
     constructor(
         address: string,
@@ -42,6 +42,7 @@ class StorageServiceImpl implements StorageService {
         const res = await fetch(this._url(bucketName, objectName), {
             method: 'GET',
             headers: {
+                // eslint-disable-next-line @typescript-eslint/naming-convention
                 'X-YaCloud-SubjectToken': token,
             },
         });
@@ -62,6 +63,7 @@ class StorageServiceImpl implements StorageService {
         const res = await fetch(this._url(bucketName, objectName), {
             method: 'PUT',
             headers: {
+                // eslint-disable-next-line @typescript-eslint/naming-convention
                 'X-YaCloud-SubjectToken': token,
             },
             body: buffer,
@@ -75,6 +77,7 @@ class StorageServiceImpl implements StorageService {
     }
 }
 
+// eslint-disable-next-line @typescript-eslint/naming-convention
 export function StorageService(session: Session) {
     if (session === undefined) {
         session = new Session();

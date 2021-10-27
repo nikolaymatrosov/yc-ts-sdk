@@ -1,6 +1,7 @@
 import { DiskPlacementGroupServiceService } from '../../../generated/yandex/cloud/compute/v1/disk_placement_group_service';
 import { DiskServiceService } from '../../../generated/yandex/cloud/compute/v1/disk_service';
 import { DiskTypeServiceService } from '../../../generated/yandex/cloud/compute/v1/disk_type_service';
+import { FilesystemServiceService } from '../../../generated/yandex/cloud/compute/v1/filesystem_service';
 import { HostGroupServiceService } from '../../../generated/yandex/cloud/compute/v1/host_group_service';
 import { HostTypeServiceService } from '../../../generated/yandex/cloud/compute/v1/host_type_service';
 import { ImageServiceService } from '../../../generated/yandex/cloud/compute/v1/image_service';
@@ -16,6 +17,8 @@ export declare const DiskServiceDef: SdkServiceDefinition<typeof DiskServiceServ
 export declare function DiskService(session?: Session): Client<typeof DiskServiceService, {}>;
 export declare const DiskTypeServiceDef: SdkServiceDefinition<typeof DiskTypeServiceService>;
 export declare function DiskTypeService(session?: Session): Client<typeof DiskTypeServiceService, {}>;
+export declare const FilesystemServiceDef: SdkServiceDefinition<typeof FilesystemServiceService>;
+export declare function FilesystemService(session?: Session): Client<typeof FilesystemServiceService, {}>;
 export declare const HostGroupServiceDef: SdkServiceDefinition<typeof HostGroupServiceService>;
 export declare function HostGroupService(session?: Session): Client<typeof HostGroupServiceService, {}>;
 export declare const HostTypeServiceDef: SdkServiceDefinition<typeof HostTypeServiceService>;

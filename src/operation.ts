@@ -9,11 +9,11 @@ export function timeSpent(op: operations.Operation): number {
 
 export function completion(
     op: operations.Operation,
-    session: Session
+    session: Session,
 ): Promise<operations.Operation> {
     const operationService = OperationService(session);
     const currentState = op;
-    return new Promise(async (resolve, reject) => {
+    return new Promise((resolve, reject) => {
         const checkOperation = async () => {
             const operation = await operationService.get({
                 operationId: currentState.id,
@@ -24,22 +24,22 @@ export function completion(
             if (operation.done) {
                 return resolve(operation);
             }
-            setTimeout(async () => {
-                try {
-                    await checkOperation();
-                } catch (e) {
+            setTimeout(() => {
+                checkOperation().catch((e) => {
                     reject(e);
-                }
+                });
             }, session.pollInterval);
         };
-        await checkOperation();
+        checkOperation().catch((e) => {
+            reject(e);
+        });
     });
 }
 
-export function getMetadata(op: operations.Operation) {
+export function getMetadata(op: operations.Operation): any {
     return util.extractAny(op.metadata);
 }
 
-export function getResponse(op: operations.Operation) {
+export function getResponse(op: operations.Operation): any {
     return util.extractAny(op.response);
 }
