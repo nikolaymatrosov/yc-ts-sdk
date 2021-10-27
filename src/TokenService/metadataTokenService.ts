@@ -27,7 +27,7 @@ export class MetadataTokenService implements ITokenService {
         const res = await fetch(this.url, this.opts);
         if (!res.ok) {
             throw new Error(
-                `failed to fetch token from metadata service: ${res.status} ${res.statusText}`,
+                `failed to fetch token from metadata service: ${res.status} ${res.statusText}`
             );
         }
         // eslint-disable-next-line @typescript-eslint/naming-convention
@@ -51,15 +51,17 @@ export class MetadataTokenService implements ITokenService {
         if (!this.token) {
             throw new Error(
                 // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
-                `failed to fetch token from metadata service: ${lastError}`,
+                `failed to fetch token from metadata service: ${lastError}`
             );
         }
         setInterval(() => {
-            this.fetchToken().then((token) => {
-                this.token = token;
-            }).catch(() => {
-                //
-            });
+            this.fetchToken()
+                .then((token) => {
+                    this.token = token;
+                })
+                .catch(() => {
+                    //
+                });
         }, 30000);
     }
 }

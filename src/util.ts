@@ -1,11 +1,10 @@
 /* eslint-disable  @typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-assignment,@typescript-eslint/no-unsafe-member-access,@typescript-eslint/restrict-plus-operands */
-
 import registar, { Cls } from './registar';
 import jsutil from 'util';
 
 type IServiceInstance = {
-    [key: string]: () => Promise<any> | any
-}
+    [key: string]: () => Promise<any> | any;
+};
 
 export function pimpServiceInstance(instance: IServiceInstance) {
     for (const methodName of Object.keys(instance.$method_definitions)) {

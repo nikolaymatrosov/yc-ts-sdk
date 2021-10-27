@@ -6,7 +6,7 @@ function invokeUrl(id: string) {
     return `https://functions.yandexcloud.net/${id}?integration=raw`;
 }
 
-type ErrorMessage = { errorType: string, errorMessage: string }
+type ErrorMessage = { errorType: string; errorMessage: string };
 
 function isErrorMessage(o: any): o is ErrorMessage {
     return 'errorType' in o && 'errorMessage' in o;
@@ -24,7 +24,7 @@ async function mapException(response: Response) {
         // do nothing
     }
     return new Error(
-        `function invocation failed with ${response.status}: ${data}`,
+        `function invocation failed with ${response.status}: ${data}`
     );
 }
 
@@ -37,7 +37,7 @@ class InvokeServiceImpl {
         address: string,
         credentials: any,
         options: any,
-        tokenCreator: TokenCreator,
+        tokenCreator: TokenCreator
     ) {
         this._tokenCreator = tokenCreator;
         this.$method_definitions = {};

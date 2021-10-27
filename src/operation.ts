@@ -9,7 +9,7 @@ export function timeSpent(op: operations.Operation): number {
 
 export function completion(
     op: operations.Operation,
-    session: Session,
+    session: Session
 ): Promise<operations.Operation> {
     const operationService = OperationService(session);
     const currentState = op;
