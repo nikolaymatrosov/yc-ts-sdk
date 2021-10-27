@@ -1,8 +1,4 @@
 import * as iam from '../api/iam/v1';
-import {
-    CreateIamTokenRequest,
-    IamTokenServiceService,
-} from 'cloud/iam/v1/iam_token_service';
 import { ITokenService } from './TokenService/ITokenService';
 import {
     IamTokenService,
@@ -17,6 +13,10 @@ import {
     Metadata,
     ServiceDefinition,
 } from '@grpc/grpc-js';
+import {
+    CreateIamTokenRequest,
+    IamTokenServiceService,
+} from 'cloud/iam/v1/iam_token_service';
 import { Client, createChannel, createClient } from 'nice-grpc';
 
 export interface GenericConfig {

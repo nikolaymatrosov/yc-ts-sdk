@@ -13,7 +13,6 @@ export function pimpServiceInstance(instance: IServiceInstance) {
     return instance;
 }
 
-
 export function extractAny(data: Any | undefined) {
     if (data === undefined) {
         return;

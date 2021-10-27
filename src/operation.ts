@@ -1,8 +1,8 @@
 import { OperationService } from '../api/operation';
-import * as operations from 'cloud/operation/operation';
-import { GetOperationRequest } from 'cloud/operation/operation_service';
 import { Session } from './index';
 import * as util from './util';
+import * as operations from 'cloud/operation/operation';
+import { GetOperationRequest } from 'cloud/operation/operation_service';
 
 export function timeSpent(op: operations.Operation): number {
     return new Date().getTime() - (op.createdAt?.getTime() ?? 0);
@@ -10,15 +10,17 @@ export function timeSpent(op: operations.Operation): number {
 
 export function completion(
     op: operations.Operation,
-    session: Session,
+    session: Session
 ): Promise<operations.Operation> {
     const operationService = OperationService(session);
     const currentState = op;
     return new Promise((resolve, reject) => {
         const checkOperation = async () => {
-            const operation = await operationService.get(GetOperationRequest.fromPartial({
-                operationId: currentState.id
-            }));
+            const operation = await operationService.get(
+                GetOperationRequest.fromPartial({
+                    operationId: currentState.id,
+                })
+            );
             if (operation.error) {
                 return reject(operation);
             }
