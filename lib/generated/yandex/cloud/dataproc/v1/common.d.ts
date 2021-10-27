@@ -14,6 +14,7 @@ export declare enum Health {
 export declare function healthFromJSON(object: any): Health;
 export declare function healthToJSON(object: Health): string;
 export interface Resources {
+    $type: 'yandex.cloud.dataproc.v1.Resources';
     /**
      * ID of the resource preset for computational resources available to a host (CPU, memory etc.).
      * All available presets are listed in the [documentation](/docs/data-proc/concepts/instance-types).
@@ -30,6 +31,7 @@ export interface Resources {
     diskSize: number;
 }
 export declare const Resources: {
+    $type: "yandex.cloud.dataproc.v1.Resources";
     encode(message: Resources, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Resources;
     fromJSON(object: any): Resources;
@@ -38,6 +40,6 @@ export declare const Resources: {
 };
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

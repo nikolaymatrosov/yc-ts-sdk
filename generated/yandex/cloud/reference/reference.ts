@@ -1,10 +1,12 @@
 /* eslint-disable */
+import { messageTypeRegistry } from '../../../typeRegistry';
 import Long from 'long';
 import _m0 from 'protobufjs/minimal';
 
 export const protobufPackage = 'yandex.cloud.reference';
 
 export interface Reference {
+    $type: 'yandex.cloud.reference.Reference';
     referrer: Referrer | undefined;
     type: Reference_Type;
 }
@@ -48,6 +50,7 @@ export function reference_TypeToJSON(object: Reference_Type): string {
 }
 
 export interface Referrer {
+    $type: 'yandex.cloud.reference.Referrer';
     /**
      * `type = compute.instance, id = <instance id>`
      * * `type = compute.instanceGroup, id = <instanceGroup id>`
@@ -59,9 +62,14 @@ export interface Referrer {
     id: string;
 }
 
-const baseReference: object = { type: 0 };
+const baseReference: object = {
+    $type: 'yandex.cloud.reference.Reference',
+    type: 0,
+};
 
 export const Reference = {
+    $type: 'yandex.cloud.reference.Reference' as const,
+
     encode(
         message: Reference,
         writer: _m0.Writer = _m0.Writer.create()
@@ -142,9 +150,17 @@ export const Reference = {
     },
 };
 
-const baseReferrer: object = { type: '', id: '' };
+messageTypeRegistry.set(Reference.$type, Reference);
+
+const baseReferrer: object = {
+    $type: 'yandex.cloud.reference.Referrer',
+    type: '',
+    id: '',
+};
 
 export const Referrer = {
+    $type: 'yandex.cloud.reference.Referrer' as const,
+
     encode(
         message: Referrer,
         writer: _m0.Writer = _m0.Writer.create()
@@ -218,6 +234,8 @@ export const Referrer = {
     },
 };
 
+messageTypeRegistry.set(Referrer.$type, Referrer);
+
 type Builtin =
     | Date
     | Function
@@ -233,7 +251,7 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 if (_m0.util.Long !== Long) {

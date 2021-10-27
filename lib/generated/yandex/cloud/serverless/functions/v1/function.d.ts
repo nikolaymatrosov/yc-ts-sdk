@@ -3,6 +3,7 @@ import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.serverless.functions.v1";
 /** A serverless function. For details about the concept, see [Functions](/docs/functions/concepts/function). */
 export interface Function {
+    $type: 'yandex.cloud.serverless.functions.v1.Function';
     /** ID of the function. Generated at creation time. */
     id: string;
     /** ID of the folder that the function belongs to. */
@@ -39,11 +40,13 @@ export declare enum Function_Status {
 export declare function function_StatusFromJSON(object: any): Function_Status;
 export declare function function_StatusToJSON(object: Function_Status): string;
 export interface Function_LabelsEntry {
+    $type: 'yandex.cloud.serverless.functions.v1.Function.LabelsEntry';
     key: string;
     value: string;
 }
 /** Version of a function. For details about the concept, see [Function versions](/docs/functions/concepts/function#version). */
 export interface Version {
+    $type: 'yandex.cloud.serverless.functions.v1.Version';
     /** ID of the version. */
     id: string;
     /** ID of the function that the version belongs to. */
@@ -104,20 +107,24 @@ export declare enum Version_Status {
 export declare function version_StatusFromJSON(object: any): Version_Status;
 export declare function version_StatusToJSON(object: Version_Status): string;
 export interface Version_EnvironmentEntry {
+    $type: 'yandex.cloud.serverless.functions.v1.Version.EnvironmentEntry';
     key: string;
     value: string;
 }
 export interface Version_NamedServiceAccountsEntry {
+    $type: 'yandex.cloud.serverless.functions.v1.Version.NamedServiceAccountsEntry';
     key: string;
     value: string;
 }
 /** Resources allocated to a version. */
 export interface Resources {
+    $type: 'yandex.cloud.serverless.functions.v1.Resources';
     /** Amount of memory available to the version, specified in bytes. */
     memory: number;
 }
 /** Version deployment package. */
 export interface Package {
+    $type: 'yandex.cloud.serverless.functions.v1.Package';
     /** Name of the bucket that stores the code for the version. */
     bucketName: string;
     /** Name of the object in the bucket that stores the code for the version. */
@@ -127,6 +134,7 @@ export interface Package {
 }
 /** Version connectivity specification. */
 export interface Connectivity {
+    $type: 'yandex.cloud.serverless.functions.v1.Connectivity';
     /**
      * Network the version will have access to.
      * It's essential to specify network with subnets in all availability zones.
@@ -139,6 +147,7 @@ export interface Connectivity {
     subnetId: string[];
 }
 export interface ScalingPolicy {
+    $type: 'yandex.cloud.serverless.functions.v1.ScalingPolicy';
     /** ID of the function that the scaling policy belongs to. */
     functionId: string;
     /** Tag of the version that the scaling policy belongs to. For details, see [Version tag](/docs/functions/concepts/function#tag). */
@@ -164,6 +173,7 @@ export interface ScalingPolicy {
     zoneRequestsLimit: number;
 }
 export declare const Function: {
+    $type: "yandex.cloud.serverless.functions.v1.Function";
     encode(message: Function, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Function;
     fromJSON(object: any): Function;
@@ -171,6 +181,7 @@ export declare const Function: {
     fromPartial(object: DeepPartial<Function>): Function;
 };
 export declare const Function_LabelsEntry: {
+    $type: "yandex.cloud.serverless.functions.v1.Function.LabelsEntry";
     encode(message: Function_LabelsEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Function_LabelsEntry;
     fromJSON(object: any): Function_LabelsEntry;
@@ -178,6 +189,7 @@ export declare const Function_LabelsEntry: {
     fromPartial(object: DeepPartial<Function_LabelsEntry>): Function_LabelsEntry;
 };
 export declare const Version: {
+    $type: "yandex.cloud.serverless.functions.v1.Version";
     encode(message: Version, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Version;
     fromJSON(object: any): Version;
@@ -185,6 +197,7 @@ export declare const Version: {
     fromPartial(object: DeepPartial<Version>): Version;
 };
 export declare const Version_EnvironmentEntry: {
+    $type: "yandex.cloud.serverless.functions.v1.Version.EnvironmentEntry";
     encode(message: Version_EnvironmentEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Version_EnvironmentEntry;
     fromJSON(object: any): Version_EnvironmentEntry;
@@ -192,6 +205,7 @@ export declare const Version_EnvironmentEntry: {
     fromPartial(object: DeepPartial<Version_EnvironmentEntry>): Version_EnvironmentEntry;
 };
 export declare const Version_NamedServiceAccountsEntry: {
+    $type: "yandex.cloud.serverless.functions.v1.Version.NamedServiceAccountsEntry";
     encode(message: Version_NamedServiceAccountsEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Version_NamedServiceAccountsEntry;
     fromJSON(object: any): Version_NamedServiceAccountsEntry;
@@ -199,6 +213,7 @@ export declare const Version_NamedServiceAccountsEntry: {
     fromPartial(object: DeepPartial<Version_NamedServiceAccountsEntry>): Version_NamedServiceAccountsEntry;
 };
 export declare const Resources: {
+    $type: "yandex.cloud.serverless.functions.v1.Resources";
     encode(message: Resources, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Resources;
     fromJSON(object: any): Resources;
@@ -206,6 +221,7 @@ export declare const Resources: {
     fromPartial(object: DeepPartial<Resources>): Resources;
 };
 export declare const Package: {
+    $type: "yandex.cloud.serverless.functions.v1.Package";
     encode(message: Package, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Package;
     fromJSON(object: any): Package;
@@ -213,6 +229,7 @@ export declare const Package: {
     fromPartial(object: DeepPartial<Package>): Package;
 };
 export declare const Connectivity: {
+    $type: "yandex.cloud.serverless.functions.v1.Connectivity";
     encode(message: Connectivity, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Connectivity;
     fromJSON(object: any): Connectivity;
@@ -220,6 +237,7 @@ export declare const Connectivity: {
     fromPartial(object: DeepPartial<Connectivity>): Connectivity;
 };
 export declare const ScalingPolicy: {
+    $type: "yandex.cloud.serverless.functions.v1.ScalingPolicy";
     encode(message: ScalingPolicy, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ScalingPolicy;
     fromJSON(object: any): ScalingPolicy;
@@ -228,6 +246,6 @@ export declare const ScalingPolicy: {
 };
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

@@ -9,6 +9,7 @@ import { ChannelCredentials, ChannelOptions, UntypedServiceImplementation, handl
 import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.vpc.v1";
 export interface GetNetworkRequest {
+    $type: 'yandex.cloud.vpc.v1.GetNetworkRequest';
     /**
      * ID of the Network resource to return.
      * To get the network ID, use a [NetworkService.List] request.
@@ -16,6 +17,7 @@ export interface GetNetworkRequest {
     networkId: string;
 }
 export interface ListNetworksRequest {
+    $type: 'yandex.cloud.vpc.v1.ListNetworksRequest';
     /**
      * ID of the folder to list networks in.
      * To get the folder ID, use a [yandex.cloud.resourcemanager.v1.FolderService.List] request.
@@ -43,6 +45,7 @@ export interface ListNetworksRequest {
     filter: string;
 }
 export interface ListNetworksResponse {
+    $type: 'yandex.cloud.vpc.v1.ListNetworksResponse';
     /** List of Network resources. */
     networks: Network[];
     /**
@@ -56,6 +59,7 @@ export interface ListNetworksResponse {
     nextPageToken: string;
 }
 export interface CreateNetworkRequest {
+    $type: 'yandex.cloud.vpc.v1.CreateNetworkRequest';
     /**
      * ID of the folder for this request to create a network in.
      * To get the folder ID, use a [yandex.cloud.resourcemanager.v1.FolderService.List] request.
@@ -74,14 +78,17 @@ export interface CreateNetworkRequest {
     };
 }
 export interface CreateNetworkRequest_LabelsEntry {
+    $type: 'yandex.cloud.vpc.v1.CreateNetworkRequest.LabelsEntry';
     key: string;
     value: string;
 }
 export interface CreateNetworkMetadata {
+    $type: 'yandex.cloud.vpc.v1.CreateNetworkMetadata';
     /** ID of the Network that is being created. */
     networkId: string;
 }
 export interface UpdateNetworkRequest {
+    $type: 'yandex.cloud.vpc.v1.UpdateNetworkRequest';
     /**
      * ID of the Network resource to update.
      * To get the network ID use a [NetworkService.List] request.
@@ -102,14 +109,17 @@ export interface UpdateNetworkRequest {
     };
 }
 export interface UpdateNetworkRequest_LabelsEntry {
+    $type: 'yandex.cloud.vpc.v1.UpdateNetworkRequest.LabelsEntry';
     key: string;
     value: string;
 }
 export interface UpdateNetworkMetadata {
+    $type: 'yandex.cloud.vpc.v1.UpdateNetworkMetadata';
     /** ID of the Network resource that is being updated. */
     networkId: string;
 }
 export interface DeleteNetworkRequest {
+    $type: 'yandex.cloud.vpc.v1.DeleteNetworkRequest';
     /**
      * ID of the Network resource to update.
      * To get the network ID, use a [NetworkService.List] request.
@@ -117,10 +127,12 @@ export interface DeleteNetworkRequest {
     networkId: string;
 }
 export interface DeleteNetworkMetadata {
+    $type: 'yandex.cloud.vpc.v1.DeleteNetworkMetadata';
     /** ID of the network that is being deleted. */
     networkId: string;
 }
 export interface ListNetworkSubnetsRequest {
+    $type: 'yandex.cloud.vpc.v1.ListNetworkSubnetsRequest';
     /** ID of the Network resource to list subnets for. */
     networkId: string;
     /**
@@ -138,6 +150,7 @@ export interface ListNetworkSubnetsRequest {
     pageToken: string;
 }
 export interface ListNetworkSubnetsResponse {
+    $type: 'yandex.cloud.vpc.v1.ListNetworkSubnetsResponse';
     /** List of subnets that belong to the network which is specified in the request. */
     subnets: Subnet[];
     /**
@@ -151,6 +164,7 @@ export interface ListNetworkSubnetsResponse {
     nextPageToken: string;
 }
 export interface ListNetworkSecurityGroupsRequest {
+    $type: 'yandex.cloud.vpc.v1.ListNetworkSecurityGroupsRequest';
     /** ID of the Network resource to list security groups for. */
     networkId: string;
     /**
@@ -168,6 +182,7 @@ export interface ListNetworkSecurityGroupsRequest {
     pageToken: string;
 }
 export interface ListNetworkSecurityGroupsResponse {
+    $type: 'yandex.cloud.vpc.v1.ListNetworkSecurityGroupsResponse';
     /** List of security groups that belong to the network which is specified in the request. */
     securityGroups: SecurityGroup[];
     /**
@@ -181,6 +196,7 @@ export interface ListNetworkSecurityGroupsResponse {
     nextPageToken: string;
 }
 export interface ListNetworkRouteTablesRequest {
+    $type: 'yandex.cloud.vpc.v1.ListNetworkRouteTablesRequest';
     /** ID of the Network resource to list route tables for. */
     networkId: string;
     /**
@@ -198,6 +214,7 @@ export interface ListNetworkRouteTablesRequest {
     pageToken: string;
 }
 export interface ListNetworkRouteTablesResponse {
+    $type: 'yandex.cloud.vpc.v1.ListNetworkRouteTablesResponse';
     /** List of route tables that belong to the network which is specified in the request. */
     routeTables: RouteTable[];
     /**
@@ -211,6 +228,7 @@ export interface ListNetworkRouteTablesResponse {
     nextPageToken: string;
 }
 export interface ListNetworkOperationsRequest {
+    $type: 'yandex.cloud.vpc.v1.ListNetworkOperationsRequest';
     /** ID of the Network resource to list operations for. */
     networkId: string;
     /**
@@ -226,6 +244,7 @@ export interface ListNetworkOperationsRequest {
     pageToken: string;
 }
 export interface ListNetworkOperationsResponse {
+    $type: 'yandex.cloud.vpc.v1.ListNetworkOperationsResponse';
     /** List of operations for the specified network. */
     operations: Operation[];
     /**
@@ -237,16 +256,19 @@ export interface ListNetworkOperationsResponse {
     nextPageToken: string;
 }
 export interface MoveNetworkRequest {
+    $type: 'yandex.cloud.vpc.v1.MoveNetworkRequest';
     /** ID of the Network resource to move. */
     networkId: string;
     /** ID of the destination folder. */
     destinationFolderId: string;
 }
 export interface MoveNetworkMetadata {
+    $type: 'yandex.cloud.vpc.v1.MoveNetworkMetadata';
     /** ID of the network that is being moved. */
     networkId: string;
 }
 export declare const GetNetworkRequest: {
+    $type: "yandex.cloud.vpc.v1.GetNetworkRequest";
     encode(message: GetNetworkRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): GetNetworkRequest;
     fromJSON(object: any): GetNetworkRequest;
@@ -254,6 +276,7 @@ export declare const GetNetworkRequest: {
     fromPartial(object: DeepPartial<GetNetworkRequest>): GetNetworkRequest;
 };
 export declare const ListNetworksRequest: {
+    $type: "yandex.cloud.vpc.v1.ListNetworksRequest";
     encode(message: ListNetworksRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListNetworksRequest;
     fromJSON(object: any): ListNetworksRequest;
@@ -261,6 +284,7 @@ export declare const ListNetworksRequest: {
     fromPartial(object: DeepPartial<ListNetworksRequest>): ListNetworksRequest;
 };
 export declare const ListNetworksResponse: {
+    $type: "yandex.cloud.vpc.v1.ListNetworksResponse";
     encode(message: ListNetworksResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListNetworksResponse;
     fromJSON(object: any): ListNetworksResponse;
@@ -268,6 +292,7 @@ export declare const ListNetworksResponse: {
     fromPartial(object: DeepPartial<ListNetworksResponse>): ListNetworksResponse;
 };
 export declare const CreateNetworkRequest: {
+    $type: "yandex.cloud.vpc.v1.CreateNetworkRequest";
     encode(message: CreateNetworkRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateNetworkRequest;
     fromJSON(object: any): CreateNetworkRequest;
@@ -275,6 +300,7 @@ export declare const CreateNetworkRequest: {
     fromPartial(object: DeepPartial<CreateNetworkRequest>): CreateNetworkRequest;
 };
 export declare const CreateNetworkRequest_LabelsEntry: {
+    $type: "yandex.cloud.vpc.v1.CreateNetworkRequest.LabelsEntry";
     encode(message: CreateNetworkRequest_LabelsEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateNetworkRequest_LabelsEntry;
     fromJSON(object: any): CreateNetworkRequest_LabelsEntry;
@@ -282,6 +308,7 @@ export declare const CreateNetworkRequest_LabelsEntry: {
     fromPartial(object: DeepPartial<CreateNetworkRequest_LabelsEntry>): CreateNetworkRequest_LabelsEntry;
 };
 export declare const CreateNetworkMetadata: {
+    $type: "yandex.cloud.vpc.v1.CreateNetworkMetadata";
     encode(message: CreateNetworkMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateNetworkMetadata;
     fromJSON(object: any): CreateNetworkMetadata;
@@ -289,6 +316,7 @@ export declare const CreateNetworkMetadata: {
     fromPartial(object: DeepPartial<CreateNetworkMetadata>): CreateNetworkMetadata;
 };
 export declare const UpdateNetworkRequest: {
+    $type: "yandex.cloud.vpc.v1.UpdateNetworkRequest";
     encode(message: UpdateNetworkRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateNetworkRequest;
     fromJSON(object: any): UpdateNetworkRequest;
@@ -296,6 +324,7 @@ export declare const UpdateNetworkRequest: {
     fromPartial(object: DeepPartial<UpdateNetworkRequest>): UpdateNetworkRequest;
 };
 export declare const UpdateNetworkRequest_LabelsEntry: {
+    $type: "yandex.cloud.vpc.v1.UpdateNetworkRequest.LabelsEntry";
     encode(message: UpdateNetworkRequest_LabelsEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateNetworkRequest_LabelsEntry;
     fromJSON(object: any): UpdateNetworkRequest_LabelsEntry;
@@ -303,6 +332,7 @@ export declare const UpdateNetworkRequest_LabelsEntry: {
     fromPartial(object: DeepPartial<UpdateNetworkRequest_LabelsEntry>): UpdateNetworkRequest_LabelsEntry;
 };
 export declare const UpdateNetworkMetadata: {
+    $type: "yandex.cloud.vpc.v1.UpdateNetworkMetadata";
     encode(message: UpdateNetworkMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateNetworkMetadata;
     fromJSON(object: any): UpdateNetworkMetadata;
@@ -310,6 +340,7 @@ export declare const UpdateNetworkMetadata: {
     fromPartial(object: DeepPartial<UpdateNetworkMetadata>): UpdateNetworkMetadata;
 };
 export declare const DeleteNetworkRequest: {
+    $type: "yandex.cloud.vpc.v1.DeleteNetworkRequest";
     encode(message: DeleteNetworkRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteNetworkRequest;
     fromJSON(object: any): DeleteNetworkRequest;
@@ -317,6 +348,7 @@ export declare const DeleteNetworkRequest: {
     fromPartial(object: DeepPartial<DeleteNetworkRequest>): DeleteNetworkRequest;
 };
 export declare const DeleteNetworkMetadata: {
+    $type: "yandex.cloud.vpc.v1.DeleteNetworkMetadata";
     encode(message: DeleteNetworkMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteNetworkMetadata;
     fromJSON(object: any): DeleteNetworkMetadata;
@@ -324,6 +356,7 @@ export declare const DeleteNetworkMetadata: {
     fromPartial(object: DeepPartial<DeleteNetworkMetadata>): DeleteNetworkMetadata;
 };
 export declare const ListNetworkSubnetsRequest: {
+    $type: "yandex.cloud.vpc.v1.ListNetworkSubnetsRequest";
     encode(message: ListNetworkSubnetsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListNetworkSubnetsRequest;
     fromJSON(object: any): ListNetworkSubnetsRequest;
@@ -331,6 +364,7 @@ export declare const ListNetworkSubnetsRequest: {
     fromPartial(object: DeepPartial<ListNetworkSubnetsRequest>): ListNetworkSubnetsRequest;
 };
 export declare const ListNetworkSubnetsResponse: {
+    $type: "yandex.cloud.vpc.v1.ListNetworkSubnetsResponse";
     encode(message: ListNetworkSubnetsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListNetworkSubnetsResponse;
     fromJSON(object: any): ListNetworkSubnetsResponse;
@@ -338,6 +372,7 @@ export declare const ListNetworkSubnetsResponse: {
     fromPartial(object: DeepPartial<ListNetworkSubnetsResponse>): ListNetworkSubnetsResponse;
 };
 export declare const ListNetworkSecurityGroupsRequest: {
+    $type: "yandex.cloud.vpc.v1.ListNetworkSecurityGroupsRequest";
     encode(message: ListNetworkSecurityGroupsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListNetworkSecurityGroupsRequest;
     fromJSON(object: any): ListNetworkSecurityGroupsRequest;
@@ -345,6 +380,7 @@ export declare const ListNetworkSecurityGroupsRequest: {
     fromPartial(object: DeepPartial<ListNetworkSecurityGroupsRequest>): ListNetworkSecurityGroupsRequest;
 };
 export declare const ListNetworkSecurityGroupsResponse: {
+    $type: "yandex.cloud.vpc.v1.ListNetworkSecurityGroupsResponse";
     encode(message: ListNetworkSecurityGroupsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListNetworkSecurityGroupsResponse;
     fromJSON(object: any): ListNetworkSecurityGroupsResponse;
@@ -352,6 +388,7 @@ export declare const ListNetworkSecurityGroupsResponse: {
     fromPartial(object: DeepPartial<ListNetworkSecurityGroupsResponse>): ListNetworkSecurityGroupsResponse;
 };
 export declare const ListNetworkRouteTablesRequest: {
+    $type: "yandex.cloud.vpc.v1.ListNetworkRouteTablesRequest";
     encode(message: ListNetworkRouteTablesRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListNetworkRouteTablesRequest;
     fromJSON(object: any): ListNetworkRouteTablesRequest;
@@ -359,6 +396,7 @@ export declare const ListNetworkRouteTablesRequest: {
     fromPartial(object: DeepPartial<ListNetworkRouteTablesRequest>): ListNetworkRouteTablesRequest;
 };
 export declare const ListNetworkRouteTablesResponse: {
+    $type: "yandex.cloud.vpc.v1.ListNetworkRouteTablesResponse";
     encode(message: ListNetworkRouteTablesResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListNetworkRouteTablesResponse;
     fromJSON(object: any): ListNetworkRouteTablesResponse;
@@ -366,6 +404,7 @@ export declare const ListNetworkRouteTablesResponse: {
     fromPartial(object: DeepPartial<ListNetworkRouteTablesResponse>): ListNetworkRouteTablesResponse;
 };
 export declare const ListNetworkOperationsRequest: {
+    $type: "yandex.cloud.vpc.v1.ListNetworkOperationsRequest";
     encode(message: ListNetworkOperationsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListNetworkOperationsRequest;
     fromJSON(object: any): ListNetworkOperationsRequest;
@@ -373,6 +412,7 @@ export declare const ListNetworkOperationsRequest: {
     fromPartial(object: DeepPartial<ListNetworkOperationsRequest>): ListNetworkOperationsRequest;
 };
 export declare const ListNetworkOperationsResponse: {
+    $type: "yandex.cloud.vpc.v1.ListNetworkOperationsResponse";
     encode(message: ListNetworkOperationsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListNetworkOperationsResponse;
     fromJSON(object: any): ListNetworkOperationsResponse;
@@ -380,6 +420,7 @@ export declare const ListNetworkOperationsResponse: {
     fromPartial(object: DeepPartial<ListNetworkOperationsResponse>): ListNetworkOperationsResponse;
 };
 export declare const MoveNetworkRequest: {
+    $type: "yandex.cloud.vpc.v1.MoveNetworkRequest";
     encode(message: MoveNetworkRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): MoveNetworkRequest;
     fromJSON(object: any): MoveNetworkRequest;
@@ -387,6 +428,7 @@ export declare const MoveNetworkRequest: {
     fromPartial(object: DeepPartial<MoveNetworkRequest>): MoveNetworkRequest;
 };
 export declare const MoveNetworkMetadata: {
+    $type: "yandex.cloud.vpc.v1.MoveNetworkMetadata";
     encode(message: MoveNetworkMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): MoveNetworkMetadata;
     fromJSON(object: any): MoveNetworkMetadata;
@@ -593,6 +635,6 @@ export interface NetworkServiceClient extends Client {
 export declare const NetworkServiceClient: new (address: string, credentials: ChannelCredentials, options?: Partial<ChannelOptions> | undefined) => NetworkServiceClient;
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

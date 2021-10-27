@@ -1,5 +1,6 @@
 /* eslint-disable */
 import { FieldMask } from '../../../../google/protobuf/field_mask';
+import { messageTypeRegistry } from '../../../../typeRegistry';
 import {
     Disk,
     DiskPlacementPolicy,
@@ -23,6 +24,7 @@ import _m0 from 'protobufjs/minimal';
 export const protobufPackage = 'yandex.cloud.compute.v1';
 
 export interface GetDiskRequest {
+    $type: 'yandex.cloud.compute.v1.GetDiskRequest';
     /**
      * ID of the Disk resource to return.
      * To get the disk ID use a [DiskService.List] request.
@@ -31,6 +33,7 @@ export interface GetDiskRequest {
 }
 
 export interface ListDisksRequest {
+    $type: 'yandex.cloud.compute.v1.ListDisksRequest';
     /**
      * ID of the folder to list disks in.
      * To get the folder ID use a [yandex.cloud.resourcemanager.v1.FolderService.List] request.
@@ -59,6 +62,7 @@ export interface ListDisksRequest {
 }
 
 export interface ListDisksResponse {
+    $type: 'yandex.cloud.compute.v1.ListDisksResponse';
     /** List of Disk resources. */
     disks: Disk[];
     /**
@@ -73,6 +77,7 @@ export interface ListDisksResponse {
 }
 
 export interface CreateDiskRequest {
+    $type: 'yandex.cloud.compute.v1.CreateDiskRequest';
     /**
      * ID of the folder to create a disk in.
      * To get the folder ID use a [yandex.cloud.resourcemanager.v1.FolderService.List] request.
@@ -111,16 +116,19 @@ export interface CreateDiskRequest {
 }
 
 export interface CreateDiskRequest_LabelsEntry {
+    $type: 'yandex.cloud.compute.v1.CreateDiskRequest.LabelsEntry';
     key: string;
     value: string;
 }
 
 export interface CreateDiskMetadata {
+    $type: 'yandex.cloud.compute.v1.CreateDiskMetadata';
     /** ID of the disk that is being created. */
     diskId: string;
 }
 
 export interface UpdateDiskRequest {
+    $type: 'yandex.cloud.compute.v1.UpdateDiskRequest';
     /**
      * ID of the Disk resource to update.
      * To get the disk ID use a [DiskService.List] request.
@@ -145,16 +153,19 @@ export interface UpdateDiskRequest {
 }
 
 export interface UpdateDiskRequest_LabelsEntry {
+    $type: 'yandex.cloud.compute.v1.UpdateDiskRequest.LabelsEntry';
     key: string;
     value: string;
 }
 
 export interface UpdateDiskMetadata {
+    $type: 'yandex.cloud.compute.v1.UpdateDiskMetadata';
     /** ID of the Disk resource that is being updated. */
     diskId: string;
 }
 
 export interface DeleteDiskRequest {
+    $type: 'yandex.cloud.compute.v1.DeleteDiskRequest';
     /**
      * ID of the disk to delete.
      * To get the disk ID use a [DiskService.List] request.
@@ -163,11 +174,13 @@ export interface DeleteDiskRequest {
 }
 
 export interface DeleteDiskMetadata {
+    $type: 'yandex.cloud.compute.v1.DeleteDiskMetadata';
     /** ID of the disk that is being deleted. */
     diskId: string;
 }
 
 export interface ListDiskOperationsRequest {
+    $type: 'yandex.cloud.compute.v1.ListDiskOperationsRequest';
     /** ID of the Disk resource to list operations for. */
     diskId: string;
     /**
@@ -184,6 +197,7 @@ export interface ListDiskOperationsRequest {
 }
 
 export interface ListDiskOperationsResponse {
+    $type: 'yandex.cloud.compute.v1.ListDiskOperationsResponse';
     /** List of operations for the specified disk. */
     operations: Operation[];
     /**
@@ -195,9 +209,14 @@ export interface ListDiskOperationsResponse {
     nextPageToken: string;
 }
 
-const baseGetDiskRequest: object = { diskId: '' };
+const baseGetDiskRequest: object = {
+    $type: 'yandex.cloud.compute.v1.GetDiskRequest',
+    diskId: '',
+};
 
 export const GetDiskRequest = {
+    $type: 'yandex.cloud.compute.v1.GetDiskRequest' as const,
+
     encode(
         message: GetDiskRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -254,7 +273,10 @@ export const GetDiskRequest = {
     },
 };
 
+messageTypeRegistry.set(GetDiskRequest.$type, GetDiskRequest);
+
 const baseListDisksRequest: object = {
+    $type: 'yandex.cloud.compute.v1.ListDisksRequest',
     folderId: '',
     pageSize: 0,
     pageToken: '',
@@ -262,6 +284,8 @@ const baseListDisksRequest: object = {
 };
 
 export const ListDisksRequest = {
+    $type: 'yandex.cloud.compute.v1.ListDisksRequest' as const,
+
     encode(
         message: ListDisksRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -369,9 +393,16 @@ export const ListDisksRequest = {
     },
 };
 
-const baseListDisksResponse: object = { nextPageToken: '' };
+messageTypeRegistry.set(ListDisksRequest.$type, ListDisksRequest);
+
+const baseListDisksResponse: object = {
+    $type: 'yandex.cloud.compute.v1.ListDisksResponse',
+    nextPageToken: '',
+};
 
 export const ListDisksResponse = {
+    $type: 'yandex.cloud.compute.v1.ListDisksResponse' as const,
+
     encode(
         message: ListDisksResponse,
         writer: _m0.Writer = _m0.Writer.create()
@@ -461,7 +492,10 @@ export const ListDisksResponse = {
     },
 };
 
+messageTypeRegistry.set(ListDisksResponse.$type, ListDisksResponse);
+
 const baseCreateDiskRequest: object = {
+    $type: 'yandex.cloud.compute.v1.CreateDiskRequest',
     folderId: '',
     name: '',
     description: '',
@@ -472,6 +506,8 @@ const baseCreateDiskRequest: object = {
 };
 
 export const CreateDiskRequest = {
+    $type: 'yandex.cloud.compute.v1.CreateDiskRequest' as const,
+
     encode(
         message: CreateDiskRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -487,7 +523,11 @@ export const CreateDiskRequest = {
         }
         Object.entries(message.labels).forEach(([key, value]) => {
             CreateDiskRequest_LabelsEntry.encode(
-                { key: key as any, value },
+                {
+                    $type: 'yandex.cloud.compute.v1.CreateDiskRequest.LabelsEntry',
+                    key: key as any,
+                    value,
+                },
                 writer.uint32(34).fork()
             ).ldelim();
         });
@@ -738,9 +778,17 @@ export const CreateDiskRequest = {
     },
 };
 
-const baseCreateDiskRequest_LabelsEntry: object = { key: '', value: '' };
+messageTypeRegistry.set(CreateDiskRequest.$type, CreateDiskRequest);
+
+const baseCreateDiskRequest_LabelsEntry: object = {
+    $type: 'yandex.cloud.compute.v1.CreateDiskRequest.LabelsEntry',
+    key: '',
+    value: '',
+};
 
 export const CreateDiskRequest_LabelsEntry = {
+    $type: 'yandex.cloud.compute.v1.CreateDiskRequest.LabelsEntry' as const,
+
     encode(
         message: CreateDiskRequest_LabelsEntry,
         writer: _m0.Writer = _m0.Writer.create()
@@ -825,9 +873,19 @@ export const CreateDiskRequest_LabelsEntry = {
     },
 };
 
-const baseCreateDiskMetadata: object = { diskId: '' };
+messageTypeRegistry.set(
+    CreateDiskRequest_LabelsEntry.$type,
+    CreateDiskRequest_LabelsEntry
+);
+
+const baseCreateDiskMetadata: object = {
+    $type: 'yandex.cloud.compute.v1.CreateDiskMetadata',
+    diskId: '',
+};
 
 export const CreateDiskMetadata = {
+    $type: 'yandex.cloud.compute.v1.CreateDiskMetadata' as const,
+
     encode(
         message: CreateDiskMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -887,7 +945,10 @@ export const CreateDiskMetadata = {
     },
 };
 
+messageTypeRegistry.set(CreateDiskMetadata.$type, CreateDiskMetadata);
+
 const baseUpdateDiskRequest: object = {
+    $type: 'yandex.cloud.compute.v1.UpdateDiskRequest',
     diskId: '',
     name: '',
     description: '',
@@ -895,6 +956,8 @@ const baseUpdateDiskRequest: object = {
 };
 
 export const UpdateDiskRequest = {
+    $type: 'yandex.cloud.compute.v1.UpdateDiskRequest' as const,
+
     encode(
         message: UpdateDiskRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -916,7 +979,11 @@ export const UpdateDiskRequest = {
         }
         Object.entries(message.labels).forEach(([key, value]) => {
             UpdateDiskRequest_LabelsEntry.encode(
-                { key: key as any, value },
+                {
+                    $type: 'yandex.cloud.compute.v1.UpdateDiskRequest.LabelsEntry',
+                    key: key as any,
+                    value,
+                },
                 writer.uint32(42).fork()
             ).ldelim();
         });
@@ -1101,9 +1168,17 @@ export const UpdateDiskRequest = {
     },
 };
 
-const baseUpdateDiskRequest_LabelsEntry: object = { key: '', value: '' };
+messageTypeRegistry.set(UpdateDiskRequest.$type, UpdateDiskRequest);
+
+const baseUpdateDiskRequest_LabelsEntry: object = {
+    $type: 'yandex.cloud.compute.v1.UpdateDiskRequest.LabelsEntry',
+    key: '',
+    value: '',
+};
 
 export const UpdateDiskRequest_LabelsEntry = {
+    $type: 'yandex.cloud.compute.v1.UpdateDiskRequest.LabelsEntry' as const,
+
     encode(
         message: UpdateDiskRequest_LabelsEntry,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1188,9 +1263,19 @@ export const UpdateDiskRequest_LabelsEntry = {
     },
 };
 
-const baseUpdateDiskMetadata: object = { diskId: '' };
+messageTypeRegistry.set(
+    UpdateDiskRequest_LabelsEntry.$type,
+    UpdateDiskRequest_LabelsEntry
+);
+
+const baseUpdateDiskMetadata: object = {
+    $type: 'yandex.cloud.compute.v1.UpdateDiskMetadata',
+    diskId: '',
+};
 
 export const UpdateDiskMetadata = {
+    $type: 'yandex.cloud.compute.v1.UpdateDiskMetadata' as const,
+
     encode(
         message: UpdateDiskMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1250,9 +1335,16 @@ export const UpdateDiskMetadata = {
     },
 };
 
-const baseDeleteDiskRequest: object = { diskId: '' };
+messageTypeRegistry.set(UpdateDiskMetadata.$type, UpdateDiskMetadata);
+
+const baseDeleteDiskRequest: object = {
+    $type: 'yandex.cloud.compute.v1.DeleteDiskRequest',
+    diskId: '',
+};
 
 export const DeleteDiskRequest = {
+    $type: 'yandex.cloud.compute.v1.DeleteDiskRequest' as const,
+
     encode(
         message: DeleteDiskRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1309,9 +1401,16 @@ export const DeleteDiskRequest = {
     },
 };
 
-const baseDeleteDiskMetadata: object = { diskId: '' };
+messageTypeRegistry.set(DeleteDiskRequest.$type, DeleteDiskRequest);
+
+const baseDeleteDiskMetadata: object = {
+    $type: 'yandex.cloud.compute.v1.DeleteDiskMetadata',
+    diskId: '',
+};
 
 export const DeleteDiskMetadata = {
+    $type: 'yandex.cloud.compute.v1.DeleteDiskMetadata' as const,
+
     encode(
         message: DeleteDiskMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1371,13 +1470,18 @@ export const DeleteDiskMetadata = {
     },
 };
 
+messageTypeRegistry.set(DeleteDiskMetadata.$type, DeleteDiskMetadata);
+
 const baseListDiskOperationsRequest: object = {
+    $type: 'yandex.cloud.compute.v1.ListDiskOperationsRequest',
     diskId: '',
     pageSize: 0,
     pageToken: '',
 };
 
 export const ListDiskOperationsRequest = {
+    $type: 'yandex.cloud.compute.v1.ListDiskOperationsRequest' as const,
+
     encode(
         message: ListDiskOperationsRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1479,9 +1583,19 @@ export const ListDiskOperationsRequest = {
     },
 };
 
-const baseListDiskOperationsResponse: object = { nextPageToken: '' };
+messageTypeRegistry.set(
+    ListDiskOperationsRequest.$type,
+    ListDiskOperationsRequest
+);
+
+const baseListDiskOperationsResponse: object = {
+    $type: 'yandex.cloud.compute.v1.ListDiskOperationsResponse',
+    nextPageToken: '',
+};
 
 export const ListDiskOperationsResponse = {
+    $type: 'yandex.cloud.compute.v1.ListDiskOperationsResponse' as const,
+
     encode(
         message: ListDiskOperationsResponse,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1583,6 +1697,11 @@ export const ListDiskOperationsResponse = {
         return message;
     },
 };
+
+messageTypeRegistry.set(
+    ListDiskOperationsResponse.$type,
+    ListDiskOperationsResponse
+);
 
 /** A set of methods for managing Disk resources. */
 export const DiskServiceService = {
@@ -1882,7 +2001,7 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 function longToNumber(long: Long): number {

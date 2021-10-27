@@ -1,6 +1,7 @@
 /* eslint-disable */
 import { Duration } from '../../../../google/protobuf/duration';
 import { Timestamp } from '../../../../google/protobuf/timestamp';
+import { messageTypeRegistry } from '../../../../typeRegistry';
 import {
     Health,
     Resources,
@@ -85,6 +86,7 @@ export function roleToJSON(object: Role): string {
 }
 
 export interface AutoscalingConfig {
+    $type: 'yandex.cloud.dataproc.v1.AutoscalingConfig';
     /** Upper limit for total instance subcluster count. */
     maxHostsCount: number;
     /**
@@ -115,6 +117,7 @@ export interface AutoscalingConfig {
 
 /** A Data Proc subcluster. For details about the concept, see [documentation](/docs/data-proc/concepts/). */
 export interface Subcluster {
+    $type: 'yandex.cloud.dataproc.v1.Subcluster';
     /** ID of the subcluster. Generated at creation time. */
     id: string;
     /** ID of the Data Proc cluster that the subcluster belongs to. */
@@ -139,6 +142,7 @@ export interface Subcluster {
 
 /** A Data Proc host. For details about the concept, see [documentation](/docs/data-proc/concepts/). */
 export interface Host {
+    $type: 'yandex.cloud.dataproc.v1.Host';
     /**
      * Name of the Data Proc host. The host name is assigned by Data Proc at creation time
      * and cannot be changed. The name is generated to be unique across all existing Data Proc
@@ -156,6 +160,7 @@ export interface Host {
 }
 
 const baseAutoscalingConfig: object = {
+    $type: 'yandex.cloud.dataproc.v1.AutoscalingConfig',
     maxHostsCount: 0,
     preemptible: false,
     cpuUtilizationTarget: 0,
@@ -163,6 +168,8 @@ const baseAutoscalingConfig: object = {
 };
 
 export const AutoscalingConfig = {
+    $type: 'yandex.cloud.dataproc.v1.AutoscalingConfig' as const,
+
     encode(
         message: AutoscalingConfig,
         writer: _m0.Writer = _m0.Writer.create()
@@ -402,7 +409,10 @@ export const AutoscalingConfig = {
     },
 };
 
+messageTypeRegistry.set(AutoscalingConfig.$type, AutoscalingConfig);
+
 const baseSubcluster: object = {
+    $type: 'yandex.cloud.dataproc.v1.Subcluster',
     id: '',
     clusterId: '',
     name: '',
@@ -413,6 +423,8 @@ const baseSubcluster: object = {
 };
 
 export const Subcluster = {
+    $type: 'yandex.cloud.dataproc.v1.Subcluster' as const,
+
     encode(
         message: Subcluster,
         writer: _m0.Writer = _m0.Writer.create()
@@ -664,7 +676,10 @@ export const Subcluster = {
     },
 };
 
+messageTypeRegistry.set(Subcluster.$type, Subcluster);
+
 const baseHost: object = {
+    $type: 'yandex.cloud.dataproc.v1.Host',
     name: '',
     subclusterId: '',
     health: 0,
@@ -673,6 +688,8 @@ const baseHost: object = {
 };
 
 export const Host = {
+    $type: 'yandex.cloud.dataproc.v1.Host' as const,
+
     encode(
         message: Host,
         writer: _m0.Writer = _m0.Writer.create()
@@ -806,6 +823,8 @@ export const Host = {
     },
 };
 
+messageTypeRegistry.set(Host.$type, Host);
+
 declare var self: any | undefined;
 declare var window: any | undefined;
 declare var global: any | undefined;
@@ -832,13 +851,13 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 function toTimestamp(date: Date): Timestamp {
     const seconds = date.getTime() / 1_000;
     const nanos = (date.getTime() % 1_000) * 1_000_000;
-    return { seconds, nanos };
+    return { $type: 'google.protobuf.Timestamp', seconds, nanos };
 }
 
 function fromTimestamp(t: Timestamp): Date {

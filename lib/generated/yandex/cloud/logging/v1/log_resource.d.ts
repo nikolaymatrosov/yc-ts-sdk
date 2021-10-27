@@ -6,6 +6,7 @@ export declare const protobufPackage = "yandex.cloud.logging.v1";
  * May be used either by services and by user.
  */
 export interface LogEntryResource {
+    $type: 'yandex.cloud.logging.v1.LogEntryResource';
     /** Resource type, i.e., `serverless.function` */
     type: string;
     /** Resource ID, i.e., ID of the function producing logs. */
@@ -13,6 +14,7 @@ export interface LogEntryResource {
 }
 /** Log group resource. */
 export interface LogGroupResource {
+    $type: 'yandex.cloud.logging.v1.LogGroupResource';
     /**
      * Resource type.
      *
@@ -23,6 +25,7 @@ export interface LogGroupResource {
     ids: string[];
 }
 export declare const LogEntryResource: {
+    $type: "yandex.cloud.logging.v1.LogEntryResource";
     encode(message: LogEntryResource, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): LogEntryResource;
     fromJSON(object: any): LogEntryResource;
@@ -30,6 +33,7 @@ export declare const LogEntryResource: {
     fromPartial(object: DeepPartial<LogEntryResource>): LogEntryResource;
 };
 export declare const LogGroupResource: {
+    $type: "yandex.cloud.logging.v1.LogGroupResource";
     encode(message: LogGroupResource, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): LogGroupResource;
     fromJSON(object: any): LogGroupResource;
@@ -38,6 +42,6 @@ export declare const LogGroupResource: {
 };
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

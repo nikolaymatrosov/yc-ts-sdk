@@ -1,11 +1,13 @@
 /* eslint-disable */
 import { Timestamp } from '../../../../../google/protobuf/timestamp';
+import { messageTypeRegistry } from '../../../../../typeRegistry';
 import Long from 'long';
 import _m0 from 'protobufjs/minimal';
 
 export const protobufPackage = 'yandex.cloud.marketplace.v1.metering';
 
 export interface UsageRecord {
+    $type: 'yandex.cloud.marketplace.v1.metering.UsageRecord';
     /** Unique identitifier of the usage record (UUID format) */
     uuid: string;
     /** Consumed Marketplace SaaS Sku ID, linked to `UsageRecord.product_id` */
@@ -17,11 +19,13 @@ export interface UsageRecord {
 }
 
 export interface AcceptedUsageRecord {
+    $type: 'yandex.cloud.marketplace.v1.metering.AcceptedUsageRecord';
     /** Unique identitifier of the usage record (UUID format) */
     uuid: string;
 }
 
 export interface RejectedUsageRecord {
+    $type: 'yandex.cloud.marketplace.v1.metering.RejectedUsageRecord';
     /** Unique identitifier of the usage record (UUID format) */
     uuid: string;
     /** The reason of rejection */
@@ -100,9 +104,16 @@ export function rejectedUsageRecord_ReasonToJSON(
     }
 }
 
-const baseUsageRecord: object = { uuid: '', skuId: '', quantity: 0 };
+const baseUsageRecord: object = {
+    $type: 'yandex.cloud.marketplace.v1.metering.UsageRecord',
+    uuid: '',
+    skuId: '',
+    quantity: 0,
+};
 
 export const UsageRecord = {
+    $type: 'yandex.cloud.marketplace.v1.metering.UsageRecord' as const,
+
     encode(
         message: UsageRecord,
         writer: _m0.Writer = _m0.Writer.create()
@@ -216,9 +227,16 @@ export const UsageRecord = {
     },
 };
 
-const baseAcceptedUsageRecord: object = { uuid: '' };
+messageTypeRegistry.set(UsageRecord.$type, UsageRecord);
+
+const baseAcceptedUsageRecord: object = {
+    $type: 'yandex.cloud.marketplace.v1.metering.AcceptedUsageRecord',
+    uuid: '',
+};
 
 export const AcceptedUsageRecord = {
+    $type: 'yandex.cloud.marketplace.v1.metering.AcceptedUsageRecord' as const,
+
     encode(
         message: AcceptedUsageRecord,
         writer: _m0.Writer = _m0.Writer.create()
@@ -278,9 +296,17 @@ export const AcceptedUsageRecord = {
     },
 };
 
-const baseRejectedUsageRecord: object = { uuid: '', reason: 0 };
+messageTypeRegistry.set(AcceptedUsageRecord.$type, AcceptedUsageRecord);
+
+const baseRejectedUsageRecord: object = {
+    $type: 'yandex.cloud.marketplace.v1.metering.RejectedUsageRecord',
+    uuid: '',
+    reason: 0,
+};
 
 export const RejectedUsageRecord = {
+    $type: 'yandex.cloud.marketplace.v1.metering.RejectedUsageRecord' as const,
+
     encode(
         message: RejectedUsageRecord,
         writer: _m0.Writer = _m0.Writer.create()
@@ -358,6 +384,8 @@ export const RejectedUsageRecord = {
     },
 };
 
+messageTypeRegistry.set(RejectedUsageRecord.$type, RejectedUsageRecord);
+
 declare var self: any | undefined;
 declare var window: any | undefined;
 declare var global: any | undefined;
@@ -384,13 +412,13 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 function toTimestamp(date: Date): Timestamp {
     const seconds = date.getTime() / 1_000;
     const nanos = (date.getTime() % 1_000) * 1_000_000;
-    return { seconds, nanos };
+    return { $type: 'google.protobuf.Timestamp', seconds, nanos };
 }
 
 function fromTimestamp(t: Timestamp): Date {

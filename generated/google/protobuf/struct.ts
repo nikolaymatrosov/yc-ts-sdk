@@ -1,4 +1,5 @@
 /* eslint-disable */
+import { messageTypeRegistry } from '../../typeRegistry';
 import Long from 'long';
 import _m0 from 'protobufjs/minimal';
 
@@ -48,11 +49,13 @@ export function nullValueToJSON(object: NullValue): string {
  * The JSON representation for `Struct` is JSON object.
  */
 export interface Struct {
+    $type: 'google.protobuf.Struct';
     /** Unordered map of dynamically typed values. */
     fields: { [key: string]: Value };
 }
 
 export interface Struct_FieldsEntry {
+    $type: 'google.protobuf.Struct.FieldsEntry';
     key: string;
     value: Value | undefined;
 }
@@ -66,6 +69,7 @@ export interface Struct_FieldsEntry {
  * The JSON representation for `Value` is JSON value.
  */
 export interface Value {
+    $type: 'google.protobuf.Value';
     /** Represents a null value. */
     nullValue: NullValue | undefined;
     /** Represents a double value. */
@@ -86,20 +90,27 @@ export interface Value {
  * The JSON representation for `ListValue` is JSON array.
  */
 export interface ListValue {
+    $type: 'google.protobuf.ListValue';
     /** Repeated field of dynamically typed values. */
     values: Value[];
 }
 
-const baseStruct: object = {};
+const baseStruct: object = { $type: 'google.protobuf.Struct' };
 
 export const Struct = {
+    $type: 'google.protobuf.Struct' as const,
+
     encode(
         message: Struct,
         writer: _m0.Writer = _m0.Writer.create()
     ): _m0.Writer {
         Object.entries(message.fields).forEach(([key, value]) => {
             Struct_FieldsEntry.encode(
-                { key: key as any, value },
+                {
+                    $type: 'google.protobuf.Struct.FieldsEntry',
+                    key: key as any,
+                    value,
+                },
                 writer.uint32(10).fork()
             ).ldelim();
         });
@@ -168,9 +179,16 @@ export const Struct = {
     },
 };
 
-const baseStruct_FieldsEntry: object = { key: '' };
+messageTypeRegistry.set(Struct.$type, Struct);
+
+const baseStruct_FieldsEntry: object = {
+    $type: 'google.protobuf.Struct.FieldsEntry',
+    key: '',
+};
 
 export const Struct_FieldsEntry = {
+    $type: 'google.protobuf.Struct.FieldsEntry' as const,
+
     encode(
         message: Struct_FieldsEntry,
         writer: _m0.Writer = _m0.Writer.create()
@@ -250,9 +268,13 @@ export const Struct_FieldsEntry = {
     },
 };
 
-const baseValue: object = {};
+messageTypeRegistry.set(Struct_FieldsEntry.$type, Struct_FieldsEntry);
+
+const baseValue: object = { $type: 'google.protobuf.Value' };
 
 export const Value = {
+    $type: 'google.protobuf.Value' as const,
+
     encode(
         message: Value,
         writer: _m0.Writer = _m0.Writer.create()
@@ -418,9 +440,13 @@ export const Value = {
     },
 };
 
-const baseListValue: object = {};
+messageTypeRegistry.set(Value.$type, Value);
+
+const baseListValue: object = { $type: 'google.protobuf.ListValue' };
 
 export const ListValue = {
+    $type: 'google.protobuf.ListValue' as const,
+
     encode(
         message: ListValue,
         writer: _m0.Writer = _m0.Writer.create()
@@ -486,6 +512,8 @@ export const ListValue = {
     },
 };
 
+messageTypeRegistry.set(ListValue.$type, ListValue);
+
 type Builtin =
     | Date
     | Function
@@ -501,7 +529,7 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 if (_m0.util.Long !== Long) {

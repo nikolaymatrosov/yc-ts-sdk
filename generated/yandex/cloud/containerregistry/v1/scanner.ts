@@ -1,5 +1,6 @@
 /* eslint-disable */
 import { Timestamp } from '../../../../google/protobuf/timestamp';
+import { messageTypeRegistry } from '../../../../typeRegistry';
 import Long from 'long';
 import _m0 from 'protobufjs/minimal';
 
@@ -7,6 +8,7 @@ export const protobufPackage = 'yandex.cloud.containerregistry.v1';
 
 /** A ScanResult resource. */
 export interface ScanResult {
+    $type: 'yandex.cloud.containerregistry.v1.ScanResult';
     /** Output only. ID of the ScanResult. */
     id: string;
     /** Output only. ID of the Image that the ScanResult belongs to. */
@@ -68,6 +70,7 @@ export function scanResult_StatusToJSON(object: ScanResult_Status): string {
 
 /** A VulnerabilityStats resource. */
 export interface VulnerabilityStats {
+    $type: 'yandex.cloud.containerregistry.v1.VulnerabilityStats';
     /** Count of CRITICAL vulnerabilities. */
     critical: number;
     /** Count of HIGH vulnerabilities. */
@@ -84,6 +87,7 @@ export interface VulnerabilityStats {
 
 /** A Vulnerability resource. */
 export interface Vulnerability {
+    $type: 'yandex.cloud.containerregistry.v1.Vulnerability';
     /** Output only. Severity of the Vulnerability. */
     severity: Vulnerability_Severity;
     package: PackageVulnerability | undefined;
@@ -184,6 +188,7 @@ export function vulnerability_SeverityToJSON(
 
 /** A PackageVulnerability resource. */
 export interface PackageVulnerability {
+    $type: 'yandex.cloud.containerregistry.v1.PackageVulnerability';
     /** Name of vulnerability in CVE database. */
     name: string;
     /** URL to the page with description of vulnerability. */
@@ -198,9 +203,16 @@ export interface PackageVulnerability {
     fixedBy: string;
 }
 
-const baseScanResult: object = { id: '', imageId: '', status: 0 };
+const baseScanResult: object = {
+    $type: 'yandex.cloud.containerregistry.v1.ScanResult',
+    id: '',
+    imageId: '',
+    status: 0,
+};
 
 export const ScanResult = {
+    $type: 'yandex.cloud.containerregistry.v1.ScanResult' as const,
+
     encode(
         message: ScanResult,
         writer: _m0.Writer = _m0.Writer.create()
@@ -351,7 +363,10 @@ export const ScanResult = {
     },
 };
 
+messageTypeRegistry.set(ScanResult.$type, ScanResult);
+
 const baseVulnerabilityStats: object = {
+    $type: 'yandex.cloud.containerregistry.v1.VulnerabilityStats',
     critical: 0,
     high: 0,
     medium: 0,
@@ -361,6 +376,8 @@ const baseVulnerabilityStats: object = {
 };
 
 export const VulnerabilityStats = {
+    $type: 'yandex.cloud.containerregistry.v1.VulnerabilityStats' as const,
+
     encode(
         message: VulnerabilityStats,
         writer: _m0.Writer = _m0.Writer.create()
@@ -506,9 +523,16 @@ export const VulnerabilityStats = {
     },
 };
 
-const baseVulnerability: object = { severity: 0 };
+messageTypeRegistry.set(VulnerabilityStats.$type, VulnerabilityStats);
+
+const baseVulnerability: object = {
+    $type: 'yandex.cloud.containerregistry.v1.Vulnerability',
+    severity: 0,
+};
 
 export const Vulnerability = {
+    $type: 'yandex.cloud.containerregistry.v1.Vulnerability' as const,
+
     encode(
         message: Vulnerability,
         writer: _m0.Writer = _m0.Writer.create()
@@ -592,7 +616,10 @@ export const Vulnerability = {
     },
 };
 
+messageTypeRegistry.set(Vulnerability.$type, Vulnerability);
+
 const basePackageVulnerability: object = {
+    $type: 'yandex.cloud.containerregistry.v1.PackageVulnerability',
     name: '',
     link: '',
     package: '',
@@ -602,6 +629,8 @@ const basePackageVulnerability: object = {
 };
 
 export const PackageVulnerability = {
+    $type: 'yandex.cloud.containerregistry.v1.PackageVulnerability' as const,
+
     encode(
         message: PackageVulnerability,
         writer: _m0.Writer = _m0.Writer.create()
@@ -748,6 +777,8 @@ export const PackageVulnerability = {
     },
 };
 
+messageTypeRegistry.set(PackageVulnerability.$type, PackageVulnerability);
+
 declare var self: any | undefined;
 declare var window: any | undefined;
 declare var global: any | undefined;
@@ -774,13 +805,13 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 function toTimestamp(date: Date): Timestamp {
     const seconds = date.getTime() / 1_000;
     const nanos = (date.getTime() % 1_000) * 1_000_000;
-    return { seconds, nanos };
+    return { $type: 'google.protobuf.Timestamp', seconds, nanos };
 }
 
 function fromTimestamp(t: Timestamp): Date {

@@ -1,5 +1,6 @@
 /* eslint-disable */
 import { Timestamp } from '../../../../google/protobuf/timestamp';
+import { messageTypeRegistry } from '../../../../typeRegistry';
 import Long from 'long';
 import _m0 from 'protobufjs/minimal';
 
@@ -7,6 +8,7 @@ export const protobufPackage = 'yandex.cloud.iam.v1';
 
 /** A Key resource. For more information, see [Authorized keys](/docs/iam/concepts/authorization/key). */
 export interface Key {
+    $type: 'yandex.cloud.iam.v1.Key';
     /** ID of the Key resource. */
     id: string;
     /** ID of the user account that the Key resource belongs to. */
@@ -64,6 +66,7 @@ export function key_AlgorithmToJSON(object: Key_Algorithm): string {
 }
 
 const baseKey: object = {
+    $type: 'yandex.cloud.iam.v1.Key',
     id: '',
     description: '',
     keyAlgorithm: 0,
@@ -71,6 +74,8 @@ const baseKey: object = {
 };
 
 export const Key = {
+    $type: 'yandex.cloud.iam.v1.Key' as const,
+
     encode(message: Key, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
         if (message.id !== '') {
             writer.uint32(10).string(message.id);
@@ -248,6 +253,8 @@ export const Key = {
     },
 };
 
+messageTypeRegistry.set(Key.$type, Key);
+
 type Builtin =
     | Date
     | Function
@@ -263,13 +270,13 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 function toTimestamp(date: Date): Timestamp {
     const seconds = date.getTime() / 1_000;
     const nanos = (date.getTime() % 1_000) * 1_000_000;
-    return { seconds, nanos };
+    return { $type: 'google.protobuf.Timestamp', seconds, nanos };
 }
 
 function fromTimestamp(t: Timestamp): Date {

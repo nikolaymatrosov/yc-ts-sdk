@@ -4,6 +4,7 @@ import { ChannelCredentials, ChannelOptions, UntypedServiceImplementation, handl
 import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.billing.v1";
 export interface GetServiceRequest {
+    $type: 'yandex.cloud.billing.v1.GetServiceRequest';
     /**
      * ID of the service to return.
      * To get the service ID, use [ServiceService.List] request.
@@ -11,6 +12,7 @@ export interface GetServiceRequest {
     id: string;
 }
 export interface ListServicesRequest {
+    $type: 'yandex.cloud.billing.v1.ListServicesRequest';
     /**
      * A filter expression that filters resources listed in the response.
      * The expression must specify:
@@ -34,6 +36,7 @@ export interface ListServicesRequest {
     pageToken: string;
 }
 export interface ListServicesResponse {
+    $type: 'yandex.cloud.billing.v1.ListServicesResponse';
     /** List of services. */
     services: Service[];
     /**
@@ -47,6 +50,7 @@ export interface ListServicesResponse {
     nextPageToken: string;
 }
 export declare const GetServiceRequest: {
+    $type: "yandex.cloud.billing.v1.GetServiceRequest";
     encode(message: GetServiceRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): GetServiceRequest;
     fromJSON(object: any): GetServiceRequest;
@@ -54,6 +58,7 @@ export declare const GetServiceRequest: {
     fromPartial(object: DeepPartial<GetServiceRequest>): GetServiceRequest;
 };
 export declare const ListServicesRequest: {
+    $type: "yandex.cloud.billing.v1.ListServicesRequest";
     encode(message: ListServicesRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListServicesRequest;
     fromJSON(object: any): ListServicesRequest;
@@ -61,6 +66,7 @@ export declare const ListServicesRequest: {
     fromPartial(object: DeepPartial<ListServicesRequest>): ListServicesRequest;
 };
 export declare const ListServicesResponse: {
+    $type: "yandex.cloud.billing.v1.ListServicesResponse";
     encode(message: ListServicesResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListServicesResponse;
     fromJSON(object: any): ListServicesResponse;
@@ -109,6 +115,6 @@ export interface ServiceServiceClient extends Client {
 export declare const ServiceServiceClient: new (address: string, credentials: ChannelCredentials, options?: Partial<ChannelOptions> | undefined) => ServiceServiceClient;
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

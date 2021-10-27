@@ -5,6 +5,7 @@ export declare const protobufPackage = "yandex.cloud.mdb.clickhouse.v1";
  * the [Developer's guide](/docs/managed-clickhouse/concepts).
  */
 export interface User {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.User';
     /** Name of the ClickHouse user. */
     name: string;
     /** ID of the ClickHouse cluster the user belongs to. */
@@ -16,10 +17,12 @@ export interface User {
     quotas: UserQuota[];
 }
 export interface Permission {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.Permission';
     /** Name of the database that the permission grants access to. */
     databaseName: string;
 }
 export interface UserSpec {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.UserSpec';
     /** Name of the ClickHouse user. */
     name: string;
     /** Password of the ClickHouse user. */
@@ -35,6 +38,7 @@ export interface UserSpec {
  * described in [ClickHouse documentation](https://clickhouse.yandex/docs/en/operations/settings/).
  */
 export interface UserSettings {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.UserSettings';
     /**
      * Restricts permissions for non-DDL queries. To restrict permissions for DDL queries, use [allow_ddl] instead.
      * * **0** (default)-no restrictions.
@@ -794,6 +798,7 @@ export declare function userSettings_CountDistinctImplementationToJSON(object: U
  * See in-depth description [ClickHouse documentation](https://clickhouse.yandex/docs/en/operations/quotas/).
  */
 export interface UserQuota {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.UserQuota';
     /**
      * Duration of interval for quota in milliseconds.
      * Minimal value is 1 second.
@@ -826,6 +831,7 @@ export interface UserQuota {
     executionTime: number | undefined;
 }
 export declare const User: {
+    $type: "yandex.cloud.mdb.clickhouse.v1.User";
     encode(message: User, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): User;
     fromJSON(object: any): User;
@@ -833,6 +839,7 @@ export declare const User: {
     fromPartial(object: DeepPartial<User>): User;
 };
 export declare const Permission: {
+    $type: "yandex.cloud.mdb.clickhouse.v1.Permission";
     encode(message: Permission, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Permission;
     fromJSON(object: any): Permission;
@@ -840,6 +847,7 @@ export declare const Permission: {
     fromPartial(object: DeepPartial<Permission>): Permission;
 };
 export declare const UserSpec: {
+    $type: "yandex.cloud.mdb.clickhouse.v1.UserSpec";
     encode(message: UserSpec, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UserSpec;
     fromJSON(object: any): UserSpec;
@@ -847,6 +855,7 @@ export declare const UserSpec: {
     fromPartial(object: DeepPartial<UserSpec>): UserSpec;
 };
 export declare const UserSettings: {
+    $type: "yandex.cloud.mdb.clickhouse.v1.UserSettings";
     encode(message: UserSettings, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UserSettings;
     fromJSON(object: any): UserSettings;
@@ -854,6 +863,7 @@ export declare const UserSettings: {
     fromPartial(object: DeepPartial<UserSettings>): UserSettings;
 };
 export declare const UserQuota: {
+    $type: "yandex.cloud.mdb.clickhouse.v1.UserQuota";
     encode(message: UserQuota, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UserQuota;
     fromJSON(object: any): UserQuota;
@@ -862,6 +872,6 @@ export declare const UserQuota: {
 };
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

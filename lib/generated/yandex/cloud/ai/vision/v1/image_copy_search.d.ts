@@ -1,12 +1,14 @@
 import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.ai.vision.v1";
 export interface ImageCopySearchAnnotation {
+    $type: 'yandex.cloud.ai.vision.v1.ImageCopySearchAnnotation';
     /** Number of image copies */
     copyCount: number;
     /** Top relevance result of image copy search */
     topResults: CopyMatch[];
 }
 export interface CopyMatch {
+    $type: 'yandex.cloud.ai.vision.v1.CopyMatch';
     /** url of image */
     imageUrl: string;
     /** url of page that contains image */
@@ -17,6 +19,7 @@ export interface CopyMatch {
     description: string;
 }
 export declare const ImageCopySearchAnnotation: {
+    $type: "yandex.cloud.ai.vision.v1.ImageCopySearchAnnotation";
     encode(message: ImageCopySearchAnnotation, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ImageCopySearchAnnotation;
     fromJSON(object: any): ImageCopySearchAnnotation;
@@ -24,6 +27,7 @@ export declare const ImageCopySearchAnnotation: {
     fromPartial(object: DeepPartial<ImageCopySearchAnnotation>): ImageCopySearchAnnotation;
 };
 export declare const CopyMatch: {
+    $type: "yandex.cloud.ai.vision.v1.CopyMatch";
     encode(message: CopyMatch, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CopyMatch;
     fromJSON(object: any): CopyMatch;
@@ -32,6 +36,6 @@ export declare const CopyMatch: {
 };
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

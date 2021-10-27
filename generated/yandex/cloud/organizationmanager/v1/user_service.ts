@@ -1,4 +1,5 @@
 /* eslint-disable */
+import { messageTypeRegistry } from '../../../../typeRegistry';
 import { SubjectClaims } from '../../../../yandex/cloud/oauth/claims';
 import { Operation } from '../../../../yandex/cloud/operation/operation';
 import {
@@ -19,6 +20,7 @@ import _m0 from 'protobufjs/minimal';
 export const protobufPackage = 'yandex.cloud.organizationmanager.v1';
 
 export interface ListMembersRequest {
+    $type: 'yandex.cloud.organizationmanager.v1.ListMembersRequest';
     /** ID of the Organization resource to list members for. */
     organizationId: string;
     /**
@@ -37,6 +39,7 @@ export interface ListMembersRequest {
 }
 
 export interface ListMembersResponse {
+    $type: 'yandex.cloud.organizationmanager.v1.ListMembersResponse';
     /** List of users for the specified organization. */
     users: ListMembersResponse_OrganizationUser[];
     /**
@@ -49,11 +52,13 @@ export interface ListMembersResponse {
 }
 
 export interface ListMembersResponse_OrganizationUser {
+    $type: 'yandex.cloud.organizationmanager.v1.ListMembersResponse.OrganizationUser';
     /** OpenID standard claims with additional Yandex.Organization claims. */
     subjectClaims: SubjectClaims | undefined;
 }
 
 export interface DeleteMembershipRequest {
+    $type: 'yandex.cloud.organizationmanager.v1.DeleteMembershipRequest';
     /** ID of the organization to delete membership. */
     organizationId: string;
     /**
@@ -64,6 +69,7 @@ export interface DeleteMembershipRequest {
 }
 
 export interface DeleteMembershipMetadata {
+    $type: 'yandex.cloud.organizationmanager.v1.DeleteMembershipMetadata';
     /** ID of the organization to delete membership. */
     organizationId: string;
     /** ID of the subject that is being deleted from organization. */
@@ -71,6 +77,7 @@ export interface DeleteMembershipMetadata {
 }
 
 export interface DeleteMembershipResponse {
+    $type: 'yandex.cloud.organizationmanager.v1.DeleteMembershipResponse';
     /** ID of the organization to delete membership. */
     organizationId: string;
     /** ID of the subject that is being deleted from organization. */
@@ -78,12 +85,15 @@ export interface DeleteMembershipResponse {
 }
 
 const baseListMembersRequest: object = {
+    $type: 'yandex.cloud.organizationmanager.v1.ListMembersRequest',
     organizationId: '',
     pageSize: 0,
     pageToken: '',
 };
 
 export const ListMembersRequest = {
+    $type: 'yandex.cloud.organizationmanager.v1.ListMembersRequest' as const,
+
     encode(
         message: ListMembersRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -184,9 +194,16 @@ export const ListMembersRequest = {
     },
 };
 
-const baseListMembersResponse: object = { nextPageToken: '' };
+messageTypeRegistry.set(ListMembersRequest.$type, ListMembersRequest);
+
+const baseListMembersResponse: object = {
+    $type: 'yandex.cloud.organizationmanager.v1.ListMembersResponse',
+    nextPageToken: '',
+};
 
 export const ListMembersResponse = {
+    $type: 'yandex.cloud.organizationmanager.v1.ListMembersResponse' as const,
+
     encode(
         message: ListMembersResponse,
         writer: _m0.Writer = _m0.Writer.create()
@@ -291,9 +308,15 @@ export const ListMembersResponse = {
     },
 };
 
-const baseListMembersResponse_OrganizationUser: object = {};
+messageTypeRegistry.set(ListMembersResponse.$type, ListMembersResponse);
+
+const baseListMembersResponse_OrganizationUser: object = {
+    $type: 'yandex.cloud.organizationmanager.v1.ListMembersResponse.OrganizationUser',
+};
 
 export const ListMembersResponse_OrganizationUser = {
+    $type: 'yandex.cloud.organizationmanager.v1.ListMembersResponse.OrganizationUser' as const,
+
     encode(
         message: ListMembersResponse_OrganizationUser,
         writer: _m0.Writer = _m0.Writer.create()
@@ -380,12 +403,20 @@ export const ListMembersResponse_OrganizationUser = {
     },
 };
 
+messageTypeRegistry.set(
+    ListMembersResponse_OrganizationUser.$type,
+    ListMembersResponse_OrganizationUser
+);
+
 const baseDeleteMembershipRequest: object = {
+    $type: 'yandex.cloud.organizationmanager.v1.DeleteMembershipRequest',
     organizationId: '',
     subjectId: '',
 };
 
 export const DeleteMembershipRequest = {
+    $type: 'yandex.cloud.organizationmanager.v1.DeleteMembershipRequest' as const,
+
     encode(
         message: DeleteMembershipRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -477,12 +508,17 @@ export const DeleteMembershipRequest = {
     },
 };
 
+messageTypeRegistry.set(DeleteMembershipRequest.$type, DeleteMembershipRequest);
+
 const baseDeleteMembershipMetadata: object = {
+    $type: 'yandex.cloud.organizationmanager.v1.DeleteMembershipMetadata',
     organizationId: '',
     subjectId: '',
 };
 
 export const DeleteMembershipMetadata = {
+    $type: 'yandex.cloud.organizationmanager.v1.DeleteMembershipMetadata' as const,
+
     encode(
         message: DeleteMembershipMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -574,12 +610,20 @@ export const DeleteMembershipMetadata = {
     },
 };
 
+messageTypeRegistry.set(
+    DeleteMembershipMetadata.$type,
+    DeleteMembershipMetadata
+);
+
 const baseDeleteMembershipResponse: object = {
+    $type: 'yandex.cloud.organizationmanager.v1.DeleteMembershipResponse',
     organizationId: '',
     subjectId: '',
 };
 
 export const DeleteMembershipResponse = {
+    $type: 'yandex.cloud.organizationmanager.v1.DeleteMembershipResponse' as const,
+
     encode(
         message: DeleteMembershipResponse,
         writer: _m0.Writer = _m0.Writer.create()
@@ -670,6 +714,11 @@ export const DeleteMembershipResponse = {
         return message;
     },
 };
+
+messageTypeRegistry.set(
+    DeleteMembershipResponse.$type,
+    DeleteMembershipResponse
+);
 
 /** A set of methods for managing Organization users. */
 export const UserServiceService = {
@@ -789,7 +838,7 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 function longToNumber(long: Long): number {

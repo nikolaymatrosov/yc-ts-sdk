@@ -1,12 +1,15 @@
 import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.mdb.greenplum.v1";
 export interface MaintenanceWindow {
+    $type: 'yandex.cloud.mdb.greenplum.v1.MaintenanceWindow';
     anytime: AnytimeMaintenanceWindow | undefined;
     weeklyMaintenanceWindow: WeeklyMaintenanceWindow | undefined;
 }
 export interface AnytimeMaintenanceWindow {
+    $type: 'yandex.cloud.mdb.greenplum.v1.AnytimeMaintenanceWindow';
 }
 export interface WeeklyMaintenanceWindow {
+    $type: 'yandex.cloud.mdb.greenplum.v1.WeeklyMaintenanceWindow';
     day: WeeklyMaintenanceWindow_WeekDay;
     /** Hour of the day in UTC. */
     hour: number;
@@ -25,10 +28,12 @@ export declare enum WeeklyMaintenanceWindow_WeekDay {
 export declare function weeklyMaintenanceWindow_WeekDayFromJSON(object: any): WeeklyMaintenanceWindow_WeekDay;
 export declare function weeklyMaintenanceWindow_WeekDayToJSON(object: WeeklyMaintenanceWindow_WeekDay): string;
 export interface MaintenanceOperation {
+    $type: 'yandex.cloud.mdb.greenplum.v1.MaintenanceOperation';
     info: string;
     delayedUntil: Date | undefined;
 }
 export declare const MaintenanceWindow: {
+    $type: "yandex.cloud.mdb.greenplum.v1.MaintenanceWindow";
     encode(message: MaintenanceWindow, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): MaintenanceWindow;
     fromJSON(object: any): MaintenanceWindow;
@@ -36,6 +41,7 @@ export declare const MaintenanceWindow: {
     fromPartial(object: DeepPartial<MaintenanceWindow>): MaintenanceWindow;
 };
 export declare const AnytimeMaintenanceWindow: {
+    $type: "yandex.cloud.mdb.greenplum.v1.AnytimeMaintenanceWindow";
     encode(_: AnytimeMaintenanceWindow, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): AnytimeMaintenanceWindow;
     fromJSON(_: any): AnytimeMaintenanceWindow;
@@ -43,6 +49,7 @@ export declare const AnytimeMaintenanceWindow: {
     fromPartial(_: DeepPartial<AnytimeMaintenanceWindow>): AnytimeMaintenanceWindow;
 };
 export declare const WeeklyMaintenanceWindow: {
+    $type: "yandex.cloud.mdb.greenplum.v1.WeeklyMaintenanceWindow";
     encode(message: WeeklyMaintenanceWindow, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): WeeklyMaintenanceWindow;
     fromJSON(object: any): WeeklyMaintenanceWindow;
@@ -50,6 +57,7 @@ export declare const WeeklyMaintenanceWindow: {
     fromPartial(object: DeepPartial<WeeklyMaintenanceWindow>): WeeklyMaintenanceWindow;
 };
 export declare const MaintenanceOperation: {
+    $type: "yandex.cloud.mdb.greenplum.v1.MaintenanceOperation";
     encode(message: MaintenanceOperation, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): MaintenanceOperation;
     fromJSON(object: any): MaintenanceOperation;
@@ -58,6 +66,6 @@ export declare const MaintenanceOperation: {
 };
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

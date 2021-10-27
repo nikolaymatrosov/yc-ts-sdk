@@ -1,5 +1,6 @@
 /* eslint-disable */
 import { FieldMask } from '../../../../../google/protobuf/field_mask';
+import { messageTypeRegistry } from '../../../../../typeRegistry';
 import { Operation } from '../../../../../yandex/cloud/operation/operation';
 import {
     Trigger,
@@ -23,6 +24,7 @@ import _m0 from 'protobufjs/minimal';
 export const protobufPackage = 'yandex.cloud.serverless.triggers.v1';
 
 export interface GetTriggerRequest {
+    $type: 'yandex.cloud.serverless.triggers.v1.GetTriggerRequest';
     /**
      * ID of the trigger to return.
      *
@@ -32,6 +34,7 @@ export interface GetTriggerRequest {
 }
 
 export interface ListTriggersRequest {
+    $type: 'yandex.cloud.serverless.triggers.v1.ListTriggersRequest';
     /**
      * ID of the folder to list triggers in.
      *
@@ -65,6 +68,7 @@ export interface ListTriggersRequest {
 }
 
 export interface ListTriggersResponse {
+    $type: 'yandex.cloud.serverless.triggers.v1.ListTriggersResponse';
     /** List of triggers in the specified folder. */
     triggers: Trigger[];
     /**
@@ -78,6 +82,7 @@ export interface ListTriggersResponse {
 }
 
 export interface CreateTriggerRequest {
+    $type: 'yandex.cloud.serverless.triggers.v1.CreateTriggerRequest';
     /**
      * ID of the folder to create a trigger in.
      *
@@ -98,16 +103,19 @@ export interface CreateTriggerRequest {
 }
 
 export interface CreateTriggerRequest_LabelsEntry {
+    $type: 'yandex.cloud.serverless.triggers.v1.CreateTriggerRequest.LabelsEntry';
     key: string;
     value: string;
 }
 
 export interface CreateTriggerMetadata {
+    $type: 'yandex.cloud.serverless.triggers.v1.CreateTriggerMetadata';
     /** ID of the trigger that is being created. */
     triggerId: string;
 }
 
 export interface UpdateTriggerRequest {
+    $type: 'yandex.cloud.serverless.triggers.v1.UpdateTriggerRequest';
     /**
      * ID of the trigger to update.
      *
@@ -133,16 +141,19 @@ export interface UpdateTriggerRequest {
 }
 
 export interface UpdateTriggerRequest_LabelsEntry {
+    $type: 'yandex.cloud.serverless.triggers.v1.UpdateTriggerRequest.LabelsEntry';
     key: string;
     value: string;
 }
 
 export interface UpdateTriggerMetadata {
+    $type: 'yandex.cloud.serverless.triggers.v1.UpdateTriggerMetadata';
     /** ID of the trigger that is being updated. */
     triggerId: string;
 }
 
 export interface DeleteTriggerRequest {
+    $type: 'yandex.cloud.serverless.triggers.v1.DeleteTriggerRequest';
     /**
      * ID of the trigger to delete.
      *
@@ -152,11 +163,13 @@ export interface DeleteTriggerRequest {
 }
 
 export interface DeleteTriggerMetadata {
+    $type: 'yandex.cloud.serverless.triggers.v1.DeleteTriggerMetadata';
     /** ID of the trigger that is being deleted. */
     triggerId: string;
 }
 
 export interface PauseTriggerRequest {
+    $type: 'yandex.cloud.serverless.triggers.v1.PauseTriggerRequest';
     /**
      * ID of the trigger to pause
      *
@@ -166,11 +179,13 @@ export interface PauseTriggerRequest {
 }
 
 export interface PauseTriggerMetadata {
+    $type: 'yandex.cloud.serverless.triggers.v1.PauseTriggerMetadata';
     /** ID of the trigger that is being paused. */
     triggerId: string;
 }
 
 export interface ResumeTriggerRequest {
+    $type: 'yandex.cloud.serverless.triggers.v1.ResumeTriggerRequest';
     /**
      * ID of the trigger to pause
      *
@@ -180,11 +195,13 @@ export interface ResumeTriggerRequest {
 }
 
 export interface ResumeTriggerMetadata {
+    $type: 'yandex.cloud.serverless.triggers.v1.ResumeTriggerMetadata';
     /** ID of the trigger that is being paused. */
     triggerId: string;
 }
 
 export interface ListTriggerOperationsRequest {
+    $type: 'yandex.cloud.serverless.triggers.v1.ListTriggerOperationsRequest';
     /** ID of the trigger to list operations for. */
     triggerId: string;
     /**
@@ -214,6 +231,7 @@ export interface ListTriggerOperationsRequest {
 }
 
 export interface ListTriggerOperationsResponse {
+    $type: 'yandex.cloud.serverless.triggers.v1.ListTriggerOperationsResponse';
     /** List of operations for the specified trigger. */
     operations: Operation[];
     /**
@@ -226,9 +244,14 @@ export interface ListTriggerOperationsResponse {
     nextPageToken: string;
 }
 
-const baseGetTriggerRequest: object = { triggerId: '' };
+const baseGetTriggerRequest: object = {
+    $type: 'yandex.cloud.serverless.triggers.v1.GetTriggerRequest',
+    triggerId: '',
+};
 
 export const GetTriggerRequest = {
+    $type: 'yandex.cloud.serverless.triggers.v1.GetTriggerRequest' as const,
+
     encode(
         message: GetTriggerRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -285,7 +308,10 @@ export const GetTriggerRequest = {
     },
 };
 
+messageTypeRegistry.set(GetTriggerRequest.$type, GetTriggerRequest);
+
 const baseListTriggersRequest: object = {
+    $type: 'yandex.cloud.serverless.triggers.v1.ListTriggersRequest',
     folderId: '',
     pageSize: 0,
     pageToken: '',
@@ -293,6 +319,8 @@ const baseListTriggersRequest: object = {
 };
 
 export const ListTriggersRequest = {
+    $type: 'yandex.cloud.serverless.triggers.v1.ListTriggersRequest' as const,
+
     encode(
         message: ListTriggersRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -403,9 +431,16 @@ export const ListTriggersRequest = {
     },
 };
 
-const baseListTriggersResponse: object = { nextPageToken: '' };
+messageTypeRegistry.set(ListTriggersRequest.$type, ListTriggersRequest);
+
+const baseListTriggersResponse: object = {
+    $type: 'yandex.cloud.serverless.triggers.v1.ListTriggersResponse',
+    nextPageToken: '',
+};
 
 export const ListTriggersResponse = {
+    $type: 'yandex.cloud.serverless.triggers.v1.ListTriggersResponse' as const,
+
     encode(
         message: ListTriggersResponse,
         writer: _m0.Writer = _m0.Writer.create()
@@ -502,13 +537,18 @@ export const ListTriggersResponse = {
     },
 };
 
+messageTypeRegistry.set(ListTriggersResponse.$type, ListTriggersResponse);
+
 const baseCreateTriggerRequest: object = {
+    $type: 'yandex.cloud.serverless.triggers.v1.CreateTriggerRequest',
     folderId: '',
     name: '',
     description: '',
 };
 
 export const CreateTriggerRequest = {
+    $type: 'yandex.cloud.serverless.triggers.v1.CreateTriggerRequest' as const,
+
     encode(
         message: CreateTriggerRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -524,7 +564,11 @@ export const CreateTriggerRequest = {
         }
         Object.entries(message.labels).forEach(([key, value]) => {
             CreateTriggerRequest_LabelsEntry.encode(
-                { key: key as any, value },
+                {
+                    $type: 'yandex.cloud.serverless.triggers.v1.CreateTriggerRequest.LabelsEntry',
+                    key: key as any,
+                    value,
+                },
                 writer.uint32(34).fork()
             ).ldelim();
         });
@@ -664,9 +708,17 @@ export const CreateTriggerRequest = {
     },
 };
 
-const baseCreateTriggerRequest_LabelsEntry: object = { key: '', value: '' };
+messageTypeRegistry.set(CreateTriggerRequest.$type, CreateTriggerRequest);
+
+const baseCreateTriggerRequest_LabelsEntry: object = {
+    $type: 'yandex.cloud.serverless.triggers.v1.CreateTriggerRequest.LabelsEntry',
+    key: '',
+    value: '',
+};
 
 export const CreateTriggerRequest_LabelsEntry = {
+    $type: 'yandex.cloud.serverless.triggers.v1.CreateTriggerRequest.LabelsEntry' as const,
+
     encode(
         message: CreateTriggerRequest_LabelsEntry,
         writer: _m0.Writer = _m0.Writer.create()
@@ -751,9 +803,19 @@ export const CreateTriggerRequest_LabelsEntry = {
     },
 };
 
-const baseCreateTriggerMetadata: object = { triggerId: '' };
+messageTypeRegistry.set(
+    CreateTriggerRequest_LabelsEntry.$type,
+    CreateTriggerRequest_LabelsEntry
+);
+
+const baseCreateTriggerMetadata: object = {
+    $type: 'yandex.cloud.serverless.triggers.v1.CreateTriggerMetadata',
+    triggerId: '',
+};
 
 export const CreateTriggerMetadata = {
+    $type: 'yandex.cloud.serverless.triggers.v1.CreateTriggerMetadata' as const,
+
     encode(
         message: CreateTriggerMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -821,13 +883,18 @@ export const CreateTriggerMetadata = {
     },
 };
 
+messageTypeRegistry.set(CreateTriggerMetadata.$type, CreateTriggerMetadata);
+
 const baseUpdateTriggerRequest: object = {
+    $type: 'yandex.cloud.serverless.triggers.v1.UpdateTriggerRequest',
     triggerId: '',
     name: '',
     description: '',
 };
 
 export const UpdateTriggerRequest = {
+    $type: 'yandex.cloud.serverless.triggers.v1.UpdateTriggerRequest' as const,
+
     encode(
         message: UpdateTriggerRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -849,7 +916,11 @@ export const UpdateTriggerRequest = {
         }
         Object.entries(message.labels).forEach(([key, value]) => {
             UpdateTriggerRequest_LabelsEntry.encode(
-                { key: key as any, value },
+                {
+                    $type: 'yandex.cloud.serverless.triggers.v1.UpdateTriggerRequest.LabelsEntry',
+                    key: key as any,
+                    value,
+                },
                 writer.uint32(42).fork()
             ).ldelim();
         });
@@ -986,9 +1057,17 @@ export const UpdateTriggerRequest = {
     },
 };
 
-const baseUpdateTriggerRequest_LabelsEntry: object = { key: '', value: '' };
+messageTypeRegistry.set(UpdateTriggerRequest.$type, UpdateTriggerRequest);
+
+const baseUpdateTriggerRequest_LabelsEntry: object = {
+    $type: 'yandex.cloud.serverless.triggers.v1.UpdateTriggerRequest.LabelsEntry',
+    key: '',
+    value: '',
+};
 
 export const UpdateTriggerRequest_LabelsEntry = {
+    $type: 'yandex.cloud.serverless.triggers.v1.UpdateTriggerRequest.LabelsEntry' as const,
+
     encode(
         message: UpdateTriggerRequest_LabelsEntry,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1073,9 +1152,19 @@ export const UpdateTriggerRequest_LabelsEntry = {
     },
 };
 
-const baseUpdateTriggerMetadata: object = { triggerId: '' };
+messageTypeRegistry.set(
+    UpdateTriggerRequest_LabelsEntry.$type,
+    UpdateTriggerRequest_LabelsEntry
+);
+
+const baseUpdateTriggerMetadata: object = {
+    $type: 'yandex.cloud.serverless.triggers.v1.UpdateTriggerMetadata',
+    triggerId: '',
+};
 
 export const UpdateTriggerMetadata = {
+    $type: 'yandex.cloud.serverless.triggers.v1.UpdateTriggerMetadata' as const,
+
     encode(
         message: UpdateTriggerMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1143,9 +1232,16 @@ export const UpdateTriggerMetadata = {
     },
 };
 
-const baseDeleteTriggerRequest: object = { triggerId: '' };
+messageTypeRegistry.set(UpdateTriggerMetadata.$type, UpdateTriggerMetadata);
+
+const baseDeleteTriggerRequest: object = {
+    $type: 'yandex.cloud.serverless.triggers.v1.DeleteTriggerRequest',
+    triggerId: '',
+};
 
 export const DeleteTriggerRequest = {
+    $type: 'yandex.cloud.serverless.triggers.v1.DeleteTriggerRequest' as const,
+
     encode(
         message: DeleteTriggerRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1207,9 +1303,16 @@ export const DeleteTriggerRequest = {
     },
 };
 
-const baseDeleteTriggerMetadata: object = { triggerId: '' };
+messageTypeRegistry.set(DeleteTriggerRequest.$type, DeleteTriggerRequest);
+
+const baseDeleteTriggerMetadata: object = {
+    $type: 'yandex.cloud.serverless.triggers.v1.DeleteTriggerMetadata',
+    triggerId: '',
+};
 
 export const DeleteTriggerMetadata = {
+    $type: 'yandex.cloud.serverless.triggers.v1.DeleteTriggerMetadata' as const,
+
     encode(
         message: DeleteTriggerMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1277,9 +1380,16 @@ export const DeleteTriggerMetadata = {
     },
 };
 
-const basePauseTriggerRequest: object = { triggerId: '' };
+messageTypeRegistry.set(DeleteTriggerMetadata.$type, DeleteTriggerMetadata);
+
+const basePauseTriggerRequest: object = {
+    $type: 'yandex.cloud.serverless.triggers.v1.PauseTriggerRequest',
+    triggerId: '',
+};
 
 export const PauseTriggerRequest = {
+    $type: 'yandex.cloud.serverless.triggers.v1.PauseTriggerRequest' as const,
+
     encode(
         message: PauseTriggerRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1339,9 +1449,16 @@ export const PauseTriggerRequest = {
     },
 };
 
-const basePauseTriggerMetadata: object = { triggerId: '' };
+messageTypeRegistry.set(PauseTriggerRequest.$type, PauseTriggerRequest);
+
+const basePauseTriggerMetadata: object = {
+    $type: 'yandex.cloud.serverless.triggers.v1.PauseTriggerMetadata',
+    triggerId: '',
+};
 
 export const PauseTriggerMetadata = {
+    $type: 'yandex.cloud.serverless.triggers.v1.PauseTriggerMetadata' as const,
+
     encode(
         message: PauseTriggerMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1403,9 +1520,16 @@ export const PauseTriggerMetadata = {
     },
 };
 
-const baseResumeTriggerRequest: object = { triggerId: '' };
+messageTypeRegistry.set(PauseTriggerMetadata.$type, PauseTriggerMetadata);
+
+const baseResumeTriggerRequest: object = {
+    $type: 'yandex.cloud.serverless.triggers.v1.ResumeTriggerRequest',
+    triggerId: '',
+};
 
 export const ResumeTriggerRequest = {
+    $type: 'yandex.cloud.serverless.triggers.v1.ResumeTriggerRequest' as const,
+
     encode(
         message: ResumeTriggerRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1467,9 +1591,16 @@ export const ResumeTriggerRequest = {
     },
 };
 
-const baseResumeTriggerMetadata: object = { triggerId: '' };
+messageTypeRegistry.set(ResumeTriggerRequest.$type, ResumeTriggerRequest);
+
+const baseResumeTriggerMetadata: object = {
+    $type: 'yandex.cloud.serverless.triggers.v1.ResumeTriggerMetadata',
+    triggerId: '',
+};
 
 export const ResumeTriggerMetadata = {
+    $type: 'yandex.cloud.serverless.triggers.v1.ResumeTriggerMetadata' as const,
+
     encode(
         message: ResumeTriggerMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1537,7 +1668,10 @@ export const ResumeTriggerMetadata = {
     },
 };
 
+messageTypeRegistry.set(ResumeTriggerMetadata.$type, ResumeTriggerMetadata);
+
 const baseListTriggerOperationsRequest: object = {
+    $type: 'yandex.cloud.serverless.triggers.v1.ListTriggerOperationsRequest',
     triggerId: '',
     pageSize: 0,
     pageToken: '',
@@ -1545,6 +1679,8 @@ const baseListTriggerOperationsRequest: object = {
 };
 
 export const ListTriggerOperationsRequest = {
+    $type: 'yandex.cloud.serverless.triggers.v1.ListTriggerOperationsRequest' as const,
+
     encode(
         message: ListTriggerOperationsRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1663,9 +1799,19 @@ export const ListTriggerOperationsRequest = {
     },
 };
 
-const baseListTriggerOperationsResponse: object = { nextPageToken: '' };
+messageTypeRegistry.set(
+    ListTriggerOperationsRequest.$type,
+    ListTriggerOperationsRequest
+);
+
+const baseListTriggerOperationsResponse: object = {
+    $type: 'yandex.cloud.serverless.triggers.v1.ListTriggerOperationsResponse',
+    nextPageToken: '',
+};
 
 export const ListTriggerOperationsResponse = {
+    $type: 'yandex.cloud.serverless.triggers.v1.ListTriggerOperationsResponse' as const,
+
     encode(
         message: ListTriggerOperationsResponse,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1767,6 +1913,11 @@ export const ListTriggerOperationsResponse = {
         return message;
     },
 };
+
+messageTypeRegistry.set(
+    ListTriggerOperationsResponse.$type,
+    ListTriggerOperationsResponse
+);
 
 /** A set of methods for managing triggers for serverless functions. */
 export const TriggerServiceService = {
@@ -2097,7 +2248,7 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 function longToNumber(long: Long): number {

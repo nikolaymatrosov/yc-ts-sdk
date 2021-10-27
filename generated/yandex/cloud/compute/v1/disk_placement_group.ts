@@ -1,11 +1,13 @@
 /* eslint-disable */
 import { Timestamp } from '../../../../google/protobuf/timestamp';
+import { messageTypeRegistry } from '../../../../typeRegistry';
 import Long from 'long';
 import _m0 from 'protobufjs/minimal';
 
 export const protobufPackage = 'yandex.cloud.compute.v1';
 
 export interface DiskPlacementGroup {
+    $type: 'yandex.cloud.compute.v1.DiskPlacementGroup';
     /** ID of the placement group. */
     id: string;
     /** ID of the folder that the placement group belongs to. */
@@ -78,13 +80,17 @@ export function diskPlacementGroup_StatusToJSON(
 }
 
 export interface DiskPlacementGroup_LabelsEntry {
+    $type: 'yandex.cloud.compute.v1.DiskPlacementGroup.LabelsEntry';
     key: string;
     value: string;
 }
 
-export interface DiskSpreadPlacementStrategy {}
+export interface DiskSpreadPlacementStrategy {
+    $type: 'yandex.cloud.compute.v1.DiskSpreadPlacementStrategy';
+}
 
 const baseDiskPlacementGroup: object = {
+    $type: 'yandex.cloud.compute.v1.DiskPlacementGroup',
     id: '',
     folderId: '',
     name: '',
@@ -94,6 +100,8 @@ const baseDiskPlacementGroup: object = {
 };
 
 export const DiskPlacementGroup = {
+    $type: 'yandex.cloud.compute.v1.DiskPlacementGroup' as const,
+
     encode(
         message: DiskPlacementGroup,
         writer: _m0.Writer = _m0.Writer.create()
@@ -118,7 +126,11 @@ export const DiskPlacementGroup = {
         }
         Object.entries(message.labels).forEach(([key, value]) => {
             DiskPlacementGroup_LabelsEntry.encode(
-                { key: key as any, value },
+                {
+                    $type: 'yandex.cloud.compute.v1.DiskPlacementGroup.LabelsEntry',
+                    key: key as any,
+                    value,
+                },
                 writer.uint32(50).fork()
             ).ldelim();
         });
@@ -340,9 +352,17 @@ export const DiskPlacementGroup = {
     },
 };
 
-const baseDiskPlacementGroup_LabelsEntry: object = { key: '', value: '' };
+messageTypeRegistry.set(DiskPlacementGroup.$type, DiskPlacementGroup);
+
+const baseDiskPlacementGroup_LabelsEntry: object = {
+    $type: 'yandex.cloud.compute.v1.DiskPlacementGroup.LabelsEntry',
+    key: '',
+    value: '',
+};
 
 export const DiskPlacementGroup_LabelsEntry = {
+    $type: 'yandex.cloud.compute.v1.DiskPlacementGroup.LabelsEntry' as const,
+
     encode(
         message: DiskPlacementGroup_LabelsEntry,
         writer: _m0.Writer = _m0.Writer.create()
@@ -427,9 +447,18 @@ export const DiskPlacementGroup_LabelsEntry = {
     },
 };
 
-const baseDiskSpreadPlacementStrategy: object = {};
+messageTypeRegistry.set(
+    DiskPlacementGroup_LabelsEntry.$type,
+    DiskPlacementGroup_LabelsEntry
+);
+
+const baseDiskSpreadPlacementStrategy: object = {
+    $type: 'yandex.cloud.compute.v1.DiskSpreadPlacementStrategy',
+};
 
 export const DiskSpreadPlacementStrategy = {
+    $type: 'yandex.cloud.compute.v1.DiskSpreadPlacementStrategy' as const,
+
     encode(
         _: DiskSpreadPlacementStrategy,
         writer: _m0.Writer = _m0.Writer.create()
@@ -480,6 +509,11 @@ export const DiskSpreadPlacementStrategy = {
     },
 };
 
+messageTypeRegistry.set(
+    DiskSpreadPlacementStrategy.$type,
+    DiskSpreadPlacementStrategy
+);
+
 type Builtin =
     | Date
     | Function
@@ -495,13 +529,13 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 function toTimestamp(date: Date): Timestamp {
     const seconds = date.getTime() / 1_000;
     const nanos = (date.getTime() % 1_000) * 1_000_000;
-    return { seconds, nanos };
+    return { $type: 'google.protobuf.Timestamp', seconds, nanos };
 }
 
 function fromTimestamp(t: Timestamp): Date {

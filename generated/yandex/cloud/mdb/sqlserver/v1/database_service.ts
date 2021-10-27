@@ -1,5 +1,6 @@
 /* eslint-disable */
 import { Timestamp } from '../../../../../google/protobuf/timestamp';
+import { messageTypeRegistry } from '../../../../../typeRegistry';
 import {
     Database,
     DatabaseSpec,
@@ -23,6 +24,7 @@ import _m0 from 'protobufjs/minimal';
 export const protobufPackage = 'yandex.cloud.mdb.sqlserver.v1';
 
 export interface GetDatabaseRequest {
+    $type: 'yandex.cloud.mdb.sqlserver.v1.GetDatabaseRequest';
     /**
      * ID of the SQL Server cluster the database belongs to.
      *
@@ -38,6 +40,7 @@ export interface GetDatabaseRequest {
 }
 
 export interface ListDatabasesRequest {
+    $type: 'yandex.cloud.mdb.sqlserver.v1.ListDatabasesRequest';
     /**
      * ID of the SQL Server cluster to list databases in.
      *
@@ -58,6 +61,7 @@ export interface ListDatabasesRequest {
 }
 
 export interface ListDatabasesResponse {
+    $type: 'yandex.cloud.mdb.sqlserver.v1.ListDatabasesResponse';
     /** List of SQL Server databases. */
     databases: Database[];
     /**
@@ -70,6 +74,7 @@ export interface ListDatabasesResponse {
 }
 
 export interface CreateDatabaseRequest {
+    $type: 'yandex.cloud.mdb.sqlserver.v1.CreateDatabaseRequest';
     /**
      * ID of the SQL Server cluster to create a database in.
      *
@@ -81,6 +86,7 @@ export interface CreateDatabaseRequest {
 }
 
 export interface CreateDatabaseMetadata {
+    $type: 'yandex.cloud.mdb.sqlserver.v1.CreateDatabaseMetadata';
     /** ID of the SQL Server cluster where the database is being created. */
     clusterId: string;
     /** Name of the SQL Server database being created. */
@@ -88,6 +94,7 @@ export interface CreateDatabaseMetadata {
 }
 
 export interface RestoreDatabaseMetadata {
+    $type: 'yandex.cloud.mdb.sqlserver.v1.RestoreDatabaseMetadata';
     /** ID of the SQLServer cluster where a database is being created. */
     clusterId: string;
     /** Name of the SQLServer database that is being created. */
@@ -99,6 +106,7 @@ export interface RestoreDatabaseMetadata {
 }
 
 export interface DeleteDatabaseRequest {
+    $type: 'yandex.cloud.mdb.sqlserver.v1.DeleteDatabaseRequest';
     /**
      * ID of the SQL Server cluster to delete a database in.
      *
@@ -114,6 +122,7 @@ export interface DeleteDatabaseRequest {
 }
 
 export interface DeleteDatabaseMetadata {
+    $type: 'yandex.cloud.mdb.sqlserver.v1.DeleteDatabaseMetadata';
     /** ID of the SQL Server cluster where the database is being deleted. */
     clusterId: string;
     /** Name of the SQL Server database being deleted. */
@@ -121,6 +130,7 @@ export interface DeleteDatabaseMetadata {
 }
 
 export interface RestoreDatabaseRequest {
+    $type: 'yandex.cloud.mdb.sqlserver.v1.RestoreDatabaseRequest';
     /**
      * Required. ID of the SQL Server cluster to restore a database in.
      * To get the cluster ID, use a [ClusterService.List] request
@@ -136,9 +146,15 @@ export interface RestoreDatabaseRequest {
     time: Date | undefined;
 }
 
-const baseGetDatabaseRequest: object = { clusterId: '', databaseName: '' };
+const baseGetDatabaseRequest: object = {
+    $type: 'yandex.cloud.mdb.sqlserver.v1.GetDatabaseRequest',
+    clusterId: '',
+    databaseName: '',
+};
 
 export const GetDatabaseRequest = {
+    $type: 'yandex.cloud.mdb.sqlserver.v1.GetDatabaseRequest' as const,
+
     encode(
         message: GetDatabaseRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -216,13 +232,18 @@ export const GetDatabaseRequest = {
     },
 };
 
+messageTypeRegistry.set(GetDatabaseRequest.$type, GetDatabaseRequest);
+
 const baseListDatabasesRequest: object = {
+    $type: 'yandex.cloud.mdb.sqlserver.v1.ListDatabasesRequest',
     clusterId: '',
     pageSize: 0,
     pageToken: '',
 };
 
 export const ListDatabasesRequest = {
+    $type: 'yandex.cloud.mdb.sqlserver.v1.ListDatabasesRequest' as const,
+
     encode(
         message: ListDatabasesRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -318,9 +339,16 @@ export const ListDatabasesRequest = {
     },
 };
 
-const baseListDatabasesResponse: object = { nextPageToken: '' };
+messageTypeRegistry.set(ListDatabasesRequest.$type, ListDatabasesRequest);
+
+const baseListDatabasesResponse: object = {
+    $type: 'yandex.cloud.mdb.sqlserver.v1.ListDatabasesResponse',
+    nextPageToken: '',
+};
 
 export const ListDatabasesResponse = {
+    $type: 'yandex.cloud.mdb.sqlserver.v1.ListDatabasesResponse' as const,
+
     encode(
         message: ListDatabasesResponse,
         writer: _m0.Writer = _m0.Writer.create()
@@ -423,9 +451,16 @@ export const ListDatabasesResponse = {
     },
 };
 
-const baseCreateDatabaseRequest: object = { clusterId: '' };
+messageTypeRegistry.set(ListDatabasesResponse.$type, ListDatabasesResponse);
+
+const baseCreateDatabaseRequest: object = {
+    $type: 'yandex.cloud.mdb.sqlserver.v1.CreateDatabaseRequest',
+    clusterId: '',
+};
 
 export const CreateDatabaseRequest = {
+    $type: 'yandex.cloud.mdb.sqlserver.v1.CreateDatabaseRequest' as const,
+
     encode(
         message: CreateDatabaseRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -521,9 +556,17 @@ export const CreateDatabaseRequest = {
     },
 };
 
-const baseCreateDatabaseMetadata: object = { clusterId: '', databaseName: '' };
+messageTypeRegistry.set(CreateDatabaseRequest.$type, CreateDatabaseRequest);
+
+const baseCreateDatabaseMetadata: object = {
+    $type: 'yandex.cloud.mdb.sqlserver.v1.CreateDatabaseMetadata',
+    clusterId: '',
+    databaseName: '',
+};
 
 export const CreateDatabaseMetadata = {
+    $type: 'yandex.cloud.mdb.sqlserver.v1.CreateDatabaseMetadata' as const,
+
     encode(
         message: CreateDatabaseMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -609,7 +652,10 @@ export const CreateDatabaseMetadata = {
     },
 };
 
+messageTypeRegistry.set(CreateDatabaseMetadata.$type, CreateDatabaseMetadata);
+
 const baseRestoreDatabaseMetadata: object = {
+    $type: 'yandex.cloud.mdb.sqlserver.v1.RestoreDatabaseMetadata',
     clusterId: '',
     databaseName: '',
     fromDatabase: '',
@@ -617,6 +663,8 @@ const baseRestoreDatabaseMetadata: object = {
 };
 
 export const RestoreDatabaseMetadata = {
+    $type: 'yandex.cloud.mdb.sqlserver.v1.RestoreDatabaseMetadata' as const,
+
     encode(
         message: RestoreDatabaseMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -737,9 +785,17 @@ export const RestoreDatabaseMetadata = {
     },
 };
 
-const baseDeleteDatabaseRequest: object = { clusterId: '', databaseName: '' };
+messageTypeRegistry.set(RestoreDatabaseMetadata.$type, RestoreDatabaseMetadata);
+
+const baseDeleteDatabaseRequest: object = {
+    $type: 'yandex.cloud.mdb.sqlserver.v1.DeleteDatabaseRequest',
+    clusterId: '',
+    databaseName: '',
+};
 
 export const DeleteDatabaseRequest = {
+    $type: 'yandex.cloud.mdb.sqlserver.v1.DeleteDatabaseRequest' as const,
+
     encode(
         message: DeleteDatabaseRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -825,9 +881,17 @@ export const DeleteDatabaseRequest = {
     },
 };
 
-const baseDeleteDatabaseMetadata: object = { clusterId: '', databaseName: '' };
+messageTypeRegistry.set(DeleteDatabaseRequest.$type, DeleteDatabaseRequest);
+
+const baseDeleteDatabaseMetadata: object = {
+    $type: 'yandex.cloud.mdb.sqlserver.v1.DeleteDatabaseMetadata',
+    clusterId: '',
+    databaseName: '',
+};
 
 export const DeleteDatabaseMetadata = {
+    $type: 'yandex.cloud.mdb.sqlserver.v1.DeleteDatabaseMetadata' as const,
+
     encode(
         message: DeleteDatabaseMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -913,7 +977,10 @@ export const DeleteDatabaseMetadata = {
     },
 };
 
+messageTypeRegistry.set(DeleteDatabaseMetadata.$type, DeleteDatabaseMetadata);
+
 const baseRestoreDatabaseRequest: object = {
+    $type: 'yandex.cloud.mdb.sqlserver.v1.RestoreDatabaseRequest',
     clusterId: '',
     databaseName: '',
     fromDatabase: '',
@@ -921,6 +988,8 @@ const baseRestoreDatabaseRequest: object = {
 };
 
 export const RestoreDatabaseRequest = {
+    $type: 'yandex.cloud.mdb.sqlserver.v1.RestoreDatabaseRequest' as const,
+
     encode(
         message: RestoreDatabaseRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1062,6 +1131,8 @@ export const RestoreDatabaseRequest = {
         return message;
     },
 };
+
+messageTypeRegistry.set(RestoreDatabaseRequest.$type, RestoreDatabaseRequest);
 
 /** A set of methods for managing SQL Server databases. */
 export const DatabaseServiceService = {
@@ -1286,13 +1357,13 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 function toTimestamp(date: Date): Timestamp {
     const seconds = date.getTime() / 1_000;
     const nanos = (date.getTime() % 1_000) * 1_000_000;
-    return { seconds, nanos };
+    return { $type: 'google.protobuf.Timestamp', seconds, nanos };
 }
 
 function fromTimestamp(t: Timestamp): Date {

@@ -1,5 +1,6 @@
 /* eslint-disable */
 import { Timestamp } from '../../../../google/protobuf/timestamp';
+import { messageTypeRegistry } from '../../../../typeRegistry';
 import { BackupConfig } from '../../../../yandex/cloud/ydb/v1/backup';
 import Long from 'long';
 import _m0 from 'protobufjs/minimal';
@@ -68,6 +69,7 @@ export function alertEvaluationStatusToJSON(
 
 /** YDB database. */
 export interface Database {
+    $type: 'yandex.cloud.ydb.v1.Database';
     id: string;
     folderId: string;
     createdAt: Date | undefined;
@@ -164,11 +166,13 @@ export function database_StatusToJSON(object: Database_Status): string {
 }
 
 export interface Database_LabelsEntry {
+    $type: 'yandex.cloud.ydb.v1.Database.LabelsEntry';
     key: string;
     value: string;
 }
 
 export interface AlertParameter {
+    $type: 'yandex.cloud.ydb.v1.AlertParameter';
     doubleParameterValue: AlertParameter_DoubleParameterValue | undefined;
     integerParameterValue: AlertParameter_IntegerParameterValue | undefined;
     textParameterValue: AlertParameter_TextParameterValue | undefined;
@@ -177,6 +181,7 @@ export interface AlertParameter {
 }
 
 export interface AlertParameter_DoubleParameterValue {
+    $type: 'yandex.cloud.ydb.v1.AlertParameter.DoubleParameterValue';
     /** Required. Parameter name */
     name: string;
     /** Required. Parameter value */
@@ -184,6 +189,7 @@ export interface AlertParameter_DoubleParameterValue {
 }
 
 export interface AlertParameter_IntegerParameterValue {
+    $type: 'yandex.cloud.ydb.v1.AlertParameter.IntegerParameterValue';
     /** Required. Parameter name */
     name: string;
     /** Required. Parameter value */
@@ -191,6 +197,7 @@ export interface AlertParameter_IntegerParameterValue {
 }
 
 export interface AlertParameter_TextParameterValue {
+    $type: 'yandex.cloud.ydb.v1.AlertParameter.TextParameterValue';
     /** Required. Parameter name */
     name: string;
     /** Required. Parameter value */
@@ -198,6 +205,7 @@ export interface AlertParameter_TextParameterValue {
 }
 
 export interface AlertParameter_TextListParameterValue {
+    $type: 'yandex.cloud.ydb.v1.AlertParameter.TextListParameterValue';
     /** Required. Parameter name */
     name: string;
     /** Required. Parameter value */
@@ -205,6 +213,7 @@ export interface AlertParameter_TextListParameterValue {
 }
 
 export interface AlertParameter_LabelListParameterValue {
+    $type: 'yandex.cloud.ydb.v1.AlertParameter.LabelListParameterValue';
     /** Required. Parameter name */
     name: string;
     /** Required. Parameter value */
@@ -212,12 +221,14 @@ export interface AlertParameter_LabelListParameterValue {
 }
 
 export interface NotificationChannel {
+    $type: 'yandex.cloud.ydb.v1.NotificationChannel';
     notificationChannelId: string;
     notifyAboutStatuses: AlertEvaluationStatus[];
     repeateNotifyDelayMs: number;
 }
 
 export interface Alert {
+    $type: 'yandex.cloud.ydb.v1.Alert';
     /** output only field. */
     alertId: string;
     /** template of the alert. */
@@ -235,10 +246,12 @@ export interface Alert {
 }
 
 export interface MonitoringConfig {
+    $type: 'yandex.cloud.ydb.v1.MonitoringConfig';
     alerts: Alert[];
 }
 
 export interface DedicatedDatabase {
+    $type: 'yandex.cloud.ydb.v1.DedicatedDatabase';
     resourcePresetId: string;
     storageConfig: StorageConfig | undefined;
     scalePolicy: ScalePolicy | undefined;
@@ -248,6 +261,7 @@ export interface DedicatedDatabase {
 }
 
 export interface ServerlessDatabase {
+    $type: 'yandex.cloud.ydb.v1.ServerlessDatabase';
     /**
      * Let's define 1 RU  - 1 request unit
      * Let's define 1 RCU - 1 request capacity unit, which is 1 RU per second.
@@ -269,33 +283,40 @@ export interface ServerlessDatabase {
 }
 
 export interface ZonalDatabase {
+    $type: 'yandex.cloud.ydb.v1.ZonalDatabase';
     zoneId: string;
 }
 
 export interface RegionalDatabase {
+    $type: 'yandex.cloud.ydb.v1.RegionalDatabase';
     regionId: string;
 }
 
 export interface ScalePolicy {
+    $type: 'yandex.cloud.ydb.v1.ScalePolicy';
     fixedScale: ScalePolicy_FixedScale | undefined;
 }
 
 export interface ScalePolicy_FixedScale {
+    $type: 'yandex.cloud.ydb.v1.ScalePolicy.FixedScale';
     size: number;
 }
 
 export interface StorageConfig {
+    $type: 'yandex.cloud.ydb.v1.StorageConfig';
     storageOptions: StorageOption[];
     /** output only field: storage size limit of dedicated database. */
     storageSizeLimit: number;
 }
 
 export interface StorageOption {
+    $type: 'yandex.cloud.ydb.v1.StorageOption';
     storageTypeId: string;
     groupCount: number;
 }
 
 const baseDatabase: object = {
+    $type: 'yandex.cloud.ydb.v1.Database',
     id: '',
     folderId: '',
     name: '',
@@ -312,6 +333,8 @@ const baseDatabase: object = {
 };
 
 export const Database = {
+    $type: 'yandex.cloud.ydb.v1.Database' as const,
+
     encode(
         message: Database,
         writer: _m0.Writer = _m0.Writer.create()
@@ -393,7 +416,11 @@ export const Database = {
         }
         Object.entries(message.labels).forEach(([key, value]) => {
             Database_LabelsEntry.encode(
-                { key: key as any, value },
+                {
+                    $type: 'yandex.cloud.ydb.v1.Database.LabelsEntry',
+                    key: key as any,
+                    value,
+                },
                 writer.uint32(162).fork()
             ).ldelim();
         });
@@ -939,9 +966,17 @@ export const Database = {
     },
 };
 
-const baseDatabase_LabelsEntry: object = { key: '', value: '' };
+messageTypeRegistry.set(Database.$type, Database);
+
+const baseDatabase_LabelsEntry: object = {
+    $type: 'yandex.cloud.ydb.v1.Database.LabelsEntry',
+    key: '',
+    value: '',
+};
 
 export const Database_LabelsEntry = {
+    $type: 'yandex.cloud.ydb.v1.Database.LabelsEntry' as const,
+
     encode(
         message: Database_LabelsEntry,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1020,9 +1055,15 @@ export const Database_LabelsEntry = {
     },
 };
 
-const baseAlertParameter: object = {};
+messageTypeRegistry.set(Database_LabelsEntry.$type, Database_LabelsEntry);
+
+const baseAlertParameter: object = {
+    $type: 'yandex.cloud.ydb.v1.AlertParameter',
+};
 
 export const AlertParameter = {
+    $type: 'yandex.cloud.ydb.v1.AlertParameter' as const,
+
     encode(
         message: AlertParameter,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1267,9 +1308,17 @@ export const AlertParameter = {
     },
 };
 
-const baseAlertParameter_DoubleParameterValue: object = { name: '', value: 0 };
+messageTypeRegistry.set(AlertParameter.$type, AlertParameter);
+
+const baseAlertParameter_DoubleParameterValue: object = {
+    $type: 'yandex.cloud.ydb.v1.AlertParameter.DoubleParameterValue',
+    name: '',
+    value: 0,
+};
 
 export const AlertParameter_DoubleParameterValue = {
+    $type: 'yandex.cloud.ydb.v1.AlertParameter.DoubleParameterValue' as const,
+
     encode(
         message: AlertParameter_DoubleParameterValue,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1354,9 +1403,20 @@ export const AlertParameter_DoubleParameterValue = {
     },
 };
 
-const baseAlertParameter_IntegerParameterValue: object = { name: '', value: 0 };
+messageTypeRegistry.set(
+    AlertParameter_DoubleParameterValue.$type,
+    AlertParameter_DoubleParameterValue
+);
+
+const baseAlertParameter_IntegerParameterValue: object = {
+    $type: 'yandex.cloud.ydb.v1.AlertParameter.IntegerParameterValue',
+    name: '',
+    value: 0,
+};
 
 export const AlertParameter_IntegerParameterValue = {
+    $type: 'yandex.cloud.ydb.v1.AlertParameter.IntegerParameterValue' as const,
+
     encode(
         message: AlertParameter_IntegerParameterValue,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1441,9 +1501,20 @@ export const AlertParameter_IntegerParameterValue = {
     },
 };
 
-const baseAlertParameter_TextParameterValue: object = { name: '', value: '' };
+messageTypeRegistry.set(
+    AlertParameter_IntegerParameterValue.$type,
+    AlertParameter_IntegerParameterValue
+);
+
+const baseAlertParameter_TextParameterValue: object = {
+    $type: 'yandex.cloud.ydb.v1.AlertParameter.TextParameterValue',
+    name: '',
+    value: '',
+};
 
 export const AlertParameter_TextParameterValue = {
+    $type: 'yandex.cloud.ydb.v1.AlertParameter.TextParameterValue' as const,
+
     encode(
         message: AlertParameter_TextParameterValue,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1528,12 +1599,20 @@ export const AlertParameter_TextParameterValue = {
     },
 };
 
+messageTypeRegistry.set(
+    AlertParameter_TextParameterValue.$type,
+    AlertParameter_TextParameterValue
+);
+
 const baseAlertParameter_TextListParameterValue: object = {
+    $type: 'yandex.cloud.ydb.v1.AlertParameter.TextListParameterValue',
     name: '',
     values: '',
 };
 
 export const AlertParameter_TextListParameterValue = {
+    $type: 'yandex.cloud.ydb.v1.AlertParameter.TextListParameterValue' as const,
+
     encode(
         message: AlertParameter_TextListParameterValue,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1625,12 +1704,20 @@ export const AlertParameter_TextListParameterValue = {
     },
 };
 
+messageTypeRegistry.set(
+    AlertParameter_TextListParameterValue.$type,
+    AlertParameter_TextListParameterValue
+);
+
 const baseAlertParameter_LabelListParameterValue: object = {
+    $type: 'yandex.cloud.ydb.v1.AlertParameter.LabelListParameterValue',
     name: '',
     values: '',
 };
 
 export const AlertParameter_LabelListParameterValue = {
+    $type: 'yandex.cloud.ydb.v1.AlertParameter.LabelListParameterValue' as const,
+
     encode(
         message: AlertParameter_LabelListParameterValue,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1722,13 +1809,21 @@ export const AlertParameter_LabelListParameterValue = {
     },
 };
 
+messageTypeRegistry.set(
+    AlertParameter_LabelListParameterValue.$type,
+    AlertParameter_LabelListParameterValue
+);
+
 const baseNotificationChannel: object = {
+    $type: 'yandex.cloud.ydb.v1.NotificationChannel',
     notificationChannelId: '',
     notifyAboutStatuses: 0,
     repeateNotifyDelayMs: 0,
 };
 
 export const NotificationChannel = {
+    $type: 'yandex.cloud.ydb.v1.NotificationChannel' as const,
+
     encode(
         message: NotificationChannel,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1868,7 +1963,10 @@ export const NotificationChannel = {
     },
 };
 
+messageTypeRegistry.set(NotificationChannel.$type, NotificationChannel);
+
 const baseAlert: object = {
+    $type: 'yandex.cloud.ydb.v1.Alert',
     alertId: '',
     alertTemplateId: '',
     name: '',
@@ -1876,6 +1974,8 @@ const baseAlert: object = {
 };
 
 export const Alert = {
+    $type: 'yandex.cloud.ydb.v1.Alert' as const,
+
     encode(
         message: Alert,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2097,9 +2197,15 @@ export const Alert = {
     },
 };
 
-const baseMonitoringConfig: object = {};
+messageTypeRegistry.set(Alert.$type, Alert);
+
+const baseMonitoringConfig: object = {
+    $type: 'yandex.cloud.ydb.v1.MonitoringConfig',
+};
 
 export const MonitoringConfig = {
+    $type: 'yandex.cloud.ydb.v1.MonitoringConfig' as const,
+
     encode(
         message: MonitoringConfig,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2165,7 +2271,10 @@ export const MonitoringConfig = {
     },
 };
 
+messageTypeRegistry.set(MonitoringConfig.$type, MonitoringConfig);
+
 const baseDedicatedDatabase: object = {
+    $type: 'yandex.cloud.ydb.v1.DedicatedDatabase',
     resourcePresetId: '',
     networkId: '',
     subnetIds: '',
@@ -2173,6 +2282,8 @@ const baseDedicatedDatabase: object = {
 };
 
 export const DedicatedDatabase = {
+    $type: 'yandex.cloud.ydb.v1.DedicatedDatabase' as const,
+
     encode(
         message: DedicatedDatabase,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2363,7 +2474,10 @@ export const DedicatedDatabase = {
     },
 };
 
+messageTypeRegistry.set(DedicatedDatabase.$type, DedicatedDatabase);
+
 const baseServerlessDatabase: object = {
+    $type: 'yandex.cloud.ydb.v1.ServerlessDatabase',
     throttlingRcuLimit: 0,
     storageSizeLimit: 0,
     enableThrottlingRcuLimit: false,
@@ -2371,6 +2485,8 @@ const baseServerlessDatabase: object = {
 };
 
 export const ServerlessDatabase = {
+    $type: 'yandex.cloud.ydb.v1.ServerlessDatabase' as const,
+
     encode(
         message: ServerlessDatabase,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2517,9 +2633,16 @@ export const ServerlessDatabase = {
     },
 };
 
-const baseZonalDatabase: object = { zoneId: '' };
+messageTypeRegistry.set(ServerlessDatabase.$type, ServerlessDatabase);
+
+const baseZonalDatabase: object = {
+    $type: 'yandex.cloud.ydb.v1.ZonalDatabase',
+    zoneId: '',
+};
 
 export const ZonalDatabase = {
+    $type: 'yandex.cloud.ydb.v1.ZonalDatabase' as const,
+
     encode(
         message: ZonalDatabase,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2576,9 +2699,16 @@ export const ZonalDatabase = {
     },
 };
 
-const baseRegionalDatabase: object = { regionId: '' };
+messageTypeRegistry.set(ZonalDatabase.$type, ZonalDatabase);
+
+const baseRegionalDatabase: object = {
+    $type: 'yandex.cloud.ydb.v1.RegionalDatabase',
+    regionId: '',
+};
 
 export const RegionalDatabase = {
+    $type: 'yandex.cloud.ydb.v1.RegionalDatabase' as const,
+
     encode(
         message: RegionalDatabase,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2635,9 +2765,13 @@ export const RegionalDatabase = {
     },
 };
 
-const baseScalePolicy: object = {};
+messageTypeRegistry.set(RegionalDatabase.$type, RegionalDatabase);
+
+const baseScalePolicy: object = { $type: 'yandex.cloud.ydb.v1.ScalePolicy' };
 
 export const ScalePolicy = {
+    $type: 'yandex.cloud.ydb.v1.ScalePolicy' as const,
+
     encode(
         message: ScalePolicy,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2707,9 +2841,16 @@ export const ScalePolicy = {
     },
 };
 
-const baseScalePolicy_FixedScale: object = { size: 0 };
+messageTypeRegistry.set(ScalePolicy.$type, ScalePolicy);
+
+const baseScalePolicy_FixedScale: object = {
+    $type: 'yandex.cloud.ydb.v1.ScalePolicy.FixedScale',
+    size: 0,
+};
 
 export const ScalePolicy_FixedScale = {
+    $type: 'yandex.cloud.ydb.v1.ScalePolicy.FixedScale' as const,
+
     encode(
         message: ScalePolicy_FixedScale,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2777,9 +2918,16 @@ export const ScalePolicy_FixedScale = {
     },
 };
 
-const baseStorageConfig: object = { storageSizeLimit: 0 };
+messageTypeRegistry.set(ScalePolicy_FixedScale.$type, ScalePolicy_FixedScale);
+
+const baseStorageConfig: object = {
+    $type: 'yandex.cloud.ydb.v1.StorageConfig',
+    storageSizeLimit: 0,
+};
 
 export const StorageConfig = {
+    $type: 'yandex.cloud.ydb.v1.StorageConfig' as const,
+
     encode(
         message: StorageConfig,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2879,9 +3027,17 @@ export const StorageConfig = {
     },
 };
 
-const baseStorageOption: object = { storageTypeId: '', groupCount: 0 };
+messageTypeRegistry.set(StorageConfig.$type, StorageConfig);
+
+const baseStorageOption: object = {
+    $type: 'yandex.cloud.ydb.v1.StorageOption',
+    storageTypeId: '',
+    groupCount: 0,
+};
 
 export const StorageOption = {
+    $type: 'yandex.cloud.ydb.v1.StorageOption' as const,
+
     encode(
         message: StorageOption,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2963,6 +3119,8 @@ export const StorageOption = {
     },
 };
 
+messageTypeRegistry.set(StorageOption.$type, StorageOption);
+
 declare var self: any | undefined;
 declare var window: any | undefined;
 declare var global: any | undefined;
@@ -2989,13 +3147,13 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 function toTimestamp(date: Date): Timestamp {
     const seconds = date.getTime() / 1_000;
     const nanos = (date.getTime() % 1_000) * 1_000_000;
-    return { seconds, nanos };
+    return { $type: 'google.protobuf.Timestamp', seconds, nanos };
 }
 
 function fromTimestamp(t: Timestamp): Date {

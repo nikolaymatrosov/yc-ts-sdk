@@ -24,12 +24,14 @@ export declare function nullValueToJSON(object: NullValue): string;
  * The JSON representation for `Struct` is JSON object.
  */
 export interface Struct {
+    $type: 'google.protobuf.Struct';
     /** Unordered map of dynamically typed values. */
     fields: {
         [key: string]: Value;
     };
 }
 export interface Struct_FieldsEntry {
+    $type: 'google.protobuf.Struct.FieldsEntry';
     key: string;
     value: Value | undefined;
 }
@@ -42,6 +44,7 @@ export interface Struct_FieldsEntry {
  * The JSON representation for `Value` is JSON value.
  */
 export interface Value {
+    $type: 'google.protobuf.Value';
     /** Represents a null value. */
     nullValue: NullValue | undefined;
     /** Represents a double value. */
@@ -61,10 +64,12 @@ export interface Value {
  * The JSON representation for `ListValue` is JSON array.
  */
 export interface ListValue {
+    $type: 'google.protobuf.ListValue';
     /** Repeated field of dynamically typed values. */
     values: Value[];
 }
 export declare const Struct: {
+    $type: "google.protobuf.Struct";
     encode(message: Struct, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Struct;
     fromJSON(object: any): Struct;
@@ -72,6 +77,7 @@ export declare const Struct: {
     fromPartial(object: DeepPartial<Struct>): Struct;
 };
 export declare const Struct_FieldsEntry: {
+    $type: "google.protobuf.Struct.FieldsEntry";
     encode(message: Struct_FieldsEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Struct_FieldsEntry;
     fromJSON(object: any): Struct_FieldsEntry;
@@ -79,6 +85,7 @@ export declare const Struct_FieldsEntry: {
     fromPartial(object: DeepPartial<Struct_FieldsEntry>): Struct_FieldsEntry;
 };
 export declare const Value: {
+    $type: "google.protobuf.Value";
     encode(message: Value, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Value;
     fromJSON(object: any): Value;
@@ -86,6 +93,7 @@ export declare const Value: {
     fromPartial(object: DeepPartial<Value>): Value;
 };
 export declare const ListValue: {
+    $type: "google.protobuf.ListValue";
     encode(message: ListValue, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListValue;
     fromJSON(object: any): ListValue;
@@ -94,6 +102,6 @@ export declare const ListValue: {
 };
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

@@ -14,6 +14,7 @@ export declare function alertEvaluationStatusFromJSON(object: any): AlertEvaluat
 export declare function alertEvaluationStatusToJSON(object: AlertEvaluationStatus): string;
 /** YDB database. */
 export interface Database {
+    $type: 'yandex.cloud.ydb.v1.Database';
     id: string;
     folderId: string;
     createdAt: Date | undefined;
@@ -56,10 +57,12 @@ export declare enum Database_Status {
 export declare function database_StatusFromJSON(object: any): Database_Status;
 export declare function database_StatusToJSON(object: Database_Status): string;
 export interface Database_LabelsEntry {
+    $type: 'yandex.cloud.ydb.v1.Database.LabelsEntry';
     key: string;
     value: string;
 }
 export interface AlertParameter {
+    $type: 'yandex.cloud.ydb.v1.AlertParameter';
     doubleParameterValue: AlertParameter_DoubleParameterValue | undefined;
     integerParameterValue: AlertParameter_IntegerParameterValue | undefined;
     textParameterValue: AlertParameter_TextParameterValue | undefined;
@@ -67,41 +70,48 @@ export interface AlertParameter {
     labelListParameterValue: AlertParameter_LabelListParameterValue | undefined;
 }
 export interface AlertParameter_DoubleParameterValue {
+    $type: 'yandex.cloud.ydb.v1.AlertParameter.DoubleParameterValue';
     /** Required. Parameter name */
     name: string;
     /** Required. Parameter value */
     value: number;
 }
 export interface AlertParameter_IntegerParameterValue {
+    $type: 'yandex.cloud.ydb.v1.AlertParameter.IntegerParameterValue';
     /** Required. Parameter name */
     name: string;
     /** Required. Parameter value */
     value: number;
 }
 export interface AlertParameter_TextParameterValue {
+    $type: 'yandex.cloud.ydb.v1.AlertParameter.TextParameterValue';
     /** Required. Parameter name */
     name: string;
     /** Required. Parameter value */
     value: string;
 }
 export interface AlertParameter_TextListParameterValue {
+    $type: 'yandex.cloud.ydb.v1.AlertParameter.TextListParameterValue';
     /** Required. Parameter name */
     name: string;
     /** Required. Parameter value */
     values: string[];
 }
 export interface AlertParameter_LabelListParameterValue {
+    $type: 'yandex.cloud.ydb.v1.AlertParameter.LabelListParameterValue';
     /** Required. Parameter name */
     name: string;
     /** Required. Parameter value */
     values: string[];
 }
 export interface NotificationChannel {
+    $type: 'yandex.cloud.ydb.v1.NotificationChannel';
     notificationChannelId: string;
     notifyAboutStatuses: AlertEvaluationStatus[];
     repeateNotifyDelayMs: number;
 }
 export interface Alert {
+    $type: 'yandex.cloud.ydb.v1.Alert';
     /** output only field. */
     alertId: string;
     /** template of the alert. */
@@ -118,9 +128,11 @@ export interface Alert {
     alertThresholds: AlertParameter[];
 }
 export interface MonitoringConfig {
+    $type: 'yandex.cloud.ydb.v1.MonitoringConfig';
     alerts: Alert[];
 }
 export interface DedicatedDatabase {
+    $type: 'yandex.cloud.ydb.v1.DedicatedDatabase';
     resourcePresetId: string;
     storageConfig: StorageConfig | undefined;
     scalePolicy: ScalePolicy | undefined;
@@ -129,6 +141,7 @@ export interface DedicatedDatabase {
     assignPublicIps: boolean;
 }
 export interface ServerlessDatabase {
+    $type: 'yandex.cloud.ydb.v1.ServerlessDatabase';
     /**
      * Let's define 1 RU  - 1 request unit
      * Let's define 1 RCU - 1 request capacity unit, which is 1 RU per second.
@@ -149,27 +162,34 @@ export interface ServerlessDatabase {
     provisionedRcuLimit: number;
 }
 export interface ZonalDatabase {
+    $type: 'yandex.cloud.ydb.v1.ZonalDatabase';
     zoneId: string;
 }
 export interface RegionalDatabase {
+    $type: 'yandex.cloud.ydb.v1.RegionalDatabase';
     regionId: string;
 }
 export interface ScalePolicy {
+    $type: 'yandex.cloud.ydb.v1.ScalePolicy';
     fixedScale: ScalePolicy_FixedScale | undefined;
 }
 export interface ScalePolicy_FixedScale {
+    $type: 'yandex.cloud.ydb.v1.ScalePolicy.FixedScale';
     size: number;
 }
 export interface StorageConfig {
+    $type: 'yandex.cloud.ydb.v1.StorageConfig';
     storageOptions: StorageOption[];
     /** output only field: storage size limit of dedicated database. */
     storageSizeLimit: number;
 }
 export interface StorageOption {
+    $type: 'yandex.cloud.ydb.v1.StorageOption';
     storageTypeId: string;
     groupCount: number;
 }
 export declare const Database: {
+    $type: "yandex.cloud.ydb.v1.Database";
     encode(message: Database, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Database;
     fromJSON(object: any): Database;
@@ -177,6 +197,7 @@ export declare const Database: {
     fromPartial(object: DeepPartial<Database>): Database;
 };
 export declare const Database_LabelsEntry: {
+    $type: "yandex.cloud.ydb.v1.Database.LabelsEntry";
     encode(message: Database_LabelsEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Database_LabelsEntry;
     fromJSON(object: any): Database_LabelsEntry;
@@ -184,6 +205,7 @@ export declare const Database_LabelsEntry: {
     fromPartial(object: DeepPartial<Database_LabelsEntry>): Database_LabelsEntry;
 };
 export declare const AlertParameter: {
+    $type: "yandex.cloud.ydb.v1.AlertParameter";
     encode(message: AlertParameter, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): AlertParameter;
     fromJSON(object: any): AlertParameter;
@@ -191,6 +213,7 @@ export declare const AlertParameter: {
     fromPartial(object: DeepPartial<AlertParameter>): AlertParameter;
 };
 export declare const AlertParameter_DoubleParameterValue: {
+    $type: "yandex.cloud.ydb.v1.AlertParameter.DoubleParameterValue";
     encode(message: AlertParameter_DoubleParameterValue, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): AlertParameter_DoubleParameterValue;
     fromJSON(object: any): AlertParameter_DoubleParameterValue;
@@ -198,6 +221,7 @@ export declare const AlertParameter_DoubleParameterValue: {
     fromPartial(object: DeepPartial<AlertParameter_DoubleParameterValue>): AlertParameter_DoubleParameterValue;
 };
 export declare const AlertParameter_IntegerParameterValue: {
+    $type: "yandex.cloud.ydb.v1.AlertParameter.IntegerParameterValue";
     encode(message: AlertParameter_IntegerParameterValue, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): AlertParameter_IntegerParameterValue;
     fromJSON(object: any): AlertParameter_IntegerParameterValue;
@@ -205,6 +229,7 @@ export declare const AlertParameter_IntegerParameterValue: {
     fromPartial(object: DeepPartial<AlertParameter_IntegerParameterValue>): AlertParameter_IntegerParameterValue;
 };
 export declare const AlertParameter_TextParameterValue: {
+    $type: "yandex.cloud.ydb.v1.AlertParameter.TextParameterValue";
     encode(message: AlertParameter_TextParameterValue, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): AlertParameter_TextParameterValue;
     fromJSON(object: any): AlertParameter_TextParameterValue;
@@ -212,6 +237,7 @@ export declare const AlertParameter_TextParameterValue: {
     fromPartial(object: DeepPartial<AlertParameter_TextParameterValue>): AlertParameter_TextParameterValue;
 };
 export declare const AlertParameter_TextListParameterValue: {
+    $type: "yandex.cloud.ydb.v1.AlertParameter.TextListParameterValue";
     encode(message: AlertParameter_TextListParameterValue, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): AlertParameter_TextListParameterValue;
     fromJSON(object: any): AlertParameter_TextListParameterValue;
@@ -219,6 +245,7 @@ export declare const AlertParameter_TextListParameterValue: {
     fromPartial(object: DeepPartial<AlertParameter_TextListParameterValue>): AlertParameter_TextListParameterValue;
 };
 export declare const AlertParameter_LabelListParameterValue: {
+    $type: "yandex.cloud.ydb.v1.AlertParameter.LabelListParameterValue";
     encode(message: AlertParameter_LabelListParameterValue, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): AlertParameter_LabelListParameterValue;
     fromJSON(object: any): AlertParameter_LabelListParameterValue;
@@ -226,6 +253,7 @@ export declare const AlertParameter_LabelListParameterValue: {
     fromPartial(object: DeepPartial<AlertParameter_LabelListParameterValue>): AlertParameter_LabelListParameterValue;
 };
 export declare const NotificationChannel: {
+    $type: "yandex.cloud.ydb.v1.NotificationChannel";
     encode(message: NotificationChannel, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): NotificationChannel;
     fromJSON(object: any): NotificationChannel;
@@ -233,6 +261,7 @@ export declare const NotificationChannel: {
     fromPartial(object: DeepPartial<NotificationChannel>): NotificationChannel;
 };
 export declare const Alert: {
+    $type: "yandex.cloud.ydb.v1.Alert";
     encode(message: Alert, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Alert;
     fromJSON(object: any): Alert;
@@ -240,6 +269,7 @@ export declare const Alert: {
     fromPartial(object: DeepPartial<Alert>): Alert;
 };
 export declare const MonitoringConfig: {
+    $type: "yandex.cloud.ydb.v1.MonitoringConfig";
     encode(message: MonitoringConfig, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): MonitoringConfig;
     fromJSON(object: any): MonitoringConfig;
@@ -247,6 +277,7 @@ export declare const MonitoringConfig: {
     fromPartial(object: DeepPartial<MonitoringConfig>): MonitoringConfig;
 };
 export declare const DedicatedDatabase: {
+    $type: "yandex.cloud.ydb.v1.DedicatedDatabase";
     encode(message: DedicatedDatabase, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DedicatedDatabase;
     fromJSON(object: any): DedicatedDatabase;
@@ -254,6 +285,7 @@ export declare const DedicatedDatabase: {
     fromPartial(object: DeepPartial<DedicatedDatabase>): DedicatedDatabase;
 };
 export declare const ServerlessDatabase: {
+    $type: "yandex.cloud.ydb.v1.ServerlessDatabase";
     encode(message: ServerlessDatabase, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ServerlessDatabase;
     fromJSON(object: any): ServerlessDatabase;
@@ -261,6 +293,7 @@ export declare const ServerlessDatabase: {
     fromPartial(object: DeepPartial<ServerlessDatabase>): ServerlessDatabase;
 };
 export declare const ZonalDatabase: {
+    $type: "yandex.cloud.ydb.v1.ZonalDatabase";
     encode(message: ZonalDatabase, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ZonalDatabase;
     fromJSON(object: any): ZonalDatabase;
@@ -268,6 +301,7 @@ export declare const ZonalDatabase: {
     fromPartial(object: DeepPartial<ZonalDatabase>): ZonalDatabase;
 };
 export declare const RegionalDatabase: {
+    $type: "yandex.cloud.ydb.v1.RegionalDatabase";
     encode(message: RegionalDatabase, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): RegionalDatabase;
     fromJSON(object: any): RegionalDatabase;
@@ -275,6 +309,7 @@ export declare const RegionalDatabase: {
     fromPartial(object: DeepPartial<RegionalDatabase>): RegionalDatabase;
 };
 export declare const ScalePolicy: {
+    $type: "yandex.cloud.ydb.v1.ScalePolicy";
     encode(message: ScalePolicy, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ScalePolicy;
     fromJSON(object: any): ScalePolicy;
@@ -282,6 +317,7 @@ export declare const ScalePolicy: {
     fromPartial(object: DeepPartial<ScalePolicy>): ScalePolicy;
 };
 export declare const ScalePolicy_FixedScale: {
+    $type: "yandex.cloud.ydb.v1.ScalePolicy.FixedScale";
     encode(message: ScalePolicy_FixedScale, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ScalePolicy_FixedScale;
     fromJSON(object: any): ScalePolicy_FixedScale;
@@ -289,6 +325,7 @@ export declare const ScalePolicy_FixedScale: {
     fromPartial(object: DeepPartial<ScalePolicy_FixedScale>): ScalePolicy_FixedScale;
 };
 export declare const StorageConfig: {
+    $type: "yandex.cloud.ydb.v1.StorageConfig";
     encode(message: StorageConfig, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): StorageConfig;
     fromJSON(object: any): StorageConfig;
@@ -296,6 +333,7 @@ export declare const StorageConfig: {
     fromPartial(object: DeepPartial<StorageConfig>): StorageConfig;
 };
 export declare const StorageOption: {
+    $type: "yandex.cloud.ydb.v1.StorageOption";
     encode(message: StorageOption, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): StorageOption;
     fromJSON(object: any): StorageOption;
@@ -304,6 +342,6 @@ export declare const StorageOption: {
 };
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

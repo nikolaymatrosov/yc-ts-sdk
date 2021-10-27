@@ -1,10 +1,12 @@
 /* eslint-disable */
+import { messageTypeRegistry } from '../../../../../typeRegistry';
 import Long from 'long';
 import _m0 from 'protobufjs/minimal';
 
 export const protobufPackage = 'yandex.cloud.mdb.clickhouse.v1';
 
 export interface Version {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.Version';
     /** ID of the version. */
     id: string;
     /** Name of the version. */
@@ -16,6 +18,7 @@ export interface Version {
 }
 
 const baseVersion: object = {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.Version',
     id: '',
     name: '',
     deprecated: false,
@@ -23,6 +26,8 @@ const baseVersion: object = {
 };
 
 export const Version = {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.Version' as const,
+
     encode(
         message: Version,
         writer: _m0.Writer = _m0.Writer.create()
@@ -138,6 +143,8 @@ export const Version = {
     },
 };
 
+messageTypeRegistry.set(Version.$type, Version);
+
 type Builtin =
     | Date
     | Function
@@ -153,7 +160,7 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 if (_m0.util.Long !== Long) {

@@ -8,6 +8,7 @@ import { ChannelCredentials, ChannelOptions, UntypedServiceImplementation, handl
 import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.organizationmanager.v1.saml";
 export interface GetFederationRequest {
+    $type: 'yandex.cloud.organizationmanager.v1.saml.GetFederationRequest';
     /**
      * ID of the federation to return.
      * To get the federation ID, make a [FederationService.List] request.
@@ -15,6 +16,7 @@ export interface GetFederationRequest {
     federationId: string;
 }
 export interface ListFederationsRequest {
+    $type: 'yandex.cloud.organizationmanager.v1.saml.ListFederationsRequest';
     /**
      * ID of the organization to list federations in.
      * To get the organization ID, make a [yandex.cloud.organizationmanager.v1.OrganizationService.List] request.
@@ -44,6 +46,7 @@ export interface ListFederationsRequest {
     filter: string;
 }
 export interface ListFederationsResponse {
+    $type: 'yandex.cloud.organizationmanager.v1.saml.ListFederationsResponse';
     /** List of federations. */
     federations: Federation[];
     /**
@@ -57,6 +60,7 @@ export interface ListFederationsResponse {
     nextPageToken: string;
 }
 export interface CreateFederationRequest {
+    $type: 'yandex.cloud.organizationmanager.v1.saml.CreateFederationRequest';
     /**
      * ID of the organization to create a federation in.
      * To get the organization ID, make a [yandex.cloud.organizationmanager.v1.OrganizationService.List] request.
@@ -112,14 +116,17 @@ export interface CreateFederationRequest {
     };
 }
 export interface CreateFederationRequest_LabelsEntry {
+    $type: 'yandex.cloud.organizationmanager.v1.saml.CreateFederationRequest.LabelsEntry';
     key: string;
     value: string;
 }
 export interface CreateFederationMetadata {
+    $type: 'yandex.cloud.organizationmanager.v1.saml.CreateFederationMetadata';
     /** ID of the federation that is being created. */
     federationId: string;
 }
 export interface UpdateFederationRequest {
+    $type: 'yandex.cloud.organizationmanager.v1.saml.UpdateFederationRequest';
     /**
      * ID of the federation to update.
      * To get the federation ID, make a [FederationService.List] request.
@@ -177,14 +184,17 @@ export interface UpdateFederationRequest {
     };
 }
 export interface UpdateFederationRequest_LabelsEntry {
+    $type: 'yandex.cloud.organizationmanager.v1.saml.UpdateFederationRequest.LabelsEntry';
     key: string;
     value: string;
 }
 export interface UpdateFederationMetadata {
+    $type: 'yandex.cloud.organizationmanager.v1.saml.UpdateFederationMetadata';
     /** ID of the federation that is being updated. */
     federationId: string;
 }
 export interface DeleteFederationRequest {
+    $type: 'yandex.cloud.organizationmanager.v1.saml.DeleteFederationRequest';
     /**
      * ID of the federation to delete.
      * To get the federation ID, make a [FederationService.List] request.
@@ -192,10 +202,12 @@ export interface DeleteFederationRequest {
     federationId: string;
 }
 export interface DeleteFederationMetadata {
+    $type: 'yandex.cloud.organizationmanager.v1.saml.DeleteFederationMetadata';
     /** ID of the federation that is being deleted. */
     federationId: string;
 }
 export interface AddFederatedUserAccountsRequest {
+    $type: 'yandex.cloud.organizationmanager.v1.saml.AddFederatedUserAccountsRequest';
     /** ID of the federation to add users. */
     federationId: string;
     /**
@@ -205,14 +217,17 @@ export interface AddFederatedUserAccountsRequest {
     nameIds: string[];
 }
 export interface AddFederatedUserAccountsMetadata {
+    $type: 'yandex.cloud.organizationmanager.v1.saml.AddFederatedUserAccountsMetadata';
     /** ID of the federation that is being altered. */
     federationId: string;
 }
 export interface AddFederatedUserAccountsResponse {
+    $type: 'yandex.cloud.organizationmanager.v1.saml.AddFederatedUserAccountsResponse';
     /** List of users created by [FederationService.AddUserAccounts] request. */
     userAccounts: UserAccount[];
 }
 export interface ListFederatedUserAccountsRequest {
+    $type: 'yandex.cloud.organizationmanager.v1.saml.ListFederatedUserAccountsRequest';
     /** ID of the federation to list user accounts for. */
     federationId: string;
     /**
@@ -230,6 +245,7 @@ export interface ListFederatedUserAccountsRequest {
     pageToken: string;
 }
 export interface ListFederatedUserAccountsResponse {
+    $type: 'yandex.cloud.organizationmanager.v1.saml.ListFederatedUserAccountsResponse';
     /** List of user accounts for the specified federation. */
     userAccounts: UserAccount[];
     /**
@@ -241,6 +257,7 @@ export interface ListFederatedUserAccountsResponse {
     nextPageToken: string;
 }
 export interface ListFederationOperationsRequest {
+    $type: 'yandex.cloud.organizationmanager.v1.saml.ListFederationOperationsRequest';
     /** ID of the federation to list operations for. */
     federationId: string;
     /**
@@ -258,6 +275,7 @@ export interface ListFederationOperationsRequest {
     pageToken: string;
 }
 export interface ListFederationOperationsResponse {
+    $type: 'yandex.cloud.organizationmanager.v1.saml.ListFederationOperationsResponse';
     /** List of operations for the specified federation. */
     operations: Operation[];
     /**
@@ -269,6 +287,7 @@ export interface ListFederationOperationsResponse {
     nextPageToken: string;
 }
 export declare const GetFederationRequest: {
+    $type: "yandex.cloud.organizationmanager.v1.saml.GetFederationRequest";
     encode(message: GetFederationRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): GetFederationRequest;
     fromJSON(object: any): GetFederationRequest;
@@ -276,6 +295,7 @@ export declare const GetFederationRequest: {
     fromPartial(object: DeepPartial<GetFederationRequest>): GetFederationRequest;
 };
 export declare const ListFederationsRequest: {
+    $type: "yandex.cloud.organizationmanager.v1.saml.ListFederationsRequest";
     encode(message: ListFederationsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListFederationsRequest;
     fromJSON(object: any): ListFederationsRequest;
@@ -283,6 +303,7 @@ export declare const ListFederationsRequest: {
     fromPartial(object: DeepPartial<ListFederationsRequest>): ListFederationsRequest;
 };
 export declare const ListFederationsResponse: {
+    $type: "yandex.cloud.organizationmanager.v1.saml.ListFederationsResponse";
     encode(message: ListFederationsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListFederationsResponse;
     fromJSON(object: any): ListFederationsResponse;
@@ -290,6 +311,7 @@ export declare const ListFederationsResponse: {
     fromPartial(object: DeepPartial<ListFederationsResponse>): ListFederationsResponse;
 };
 export declare const CreateFederationRequest: {
+    $type: "yandex.cloud.organizationmanager.v1.saml.CreateFederationRequest";
     encode(message: CreateFederationRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateFederationRequest;
     fromJSON(object: any): CreateFederationRequest;
@@ -297,6 +319,7 @@ export declare const CreateFederationRequest: {
     fromPartial(object: DeepPartial<CreateFederationRequest>): CreateFederationRequest;
 };
 export declare const CreateFederationRequest_LabelsEntry: {
+    $type: "yandex.cloud.organizationmanager.v1.saml.CreateFederationRequest.LabelsEntry";
     encode(message: CreateFederationRequest_LabelsEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateFederationRequest_LabelsEntry;
     fromJSON(object: any): CreateFederationRequest_LabelsEntry;
@@ -304,6 +327,7 @@ export declare const CreateFederationRequest_LabelsEntry: {
     fromPartial(object: DeepPartial<CreateFederationRequest_LabelsEntry>): CreateFederationRequest_LabelsEntry;
 };
 export declare const CreateFederationMetadata: {
+    $type: "yandex.cloud.organizationmanager.v1.saml.CreateFederationMetadata";
     encode(message: CreateFederationMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateFederationMetadata;
     fromJSON(object: any): CreateFederationMetadata;
@@ -311,6 +335,7 @@ export declare const CreateFederationMetadata: {
     fromPartial(object: DeepPartial<CreateFederationMetadata>): CreateFederationMetadata;
 };
 export declare const UpdateFederationRequest: {
+    $type: "yandex.cloud.organizationmanager.v1.saml.UpdateFederationRequest";
     encode(message: UpdateFederationRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateFederationRequest;
     fromJSON(object: any): UpdateFederationRequest;
@@ -318,6 +343,7 @@ export declare const UpdateFederationRequest: {
     fromPartial(object: DeepPartial<UpdateFederationRequest>): UpdateFederationRequest;
 };
 export declare const UpdateFederationRequest_LabelsEntry: {
+    $type: "yandex.cloud.organizationmanager.v1.saml.UpdateFederationRequest.LabelsEntry";
     encode(message: UpdateFederationRequest_LabelsEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateFederationRequest_LabelsEntry;
     fromJSON(object: any): UpdateFederationRequest_LabelsEntry;
@@ -325,6 +351,7 @@ export declare const UpdateFederationRequest_LabelsEntry: {
     fromPartial(object: DeepPartial<UpdateFederationRequest_LabelsEntry>): UpdateFederationRequest_LabelsEntry;
 };
 export declare const UpdateFederationMetadata: {
+    $type: "yandex.cloud.organizationmanager.v1.saml.UpdateFederationMetadata";
     encode(message: UpdateFederationMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateFederationMetadata;
     fromJSON(object: any): UpdateFederationMetadata;
@@ -332,6 +359,7 @@ export declare const UpdateFederationMetadata: {
     fromPartial(object: DeepPartial<UpdateFederationMetadata>): UpdateFederationMetadata;
 };
 export declare const DeleteFederationRequest: {
+    $type: "yandex.cloud.organizationmanager.v1.saml.DeleteFederationRequest";
     encode(message: DeleteFederationRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteFederationRequest;
     fromJSON(object: any): DeleteFederationRequest;
@@ -339,6 +367,7 @@ export declare const DeleteFederationRequest: {
     fromPartial(object: DeepPartial<DeleteFederationRequest>): DeleteFederationRequest;
 };
 export declare const DeleteFederationMetadata: {
+    $type: "yandex.cloud.organizationmanager.v1.saml.DeleteFederationMetadata";
     encode(message: DeleteFederationMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteFederationMetadata;
     fromJSON(object: any): DeleteFederationMetadata;
@@ -346,6 +375,7 @@ export declare const DeleteFederationMetadata: {
     fromPartial(object: DeepPartial<DeleteFederationMetadata>): DeleteFederationMetadata;
 };
 export declare const AddFederatedUserAccountsRequest: {
+    $type: "yandex.cloud.organizationmanager.v1.saml.AddFederatedUserAccountsRequest";
     encode(message: AddFederatedUserAccountsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): AddFederatedUserAccountsRequest;
     fromJSON(object: any): AddFederatedUserAccountsRequest;
@@ -353,6 +383,7 @@ export declare const AddFederatedUserAccountsRequest: {
     fromPartial(object: DeepPartial<AddFederatedUserAccountsRequest>): AddFederatedUserAccountsRequest;
 };
 export declare const AddFederatedUserAccountsMetadata: {
+    $type: "yandex.cloud.organizationmanager.v1.saml.AddFederatedUserAccountsMetadata";
     encode(message: AddFederatedUserAccountsMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): AddFederatedUserAccountsMetadata;
     fromJSON(object: any): AddFederatedUserAccountsMetadata;
@@ -360,6 +391,7 @@ export declare const AddFederatedUserAccountsMetadata: {
     fromPartial(object: DeepPartial<AddFederatedUserAccountsMetadata>): AddFederatedUserAccountsMetadata;
 };
 export declare const AddFederatedUserAccountsResponse: {
+    $type: "yandex.cloud.organizationmanager.v1.saml.AddFederatedUserAccountsResponse";
     encode(message: AddFederatedUserAccountsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): AddFederatedUserAccountsResponse;
     fromJSON(object: any): AddFederatedUserAccountsResponse;
@@ -367,6 +399,7 @@ export declare const AddFederatedUserAccountsResponse: {
     fromPartial(object: DeepPartial<AddFederatedUserAccountsResponse>): AddFederatedUserAccountsResponse;
 };
 export declare const ListFederatedUserAccountsRequest: {
+    $type: "yandex.cloud.organizationmanager.v1.saml.ListFederatedUserAccountsRequest";
     encode(message: ListFederatedUserAccountsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListFederatedUserAccountsRequest;
     fromJSON(object: any): ListFederatedUserAccountsRequest;
@@ -374,6 +407,7 @@ export declare const ListFederatedUserAccountsRequest: {
     fromPartial(object: DeepPartial<ListFederatedUserAccountsRequest>): ListFederatedUserAccountsRequest;
 };
 export declare const ListFederatedUserAccountsResponse: {
+    $type: "yandex.cloud.organizationmanager.v1.saml.ListFederatedUserAccountsResponse";
     encode(message: ListFederatedUserAccountsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListFederatedUserAccountsResponse;
     fromJSON(object: any): ListFederatedUserAccountsResponse;
@@ -381,6 +415,7 @@ export declare const ListFederatedUserAccountsResponse: {
     fromPartial(object: DeepPartial<ListFederatedUserAccountsResponse>): ListFederatedUserAccountsResponse;
 };
 export declare const ListFederationOperationsRequest: {
+    $type: "yandex.cloud.organizationmanager.v1.saml.ListFederationOperationsRequest";
     encode(message: ListFederationOperationsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListFederationOperationsRequest;
     fromJSON(object: any): ListFederationOperationsRequest;
@@ -388,6 +423,7 @@ export declare const ListFederationOperationsRequest: {
     fromPartial(object: DeepPartial<ListFederationOperationsRequest>): ListFederationOperationsRequest;
 };
 export declare const ListFederationOperationsResponse: {
+    $type: "yandex.cloud.organizationmanager.v1.saml.ListFederationOperationsResponse";
     encode(message: ListFederationOperationsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListFederationOperationsResponse;
     fromJSON(object: any): ListFederationOperationsResponse;
@@ -544,6 +580,6 @@ export interface FederationServiceClient extends Client {
 export declare const FederationServiceClient: new (address: string, credentials: ChannelCredentials, options?: Partial<ChannelOptions> | undefined) => FederationServiceClient;
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

@@ -19,6 +19,7 @@ export declare function releaseChannelFromJSON(object: any): ReleaseChannel;
 export declare function releaseChannelToJSON(object: ReleaseChannel): string;
 /** A Kubernetes cluster. */
 export interface Cluster {
+    $type: 'yandex.cloud.k8s.v1.Cluster';
     /** ID of the Kubernetes cluster. */
     id: string;
     /** ID of the folder that the Kubernetes cluster belongs to. */
@@ -94,10 +95,12 @@ export declare enum Cluster_Health {
 export declare function cluster_HealthFromJSON(object: any): Cluster_Health;
 export declare function cluster_HealthToJSON(object: Cluster_Health): string;
 export interface Cluster_LabelsEntry {
+    $type: 'yandex.cloud.k8s.v1.Cluster.LabelsEntry';
     key: string;
     value: string;
 }
 export interface Master {
+    $type: 'yandex.cloud.k8s.v1.Master';
     /** Parameters of the availability zone for the master. */
     zonalMaster: ZonalMaster | undefined;
     /** Parameters of the region for the master. */
@@ -119,10 +122,12 @@ export interface Master {
     securityGroupIds: string[];
 }
 export interface MasterAuth {
+    $type: 'yandex.cloud.k8s.v1.MasterAuth';
     /** PEM-encoded public certificate that is the root of trust for the Kubernetes cluster. */
     clusterCaCertificate: string;
 }
 export interface ZonalMaster {
+    $type: 'yandex.cloud.k8s.v1.ZonalMaster';
     /** ID of the availability zone where the master resides. */
     zoneId: string;
     /** IPv4 internal network address that is assigned to the master. */
@@ -131,6 +136,7 @@ export interface ZonalMaster {
     externalV4Address: string;
 }
 export interface RegionalMaster {
+    $type: 'yandex.cloud.k8s.v1.RegionalMaster';
     /** ID of the region where the master resides. */
     regionId: string;
     /** IPv4 internal network address that is assigned to the master. */
@@ -139,12 +145,14 @@ export interface RegionalMaster {
     externalV4Address: string;
 }
 export interface MasterEndpoints {
+    $type: 'yandex.cloud.k8s.v1.MasterEndpoints';
     /** Internal endpoint that can be used to connect to the master from cloud networks. */
     internalV4Endpoint: string;
     /** External endpoint that can be used to access Kubernetes cluster API from the internet (outside of the cloud). */
     externalV4Endpoint: string;
 }
 export interface IPAllocationPolicy {
+    $type: 'yandex.cloud.k8s.v1.IPAllocationPolicy';
     /**
      * CIDR block. IP range for allocating pod addresses.
      *
@@ -170,6 +178,7 @@ export interface IPAllocationPolicy {
     serviceIpv6CidrBlock: string;
 }
 export interface MasterMaintenancePolicy {
+    $type: 'yandex.cloud.k8s.v1.MasterMaintenancePolicy';
     /**
      * If set to true, automatic updates are installed in the specified period of time with no interaction from the user.
      * If set to false, automatic upgrades are disabled.
@@ -182,6 +191,7 @@ export interface MasterMaintenancePolicy {
     maintenanceWindow: MaintenanceWindow | undefined;
 }
 export interface NetworkPolicy {
+    $type: 'yandex.cloud.k8s.v1.NetworkPolicy';
     provider: NetworkPolicy_Provider;
 }
 export declare enum NetworkPolicy_Provider {
@@ -192,6 +202,7 @@ export declare enum NetworkPolicy_Provider {
 export declare function networkPolicy_ProviderFromJSON(object: any): NetworkPolicy_Provider;
 export declare function networkPolicy_ProviderToJSON(object: NetworkPolicy_Provider): string;
 export interface KMSProvider {
+    $type: 'yandex.cloud.k8s.v1.KMSProvider';
     /**
      * KMS key ID for secrets encryption.
      * To obtain a KMS key ID use a [yandex.cloud.kms.v1.SymmetricKeyService.List] request.
@@ -199,6 +210,7 @@ export interface KMSProvider {
     keyId: string;
 }
 export interface Cilium {
+    $type: 'yandex.cloud.k8s.v1.Cilium';
     routingMode: Cilium_RoutingMode;
 }
 export declare enum Cilium_RoutingMode {
@@ -209,6 +221,7 @@ export declare enum Cilium_RoutingMode {
 export declare function cilium_RoutingModeFromJSON(object: any): Cilium_RoutingMode;
 export declare function cilium_RoutingModeToJSON(object: Cilium_RoutingMode): string;
 export declare const Cluster: {
+    $type: "yandex.cloud.k8s.v1.Cluster";
     encode(message: Cluster, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Cluster;
     fromJSON(object: any): Cluster;
@@ -216,6 +229,7 @@ export declare const Cluster: {
     fromPartial(object: DeepPartial<Cluster>): Cluster;
 };
 export declare const Cluster_LabelsEntry: {
+    $type: "yandex.cloud.k8s.v1.Cluster.LabelsEntry";
     encode(message: Cluster_LabelsEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Cluster_LabelsEntry;
     fromJSON(object: any): Cluster_LabelsEntry;
@@ -223,6 +237,7 @@ export declare const Cluster_LabelsEntry: {
     fromPartial(object: DeepPartial<Cluster_LabelsEntry>): Cluster_LabelsEntry;
 };
 export declare const Master: {
+    $type: "yandex.cloud.k8s.v1.Master";
     encode(message: Master, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Master;
     fromJSON(object: any): Master;
@@ -230,6 +245,7 @@ export declare const Master: {
     fromPartial(object: DeepPartial<Master>): Master;
 };
 export declare const MasterAuth: {
+    $type: "yandex.cloud.k8s.v1.MasterAuth";
     encode(message: MasterAuth, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): MasterAuth;
     fromJSON(object: any): MasterAuth;
@@ -237,6 +253,7 @@ export declare const MasterAuth: {
     fromPartial(object: DeepPartial<MasterAuth>): MasterAuth;
 };
 export declare const ZonalMaster: {
+    $type: "yandex.cloud.k8s.v1.ZonalMaster";
     encode(message: ZonalMaster, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ZonalMaster;
     fromJSON(object: any): ZonalMaster;
@@ -244,6 +261,7 @@ export declare const ZonalMaster: {
     fromPartial(object: DeepPartial<ZonalMaster>): ZonalMaster;
 };
 export declare const RegionalMaster: {
+    $type: "yandex.cloud.k8s.v1.RegionalMaster";
     encode(message: RegionalMaster, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): RegionalMaster;
     fromJSON(object: any): RegionalMaster;
@@ -251,6 +269,7 @@ export declare const RegionalMaster: {
     fromPartial(object: DeepPartial<RegionalMaster>): RegionalMaster;
 };
 export declare const MasterEndpoints: {
+    $type: "yandex.cloud.k8s.v1.MasterEndpoints";
     encode(message: MasterEndpoints, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): MasterEndpoints;
     fromJSON(object: any): MasterEndpoints;
@@ -258,6 +277,7 @@ export declare const MasterEndpoints: {
     fromPartial(object: DeepPartial<MasterEndpoints>): MasterEndpoints;
 };
 export declare const IPAllocationPolicy: {
+    $type: "yandex.cloud.k8s.v1.IPAllocationPolicy";
     encode(message: IPAllocationPolicy, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): IPAllocationPolicy;
     fromJSON(object: any): IPAllocationPolicy;
@@ -265,6 +285,7 @@ export declare const IPAllocationPolicy: {
     fromPartial(object: DeepPartial<IPAllocationPolicy>): IPAllocationPolicy;
 };
 export declare const MasterMaintenancePolicy: {
+    $type: "yandex.cloud.k8s.v1.MasterMaintenancePolicy";
     encode(message: MasterMaintenancePolicy, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): MasterMaintenancePolicy;
     fromJSON(object: any): MasterMaintenancePolicy;
@@ -272,6 +293,7 @@ export declare const MasterMaintenancePolicy: {
     fromPartial(object: DeepPartial<MasterMaintenancePolicy>): MasterMaintenancePolicy;
 };
 export declare const NetworkPolicy: {
+    $type: "yandex.cloud.k8s.v1.NetworkPolicy";
     encode(message: NetworkPolicy, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): NetworkPolicy;
     fromJSON(object: any): NetworkPolicy;
@@ -279,6 +301,7 @@ export declare const NetworkPolicy: {
     fromPartial(object: DeepPartial<NetworkPolicy>): NetworkPolicy;
 };
 export declare const KMSProvider: {
+    $type: "yandex.cloud.k8s.v1.KMSProvider";
     encode(message: KMSProvider, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): KMSProvider;
     fromJSON(object: any): KMSProvider;
@@ -286,6 +309,7 @@ export declare const KMSProvider: {
     fromPartial(object: DeepPartial<KMSProvider>): KMSProvider;
 };
 export declare const Cilium: {
+    $type: "yandex.cloud.k8s.v1.Cilium";
     encode(message: Cilium, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Cilium;
     fromJSON(object: any): Cilium;
@@ -294,6 +318,6 @@ export declare const Cilium: {
 };
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

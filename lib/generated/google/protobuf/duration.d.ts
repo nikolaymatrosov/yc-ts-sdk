@@ -61,6 +61,7 @@ export declare const protobufPackage = "google.protobuf";
  * microsecond should be expressed in JSON format as "3.000001s".
  */
 export interface Duration {
+    $type: 'google.protobuf.Duration';
     /**
      * Signed seconds of the span of time. Must be from -315,576,000,000
      * to +315,576,000,000 inclusive. Note: these bounds are computed from:
@@ -78,6 +79,7 @@ export interface Duration {
     nanos: number;
 }
 export declare const Duration: {
+    $type: "google.protobuf.Duration";
     encode(message: Duration, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Duration;
     fromJSON(object: any): Duration;
@@ -86,6 +88,6 @@ export declare const Duration: {
 };
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

@@ -1,4 +1,5 @@
 /* eslint-disable */
+import { messageTypeRegistry } from '../../../../typeRegistry';
 import { Payload } from '../../../../yandex/cloud/lockbox/v1/payload';
 import {
     makeGenericClientConstructor,
@@ -18,15 +19,22 @@ import _m0 from 'protobufjs/minimal';
 export const protobufPackage = 'yandex.cloud.lockbox.v1';
 
 export interface GetPayloadRequest {
+    $type: 'yandex.cloud.lockbox.v1.GetPayloadRequest';
     /** ID of the secret. */
     secretId: string;
     /** Optional ID of the version. */
     versionId: string;
 }
 
-const baseGetPayloadRequest: object = { secretId: '', versionId: '' };
+const baseGetPayloadRequest: object = {
+    $type: 'yandex.cloud.lockbox.v1.GetPayloadRequest',
+    secretId: '',
+    versionId: '',
+};
 
 export const GetPayloadRequest = {
+    $type: 'yandex.cloud.lockbox.v1.GetPayloadRequest' as const,
+
     encode(
         message: GetPayloadRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -99,6 +107,8 @@ export const GetPayloadRequest = {
         return message;
     },
 };
+
+messageTypeRegistry.set(GetPayloadRequest.$type, GetPayloadRequest);
 
 /** Set of methods to access payload of secrets. */
 export const PayloadServiceService = {
@@ -178,7 +188,7 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 if (_m0.util.Long !== Long) {

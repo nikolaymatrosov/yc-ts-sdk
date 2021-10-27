@@ -1,24 +1,29 @@
 /* eslint-disable */
+import { messageTypeRegistry } from '../../../../../typeRegistry';
 import Long from 'long';
 import _m0 from 'protobufjs/minimal';
 
 export const protobufPackage = 'yandex.cloud.ai.vision.v1';
 
 export interface Polygon {
+    $type: 'yandex.cloud.ai.vision.v1.Polygon';
     /** The bounding polygon vertices. */
     vertices: Vertex[];
 }
 
 export interface Vertex {
+    $type: 'yandex.cloud.ai.vision.v1.Vertex';
     /** X coordinate in pixels. */
     x: number;
     /** Y coordinate in pixels. */
     y: number;
 }
 
-const basePolygon: object = {};
+const basePolygon: object = { $type: 'yandex.cloud.ai.vision.v1.Polygon' };
 
 export const Polygon = {
+    $type: 'yandex.cloud.ai.vision.v1.Polygon' as const,
+
     encode(
         message: Polygon,
         writer: _m0.Writer = _m0.Writer.create()
@@ -86,9 +91,17 @@ export const Polygon = {
     },
 };
 
-const baseVertex: object = { x: 0, y: 0 };
+messageTypeRegistry.set(Polygon.$type, Polygon);
+
+const baseVertex: object = {
+    $type: 'yandex.cloud.ai.vision.v1.Vertex',
+    x: 0,
+    y: 0,
+};
 
 export const Vertex = {
+    $type: 'yandex.cloud.ai.vision.v1.Vertex' as const,
+
     encode(
         message: Vertex,
         writer: _m0.Writer = _m0.Writer.create()
@@ -162,6 +175,8 @@ export const Vertex = {
     },
 };
 
+messageTypeRegistry.set(Vertex.$type, Vertex);
+
 declare var self: any | undefined;
 declare var window: any | undefined;
 declare var global: any | undefined;
@@ -188,7 +203,7 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 function longToNumber(long: Long): number {

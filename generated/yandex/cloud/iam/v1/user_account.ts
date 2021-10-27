@@ -1,4 +1,5 @@
 /* eslint-disable */
+import { messageTypeRegistry } from '../../../../typeRegistry';
 import Long from 'long';
 import _m0 from 'protobufjs/minimal';
 
@@ -6,6 +7,7 @@ export const protobufPackage = 'yandex.cloud.iam.v1';
 
 /** Currently represents only [Yandex.Passport account](/docs/iam/concepts/#passport). */
 export interface UserAccount {
+    $type: 'yandex.cloud.iam.v1.UserAccount';
     /** ID of the user account. */
     id: string;
     /** A YandexPassportUserAccount resource. */
@@ -19,6 +21,7 @@ export interface UserAccount {
  * For more information, see [Yandex.Passport account](/docs/iam/concepts/#passport).
  */
 export interface YandexPassportUserAccount {
+    $type: 'yandex.cloud.iam.v1.YandexPassportUserAccount';
     /** Login of the Yandex.Passport user account. */
     login: string;
     /** Default email of the Yandex.Passport user account. */
@@ -30,6 +33,7 @@ export interface YandexPassportUserAccount {
  * For more information, see [federations](/docs/iam/concepts/users/saml-federations).
  */
 export interface SamlUserAccount {
+    $type: 'yandex.cloud.iam.v1.SamlUserAccount';
     /** ID of the federation that the federation belongs to. */
     federationId: string;
     /**
@@ -42,17 +46,24 @@ export interface SamlUserAccount {
 }
 
 export interface SamlUserAccount_Attribute {
+    $type: 'yandex.cloud.iam.v1.SamlUserAccount.Attribute';
     value: string[];
 }
 
 export interface SamlUserAccount_AttributesEntry {
+    $type: 'yandex.cloud.iam.v1.SamlUserAccount.AttributesEntry';
     key: string;
     value: SamlUserAccount_Attribute | undefined;
 }
 
-const baseUserAccount: object = { id: '' };
+const baseUserAccount: object = {
+    $type: 'yandex.cloud.iam.v1.UserAccount',
+    id: '',
+};
 
 export const UserAccount = {
+    $type: 'yandex.cloud.iam.v1.UserAccount' as const,
+
     encode(
         message: UserAccount,
         writer: _m0.Writer = _m0.Writer.create()
@@ -186,9 +197,17 @@ export const UserAccount = {
     },
 };
 
-const baseYandexPassportUserAccount: object = { login: '', defaultEmail: '' };
+messageTypeRegistry.set(UserAccount.$type, UserAccount);
+
+const baseYandexPassportUserAccount: object = {
+    $type: 'yandex.cloud.iam.v1.YandexPassportUserAccount',
+    login: '',
+    defaultEmail: '',
+};
 
 export const YandexPassportUserAccount = {
+    $type: 'yandex.cloud.iam.v1.YandexPassportUserAccount' as const,
+
     encode(
         message: YandexPassportUserAccount,
         writer: _m0.Writer = _m0.Writer.create()
@@ -274,9 +293,20 @@ export const YandexPassportUserAccount = {
     },
 };
 
-const baseSamlUserAccount: object = { federationId: '', nameId: '' };
+messageTypeRegistry.set(
+    YandexPassportUserAccount.$type,
+    YandexPassportUserAccount
+);
+
+const baseSamlUserAccount: object = {
+    $type: 'yandex.cloud.iam.v1.SamlUserAccount',
+    federationId: '',
+    nameId: '',
+};
 
 export const SamlUserAccount = {
+    $type: 'yandex.cloud.iam.v1.SamlUserAccount' as const,
+
     encode(
         message: SamlUserAccount,
         writer: _m0.Writer = _m0.Writer.create()
@@ -289,7 +319,11 @@ export const SamlUserAccount = {
         }
         Object.entries(message.attributes).forEach(([key, value]) => {
             SamlUserAccount_AttributesEntry.encode(
-                { key: key as any, value },
+                {
+                    $type: 'yandex.cloud.iam.v1.SamlUserAccount.AttributesEntry',
+                    key: key as any,
+                    value,
+                },
                 writer.uint32(26).fork()
             ).ldelim();
         });
@@ -389,9 +423,16 @@ export const SamlUserAccount = {
     },
 };
 
-const baseSamlUserAccount_Attribute: object = { value: '' };
+messageTypeRegistry.set(SamlUserAccount.$type, SamlUserAccount);
+
+const baseSamlUserAccount_Attribute: object = {
+    $type: 'yandex.cloud.iam.v1.SamlUserAccount.Attribute',
+    value: '',
+};
 
 export const SamlUserAccount_Attribute = {
+    $type: 'yandex.cloud.iam.v1.SamlUserAccount.Attribute' as const,
+
     encode(
         message: SamlUserAccount_Attribute,
         writer: _m0.Writer = _m0.Writer.create()
@@ -466,9 +507,19 @@ export const SamlUserAccount_Attribute = {
     },
 };
 
-const baseSamlUserAccount_AttributesEntry: object = { key: '' };
+messageTypeRegistry.set(
+    SamlUserAccount_Attribute.$type,
+    SamlUserAccount_Attribute
+);
+
+const baseSamlUserAccount_AttributesEntry: object = {
+    $type: 'yandex.cloud.iam.v1.SamlUserAccount.AttributesEntry',
+    key: '',
+};
 
 export const SamlUserAccount_AttributesEntry = {
+    $type: 'yandex.cloud.iam.v1.SamlUserAccount.AttributesEntry' as const,
+
     encode(
         message: SamlUserAccount_AttributesEntry,
         writer: _m0.Writer = _m0.Writer.create()
@@ -562,6 +613,11 @@ export const SamlUserAccount_AttributesEntry = {
     },
 };
 
+messageTypeRegistry.set(
+    SamlUserAccount_AttributesEntry.$type,
+    SamlUserAccount_AttributesEntry
+);
+
 type Builtin =
     | Date
     | Function
@@ -577,7 +633,7 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 if (_m0.util.Long !== Long) {

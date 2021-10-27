@@ -1,4 +1,5 @@
 /* eslint-disable */
+import { messageTypeRegistry } from '../../../../typeRegistry';
 import { Role } from '../../../../yandex/cloud/iam/v1/role';
 import {
     makeGenericClientConstructor,
@@ -18,6 +19,7 @@ import _m0 from 'protobufjs/minimal';
 export const protobufPackage = 'yandex.cloud.iam.v1';
 
 export interface GetRoleRequest {
+    $type: 'yandex.cloud.iam.v1.GetRoleRequest';
     /**
      * ID of the Role resource to return.
      * To get the role ID, use a [RoleService.List] request.
@@ -26,6 +28,7 @@ export interface GetRoleRequest {
 }
 
 export interface ListRolesRequest {
+    $type: 'yandex.cloud.iam.v1.ListRolesRequest';
     /**
      * The maximum number of results per page to return. If the number of available
      * results is larger than [page_size],
@@ -45,6 +48,7 @@ export interface ListRolesRequest {
 }
 
 export interface ListRolesResponse {
+    $type: 'yandex.cloud.iam.v1.ListRolesResponse';
     /** List of Role resources. */
     roles: Role[];
     /**
@@ -58,9 +62,14 @@ export interface ListRolesResponse {
     nextPageToken: string;
 }
 
-const baseGetRoleRequest: object = { roleId: '' };
+const baseGetRoleRequest: object = {
+    $type: 'yandex.cloud.iam.v1.GetRoleRequest',
+    roleId: '',
+};
 
 export const GetRoleRequest = {
+    $type: 'yandex.cloud.iam.v1.GetRoleRequest' as const,
+
     encode(
         message: GetRoleRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -117,9 +126,18 @@ export const GetRoleRequest = {
     },
 };
 
-const baseListRolesRequest: object = { pageSize: 0, pageToken: '', filter: '' };
+messageTypeRegistry.set(GetRoleRequest.$type, GetRoleRequest);
+
+const baseListRolesRequest: object = {
+    $type: 'yandex.cloud.iam.v1.ListRolesRequest',
+    pageSize: 0,
+    pageToken: '',
+    filter: '',
+};
 
 export const ListRolesRequest = {
+    $type: 'yandex.cloud.iam.v1.ListRolesRequest' as const,
+
     encode(
         message: ListRolesRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -210,9 +228,16 @@ export const ListRolesRequest = {
     },
 };
 
-const baseListRolesResponse: object = { nextPageToken: '' };
+messageTypeRegistry.set(ListRolesRequest.$type, ListRolesRequest);
+
+const baseListRolesResponse: object = {
+    $type: 'yandex.cloud.iam.v1.ListRolesResponse',
+    nextPageToken: '',
+};
 
 export const ListRolesResponse = {
+    $type: 'yandex.cloud.iam.v1.ListRolesResponse' as const,
+
     encode(
         message: ListRolesResponse,
         writer: _m0.Writer = _m0.Writer.create()
@@ -301,6 +326,8 @@ export const ListRolesResponse = {
         return message;
     },
 };
+
+messageTypeRegistry.set(ListRolesResponse.$type, ListRolesResponse);
 
 /** A set of methods for managing Role resources. */
 export const RoleServiceService = {
@@ -430,7 +457,7 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 function longToNumber(long: Long): number {

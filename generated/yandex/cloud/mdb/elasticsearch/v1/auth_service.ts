@@ -1,4 +1,5 @@
 /* eslint-disable */
+import { messageTypeRegistry } from '../../../../../typeRegistry';
 import { AuthProvider } from '../../../../../yandex/cloud/mdb/elasticsearch/v1/auth';
 import { Operation } from '../../../../../yandex/cloud/operation/operation';
 import {
@@ -19,16 +20,19 @@ import _m0 from 'protobufjs/minimal';
 export const protobufPackage = 'yandex.cloud.mdb.elasticsearch.v1';
 
 export interface ListAuthProvidersRequest {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.ListAuthProvidersRequest';
     /** Required. ID of the ElasticSearch cluster. */
     clusterId: string;
 }
 
 export interface ListAuthProvidersResponse {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.ListAuthProvidersResponse';
     /** List of auth providers of the Elasticsearch cluster. */
     providers: AuthProvider[];
 }
 
 export interface GetAuthProviderRequest {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.GetAuthProviderRequest';
     /** Required. ID of the ElasticSearch cluster. */
     clusterId: string;
     /** Required. Name of the provider to delete. */
@@ -36,6 +40,7 @@ export interface GetAuthProviderRequest {
 }
 
 export interface AddAuthProvidersRequest {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.AddAuthProvidersRequest';
     /** Required. ID of the ElasticSearch cluster. */
     clusterId: string;
     /** Required. List of providers to add. */
@@ -43,6 +48,7 @@ export interface AddAuthProvidersRequest {
 }
 
 export interface UpdateAuthProvidersRequest {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.UpdateAuthProvidersRequest';
     /** Required. ID of the ElasticSearch cluster. */
     clusterId: string;
     /** Required. List of providers to set. */
@@ -50,6 +56,7 @@ export interface UpdateAuthProvidersRequest {
 }
 
 export interface DeleteAuthProvidersRequest {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.DeleteAuthProvidersRequest';
     /** Required. ID of the ElasticSearch cluster. */
     clusterId: string;
     /** Required. List of providers to delete. */
@@ -57,6 +64,7 @@ export interface DeleteAuthProvidersRequest {
 }
 
 export interface UpdateAuthProviderRequest {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.UpdateAuthProviderRequest';
     /** Required. ID of the ElasticSearch cluster. */
     clusterId: string;
     /** Required. Name of the provider to update. */
@@ -66,6 +74,7 @@ export interface UpdateAuthProviderRequest {
 }
 
 export interface DeleteAuthProviderRequest {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.DeleteAuthProviderRequest';
     /** Required. ID of the ElasticSearch cluster. */
     clusterId: string;
     /** Required. Name of the provider to delete. */
@@ -73,6 +82,7 @@ export interface DeleteAuthProviderRequest {
 }
 
 export interface AddAuthProvidersMetadata {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.AddAuthProvidersMetadata';
     /** ID of the ElasticSearch cluster. */
     clusterId: string;
     /** Names of the providers being added. */
@@ -80,6 +90,7 @@ export interface AddAuthProvidersMetadata {
 }
 
 export interface UpdateAuthProvidersMetadata {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.UpdateAuthProvidersMetadata';
     /** ID of the ElasticSearch cluster. */
     clusterId: string;
     /** Names of the providers being added. */
@@ -87,15 +98,21 @@ export interface UpdateAuthProvidersMetadata {
 }
 
 export interface DeleteAuthProvidersMetadata {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.DeleteAuthProvidersMetadata';
     /** ID of the ElasticSearch cluster. */
     clusterId: string;
     /** Names of the providers being removed. */
     names: string[];
 }
 
-const baseListAuthProvidersRequest: object = { clusterId: '' };
+const baseListAuthProvidersRequest: object = {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.ListAuthProvidersRequest',
+    clusterId: '',
+};
 
 export const ListAuthProvidersRequest = {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.ListAuthProvidersRequest' as const,
+
     encode(
         message: ListAuthProvidersRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -163,9 +180,18 @@ export const ListAuthProvidersRequest = {
     },
 };
 
-const baseListAuthProvidersResponse: object = {};
+messageTypeRegistry.set(
+    ListAuthProvidersRequest.$type,
+    ListAuthProvidersRequest
+);
+
+const baseListAuthProvidersResponse: object = {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.ListAuthProvidersResponse',
+};
 
 export const ListAuthProvidersResponse = {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.ListAuthProvidersResponse' as const,
+
     encode(
         message: ListAuthProvidersResponse,
         writer: _m0.Writer = _m0.Writer.create()
@@ -244,9 +270,20 @@ export const ListAuthProvidersResponse = {
     },
 };
 
-const baseGetAuthProviderRequest: object = { clusterId: '', name: '' };
+messageTypeRegistry.set(
+    ListAuthProvidersResponse.$type,
+    ListAuthProvidersResponse
+);
+
+const baseGetAuthProviderRequest: object = {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.GetAuthProviderRequest',
+    clusterId: '',
+    name: '',
+};
 
 export const GetAuthProviderRequest = {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.GetAuthProviderRequest' as const,
+
     encode(
         message: GetAuthProviderRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -331,9 +368,16 @@ export const GetAuthProviderRequest = {
     },
 };
 
-const baseAddAuthProvidersRequest: object = { clusterId: '' };
+messageTypeRegistry.set(GetAuthProviderRequest.$type, GetAuthProviderRequest);
+
+const baseAddAuthProvidersRequest: object = {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.AddAuthProvidersRequest',
+    clusterId: '',
+};
 
 export const AddAuthProvidersRequest = {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.AddAuthProvidersRequest' as const,
+
     encode(
         message: AddAuthProvidersRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -429,9 +473,16 @@ export const AddAuthProvidersRequest = {
     },
 };
 
-const baseUpdateAuthProvidersRequest: object = { clusterId: '' };
+messageTypeRegistry.set(AddAuthProvidersRequest.$type, AddAuthProvidersRequest);
+
+const baseUpdateAuthProvidersRequest: object = {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.UpdateAuthProvidersRequest',
+    clusterId: '',
+};
 
 export const UpdateAuthProvidersRequest = {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.UpdateAuthProvidersRequest' as const,
+
     encode(
         message: UpdateAuthProvidersRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -527,12 +578,20 @@ export const UpdateAuthProvidersRequest = {
     },
 };
 
+messageTypeRegistry.set(
+    UpdateAuthProvidersRequest.$type,
+    UpdateAuthProvidersRequest
+);
+
 const baseDeleteAuthProvidersRequest: object = {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.DeleteAuthProvidersRequest',
     clusterId: '',
     providerNames: '',
 };
 
 export const DeleteAuthProvidersRequest = {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.DeleteAuthProvidersRequest' as const,
+
     encode(
         message: DeleteAuthProvidersRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -630,9 +689,20 @@ export const DeleteAuthProvidersRequest = {
     },
 };
 
-const baseUpdateAuthProviderRequest: object = { clusterId: '', name: '' };
+messageTypeRegistry.set(
+    DeleteAuthProvidersRequest.$type,
+    DeleteAuthProvidersRequest
+);
+
+const baseUpdateAuthProviderRequest: object = {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.UpdateAuthProviderRequest',
+    clusterId: '',
+    name: '',
+};
 
 export const UpdateAuthProviderRequest = {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.UpdateAuthProviderRequest' as const,
+
     encode(
         message: UpdateAuthProviderRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -743,9 +813,20 @@ export const UpdateAuthProviderRequest = {
     },
 };
 
-const baseDeleteAuthProviderRequest: object = { clusterId: '', name: '' };
+messageTypeRegistry.set(
+    UpdateAuthProviderRequest.$type,
+    UpdateAuthProviderRequest
+);
+
+const baseDeleteAuthProviderRequest: object = {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.DeleteAuthProviderRequest',
+    clusterId: '',
+    name: '',
+};
 
 export const DeleteAuthProviderRequest = {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.DeleteAuthProviderRequest' as const,
+
     encode(
         message: DeleteAuthProviderRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -830,9 +911,20 @@ export const DeleteAuthProviderRequest = {
     },
 };
 
-const baseAddAuthProvidersMetadata: object = { clusterId: '', names: '' };
+messageTypeRegistry.set(
+    DeleteAuthProviderRequest.$type,
+    DeleteAuthProviderRequest
+);
+
+const baseAddAuthProvidersMetadata: object = {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.AddAuthProvidersMetadata',
+    clusterId: '',
+    names: '',
+};
 
 export const AddAuthProvidersMetadata = {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.AddAuthProvidersMetadata' as const,
+
     encode(
         message: AddAuthProvidersMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -924,9 +1016,20 @@ export const AddAuthProvidersMetadata = {
     },
 };
 
-const baseUpdateAuthProvidersMetadata: object = { clusterId: '', names: '' };
+messageTypeRegistry.set(
+    AddAuthProvidersMetadata.$type,
+    AddAuthProvidersMetadata
+);
+
+const baseUpdateAuthProvidersMetadata: object = {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.UpdateAuthProvidersMetadata',
+    clusterId: '',
+    names: '',
+};
 
 export const UpdateAuthProvidersMetadata = {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.UpdateAuthProvidersMetadata' as const,
+
     encode(
         message: UpdateAuthProvidersMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1018,9 +1121,20 @@ export const UpdateAuthProvidersMetadata = {
     },
 };
 
-const baseDeleteAuthProvidersMetadata: object = { clusterId: '', names: '' };
+messageTypeRegistry.set(
+    UpdateAuthProvidersMetadata.$type,
+    UpdateAuthProvidersMetadata
+);
+
+const baseDeleteAuthProvidersMetadata: object = {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.DeleteAuthProvidersMetadata',
+    clusterId: '',
+    names: '',
+};
 
 export const DeleteAuthProvidersMetadata = {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.DeleteAuthProvidersMetadata' as const,
+
     encode(
         message: DeleteAuthProvidersMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1111,6 +1225,11 @@ export const DeleteAuthProvidersMetadata = {
         return message;
     },
 };
+
+messageTypeRegistry.set(
+    DeleteAuthProvidersMetadata.$type,
+    DeleteAuthProvidersMetadata
+);
 
 /** A set of methods for managing Elasticsearch Authentication resources. */
 export const AuthServiceService = {
@@ -1378,7 +1497,7 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 if (_m0.util.Long !== Long) {

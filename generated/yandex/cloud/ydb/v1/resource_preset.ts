@@ -1,18 +1,27 @@
 /* eslint-disable */
+import { messageTypeRegistry } from '../../../../typeRegistry';
 import Long from 'long';
 import _m0 from 'protobufjs/minimal';
 
 export const protobufPackage = 'yandex.cloud.ydb.v1';
 
 export interface ResourcePreset {
+    $type: 'yandex.cloud.ydb.v1.ResourcePreset';
     id: string;
     cores: number;
     memory: number;
 }
 
-const baseResourcePreset: object = { id: '', cores: 0, memory: 0 };
+const baseResourcePreset: object = {
+    $type: 'yandex.cloud.ydb.v1.ResourcePreset',
+    id: '',
+    cores: 0,
+    memory: 0,
+};
 
 export const ResourcePreset = {
+    $type: 'yandex.cloud.ydb.v1.ResourcePreset' as const,
+
     encode(
         message: ResourcePreset,
         writer: _m0.Writer = _m0.Writer.create()
@@ -103,6 +112,8 @@ export const ResourcePreset = {
     },
 };
 
+messageTypeRegistry.set(ResourcePreset.$type, ResourcePreset);
+
 declare var self: any | undefined;
 declare var window: any | undefined;
 declare var global: any | undefined;
@@ -129,7 +140,7 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 function longToNumber(long: Long): number {

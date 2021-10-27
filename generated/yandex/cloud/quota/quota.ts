@@ -1,10 +1,12 @@
 /* eslint-disable */
+import { messageTypeRegistry } from '../../../typeRegistry';
 import Long from 'long';
 import _m0 from 'protobufjs/minimal';
 
 export const protobufPackage = 'yandex.cloud.quota';
 
 export interface QuotaMetric {
+    $type: 'yandex.cloud.quota.QuotaMetric';
     /** formatted as <domain>.<metric>.<unit>, e.g. mdb.hdd.size */
     name: string;
     limit: number;
@@ -12,23 +14,33 @@ export interface QuotaMetric {
 }
 
 export interface MetricLimit {
+    $type: 'yandex.cloud.quota.MetricLimit';
     name: string;
     limit: number;
 }
 
 export interface QuotaFailure {
+    $type: 'yandex.cloud.quota.QuotaFailure';
     violations: QuotaFailure_Violation[];
 }
 
 export interface QuotaFailure_Violation {
+    $type: 'yandex.cloud.quota.QuotaFailure.Violation';
     metric: QuotaMetric | undefined;
     /** new value for the MetricLimit.limit, so it is: old limit + delta */
     required: number;
 }
 
-const baseQuotaMetric: object = { name: '', limit: 0, usage: 0 };
+const baseQuotaMetric: object = {
+    $type: 'yandex.cloud.quota.QuotaMetric',
+    name: '',
+    limit: 0,
+    usage: 0,
+};
 
 export const QuotaMetric = {
+    $type: 'yandex.cloud.quota.QuotaMetric' as const,
+
     encode(
         message: QuotaMetric,
         writer: _m0.Writer = _m0.Writer.create()
@@ -119,9 +131,17 @@ export const QuotaMetric = {
     },
 };
 
-const baseMetricLimit: object = { name: '', limit: 0 };
+messageTypeRegistry.set(QuotaMetric.$type, QuotaMetric);
+
+const baseMetricLimit: object = {
+    $type: 'yandex.cloud.quota.MetricLimit',
+    name: '',
+    limit: 0,
+};
 
 export const MetricLimit = {
+    $type: 'yandex.cloud.quota.MetricLimit' as const,
+
     encode(
         message: MetricLimit,
         writer: _m0.Writer = _m0.Writer.create()
@@ -195,9 +215,13 @@ export const MetricLimit = {
     },
 };
 
-const baseQuotaFailure: object = {};
+messageTypeRegistry.set(MetricLimit.$type, MetricLimit);
+
+const baseQuotaFailure: object = { $type: 'yandex.cloud.quota.QuotaFailure' };
 
 export const QuotaFailure = {
+    $type: 'yandex.cloud.quota.QuotaFailure' as const,
+
     encode(
         message: QuotaFailure,
         writer: _m0.Writer = _m0.Writer.create()
@@ -268,9 +292,16 @@ export const QuotaFailure = {
     },
 };
 
-const baseQuotaFailure_Violation: object = { required: 0 };
+messageTypeRegistry.set(QuotaFailure.$type, QuotaFailure);
+
+const baseQuotaFailure_Violation: object = {
+    $type: 'yandex.cloud.quota.QuotaFailure.Violation',
+    required: 0,
+};
 
 export const QuotaFailure_Violation = {
+    $type: 'yandex.cloud.quota.QuotaFailure.Violation' as const,
+
     encode(
         message: QuotaFailure_Violation,
         writer: _m0.Writer = _m0.Writer.create()
@@ -364,6 +395,8 @@ export const QuotaFailure_Violation = {
     },
 };
 
+messageTypeRegistry.set(QuotaFailure_Violation.$type, QuotaFailure_Violation);
+
 declare var self: any | undefined;
 declare var window: any | undefined;
 declare var global: any | undefined;
@@ -390,7 +423,7 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 function longToNumber(long: Long): number {

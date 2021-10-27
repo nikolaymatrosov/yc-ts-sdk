@@ -1,18 +1,23 @@
 /* eslint-disable */
 import { Timestamp } from '../../../../../google/protobuf/timestamp';
+import { messageTypeRegistry } from '../../../../../typeRegistry';
 import Long from 'long';
 import _m0 from 'protobufjs/minimal';
 
 export const protobufPackage = 'yandex.cloud.mdb.greenplum.v1';
 
 export interface MaintenanceWindow {
+    $type: 'yandex.cloud.mdb.greenplum.v1.MaintenanceWindow';
     anytime: AnytimeMaintenanceWindow | undefined;
     weeklyMaintenanceWindow: WeeklyMaintenanceWindow | undefined;
 }
 
-export interface AnytimeMaintenanceWindow {}
+export interface AnytimeMaintenanceWindow {
+    $type: 'yandex.cloud.mdb.greenplum.v1.AnytimeMaintenanceWindow';
+}
 
 export interface WeeklyMaintenanceWindow {
+    $type: 'yandex.cloud.mdb.greenplum.v1.WeeklyMaintenanceWindow';
     day: WeeklyMaintenanceWindow_WeekDay;
     /** Hour of the day in UTC. */
     hour: number;
@@ -91,13 +96,18 @@ export function weeklyMaintenanceWindow_WeekDayToJSON(
 }
 
 export interface MaintenanceOperation {
+    $type: 'yandex.cloud.mdb.greenplum.v1.MaintenanceOperation';
     info: string;
     delayedUntil: Date | undefined;
 }
 
-const baseMaintenanceWindow: object = {};
+const baseMaintenanceWindow: object = {
+    $type: 'yandex.cloud.mdb.greenplum.v1.MaintenanceWindow',
+};
 
 export const MaintenanceWindow = {
+    $type: 'yandex.cloud.mdb.greenplum.v1.MaintenanceWindow' as const,
+
     encode(
         message: MaintenanceWindow,
         writer: _m0.Writer = _m0.Writer.create()
@@ -202,9 +212,15 @@ export const MaintenanceWindow = {
     },
 };
 
-const baseAnytimeMaintenanceWindow: object = {};
+messageTypeRegistry.set(MaintenanceWindow.$type, MaintenanceWindow);
+
+const baseAnytimeMaintenanceWindow: object = {
+    $type: 'yandex.cloud.mdb.greenplum.v1.AnytimeMaintenanceWindow',
+};
 
 export const AnytimeMaintenanceWindow = {
+    $type: 'yandex.cloud.mdb.greenplum.v1.AnytimeMaintenanceWindow' as const,
+
     encode(
         _: AnytimeMaintenanceWindow,
         writer: _m0.Writer = _m0.Writer.create()
@@ -255,9 +271,20 @@ export const AnytimeMaintenanceWindow = {
     },
 };
 
-const baseWeeklyMaintenanceWindow: object = { day: 0, hour: 0 };
+messageTypeRegistry.set(
+    AnytimeMaintenanceWindow.$type,
+    AnytimeMaintenanceWindow
+);
+
+const baseWeeklyMaintenanceWindow: object = {
+    $type: 'yandex.cloud.mdb.greenplum.v1.WeeklyMaintenanceWindow',
+    day: 0,
+    hour: 0,
+};
 
 export const WeeklyMaintenanceWindow = {
+    $type: 'yandex.cloud.mdb.greenplum.v1.WeeklyMaintenanceWindow' as const,
+
     encode(
         message: WeeklyMaintenanceWindow,
         writer: _m0.Writer = _m0.Writer.create()
@@ -343,9 +370,16 @@ export const WeeklyMaintenanceWindow = {
     },
 };
 
-const baseMaintenanceOperation: object = { info: '' };
+messageTypeRegistry.set(WeeklyMaintenanceWindow.$type, WeeklyMaintenanceWindow);
+
+const baseMaintenanceOperation: object = {
+    $type: 'yandex.cloud.mdb.greenplum.v1.MaintenanceOperation',
+    info: '',
+};
 
 export const MaintenanceOperation = {
+    $type: 'yandex.cloud.mdb.greenplum.v1.MaintenanceOperation' as const,
+
     encode(
         message: MaintenanceOperation,
         writer: _m0.Writer = _m0.Writer.create()
@@ -430,6 +464,8 @@ export const MaintenanceOperation = {
     },
 };
 
+messageTypeRegistry.set(MaintenanceOperation.$type, MaintenanceOperation);
+
 declare var self: any | undefined;
 declare var window: any | undefined;
 declare var global: any | undefined;
@@ -456,13 +492,13 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 function toTimestamp(date: Date): Timestamp {
     const seconds = date.getTime() / 1_000;
     const nanos = (date.getTime() % 1_000) * 1_000_000;
-    return { seconds, nanos };
+    return { $type: 'google.protobuf.Timestamp', seconds, nanos };
 }
 
 function fromTimestamp(t: Timestamp): Date {

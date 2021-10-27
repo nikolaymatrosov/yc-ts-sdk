@@ -1,4 +1,5 @@
 /* eslint-disable */
+import { messageTypeRegistry } from '../../../../typeRegistry';
 import { Sku } from '../../../../yandex/cloud/billing/v1/sku';
 import {
     makeGenericClientConstructor,
@@ -18,6 +19,7 @@ import _m0 from 'protobufjs/minimal';
 export const protobufPackage = 'yandex.cloud.billing.v1';
 
 export interface GetSkuRequest {
+    $type: 'yandex.cloud.billing.v1.GetSkuRequest';
     /**
      * ID of the SKU to return.
      * To get the SKU ID, use [SkuService.List] request.
@@ -40,6 +42,7 @@ export interface GetSkuRequest {
 }
 
 export interface ListSkusRequest {
+    $type: 'yandex.cloud.billing.v1.ListSkusRequest';
     /**
      * Currency of the prices.
      * Can be one of the following:
@@ -78,6 +81,7 @@ export interface ListSkusRequest {
 }
 
 export interface ListSkusResponse {
+    $type: 'yandex.cloud.billing.v1.ListSkusResponse';
     /** List of skus. */
     skus: Sku[];
     /**
@@ -92,12 +96,15 @@ export interface ListSkusResponse {
 }
 
 const baseGetSkuRequest: object = {
+    $type: 'yandex.cloud.billing.v1.GetSkuRequest',
     id: '',
     currency: '',
     billingAccountId: '',
 };
 
 export const GetSkuRequest = {
+    $type: 'yandex.cloud.billing.v1.GetSkuRequest' as const,
+
     encode(
         message: GetSkuRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -195,7 +202,10 @@ export const GetSkuRequest = {
     },
 };
 
+messageTypeRegistry.set(GetSkuRequest.$type, GetSkuRequest);
+
 const baseListSkusRequest: object = {
+    $type: 'yandex.cloud.billing.v1.ListSkusRequest',
     currency: '',
     billingAccountId: '',
     filter: '',
@@ -204,6 +214,8 @@ const baseListSkusRequest: object = {
 };
 
 export const ListSkusRequest = {
+    $type: 'yandex.cloud.billing.v1.ListSkusRequest' as const,
+
     encode(
         message: ListSkusRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -335,9 +347,16 @@ export const ListSkusRequest = {
     },
 };
 
-const baseListSkusResponse: object = { nextPageToken: '' };
+messageTypeRegistry.set(ListSkusRequest.$type, ListSkusRequest);
+
+const baseListSkusResponse: object = {
+    $type: 'yandex.cloud.billing.v1.ListSkusResponse',
+    nextPageToken: '',
+};
 
 export const ListSkusResponse = {
+    $type: 'yandex.cloud.billing.v1.ListSkusResponse' as const,
+
     encode(
         message: ListSkusResponse,
         writer: _m0.Writer = _m0.Writer.create()
@@ -424,6 +443,8 @@ export const ListSkusResponse = {
         return message;
     },
 };
+
+messageTypeRegistry.set(ListSkusResponse.$type, ListSkusResponse);
 
 /** A set of methods for managing Sku resources. */
 export const SkuServiceService = {
@@ -541,7 +562,7 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 function longToNumber(long: Long): number {

@@ -7,6 +7,7 @@ import { ChannelCredentials, ChannelOptions, UntypedServiceImplementation, handl
 import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.compute.v1";
 export interface GetDiskPlacementGroupRequest {
+    $type: 'yandex.cloud.compute.v1.GetDiskPlacementGroupRequest';
     /**
      * ID of the placement group to return.
      * To get the placement group ID, use [DiskPlacementGroupService.List] request.
@@ -14,6 +15,7 @@ export interface GetDiskPlacementGroupRequest {
     diskPlacementGroupId: string;
 }
 export interface ListDiskPlacementGroupsRequest {
+    $type: 'yandex.cloud.compute.v1.ListDiskPlacementGroupsRequest';
     /**
      * ID of the folder to list placement groups in.
      * To get the folder ID, use [yandex.cloud.resourcemanager.v1.FolderService.List] request.
@@ -39,6 +41,7 @@ export interface ListDiskPlacementGroupsRequest {
     filter: string;
 }
 export interface ListDiskPlacementGroupsResponse {
+    $type: 'yandex.cloud.compute.v1.ListDiskPlacementGroupsResponse';
     /** Lists placement groups for the specified folder. */
     diskPlacementGroups: DiskPlacementGroup[];
     /**
@@ -52,6 +55,7 @@ export interface ListDiskPlacementGroupsResponse {
     nextPageToken: string;
 }
 export interface CreateDiskPlacementGroupRequest {
+    $type: 'yandex.cloud.compute.v1.CreateDiskPlacementGroupRequest';
     /**
      * ID of the folder to create a placement group in.
      * To get the folder ID, use a [yandex.cloud.resourcemanager.v1.FolderService.List] request.
@@ -74,14 +78,17 @@ export interface CreateDiskPlacementGroupRequest {
     spreadPlacementStrategy: DiskSpreadPlacementStrategy | undefined;
 }
 export interface CreateDiskPlacementGroupRequest_LabelsEntry {
+    $type: 'yandex.cloud.compute.v1.CreateDiskPlacementGroupRequest.LabelsEntry';
     key: string;
     value: string;
 }
 export interface CreateDiskPlacementGroupMetadata {
+    $type: 'yandex.cloud.compute.v1.CreateDiskPlacementGroupMetadata';
     /** ID of the placement group that is being created. */
     diskPlacementGroupId: string;
 }
 export interface UpdateDiskPlacementGroupRequest {
+    $type: 'yandex.cloud.compute.v1.UpdateDiskPlacementGroupRequest';
     /**
      * ID of the placement group to update.
      * To get the placement group ID, use an [DiskPlacementGroupService.List] request.
@@ -103,14 +110,17 @@ export interface UpdateDiskPlacementGroupRequest {
     };
 }
 export interface UpdateDiskPlacementGroupRequest_LabelsEntry {
+    $type: 'yandex.cloud.compute.v1.UpdateDiskPlacementGroupRequest.LabelsEntry';
     key: string;
     value: string;
 }
 export interface UpdateDiskPlacementGroupMetadata {
+    $type: 'yandex.cloud.compute.v1.UpdateDiskPlacementGroupMetadata';
     /** ID of the placement group that is being updated. */
     diskPlacementGroupId: string;
 }
 export interface DeleteDiskPlacementGroupRequest {
+    $type: 'yandex.cloud.compute.v1.DeleteDiskPlacementGroupRequest';
     /**
      * ID of the placement group to delete.
      * To get the placement group ID, use [DiskPlacementGroupService.List] request.
@@ -118,10 +128,12 @@ export interface DeleteDiskPlacementGroupRequest {
     diskPlacementGroupId: string;
 }
 export interface DeleteDiskPlacementGroupMetadata {
+    $type: 'yandex.cloud.compute.v1.DeleteDiskPlacementGroupMetadata';
     /** ID of the placement group that is being deleted. */
     diskPlacementGroupId: string;
 }
 export interface ListDiskPlacementGroupDisksRequest {
+    $type: 'yandex.cloud.compute.v1.ListDiskPlacementGroupDisksRequest';
     /**
      * ID of the placement group to list disks for.
      * To get the placement group ID, use [DiskPlacementGroupService.List] request.
@@ -142,6 +154,7 @@ export interface ListDiskPlacementGroupDisksRequest {
     pageToken: string;
 }
 export interface ListDiskPlacementGroupDisksResponse {
+    $type: 'yandex.cloud.compute.v1.ListDiskPlacementGroupDisksResponse';
     /** Lists disks for the specified placement group. */
     disks: Disk[];
     /**
@@ -155,6 +168,7 @@ export interface ListDiskPlacementGroupDisksResponse {
     nextPageToken: string;
 }
 export interface ListDiskPlacementGroupOperationsRequest {
+    $type: 'yandex.cloud.compute.v1.ListDiskPlacementGroupOperationsRequest';
     /**
      * ID of the placement group to list operations for.
      * To get the placement group ID, use [DiskPlacementGroupService.List] request.
@@ -173,6 +187,7 @@ export interface ListDiskPlacementGroupOperationsRequest {
     pageToken: string;
 }
 export interface ListDiskPlacementGroupOperationsResponse {
+    $type: 'yandex.cloud.compute.v1.ListDiskPlacementGroupOperationsResponse';
     /** List of operations for the specified placement group. */
     operations: Operation[];
     /**
@@ -184,6 +199,7 @@ export interface ListDiskPlacementGroupOperationsResponse {
     nextPageToken: string;
 }
 export declare const GetDiskPlacementGroupRequest: {
+    $type: "yandex.cloud.compute.v1.GetDiskPlacementGroupRequest";
     encode(message: GetDiskPlacementGroupRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): GetDiskPlacementGroupRequest;
     fromJSON(object: any): GetDiskPlacementGroupRequest;
@@ -191,6 +207,7 @@ export declare const GetDiskPlacementGroupRequest: {
     fromPartial(object: DeepPartial<GetDiskPlacementGroupRequest>): GetDiskPlacementGroupRequest;
 };
 export declare const ListDiskPlacementGroupsRequest: {
+    $type: "yandex.cloud.compute.v1.ListDiskPlacementGroupsRequest";
     encode(message: ListDiskPlacementGroupsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListDiskPlacementGroupsRequest;
     fromJSON(object: any): ListDiskPlacementGroupsRequest;
@@ -198,6 +215,7 @@ export declare const ListDiskPlacementGroupsRequest: {
     fromPartial(object: DeepPartial<ListDiskPlacementGroupsRequest>): ListDiskPlacementGroupsRequest;
 };
 export declare const ListDiskPlacementGroupsResponse: {
+    $type: "yandex.cloud.compute.v1.ListDiskPlacementGroupsResponse";
     encode(message: ListDiskPlacementGroupsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListDiskPlacementGroupsResponse;
     fromJSON(object: any): ListDiskPlacementGroupsResponse;
@@ -205,6 +223,7 @@ export declare const ListDiskPlacementGroupsResponse: {
     fromPartial(object: DeepPartial<ListDiskPlacementGroupsResponse>): ListDiskPlacementGroupsResponse;
 };
 export declare const CreateDiskPlacementGroupRequest: {
+    $type: "yandex.cloud.compute.v1.CreateDiskPlacementGroupRequest";
     encode(message: CreateDiskPlacementGroupRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateDiskPlacementGroupRequest;
     fromJSON(object: any): CreateDiskPlacementGroupRequest;
@@ -212,6 +231,7 @@ export declare const CreateDiskPlacementGroupRequest: {
     fromPartial(object: DeepPartial<CreateDiskPlacementGroupRequest>): CreateDiskPlacementGroupRequest;
 };
 export declare const CreateDiskPlacementGroupRequest_LabelsEntry: {
+    $type: "yandex.cloud.compute.v1.CreateDiskPlacementGroupRequest.LabelsEntry";
     encode(message: CreateDiskPlacementGroupRequest_LabelsEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateDiskPlacementGroupRequest_LabelsEntry;
     fromJSON(object: any): CreateDiskPlacementGroupRequest_LabelsEntry;
@@ -219,6 +239,7 @@ export declare const CreateDiskPlacementGroupRequest_LabelsEntry: {
     fromPartial(object: DeepPartial<CreateDiskPlacementGroupRequest_LabelsEntry>): CreateDiskPlacementGroupRequest_LabelsEntry;
 };
 export declare const CreateDiskPlacementGroupMetadata: {
+    $type: "yandex.cloud.compute.v1.CreateDiskPlacementGroupMetadata";
     encode(message: CreateDiskPlacementGroupMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateDiskPlacementGroupMetadata;
     fromJSON(object: any): CreateDiskPlacementGroupMetadata;
@@ -226,6 +247,7 @@ export declare const CreateDiskPlacementGroupMetadata: {
     fromPartial(object: DeepPartial<CreateDiskPlacementGroupMetadata>): CreateDiskPlacementGroupMetadata;
 };
 export declare const UpdateDiskPlacementGroupRequest: {
+    $type: "yandex.cloud.compute.v1.UpdateDiskPlacementGroupRequest";
     encode(message: UpdateDiskPlacementGroupRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateDiskPlacementGroupRequest;
     fromJSON(object: any): UpdateDiskPlacementGroupRequest;
@@ -233,6 +255,7 @@ export declare const UpdateDiskPlacementGroupRequest: {
     fromPartial(object: DeepPartial<UpdateDiskPlacementGroupRequest>): UpdateDiskPlacementGroupRequest;
 };
 export declare const UpdateDiskPlacementGroupRequest_LabelsEntry: {
+    $type: "yandex.cloud.compute.v1.UpdateDiskPlacementGroupRequest.LabelsEntry";
     encode(message: UpdateDiskPlacementGroupRequest_LabelsEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateDiskPlacementGroupRequest_LabelsEntry;
     fromJSON(object: any): UpdateDiskPlacementGroupRequest_LabelsEntry;
@@ -240,6 +263,7 @@ export declare const UpdateDiskPlacementGroupRequest_LabelsEntry: {
     fromPartial(object: DeepPartial<UpdateDiskPlacementGroupRequest_LabelsEntry>): UpdateDiskPlacementGroupRequest_LabelsEntry;
 };
 export declare const UpdateDiskPlacementGroupMetadata: {
+    $type: "yandex.cloud.compute.v1.UpdateDiskPlacementGroupMetadata";
     encode(message: UpdateDiskPlacementGroupMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateDiskPlacementGroupMetadata;
     fromJSON(object: any): UpdateDiskPlacementGroupMetadata;
@@ -247,6 +271,7 @@ export declare const UpdateDiskPlacementGroupMetadata: {
     fromPartial(object: DeepPartial<UpdateDiskPlacementGroupMetadata>): UpdateDiskPlacementGroupMetadata;
 };
 export declare const DeleteDiskPlacementGroupRequest: {
+    $type: "yandex.cloud.compute.v1.DeleteDiskPlacementGroupRequest";
     encode(message: DeleteDiskPlacementGroupRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteDiskPlacementGroupRequest;
     fromJSON(object: any): DeleteDiskPlacementGroupRequest;
@@ -254,6 +279,7 @@ export declare const DeleteDiskPlacementGroupRequest: {
     fromPartial(object: DeepPartial<DeleteDiskPlacementGroupRequest>): DeleteDiskPlacementGroupRequest;
 };
 export declare const DeleteDiskPlacementGroupMetadata: {
+    $type: "yandex.cloud.compute.v1.DeleteDiskPlacementGroupMetadata";
     encode(message: DeleteDiskPlacementGroupMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteDiskPlacementGroupMetadata;
     fromJSON(object: any): DeleteDiskPlacementGroupMetadata;
@@ -261,6 +287,7 @@ export declare const DeleteDiskPlacementGroupMetadata: {
     fromPartial(object: DeepPartial<DeleteDiskPlacementGroupMetadata>): DeleteDiskPlacementGroupMetadata;
 };
 export declare const ListDiskPlacementGroupDisksRequest: {
+    $type: "yandex.cloud.compute.v1.ListDiskPlacementGroupDisksRequest";
     encode(message: ListDiskPlacementGroupDisksRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListDiskPlacementGroupDisksRequest;
     fromJSON(object: any): ListDiskPlacementGroupDisksRequest;
@@ -268,6 +295,7 @@ export declare const ListDiskPlacementGroupDisksRequest: {
     fromPartial(object: DeepPartial<ListDiskPlacementGroupDisksRequest>): ListDiskPlacementGroupDisksRequest;
 };
 export declare const ListDiskPlacementGroupDisksResponse: {
+    $type: "yandex.cloud.compute.v1.ListDiskPlacementGroupDisksResponse";
     encode(message: ListDiskPlacementGroupDisksResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListDiskPlacementGroupDisksResponse;
     fromJSON(object: any): ListDiskPlacementGroupDisksResponse;
@@ -275,6 +303,7 @@ export declare const ListDiskPlacementGroupDisksResponse: {
     fromPartial(object: DeepPartial<ListDiskPlacementGroupDisksResponse>): ListDiskPlacementGroupDisksResponse;
 };
 export declare const ListDiskPlacementGroupOperationsRequest: {
+    $type: "yandex.cloud.compute.v1.ListDiskPlacementGroupOperationsRequest";
     encode(message: ListDiskPlacementGroupOperationsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListDiskPlacementGroupOperationsRequest;
     fromJSON(object: any): ListDiskPlacementGroupOperationsRequest;
@@ -282,6 +311,7 @@ export declare const ListDiskPlacementGroupOperationsRequest: {
     fromPartial(object: DeepPartial<ListDiskPlacementGroupOperationsRequest>): ListDiskPlacementGroupOperationsRequest;
 };
 export declare const ListDiskPlacementGroupOperationsResponse: {
+    $type: "yandex.cloud.compute.v1.ListDiskPlacementGroupOperationsResponse";
     encode(message: ListDiskPlacementGroupOperationsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListDiskPlacementGroupOperationsResponse;
     fromJSON(object: any): ListDiskPlacementGroupOperationsResponse;
@@ -410,6 +440,6 @@ export interface DiskPlacementGroupServiceClient extends Client {
 export declare const DiskPlacementGroupServiceClient: new (address: string, credentials: ChannelCredentials, options?: Partial<ChannelOptions> | undefined) => DiskPlacementGroupServiceClient;
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

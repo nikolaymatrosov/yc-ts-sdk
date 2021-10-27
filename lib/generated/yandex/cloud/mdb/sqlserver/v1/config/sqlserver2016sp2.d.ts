@@ -8,6 +8,7 @@ export declare const protobufPackage = "yandex.cloud.mdb.sqlserver.v1.config";
  * Any options that are not listed here are not supported.
  */
 export interface SQLServerConfig2016sp2std {
+    $type: 'yandex.cloud.mdb.sqlserver.v1.config.SQLServerConfig2016sp2std';
     /**
      * Limits the number of processors to use in parallel plan execution per task.
      *
@@ -51,6 +52,7 @@ export interface SQLServerConfig2016sp2std {
     optimizeForAdHocWorkloads: boolean | undefined;
 }
 export interface SQLServerConfigSet2016sp2std {
+    $type: 'yandex.cloud.mdb.sqlserver.v1.config.SQLServerConfigSet2016sp2std';
     /** Effective settings for an SQL Server 2016 SP2 cluster (a combination of settings defined in [user_config] and [default_config]). */
     effectiveConfig: SQLServerConfig2016sp2std | undefined;
     /** User-defined settings for an SQL Server 2016 SP2 cluster. */
@@ -66,6 +68,7 @@ export interface SQLServerConfigSet2016sp2std {
  * Any options that are not listed here are not supported.
  */
 export interface SQLServerConfig2016sp2ent {
+    $type: 'yandex.cloud.mdb.sqlserver.v1.config.SQLServerConfig2016sp2ent';
     /**
      * Limits the number of processors to use in parallel plan execution per task.
      *
@@ -109,6 +112,7 @@ export interface SQLServerConfig2016sp2ent {
     optimizeForAdHocWorkloads: boolean | undefined;
 }
 export interface SQLServerConfigSet2016sp2ent {
+    $type: 'yandex.cloud.mdb.sqlserver.v1.config.SQLServerConfigSet2016sp2ent';
     /** Effective settings for an SQL Server 2016 SP2 cluster (a combination of settings defined in [user_config] and [default_config]). */
     effectiveConfig: SQLServerConfig2016sp2ent | undefined;
     /** User-defined settings for an SQL Server 2016 SP2 cluster. */
@@ -117,6 +121,7 @@ export interface SQLServerConfigSet2016sp2ent {
     defaultConfig: SQLServerConfig2016sp2ent | undefined;
 }
 export declare const SQLServerConfig2016sp2std: {
+    $type: "yandex.cloud.mdb.sqlserver.v1.config.SQLServerConfig2016sp2std";
     encode(message: SQLServerConfig2016sp2std, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): SQLServerConfig2016sp2std;
     fromJSON(object: any): SQLServerConfig2016sp2std;
@@ -124,6 +129,7 @@ export declare const SQLServerConfig2016sp2std: {
     fromPartial(object: DeepPartial<SQLServerConfig2016sp2std>): SQLServerConfig2016sp2std;
 };
 export declare const SQLServerConfigSet2016sp2std: {
+    $type: "yandex.cloud.mdb.sqlserver.v1.config.SQLServerConfigSet2016sp2std";
     encode(message: SQLServerConfigSet2016sp2std, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): SQLServerConfigSet2016sp2std;
     fromJSON(object: any): SQLServerConfigSet2016sp2std;
@@ -131,6 +137,7 @@ export declare const SQLServerConfigSet2016sp2std: {
     fromPartial(object: DeepPartial<SQLServerConfigSet2016sp2std>): SQLServerConfigSet2016sp2std;
 };
 export declare const SQLServerConfig2016sp2ent: {
+    $type: "yandex.cloud.mdb.sqlserver.v1.config.SQLServerConfig2016sp2ent";
     encode(message: SQLServerConfig2016sp2ent, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): SQLServerConfig2016sp2ent;
     fromJSON(object: any): SQLServerConfig2016sp2ent;
@@ -138,6 +145,7 @@ export declare const SQLServerConfig2016sp2ent: {
     fromPartial(object: DeepPartial<SQLServerConfig2016sp2ent>): SQLServerConfig2016sp2ent;
 };
 export declare const SQLServerConfigSet2016sp2ent: {
+    $type: "yandex.cloud.mdb.sqlserver.v1.config.SQLServerConfigSet2016sp2ent";
     encode(message: SQLServerConfigSet2016sp2ent, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): SQLServerConfigSet2016sp2ent;
     fromJSON(object: any): SQLServerConfigSet2016sp2ent;
@@ -146,6 +154,6 @@ export declare const SQLServerConfigSet2016sp2ent: {
 };
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

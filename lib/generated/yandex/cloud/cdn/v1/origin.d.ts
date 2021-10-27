@@ -2,6 +2,7 @@ import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.cdn.v1";
 /** An origin. For details about the concept, see [documentation](/docs/cdn/concepts/origins). */
 export interface Origin {
+    $type: 'yandex.cloud.cdn.v1.Origin';
     /** ID of the origin. */
     id: number;
     /** ID of the parent origin group. */
@@ -31,6 +32,7 @@ export interface Origin {
 }
 /** Origin parameters. For details about the concept, see [documentation](/docs/cdn/concepts/origins). */
 export interface OriginParams {
+    $type: 'yandex.cloud.cdn.v1.OriginParams';
     /** Source: IP address or Domain name of your origin and the port (if custom). */
     source: string;
     /**
@@ -56,6 +58,7 @@ export interface OriginParams {
 }
 /** Origin type. For details about the concept, see [documentation](/docs/cdn/concepts/origins). */
 export interface OriginMeta {
+    $type: 'yandex.cloud.cdn.v1.OriginMeta';
     /** A server with a domain name linked to it */
     common: OriginNamedMeta | undefined;
     /** A Yandex Object Storage bucket not configured as a static site hosting. */
@@ -70,15 +73,18 @@ export interface OriginMeta {
 }
 /** Origin info. For details about the concept, see [documentation](/docs/cdn/concepts/origins). */
 export interface OriginNamedMeta {
+    $type: 'yandex.cloud.cdn.v1.OriginNamedMeta';
     /** Name of the origin. */
     name: string;
 }
 /** Yandex Application Load Balancer origin info. For details about the concept, see [documentation](/docs/cdn/concepts/origins). */
 export interface OriginBalancerMeta {
+    $type: 'yandex.cloud.cdn.v1.OriginBalancerMeta';
     /** ID of the origin. */
     id: string;
 }
 export declare const Origin: {
+    $type: "yandex.cloud.cdn.v1.Origin";
     encode(message: Origin, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Origin;
     fromJSON(object: any): Origin;
@@ -86,6 +92,7 @@ export declare const Origin: {
     fromPartial(object: DeepPartial<Origin>): Origin;
 };
 export declare const OriginParams: {
+    $type: "yandex.cloud.cdn.v1.OriginParams";
     encode(message: OriginParams, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): OriginParams;
     fromJSON(object: any): OriginParams;
@@ -93,6 +100,7 @@ export declare const OriginParams: {
     fromPartial(object: DeepPartial<OriginParams>): OriginParams;
 };
 export declare const OriginMeta: {
+    $type: "yandex.cloud.cdn.v1.OriginMeta";
     encode(message: OriginMeta, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): OriginMeta;
     fromJSON(object: any): OriginMeta;
@@ -100,6 +108,7 @@ export declare const OriginMeta: {
     fromPartial(object: DeepPartial<OriginMeta>): OriginMeta;
 };
 export declare const OriginNamedMeta: {
+    $type: "yandex.cloud.cdn.v1.OriginNamedMeta";
     encode(message: OriginNamedMeta, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): OriginNamedMeta;
     fromJSON(object: any): OriginNamedMeta;
@@ -107,6 +116,7 @@ export declare const OriginNamedMeta: {
     fromPartial(object: DeepPartial<OriginNamedMeta>): OriginNamedMeta;
 };
 export declare const OriginBalancerMeta: {
+    $type: "yandex.cloud.cdn.v1.OriginBalancerMeta";
     encode(message: OriginBalancerMeta, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): OriginBalancerMeta;
     fromJSON(object: any): OriginBalancerMeta;
@@ -115,6 +125,6 @@ export declare const OriginBalancerMeta: {
 };
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

@@ -1,5 +1,6 @@
 /* eslint-disable */
 import { FieldMask } from '../../../../google/protobuf/field_mask';
+import { messageTypeRegistry } from '../../../../typeRegistry';
 import { Operation } from '../../../../yandex/cloud/operation/operation';
 import {
     SecurityGroupRule_Direction,
@@ -27,10 +28,12 @@ import _m0 from 'protobufjs/minimal';
 export const protobufPackage = 'yandex.cloud.vpc.v1';
 
 export interface GetSecurityGroupRequest {
+    $type: 'yandex.cloud.vpc.v1.GetSecurityGroupRequest';
     securityGroupId: string;
 }
 
 export interface ListSecurityGroupsRequest {
+    $type: 'yandex.cloud.vpc.v1.ListSecurityGroupsRequest';
     folderId: string;
     pageSize: number;
     pageToken: string;
@@ -39,11 +42,13 @@ export interface ListSecurityGroupsRequest {
 }
 
 export interface ListSecurityGroupsResponse {
+    $type: 'yandex.cloud.vpc.v1.ListSecurityGroupsResponse';
     securityGroups: SecurityGroup[];
     nextPageToken: string;
 }
 
 export interface CreateSecurityGroupRequest {
+    $type: 'yandex.cloud.vpc.v1.CreateSecurityGroupRequest';
     folderId: string;
     name: string;
     description: string;
@@ -53,11 +58,13 @@ export interface CreateSecurityGroupRequest {
 }
 
 export interface CreateSecurityGroupRequest_LabelsEntry {
+    $type: 'yandex.cloud.vpc.v1.CreateSecurityGroupRequest.LabelsEntry';
     key: string;
     value: string;
 }
 
 export interface SecurityGroupRuleSpec {
+    $type: 'yandex.cloud.vpc.v1.SecurityGroupRuleSpec';
     description: string;
     labels: { [key: string]: string };
     direction: SecurityGroupRule_Direction;
@@ -72,15 +79,18 @@ export interface SecurityGroupRuleSpec {
 }
 
 export interface SecurityGroupRuleSpec_LabelsEntry {
+    $type: 'yandex.cloud.vpc.v1.SecurityGroupRuleSpec.LabelsEntry';
     key: string;
     value: string;
 }
 
 export interface CreateSecurityGroupMetadata {
+    $type: 'yandex.cloud.vpc.v1.CreateSecurityGroupMetadata';
     securityGroupId: string;
 }
 
 export interface UpdateSecurityGroupRequest {
+    $type: 'yandex.cloud.vpc.v1.UpdateSecurityGroupRequest';
     securityGroupId: string;
     updateMask: FieldMask | undefined;
     name: string;
@@ -91,16 +101,19 @@ export interface UpdateSecurityGroupRequest {
 }
 
 export interface UpdateSecurityGroupRequest_LabelsEntry {
+    $type: 'yandex.cloud.vpc.v1.UpdateSecurityGroupRequest.LabelsEntry';
     key: string;
     value: string;
 }
 
 export interface UpdateSecurityGroupMetadata {
+    $type: 'yandex.cloud.vpc.v1.UpdateSecurityGroupMetadata';
     securityGroupId: string;
     addedRuleIds: string[];
 }
 
 export interface UpdateSecurityGroupRulesRequest {
+    $type: 'yandex.cloud.vpc.v1.UpdateSecurityGroupRulesRequest';
     securityGroupId: string;
     /** list of rules ids to delete */
     deletionRuleIds: string[];
@@ -108,6 +121,7 @@ export interface UpdateSecurityGroupRulesRequest {
 }
 
 export interface UpdateSecurityGroupRuleRequest {
+    $type: 'yandex.cloud.vpc.v1.UpdateSecurityGroupRuleRequest';
     securityGroupId: string;
     ruleId: string;
     updateMask: FieldMask | undefined;
@@ -116,46 +130,59 @@ export interface UpdateSecurityGroupRuleRequest {
 }
 
 export interface UpdateSecurityGroupRuleRequest_LabelsEntry {
+    $type: 'yandex.cloud.vpc.v1.UpdateSecurityGroupRuleRequest.LabelsEntry';
     key: string;
     value: string;
 }
 
 export interface UpdateSecurityGroupRuleMetadata {
+    $type: 'yandex.cloud.vpc.v1.UpdateSecurityGroupRuleMetadata';
     securityGroupId: string;
     ruleId: string;
 }
 
 export interface DeleteSecurityGroupRequest {
+    $type: 'yandex.cloud.vpc.v1.DeleteSecurityGroupRequest';
     securityGroupId: string;
 }
 
 export interface DeleteSecurityGroupMetadata {
+    $type: 'yandex.cloud.vpc.v1.DeleteSecurityGroupMetadata';
     securityGroupId: string;
 }
 
 export interface ListSecurityGroupOperationsRequest {
+    $type: 'yandex.cloud.vpc.v1.ListSecurityGroupOperationsRequest';
     securityGroupId: string;
     pageSize: number;
     pageToken: string;
 }
 
 export interface ListSecurityGroupOperationsResponse {
+    $type: 'yandex.cloud.vpc.v1.ListSecurityGroupOperationsResponse';
     operations: Operation[];
     nextPageToken: string;
 }
 
 export interface MoveSecurityGroupRequest {
+    $type: 'yandex.cloud.vpc.v1.MoveSecurityGroupRequest';
     securityGroupId: string;
     destinationFolderId: string;
 }
 
 export interface MoveSecurityGroupMetadata {
+    $type: 'yandex.cloud.vpc.v1.MoveSecurityGroupMetadata';
     securityGroupId: string;
 }
 
-const baseGetSecurityGroupRequest: object = { securityGroupId: '' };
+const baseGetSecurityGroupRequest: object = {
+    $type: 'yandex.cloud.vpc.v1.GetSecurityGroupRequest',
+    securityGroupId: '',
+};
 
 export const GetSecurityGroupRequest = {
+    $type: 'yandex.cloud.vpc.v1.GetSecurityGroupRequest' as const,
+
     encode(
         message: GetSecurityGroupRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -230,7 +257,10 @@ export const GetSecurityGroupRequest = {
     },
 };
 
+messageTypeRegistry.set(GetSecurityGroupRequest.$type, GetSecurityGroupRequest);
+
 const baseListSecurityGroupsRequest: object = {
+    $type: 'yandex.cloud.vpc.v1.ListSecurityGroupsRequest',
     folderId: '',
     pageSize: 0,
     pageToken: '',
@@ -238,6 +268,8 @@ const baseListSecurityGroupsRequest: object = {
 };
 
 export const ListSecurityGroupsRequest = {
+    $type: 'yandex.cloud.vpc.v1.ListSecurityGroupsRequest' as const,
+
     encode(
         message: ListSecurityGroupsRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -356,9 +388,19 @@ export const ListSecurityGroupsRequest = {
     },
 };
 
-const baseListSecurityGroupsResponse: object = { nextPageToken: '' };
+messageTypeRegistry.set(
+    ListSecurityGroupsRequest.$type,
+    ListSecurityGroupsRequest
+);
+
+const baseListSecurityGroupsResponse: object = {
+    $type: 'yandex.cloud.vpc.v1.ListSecurityGroupsResponse',
+    nextPageToken: '',
+};
 
 export const ListSecurityGroupsResponse = {
+    $type: 'yandex.cloud.vpc.v1.ListSecurityGroupsResponse' as const,
+
     encode(
         message: ListSecurityGroupsResponse,
         writer: _m0.Writer = _m0.Writer.create()
@@ -467,7 +509,13 @@ export const ListSecurityGroupsResponse = {
     },
 };
 
+messageTypeRegistry.set(
+    ListSecurityGroupsResponse.$type,
+    ListSecurityGroupsResponse
+);
+
 const baseCreateSecurityGroupRequest: object = {
+    $type: 'yandex.cloud.vpc.v1.CreateSecurityGroupRequest',
     folderId: '',
     name: '',
     description: '',
@@ -475,6 +523,8 @@ const baseCreateSecurityGroupRequest: object = {
 };
 
 export const CreateSecurityGroupRequest = {
+    $type: 'yandex.cloud.vpc.v1.CreateSecurityGroupRequest' as const,
+
     encode(
         message: CreateSecurityGroupRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -490,7 +540,11 @@ export const CreateSecurityGroupRequest = {
         }
         Object.entries(message.labels).forEach(([key, value]) => {
             CreateSecurityGroupRequest_LabelsEntry.encode(
-                { key: key as any, value },
+                {
+                    $type: 'yandex.cloud.vpc.v1.CreateSecurityGroupRequest.LabelsEntry',
+                    key: key as any,
+                    value,
+                },
                 writer.uint32(34).fork()
             ).ldelim();
         });
@@ -659,12 +713,20 @@ export const CreateSecurityGroupRequest = {
     },
 };
 
+messageTypeRegistry.set(
+    CreateSecurityGroupRequest.$type,
+    CreateSecurityGroupRequest
+);
+
 const baseCreateSecurityGroupRequest_LabelsEntry: object = {
+    $type: 'yandex.cloud.vpc.v1.CreateSecurityGroupRequest.LabelsEntry',
     key: '',
     value: '',
 };
 
 export const CreateSecurityGroupRequest_LabelsEntry = {
+    $type: 'yandex.cloud.vpc.v1.CreateSecurityGroupRequest.LabelsEntry' as const,
+
     encode(
         message: CreateSecurityGroupRequest_LabelsEntry,
         writer: _m0.Writer = _m0.Writer.create()
@@ -749,9 +811,20 @@ export const CreateSecurityGroupRequest_LabelsEntry = {
     },
 };
 
-const baseSecurityGroupRuleSpec: object = { description: '', direction: 0 };
+messageTypeRegistry.set(
+    CreateSecurityGroupRequest_LabelsEntry.$type,
+    CreateSecurityGroupRequest_LabelsEntry
+);
+
+const baseSecurityGroupRuleSpec: object = {
+    $type: 'yandex.cloud.vpc.v1.SecurityGroupRuleSpec',
+    description: '',
+    direction: 0,
+};
 
 export const SecurityGroupRuleSpec = {
+    $type: 'yandex.cloud.vpc.v1.SecurityGroupRuleSpec' as const,
+
     encode(
         message: SecurityGroupRuleSpec,
         writer: _m0.Writer = _m0.Writer.create()
@@ -761,7 +834,11 @@ export const SecurityGroupRuleSpec = {
         }
         Object.entries(message.labels).forEach(([key, value]) => {
             SecurityGroupRuleSpec_LabelsEntry.encode(
-                { key: key as any, value },
+                {
+                    $type: 'yandex.cloud.vpc.v1.SecurityGroupRuleSpec.LabelsEntry',
+                    key: key as any,
+                    value,
+                },
                 writer.uint32(18).fork()
             ).ldelim();
         });
@@ -1016,9 +1093,17 @@ export const SecurityGroupRuleSpec = {
     },
 };
 
-const baseSecurityGroupRuleSpec_LabelsEntry: object = { key: '', value: '' };
+messageTypeRegistry.set(SecurityGroupRuleSpec.$type, SecurityGroupRuleSpec);
+
+const baseSecurityGroupRuleSpec_LabelsEntry: object = {
+    $type: 'yandex.cloud.vpc.v1.SecurityGroupRuleSpec.LabelsEntry',
+    key: '',
+    value: '',
+};
 
 export const SecurityGroupRuleSpec_LabelsEntry = {
+    $type: 'yandex.cloud.vpc.v1.SecurityGroupRuleSpec.LabelsEntry' as const,
+
     encode(
         message: SecurityGroupRuleSpec_LabelsEntry,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1103,9 +1188,19 @@ export const SecurityGroupRuleSpec_LabelsEntry = {
     },
 };
 
-const baseCreateSecurityGroupMetadata: object = { securityGroupId: '' };
+messageTypeRegistry.set(
+    SecurityGroupRuleSpec_LabelsEntry.$type,
+    SecurityGroupRuleSpec_LabelsEntry
+);
+
+const baseCreateSecurityGroupMetadata: object = {
+    $type: 'yandex.cloud.vpc.v1.CreateSecurityGroupMetadata',
+    securityGroupId: '',
+};
 
 export const CreateSecurityGroupMetadata = {
+    $type: 'yandex.cloud.vpc.v1.CreateSecurityGroupMetadata' as const,
+
     encode(
         message: CreateSecurityGroupMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1180,13 +1275,21 @@ export const CreateSecurityGroupMetadata = {
     },
 };
 
+messageTypeRegistry.set(
+    CreateSecurityGroupMetadata.$type,
+    CreateSecurityGroupMetadata
+);
+
 const baseUpdateSecurityGroupRequest: object = {
+    $type: 'yandex.cloud.vpc.v1.UpdateSecurityGroupRequest',
     securityGroupId: '',
     name: '',
     description: '',
 };
 
 export const UpdateSecurityGroupRequest = {
+    $type: 'yandex.cloud.vpc.v1.UpdateSecurityGroupRequest' as const,
+
     encode(
         message: UpdateSecurityGroupRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1208,7 +1311,11 @@ export const UpdateSecurityGroupRequest = {
         }
         Object.entries(message.labels).forEach(([key, value]) => {
             UpdateSecurityGroupRequest_LabelsEntry.encode(
-                { key: key as any, value },
+                {
+                    $type: 'yandex.cloud.vpc.v1.UpdateSecurityGroupRequest.LabelsEntry',
+                    key: key as any,
+                    value,
+                },
                 writer.uint32(42).fork()
             ).ldelim();
         });
@@ -1387,12 +1494,20 @@ export const UpdateSecurityGroupRequest = {
     },
 };
 
+messageTypeRegistry.set(
+    UpdateSecurityGroupRequest.$type,
+    UpdateSecurityGroupRequest
+);
+
 const baseUpdateSecurityGroupRequest_LabelsEntry: object = {
+    $type: 'yandex.cloud.vpc.v1.UpdateSecurityGroupRequest.LabelsEntry',
     key: '',
     value: '',
 };
 
 export const UpdateSecurityGroupRequest_LabelsEntry = {
+    $type: 'yandex.cloud.vpc.v1.UpdateSecurityGroupRequest.LabelsEntry' as const,
+
     encode(
         message: UpdateSecurityGroupRequest_LabelsEntry,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1477,12 +1592,20 @@ export const UpdateSecurityGroupRequest_LabelsEntry = {
     },
 };
 
+messageTypeRegistry.set(
+    UpdateSecurityGroupRequest_LabelsEntry.$type,
+    UpdateSecurityGroupRequest_LabelsEntry
+);
+
 const baseUpdateSecurityGroupMetadata: object = {
+    $type: 'yandex.cloud.vpc.v1.UpdateSecurityGroupMetadata',
     securityGroupId: '',
     addedRuleIds: '',
 };
 
 export const UpdateSecurityGroupMetadata = {
+    $type: 'yandex.cloud.vpc.v1.UpdateSecurityGroupMetadata' as const,
+
     encode(
         message: UpdateSecurityGroupMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1581,12 +1704,20 @@ export const UpdateSecurityGroupMetadata = {
     },
 };
 
+messageTypeRegistry.set(
+    UpdateSecurityGroupMetadata.$type,
+    UpdateSecurityGroupMetadata
+);
+
 const baseUpdateSecurityGroupRulesRequest: object = {
+    $type: 'yandex.cloud.vpc.v1.UpdateSecurityGroupRulesRequest',
     securityGroupId: '',
     deletionRuleIds: '',
 };
 
 export const UpdateSecurityGroupRulesRequest = {
+    $type: 'yandex.cloud.vpc.v1.UpdateSecurityGroupRulesRequest' as const,
+
     encode(
         message: UpdateSecurityGroupRulesRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1729,13 +1860,21 @@ export const UpdateSecurityGroupRulesRequest = {
     },
 };
 
+messageTypeRegistry.set(
+    UpdateSecurityGroupRulesRequest.$type,
+    UpdateSecurityGroupRulesRequest
+);
+
 const baseUpdateSecurityGroupRuleRequest: object = {
+    $type: 'yandex.cloud.vpc.v1.UpdateSecurityGroupRuleRequest',
     securityGroupId: '',
     ruleId: '',
     description: '',
 };
 
 export const UpdateSecurityGroupRuleRequest = {
+    $type: 'yandex.cloud.vpc.v1.UpdateSecurityGroupRuleRequest' as const,
+
     encode(
         message: UpdateSecurityGroupRuleRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1757,7 +1896,11 @@ export const UpdateSecurityGroupRuleRequest = {
         }
         Object.entries(message.labels).forEach(([key, value]) => {
             UpdateSecurityGroupRuleRequest_LabelsEntry.encode(
-                { key: key as any, value },
+                {
+                    $type: 'yandex.cloud.vpc.v1.UpdateSecurityGroupRuleRequest.LabelsEntry',
+                    key: key as any,
+                    value,
+                },
                 writer.uint32(42).fork()
             ).ldelim();
         });
@@ -1908,12 +2051,20 @@ export const UpdateSecurityGroupRuleRequest = {
     },
 };
 
+messageTypeRegistry.set(
+    UpdateSecurityGroupRuleRequest.$type,
+    UpdateSecurityGroupRuleRequest
+);
+
 const baseUpdateSecurityGroupRuleRequest_LabelsEntry: object = {
+    $type: 'yandex.cloud.vpc.v1.UpdateSecurityGroupRuleRequest.LabelsEntry',
     key: '',
     value: '',
 };
 
 export const UpdateSecurityGroupRuleRequest_LabelsEntry = {
+    $type: 'yandex.cloud.vpc.v1.UpdateSecurityGroupRuleRequest.LabelsEntry' as const,
+
     encode(
         message: UpdateSecurityGroupRuleRequest_LabelsEntry,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1998,12 +2149,20 @@ export const UpdateSecurityGroupRuleRequest_LabelsEntry = {
     },
 };
 
+messageTypeRegistry.set(
+    UpdateSecurityGroupRuleRequest_LabelsEntry.$type,
+    UpdateSecurityGroupRuleRequest_LabelsEntry
+);
+
 const baseUpdateSecurityGroupRuleMetadata: object = {
+    $type: 'yandex.cloud.vpc.v1.UpdateSecurityGroupRuleMetadata',
     securityGroupId: '',
     ruleId: '',
 };
 
 export const UpdateSecurityGroupRuleMetadata = {
+    $type: 'yandex.cloud.vpc.v1.UpdateSecurityGroupRuleMetadata' as const,
+
     encode(
         message: UpdateSecurityGroupRuleMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2095,9 +2254,19 @@ export const UpdateSecurityGroupRuleMetadata = {
     },
 };
 
-const baseDeleteSecurityGroupRequest: object = { securityGroupId: '' };
+messageTypeRegistry.set(
+    UpdateSecurityGroupRuleMetadata.$type,
+    UpdateSecurityGroupRuleMetadata
+);
+
+const baseDeleteSecurityGroupRequest: object = {
+    $type: 'yandex.cloud.vpc.v1.DeleteSecurityGroupRequest',
+    securityGroupId: '',
+};
 
 export const DeleteSecurityGroupRequest = {
+    $type: 'yandex.cloud.vpc.v1.DeleteSecurityGroupRequest' as const,
+
     encode(
         message: DeleteSecurityGroupRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2172,9 +2341,19 @@ export const DeleteSecurityGroupRequest = {
     },
 };
 
-const baseDeleteSecurityGroupMetadata: object = { securityGroupId: '' };
+messageTypeRegistry.set(
+    DeleteSecurityGroupRequest.$type,
+    DeleteSecurityGroupRequest
+);
+
+const baseDeleteSecurityGroupMetadata: object = {
+    $type: 'yandex.cloud.vpc.v1.DeleteSecurityGroupMetadata',
+    securityGroupId: '',
+};
 
 export const DeleteSecurityGroupMetadata = {
+    $type: 'yandex.cloud.vpc.v1.DeleteSecurityGroupMetadata' as const,
+
     encode(
         message: DeleteSecurityGroupMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2249,13 +2428,21 @@ export const DeleteSecurityGroupMetadata = {
     },
 };
 
+messageTypeRegistry.set(
+    DeleteSecurityGroupMetadata.$type,
+    DeleteSecurityGroupMetadata
+);
+
 const baseListSecurityGroupOperationsRequest: object = {
+    $type: 'yandex.cloud.vpc.v1.ListSecurityGroupOperationsRequest',
     securityGroupId: '',
     pageSize: 0,
     pageToken: '',
 };
 
 export const ListSecurityGroupOperationsRequest = {
+    $type: 'yandex.cloud.vpc.v1.ListSecurityGroupOperationsRequest' as const,
+
     encode(
         message: ListSecurityGroupOperationsRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2364,9 +2551,19 @@ export const ListSecurityGroupOperationsRequest = {
     },
 };
 
-const baseListSecurityGroupOperationsResponse: object = { nextPageToken: '' };
+messageTypeRegistry.set(
+    ListSecurityGroupOperationsRequest.$type,
+    ListSecurityGroupOperationsRequest
+);
+
+const baseListSecurityGroupOperationsResponse: object = {
+    $type: 'yandex.cloud.vpc.v1.ListSecurityGroupOperationsResponse',
+    nextPageToken: '',
+};
 
 export const ListSecurityGroupOperationsResponse = {
+    $type: 'yandex.cloud.vpc.v1.ListSecurityGroupOperationsResponse' as const,
+
     encode(
         message: ListSecurityGroupOperationsResponse,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2469,12 +2666,20 @@ export const ListSecurityGroupOperationsResponse = {
     },
 };
 
+messageTypeRegistry.set(
+    ListSecurityGroupOperationsResponse.$type,
+    ListSecurityGroupOperationsResponse
+);
+
 const baseMoveSecurityGroupRequest: object = {
+    $type: 'yandex.cloud.vpc.v1.MoveSecurityGroupRequest',
     securityGroupId: '',
     destinationFolderId: '',
 };
 
 export const MoveSecurityGroupRequest = {
+    $type: 'yandex.cloud.vpc.v1.MoveSecurityGroupRequest' as const,
+
     encode(
         message: MoveSecurityGroupRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2573,9 +2778,19 @@ export const MoveSecurityGroupRequest = {
     },
 };
 
-const baseMoveSecurityGroupMetadata: object = { securityGroupId: '' };
+messageTypeRegistry.set(
+    MoveSecurityGroupRequest.$type,
+    MoveSecurityGroupRequest
+);
+
+const baseMoveSecurityGroupMetadata: object = {
+    $type: 'yandex.cloud.vpc.v1.MoveSecurityGroupMetadata',
+    securityGroupId: '',
+};
 
 export const MoveSecurityGroupMetadata = {
+    $type: 'yandex.cloud.vpc.v1.MoveSecurityGroupMetadata' as const,
+
     encode(
         message: MoveSecurityGroupMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2649,6 +2864,11 @@ export const MoveSecurityGroupMetadata = {
         return message;
     },
 };
+
+messageTypeRegistry.set(
+    MoveSecurityGroupMetadata.$type,
+    MoveSecurityGroupMetadata
+);
 
 export const SecurityGroupServiceService = {
     get: {
@@ -2982,7 +3202,7 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 function longToNumber(long: Long): number {

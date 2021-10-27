@@ -11,6 +11,7 @@ export declare enum AccessBindingAction {
 export declare function accessBindingActionFromJSON(object: any): AccessBindingAction;
 export declare function accessBindingActionToJSON(object: AccessBindingAction): string;
 export interface Subject {
+    $type: 'yandex.cloud.access.Subject';
     /**
      * ID of the subject.
      *
@@ -37,6 +38,7 @@ export interface Subject {
     type: string;
 }
 export interface AccessBinding {
+    $type: 'yandex.cloud.access.AccessBinding';
     /** ID of the [yandex.cloud.iam.v1.Role] that is assigned to the [subject]. */
     roleId: string;
     /**
@@ -46,6 +48,7 @@ export interface AccessBinding {
     subject: Subject | undefined;
 }
 export interface ListAccessBindingsRequest {
+    $type: 'yandex.cloud.access.ListAccessBindingsRequest';
     /**
      * ID of the resource to list access bindings for.
      *
@@ -69,6 +72,7 @@ export interface ListAccessBindingsRequest {
     pageToken: string;
 }
 export interface ListAccessBindingsResponse {
+    $type: 'yandex.cloud.access.ListAccessBindingsResponse';
     /** List of access bindings for the specified resource. */
     accessBindings: AccessBinding[];
     /**
@@ -82,6 +86,7 @@ export interface ListAccessBindingsResponse {
     nextPageToken: string;
 }
 export interface SetAccessBindingsRequest {
+    $type: 'yandex.cloud.access.SetAccessBindingsRequest';
     /**
      * ID of the resource for which access bindings are being set.
      *
@@ -92,26 +97,31 @@ export interface SetAccessBindingsRequest {
     accessBindings: AccessBinding[];
 }
 export interface SetAccessBindingsMetadata {
+    $type: 'yandex.cloud.access.SetAccessBindingsMetadata';
     /** ID of the resource for which access bindings are being set. */
     resourceId: string;
 }
 export interface UpdateAccessBindingsRequest {
+    $type: 'yandex.cloud.access.UpdateAccessBindingsRequest';
     /** ID of the resource for which access bindings are being updated. */
     resourceId: string;
     /** Updates to access bindings. */
     accessBindingDeltas: AccessBindingDelta[];
 }
 export interface UpdateAccessBindingsMetadata {
+    $type: 'yandex.cloud.access.UpdateAccessBindingsMetadata';
     /** ID of the resource for which access bindings are being updated. */
     resourceId: string;
 }
 export interface AccessBindingDelta {
+    $type: 'yandex.cloud.access.AccessBindingDelta';
     /** The action that is being performed on an access binding. */
     action: AccessBindingAction;
     /** Access binding. For more information, see [Access Bindings](/docs/iam/concepts/access-control/#access-bindings). */
     accessBinding: AccessBinding | undefined;
 }
 export declare const Subject: {
+    $type: "yandex.cloud.access.Subject";
     encode(message: Subject, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Subject;
     fromJSON(object: any): Subject;
@@ -119,6 +129,7 @@ export declare const Subject: {
     fromPartial(object: DeepPartial<Subject>): Subject;
 };
 export declare const AccessBinding: {
+    $type: "yandex.cloud.access.AccessBinding";
     encode(message: AccessBinding, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): AccessBinding;
     fromJSON(object: any): AccessBinding;
@@ -126,6 +137,7 @@ export declare const AccessBinding: {
     fromPartial(object: DeepPartial<AccessBinding>): AccessBinding;
 };
 export declare const ListAccessBindingsRequest: {
+    $type: "yandex.cloud.access.ListAccessBindingsRequest";
     encode(message: ListAccessBindingsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListAccessBindingsRequest;
     fromJSON(object: any): ListAccessBindingsRequest;
@@ -133,6 +145,7 @@ export declare const ListAccessBindingsRequest: {
     fromPartial(object: DeepPartial<ListAccessBindingsRequest>): ListAccessBindingsRequest;
 };
 export declare const ListAccessBindingsResponse: {
+    $type: "yandex.cloud.access.ListAccessBindingsResponse";
     encode(message: ListAccessBindingsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListAccessBindingsResponse;
     fromJSON(object: any): ListAccessBindingsResponse;
@@ -140,6 +153,7 @@ export declare const ListAccessBindingsResponse: {
     fromPartial(object: DeepPartial<ListAccessBindingsResponse>): ListAccessBindingsResponse;
 };
 export declare const SetAccessBindingsRequest: {
+    $type: "yandex.cloud.access.SetAccessBindingsRequest";
     encode(message: SetAccessBindingsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): SetAccessBindingsRequest;
     fromJSON(object: any): SetAccessBindingsRequest;
@@ -147,6 +161,7 @@ export declare const SetAccessBindingsRequest: {
     fromPartial(object: DeepPartial<SetAccessBindingsRequest>): SetAccessBindingsRequest;
 };
 export declare const SetAccessBindingsMetadata: {
+    $type: "yandex.cloud.access.SetAccessBindingsMetadata";
     encode(message: SetAccessBindingsMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): SetAccessBindingsMetadata;
     fromJSON(object: any): SetAccessBindingsMetadata;
@@ -154,6 +169,7 @@ export declare const SetAccessBindingsMetadata: {
     fromPartial(object: DeepPartial<SetAccessBindingsMetadata>): SetAccessBindingsMetadata;
 };
 export declare const UpdateAccessBindingsRequest: {
+    $type: "yandex.cloud.access.UpdateAccessBindingsRequest";
     encode(message: UpdateAccessBindingsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateAccessBindingsRequest;
     fromJSON(object: any): UpdateAccessBindingsRequest;
@@ -161,6 +177,7 @@ export declare const UpdateAccessBindingsRequest: {
     fromPartial(object: DeepPartial<UpdateAccessBindingsRequest>): UpdateAccessBindingsRequest;
 };
 export declare const UpdateAccessBindingsMetadata: {
+    $type: "yandex.cloud.access.UpdateAccessBindingsMetadata";
     encode(message: UpdateAccessBindingsMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateAccessBindingsMetadata;
     fromJSON(object: any): UpdateAccessBindingsMetadata;
@@ -168,6 +185,7 @@ export declare const UpdateAccessBindingsMetadata: {
     fromPartial(object: DeepPartial<UpdateAccessBindingsMetadata>): UpdateAccessBindingsMetadata;
 };
 export declare const AccessBindingDelta: {
+    $type: "yandex.cloud.access.AccessBindingDelta";
     encode(message: AccessBindingDelta, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): AccessBindingDelta;
     fromJSON(object: any): AccessBindingDelta;
@@ -176,6 +194,6 @@ export declare const AccessBindingDelta: {
 };
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

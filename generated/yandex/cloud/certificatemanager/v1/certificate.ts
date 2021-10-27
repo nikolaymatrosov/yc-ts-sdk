@@ -1,5 +1,6 @@
 /* eslint-disable */
 import { Timestamp } from '../../../../google/protobuf/timestamp';
+import { messageTypeRegistry } from '../../../../typeRegistry';
 import Long from 'long';
 import _m0 from 'protobufjs/minimal';
 
@@ -89,6 +90,7 @@ export function challengeTypeToJSON(object: ChallengeType): string {
 
 /** A certificate. For details about the concept, see [documentation](docs/certificate-manager/concepts/). */
 export interface Certificate {
+    $type: 'yandex.cloud.certificatemanager.v1.Certificate';
     /** ID of the certificate. Generated at creation time. */
     id: string;
     /** ID of the folder that the certificate belongs to. */
@@ -197,12 +199,14 @@ export function certificate_StatusToJSON(object: Certificate_Status): string {
 }
 
 export interface Certificate_LabelsEntry {
+    $type: 'yandex.cloud.certificatemanager.v1.Certificate.LabelsEntry';
     key: string;
     value: string;
 }
 
 /** Domain validation challenge. */
 export interface Challenge {
+    $type: 'yandex.cloud.certificatemanager.v1.Challenge';
     /** Domain of the challenge. */
     domain: string;
     /** Type of the challenge. */
@@ -278,6 +282,7 @@ export function challenge_StatusToJSON(object: Challenge_Status): string {
 }
 
 export interface Challenge_DnsRecord {
+    $type: 'yandex.cloud.certificatemanager.v1.Challenge.DnsRecord';
     /** Name of the DNS record. */
     name: string;
     /** Type of the DNS-record. */
@@ -287,6 +292,7 @@ export interface Challenge_DnsRecord {
 }
 
 export interface Challenge_HttpFile {
+    $type: 'yandex.cloud.certificatemanager.v1.Challenge.HttpFile';
     /** Location of the HTTP file. */
     url: string;
     /** Content of the HTTP file. */
@@ -294,6 +300,7 @@ export interface Challenge_HttpFile {
 }
 
 const baseCertificate: object = {
+    $type: 'yandex.cloud.certificatemanager.v1.Certificate',
     id: '',
     folderId: '',
     name: '',
@@ -307,6 +314,8 @@ const baseCertificate: object = {
 };
 
 export const Certificate = {
+    $type: 'yandex.cloud.certificatemanager.v1.Certificate' as const,
+
     encode(
         message: Certificate,
         writer: _m0.Writer = _m0.Writer.create()
@@ -331,7 +340,11 @@ export const Certificate = {
         }
         Object.entries(message.labels).forEach(([key, value]) => {
             Certificate_LabelsEntry.encode(
-                { key: key as any, value },
+                {
+                    $type: 'yandex.cloud.certificatemanager.v1.Certificate.LabelsEntry',
+                    key: key as any,
+                    value,
+                },
                 writer.uint32(50).fork()
             ).ldelim();
         });
@@ -705,9 +718,17 @@ export const Certificate = {
     },
 };
 
-const baseCertificate_LabelsEntry: object = { key: '', value: '' };
+messageTypeRegistry.set(Certificate.$type, Certificate);
+
+const baseCertificate_LabelsEntry: object = {
+    $type: 'yandex.cloud.certificatemanager.v1.Certificate.LabelsEntry',
+    key: '',
+    value: '',
+};
 
 export const Certificate_LabelsEntry = {
+    $type: 'yandex.cloud.certificatemanager.v1.Certificate.LabelsEntry' as const,
+
     encode(
         message: Certificate_LabelsEntry,
         writer: _m0.Writer = _m0.Writer.create()
@@ -792,7 +813,10 @@ export const Certificate_LabelsEntry = {
     },
 };
 
+messageTypeRegistry.set(Certificate_LabelsEntry.$type, Certificate_LabelsEntry);
+
 const baseChallenge: object = {
+    $type: 'yandex.cloud.certificatemanager.v1.Challenge',
     domain: '',
     type: 0,
     status: 0,
@@ -801,6 +825,8 @@ const baseChallenge: object = {
 };
 
 export const Challenge = {
+    $type: 'yandex.cloud.certificatemanager.v1.Challenge' as const,
+
     encode(
         message: Challenge,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1039,9 +1065,18 @@ export const Challenge = {
     },
 };
 
-const baseChallenge_DnsRecord: object = { name: '', type: '', value: '' };
+messageTypeRegistry.set(Challenge.$type, Challenge);
+
+const baseChallenge_DnsRecord: object = {
+    $type: 'yandex.cloud.certificatemanager.v1.Challenge.DnsRecord',
+    name: '',
+    type: '',
+    value: '',
+};
 
 export const Challenge_DnsRecord = {
+    $type: 'yandex.cloud.certificatemanager.v1.Challenge.DnsRecord' as const,
+
     encode(
         message: Challenge_DnsRecord,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1135,9 +1170,17 @@ export const Challenge_DnsRecord = {
     },
 };
 
-const baseChallenge_HttpFile: object = { url: '', content: '' };
+messageTypeRegistry.set(Challenge_DnsRecord.$type, Challenge_DnsRecord);
+
+const baseChallenge_HttpFile: object = {
+    $type: 'yandex.cloud.certificatemanager.v1.Challenge.HttpFile',
+    url: '',
+    content: '',
+};
 
 export const Challenge_HttpFile = {
+    $type: 'yandex.cloud.certificatemanager.v1.Challenge.HttpFile' as const,
+
     encode(
         message: Challenge_HttpFile,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1214,6 +1257,8 @@ export const Challenge_HttpFile = {
     },
 };
 
+messageTypeRegistry.set(Challenge_HttpFile.$type, Challenge_HttpFile);
+
 type Builtin =
     | Date
     | Function
@@ -1229,13 +1274,13 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 function toTimestamp(date: Date): Timestamp {
     const seconds = date.getTime() / 1_000;
     const nanos = (date.getTime() % 1_000) * 1_000_000;
-    return { seconds, nanos };
+    return { $type: 'google.protobuf.Timestamp', seconds, nanos };
 }
 
 function fromTimestamp(t: Timestamp): Date {

@@ -1,5 +1,6 @@
 /* eslint-disable */
 import { Duration } from '../../../../google/protobuf/duration';
+import { messageTypeRegistry } from '../../../../typeRegistry';
 import { Payload } from '../../../../yandex/cloud/apploadbalancer/v1/payload';
 import Long from 'long';
 import _m0 from 'protobufjs/minimal';
@@ -11,6 +12,7 @@ export const protobufPackage = 'yandex.cloud.apploadbalancer.v1';
  * For details about the concept, see [documentation](/docs/application-load-balancer/concepts/http-router#virtual-host).
  */
 export interface VirtualHost {
+    $type: 'yandex.cloud.apploadbalancer.v1.VirtualHost';
     /** Name of the virtual host. The name is unique within the HTTP router. */
     name: string;
     /**
@@ -47,6 +49,7 @@ export interface VirtualHost {
 }
 
 export interface RouteOptions {
+    $type: 'yandex.cloud.apploadbalancer.v1.RouteOptions';
     /** Apply the following modifications to the request headers. */
     modifyRequestHeaders: HeaderModification[];
     /** Apply the following modifications to the response headers. */
@@ -55,6 +58,7 @@ export interface RouteOptions {
 
 /** A header modification resource. */
 export interface HeaderModification {
+    $type: 'yandex.cloud.apploadbalancer.v1.HeaderModification';
     /** Name of the header. */
     name: string;
     /**
@@ -85,6 +89,7 @@ export interface HeaderModification {
  * For details about the concept, see [documentation](/docs/application-load-balancer/concepts/http-router#routes).
  */
 export interface Route {
+    $type: 'yandex.cloud.apploadbalancer.v1.Route';
     /** Name of the route. */
     name: string;
     /** HTTP route configuration. */
@@ -96,6 +101,7 @@ export interface Route {
 
 /** An HTTP route configuration resource. */
 export interface HttpRoute {
+    $type: 'yandex.cloud.apploadbalancer.v1.HttpRoute';
     /** Condition (predicate) used to select the route. */
     match: HttpRouteMatch | undefined;
     /** Forwards the request to a backend group for processing as configured. */
@@ -108,6 +114,7 @@ export interface HttpRoute {
 
 /** A gRPC route configuration resource. */
 export interface GrpcRoute {
+    $type: 'yandex.cloud.apploadbalancer.v1.GrpcRoute';
     /** Condition (predicate) used to select the route. */
     match: GrpcRouteMatch | undefined;
     /** Forwards the request to a backend group for processing as configured. */
@@ -118,6 +125,7 @@ export interface GrpcRoute {
 
 /** An HTTP route condition (predicate) resource. */
 export interface HttpRouteMatch {
+    $type: 'yandex.cloud.apploadbalancer.v1.HttpRouteMatch';
     /** HTTP method specified in the request. */
     httpMethod: string[];
     /**
@@ -130,6 +138,7 @@ export interface HttpRouteMatch {
 
 /** A gRPC route condition (predicate) resource. */
 export interface GrpcRouteMatch {
+    $type: 'yandex.cloud.apploadbalancer.v1.GrpcRouteMatch';
     /**
      * Match settings for gRPC service method called in the request.
      *
@@ -142,6 +151,7 @@ export interface GrpcRouteMatch {
 
 /** A string matcher resource. */
 export interface StringMatch {
+    $type: 'yandex.cloud.apploadbalancer.v1.StringMatch';
     /** Exact match string. */
     exactMatch: string | undefined;
     /** Prefix match string. */
@@ -150,6 +160,7 @@ export interface StringMatch {
 
 /** A redirect action resource. */
 export interface RedirectAction {
+    $type: 'yandex.cloud.apploadbalancer.v1.RedirectAction';
     /**
      * URI scheme replacement.
      *
@@ -249,6 +260,7 @@ export function redirectAction_RedirectResponseCodeToJSON(
 
 /** A direct response action resource. */
 export interface DirectResponseAction {
+    $type: 'yandex.cloud.apploadbalancer.v1.DirectResponseAction';
     /** HTTP status code to use in responses. */
     status: number;
     /** Response body. */
@@ -257,6 +269,7 @@ export interface DirectResponseAction {
 
 /** A gRPC status response action resource. */
 export interface GrpcStatusResponseAction {
+    $type: 'yandex.cloud.apploadbalancer.v1.GrpcStatusResponseAction';
     /** gRPC [status code](https://grpc.github.io/grpc/core/md_doc_statuscodes.html) to use in responses. */
     status: GrpcStatusResponseAction_Status;
 }
@@ -344,6 +357,7 @@ export function grpcStatusResponseAction_StatusToJSON(
 
 /** An HTTP route action resource. */
 export interface HttpRouteAction {
+    $type: 'yandex.cloud.apploadbalancer.v1.HttpRouteAction';
     /** Backend group to forward requests to. */
     backendGroupId: string;
     /**
@@ -387,6 +401,7 @@ export interface HttpRouteAction {
 
 /** A gRPC route action resource. */
 export interface GrpcRouteAction {
+    $type: 'yandex.cloud.apploadbalancer.v1.GrpcRouteAction';
     /** Backend group to forward requests to. */
     backendGroupId: string;
     /**
@@ -419,9 +434,15 @@ export interface GrpcRouteAction {
     autoHostRewrite: boolean | undefined;
 }
 
-const baseVirtualHost: object = { name: '', authority: '' };
+const baseVirtualHost: object = {
+    $type: 'yandex.cloud.apploadbalancer.v1.VirtualHost',
+    name: '',
+    authority: '',
+};
 
 export const VirtualHost = {
+    $type: 'yandex.cloud.apploadbalancer.v1.VirtualHost' as const,
+
     encode(
         message: VirtualHost,
         writer: _m0.Writer = _m0.Writer.create()
@@ -632,9 +653,15 @@ export const VirtualHost = {
     },
 };
 
-const baseRouteOptions: object = {};
+messageTypeRegistry.set(VirtualHost.$type, VirtualHost);
+
+const baseRouteOptions: object = {
+    $type: 'yandex.cloud.apploadbalancer.v1.RouteOptions',
+};
 
 export const RouteOptions = {
+    $type: 'yandex.cloud.apploadbalancer.v1.RouteOptions' as const,
+
     encode(
         message: RouteOptions,
         writer: _m0.Writer = _m0.Writer.create()
@@ -750,9 +777,16 @@ export const RouteOptions = {
     },
 };
 
-const baseHeaderModification: object = { name: '' };
+messageTypeRegistry.set(RouteOptions.$type, RouteOptions);
+
+const baseHeaderModification: object = {
+    $type: 'yandex.cloud.apploadbalancer.v1.HeaderModification',
+    name: '',
+};
 
 export const HeaderModification = {
+    $type: 'yandex.cloud.apploadbalancer.v1.HeaderModification' as const,
+
     encode(
         message: HeaderModification,
         writer: _m0.Writer = _m0.Writer.create()
@@ -880,9 +914,16 @@ export const HeaderModification = {
     },
 };
 
-const baseRoute: object = { name: '' };
+messageTypeRegistry.set(HeaderModification.$type, HeaderModification);
+
+const baseRoute: object = {
+    $type: 'yandex.cloud.apploadbalancer.v1.Route',
+    name: '',
+};
 
 export const Route = {
+    $type: 'yandex.cloud.apploadbalancer.v1.Route' as const,
+
     encode(
         message: Route,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1007,9 +1048,15 @@ export const Route = {
     },
 };
 
-const baseHttpRoute: object = {};
+messageTypeRegistry.set(Route.$type, Route);
+
+const baseHttpRoute: object = {
+    $type: 'yandex.cloud.apploadbalancer.v1.HttpRoute',
+};
 
 export const HttpRoute = {
+    $type: 'yandex.cloud.apploadbalancer.v1.HttpRoute' as const,
+
     encode(
         message: HttpRoute,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1163,9 +1210,15 @@ export const HttpRoute = {
     },
 };
 
-const baseGrpcRoute: object = {};
+messageTypeRegistry.set(HttpRoute.$type, HttpRoute);
+
+const baseGrpcRoute: object = {
+    $type: 'yandex.cloud.apploadbalancer.v1.GrpcRoute',
+};
 
 export const GrpcRoute = {
+    $type: 'yandex.cloud.apploadbalancer.v1.GrpcRoute' as const,
+
     encode(
         message: GrpcRoute,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1293,9 +1346,16 @@ export const GrpcRoute = {
     },
 };
 
-const baseHttpRouteMatch: object = { httpMethod: '' };
+messageTypeRegistry.set(GrpcRoute.$type, GrpcRoute);
+
+const baseHttpRouteMatch: object = {
+    $type: 'yandex.cloud.apploadbalancer.v1.HttpRouteMatch',
+    httpMethod: '',
+};
 
 export const HttpRouteMatch = {
+    $type: 'yandex.cloud.apploadbalancer.v1.HttpRouteMatch' as const,
+
     encode(
         message: HttpRouteMatch,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1379,9 +1439,15 @@ export const HttpRouteMatch = {
     },
 };
 
-const baseGrpcRouteMatch: object = {};
+messageTypeRegistry.set(HttpRouteMatch.$type, HttpRouteMatch);
+
+const baseGrpcRouteMatch: object = {
+    $type: 'yandex.cloud.apploadbalancer.v1.GrpcRouteMatch',
+};
 
 export const GrpcRouteMatch = {
+    $type: 'yandex.cloud.apploadbalancer.v1.GrpcRouteMatch' as const,
+
     encode(
         message: GrpcRouteMatch,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1441,9 +1507,15 @@ export const GrpcRouteMatch = {
     },
 };
 
-const baseStringMatch: object = {};
+messageTypeRegistry.set(GrpcRouteMatch.$type, GrpcRouteMatch);
+
+const baseStringMatch: object = {
+    $type: 'yandex.cloud.apploadbalancer.v1.StringMatch',
+};
 
 export const StringMatch = {
+    $type: 'yandex.cloud.apploadbalancer.v1.StringMatch' as const,
+
     encode(
         message: StringMatch,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1519,7 +1591,10 @@ export const StringMatch = {
     },
 };
 
+messageTypeRegistry.set(StringMatch.$type, StringMatch);
+
 const baseRedirectAction: object = {
+    $type: 'yandex.cloud.apploadbalancer.v1.RedirectAction',
     replaceScheme: '',
     replaceHost: '',
     replacePort: 0,
@@ -1528,6 +1603,8 @@ const baseRedirectAction: object = {
 };
 
 export const RedirectAction = {
+    $type: 'yandex.cloud.apploadbalancer.v1.RedirectAction' as const,
+
     encode(
         message: RedirectAction,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1709,9 +1786,16 @@ export const RedirectAction = {
     },
 };
 
-const baseDirectResponseAction: object = { status: 0 };
+messageTypeRegistry.set(RedirectAction.$type, RedirectAction);
+
+const baseDirectResponseAction: object = {
+    $type: 'yandex.cloud.apploadbalancer.v1.DirectResponseAction',
+    status: 0,
+};
 
 export const DirectResponseAction = {
+    $type: 'yandex.cloud.apploadbalancer.v1.DirectResponseAction' as const,
+
     encode(
         message: DirectResponseAction,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1793,9 +1877,16 @@ export const DirectResponseAction = {
     },
 };
 
-const baseGrpcStatusResponseAction: object = { status: 0 };
+messageTypeRegistry.set(DirectResponseAction.$type, DirectResponseAction);
+
+const baseGrpcStatusResponseAction: object = {
+    $type: 'yandex.cloud.apploadbalancer.v1.GrpcStatusResponseAction',
+    status: 0,
+};
 
 export const GrpcStatusResponseAction = {
+    $type: 'yandex.cloud.apploadbalancer.v1.GrpcStatusResponseAction' as const,
+
     encode(
         message: GrpcStatusResponseAction,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1868,13 +1959,21 @@ export const GrpcStatusResponseAction = {
     },
 };
 
+messageTypeRegistry.set(
+    GrpcStatusResponseAction.$type,
+    GrpcStatusResponseAction
+);
+
 const baseHttpRouteAction: object = {
+    $type: 'yandex.cloud.apploadbalancer.v1.HttpRouteAction',
     backendGroupId: '',
     prefixRewrite: '',
     upgradeTypes: '',
 };
 
 export const HttpRouteAction = {
+    $type: 'yandex.cloud.apploadbalancer.v1.HttpRouteAction' as const,
+
     encode(
         message: HttpRouteAction,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2074,9 +2173,16 @@ export const HttpRouteAction = {
     },
 };
 
-const baseGrpcRouteAction: object = { backendGroupId: '' };
+messageTypeRegistry.set(HttpRouteAction.$type, HttpRouteAction);
+
+const baseGrpcRouteAction: object = {
+    $type: 'yandex.cloud.apploadbalancer.v1.GrpcRouteAction',
+    backendGroupId: '',
+};
 
 export const GrpcRouteAction = {
+    $type: 'yandex.cloud.apploadbalancer.v1.GrpcRouteAction' as const,
+
     encode(
         message: GrpcRouteAction,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2234,6 +2340,8 @@ export const GrpcRouteAction = {
     },
 };
 
+messageTypeRegistry.set(GrpcRouteAction.$type, GrpcRouteAction);
+
 declare var self: any | undefined;
 declare var window: any | undefined;
 declare var global: any | undefined;
@@ -2260,7 +2368,7 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 function longToNumber(long: Long): number {

@@ -4,10 +4,12 @@ import { ChannelCredentials, ChannelOptions, UntypedServiceImplementation, handl
 import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.ydb.v1";
 export interface GetStorageTypeRequest {
+    $type: 'yandex.cloud.ydb.v1.GetStorageTypeRequest';
     /** Required. ID of the storage type to return. */
     storageTypeId: string;
 }
 export interface ListStorageTypesRequest {
+    $type: 'yandex.cloud.ydb.v1.ListStorageTypesRequest';
     /**
      * The maximum number of results per page that should be returned. If the number of available
      * results is larger than `page_size`, the service returns a `next_page_token` that can be used
@@ -22,6 +24,7 @@ export interface ListStorageTypesRequest {
     pageToken: string;
 }
 export interface ListStorageTypesResponse {
+    $type: 'yandex.cloud.ydb.v1.ListStorageTypesResponse';
     /** Requested list of storage types. */
     storageTypes: StorageType[];
     /**
@@ -34,6 +37,7 @@ export interface ListStorageTypesResponse {
     nextPageToken: string;
 }
 export declare const GetStorageTypeRequest: {
+    $type: "yandex.cloud.ydb.v1.GetStorageTypeRequest";
     encode(message: GetStorageTypeRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): GetStorageTypeRequest;
     fromJSON(object: any): GetStorageTypeRequest;
@@ -41,6 +45,7 @@ export declare const GetStorageTypeRequest: {
     fromPartial(object: DeepPartial<GetStorageTypeRequest>): GetStorageTypeRequest;
 };
 export declare const ListStorageTypesRequest: {
+    $type: "yandex.cloud.ydb.v1.ListStorageTypesRequest";
     encode(message: ListStorageTypesRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListStorageTypesRequest;
     fromJSON(object: any): ListStorageTypesRequest;
@@ -48,6 +53,7 @@ export declare const ListStorageTypesRequest: {
     fromPartial(object: DeepPartial<ListStorageTypesRequest>): ListStorageTypesRequest;
 };
 export declare const ListStorageTypesResponse: {
+    $type: "yandex.cloud.ydb.v1.ListStorageTypesResponse";
     encode(message: ListStorageTypesResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListStorageTypesResponse;
     fromJSON(object: any): ListStorageTypesResponse;
@@ -95,6 +101,6 @@ export interface StorageTypeServiceClient extends Client {
 export declare const StorageTypeServiceClient: new (address: string, credentials: ChannelCredentials, options?: Partial<ChannelOptions> | undefined) => StorageTypeServiceClient;
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

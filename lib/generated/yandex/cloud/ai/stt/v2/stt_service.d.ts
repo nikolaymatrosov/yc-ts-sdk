@@ -5,28 +5,35 @@ import { ChannelCredentials, ChannelOptions, UntypedServiceImplementation, handl
 import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.ai.stt.v2";
 export interface LongRunningRecognitionRequest {
+    $type: 'yandex.cloud.ai.stt.v2.LongRunningRecognitionRequest';
     config: RecognitionConfig | undefined;
     audio: RecognitionAudio | undefined;
 }
 export interface LongRunningRecognitionResponse {
+    $type: 'yandex.cloud.ai.stt.v2.LongRunningRecognitionResponse';
     chunks: SpeechRecognitionResult[];
 }
 export interface StreamingRecognitionRequest {
+    $type: 'yandex.cloud.ai.stt.v2.StreamingRecognitionRequest';
     config: RecognitionConfig | undefined;
     audioContent: Uint8Array | undefined;
 }
 export interface StreamingRecognitionResponse {
+    $type: 'yandex.cloud.ai.stt.v2.StreamingRecognitionResponse';
     chunks: SpeechRecognitionChunk[];
 }
 export interface RecognitionAudio {
+    $type: 'yandex.cloud.ai.stt.v2.RecognitionAudio';
     content: Uint8Array | undefined;
     uri: string | undefined;
 }
 export interface RecognitionConfig {
+    $type: 'yandex.cloud.ai.stt.v2.RecognitionConfig';
     specification: RecognitionSpec | undefined;
     folderId: string;
 }
 export interface RecognitionSpec {
+    $type: 'yandex.cloud.ai.stt.v2.RecognitionSpec';
     audioEncoding: RecognitionSpec_AudioEncoding;
     /** 8000, 16000, 48000 only for pcm */
     sampleRateHertz: number;
@@ -56,6 +63,7 @@ export declare enum RecognitionSpec_AudioEncoding {
 export declare function recognitionSpec_AudioEncodingFromJSON(object: any): RecognitionSpec_AudioEncoding;
 export declare function recognitionSpec_AudioEncodingToJSON(object: RecognitionSpec_AudioEncoding): string;
 export interface SpeechRecognitionChunk {
+    $type: 'yandex.cloud.ai.stt.v2.SpeechRecognitionChunk';
     alternatives: SpeechRecognitionAlternative[];
     /** This flag shows that the received chunk contains a part of the recognized text that won't be changed. */
     final: boolean;
@@ -63,21 +71,25 @@ export interface SpeechRecognitionChunk {
     endOfUtterance: boolean;
 }
 export interface SpeechRecognitionResult {
+    $type: 'yandex.cloud.ai.stt.v2.SpeechRecognitionResult';
     alternatives: SpeechRecognitionAlternative[];
     channelTag: number;
 }
 export interface SpeechRecognitionAlternative {
+    $type: 'yandex.cloud.ai.stt.v2.SpeechRecognitionAlternative';
     text: string;
     confidence: number;
     words: WordInfo[];
 }
 export interface WordInfo {
+    $type: 'yandex.cloud.ai.stt.v2.WordInfo';
     startTime: Duration | undefined;
     endTime: Duration | undefined;
     word: string;
     confidence: number;
 }
 export declare const LongRunningRecognitionRequest: {
+    $type: "yandex.cloud.ai.stt.v2.LongRunningRecognitionRequest";
     encode(message: LongRunningRecognitionRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): LongRunningRecognitionRequest;
     fromJSON(object: any): LongRunningRecognitionRequest;
@@ -85,6 +97,7 @@ export declare const LongRunningRecognitionRequest: {
     fromPartial(object: DeepPartial<LongRunningRecognitionRequest>): LongRunningRecognitionRequest;
 };
 export declare const LongRunningRecognitionResponse: {
+    $type: "yandex.cloud.ai.stt.v2.LongRunningRecognitionResponse";
     encode(message: LongRunningRecognitionResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): LongRunningRecognitionResponse;
     fromJSON(object: any): LongRunningRecognitionResponse;
@@ -92,6 +105,7 @@ export declare const LongRunningRecognitionResponse: {
     fromPartial(object: DeepPartial<LongRunningRecognitionResponse>): LongRunningRecognitionResponse;
 };
 export declare const StreamingRecognitionRequest: {
+    $type: "yandex.cloud.ai.stt.v2.StreamingRecognitionRequest";
     encode(message: StreamingRecognitionRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): StreamingRecognitionRequest;
     fromJSON(object: any): StreamingRecognitionRequest;
@@ -99,6 +113,7 @@ export declare const StreamingRecognitionRequest: {
     fromPartial(object: DeepPartial<StreamingRecognitionRequest>): StreamingRecognitionRequest;
 };
 export declare const StreamingRecognitionResponse: {
+    $type: "yandex.cloud.ai.stt.v2.StreamingRecognitionResponse";
     encode(message: StreamingRecognitionResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): StreamingRecognitionResponse;
     fromJSON(object: any): StreamingRecognitionResponse;
@@ -106,6 +121,7 @@ export declare const StreamingRecognitionResponse: {
     fromPartial(object: DeepPartial<StreamingRecognitionResponse>): StreamingRecognitionResponse;
 };
 export declare const RecognitionAudio: {
+    $type: "yandex.cloud.ai.stt.v2.RecognitionAudio";
     encode(message: RecognitionAudio, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): RecognitionAudio;
     fromJSON(object: any): RecognitionAudio;
@@ -113,6 +129,7 @@ export declare const RecognitionAudio: {
     fromPartial(object: DeepPartial<RecognitionAudio>): RecognitionAudio;
 };
 export declare const RecognitionConfig: {
+    $type: "yandex.cloud.ai.stt.v2.RecognitionConfig";
     encode(message: RecognitionConfig, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): RecognitionConfig;
     fromJSON(object: any): RecognitionConfig;
@@ -120,6 +137,7 @@ export declare const RecognitionConfig: {
     fromPartial(object: DeepPartial<RecognitionConfig>): RecognitionConfig;
 };
 export declare const RecognitionSpec: {
+    $type: "yandex.cloud.ai.stt.v2.RecognitionSpec";
     encode(message: RecognitionSpec, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): RecognitionSpec;
     fromJSON(object: any): RecognitionSpec;
@@ -127,6 +145,7 @@ export declare const RecognitionSpec: {
     fromPartial(object: DeepPartial<RecognitionSpec>): RecognitionSpec;
 };
 export declare const SpeechRecognitionChunk: {
+    $type: "yandex.cloud.ai.stt.v2.SpeechRecognitionChunk";
     encode(message: SpeechRecognitionChunk, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): SpeechRecognitionChunk;
     fromJSON(object: any): SpeechRecognitionChunk;
@@ -134,6 +153,7 @@ export declare const SpeechRecognitionChunk: {
     fromPartial(object: DeepPartial<SpeechRecognitionChunk>): SpeechRecognitionChunk;
 };
 export declare const SpeechRecognitionResult: {
+    $type: "yandex.cloud.ai.stt.v2.SpeechRecognitionResult";
     encode(message: SpeechRecognitionResult, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): SpeechRecognitionResult;
     fromJSON(object: any): SpeechRecognitionResult;
@@ -141,6 +161,7 @@ export declare const SpeechRecognitionResult: {
     fromPartial(object: DeepPartial<SpeechRecognitionResult>): SpeechRecognitionResult;
 };
 export declare const SpeechRecognitionAlternative: {
+    $type: "yandex.cloud.ai.stt.v2.SpeechRecognitionAlternative";
     encode(message: SpeechRecognitionAlternative, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): SpeechRecognitionAlternative;
     fromJSON(object: any): SpeechRecognitionAlternative;
@@ -148,6 +169,7 @@ export declare const SpeechRecognitionAlternative: {
     fromPartial(object: DeepPartial<SpeechRecognitionAlternative>): SpeechRecognitionAlternative;
 };
 export declare const WordInfo: {
+    $type: "yandex.cloud.ai.stt.v2.WordInfo";
     encode(message: WordInfo, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): WordInfo;
     fromJSON(object: any): WordInfo;
@@ -189,6 +211,6 @@ export interface SttServiceClient extends Client {
 export declare const SttServiceClient: new (address: string, credentials: ChannelCredentials, options?: Partial<ChannelOptions> | undefined) => SttServiceClient;
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

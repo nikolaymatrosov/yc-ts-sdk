@@ -8,6 +8,7 @@ import { ChannelCredentials, ChannelOptions, UntypedServiceImplementation, handl
 import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.serverless.functions.v1";
 export interface GetFunctionRequest {
+    $type: 'yandex.cloud.serverless.functions.v1.GetFunctionRequest';
     /**
      * ID of the function to return.
      *
@@ -16,6 +17,7 @@ export interface GetFunctionRequest {
     functionId: string;
 }
 export interface GetFunctionVersionRequest {
+    $type: 'yandex.cloud.serverless.functions.v1.GetFunctionVersionRequest';
     /**
      * ID of the version to return.
      *
@@ -24,6 +26,7 @@ export interface GetFunctionVersionRequest {
     functionVersionId: string;
 }
 export interface GetFunctionVersionByTagRequest {
+    $type: 'yandex.cloud.serverless.functions.v1.GetFunctionVersionByTagRequest';
     /**
      * ID of the function whose versions should be listed.
      *
@@ -38,6 +41,7 @@ export interface GetFunctionVersionByTagRequest {
     tag: string;
 }
 export interface ListFunctionsRequest {
+    $type: 'yandex.cloud.serverless.functions.v1.ListFunctionsRequest';
     /**
      * ID of the folder to list functions in.
      *
@@ -70,6 +74,7 @@ export interface ListFunctionsRequest {
     filter: string;
 }
 export interface ListFunctionsResponse {
+    $type: 'yandex.cloud.serverless.functions.v1.ListFunctionsResponse';
     /** List of functions in the specified folder. */
     functions: Function[];
     /**
@@ -82,6 +87,7 @@ export interface ListFunctionsResponse {
     nextPageToken: string;
 }
 export interface CreateFunctionRequest {
+    $type: 'yandex.cloud.serverless.functions.v1.CreateFunctionRequest';
     /**
      * ID of the folder to create a function in.
      *
@@ -101,14 +107,17 @@ export interface CreateFunctionRequest {
     };
 }
 export interface CreateFunctionRequest_LabelsEntry {
+    $type: 'yandex.cloud.serverless.functions.v1.CreateFunctionRequest.LabelsEntry';
     key: string;
     value: string;
 }
 export interface CreateFunctionMetadata {
+    $type: 'yandex.cloud.serverless.functions.v1.CreateFunctionMetadata';
     /** ID of the function that is being created. */
     functionId: string;
 }
 export interface UpdateFunctionRequest {
+    $type: 'yandex.cloud.serverless.functions.v1.UpdateFunctionRequest';
     /**
      * ID of the function to update.
      *
@@ -135,14 +144,17 @@ export interface UpdateFunctionRequest {
     };
 }
 export interface UpdateFunctionRequest_LabelsEntry {
+    $type: 'yandex.cloud.serverless.functions.v1.UpdateFunctionRequest.LabelsEntry';
     key: string;
     value: string;
 }
 export interface UpdateFunctionMetadata {
+    $type: 'yandex.cloud.serverless.functions.v1.UpdateFunctionMetadata';
     /** ID of the function that is being updated. */
     functionId: string;
 }
 export interface DeleteFunctionRequest {
+    $type: 'yandex.cloud.serverless.functions.v1.DeleteFunctionRequest';
     /**
      * ID of the function to delete.
      * To get a function ID make a [FunctionService.List] request.
@@ -150,16 +162,20 @@ export interface DeleteFunctionRequest {
     functionId: string;
 }
 export interface DeleteFunctionMetadata {
+    $type: 'yandex.cloud.serverless.functions.v1.DeleteFunctionMetadata';
     /** ID of the function that is being deleted. */
     functionId: string;
 }
 export interface ListRuntimesRequest {
+    $type: 'yandex.cloud.serverless.functions.v1.ListRuntimesRequest';
 }
 export interface ListRuntimesResponse {
+    $type: 'yandex.cloud.serverless.functions.v1.ListRuntimesResponse';
     /** Runtime environments available for the specified function. */
     runtimes: string[];
 }
 export interface ListFunctionsVersionsRequest {
+    $type: 'yandex.cloud.serverless.functions.v1.ListFunctionsVersionsRequest';
     /**
      * ID of the folder to list function versions for.
      * To get a folder ID make a [yandex.cloud.resourcemanager.v1.FolderService.List] request.
@@ -196,6 +212,7 @@ export interface ListFunctionsVersionsRequest {
     filter: string;
 }
 export interface ListFunctionsVersionsResponse {
+    $type: 'yandex.cloud.serverless.functions.v1.ListFunctionsVersionsResponse';
     /** List of versions for the specified folder or function. */
     versions: Version[];
     /**
@@ -208,6 +225,7 @@ export interface ListFunctionsVersionsResponse {
     nextPageToken: string;
 }
 export interface ListFunctionOperationsRequest {
+    $type: 'yandex.cloud.serverless.functions.v1.ListFunctionOperationsRequest';
     /** ID of the function to list operations for. */
     functionId: string;
     /**
@@ -236,6 +254,7 @@ export interface ListFunctionOperationsRequest {
     filter: string;
 }
 export interface ListFunctionOperationsResponse {
+    $type: 'yandex.cloud.serverless.functions.v1.ListFunctionOperationsResponse';
     /** List of operations for the specified function. */
     operations: Operation[];
     /**
@@ -248,6 +267,7 @@ export interface ListFunctionOperationsResponse {
     nextPageToken: string;
 }
 export interface CreateFunctionVersionRequest {
+    $type: 'yandex.cloud.serverless.functions.v1.CreateFunctionVersionRequest';
     /**
      * ID of the function to create a version for.
      *
@@ -293,18 +313,22 @@ export interface CreateFunctionVersionRequest {
     };
 }
 export interface CreateFunctionVersionRequest_EnvironmentEntry {
+    $type: 'yandex.cloud.serverless.functions.v1.CreateFunctionVersionRequest.EnvironmentEntry';
     key: string;
     value: string;
 }
 export interface CreateFunctionVersionRequest_NamedServiceAccountsEntry {
+    $type: 'yandex.cloud.serverless.functions.v1.CreateFunctionVersionRequest.NamedServiceAccountsEntry';
     key: string;
     value: string;
 }
 export interface CreateFunctionVersionMetadata {
+    $type: 'yandex.cloud.serverless.functions.v1.CreateFunctionVersionMetadata';
     /** ID of the version that is being created. */
     functionVersionId: string;
 }
 export interface SetFunctionTagRequest {
+    $type: 'yandex.cloud.serverless.functions.v1.SetFunctionTagRequest';
     /**
      * ID of the version to set the tag for.
      *
@@ -315,6 +339,7 @@ export interface SetFunctionTagRequest {
     tag: string;
 }
 export interface RemoveFunctionTagRequest {
+    $type: 'yandex.cloud.serverless.functions.v1.RemoveFunctionTagRequest';
     /**
      * ID of the version to remove a tag from.
      *
@@ -325,14 +350,17 @@ export interface RemoveFunctionTagRequest {
     tag: string;
 }
 export interface SetFunctionTagMetadata {
+    $type: 'yandex.cloud.serverless.functions.v1.SetFunctionTagMetadata';
     /** ID of the function versions that is being tagged. */
     functionVersionId: string;
 }
 export interface RemoveFunctionTagMetadata {
+    $type: 'yandex.cloud.serverless.functions.v1.RemoveFunctionTagMetadata';
     /** ID of the function versions that is being untagged. */
     functionVersionId: string;
 }
 export interface ListFunctionTagHistoryRequest {
+    $type: 'yandex.cloud.serverless.functions.v1.ListFunctionTagHistoryRequest';
     /**
      * ID of the function to retrieve tag history for.
      *
@@ -366,6 +394,7 @@ export interface ListFunctionTagHistoryRequest {
     filter: string;
 }
 export interface ListFunctionTagHistoryResponse {
+    $type: 'yandex.cloud.serverless.functions.v1.ListFunctionTagHistoryResponse';
     /** Set of relevant tag history records. */
     functionTagHistoryRecord: ListFunctionTagHistoryResponse_FunctionTagHistoryRecord[];
     /**
@@ -379,6 +408,7 @@ export interface ListFunctionTagHistoryResponse {
 }
 /** A record in the tag history. */
 export interface ListFunctionTagHistoryResponse_FunctionTagHistoryRecord {
+    $type: 'yandex.cloud.serverless.functions.v1.ListFunctionTagHistoryResponse.FunctionTagHistoryRecord';
     /** ID of the function that the record is about. */
     functionId: string;
     /** ID of the function version that the record is about. */
@@ -391,6 +421,7 @@ export interface ListFunctionTagHistoryResponse_FunctionTagHistoryRecord {
     effectiveTo: Date | undefined;
 }
 export interface ListScalingPoliciesRequest {
+    $type: 'yandex.cloud.serverless.functions.v1.ListScalingPoliciesRequest';
     /**
      * ID of the function to retrieve scaling policies for.
      *
@@ -412,6 +443,7 @@ export interface ListScalingPoliciesRequest {
     pageToken: string;
 }
 export interface ListScalingPoliciesResponse {
+    $type: 'yandex.cloud.serverless.functions.v1.ListScalingPoliciesResponse';
     /** Set of relevant scaling policies. */
     scalingPolicies: ScalingPolicy[];
     /**
@@ -424,6 +456,7 @@ export interface ListScalingPoliciesResponse {
     nextPageToken: string;
 }
 export interface SetScalingPolicyRequest {
+    $type: 'yandex.cloud.serverless.functions.v1.SetScalingPolicyRequest';
     /**
      * ID of the function to retrieve scaling policies for.
      *
@@ -453,10 +486,12 @@ export interface SetScalingPolicyRequest {
     zoneRequestsLimit: number;
 }
 export interface SetScalingPolicyMetadata {
+    $type: 'yandex.cloud.serverless.functions.v1.SetScalingPolicyMetadata';
     /** ID of the function for which scaling policy was set. */
     functionId: string;
 }
 export interface RemoveScalingPolicyRequest {
+    $type: 'yandex.cloud.serverless.functions.v1.RemoveScalingPolicyRequest';
     /**
      * ID of the function to remove scaling policies for.
      *
@@ -471,10 +506,12 @@ export interface RemoveScalingPolicyRequest {
     tag: string;
 }
 export interface RemoveScalingPolicyMetadata {
+    $type: 'yandex.cloud.serverless.functions.v1.RemoveScalingPolicyMetadata';
     /** ID of the function for which scaling policy was removed. */
     functionId: string;
 }
 export declare const GetFunctionRequest: {
+    $type: "yandex.cloud.serverless.functions.v1.GetFunctionRequest";
     encode(message: GetFunctionRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): GetFunctionRequest;
     fromJSON(object: any): GetFunctionRequest;
@@ -482,6 +519,7 @@ export declare const GetFunctionRequest: {
     fromPartial(object: DeepPartial<GetFunctionRequest>): GetFunctionRequest;
 };
 export declare const GetFunctionVersionRequest: {
+    $type: "yandex.cloud.serverless.functions.v1.GetFunctionVersionRequest";
     encode(message: GetFunctionVersionRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): GetFunctionVersionRequest;
     fromJSON(object: any): GetFunctionVersionRequest;
@@ -489,6 +527,7 @@ export declare const GetFunctionVersionRequest: {
     fromPartial(object: DeepPartial<GetFunctionVersionRequest>): GetFunctionVersionRequest;
 };
 export declare const GetFunctionVersionByTagRequest: {
+    $type: "yandex.cloud.serverless.functions.v1.GetFunctionVersionByTagRequest";
     encode(message: GetFunctionVersionByTagRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): GetFunctionVersionByTagRequest;
     fromJSON(object: any): GetFunctionVersionByTagRequest;
@@ -496,6 +535,7 @@ export declare const GetFunctionVersionByTagRequest: {
     fromPartial(object: DeepPartial<GetFunctionVersionByTagRequest>): GetFunctionVersionByTagRequest;
 };
 export declare const ListFunctionsRequest: {
+    $type: "yandex.cloud.serverless.functions.v1.ListFunctionsRequest";
     encode(message: ListFunctionsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListFunctionsRequest;
     fromJSON(object: any): ListFunctionsRequest;
@@ -503,6 +543,7 @@ export declare const ListFunctionsRequest: {
     fromPartial(object: DeepPartial<ListFunctionsRequest>): ListFunctionsRequest;
 };
 export declare const ListFunctionsResponse: {
+    $type: "yandex.cloud.serverless.functions.v1.ListFunctionsResponse";
     encode(message: ListFunctionsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListFunctionsResponse;
     fromJSON(object: any): ListFunctionsResponse;
@@ -510,6 +551,7 @@ export declare const ListFunctionsResponse: {
     fromPartial(object: DeepPartial<ListFunctionsResponse>): ListFunctionsResponse;
 };
 export declare const CreateFunctionRequest: {
+    $type: "yandex.cloud.serverless.functions.v1.CreateFunctionRequest";
     encode(message: CreateFunctionRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateFunctionRequest;
     fromJSON(object: any): CreateFunctionRequest;
@@ -517,6 +559,7 @@ export declare const CreateFunctionRequest: {
     fromPartial(object: DeepPartial<CreateFunctionRequest>): CreateFunctionRequest;
 };
 export declare const CreateFunctionRequest_LabelsEntry: {
+    $type: "yandex.cloud.serverless.functions.v1.CreateFunctionRequest.LabelsEntry";
     encode(message: CreateFunctionRequest_LabelsEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateFunctionRequest_LabelsEntry;
     fromJSON(object: any): CreateFunctionRequest_LabelsEntry;
@@ -524,6 +567,7 @@ export declare const CreateFunctionRequest_LabelsEntry: {
     fromPartial(object: DeepPartial<CreateFunctionRequest_LabelsEntry>): CreateFunctionRequest_LabelsEntry;
 };
 export declare const CreateFunctionMetadata: {
+    $type: "yandex.cloud.serverless.functions.v1.CreateFunctionMetadata";
     encode(message: CreateFunctionMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateFunctionMetadata;
     fromJSON(object: any): CreateFunctionMetadata;
@@ -531,6 +575,7 @@ export declare const CreateFunctionMetadata: {
     fromPartial(object: DeepPartial<CreateFunctionMetadata>): CreateFunctionMetadata;
 };
 export declare const UpdateFunctionRequest: {
+    $type: "yandex.cloud.serverless.functions.v1.UpdateFunctionRequest";
     encode(message: UpdateFunctionRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateFunctionRequest;
     fromJSON(object: any): UpdateFunctionRequest;
@@ -538,6 +583,7 @@ export declare const UpdateFunctionRequest: {
     fromPartial(object: DeepPartial<UpdateFunctionRequest>): UpdateFunctionRequest;
 };
 export declare const UpdateFunctionRequest_LabelsEntry: {
+    $type: "yandex.cloud.serverless.functions.v1.UpdateFunctionRequest.LabelsEntry";
     encode(message: UpdateFunctionRequest_LabelsEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateFunctionRequest_LabelsEntry;
     fromJSON(object: any): UpdateFunctionRequest_LabelsEntry;
@@ -545,6 +591,7 @@ export declare const UpdateFunctionRequest_LabelsEntry: {
     fromPartial(object: DeepPartial<UpdateFunctionRequest_LabelsEntry>): UpdateFunctionRequest_LabelsEntry;
 };
 export declare const UpdateFunctionMetadata: {
+    $type: "yandex.cloud.serverless.functions.v1.UpdateFunctionMetadata";
     encode(message: UpdateFunctionMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateFunctionMetadata;
     fromJSON(object: any): UpdateFunctionMetadata;
@@ -552,6 +599,7 @@ export declare const UpdateFunctionMetadata: {
     fromPartial(object: DeepPartial<UpdateFunctionMetadata>): UpdateFunctionMetadata;
 };
 export declare const DeleteFunctionRequest: {
+    $type: "yandex.cloud.serverless.functions.v1.DeleteFunctionRequest";
     encode(message: DeleteFunctionRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteFunctionRequest;
     fromJSON(object: any): DeleteFunctionRequest;
@@ -559,6 +607,7 @@ export declare const DeleteFunctionRequest: {
     fromPartial(object: DeepPartial<DeleteFunctionRequest>): DeleteFunctionRequest;
 };
 export declare const DeleteFunctionMetadata: {
+    $type: "yandex.cloud.serverless.functions.v1.DeleteFunctionMetadata";
     encode(message: DeleteFunctionMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteFunctionMetadata;
     fromJSON(object: any): DeleteFunctionMetadata;
@@ -566,6 +615,7 @@ export declare const DeleteFunctionMetadata: {
     fromPartial(object: DeepPartial<DeleteFunctionMetadata>): DeleteFunctionMetadata;
 };
 export declare const ListRuntimesRequest: {
+    $type: "yandex.cloud.serverless.functions.v1.ListRuntimesRequest";
     encode(_: ListRuntimesRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListRuntimesRequest;
     fromJSON(_: any): ListRuntimesRequest;
@@ -573,6 +623,7 @@ export declare const ListRuntimesRequest: {
     fromPartial(_: DeepPartial<ListRuntimesRequest>): ListRuntimesRequest;
 };
 export declare const ListRuntimesResponse: {
+    $type: "yandex.cloud.serverless.functions.v1.ListRuntimesResponse";
     encode(message: ListRuntimesResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListRuntimesResponse;
     fromJSON(object: any): ListRuntimesResponse;
@@ -580,6 +631,7 @@ export declare const ListRuntimesResponse: {
     fromPartial(object: DeepPartial<ListRuntimesResponse>): ListRuntimesResponse;
 };
 export declare const ListFunctionsVersionsRequest: {
+    $type: "yandex.cloud.serverless.functions.v1.ListFunctionsVersionsRequest";
     encode(message: ListFunctionsVersionsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListFunctionsVersionsRequest;
     fromJSON(object: any): ListFunctionsVersionsRequest;
@@ -587,6 +639,7 @@ export declare const ListFunctionsVersionsRequest: {
     fromPartial(object: DeepPartial<ListFunctionsVersionsRequest>): ListFunctionsVersionsRequest;
 };
 export declare const ListFunctionsVersionsResponse: {
+    $type: "yandex.cloud.serverless.functions.v1.ListFunctionsVersionsResponse";
     encode(message: ListFunctionsVersionsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListFunctionsVersionsResponse;
     fromJSON(object: any): ListFunctionsVersionsResponse;
@@ -594,6 +647,7 @@ export declare const ListFunctionsVersionsResponse: {
     fromPartial(object: DeepPartial<ListFunctionsVersionsResponse>): ListFunctionsVersionsResponse;
 };
 export declare const ListFunctionOperationsRequest: {
+    $type: "yandex.cloud.serverless.functions.v1.ListFunctionOperationsRequest";
     encode(message: ListFunctionOperationsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListFunctionOperationsRequest;
     fromJSON(object: any): ListFunctionOperationsRequest;
@@ -601,6 +655,7 @@ export declare const ListFunctionOperationsRequest: {
     fromPartial(object: DeepPartial<ListFunctionOperationsRequest>): ListFunctionOperationsRequest;
 };
 export declare const ListFunctionOperationsResponse: {
+    $type: "yandex.cloud.serverless.functions.v1.ListFunctionOperationsResponse";
     encode(message: ListFunctionOperationsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListFunctionOperationsResponse;
     fromJSON(object: any): ListFunctionOperationsResponse;
@@ -608,6 +663,7 @@ export declare const ListFunctionOperationsResponse: {
     fromPartial(object: DeepPartial<ListFunctionOperationsResponse>): ListFunctionOperationsResponse;
 };
 export declare const CreateFunctionVersionRequest: {
+    $type: "yandex.cloud.serverless.functions.v1.CreateFunctionVersionRequest";
     encode(message: CreateFunctionVersionRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateFunctionVersionRequest;
     fromJSON(object: any): CreateFunctionVersionRequest;
@@ -615,6 +671,7 @@ export declare const CreateFunctionVersionRequest: {
     fromPartial(object: DeepPartial<CreateFunctionVersionRequest>): CreateFunctionVersionRequest;
 };
 export declare const CreateFunctionVersionRequest_EnvironmentEntry: {
+    $type: "yandex.cloud.serverless.functions.v1.CreateFunctionVersionRequest.EnvironmentEntry";
     encode(message: CreateFunctionVersionRequest_EnvironmentEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateFunctionVersionRequest_EnvironmentEntry;
     fromJSON(object: any): CreateFunctionVersionRequest_EnvironmentEntry;
@@ -622,6 +679,7 @@ export declare const CreateFunctionVersionRequest_EnvironmentEntry: {
     fromPartial(object: DeepPartial<CreateFunctionVersionRequest_EnvironmentEntry>): CreateFunctionVersionRequest_EnvironmentEntry;
 };
 export declare const CreateFunctionVersionRequest_NamedServiceAccountsEntry: {
+    $type: "yandex.cloud.serverless.functions.v1.CreateFunctionVersionRequest.NamedServiceAccountsEntry";
     encode(message: CreateFunctionVersionRequest_NamedServiceAccountsEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateFunctionVersionRequest_NamedServiceAccountsEntry;
     fromJSON(object: any): CreateFunctionVersionRequest_NamedServiceAccountsEntry;
@@ -629,6 +687,7 @@ export declare const CreateFunctionVersionRequest_NamedServiceAccountsEntry: {
     fromPartial(object: DeepPartial<CreateFunctionVersionRequest_NamedServiceAccountsEntry>): CreateFunctionVersionRequest_NamedServiceAccountsEntry;
 };
 export declare const CreateFunctionVersionMetadata: {
+    $type: "yandex.cloud.serverless.functions.v1.CreateFunctionVersionMetadata";
     encode(message: CreateFunctionVersionMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateFunctionVersionMetadata;
     fromJSON(object: any): CreateFunctionVersionMetadata;
@@ -636,6 +695,7 @@ export declare const CreateFunctionVersionMetadata: {
     fromPartial(object: DeepPartial<CreateFunctionVersionMetadata>): CreateFunctionVersionMetadata;
 };
 export declare const SetFunctionTagRequest: {
+    $type: "yandex.cloud.serverless.functions.v1.SetFunctionTagRequest";
     encode(message: SetFunctionTagRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): SetFunctionTagRequest;
     fromJSON(object: any): SetFunctionTagRequest;
@@ -643,6 +703,7 @@ export declare const SetFunctionTagRequest: {
     fromPartial(object: DeepPartial<SetFunctionTagRequest>): SetFunctionTagRequest;
 };
 export declare const RemoveFunctionTagRequest: {
+    $type: "yandex.cloud.serverless.functions.v1.RemoveFunctionTagRequest";
     encode(message: RemoveFunctionTagRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): RemoveFunctionTagRequest;
     fromJSON(object: any): RemoveFunctionTagRequest;
@@ -650,6 +711,7 @@ export declare const RemoveFunctionTagRequest: {
     fromPartial(object: DeepPartial<RemoveFunctionTagRequest>): RemoveFunctionTagRequest;
 };
 export declare const SetFunctionTagMetadata: {
+    $type: "yandex.cloud.serverless.functions.v1.SetFunctionTagMetadata";
     encode(message: SetFunctionTagMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): SetFunctionTagMetadata;
     fromJSON(object: any): SetFunctionTagMetadata;
@@ -657,6 +719,7 @@ export declare const SetFunctionTagMetadata: {
     fromPartial(object: DeepPartial<SetFunctionTagMetadata>): SetFunctionTagMetadata;
 };
 export declare const RemoveFunctionTagMetadata: {
+    $type: "yandex.cloud.serverless.functions.v1.RemoveFunctionTagMetadata";
     encode(message: RemoveFunctionTagMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): RemoveFunctionTagMetadata;
     fromJSON(object: any): RemoveFunctionTagMetadata;
@@ -664,6 +727,7 @@ export declare const RemoveFunctionTagMetadata: {
     fromPartial(object: DeepPartial<RemoveFunctionTagMetadata>): RemoveFunctionTagMetadata;
 };
 export declare const ListFunctionTagHistoryRequest: {
+    $type: "yandex.cloud.serverless.functions.v1.ListFunctionTagHistoryRequest";
     encode(message: ListFunctionTagHistoryRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListFunctionTagHistoryRequest;
     fromJSON(object: any): ListFunctionTagHistoryRequest;
@@ -671,6 +735,7 @@ export declare const ListFunctionTagHistoryRequest: {
     fromPartial(object: DeepPartial<ListFunctionTagHistoryRequest>): ListFunctionTagHistoryRequest;
 };
 export declare const ListFunctionTagHistoryResponse: {
+    $type: "yandex.cloud.serverless.functions.v1.ListFunctionTagHistoryResponse";
     encode(message: ListFunctionTagHistoryResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListFunctionTagHistoryResponse;
     fromJSON(object: any): ListFunctionTagHistoryResponse;
@@ -678,6 +743,7 @@ export declare const ListFunctionTagHistoryResponse: {
     fromPartial(object: DeepPartial<ListFunctionTagHistoryResponse>): ListFunctionTagHistoryResponse;
 };
 export declare const ListFunctionTagHistoryResponse_FunctionTagHistoryRecord: {
+    $type: "yandex.cloud.serverless.functions.v1.ListFunctionTagHistoryResponse.FunctionTagHistoryRecord";
     encode(message: ListFunctionTagHistoryResponse_FunctionTagHistoryRecord, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListFunctionTagHistoryResponse_FunctionTagHistoryRecord;
     fromJSON(object: any): ListFunctionTagHistoryResponse_FunctionTagHistoryRecord;
@@ -685,6 +751,7 @@ export declare const ListFunctionTagHistoryResponse_FunctionTagHistoryRecord: {
     fromPartial(object: DeepPartial<ListFunctionTagHistoryResponse_FunctionTagHistoryRecord>): ListFunctionTagHistoryResponse_FunctionTagHistoryRecord;
 };
 export declare const ListScalingPoliciesRequest: {
+    $type: "yandex.cloud.serverless.functions.v1.ListScalingPoliciesRequest";
     encode(message: ListScalingPoliciesRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListScalingPoliciesRequest;
     fromJSON(object: any): ListScalingPoliciesRequest;
@@ -692,6 +759,7 @@ export declare const ListScalingPoliciesRequest: {
     fromPartial(object: DeepPartial<ListScalingPoliciesRequest>): ListScalingPoliciesRequest;
 };
 export declare const ListScalingPoliciesResponse: {
+    $type: "yandex.cloud.serverless.functions.v1.ListScalingPoliciesResponse";
     encode(message: ListScalingPoliciesResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListScalingPoliciesResponse;
     fromJSON(object: any): ListScalingPoliciesResponse;
@@ -699,6 +767,7 @@ export declare const ListScalingPoliciesResponse: {
     fromPartial(object: DeepPartial<ListScalingPoliciesResponse>): ListScalingPoliciesResponse;
 };
 export declare const SetScalingPolicyRequest: {
+    $type: "yandex.cloud.serverless.functions.v1.SetScalingPolicyRequest";
     encode(message: SetScalingPolicyRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): SetScalingPolicyRequest;
     fromJSON(object: any): SetScalingPolicyRequest;
@@ -706,6 +775,7 @@ export declare const SetScalingPolicyRequest: {
     fromPartial(object: DeepPartial<SetScalingPolicyRequest>): SetScalingPolicyRequest;
 };
 export declare const SetScalingPolicyMetadata: {
+    $type: "yandex.cloud.serverless.functions.v1.SetScalingPolicyMetadata";
     encode(message: SetScalingPolicyMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): SetScalingPolicyMetadata;
     fromJSON(object: any): SetScalingPolicyMetadata;
@@ -713,6 +783,7 @@ export declare const SetScalingPolicyMetadata: {
     fromPartial(object: DeepPartial<SetScalingPolicyMetadata>): SetScalingPolicyMetadata;
 };
 export declare const RemoveScalingPolicyRequest: {
+    $type: "yandex.cloud.serverless.functions.v1.RemoveScalingPolicyRequest";
     encode(message: RemoveScalingPolicyRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): RemoveScalingPolicyRequest;
     fromJSON(object: any): RemoveScalingPolicyRequest;
@@ -720,6 +791,7 @@ export declare const RemoveScalingPolicyRequest: {
     fromPartial(object: DeepPartial<RemoveScalingPolicyRequest>): RemoveScalingPolicyRequest;
 };
 export declare const RemoveScalingPolicyMetadata: {
+    $type: "yandex.cloud.serverless.functions.v1.RemoveScalingPolicyMetadata";
     encode(message: RemoveScalingPolicyMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): RemoveScalingPolicyMetadata;
     fromJSON(object: any): RemoveScalingPolicyMetadata;
@@ -1101,6 +1173,6 @@ export interface FunctionServiceClient extends Client {
 export declare const FunctionServiceClient: new (address: string, credentials: ChannelCredentials, options?: Partial<ChannelOptions> | undefined) => FunctionServiceClient;
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

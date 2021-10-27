@@ -1,18 +1,21 @@
 import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "speechkit.tts.v3";
 export interface AudioContent {
+    $type: 'speechkit.tts.v3.AudioContent';
     /** Bytes with audio data. */
     content: Uint8Array | undefined;
     /** Description of the audio format. */
     audioSpec: AudioFormatOptions | undefined;
 }
 export interface AudioFormatOptions {
+    $type: 'speechkit.tts.v3.AudioFormatOptions';
     /** The audio format specified in request parameters. */
     rawAudio: RawAudio | undefined;
     /** The audio format specified inside the container metadata. */
     containerAudio: ContainerAudio | undefined;
 }
 export interface RawAudio {
+    $type: 'speechkit.tts.v3.RawAudio';
     /** Encoding type. */
     audioEncoding: RawAudio_AudioEncoding;
     /** Sampling frequency of the signal. */
@@ -27,6 +30,7 @@ export declare enum RawAudio_AudioEncoding {
 export declare function rawAudio_AudioEncodingFromJSON(object: any): RawAudio_AudioEncoding;
 export declare function rawAudio_AudioEncodingToJSON(object: RawAudio_AudioEncoding): string;
 export interface ContainerAudio {
+    $type: 'speechkit.tts.v3.ContainerAudio';
     containerAudioType: ContainerAudio_ContainerAudioType;
 }
 export declare enum ContainerAudio_ContainerAudioType {
@@ -39,12 +43,14 @@ export declare enum ContainerAudio_ContainerAudioType {
 export declare function containerAudio_ContainerAudioTypeFromJSON(object: any): ContainerAudio_ContainerAudioType;
 export declare function containerAudio_ContainerAudioTypeToJSON(object: ContainerAudio_ContainerAudioType): string;
 export interface TextVariable {
+    $type: 'speechkit.tts.v3.TextVariable';
     /** The name of the variable. */
     variableName: string;
     /** The text of the variable. */
     variableValue: string;
 }
 export interface AudioVariable {
+    $type: 'speechkit.tts.v3.AudioVariable';
     /** The name of the variable. */
     variableName: string;
     /** Start time of the variable in milliseconds. */
@@ -53,10 +59,12 @@ export interface AudioVariable {
     variableLengthMs: number;
 }
 export interface UtteranceSynthesisResponse {
+    $type: 'speechkit.tts.v3.UtteranceSynthesisResponse';
     /** Part of synthesized audio. */
     audioChunk: AudioChunk | undefined;
 }
 export interface AudioTemplate {
+    $type: 'speechkit.tts.v3.AudioTemplate';
     /** Audio file. */
     audio: AudioContent | undefined;
     /** Template and description of its variables. */
@@ -65,10 +73,12 @@ export interface AudioTemplate {
     variables: AudioVariable[];
 }
 export interface AudioChunk {
+    $type: 'speechkit.tts.v3.AudioChunk';
     /** Sequence of bytes of the synthesized audio in format specified in output_audio_spec. */
     data: Uint8Array;
 }
 export interface TextTemplate {
+    $type: 'speechkit.tts.v3.TextTemplate';
     /**
      * Template text.
      *
@@ -83,6 +93,7 @@ export interface TextTemplate {
     variables: TextVariable[];
 }
 export interface Hints {
+    $type: 'speechkit.tts.v3.Hints';
     /** Name of speaker to use. */
     voice: string | undefined;
     /** Template for synthesizing. */
@@ -93,6 +104,7 @@ export interface Hints {
     volume: number | undefined;
 }
 export interface UtteranceSynthesisRequest {
+    $type: 'speechkit.tts.v3.UtteranceSynthesisRequest';
     /**
      * The name of the model.
      *
@@ -120,6 +132,7 @@ export declare enum UtteranceSynthesisRequest_LoudnessNormalizationType {
 export declare function utteranceSynthesisRequest_LoudnessNormalizationTypeFromJSON(object: any): UtteranceSynthesisRequest_LoudnessNormalizationType;
 export declare function utteranceSynthesisRequest_LoudnessNormalizationTypeToJSON(object: UtteranceSynthesisRequest_LoudnessNormalizationType): string;
 export declare const AudioContent: {
+    $type: "speechkit.tts.v3.AudioContent";
     encode(message: AudioContent, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): AudioContent;
     fromJSON(object: any): AudioContent;
@@ -127,6 +140,7 @@ export declare const AudioContent: {
     fromPartial(object: DeepPartial<AudioContent>): AudioContent;
 };
 export declare const AudioFormatOptions: {
+    $type: "speechkit.tts.v3.AudioFormatOptions";
     encode(message: AudioFormatOptions, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): AudioFormatOptions;
     fromJSON(object: any): AudioFormatOptions;
@@ -134,6 +148,7 @@ export declare const AudioFormatOptions: {
     fromPartial(object: DeepPartial<AudioFormatOptions>): AudioFormatOptions;
 };
 export declare const RawAudio: {
+    $type: "speechkit.tts.v3.RawAudio";
     encode(message: RawAudio, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): RawAudio;
     fromJSON(object: any): RawAudio;
@@ -141,6 +156,7 @@ export declare const RawAudio: {
     fromPartial(object: DeepPartial<RawAudio>): RawAudio;
 };
 export declare const ContainerAudio: {
+    $type: "speechkit.tts.v3.ContainerAudio";
     encode(message: ContainerAudio, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ContainerAudio;
     fromJSON(object: any): ContainerAudio;
@@ -148,6 +164,7 @@ export declare const ContainerAudio: {
     fromPartial(object: DeepPartial<ContainerAudio>): ContainerAudio;
 };
 export declare const TextVariable: {
+    $type: "speechkit.tts.v3.TextVariable";
     encode(message: TextVariable, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): TextVariable;
     fromJSON(object: any): TextVariable;
@@ -155,6 +172,7 @@ export declare const TextVariable: {
     fromPartial(object: DeepPartial<TextVariable>): TextVariable;
 };
 export declare const AudioVariable: {
+    $type: "speechkit.tts.v3.AudioVariable";
     encode(message: AudioVariable, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): AudioVariable;
     fromJSON(object: any): AudioVariable;
@@ -162,6 +180,7 @@ export declare const AudioVariable: {
     fromPartial(object: DeepPartial<AudioVariable>): AudioVariable;
 };
 export declare const UtteranceSynthesisResponse: {
+    $type: "speechkit.tts.v3.UtteranceSynthesisResponse";
     encode(message: UtteranceSynthesisResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UtteranceSynthesisResponse;
     fromJSON(object: any): UtteranceSynthesisResponse;
@@ -169,6 +188,7 @@ export declare const UtteranceSynthesisResponse: {
     fromPartial(object: DeepPartial<UtteranceSynthesisResponse>): UtteranceSynthesisResponse;
 };
 export declare const AudioTemplate: {
+    $type: "speechkit.tts.v3.AudioTemplate";
     encode(message: AudioTemplate, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): AudioTemplate;
     fromJSON(object: any): AudioTemplate;
@@ -176,6 +196,7 @@ export declare const AudioTemplate: {
     fromPartial(object: DeepPartial<AudioTemplate>): AudioTemplate;
 };
 export declare const AudioChunk: {
+    $type: "speechkit.tts.v3.AudioChunk";
     encode(message: AudioChunk, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): AudioChunk;
     fromJSON(object: any): AudioChunk;
@@ -183,6 +204,7 @@ export declare const AudioChunk: {
     fromPartial(object: DeepPartial<AudioChunk>): AudioChunk;
 };
 export declare const TextTemplate: {
+    $type: "speechkit.tts.v3.TextTemplate";
     encode(message: TextTemplate, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): TextTemplate;
     fromJSON(object: any): TextTemplate;
@@ -190,6 +212,7 @@ export declare const TextTemplate: {
     fromPartial(object: DeepPartial<TextTemplate>): TextTemplate;
 };
 export declare const Hints: {
+    $type: "speechkit.tts.v3.Hints";
     encode(message: Hints, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Hints;
     fromJSON(object: any): Hints;
@@ -197,6 +220,7 @@ export declare const Hints: {
     fromPartial(object: DeepPartial<Hints>): Hints;
 };
 export declare const UtteranceSynthesisRequest: {
+    $type: "speechkit.tts.v3.UtteranceSynthesisRequest";
     encode(message: UtteranceSynthesisRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UtteranceSynthesisRequest;
     fromJSON(object: any): UtteranceSynthesisRequest;
@@ -205,6 +229,6 @@ export declare const UtteranceSynthesisRequest: {
 };
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

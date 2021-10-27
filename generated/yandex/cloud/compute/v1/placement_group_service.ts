@@ -1,5 +1,6 @@
 /* eslint-disable */
 import { FieldMask } from '../../../../google/protobuf/field_mask';
+import { messageTypeRegistry } from '../../../../typeRegistry';
 import { Instance } from '../../../../yandex/cloud/compute/v1/instance';
 import {
     PlacementGroup,
@@ -24,6 +25,7 @@ import _m0 from 'protobufjs/minimal';
 export const protobufPackage = 'yandex.cloud.compute.v1';
 
 export interface GetPlacementGroupRequest {
+    $type: 'yandex.cloud.compute.v1.GetPlacementGroupRequest';
     /**
      * ID of the placement group to return.
      *
@@ -33,6 +35,7 @@ export interface GetPlacementGroupRequest {
 }
 
 export interface ListPlacementGroupsRequest {
+    $type: 'yandex.cloud.compute.v1.ListPlacementGroupsRequest';
     /**
      * ID of the folder to list placement groups in.
      *
@@ -60,6 +63,7 @@ export interface ListPlacementGroupsRequest {
 }
 
 export interface ListPlacementGroupsResponse {
+    $type: 'yandex.cloud.compute.v1.ListPlacementGroupsResponse';
     /** Lists placement groups in the specified folder. */
     placementGroups: PlacementGroup[];
     /**
@@ -73,6 +77,7 @@ export interface ListPlacementGroupsResponse {
 }
 
 export interface CreatePlacementGroupRequest {
+    $type: 'yandex.cloud.compute.v1.CreatePlacementGroupRequest';
     /**
      * ID of the folder to create a placement group in.
      *
@@ -90,16 +95,19 @@ export interface CreatePlacementGroupRequest {
 }
 
 export interface CreatePlacementGroupRequest_LabelsEntry {
+    $type: 'yandex.cloud.compute.v1.CreatePlacementGroupRequest.LabelsEntry';
     key: string;
     value: string;
 }
 
 export interface CreatePlacementGroupMetadata {
+    $type: 'yandex.cloud.compute.v1.CreatePlacementGroupMetadata';
     /** ID of the placement group that is being created. */
     placementGroupId: string;
 }
 
 export interface UpdatePlacementGroupRequest {
+    $type: 'yandex.cloud.compute.v1.UpdatePlacementGroupRequest';
     /**
      * ID of the placement group to update.
      *
@@ -121,16 +129,19 @@ export interface UpdatePlacementGroupRequest {
 }
 
 export interface UpdatePlacementGroupRequest_LabelsEntry {
+    $type: 'yandex.cloud.compute.v1.UpdatePlacementGroupRequest.LabelsEntry';
     key: string;
     value: string;
 }
 
 export interface UpdatePlacementGroupMetadata {
+    $type: 'yandex.cloud.compute.v1.UpdatePlacementGroupMetadata';
     /** ID of the placement group that is being updated. */
     placementGroupId: string;
 }
 
 export interface DeletePlacementGroupRequest {
+    $type: 'yandex.cloud.compute.v1.DeletePlacementGroupRequest';
     /**
      * ID of the placement group to delete.
      *
@@ -140,11 +151,13 @@ export interface DeletePlacementGroupRequest {
 }
 
 export interface DeletePlacementGroupMetadata {
+    $type: 'yandex.cloud.compute.v1.DeletePlacementGroupMetadata';
     /** ID of the placement group that is being deleted. */
     placementGroupId: string;
 }
 
 export interface ListPlacementGroupInstancesRequest {
+    $type: 'yandex.cloud.compute.v1.ListPlacementGroupInstancesRequest';
     /**
      * ID of the placement group to list instances for.
      *
@@ -167,6 +180,7 @@ export interface ListPlacementGroupInstancesRequest {
 }
 
 export interface ListPlacementGroupInstancesResponse {
+    $type: 'yandex.cloud.compute.v1.ListPlacementGroupInstancesResponse';
     /** Lists instances for the specified placement group. */
     instances: Instance[];
     /**
@@ -181,6 +195,7 @@ export interface ListPlacementGroupInstancesResponse {
 }
 
 export interface ListPlacementGroupOperationsRequest {
+    $type: 'yandex.cloud.compute.v1.ListPlacementGroupOperationsRequest';
     /**
      * ID of the placement group to list operations for.
      *
@@ -201,6 +216,7 @@ export interface ListPlacementGroupOperationsRequest {
 }
 
 export interface ListPlacementGroupOperationsResponse {
+    $type: 'yandex.cloud.compute.v1.ListPlacementGroupOperationsResponse';
     /** List of operations for the specified placement group. */
     operations: Operation[];
     /**
@@ -212,9 +228,14 @@ export interface ListPlacementGroupOperationsResponse {
     nextPageToken: string;
 }
 
-const baseGetPlacementGroupRequest: object = { placementGroupId: '' };
+const baseGetPlacementGroupRequest: object = {
+    $type: 'yandex.cloud.compute.v1.GetPlacementGroupRequest',
+    placementGroupId: '',
+};
 
 export const GetPlacementGroupRequest = {
+    $type: 'yandex.cloud.compute.v1.GetPlacementGroupRequest' as const,
+
     encode(
         message: GetPlacementGroupRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -289,7 +310,13 @@ export const GetPlacementGroupRequest = {
     },
 };
 
+messageTypeRegistry.set(
+    GetPlacementGroupRequest.$type,
+    GetPlacementGroupRequest
+);
+
 const baseListPlacementGroupsRequest: object = {
+    $type: 'yandex.cloud.compute.v1.ListPlacementGroupsRequest',
     folderId: '',
     pageSize: 0,
     pageToken: '',
@@ -297,6 +324,8 @@ const baseListPlacementGroupsRequest: object = {
 };
 
 export const ListPlacementGroupsRequest = {
+    $type: 'yandex.cloud.compute.v1.ListPlacementGroupsRequest' as const,
+
     encode(
         message: ListPlacementGroupsRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -415,9 +444,19 @@ export const ListPlacementGroupsRequest = {
     },
 };
 
-const baseListPlacementGroupsResponse: object = { nextPageToken: '' };
+messageTypeRegistry.set(
+    ListPlacementGroupsRequest.$type,
+    ListPlacementGroupsRequest
+);
+
+const baseListPlacementGroupsResponse: object = {
+    $type: 'yandex.cloud.compute.v1.ListPlacementGroupsResponse',
+    nextPageToken: '',
+};
 
 export const ListPlacementGroupsResponse = {
+    $type: 'yandex.cloud.compute.v1.ListPlacementGroupsResponse' as const,
+
     encode(
         message: ListPlacementGroupsResponse,
         writer: _m0.Writer = _m0.Writer.create()
@@ -526,13 +565,21 @@ export const ListPlacementGroupsResponse = {
     },
 };
 
+messageTypeRegistry.set(
+    ListPlacementGroupsResponse.$type,
+    ListPlacementGroupsResponse
+);
+
 const baseCreatePlacementGroupRequest: object = {
+    $type: 'yandex.cloud.compute.v1.CreatePlacementGroupRequest',
     folderId: '',
     name: '',
     description: '',
 };
 
 export const CreatePlacementGroupRequest = {
+    $type: 'yandex.cloud.compute.v1.CreatePlacementGroupRequest' as const,
+
     encode(
         message: CreatePlacementGroupRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -548,7 +595,11 @@ export const CreatePlacementGroupRequest = {
         }
         Object.entries(message.labels).forEach(([key, value]) => {
             CreatePlacementGroupRequest_LabelsEntry.encode(
-                { key: key as any, value },
+                {
+                    $type: 'yandex.cloud.compute.v1.CreatePlacementGroupRequest.LabelsEntry',
+                    key: key as any,
+                    value,
+                },
                 writer.uint32(34).fork()
             ).ldelim();
         });
@@ -709,12 +760,20 @@ export const CreatePlacementGroupRequest = {
     },
 };
 
+messageTypeRegistry.set(
+    CreatePlacementGroupRequest.$type,
+    CreatePlacementGroupRequest
+);
+
 const baseCreatePlacementGroupRequest_LabelsEntry: object = {
+    $type: 'yandex.cloud.compute.v1.CreatePlacementGroupRequest.LabelsEntry',
     key: '',
     value: '',
 };
 
 export const CreatePlacementGroupRequest_LabelsEntry = {
+    $type: 'yandex.cloud.compute.v1.CreatePlacementGroupRequest.LabelsEntry' as const,
+
     encode(
         message: CreatePlacementGroupRequest_LabelsEntry,
         writer: _m0.Writer = _m0.Writer.create()
@@ -799,9 +858,19 @@ export const CreatePlacementGroupRequest_LabelsEntry = {
     },
 };
 
-const baseCreatePlacementGroupMetadata: object = { placementGroupId: '' };
+messageTypeRegistry.set(
+    CreatePlacementGroupRequest_LabelsEntry.$type,
+    CreatePlacementGroupRequest_LabelsEntry
+);
+
+const baseCreatePlacementGroupMetadata: object = {
+    $type: 'yandex.cloud.compute.v1.CreatePlacementGroupMetadata',
+    placementGroupId: '',
+};
 
 export const CreatePlacementGroupMetadata = {
+    $type: 'yandex.cloud.compute.v1.CreatePlacementGroupMetadata' as const,
+
     encode(
         message: CreatePlacementGroupMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -876,13 +945,21 @@ export const CreatePlacementGroupMetadata = {
     },
 };
 
+messageTypeRegistry.set(
+    CreatePlacementGroupMetadata.$type,
+    CreatePlacementGroupMetadata
+);
+
 const baseUpdatePlacementGroupRequest: object = {
+    $type: 'yandex.cloud.compute.v1.UpdatePlacementGroupRequest',
     placementGroupId: '',
     name: '',
     description: '',
 };
 
 export const UpdatePlacementGroupRequest = {
+    $type: 'yandex.cloud.compute.v1.UpdatePlacementGroupRequest' as const,
+
     encode(
         message: UpdatePlacementGroupRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -904,7 +981,11 @@ export const UpdatePlacementGroupRequest = {
         }
         Object.entries(message.labels).forEach(([key, value]) => {
             UpdatePlacementGroupRequest_LabelsEntry.encode(
-                { key: key as any, value },
+                {
+                    $type: 'yandex.cloud.compute.v1.UpdatePlacementGroupRequest.LabelsEntry',
+                    key: key as any,
+                    value,
+                },
                 writer.uint32(42).fork()
             ).ldelim();
         });
@@ -1055,12 +1136,20 @@ export const UpdatePlacementGroupRequest = {
     },
 };
 
+messageTypeRegistry.set(
+    UpdatePlacementGroupRequest.$type,
+    UpdatePlacementGroupRequest
+);
+
 const baseUpdatePlacementGroupRequest_LabelsEntry: object = {
+    $type: 'yandex.cloud.compute.v1.UpdatePlacementGroupRequest.LabelsEntry',
     key: '',
     value: '',
 };
 
 export const UpdatePlacementGroupRequest_LabelsEntry = {
+    $type: 'yandex.cloud.compute.v1.UpdatePlacementGroupRequest.LabelsEntry' as const,
+
     encode(
         message: UpdatePlacementGroupRequest_LabelsEntry,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1145,9 +1234,19 @@ export const UpdatePlacementGroupRequest_LabelsEntry = {
     },
 };
 
-const baseUpdatePlacementGroupMetadata: object = { placementGroupId: '' };
+messageTypeRegistry.set(
+    UpdatePlacementGroupRequest_LabelsEntry.$type,
+    UpdatePlacementGroupRequest_LabelsEntry
+);
+
+const baseUpdatePlacementGroupMetadata: object = {
+    $type: 'yandex.cloud.compute.v1.UpdatePlacementGroupMetadata',
+    placementGroupId: '',
+};
 
 export const UpdatePlacementGroupMetadata = {
+    $type: 'yandex.cloud.compute.v1.UpdatePlacementGroupMetadata' as const,
+
     encode(
         message: UpdatePlacementGroupMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1222,9 +1321,19 @@ export const UpdatePlacementGroupMetadata = {
     },
 };
 
-const baseDeletePlacementGroupRequest: object = { placementGroupId: '' };
+messageTypeRegistry.set(
+    UpdatePlacementGroupMetadata.$type,
+    UpdatePlacementGroupMetadata
+);
+
+const baseDeletePlacementGroupRequest: object = {
+    $type: 'yandex.cloud.compute.v1.DeletePlacementGroupRequest',
+    placementGroupId: '',
+};
 
 export const DeletePlacementGroupRequest = {
+    $type: 'yandex.cloud.compute.v1.DeletePlacementGroupRequest' as const,
+
     encode(
         message: DeletePlacementGroupRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1299,9 +1408,19 @@ export const DeletePlacementGroupRequest = {
     },
 };
 
-const baseDeletePlacementGroupMetadata: object = { placementGroupId: '' };
+messageTypeRegistry.set(
+    DeletePlacementGroupRequest.$type,
+    DeletePlacementGroupRequest
+);
+
+const baseDeletePlacementGroupMetadata: object = {
+    $type: 'yandex.cloud.compute.v1.DeletePlacementGroupMetadata',
+    placementGroupId: '',
+};
 
 export const DeletePlacementGroupMetadata = {
+    $type: 'yandex.cloud.compute.v1.DeletePlacementGroupMetadata' as const,
+
     encode(
         message: DeletePlacementGroupMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1376,13 +1495,21 @@ export const DeletePlacementGroupMetadata = {
     },
 };
 
+messageTypeRegistry.set(
+    DeletePlacementGroupMetadata.$type,
+    DeletePlacementGroupMetadata
+);
+
 const baseListPlacementGroupInstancesRequest: object = {
+    $type: 'yandex.cloud.compute.v1.ListPlacementGroupInstancesRequest',
     placementGroupId: '',
     pageSize: 0,
     pageToken: '',
 };
 
 export const ListPlacementGroupInstancesRequest = {
+    $type: 'yandex.cloud.compute.v1.ListPlacementGroupInstancesRequest' as const,
+
     encode(
         message: ListPlacementGroupInstancesRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1491,9 +1618,19 @@ export const ListPlacementGroupInstancesRequest = {
     },
 };
 
-const baseListPlacementGroupInstancesResponse: object = { nextPageToken: '' };
+messageTypeRegistry.set(
+    ListPlacementGroupInstancesRequest.$type,
+    ListPlacementGroupInstancesRequest
+);
+
+const baseListPlacementGroupInstancesResponse: object = {
+    $type: 'yandex.cloud.compute.v1.ListPlacementGroupInstancesResponse',
+    nextPageToken: '',
+};
 
 export const ListPlacementGroupInstancesResponse = {
+    $type: 'yandex.cloud.compute.v1.ListPlacementGroupInstancesResponse' as const,
+
     encode(
         message: ListPlacementGroupInstancesResponse,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1596,13 +1733,21 @@ export const ListPlacementGroupInstancesResponse = {
     },
 };
 
+messageTypeRegistry.set(
+    ListPlacementGroupInstancesResponse.$type,
+    ListPlacementGroupInstancesResponse
+);
+
 const baseListPlacementGroupOperationsRequest: object = {
+    $type: 'yandex.cloud.compute.v1.ListPlacementGroupOperationsRequest',
     placementGroupId: '',
     pageSize: 0,
     pageToken: '',
 };
 
 export const ListPlacementGroupOperationsRequest = {
+    $type: 'yandex.cloud.compute.v1.ListPlacementGroupOperationsRequest' as const,
+
     encode(
         message: ListPlacementGroupOperationsRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1711,9 +1856,19 @@ export const ListPlacementGroupOperationsRequest = {
     },
 };
 
-const baseListPlacementGroupOperationsResponse: object = { nextPageToken: '' };
+messageTypeRegistry.set(
+    ListPlacementGroupOperationsRequest.$type,
+    ListPlacementGroupOperationsRequest
+);
+
+const baseListPlacementGroupOperationsResponse: object = {
+    $type: 'yandex.cloud.compute.v1.ListPlacementGroupOperationsResponse',
+    nextPageToken: '',
+};
 
 export const ListPlacementGroupOperationsResponse = {
+    $type: 'yandex.cloud.compute.v1.ListPlacementGroupOperationsResponse' as const,
+
     encode(
         message: ListPlacementGroupOperationsResponse,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1815,6 +1970,11 @@ export const ListPlacementGroupOperationsResponse = {
         return message;
     },
 };
+
+messageTypeRegistry.set(
+    ListPlacementGroupOperationsResponse.$type,
+    ListPlacementGroupOperationsResponse
+);
 
 /** A set of methods for managing placement groups. */
 export const PlacementGroupServiceService = {
@@ -2140,7 +2300,7 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 function longToNumber(long: Long): number {

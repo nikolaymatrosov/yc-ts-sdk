@@ -1,5 +1,6 @@
 /* eslint-disable */
 import { Timestamp } from '../../../../google/protobuf/timestamp';
+import { messageTypeRegistry } from '../../../../typeRegistry';
 import Long from 'long';
 import _m0 from 'protobufjs/minimal';
 
@@ -7,6 +8,7 @@ export const protobufPackage = 'yandex.cloud.compute.v1';
 
 /** A Snapshot resource. For more information, see [Snapshots](/docs/compute/concepts/snapshot). */
 export interface Snapshot {
+    $type: 'yandex.cloud.compute.v1.Snapshot';
     /** ID of the snapshot. */
     id: string;
     /** ID of the folder that the snapshot belongs to. */
@@ -94,11 +96,13 @@ export function snapshot_StatusToJSON(object: Snapshot_Status): string {
 }
 
 export interface Snapshot_LabelsEntry {
+    $type: 'yandex.cloud.compute.v1.Snapshot.LabelsEntry';
     key: string;
     value: string;
 }
 
 const baseSnapshot: object = {
+    $type: 'yandex.cloud.compute.v1.Snapshot',
     id: '',
     folderId: '',
     name: '',
@@ -111,6 +115,8 @@ const baseSnapshot: object = {
 };
 
 export const Snapshot = {
+    $type: 'yandex.cloud.compute.v1.Snapshot' as const,
+
     encode(
         message: Snapshot,
         writer: _m0.Writer = _m0.Writer.create()
@@ -135,7 +141,11 @@ export const Snapshot = {
         }
         Object.entries(message.labels).forEach(([key, value]) => {
             Snapshot_LabelsEntry.encode(
-                { key: key as any, value },
+                {
+                    $type: 'yandex.cloud.compute.v1.Snapshot.LabelsEntry',
+                    key: key as any,
+                    value,
+                },
                 writer.uint32(50).fork()
             ).ldelim();
         });
@@ -373,9 +383,17 @@ export const Snapshot = {
     },
 };
 
-const baseSnapshot_LabelsEntry: object = { key: '', value: '' };
+messageTypeRegistry.set(Snapshot.$type, Snapshot);
+
+const baseSnapshot_LabelsEntry: object = {
+    $type: 'yandex.cloud.compute.v1.Snapshot.LabelsEntry',
+    key: '',
+    value: '',
+};
 
 export const Snapshot_LabelsEntry = {
+    $type: 'yandex.cloud.compute.v1.Snapshot.LabelsEntry' as const,
+
     encode(
         message: Snapshot_LabelsEntry,
         writer: _m0.Writer = _m0.Writer.create()
@@ -454,6 +472,8 @@ export const Snapshot_LabelsEntry = {
     },
 };
 
+messageTypeRegistry.set(Snapshot_LabelsEntry.$type, Snapshot_LabelsEntry);
+
 declare var self: any | undefined;
 declare var window: any | undefined;
 declare var global: any | undefined;
@@ -480,13 +500,13 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 function toTimestamp(date: Date): Timestamp {
     const seconds = date.getTime() / 1_000;
     const nanos = (date.getTime() % 1_000) * 1_000_000;
-    return { seconds, nanos };
+    return { $type: 'google.protobuf.Timestamp', seconds, nanos };
 }
 
 function fromTimestamp(t: Timestamp): Date {

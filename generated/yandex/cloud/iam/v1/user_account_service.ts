@@ -1,4 +1,5 @@
 /* eslint-disable */
+import { messageTypeRegistry } from '../../../../typeRegistry';
 import { UserAccount } from '../../../../yandex/cloud/iam/v1/user_account';
 import {
     makeGenericClientConstructor,
@@ -18,13 +19,19 @@ import _m0 from 'protobufjs/minimal';
 export const protobufPackage = 'yandex.cloud.iam.v1';
 
 export interface GetUserAccountRequest {
+    $type: 'yandex.cloud.iam.v1.GetUserAccountRequest';
     /** ID of the UserAccount resource to return. */
     userAccountId: string;
 }
 
-const baseGetUserAccountRequest: object = { userAccountId: '' };
+const baseGetUserAccountRequest: object = {
+    $type: 'yandex.cloud.iam.v1.GetUserAccountRequest',
+    userAccountId: '',
+};
 
 export const GetUserAccountRequest = {
+    $type: 'yandex.cloud.iam.v1.GetUserAccountRequest' as const,
+
     encode(
         message: GetUserAccountRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -99,6 +106,8 @@ export const GetUserAccountRequest = {
     },
 };
 
+messageTypeRegistry.set(GetUserAccountRequest.$type, GetUserAccountRequest);
+
 /** A set of methods for managing user accounts. Currently applicable only for [Yandex.Passport accounts](/docs/iam/concepts/#passport). */
 export const UserAccountServiceService = {
     /** Returns the specified UserAccount resource. */
@@ -166,7 +175,7 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 if (_m0.util.Long !== Long) {

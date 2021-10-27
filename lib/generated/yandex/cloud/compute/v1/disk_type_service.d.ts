@@ -4,6 +4,7 @@ import { ChannelCredentials, ChannelOptions, UntypedServiceImplementation, handl
 import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.compute.v1";
 export interface GetDiskTypeRequest {
+    $type: 'yandex.cloud.compute.v1.GetDiskTypeRequest';
     /**
      * ID of the disk type to return information about.
      * To get the disk type ID use a [DiskTypeService.List] request.
@@ -11,6 +12,7 @@ export interface GetDiskTypeRequest {
     diskTypeId: string;
 }
 export interface ListDiskTypesRequest {
+    $type: 'yandex.cloud.compute.v1.ListDiskTypesRequest';
     /**
      * The maximum number of results per page to return. If the number of available
      * results is larger than [page_size],
@@ -25,6 +27,7 @@ export interface ListDiskTypesRequest {
     pageToken: string;
 }
 export interface ListDiskTypesResponse {
+    $type: 'yandex.cloud.compute.v1.ListDiskTypesResponse';
     /** List of disk types. */
     diskTypes: DiskType[];
     /**
@@ -38,6 +41,7 @@ export interface ListDiskTypesResponse {
     nextPageToken: string;
 }
 export declare const GetDiskTypeRequest: {
+    $type: "yandex.cloud.compute.v1.GetDiskTypeRequest";
     encode(message: GetDiskTypeRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): GetDiskTypeRequest;
     fromJSON(object: any): GetDiskTypeRequest;
@@ -45,6 +49,7 @@ export declare const GetDiskTypeRequest: {
     fromPartial(object: DeepPartial<GetDiskTypeRequest>): GetDiskTypeRequest;
 };
 export declare const ListDiskTypesRequest: {
+    $type: "yandex.cloud.compute.v1.ListDiskTypesRequest";
     encode(message: ListDiskTypesRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListDiskTypesRequest;
     fromJSON(object: any): ListDiskTypesRequest;
@@ -52,6 +57,7 @@ export declare const ListDiskTypesRequest: {
     fromPartial(object: DeepPartial<ListDiskTypesRequest>): ListDiskTypesRequest;
 };
 export declare const ListDiskTypesResponse: {
+    $type: "yandex.cloud.compute.v1.ListDiskTypesResponse";
     encode(message: ListDiskTypesResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListDiskTypesResponse;
     fromJSON(object: any): ListDiskTypesResponse;
@@ -112,6 +118,6 @@ export interface DiskTypeServiceClient extends Client {
 export declare const DiskTypeServiceClient: new (address: string, credentials: ChannelCredentials, options?: Partial<ChannelOptions> | undefined) => DiskTypeServiceClient;
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

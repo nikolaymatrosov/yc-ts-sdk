@@ -12,6 +12,7 @@ import { ChannelCredentials, ChannelOptions, UntypedServiceImplementation, handl
 import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.mdb.clickhouse.v1";
 export interface GetClusterRequest {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.GetClusterRequest';
     /**
      * ID of the ClickHouse Cluster resource to return.
      * To get the cluster ID, use a [ClusterService.List] request.
@@ -19,6 +20,7 @@ export interface GetClusterRequest {
     clusterId: string;
 }
 export interface ListClustersRequest {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.ListClustersRequest';
     /**
      * ID of the folder to list ClickHouse clusters in.
      * To get the folder ID, use a [yandex.cloud.resourcemanager.v1.FolderService.List] request.
@@ -45,6 +47,7 @@ export interface ListClustersRequest {
     filter: string;
 }
 export interface ListClustersResponse {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.ListClustersResponse';
     /** List of ClickHouse Cluster resources. */
     clusters: Cluster[];
     /**
@@ -56,6 +59,7 @@ export interface ListClustersResponse {
     nextPageToken: string;
 }
 export interface CreateClusterRequest {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.CreateClusterRequest';
     /** ID of the folder to create the ClickHouse cluster in. */
     folderId: string;
     /** Name of the ClickHouse cluster. The name must be unique within the folder. */
@@ -91,14 +95,17 @@ export interface CreateClusterRequest {
     deletionProtection: boolean;
 }
 export interface CreateClusterRequest_LabelsEntry {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.CreateClusterRequest.LabelsEntry';
     key: string;
     value: string;
 }
 export interface CreateClusterMetadata {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.CreateClusterMetadata';
     /** ID of the ClickHouse cluster that is being created. */
     clusterId: string;
 }
 export interface UpdateClusterRequest {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.UpdateClusterRequest';
     /**
      * ID of the ClickHouse Cluster resource to update.
      * To get the ClickHouse cluster ID, use a [ClusterService.List] request.
@@ -132,14 +139,17 @@ export interface UpdateClusterRequest {
     deletionProtection: boolean;
 }
 export interface UpdateClusterRequest_LabelsEntry {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.UpdateClusterRequest.LabelsEntry';
     key: string;
     value: string;
 }
 export interface UpdateClusterMetadata {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.UpdateClusterMetadata';
     /** ID of the ClickHouse Cluster resource that is being updated. */
     clusterId: string;
 }
 export interface DeleteClusterRequest {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.DeleteClusterRequest';
     /**
      * ID of the ClickHouse cluster to delete.
      * To get the ClickHouse cluster ID, use a [ClusterService.List] request.
@@ -147,32 +157,39 @@ export interface DeleteClusterRequest {
     clusterId: string;
 }
 export interface DeleteClusterMetadata {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.DeleteClusterMetadata';
     /** ID of the ClickHouse cluster that is being deleted. */
     clusterId: string;
 }
 export interface StartClusterRequest {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.StartClusterRequest';
     /** ID of the ClickHouse cluster to start. */
     clusterId: string;
 }
 export interface StartClusterMetadata {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.StartClusterMetadata';
     /** ID of the ClickHouse cluster being started. */
     clusterId: string;
 }
 export interface StopClusterRequest {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.StopClusterRequest';
     /** ID of the ClickHouse cluster to stop. */
     clusterId: string;
 }
 export interface StopClusterMetadata {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.StopClusterMetadata';
     /** ID of the ClickHouse cluster being stopped. */
     clusterId: string;
 }
 export interface MoveClusterRequest {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.MoveClusterRequest';
     /** ID of the ClickHouse cluster to move. */
     clusterId: string;
     /** ID of the destination folder. */
     destinationFolderId: string;
 }
 export interface MoveClusterMetadata {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.MoveClusterMetadata';
     /** ID of the ClickHouse cluster being moved. */
     clusterId: string;
     /** ID of the source folder. */
@@ -181,6 +198,7 @@ export interface MoveClusterMetadata {
     destinationFolderId: string;
 }
 export interface AddClusterZookeeperRequest {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.AddClusterZookeeperRequest';
     /** ID of the ClickHouse cluster to modify. */
     clusterId: string;
     /** Resources allocated to Zookeeper hosts. */
@@ -189,10 +207,12 @@ export interface AddClusterZookeeperRequest {
     hostSpecs: HostSpec[];
 }
 export interface AddClusterZookeeperMetadata {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.AddClusterZookeeperMetadata';
     /** ID of the ClickHouse cluster. */
     clusterId: string;
 }
 export interface BackupClusterRequest {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.BackupClusterRequest';
     /**
      * ID of the ClickHouse cluster to back up.
      * To get the ClickHouse cluster ID use a [ClusterService.List] request.
@@ -200,10 +220,12 @@ export interface BackupClusterRequest {
     clusterId: string;
 }
 export interface BackupClusterMetadata {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.BackupClusterMetadata';
     /** ID of the ClickHouse cluster that is being backed up. */
     clusterId: string;
 }
 export interface RestoreClusterRequest {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.RestoreClusterRequest';
     /**
      * ID of the backup to create a cluster from.
      * To get the backup ID, use a [ClusterService.ListBackups] request.
@@ -239,16 +261,19 @@ export interface RestoreClusterRequest {
     securityGroupIds: string[];
 }
 export interface RestoreClusterRequest_LabelsEntry {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.RestoreClusterRequest.LabelsEntry';
     key: string;
     value: string;
 }
 export interface RestoreClusterMetadata {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.RestoreClusterMetadata';
     /** ID of the new ClickHouse cluster that is being created from a backup. */
     clusterId: string;
     /** ID of the backup that is being used for creating a cluster. */
     backupId: string;
 }
 export interface RescheduleMaintenanceRequest {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.RescheduleMaintenanceRequest';
     /** ID of the ClickHouse cluster to reschedule the maintenance operation for. */
     clusterId: string;
     /** The type of reschedule request. */
@@ -270,12 +295,14 @@ export declare function rescheduleMaintenanceRequest_RescheduleTypeFromJSON(obje
 export declare function rescheduleMaintenanceRequest_RescheduleTypeToJSON(object: RescheduleMaintenanceRequest_RescheduleType): string;
 /** Rescheduled maintenance operation metadata. */
 export interface RescheduleMaintenanceMetadata {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.RescheduleMaintenanceMetadata';
     /** Required. ID of the ClickHouse cluster. */
     clusterId: string;
     /** Required. The time until which this maintenance operation is to be delayed. */
     delayedUntil: Date | undefined;
 }
 export interface LogRecord {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.LogRecord';
     /** Log record timestamp in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format. */
     timestamp: Date | undefined;
     /** Contents of the log record. */
@@ -284,10 +311,12 @@ export interface LogRecord {
     };
 }
 export interface LogRecord_MessageEntry {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.LogRecord.MessageEntry';
     key: string;
     value: string;
 }
 export interface ListClusterLogsRequest {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.ListClusterLogsRequest';
     /**
      * ID of the ClickHouse cluster to request logs for.
      * To get the ClickHouse cluster ID, use a [ClusterService.List] request.
@@ -325,6 +354,7 @@ export declare enum ListClusterLogsRequest_ServiceType {
 export declare function listClusterLogsRequest_ServiceTypeFromJSON(object: any): ListClusterLogsRequest_ServiceType;
 export declare function listClusterLogsRequest_ServiceTypeToJSON(object: ListClusterLogsRequest_ServiceType): string;
 export interface ListClusterLogsResponse {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.ListClusterLogsResponse';
     /** Requested log records. */
     logs: LogRecord[];
     /**
@@ -337,6 +367,7 @@ export interface ListClusterLogsResponse {
     nextPageToken: string;
 }
 export interface StreamLogRecord {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.StreamLogRecord';
     /** One of the requested log records. */
     record: LogRecord | undefined;
     /**
@@ -348,6 +379,7 @@ export interface StreamLogRecord {
     nextRecordToken: string;
 }
 export interface StreamClusterLogsRequest {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.StreamClusterLogsRequest';
     /** Required. ID of the ClickHouse cluster. */
     clusterId: string;
     /** Columns from logs table to get in the response. */
@@ -387,6 +419,7 @@ export declare enum StreamClusterLogsRequest_ServiceType {
 export declare function streamClusterLogsRequest_ServiceTypeFromJSON(object: any): StreamClusterLogsRequest_ServiceType;
 export declare function streamClusterLogsRequest_ServiceTypeToJSON(object: StreamClusterLogsRequest_ServiceType): string;
 export interface ListClusterOperationsRequest {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.ListClusterOperationsRequest';
     /** ID of the ClickHouse Cluster resource to list operations for. */
     clusterId: string;
     /**
@@ -402,6 +435,7 @@ export interface ListClusterOperationsRequest {
     pageToken: string;
 }
 export interface ListClusterOperationsResponse {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.ListClusterOperationsResponse';
     /** List of Operation resources for the specified ClickHouse cluster. */
     operations: Operation[];
     /**
@@ -413,6 +447,7 @@ export interface ListClusterOperationsResponse {
     nextPageToken: string;
 }
 export interface ListClusterBackupsRequest {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.ListClusterBackupsRequest';
     /**
      * ID of the ClickHouse cluster.
      * To get the ClickHouse cluster ID, use a [ClusterService.List] request.
@@ -431,6 +466,7 @@ export interface ListClusterBackupsRequest {
     pageToken: string;
 }
 export interface ListClusterBackupsResponse {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.ListClusterBackupsResponse';
     /** List of ClickHouse Backup resources. */
     backups: Backup[];
     /**
@@ -442,6 +478,7 @@ export interface ListClusterBackupsResponse {
     nextPageToken: string;
 }
 export interface ListClusterHostsRequest {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.ListClusterHostsRequest';
     /**
      * ID of the ClickHouse cluster.
      * To get the ClickHouse cluster ID use a [ClusterService.List] request.
@@ -460,6 +497,7 @@ export interface ListClusterHostsRequest {
     pageToken: string;
 }
 export interface ListClusterHostsResponse {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.ListClusterHostsResponse';
     /** Requested list of hosts for the cluster. */
     hosts: Host[];
     /**
@@ -471,6 +509,7 @@ export interface ListClusterHostsResponse {
     nextPageToken: string;
 }
 export interface AddClusterHostsRequest {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.AddClusterHostsRequest';
     /**
      * ID of the ClickHouse cluster to add hosts to.
      * To get the ClickHouse cluster ID, use a [ClusterService.List] request.
@@ -482,12 +521,14 @@ export interface AddClusterHostsRequest {
     copySchema: boolean | undefined;
 }
 export interface AddClusterHostsMetadata {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.AddClusterHostsMetadata';
     /** ID of the ClickHouse cluster to which the hosts are being added. */
     clusterId: string;
     /** Names of hosts that are being added to the cluster. */
     hostNames: string[];
 }
 export interface DeleteClusterHostsRequest {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.DeleteClusterHostsRequest';
     /**
      * ID of the ClickHouse cluster to remove hosts from.
      * To get the ClickHouse cluster ID, use a [ClusterService.List] request.
@@ -497,12 +538,14 @@ export interface DeleteClusterHostsRequest {
     hostNames: string[];
 }
 export interface DeleteClusterHostsMetadata {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.DeleteClusterHostsMetadata';
     /** ID of the ClickHouse cluster to remove hosts from. */
     clusterId: string;
     /** Names of hosts that are being deleted. */
     hostNames: string[];
 }
 export interface GetClusterShardRequest {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.GetClusterShardRequest';
     /**
      * ID of the cluster that the shard belongs to.
      * To get the cluster ID, use a [ClusterService.List] request.
@@ -516,6 +559,7 @@ export interface GetClusterShardRequest {
     shardName: string;
 }
 export interface ListClusterShardsRequest {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.ListClusterShardsRequest';
     /**
      * ID of the ClickHouse cluster to list shards in.
      * To get the cluster ID, use a [ClusterService.List] request.
@@ -534,6 +578,7 @@ export interface ListClusterShardsRequest {
     pageToken: string;
 }
 export interface ListClusterShardsResponse {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.ListClusterShardsResponse';
     /** List of ClickHouse shards. */
     shards: Shard[];
     /**
@@ -545,6 +590,7 @@ export interface ListClusterShardsResponse {
     nextPageToken: string;
 }
 export interface AddClusterShardRequest {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.AddClusterShardRequest';
     /**
      * ID of the ClickHouse cluster to add a shard to.
      * To get the ClickHouse cluster ID, use a [ClusterService.List] request.
@@ -560,12 +606,14 @@ export interface AddClusterShardRequest {
     copySchema: boolean | undefined;
 }
 export interface AddClusterShardMetadata {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.AddClusterShardMetadata';
     /** ID of the cluster that a shard is being added to. */
     clusterId: string;
     /** Name of the shard being created. */
     shardName: string;
 }
 export interface UpdateClusterShardRequest {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.UpdateClusterShardRequest';
     /**
      * ID of the ClickHouse cluster the shard belongs to.
      * To get the cluster ID, use a [ClusterService.List] request.
@@ -582,12 +630,14 @@ export interface UpdateClusterShardRequest {
     configSpec: ShardConfigSpec | undefined;
 }
 export interface UpdateClusterShardMetadata {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.UpdateClusterShardMetadata';
     /** ID of the cluster that contains the shard being updated. */
     clusterId: string;
     /** Name of the shard being updated. */
     shardName: string;
 }
 export interface DeleteClusterShardRequest {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.DeleteClusterShardRequest';
     /**
      * ID of the ClickHouse cluster the shard belongs to.
      * To get the cluster ID, use a [ClusterService.List] request.
@@ -600,12 +650,14 @@ export interface DeleteClusterShardRequest {
     shardName: string;
 }
 export interface DeleteClusterShardMetadata {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.DeleteClusterShardMetadata';
     /** ID of the cluster that contains the shard being deleted. */
     clusterId: string;
     /** Name of the shard being deleted. */
     shardName: string;
 }
 export interface GetClusterShardGroupRequest {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.GetClusterShardGroupRequest';
     /**
      * ID of the cluster that the shard group belongs to.
      *
@@ -620,6 +672,7 @@ export interface GetClusterShardGroupRequest {
     shardGroupName: string;
 }
 export interface ListClusterShardGroupsRequest {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.ListClusterShardGroupsRequest';
     /**
      * ID of the cluster that the shard group belongs to.
      *
@@ -640,6 +693,7 @@ export interface ListClusterShardGroupsRequest {
     pageToken: string;
 }
 export interface ListClusterShardGroupsResponse {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.ListClusterShardGroupsResponse';
     /** List of ClickHouse cluster's shard groups. */
     shardGroups: ShardGroup[];
     /**
@@ -651,6 +705,7 @@ export interface ListClusterShardGroupsResponse {
     nextPageToken: string;
 }
 export interface CreateClusterShardGroupRequest {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.CreateClusterShardGroupRequest';
     /**
      * ID of the ClickHouse cluster to add a shard group to.
      *
@@ -669,12 +724,14 @@ export interface CreateClusterShardGroupRequest {
     shardNames: string[];
 }
 export interface CreateClusterShardGroupMetadata {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.CreateClusterShardGroupMetadata';
     /** ID of the cluster to add a shard group to. */
     clusterId: string;
     /** Name of the shard group that is being added. */
     shardGroupName: string;
 }
 export interface UpdateClusterShardGroupRequest {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.UpdateClusterShardGroupRequest';
     /**
      * ID of the ClickHouse cluster that contains the shard group to update.
      *
@@ -694,12 +751,14 @@ export interface UpdateClusterShardGroupRequest {
     shardNames: string[];
 }
 export interface UpdateClusterShardGroupMetadata {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.UpdateClusterShardGroupMetadata';
     /** ID of the cluster that contains the shard group being updated. */
     clusterId: string;
     /** Name of the shard group that is being updated. */
     shardGroupName: string;
 }
 export interface DeleteClusterShardGroupRequest {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.DeleteClusterShardGroupRequest';
     /**
      * ID of the ClickHouse cluster that contains the shard group to delete.
      *
@@ -714,12 +773,14 @@ export interface DeleteClusterShardGroupRequest {
     shardGroupName: string;
 }
 export interface DeleteClusterShardGroupMetadata {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.DeleteClusterShardGroupMetadata';
     /** ID of the cluster that contains the shard group being deleted. */
     clusterId: string;
     /** Name of the shard group that is being deleted. */
     shardGroupName: string;
 }
 export interface CreateClusterExternalDictionaryRequest {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.CreateClusterExternalDictionaryRequest';
     /**
      * ID of the ClickHouse cluster to create the external dictionary for.
      * To get the cluster ID, use a [ClusterService.List] request.
@@ -729,10 +790,12 @@ export interface CreateClusterExternalDictionaryRequest {
     externalDictionary: ClickhouseConfig_ExternalDictionary | undefined;
 }
 export interface CreateClusterExternalDictionaryMetadata {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.CreateClusterExternalDictionaryMetadata';
     /** ID of the cluster for which an external dictionary is being created. */
     clusterId: string;
 }
 export interface DeleteClusterExternalDictionaryRequest {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.DeleteClusterExternalDictionaryRequest';
     /**
      * ID of the ClickHouse cluster to delete the external dictionary from.
      * To get the cluster ID, use a [ClusterService.List] request.
@@ -742,10 +805,12 @@ export interface DeleteClusterExternalDictionaryRequest {
     externalDictionaryName: string;
 }
 export interface DeleteClusterExternalDictionaryMetadata {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.DeleteClusterExternalDictionaryMetadata';
     /** ID of the cluster where an external dictionary is being deleted. */
     clusterId: string;
 }
 export interface HostSpec {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.HostSpec';
     /**
      * ID of the availability zone where the host resides.
      * To get a list of available zones, use the [yandex.cloud.compute.v1.ZoneService.List] request.
@@ -774,6 +839,7 @@ export interface HostSpec {
     shardName: string;
 }
 export interface ConfigSpec {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.ConfigSpec';
     /** Version of the ClickHouse server software. */
     version: string;
     /** Configuration and resources for a ClickHouse server. */
@@ -797,12 +863,14 @@ export interface ConfigSpec {
     adminPassword: string;
 }
 export interface ConfigSpec_Clickhouse {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.ConfigSpec.Clickhouse';
     /** Configuration for a ClickHouse server. */
     config: ClickhouseConfig | undefined;
     /** Resources allocated to ClickHouse hosts. */
     resources: Resources | undefined;
 }
 export interface ConfigSpec_Zookeeper {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.ConfigSpec.Zookeeper';
     /**
      * Resources allocated to ZooKeeper hosts. If not set, minimal available resources will be used.
      * All available resource presets can be retrieved with a [ResourcePresetService.List] request.
@@ -810,10 +878,12 @@ export interface ConfigSpec_Zookeeper {
     resources: Resources | undefined;
 }
 export interface ShardConfigSpec {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.ShardConfigSpec';
     /** ClickHouse configuration for a shard. */
     clickhouse: ShardConfigSpec_Clickhouse | undefined;
 }
 export interface ShardConfigSpec_Clickhouse {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.ShardConfigSpec.Clickhouse';
     /** ClickHouse settings for the shard. */
     config: ClickhouseConfig | undefined;
     /** Computational resources for the shard. */
@@ -825,6 +895,7 @@ export interface ShardConfigSpec_Clickhouse {
     weight: number | undefined;
 }
 export declare const GetClusterRequest: {
+    $type: "yandex.cloud.mdb.clickhouse.v1.GetClusterRequest";
     encode(message: GetClusterRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): GetClusterRequest;
     fromJSON(object: any): GetClusterRequest;
@@ -832,6 +903,7 @@ export declare const GetClusterRequest: {
     fromPartial(object: DeepPartial<GetClusterRequest>): GetClusterRequest;
 };
 export declare const ListClustersRequest: {
+    $type: "yandex.cloud.mdb.clickhouse.v1.ListClustersRequest";
     encode(message: ListClustersRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListClustersRequest;
     fromJSON(object: any): ListClustersRequest;
@@ -839,6 +911,7 @@ export declare const ListClustersRequest: {
     fromPartial(object: DeepPartial<ListClustersRequest>): ListClustersRequest;
 };
 export declare const ListClustersResponse: {
+    $type: "yandex.cloud.mdb.clickhouse.v1.ListClustersResponse";
     encode(message: ListClustersResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListClustersResponse;
     fromJSON(object: any): ListClustersResponse;
@@ -846,6 +919,7 @@ export declare const ListClustersResponse: {
     fromPartial(object: DeepPartial<ListClustersResponse>): ListClustersResponse;
 };
 export declare const CreateClusterRequest: {
+    $type: "yandex.cloud.mdb.clickhouse.v1.CreateClusterRequest";
     encode(message: CreateClusterRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateClusterRequest;
     fromJSON(object: any): CreateClusterRequest;
@@ -853,6 +927,7 @@ export declare const CreateClusterRequest: {
     fromPartial(object: DeepPartial<CreateClusterRequest>): CreateClusterRequest;
 };
 export declare const CreateClusterRequest_LabelsEntry: {
+    $type: "yandex.cloud.mdb.clickhouse.v1.CreateClusterRequest.LabelsEntry";
     encode(message: CreateClusterRequest_LabelsEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateClusterRequest_LabelsEntry;
     fromJSON(object: any): CreateClusterRequest_LabelsEntry;
@@ -860,6 +935,7 @@ export declare const CreateClusterRequest_LabelsEntry: {
     fromPartial(object: DeepPartial<CreateClusterRequest_LabelsEntry>): CreateClusterRequest_LabelsEntry;
 };
 export declare const CreateClusterMetadata: {
+    $type: "yandex.cloud.mdb.clickhouse.v1.CreateClusterMetadata";
     encode(message: CreateClusterMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateClusterMetadata;
     fromJSON(object: any): CreateClusterMetadata;
@@ -867,6 +943,7 @@ export declare const CreateClusterMetadata: {
     fromPartial(object: DeepPartial<CreateClusterMetadata>): CreateClusterMetadata;
 };
 export declare const UpdateClusterRequest: {
+    $type: "yandex.cloud.mdb.clickhouse.v1.UpdateClusterRequest";
     encode(message: UpdateClusterRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateClusterRequest;
     fromJSON(object: any): UpdateClusterRequest;
@@ -874,6 +951,7 @@ export declare const UpdateClusterRequest: {
     fromPartial(object: DeepPartial<UpdateClusterRequest>): UpdateClusterRequest;
 };
 export declare const UpdateClusterRequest_LabelsEntry: {
+    $type: "yandex.cloud.mdb.clickhouse.v1.UpdateClusterRequest.LabelsEntry";
     encode(message: UpdateClusterRequest_LabelsEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateClusterRequest_LabelsEntry;
     fromJSON(object: any): UpdateClusterRequest_LabelsEntry;
@@ -881,6 +959,7 @@ export declare const UpdateClusterRequest_LabelsEntry: {
     fromPartial(object: DeepPartial<UpdateClusterRequest_LabelsEntry>): UpdateClusterRequest_LabelsEntry;
 };
 export declare const UpdateClusterMetadata: {
+    $type: "yandex.cloud.mdb.clickhouse.v1.UpdateClusterMetadata";
     encode(message: UpdateClusterMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateClusterMetadata;
     fromJSON(object: any): UpdateClusterMetadata;
@@ -888,6 +967,7 @@ export declare const UpdateClusterMetadata: {
     fromPartial(object: DeepPartial<UpdateClusterMetadata>): UpdateClusterMetadata;
 };
 export declare const DeleteClusterRequest: {
+    $type: "yandex.cloud.mdb.clickhouse.v1.DeleteClusterRequest";
     encode(message: DeleteClusterRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteClusterRequest;
     fromJSON(object: any): DeleteClusterRequest;
@@ -895,6 +975,7 @@ export declare const DeleteClusterRequest: {
     fromPartial(object: DeepPartial<DeleteClusterRequest>): DeleteClusterRequest;
 };
 export declare const DeleteClusterMetadata: {
+    $type: "yandex.cloud.mdb.clickhouse.v1.DeleteClusterMetadata";
     encode(message: DeleteClusterMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteClusterMetadata;
     fromJSON(object: any): DeleteClusterMetadata;
@@ -902,6 +983,7 @@ export declare const DeleteClusterMetadata: {
     fromPartial(object: DeepPartial<DeleteClusterMetadata>): DeleteClusterMetadata;
 };
 export declare const StartClusterRequest: {
+    $type: "yandex.cloud.mdb.clickhouse.v1.StartClusterRequest";
     encode(message: StartClusterRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): StartClusterRequest;
     fromJSON(object: any): StartClusterRequest;
@@ -909,6 +991,7 @@ export declare const StartClusterRequest: {
     fromPartial(object: DeepPartial<StartClusterRequest>): StartClusterRequest;
 };
 export declare const StartClusterMetadata: {
+    $type: "yandex.cloud.mdb.clickhouse.v1.StartClusterMetadata";
     encode(message: StartClusterMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): StartClusterMetadata;
     fromJSON(object: any): StartClusterMetadata;
@@ -916,6 +999,7 @@ export declare const StartClusterMetadata: {
     fromPartial(object: DeepPartial<StartClusterMetadata>): StartClusterMetadata;
 };
 export declare const StopClusterRequest: {
+    $type: "yandex.cloud.mdb.clickhouse.v1.StopClusterRequest";
     encode(message: StopClusterRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): StopClusterRequest;
     fromJSON(object: any): StopClusterRequest;
@@ -923,6 +1007,7 @@ export declare const StopClusterRequest: {
     fromPartial(object: DeepPartial<StopClusterRequest>): StopClusterRequest;
 };
 export declare const StopClusterMetadata: {
+    $type: "yandex.cloud.mdb.clickhouse.v1.StopClusterMetadata";
     encode(message: StopClusterMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): StopClusterMetadata;
     fromJSON(object: any): StopClusterMetadata;
@@ -930,6 +1015,7 @@ export declare const StopClusterMetadata: {
     fromPartial(object: DeepPartial<StopClusterMetadata>): StopClusterMetadata;
 };
 export declare const MoveClusterRequest: {
+    $type: "yandex.cloud.mdb.clickhouse.v1.MoveClusterRequest";
     encode(message: MoveClusterRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): MoveClusterRequest;
     fromJSON(object: any): MoveClusterRequest;
@@ -937,6 +1023,7 @@ export declare const MoveClusterRequest: {
     fromPartial(object: DeepPartial<MoveClusterRequest>): MoveClusterRequest;
 };
 export declare const MoveClusterMetadata: {
+    $type: "yandex.cloud.mdb.clickhouse.v1.MoveClusterMetadata";
     encode(message: MoveClusterMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): MoveClusterMetadata;
     fromJSON(object: any): MoveClusterMetadata;
@@ -944,6 +1031,7 @@ export declare const MoveClusterMetadata: {
     fromPartial(object: DeepPartial<MoveClusterMetadata>): MoveClusterMetadata;
 };
 export declare const AddClusterZookeeperRequest: {
+    $type: "yandex.cloud.mdb.clickhouse.v1.AddClusterZookeeperRequest";
     encode(message: AddClusterZookeeperRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): AddClusterZookeeperRequest;
     fromJSON(object: any): AddClusterZookeeperRequest;
@@ -951,6 +1039,7 @@ export declare const AddClusterZookeeperRequest: {
     fromPartial(object: DeepPartial<AddClusterZookeeperRequest>): AddClusterZookeeperRequest;
 };
 export declare const AddClusterZookeeperMetadata: {
+    $type: "yandex.cloud.mdb.clickhouse.v1.AddClusterZookeeperMetadata";
     encode(message: AddClusterZookeeperMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): AddClusterZookeeperMetadata;
     fromJSON(object: any): AddClusterZookeeperMetadata;
@@ -958,6 +1047,7 @@ export declare const AddClusterZookeeperMetadata: {
     fromPartial(object: DeepPartial<AddClusterZookeeperMetadata>): AddClusterZookeeperMetadata;
 };
 export declare const BackupClusterRequest: {
+    $type: "yandex.cloud.mdb.clickhouse.v1.BackupClusterRequest";
     encode(message: BackupClusterRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): BackupClusterRequest;
     fromJSON(object: any): BackupClusterRequest;
@@ -965,6 +1055,7 @@ export declare const BackupClusterRequest: {
     fromPartial(object: DeepPartial<BackupClusterRequest>): BackupClusterRequest;
 };
 export declare const BackupClusterMetadata: {
+    $type: "yandex.cloud.mdb.clickhouse.v1.BackupClusterMetadata";
     encode(message: BackupClusterMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): BackupClusterMetadata;
     fromJSON(object: any): BackupClusterMetadata;
@@ -972,6 +1063,7 @@ export declare const BackupClusterMetadata: {
     fromPartial(object: DeepPartial<BackupClusterMetadata>): BackupClusterMetadata;
 };
 export declare const RestoreClusterRequest: {
+    $type: "yandex.cloud.mdb.clickhouse.v1.RestoreClusterRequest";
     encode(message: RestoreClusterRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): RestoreClusterRequest;
     fromJSON(object: any): RestoreClusterRequest;
@@ -979,6 +1071,7 @@ export declare const RestoreClusterRequest: {
     fromPartial(object: DeepPartial<RestoreClusterRequest>): RestoreClusterRequest;
 };
 export declare const RestoreClusterRequest_LabelsEntry: {
+    $type: "yandex.cloud.mdb.clickhouse.v1.RestoreClusterRequest.LabelsEntry";
     encode(message: RestoreClusterRequest_LabelsEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): RestoreClusterRequest_LabelsEntry;
     fromJSON(object: any): RestoreClusterRequest_LabelsEntry;
@@ -986,6 +1079,7 @@ export declare const RestoreClusterRequest_LabelsEntry: {
     fromPartial(object: DeepPartial<RestoreClusterRequest_LabelsEntry>): RestoreClusterRequest_LabelsEntry;
 };
 export declare const RestoreClusterMetadata: {
+    $type: "yandex.cloud.mdb.clickhouse.v1.RestoreClusterMetadata";
     encode(message: RestoreClusterMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): RestoreClusterMetadata;
     fromJSON(object: any): RestoreClusterMetadata;
@@ -993,6 +1087,7 @@ export declare const RestoreClusterMetadata: {
     fromPartial(object: DeepPartial<RestoreClusterMetadata>): RestoreClusterMetadata;
 };
 export declare const RescheduleMaintenanceRequest: {
+    $type: "yandex.cloud.mdb.clickhouse.v1.RescheduleMaintenanceRequest";
     encode(message: RescheduleMaintenanceRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): RescheduleMaintenanceRequest;
     fromJSON(object: any): RescheduleMaintenanceRequest;
@@ -1000,6 +1095,7 @@ export declare const RescheduleMaintenanceRequest: {
     fromPartial(object: DeepPartial<RescheduleMaintenanceRequest>): RescheduleMaintenanceRequest;
 };
 export declare const RescheduleMaintenanceMetadata: {
+    $type: "yandex.cloud.mdb.clickhouse.v1.RescheduleMaintenanceMetadata";
     encode(message: RescheduleMaintenanceMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): RescheduleMaintenanceMetadata;
     fromJSON(object: any): RescheduleMaintenanceMetadata;
@@ -1007,6 +1103,7 @@ export declare const RescheduleMaintenanceMetadata: {
     fromPartial(object: DeepPartial<RescheduleMaintenanceMetadata>): RescheduleMaintenanceMetadata;
 };
 export declare const LogRecord: {
+    $type: "yandex.cloud.mdb.clickhouse.v1.LogRecord";
     encode(message: LogRecord, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): LogRecord;
     fromJSON(object: any): LogRecord;
@@ -1014,6 +1111,7 @@ export declare const LogRecord: {
     fromPartial(object: DeepPartial<LogRecord>): LogRecord;
 };
 export declare const LogRecord_MessageEntry: {
+    $type: "yandex.cloud.mdb.clickhouse.v1.LogRecord.MessageEntry";
     encode(message: LogRecord_MessageEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): LogRecord_MessageEntry;
     fromJSON(object: any): LogRecord_MessageEntry;
@@ -1021,6 +1119,7 @@ export declare const LogRecord_MessageEntry: {
     fromPartial(object: DeepPartial<LogRecord_MessageEntry>): LogRecord_MessageEntry;
 };
 export declare const ListClusterLogsRequest: {
+    $type: "yandex.cloud.mdb.clickhouse.v1.ListClusterLogsRequest";
     encode(message: ListClusterLogsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListClusterLogsRequest;
     fromJSON(object: any): ListClusterLogsRequest;
@@ -1028,6 +1127,7 @@ export declare const ListClusterLogsRequest: {
     fromPartial(object: DeepPartial<ListClusterLogsRequest>): ListClusterLogsRequest;
 };
 export declare const ListClusterLogsResponse: {
+    $type: "yandex.cloud.mdb.clickhouse.v1.ListClusterLogsResponse";
     encode(message: ListClusterLogsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListClusterLogsResponse;
     fromJSON(object: any): ListClusterLogsResponse;
@@ -1035,6 +1135,7 @@ export declare const ListClusterLogsResponse: {
     fromPartial(object: DeepPartial<ListClusterLogsResponse>): ListClusterLogsResponse;
 };
 export declare const StreamLogRecord: {
+    $type: "yandex.cloud.mdb.clickhouse.v1.StreamLogRecord";
     encode(message: StreamLogRecord, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): StreamLogRecord;
     fromJSON(object: any): StreamLogRecord;
@@ -1042,6 +1143,7 @@ export declare const StreamLogRecord: {
     fromPartial(object: DeepPartial<StreamLogRecord>): StreamLogRecord;
 };
 export declare const StreamClusterLogsRequest: {
+    $type: "yandex.cloud.mdb.clickhouse.v1.StreamClusterLogsRequest";
     encode(message: StreamClusterLogsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): StreamClusterLogsRequest;
     fromJSON(object: any): StreamClusterLogsRequest;
@@ -1049,6 +1151,7 @@ export declare const StreamClusterLogsRequest: {
     fromPartial(object: DeepPartial<StreamClusterLogsRequest>): StreamClusterLogsRequest;
 };
 export declare const ListClusterOperationsRequest: {
+    $type: "yandex.cloud.mdb.clickhouse.v1.ListClusterOperationsRequest";
     encode(message: ListClusterOperationsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListClusterOperationsRequest;
     fromJSON(object: any): ListClusterOperationsRequest;
@@ -1056,6 +1159,7 @@ export declare const ListClusterOperationsRequest: {
     fromPartial(object: DeepPartial<ListClusterOperationsRequest>): ListClusterOperationsRequest;
 };
 export declare const ListClusterOperationsResponse: {
+    $type: "yandex.cloud.mdb.clickhouse.v1.ListClusterOperationsResponse";
     encode(message: ListClusterOperationsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListClusterOperationsResponse;
     fromJSON(object: any): ListClusterOperationsResponse;
@@ -1063,6 +1167,7 @@ export declare const ListClusterOperationsResponse: {
     fromPartial(object: DeepPartial<ListClusterOperationsResponse>): ListClusterOperationsResponse;
 };
 export declare const ListClusterBackupsRequest: {
+    $type: "yandex.cloud.mdb.clickhouse.v1.ListClusterBackupsRequest";
     encode(message: ListClusterBackupsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListClusterBackupsRequest;
     fromJSON(object: any): ListClusterBackupsRequest;
@@ -1070,6 +1175,7 @@ export declare const ListClusterBackupsRequest: {
     fromPartial(object: DeepPartial<ListClusterBackupsRequest>): ListClusterBackupsRequest;
 };
 export declare const ListClusterBackupsResponse: {
+    $type: "yandex.cloud.mdb.clickhouse.v1.ListClusterBackupsResponse";
     encode(message: ListClusterBackupsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListClusterBackupsResponse;
     fromJSON(object: any): ListClusterBackupsResponse;
@@ -1077,6 +1183,7 @@ export declare const ListClusterBackupsResponse: {
     fromPartial(object: DeepPartial<ListClusterBackupsResponse>): ListClusterBackupsResponse;
 };
 export declare const ListClusterHostsRequest: {
+    $type: "yandex.cloud.mdb.clickhouse.v1.ListClusterHostsRequest";
     encode(message: ListClusterHostsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListClusterHostsRequest;
     fromJSON(object: any): ListClusterHostsRequest;
@@ -1084,6 +1191,7 @@ export declare const ListClusterHostsRequest: {
     fromPartial(object: DeepPartial<ListClusterHostsRequest>): ListClusterHostsRequest;
 };
 export declare const ListClusterHostsResponse: {
+    $type: "yandex.cloud.mdb.clickhouse.v1.ListClusterHostsResponse";
     encode(message: ListClusterHostsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListClusterHostsResponse;
     fromJSON(object: any): ListClusterHostsResponse;
@@ -1091,6 +1199,7 @@ export declare const ListClusterHostsResponse: {
     fromPartial(object: DeepPartial<ListClusterHostsResponse>): ListClusterHostsResponse;
 };
 export declare const AddClusterHostsRequest: {
+    $type: "yandex.cloud.mdb.clickhouse.v1.AddClusterHostsRequest";
     encode(message: AddClusterHostsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): AddClusterHostsRequest;
     fromJSON(object: any): AddClusterHostsRequest;
@@ -1098,6 +1207,7 @@ export declare const AddClusterHostsRequest: {
     fromPartial(object: DeepPartial<AddClusterHostsRequest>): AddClusterHostsRequest;
 };
 export declare const AddClusterHostsMetadata: {
+    $type: "yandex.cloud.mdb.clickhouse.v1.AddClusterHostsMetadata";
     encode(message: AddClusterHostsMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): AddClusterHostsMetadata;
     fromJSON(object: any): AddClusterHostsMetadata;
@@ -1105,6 +1215,7 @@ export declare const AddClusterHostsMetadata: {
     fromPartial(object: DeepPartial<AddClusterHostsMetadata>): AddClusterHostsMetadata;
 };
 export declare const DeleteClusterHostsRequest: {
+    $type: "yandex.cloud.mdb.clickhouse.v1.DeleteClusterHostsRequest";
     encode(message: DeleteClusterHostsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteClusterHostsRequest;
     fromJSON(object: any): DeleteClusterHostsRequest;
@@ -1112,6 +1223,7 @@ export declare const DeleteClusterHostsRequest: {
     fromPartial(object: DeepPartial<DeleteClusterHostsRequest>): DeleteClusterHostsRequest;
 };
 export declare const DeleteClusterHostsMetadata: {
+    $type: "yandex.cloud.mdb.clickhouse.v1.DeleteClusterHostsMetadata";
     encode(message: DeleteClusterHostsMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteClusterHostsMetadata;
     fromJSON(object: any): DeleteClusterHostsMetadata;
@@ -1119,6 +1231,7 @@ export declare const DeleteClusterHostsMetadata: {
     fromPartial(object: DeepPartial<DeleteClusterHostsMetadata>): DeleteClusterHostsMetadata;
 };
 export declare const GetClusterShardRequest: {
+    $type: "yandex.cloud.mdb.clickhouse.v1.GetClusterShardRequest";
     encode(message: GetClusterShardRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): GetClusterShardRequest;
     fromJSON(object: any): GetClusterShardRequest;
@@ -1126,6 +1239,7 @@ export declare const GetClusterShardRequest: {
     fromPartial(object: DeepPartial<GetClusterShardRequest>): GetClusterShardRequest;
 };
 export declare const ListClusterShardsRequest: {
+    $type: "yandex.cloud.mdb.clickhouse.v1.ListClusterShardsRequest";
     encode(message: ListClusterShardsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListClusterShardsRequest;
     fromJSON(object: any): ListClusterShardsRequest;
@@ -1133,6 +1247,7 @@ export declare const ListClusterShardsRequest: {
     fromPartial(object: DeepPartial<ListClusterShardsRequest>): ListClusterShardsRequest;
 };
 export declare const ListClusterShardsResponse: {
+    $type: "yandex.cloud.mdb.clickhouse.v1.ListClusterShardsResponse";
     encode(message: ListClusterShardsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListClusterShardsResponse;
     fromJSON(object: any): ListClusterShardsResponse;
@@ -1140,6 +1255,7 @@ export declare const ListClusterShardsResponse: {
     fromPartial(object: DeepPartial<ListClusterShardsResponse>): ListClusterShardsResponse;
 };
 export declare const AddClusterShardRequest: {
+    $type: "yandex.cloud.mdb.clickhouse.v1.AddClusterShardRequest";
     encode(message: AddClusterShardRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): AddClusterShardRequest;
     fromJSON(object: any): AddClusterShardRequest;
@@ -1147,6 +1263,7 @@ export declare const AddClusterShardRequest: {
     fromPartial(object: DeepPartial<AddClusterShardRequest>): AddClusterShardRequest;
 };
 export declare const AddClusterShardMetadata: {
+    $type: "yandex.cloud.mdb.clickhouse.v1.AddClusterShardMetadata";
     encode(message: AddClusterShardMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): AddClusterShardMetadata;
     fromJSON(object: any): AddClusterShardMetadata;
@@ -1154,6 +1271,7 @@ export declare const AddClusterShardMetadata: {
     fromPartial(object: DeepPartial<AddClusterShardMetadata>): AddClusterShardMetadata;
 };
 export declare const UpdateClusterShardRequest: {
+    $type: "yandex.cloud.mdb.clickhouse.v1.UpdateClusterShardRequest";
     encode(message: UpdateClusterShardRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateClusterShardRequest;
     fromJSON(object: any): UpdateClusterShardRequest;
@@ -1161,6 +1279,7 @@ export declare const UpdateClusterShardRequest: {
     fromPartial(object: DeepPartial<UpdateClusterShardRequest>): UpdateClusterShardRequest;
 };
 export declare const UpdateClusterShardMetadata: {
+    $type: "yandex.cloud.mdb.clickhouse.v1.UpdateClusterShardMetadata";
     encode(message: UpdateClusterShardMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateClusterShardMetadata;
     fromJSON(object: any): UpdateClusterShardMetadata;
@@ -1168,6 +1287,7 @@ export declare const UpdateClusterShardMetadata: {
     fromPartial(object: DeepPartial<UpdateClusterShardMetadata>): UpdateClusterShardMetadata;
 };
 export declare const DeleteClusterShardRequest: {
+    $type: "yandex.cloud.mdb.clickhouse.v1.DeleteClusterShardRequest";
     encode(message: DeleteClusterShardRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteClusterShardRequest;
     fromJSON(object: any): DeleteClusterShardRequest;
@@ -1175,6 +1295,7 @@ export declare const DeleteClusterShardRequest: {
     fromPartial(object: DeepPartial<DeleteClusterShardRequest>): DeleteClusterShardRequest;
 };
 export declare const DeleteClusterShardMetadata: {
+    $type: "yandex.cloud.mdb.clickhouse.v1.DeleteClusterShardMetadata";
     encode(message: DeleteClusterShardMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteClusterShardMetadata;
     fromJSON(object: any): DeleteClusterShardMetadata;
@@ -1182,6 +1303,7 @@ export declare const DeleteClusterShardMetadata: {
     fromPartial(object: DeepPartial<DeleteClusterShardMetadata>): DeleteClusterShardMetadata;
 };
 export declare const GetClusterShardGroupRequest: {
+    $type: "yandex.cloud.mdb.clickhouse.v1.GetClusterShardGroupRequest";
     encode(message: GetClusterShardGroupRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): GetClusterShardGroupRequest;
     fromJSON(object: any): GetClusterShardGroupRequest;
@@ -1189,6 +1311,7 @@ export declare const GetClusterShardGroupRequest: {
     fromPartial(object: DeepPartial<GetClusterShardGroupRequest>): GetClusterShardGroupRequest;
 };
 export declare const ListClusterShardGroupsRequest: {
+    $type: "yandex.cloud.mdb.clickhouse.v1.ListClusterShardGroupsRequest";
     encode(message: ListClusterShardGroupsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListClusterShardGroupsRequest;
     fromJSON(object: any): ListClusterShardGroupsRequest;
@@ -1196,6 +1319,7 @@ export declare const ListClusterShardGroupsRequest: {
     fromPartial(object: DeepPartial<ListClusterShardGroupsRequest>): ListClusterShardGroupsRequest;
 };
 export declare const ListClusterShardGroupsResponse: {
+    $type: "yandex.cloud.mdb.clickhouse.v1.ListClusterShardGroupsResponse";
     encode(message: ListClusterShardGroupsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListClusterShardGroupsResponse;
     fromJSON(object: any): ListClusterShardGroupsResponse;
@@ -1203,6 +1327,7 @@ export declare const ListClusterShardGroupsResponse: {
     fromPartial(object: DeepPartial<ListClusterShardGroupsResponse>): ListClusterShardGroupsResponse;
 };
 export declare const CreateClusterShardGroupRequest: {
+    $type: "yandex.cloud.mdb.clickhouse.v1.CreateClusterShardGroupRequest";
     encode(message: CreateClusterShardGroupRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateClusterShardGroupRequest;
     fromJSON(object: any): CreateClusterShardGroupRequest;
@@ -1210,6 +1335,7 @@ export declare const CreateClusterShardGroupRequest: {
     fromPartial(object: DeepPartial<CreateClusterShardGroupRequest>): CreateClusterShardGroupRequest;
 };
 export declare const CreateClusterShardGroupMetadata: {
+    $type: "yandex.cloud.mdb.clickhouse.v1.CreateClusterShardGroupMetadata";
     encode(message: CreateClusterShardGroupMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateClusterShardGroupMetadata;
     fromJSON(object: any): CreateClusterShardGroupMetadata;
@@ -1217,6 +1343,7 @@ export declare const CreateClusterShardGroupMetadata: {
     fromPartial(object: DeepPartial<CreateClusterShardGroupMetadata>): CreateClusterShardGroupMetadata;
 };
 export declare const UpdateClusterShardGroupRequest: {
+    $type: "yandex.cloud.mdb.clickhouse.v1.UpdateClusterShardGroupRequest";
     encode(message: UpdateClusterShardGroupRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateClusterShardGroupRequest;
     fromJSON(object: any): UpdateClusterShardGroupRequest;
@@ -1224,6 +1351,7 @@ export declare const UpdateClusterShardGroupRequest: {
     fromPartial(object: DeepPartial<UpdateClusterShardGroupRequest>): UpdateClusterShardGroupRequest;
 };
 export declare const UpdateClusterShardGroupMetadata: {
+    $type: "yandex.cloud.mdb.clickhouse.v1.UpdateClusterShardGroupMetadata";
     encode(message: UpdateClusterShardGroupMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateClusterShardGroupMetadata;
     fromJSON(object: any): UpdateClusterShardGroupMetadata;
@@ -1231,6 +1359,7 @@ export declare const UpdateClusterShardGroupMetadata: {
     fromPartial(object: DeepPartial<UpdateClusterShardGroupMetadata>): UpdateClusterShardGroupMetadata;
 };
 export declare const DeleteClusterShardGroupRequest: {
+    $type: "yandex.cloud.mdb.clickhouse.v1.DeleteClusterShardGroupRequest";
     encode(message: DeleteClusterShardGroupRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteClusterShardGroupRequest;
     fromJSON(object: any): DeleteClusterShardGroupRequest;
@@ -1238,6 +1367,7 @@ export declare const DeleteClusterShardGroupRequest: {
     fromPartial(object: DeepPartial<DeleteClusterShardGroupRequest>): DeleteClusterShardGroupRequest;
 };
 export declare const DeleteClusterShardGroupMetadata: {
+    $type: "yandex.cloud.mdb.clickhouse.v1.DeleteClusterShardGroupMetadata";
     encode(message: DeleteClusterShardGroupMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteClusterShardGroupMetadata;
     fromJSON(object: any): DeleteClusterShardGroupMetadata;
@@ -1245,6 +1375,7 @@ export declare const DeleteClusterShardGroupMetadata: {
     fromPartial(object: DeepPartial<DeleteClusterShardGroupMetadata>): DeleteClusterShardGroupMetadata;
 };
 export declare const CreateClusterExternalDictionaryRequest: {
+    $type: "yandex.cloud.mdb.clickhouse.v1.CreateClusterExternalDictionaryRequest";
     encode(message: CreateClusterExternalDictionaryRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateClusterExternalDictionaryRequest;
     fromJSON(object: any): CreateClusterExternalDictionaryRequest;
@@ -1252,6 +1383,7 @@ export declare const CreateClusterExternalDictionaryRequest: {
     fromPartial(object: DeepPartial<CreateClusterExternalDictionaryRequest>): CreateClusterExternalDictionaryRequest;
 };
 export declare const CreateClusterExternalDictionaryMetadata: {
+    $type: "yandex.cloud.mdb.clickhouse.v1.CreateClusterExternalDictionaryMetadata";
     encode(message: CreateClusterExternalDictionaryMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateClusterExternalDictionaryMetadata;
     fromJSON(object: any): CreateClusterExternalDictionaryMetadata;
@@ -1259,6 +1391,7 @@ export declare const CreateClusterExternalDictionaryMetadata: {
     fromPartial(object: DeepPartial<CreateClusterExternalDictionaryMetadata>): CreateClusterExternalDictionaryMetadata;
 };
 export declare const DeleteClusterExternalDictionaryRequest: {
+    $type: "yandex.cloud.mdb.clickhouse.v1.DeleteClusterExternalDictionaryRequest";
     encode(message: DeleteClusterExternalDictionaryRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteClusterExternalDictionaryRequest;
     fromJSON(object: any): DeleteClusterExternalDictionaryRequest;
@@ -1266,6 +1399,7 @@ export declare const DeleteClusterExternalDictionaryRequest: {
     fromPartial(object: DeepPartial<DeleteClusterExternalDictionaryRequest>): DeleteClusterExternalDictionaryRequest;
 };
 export declare const DeleteClusterExternalDictionaryMetadata: {
+    $type: "yandex.cloud.mdb.clickhouse.v1.DeleteClusterExternalDictionaryMetadata";
     encode(message: DeleteClusterExternalDictionaryMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteClusterExternalDictionaryMetadata;
     fromJSON(object: any): DeleteClusterExternalDictionaryMetadata;
@@ -1273,6 +1407,7 @@ export declare const DeleteClusterExternalDictionaryMetadata: {
     fromPartial(object: DeepPartial<DeleteClusterExternalDictionaryMetadata>): DeleteClusterExternalDictionaryMetadata;
 };
 export declare const HostSpec: {
+    $type: "yandex.cloud.mdb.clickhouse.v1.HostSpec";
     encode(message: HostSpec, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): HostSpec;
     fromJSON(object: any): HostSpec;
@@ -1280,6 +1415,7 @@ export declare const HostSpec: {
     fromPartial(object: DeepPartial<HostSpec>): HostSpec;
 };
 export declare const ConfigSpec: {
+    $type: "yandex.cloud.mdb.clickhouse.v1.ConfigSpec";
     encode(message: ConfigSpec, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ConfigSpec;
     fromJSON(object: any): ConfigSpec;
@@ -1287,6 +1423,7 @@ export declare const ConfigSpec: {
     fromPartial(object: DeepPartial<ConfigSpec>): ConfigSpec;
 };
 export declare const ConfigSpec_Clickhouse: {
+    $type: "yandex.cloud.mdb.clickhouse.v1.ConfigSpec.Clickhouse";
     encode(message: ConfigSpec_Clickhouse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ConfigSpec_Clickhouse;
     fromJSON(object: any): ConfigSpec_Clickhouse;
@@ -1294,6 +1431,7 @@ export declare const ConfigSpec_Clickhouse: {
     fromPartial(object: DeepPartial<ConfigSpec_Clickhouse>): ConfigSpec_Clickhouse;
 };
 export declare const ConfigSpec_Zookeeper: {
+    $type: "yandex.cloud.mdb.clickhouse.v1.ConfigSpec.Zookeeper";
     encode(message: ConfigSpec_Zookeeper, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ConfigSpec_Zookeeper;
     fromJSON(object: any): ConfigSpec_Zookeeper;
@@ -1301,6 +1439,7 @@ export declare const ConfigSpec_Zookeeper: {
     fromPartial(object: DeepPartial<ConfigSpec_Zookeeper>): ConfigSpec_Zookeeper;
 };
 export declare const ShardConfigSpec: {
+    $type: "yandex.cloud.mdb.clickhouse.v1.ShardConfigSpec";
     encode(message: ShardConfigSpec, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ShardConfigSpec;
     fromJSON(object: any): ShardConfigSpec;
@@ -1308,6 +1447,7 @@ export declare const ShardConfigSpec: {
     fromPartial(object: DeepPartial<ShardConfigSpec>): ShardConfigSpec;
 };
 export declare const ShardConfigSpec_Clickhouse: {
+    $type: "yandex.cloud.mdb.clickhouse.v1.ShardConfigSpec.Clickhouse";
     encode(message: ShardConfigSpec_Clickhouse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ShardConfigSpec_Clickhouse;
     fromJSON(object: any): ShardConfigSpec_Clickhouse;
@@ -1840,6 +1980,6 @@ export interface ClusterServiceClient extends Client {
 export declare const ClusterServiceClient: new (address: string, credentials: ChannelCredentials, options?: Partial<ChannelOptions> | undefined) => ClusterServiceClient;
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

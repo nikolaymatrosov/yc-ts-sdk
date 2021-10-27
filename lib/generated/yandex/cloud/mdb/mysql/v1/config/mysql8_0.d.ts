@@ -2,6 +2,7 @@ import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.mdb.mysql.v1.config";
 /** Options and structure of `MysqlConfig8_0` reflects MySQL 8.0 configuration file */
 export interface Mysqlconfig80 {
+    $type: 'yandex.cloud.mdb.mysql.v1.config.MysqlConfig8_0';
     /**
      * Size of the InnoDB buffer pool used for caching table and index data.
      *
@@ -396,6 +397,7 @@ export declare enum Mysqlconfig80_SlaveParallelType {
 export declare function mysqlconfig80_SlaveParallelTypeFromJSON(object: any): Mysqlconfig80_SlaveParallelType;
 export declare function mysqlconfig80_SlaveParallelTypeToJSON(object: Mysqlconfig80_SlaveParallelType): string;
 export interface Mysqlconfigset80 {
+    $type: 'yandex.cloud.mdb.mysql.v1.config.MysqlConfigSet8_0';
     /**
      * Effective settings for a MySQL 8.0 cluster (a combination of settings defined
      * in [user_config] and [default_config]).
@@ -407,6 +409,7 @@ export interface Mysqlconfigset80 {
     defaultConfig: Mysqlconfig80 | undefined;
 }
 export declare const Mysqlconfig80: {
+    $type: "yandex.cloud.mdb.mysql.v1.config.MysqlConfig8_0";
     encode(message: Mysqlconfig80, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Mysqlconfig80;
     fromJSON(object: any): Mysqlconfig80;
@@ -414,6 +417,7 @@ export declare const Mysqlconfig80: {
     fromPartial(object: DeepPartial<Mysqlconfig80>): Mysqlconfig80;
 };
 export declare const Mysqlconfigset80: {
+    $type: "yandex.cloud.mdb.mysql.v1.config.MysqlConfigSet8_0";
     encode(message: Mysqlconfigset80, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Mysqlconfigset80;
     fromJSON(object: any): Mysqlconfigset80;
@@ -422,6 +426,6 @@ export declare const Mysqlconfigset80: {
 };
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

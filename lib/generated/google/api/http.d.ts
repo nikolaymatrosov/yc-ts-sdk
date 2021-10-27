@@ -6,6 +6,7 @@ export declare const protobufPackage = "google.api";
  * to one or more HTTP REST API methods.
  */
 export interface Http {
+    $type: 'google.api.Http';
     /**
      * A list of HTTP configuration rules that apply to individual API methods.
      *
@@ -222,6 +223,7 @@ export interface Http {
  * content to Web (HTML) clients.
  */
 export interface HttpRule {
+    $type: 'google.api.HttpRule';
     /**
      * Selects methods to which this rule applies.
      *
@@ -256,12 +258,14 @@ export interface HttpRule {
 }
 /** A custom pattern is used for defining custom HTTP verb. */
 export interface CustomHttpPattern {
+    $type: 'google.api.CustomHttpPattern';
     /** The name of this custom HTTP verb. */
     kind: string;
     /** The path matched by this custom verb. */
     path: string;
 }
 export declare const Http: {
+    $type: "google.api.Http";
     encode(message: Http, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Http;
     fromJSON(object: any): Http;
@@ -269,6 +273,7 @@ export declare const Http: {
     fromPartial(object: DeepPartial<Http>): Http;
 };
 export declare const HttpRule: {
+    $type: "google.api.HttpRule";
     encode(message: HttpRule, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): HttpRule;
     fromJSON(object: any): HttpRule;
@@ -276,6 +281,7 @@ export declare const HttpRule: {
     fromPartial(object: DeepPartial<HttpRule>): HttpRule;
 };
 export declare const CustomHttpPattern: {
+    $type: "google.api.CustomHttpPattern";
     encode(message: CustomHttpPattern, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CustomHttpPattern;
     fromJSON(object: any): CustomHttpPattern;
@@ -284,6 +290,6 @@ export declare const CustomHttpPattern: {
 };
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

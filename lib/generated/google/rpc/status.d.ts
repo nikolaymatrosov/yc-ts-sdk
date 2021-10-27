@@ -56,6 +56,7 @@ export declare const protobufPackage = "google.rpc";
  *     be used directly after any stripping needed for security/privacy reasons.
  */
 export interface Status {
+    $type: 'google.rpc.Status';
     /** The status code, which should be an enum value of [google.rpc.Code][google.rpc.Code]. */
     code: number;
     /**
@@ -71,6 +72,7 @@ export interface Status {
     details: Any[];
 }
 export declare const Status: {
+    $type: "google.rpc.Status";
     encode(message: Status, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Status;
     fromJSON(object: any): Status;
@@ -79,6 +81,6 @@ export declare const Status: {
 };
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

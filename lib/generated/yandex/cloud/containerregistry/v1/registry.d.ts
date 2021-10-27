@@ -2,6 +2,7 @@ import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.containerregistry.v1";
 /** A Registry resource. For more information, see [Registry](/docs/cloud/containerregistry/registry). */
 export interface Registry {
+    $type: 'yandex.cloud.containerregistry.v1.Registry';
     /** Output only. ID of the registry. */
     id: string;
     /** ID of the folder that the registry belongs to. */
@@ -30,10 +31,12 @@ export declare enum Registry_Status {
 export declare function registry_StatusFromJSON(object: any): Registry_Status;
 export declare function registry_StatusToJSON(object: Registry_Status): string;
 export interface Registry_LabelsEntry {
+    $type: 'yandex.cloud.containerregistry.v1.Registry.LabelsEntry';
     key: string;
     value: string;
 }
 export declare const Registry: {
+    $type: "yandex.cloud.containerregistry.v1.Registry";
     encode(message: Registry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Registry;
     fromJSON(object: any): Registry;
@@ -41,6 +44,7 @@ export declare const Registry: {
     fromPartial(object: DeepPartial<Registry>): Registry;
 };
 export declare const Registry_LabelsEntry: {
+    $type: "yandex.cloud.containerregistry.v1.Registry.LabelsEntry";
     encode(message: Registry_LabelsEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Registry_LabelsEntry;
     fromJSON(object: any): Registry_LabelsEntry;
@@ -49,6 +53,6 @@ export declare const Registry_LabelsEntry: {
 };
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

@@ -1,5 +1,6 @@
 /* eslint-disable */
 import { Timestamp } from '../../../../google/protobuf/timestamp';
+import { messageTypeRegistry } from '../../../../typeRegistry';
 import {
     LogEntry,
     LogLevel_Level,
@@ -24,6 +25,7 @@ import _m0 from 'protobufjs/minimal';
 export const protobufPackage = 'yandex.cloud.logging.v1';
 
 export interface ReadRequest {
+    $type: 'yandex.cloud.logging.v1.ReadRequest';
     /**
      * Page token. To get the next page of results, set `page_token` to the
      * [ReadResponse.next_page_token] or [ReadResponse.previous_page_token] returned by a previous read request.
@@ -38,6 +40,7 @@ export interface ReadRequest {
 }
 
 export interface ReadResponse {
+    $type: 'yandex.cloud.logging.v1.ReadResponse';
     /** Log group ID the read was performed from. */
     logGroupId: string;
     /** List of matching log entries. */
@@ -64,6 +67,7 @@ export interface ReadResponse {
 
 /** Read criteria. Should be used in initial [ReadRequest]. */
 export interface Criteria {
+    $type: 'yandex.cloud.logging.v1.Criteria';
     /**
      * ID of the log group to return.
      *
@@ -98,9 +102,13 @@ export interface Criteria {
     pageSize: number;
 }
 
-const baseReadRequest: object = {};
+const baseReadRequest: object = {
+    $type: 'yandex.cloud.logging.v1.ReadRequest',
+};
 
 export const ReadRequest = {
+    $type: 'yandex.cloud.logging.v1.ReadRequest' as const,
+
     encode(
         message: ReadRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -180,13 +188,18 @@ export const ReadRequest = {
     },
 };
 
+messageTypeRegistry.set(ReadRequest.$type, ReadRequest);
+
 const baseReadResponse: object = {
+    $type: 'yandex.cloud.logging.v1.ReadResponse',
     logGroupId: '',
     nextPageToken: '',
     previousPageToken: '',
 };
 
 export const ReadResponse = {
+    $type: 'yandex.cloud.logging.v1.ReadResponse' as const,
+
     encode(
         message: ReadResponse,
         writer: _m0.Writer = _m0.Writer.create()
@@ -320,7 +333,10 @@ export const ReadResponse = {
     },
 };
 
+messageTypeRegistry.set(ReadResponse.$type, ReadResponse);
+
 const baseCriteria: object = {
+    $type: 'yandex.cloud.logging.v1.Criteria',
     logGroupId: '',
     resourceTypes: '',
     resourceIds: '',
@@ -330,6 +346,8 @@ const baseCriteria: object = {
 };
 
 export const Criteria = {
+    $type: 'yandex.cloud.logging.v1.Criteria' as const,
+
     encode(
         message: Criteria,
         writer: _m0.Writer = _m0.Writer.create()
@@ -554,6 +572,8 @@ export const Criteria = {
     },
 };
 
+messageTypeRegistry.set(Criteria.$type, Criteria);
+
 /** A set of methods for reading from log groups. To make a request use `reader.logging.yandexcloud.net`. */
 export const LogReadingServiceService = {
     /** Read log entries from the specified log group. */
@@ -631,13 +651,13 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 function toTimestamp(date: Date): Timestamp {
     const seconds = date.getTime() / 1_000;
     const nanos = (date.getTime() % 1_000) * 1_000_000;
-    return { seconds, nanos };
+    return { $type: 'google.protobuf.Timestamp', seconds, nanos };
 }
 
 function fromTimestamp(t: Timestamp): Date {

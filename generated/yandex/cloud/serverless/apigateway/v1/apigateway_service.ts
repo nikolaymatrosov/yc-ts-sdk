@@ -1,5 +1,6 @@
 /* eslint-disable */
 import { FieldMask } from '../../../../../google/protobuf/field_mask';
+import { messageTypeRegistry } from '../../../../../typeRegistry';
 import {
     ListAccessBindingsRequest,
     ListAccessBindingsResponse,
@@ -26,6 +27,7 @@ import _m0 from 'protobufjs/minimal';
 export const protobufPackage = 'yandex.cloud.serverless.apigateway.v1';
 
 export interface GetApiGatewayRequest {
+    $type: 'yandex.cloud.serverless.apigateway.v1.GetApiGatewayRequest';
     /**
      * ID of the API gateway to return.
      *
@@ -35,6 +37,7 @@ export interface GetApiGatewayRequest {
 }
 
 export interface ListApiGatewayRequest {
+    $type: 'yandex.cloud.serverless.apigateway.v1.ListApiGatewayRequest';
     /**
      * ID of the folder to list API gateways in.
      *
@@ -68,6 +71,7 @@ export interface ListApiGatewayRequest {
 }
 
 export interface ListApiGatewayResponse {
+    $type: 'yandex.cloud.serverless.apigateway.v1.ListApiGatewayResponse';
     /** List of API gateways in the specified folder. */
     apiGateways: ApiGateway[];
     /**
@@ -81,6 +85,7 @@ export interface ListApiGatewayResponse {
 }
 
 export interface CreateApiGatewayRequest {
+    $type: 'yandex.cloud.serverless.apigateway.v1.CreateApiGatewayRequest';
     /**
      * ID of the folder to create an API gateway in.
      *
@@ -101,11 +106,13 @@ export interface CreateApiGatewayRequest {
 }
 
 export interface CreateApiGatewayRequest_LabelsEntry {
+    $type: 'yandex.cloud.serverless.apigateway.v1.CreateApiGatewayRequest.LabelsEntry';
     key: string;
     value: string;
 }
 
 export interface UpdateApiGatewayRequest {
+    $type: 'yandex.cloud.serverless.apigateway.v1.UpdateApiGatewayRequest';
     /**
      * ID of the API gateway to update.
      *
@@ -133,11 +140,13 @@ export interface UpdateApiGatewayRequest {
 }
 
 export interface UpdateApiGatewayRequest_LabelsEntry {
+    $type: 'yandex.cloud.serverless.apigateway.v1.UpdateApiGatewayRequest.LabelsEntry';
     key: string;
     value: string;
 }
 
 export interface DeleteApiGatewayRequest {
+    $type: 'yandex.cloud.serverless.apigateway.v1.DeleteApiGatewayRequest';
     /**
      * ID of the API gateway to update.
      *
@@ -147,6 +156,7 @@ export interface DeleteApiGatewayRequest {
 }
 
 export interface AddDomainRequest {
+    $type: 'yandex.cloud.serverless.apigateway.v1.AddDomainRequest';
     /** ID of the API gateway that the domain is attached to. */
     apiGatewayId: string;
     /** ID of the attaching domain. */
@@ -154,6 +164,7 @@ export interface AddDomainRequest {
 }
 
 export interface RemoveDomainRequest {
+    $type: 'yandex.cloud.serverless.apigateway.v1.RemoveDomainRequest';
     /** ID of the API gateway from which the domain is being detached. */
     apiGatewayId: string;
     /** ID of the detaching domain. */
@@ -161,21 +172,25 @@ export interface RemoveDomainRequest {
 }
 
 export interface CreateApiGatewayMetadata {
+    $type: 'yandex.cloud.serverless.apigateway.v1.CreateApiGatewayMetadata';
     /** ID of the API gateway that is being created. */
     apiGatewayId: string;
 }
 
 export interface UpdateApiGatewayMetadata {
+    $type: 'yandex.cloud.serverless.apigateway.v1.UpdateApiGatewayMetadata';
     /** ID of the API gateway that is being updated. */
     apiGatewayId: string;
 }
 
 export interface DeleteApiGatewayMetadata {
+    $type: 'yandex.cloud.serverless.apigateway.v1.DeleteApiGatewayMetadata';
     /** ID of the API gateway that is being deleted. */
     apiGatewayId: string;
 }
 
 export interface AddDomainMetadata {
+    $type: 'yandex.cloud.serverless.apigateway.v1.AddDomainMetadata';
     /** ID of the API gateway that the domain is attached to. */
     apiGatewayId: string;
     /** ID of the attaching domain. */
@@ -183,6 +198,7 @@ export interface AddDomainMetadata {
 }
 
 export interface RemoveDomainMetadata {
+    $type: 'yandex.cloud.serverless.apigateway.v1.RemoveDomainMetadata';
     /** ID of the API gateway from which the domain is being detached. */
     apiGatewayId: string;
     /** ID of the detaching domain. */
@@ -190,6 +206,7 @@ export interface RemoveDomainMetadata {
 }
 
 export interface ListOperationsRequest {
+    $type: 'yandex.cloud.serverless.apigateway.v1.ListOperationsRequest';
     /** ID of the API gateway to list operations for. */
     apiGatewayId: string;
     /**
@@ -219,6 +236,7 @@ export interface ListOperationsRequest {
 }
 
 export interface ListOperationsResponse {
+    $type: 'yandex.cloud.serverless.apigateway.v1.ListOperationsResponse';
     /** List of operations for the specified API gateway. */
     operations: Operation[];
     /**
@@ -232,6 +250,7 @@ export interface ListOperationsResponse {
 }
 
 export interface GetOpenapiSpecRequest {
+    $type: 'yandex.cloud.serverless.apigateway.v1.GetOpenapiSpecRequest';
     /** ID of the API gateway to get specification from. */
     apiGatewayId: string;
     /** Format of returned specification. Default is the original format used in [CreateApiGatewayRequest]. */
@@ -281,15 +300,21 @@ export function getOpenapiSpecRequest_FormatToJSON(
 }
 
 export interface GetOpenapiSpecResponse {
+    $type: 'yandex.cloud.serverless.apigateway.v1.GetOpenapiSpecResponse';
     /** ID of the API gateway. */
     apiGatewayId: string;
     /** The text of specification, JSON or YAML. */
     openapiSpec: string;
 }
 
-const baseGetApiGatewayRequest: object = { apiGatewayId: '' };
+const baseGetApiGatewayRequest: object = {
+    $type: 'yandex.cloud.serverless.apigateway.v1.GetApiGatewayRequest',
+    apiGatewayId: '',
+};
 
 export const GetApiGatewayRequest = {
+    $type: 'yandex.cloud.serverless.apigateway.v1.GetApiGatewayRequest' as const,
+
     encode(
         message: GetApiGatewayRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -352,7 +377,10 @@ export const GetApiGatewayRequest = {
     },
 };
 
+messageTypeRegistry.set(GetApiGatewayRequest.$type, GetApiGatewayRequest);
+
 const baseListApiGatewayRequest: object = {
+    $type: 'yandex.cloud.serverless.apigateway.v1.ListApiGatewayRequest',
     folderId: '',
     pageSize: 0,
     pageToken: '',
@@ -360,6 +388,8 @@ const baseListApiGatewayRequest: object = {
 };
 
 export const ListApiGatewayRequest = {
+    $type: 'yandex.cloud.serverless.apigateway.v1.ListApiGatewayRequest' as const,
+
     encode(
         message: ListApiGatewayRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -478,9 +508,16 @@ export const ListApiGatewayRequest = {
     },
 };
 
-const baseListApiGatewayResponse: object = { nextPageToken: '' };
+messageTypeRegistry.set(ListApiGatewayRequest.$type, ListApiGatewayRequest);
+
+const baseListApiGatewayResponse: object = {
+    $type: 'yandex.cloud.serverless.apigateway.v1.ListApiGatewayResponse',
+    nextPageToken: '',
+};
 
 export const ListApiGatewayResponse = {
+    $type: 'yandex.cloud.serverless.apigateway.v1.ListApiGatewayResponse' as const,
+
     encode(
         message: ListApiGatewayResponse,
         writer: _m0.Writer = _m0.Writer.create()
@@ -583,13 +620,18 @@ export const ListApiGatewayResponse = {
     },
 };
 
+messageTypeRegistry.set(ListApiGatewayResponse.$type, ListApiGatewayResponse);
+
 const baseCreateApiGatewayRequest: object = {
+    $type: 'yandex.cloud.serverless.apigateway.v1.CreateApiGatewayRequest',
     folderId: '',
     name: '',
     description: '',
 };
 
 export const CreateApiGatewayRequest = {
+    $type: 'yandex.cloud.serverless.apigateway.v1.CreateApiGatewayRequest' as const,
+
     encode(
         message: CreateApiGatewayRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -605,7 +647,11 @@ export const CreateApiGatewayRequest = {
         }
         Object.entries(message.labels).forEach(([key, value]) => {
             CreateApiGatewayRequest_LabelsEntry.encode(
-                { key: key as any, value },
+                {
+                    $type: 'yandex.cloud.serverless.apigateway.v1.CreateApiGatewayRequest.LabelsEntry',
+                    key: key as any,
+                    value,
+                },
                 writer.uint32(34).fork()
             ).ldelim();
         });
@@ -746,9 +792,17 @@ export const CreateApiGatewayRequest = {
     },
 };
 
-const baseCreateApiGatewayRequest_LabelsEntry: object = { key: '', value: '' };
+messageTypeRegistry.set(CreateApiGatewayRequest.$type, CreateApiGatewayRequest);
+
+const baseCreateApiGatewayRequest_LabelsEntry: object = {
+    $type: 'yandex.cloud.serverless.apigateway.v1.CreateApiGatewayRequest.LabelsEntry',
+    key: '',
+    value: '',
+};
 
 export const CreateApiGatewayRequest_LabelsEntry = {
+    $type: 'yandex.cloud.serverless.apigateway.v1.CreateApiGatewayRequest.LabelsEntry' as const,
+
     encode(
         message: CreateApiGatewayRequest_LabelsEntry,
         writer: _m0.Writer = _m0.Writer.create()
@@ -833,13 +887,21 @@ export const CreateApiGatewayRequest_LabelsEntry = {
     },
 };
 
+messageTypeRegistry.set(
+    CreateApiGatewayRequest_LabelsEntry.$type,
+    CreateApiGatewayRequest_LabelsEntry
+);
+
 const baseUpdateApiGatewayRequest: object = {
+    $type: 'yandex.cloud.serverless.apigateway.v1.UpdateApiGatewayRequest',
     apiGatewayId: '',
     name: '',
     description: '',
 };
 
 export const UpdateApiGatewayRequest = {
+    $type: 'yandex.cloud.serverless.apigateway.v1.UpdateApiGatewayRequest' as const,
+
     encode(
         message: UpdateApiGatewayRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -861,7 +923,11 @@ export const UpdateApiGatewayRequest = {
         }
         Object.entries(message.labels).forEach(([key, value]) => {
             UpdateApiGatewayRequest_LabelsEntry.encode(
-                { key: key as any, value },
+                {
+                    $type: 'yandex.cloud.serverless.apigateway.v1.UpdateApiGatewayRequest.LabelsEntry',
+                    key: key as any,
+                    value,
+                },
                 writer.uint32(42).fork()
             ).ldelim();
         });
@@ -1023,9 +1089,17 @@ export const UpdateApiGatewayRequest = {
     },
 };
 
-const baseUpdateApiGatewayRequest_LabelsEntry: object = { key: '', value: '' };
+messageTypeRegistry.set(UpdateApiGatewayRequest.$type, UpdateApiGatewayRequest);
+
+const baseUpdateApiGatewayRequest_LabelsEntry: object = {
+    $type: 'yandex.cloud.serverless.apigateway.v1.UpdateApiGatewayRequest.LabelsEntry',
+    key: '',
+    value: '',
+};
 
 export const UpdateApiGatewayRequest_LabelsEntry = {
+    $type: 'yandex.cloud.serverless.apigateway.v1.UpdateApiGatewayRequest.LabelsEntry' as const,
+
     encode(
         message: UpdateApiGatewayRequest_LabelsEntry,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1110,9 +1184,19 @@ export const UpdateApiGatewayRequest_LabelsEntry = {
     },
 };
 
-const baseDeleteApiGatewayRequest: object = { apiGatewayId: '' };
+messageTypeRegistry.set(
+    UpdateApiGatewayRequest_LabelsEntry.$type,
+    UpdateApiGatewayRequest_LabelsEntry
+);
+
+const baseDeleteApiGatewayRequest: object = {
+    $type: 'yandex.cloud.serverless.apigateway.v1.DeleteApiGatewayRequest',
+    apiGatewayId: '',
+};
 
 export const DeleteApiGatewayRequest = {
+    $type: 'yandex.cloud.serverless.apigateway.v1.DeleteApiGatewayRequest' as const,
+
     encode(
         message: DeleteApiGatewayRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1181,9 +1265,17 @@ export const DeleteApiGatewayRequest = {
     },
 };
 
-const baseAddDomainRequest: object = { apiGatewayId: '', domainId: '' };
+messageTypeRegistry.set(DeleteApiGatewayRequest.$type, DeleteApiGatewayRequest);
+
+const baseAddDomainRequest: object = {
+    $type: 'yandex.cloud.serverless.apigateway.v1.AddDomainRequest',
+    apiGatewayId: '',
+    domainId: '',
+};
 
 export const AddDomainRequest = {
+    $type: 'yandex.cloud.serverless.apigateway.v1.AddDomainRequest' as const,
+
     encode(
         message: AddDomainRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1258,9 +1350,17 @@ export const AddDomainRequest = {
     },
 };
 
-const baseRemoveDomainRequest: object = { apiGatewayId: '', domainId: '' };
+messageTypeRegistry.set(AddDomainRequest.$type, AddDomainRequest);
+
+const baseRemoveDomainRequest: object = {
+    $type: 'yandex.cloud.serverless.apigateway.v1.RemoveDomainRequest',
+    apiGatewayId: '',
+    domainId: '',
+};
 
 export const RemoveDomainRequest = {
+    $type: 'yandex.cloud.serverless.apigateway.v1.RemoveDomainRequest' as const,
+
     encode(
         message: RemoveDomainRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1338,9 +1438,16 @@ export const RemoveDomainRequest = {
     },
 };
 
-const baseCreateApiGatewayMetadata: object = { apiGatewayId: '' };
+messageTypeRegistry.set(RemoveDomainRequest.$type, RemoveDomainRequest);
+
+const baseCreateApiGatewayMetadata: object = {
+    $type: 'yandex.cloud.serverless.apigateway.v1.CreateApiGatewayMetadata',
+    apiGatewayId: '',
+};
 
 export const CreateApiGatewayMetadata = {
+    $type: 'yandex.cloud.serverless.apigateway.v1.CreateApiGatewayMetadata' as const,
+
     encode(
         message: CreateApiGatewayMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1409,9 +1516,19 @@ export const CreateApiGatewayMetadata = {
     },
 };
 
-const baseUpdateApiGatewayMetadata: object = { apiGatewayId: '' };
+messageTypeRegistry.set(
+    CreateApiGatewayMetadata.$type,
+    CreateApiGatewayMetadata
+);
+
+const baseUpdateApiGatewayMetadata: object = {
+    $type: 'yandex.cloud.serverless.apigateway.v1.UpdateApiGatewayMetadata',
+    apiGatewayId: '',
+};
 
 export const UpdateApiGatewayMetadata = {
+    $type: 'yandex.cloud.serverless.apigateway.v1.UpdateApiGatewayMetadata' as const,
+
     encode(
         message: UpdateApiGatewayMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1480,9 +1597,19 @@ export const UpdateApiGatewayMetadata = {
     },
 };
 
-const baseDeleteApiGatewayMetadata: object = { apiGatewayId: '' };
+messageTypeRegistry.set(
+    UpdateApiGatewayMetadata.$type,
+    UpdateApiGatewayMetadata
+);
+
+const baseDeleteApiGatewayMetadata: object = {
+    $type: 'yandex.cloud.serverless.apigateway.v1.DeleteApiGatewayMetadata',
+    apiGatewayId: '',
+};
 
 export const DeleteApiGatewayMetadata = {
+    $type: 'yandex.cloud.serverless.apigateway.v1.DeleteApiGatewayMetadata' as const,
+
     encode(
         message: DeleteApiGatewayMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1551,9 +1678,20 @@ export const DeleteApiGatewayMetadata = {
     },
 };
 
-const baseAddDomainMetadata: object = { apiGatewayId: '', domainId: '' };
+messageTypeRegistry.set(
+    DeleteApiGatewayMetadata.$type,
+    DeleteApiGatewayMetadata
+);
+
+const baseAddDomainMetadata: object = {
+    $type: 'yandex.cloud.serverless.apigateway.v1.AddDomainMetadata',
+    apiGatewayId: '',
+    domainId: '',
+};
 
 export const AddDomainMetadata = {
+    $type: 'yandex.cloud.serverless.apigateway.v1.AddDomainMetadata' as const,
+
     encode(
         message: AddDomainMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1628,9 +1766,17 @@ export const AddDomainMetadata = {
     },
 };
 
-const baseRemoveDomainMetadata: object = { apiGatewayId: '', domainId: '' };
+messageTypeRegistry.set(AddDomainMetadata.$type, AddDomainMetadata);
+
+const baseRemoveDomainMetadata: object = {
+    $type: 'yandex.cloud.serverless.apigateway.v1.RemoveDomainMetadata',
+    apiGatewayId: '',
+    domainId: '',
+};
 
 export const RemoveDomainMetadata = {
+    $type: 'yandex.cloud.serverless.apigateway.v1.RemoveDomainMetadata' as const,
+
     encode(
         message: RemoveDomainMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1710,7 +1856,10 @@ export const RemoveDomainMetadata = {
     },
 };
 
+messageTypeRegistry.set(RemoveDomainMetadata.$type, RemoveDomainMetadata);
+
 const baseListOperationsRequest: object = {
+    $type: 'yandex.cloud.serverless.apigateway.v1.ListOperationsRequest',
     apiGatewayId: '',
     pageSize: 0,
     pageToken: '',
@@ -1718,6 +1867,8 @@ const baseListOperationsRequest: object = {
 };
 
 export const ListOperationsRequest = {
+    $type: 'yandex.cloud.serverless.apigateway.v1.ListOperationsRequest' as const,
+
     encode(
         message: ListOperationsRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1837,9 +1988,16 @@ export const ListOperationsRequest = {
     },
 };
 
-const baseListOperationsResponse: object = { nextPageToken: '' };
+messageTypeRegistry.set(ListOperationsRequest.$type, ListOperationsRequest);
+
+const baseListOperationsResponse: object = {
+    $type: 'yandex.cloud.serverless.apigateway.v1.ListOperationsResponse',
+    nextPageToken: '',
+};
 
 export const ListOperationsResponse = {
+    $type: 'yandex.cloud.serverless.apigateway.v1.ListOperationsResponse' as const,
+
     encode(
         message: ListOperationsResponse,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1942,9 +2100,17 @@ export const ListOperationsResponse = {
     },
 };
 
-const baseGetOpenapiSpecRequest: object = { apiGatewayId: '', format: 0 };
+messageTypeRegistry.set(ListOperationsResponse.$type, ListOperationsResponse);
+
+const baseGetOpenapiSpecRequest: object = {
+    $type: 'yandex.cloud.serverless.apigateway.v1.GetOpenapiSpecRequest',
+    apiGatewayId: '',
+    format: 0,
+};
 
 export const GetOpenapiSpecRequest = {
+    $type: 'yandex.cloud.serverless.apigateway.v1.GetOpenapiSpecRequest' as const,
+
     encode(
         message: GetOpenapiSpecRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2033,12 +2199,17 @@ export const GetOpenapiSpecRequest = {
     },
 };
 
+messageTypeRegistry.set(GetOpenapiSpecRequest.$type, GetOpenapiSpecRequest);
+
 const baseGetOpenapiSpecResponse: object = {
+    $type: 'yandex.cloud.serverless.apigateway.v1.GetOpenapiSpecResponse',
     apiGatewayId: '',
     openapiSpec: '',
 };
 
 export const GetOpenapiSpecResponse = {
+    $type: 'yandex.cloud.serverless.apigateway.v1.GetOpenapiSpecResponse' as const,
+
     encode(
         message: GetOpenapiSpecResponse,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2124,6 +2295,8 @@ export const GetOpenapiSpecResponse = {
         return message;
     },
 };
+
+messageTypeRegistry.set(GetOpenapiSpecResponse.$type, GetOpenapiSpecResponse);
 
 /** A set of methods for managing API gateways. */
 export const ApiGatewayServiceService = {
@@ -2610,7 +2783,7 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 function longToNumber(long: Long): number {

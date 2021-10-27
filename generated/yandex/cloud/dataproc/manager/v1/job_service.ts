@@ -1,4 +1,5 @@
 /* eslint-disable */
+import { messageTypeRegistry } from '../../../../../typeRegistry';
 import {
     Job_Status,
     Job,
@@ -24,6 +25,7 @@ import _m0 from 'protobufjs/minimal';
 export const protobufPackage = 'yandex.cloud.dataproc.manager.v1';
 
 export interface ListJobsRequest {
+    $type: 'yandex.cloud.dataproc.manager.v1.ListJobsRequest';
     /** Required. ID of the cluster to list Data Proc jobs of. */
     clusterId: string;
     /**
@@ -43,6 +45,7 @@ export interface ListJobsRequest {
 }
 
 export interface ListJobsResponse {
+    $type: 'yandex.cloud.dataproc.manager.v1.ListJobsResponse';
     /** Requested list of Data Proc jobs. */
     jobs: Job[];
     /**
@@ -56,6 +59,7 @@ export interface ListJobsResponse {
 }
 
 export interface UpdateJobStatusRequest {
+    $type: 'yandex.cloud.dataproc.manager.v1.UpdateJobStatusRequest';
     /** Required. ID of the Data Proc cluster. */
     clusterId: string;
     /** Required. ID of the Data Proc job to update. */
@@ -66,9 +70,12 @@ export interface UpdateJobStatusRequest {
     applicationInfo: ApplicationInfo | undefined;
 }
 
-export interface UpdateJobStatusResponse {}
+export interface UpdateJobStatusResponse {
+    $type: 'yandex.cloud.dataproc.manager.v1.UpdateJobStatusResponse';
+}
 
 const baseListJobsRequest: object = {
+    $type: 'yandex.cloud.dataproc.manager.v1.ListJobsRequest',
     clusterId: '',
     pageSize: 0,
     pageToken: '',
@@ -76,6 +83,8 @@ const baseListJobsRequest: object = {
 };
 
 export const ListJobsRequest = {
+    $type: 'yandex.cloud.dataproc.manager.v1.ListJobsRequest' as const,
+
     encode(
         message: ListJobsRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -183,9 +192,16 @@ export const ListJobsRequest = {
     },
 };
 
-const baseListJobsResponse: object = { nextPageToken: '' };
+messageTypeRegistry.set(ListJobsRequest.$type, ListJobsRequest);
+
+const baseListJobsResponse: object = {
+    $type: 'yandex.cloud.dataproc.manager.v1.ListJobsResponse',
+    nextPageToken: '',
+};
 
 export const ListJobsResponse = {
+    $type: 'yandex.cloud.dataproc.manager.v1.ListJobsResponse' as const,
+
     encode(
         message: ListJobsResponse,
         writer: _m0.Writer = _m0.Writer.create()
@@ -273,13 +289,18 @@ export const ListJobsResponse = {
     },
 };
 
+messageTypeRegistry.set(ListJobsResponse.$type, ListJobsResponse);
+
 const baseUpdateJobStatusRequest: object = {
+    $type: 'yandex.cloud.dataproc.manager.v1.UpdateJobStatusRequest',
     clusterId: '',
     jobId: '',
     status: 0,
 };
 
 export const UpdateJobStatusRequest = {
+    $type: 'yandex.cloud.dataproc.manager.v1.UpdateJobStatusRequest' as const,
+
     encode(
         message: UpdateJobStatusRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -418,9 +439,15 @@ export const UpdateJobStatusRequest = {
     },
 };
 
-const baseUpdateJobStatusResponse: object = {};
+messageTypeRegistry.set(UpdateJobStatusRequest.$type, UpdateJobStatusRequest);
+
+const baseUpdateJobStatusResponse: object = {
+    $type: 'yandex.cloud.dataproc.manager.v1.UpdateJobStatusResponse',
+};
 
 export const UpdateJobStatusResponse = {
+    $type: 'yandex.cloud.dataproc.manager.v1.UpdateJobStatusResponse' as const,
+
     encode(
         _: UpdateJobStatusResponse,
         writer: _m0.Writer = _m0.Writer.create()
@@ -470,6 +497,8 @@ export const UpdateJobStatusResponse = {
         return message;
     },
 };
+
+messageTypeRegistry.set(UpdateJobStatusResponse.$type, UpdateJobStatusResponse);
 
 export const JobServiceService = {
     /** Retrieves a list of jobs for Data Proc cluster. */
@@ -600,7 +629,7 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 function longToNumber(long: Long): number {

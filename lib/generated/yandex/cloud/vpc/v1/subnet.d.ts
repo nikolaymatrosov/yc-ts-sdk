@@ -10,6 +10,7 @@ export declare function ipVersionFromJSON(object: any): IpVersion;
 export declare function ipVersionToJSON(object: IpVersion): string;
 /** A Subnet resource. For more information, see [Subnets](/docs/vpc/concepts/subnets). */
 export interface Subnet {
+    $type: 'yandex.cloud.vpc.v1.Subnet';
     /** ID of the subnet. */
     id: string;
     /** ID of the folder that the subnet belongs to. */
@@ -43,15 +44,18 @@ export interface Subnet {
     dhcpOptions: DhcpOptions | undefined;
 }
 export interface Subnet_LabelsEntry {
+    $type: 'yandex.cloud.vpc.v1.Subnet.LabelsEntry';
     key: string;
     value: string;
 }
 export interface DhcpOptions {
+    $type: 'yandex.cloud.vpc.v1.DhcpOptions';
     domainNameServers: string[];
     domainName: string;
     ntpServers: string[];
 }
 export declare const Subnet: {
+    $type: "yandex.cloud.vpc.v1.Subnet";
     encode(message: Subnet, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Subnet;
     fromJSON(object: any): Subnet;
@@ -59,6 +63,7 @@ export declare const Subnet: {
     fromPartial(object: DeepPartial<Subnet>): Subnet;
 };
 export declare const Subnet_LabelsEntry: {
+    $type: "yandex.cloud.vpc.v1.Subnet.LabelsEntry";
     encode(message: Subnet_LabelsEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Subnet_LabelsEntry;
     fromJSON(object: any): Subnet_LabelsEntry;
@@ -66,6 +71,7 @@ export declare const Subnet_LabelsEntry: {
     fromPartial(object: DeepPartial<Subnet_LabelsEntry>): Subnet_LabelsEntry;
 };
 export declare const DhcpOptions: {
+    $type: "yandex.cloud.vpc.v1.DhcpOptions";
     encode(message: DhcpOptions, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DhcpOptions;
     fromJSON(object: any): DhcpOptions;
@@ -74,6 +80,6 @@ export declare const DhcpOptions: {
 };
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

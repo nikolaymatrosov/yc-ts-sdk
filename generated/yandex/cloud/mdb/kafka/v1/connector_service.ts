@@ -1,4 +1,5 @@
 /* eslint-disable */
+import { messageTypeRegistry } from '../../../../../typeRegistry';
 import {
     Connector,
     ConnectorSpec,
@@ -22,6 +23,7 @@ import _m0 from 'protobufjs/minimal';
 export const protobufPackage = 'yandex.cloud.mdb.kafka.v1';
 
 export interface GetConnectorRequest {
+    $type: 'yandex.cloud.mdb.kafka.v1.GetConnectorRequest';
     /**
      * ID of the Apache Kafka Cluster resource to return.
      * To get the cluster ID use a [ClusterService.List] request.
@@ -35,6 +37,7 @@ export interface GetConnectorRequest {
 }
 
 export interface ListConnectorsRequest {
+    $type: 'yandex.cloud.mdb.kafka.v1.ListConnectorsRequest';
     /**
      * ID of the Apache Kafka cluster to list connectors in.
      * To get the cluster ID use a [ClusterService.List] request.
@@ -49,6 +52,7 @@ export interface ListConnectorsRequest {
 }
 
 export interface ListConnectorsResponse {
+    $type: 'yandex.cloud.mdb.kafka.v1.ListConnectorsResponse';
     /** List of Apache Kafka Connector resources. */
     connectors: Connector[];
     /**
@@ -61,6 +65,7 @@ export interface ListConnectorsResponse {
 }
 
 export interface CreateConnectorRequest {
+    $type: 'yandex.cloud.mdb.kafka.v1.CreateConnectorRequest';
     /**
      * Required. ID of the Apache Kafka cluster to create a connector in.
      * To get the cluster ID use a [ClusterService.List] request.
@@ -71,6 +76,7 @@ export interface CreateConnectorRequest {
 }
 
 export interface CreateConnectorMetadata {
+    $type: 'yandex.cloud.mdb.kafka.v1.CreateConnectorMetadata';
     /** ID of the Apache Kafka cluster where a connector is being created. */
     clusterId: string;
     /** Name of the Apache Kafka connector that is being created. */
@@ -78,6 +84,7 @@ export interface CreateConnectorMetadata {
 }
 
 export interface DeleteConnectorRequest {
+    $type: 'yandex.cloud.mdb.kafka.v1.DeleteConnectorRequest';
     /**
      * Required. ID of the Apache Kafka cluster to delete a connector in.
      * To get the cluster ID, use a [ClusterService.List] request.
@@ -91,6 +98,7 @@ export interface DeleteConnectorRequest {
 }
 
 export interface DeleteConnectorMetadata {
+    $type: 'yandex.cloud.mdb.kafka.v1.DeleteConnectorMetadata';
     /** ID of the Apache Kafka cluster where a connector is being deleted. */
     clusterId: string;
     /** Name of the Apache Kafka connector that is being deleted. */
@@ -98,6 +106,7 @@ export interface DeleteConnectorMetadata {
 }
 
 export interface ResumeConnectorRequest {
+    $type: 'yandex.cloud.mdb.kafka.v1.ResumeConnectorRequest';
     /** Required. ID of the Apache Kafka cluster to resume connector in. */
     clusterId: string;
     /**
@@ -108,6 +117,7 @@ export interface ResumeConnectorRequest {
 }
 
 export interface ResumeConnectorMetadata {
+    $type: 'yandex.cloud.mdb.kafka.v1.ResumeConnectorMetadata';
     /** Required. ID of the Apache Kafka cluster. */
     clusterId: string;
     /** Name of the Apache Kafka Connector resource that is beign resumed. */
@@ -115,6 +125,7 @@ export interface ResumeConnectorMetadata {
 }
 
 export interface PauseConnectorRequest {
+    $type: 'yandex.cloud.mdb.kafka.v1.PauseConnectorRequest';
     /** Required. ID of the Apache Kafka cluster to pause connector in. */
     clusterId: string;
     /**
@@ -125,15 +136,22 @@ export interface PauseConnectorRequest {
 }
 
 export interface PauseConnectorMetadata {
+    $type: 'yandex.cloud.mdb.kafka.v1.PauseConnectorMetadata';
     /** Required. ID of the Apache Kafka cluster. */
     clusterId: string;
     /** Name of the Apache Kafka Connector resource that is being paused. */
     connectorName: string;
 }
 
-const baseGetConnectorRequest: object = { clusterId: '', connectorName: '' };
+const baseGetConnectorRequest: object = {
+    $type: 'yandex.cloud.mdb.kafka.v1.GetConnectorRequest',
+    clusterId: '',
+    connectorName: '',
+};
 
 export const GetConnectorRequest = {
+    $type: 'yandex.cloud.mdb.kafka.v1.GetConnectorRequest' as const,
+
     encode(
         message: GetConnectorRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -217,13 +235,18 @@ export const GetConnectorRequest = {
     },
 };
 
+messageTypeRegistry.set(GetConnectorRequest.$type, GetConnectorRequest);
+
 const baseListConnectorsRequest: object = {
+    $type: 'yandex.cloud.mdb.kafka.v1.ListConnectorsRequest',
     clusterId: '',
     pageSize: 0,
     pageToken: '',
 };
 
 export const ListConnectorsRequest = {
+    $type: 'yandex.cloud.mdb.kafka.v1.ListConnectorsRequest' as const,
+
     encode(
         message: ListConnectorsRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -325,9 +348,16 @@ export const ListConnectorsRequest = {
     },
 };
 
-const baseListConnectorsResponse: object = { nextPageToken: '' };
+messageTypeRegistry.set(ListConnectorsRequest.$type, ListConnectorsRequest);
+
+const baseListConnectorsResponse: object = {
+    $type: 'yandex.cloud.mdb.kafka.v1.ListConnectorsResponse',
+    nextPageToken: '',
+};
 
 export const ListConnectorsResponse = {
+    $type: 'yandex.cloud.mdb.kafka.v1.ListConnectorsResponse' as const,
+
     encode(
         message: ListConnectorsResponse,
         writer: _m0.Writer = _m0.Writer.create()
@@ -430,9 +460,16 @@ export const ListConnectorsResponse = {
     },
 };
 
-const baseCreateConnectorRequest: object = { clusterId: '' };
+messageTypeRegistry.set(ListConnectorsResponse.$type, ListConnectorsResponse);
+
+const baseCreateConnectorRequest: object = {
+    $type: 'yandex.cloud.mdb.kafka.v1.CreateConnectorRequest',
+    clusterId: '',
+};
 
 export const CreateConnectorRequest = {
+    $type: 'yandex.cloud.mdb.kafka.v1.CreateConnectorRequest' as const,
+
     encode(
         message: CreateConnectorRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -536,12 +573,17 @@ export const CreateConnectorRequest = {
     },
 };
 
+messageTypeRegistry.set(CreateConnectorRequest.$type, CreateConnectorRequest);
+
 const baseCreateConnectorMetadata: object = {
+    $type: 'yandex.cloud.mdb.kafka.v1.CreateConnectorMetadata',
     clusterId: '',
     connectorName: '',
 };
 
 export const CreateConnectorMetadata = {
+    $type: 'yandex.cloud.mdb.kafka.v1.CreateConnectorMetadata' as const,
+
     encode(
         message: CreateConnectorMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -633,9 +675,17 @@ export const CreateConnectorMetadata = {
     },
 };
 
-const baseDeleteConnectorRequest: object = { clusterId: '', connectorName: '' };
+messageTypeRegistry.set(CreateConnectorMetadata.$type, CreateConnectorMetadata);
+
+const baseDeleteConnectorRequest: object = {
+    $type: 'yandex.cloud.mdb.kafka.v1.DeleteConnectorRequest',
+    clusterId: '',
+    connectorName: '',
+};
 
 export const DeleteConnectorRequest = {
+    $type: 'yandex.cloud.mdb.kafka.v1.DeleteConnectorRequest' as const,
+
     encode(
         message: DeleteConnectorRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -727,12 +777,17 @@ export const DeleteConnectorRequest = {
     },
 };
 
+messageTypeRegistry.set(DeleteConnectorRequest.$type, DeleteConnectorRequest);
+
 const baseDeleteConnectorMetadata: object = {
+    $type: 'yandex.cloud.mdb.kafka.v1.DeleteConnectorMetadata',
     clusterId: '',
     connectorName: '',
 };
 
 export const DeleteConnectorMetadata = {
+    $type: 'yandex.cloud.mdb.kafka.v1.DeleteConnectorMetadata' as const,
+
     encode(
         message: DeleteConnectorMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -824,9 +879,17 @@ export const DeleteConnectorMetadata = {
     },
 };
 
-const baseResumeConnectorRequest: object = { clusterId: '', connectorName: '' };
+messageTypeRegistry.set(DeleteConnectorMetadata.$type, DeleteConnectorMetadata);
+
+const baseResumeConnectorRequest: object = {
+    $type: 'yandex.cloud.mdb.kafka.v1.ResumeConnectorRequest',
+    clusterId: '',
+    connectorName: '',
+};
 
 export const ResumeConnectorRequest = {
+    $type: 'yandex.cloud.mdb.kafka.v1.ResumeConnectorRequest' as const,
+
     encode(
         message: ResumeConnectorRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -918,12 +981,17 @@ export const ResumeConnectorRequest = {
     },
 };
 
+messageTypeRegistry.set(ResumeConnectorRequest.$type, ResumeConnectorRequest);
+
 const baseResumeConnectorMetadata: object = {
+    $type: 'yandex.cloud.mdb.kafka.v1.ResumeConnectorMetadata',
     clusterId: '',
     connectorName: '',
 };
 
 export const ResumeConnectorMetadata = {
+    $type: 'yandex.cloud.mdb.kafka.v1.ResumeConnectorMetadata' as const,
+
     encode(
         message: ResumeConnectorMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1015,9 +1083,17 @@ export const ResumeConnectorMetadata = {
     },
 };
 
-const basePauseConnectorRequest: object = { clusterId: '', connectorName: '' };
+messageTypeRegistry.set(ResumeConnectorMetadata.$type, ResumeConnectorMetadata);
+
+const basePauseConnectorRequest: object = {
+    $type: 'yandex.cloud.mdb.kafka.v1.PauseConnectorRequest',
+    clusterId: '',
+    connectorName: '',
+};
 
 export const PauseConnectorRequest = {
+    $type: 'yandex.cloud.mdb.kafka.v1.PauseConnectorRequest' as const,
+
     encode(
         message: PauseConnectorRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1109,9 +1185,17 @@ export const PauseConnectorRequest = {
     },
 };
 
-const basePauseConnectorMetadata: object = { clusterId: '', connectorName: '' };
+messageTypeRegistry.set(PauseConnectorRequest.$type, PauseConnectorRequest);
+
+const basePauseConnectorMetadata: object = {
+    $type: 'yandex.cloud.mdb.kafka.v1.PauseConnectorMetadata',
+    clusterId: '',
+    connectorName: '',
+};
 
 export const PauseConnectorMetadata = {
+    $type: 'yandex.cloud.mdb.kafka.v1.PauseConnectorMetadata' as const,
+
     encode(
         message: PauseConnectorMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1202,6 +1286,8 @@ export const PauseConnectorMetadata = {
         return message;
     },
 };
+
+messageTypeRegistry.set(PauseConnectorMetadata.$type, PauseConnectorMetadata);
 
 /** A set of methods for managing Apache Kafka Connectors resources. */
 export const ConnectorServiceService = {
@@ -1458,7 +1544,7 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 function longToNumber(long: Long): number {

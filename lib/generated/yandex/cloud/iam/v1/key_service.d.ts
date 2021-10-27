@@ -13,6 +13,7 @@ export declare enum KeyFormat {
 export declare function keyFormatFromJSON(object: any): KeyFormat;
 export declare function keyFormatToJSON(object: KeyFormat): string;
 export interface GetKeyRequest {
+    $type: 'yandex.cloud.iam.v1.GetKeyRequest';
     /**
      * ID of the Key resource to return.
      * To get the ID use a [KeyService.List] request.
@@ -22,6 +23,7 @@ export interface GetKeyRequest {
     format: KeyFormat;
 }
 export interface ListKeysRequest {
+    $type: 'yandex.cloud.iam.v1.ListKeysRequest';
     /** Output format of the key. */
     format: KeyFormat;
     /**
@@ -45,6 +47,7 @@ export interface ListKeysRequest {
     pageToken: string;
 }
 export interface ListKeysResponse {
+    $type: 'yandex.cloud.iam.v1.ListKeysResponse';
     /** List of Key resources. */
     keys: Key[];
     /**
@@ -58,6 +61,7 @@ export interface ListKeysResponse {
     nextPageToken: string;
 }
 export interface CreateKeyRequest {
+    $type: 'yandex.cloud.iam.v1.CreateKeyRequest';
     /**
      * ID of the service account to create a key pair for.
      * To get the service account ID, use a [yandex.cloud.iam.v1.ServiceAccountService.List] request.
@@ -72,6 +76,7 @@ export interface CreateKeyRequest {
     keyAlgorithm: Key_Algorithm;
 }
 export interface CreateKeyResponse {
+    $type: 'yandex.cloud.iam.v1.CreateKeyResponse';
     /** Key resource. */
     key: Key | undefined;
     /**
@@ -81,6 +86,7 @@ export interface CreateKeyResponse {
     privateKey: string;
 }
 export interface UpdateKeyRequest {
+    $type: 'yandex.cloud.iam.v1.UpdateKeyRequest';
     /**
      * ID of the Key resource to update.
      * To get key pair ID, use a [KeyService.List] request.
@@ -92,10 +98,12 @@ export interface UpdateKeyRequest {
     description: string;
 }
 export interface UpdateKeyMetadata {
+    $type: 'yandex.cloud.iam.v1.UpdateKeyMetadata';
     /** ID of the Key resource that is being updated. */
     keyId: string;
 }
 export interface DeleteKeyRequest {
+    $type: 'yandex.cloud.iam.v1.DeleteKeyRequest';
     /**
      * ID of the key to delete.
      * To get key ID use a [KeyService.List] request.
@@ -103,10 +111,12 @@ export interface DeleteKeyRequest {
     keyId: string;
 }
 export interface DeleteKeyMetadata {
+    $type: 'yandex.cloud.iam.v1.DeleteKeyMetadata';
     /** ID of the key that is being deleted. */
     keyId: string;
 }
 export interface ListKeyOperationsRequest {
+    $type: 'yandex.cloud.iam.v1.ListKeyOperationsRequest';
     /** ID of the key to list operations for. */
     keyId: string;
     /**
@@ -124,6 +134,7 @@ export interface ListKeyOperationsRequest {
     pageToken: string;
 }
 export interface ListKeyOperationsResponse {
+    $type: 'yandex.cloud.iam.v1.ListKeyOperationsResponse';
     /** List of operations for the specified key. */
     operations: Operation[];
     /**
@@ -135,6 +146,7 @@ export interface ListKeyOperationsResponse {
     nextPageToken: string;
 }
 export declare const GetKeyRequest: {
+    $type: "yandex.cloud.iam.v1.GetKeyRequest";
     encode(message: GetKeyRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): GetKeyRequest;
     fromJSON(object: any): GetKeyRequest;
@@ -142,6 +154,7 @@ export declare const GetKeyRequest: {
     fromPartial(object: DeepPartial<GetKeyRequest>): GetKeyRequest;
 };
 export declare const ListKeysRequest: {
+    $type: "yandex.cloud.iam.v1.ListKeysRequest";
     encode(message: ListKeysRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListKeysRequest;
     fromJSON(object: any): ListKeysRequest;
@@ -149,6 +162,7 @@ export declare const ListKeysRequest: {
     fromPartial(object: DeepPartial<ListKeysRequest>): ListKeysRequest;
 };
 export declare const ListKeysResponse: {
+    $type: "yandex.cloud.iam.v1.ListKeysResponse";
     encode(message: ListKeysResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListKeysResponse;
     fromJSON(object: any): ListKeysResponse;
@@ -156,6 +170,7 @@ export declare const ListKeysResponse: {
     fromPartial(object: DeepPartial<ListKeysResponse>): ListKeysResponse;
 };
 export declare const CreateKeyRequest: {
+    $type: "yandex.cloud.iam.v1.CreateKeyRequest";
     encode(message: CreateKeyRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateKeyRequest;
     fromJSON(object: any): CreateKeyRequest;
@@ -163,6 +178,7 @@ export declare const CreateKeyRequest: {
     fromPartial(object: DeepPartial<CreateKeyRequest>): CreateKeyRequest;
 };
 export declare const CreateKeyResponse: {
+    $type: "yandex.cloud.iam.v1.CreateKeyResponse";
     encode(message: CreateKeyResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateKeyResponse;
     fromJSON(object: any): CreateKeyResponse;
@@ -170,6 +186,7 @@ export declare const CreateKeyResponse: {
     fromPartial(object: DeepPartial<CreateKeyResponse>): CreateKeyResponse;
 };
 export declare const UpdateKeyRequest: {
+    $type: "yandex.cloud.iam.v1.UpdateKeyRequest";
     encode(message: UpdateKeyRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateKeyRequest;
     fromJSON(object: any): UpdateKeyRequest;
@@ -177,6 +194,7 @@ export declare const UpdateKeyRequest: {
     fromPartial(object: DeepPartial<UpdateKeyRequest>): UpdateKeyRequest;
 };
 export declare const UpdateKeyMetadata: {
+    $type: "yandex.cloud.iam.v1.UpdateKeyMetadata";
     encode(message: UpdateKeyMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateKeyMetadata;
     fromJSON(object: any): UpdateKeyMetadata;
@@ -184,6 +202,7 @@ export declare const UpdateKeyMetadata: {
     fromPartial(object: DeepPartial<UpdateKeyMetadata>): UpdateKeyMetadata;
 };
 export declare const DeleteKeyRequest: {
+    $type: "yandex.cloud.iam.v1.DeleteKeyRequest";
     encode(message: DeleteKeyRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteKeyRequest;
     fromJSON(object: any): DeleteKeyRequest;
@@ -191,6 +210,7 @@ export declare const DeleteKeyRequest: {
     fromPartial(object: DeepPartial<DeleteKeyRequest>): DeleteKeyRequest;
 };
 export declare const DeleteKeyMetadata: {
+    $type: "yandex.cloud.iam.v1.DeleteKeyMetadata";
     encode(message: DeleteKeyMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteKeyMetadata;
     fromJSON(object: any): DeleteKeyMetadata;
@@ -198,6 +218,7 @@ export declare const DeleteKeyMetadata: {
     fromPartial(object: DeepPartial<DeleteKeyMetadata>): DeleteKeyMetadata;
 };
 export declare const ListKeyOperationsRequest: {
+    $type: "yandex.cloud.iam.v1.ListKeyOperationsRequest";
     encode(message: ListKeyOperationsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListKeyOperationsRequest;
     fromJSON(object: any): ListKeyOperationsRequest;
@@ -205,6 +226,7 @@ export declare const ListKeyOperationsRequest: {
     fromPartial(object: DeepPartial<ListKeyOperationsRequest>): ListKeyOperationsRequest;
 };
 export declare const ListKeyOperationsResponse: {
+    $type: "yandex.cloud.iam.v1.ListKeyOperationsResponse";
     encode(message: ListKeyOperationsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListKeyOperationsResponse;
     fromJSON(object: any): ListKeyOperationsResponse;
@@ -329,6 +351,6 @@ export interface KeyServiceClient extends Client {
 export declare const KeyServiceClient: new (address: string, credentials: ChannelCredentials, options?: Partial<ChannelOptions> | undefined) => KeyServiceClient;
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

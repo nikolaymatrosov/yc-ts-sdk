@@ -3,6 +3,7 @@ import { ChannelCredentials, ChannelOptions, UntypedServiceImplementation, handl
 import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.certificatemanager.v1";
 export interface GetCertificateContentResponse {
+    $type: 'yandex.cloud.certificatemanager.v1.GetCertificateContentResponse';
     /** ID of the certificate. */
     certificateId: string;
     /** PEM-encoded certificate chain content of the certificate. */
@@ -11,10 +12,12 @@ export interface GetCertificateContentResponse {
     privateKey: string;
 }
 export interface GetCertificateContentRequest {
+    $type: 'yandex.cloud.certificatemanager.v1.GetCertificateContentRequest';
     /** ID of the certificate to download content. */
     certificateId: string;
 }
 export declare const GetCertificateContentResponse: {
+    $type: "yandex.cloud.certificatemanager.v1.GetCertificateContentResponse";
     encode(message: GetCertificateContentResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): GetCertificateContentResponse;
     fromJSON(object: any): GetCertificateContentResponse;
@@ -22,6 +25,7 @@ export declare const GetCertificateContentResponse: {
     fromPartial(object: DeepPartial<GetCertificateContentResponse>): GetCertificateContentResponse;
 };
 export declare const GetCertificateContentRequest: {
+    $type: "yandex.cloud.certificatemanager.v1.GetCertificateContentRequest";
     encode(message: GetCertificateContentRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): GetCertificateContentRequest;
     fromJSON(object: any): GetCertificateContentRequest;
@@ -54,6 +58,6 @@ export interface CertificateContentServiceClient extends Client {
 export declare const CertificateContentServiceClient: new (address: string, credentials: ChannelCredentials, options?: Partial<ChannelOptions> | undefined) => CertificateContentServiceClient;
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

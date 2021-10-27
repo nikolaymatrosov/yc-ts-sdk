@@ -1,5 +1,6 @@
 /* eslint-disable */
 import { Timestamp } from '../../../../../google/protobuf/timestamp';
+import { messageTypeRegistry } from '../../../../../typeRegistry';
 import Long from 'long';
 import _m0 from 'protobufjs/minimal';
 
@@ -10,6 +11,7 @@ export const protobufPackage = 'yandex.cloud.mdb.mongodb.v1';
  * [Developer's Guide](/docs/managed-mongodb/concepts).
  */
 export interface Backup {
+    $type: 'yandex.cloud.mdb.mongodb.v1.Backup';
     /** ID of the backup. */
     id: string;
     /** ID of the folder that the backup belongs to. */
@@ -72,6 +74,7 @@ export function backup_BackupTypeToJSON(object: Backup_BackupType): string {
 }
 
 const baseBackup: object = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.Backup',
     id: '',
     folderId: '',
     sourceClusterId: '',
@@ -81,6 +84,8 @@ const baseBackup: object = {
 };
 
 export const Backup = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.Backup' as const,
+
     encode(
         message: Backup,
         writer: _m0.Writer = _m0.Writer.create()
@@ -289,6 +294,8 @@ export const Backup = {
     },
 };
 
+messageTypeRegistry.set(Backup.$type, Backup);
+
 declare var self: any | undefined;
 declare var window: any | undefined;
 declare var global: any | undefined;
@@ -315,13 +322,13 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 function toTimestamp(date: Date): Timestamp {
     const seconds = date.getTime() / 1_000;
     const nanos = (date.getTime() % 1_000) * 1_000_000;
-    return { seconds, nanos };
+    return { $type: 'google.protobuf.Timestamp', seconds, nanos };
 }
 
 function fromTimestamp(t: Timestamp): Date {

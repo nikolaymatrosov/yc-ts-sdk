@@ -8,19 +8,23 @@ import { ChannelCredentials, ChannelOptions, UntypedServiceImplementation, handl
 import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.serverless.containers.v1";
 export interface GetContainerRequest {
+    $type: 'yandex.cloud.serverless.containers.v1.GetContainerRequest';
     containerId: string;
 }
 export interface ListContainersRequest {
+    $type: 'yandex.cloud.serverless.containers.v1.ListContainersRequest';
     folderId: string;
     pageSize: number;
     pageToken: string;
     filter: string;
 }
 export interface ListContainersResponse {
+    $type: 'yandex.cloud.serverless.containers.v1.ListContainersResponse';
     containers: Container[];
     nextPageToken: string;
 }
 export interface CreateContainerRequest {
+    $type: 'yandex.cloud.serverless.containers.v1.CreateContainerRequest';
     folderId: string;
     name: string;
     description: string;
@@ -29,13 +33,16 @@ export interface CreateContainerRequest {
     };
 }
 export interface CreateContainerRequest_LabelsEntry {
+    $type: 'yandex.cloud.serverless.containers.v1.CreateContainerRequest.LabelsEntry';
     key: string;
     value: string;
 }
 export interface CreateContainerMetadata {
+    $type: 'yandex.cloud.serverless.containers.v1.CreateContainerMetadata';
     containerId: string;
 }
 export interface UpdateContainerRequest {
+    $type: 'yandex.cloud.serverless.containers.v1.UpdateContainerRequest';
     containerId: string;
     updateMask: FieldMask | undefined;
     name: string;
@@ -45,22 +52,28 @@ export interface UpdateContainerRequest {
     };
 }
 export interface UpdateContainerRequest_LabelsEntry {
+    $type: 'yandex.cloud.serverless.containers.v1.UpdateContainerRequest.LabelsEntry';
     key: string;
     value: string;
 }
 export interface UpdateContainerMetadata {
+    $type: 'yandex.cloud.serverless.containers.v1.UpdateContainerMetadata';
     containerId: string;
 }
 export interface DeleteContainerRequest {
+    $type: 'yandex.cloud.serverless.containers.v1.DeleteContainerRequest';
     containerId: string;
 }
 export interface DeleteContainerMetadata {
+    $type: 'yandex.cloud.serverless.containers.v1.DeleteContainerMetadata';
     containerId: string;
 }
 export interface GetContainerRevisionRequest {
+    $type: 'yandex.cloud.serverless.containers.v1.GetContainerRevisionRequest';
     containerRevisionId: string;
 }
 export interface ListContainersRevisionsRequest {
+    $type: 'yandex.cloud.serverless.containers.v1.ListContainersRevisionsRequest';
     folderId: string | undefined;
     containerId: string | undefined;
     pageSize: number;
@@ -68,10 +81,12 @@ export interface ListContainersRevisionsRequest {
     filter: string;
 }
 export interface ListContainersRevisionsResponse {
+    $type: 'yandex.cloud.serverless.containers.v1.ListContainersRevisionsResponse';
     revisions: Revision[];
     nextPageToken: string;
 }
 export interface DeployContainerRevisionRequest {
+    $type: 'yandex.cloud.serverless.containers.v1.DeployContainerRevisionRequest';
     containerId: string;
     description: string;
     resources: Resources | undefined;
@@ -81,6 +96,7 @@ export interface DeployContainerRevisionRequest {
     concurrency: number;
 }
 export interface ImageSpec {
+    $type: 'yandex.cloud.serverless.containers.v1.ImageSpec';
     imageUrl: string;
     command: Command | undefined;
     args: Args | undefined;
@@ -90,23 +106,28 @@ export interface ImageSpec {
     workingDir: string;
 }
 export interface ImageSpec_EnvironmentEntry {
+    $type: 'yandex.cloud.serverless.containers.v1.ImageSpec.EnvironmentEntry';
     key: string;
     value: string;
 }
 export interface DeployContainerRevisionMetadata {
+    $type: 'yandex.cloud.serverless.containers.v1.DeployContainerRevisionMetadata';
     containerRevisionId: string;
 }
 export interface ListContainerOperationsRequest {
+    $type: 'yandex.cloud.serverless.containers.v1.ListContainerOperationsRequest';
     containerId: string;
     pageSize: number;
     pageToken: string;
     filter: string;
 }
 export interface ListContainerOperationsResponse {
+    $type: 'yandex.cloud.serverless.containers.v1.ListContainerOperationsResponse';
     operations: Operation[];
     nextPageToken: string;
 }
 export declare const GetContainerRequest: {
+    $type: "yandex.cloud.serverless.containers.v1.GetContainerRequest";
     encode(message: GetContainerRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): GetContainerRequest;
     fromJSON(object: any): GetContainerRequest;
@@ -114,6 +135,7 @@ export declare const GetContainerRequest: {
     fromPartial(object: DeepPartial<GetContainerRequest>): GetContainerRequest;
 };
 export declare const ListContainersRequest: {
+    $type: "yandex.cloud.serverless.containers.v1.ListContainersRequest";
     encode(message: ListContainersRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListContainersRequest;
     fromJSON(object: any): ListContainersRequest;
@@ -121,6 +143,7 @@ export declare const ListContainersRequest: {
     fromPartial(object: DeepPartial<ListContainersRequest>): ListContainersRequest;
 };
 export declare const ListContainersResponse: {
+    $type: "yandex.cloud.serverless.containers.v1.ListContainersResponse";
     encode(message: ListContainersResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListContainersResponse;
     fromJSON(object: any): ListContainersResponse;
@@ -128,6 +151,7 @@ export declare const ListContainersResponse: {
     fromPartial(object: DeepPartial<ListContainersResponse>): ListContainersResponse;
 };
 export declare const CreateContainerRequest: {
+    $type: "yandex.cloud.serverless.containers.v1.CreateContainerRequest";
     encode(message: CreateContainerRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateContainerRequest;
     fromJSON(object: any): CreateContainerRequest;
@@ -135,6 +159,7 @@ export declare const CreateContainerRequest: {
     fromPartial(object: DeepPartial<CreateContainerRequest>): CreateContainerRequest;
 };
 export declare const CreateContainerRequest_LabelsEntry: {
+    $type: "yandex.cloud.serverless.containers.v1.CreateContainerRequest.LabelsEntry";
     encode(message: CreateContainerRequest_LabelsEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateContainerRequest_LabelsEntry;
     fromJSON(object: any): CreateContainerRequest_LabelsEntry;
@@ -142,6 +167,7 @@ export declare const CreateContainerRequest_LabelsEntry: {
     fromPartial(object: DeepPartial<CreateContainerRequest_LabelsEntry>): CreateContainerRequest_LabelsEntry;
 };
 export declare const CreateContainerMetadata: {
+    $type: "yandex.cloud.serverless.containers.v1.CreateContainerMetadata";
     encode(message: CreateContainerMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateContainerMetadata;
     fromJSON(object: any): CreateContainerMetadata;
@@ -149,6 +175,7 @@ export declare const CreateContainerMetadata: {
     fromPartial(object: DeepPartial<CreateContainerMetadata>): CreateContainerMetadata;
 };
 export declare const UpdateContainerRequest: {
+    $type: "yandex.cloud.serverless.containers.v1.UpdateContainerRequest";
     encode(message: UpdateContainerRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateContainerRequest;
     fromJSON(object: any): UpdateContainerRequest;
@@ -156,6 +183,7 @@ export declare const UpdateContainerRequest: {
     fromPartial(object: DeepPartial<UpdateContainerRequest>): UpdateContainerRequest;
 };
 export declare const UpdateContainerRequest_LabelsEntry: {
+    $type: "yandex.cloud.serverless.containers.v1.UpdateContainerRequest.LabelsEntry";
     encode(message: UpdateContainerRequest_LabelsEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateContainerRequest_LabelsEntry;
     fromJSON(object: any): UpdateContainerRequest_LabelsEntry;
@@ -163,6 +191,7 @@ export declare const UpdateContainerRequest_LabelsEntry: {
     fromPartial(object: DeepPartial<UpdateContainerRequest_LabelsEntry>): UpdateContainerRequest_LabelsEntry;
 };
 export declare const UpdateContainerMetadata: {
+    $type: "yandex.cloud.serverless.containers.v1.UpdateContainerMetadata";
     encode(message: UpdateContainerMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateContainerMetadata;
     fromJSON(object: any): UpdateContainerMetadata;
@@ -170,6 +199,7 @@ export declare const UpdateContainerMetadata: {
     fromPartial(object: DeepPartial<UpdateContainerMetadata>): UpdateContainerMetadata;
 };
 export declare const DeleteContainerRequest: {
+    $type: "yandex.cloud.serverless.containers.v1.DeleteContainerRequest";
     encode(message: DeleteContainerRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteContainerRequest;
     fromJSON(object: any): DeleteContainerRequest;
@@ -177,6 +207,7 @@ export declare const DeleteContainerRequest: {
     fromPartial(object: DeepPartial<DeleteContainerRequest>): DeleteContainerRequest;
 };
 export declare const DeleteContainerMetadata: {
+    $type: "yandex.cloud.serverless.containers.v1.DeleteContainerMetadata";
     encode(message: DeleteContainerMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteContainerMetadata;
     fromJSON(object: any): DeleteContainerMetadata;
@@ -184,6 +215,7 @@ export declare const DeleteContainerMetadata: {
     fromPartial(object: DeepPartial<DeleteContainerMetadata>): DeleteContainerMetadata;
 };
 export declare const GetContainerRevisionRequest: {
+    $type: "yandex.cloud.serverless.containers.v1.GetContainerRevisionRequest";
     encode(message: GetContainerRevisionRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): GetContainerRevisionRequest;
     fromJSON(object: any): GetContainerRevisionRequest;
@@ -191,6 +223,7 @@ export declare const GetContainerRevisionRequest: {
     fromPartial(object: DeepPartial<GetContainerRevisionRequest>): GetContainerRevisionRequest;
 };
 export declare const ListContainersRevisionsRequest: {
+    $type: "yandex.cloud.serverless.containers.v1.ListContainersRevisionsRequest";
     encode(message: ListContainersRevisionsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListContainersRevisionsRequest;
     fromJSON(object: any): ListContainersRevisionsRequest;
@@ -198,6 +231,7 @@ export declare const ListContainersRevisionsRequest: {
     fromPartial(object: DeepPartial<ListContainersRevisionsRequest>): ListContainersRevisionsRequest;
 };
 export declare const ListContainersRevisionsResponse: {
+    $type: "yandex.cloud.serverless.containers.v1.ListContainersRevisionsResponse";
     encode(message: ListContainersRevisionsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListContainersRevisionsResponse;
     fromJSON(object: any): ListContainersRevisionsResponse;
@@ -205,6 +239,7 @@ export declare const ListContainersRevisionsResponse: {
     fromPartial(object: DeepPartial<ListContainersRevisionsResponse>): ListContainersRevisionsResponse;
 };
 export declare const DeployContainerRevisionRequest: {
+    $type: "yandex.cloud.serverless.containers.v1.DeployContainerRevisionRequest";
     encode(message: DeployContainerRevisionRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeployContainerRevisionRequest;
     fromJSON(object: any): DeployContainerRevisionRequest;
@@ -212,6 +247,7 @@ export declare const DeployContainerRevisionRequest: {
     fromPartial(object: DeepPartial<DeployContainerRevisionRequest>): DeployContainerRevisionRequest;
 };
 export declare const ImageSpec: {
+    $type: "yandex.cloud.serverless.containers.v1.ImageSpec";
     encode(message: ImageSpec, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ImageSpec;
     fromJSON(object: any): ImageSpec;
@@ -219,6 +255,7 @@ export declare const ImageSpec: {
     fromPartial(object: DeepPartial<ImageSpec>): ImageSpec;
 };
 export declare const ImageSpec_EnvironmentEntry: {
+    $type: "yandex.cloud.serverless.containers.v1.ImageSpec.EnvironmentEntry";
     encode(message: ImageSpec_EnvironmentEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ImageSpec_EnvironmentEntry;
     fromJSON(object: any): ImageSpec_EnvironmentEntry;
@@ -226,6 +263,7 @@ export declare const ImageSpec_EnvironmentEntry: {
     fromPartial(object: DeepPartial<ImageSpec_EnvironmentEntry>): ImageSpec_EnvironmentEntry;
 };
 export declare const DeployContainerRevisionMetadata: {
+    $type: "yandex.cloud.serverless.containers.v1.DeployContainerRevisionMetadata";
     encode(message: DeployContainerRevisionMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeployContainerRevisionMetadata;
     fromJSON(object: any): DeployContainerRevisionMetadata;
@@ -233,6 +271,7 @@ export declare const DeployContainerRevisionMetadata: {
     fromPartial(object: DeepPartial<DeployContainerRevisionMetadata>): DeployContainerRevisionMetadata;
 };
 export declare const ListContainerOperationsRequest: {
+    $type: "yandex.cloud.serverless.containers.v1.ListContainerOperationsRequest";
     encode(message: ListContainerOperationsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListContainerOperationsRequest;
     fromJSON(object: any): ListContainerOperationsRequest;
@@ -240,6 +279,7 @@ export declare const ListContainerOperationsRequest: {
     fromPartial(object: DeepPartial<ListContainerOperationsRequest>): ListContainerOperationsRequest;
 };
 export declare const ListContainerOperationsResponse: {
+    $type: "yandex.cloud.serverless.containers.v1.ListContainerOperationsResponse";
     encode(message: ListContainerOperationsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListContainerOperationsResponse;
     fromJSON(object: any): ListContainerOperationsResponse;
@@ -411,6 +451,6 @@ export interface ContainerServiceClient extends Client {
 export declare const ContainerServiceClient: new (address: string, credentials: ChannelCredentials, options?: Partial<ChannelOptions> | undefined) => ContainerServiceClient;
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

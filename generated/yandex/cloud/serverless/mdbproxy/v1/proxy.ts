@@ -1,11 +1,13 @@
 /* eslint-disable */
 import { Timestamp } from '../../../../../google/protobuf/timestamp';
+import { messageTypeRegistry } from '../../../../../typeRegistry';
 import Long from 'long';
 import _m0 from 'protobufjs/minimal';
 
 export const protobufPackage = 'yandex.cloud.serverless.mdbproxy.v1';
 
 export interface Proxy {
+    $type: 'yandex.cloud.serverless.mdbproxy.v1.Proxy';
     /** ID of the proxy. */
     id: string;
     /** ID of the folder that the proxy belongs to. */
@@ -23,11 +25,13 @@ export interface Proxy {
 }
 
 export interface Proxy_LabelsEntry {
+    $type: 'yandex.cloud.serverless.mdbproxy.v1.Proxy.LabelsEntry';
     key: string;
     value: string;
 }
 
 export interface Target {
+    $type: 'yandex.cloud.serverless.mdbproxy.v1.Target';
     /** Clickhouse settings for proxy. */
     clickhouse: Target_ClickHouse | undefined;
     /** PostgreSQL settings for proxy. */
@@ -35,6 +39,7 @@ export interface Target {
 }
 
 export interface Target_PostgreSQL {
+    $type: 'yandex.cloud.serverless.mdbproxy.v1.Target.PostgreSQL';
     /** Cluster identifier for postgresql. */
     clusterId: string;
     /** PostgreSQL user. */
@@ -48,6 +53,7 @@ export interface Target_PostgreSQL {
 }
 
 export interface Target_ClickHouse {
+    $type: 'yandex.cloud.serverless.mdbproxy.v1.Target.ClickHouse';
     /** Cluster identifier for clickhouse. */
     clusterId: string;
     /** Clickhouse user. */
@@ -60,9 +66,17 @@ export interface Target_ClickHouse {
     endpoint: string;
 }
 
-const baseProxy: object = { id: '', folderId: '', name: '', description: '' };
+const baseProxy: object = {
+    $type: 'yandex.cloud.serverless.mdbproxy.v1.Proxy',
+    id: '',
+    folderId: '',
+    name: '',
+    description: '',
+};
 
 export const Proxy = {
+    $type: 'yandex.cloud.serverless.mdbproxy.v1.Proxy' as const,
+
     encode(
         message: Proxy,
         writer: _m0.Writer = _m0.Writer.create()
@@ -87,7 +101,11 @@ export const Proxy = {
         }
         Object.entries(message.labels).forEach(([key, value]) => {
             Proxy_LabelsEntry.encode(
-                { key: key as any, value },
+                {
+                    $type: 'yandex.cloud.serverless.mdbproxy.v1.Proxy.LabelsEntry',
+                    key: key as any,
+                    value,
+                },
                 writer.uint32(50).fork()
             ).ldelim();
         });
@@ -250,9 +268,17 @@ export const Proxy = {
     },
 };
 
-const baseProxy_LabelsEntry: object = { key: '', value: '' };
+messageTypeRegistry.set(Proxy.$type, Proxy);
+
+const baseProxy_LabelsEntry: object = {
+    $type: 'yandex.cloud.serverless.mdbproxy.v1.Proxy.LabelsEntry',
+    key: '',
+    value: '',
+};
 
 export const Proxy_LabelsEntry = {
+    $type: 'yandex.cloud.serverless.mdbproxy.v1.Proxy.LabelsEntry' as const,
+
     encode(
         message: Proxy_LabelsEntry,
         writer: _m0.Writer = _m0.Writer.create()
@@ -326,9 +352,15 @@ export const Proxy_LabelsEntry = {
     },
 };
 
-const baseTarget: object = {};
+messageTypeRegistry.set(Proxy_LabelsEntry.$type, Proxy_LabelsEntry);
+
+const baseTarget: object = {
+    $type: 'yandex.cloud.serverless.mdbproxy.v1.Target',
+};
 
 export const Target = {
+    $type: 'yandex.cloud.serverless.mdbproxy.v1.Target' as const,
+
     encode(
         message: Target,
         writer: _m0.Writer = _m0.Writer.create()
@@ -424,7 +456,10 @@ export const Target = {
     },
 };
 
+messageTypeRegistry.set(Target.$type, Target);
+
 const baseTarget_PostgreSQL: object = {
+    $type: 'yandex.cloud.serverless.mdbproxy.v1.Target.PostgreSQL',
     clusterId: '',
     user: '',
     password: '',
@@ -433,6 +468,8 @@ const baseTarget_PostgreSQL: object = {
 };
 
 export const Target_PostgreSQL = {
+    $type: 'yandex.cloud.serverless.mdbproxy.v1.Target.PostgreSQL' as const,
+
     encode(
         message: Target_PostgreSQL,
         writer: _m0.Writer = _m0.Writer.create()
@@ -557,7 +594,10 @@ export const Target_PostgreSQL = {
     },
 };
 
+messageTypeRegistry.set(Target_PostgreSQL.$type, Target_PostgreSQL);
+
 const baseTarget_ClickHouse: object = {
+    $type: 'yandex.cloud.serverless.mdbproxy.v1.Target.ClickHouse',
     clusterId: '',
     user: '',
     password: '',
@@ -566,6 +606,8 @@ const baseTarget_ClickHouse: object = {
 };
 
 export const Target_ClickHouse = {
+    $type: 'yandex.cloud.serverless.mdbproxy.v1.Target.ClickHouse' as const,
+
     encode(
         message: Target_ClickHouse,
         writer: _m0.Writer = _m0.Writer.create()
@@ -690,6 +732,8 @@ export const Target_ClickHouse = {
     },
 };
 
+messageTypeRegistry.set(Target_ClickHouse.$type, Target_ClickHouse);
+
 type Builtin =
     | Date
     | Function
@@ -705,13 +749,13 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 function toTimestamp(date: Date): Timestamp {
     const seconds = date.getTime() / 1_000;
     const nanos = (date.getTime() % 1_000) * 1_000_000;
-    return { seconds, nanos };
+    return { $type: 'google.protobuf.Timestamp', seconds, nanos };
 }
 
 function fromTimestamp(t: Timestamp): Date {

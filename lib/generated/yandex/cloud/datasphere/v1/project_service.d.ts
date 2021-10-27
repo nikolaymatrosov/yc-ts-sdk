@@ -8,6 +8,7 @@ import { ChannelCredentials, ChannelOptions, UntypedServiceImplementation, handl
 import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.datasphere.v1";
 export interface CreateProjectRequest {
+    $type: 'yandex.cloud.datasphere.v1.CreateProjectRequest';
     /**
      * ID of the folder to create a project in.
      * To get the folder ID use a [yandex.cloud.resourcemanager.v1.FolderService.List] request.
@@ -23,10 +24,12 @@ export interface CreateProjectRequest {
     limits: Project_Limits | undefined;
 }
 export interface CreateProjectMetadata {
+    $type: 'yandex.cloud.datasphere.v1.CreateProjectMetadata';
     /** ID of the project that is being created. */
     projectId: string;
 }
 export interface UpdateProjectRequest {
+    $type: 'yandex.cloud.datasphere.v1.UpdateProjectRequest';
     /**
      * ID of the Project resource to update.
      * To get the project ID use a [ProjectService.List] request.
@@ -44,10 +47,12 @@ export interface UpdateProjectRequest {
     limits: Project_Limits | undefined;
 }
 export interface UpdateProjectMetadata {
+    $type: 'yandex.cloud.datasphere.v1.UpdateProjectMetadata';
     /** ID of the project that is being updated. */
     projectId: string;
 }
 export interface DeleteProjectRequest {
+    $type: 'yandex.cloud.datasphere.v1.DeleteProjectRequest';
     /**
      * ID of the Project resource to delete.
      * To get the project ID use a [ProjectService.List] request.
@@ -55,10 +60,12 @@ export interface DeleteProjectRequest {
     projectId: string;
 }
 export interface DeleteProjectMetadata {
+    $type: 'yandex.cloud.datasphere.v1.DeleteProjectMetadata';
     /** ID of the project that is being deleted. */
     projectId: string;
 }
 export interface OpenProjectRequest {
+    $type: 'yandex.cloud.datasphere.v1.OpenProjectRequest';
     /**
      * ID of the Project resource to open.
      * To get the project ID use a [ProjectService.List] request.
@@ -66,10 +73,12 @@ export interface OpenProjectRequest {
     projectId: string;
 }
 export interface OpenProjectMetadata {
+    $type: 'yandex.cloud.datasphere.v1.OpenProjectMetadata';
     /** ID of the project that is being opened. */
     projectId: string;
 }
 export interface OpenProjectResponse {
+    $type: 'yandex.cloud.datasphere.v1.OpenProjectResponse';
     /**
      * URL of the project that is being opened.
      * Make GET request to [project_url] with sessionToken query parameter equals to [session_token]
@@ -81,6 +90,7 @@ export interface OpenProjectResponse {
     sessionToken: string;
 }
 export interface GetProjectRequest {
+    $type: 'yandex.cloud.datasphere.v1.GetProjectRequest';
     /**
      * ID of the Project resource to return.
      * To get the project ID use a [ProjectService.List] request.
@@ -88,6 +98,7 @@ export interface GetProjectRequest {
     projectId: string;
 }
 export interface ListProjectsRequest {
+    $type: 'yandex.cloud.datasphere.v1.ListProjectsRequest';
     /**
      * ID of the folder to list projects in.
      * To get the folder ID use a [yandex.cloud.resourcemanager.v1.FolderService.List] request.
@@ -107,6 +118,7 @@ export interface ListProjectsRequest {
     pageToken: string;
 }
 export interface ListProjectsResponse {
+    $type: 'yandex.cloud.datasphere.v1.ListProjectsResponse';
     /** List of Project resources. */
     projects: Project[];
     /**
@@ -120,20 +132,24 @@ export interface ListProjectsResponse {
     nextPageToken: string;
 }
 export interface GetUnitBalanceRequest {
+    $type: 'yandex.cloud.datasphere.v1.GetUnitBalanceRequest';
     /** ID of the project to return the unit balance for. */
     projectId: string;
 }
 export interface GetUnitBalanceResponse {
+    $type: 'yandex.cloud.datasphere.v1.GetUnitBalanceResponse';
     /** The number of units available to the project. */
     unitBalance: number | undefined;
 }
 export interface SetUnitBalanceRequest {
+    $type: 'yandex.cloud.datasphere.v1.SetUnitBalanceRequest';
     /** ID of the project to set the unit balance for. */
     projectId: string;
     /** The number of units available to the project. */
     unitBalance: number | undefined;
 }
 export interface ProjectExecutionRequest {
+    $type: 'yandex.cloud.datasphere.v1.ProjectExecutionRequest';
     /** ID of the project to execute notebook/cell in. */
     projectId: string;
     /** ID of the notebook to execute. */
@@ -146,6 +162,7 @@ export interface ProjectExecutionRequest {
     outputVariableNames: string[];
 }
 export interface ProjectExecutionMetadata {
+    $type: 'yandex.cloud.datasphere.v1.ProjectExecutionMetadata';
     /** ID of the project in which notebook is being executed. */
     projectId: string;
     /** ID of the notebook that is being executed */
@@ -154,12 +171,14 @@ export interface ProjectExecutionMetadata {
     cellId: string | undefined;
 }
 export interface ProjectExecutionResponse {
+    $type: 'yandex.cloud.datasphere.v1.ProjectExecutionResponse';
     /** ID of the checkpoint resulting from the execution. */
     checkpointId: string;
     /** Values of output variables resulting from the execution. */
     outputVariables: Struct | undefined;
 }
 export interface CellOutputsRequest {
+    $type: 'yandex.cloud.datasphere.v1.CellOutputsRequest';
     /** ID of the project to return cell outputs for. */
     projectId: string;
     /** ID of the cell to return outputs for. */
@@ -170,10 +189,12 @@ export interface CellOutputsRequest {
     startAt: Date | undefined;
 }
 export interface CellOutputsResponse {
+    $type: 'yandex.cloud.datasphere.v1.CellOutputsResponse';
     /** List of outputs. */
     outputs: string[];
 }
 export interface GetStateVariablesRequest {
+    $type: 'yandex.cloud.datasphere.v1.GetStateVariablesRequest';
     /** ID of the project, for which to return state variables. */
     projectId: string;
     /** ID of the notebook, for which to return state variables. */
@@ -184,10 +205,12 @@ export interface GetStateVariablesRequest {
     checkpointId: string;
 }
 export interface GetStateVariablesResponse {
+    $type: 'yandex.cloud.datasphere.v1.GetStateVariablesResponse';
     /** Values of the specified variables. */
     variables: Struct | undefined;
 }
 export declare const CreateProjectRequest: {
+    $type: "yandex.cloud.datasphere.v1.CreateProjectRequest";
     encode(message: CreateProjectRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateProjectRequest;
     fromJSON(object: any): CreateProjectRequest;
@@ -195,6 +218,7 @@ export declare const CreateProjectRequest: {
     fromPartial(object: DeepPartial<CreateProjectRequest>): CreateProjectRequest;
 };
 export declare const CreateProjectMetadata: {
+    $type: "yandex.cloud.datasphere.v1.CreateProjectMetadata";
     encode(message: CreateProjectMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateProjectMetadata;
     fromJSON(object: any): CreateProjectMetadata;
@@ -202,6 +226,7 @@ export declare const CreateProjectMetadata: {
     fromPartial(object: DeepPartial<CreateProjectMetadata>): CreateProjectMetadata;
 };
 export declare const UpdateProjectRequest: {
+    $type: "yandex.cloud.datasphere.v1.UpdateProjectRequest";
     encode(message: UpdateProjectRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateProjectRequest;
     fromJSON(object: any): UpdateProjectRequest;
@@ -209,6 +234,7 @@ export declare const UpdateProjectRequest: {
     fromPartial(object: DeepPartial<UpdateProjectRequest>): UpdateProjectRequest;
 };
 export declare const UpdateProjectMetadata: {
+    $type: "yandex.cloud.datasphere.v1.UpdateProjectMetadata";
     encode(message: UpdateProjectMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateProjectMetadata;
     fromJSON(object: any): UpdateProjectMetadata;
@@ -216,6 +242,7 @@ export declare const UpdateProjectMetadata: {
     fromPartial(object: DeepPartial<UpdateProjectMetadata>): UpdateProjectMetadata;
 };
 export declare const DeleteProjectRequest: {
+    $type: "yandex.cloud.datasphere.v1.DeleteProjectRequest";
     encode(message: DeleteProjectRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteProjectRequest;
     fromJSON(object: any): DeleteProjectRequest;
@@ -223,6 +250,7 @@ export declare const DeleteProjectRequest: {
     fromPartial(object: DeepPartial<DeleteProjectRequest>): DeleteProjectRequest;
 };
 export declare const DeleteProjectMetadata: {
+    $type: "yandex.cloud.datasphere.v1.DeleteProjectMetadata";
     encode(message: DeleteProjectMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteProjectMetadata;
     fromJSON(object: any): DeleteProjectMetadata;
@@ -230,6 +258,7 @@ export declare const DeleteProjectMetadata: {
     fromPartial(object: DeepPartial<DeleteProjectMetadata>): DeleteProjectMetadata;
 };
 export declare const OpenProjectRequest: {
+    $type: "yandex.cloud.datasphere.v1.OpenProjectRequest";
     encode(message: OpenProjectRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): OpenProjectRequest;
     fromJSON(object: any): OpenProjectRequest;
@@ -237,6 +266,7 @@ export declare const OpenProjectRequest: {
     fromPartial(object: DeepPartial<OpenProjectRequest>): OpenProjectRequest;
 };
 export declare const OpenProjectMetadata: {
+    $type: "yandex.cloud.datasphere.v1.OpenProjectMetadata";
     encode(message: OpenProjectMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): OpenProjectMetadata;
     fromJSON(object: any): OpenProjectMetadata;
@@ -244,6 +274,7 @@ export declare const OpenProjectMetadata: {
     fromPartial(object: DeepPartial<OpenProjectMetadata>): OpenProjectMetadata;
 };
 export declare const OpenProjectResponse: {
+    $type: "yandex.cloud.datasphere.v1.OpenProjectResponse";
     encode(message: OpenProjectResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): OpenProjectResponse;
     fromJSON(object: any): OpenProjectResponse;
@@ -251,6 +282,7 @@ export declare const OpenProjectResponse: {
     fromPartial(object: DeepPartial<OpenProjectResponse>): OpenProjectResponse;
 };
 export declare const GetProjectRequest: {
+    $type: "yandex.cloud.datasphere.v1.GetProjectRequest";
     encode(message: GetProjectRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): GetProjectRequest;
     fromJSON(object: any): GetProjectRequest;
@@ -258,6 +290,7 @@ export declare const GetProjectRequest: {
     fromPartial(object: DeepPartial<GetProjectRequest>): GetProjectRequest;
 };
 export declare const ListProjectsRequest: {
+    $type: "yandex.cloud.datasphere.v1.ListProjectsRequest";
     encode(message: ListProjectsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListProjectsRequest;
     fromJSON(object: any): ListProjectsRequest;
@@ -265,6 +298,7 @@ export declare const ListProjectsRequest: {
     fromPartial(object: DeepPartial<ListProjectsRequest>): ListProjectsRequest;
 };
 export declare const ListProjectsResponse: {
+    $type: "yandex.cloud.datasphere.v1.ListProjectsResponse";
     encode(message: ListProjectsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListProjectsResponse;
     fromJSON(object: any): ListProjectsResponse;
@@ -272,6 +306,7 @@ export declare const ListProjectsResponse: {
     fromPartial(object: DeepPartial<ListProjectsResponse>): ListProjectsResponse;
 };
 export declare const GetUnitBalanceRequest: {
+    $type: "yandex.cloud.datasphere.v1.GetUnitBalanceRequest";
     encode(message: GetUnitBalanceRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): GetUnitBalanceRequest;
     fromJSON(object: any): GetUnitBalanceRequest;
@@ -279,6 +314,7 @@ export declare const GetUnitBalanceRequest: {
     fromPartial(object: DeepPartial<GetUnitBalanceRequest>): GetUnitBalanceRequest;
 };
 export declare const GetUnitBalanceResponse: {
+    $type: "yandex.cloud.datasphere.v1.GetUnitBalanceResponse";
     encode(message: GetUnitBalanceResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): GetUnitBalanceResponse;
     fromJSON(object: any): GetUnitBalanceResponse;
@@ -286,6 +322,7 @@ export declare const GetUnitBalanceResponse: {
     fromPartial(object: DeepPartial<GetUnitBalanceResponse>): GetUnitBalanceResponse;
 };
 export declare const SetUnitBalanceRequest: {
+    $type: "yandex.cloud.datasphere.v1.SetUnitBalanceRequest";
     encode(message: SetUnitBalanceRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): SetUnitBalanceRequest;
     fromJSON(object: any): SetUnitBalanceRequest;
@@ -293,6 +330,7 @@ export declare const SetUnitBalanceRequest: {
     fromPartial(object: DeepPartial<SetUnitBalanceRequest>): SetUnitBalanceRequest;
 };
 export declare const ProjectExecutionRequest: {
+    $type: "yandex.cloud.datasphere.v1.ProjectExecutionRequest";
     encode(message: ProjectExecutionRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ProjectExecutionRequest;
     fromJSON(object: any): ProjectExecutionRequest;
@@ -300,6 +338,7 @@ export declare const ProjectExecutionRequest: {
     fromPartial(object: DeepPartial<ProjectExecutionRequest>): ProjectExecutionRequest;
 };
 export declare const ProjectExecutionMetadata: {
+    $type: "yandex.cloud.datasphere.v1.ProjectExecutionMetadata";
     encode(message: ProjectExecutionMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ProjectExecutionMetadata;
     fromJSON(object: any): ProjectExecutionMetadata;
@@ -307,6 +346,7 @@ export declare const ProjectExecutionMetadata: {
     fromPartial(object: DeepPartial<ProjectExecutionMetadata>): ProjectExecutionMetadata;
 };
 export declare const ProjectExecutionResponse: {
+    $type: "yandex.cloud.datasphere.v1.ProjectExecutionResponse";
     encode(message: ProjectExecutionResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ProjectExecutionResponse;
     fromJSON(object: any): ProjectExecutionResponse;
@@ -314,6 +354,7 @@ export declare const ProjectExecutionResponse: {
     fromPartial(object: DeepPartial<ProjectExecutionResponse>): ProjectExecutionResponse;
 };
 export declare const CellOutputsRequest: {
+    $type: "yandex.cloud.datasphere.v1.CellOutputsRequest";
     encode(message: CellOutputsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CellOutputsRequest;
     fromJSON(object: any): CellOutputsRequest;
@@ -321,6 +362,7 @@ export declare const CellOutputsRequest: {
     fromPartial(object: DeepPartial<CellOutputsRequest>): CellOutputsRequest;
 };
 export declare const CellOutputsResponse: {
+    $type: "yandex.cloud.datasphere.v1.CellOutputsResponse";
     encode(message: CellOutputsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CellOutputsResponse;
     fromJSON(object: any): CellOutputsResponse;
@@ -328,6 +370,7 @@ export declare const CellOutputsResponse: {
     fromPartial(object: DeepPartial<CellOutputsResponse>): CellOutputsResponse;
 };
 export declare const GetStateVariablesRequest: {
+    $type: "yandex.cloud.datasphere.v1.GetStateVariablesRequest";
     encode(message: GetStateVariablesRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): GetStateVariablesRequest;
     fromJSON(object: any): GetStateVariablesRequest;
@@ -335,6 +378,7 @@ export declare const GetStateVariablesRequest: {
     fromPartial(object: DeepPartial<GetStateVariablesRequest>): GetStateVariablesRequest;
 };
 export declare const GetStateVariablesResponse: {
+    $type: "yandex.cloud.datasphere.v1.GetStateVariablesResponse";
     encode(message: GetStateVariablesResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): GetStateVariablesResponse;
     fromJSON(object: any): GetStateVariablesResponse;
@@ -527,6 +571,6 @@ export interface ProjectServiceClient extends Client {
 export declare const ProjectServiceClient: new (address: string, credentials: ChannelCredentials, options?: Partial<ChannelOptions> | undefined) => ProjectServiceClient;
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

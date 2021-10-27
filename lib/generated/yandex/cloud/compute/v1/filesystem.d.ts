@@ -5,6 +5,7 @@ export declare const protobufPackage = "yandex.cloud.compute.v1";
  * For details about the concept, see [documentation](/docs/compute/concepts/filesystem).
  */
 export interface Filesystem {
+    $type: 'yandex.cloud.compute.v1.Filesystem';
     /** ID of the filesystem. Generated at creation time. */
     id: string;
     /** ID of the folder that the filesystem belongs to. */
@@ -56,10 +57,12 @@ export declare enum Filesystem_Status {
 export declare function filesystem_StatusFromJSON(object: any): Filesystem_Status;
 export declare function filesystem_StatusToJSON(object: Filesystem_Status): string;
 export interface Filesystem_LabelsEntry {
+    $type: 'yandex.cloud.compute.v1.Filesystem.LabelsEntry';
     key: string;
     value: string;
 }
 export declare const Filesystem: {
+    $type: "yandex.cloud.compute.v1.Filesystem";
     encode(message: Filesystem, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Filesystem;
     fromJSON(object: any): Filesystem;
@@ -67,6 +70,7 @@ export declare const Filesystem: {
     fromPartial(object: DeepPartial<Filesystem>): Filesystem;
 };
 export declare const Filesystem_LabelsEntry: {
+    $type: "yandex.cloud.compute.v1.Filesystem.LabelsEntry";
     encode(message: Filesystem_LabelsEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Filesystem_LabelsEntry;
     fromJSON(object: any): Filesystem_LabelsEntry;
@@ -75,6 +79,6 @@ export declare const Filesystem_LabelsEntry: {
 };
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

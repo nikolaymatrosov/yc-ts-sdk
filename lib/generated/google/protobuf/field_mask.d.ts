@@ -202,10 +202,12 @@ export declare const protobufPackage = "google.protobuf";
  * `INVALID_ARGUMENT` error if any path is unmappable.
  */
 export interface FieldMask {
+    $type: 'google.protobuf.FieldMask';
     /** The set of field mask paths. */
     paths: string[];
 }
 export declare const FieldMask: {
+    $type: "google.protobuf.FieldMask";
     encode(message: FieldMask, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): FieldMask;
     fromJSON(object: any): FieldMask;
@@ -214,6 +216,6 @@ export declare const FieldMask: {
 };
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

@@ -9,10 +9,12 @@ import { ChannelCredentials, ChannelOptions, UntypedServiceImplementation, handl
 import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.k8s.v1";
 export interface GetClusterRequest {
+    $type: 'yandex.cloud.k8s.v1.GetClusterRequest';
     /** ID of the Kubernetes cluster to return. */
     clusterId: string;
 }
 export interface ListClustersRequest {
+    $type: 'yandex.cloud.k8s.v1.ListClustersRequest';
     /**
      * ID of the folder to list Kubernetes cluster in.
      * To get the folder ID use a [yandex.cloud.resourcemanager.v1.FolderService.List] request.
@@ -41,6 +43,7 @@ export interface ListClustersRequest {
     filter: string;
 }
 export interface ListClustersResponse {
+    $type: 'yandex.cloud.k8s.v1.ListClustersResponse';
     /** List of Kubernetes cluster. */
     clusters: Cluster[];
     /**
@@ -54,6 +57,7 @@ export interface ListClustersResponse {
     nextPageToken: string;
 }
 export interface DeleteClusterRequest {
+    $type: 'yandex.cloud.k8s.v1.DeleteClusterRequest';
     /**
      * ID of the Kubernetes cluster to delete.
      * To get Kubernetes cluster ID use a [ClusterService.List] request.
@@ -61,10 +65,12 @@ export interface DeleteClusterRequest {
     clusterId: string;
 }
 export interface DeleteClusterMetadata {
+    $type: 'yandex.cloud.k8s.v1.DeleteClusterMetadata';
     /** ID of the Kubernetes cluster that is being deleted. */
     clusterId: string;
 }
 export interface StopClusterRequest {
+    $type: 'yandex.cloud.k8s.v1.StopClusterRequest';
     /**
      * ID of the Kubernetes cluster to stop.
      * To get Kubernetes cluster ID use a [ClusterService.List] request.
@@ -72,10 +78,12 @@ export interface StopClusterRequest {
     clusterId: string;
 }
 export interface StopClusterMetadata {
+    $type: 'yandex.cloud.k8s.v1.StopClusterMetadata';
     /** ID of the Kubernetes cluster that is being stopped. */
     clusterId: string;
 }
 export interface StartClusterRequest {
+    $type: 'yandex.cloud.k8s.v1.StartClusterRequest';
     /**
      * ID of the Kubernetes cluster to start.
      * To get Kubernetes cluster ID use a [ClusterService.List] request.
@@ -83,10 +91,12 @@ export interface StartClusterRequest {
     clusterId: string;
 }
 export interface StartClusterMetadata {
+    $type: 'yandex.cloud.k8s.v1.StartClusterMetadata';
     /** ID of the Kubernetes cluster that is being started. */
     clusterId: string;
 }
 export interface UpdateClusterRequest {
+    $type: 'yandex.cloud.k8s.v1.UpdateClusterRequest';
     /**
      * ID of the Kubernetes cluster to update.
      * To get the Kubernetes cluster ID use a [ClusterService.List] request.
@@ -126,10 +136,12 @@ export interface UpdateClusterRequest {
     networkPolicy: NetworkPolicy | undefined;
 }
 export interface UpdateClusterRequest_LabelsEntry {
+    $type: 'yandex.cloud.k8s.v1.UpdateClusterRequest.LabelsEntry';
     key: string;
     value: string;
 }
 export interface MasterUpdateSpec {
+    $type: 'yandex.cloud.k8s.v1.MasterUpdateSpec';
     /** Specification of the master update. */
     version: UpdateVersionSpec | undefined;
     /** Maintenance policy of the master. */
@@ -138,10 +150,12 @@ export interface MasterUpdateSpec {
     securityGroupIds: string[];
 }
 export interface UpdateClusterMetadata {
+    $type: 'yandex.cloud.k8s.v1.UpdateClusterMetadata';
     /** ID of the Kubernetes cluster that is being updated. */
     clusterId: string;
 }
 export interface CreateClusterRequest {
+    $type: 'yandex.cloud.k8s.v1.CreateClusterRequest';
     /**
      * ID of the folder to create a Kubernetes cluster in.
      * To get the folder ID use a [yandex.cloud.resourcemanager.v1.FolderService.List] request.
@@ -182,18 +196,22 @@ export interface CreateClusterRequest {
     cilium: Cilium | undefined;
 }
 export interface CreateClusterRequest_LabelsEntry {
+    $type: 'yandex.cloud.k8s.v1.CreateClusterRequest.LabelsEntry';
     key: string;
     value: string;
 }
 export interface CreateClusterMetadata {
+    $type: 'yandex.cloud.k8s.v1.CreateClusterMetadata';
     /** ID of the Kubernetes cluster that is being created. */
     clusterId: string;
 }
 export interface AutoUpgradeMasterMetadata {
+    $type: 'yandex.cloud.k8s.v1.AutoUpgradeMasterMetadata';
     /** ID of the Kubernetes cluster that is being auto upgraded. */
     clusterId: string;
 }
 export interface ListClusterOperationsRequest {
+    $type: 'yandex.cloud.k8s.v1.ListClusterOperationsRequest';
     /** ID of the Kubernetes cluster to list operations for. */
     clusterId: string;
     /**
@@ -215,6 +233,7 @@ export interface ListClusterOperationsRequest {
     filter: string;
 }
 export interface ListClusterOperationsResponse {
+    $type: 'yandex.cloud.k8s.v1.ListClusterOperationsResponse';
     /** List of operations for the specified Kubernetes cluster. */
     operations: Operation[];
     /**
@@ -226,6 +245,7 @@ export interface ListClusterOperationsResponse {
     nextPageToken: string;
 }
 export interface ListClusterNodeGroupsRequest {
+    $type: 'yandex.cloud.k8s.v1.ListClusterNodeGroupsRequest';
     /**
      * ID of the Kubernetes cluster to list node groups in.
      * To get the Kubernetes cluster ID use a [ClusterService.List] request.
@@ -251,6 +271,7 @@ export interface ListClusterNodeGroupsRequest {
     filter: string;
 }
 export interface ListClusterNodeGroupsResponse {
+    $type: 'yandex.cloud.k8s.v1.ListClusterNodeGroupsResponse';
     /** List of node groups for the specified Kubernetes cluster. */
     nodeGroups: NodeGroup[];
     /**
@@ -264,6 +285,7 @@ export interface ListClusterNodeGroupsResponse {
     nextPageToken: string;
 }
 export interface ListClusterNodesRequest {
+    $type: 'yandex.cloud.k8s.v1.ListClusterNodesRequest';
     /**
      * ID of the Kubernetes cluster to list nodes in.
      * To get the Kubernetes cluster ID use a [ClusterService.List] request.
@@ -284,6 +306,7 @@ export interface ListClusterNodesRequest {
     pageToken: string;
 }
 export interface ListClusterNodesResponse {
+    $type: 'yandex.cloud.k8s.v1.ListClusterNodesResponse';
     /** List of nodes for the specified Kubernetes cluster. */
     nodes: Node[];
     /**
@@ -297,6 +320,7 @@ export interface ListClusterNodesResponse {
     nextPageToken: string;
 }
 export interface MasterSpec {
+    $type: 'yandex.cloud.k8s.v1.MasterSpec';
     /** Specification of the zonal master. */
     zonalMasterSpec: ZonalMasterSpec | undefined;
     /** Specification of the regional master. */
@@ -309,6 +333,7 @@ export interface MasterSpec {
     securityGroupIds: string[];
 }
 export interface ZonalMasterSpec {
+    $type: 'yandex.cloud.k8s.v1.ZonalMasterSpec';
     /** ID of the availability zone. */
     zoneId: string;
     /** Specification of parameters for internal IPv4 networking. */
@@ -317,6 +342,7 @@ export interface ZonalMasterSpec {
     externalV4AddressSpec: ExternalAddressSpec | undefined;
 }
 export interface RegionalMasterSpec {
+    $type: 'yandex.cloud.k8s.v1.RegionalMasterSpec';
     /** ID of the availability zone where the master resides. */
     regionId: string;
     /** List of locations where the master will be allocated. */
@@ -325,12 +351,15 @@ export interface RegionalMasterSpec {
     externalV4AddressSpec: ExternalAddressSpec | undefined;
 }
 export interface InternalAddressSpec {
+    $type: 'yandex.cloud.k8s.v1.InternalAddressSpec';
     /** ID of the subnet. If no ID is specified, and there only one subnet in specified zone, an address in this subnet will be allocated. */
     subnetId: string;
 }
 export interface ExternalAddressSpec {
+    $type: 'yandex.cloud.k8s.v1.ExternalAddressSpec';
 }
 export interface MasterLocation {
+    $type: 'yandex.cloud.k8s.v1.MasterLocation';
     /** ID of the availability zone. */
     zoneId: string;
     /**
@@ -340,6 +369,7 @@ export interface MasterLocation {
     internalV4AddressSpec: InternalAddressSpec | undefined;
 }
 export declare const GetClusterRequest: {
+    $type: "yandex.cloud.k8s.v1.GetClusterRequest";
     encode(message: GetClusterRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): GetClusterRequest;
     fromJSON(object: any): GetClusterRequest;
@@ -347,6 +377,7 @@ export declare const GetClusterRequest: {
     fromPartial(object: DeepPartial<GetClusterRequest>): GetClusterRequest;
 };
 export declare const ListClustersRequest: {
+    $type: "yandex.cloud.k8s.v1.ListClustersRequest";
     encode(message: ListClustersRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListClustersRequest;
     fromJSON(object: any): ListClustersRequest;
@@ -354,6 +385,7 @@ export declare const ListClustersRequest: {
     fromPartial(object: DeepPartial<ListClustersRequest>): ListClustersRequest;
 };
 export declare const ListClustersResponse: {
+    $type: "yandex.cloud.k8s.v1.ListClustersResponse";
     encode(message: ListClustersResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListClustersResponse;
     fromJSON(object: any): ListClustersResponse;
@@ -361,6 +393,7 @@ export declare const ListClustersResponse: {
     fromPartial(object: DeepPartial<ListClustersResponse>): ListClustersResponse;
 };
 export declare const DeleteClusterRequest: {
+    $type: "yandex.cloud.k8s.v1.DeleteClusterRequest";
     encode(message: DeleteClusterRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteClusterRequest;
     fromJSON(object: any): DeleteClusterRequest;
@@ -368,6 +401,7 @@ export declare const DeleteClusterRequest: {
     fromPartial(object: DeepPartial<DeleteClusterRequest>): DeleteClusterRequest;
 };
 export declare const DeleteClusterMetadata: {
+    $type: "yandex.cloud.k8s.v1.DeleteClusterMetadata";
     encode(message: DeleteClusterMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteClusterMetadata;
     fromJSON(object: any): DeleteClusterMetadata;
@@ -375,6 +409,7 @@ export declare const DeleteClusterMetadata: {
     fromPartial(object: DeepPartial<DeleteClusterMetadata>): DeleteClusterMetadata;
 };
 export declare const StopClusterRequest: {
+    $type: "yandex.cloud.k8s.v1.StopClusterRequest";
     encode(message: StopClusterRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): StopClusterRequest;
     fromJSON(object: any): StopClusterRequest;
@@ -382,6 +417,7 @@ export declare const StopClusterRequest: {
     fromPartial(object: DeepPartial<StopClusterRequest>): StopClusterRequest;
 };
 export declare const StopClusterMetadata: {
+    $type: "yandex.cloud.k8s.v1.StopClusterMetadata";
     encode(message: StopClusterMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): StopClusterMetadata;
     fromJSON(object: any): StopClusterMetadata;
@@ -389,6 +425,7 @@ export declare const StopClusterMetadata: {
     fromPartial(object: DeepPartial<StopClusterMetadata>): StopClusterMetadata;
 };
 export declare const StartClusterRequest: {
+    $type: "yandex.cloud.k8s.v1.StartClusterRequest";
     encode(message: StartClusterRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): StartClusterRequest;
     fromJSON(object: any): StartClusterRequest;
@@ -396,6 +433,7 @@ export declare const StartClusterRequest: {
     fromPartial(object: DeepPartial<StartClusterRequest>): StartClusterRequest;
 };
 export declare const StartClusterMetadata: {
+    $type: "yandex.cloud.k8s.v1.StartClusterMetadata";
     encode(message: StartClusterMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): StartClusterMetadata;
     fromJSON(object: any): StartClusterMetadata;
@@ -403,6 +441,7 @@ export declare const StartClusterMetadata: {
     fromPartial(object: DeepPartial<StartClusterMetadata>): StartClusterMetadata;
 };
 export declare const UpdateClusterRequest: {
+    $type: "yandex.cloud.k8s.v1.UpdateClusterRequest";
     encode(message: UpdateClusterRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateClusterRequest;
     fromJSON(object: any): UpdateClusterRequest;
@@ -410,6 +449,7 @@ export declare const UpdateClusterRequest: {
     fromPartial(object: DeepPartial<UpdateClusterRequest>): UpdateClusterRequest;
 };
 export declare const UpdateClusterRequest_LabelsEntry: {
+    $type: "yandex.cloud.k8s.v1.UpdateClusterRequest.LabelsEntry";
     encode(message: UpdateClusterRequest_LabelsEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateClusterRequest_LabelsEntry;
     fromJSON(object: any): UpdateClusterRequest_LabelsEntry;
@@ -417,6 +457,7 @@ export declare const UpdateClusterRequest_LabelsEntry: {
     fromPartial(object: DeepPartial<UpdateClusterRequest_LabelsEntry>): UpdateClusterRequest_LabelsEntry;
 };
 export declare const MasterUpdateSpec: {
+    $type: "yandex.cloud.k8s.v1.MasterUpdateSpec";
     encode(message: MasterUpdateSpec, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): MasterUpdateSpec;
     fromJSON(object: any): MasterUpdateSpec;
@@ -424,6 +465,7 @@ export declare const MasterUpdateSpec: {
     fromPartial(object: DeepPartial<MasterUpdateSpec>): MasterUpdateSpec;
 };
 export declare const UpdateClusterMetadata: {
+    $type: "yandex.cloud.k8s.v1.UpdateClusterMetadata";
     encode(message: UpdateClusterMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateClusterMetadata;
     fromJSON(object: any): UpdateClusterMetadata;
@@ -431,6 +473,7 @@ export declare const UpdateClusterMetadata: {
     fromPartial(object: DeepPartial<UpdateClusterMetadata>): UpdateClusterMetadata;
 };
 export declare const CreateClusterRequest: {
+    $type: "yandex.cloud.k8s.v1.CreateClusterRequest";
     encode(message: CreateClusterRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateClusterRequest;
     fromJSON(object: any): CreateClusterRequest;
@@ -438,6 +481,7 @@ export declare const CreateClusterRequest: {
     fromPartial(object: DeepPartial<CreateClusterRequest>): CreateClusterRequest;
 };
 export declare const CreateClusterRequest_LabelsEntry: {
+    $type: "yandex.cloud.k8s.v1.CreateClusterRequest.LabelsEntry";
     encode(message: CreateClusterRequest_LabelsEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateClusterRequest_LabelsEntry;
     fromJSON(object: any): CreateClusterRequest_LabelsEntry;
@@ -445,6 +489,7 @@ export declare const CreateClusterRequest_LabelsEntry: {
     fromPartial(object: DeepPartial<CreateClusterRequest_LabelsEntry>): CreateClusterRequest_LabelsEntry;
 };
 export declare const CreateClusterMetadata: {
+    $type: "yandex.cloud.k8s.v1.CreateClusterMetadata";
     encode(message: CreateClusterMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateClusterMetadata;
     fromJSON(object: any): CreateClusterMetadata;
@@ -452,6 +497,7 @@ export declare const CreateClusterMetadata: {
     fromPartial(object: DeepPartial<CreateClusterMetadata>): CreateClusterMetadata;
 };
 export declare const AutoUpgradeMasterMetadata: {
+    $type: "yandex.cloud.k8s.v1.AutoUpgradeMasterMetadata";
     encode(message: AutoUpgradeMasterMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): AutoUpgradeMasterMetadata;
     fromJSON(object: any): AutoUpgradeMasterMetadata;
@@ -459,6 +505,7 @@ export declare const AutoUpgradeMasterMetadata: {
     fromPartial(object: DeepPartial<AutoUpgradeMasterMetadata>): AutoUpgradeMasterMetadata;
 };
 export declare const ListClusterOperationsRequest: {
+    $type: "yandex.cloud.k8s.v1.ListClusterOperationsRequest";
     encode(message: ListClusterOperationsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListClusterOperationsRequest;
     fromJSON(object: any): ListClusterOperationsRequest;
@@ -466,6 +513,7 @@ export declare const ListClusterOperationsRequest: {
     fromPartial(object: DeepPartial<ListClusterOperationsRequest>): ListClusterOperationsRequest;
 };
 export declare const ListClusterOperationsResponse: {
+    $type: "yandex.cloud.k8s.v1.ListClusterOperationsResponse";
     encode(message: ListClusterOperationsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListClusterOperationsResponse;
     fromJSON(object: any): ListClusterOperationsResponse;
@@ -473,6 +521,7 @@ export declare const ListClusterOperationsResponse: {
     fromPartial(object: DeepPartial<ListClusterOperationsResponse>): ListClusterOperationsResponse;
 };
 export declare const ListClusterNodeGroupsRequest: {
+    $type: "yandex.cloud.k8s.v1.ListClusterNodeGroupsRequest";
     encode(message: ListClusterNodeGroupsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListClusterNodeGroupsRequest;
     fromJSON(object: any): ListClusterNodeGroupsRequest;
@@ -480,6 +529,7 @@ export declare const ListClusterNodeGroupsRequest: {
     fromPartial(object: DeepPartial<ListClusterNodeGroupsRequest>): ListClusterNodeGroupsRequest;
 };
 export declare const ListClusterNodeGroupsResponse: {
+    $type: "yandex.cloud.k8s.v1.ListClusterNodeGroupsResponse";
     encode(message: ListClusterNodeGroupsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListClusterNodeGroupsResponse;
     fromJSON(object: any): ListClusterNodeGroupsResponse;
@@ -487,6 +537,7 @@ export declare const ListClusterNodeGroupsResponse: {
     fromPartial(object: DeepPartial<ListClusterNodeGroupsResponse>): ListClusterNodeGroupsResponse;
 };
 export declare const ListClusterNodesRequest: {
+    $type: "yandex.cloud.k8s.v1.ListClusterNodesRequest";
     encode(message: ListClusterNodesRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListClusterNodesRequest;
     fromJSON(object: any): ListClusterNodesRequest;
@@ -494,6 +545,7 @@ export declare const ListClusterNodesRequest: {
     fromPartial(object: DeepPartial<ListClusterNodesRequest>): ListClusterNodesRequest;
 };
 export declare const ListClusterNodesResponse: {
+    $type: "yandex.cloud.k8s.v1.ListClusterNodesResponse";
     encode(message: ListClusterNodesResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListClusterNodesResponse;
     fromJSON(object: any): ListClusterNodesResponse;
@@ -501,6 +553,7 @@ export declare const ListClusterNodesResponse: {
     fromPartial(object: DeepPartial<ListClusterNodesResponse>): ListClusterNodesResponse;
 };
 export declare const MasterSpec: {
+    $type: "yandex.cloud.k8s.v1.MasterSpec";
     encode(message: MasterSpec, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): MasterSpec;
     fromJSON(object: any): MasterSpec;
@@ -508,6 +561,7 @@ export declare const MasterSpec: {
     fromPartial(object: DeepPartial<MasterSpec>): MasterSpec;
 };
 export declare const ZonalMasterSpec: {
+    $type: "yandex.cloud.k8s.v1.ZonalMasterSpec";
     encode(message: ZonalMasterSpec, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ZonalMasterSpec;
     fromJSON(object: any): ZonalMasterSpec;
@@ -515,6 +569,7 @@ export declare const ZonalMasterSpec: {
     fromPartial(object: DeepPartial<ZonalMasterSpec>): ZonalMasterSpec;
 };
 export declare const RegionalMasterSpec: {
+    $type: "yandex.cloud.k8s.v1.RegionalMasterSpec";
     encode(message: RegionalMasterSpec, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): RegionalMasterSpec;
     fromJSON(object: any): RegionalMasterSpec;
@@ -522,6 +577,7 @@ export declare const RegionalMasterSpec: {
     fromPartial(object: DeepPartial<RegionalMasterSpec>): RegionalMasterSpec;
 };
 export declare const InternalAddressSpec: {
+    $type: "yandex.cloud.k8s.v1.InternalAddressSpec";
     encode(message: InternalAddressSpec, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): InternalAddressSpec;
     fromJSON(object: any): InternalAddressSpec;
@@ -529,6 +585,7 @@ export declare const InternalAddressSpec: {
     fromPartial(object: DeepPartial<InternalAddressSpec>): InternalAddressSpec;
 };
 export declare const ExternalAddressSpec: {
+    $type: "yandex.cloud.k8s.v1.ExternalAddressSpec";
     encode(_: ExternalAddressSpec, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ExternalAddressSpec;
     fromJSON(_: any): ExternalAddressSpec;
@@ -536,6 +593,7 @@ export declare const ExternalAddressSpec: {
     fromPartial(_: DeepPartial<ExternalAddressSpec>): ExternalAddressSpec;
 };
 export declare const MasterLocation: {
+    $type: "yandex.cloud.k8s.v1.MasterLocation";
     encode(message: MasterLocation, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): MasterLocation;
     fromJSON(object: any): MasterLocation;
@@ -724,6 +782,6 @@ export interface ClusterServiceClient extends Client {
 export declare const ClusterServiceClient: new (address: string, credentials: ChannelCredentials, options?: Partial<ChannelOptions> | undefined) => ClusterServiceClient;
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

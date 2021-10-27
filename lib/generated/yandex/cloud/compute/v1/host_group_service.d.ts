@@ -7,6 +7,7 @@ import { ChannelCredentials, ChannelOptions, UntypedServiceImplementation, handl
 import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.compute.v1";
 export interface GetHostGroupRequest {
+    $type: 'yandex.cloud.compute.v1.GetHostGroupRequest';
     /**
      * ID of the host group to return.
      * To get the host group ID, use [HostGroupService.List] request.
@@ -14,6 +15,7 @@ export interface GetHostGroupRequest {
     hostGroupId: string;
 }
 export interface ListHostGroupsRequest {
+    $type: 'yandex.cloud.compute.v1.ListHostGroupsRequest';
     /**
      * ID of the folder to list host groups in.
      * To get the folder ID, use [yandex.cloud.resourcemanager.v1.FolderService.List] request.
@@ -39,6 +41,7 @@ export interface ListHostGroupsRequest {
     filter: string;
 }
 export interface ListHostGroupsResponse {
+    $type: 'yandex.cloud.compute.v1.ListHostGroupsResponse';
     /** Lists host groups for the specified folder. */
     hostGroups: HostGroup[];
     /**
@@ -52,6 +55,7 @@ export interface ListHostGroupsResponse {
     nextPageToken: string;
 }
 export interface CreateHostGroupRequest {
+    $type: 'yandex.cloud.compute.v1.CreateHostGroupRequest';
     /**
      * ID of the folder to create a host group in.
      * To get the folder ID, use a [yandex.cloud.resourcemanager.v1.FolderService.List] request.
@@ -75,14 +79,17 @@ export interface CreateHostGroupRequest {
     scalePolicy: ScalePolicy | undefined;
 }
 export interface CreateHostGroupRequest_LabelsEntry {
+    $type: 'yandex.cloud.compute.v1.CreateHostGroupRequest.LabelsEntry';
     key: string;
     value: string;
 }
 export interface CreateHostGroupMetadata {
+    $type: 'yandex.cloud.compute.v1.CreateHostGroupMetadata';
     /** ID of the host group that is being created. */
     hostGroupId: string;
 }
 export interface UpdateHostGroupRequest {
+    $type: 'yandex.cloud.compute.v1.UpdateHostGroupRequest';
     /**
      * ID of the host group to update.
      * To get the host group ID, use an [HostGroupService.List] request.
@@ -108,14 +115,17 @@ export interface UpdateHostGroupRequest {
     scalePolicy: ScalePolicy | undefined;
 }
 export interface UpdateHostGroupRequest_LabelsEntry {
+    $type: 'yandex.cloud.compute.v1.UpdateHostGroupRequest.LabelsEntry';
     key: string;
     value: string;
 }
 export interface UpdateHostGroupMetadata {
+    $type: 'yandex.cloud.compute.v1.UpdateHostGroupMetadata';
     /** ID of the host group that is being updated. */
     hostGroupId: string;
 }
 export interface DeleteHostGroupRequest {
+    $type: 'yandex.cloud.compute.v1.DeleteHostGroupRequest';
     /**
      * ID of the host group to delete.
      * To get the host group ID, use [HostGroupService.List] request.
@@ -123,10 +133,12 @@ export interface DeleteHostGroupRequest {
     hostGroupId: string;
 }
 export interface DeleteHostGroupMetadata {
+    $type: 'yandex.cloud.compute.v1.DeleteHostGroupMetadata';
     /** ID of the host group that is being deleted. */
     hostGroupId: string;
 }
 export interface ListHostGroupInstancesRequest {
+    $type: 'yandex.cloud.compute.v1.ListHostGroupInstancesRequest';
     /**
      * ID of the host group to list instances for.
      * To get the host group ID, use [HostGroupService.List] request.
@@ -153,6 +165,7 @@ export interface ListHostGroupInstancesRequest {
     filter: string;
 }
 export interface ListHostGroupInstancesResponse {
+    $type: 'yandex.cloud.compute.v1.ListHostGroupInstancesResponse';
     /** Lists instances for the specified host group. */
     instances: Instance[];
     /**
@@ -166,6 +179,7 @@ export interface ListHostGroupInstancesResponse {
     nextPageToken: string;
 }
 export interface ListHostGroupHostsRequest {
+    $type: 'yandex.cloud.compute.v1.ListHostGroupHostsRequest';
     /**
      * ID of the host group to list hosts for.
      * To get the host group ID, use [HostGroupService.List] request.
@@ -186,6 +200,7 @@ export interface ListHostGroupHostsRequest {
     pageToken: string;
 }
 export interface ListHostGroupHostsResponse {
+    $type: 'yandex.cloud.compute.v1.ListHostGroupHostsResponse';
     /** Lists hosts for the specified host group. */
     hosts: Host[];
     /**
@@ -199,6 +214,7 @@ export interface ListHostGroupHostsResponse {
     nextPageToken: string;
 }
 export interface ListHostGroupOperationsRequest {
+    $type: 'yandex.cloud.compute.v1.ListHostGroupOperationsRequest';
     /**
      * ID of the host group to list operations for.
      * To get the host group ID, use [HostGroupService.List] request.
@@ -217,6 +233,7 @@ export interface ListHostGroupOperationsRequest {
     pageToken: string;
 }
 export interface ListHostGroupOperationsResponse {
+    $type: 'yandex.cloud.compute.v1.ListHostGroupOperationsResponse';
     /** List of operations for the specified host group. */
     operations: Operation[];
     /**
@@ -228,6 +245,7 @@ export interface ListHostGroupOperationsResponse {
     nextPageToken: string;
 }
 export declare const GetHostGroupRequest: {
+    $type: "yandex.cloud.compute.v1.GetHostGroupRequest";
     encode(message: GetHostGroupRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): GetHostGroupRequest;
     fromJSON(object: any): GetHostGroupRequest;
@@ -235,6 +253,7 @@ export declare const GetHostGroupRequest: {
     fromPartial(object: DeepPartial<GetHostGroupRequest>): GetHostGroupRequest;
 };
 export declare const ListHostGroupsRequest: {
+    $type: "yandex.cloud.compute.v1.ListHostGroupsRequest";
     encode(message: ListHostGroupsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListHostGroupsRequest;
     fromJSON(object: any): ListHostGroupsRequest;
@@ -242,6 +261,7 @@ export declare const ListHostGroupsRequest: {
     fromPartial(object: DeepPartial<ListHostGroupsRequest>): ListHostGroupsRequest;
 };
 export declare const ListHostGroupsResponse: {
+    $type: "yandex.cloud.compute.v1.ListHostGroupsResponse";
     encode(message: ListHostGroupsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListHostGroupsResponse;
     fromJSON(object: any): ListHostGroupsResponse;
@@ -249,6 +269,7 @@ export declare const ListHostGroupsResponse: {
     fromPartial(object: DeepPartial<ListHostGroupsResponse>): ListHostGroupsResponse;
 };
 export declare const CreateHostGroupRequest: {
+    $type: "yandex.cloud.compute.v1.CreateHostGroupRequest";
     encode(message: CreateHostGroupRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateHostGroupRequest;
     fromJSON(object: any): CreateHostGroupRequest;
@@ -256,6 +277,7 @@ export declare const CreateHostGroupRequest: {
     fromPartial(object: DeepPartial<CreateHostGroupRequest>): CreateHostGroupRequest;
 };
 export declare const CreateHostGroupRequest_LabelsEntry: {
+    $type: "yandex.cloud.compute.v1.CreateHostGroupRequest.LabelsEntry";
     encode(message: CreateHostGroupRequest_LabelsEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateHostGroupRequest_LabelsEntry;
     fromJSON(object: any): CreateHostGroupRequest_LabelsEntry;
@@ -263,6 +285,7 @@ export declare const CreateHostGroupRequest_LabelsEntry: {
     fromPartial(object: DeepPartial<CreateHostGroupRequest_LabelsEntry>): CreateHostGroupRequest_LabelsEntry;
 };
 export declare const CreateHostGroupMetadata: {
+    $type: "yandex.cloud.compute.v1.CreateHostGroupMetadata";
     encode(message: CreateHostGroupMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateHostGroupMetadata;
     fromJSON(object: any): CreateHostGroupMetadata;
@@ -270,6 +293,7 @@ export declare const CreateHostGroupMetadata: {
     fromPartial(object: DeepPartial<CreateHostGroupMetadata>): CreateHostGroupMetadata;
 };
 export declare const UpdateHostGroupRequest: {
+    $type: "yandex.cloud.compute.v1.UpdateHostGroupRequest";
     encode(message: UpdateHostGroupRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateHostGroupRequest;
     fromJSON(object: any): UpdateHostGroupRequest;
@@ -277,6 +301,7 @@ export declare const UpdateHostGroupRequest: {
     fromPartial(object: DeepPartial<UpdateHostGroupRequest>): UpdateHostGroupRequest;
 };
 export declare const UpdateHostGroupRequest_LabelsEntry: {
+    $type: "yandex.cloud.compute.v1.UpdateHostGroupRequest.LabelsEntry";
     encode(message: UpdateHostGroupRequest_LabelsEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateHostGroupRequest_LabelsEntry;
     fromJSON(object: any): UpdateHostGroupRequest_LabelsEntry;
@@ -284,6 +309,7 @@ export declare const UpdateHostGroupRequest_LabelsEntry: {
     fromPartial(object: DeepPartial<UpdateHostGroupRequest_LabelsEntry>): UpdateHostGroupRequest_LabelsEntry;
 };
 export declare const UpdateHostGroupMetadata: {
+    $type: "yandex.cloud.compute.v1.UpdateHostGroupMetadata";
     encode(message: UpdateHostGroupMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateHostGroupMetadata;
     fromJSON(object: any): UpdateHostGroupMetadata;
@@ -291,6 +317,7 @@ export declare const UpdateHostGroupMetadata: {
     fromPartial(object: DeepPartial<UpdateHostGroupMetadata>): UpdateHostGroupMetadata;
 };
 export declare const DeleteHostGroupRequest: {
+    $type: "yandex.cloud.compute.v1.DeleteHostGroupRequest";
     encode(message: DeleteHostGroupRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteHostGroupRequest;
     fromJSON(object: any): DeleteHostGroupRequest;
@@ -298,6 +325,7 @@ export declare const DeleteHostGroupRequest: {
     fromPartial(object: DeepPartial<DeleteHostGroupRequest>): DeleteHostGroupRequest;
 };
 export declare const DeleteHostGroupMetadata: {
+    $type: "yandex.cloud.compute.v1.DeleteHostGroupMetadata";
     encode(message: DeleteHostGroupMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteHostGroupMetadata;
     fromJSON(object: any): DeleteHostGroupMetadata;
@@ -305,6 +333,7 @@ export declare const DeleteHostGroupMetadata: {
     fromPartial(object: DeepPartial<DeleteHostGroupMetadata>): DeleteHostGroupMetadata;
 };
 export declare const ListHostGroupInstancesRequest: {
+    $type: "yandex.cloud.compute.v1.ListHostGroupInstancesRequest";
     encode(message: ListHostGroupInstancesRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListHostGroupInstancesRequest;
     fromJSON(object: any): ListHostGroupInstancesRequest;
@@ -312,6 +341,7 @@ export declare const ListHostGroupInstancesRequest: {
     fromPartial(object: DeepPartial<ListHostGroupInstancesRequest>): ListHostGroupInstancesRequest;
 };
 export declare const ListHostGroupInstancesResponse: {
+    $type: "yandex.cloud.compute.v1.ListHostGroupInstancesResponse";
     encode(message: ListHostGroupInstancesResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListHostGroupInstancesResponse;
     fromJSON(object: any): ListHostGroupInstancesResponse;
@@ -319,6 +349,7 @@ export declare const ListHostGroupInstancesResponse: {
     fromPartial(object: DeepPartial<ListHostGroupInstancesResponse>): ListHostGroupInstancesResponse;
 };
 export declare const ListHostGroupHostsRequest: {
+    $type: "yandex.cloud.compute.v1.ListHostGroupHostsRequest";
     encode(message: ListHostGroupHostsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListHostGroupHostsRequest;
     fromJSON(object: any): ListHostGroupHostsRequest;
@@ -326,6 +357,7 @@ export declare const ListHostGroupHostsRequest: {
     fromPartial(object: DeepPartial<ListHostGroupHostsRequest>): ListHostGroupHostsRequest;
 };
 export declare const ListHostGroupHostsResponse: {
+    $type: "yandex.cloud.compute.v1.ListHostGroupHostsResponse";
     encode(message: ListHostGroupHostsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListHostGroupHostsResponse;
     fromJSON(object: any): ListHostGroupHostsResponse;
@@ -333,6 +365,7 @@ export declare const ListHostGroupHostsResponse: {
     fromPartial(object: DeepPartial<ListHostGroupHostsResponse>): ListHostGroupHostsResponse;
 };
 export declare const ListHostGroupOperationsRequest: {
+    $type: "yandex.cloud.compute.v1.ListHostGroupOperationsRequest";
     encode(message: ListHostGroupOperationsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListHostGroupOperationsRequest;
     fromJSON(object: any): ListHostGroupOperationsRequest;
@@ -340,6 +373,7 @@ export declare const ListHostGroupOperationsRequest: {
     fromPartial(object: DeepPartial<ListHostGroupOperationsRequest>): ListHostGroupOperationsRequest;
 };
 export declare const ListHostGroupOperationsResponse: {
+    $type: "yandex.cloud.compute.v1.ListHostGroupOperationsResponse";
     encode(message: ListHostGroupOperationsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListHostGroupOperationsResponse;
     fromJSON(object: any): ListHostGroupOperationsResponse;
@@ -484,6 +518,6 @@ export interface HostGroupServiceClient extends Client {
 export declare const HostGroupServiceClient: new (address: string, credentials: ChannelCredentials, options?: Partial<ChannelOptions> | undefined) => HostGroupServiceClient;
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

@@ -6,12 +6,14 @@ import {
     dayOfWeekToJSON,
 } from '../../../../google/type/dayofweek';
 import { TimeOfDay } from '../../../../google/type/timeofday';
+import { messageTypeRegistry } from '../../../../typeRegistry';
 import Long from 'long';
 import _m0 from 'protobufjs/minimal';
 
 export const protobufPackage = 'yandex.cloud.k8s.v1';
 
 export interface MaintenanceWindow {
+    $type: 'yandex.cloud.k8s.v1.MaintenanceWindow';
     /** Updating the master at any time. */
     anytime: AnytimeMaintenanceWindow | undefined;
     /** Updating the master on any day during the specified time window. */
@@ -20,9 +22,12 @@ export interface MaintenanceWindow {
     weeklyMaintenanceWindow: WeeklyMaintenanceWindow | undefined;
 }
 
-export interface AnytimeMaintenanceWindow {}
+export interface AnytimeMaintenanceWindow {
+    $type: 'yandex.cloud.k8s.v1.AnytimeMaintenanceWindow';
+}
 
 export interface DailyMaintenanceWindow {
+    $type: 'yandex.cloud.k8s.v1.DailyMaintenanceWindow';
     /** Window start time, in the UTC timezone. */
     startTime: TimeOfDay | undefined;
     /** Window duration. */
@@ -30,6 +35,7 @@ export interface DailyMaintenanceWindow {
 }
 
 export interface DaysOfWeekMaintenanceWindow {
+    $type: 'yandex.cloud.k8s.v1.DaysOfWeekMaintenanceWindow';
     /** Days of the week when automatic updates are allowed. */
     days: DayOfWeek[];
     /** Window start time, in the UTC timezone. */
@@ -39,13 +45,18 @@ export interface DaysOfWeekMaintenanceWindow {
 }
 
 export interface WeeklyMaintenanceWindow {
+    $type: 'yandex.cloud.k8s.v1.WeeklyMaintenanceWindow';
     /** Days of the week and the maintenance window for these days when automatic updates are allowed. */
     daysOfWeek: DaysOfWeekMaintenanceWindow[];
 }
 
-const baseMaintenanceWindow: object = {};
+const baseMaintenanceWindow: object = {
+    $type: 'yandex.cloud.k8s.v1.MaintenanceWindow',
+};
 
 export const MaintenanceWindow = {
+    $type: 'yandex.cloud.k8s.v1.MaintenanceWindow' as const,
+
     encode(
         message: MaintenanceWindow,
         writer: _m0.Writer = _m0.Writer.create()
@@ -184,9 +195,15 @@ export const MaintenanceWindow = {
     },
 };
 
-const baseAnytimeMaintenanceWindow: object = {};
+messageTypeRegistry.set(MaintenanceWindow.$type, MaintenanceWindow);
+
+const baseAnytimeMaintenanceWindow: object = {
+    $type: 'yandex.cloud.k8s.v1.AnytimeMaintenanceWindow',
+};
 
 export const AnytimeMaintenanceWindow = {
+    $type: 'yandex.cloud.k8s.v1.AnytimeMaintenanceWindow' as const,
+
     encode(
         _: AnytimeMaintenanceWindow,
         writer: _m0.Writer = _m0.Writer.create()
@@ -237,9 +254,18 @@ export const AnytimeMaintenanceWindow = {
     },
 };
 
-const baseDailyMaintenanceWindow: object = {};
+messageTypeRegistry.set(
+    AnytimeMaintenanceWindow.$type,
+    AnytimeMaintenanceWindow
+);
+
+const baseDailyMaintenanceWindow: object = {
+    $type: 'yandex.cloud.k8s.v1.DailyMaintenanceWindow',
+};
 
 export const DailyMaintenanceWindow = {
+    $type: 'yandex.cloud.k8s.v1.DailyMaintenanceWindow' as const,
+
     encode(
         message: DailyMaintenanceWindow,
         writer: _m0.Writer = _m0.Writer.create()
@@ -339,9 +365,16 @@ export const DailyMaintenanceWindow = {
     },
 };
 
-const baseDaysOfWeekMaintenanceWindow: object = { days: 0 };
+messageTypeRegistry.set(DailyMaintenanceWindow.$type, DailyMaintenanceWindow);
+
+const baseDaysOfWeekMaintenanceWindow: object = {
+    $type: 'yandex.cloud.k8s.v1.DaysOfWeekMaintenanceWindow',
+    days: 0,
+};
 
 export const DaysOfWeekMaintenanceWindow = {
+    $type: 'yandex.cloud.k8s.v1.DaysOfWeekMaintenanceWindow' as const,
+
     encode(
         message: DaysOfWeekMaintenanceWindow,
         writer: _m0.Writer = _m0.Writer.create()
@@ -474,9 +507,18 @@ export const DaysOfWeekMaintenanceWindow = {
     },
 };
 
-const baseWeeklyMaintenanceWindow: object = {};
+messageTypeRegistry.set(
+    DaysOfWeekMaintenanceWindow.$type,
+    DaysOfWeekMaintenanceWindow
+);
+
+const baseWeeklyMaintenanceWindow: object = {
+    $type: 'yandex.cloud.k8s.v1.WeeklyMaintenanceWindow',
+};
 
 export const WeeklyMaintenanceWindow = {
+    $type: 'yandex.cloud.k8s.v1.WeeklyMaintenanceWindow' as const,
+
     encode(
         message: WeeklyMaintenanceWindow,
         writer: _m0.Writer = _m0.Writer.create()
@@ -565,6 +607,8 @@ export const WeeklyMaintenanceWindow = {
     },
 };
 
+messageTypeRegistry.set(WeeklyMaintenanceWindow.$type, WeeklyMaintenanceWindow);
+
 type Builtin =
     | Date
     | Function
@@ -580,7 +624,7 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 if (_m0.util.Long !== Long) {

@@ -3,6 +3,7 @@ import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.loadbalancer.v1";
 /** A HealthCheck resource. For more information, see [Health check](/docs/network-load-balancer/concepts/health-check). */
 export interface HealthCheck {
+    $type: 'yandex.cloud.loadbalancer.v1.HealthCheck';
     /** Name of the health check. The name must be unique for each target group that attached to a single load balancer. 3-63 characters long. */
     name: string;
     /** The interval between health checks. The default is 2 seconds. */
@@ -20,11 +21,13 @@ export interface HealthCheck {
 }
 /** Configuration option for a TCP health check. */
 export interface HealthCheck_TcpOptions {
+    $type: 'yandex.cloud.loadbalancer.v1.HealthCheck.TcpOptions';
     /** Port to use for TCP health checks. */
     port: number;
 }
 /** Configuration option for an HTTP health check. */
 export interface HealthCheck_HttpOptions {
+    $type: 'yandex.cloud.loadbalancer.v1.HealthCheck.HttpOptions';
     /** Port to use for HTTP health checks. */
     port: number;
     /**
@@ -34,6 +37,7 @@ export interface HealthCheck_HttpOptions {
     path: string;
 }
 export declare const HealthCheck: {
+    $type: "yandex.cloud.loadbalancer.v1.HealthCheck";
     encode(message: HealthCheck, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): HealthCheck;
     fromJSON(object: any): HealthCheck;
@@ -41,6 +45,7 @@ export declare const HealthCheck: {
     fromPartial(object: DeepPartial<HealthCheck>): HealthCheck;
 };
 export declare const HealthCheck_TcpOptions: {
+    $type: "yandex.cloud.loadbalancer.v1.HealthCheck.TcpOptions";
     encode(message: HealthCheck_TcpOptions, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): HealthCheck_TcpOptions;
     fromJSON(object: any): HealthCheck_TcpOptions;
@@ -48,6 +53,7 @@ export declare const HealthCheck_TcpOptions: {
     fromPartial(object: DeepPartial<HealthCheck_TcpOptions>): HealthCheck_TcpOptions;
 };
 export declare const HealthCheck_HttpOptions: {
+    $type: "yandex.cloud.loadbalancer.v1.HealthCheck.HttpOptions";
     encode(message: HealthCheck_HttpOptions, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): HealthCheck_HttpOptions;
     fromJSON(object: any): HealthCheck_HttpOptions;
@@ -56,6 +62,6 @@ export declare const HealthCheck_HttpOptions: {
 };
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

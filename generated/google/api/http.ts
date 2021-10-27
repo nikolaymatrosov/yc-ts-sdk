@@ -1,4 +1,5 @@
 /* eslint-disable */
+import { messageTypeRegistry } from '../../typeRegistry';
 import Long from 'long';
 import _m0 from 'protobufjs/minimal';
 
@@ -10,6 +11,7 @@ export const protobufPackage = 'google.api';
  * to one or more HTTP REST API methods.
  */
 export interface Http {
+    $type: 'google.api.Http';
     /**
      * A list of HTTP configuration rules that apply to individual API methods.
      *
@@ -227,6 +229,7 @@ export interface Http {
  * content to Web (HTML) clients.
  */
 export interface HttpRule {
+    $type: 'google.api.HttpRule';
     /**
      * Selects methods to which this rule applies.
      *
@@ -262,15 +265,18 @@ export interface HttpRule {
 
 /** A custom pattern is used for defining custom HTTP verb. */
 export interface CustomHttpPattern {
+    $type: 'google.api.CustomHttpPattern';
     /** The name of this custom HTTP verb. */
     kind: string;
     /** The path matched by this custom verb. */
     path: string;
 }
 
-const baseHttp: object = {};
+const baseHttp: object = { $type: 'google.api.Http' };
 
 export const Http = {
+    $type: 'google.api.Http' as const,
+
     encode(
         message: Http,
         writer: _m0.Writer = _m0.Writer.create()
@@ -338,9 +344,17 @@ export const Http = {
     },
 };
 
-const baseHttpRule: object = { selector: '', body: '' };
+messageTypeRegistry.set(Http.$type, Http);
+
+const baseHttpRule: object = {
+    $type: 'google.api.HttpRule',
+    selector: '',
+    body: '',
+};
 
 export const HttpRule = {
+    $type: 'google.api.HttpRule' as const,
+
     encode(
         message: HttpRule,
         writer: _m0.Writer = _m0.Writer.create()
@@ -559,9 +573,17 @@ export const HttpRule = {
     },
 };
 
-const baseCustomHttpPattern: object = { kind: '', path: '' };
+messageTypeRegistry.set(HttpRule.$type, HttpRule);
+
+const baseCustomHttpPattern: object = {
+    $type: 'google.api.CustomHttpPattern',
+    kind: '',
+    path: '',
+};
 
 export const CustomHttpPattern = {
+    $type: 'google.api.CustomHttpPattern' as const,
+
     encode(
         message: CustomHttpPattern,
         writer: _m0.Writer = _m0.Writer.create()
@@ -635,6 +657,8 @@ export const CustomHttpPattern = {
     },
 };
 
+messageTypeRegistry.set(CustomHttpPattern.$type, CustomHttpPattern);
+
 type Builtin =
     | Date
     | Function
@@ -650,7 +674,7 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 if (_m0.util.Long !== Long) {

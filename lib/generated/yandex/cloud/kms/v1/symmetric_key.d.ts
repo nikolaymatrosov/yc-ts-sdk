@@ -18,6 +18,7 @@ export declare function symmetricAlgorithmFromJSON(object: any): SymmetricAlgori
 export declare function symmetricAlgorithmToJSON(object: SymmetricAlgorithm): string;
 /** A symmetric KMS key that may contain several versions of the cryptographic material. */
 export interface SymmetricKey {
+    $type: 'yandex.cloud.kms.v1.SymmetricKey';
     /** ID of the key. */
     id: string;
     /** ID of the folder that the key belongs to. */
@@ -70,11 +71,13 @@ export declare enum SymmetricKey_Status {
 export declare function symmetricKey_StatusFromJSON(object: any): SymmetricKey_Status;
 export declare function symmetricKey_StatusToJSON(object: SymmetricKey_Status): string;
 export interface SymmetricKey_LabelsEntry {
+    $type: 'yandex.cloud.kms.v1.SymmetricKey.LabelsEntry';
     key: string;
     value: string;
 }
 /** Symmetric KMS key version: metadata about actual cryptographic data. */
 export interface SymmetricKeyVersion {
+    $type: 'yandex.cloud.kms.v1.SymmetricKeyVersion';
     /** ID of the key version. */
     id: string;
     /** ID of the symmetric KMS key that the version belongs to. */
@@ -115,6 +118,7 @@ export declare enum SymmetricKeyVersion_Status {
 export declare function symmetricKeyVersion_StatusFromJSON(object: any): SymmetricKeyVersion_Status;
 export declare function symmetricKeyVersion_StatusToJSON(object: SymmetricKeyVersion_Status): string;
 export declare const SymmetricKey: {
+    $type: "yandex.cloud.kms.v1.SymmetricKey";
     encode(message: SymmetricKey, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): SymmetricKey;
     fromJSON(object: any): SymmetricKey;
@@ -122,6 +126,7 @@ export declare const SymmetricKey: {
     fromPartial(object: DeepPartial<SymmetricKey>): SymmetricKey;
 };
 export declare const SymmetricKey_LabelsEntry: {
+    $type: "yandex.cloud.kms.v1.SymmetricKey.LabelsEntry";
     encode(message: SymmetricKey_LabelsEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): SymmetricKey_LabelsEntry;
     fromJSON(object: any): SymmetricKey_LabelsEntry;
@@ -129,6 +134,7 @@ export declare const SymmetricKey_LabelsEntry: {
     fromPartial(object: DeepPartial<SymmetricKey_LabelsEntry>): SymmetricKey_LabelsEntry;
 };
 export declare const SymmetricKeyVersion: {
+    $type: "yandex.cloud.kms.v1.SymmetricKeyVersion";
     encode(message: SymmetricKeyVersion, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): SymmetricKeyVersion;
     fromJSON(object: any): SymmetricKeyVersion;
@@ -137,6 +143,6 @@ export declare const SymmetricKeyVersion: {
 };
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

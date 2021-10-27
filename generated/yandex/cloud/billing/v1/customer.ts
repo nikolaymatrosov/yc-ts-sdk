@@ -1,4 +1,5 @@
 /* eslint-disable */
+import { messageTypeRegistry } from '../../../../typeRegistry';
 import Long from 'long';
 import _m0 from 'protobufjs/minimal';
 
@@ -6,6 +7,7 @@ export const protobufPackage = 'yandex.cloud.billing.v1';
 
 /** A Customer resource. */
 export interface Customer {
+    $type: 'yandex.cloud.billing.v1.Customer';
     /** ID of the customer. */
     id: string;
     /** ID of the [yandex.cloud.billing.v1.BillingAccount] assigned to the customer. */
@@ -14,6 +16,7 @@ export interface Customer {
 
 /** Person of the customer. Contains legal information. */
 export interface CustomerPerson {
+    $type: 'yandex.cloud.billing.v1.CustomerPerson';
     /** Name of the person. */
     name: string;
     /** Long name of the person. */
@@ -32,9 +35,15 @@ export interface CustomerPerson {
     tin: string;
 }
 
-const baseCustomer: object = { id: '', billingAccountId: '' };
+const baseCustomer: object = {
+    $type: 'yandex.cloud.billing.v1.Customer',
+    id: '',
+    billingAccountId: '',
+};
 
 export const Customer = {
+    $type: 'yandex.cloud.billing.v1.Customer' as const,
+
     encode(
         message: Customer,
         writer: _m0.Writer = _m0.Writer.create()
@@ -115,7 +124,10 @@ export const Customer = {
     },
 };
 
+messageTypeRegistry.set(Customer.$type, Customer);
+
 const baseCustomerPerson: object = {
+    $type: 'yandex.cloud.billing.v1.CustomerPerson',
     name: '',
     longname: '',
     phone: '',
@@ -127,6 +139,8 @@ const baseCustomerPerson: object = {
 };
 
 export const CustomerPerson = {
+    $type: 'yandex.cloud.billing.v1.CustomerPerson' as const,
+
     encode(
         message: CustomerPerson,
         writer: _m0.Writer = _m0.Writer.create()
@@ -304,6 +318,8 @@ export const CustomerPerson = {
     },
 };
 
+messageTypeRegistry.set(CustomerPerson.$type, CustomerPerson);
+
 type Builtin =
     | Date
     | Function
@@ -319,7 +335,7 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 if (_m0.util.Long !== Long) {

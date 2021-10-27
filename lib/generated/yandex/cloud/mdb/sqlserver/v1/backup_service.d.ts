@@ -4,6 +4,7 @@ import { ChannelCredentials, ChannelOptions, UntypedServiceImplementation, handl
 import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.mdb.sqlserver.v1";
 export interface GetBackupRequest {
+    $type: 'yandex.cloud.mdb.sqlserver.v1.GetBackupRequest';
     /**
      * ID of the backup to return information about.
      *
@@ -12,6 +13,7 @@ export interface GetBackupRequest {
     backupId: string;
 }
 export interface ListBackupsRequest {
+    $type: 'yandex.cloud.mdb.sqlserver.v1.ListBackupsRequest';
     /**
      * ID of the folder to list backups in.
      *
@@ -31,6 +33,7 @@ export interface ListBackupsRequest {
     pageToken: string;
 }
 export interface ListBackupsResponse {
+    $type: 'yandex.cloud.mdb.sqlserver.v1.ListBackupsResponse';
     /** List of SQL Server backups. */
     backups: Backup[];
     /**
@@ -42,6 +45,7 @@ export interface ListBackupsResponse {
     nextPageToken: string;
 }
 export declare const GetBackupRequest: {
+    $type: "yandex.cloud.mdb.sqlserver.v1.GetBackupRequest";
     encode(message: GetBackupRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): GetBackupRequest;
     fromJSON(object: any): GetBackupRequest;
@@ -49,6 +53,7 @@ export declare const GetBackupRequest: {
     fromPartial(object: DeepPartial<GetBackupRequest>): GetBackupRequest;
 };
 export declare const ListBackupsRequest: {
+    $type: "yandex.cloud.mdb.sqlserver.v1.ListBackupsRequest";
     encode(message: ListBackupsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListBackupsRequest;
     fromJSON(object: any): ListBackupsRequest;
@@ -56,6 +61,7 @@ export declare const ListBackupsRequest: {
     fromPartial(object: DeepPartial<ListBackupsRequest>): ListBackupsRequest;
 };
 export declare const ListBackupsResponse: {
+    $type: "yandex.cloud.mdb.sqlserver.v1.ListBackupsResponse";
     encode(message: ListBackupsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListBackupsResponse;
     fromJSON(object: any): ListBackupsResponse;
@@ -116,6 +122,6 @@ export interface BackupServiceClient extends Client {
 export declare const BackupServiceClient: new (address: string, credentials: ChannelCredentials, options?: Partial<ChannelOptions> | undefined) => BackupServiceClient;
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

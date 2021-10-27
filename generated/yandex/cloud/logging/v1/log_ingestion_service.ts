@@ -1,5 +1,6 @@
 /* eslint-disable */
 import { Status } from '../../../../google/rpc/status';
+import { messageTypeRegistry } from '../../../../typeRegistry';
 import {
     Destination,
     IncomingLogEntry,
@@ -24,6 +25,7 @@ import _m0 from 'protobufjs/minimal';
 export const protobufPackage = 'yandex.cloud.logging.v1';
 
 export interface WriteRequest {
+    $type: 'yandex.cloud.logging.v1.WriteRequest';
     /**
      * Log entries destination.
      *
@@ -43,6 +45,7 @@ export interface WriteRequest {
 }
 
 export interface WriteResponse {
+    $type: 'yandex.cloud.logging.v1.WriteResponse';
     /**
      * Map<idx, status> of ingest failures.
      *
@@ -52,13 +55,18 @@ export interface WriteResponse {
 }
 
 export interface WriteResponse_ErrorsEntry {
+    $type: 'yandex.cloud.logging.v1.WriteResponse.ErrorsEntry';
     key: number;
     value: Status | undefined;
 }
 
-const baseWriteRequest: object = {};
+const baseWriteRequest: object = {
+    $type: 'yandex.cloud.logging.v1.WriteRequest',
+};
 
 export const WriteRequest = {
+    $type: 'yandex.cloud.logging.v1.WriteRequest' as const,
+
     encode(
         message: WriteRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -204,16 +212,26 @@ export const WriteRequest = {
     },
 };
 
-const baseWriteResponse: object = {};
+messageTypeRegistry.set(WriteRequest.$type, WriteRequest);
+
+const baseWriteResponse: object = {
+    $type: 'yandex.cloud.logging.v1.WriteResponse',
+};
 
 export const WriteResponse = {
+    $type: 'yandex.cloud.logging.v1.WriteResponse' as const,
+
     encode(
         message: WriteResponse,
         writer: _m0.Writer = _m0.Writer.create()
     ): _m0.Writer {
         Object.entries(message.errors).forEach(([key, value]) => {
             WriteResponse_ErrorsEntry.encode(
-                { key: key as any, value },
+                {
+                    $type: 'yandex.cloud.logging.v1.WriteResponse.ErrorsEntry',
+                    key: key as any,
+                    value,
+                },
                 writer.uint32(10).fork()
             ).ldelim();
         });
@@ -282,9 +300,16 @@ export const WriteResponse = {
     },
 };
 
-const baseWriteResponse_ErrorsEntry: object = { key: 0 };
+messageTypeRegistry.set(WriteResponse.$type, WriteResponse);
+
+const baseWriteResponse_ErrorsEntry: object = {
+    $type: 'yandex.cloud.logging.v1.WriteResponse.ErrorsEntry',
+    key: 0,
+};
 
 export const WriteResponse_ErrorsEntry = {
+    $type: 'yandex.cloud.logging.v1.WriteResponse.ErrorsEntry' as const,
+
     encode(
         message: WriteResponse_ErrorsEntry,
         writer: _m0.Writer = _m0.Writer.create()
@@ -372,6 +397,11 @@ export const WriteResponse_ErrorsEntry = {
     },
 };
 
+messageTypeRegistry.set(
+    WriteResponse_ErrorsEntry.$type,
+    WriteResponse_ErrorsEntry
+);
+
 /** A set of methods for writing to log groups. To make a request use `ingester.logging.yandexcloud.net`. */
 export const LogIngestionServiceService = {
     /** Write log entries to specified destination. */
@@ -450,7 +480,7 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 function longToNumber(long: Long): number {

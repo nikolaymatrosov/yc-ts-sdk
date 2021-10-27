@@ -1,5 +1,6 @@
 /* eslint-disable */
 import { Timestamp } from '../../../../google/protobuf/timestamp';
+import { messageTypeRegistry } from '../../../../typeRegistry';
 import Long from 'long';
 import _m0 from 'protobufjs/minimal';
 
@@ -7,6 +8,7 @@ export const protobufPackage = 'yandex.cloud.billing.v1';
 
 /** A BillingAccount resource. For more information, see [BillingAccount](/docs/billing/concepts/billing-account). */
 export interface BillingAccount {
+    $type: 'yandex.cloud.billing.v1.BillingAccount';
     /** ID of the billing account. */
     id: string;
     /** Name of the billing account. */
@@ -30,6 +32,7 @@ export interface BillingAccount {
 }
 
 const baseBillingAccount: object = {
+    $type: 'yandex.cloud.billing.v1.BillingAccount',
     id: '',
     name: '',
     countryCode: '',
@@ -39,6 +42,8 @@ const baseBillingAccount: object = {
 };
 
 export const BillingAccount = {
+    $type: 'yandex.cloud.billing.v1.BillingAccount' as const,
+
     encode(
         message: BillingAccount,
         writer: _m0.Writer = _m0.Writer.create()
@@ -204,6 +209,8 @@ export const BillingAccount = {
     },
 };
 
+messageTypeRegistry.set(BillingAccount.$type, BillingAccount);
+
 type Builtin =
     | Date
     | Function
@@ -219,13 +226,13 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 function toTimestamp(date: Date): Timestamp {
     const seconds = date.getTime() / 1_000;
     const nanos = (date.getTime() % 1_000) * 1_000_000;
-    return { seconds, nanos };
+    return { $type: 'google.protobuf.Timestamp', seconds, nanos };
 }
 
 function fromTimestamp(t: Timestamp): Date {

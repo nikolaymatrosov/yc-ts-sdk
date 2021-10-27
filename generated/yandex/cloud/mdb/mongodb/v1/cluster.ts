@@ -2,6 +2,7 @@
 import { Timestamp } from '../../../../../google/protobuf/timestamp';
 import { Int64Value } from '../../../../../google/protobuf/wrappers';
 import { TimeOfDay } from '../../../../../google/type/timeofday';
+import { messageTypeRegistry } from '../../../../../typeRegistry';
 import {
     Mongodconfigset36,
     Mongocfgconfigset36,
@@ -38,6 +39,7 @@ export const protobufPackage = 'yandex.cloud.mdb.mongodb.v1';
 
 /** A managed MongoDB cluster. For more information, see the [documentation](/docs/managed-mongodb/concepts). */
 export interface Cluster {
+    $type: 'yandex.cloud.mdb.mongodb.v1.Cluster';
     /**
      * ID of the MongoDB cluster.
      * This ID is assigned by MDB at creation time.
@@ -252,12 +254,14 @@ export function cluster_StatusToJSON(object: Cluster_Status): string {
 }
 
 export interface Cluster_LabelsEntry {
+    $type: 'yandex.cloud.mdb.mongodb.v1.Cluster.LabelsEntry';
     key: string;
     value: string;
 }
 
 /** Monitoring system. */
 export interface Monitoring {
+    $type: 'yandex.cloud.mdb.mongodb.v1.Monitoring';
     /** Name of the monitoring system. */
     name: string;
     /** Description of the monitoring system. */
@@ -267,6 +271,7 @@ export interface Monitoring {
 }
 
 export interface ClusterConfig {
+    $type: 'yandex.cloud.mdb.mongodb.v1.ClusterConfig';
     /** Version of MongoDB server software. Possible values: `3.6`, `4.0`, `4.2`, `4.4`, `5.0`. */
     version: string;
     /**
@@ -299,6 +304,7 @@ export interface ClusterConfig {
 }
 
 export interface Mongodb36 {
+    $type: 'yandex.cloud.mdb.mongodb.v1.Mongodb3_6';
     /** Configuration and resource allocation for mongod in a MongoDB 3.6 cluster. */
     mongod: Mongodb36_Mongod | undefined;
     /** Configuration and resource allocation for mongocfg in a MongoDB 3.6 cluster. */
@@ -310,6 +316,7 @@ export interface Mongodb36 {
 }
 
 export interface Mongodb36_Mongod {
+    $type: 'yandex.cloud.mdb.mongodb.v1.Mongodb3_6.Mongod';
     /** Configuration for a mongod 3.6 hosts. */
     config: Mongodconfigset36 | undefined;
     /** Resources allocated to MongoDB hosts. */
@@ -317,18 +324,21 @@ export interface Mongodb36_Mongod {
 }
 
 export interface Mongodb36_MongoCfg {
+    $type: 'yandex.cloud.mdb.mongodb.v1.Mongodb3_6.MongoCfg';
     config: Mongocfgconfigset36 | undefined;
     /** Resources allocated to mongocfg hosts. */
     resources: Resources | undefined;
 }
 
 export interface Mongodb36_Mongos {
+    $type: 'yandex.cloud.mdb.mongodb.v1.Mongodb3_6.Mongos';
     config: Mongosconfigset36 | undefined;
     /** Resources allocated to mongocfg hosts. */
     resources: Resources | undefined;
 }
 
 export interface Mongodb36_MongoInfra {
+    $type: 'yandex.cloud.mdb.mongodb.v1.Mongodb3_6.MongoInfra';
     configMongos: Mongosconfigset36 | undefined;
     configMongocfg: Mongocfgconfigset36 | undefined;
     /** Resources allocated to mongoinfra (mongos+mongocfg) hosts. */
@@ -336,6 +346,7 @@ export interface Mongodb36_MongoInfra {
 }
 
 export interface Mongodb40 {
+    $type: 'yandex.cloud.mdb.mongodb.v1.Mongodb4_0';
     /** Configuration and resource allocation for mongod in a MongoDB 4.0 cluster. */
     mongod: Mongodb40_Mongod | undefined;
     /** Configuration and resource allocation for mongocfg in a MongoDB 4.0 cluster. */
@@ -347,6 +358,7 @@ export interface Mongodb40 {
 }
 
 export interface Mongodb40_Mongod {
+    $type: 'yandex.cloud.mdb.mongodb.v1.Mongodb4_0.Mongod';
     /** Configuration for mongod 4.0 hosts. */
     config: Mongodconfigset40 | undefined;
     /** Resources allocated to mongod hosts. */
@@ -354,6 +366,7 @@ export interface Mongodb40_Mongod {
 }
 
 export interface Mongodb40_MongoCfg {
+    $type: 'yandex.cloud.mdb.mongodb.v1.Mongodb4_0.MongoCfg';
     /** Configuration for mongocfg 4.0 hosts. */
     config: Mongocfgconfigset40 | undefined;
     /** Resources allocated to mongocfg hosts. */
@@ -361,6 +374,7 @@ export interface Mongodb40_MongoCfg {
 }
 
 export interface Mongodb40_Mongos {
+    $type: 'yandex.cloud.mdb.mongodb.v1.Mongodb4_0.Mongos';
     /** Configuration for mongos 4.0 hosts. */
     config: Mongosconfigset40 | undefined;
     /** Resources allocated to mongos hosts. */
@@ -368,6 +382,7 @@ export interface Mongodb40_Mongos {
 }
 
 export interface Mongodb40_MongoInfra {
+    $type: 'yandex.cloud.mdb.mongodb.v1.Mongodb4_0.MongoInfra';
     configMongos: Mongosconfigset40 | undefined;
     configMongocfg: Mongocfgconfigset40 | undefined;
     /** Resources allocated to mongoinfra (mongos+mongocfg) hosts. */
@@ -375,6 +390,7 @@ export interface Mongodb40_MongoInfra {
 }
 
 export interface Mongodb42 {
+    $type: 'yandex.cloud.mdb.mongodb.v1.Mongodb4_2';
     /** Configuration and resource allocation for mongod in a MongoDB 4.2 cluster. */
     mongod: Mongodb42_Mongod | undefined;
     /** Configuration and resource allocation for mongocfg in a MongoDB 4.2 cluster. */
@@ -386,6 +402,7 @@ export interface Mongodb42 {
 }
 
 export interface Mongodb42_Mongod {
+    $type: 'yandex.cloud.mdb.mongodb.v1.Mongodb4_2.Mongod';
     /** Configuration for mongod 4.2 hosts. */
     config: Mongodconfigset42 | undefined;
     /** Resources allocated to mongod hosts. */
@@ -393,6 +410,7 @@ export interface Mongodb42_Mongod {
 }
 
 export interface Mongodb42_MongoCfg {
+    $type: 'yandex.cloud.mdb.mongodb.v1.Mongodb4_2.MongoCfg';
     /** Configuration for mongocfg 4.2 hosts. */
     config: Mongocfgconfigset42 | undefined;
     /** Resources allocated to mongocfg hosts. */
@@ -400,6 +418,7 @@ export interface Mongodb42_MongoCfg {
 }
 
 export interface Mongodb42_Mongos {
+    $type: 'yandex.cloud.mdb.mongodb.v1.Mongodb4_2.Mongos';
     /** Configuration for mongos 4.2 hosts. */
     config: Mongosconfigset42 | undefined;
     /** Resources allocated to mongos hosts. */
@@ -407,6 +426,7 @@ export interface Mongodb42_Mongos {
 }
 
 export interface Mongodb42_MongoInfra {
+    $type: 'yandex.cloud.mdb.mongodb.v1.Mongodb4_2.MongoInfra';
     configMongos: Mongosconfigset42 | undefined;
     configMongocfg: Mongocfgconfigset42 | undefined;
     /** Resources allocated to mongoinfra (mongos+mongocfg) hosts. */
@@ -414,6 +434,7 @@ export interface Mongodb42_MongoInfra {
 }
 
 export interface Mongodb44 {
+    $type: 'yandex.cloud.mdb.mongodb.v1.Mongodb4_4';
     /** Configuration and resource allocation for mongod in a MongoDB 4.4 cluster. */
     mongod: Mongodb44_Mongod | undefined;
     /** Configuration and resource allocation for mongocfg in a MongoDB 4.4 cluster. */
@@ -425,6 +446,7 @@ export interface Mongodb44 {
 }
 
 export interface Mongodb44_Mongod {
+    $type: 'yandex.cloud.mdb.mongodb.v1.Mongodb4_4.Mongod';
     /** Configuration for mongod 4.4 hosts. */
     config: Mongodconfigset44 | undefined;
     /** Resources allocated to mongod hosts. */
@@ -432,6 +454,7 @@ export interface Mongodb44_Mongod {
 }
 
 export interface Mongodb44_MongoCfg {
+    $type: 'yandex.cloud.mdb.mongodb.v1.Mongodb4_4.MongoCfg';
     /** Configuration for mongocfg 4.4 hosts. */
     config: Mongocfgconfigset44 | undefined;
     /** Resources allocated to mongocfg hosts. */
@@ -439,6 +462,7 @@ export interface Mongodb44_MongoCfg {
 }
 
 export interface Mongodb44_Mongos {
+    $type: 'yandex.cloud.mdb.mongodb.v1.Mongodb4_4.Mongos';
     /** Configuration for mongos 4.4 hosts. */
     config: Mongosconfigset44 | undefined;
     /** Resources allocated to mongos hosts. */
@@ -446,6 +470,7 @@ export interface Mongodb44_Mongos {
 }
 
 export interface Mongodb44_MongoInfra {
+    $type: 'yandex.cloud.mdb.mongodb.v1.Mongodb4_4.MongoInfra';
     configMongos: Mongosconfigset44 | undefined;
     configMongocfg: Mongocfgconfigset44 | undefined;
     /** Resources allocated to mongoinfra (mongos+mongocfg) hosts. */
@@ -453,6 +478,7 @@ export interface Mongodb44_MongoInfra {
 }
 
 export interface Mongodb50 {
+    $type: 'yandex.cloud.mdb.mongodb.v1.Mongodb5_0';
     /** Configuration and resource allocation for mongod in a MongoDB 5.0 cluster. */
     mongod: Mongodb50_Mongod | undefined;
     /** Configuration and resource allocation for mongocfg in a MongoDB 5.0 cluster. */
@@ -464,6 +490,7 @@ export interface Mongodb50 {
 }
 
 export interface Mongodb50_Mongod {
+    $type: 'yandex.cloud.mdb.mongodb.v1.Mongodb5_0.Mongod';
     /** Configuration for mongod 5.0 hosts. */
     config: Mongodconfigset50 | undefined;
     /** Resources allocated to mongod hosts. */
@@ -471,6 +498,7 @@ export interface Mongodb50_Mongod {
 }
 
 export interface Mongodb50_MongoCfg {
+    $type: 'yandex.cloud.mdb.mongodb.v1.Mongodb5_0.MongoCfg';
     /** Configuration for mongocfg 5.0 hosts. */
     config: Mongocfgconfigset50 | undefined;
     /** Resources allocated to mongocfg hosts. */
@@ -478,6 +506,7 @@ export interface Mongodb50_MongoCfg {
 }
 
 export interface Mongodb50_Mongos {
+    $type: 'yandex.cloud.mdb.mongodb.v1.Mongodb5_0.Mongos';
     /** Configuration for mongos 5.0 hosts. */
     config: Mongosconfigset50 | undefined;
     /** Resources allocated to mongos hosts. */
@@ -485,6 +514,7 @@ export interface Mongodb50_Mongos {
 }
 
 export interface Mongodb50_MongoInfra {
+    $type: 'yandex.cloud.mdb.mongodb.v1.Mongodb5_0.MongoInfra';
     configMongos: Mongosconfigset50 | undefined;
     configMongocfg: Mongocfgconfigset50 | undefined;
     /** Resources allocated to mongoinfra (mongos+mongocfg) hosts. */
@@ -492,6 +522,7 @@ export interface Mongodb50_MongoInfra {
 }
 
 export interface Shard {
+    $type: 'yandex.cloud.mdb.mongodb.v1.Shard';
     /** Name of the shard. */
     name: string;
     /** ID of the cluster that the shard belongs to. */
@@ -499,6 +530,7 @@ export interface Shard {
 }
 
 export interface Host {
+    $type: 'yandex.cloud.mdb.mongodb.v1.Host';
     /**
      * Name of the MongoDB host. The host name is assigned by MDB at creation time, and cannot be changed.
      * 1-63 characters long.
@@ -672,6 +704,7 @@ export function host_HealthToJSON(object: Host_Health): string {
 }
 
 export interface Service {
+    $type: 'yandex.cloud.mdb.mongodb.v1.Service';
     /** Type of the service provided by the host. */
     type: Service_Type;
     /** Status code of server availability. */
@@ -767,6 +800,7 @@ export function service_HealthToJSON(object: Service_Health): string {
 }
 
 export interface Resources {
+    $type: 'yandex.cloud.mdb.mongodb.v1.Resources';
     /**
      * ID of the preset for computational resources available to a host (CPU, memory etc.).
      * All available presets are listed in the [documentation](/docs/managed-mongodb/concepts/instance-types).
@@ -785,11 +819,13 @@ export interface Resources {
 }
 
 export interface Access {
+    $type: 'yandex.cloud.mdb.mongodb.v1.Access';
     /** Allow access for DataLens */
     dataLens: boolean;
 }
 
 const baseCluster: object = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.Cluster',
     id: '',
     folderId: '',
     name: '',
@@ -804,6 +840,8 @@ const baseCluster: object = {
 };
 
 export const Cluster = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.Cluster' as const,
+
     encode(
         message: Cluster,
         writer: _m0.Writer = _m0.Writer.create()
@@ -828,7 +866,11 @@ export const Cluster = {
         }
         Object.entries(message.labels).forEach(([key, value]) => {
             Cluster_LabelsEntry.encode(
-                { key: key as any, value },
+                {
+                    $type: 'yandex.cloud.mdb.mongodb.v1.Cluster.LabelsEntry',
+                    key: key as any,
+                    value,
+                },
                 writer.uint32(50).fork()
             ).ldelim();
         });
@@ -1241,9 +1283,17 @@ export const Cluster = {
     },
 };
 
-const baseCluster_LabelsEntry: object = { key: '', value: '' };
+messageTypeRegistry.set(Cluster.$type, Cluster);
+
+const baseCluster_LabelsEntry: object = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.Cluster.LabelsEntry',
+    key: '',
+    value: '',
+};
 
 export const Cluster_LabelsEntry = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.Cluster.LabelsEntry' as const,
+
     encode(
         message: Cluster_LabelsEntry,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1320,9 +1370,18 @@ export const Cluster_LabelsEntry = {
     },
 };
 
-const baseMonitoring: object = { name: '', description: '', link: '' };
+messageTypeRegistry.set(Cluster_LabelsEntry.$type, Cluster_LabelsEntry);
+
+const baseMonitoring: object = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.Monitoring',
+    name: '',
+    description: '',
+    link: '',
+};
 
 export const Monitoring = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.Monitoring' as const,
+
     encode(
         message: Monitoring,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1414,12 +1473,17 @@ export const Monitoring = {
     },
 };
 
+messageTypeRegistry.set(Monitoring.$type, Monitoring);
+
 const baseClusterConfig: object = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.ClusterConfig',
     version: '',
     featureCompatibilityVersion: '',
 };
 
 export const ClusterConfig = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.ClusterConfig' as const,
+
     encode(
         message: ClusterConfig,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1468,7 +1532,10 @@ export const ClusterConfig = {
         }
         if (message.backupRetainPeriodDays !== undefined) {
             Int64Value.encode(
-                { value: message.backupRetainPeriodDays! },
+                {
+                    $type: 'google.protobuf.Int64Value',
+                    value: message.backupRetainPeriodDays!,
+                },
                 writer.uint32(74).fork()
             ).ldelim();
         }
@@ -1722,9 +1789,15 @@ export const ClusterConfig = {
     },
 };
 
-const baseMongodb36: object = {};
+messageTypeRegistry.set(ClusterConfig.$type, ClusterConfig);
+
+const baseMongodb36: object = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.Mongodb3_6',
+};
 
 export const Mongodb36 = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.Mongodb3_6' as const,
+
     encode(
         message: Mongodb36,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1872,9 +1945,15 @@ export const Mongodb36 = {
     },
 };
 
-const baseMongodb36_Mongod: object = {};
+messageTypeRegistry.set(Mongodb36.$type, Mongodb36);
+
+const baseMongodb36_Mongod: object = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.Mongodb3_6.Mongod',
+};
 
 export const Mongodb36_Mongod = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.Mongodb3_6.Mongod' as const,
+
     encode(
         message: Mongodb36_Mongod,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1966,9 +2045,15 @@ export const Mongodb36_Mongod = {
     },
 };
 
-const baseMongodb36_MongoCfg: object = {};
+messageTypeRegistry.set(Mongodb36_Mongod.$type, Mongodb36_Mongod);
+
+const baseMongodb36_MongoCfg: object = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.Mongodb3_6.MongoCfg',
+};
 
 export const Mongodb36_MongoCfg = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.Mongodb3_6.MongoCfg' as const,
+
     encode(
         message: Mongodb36_MongoCfg,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2063,9 +2148,15 @@ export const Mongodb36_MongoCfg = {
     },
 };
 
-const baseMongodb36_Mongos: object = {};
+messageTypeRegistry.set(Mongodb36_MongoCfg.$type, Mongodb36_MongoCfg);
+
+const baseMongodb36_Mongos: object = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.Mongodb3_6.Mongos',
+};
 
 export const Mongodb36_Mongos = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.Mongodb3_6.Mongos' as const,
+
     encode(
         message: Mongodb36_Mongos,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2157,9 +2248,15 @@ export const Mongodb36_Mongos = {
     },
 };
 
-const baseMongodb36_MongoInfra: object = {};
+messageTypeRegistry.set(Mongodb36_Mongos.$type, Mongodb36_Mongos);
+
+const baseMongodb36_MongoInfra: object = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.Mongodb3_6.MongoInfra',
+};
 
 export const Mongodb36_MongoInfra = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.Mongodb3_6.MongoInfra' as const,
+
     encode(
         message: Mongodb36_MongoInfra,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2296,9 +2393,15 @@ export const Mongodb36_MongoInfra = {
     },
 };
 
-const baseMongodb40: object = {};
+messageTypeRegistry.set(Mongodb36_MongoInfra.$type, Mongodb36_MongoInfra);
+
+const baseMongodb40: object = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.Mongodb4_0',
+};
 
 export const Mongodb40 = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.Mongodb4_0' as const,
+
     encode(
         message: Mongodb40,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2446,9 +2549,15 @@ export const Mongodb40 = {
     },
 };
 
-const baseMongodb40_Mongod: object = {};
+messageTypeRegistry.set(Mongodb40.$type, Mongodb40);
+
+const baseMongodb40_Mongod: object = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.Mongodb4_0.Mongod',
+};
 
 export const Mongodb40_Mongod = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.Mongodb4_0.Mongod' as const,
+
     encode(
         message: Mongodb40_Mongod,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2540,9 +2649,15 @@ export const Mongodb40_Mongod = {
     },
 };
 
-const baseMongodb40_MongoCfg: object = {};
+messageTypeRegistry.set(Mongodb40_Mongod.$type, Mongodb40_Mongod);
+
+const baseMongodb40_MongoCfg: object = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.Mongodb4_0.MongoCfg',
+};
 
 export const Mongodb40_MongoCfg = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.Mongodb4_0.MongoCfg' as const,
+
     encode(
         message: Mongodb40_MongoCfg,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2637,9 +2752,15 @@ export const Mongodb40_MongoCfg = {
     },
 };
 
-const baseMongodb40_Mongos: object = {};
+messageTypeRegistry.set(Mongodb40_MongoCfg.$type, Mongodb40_MongoCfg);
+
+const baseMongodb40_Mongos: object = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.Mongodb4_0.Mongos',
+};
 
 export const Mongodb40_Mongos = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.Mongodb4_0.Mongos' as const,
+
     encode(
         message: Mongodb40_Mongos,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2731,9 +2852,15 @@ export const Mongodb40_Mongos = {
     },
 };
 
-const baseMongodb40_MongoInfra: object = {};
+messageTypeRegistry.set(Mongodb40_Mongos.$type, Mongodb40_Mongos);
+
+const baseMongodb40_MongoInfra: object = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.Mongodb4_0.MongoInfra',
+};
 
 export const Mongodb40_MongoInfra = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.Mongodb4_0.MongoInfra' as const,
+
     encode(
         message: Mongodb40_MongoInfra,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2870,9 +2997,15 @@ export const Mongodb40_MongoInfra = {
     },
 };
 
-const baseMongodb42: object = {};
+messageTypeRegistry.set(Mongodb40_MongoInfra.$type, Mongodb40_MongoInfra);
+
+const baseMongodb42: object = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.Mongodb4_2',
+};
 
 export const Mongodb42 = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.Mongodb4_2' as const,
+
     encode(
         message: Mongodb42,
         writer: _m0.Writer = _m0.Writer.create()
@@ -3020,9 +3153,15 @@ export const Mongodb42 = {
     },
 };
 
-const baseMongodb42_Mongod: object = {};
+messageTypeRegistry.set(Mongodb42.$type, Mongodb42);
+
+const baseMongodb42_Mongod: object = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.Mongodb4_2.Mongod',
+};
 
 export const Mongodb42_Mongod = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.Mongodb4_2.Mongod' as const,
+
     encode(
         message: Mongodb42_Mongod,
         writer: _m0.Writer = _m0.Writer.create()
@@ -3114,9 +3253,15 @@ export const Mongodb42_Mongod = {
     },
 };
 
-const baseMongodb42_MongoCfg: object = {};
+messageTypeRegistry.set(Mongodb42_Mongod.$type, Mongodb42_Mongod);
+
+const baseMongodb42_MongoCfg: object = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.Mongodb4_2.MongoCfg',
+};
 
 export const Mongodb42_MongoCfg = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.Mongodb4_2.MongoCfg' as const,
+
     encode(
         message: Mongodb42_MongoCfg,
         writer: _m0.Writer = _m0.Writer.create()
@@ -3211,9 +3356,15 @@ export const Mongodb42_MongoCfg = {
     },
 };
 
-const baseMongodb42_Mongos: object = {};
+messageTypeRegistry.set(Mongodb42_MongoCfg.$type, Mongodb42_MongoCfg);
+
+const baseMongodb42_Mongos: object = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.Mongodb4_2.Mongos',
+};
 
 export const Mongodb42_Mongos = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.Mongodb4_2.Mongos' as const,
+
     encode(
         message: Mongodb42_Mongos,
         writer: _m0.Writer = _m0.Writer.create()
@@ -3305,9 +3456,15 @@ export const Mongodb42_Mongos = {
     },
 };
 
-const baseMongodb42_MongoInfra: object = {};
+messageTypeRegistry.set(Mongodb42_Mongos.$type, Mongodb42_Mongos);
+
+const baseMongodb42_MongoInfra: object = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.Mongodb4_2.MongoInfra',
+};
 
 export const Mongodb42_MongoInfra = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.Mongodb4_2.MongoInfra' as const,
+
     encode(
         message: Mongodb42_MongoInfra,
         writer: _m0.Writer = _m0.Writer.create()
@@ -3444,9 +3601,15 @@ export const Mongodb42_MongoInfra = {
     },
 };
 
-const baseMongodb44: object = {};
+messageTypeRegistry.set(Mongodb42_MongoInfra.$type, Mongodb42_MongoInfra);
+
+const baseMongodb44: object = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.Mongodb4_4',
+};
 
 export const Mongodb44 = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.Mongodb4_4' as const,
+
     encode(
         message: Mongodb44,
         writer: _m0.Writer = _m0.Writer.create()
@@ -3594,9 +3757,15 @@ export const Mongodb44 = {
     },
 };
 
-const baseMongodb44_Mongod: object = {};
+messageTypeRegistry.set(Mongodb44.$type, Mongodb44);
+
+const baseMongodb44_Mongod: object = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.Mongodb4_4.Mongod',
+};
 
 export const Mongodb44_Mongod = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.Mongodb4_4.Mongod' as const,
+
     encode(
         message: Mongodb44_Mongod,
         writer: _m0.Writer = _m0.Writer.create()
@@ -3688,9 +3857,15 @@ export const Mongodb44_Mongod = {
     },
 };
 
-const baseMongodb44_MongoCfg: object = {};
+messageTypeRegistry.set(Mongodb44_Mongod.$type, Mongodb44_Mongod);
+
+const baseMongodb44_MongoCfg: object = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.Mongodb4_4.MongoCfg',
+};
 
 export const Mongodb44_MongoCfg = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.Mongodb4_4.MongoCfg' as const,
+
     encode(
         message: Mongodb44_MongoCfg,
         writer: _m0.Writer = _m0.Writer.create()
@@ -3785,9 +3960,15 @@ export const Mongodb44_MongoCfg = {
     },
 };
 
-const baseMongodb44_Mongos: object = {};
+messageTypeRegistry.set(Mongodb44_MongoCfg.$type, Mongodb44_MongoCfg);
+
+const baseMongodb44_Mongos: object = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.Mongodb4_4.Mongos',
+};
 
 export const Mongodb44_Mongos = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.Mongodb4_4.Mongos' as const,
+
     encode(
         message: Mongodb44_Mongos,
         writer: _m0.Writer = _m0.Writer.create()
@@ -3879,9 +4060,15 @@ export const Mongodb44_Mongos = {
     },
 };
 
-const baseMongodb44_MongoInfra: object = {};
+messageTypeRegistry.set(Mongodb44_Mongos.$type, Mongodb44_Mongos);
+
+const baseMongodb44_MongoInfra: object = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.Mongodb4_4.MongoInfra',
+};
 
 export const Mongodb44_MongoInfra = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.Mongodb4_4.MongoInfra' as const,
+
     encode(
         message: Mongodb44_MongoInfra,
         writer: _m0.Writer = _m0.Writer.create()
@@ -4018,9 +4205,15 @@ export const Mongodb44_MongoInfra = {
     },
 };
 
-const baseMongodb50: object = {};
+messageTypeRegistry.set(Mongodb44_MongoInfra.$type, Mongodb44_MongoInfra);
+
+const baseMongodb50: object = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.Mongodb5_0',
+};
 
 export const Mongodb50 = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.Mongodb5_0' as const,
+
     encode(
         message: Mongodb50,
         writer: _m0.Writer = _m0.Writer.create()
@@ -4168,9 +4361,15 @@ export const Mongodb50 = {
     },
 };
 
-const baseMongodb50_Mongod: object = {};
+messageTypeRegistry.set(Mongodb50.$type, Mongodb50);
+
+const baseMongodb50_Mongod: object = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.Mongodb5_0.Mongod',
+};
 
 export const Mongodb50_Mongod = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.Mongodb5_0.Mongod' as const,
+
     encode(
         message: Mongodb50_Mongod,
         writer: _m0.Writer = _m0.Writer.create()
@@ -4262,9 +4461,15 @@ export const Mongodb50_Mongod = {
     },
 };
 
-const baseMongodb50_MongoCfg: object = {};
+messageTypeRegistry.set(Mongodb50_Mongod.$type, Mongodb50_Mongod);
+
+const baseMongodb50_MongoCfg: object = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.Mongodb5_0.MongoCfg',
+};
 
 export const Mongodb50_MongoCfg = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.Mongodb5_0.MongoCfg' as const,
+
     encode(
         message: Mongodb50_MongoCfg,
         writer: _m0.Writer = _m0.Writer.create()
@@ -4359,9 +4564,15 @@ export const Mongodb50_MongoCfg = {
     },
 };
 
-const baseMongodb50_Mongos: object = {};
+messageTypeRegistry.set(Mongodb50_MongoCfg.$type, Mongodb50_MongoCfg);
+
+const baseMongodb50_Mongos: object = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.Mongodb5_0.Mongos',
+};
 
 export const Mongodb50_Mongos = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.Mongodb5_0.Mongos' as const,
+
     encode(
         message: Mongodb50_Mongos,
         writer: _m0.Writer = _m0.Writer.create()
@@ -4453,9 +4664,15 @@ export const Mongodb50_Mongos = {
     },
 };
 
-const baseMongodb50_MongoInfra: object = {};
+messageTypeRegistry.set(Mongodb50_Mongos.$type, Mongodb50_Mongos);
+
+const baseMongodb50_MongoInfra: object = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.Mongodb5_0.MongoInfra',
+};
 
 export const Mongodb50_MongoInfra = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.Mongodb5_0.MongoInfra' as const,
+
     encode(
         message: Mongodb50_MongoInfra,
         writer: _m0.Writer = _m0.Writer.create()
@@ -4592,9 +4809,17 @@ export const Mongodb50_MongoInfra = {
     },
 };
 
-const baseShard: object = { name: '', clusterId: '' };
+messageTypeRegistry.set(Mongodb50_MongoInfra.$type, Mongodb50_MongoInfra);
+
+const baseShard: object = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.Shard',
+    name: '',
+    clusterId: '',
+};
 
 export const Shard = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.Shard' as const,
+
     encode(
         message: Shard,
         writer: _m0.Writer = _m0.Writer.create()
@@ -4668,7 +4893,10 @@ export const Shard = {
     },
 };
 
+messageTypeRegistry.set(Shard.$type, Shard);
+
 const baseHost: object = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.Host',
     name: '',
     clusterId: '',
     zoneId: '',
@@ -4681,6 +4909,8 @@ const baseHost: object = {
 };
 
 export const Host = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.Host' as const,
+
     encode(
         message: Host,
         writer: _m0.Writer = _m0.Writer.create()
@@ -4937,9 +5167,17 @@ export const Host = {
     },
 };
 
-const baseService: object = { type: 0, health: 0 };
+messageTypeRegistry.set(Host.$type, Host);
+
+const baseService: object = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.Service',
+    type: 0,
+    health: 0,
+};
 
 export const Service = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.Service' as const,
+
     encode(
         message: Service,
         writer: _m0.Writer = _m0.Writer.create()
@@ -5015,13 +5253,18 @@ export const Service = {
     },
 };
 
+messageTypeRegistry.set(Service.$type, Service);
+
 const baseResources: object = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.Resources',
     resourcePresetId: '',
     diskSize: 0,
     diskTypeId: '',
 };
 
 export const Resources = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.Resources' as const,
+
     encode(
         message: Resources,
         writer: _m0.Writer = _m0.Writer.create()
@@ -5120,9 +5363,16 @@ export const Resources = {
     },
 };
 
-const baseAccess: object = { dataLens: false };
+messageTypeRegistry.set(Resources.$type, Resources);
+
+const baseAccess: object = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.Access',
+    dataLens: false,
+};
 
 export const Access = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.Access' as const,
+
     encode(
         message: Access,
         writer: _m0.Writer = _m0.Writer.create()
@@ -5179,6 +5429,8 @@ export const Access = {
     },
 };
 
+messageTypeRegistry.set(Access.$type, Access);
+
 declare var self: any | undefined;
 declare var window: any | undefined;
 declare var global: any | undefined;
@@ -5205,13 +5457,13 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 function toTimestamp(date: Date): Timestamp {
     const seconds = date.getTime() / 1_000;
     const nanos = (date.getTime() % 1_000) * 1_000_000;
-    return { seconds, nanos };
+    return { $type: 'google.protobuf.Timestamp', seconds, nanos };
 }
 
 function fromTimestamp(t: Timestamp): Date {

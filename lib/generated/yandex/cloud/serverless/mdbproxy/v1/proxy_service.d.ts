@@ -7,6 +7,7 @@ import { ChannelCredentials, ChannelOptions, UntypedServiceImplementation, handl
 import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.serverless.mdbproxy.v1";
 export interface GetProxyRequest {
+    $type: 'yandex.cloud.serverless.mdbproxy.v1.GetProxyRequest';
     /**
      * ID of the proxy to return.
      *
@@ -15,6 +16,7 @@ export interface GetProxyRequest {
     proxyId: string;
 }
 export interface ListProxyRequest {
+    $type: 'yandex.cloud.serverless.mdbproxy.v1.ListProxyRequest';
     /**
      * ID of the folder to list proxies in.
      *
@@ -47,6 +49,7 @@ export interface ListProxyRequest {
     filter: string;
 }
 export interface ListProxyResponse {
+    $type: 'yandex.cloud.serverless.mdbproxy.v1.ListProxyResponse';
     /** List of proxies in the specified folder. */
     proxies: Proxy[];
     /**
@@ -59,6 +62,7 @@ export interface ListProxyResponse {
     nextPageToken: string;
 }
 export interface CreateProxyRequest {
+    $type: 'yandex.cloud.serverless.mdbproxy.v1.CreateProxyRequest';
     /**
      * ID of the folder to create a proxy in.
      *
@@ -80,14 +84,17 @@ export interface CreateProxyRequest {
     target: Target | undefined;
 }
 export interface CreateProxyRequest_LabelsEntry {
+    $type: 'yandex.cloud.serverless.mdbproxy.v1.CreateProxyRequest.LabelsEntry';
     key: string;
     value: string;
 }
 export interface CreateProxyMetadata {
+    $type: 'yandex.cloud.serverless.mdbproxy.v1.CreateProxyMetadata';
     /** ID of the proxy. */
     proxyId: string;
 }
 export interface UpdateProxyRequest {
+    $type: 'yandex.cloud.serverless.mdbproxy.v1.UpdateProxyRequest';
     /** ID of the proxy to update. */
     proxyId: string;
     /** Field mask that specifies which attributes of the proxy should be updated. */
@@ -107,22 +114,27 @@ export interface UpdateProxyRequest {
     target: Target | undefined;
 }
 export interface UpdateProxyRequest_LabelsEntry {
+    $type: 'yandex.cloud.serverless.mdbproxy.v1.UpdateProxyRequest.LabelsEntry';
     key: string;
     value: string;
 }
 export interface UpdateProxyMetadata {
+    $type: 'yandex.cloud.serverless.mdbproxy.v1.UpdateProxyMetadata';
     /** ID of the proxy. */
     proxyId: string;
 }
 export interface DeleteProxyRequest {
+    $type: 'yandex.cloud.serverless.mdbproxy.v1.DeleteProxyRequest';
     /** ID of the proxy. */
     proxyId: string;
 }
 export interface DeleteProxyMetadata {
+    $type: 'yandex.cloud.serverless.mdbproxy.v1.DeleteProxyMetadata';
     /** ID of the proxy. */
     proxyId: string;
 }
 export interface ListProxyOperationsRequest {
+    $type: 'yandex.cloud.serverless.mdbproxy.v1.ListProxyOperationsRequest';
     /** ID of the proxy to list operations for. */
     proxyId: string;
     /**
@@ -151,6 +163,7 @@ export interface ListProxyOperationsRequest {
     filter: string;
 }
 export interface ListProxyOperationsResponse {
+    $type: 'yandex.cloud.serverless.mdbproxy.v1.ListProxyOperationsResponse';
     /** List of operations for the specified proxy. */
     operations: Operation[];
     /**
@@ -163,6 +176,7 @@ export interface ListProxyOperationsResponse {
     nextPageToken: string;
 }
 export declare const GetProxyRequest: {
+    $type: "yandex.cloud.serverless.mdbproxy.v1.GetProxyRequest";
     encode(message: GetProxyRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): GetProxyRequest;
     fromJSON(object: any): GetProxyRequest;
@@ -170,6 +184,7 @@ export declare const GetProxyRequest: {
     fromPartial(object: DeepPartial<GetProxyRequest>): GetProxyRequest;
 };
 export declare const ListProxyRequest: {
+    $type: "yandex.cloud.serverless.mdbproxy.v1.ListProxyRequest";
     encode(message: ListProxyRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListProxyRequest;
     fromJSON(object: any): ListProxyRequest;
@@ -177,6 +192,7 @@ export declare const ListProxyRequest: {
     fromPartial(object: DeepPartial<ListProxyRequest>): ListProxyRequest;
 };
 export declare const ListProxyResponse: {
+    $type: "yandex.cloud.serverless.mdbproxy.v1.ListProxyResponse";
     encode(message: ListProxyResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListProxyResponse;
     fromJSON(object: any): ListProxyResponse;
@@ -184,6 +200,7 @@ export declare const ListProxyResponse: {
     fromPartial(object: DeepPartial<ListProxyResponse>): ListProxyResponse;
 };
 export declare const CreateProxyRequest: {
+    $type: "yandex.cloud.serverless.mdbproxy.v1.CreateProxyRequest";
     encode(message: CreateProxyRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateProxyRequest;
     fromJSON(object: any): CreateProxyRequest;
@@ -191,6 +208,7 @@ export declare const CreateProxyRequest: {
     fromPartial(object: DeepPartial<CreateProxyRequest>): CreateProxyRequest;
 };
 export declare const CreateProxyRequest_LabelsEntry: {
+    $type: "yandex.cloud.serverless.mdbproxy.v1.CreateProxyRequest.LabelsEntry";
     encode(message: CreateProxyRequest_LabelsEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateProxyRequest_LabelsEntry;
     fromJSON(object: any): CreateProxyRequest_LabelsEntry;
@@ -198,6 +216,7 @@ export declare const CreateProxyRequest_LabelsEntry: {
     fromPartial(object: DeepPartial<CreateProxyRequest_LabelsEntry>): CreateProxyRequest_LabelsEntry;
 };
 export declare const CreateProxyMetadata: {
+    $type: "yandex.cloud.serverless.mdbproxy.v1.CreateProxyMetadata";
     encode(message: CreateProxyMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateProxyMetadata;
     fromJSON(object: any): CreateProxyMetadata;
@@ -205,6 +224,7 @@ export declare const CreateProxyMetadata: {
     fromPartial(object: DeepPartial<CreateProxyMetadata>): CreateProxyMetadata;
 };
 export declare const UpdateProxyRequest: {
+    $type: "yandex.cloud.serverless.mdbproxy.v1.UpdateProxyRequest";
     encode(message: UpdateProxyRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateProxyRequest;
     fromJSON(object: any): UpdateProxyRequest;
@@ -212,6 +232,7 @@ export declare const UpdateProxyRequest: {
     fromPartial(object: DeepPartial<UpdateProxyRequest>): UpdateProxyRequest;
 };
 export declare const UpdateProxyRequest_LabelsEntry: {
+    $type: "yandex.cloud.serverless.mdbproxy.v1.UpdateProxyRequest.LabelsEntry";
     encode(message: UpdateProxyRequest_LabelsEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateProxyRequest_LabelsEntry;
     fromJSON(object: any): UpdateProxyRequest_LabelsEntry;
@@ -219,6 +240,7 @@ export declare const UpdateProxyRequest_LabelsEntry: {
     fromPartial(object: DeepPartial<UpdateProxyRequest_LabelsEntry>): UpdateProxyRequest_LabelsEntry;
 };
 export declare const UpdateProxyMetadata: {
+    $type: "yandex.cloud.serverless.mdbproxy.v1.UpdateProxyMetadata";
     encode(message: UpdateProxyMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateProxyMetadata;
     fromJSON(object: any): UpdateProxyMetadata;
@@ -226,6 +248,7 @@ export declare const UpdateProxyMetadata: {
     fromPartial(object: DeepPartial<UpdateProxyMetadata>): UpdateProxyMetadata;
 };
 export declare const DeleteProxyRequest: {
+    $type: "yandex.cloud.serverless.mdbproxy.v1.DeleteProxyRequest";
     encode(message: DeleteProxyRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteProxyRequest;
     fromJSON(object: any): DeleteProxyRequest;
@@ -233,6 +256,7 @@ export declare const DeleteProxyRequest: {
     fromPartial(object: DeepPartial<DeleteProxyRequest>): DeleteProxyRequest;
 };
 export declare const DeleteProxyMetadata: {
+    $type: "yandex.cloud.serverless.mdbproxy.v1.DeleteProxyMetadata";
     encode(message: DeleteProxyMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteProxyMetadata;
     fromJSON(object: any): DeleteProxyMetadata;
@@ -240,6 +264,7 @@ export declare const DeleteProxyMetadata: {
     fromPartial(object: DeepPartial<DeleteProxyMetadata>): DeleteProxyMetadata;
 };
 export declare const ListProxyOperationsRequest: {
+    $type: "yandex.cloud.serverless.mdbproxy.v1.ListProxyOperationsRequest";
     encode(message: ListProxyOperationsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListProxyOperationsRequest;
     fromJSON(object: any): ListProxyOperationsRequest;
@@ -247,6 +272,7 @@ export declare const ListProxyOperationsRequest: {
     fromPartial(object: DeepPartial<ListProxyOperationsRequest>): ListProxyOperationsRequest;
 };
 export declare const ListProxyOperationsResponse: {
+    $type: "yandex.cloud.serverless.mdbproxy.v1.ListProxyOperationsResponse";
     encode(message: ListProxyOperationsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListProxyOperationsResponse;
     fromJSON(object: any): ListProxyOperationsResponse;
@@ -419,6 +445,6 @@ export interface ProxyServiceClient extends Client {
 export declare const ProxyServiceClient: new (address: string, credentials: ChannelCredentials, options?: Partial<ChannelOptions> | undefined) => ProxyServiceClient;
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

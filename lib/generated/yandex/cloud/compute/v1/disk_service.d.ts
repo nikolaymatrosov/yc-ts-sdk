@@ -6,6 +6,7 @@ import { ChannelCredentials, ChannelOptions, UntypedServiceImplementation, handl
 import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.compute.v1";
 export interface GetDiskRequest {
+    $type: 'yandex.cloud.compute.v1.GetDiskRequest';
     /**
      * ID of the Disk resource to return.
      * To get the disk ID use a [DiskService.List] request.
@@ -13,6 +14,7 @@ export interface GetDiskRequest {
     diskId: string;
 }
 export interface ListDisksRequest {
+    $type: 'yandex.cloud.compute.v1.ListDisksRequest';
     /**
      * ID of the folder to list disks in.
      * To get the folder ID use a [yandex.cloud.resourcemanager.v1.FolderService.List] request.
@@ -40,6 +42,7 @@ export interface ListDisksRequest {
     filter: string;
 }
 export interface ListDisksResponse {
+    $type: 'yandex.cloud.compute.v1.ListDisksResponse';
     /** List of Disk resources. */
     disks: Disk[];
     /**
@@ -53,6 +56,7 @@ export interface ListDisksResponse {
     nextPageToken: string;
 }
 export interface CreateDiskRequest {
+    $type: 'yandex.cloud.compute.v1.CreateDiskRequest';
     /**
      * ID of the folder to create a disk in.
      * To get the folder ID use a [yandex.cloud.resourcemanager.v1.FolderService.List] request.
@@ -92,14 +96,17 @@ export interface CreateDiskRequest {
     diskPlacementPolicy: DiskPlacementPolicy | undefined;
 }
 export interface CreateDiskRequest_LabelsEntry {
+    $type: 'yandex.cloud.compute.v1.CreateDiskRequest.LabelsEntry';
     key: string;
     value: string;
 }
 export interface CreateDiskMetadata {
+    $type: 'yandex.cloud.compute.v1.CreateDiskMetadata';
     /** ID of the disk that is being created. */
     diskId: string;
 }
 export interface UpdateDiskRequest {
+    $type: 'yandex.cloud.compute.v1.UpdateDiskRequest';
     /**
      * ID of the Disk resource to update.
      * To get the disk ID use a [DiskService.List] request.
@@ -125,14 +132,17 @@ export interface UpdateDiskRequest {
     diskPlacementPolicy: DiskPlacementPolicy | undefined;
 }
 export interface UpdateDiskRequest_LabelsEntry {
+    $type: 'yandex.cloud.compute.v1.UpdateDiskRequest.LabelsEntry';
     key: string;
     value: string;
 }
 export interface UpdateDiskMetadata {
+    $type: 'yandex.cloud.compute.v1.UpdateDiskMetadata';
     /** ID of the Disk resource that is being updated. */
     diskId: string;
 }
 export interface DeleteDiskRequest {
+    $type: 'yandex.cloud.compute.v1.DeleteDiskRequest';
     /**
      * ID of the disk to delete.
      * To get the disk ID use a [DiskService.List] request.
@@ -140,10 +150,12 @@ export interface DeleteDiskRequest {
     diskId: string;
 }
 export interface DeleteDiskMetadata {
+    $type: 'yandex.cloud.compute.v1.DeleteDiskMetadata';
     /** ID of the disk that is being deleted. */
     diskId: string;
 }
 export interface ListDiskOperationsRequest {
+    $type: 'yandex.cloud.compute.v1.ListDiskOperationsRequest';
     /** ID of the Disk resource to list operations for. */
     diskId: string;
     /**
@@ -159,6 +171,7 @@ export interface ListDiskOperationsRequest {
     pageToken: string;
 }
 export interface ListDiskOperationsResponse {
+    $type: 'yandex.cloud.compute.v1.ListDiskOperationsResponse';
     /** List of operations for the specified disk. */
     operations: Operation[];
     /**
@@ -170,6 +183,7 @@ export interface ListDiskOperationsResponse {
     nextPageToken: string;
 }
 export declare const GetDiskRequest: {
+    $type: "yandex.cloud.compute.v1.GetDiskRequest";
     encode(message: GetDiskRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): GetDiskRequest;
     fromJSON(object: any): GetDiskRequest;
@@ -177,6 +191,7 @@ export declare const GetDiskRequest: {
     fromPartial(object: DeepPartial<GetDiskRequest>): GetDiskRequest;
 };
 export declare const ListDisksRequest: {
+    $type: "yandex.cloud.compute.v1.ListDisksRequest";
     encode(message: ListDisksRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListDisksRequest;
     fromJSON(object: any): ListDisksRequest;
@@ -184,6 +199,7 @@ export declare const ListDisksRequest: {
     fromPartial(object: DeepPartial<ListDisksRequest>): ListDisksRequest;
 };
 export declare const ListDisksResponse: {
+    $type: "yandex.cloud.compute.v1.ListDisksResponse";
     encode(message: ListDisksResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListDisksResponse;
     fromJSON(object: any): ListDisksResponse;
@@ -191,6 +207,7 @@ export declare const ListDisksResponse: {
     fromPartial(object: DeepPartial<ListDisksResponse>): ListDisksResponse;
 };
 export declare const CreateDiskRequest: {
+    $type: "yandex.cloud.compute.v1.CreateDiskRequest";
     encode(message: CreateDiskRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateDiskRequest;
     fromJSON(object: any): CreateDiskRequest;
@@ -198,6 +215,7 @@ export declare const CreateDiskRequest: {
     fromPartial(object: DeepPartial<CreateDiskRequest>): CreateDiskRequest;
 };
 export declare const CreateDiskRequest_LabelsEntry: {
+    $type: "yandex.cloud.compute.v1.CreateDiskRequest.LabelsEntry";
     encode(message: CreateDiskRequest_LabelsEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateDiskRequest_LabelsEntry;
     fromJSON(object: any): CreateDiskRequest_LabelsEntry;
@@ -205,6 +223,7 @@ export declare const CreateDiskRequest_LabelsEntry: {
     fromPartial(object: DeepPartial<CreateDiskRequest_LabelsEntry>): CreateDiskRequest_LabelsEntry;
 };
 export declare const CreateDiskMetadata: {
+    $type: "yandex.cloud.compute.v1.CreateDiskMetadata";
     encode(message: CreateDiskMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateDiskMetadata;
     fromJSON(object: any): CreateDiskMetadata;
@@ -212,6 +231,7 @@ export declare const CreateDiskMetadata: {
     fromPartial(object: DeepPartial<CreateDiskMetadata>): CreateDiskMetadata;
 };
 export declare const UpdateDiskRequest: {
+    $type: "yandex.cloud.compute.v1.UpdateDiskRequest";
     encode(message: UpdateDiskRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateDiskRequest;
     fromJSON(object: any): UpdateDiskRequest;
@@ -219,6 +239,7 @@ export declare const UpdateDiskRequest: {
     fromPartial(object: DeepPartial<UpdateDiskRequest>): UpdateDiskRequest;
 };
 export declare const UpdateDiskRequest_LabelsEntry: {
+    $type: "yandex.cloud.compute.v1.UpdateDiskRequest.LabelsEntry";
     encode(message: UpdateDiskRequest_LabelsEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateDiskRequest_LabelsEntry;
     fromJSON(object: any): UpdateDiskRequest_LabelsEntry;
@@ -226,6 +247,7 @@ export declare const UpdateDiskRequest_LabelsEntry: {
     fromPartial(object: DeepPartial<UpdateDiskRequest_LabelsEntry>): UpdateDiskRequest_LabelsEntry;
 };
 export declare const UpdateDiskMetadata: {
+    $type: "yandex.cloud.compute.v1.UpdateDiskMetadata";
     encode(message: UpdateDiskMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateDiskMetadata;
     fromJSON(object: any): UpdateDiskMetadata;
@@ -233,6 +255,7 @@ export declare const UpdateDiskMetadata: {
     fromPartial(object: DeepPartial<UpdateDiskMetadata>): UpdateDiskMetadata;
 };
 export declare const DeleteDiskRequest: {
+    $type: "yandex.cloud.compute.v1.DeleteDiskRequest";
     encode(message: DeleteDiskRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteDiskRequest;
     fromJSON(object: any): DeleteDiskRequest;
@@ -240,6 +263,7 @@ export declare const DeleteDiskRequest: {
     fromPartial(object: DeepPartial<DeleteDiskRequest>): DeleteDiskRequest;
 };
 export declare const DeleteDiskMetadata: {
+    $type: "yandex.cloud.compute.v1.DeleteDiskMetadata";
     encode(message: DeleteDiskMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteDiskMetadata;
     fromJSON(object: any): DeleteDiskMetadata;
@@ -247,6 +271,7 @@ export declare const DeleteDiskMetadata: {
     fromPartial(object: DeepPartial<DeleteDiskMetadata>): DeleteDiskMetadata;
 };
 export declare const ListDiskOperationsRequest: {
+    $type: "yandex.cloud.compute.v1.ListDiskOperationsRequest";
     encode(message: ListDiskOperationsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListDiskOperationsRequest;
     fromJSON(object: any): ListDiskOperationsRequest;
@@ -254,6 +279,7 @@ export declare const ListDiskOperationsRequest: {
     fromPartial(object: DeepPartial<ListDiskOperationsRequest>): ListDiskOperationsRequest;
 };
 export declare const ListDiskOperationsResponse: {
+    $type: "yandex.cloud.compute.v1.ListDiskOperationsResponse";
     encode(message: ListDiskOperationsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListDiskOperationsResponse;
     fromJSON(object: any): ListDiskOperationsResponse;
@@ -414,6 +440,6 @@ export interface DiskServiceClient extends Client {
 export declare const DiskServiceClient: new (address: string, credentials: ChannelCredentials, options?: Partial<ChannelOptions> | undefined) => DiskServiceClient;
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

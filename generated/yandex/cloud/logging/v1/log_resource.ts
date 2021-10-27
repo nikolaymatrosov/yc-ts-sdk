@@ -1,4 +1,5 @@
 /* eslint-disable */
+import { messageTypeRegistry } from '../../../../typeRegistry';
 import Long from 'long';
 import _m0 from 'protobufjs/minimal';
 
@@ -10,6 +11,7 @@ export const protobufPackage = 'yandex.cloud.logging.v1';
  * May be used either by services and by user.
  */
 export interface LogEntryResource {
+    $type: 'yandex.cloud.logging.v1.LogEntryResource';
     /** Resource type, i.e., `serverless.function` */
     type: string;
     /** Resource ID, i.e., ID of the function producing logs. */
@@ -18,6 +20,7 @@ export interface LogEntryResource {
 
 /** Log group resource. */
 export interface LogGroupResource {
+    $type: 'yandex.cloud.logging.v1.LogGroupResource';
     /**
      * Resource type.
      *
@@ -28,9 +31,15 @@ export interface LogGroupResource {
     ids: string[];
 }
 
-const baseLogEntryResource: object = { type: '', id: '' };
+const baseLogEntryResource: object = {
+    $type: 'yandex.cloud.logging.v1.LogEntryResource',
+    type: '',
+    id: '',
+};
 
 export const LogEntryResource = {
+    $type: 'yandex.cloud.logging.v1.LogEntryResource' as const,
+
     encode(
         message: LogEntryResource,
         writer: _m0.Writer = _m0.Writer.create()
@@ -104,9 +113,17 @@ export const LogEntryResource = {
     },
 };
 
-const baseLogGroupResource: object = { type: '', ids: '' };
+messageTypeRegistry.set(LogEntryResource.$type, LogEntryResource);
+
+const baseLogGroupResource: object = {
+    $type: 'yandex.cloud.logging.v1.LogGroupResource',
+    type: '',
+    ids: '',
+};
 
 export const LogGroupResource = {
+    $type: 'yandex.cloud.logging.v1.LogGroupResource' as const,
+
     encode(
         message: LogGroupResource,
         writer: _m0.Writer = _m0.Writer.create()
@@ -187,6 +204,8 @@ export const LogGroupResource = {
     },
 };
 
+messageTypeRegistry.set(LogGroupResource.$type, LogGroupResource);
+
 type Builtin =
     | Date
     | Function
@@ -202,7 +221,7 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 if (_m0.util.Long !== Long) {

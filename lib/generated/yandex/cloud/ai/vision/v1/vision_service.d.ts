@@ -8,6 +8,7 @@ import { ChannelCredentials, ChannelOptions, UntypedServiceImplementation, handl
 import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.ai.vision.v1";
 export interface BatchAnalyzeRequest {
+    $type: 'yandex.cloud.ai.vision.v1.BatchAnalyzeRequest';
     /**
      * A list of specifications. Each specification contains the file to analyze and features to use for analysis.
      *
@@ -25,6 +26,7 @@ export interface BatchAnalyzeRequest {
     folderId: string;
 }
 export interface AnalyzeSpec {
+    $type: 'yandex.cloud.ai.vision.v1.AnalyzeSpec';
     /**
      * Image content, represented as a stream of bytes.
      * Note: As with all bytes fields, protobuffers use a pure binary representation, whereas JSON representations use base64.
@@ -41,6 +43,7 @@ export interface AnalyzeSpec {
     mimeType: string;
 }
 export interface Feature {
+    $type: 'yandex.cloud.ai.vision.v1.Feature';
     /** Type of requested feature. */
     type: Feature_Type;
     /** Required for the `CLASSIFICATION` type. Specifies configuration for the classification feature. */
@@ -63,10 +66,12 @@ export declare enum Feature_Type {
 export declare function feature_TypeFromJSON(object: any): Feature_Type;
 export declare function feature_TypeToJSON(object: Feature_Type): string;
 export interface FeatureClassificationConfig {
+    $type: 'yandex.cloud.ai.vision.v1.FeatureClassificationConfig';
     /** Model to use for image classification. */
     model: string;
 }
 export interface FeatureTextDetectionConfig {
+    $type: 'yandex.cloud.ai.vision.v1.FeatureTextDetectionConfig';
     /**
      * List of the languages to recognize text.
      * Specified in [ISO 639-1](https://en.wikipedia.org/wiki/ISO_639-1) format (for example, `` ru ``).
@@ -81,6 +86,7 @@ export interface FeatureTextDetectionConfig {
     model: string;
 }
 export interface BatchAnalyzeResponse {
+    $type: 'yandex.cloud.ai.vision.v1.BatchAnalyzeResponse';
     /**
      * Request results.
      * Results have the same order as specifications in the request.
@@ -88,6 +94,7 @@ export interface BatchAnalyzeResponse {
     results: AnalyzeResult[];
 }
 export interface AnalyzeResult {
+    $type: 'yandex.cloud.ai.vision.v1.AnalyzeResult';
     /**
      * Results for each requested feature.
      * Feature results have the same order as in the request.
@@ -97,6 +104,7 @@ export interface AnalyzeResult {
     error: Status | undefined;
 }
 export interface FeatureResult {
+    $type: 'yandex.cloud.ai.vision.v1.FeatureResult';
     /** Text detection (OCR) result. */
     textDetection: TextAnnotation | undefined;
     /** Classification result. */
@@ -109,6 +117,7 @@ export interface FeatureResult {
     error: Status | undefined;
 }
 export declare const BatchAnalyzeRequest: {
+    $type: "yandex.cloud.ai.vision.v1.BatchAnalyzeRequest";
     encode(message: BatchAnalyzeRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): BatchAnalyzeRequest;
     fromJSON(object: any): BatchAnalyzeRequest;
@@ -116,6 +125,7 @@ export declare const BatchAnalyzeRequest: {
     fromPartial(object: DeepPartial<BatchAnalyzeRequest>): BatchAnalyzeRequest;
 };
 export declare const AnalyzeSpec: {
+    $type: "yandex.cloud.ai.vision.v1.AnalyzeSpec";
     encode(message: AnalyzeSpec, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): AnalyzeSpec;
     fromJSON(object: any): AnalyzeSpec;
@@ -123,6 +133,7 @@ export declare const AnalyzeSpec: {
     fromPartial(object: DeepPartial<AnalyzeSpec>): AnalyzeSpec;
 };
 export declare const Feature: {
+    $type: "yandex.cloud.ai.vision.v1.Feature";
     encode(message: Feature, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Feature;
     fromJSON(object: any): Feature;
@@ -130,6 +141,7 @@ export declare const Feature: {
     fromPartial(object: DeepPartial<Feature>): Feature;
 };
 export declare const FeatureClassificationConfig: {
+    $type: "yandex.cloud.ai.vision.v1.FeatureClassificationConfig";
     encode(message: FeatureClassificationConfig, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): FeatureClassificationConfig;
     fromJSON(object: any): FeatureClassificationConfig;
@@ -137,6 +149,7 @@ export declare const FeatureClassificationConfig: {
     fromPartial(object: DeepPartial<FeatureClassificationConfig>): FeatureClassificationConfig;
 };
 export declare const FeatureTextDetectionConfig: {
+    $type: "yandex.cloud.ai.vision.v1.FeatureTextDetectionConfig";
     encode(message: FeatureTextDetectionConfig, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): FeatureTextDetectionConfig;
     fromJSON(object: any): FeatureTextDetectionConfig;
@@ -144,6 +157,7 @@ export declare const FeatureTextDetectionConfig: {
     fromPartial(object: DeepPartial<FeatureTextDetectionConfig>): FeatureTextDetectionConfig;
 };
 export declare const BatchAnalyzeResponse: {
+    $type: "yandex.cloud.ai.vision.v1.BatchAnalyzeResponse";
     encode(message: BatchAnalyzeResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): BatchAnalyzeResponse;
     fromJSON(object: any): BatchAnalyzeResponse;
@@ -151,6 +165,7 @@ export declare const BatchAnalyzeResponse: {
     fromPartial(object: DeepPartial<BatchAnalyzeResponse>): BatchAnalyzeResponse;
 };
 export declare const AnalyzeResult: {
+    $type: "yandex.cloud.ai.vision.v1.AnalyzeResult";
     encode(message: AnalyzeResult, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): AnalyzeResult;
     fromJSON(object: any): AnalyzeResult;
@@ -158,6 +173,7 @@ export declare const AnalyzeResult: {
     fromPartial(object: DeepPartial<AnalyzeResult>): AnalyzeResult;
 };
 export declare const FeatureResult: {
+    $type: "yandex.cloud.ai.vision.v1.FeatureResult";
     encode(message: FeatureResult, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): FeatureResult;
     fromJSON(object: any): FeatureResult;
@@ -190,6 +206,6 @@ export interface VisionServiceClient extends Client {
 export declare const VisionServiceClient: new (address: string, credentials: ChannelCredentials, options?: Partial<ChannelOptions> | undefined) => VisionServiceClient;
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

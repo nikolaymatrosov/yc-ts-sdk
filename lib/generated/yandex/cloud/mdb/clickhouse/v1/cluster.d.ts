@@ -8,6 +8,7 @@ export declare const protobufPackage = "yandex.cloud.mdb.clickhouse.v1";
  * [Cluster](/docs/managed-clickhouse/concepts) section in the Developer's Guide.
  */
 export interface Cluster {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.Cluster';
     /**
      * ID of the ClickHouse cluster.
      * This ID is assigned by MDB at creation time.
@@ -103,11 +104,13 @@ export declare enum Cluster_Status {
 export declare function cluster_StatusFromJSON(object: any): Cluster_Status;
 export declare function cluster_StatusToJSON(object: Cluster_Status): string;
 export interface Cluster_LabelsEntry {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.Cluster.LabelsEntry';
     key: string;
     value: string;
 }
 /** Monitoring system metadata. */
 export interface Monitoring {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.Monitoring';
     /** Name of the monitoring system. */
     name: string;
     /** Description of the monitoring system. */
@@ -116,6 +119,7 @@ export interface Monitoring {
     link: string;
 }
 export interface ClusterConfig {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.ClusterConfig';
     /** Version of the ClickHouse server software. */
     version: string;
     /** Configuration and resource allocation for ClickHouse hosts. */
@@ -133,16 +137,19 @@ export interface ClusterConfig {
     sqlUserManagement: boolean | undefined;
 }
 export interface ClusterConfig_Clickhouse {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.ClusterConfig.Clickhouse';
     /** Configuration settings of a ClickHouse server. */
     config: ClickhouseConfigSet | undefined;
     /** Resources allocated to ClickHouse hosts. */
     resources: Resources | undefined;
 }
 export interface ClusterConfig_Zookeeper {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.ClusterConfig.Zookeeper';
     /** Resources allocated to ZooKeeper hosts. */
     resources: Resources | undefined;
 }
 export interface Shard {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.Shard';
     /** Name of the shard. */
     name: string;
     /** ID of the cluster that the shard belongs to. */
@@ -151,6 +158,7 @@ export interface Shard {
     config: ShardConfig | undefined;
 }
 export interface ShardGroup {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.ShardGroup';
     /** Name of the shard group. */
     name: string;
     /** ID of the ClickHouse cluster that the shard group belongs to. */
@@ -161,10 +169,12 @@ export interface ShardGroup {
     shardNames: string[];
 }
 export interface ShardConfig {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.ShardConfig';
     /** ClickHouse configuration for a shard. */
     clickhouse: ShardConfig_Clickhouse | undefined;
 }
 export interface ShardConfig_Clickhouse {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.ShardConfig.Clickhouse';
     /** ClickHouse settings for a shard. */
     config: ClickhouseConfigSet | undefined;
     /** Computational resources for a shard. */
@@ -176,6 +186,7 @@ export interface ShardConfig_Clickhouse {
     weight: number | undefined;
 }
 export interface Host {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.Host';
     /**
      * Name of the ClickHouse host. The host name is assigned by MDB at creation time, and cannot be changed.
      * 1-63 characters long.
@@ -225,6 +236,7 @@ export declare enum Host_Health {
 export declare function host_HealthFromJSON(object: any): Host_Health;
 export declare function host_HealthToJSON(object: Host_Health): string;
 export interface Service {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.Service';
     /** Type of the service provided by the host. */
     type: Service_Type;
     /** Status code of server availability. */
@@ -252,6 +264,7 @@ export declare enum Service_Health {
 export declare function service_HealthFromJSON(object: any): Service_Health;
 export declare function service_HealthToJSON(object: Service_Health): string;
 export interface Resources {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.Resources';
     /**
      * ID of the preset for computational resources available to a host (CPU, memory etc.).
      * All available presets are listed in the [documentation](/docs/managed-clickhouse/concepts/instance-types)
@@ -269,6 +282,7 @@ export interface Resources {
     diskTypeId: string;
 }
 export interface Access {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.Access';
     /** Allow to export data from the cluster to Yandex DataLens. */
     dataLens: boolean;
     /**
@@ -287,10 +301,12 @@ export interface Access {
     serverless: boolean;
 }
 export interface CloudStorage {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.CloudStorage';
     /** Whether to use Yandex Object Storage for storing ClickHouse data. */
     enabled: boolean;
 }
 export declare const Cluster: {
+    $type: "yandex.cloud.mdb.clickhouse.v1.Cluster";
     encode(message: Cluster, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Cluster;
     fromJSON(object: any): Cluster;
@@ -298,6 +314,7 @@ export declare const Cluster: {
     fromPartial(object: DeepPartial<Cluster>): Cluster;
 };
 export declare const Cluster_LabelsEntry: {
+    $type: "yandex.cloud.mdb.clickhouse.v1.Cluster.LabelsEntry";
     encode(message: Cluster_LabelsEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Cluster_LabelsEntry;
     fromJSON(object: any): Cluster_LabelsEntry;
@@ -305,6 +322,7 @@ export declare const Cluster_LabelsEntry: {
     fromPartial(object: DeepPartial<Cluster_LabelsEntry>): Cluster_LabelsEntry;
 };
 export declare const Monitoring: {
+    $type: "yandex.cloud.mdb.clickhouse.v1.Monitoring";
     encode(message: Monitoring, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Monitoring;
     fromJSON(object: any): Monitoring;
@@ -312,6 +330,7 @@ export declare const Monitoring: {
     fromPartial(object: DeepPartial<Monitoring>): Monitoring;
 };
 export declare const ClusterConfig: {
+    $type: "yandex.cloud.mdb.clickhouse.v1.ClusterConfig";
     encode(message: ClusterConfig, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ClusterConfig;
     fromJSON(object: any): ClusterConfig;
@@ -319,6 +338,7 @@ export declare const ClusterConfig: {
     fromPartial(object: DeepPartial<ClusterConfig>): ClusterConfig;
 };
 export declare const ClusterConfig_Clickhouse: {
+    $type: "yandex.cloud.mdb.clickhouse.v1.ClusterConfig.Clickhouse";
     encode(message: ClusterConfig_Clickhouse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ClusterConfig_Clickhouse;
     fromJSON(object: any): ClusterConfig_Clickhouse;
@@ -326,6 +346,7 @@ export declare const ClusterConfig_Clickhouse: {
     fromPartial(object: DeepPartial<ClusterConfig_Clickhouse>): ClusterConfig_Clickhouse;
 };
 export declare const ClusterConfig_Zookeeper: {
+    $type: "yandex.cloud.mdb.clickhouse.v1.ClusterConfig.Zookeeper";
     encode(message: ClusterConfig_Zookeeper, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ClusterConfig_Zookeeper;
     fromJSON(object: any): ClusterConfig_Zookeeper;
@@ -333,6 +354,7 @@ export declare const ClusterConfig_Zookeeper: {
     fromPartial(object: DeepPartial<ClusterConfig_Zookeeper>): ClusterConfig_Zookeeper;
 };
 export declare const Shard: {
+    $type: "yandex.cloud.mdb.clickhouse.v1.Shard";
     encode(message: Shard, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Shard;
     fromJSON(object: any): Shard;
@@ -340,6 +362,7 @@ export declare const Shard: {
     fromPartial(object: DeepPartial<Shard>): Shard;
 };
 export declare const ShardGroup: {
+    $type: "yandex.cloud.mdb.clickhouse.v1.ShardGroup";
     encode(message: ShardGroup, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ShardGroup;
     fromJSON(object: any): ShardGroup;
@@ -347,6 +370,7 @@ export declare const ShardGroup: {
     fromPartial(object: DeepPartial<ShardGroup>): ShardGroup;
 };
 export declare const ShardConfig: {
+    $type: "yandex.cloud.mdb.clickhouse.v1.ShardConfig";
     encode(message: ShardConfig, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ShardConfig;
     fromJSON(object: any): ShardConfig;
@@ -354,6 +378,7 @@ export declare const ShardConfig: {
     fromPartial(object: DeepPartial<ShardConfig>): ShardConfig;
 };
 export declare const ShardConfig_Clickhouse: {
+    $type: "yandex.cloud.mdb.clickhouse.v1.ShardConfig.Clickhouse";
     encode(message: ShardConfig_Clickhouse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ShardConfig_Clickhouse;
     fromJSON(object: any): ShardConfig_Clickhouse;
@@ -361,6 +386,7 @@ export declare const ShardConfig_Clickhouse: {
     fromPartial(object: DeepPartial<ShardConfig_Clickhouse>): ShardConfig_Clickhouse;
 };
 export declare const Host: {
+    $type: "yandex.cloud.mdb.clickhouse.v1.Host";
     encode(message: Host, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Host;
     fromJSON(object: any): Host;
@@ -368,6 +394,7 @@ export declare const Host: {
     fromPartial(object: DeepPartial<Host>): Host;
 };
 export declare const Service: {
+    $type: "yandex.cloud.mdb.clickhouse.v1.Service";
     encode(message: Service, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Service;
     fromJSON(object: any): Service;
@@ -375,6 +402,7 @@ export declare const Service: {
     fromPartial(object: DeepPartial<Service>): Service;
 };
 export declare const Resources: {
+    $type: "yandex.cloud.mdb.clickhouse.v1.Resources";
     encode(message: Resources, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Resources;
     fromJSON(object: any): Resources;
@@ -382,6 +410,7 @@ export declare const Resources: {
     fromPartial(object: DeepPartial<Resources>): Resources;
 };
 export declare const Access: {
+    $type: "yandex.cloud.mdb.clickhouse.v1.Access";
     encode(message: Access, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Access;
     fromJSON(object: any): Access;
@@ -389,6 +418,7 @@ export declare const Access: {
     fromPartial(object: DeepPartial<Access>): Access;
 };
 export declare const CloudStorage: {
+    $type: "yandex.cloud.mdb.clickhouse.v1.CloudStorage";
     encode(message: CloudStorage, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CloudStorage;
     fromJSON(object: any): CloudStorage;
@@ -397,6 +427,6 @@ export declare const CloudStorage: {
 };
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

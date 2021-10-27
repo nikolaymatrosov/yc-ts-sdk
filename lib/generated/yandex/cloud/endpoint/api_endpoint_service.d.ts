@@ -4,17 +4,21 @@ import { ChannelCredentials, ChannelOptions, UntypedServiceImplementation, handl
 import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.endpoint";
 export interface GetApiEndpointRequest {
+    $type: 'yandex.cloud.endpoint.GetApiEndpointRequest';
     apiEndpointId: string;
 }
 export interface ListApiEndpointsRequest {
+    $type: 'yandex.cloud.endpoint.ListApiEndpointsRequest';
     pageSize: number;
     pageToken: string;
 }
 export interface ListApiEndpointsResponse {
+    $type: 'yandex.cloud.endpoint.ListApiEndpointsResponse';
     endpoints: ApiEndpoint[];
     nextPageToken: string;
 }
 export declare const GetApiEndpointRequest: {
+    $type: "yandex.cloud.endpoint.GetApiEndpointRequest";
     encode(message: GetApiEndpointRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): GetApiEndpointRequest;
     fromJSON(object: any): GetApiEndpointRequest;
@@ -22,6 +26,7 @@ export declare const GetApiEndpointRequest: {
     fromPartial(object: DeepPartial<GetApiEndpointRequest>): GetApiEndpointRequest;
 };
 export declare const ListApiEndpointsRequest: {
+    $type: "yandex.cloud.endpoint.ListApiEndpointsRequest";
     encode(message: ListApiEndpointsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListApiEndpointsRequest;
     fromJSON(object: any): ListApiEndpointsRequest;
@@ -29,6 +34,7 @@ export declare const ListApiEndpointsRequest: {
     fromPartial(object: DeepPartial<ListApiEndpointsRequest>): ListApiEndpointsRequest;
 };
 export declare const ListApiEndpointsResponse: {
+    $type: "yandex.cloud.endpoint.ListApiEndpointsResponse";
     encode(message: ListApiEndpointsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListApiEndpointsResponse;
     fromJSON(object: any): ListApiEndpointsResponse;
@@ -70,6 +76,6 @@ export interface ApiEndpointServiceClient extends Client {
 export declare const ApiEndpointServiceClient: new (address: string, credentials: ChannelCredentials, options?: Partial<ChannelOptions> | undefined) => ApiEndpointServiceClient;
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

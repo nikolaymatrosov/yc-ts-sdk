@@ -1,14 +1,17 @@
 /* eslint-disable */
+import { messageTypeRegistry } from '../../../../../typeRegistry';
 import Long from 'long';
 import _m0 from 'protobufjs/minimal';
 
 export const protobufPackage = 'yandex.cloud.mdb.elasticsearch.v1';
 
 export interface AuthProviders {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.AuthProviders';
     providers: AuthProvider[];
 }
 
 export interface AuthProvider {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.AuthProvider';
     type: AuthProvider_Type;
     name: string;
     order: number;
@@ -64,6 +67,7 @@ export function authProvider_TypeToJSON(object: AuthProvider_Type): string {
 }
 
 export interface SamlSettings {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.SamlSettings';
     idpEntityId: string;
     idpMetadataFile: Uint8Array;
     spEntityId: string;
@@ -75,9 +79,13 @@ export interface SamlSettings {
     attributeDn: string;
 }
 
-const baseAuthProviders: object = {};
+const baseAuthProviders: object = {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.AuthProviders',
+};
 
 export const AuthProviders = {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.AuthProviders' as const,
+
     encode(
         message: AuthProviders,
         writer: _m0.Writer = _m0.Writer.create()
@@ -145,7 +153,10 @@ export const AuthProviders = {
     },
 };
 
+messageTypeRegistry.set(AuthProviders.$type, AuthProviders);
+
 const baseAuthProvider: object = {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.AuthProvider',
     type: 0,
     name: '',
     order: 0,
@@ -157,6 +168,8 @@ const baseAuthProvider: object = {
 };
 
 export const AuthProvider = {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.AuthProvider' as const,
+
     encode(
         message: AuthProvider,
         writer: _m0.Writer = _m0.Writer.create()
@@ -357,7 +370,10 @@ export const AuthProvider = {
     },
 };
 
+messageTypeRegistry.set(AuthProvider.$type, AuthProvider);
+
 const baseSamlSettings: object = {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.SamlSettings',
     idpEntityId: '',
     spEntityId: '',
     kibanaUrl: '',
@@ -369,6 +385,8 @@ const baseSamlSettings: object = {
 };
 
 export const SamlSettings = {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.SamlSettings' as const,
+
     encode(
         message: SamlSettings,
         writer: _m0.Writer = _m0.Writer.create()
@@ -603,6 +621,8 @@ export const SamlSettings = {
     },
 };
 
+messageTypeRegistry.set(SamlSettings.$type, SamlSettings);
+
 declare var self: any | undefined;
 declare var window: any | undefined;
 declare var global: any | undefined;
@@ -652,7 +672,7 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 function longToNumber(long: Long): number {

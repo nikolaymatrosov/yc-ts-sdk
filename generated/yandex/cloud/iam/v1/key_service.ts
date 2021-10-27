@@ -1,5 +1,6 @@
 /* eslint-disable */
 import { FieldMask } from '../../../../google/protobuf/field_mask';
+import { messageTypeRegistry } from '../../../../typeRegistry';
 import {
     Key_Algorithm,
     Key,
@@ -52,6 +53,7 @@ export function keyFormatToJSON(object: KeyFormat): string {
 }
 
 export interface GetKeyRequest {
+    $type: 'yandex.cloud.iam.v1.GetKeyRequest';
     /**
      * ID of the Key resource to return.
      * To get the ID use a [KeyService.List] request.
@@ -62,6 +64,7 @@ export interface GetKeyRequest {
 }
 
 export interface ListKeysRequest {
+    $type: 'yandex.cloud.iam.v1.ListKeysRequest';
     /** Output format of the key. */
     format: KeyFormat;
     /**
@@ -86,6 +89,7 @@ export interface ListKeysRequest {
 }
 
 export interface ListKeysResponse {
+    $type: 'yandex.cloud.iam.v1.ListKeysResponse';
     /** List of Key resources. */
     keys: Key[];
     /**
@@ -100,6 +104,7 @@ export interface ListKeysResponse {
 }
 
 export interface CreateKeyRequest {
+    $type: 'yandex.cloud.iam.v1.CreateKeyRequest';
     /**
      * ID of the service account to create a key pair for.
      * To get the service account ID, use a [yandex.cloud.iam.v1.ServiceAccountService.List] request.
@@ -115,6 +120,7 @@ export interface CreateKeyRequest {
 }
 
 export interface CreateKeyResponse {
+    $type: 'yandex.cloud.iam.v1.CreateKeyResponse';
     /** Key resource. */
     key: Key | undefined;
     /**
@@ -125,6 +131,7 @@ export interface CreateKeyResponse {
 }
 
 export interface UpdateKeyRequest {
+    $type: 'yandex.cloud.iam.v1.UpdateKeyRequest';
     /**
      * ID of the Key resource to update.
      * To get key pair ID, use a [KeyService.List] request.
@@ -137,11 +144,13 @@ export interface UpdateKeyRequest {
 }
 
 export interface UpdateKeyMetadata {
+    $type: 'yandex.cloud.iam.v1.UpdateKeyMetadata';
     /** ID of the Key resource that is being updated. */
     keyId: string;
 }
 
 export interface DeleteKeyRequest {
+    $type: 'yandex.cloud.iam.v1.DeleteKeyRequest';
     /**
      * ID of the key to delete.
      * To get key ID use a [KeyService.List] request.
@@ -150,11 +159,13 @@ export interface DeleteKeyRequest {
 }
 
 export interface DeleteKeyMetadata {
+    $type: 'yandex.cloud.iam.v1.DeleteKeyMetadata';
     /** ID of the key that is being deleted. */
     keyId: string;
 }
 
 export interface ListKeyOperationsRequest {
+    $type: 'yandex.cloud.iam.v1.ListKeyOperationsRequest';
     /** ID of the key to list operations for. */
     keyId: string;
     /**
@@ -173,6 +184,7 @@ export interface ListKeyOperationsRequest {
 }
 
 export interface ListKeyOperationsResponse {
+    $type: 'yandex.cloud.iam.v1.ListKeyOperationsResponse';
     /** List of operations for the specified key. */
     operations: Operation[];
     /**
@@ -184,9 +196,15 @@ export interface ListKeyOperationsResponse {
     nextPageToken: string;
 }
 
-const baseGetKeyRequest: object = { keyId: '', format: 0 };
+const baseGetKeyRequest: object = {
+    $type: 'yandex.cloud.iam.v1.GetKeyRequest',
+    keyId: '',
+    format: 0,
+};
 
 export const GetKeyRequest = {
+    $type: 'yandex.cloud.iam.v1.GetKeyRequest' as const,
+
     encode(
         message: GetKeyRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -261,7 +279,10 @@ export const GetKeyRequest = {
     },
 };
 
+messageTypeRegistry.set(GetKeyRequest.$type, GetKeyRequest);
+
 const baseListKeysRequest: object = {
+    $type: 'yandex.cloud.iam.v1.ListKeysRequest',
     format: 0,
     serviceAccountId: '',
     pageSize: 0,
@@ -269,6 +290,8 @@ const baseListKeysRequest: object = {
 };
 
 export const ListKeysRequest = {
+    $type: 'yandex.cloud.iam.v1.ListKeysRequest' as const,
+
     encode(
         message: ListKeysRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -384,9 +407,16 @@ export const ListKeysRequest = {
     },
 };
 
-const baseListKeysResponse: object = { nextPageToken: '' };
+messageTypeRegistry.set(ListKeysRequest.$type, ListKeysRequest);
+
+const baseListKeysResponse: object = {
+    $type: 'yandex.cloud.iam.v1.ListKeysResponse',
+    nextPageToken: '',
+};
 
 export const ListKeysResponse = {
+    $type: 'yandex.cloud.iam.v1.ListKeysResponse' as const,
+
     encode(
         message: ListKeysResponse,
         writer: _m0.Writer = _m0.Writer.create()
@@ -474,7 +504,10 @@ export const ListKeysResponse = {
     },
 };
 
+messageTypeRegistry.set(ListKeysResponse.$type, ListKeysResponse);
+
 const baseCreateKeyRequest: object = {
+    $type: 'yandex.cloud.iam.v1.CreateKeyRequest',
     serviceAccountId: '',
     description: '',
     format: 0,
@@ -482,6 +515,8 @@ const baseCreateKeyRequest: object = {
 };
 
 export const CreateKeyRequest = {
+    $type: 'yandex.cloud.iam.v1.CreateKeyRequest' as const,
+
     encode(
         message: CreateKeyRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -599,9 +634,16 @@ export const CreateKeyRequest = {
     },
 };
 
-const baseCreateKeyResponse: object = { privateKey: '' };
+messageTypeRegistry.set(CreateKeyRequest.$type, CreateKeyRequest);
+
+const baseCreateKeyResponse: object = {
+    $type: 'yandex.cloud.iam.v1.CreateKeyResponse',
+    privateKey: '',
+};
 
 export const CreateKeyResponse = {
+    $type: 'yandex.cloud.iam.v1.CreateKeyResponse' as const,
+
     encode(
         message: CreateKeyResponse,
         writer: _m0.Writer = _m0.Writer.create()
@@ -677,9 +719,17 @@ export const CreateKeyResponse = {
     },
 };
 
-const baseUpdateKeyRequest: object = { keyId: '', description: '' };
+messageTypeRegistry.set(CreateKeyResponse.$type, CreateKeyResponse);
+
+const baseUpdateKeyRequest: object = {
+    $type: 'yandex.cloud.iam.v1.UpdateKeyRequest',
+    keyId: '',
+    description: '',
+};
 
 export const UpdateKeyRequest = {
+    $type: 'yandex.cloud.iam.v1.UpdateKeyRequest' as const,
+
     encode(
         message: UpdateKeyRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -780,9 +830,16 @@ export const UpdateKeyRequest = {
     },
 };
 
-const baseUpdateKeyMetadata: object = { keyId: '' };
+messageTypeRegistry.set(UpdateKeyRequest.$type, UpdateKeyRequest);
+
+const baseUpdateKeyMetadata: object = {
+    $type: 'yandex.cloud.iam.v1.UpdateKeyMetadata',
+    keyId: '',
+};
 
 export const UpdateKeyMetadata = {
+    $type: 'yandex.cloud.iam.v1.UpdateKeyMetadata' as const,
+
     encode(
         message: UpdateKeyMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -839,9 +896,16 @@ export const UpdateKeyMetadata = {
     },
 };
 
-const baseDeleteKeyRequest: object = { keyId: '' };
+messageTypeRegistry.set(UpdateKeyMetadata.$type, UpdateKeyMetadata);
+
+const baseDeleteKeyRequest: object = {
+    $type: 'yandex.cloud.iam.v1.DeleteKeyRequest',
+    keyId: '',
+};
 
 export const DeleteKeyRequest = {
+    $type: 'yandex.cloud.iam.v1.DeleteKeyRequest' as const,
+
     encode(
         message: DeleteKeyRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -898,9 +962,16 @@ export const DeleteKeyRequest = {
     },
 };
 
-const baseDeleteKeyMetadata: object = { keyId: '' };
+messageTypeRegistry.set(DeleteKeyRequest.$type, DeleteKeyRequest);
+
+const baseDeleteKeyMetadata: object = {
+    $type: 'yandex.cloud.iam.v1.DeleteKeyMetadata',
+    keyId: '',
+};
 
 export const DeleteKeyMetadata = {
+    $type: 'yandex.cloud.iam.v1.DeleteKeyMetadata' as const,
+
     encode(
         message: DeleteKeyMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -957,13 +1028,18 @@ export const DeleteKeyMetadata = {
     },
 };
 
+messageTypeRegistry.set(DeleteKeyMetadata.$type, DeleteKeyMetadata);
+
 const baseListKeyOperationsRequest: object = {
+    $type: 'yandex.cloud.iam.v1.ListKeyOperationsRequest',
     keyId: '',
     pageSize: 0,
     pageToken: '',
 };
 
 export const ListKeyOperationsRequest = {
+    $type: 'yandex.cloud.iam.v1.ListKeyOperationsRequest' as const,
+
     encode(
         message: ListKeyOperationsRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1065,9 +1141,19 @@ export const ListKeyOperationsRequest = {
     },
 };
 
-const baseListKeyOperationsResponse: object = { nextPageToken: '' };
+messageTypeRegistry.set(
+    ListKeyOperationsRequest.$type,
+    ListKeyOperationsRequest
+);
+
+const baseListKeyOperationsResponse: object = {
+    $type: 'yandex.cloud.iam.v1.ListKeyOperationsResponse',
+    nextPageToken: '',
+};
 
 export const ListKeyOperationsResponse = {
+    $type: 'yandex.cloud.iam.v1.ListKeyOperationsResponse' as const,
+
     encode(
         message: ListKeyOperationsResponse,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1169,6 +1255,11 @@ export const ListKeyOperationsResponse = {
         return message;
     },
 };
+
+messageTypeRegistry.set(
+    ListKeyOperationsResponse.$type,
+    ListKeyOperationsResponse
+);
 
 /** A set of methods for managing Key resources. */
 export const KeyServiceService = {
@@ -1441,7 +1532,7 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 function longToNumber(long: Long): number {

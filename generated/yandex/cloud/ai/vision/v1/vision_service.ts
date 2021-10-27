@@ -1,5 +1,6 @@
 /* eslint-disable */
 import { Status } from '../../../../../google/rpc/status';
+import { messageTypeRegistry } from '../../../../../typeRegistry';
 import { ClassAnnotation } from '../../../../../yandex/cloud/ai/vision/v1/classification';
 import { FaceAnnotation } from '../../../../../yandex/cloud/ai/vision/v1/face_detection';
 import { ImageCopySearchAnnotation } from '../../../../../yandex/cloud/ai/vision/v1/image_copy_search';
@@ -22,6 +23,7 @@ import _m0 from 'protobufjs/minimal';
 export const protobufPackage = 'yandex.cloud.ai.vision.v1';
 
 export interface BatchAnalyzeRequest {
+    $type: 'yandex.cloud.ai.vision.v1.BatchAnalyzeRequest';
     /**
      * A list of specifications. Each specification contains the file to analyze and features to use for analysis.
      *
@@ -40,6 +42,7 @@ export interface BatchAnalyzeRequest {
 }
 
 export interface AnalyzeSpec {
+    $type: 'yandex.cloud.ai.vision.v1.AnalyzeSpec';
     /**
      * Image content, represented as a stream of bytes.
      * Note: As with all bytes fields, protobuffers use a pure binary representation, whereas JSON representations use base64.
@@ -57,6 +60,7 @@ export interface AnalyzeSpec {
 }
 
 export interface Feature {
+    $type: 'yandex.cloud.ai.vision.v1.Feature';
     /** Type of requested feature. */
     type: Feature_Type;
     /** Required for the `CLASSIFICATION` type. Specifies configuration for the classification feature. */
@@ -120,11 +124,13 @@ export function feature_TypeToJSON(object: Feature_Type): string {
 }
 
 export interface FeatureClassificationConfig {
+    $type: 'yandex.cloud.ai.vision.v1.FeatureClassificationConfig';
     /** Model to use for image classification. */
     model: string;
 }
 
 export interface FeatureTextDetectionConfig {
+    $type: 'yandex.cloud.ai.vision.v1.FeatureTextDetectionConfig';
     /**
      * List of the languages to recognize text.
      * Specified in [ISO 639-1](https://en.wikipedia.org/wiki/ISO_639-1) format (for example, `` ru ``).
@@ -140,6 +146,7 @@ export interface FeatureTextDetectionConfig {
 }
 
 export interface BatchAnalyzeResponse {
+    $type: 'yandex.cloud.ai.vision.v1.BatchAnalyzeResponse';
     /**
      * Request results.
      * Results have the same order as specifications in the request.
@@ -148,6 +155,7 @@ export interface BatchAnalyzeResponse {
 }
 
 export interface AnalyzeResult {
+    $type: 'yandex.cloud.ai.vision.v1.AnalyzeResult';
     /**
      * Results for each requested feature.
      * Feature results have the same order as in the request.
@@ -158,6 +166,7 @@ export interface AnalyzeResult {
 }
 
 export interface FeatureResult {
+    $type: 'yandex.cloud.ai.vision.v1.FeatureResult';
     /** Text detection (OCR) result. */
     textDetection: TextAnnotation | undefined;
     /** Classification result. */
@@ -170,9 +179,14 @@ export interface FeatureResult {
     error: Status | undefined;
 }
 
-const baseBatchAnalyzeRequest: object = { folderId: '' };
+const baseBatchAnalyzeRequest: object = {
+    $type: 'yandex.cloud.ai.vision.v1.BatchAnalyzeRequest',
+    folderId: '',
+};
 
 export const BatchAnalyzeRequest = {
+    $type: 'yandex.cloud.ai.vision.v1.BatchAnalyzeRequest' as const,
+
     encode(
         message: BatchAnalyzeRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -260,9 +274,16 @@ export const BatchAnalyzeRequest = {
     },
 };
 
-const baseAnalyzeSpec: object = { mimeType: '' };
+messageTypeRegistry.set(BatchAnalyzeRequest.$type, BatchAnalyzeRequest);
+
+const baseAnalyzeSpec: object = {
+    $type: 'yandex.cloud.ai.vision.v1.AnalyzeSpec',
+    mimeType: '',
+};
 
 export const AnalyzeSpec = {
+    $type: 'yandex.cloud.ai.vision.v1.AnalyzeSpec' as const,
+
     encode(
         message: AnalyzeSpec,
         writer: _m0.Writer = _m0.Writer.create()
@@ -383,9 +404,16 @@ export const AnalyzeSpec = {
     },
 };
 
-const baseFeature: object = { type: 0 };
+messageTypeRegistry.set(AnalyzeSpec.$type, AnalyzeSpec);
+
+const baseFeature: object = {
+    $type: 'yandex.cloud.ai.vision.v1.Feature',
+    type: 0,
+};
 
 export const Feature = {
+    $type: 'yandex.cloud.ai.vision.v1.Feature' as const,
+
     encode(
         message: Feature,
         writer: _m0.Writer = _m0.Writer.create()
@@ -521,9 +549,16 @@ export const Feature = {
     },
 };
 
-const baseFeatureClassificationConfig: object = { model: '' };
+messageTypeRegistry.set(Feature.$type, Feature);
+
+const baseFeatureClassificationConfig: object = {
+    $type: 'yandex.cloud.ai.vision.v1.FeatureClassificationConfig',
+    model: '',
+};
 
 export const FeatureClassificationConfig = {
+    $type: 'yandex.cloud.ai.vision.v1.FeatureClassificationConfig' as const,
+
     encode(
         message: FeatureClassificationConfig,
         writer: _m0.Writer = _m0.Writer.create()
@@ -591,9 +626,20 @@ export const FeatureClassificationConfig = {
     },
 };
 
-const baseFeatureTextDetectionConfig: object = { languageCodes: '', model: '' };
+messageTypeRegistry.set(
+    FeatureClassificationConfig.$type,
+    FeatureClassificationConfig
+);
+
+const baseFeatureTextDetectionConfig: object = {
+    $type: 'yandex.cloud.ai.vision.v1.FeatureTextDetectionConfig',
+    languageCodes: '',
+    model: '',
+};
 
 export const FeatureTextDetectionConfig = {
+    $type: 'yandex.cloud.ai.vision.v1.FeatureTextDetectionConfig' as const,
+
     encode(
         message: FeatureTextDetectionConfig,
         writer: _m0.Writer = _m0.Writer.create()
@@ -691,9 +737,18 @@ export const FeatureTextDetectionConfig = {
     },
 };
 
-const baseBatchAnalyzeResponse: object = {};
+messageTypeRegistry.set(
+    FeatureTextDetectionConfig.$type,
+    FeatureTextDetectionConfig
+);
+
+const baseBatchAnalyzeResponse: object = {
+    $type: 'yandex.cloud.ai.vision.v1.BatchAnalyzeResponse',
+};
 
 export const BatchAnalyzeResponse = {
+    $type: 'yandex.cloud.ai.vision.v1.BatchAnalyzeResponse' as const,
+
     encode(
         message: BatchAnalyzeResponse,
         writer: _m0.Writer = _m0.Writer.create()
@@ -766,9 +821,15 @@ export const BatchAnalyzeResponse = {
     },
 };
 
-const baseAnalyzeResult: object = {};
+messageTypeRegistry.set(BatchAnalyzeResponse.$type, BatchAnalyzeResponse);
+
+const baseAnalyzeResult: object = {
+    $type: 'yandex.cloud.ai.vision.v1.AnalyzeResult',
+};
 
 export const AnalyzeResult = {
+    $type: 'yandex.cloud.ai.vision.v1.AnalyzeResult' as const,
+
     encode(
         message: AnalyzeResult,
         writer: _m0.Writer = _m0.Writer.create()
@@ -856,9 +917,15 @@ export const AnalyzeResult = {
     },
 };
 
-const baseFeatureResult: object = {};
+messageTypeRegistry.set(AnalyzeResult.$type, AnalyzeResult);
+
+const baseFeatureResult: object = {
+    $type: 'yandex.cloud.ai.vision.v1.FeatureResult',
+};
 
 export const FeatureResult = {
+    $type: 'yandex.cloud.ai.vision.v1.FeatureResult' as const,
+
     encode(
         message: FeatureResult,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1062,6 +1129,8 @@ export const FeatureResult = {
     },
 };
 
+messageTypeRegistry.set(FeatureResult.$type, FeatureResult);
+
 /** A set of methods for the Yandex Vision service. */
 export const VisionServiceService = {
     /** Analyzes a batch of images and returns results with annotations. */
@@ -1173,7 +1242,7 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 if (_m0.util.Long !== Long) {

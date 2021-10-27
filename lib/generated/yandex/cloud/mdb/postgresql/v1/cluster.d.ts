@@ -23,6 +23,7 @@ export declare const protobufPackage = "yandex.cloud.mdb.postgresql.v1";
  * the [Concepts](/docs/managed-postgresql/concepts) section of the documentation.
  */
 export interface Cluster {
+    $type: 'yandex.cloud.mdb.postgresql.v1.Cluster';
     /**
      * ID of the PostgreSQL cluster.
      * This ID is assigned by MDB at creation time.
@@ -118,11 +119,13 @@ export declare enum Cluster_Status {
 export declare function cluster_StatusFromJSON(object: any): Cluster_Status;
 export declare function cluster_StatusToJSON(object: Cluster_Status): string;
 export interface Cluster_LabelsEntry {
+    $type: 'yandex.cloud.mdb.postgresql.v1.Cluster.LabelsEntry';
     key: string;
     value: string;
 }
 /** Monitoring system. */
 export interface Monitoring {
+    $type: 'yandex.cloud.mdb.postgresql.v1.Monitoring';
     /** Name of the monitoring system. */
     name: string;
     /** Description of the monitoring system. */
@@ -131,6 +134,7 @@ export interface Monitoring {
     link: string;
 }
 export interface ClusterConfig {
+    $type: 'yandex.cloud.mdb.postgresql.v1.ClusterConfig';
     /** Version of PostgreSQL server software. */
     version: string;
     /** Configuration of a PostgreSQL 9.6 server. */
@@ -165,6 +169,7 @@ export interface ClusterConfig {
     performanceDiagnostics: PerformanceDiagnostics | undefined;
 }
 export interface ConnectionPoolerConfig {
+    $type: 'yandex.cloud.mdb.postgresql.v1.ConnectionPoolerConfig';
     /**
      * Mode that the connection pooler is working in.
      * See descriptions of all modes in the [documentation for PgBouncer](https://pgbouncer.github.io/usage).
@@ -186,6 +191,7 @@ export declare enum ConnectionPoolerConfig_PoolingMode {
 export declare function connectionPoolerConfig_PoolingModeFromJSON(object: any): ConnectionPoolerConfig_PoolingMode;
 export declare function connectionPoolerConfig_PoolingModeToJSON(object: ConnectionPoolerConfig_PoolingMode): string;
 export interface Host {
+    $type: 'yandex.cloud.mdb.postgresql.v1.Host';
     /**
      * Name of the PostgreSQL host. The host name is assigned by MDB at creation time, and cannot be changed.
      * 1-63 characters long.
@@ -259,6 +265,7 @@ export declare enum Host_Health {
 export declare function host_HealthFromJSON(object: any): Host_Health;
 export declare function host_HealthToJSON(object: Host_Health): string;
 export interface HostConfig {
+    $type: 'yandex.cloud.mdb.postgresql.v1.HostConfig';
     /** Configuration for a host with PostgreSQL 9.6 server deployed. */
     postgresqlConfig96: Postgresqlhostconfig96 | undefined;
     /** Configuration for a host with PostgreSQL 10 1C server deployed. */
@@ -277,6 +284,7 @@ export interface HostConfig {
     postgresqlConfig13: PostgresqlHostConfig13 | undefined;
 }
 export interface Service {
+    $type: 'yandex.cloud.mdb.postgresql.v1.Service';
     /** Type of the service provided by the host. */
     type: Service_Type;
     /** Status code of server availability. */
@@ -304,6 +312,7 @@ export declare enum Service_Health {
 export declare function service_HealthFromJSON(object: any): Service_Health;
 export declare function service_HealthToJSON(object: Service_Health): string;
 export interface Resources {
+    $type: 'yandex.cloud.mdb.postgresql.v1.Resources';
     /**
      * ID of the preset for computational resources available to a host (CPU, memory etc.).
      * All available presets are listed in the [documentation](/docs/managed-postgresql/concepts/instance-types).
@@ -321,6 +330,7 @@ export interface Resources {
     diskTypeId: string;
 }
 export interface Access {
+    $type: 'yandex.cloud.mdb.postgresql.v1.Access';
     /** Allow access for DataLens */
     dataLens: boolean;
     /**
@@ -333,6 +343,7 @@ export interface Access {
     serverless: boolean;
 }
 export interface PerformanceDiagnostics {
+    $type: 'yandex.cloud.mdb.postgresql.v1.PerformanceDiagnostics';
     /** Configuration setting which enables/disables performance diagnostics service in cluster. */
     enabled: boolean;
     /** Interval (in seconds) for pg_stat_activity sampling */
@@ -341,6 +352,7 @@ export interface PerformanceDiagnostics {
     statementsSamplingInterval: number;
 }
 export declare const Cluster: {
+    $type: "yandex.cloud.mdb.postgresql.v1.Cluster";
     encode(message: Cluster, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Cluster;
     fromJSON(object: any): Cluster;
@@ -348,6 +360,7 @@ export declare const Cluster: {
     fromPartial(object: DeepPartial<Cluster>): Cluster;
 };
 export declare const Cluster_LabelsEntry: {
+    $type: "yandex.cloud.mdb.postgresql.v1.Cluster.LabelsEntry";
     encode(message: Cluster_LabelsEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Cluster_LabelsEntry;
     fromJSON(object: any): Cluster_LabelsEntry;
@@ -355,6 +368,7 @@ export declare const Cluster_LabelsEntry: {
     fromPartial(object: DeepPartial<Cluster_LabelsEntry>): Cluster_LabelsEntry;
 };
 export declare const Monitoring: {
+    $type: "yandex.cloud.mdb.postgresql.v1.Monitoring";
     encode(message: Monitoring, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Monitoring;
     fromJSON(object: any): Monitoring;
@@ -362,6 +376,7 @@ export declare const Monitoring: {
     fromPartial(object: DeepPartial<Monitoring>): Monitoring;
 };
 export declare const ClusterConfig: {
+    $type: "yandex.cloud.mdb.postgresql.v1.ClusterConfig";
     encode(message: ClusterConfig, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ClusterConfig;
     fromJSON(object: any): ClusterConfig;
@@ -369,6 +384,7 @@ export declare const ClusterConfig: {
     fromPartial(object: DeepPartial<ClusterConfig>): ClusterConfig;
 };
 export declare const ConnectionPoolerConfig: {
+    $type: "yandex.cloud.mdb.postgresql.v1.ConnectionPoolerConfig";
     encode(message: ConnectionPoolerConfig, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ConnectionPoolerConfig;
     fromJSON(object: any): ConnectionPoolerConfig;
@@ -376,6 +392,7 @@ export declare const ConnectionPoolerConfig: {
     fromPartial(object: DeepPartial<ConnectionPoolerConfig>): ConnectionPoolerConfig;
 };
 export declare const Host: {
+    $type: "yandex.cloud.mdb.postgresql.v1.Host";
     encode(message: Host, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Host;
     fromJSON(object: any): Host;
@@ -383,6 +400,7 @@ export declare const Host: {
     fromPartial(object: DeepPartial<Host>): Host;
 };
 export declare const HostConfig: {
+    $type: "yandex.cloud.mdb.postgresql.v1.HostConfig";
     encode(message: HostConfig, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): HostConfig;
     fromJSON(object: any): HostConfig;
@@ -390,6 +408,7 @@ export declare const HostConfig: {
     fromPartial(object: DeepPartial<HostConfig>): HostConfig;
 };
 export declare const Service: {
+    $type: "yandex.cloud.mdb.postgresql.v1.Service";
     encode(message: Service, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Service;
     fromJSON(object: any): Service;
@@ -397,6 +416,7 @@ export declare const Service: {
     fromPartial(object: DeepPartial<Service>): Service;
 };
 export declare const Resources: {
+    $type: "yandex.cloud.mdb.postgresql.v1.Resources";
     encode(message: Resources, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Resources;
     fromJSON(object: any): Resources;
@@ -404,6 +424,7 @@ export declare const Resources: {
     fromPartial(object: DeepPartial<Resources>): Resources;
 };
 export declare const Access: {
+    $type: "yandex.cloud.mdb.postgresql.v1.Access";
     encode(message: Access, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Access;
     fromJSON(object: any): Access;
@@ -411,6 +432,7 @@ export declare const Access: {
     fromPartial(object: DeepPartial<Access>): Access;
 };
 export declare const PerformanceDiagnostics: {
+    $type: "yandex.cloud.mdb.postgresql.v1.PerformanceDiagnostics";
     encode(message: PerformanceDiagnostics, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): PerformanceDiagnostics;
     fromJSON(object: any): PerformanceDiagnostics;
@@ -419,6 +441,6 @@ export declare const PerformanceDiagnostics: {
 };
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

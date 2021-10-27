@@ -1,4 +1,5 @@
 /* eslint-disable */
+import { messageTypeRegistry } from '../../../../../typeRegistry';
 import { Backup } from '../../../../../yandex/cloud/mdb/mysql/v1alpha/backup';
 import {
     makeGenericClientConstructor,
@@ -18,6 +19,7 @@ import _m0 from 'protobufjs/minimal';
 export const protobufPackage = 'yandex.cloud.mdb.mysql.v1alpha';
 
 export interface GetBackupRequest {
+    $type: 'yandex.cloud.mdb.mysql.v1alpha.GetBackupRequest';
     /**
      * ID of the backup to return information about.
      * To get the backup ID, use a [ClusterService.ListBackups] request.
@@ -26,6 +28,7 @@ export interface GetBackupRequest {
 }
 
 export interface ListBackupsRequest {
+    $type: 'yandex.cloud.mdb.mysql.v1alpha.ListBackupsRequest';
     /**
      * ID of the folder to list backups in.
      * To get the folder ID, use a [yandex.cloud.resourcemanager.v1.FolderService.List] request.
@@ -45,6 +48,7 @@ export interface ListBackupsRequest {
 }
 
 export interface ListBackupsResponse {
+    $type: 'yandex.cloud.mdb.mysql.v1alpha.ListBackupsResponse';
     /** List of MySQL backups. */
     backups: Backup[];
     /**
@@ -56,9 +60,14 @@ export interface ListBackupsResponse {
     nextPageToken: string;
 }
 
-const baseGetBackupRequest: object = { backupId: '' };
+const baseGetBackupRequest: object = {
+    $type: 'yandex.cloud.mdb.mysql.v1alpha.GetBackupRequest',
+    backupId: '',
+};
 
 export const GetBackupRequest = {
+    $type: 'yandex.cloud.mdb.mysql.v1alpha.GetBackupRequest' as const,
+
     encode(
         message: GetBackupRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -115,13 +124,18 @@ export const GetBackupRequest = {
     },
 };
 
+messageTypeRegistry.set(GetBackupRequest.$type, GetBackupRequest);
+
 const baseListBackupsRequest: object = {
+    $type: 'yandex.cloud.mdb.mysql.v1alpha.ListBackupsRequest',
     folderId: '',
     pageSize: 0,
     pageToken: '',
 };
 
 export const ListBackupsRequest = {
+    $type: 'yandex.cloud.mdb.mysql.v1alpha.ListBackupsRequest' as const,
+
     encode(
         message: ListBackupsRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -215,9 +229,16 @@ export const ListBackupsRequest = {
     },
 };
 
-const baseListBackupsResponse: object = { nextPageToken: '' };
+messageTypeRegistry.set(ListBackupsRequest.$type, ListBackupsRequest);
+
+const baseListBackupsResponse: object = {
+    $type: 'yandex.cloud.mdb.mysql.v1alpha.ListBackupsResponse',
+    nextPageToken: '',
+};
 
 export const ListBackupsResponse = {
+    $type: 'yandex.cloud.mdb.mysql.v1alpha.ListBackupsResponse' as const,
+
     encode(
         message: ListBackupsResponse,
         writer: _m0.Writer = _m0.Writer.create()
@@ -311,6 +332,8 @@ export const ListBackupsResponse = {
         return message;
     },
 };
+
+messageTypeRegistry.set(ListBackupsResponse.$type, ListBackupsResponse);
 
 /** A set of methods for managing MySQL backups. */
 export const BackupServiceService = {
@@ -441,7 +464,7 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 function longToNumber(long: Long): number {

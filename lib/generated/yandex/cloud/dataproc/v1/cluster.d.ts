@@ -3,6 +3,7 @@ import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.dataproc.v1";
 /** A Data Proc cluster. For details about the concept, see [documentation](/docs/data-proc/concepts/). */
 export interface Cluster {
+    $type: 'yandex.cloud.dataproc.v1.Cluster';
     /** ID of the cluster. Generated at creation time. */
     id: string;
     /** ID of the folder that the cluster belongs to. */
@@ -62,11 +63,13 @@ export declare enum Cluster_Status {
 export declare function cluster_StatusFromJSON(object: any): Cluster_Status;
 export declare function cluster_StatusToJSON(object: Cluster_Status): string;
 export interface Cluster_LabelsEntry {
+    $type: 'yandex.cloud.dataproc.v1.Cluster.LabelsEntry';
     key: string;
     value: string;
 }
 /** Metadata of a monitoring system for a Data Proc cluster. */
 export interface Monitoring {
+    $type: 'yandex.cloud.dataproc.v1.Monitoring';
     /** Name of the monitoring system. */
     name: string;
     /** Description of the monitoring system. */
@@ -79,6 +82,7 @@ export interface Monitoring {
  * their properties and settings.
  */
 export interface HadoopConfig {
+    $type: 'yandex.cloud.dataproc.v1.HadoopConfig';
     /** Set of services used in the cluster (if empty, the default set is used). */
     services: HadoopConfig_Service[];
     /**
@@ -114,10 +118,12 @@ export declare enum HadoopConfig_Service {
 export declare function hadoopConfig_ServiceFromJSON(object: any): HadoopConfig_Service;
 export declare function hadoopConfig_ServiceToJSON(object: HadoopConfig_Service): string;
 export interface HadoopConfig_PropertiesEntry {
+    $type: 'yandex.cloud.dataproc.v1.HadoopConfig.PropertiesEntry';
     key: string;
     value: string;
 }
 export interface ClusterConfig {
+    $type: 'yandex.cloud.dataproc.v1.ClusterConfig';
     /**
      * Image version for cluster provisioning.
      * All available versions are listed in the [documentation](/docs/managed-hadoop/concepts/image-versions).
@@ -127,6 +133,7 @@ export interface ClusterConfig {
     hadoop: HadoopConfig | undefined;
 }
 export declare const Cluster: {
+    $type: "yandex.cloud.dataproc.v1.Cluster";
     encode(message: Cluster, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Cluster;
     fromJSON(object: any): Cluster;
@@ -134,6 +141,7 @@ export declare const Cluster: {
     fromPartial(object: DeepPartial<Cluster>): Cluster;
 };
 export declare const Cluster_LabelsEntry: {
+    $type: "yandex.cloud.dataproc.v1.Cluster.LabelsEntry";
     encode(message: Cluster_LabelsEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Cluster_LabelsEntry;
     fromJSON(object: any): Cluster_LabelsEntry;
@@ -141,6 +149,7 @@ export declare const Cluster_LabelsEntry: {
     fromPartial(object: DeepPartial<Cluster_LabelsEntry>): Cluster_LabelsEntry;
 };
 export declare const Monitoring: {
+    $type: "yandex.cloud.dataproc.v1.Monitoring";
     encode(message: Monitoring, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Monitoring;
     fromJSON(object: any): Monitoring;
@@ -148,6 +157,7 @@ export declare const Monitoring: {
     fromPartial(object: DeepPartial<Monitoring>): Monitoring;
 };
 export declare const HadoopConfig: {
+    $type: "yandex.cloud.dataproc.v1.HadoopConfig";
     encode(message: HadoopConfig, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): HadoopConfig;
     fromJSON(object: any): HadoopConfig;
@@ -155,6 +165,7 @@ export declare const HadoopConfig: {
     fromPartial(object: DeepPartial<HadoopConfig>): HadoopConfig;
 };
 export declare const HadoopConfig_PropertiesEntry: {
+    $type: "yandex.cloud.dataproc.v1.HadoopConfig.PropertiesEntry";
     encode(message: HadoopConfig_PropertiesEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): HadoopConfig_PropertiesEntry;
     fromJSON(object: any): HadoopConfig_PropertiesEntry;
@@ -162,6 +173,7 @@ export declare const HadoopConfig_PropertiesEntry: {
     fromPartial(object: DeepPartial<HadoopConfig_PropertiesEntry>): HadoopConfig_PropertiesEntry;
 };
 export declare const ClusterConfig: {
+    $type: "yandex.cloud.dataproc.v1.ClusterConfig";
     encode(message: ClusterConfig, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ClusterConfig;
     fromJSON(object: any): ClusterConfig;
@@ -170,6 +182,6 @@ export declare const ClusterConfig: {
 };
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

@@ -5,6 +5,7 @@ import { ChannelCredentials, ChannelOptions, UntypedServiceImplementation, handl
 import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.billing.v1";
 export interface GetBudgetRequest {
+    $type: 'yandex.cloud.billing.v1.GetBudgetRequest';
     /**
      * ID of the budget to return.
      * To get the budget ID, use [BudgetService.List] request.
@@ -12,6 +13,7 @@ export interface GetBudgetRequest {
     id: string;
 }
 export interface ListBudgetsRequest {
+    $type: 'yandex.cloud.billing.v1.ListBudgetsRequest';
     /**
      * ID of the billing account to list budgets corresponding to.
      * To get the billing account ID, use [BillingAccountService.List] request.
@@ -32,6 +34,7 @@ export interface ListBudgetsRequest {
     pageToken: string;
 }
 export interface ListBudgetsResponse {
+    $type: 'yandex.cloud.billing.v1.ListBudgetsResponse';
     /** List of budgets. */
     budgets: Budget[];
     /**
@@ -45,6 +48,7 @@ export interface ListBudgetsResponse {
     nextPageToken: string;
 }
 export interface CreateBudgetRequest {
+    $type: 'yandex.cloud.billing.v1.CreateBudgetRequest';
     /**
      * ID of the billing account to list budgets corresponding to.
      * To get the billing account ID, use [yandex.cloud.billing.v1.BillingAccountService.List] request.
@@ -60,10 +64,12 @@ export interface CreateBudgetRequest {
     balanceBudgetSpec: BalanceBudgetSpec | undefined;
 }
 export interface CreateBudgetMetadata {
+    $type: 'yandex.cloud.billing.v1.CreateBudgetMetadata';
     /** ID of the budget. */
     budgetId: string;
 }
 export declare const GetBudgetRequest: {
+    $type: "yandex.cloud.billing.v1.GetBudgetRequest";
     encode(message: GetBudgetRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): GetBudgetRequest;
     fromJSON(object: any): GetBudgetRequest;
@@ -71,6 +77,7 @@ export declare const GetBudgetRequest: {
     fromPartial(object: DeepPartial<GetBudgetRequest>): GetBudgetRequest;
 };
 export declare const ListBudgetsRequest: {
+    $type: "yandex.cloud.billing.v1.ListBudgetsRequest";
     encode(message: ListBudgetsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListBudgetsRequest;
     fromJSON(object: any): ListBudgetsRequest;
@@ -78,6 +85,7 @@ export declare const ListBudgetsRequest: {
     fromPartial(object: DeepPartial<ListBudgetsRequest>): ListBudgetsRequest;
 };
 export declare const ListBudgetsResponse: {
+    $type: "yandex.cloud.billing.v1.ListBudgetsResponse";
     encode(message: ListBudgetsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListBudgetsResponse;
     fromJSON(object: any): ListBudgetsResponse;
@@ -85,6 +93,7 @@ export declare const ListBudgetsResponse: {
     fromPartial(object: DeepPartial<ListBudgetsResponse>): ListBudgetsResponse;
 };
 export declare const CreateBudgetRequest: {
+    $type: "yandex.cloud.billing.v1.CreateBudgetRequest";
     encode(message: CreateBudgetRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateBudgetRequest;
     fromJSON(object: any): CreateBudgetRequest;
@@ -92,6 +101,7 @@ export declare const CreateBudgetRequest: {
     fromPartial(object: DeepPartial<CreateBudgetRequest>): CreateBudgetRequest;
 };
 export declare const CreateBudgetMetadata: {
+    $type: "yandex.cloud.billing.v1.CreateBudgetMetadata";
     encode(message: CreateBudgetMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateBudgetMetadata;
     fromJSON(object: any): CreateBudgetMetadata;
@@ -156,6 +166,6 @@ export interface BudgetServiceClient extends Client {
 export declare const BudgetServiceClient: new (address: string, credentials: ChannelCredentials, options?: Partial<ChannelOptions> | undefined) => BudgetServiceClient;
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

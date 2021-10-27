@@ -3,6 +3,7 @@ import {
     Int64Value,
     DoubleValue,
 } from '../../../../../../google/protobuf/wrappers';
+import { messageTypeRegistry } from '../../../../../../typeRegistry';
 import Long from 'long';
 import _m0 from 'protobufjs/minimal';
 
@@ -10,6 +11,7 @@ export const protobufPackage = 'yandex.cloud.mdb.mysql.v1alpha.config';
 
 /** Options and structure of `MysqlConfig5_7` reflects MySQL 5.7 configuration file */
 export interface Mysqlconfig57 {
+    $type: 'yandex.cloud.mdb.mysql.v1alpha.config.MysqlConfig5_7';
     /**
      * Size of the InnoDB buffer pool used for caching table and index data.
      *
@@ -31,6 +33,7 @@ export interface Mysqlconfig57 {
 }
 
 export interface Mysqlconfigset57 {
+    $type: 'yandex.cloud.mdb.mysql.v1alpha.config.MysqlConfigSet5_7';
     /**
      * Effective settings for a MySQL 5.7 cluster (a combination of settings defined
      * in [user_config] and [default_config]).
@@ -42,28 +45,41 @@ export interface Mysqlconfigset57 {
     defaultConfig: Mysqlconfig57 | undefined;
 }
 
-const baseMysqlconfig57: object = {};
+const baseMysqlconfig57: object = {
+    $type: 'yandex.cloud.mdb.mysql.v1alpha.config.MysqlConfig5_7',
+};
 
 export const Mysqlconfig57 = {
+    $type: 'yandex.cloud.mdb.mysql.v1alpha.config.MysqlConfig5_7' as const,
+
     encode(
         message: Mysqlconfig57,
         writer: _m0.Writer = _m0.Writer.create()
     ): _m0.Writer {
         if (message.innodbBufferPoolSize !== undefined) {
             Int64Value.encode(
-                { value: message.innodbBufferPoolSize! },
+                {
+                    $type: 'google.protobuf.Int64Value',
+                    value: message.innodbBufferPoolSize!,
+                },
                 writer.uint32(10).fork()
             ).ldelim();
         }
         if (message.maxConnections !== undefined) {
             Int64Value.encode(
-                { value: message.maxConnections! },
+                {
+                    $type: 'google.protobuf.Int64Value',
+                    value: message.maxConnections!,
+                },
                 writer.uint32(18).fork()
             ).ldelim();
         }
         if (message.longQueryTime !== undefined) {
             DoubleValue.encode(
-                { value: message.longQueryTime! },
+                {
+                    $type: 'google.protobuf.DoubleValue',
+                    value: message.longQueryTime!,
+                },
                 writer.uint32(26).fork()
             ).ldelim();
         }
@@ -174,9 +190,15 @@ export const Mysqlconfig57 = {
     },
 };
 
-const baseMysqlconfigset57: object = {};
+messageTypeRegistry.set(Mysqlconfig57.$type, Mysqlconfig57);
+
+const baseMysqlconfigset57: object = {
+    $type: 'yandex.cloud.mdb.mysql.v1alpha.config.MysqlConfigSet5_7',
+};
 
 export const Mysqlconfigset57 = {
+    $type: 'yandex.cloud.mdb.mysql.v1alpha.config.MysqlConfigSet5_7' as const,
+
     encode(
         message: Mysqlconfigset57,
         writer: _m0.Writer = _m0.Writer.create()
@@ -314,6 +336,8 @@ export const Mysqlconfigset57 = {
     },
 };
 
+messageTypeRegistry.set(Mysqlconfigset57.$type, Mysqlconfigset57);
+
 type Builtin =
     | Date
     | Function
@@ -329,7 +353,7 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 if (_m0.util.Long !== Long) {

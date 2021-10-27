@@ -3,6 +3,7 @@ import { FieldMask } from '../../../../../google/protobuf/field_mask';
 import { Timestamp } from '../../../../../google/protobuf/timestamp';
 import { Int64Value } from '../../../../../google/protobuf/wrappers';
 import { TimeOfDay } from '../../../../../google/type/timeofday';
+import { messageTypeRegistry } from '../../../../../typeRegistry';
 import { Backup } from '../../../../../yandex/cloud/mdb/mongodb/v1/backup';
 import {
     Cluster_Environment,
@@ -66,6 +67,7 @@ import _m0 from 'protobufjs/minimal';
 export const protobufPackage = 'yandex.cloud.mdb.mongodb.v1';
 
 export interface GetClusterRequest {
+    $type: 'yandex.cloud.mdb.mongodb.v1.GetClusterRequest';
     /**
      * ID of the MongoDB Cluster resource to return.
      * To get the cluster ID, use a [ClusterService.List] request.
@@ -74,6 +76,7 @@ export interface GetClusterRequest {
 }
 
 export interface ListClustersRequest {
+    $type: 'yandex.cloud.mdb.mongodb.v1.ListClustersRequest';
     /**
      * ID of the folder to list MongoDB clusters in.
      * To get the folder ID, use a [yandex.cloud.resourcemanager.v1.FolderService.List] request.
@@ -96,6 +99,7 @@ export interface ListClustersRequest {
 }
 
 export interface ListClustersResponse {
+    $type: 'yandex.cloud.mdb.mongodb.v1.ListClustersResponse';
     /** List of MongoDB Cluster resources. */
     clusters: Cluster[];
     /**
@@ -108,6 +112,7 @@ export interface ListClustersResponse {
 }
 
 export interface CreateClusterRequest {
+    $type: 'yandex.cloud.mdb.mongodb.v1.CreateClusterRequest';
     /** ID of the folder to create MongoDB cluster in. */
     folderId: string;
     /** Name of the MongoDB cluster. The name must be unique within the folder. */
@@ -138,16 +143,19 @@ export interface CreateClusterRequest {
 }
 
 export interface CreateClusterRequest_LabelsEntry {
+    $type: 'yandex.cloud.mdb.mongodb.v1.CreateClusterRequest.LabelsEntry';
     key: string;
     value: string;
 }
 
 export interface CreateClusterMetadata {
+    $type: 'yandex.cloud.mdb.mongodb.v1.CreateClusterMetadata';
     /** ID of the MongoDB cluster that is being created. */
     clusterId: string;
 }
 
 export interface UpdateClusterRequest {
+    $type: 'yandex.cloud.mdb.mongodb.v1.UpdateClusterRequest';
     /**
      * ID of the MongoDB Cluster resource to update.
      * To get the MongoDB cluster ID use a [ClusterService.List] request.
@@ -178,16 +186,19 @@ export interface UpdateClusterRequest {
 }
 
 export interface UpdateClusterRequest_LabelsEntry {
+    $type: 'yandex.cloud.mdb.mongodb.v1.UpdateClusterRequest.LabelsEntry';
     key: string;
     value: string;
 }
 
 export interface UpdateClusterMetadata {
+    $type: 'yandex.cloud.mdb.mongodb.v1.UpdateClusterMetadata';
     /** ID of the MongoDB Cluster resource that is being updated. */
     clusterId: string;
 }
 
 export interface DeleteClusterRequest {
+    $type: 'yandex.cloud.mdb.mongodb.v1.DeleteClusterRequest';
     /**
      * ID of the MongoDB cluster to delete.
      * To get the MongoDB cluster ID, use a [ClusterService.List] request.
@@ -196,31 +207,37 @@ export interface DeleteClusterRequest {
 }
 
 export interface DeleteClusterMetadata {
+    $type: 'yandex.cloud.mdb.mongodb.v1.DeleteClusterMetadata';
     /** ID of the MongoDB cluster that is being deleted. */
     clusterId: string;
 }
 
 export interface StartClusterRequest {
+    $type: 'yandex.cloud.mdb.mongodb.v1.StartClusterRequest';
     /** ID of the MongoDB cluster to start. */
     clusterId: string;
 }
 
 export interface StartClusterMetadata {
+    $type: 'yandex.cloud.mdb.mongodb.v1.StartClusterMetadata';
     /** ID of the MongoDB cluster. */
     clusterId: string;
 }
 
 export interface StopClusterRequest {
+    $type: 'yandex.cloud.mdb.mongodb.v1.StopClusterRequest';
     /** ID of the MongoDB cluster to stop. */
     clusterId: string;
 }
 
 export interface StopClusterMetadata {
+    $type: 'yandex.cloud.mdb.mongodb.v1.StopClusterMetadata';
     /** ID of the MongoDB cluster. */
     clusterId: string;
 }
 
 export interface MoveClusterRequest {
+    $type: 'yandex.cloud.mdb.mongodb.v1.MoveClusterRequest';
     /** ID of the MongoDB cluster to move. */
     clusterId: string;
     /** ID of the destination folder. */
@@ -228,6 +245,7 @@ export interface MoveClusterRequest {
 }
 
 export interface MoveClusterMetadata {
+    $type: 'yandex.cloud.mdb.mongodb.v1.MoveClusterMetadata';
     /** ID of the MongoDB cluster being moved. */
     clusterId: string;
     /** ID of the source folder. */
@@ -237,6 +255,7 @@ export interface MoveClusterMetadata {
 }
 
 export interface BackupClusterRequest {
+    $type: 'yandex.cloud.mdb.mongodb.v1.BackupClusterRequest';
     /**
      * ID of the MongoDB cluster to back up.
      * To get the MongoDB cluster ID, use a [ClusterService.List] request.
@@ -245,11 +264,13 @@ export interface BackupClusterRequest {
 }
 
 export interface BackupClusterMetadata {
+    $type: 'yandex.cloud.mdb.mongodb.v1.BackupClusterMetadata';
     /** ID of the MongoDB cluster that is being backed up. */
     clusterId: string;
 }
 
 export interface RestoreClusterRequest {
+    $type: 'yandex.cloud.mdb.mongodb.v1.RestoreClusterRequest';
     /**
      * ID of the backup to create a cluster from.
      * To get the backup ID, use a [ClusterService.ListBackups] request.
@@ -284,16 +305,19 @@ export interface RestoreClusterRequest {
 }
 
 export interface RestoreClusterRequest_LabelsEntry {
+    $type: 'yandex.cloud.mdb.mongodb.v1.RestoreClusterRequest.LabelsEntry';
     key: string;
     value: string;
 }
 
 export interface RestoreClusterRequest_RecoveryTargetSpec {
+    $type: 'yandex.cloud.mdb.mongodb.v1.RestoreClusterRequest.RecoveryTargetSpec';
     /** Timestamp of the recovery target */
     timestamp: number;
 }
 
 export interface RestoreClusterMetadata {
+    $type: 'yandex.cloud.mdb.mongodb.v1.RestoreClusterMetadata';
     /** ID of the new MongoDB cluster that is being created from a backup. */
     clusterId: string;
     /** ID of the backup that is being used for creating a cluster. */
@@ -301,6 +325,7 @@ export interface RestoreClusterMetadata {
 }
 
 export interface RescheduleMaintenanceRequest {
+    $type: 'yandex.cloud.mdb.mongodb.v1.RescheduleMaintenanceRequest';
     /** ID of the MongoDB cluster to reschedule the maintenance operation for. */
     clusterId: string;
     /** The type of reschedule request. */
@@ -362,6 +387,7 @@ export function rescheduleMaintenanceRequest_RescheduleTypeToJSON(
 
 /** Rescheduled maintenance operation metadata. */
 export interface RescheduleMaintenanceMetadata {
+    $type: 'yandex.cloud.mdb.mongodb.v1.RescheduleMaintenanceMetadata';
     /** Required. ID of the MongoDB cluster. */
     clusterId: string;
     /** Required. The time until which this maintenance operation is to be delayed. */
@@ -369,6 +395,7 @@ export interface RescheduleMaintenanceMetadata {
 }
 
 export interface LogRecord {
+    $type: 'yandex.cloud.mdb.mongodb.v1.LogRecord';
     /** Log record timestamp in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format. */
     timestamp: Date | undefined;
     /** Contents of the log record. */
@@ -376,11 +403,13 @@ export interface LogRecord {
 }
 
 export interface LogRecord_MessageEntry {
+    $type: 'yandex.cloud.mdb.mongodb.v1.LogRecord.MessageEntry';
     key: string;
     value: string;
 }
 
 export interface ListClusterLogsRequest {
+    $type: 'yandex.cloud.mdb.mongodb.v1.ListClusterLogsRequest';
     /**
      * ID of the MongoDB cluster to request logs for.
      * To get the MongoDB cluster ID use a [ClusterService.List] request.
@@ -455,6 +484,7 @@ export function listClusterLogsRequest_ServiceTypeToJSON(
 }
 
 export interface ListClusterLogsResponse {
+    $type: 'yandex.cloud.mdb.mongodb.v1.ListClusterLogsResponse';
     /** Requested log records. */
     logs: LogRecord[];
     /**
@@ -468,6 +498,7 @@ export interface ListClusterLogsResponse {
 }
 
 export interface StreamLogRecord {
+    $type: 'yandex.cloud.mdb.mongodb.v1.StreamLogRecord';
     /** One of the requested log records. */
     record: LogRecord | undefined;
     /**
@@ -480,6 +511,7 @@ export interface StreamLogRecord {
 }
 
 export interface StreamClusterLogsRequest {
+    $type: 'yandex.cloud.mdb.mongodb.v1.StreamClusterLogsRequest';
     /** Required. ID of the MongoDB cluster. */
     clusterId: string;
     /** Columns from logs table to get in the response. */
@@ -559,6 +591,7 @@ export function streamClusterLogsRequest_ServiceTypeToJSON(
 }
 
 export interface ListClusterOperationsRequest {
+    $type: 'yandex.cloud.mdb.mongodb.v1.ListClusterOperationsRequest';
     /** ID of the MongoDB Cluster resource to list operations for. */
     clusterId: string;
     pageSize: number;
@@ -570,6 +603,7 @@ export interface ListClusterOperationsRequest {
 }
 
 export interface ListClusterOperationsResponse {
+    $type: 'yandex.cloud.mdb.mongodb.v1.ListClusterOperationsResponse';
     /** List of Operation resources for the specified MongoDB cluster. */
     operations: Operation[];
     /**
@@ -582,6 +616,7 @@ export interface ListClusterOperationsResponse {
 }
 
 export interface ListClusterBackupsRequest {
+    $type: 'yandex.cloud.mdb.mongodb.v1.ListClusterBackupsRequest';
     /**
      * ID of the MongoDB cluster.
      * To get the MongoDB cluster ID, use a [ClusterService.List] request.
@@ -596,6 +631,7 @@ export interface ListClusterBackupsRequest {
 }
 
 export interface ListClusterBackupsResponse {
+    $type: 'yandex.cloud.mdb.mongodb.v1.ListClusterBackupsResponse';
     /** List of MongoDB Backup resources. */
     backups: Backup[];
     /**
@@ -608,6 +644,7 @@ export interface ListClusterBackupsResponse {
 }
 
 export interface ListClusterHostsRequest {
+    $type: 'yandex.cloud.mdb.mongodb.v1.ListClusterHostsRequest';
     /**
      * ID of the MongoDB cluster.
      * To get the MongoDB cluster ID, use a [ClusterService.List] request.
@@ -622,6 +659,7 @@ export interface ListClusterHostsRequest {
 }
 
 export interface ListClusterHostsResponse {
+    $type: 'yandex.cloud.mdb.mongodb.v1.ListClusterHostsResponse';
     /** List of Host resources. */
     hosts: Host[];
     /**
@@ -634,6 +672,7 @@ export interface ListClusterHostsResponse {
 }
 
 export interface AddClusterHostsRequest {
+    $type: 'yandex.cloud.mdb.mongodb.v1.AddClusterHostsRequest';
     /**
      * ID of the MongoDB cluster to add hosts to.
      * To get the MongoDB cluster ID use a [ClusterService.List] request.
@@ -644,6 +683,7 @@ export interface AddClusterHostsRequest {
 }
 
 export interface AddClusterHostsMetadata {
+    $type: 'yandex.cloud.mdb.mongodb.v1.AddClusterHostsMetadata';
     /** ID of the MongoDB cluster to which the hosts are being added. */
     clusterId: string;
     /** Names of hosts that are being added to the cluster. */
@@ -651,6 +691,7 @@ export interface AddClusterHostsMetadata {
 }
 
 export interface DeleteClusterHostsRequest {
+    $type: 'yandex.cloud.mdb.mongodb.v1.DeleteClusterHostsRequest';
     /**
      * ID of the MongoDB cluster to remove hosts from.
      * To get the MongoDB cluster ID, use a [ClusterService.List] request.
@@ -661,6 +702,7 @@ export interface DeleteClusterHostsRequest {
 }
 
 export interface DeleteClusterHostsMetadata {
+    $type: 'yandex.cloud.mdb.mongodb.v1.DeleteClusterHostsMetadata';
     /** ID of the MongoDB cluster to remove hosts from. */
     clusterId: string;
     /** Names of hosts that are being deleted. */
@@ -668,6 +710,7 @@ export interface DeleteClusterHostsMetadata {
 }
 
 export interface EnableClusterShardingRequest {
+    $type: 'yandex.cloud.mdb.mongodb.v1.EnableClusterShardingRequest';
     /** ID of the MongoDB cluster to enable sharding for. */
     clusterId: string;
     /** mongocfg specification for sharding. */
@@ -681,26 +724,31 @@ export interface EnableClusterShardingRequest {
 }
 
 export interface EnableClusterShardingRequest_MongoCfg {
+    $type: 'yandex.cloud.mdb.mongodb.v1.EnableClusterShardingRequest.MongoCfg';
     /** Resources for mongocfg hosts. */
     resources: Resources | undefined;
 }
 
 export interface EnableClusterShardingRequest_Mongos {
+    $type: 'yandex.cloud.mdb.mongodb.v1.EnableClusterShardingRequest.Mongos';
     /** Resources for mongos hosts. */
     resources: Resources | undefined;
 }
 
 export interface EnableClusterShardingRequest_MongoInfra {
+    $type: 'yandex.cloud.mdb.mongodb.v1.EnableClusterShardingRequest.MongoInfra';
     /** Resources for mongoinfra (mongos+mongocfg) hosts. */
     resources: Resources | undefined;
 }
 
 export interface EnableClusterShardingMetadata {
+    $type: 'yandex.cloud.mdb.mongodb.v1.EnableClusterShardingMetadata';
     /** ID of the MongoDB cluster that sharding is being enabled for. */
     clusterId: string;
 }
 
 export interface GetClusterShardRequest {
+    $type: 'yandex.cloud.mdb.mongodb.v1.GetClusterShardRequest';
     /**
      * ID of the MongoDB cluster that the shard belongs to.
      * To get the cluster ID use a [ClusterService.List] request.
@@ -714,6 +762,7 @@ export interface GetClusterShardRequest {
 }
 
 export interface ListClusterShardsRequest {
+    $type: 'yandex.cloud.mdb.mongodb.v1.ListClusterShardsRequest';
     /**
      * ID of the MongoDB cluster to list databases in.
      * To get the cluster ID, use a [ClusterService.List] request.
@@ -733,6 +782,7 @@ export interface ListClusterShardsRequest {
 }
 
 export interface ListClusterShardsResponse {
+    $type: 'yandex.cloud.mdb.mongodb.v1.ListClusterShardsResponse';
     /** List of MongoDB shards. */
     shards: Shard[];
     /**
@@ -745,6 +795,7 @@ export interface ListClusterShardsResponse {
 }
 
 export interface AddClusterShardRequest {
+    $type: 'yandex.cloud.mdb.mongodb.v1.AddClusterShardRequest';
     /**
      * ID of the MongoDB cluster to add a shard to.
      * To get the cluster ID, use a [ClusterService.List] request.
@@ -757,6 +808,7 @@ export interface AddClusterShardRequest {
 }
 
 export interface AddClusterShardMetadata {
+    $type: 'yandex.cloud.mdb.mongodb.v1.AddClusterShardMetadata';
     /** ID of the MongoDB cluster that a shard is being added to. */
     clusterId: string;
     /** Name of the shard being added. */
@@ -764,6 +816,7 @@ export interface AddClusterShardMetadata {
 }
 
 export interface DeleteClusterShardRequest {
+    $type: 'yandex.cloud.mdb.mongodb.v1.DeleteClusterShardRequest';
     /**
      * ID of the MongoDB cluster to delete a shard in.
      * To get the cluster ID, use a [ClusterService.List] request.
@@ -777,6 +830,7 @@ export interface DeleteClusterShardRequest {
 }
 
 export interface DeleteClusterShardMetadata {
+    $type: 'yandex.cloud.mdb.mongodb.v1.DeleteClusterShardMetadata';
     /** ID of the MongoDB cluster that a shard is being deleted in. */
     clusterId: string;
     /** Name of the shard being deleted. */
@@ -784,6 +838,7 @@ export interface DeleteClusterShardMetadata {
 }
 
 export interface ResetupHostsRequest {
+    $type: 'yandex.cloud.mdb.mongodb.v1.ResetupHostsRequest';
     /** Required. ID of the MongoDB cluster. */
     clusterId: string;
     /** Required. Name of the hosts to resetup. */
@@ -791,6 +846,7 @@ export interface ResetupHostsRequest {
 }
 
 export interface ResetupHostsMetadata {
+    $type: 'yandex.cloud.mdb.mongodb.v1.ResetupHostsMetadata';
     /** Required. ID of the MongoDB cluster. */
     clusterId: string;
     /** Required. The name of hosts to resetup. */
@@ -798,6 +854,7 @@ export interface ResetupHostsMetadata {
 }
 
 export interface RestartHostsRequest {
+    $type: 'yandex.cloud.mdb.mongodb.v1.RestartHostsRequest';
     /** Required. ID of the MongoDB cluster. */
     clusterId: string;
     /** Required. Name of the hosts to restart. */
@@ -805,6 +862,7 @@ export interface RestartHostsRequest {
 }
 
 export interface RestartHostsMetadata {
+    $type: 'yandex.cloud.mdb.mongodb.v1.RestartHostsMetadata';
     /** Required. ID of the MongoDB cluster. */
     clusterId: string;
     /** Required. The name of hosts to restart. */
@@ -812,6 +870,7 @@ export interface RestartHostsMetadata {
 }
 
 export interface StepdownHostsRequest {
+    $type: 'yandex.cloud.mdb.mongodb.v1.StepdownHostsRequest';
     /** Required. ID of the MongoDB cluster. */
     clusterId: string;
     /** Required. Name of the hosts to resetup. */
@@ -819,6 +878,7 @@ export interface StepdownHostsRequest {
 }
 
 export interface StepdownHostsMetadata {
+    $type: 'yandex.cloud.mdb.mongodb.v1.StepdownHostsMetadata';
     /** Required. ID of the MongoDB cluster. */
     clusterId: string;
     /** Required. The name of hosts to resetup. */
@@ -826,6 +886,7 @@ export interface StepdownHostsMetadata {
 }
 
 export interface HostSpec {
+    $type: 'yandex.cloud.mdb.mongodb.v1.HostSpec';
     /**
      * ID of the availability zone where the host resides.
      * To get a list of available zones, use the [yandex.cloud.compute.v1.ZoneService.List] request.
@@ -855,6 +916,7 @@ export interface HostSpec {
 }
 
 export interface Mongodbspec36 {
+    $type: 'yandex.cloud.mdb.mongodb.v1.MongodbSpec3_6';
     /** Configuration and resource allocation for mongod 3.6 hosts. */
     mongod: Mongodbspec36_Mongod | undefined;
     /** Configuration and resource allocation for mongocfg 3.6 hosts. */
@@ -866,6 +928,7 @@ export interface Mongodbspec36 {
 }
 
 export interface Mongodbspec36_Mongod {
+    $type: 'yandex.cloud.mdb.mongodb.v1.MongodbSpec3_6.Mongod';
     /** Configuration for mongod 3.6 hosts. */
     config: Mongodconfig36 | undefined;
     /** Resources allocated to each mongod host. */
@@ -873,6 +936,7 @@ export interface Mongodbspec36_Mongod {
 }
 
 export interface Mongodbspec36_MongoCfg {
+    $type: 'yandex.cloud.mdb.mongodb.v1.MongodbSpec3_6.MongoCfg';
     /** Configuration for mongocfg 3.6 hosts. */
     config: Mongocfgconfig36 | undefined;
     /** Resources allocated to each mongocfg host. */
@@ -880,6 +944,7 @@ export interface Mongodbspec36_MongoCfg {
 }
 
 export interface Mongodbspec36_Mongos {
+    $type: 'yandex.cloud.mdb.mongodb.v1.MongodbSpec3_6.Mongos';
     /** Configuration for mongos 3.6 hosts. */
     config: Mongosconfig36 | undefined;
     /** Resources allocated to each mongos host. */
@@ -887,6 +952,7 @@ export interface Mongodbspec36_Mongos {
 }
 
 export interface Mongodbspec36_MongoInfra {
+    $type: 'yandex.cloud.mdb.mongodb.v1.MongodbSpec3_6.MongoInfra';
     /** Configuration for mongoinfra 3.6 hosts. */
     configMongos: Mongosconfig36 | undefined;
     configMongocfg: Mongocfgconfig36 | undefined;
@@ -895,6 +961,7 @@ export interface Mongodbspec36_MongoInfra {
 }
 
 export interface Mongodbspec40 {
+    $type: 'yandex.cloud.mdb.mongodb.v1.MongodbSpec4_0';
     /** Configuration and resource allocation for mongod 4.0 hosts. */
     mongod: Mongodbspec40_Mongod | undefined;
     /** Configuration and resource allocation for mongocfg 4.0 hosts. */
@@ -906,6 +973,7 @@ export interface Mongodbspec40 {
 }
 
 export interface Mongodbspec40_Mongod {
+    $type: 'yandex.cloud.mdb.mongodb.v1.MongodbSpec4_0.Mongod';
     /** Configuration for mongod 4.0 hosts. */
     config: Mongodconfig40 | undefined;
     /** Resources allocated to each mongod host. */
@@ -913,6 +981,7 @@ export interface Mongodbspec40_Mongod {
 }
 
 export interface Mongodbspec40_MongoCfg {
+    $type: 'yandex.cloud.mdb.mongodb.v1.MongodbSpec4_0.MongoCfg';
     /** Configuration for mongocfg 4.0 hosts. */
     config: Mongocfgconfig40 | undefined;
     /** Resources allocated to each mongocfg host. */
@@ -920,6 +989,7 @@ export interface Mongodbspec40_MongoCfg {
 }
 
 export interface Mongodbspec40_Mongos {
+    $type: 'yandex.cloud.mdb.mongodb.v1.MongodbSpec4_0.Mongos';
     /** Configuration for mongos 4.0 hosts. */
     config: Mongosconfig40 | undefined;
     /** Resources allocated to each mongos host. */
@@ -927,6 +997,7 @@ export interface Mongodbspec40_Mongos {
 }
 
 export interface Mongodbspec40_MongoInfra {
+    $type: 'yandex.cloud.mdb.mongodb.v1.MongodbSpec4_0.MongoInfra';
     /** Configuration for mongoinfra 4.0 hosts. */
     configMongos: Mongosconfig40 | undefined;
     configMongocfg: Mongocfgconfig40 | undefined;
@@ -935,6 +1006,7 @@ export interface Mongodbspec40_MongoInfra {
 }
 
 export interface Mongodbspec42 {
+    $type: 'yandex.cloud.mdb.mongodb.v1.MongodbSpec4_2';
     /** Configuration and resource allocation for mongod 4.2 hosts. */
     mongod: Mongodbspec42_Mongod | undefined;
     /** Configuration and resource allocation for mongocfg 4.2 hosts. */
@@ -946,6 +1018,7 @@ export interface Mongodbspec42 {
 }
 
 export interface Mongodbspec42_Mongod {
+    $type: 'yandex.cloud.mdb.mongodb.v1.MongodbSpec4_2.Mongod';
     /** Configuration for mongod 4.2 hosts. */
     config: Mongodconfig42 | undefined;
     /** Resources allocated to each mongod host. */
@@ -953,6 +1026,7 @@ export interface Mongodbspec42_Mongod {
 }
 
 export interface Mongodbspec42_MongoCfg {
+    $type: 'yandex.cloud.mdb.mongodb.v1.MongodbSpec4_2.MongoCfg';
     /** Configuration for mongocfg 4.2 hosts. */
     config: Mongocfgconfig42 | undefined;
     /** Resources allocated to each mongocfg host. */
@@ -960,6 +1034,7 @@ export interface Mongodbspec42_MongoCfg {
 }
 
 export interface Mongodbspec42_Mongos {
+    $type: 'yandex.cloud.mdb.mongodb.v1.MongodbSpec4_2.Mongos';
     /** Configuration for mongos 4.2 hosts. */
     config: Mongosconfig42 | undefined;
     /** Resources allocated to each mongos host. */
@@ -967,6 +1042,7 @@ export interface Mongodbspec42_Mongos {
 }
 
 export interface Mongodbspec42_MongoInfra {
+    $type: 'yandex.cloud.mdb.mongodb.v1.MongodbSpec4_2.MongoInfra';
     /** Configuration for mongoinfra 4.2 hosts. */
     configMongos: Mongosconfig42 | undefined;
     configMongocfg: Mongocfgconfig42 | undefined;
@@ -975,6 +1051,7 @@ export interface Mongodbspec42_MongoInfra {
 }
 
 export interface Mongodbspec44 {
+    $type: 'yandex.cloud.mdb.mongodb.v1.MongodbSpec4_4';
     /** Configuration and resource allocation for mongod 4.4 hosts. */
     mongod: Mongodbspec44_Mongod | undefined;
     /** Configuration and resource allocation for mongocfg 4.4 hosts. */
@@ -986,6 +1063,7 @@ export interface Mongodbspec44 {
 }
 
 export interface Mongodbspec44_Mongod {
+    $type: 'yandex.cloud.mdb.mongodb.v1.MongodbSpec4_4.Mongod';
     /** Configuration for mongod 4.4 hosts. */
     config: Mongodconfig44 | undefined;
     /** Resources allocated to each mongod host. */
@@ -993,6 +1071,7 @@ export interface Mongodbspec44_Mongod {
 }
 
 export interface Mongodbspec44_MongoCfg {
+    $type: 'yandex.cloud.mdb.mongodb.v1.MongodbSpec4_4.MongoCfg';
     /** Configuration for mongocfg 4.4 hosts. */
     config: Mongocfgconfig44 | undefined;
     /** Resources allocated to each mongocfg host. */
@@ -1000,6 +1079,7 @@ export interface Mongodbspec44_MongoCfg {
 }
 
 export interface Mongodbspec44_Mongos {
+    $type: 'yandex.cloud.mdb.mongodb.v1.MongodbSpec4_4.Mongos';
     /** Configuration for mongos 4.4 hosts. */
     config: Mongosconfig44 | undefined;
     /** Resources allocated to each mongos host. */
@@ -1007,6 +1087,7 @@ export interface Mongodbspec44_Mongos {
 }
 
 export interface Mongodbspec44_MongoInfra {
+    $type: 'yandex.cloud.mdb.mongodb.v1.MongodbSpec4_4.MongoInfra';
     /** Configuration for mongoinfra 4.4 hosts. */
     configMongos: Mongosconfig44 | undefined;
     configMongocfg: Mongocfgconfig44 | undefined;
@@ -1015,6 +1096,7 @@ export interface Mongodbspec44_MongoInfra {
 }
 
 export interface Mongodbspec50 {
+    $type: 'yandex.cloud.mdb.mongodb.v1.MongodbSpec5_0';
     /** Configuration and resource allocation for mongod 5.0 hosts. */
     mongod: Mongodbspec50_Mongod | undefined;
     /** Configuration and resource allocation for mongocfg 5.0 hosts. */
@@ -1026,6 +1108,7 @@ export interface Mongodbspec50 {
 }
 
 export interface Mongodbspec50_Mongod {
+    $type: 'yandex.cloud.mdb.mongodb.v1.MongodbSpec5_0.Mongod';
     /** Configuration for mongod 5.0 hosts. */
     config: Mongodconfig50 | undefined;
     /** Resources allocated to each mongod host. */
@@ -1033,6 +1116,7 @@ export interface Mongodbspec50_Mongod {
 }
 
 export interface Mongodbspec50_MongoCfg {
+    $type: 'yandex.cloud.mdb.mongodb.v1.MongodbSpec5_0.MongoCfg';
     /** Configuration for mongocfg 5.0 hosts. */
     config: Mongocfgconfig50 | undefined;
     /** Resources allocated to each mongocfg host. */
@@ -1040,6 +1124,7 @@ export interface Mongodbspec50_MongoCfg {
 }
 
 export interface Mongodbspec50_Mongos {
+    $type: 'yandex.cloud.mdb.mongodb.v1.MongodbSpec5_0.Mongos';
     /** Configuration for mongos 5.0 hosts. */
     config: Mongosconfig50 | undefined;
     /** Resources allocated to each mongos host. */
@@ -1047,6 +1132,7 @@ export interface Mongodbspec50_Mongos {
 }
 
 export interface Mongodbspec50_MongoInfra {
+    $type: 'yandex.cloud.mdb.mongodb.v1.MongodbSpec5_0.MongoInfra';
     /** Configuration for mongoinfra 5.0 hosts. */
     configMongos: Mongosconfig50 | undefined;
     configMongocfg: Mongocfgconfig50 | undefined;
@@ -1055,6 +1141,7 @@ export interface Mongodbspec50_MongoInfra {
 }
 
 export interface ConfigSpec {
+    $type: 'yandex.cloud.mdb.mongodb.v1.ConfigSpec';
     /** Version of MongoDB used in the cluster. Possible values: `3.6`, `4.0`, `4.2`, `4.4`, `5.0`. */
     version: string;
     /**
@@ -1086,9 +1173,14 @@ export interface ConfigSpec {
     access: Access | undefined;
 }
 
-const baseGetClusterRequest: object = { clusterId: '' };
+const baseGetClusterRequest: object = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.GetClusterRequest',
+    clusterId: '',
+};
 
 export const GetClusterRequest = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.GetClusterRequest' as const,
+
     encode(
         message: GetClusterRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1145,7 +1237,10 @@ export const GetClusterRequest = {
     },
 };
 
+messageTypeRegistry.set(GetClusterRequest.$type, GetClusterRequest);
+
 const baseListClustersRequest: object = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.ListClustersRequest',
     folderId: '',
     pageSize: 0,
     pageToken: '',
@@ -1153,6 +1248,8 @@ const baseListClustersRequest: object = {
 };
 
 export const ListClustersRequest = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.ListClustersRequest' as const,
+
     encode(
         message: ListClustersRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1263,9 +1360,16 @@ export const ListClustersRequest = {
     },
 };
 
-const baseListClustersResponse: object = { nextPageToken: '' };
+messageTypeRegistry.set(ListClustersRequest.$type, ListClustersRequest);
+
+const baseListClustersResponse: object = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.ListClustersResponse',
+    nextPageToken: '',
+};
 
 export const ListClustersResponse = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.ListClustersResponse' as const,
+
     encode(
         message: ListClustersResponse,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1362,7 +1466,10 @@ export const ListClustersResponse = {
     },
 };
 
+messageTypeRegistry.set(ListClustersResponse.$type, ListClustersResponse);
+
 const baseCreateClusterRequest: object = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.CreateClusterRequest',
     folderId: '',
     name: '',
     description: '',
@@ -1373,6 +1480,8 @@ const baseCreateClusterRequest: object = {
 };
 
 export const CreateClusterRequest = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.CreateClusterRequest' as const,
+
     encode(
         message: CreateClusterRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1388,7 +1497,11 @@ export const CreateClusterRequest = {
         }
         Object.entries(message.labels).forEach(([key, value]) => {
             CreateClusterRequest_LabelsEntry.encode(
-                { key: key as any, value },
+                {
+                    $type: 'yandex.cloud.mdb.mongodb.v1.CreateClusterRequest.LabelsEntry',
+                    key: key as any,
+                    value,
+                },
                 writer.uint32(34).fork()
             ).ldelim();
         });
@@ -1712,9 +1825,17 @@ export const CreateClusterRequest = {
     },
 };
 
-const baseCreateClusterRequest_LabelsEntry: object = { key: '', value: '' };
+messageTypeRegistry.set(CreateClusterRequest.$type, CreateClusterRequest);
+
+const baseCreateClusterRequest_LabelsEntry: object = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.CreateClusterRequest.LabelsEntry',
+    key: '',
+    value: '',
+};
 
 export const CreateClusterRequest_LabelsEntry = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.CreateClusterRequest.LabelsEntry' as const,
+
     encode(
         message: CreateClusterRequest_LabelsEntry,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1799,9 +1920,19 @@ export const CreateClusterRequest_LabelsEntry = {
     },
 };
 
-const baseCreateClusterMetadata: object = { clusterId: '' };
+messageTypeRegistry.set(
+    CreateClusterRequest_LabelsEntry.$type,
+    CreateClusterRequest_LabelsEntry
+);
+
+const baseCreateClusterMetadata: object = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.CreateClusterMetadata',
+    clusterId: '',
+};
 
 export const CreateClusterMetadata = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.CreateClusterMetadata' as const,
+
     encode(
         message: CreateClusterMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1869,7 +2000,10 @@ export const CreateClusterMetadata = {
     },
 };
 
+messageTypeRegistry.set(CreateClusterMetadata.$type, CreateClusterMetadata);
+
 const baseUpdateClusterRequest: object = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.UpdateClusterRequest',
     clusterId: '',
     description: '',
     name: '',
@@ -1878,6 +2012,8 @@ const baseUpdateClusterRequest: object = {
 };
 
 export const UpdateClusterRequest = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.UpdateClusterRequest' as const,
+
     encode(
         message: UpdateClusterRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1896,7 +2032,11 @@ export const UpdateClusterRequest = {
         }
         Object.entries(message.labels).forEach(([key, value]) => {
             UpdateClusterRequest_LabelsEntry.encode(
-                { key: key as any, value },
+                {
+                    $type: 'yandex.cloud.mdb.mongodb.v1.UpdateClusterRequest.LabelsEntry',
+                    key: key as any,
+                    value,
+                },
                 writer.uint32(34).fork()
             ).ldelim();
         });
@@ -2152,9 +2292,17 @@ export const UpdateClusterRequest = {
     },
 };
 
-const baseUpdateClusterRequest_LabelsEntry: object = { key: '', value: '' };
+messageTypeRegistry.set(UpdateClusterRequest.$type, UpdateClusterRequest);
+
+const baseUpdateClusterRequest_LabelsEntry: object = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.UpdateClusterRequest.LabelsEntry',
+    key: '',
+    value: '',
+};
 
 export const UpdateClusterRequest_LabelsEntry = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.UpdateClusterRequest.LabelsEntry' as const,
+
     encode(
         message: UpdateClusterRequest_LabelsEntry,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2239,9 +2387,19 @@ export const UpdateClusterRequest_LabelsEntry = {
     },
 };
 
-const baseUpdateClusterMetadata: object = { clusterId: '' };
+messageTypeRegistry.set(
+    UpdateClusterRequest_LabelsEntry.$type,
+    UpdateClusterRequest_LabelsEntry
+);
+
+const baseUpdateClusterMetadata: object = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.UpdateClusterMetadata',
+    clusterId: '',
+};
 
 export const UpdateClusterMetadata = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.UpdateClusterMetadata' as const,
+
     encode(
         message: UpdateClusterMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2309,9 +2467,16 @@ export const UpdateClusterMetadata = {
     },
 };
 
-const baseDeleteClusterRequest: object = { clusterId: '' };
+messageTypeRegistry.set(UpdateClusterMetadata.$type, UpdateClusterMetadata);
+
+const baseDeleteClusterRequest: object = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.DeleteClusterRequest',
+    clusterId: '',
+};
 
 export const DeleteClusterRequest = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.DeleteClusterRequest' as const,
+
     encode(
         message: DeleteClusterRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2373,9 +2538,16 @@ export const DeleteClusterRequest = {
     },
 };
 
-const baseDeleteClusterMetadata: object = { clusterId: '' };
+messageTypeRegistry.set(DeleteClusterRequest.$type, DeleteClusterRequest);
+
+const baseDeleteClusterMetadata: object = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.DeleteClusterMetadata',
+    clusterId: '',
+};
 
 export const DeleteClusterMetadata = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.DeleteClusterMetadata' as const,
+
     encode(
         message: DeleteClusterMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2443,9 +2615,16 @@ export const DeleteClusterMetadata = {
     },
 };
 
-const baseStartClusterRequest: object = { clusterId: '' };
+messageTypeRegistry.set(DeleteClusterMetadata.$type, DeleteClusterMetadata);
+
+const baseStartClusterRequest: object = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.StartClusterRequest',
+    clusterId: '',
+};
 
 export const StartClusterRequest = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.StartClusterRequest' as const,
+
     encode(
         message: StartClusterRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2505,9 +2684,16 @@ export const StartClusterRequest = {
     },
 };
 
-const baseStartClusterMetadata: object = { clusterId: '' };
+messageTypeRegistry.set(StartClusterRequest.$type, StartClusterRequest);
+
+const baseStartClusterMetadata: object = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.StartClusterMetadata',
+    clusterId: '',
+};
 
 export const StartClusterMetadata = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.StartClusterMetadata' as const,
+
     encode(
         message: StartClusterMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2569,9 +2755,16 @@ export const StartClusterMetadata = {
     },
 };
 
-const baseStopClusterRequest: object = { clusterId: '' };
+messageTypeRegistry.set(StartClusterMetadata.$type, StartClusterMetadata);
+
+const baseStopClusterRequest: object = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.StopClusterRequest',
+    clusterId: '',
+};
 
 export const StopClusterRequest = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.StopClusterRequest' as const,
+
     encode(
         message: StopClusterRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2631,9 +2824,16 @@ export const StopClusterRequest = {
     },
 };
 
-const baseStopClusterMetadata: object = { clusterId: '' };
+messageTypeRegistry.set(StopClusterRequest.$type, StopClusterRequest);
+
+const baseStopClusterMetadata: object = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.StopClusterMetadata',
+    clusterId: '',
+};
 
 export const StopClusterMetadata = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.StopClusterMetadata' as const,
+
     encode(
         message: StopClusterMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2693,12 +2893,17 @@ export const StopClusterMetadata = {
     },
 };
 
+messageTypeRegistry.set(StopClusterMetadata.$type, StopClusterMetadata);
+
 const baseMoveClusterRequest: object = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.MoveClusterRequest',
     clusterId: '',
     destinationFolderId: '',
 };
 
 export const MoveClusterRequest = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.MoveClusterRequest' as const,
+
     encode(
         message: MoveClusterRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2782,13 +2987,18 @@ export const MoveClusterRequest = {
     },
 };
 
+messageTypeRegistry.set(MoveClusterRequest.$type, MoveClusterRequest);
+
 const baseMoveClusterMetadata: object = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.MoveClusterMetadata',
     clusterId: '',
     sourceFolderId: '',
     destinationFolderId: '',
 };
 
 export const MoveClusterMetadata = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.MoveClusterMetadata' as const,
+
     encode(
         message: MoveClusterMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2896,9 +3106,16 @@ export const MoveClusterMetadata = {
     },
 };
 
-const baseBackupClusterRequest: object = { clusterId: '' };
+messageTypeRegistry.set(MoveClusterMetadata.$type, MoveClusterMetadata);
+
+const baseBackupClusterRequest: object = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.BackupClusterRequest',
+    clusterId: '',
+};
 
 export const BackupClusterRequest = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.BackupClusterRequest' as const,
+
     encode(
         message: BackupClusterRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2960,9 +3177,16 @@ export const BackupClusterRequest = {
     },
 };
 
-const baseBackupClusterMetadata: object = { clusterId: '' };
+messageTypeRegistry.set(BackupClusterRequest.$type, BackupClusterRequest);
+
+const baseBackupClusterMetadata: object = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.BackupClusterMetadata',
+    clusterId: '',
+};
 
 export const BackupClusterMetadata = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.BackupClusterMetadata' as const,
+
     encode(
         message: BackupClusterMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -3030,7 +3254,10 @@ export const BackupClusterMetadata = {
     },
 };
 
+messageTypeRegistry.set(BackupClusterMetadata.$type, BackupClusterMetadata);
+
 const baseRestoreClusterRequest: object = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.RestoreClusterRequest',
     backupId: '',
     name: '',
     description: '',
@@ -3041,6 +3268,8 @@ const baseRestoreClusterRequest: object = {
 };
 
 export const RestoreClusterRequest = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.RestoreClusterRequest' as const,
+
     encode(
         message: RestoreClusterRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -3056,7 +3285,11 @@ export const RestoreClusterRequest = {
         }
         Object.entries(message.labels).forEach(([key, value]) => {
             RestoreClusterRequest_LabelsEntry.encode(
-                { key: key as any, value },
+                {
+                    $type: 'yandex.cloud.mdb.mongodb.v1.RestoreClusterRequest.LabelsEntry',
+                    key: key as any,
+                    value,
+                },
                 writer.uint32(34).fork()
             ).ldelim();
         });
@@ -3358,9 +3591,17 @@ export const RestoreClusterRequest = {
     },
 };
 
-const baseRestoreClusterRequest_LabelsEntry: object = { key: '', value: '' };
+messageTypeRegistry.set(RestoreClusterRequest.$type, RestoreClusterRequest);
+
+const baseRestoreClusterRequest_LabelsEntry: object = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.RestoreClusterRequest.LabelsEntry',
+    key: '',
+    value: '',
+};
 
 export const RestoreClusterRequest_LabelsEntry = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.RestoreClusterRequest.LabelsEntry' as const,
+
     encode(
         message: RestoreClusterRequest_LabelsEntry,
         writer: _m0.Writer = _m0.Writer.create()
@@ -3445,9 +3686,19 @@ export const RestoreClusterRequest_LabelsEntry = {
     },
 };
 
-const baseRestoreClusterRequest_RecoveryTargetSpec: object = { timestamp: 0 };
+messageTypeRegistry.set(
+    RestoreClusterRequest_LabelsEntry.$type,
+    RestoreClusterRequest_LabelsEntry
+);
+
+const baseRestoreClusterRequest_RecoveryTargetSpec: object = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.RestoreClusterRequest.RecoveryTargetSpec',
+    timestamp: 0,
+};
 
 export const RestoreClusterRequest_RecoveryTargetSpec = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.RestoreClusterRequest.RecoveryTargetSpec' as const,
+
     encode(
         message: RestoreClusterRequest_RecoveryTargetSpec,
         writer: _m0.Writer = _m0.Writer.create()
@@ -3515,9 +3766,20 @@ export const RestoreClusterRequest_RecoveryTargetSpec = {
     },
 };
 
-const baseRestoreClusterMetadata: object = { clusterId: '', backupId: '' };
+messageTypeRegistry.set(
+    RestoreClusterRequest_RecoveryTargetSpec.$type,
+    RestoreClusterRequest_RecoveryTargetSpec
+);
+
+const baseRestoreClusterMetadata: object = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.RestoreClusterMetadata',
+    clusterId: '',
+    backupId: '',
+};
 
 export const RestoreClusterMetadata = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.RestoreClusterMetadata' as const,
+
     encode(
         message: RestoreClusterMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -3602,12 +3864,17 @@ export const RestoreClusterMetadata = {
     },
 };
 
+messageTypeRegistry.set(RestoreClusterMetadata.$type, RestoreClusterMetadata);
+
 const baseRescheduleMaintenanceRequest: object = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.RescheduleMaintenanceRequest',
     clusterId: '',
     rescheduleType: 0,
 };
 
 export const RescheduleMaintenanceRequest = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.RescheduleMaintenanceRequest' as const,
+
     encode(
         message: RescheduleMaintenanceRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -3728,9 +3995,19 @@ export const RescheduleMaintenanceRequest = {
     },
 };
 
-const baseRescheduleMaintenanceMetadata: object = { clusterId: '' };
+messageTypeRegistry.set(
+    RescheduleMaintenanceRequest.$type,
+    RescheduleMaintenanceRequest
+);
+
+const baseRescheduleMaintenanceMetadata: object = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.RescheduleMaintenanceMetadata',
+    clusterId: '',
+};
 
 export const RescheduleMaintenanceMetadata = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.RescheduleMaintenanceMetadata' as const,
+
     encode(
         message: RescheduleMaintenanceMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -3821,9 +4098,18 @@ export const RescheduleMaintenanceMetadata = {
     },
 };
 
-const baseLogRecord: object = {};
+messageTypeRegistry.set(
+    RescheduleMaintenanceMetadata.$type,
+    RescheduleMaintenanceMetadata
+);
+
+const baseLogRecord: object = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.LogRecord',
+};
 
 export const LogRecord = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.LogRecord' as const,
+
     encode(
         message: LogRecord,
         writer: _m0.Writer = _m0.Writer.create()
@@ -3836,7 +4122,11 @@ export const LogRecord = {
         }
         Object.entries(message.message).forEach(([key, value]) => {
             LogRecord_MessageEntry.encode(
-                { key: key as any, value },
+                {
+                    $type: 'yandex.cloud.mdb.mongodb.v1.LogRecord.MessageEntry',
+                    key: key as any,
+                    value,
+                },
                 writer.uint32(18).fork()
             ).ldelim();
         });
@@ -3922,9 +4212,17 @@ export const LogRecord = {
     },
 };
 
-const baseLogRecord_MessageEntry: object = { key: '', value: '' };
+messageTypeRegistry.set(LogRecord.$type, LogRecord);
+
+const baseLogRecord_MessageEntry: object = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.LogRecord.MessageEntry',
+    key: '',
+    value: '',
+};
 
 export const LogRecord_MessageEntry = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.LogRecord.MessageEntry' as const,
+
     encode(
         message: LogRecord_MessageEntry,
         writer: _m0.Writer = _m0.Writer.create()
@@ -4009,7 +4307,10 @@ export const LogRecord_MessageEntry = {
     },
 };
 
+messageTypeRegistry.set(LogRecord_MessageEntry.$type, LogRecord_MessageEntry);
+
 const baseListClusterLogsRequest: object = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.ListClusterLogsRequest',
     clusterId: '',
     columnFilter: '',
     serviceType: 0,
@@ -4018,6 +4319,8 @@ const baseListClusterLogsRequest: object = {
 };
 
 export const ListClusterLogsRequest = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.ListClusterLogsRequest' as const,
+
     encode(
         message: ListClusterLogsRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -4211,9 +4514,16 @@ export const ListClusterLogsRequest = {
     },
 };
 
-const baseListClusterLogsResponse: object = { nextPageToken: '' };
+messageTypeRegistry.set(ListClusterLogsRequest.$type, ListClusterLogsRequest);
+
+const baseListClusterLogsResponse: object = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.ListClusterLogsResponse',
+    nextPageToken: '',
+};
 
 export const ListClusterLogsResponse = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.ListClusterLogsResponse' as const,
+
     encode(
         message: ListClusterLogsResponse,
         writer: _m0.Writer = _m0.Writer.create()
@@ -4316,9 +4626,16 @@ export const ListClusterLogsResponse = {
     },
 };
 
-const baseStreamLogRecord: object = { nextRecordToken: '' };
+messageTypeRegistry.set(ListClusterLogsResponse.$type, ListClusterLogsResponse);
+
+const baseStreamLogRecord: object = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.StreamLogRecord',
+    nextRecordToken: '',
+};
 
 export const StreamLogRecord = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.StreamLogRecord' as const,
+
     encode(
         message: StreamLogRecord,
         writer: _m0.Writer = _m0.Writer.create()
@@ -4402,7 +4719,10 @@ export const StreamLogRecord = {
     },
 };
 
+messageTypeRegistry.set(StreamLogRecord.$type, StreamLogRecord);
+
 const baseStreamClusterLogsRequest: object = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.StreamClusterLogsRequest',
     clusterId: '',
     columnFilter: '',
     serviceType: 0,
@@ -4411,6 +4731,8 @@ const baseStreamClusterLogsRequest: object = {
 };
 
 export const StreamClusterLogsRequest = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.StreamClusterLogsRequest' as const,
+
     encode(
         message: StreamClusterLogsRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -4605,13 +4927,21 @@ export const StreamClusterLogsRequest = {
     },
 };
 
+messageTypeRegistry.set(
+    StreamClusterLogsRequest.$type,
+    StreamClusterLogsRequest
+);
+
 const baseListClusterOperationsRequest: object = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.ListClusterOperationsRequest',
     clusterId: '',
     pageSize: 0,
     pageToken: '',
 };
 
 export const ListClusterOperationsRequest = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.ListClusterOperationsRequest' as const,
+
     encode(
         message: ListClusterOperationsRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -4713,9 +5043,19 @@ export const ListClusterOperationsRequest = {
     },
 };
 
-const baseListClusterOperationsResponse: object = { nextPageToken: '' };
+messageTypeRegistry.set(
+    ListClusterOperationsRequest.$type,
+    ListClusterOperationsRequest
+);
+
+const baseListClusterOperationsResponse: object = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.ListClusterOperationsResponse',
+    nextPageToken: '',
+};
 
 export const ListClusterOperationsResponse = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.ListClusterOperationsResponse' as const,
+
     encode(
         message: ListClusterOperationsResponse,
         writer: _m0.Writer = _m0.Writer.create()
@@ -4818,13 +5158,21 @@ export const ListClusterOperationsResponse = {
     },
 };
 
+messageTypeRegistry.set(
+    ListClusterOperationsResponse.$type,
+    ListClusterOperationsResponse
+);
+
 const baseListClusterBackupsRequest: object = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.ListClusterBackupsRequest',
     clusterId: '',
     pageSize: 0,
     pageToken: '',
 };
 
 export const ListClusterBackupsRequest = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.ListClusterBackupsRequest' as const,
+
     encode(
         message: ListClusterBackupsRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -4926,9 +5274,19 @@ export const ListClusterBackupsRequest = {
     },
 };
 
-const baseListClusterBackupsResponse: object = { nextPageToken: '' };
+messageTypeRegistry.set(
+    ListClusterBackupsRequest.$type,
+    ListClusterBackupsRequest
+);
+
+const baseListClusterBackupsResponse: object = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.ListClusterBackupsResponse',
+    nextPageToken: '',
+};
 
 export const ListClusterBackupsResponse = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.ListClusterBackupsResponse' as const,
+
     encode(
         message: ListClusterBackupsResponse,
         writer: _m0.Writer = _m0.Writer.create()
@@ -5031,13 +5389,21 @@ export const ListClusterBackupsResponse = {
     },
 };
 
+messageTypeRegistry.set(
+    ListClusterBackupsResponse.$type,
+    ListClusterBackupsResponse
+);
+
 const baseListClusterHostsRequest: object = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.ListClusterHostsRequest',
     clusterId: '',
     pageSize: 0,
     pageToken: '',
 };
 
 export const ListClusterHostsRequest = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.ListClusterHostsRequest' as const,
+
     encode(
         message: ListClusterHostsRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -5139,9 +5505,16 @@ export const ListClusterHostsRequest = {
     },
 };
 
-const baseListClusterHostsResponse: object = { nextPageToken: '' };
+messageTypeRegistry.set(ListClusterHostsRequest.$type, ListClusterHostsRequest);
+
+const baseListClusterHostsResponse: object = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.ListClusterHostsResponse',
+    nextPageToken: '',
+};
 
 export const ListClusterHostsResponse = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.ListClusterHostsResponse' as const,
+
     encode(
         message: ListClusterHostsResponse,
         writer: _m0.Writer = _m0.Writer.create()
@@ -5242,9 +5615,19 @@ export const ListClusterHostsResponse = {
     },
 };
 
-const baseAddClusterHostsRequest: object = { clusterId: '' };
+messageTypeRegistry.set(
+    ListClusterHostsResponse.$type,
+    ListClusterHostsResponse
+);
+
+const baseAddClusterHostsRequest: object = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.AddClusterHostsRequest',
+    clusterId: '',
+};
 
 export const AddClusterHostsRequest = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.AddClusterHostsRequest' as const,
+
     encode(
         message: AddClusterHostsRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -5340,9 +5723,17 @@ export const AddClusterHostsRequest = {
     },
 };
 
-const baseAddClusterHostsMetadata: object = { clusterId: '', hostNames: '' };
+messageTypeRegistry.set(AddClusterHostsRequest.$type, AddClusterHostsRequest);
+
+const baseAddClusterHostsMetadata: object = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.AddClusterHostsMetadata',
+    clusterId: '',
+    hostNames: '',
+};
 
 export const AddClusterHostsMetadata = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.AddClusterHostsMetadata' as const,
+
     encode(
         message: AddClusterHostsMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -5434,9 +5825,17 @@ export const AddClusterHostsMetadata = {
     },
 };
 
-const baseDeleteClusterHostsRequest: object = { clusterId: '', hostNames: '' };
+messageTypeRegistry.set(AddClusterHostsMetadata.$type, AddClusterHostsMetadata);
+
+const baseDeleteClusterHostsRequest: object = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.DeleteClusterHostsRequest',
+    clusterId: '',
+    hostNames: '',
+};
 
 export const DeleteClusterHostsRequest = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.DeleteClusterHostsRequest' as const,
+
     encode(
         message: DeleteClusterHostsRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -5528,9 +5927,20 @@ export const DeleteClusterHostsRequest = {
     },
 };
 
-const baseDeleteClusterHostsMetadata: object = { clusterId: '', hostNames: '' };
+messageTypeRegistry.set(
+    DeleteClusterHostsRequest.$type,
+    DeleteClusterHostsRequest
+);
+
+const baseDeleteClusterHostsMetadata: object = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.DeleteClusterHostsMetadata',
+    clusterId: '',
+    hostNames: '',
+};
 
 export const DeleteClusterHostsMetadata = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.DeleteClusterHostsMetadata' as const,
+
     encode(
         message: DeleteClusterHostsMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -5622,9 +6032,19 @@ export const DeleteClusterHostsMetadata = {
     },
 };
 
-const baseEnableClusterShardingRequest: object = { clusterId: '' };
+messageTypeRegistry.set(
+    DeleteClusterHostsMetadata.$type,
+    DeleteClusterHostsMetadata
+);
+
+const baseEnableClusterShardingRequest: object = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.EnableClusterShardingRequest',
+    clusterId: '',
+};
 
 export const EnableClusterShardingRequest = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.EnableClusterShardingRequest' as const,
+
     encode(
         message: EnableClusterShardingRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -5817,9 +6237,18 @@ export const EnableClusterShardingRequest = {
     },
 };
 
-const baseEnableClusterShardingRequest_MongoCfg: object = {};
+messageTypeRegistry.set(
+    EnableClusterShardingRequest.$type,
+    EnableClusterShardingRequest
+);
+
+const baseEnableClusterShardingRequest_MongoCfg: object = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.EnableClusterShardingRequest.MongoCfg',
+};
 
 export const EnableClusterShardingRequest_MongoCfg = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.EnableClusterShardingRequest.MongoCfg' as const,
+
     encode(
         message: EnableClusterShardingRequest_MongoCfg,
         writer: _m0.Writer = _m0.Writer.create()
@@ -5896,9 +6325,18 @@ export const EnableClusterShardingRequest_MongoCfg = {
     },
 };
 
-const baseEnableClusterShardingRequest_Mongos: object = {};
+messageTypeRegistry.set(
+    EnableClusterShardingRequest_MongoCfg.$type,
+    EnableClusterShardingRequest_MongoCfg
+);
+
+const baseEnableClusterShardingRequest_Mongos: object = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.EnableClusterShardingRequest.Mongos',
+};
 
 export const EnableClusterShardingRequest_Mongos = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.EnableClusterShardingRequest.Mongos' as const,
+
     encode(
         message: EnableClusterShardingRequest_Mongos,
         writer: _m0.Writer = _m0.Writer.create()
@@ -5975,9 +6413,18 @@ export const EnableClusterShardingRequest_Mongos = {
     },
 };
 
-const baseEnableClusterShardingRequest_MongoInfra: object = {};
+messageTypeRegistry.set(
+    EnableClusterShardingRequest_Mongos.$type,
+    EnableClusterShardingRequest_Mongos
+);
+
+const baseEnableClusterShardingRequest_MongoInfra: object = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.EnableClusterShardingRequest.MongoInfra',
+};
 
 export const EnableClusterShardingRequest_MongoInfra = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.EnableClusterShardingRequest.MongoInfra' as const,
+
     encode(
         message: EnableClusterShardingRequest_MongoInfra,
         writer: _m0.Writer = _m0.Writer.create()
@@ -6054,9 +6501,19 @@ export const EnableClusterShardingRequest_MongoInfra = {
     },
 };
 
-const baseEnableClusterShardingMetadata: object = { clusterId: '' };
+messageTypeRegistry.set(
+    EnableClusterShardingRequest_MongoInfra.$type,
+    EnableClusterShardingRequest_MongoInfra
+);
+
+const baseEnableClusterShardingMetadata: object = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.EnableClusterShardingMetadata',
+    clusterId: '',
+};
 
 export const EnableClusterShardingMetadata = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.EnableClusterShardingMetadata' as const,
+
     encode(
         message: EnableClusterShardingMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -6124,9 +6581,20 @@ export const EnableClusterShardingMetadata = {
     },
 };
 
-const baseGetClusterShardRequest: object = { clusterId: '', shardName: '' };
+messageTypeRegistry.set(
+    EnableClusterShardingMetadata.$type,
+    EnableClusterShardingMetadata
+);
+
+const baseGetClusterShardRequest: object = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.GetClusterShardRequest',
+    clusterId: '',
+    shardName: '',
+};
 
 export const GetClusterShardRequest = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.GetClusterShardRequest' as const,
+
     encode(
         message: GetClusterShardRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -6211,13 +6679,18 @@ export const GetClusterShardRequest = {
     },
 };
 
+messageTypeRegistry.set(GetClusterShardRequest.$type, GetClusterShardRequest);
+
 const baseListClusterShardsRequest: object = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.ListClusterShardsRequest',
     clusterId: '',
     pageSize: 0,
     pageToken: '',
 };
 
 export const ListClusterShardsRequest = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.ListClusterShardsRequest' as const,
+
     encode(
         message: ListClusterShardsRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -6319,9 +6792,19 @@ export const ListClusterShardsRequest = {
     },
 };
 
-const baseListClusterShardsResponse: object = { nextPageToken: '' };
+messageTypeRegistry.set(
+    ListClusterShardsRequest.$type,
+    ListClusterShardsRequest
+);
+
+const baseListClusterShardsResponse: object = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.ListClusterShardsResponse',
+    nextPageToken: '',
+};
 
 export const ListClusterShardsResponse = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.ListClusterShardsResponse' as const,
+
     encode(
         message: ListClusterShardsResponse,
         writer: _m0.Writer = _m0.Writer.create()
@@ -6422,9 +6905,20 @@ export const ListClusterShardsResponse = {
     },
 };
 
-const baseAddClusterShardRequest: object = { clusterId: '', shardName: '' };
+messageTypeRegistry.set(
+    ListClusterShardsResponse.$type,
+    ListClusterShardsResponse
+);
+
+const baseAddClusterShardRequest: object = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.AddClusterShardRequest',
+    clusterId: '',
+    shardName: '',
+};
 
 export const AddClusterShardRequest = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.AddClusterShardRequest' as const,
+
     encode(
         message: AddClusterShardRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -6537,9 +7031,17 @@ export const AddClusterShardRequest = {
     },
 };
 
-const baseAddClusterShardMetadata: object = { clusterId: '', shardName: '' };
+messageTypeRegistry.set(AddClusterShardRequest.$type, AddClusterShardRequest);
+
+const baseAddClusterShardMetadata: object = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.AddClusterShardMetadata',
+    clusterId: '',
+    shardName: '',
+};
 
 export const AddClusterShardMetadata = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.AddClusterShardMetadata' as const,
+
     encode(
         message: AddClusterShardMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -6624,9 +7126,17 @@ export const AddClusterShardMetadata = {
     },
 };
 
-const baseDeleteClusterShardRequest: object = { clusterId: '', shardName: '' };
+messageTypeRegistry.set(AddClusterShardMetadata.$type, AddClusterShardMetadata);
+
+const baseDeleteClusterShardRequest: object = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.DeleteClusterShardRequest',
+    clusterId: '',
+    shardName: '',
+};
 
 export const DeleteClusterShardRequest = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.DeleteClusterShardRequest' as const,
+
     encode(
         message: DeleteClusterShardRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -6711,9 +7221,20 @@ export const DeleteClusterShardRequest = {
     },
 };
 
-const baseDeleteClusterShardMetadata: object = { clusterId: '', shardName: '' };
+messageTypeRegistry.set(
+    DeleteClusterShardRequest.$type,
+    DeleteClusterShardRequest
+);
+
+const baseDeleteClusterShardMetadata: object = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.DeleteClusterShardMetadata',
+    clusterId: '',
+    shardName: '',
+};
 
 export const DeleteClusterShardMetadata = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.DeleteClusterShardMetadata' as const,
+
     encode(
         message: DeleteClusterShardMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -6798,9 +7319,20 @@ export const DeleteClusterShardMetadata = {
     },
 };
 
-const baseResetupHostsRequest: object = { clusterId: '', hostNames: '' };
+messageTypeRegistry.set(
+    DeleteClusterShardMetadata.$type,
+    DeleteClusterShardMetadata
+);
+
+const baseResetupHostsRequest: object = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.ResetupHostsRequest',
+    clusterId: '',
+    hostNames: '',
+};
 
 export const ResetupHostsRequest = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.ResetupHostsRequest' as const,
+
     encode(
         message: ResetupHostsRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -6884,9 +7416,17 @@ export const ResetupHostsRequest = {
     },
 };
 
-const baseResetupHostsMetadata: object = { clusterId: '', hostNames: '' };
+messageTypeRegistry.set(ResetupHostsRequest.$type, ResetupHostsRequest);
+
+const baseResetupHostsMetadata: object = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.ResetupHostsMetadata',
+    clusterId: '',
+    hostNames: '',
+};
 
 export const ResetupHostsMetadata = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.ResetupHostsMetadata' as const,
+
     encode(
         message: ResetupHostsMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -6972,9 +7512,17 @@ export const ResetupHostsMetadata = {
     },
 };
 
-const baseRestartHostsRequest: object = { clusterId: '', hostNames: '' };
+messageTypeRegistry.set(ResetupHostsMetadata.$type, ResetupHostsMetadata);
+
+const baseRestartHostsRequest: object = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.RestartHostsRequest',
+    clusterId: '',
+    hostNames: '',
+};
 
 export const RestartHostsRequest = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.RestartHostsRequest' as const,
+
     encode(
         message: RestartHostsRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -7058,9 +7606,17 @@ export const RestartHostsRequest = {
     },
 };
 
-const baseRestartHostsMetadata: object = { clusterId: '', hostNames: '' };
+messageTypeRegistry.set(RestartHostsRequest.$type, RestartHostsRequest);
+
+const baseRestartHostsMetadata: object = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.RestartHostsMetadata',
+    clusterId: '',
+    hostNames: '',
+};
 
 export const RestartHostsMetadata = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.RestartHostsMetadata' as const,
+
     encode(
         message: RestartHostsMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -7146,9 +7702,17 @@ export const RestartHostsMetadata = {
     },
 };
 
-const baseStepdownHostsRequest: object = { clusterId: '', hostNames: '' };
+messageTypeRegistry.set(RestartHostsMetadata.$type, RestartHostsMetadata);
+
+const baseStepdownHostsRequest: object = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.StepdownHostsRequest',
+    clusterId: '',
+    hostNames: '',
+};
 
 export const StepdownHostsRequest = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.StepdownHostsRequest' as const,
+
     encode(
         message: StepdownHostsRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -7234,9 +7798,17 @@ export const StepdownHostsRequest = {
     },
 };
 
-const baseStepdownHostsMetadata: object = { clusterId: '', hostNames: '' };
+messageTypeRegistry.set(StepdownHostsRequest.$type, StepdownHostsRequest);
+
+const baseStepdownHostsMetadata: object = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.StepdownHostsMetadata',
+    clusterId: '',
+    hostNames: '',
+};
 
 export const StepdownHostsMetadata = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.StepdownHostsMetadata' as const,
+
     encode(
         message: StepdownHostsMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -7328,7 +7900,10 @@ export const StepdownHostsMetadata = {
     },
 };
 
+messageTypeRegistry.set(StepdownHostsMetadata.$type, StepdownHostsMetadata);
+
 const baseHostSpec: object = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.HostSpec',
     zoneId: '',
     subnetId: '',
     assignPublicIp: false,
@@ -7337,6 +7912,8 @@ const baseHostSpec: object = {
 };
 
 export const HostSpec = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.HostSpec' as const,
+
     encode(
         message: HostSpec,
         writer: _m0.Writer = _m0.Writer.create()
@@ -7469,9 +8046,15 @@ export const HostSpec = {
     },
 };
 
-const baseMongodbspec36: object = {};
+messageTypeRegistry.set(HostSpec.$type, HostSpec);
+
+const baseMongodbspec36: object = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.MongodbSpec3_6',
+};
 
 export const Mongodbspec36 = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.MongodbSpec3_6' as const,
+
     encode(
         message: Mongodbspec36,
         writer: _m0.Writer = _m0.Writer.create()
@@ -7621,9 +8204,15 @@ export const Mongodbspec36 = {
     },
 };
 
-const baseMongodbspec36_Mongod: object = {};
+messageTypeRegistry.set(Mongodbspec36.$type, Mongodbspec36);
+
+const baseMongodbspec36_Mongod: object = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.MongodbSpec3_6.Mongod',
+};
 
 export const Mongodbspec36_Mongod = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.MongodbSpec3_6.Mongod' as const,
+
     encode(
         message: Mongodbspec36_Mongod,
         writer: _m0.Writer = _m0.Writer.create()
@@ -7720,9 +8309,15 @@ export const Mongodbspec36_Mongod = {
     },
 };
 
-const baseMongodbspec36_MongoCfg: object = {};
+messageTypeRegistry.set(Mongodbspec36_Mongod.$type, Mongodbspec36_Mongod);
+
+const baseMongodbspec36_MongoCfg: object = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.MongodbSpec3_6.MongoCfg',
+};
 
 export const Mongodbspec36_MongoCfg = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.MongodbSpec3_6.MongoCfg' as const,
+
     encode(
         message: Mongodbspec36_MongoCfg,
         writer: _m0.Writer = _m0.Writer.create()
@@ -7825,9 +8420,15 @@ export const Mongodbspec36_MongoCfg = {
     },
 };
 
-const baseMongodbspec36_Mongos: object = {};
+messageTypeRegistry.set(Mongodbspec36_MongoCfg.$type, Mongodbspec36_MongoCfg);
+
+const baseMongodbspec36_Mongos: object = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.MongodbSpec3_6.Mongos',
+};
 
 export const Mongodbspec36_Mongos = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.MongodbSpec3_6.Mongos' as const,
+
     encode(
         message: Mongodbspec36_Mongos,
         writer: _m0.Writer = _m0.Writer.create()
@@ -7924,9 +8525,15 @@ export const Mongodbspec36_Mongos = {
     },
 };
 
-const baseMongodbspec36_MongoInfra: object = {};
+messageTypeRegistry.set(Mongodbspec36_Mongos.$type, Mongodbspec36_Mongos);
+
+const baseMongodbspec36_MongoInfra: object = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.MongodbSpec3_6.MongoInfra',
+};
 
 export const Mongodbspec36_MongoInfra = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.MongodbSpec3_6.MongoInfra' as const,
+
     encode(
         message: Mongodbspec36_MongoInfra,
         writer: _m0.Writer = _m0.Writer.create()
@@ -8067,9 +8674,18 @@ export const Mongodbspec36_MongoInfra = {
     },
 };
 
-const baseMongodbspec40: object = {};
+messageTypeRegistry.set(
+    Mongodbspec36_MongoInfra.$type,
+    Mongodbspec36_MongoInfra
+);
+
+const baseMongodbspec40: object = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.MongodbSpec4_0',
+};
 
 export const Mongodbspec40 = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.MongodbSpec4_0' as const,
+
     encode(
         message: Mongodbspec40,
         writer: _m0.Writer = _m0.Writer.create()
@@ -8219,9 +8835,15 @@ export const Mongodbspec40 = {
     },
 };
 
-const baseMongodbspec40_Mongod: object = {};
+messageTypeRegistry.set(Mongodbspec40.$type, Mongodbspec40);
+
+const baseMongodbspec40_Mongod: object = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.MongodbSpec4_0.Mongod',
+};
 
 export const Mongodbspec40_Mongod = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.MongodbSpec4_0.Mongod' as const,
+
     encode(
         message: Mongodbspec40_Mongod,
         writer: _m0.Writer = _m0.Writer.create()
@@ -8318,9 +8940,15 @@ export const Mongodbspec40_Mongod = {
     },
 };
 
-const baseMongodbspec40_MongoCfg: object = {};
+messageTypeRegistry.set(Mongodbspec40_Mongod.$type, Mongodbspec40_Mongod);
+
+const baseMongodbspec40_MongoCfg: object = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.MongodbSpec4_0.MongoCfg',
+};
 
 export const Mongodbspec40_MongoCfg = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.MongodbSpec4_0.MongoCfg' as const,
+
     encode(
         message: Mongodbspec40_MongoCfg,
         writer: _m0.Writer = _m0.Writer.create()
@@ -8423,9 +9051,15 @@ export const Mongodbspec40_MongoCfg = {
     },
 };
 
-const baseMongodbspec40_Mongos: object = {};
+messageTypeRegistry.set(Mongodbspec40_MongoCfg.$type, Mongodbspec40_MongoCfg);
+
+const baseMongodbspec40_Mongos: object = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.MongodbSpec4_0.Mongos',
+};
 
 export const Mongodbspec40_Mongos = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.MongodbSpec4_0.Mongos' as const,
+
     encode(
         message: Mongodbspec40_Mongos,
         writer: _m0.Writer = _m0.Writer.create()
@@ -8522,9 +9156,15 @@ export const Mongodbspec40_Mongos = {
     },
 };
 
-const baseMongodbspec40_MongoInfra: object = {};
+messageTypeRegistry.set(Mongodbspec40_Mongos.$type, Mongodbspec40_Mongos);
+
+const baseMongodbspec40_MongoInfra: object = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.MongodbSpec4_0.MongoInfra',
+};
 
 export const Mongodbspec40_MongoInfra = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.MongodbSpec4_0.MongoInfra' as const,
+
     encode(
         message: Mongodbspec40_MongoInfra,
         writer: _m0.Writer = _m0.Writer.create()
@@ -8665,9 +9305,18 @@ export const Mongodbspec40_MongoInfra = {
     },
 };
 
-const baseMongodbspec42: object = {};
+messageTypeRegistry.set(
+    Mongodbspec40_MongoInfra.$type,
+    Mongodbspec40_MongoInfra
+);
+
+const baseMongodbspec42: object = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.MongodbSpec4_2',
+};
 
 export const Mongodbspec42 = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.MongodbSpec4_2' as const,
+
     encode(
         message: Mongodbspec42,
         writer: _m0.Writer = _m0.Writer.create()
@@ -8817,9 +9466,15 @@ export const Mongodbspec42 = {
     },
 };
 
-const baseMongodbspec42_Mongod: object = {};
+messageTypeRegistry.set(Mongodbspec42.$type, Mongodbspec42);
+
+const baseMongodbspec42_Mongod: object = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.MongodbSpec4_2.Mongod',
+};
 
 export const Mongodbspec42_Mongod = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.MongodbSpec4_2.Mongod' as const,
+
     encode(
         message: Mongodbspec42_Mongod,
         writer: _m0.Writer = _m0.Writer.create()
@@ -8916,9 +9571,15 @@ export const Mongodbspec42_Mongod = {
     },
 };
 
-const baseMongodbspec42_MongoCfg: object = {};
+messageTypeRegistry.set(Mongodbspec42_Mongod.$type, Mongodbspec42_Mongod);
+
+const baseMongodbspec42_MongoCfg: object = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.MongodbSpec4_2.MongoCfg',
+};
 
 export const Mongodbspec42_MongoCfg = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.MongodbSpec4_2.MongoCfg' as const,
+
     encode(
         message: Mongodbspec42_MongoCfg,
         writer: _m0.Writer = _m0.Writer.create()
@@ -9021,9 +9682,15 @@ export const Mongodbspec42_MongoCfg = {
     },
 };
 
-const baseMongodbspec42_Mongos: object = {};
+messageTypeRegistry.set(Mongodbspec42_MongoCfg.$type, Mongodbspec42_MongoCfg);
+
+const baseMongodbspec42_Mongos: object = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.MongodbSpec4_2.Mongos',
+};
 
 export const Mongodbspec42_Mongos = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.MongodbSpec4_2.Mongos' as const,
+
     encode(
         message: Mongodbspec42_Mongos,
         writer: _m0.Writer = _m0.Writer.create()
@@ -9120,9 +9787,15 @@ export const Mongodbspec42_Mongos = {
     },
 };
 
-const baseMongodbspec42_MongoInfra: object = {};
+messageTypeRegistry.set(Mongodbspec42_Mongos.$type, Mongodbspec42_Mongos);
+
+const baseMongodbspec42_MongoInfra: object = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.MongodbSpec4_2.MongoInfra',
+};
 
 export const Mongodbspec42_MongoInfra = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.MongodbSpec4_2.MongoInfra' as const,
+
     encode(
         message: Mongodbspec42_MongoInfra,
         writer: _m0.Writer = _m0.Writer.create()
@@ -9263,9 +9936,18 @@ export const Mongodbspec42_MongoInfra = {
     },
 };
 
-const baseMongodbspec44: object = {};
+messageTypeRegistry.set(
+    Mongodbspec42_MongoInfra.$type,
+    Mongodbspec42_MongoInfra
+);
+
+const baseMongodbspec44: object = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.MongodbSpec4_4',
+};
 
 export const Mongodbspec44 = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.MongodbSpec4_4' as const,
+
     encode(
         message: Mongodbspec44,
         writer: _m0.Writer = _m0.Writer.create()
@@ -9415,9 +10097,15 @@ export const Mongodbspec44 = {
     },
 };
 
-const baseMongodbspec44_Mongod: object = {};
+messageTypeRegistry.set(Mongodbspec44.$type, Mongodbspec44);
+
+const baseMongodbspec44_Mongod: object = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.MongodbSpec4_4.Mongod',
+};
 
 export const Mongodbspec44_Mongod = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.MongodbSpec4_4.Mongod' as const,
+
     encode(
         message: Mongodbspec44_Mongod,
         writer: _m0.Writer = _m0.Writer.create()
@@ -9514,9 +10202,15 @@ export const Mongodbspec44_Mongod = {
     },
 };
 
-const baseMongodbspec44_MongoCfg: object = {};
+messageTypeRegistry.set(Mongodbspec44_Mongod.$type, Mongodbspec44_Mongod);
+
+const baseMongodbspec44_MongoCfg: object = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.MongodbSpec4_4.MongoCfg',
+};
 
 export const Mongodbspec44_MongoCfg = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.MongodbSpec4_4.MongoCfg' as const,
+
     encode(
         message: Mongodbspec44_MongoCfg,
         writer: _m0.Writer = _m0.Writer.create()
@@ -9619,9 +10313,15 @@ export const Mongodbspec44_MongoCfg = {
     },
 };
 
-const baseMongodbspec44_Mongos: object = {};
+messageTypeRegistry.set(Mongodbspec44_MongoCfg.$type, Mongodbspec44_MongoCfg);
+
+const baseMongodbspec44_Mongos: object = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.MongodbSpec4_4.Mongos',
+};
 
 export const Mongodbspec44_Mongos = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.MongodbSpec4_4.Mongos' as const,
+
     encode(
         message: Mongodbspec44_Mongos,
         writer: _m0.Writer = _m0.Writer.create()
@@ -9718,9 +10418,15 @@ export const Mongodbspec44_Mongos = {
     },
 };
 
-const baseMongodbspec44_MongoInfra: object = {};
+messageTypeRegistry.set(Mongodbspec44_Mongos.$type, Mongodbspec44_Mongos);
+
+const baseMongodbspec44_MongoInfra: object = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.MongodbSpec4_4.MongoInfra',
+};
 
 export const Mongodbspec44_MongoInfra = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.MongodbSpec4_4.MongoInfra' as const,
+
     encode(
         message: Mongodbspec44_MongoInfra,
         writer: _m0.Writer = _m0.Writer.create()
@@ -9861,9 +10567,18 @@ export const Mongodbspec44_MongoInfra = {
     },
 };
 
-const baseMongodbspec50: object = {};
+messageTypeRegistry.set(
+    Mongodbspec44_MongoInfra.$type,
+    Mongodbspec44_MongoInfra
+);
+
+const baseMongodbspec50: object = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.MongodbSpec5_0',
+};
 
 export const Mongodbspec50 = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.MongodbSpec5_0' as const,
+
     encode(
         message: Mongodbspec50,
         writer: _m0.Writer = _m0.Writer.create()
@@ -10013,9 +10728,15 @@ export const Mongodbspec50 = {
     },
 };
 
-const baseMongodbspec50_Mongod: object = {};
+messageTypeRegistry.set(Mongodbspec50.$type, Mongodbspec50);
+
+const baseMongodbspec50_Mongod: object = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.MongodbSpec5_0.Mongod',
+};
 
 export const Mongodbspec50_Mongod = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.MongodbSpec5_0.Mongod' as const,
+
     encode(
         message: Mongodbspec50_Mongod,
         writer: _m0.Writer = _m0.Writer.create()
@@ -10112,9 +10833,15 @@ export const Mongodbspec50_Mongod = {
     },
 };
 
-const baseMongodbspec50_MongoCfg: object = {};
+messageTypeRegistry.set(Mongodbspec50_Mongod.$type, Mongodbspec50_Mongod);
+
+const baseMongodbspec50_MongoCfg: object = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.MongodbSpec5_0.MongoCfg',
+};
 
 export const Mongodbspec50_MongoCfg = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.MongodbSpec5_0.MongoCfg' as const,
+
     encode(
         message: Mongodbspec50_MongoCfg,
         writer: _m0.Writer = _m0.Writer.create()
@@ -10217,9 +10944,15 @@ export const Mongodbspec50_MongoCfg = {
     },
 };
 
-const baseMongodbspec50_Mongos: object = {};
+messageTypeRegistry.set(Mongodbspec50_MongoCfg.$type, Mongodbspec50_MongoCfg);
+
+const baseMongodbspec50_Mongos: object = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.MongodbSpec5_0.Mongos',
+};
 
 export const Mongodbspec50_Mongos = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.MongodbSpec5_0.Mongos' as const,
+
     encode(
         message: Mongodbspec50_Mongos,
         writer: _m0.Writer = _m0.Writer.create()
@@ -10316,9 +11049,15 @@ export const Mongodbspec50_Mongos = {
     },
 };
 
-const baseMongodbspec50_MongoInfra: object = {};
+messageTypeRegistry.set(Mongodbspec50_Mongos.$type, Mongodbspec50_Mongos);
+
+const baseMongodbspec50_MongoInfra: object = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.MongodbSpec5_0.MongoInfra',
+};
 
 export const Mongodbspec50_MongoInfra = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.MongodbSpec5_0.MongoInfra' as const,
+
     encode(
         message: Mongodbspec50_MongoInfra,
         writer: _m0.Writer = _m0.Writer.create()
@@ -10459,9 +11198,20 @@ export const Mongodbspec50_MongoInfra = {
     },
 };
 
-const baseConfigSpec: object = { version: '', featureCompatibilityVersion: '' };
+messageTypeRegistry.set(
+    Mongodbspec50_MongoInfra.$type,
+    Mongodbspec50_MongoInfra
+);
+
+const baseConfigSpec: object = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.ConfigSpec',
+    version: '',
+    featureCompatibilityVersion: '',
+};
 
 export const ConfigSpec = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.ConfigSpec' as const,
+
     encode(
         message: ConfigSpec,
         writer: _m0.Writer = _m0.Writer.create()
@@ -10510,7 +11260,10 @@ export const ConfigSpec = {
         }
         if (message.backupRetainPeriodDays !== undefined) {
             Int64Value.encode(
-                { value: message.backupRetainPeriodDays! },
+                {
+                    $type: 'google.protobuf.Int64Value',
+                    value: message.backupRetainPeriodDays!,
+                },
                 writer.uint32(74).fork()
             ).ldelim();
         }
@@ -10813,6 +11566,8 @@ export const ConfigSpec = {
         return message;
     },
 };
+
+messageTypeRegistry.set(ConfigSpec.$type, ConfigSpec);
 
 /** A set of methods for managing MongoDB Cluster resources. */
 export const ClusterServiceService = {
@@ -11766,13 +12521,13 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 function toTimestamp(date: Date): Timestamp {
     const seconds = date.getTime() / 1_000;
     const nanos = (date.getTime() % 1_000) * 1_000_000;
-    return { seconds, nanos };
+    return { $type: 'google.protobuf.Timestamp', seconds, nanos };
 }
 
 function fromTimestamp(t: Timestamp): Date {

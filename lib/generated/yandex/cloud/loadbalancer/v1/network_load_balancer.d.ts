@@ -17,6 +17,7 @@ export declare function ipVersionFromJSON(object: any): IpVersion;
 export declare function ipVersionToJSON(object: IpVersion): string;
 /** A NetworkLoadBalancer resource. For more information, see [Network Load Balancer](/docs/network-load-balancer/concepts). */
 export interface NetworkLoadBalancer {
+    $type: 'yandex.cloud.loadbalancer.v1.NetworkLoadBalancer';
     /** ID of the network load balancer. */
     id: string;
     /** ID of the folder that the network load balancer belongs to. */
@@ -92,11 +93,13 @@ export declare enum NetworkLoadBalancer_SessionAffinity {
 export declare function networkLoadBalancer_SessionAffinityFromJSON(object: any): NetworkLoadBalancer_SessionAffinity;
 export declare function networkLoadBalancer_SessionAffinityToJSON(object: NetworkLoadBalancer_SessionAffinity): string;
 export interface NetworkLoadBalancer_LabelsEntry {
+    $type: 'yandex.cloud.loadbalancer.v1.NetworkLoadBalancer.LabelsEntry';
     key: string;
     value: string;
 }
 /** An AttachedTargetGroup resource. For more information, see [Targets and groups](/docs/network-load-balancer/concepts/target-resources). */
 export interface AttachedTargetGroup {
+    $type: 'yandex.cloud.loadbalancer.v1.AttachedTargetGroup';
     /** ID of the target group. */
     targetGroupId: string;
     /**
@@ -107,6 +110,7 @@ export interface AttachedTargetGroup {
 }
 /** A Listener resource. For more information, see [Listener](/docs/network-load-balancer/concepts/listener) */
 export interface Listener {
+    $type: 'yandex.cloud.loadbalancer.v1.Listener';
     /** Name of the listener. The name must be unique for each listener on a single load balancer. 3-63 characters long. */
     name: string;
     /** IP address for the listener. */
@@ -133,6 +137,7 @@ export declare function listener_ProtocolFromJSON(object: any): Listener_Protoco
 export declare function listener_ProtocolToJSON(object: Listener_Protocol): string;
 /** State of the target that was returned after the last health check. */
 export interface TargetState {
+    $type: 'yandex.cloud.loadbalancer.v1.TargetState';
     /** ID of the subnet that the target is connected to. */
     subnetId: string;
     /** IP address of the target. */
@@ -158,6 +163,7 @@ export declare enum TargetState_Status {
 export declare function targetState_StatusFromJSON(object: any): TargetState_Status;
 export declare function targetState_StatusToJSON(object: TargetState_Status): string;
 export declare const NetworkLoadBalancer: {
+    $type: "yandex.cloud.loadbalancer.v1.NetworkLoadBalancer";
     encode(message: NetworkLoadBalancer, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): NetworkLoadBalancer;
     fromJSON(object: any): NetworkLoadBalancer;
@@ -165,6 +171,7 @@ export declare const NetworkLoadBalancer: {
     fromPartial(object: DeepPartial<NetworkLoadBalancer>): NetworkLoadBalancer;
 };
 export declare const NetworkLoadBalancer_LabelsEntry: {
+    $type: "yandex.cloud.loadbalancer.v1.NetworkLoadBalancer.LabelsEntry";
     encode(message: NetworkLoadBalancer_LabelsEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): NetworkLoadBalancer_LabelsEntry;
     fromJSON(object: any): NetworkLoadBalancer_LabelsEntry;
@@ -172,6 +179,7 @@ export declare const NetworkLoadBalancer_LabelsEntry: {
     fromPartial(object: DeepPartial<NetworkLoadBalancer_LabelsEntry>): NetworkLoadBalancer_LabelsEntry;
 };
 export declare const AttachedTargetGroup: {
+    $type: "yandex.cloud.loadbalancer.v1.AttachedTargetGroup";
     encode(message: AttachedTargetGroup, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): AttachedTargetGroup;
     fromJSON(object: any): AttachedTargetGroup;
@@ -179,6 +187,7 @@ export declare const AttachedTargetGroup: {
     fromPartial(object: DeepPartial<AttachedTargetGroup>): AttachedTargetGroup;
 };
 export declare const Listener: {
+    $type: "yandex.cloud.loadbalancer.v1.Listener";
     encode(message: Listener, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Listener;
     fromJSON(object: any): Listener;
@@ -186,6 +195,7 @@ export declare const Listener: {
     fromPartial(object: DeepPartial<Listener>): Listener;
 };
 export declare const TargetState: {
+    $type: "yandex.cloud.loadbalancer.v1.TargetState";
     encode(message: TargetState, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): TargetState;
     fromJSON(object: any): TargetState;
@@ -194,6 +204,6 @@ export declare const TargetState: {
 };
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

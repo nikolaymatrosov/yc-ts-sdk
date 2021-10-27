@@ -1,4 +1,5 @@
 /* eslint-disable */
+import { messageTypeRegistry } from '../../../../typeRegistry';
 import {
     ListAccessBindingsRequest,
     ListAccessBindingsResponse,
@@ -28,6 +29,7 @@ import _m0 from 'protobufjs/minimal';
 export const protobufPackage = 'yandex.cloud.billing.v1';
 
 export interface GetBillingAccountRequest {
+    $type: 'yandex.cloud.billing.v1.GetBillingAccountRequest';
     /**
      * ID of the billing account to return.
      * To get the billing account ID, use [BillingAccountService.List] request.
@@ -36,6 +38,7 @@ export interface GetBillingAccountRequest {
 }
 
 export interface ListBillingAccountsRequest {
+    $type: 'yandex.cloud.billing.v1.ListBillingAccountsRequest';
     /**
      * The maximum number of results per page to return. If the number of available
      * results is larger than [page_size],
@@ -52,6 +55,7 @@ export interface ListBillingAccountsRequest {
 }
 
 export interface ListBillingAccountsResponse {
+    $type: 'yandex.cloud.billing.v1.ListBillingAccountsResponse';
     /** List of billing accounts. */
     billingAccounts: BillingAccount[];
     /**
@@ -66,6 +70,7 @@ export interface ListBillingAccountsResponse {
 }
 
 export interface ListBillableObjectBindingsRequest {
+    $type: 'yandex.cloud.billing.v1.ListBillableObjectBindingsRequest';
     /**
      * ID of the billing account to list associated billable object bindings.
      * To get the billing account ID, use [BillingAccountService.List] request.
@@ -87,6 +92,7 @@ export interface ListBillableObjectBindingsRequest {
 }
 
 export interface ListBillableObjectBindingsResponse {
+    $type: 'yandex.cloud.billing.v1.ListBillableObjectBindingsResponse';
     /** List of billable object bindings. */
     billableObjectBindings: BillableObjectBinding[];
     /**
@@ -101,6 +107,7 @@ export interface ListBillableObjectBindingsResponse {
 }
 
 export interface BindBillableObjectRequest {
+    $type: 'yandex.cloud.billing.v1.BindBillableObjectRequest';
     /**
      * ID of the billing account to bind billable object.
      * To get the billing account ID, use [BillingAccountService.List] request.
@@ -111,13 +118,19 @@ export interface BindBillableObjectRequest {
 }
 
 export interface BindBillableObjectMetadata {
+    $type: 'yandex.cloud.billing.v1.BindBillableObjectMetadata';
     /** ID of the [yandex.cloud.billing.v1.BillableObject] that was bound to billing account. */
     billableObjectId: string;
 }
 
-const baseGetBillingAccountRequest: object = { id: '' };
+const baseGetBillingAccountRequest: object = {
+    $type: 'yandex.cloud.billing.v1.GetBillingAccountRequest',
+    id: '',
+};
 
 export const GetBillingAccountRequest = {
+    $type: 'yandex.cloud.billing.v1.GetBillingAccountRequest' as const,
+
     encode(
         message: GetBillingAccountRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -185,9 +198,20 @@ export const GetBillingAccountRequest = {
     },
 };
 
-const baseListBillingAccountsRequest: object = { pageSize: 0, pageToken: '' };
+messageTypeRegistry.set(
+    GetBillingAccountRequest.$type,
+    GetBillingAccountRequest
+);
+
+const baseListBillingAccountsRequest: object = {
+    $type: 'yandex.cloud.billing.v1.ListBillingAccountsRequest',
+    pageSize: 0,
+    pageToken: '',
+};
 
 export const ListBillingAccountsRequest = {
+    $type: 'yandex.cloud.billing.v1.ListBillingAccountsRequest' as const,
+
     encode(
         message: ListBillingAccountsRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -272,9 +296,19 @@ export const ListBillingAccountsRequest = {
     },
 };
 
-const baseListBillingAccountsResponse: object = { nextPageToken: '' };
+messageTypeRegistry.set(
+    ListBillingAccountsRequest.$type,
+    ListBillingAccountsRequest
+);
+
+const baseListBillingAccountsResponse: object = {
+    $type: 'yandex.cloud.billing.v1.ListBillingAccountsResponse',
+    nextPageToken: '',
+};
 
 export const ListBillingAccountsResponse = {
+    $type: 'yandex.cloud.billing.v1.ListBillingAccountsResponse' as const,
+
     encode(
         message: ListBillingAccountsResponse,
         writer: _m0.Writer = _m0.Writer.create()
@@ -383,13 +417,21 @@ export const ListBillingAccountsResponse = {
     },
 };
 
+messageTypeRegistry.set(
+    ListBillingAccountsResponse.$type,
+    ListBillingAccountsResponse
+);
+
 const baseListBillableObjectBindingsRequest: object = {
+    $type: 'yandex.cloud.billing.v1.ListBillableObjectBindingsRequest',
     billingAccountId: '',
     pageSize: 0,
     pageToken: '',
 };
 
 export const ListBillableObjectBindingsRequest = {
+    $type: 'yandex.cloud.billing.v1.ListBillableObjectBindingsRequest' as const,
+
     encode(
         message: ListBillableObjectBindingsRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -498,9 +540,19 @@ export const ListBillableObjectBindingsRequest = {
     },
 };
 
-const baseListBillableObjectBindingsResponse: object = { nextPageToken: '' };
+messageTypeRegistry.set(
+    ListBillableObjectBindingsRequest.$type,
+    ListBillableObjectBindingsRequest
+);
+
+const baseListBillableObjectBindingsResponse: object = {
+    $type: 'yandex.cloud.billing.v1.ListBillableObjectBindingsResponse',
+    nextPageToken: '',
+};
 
 export const ListBillableObjectBindingsResponse = {
+    $type: 'yandex.cloud.billing.v1.ListBillableObjectBindingsResponse' as const,
+
     encode(
         message: ListBillableObjectBindingsResponse,
         writer: _m0.Writer = _m0.Writer.create()
@@ -613,9 +665,19 @@ export const ListBillableObjectBindingsResponse = {
     },
 };
 
-const baseBindBillableObjectRequest: object = { billingAccountId: '' };
+messageTypeRegistry.set(
+    ListBillableObjectBindingsResponse.$type,
+    ListBillableObjectBindingsResponse
+);
+
+const baseBindBillableObjectRequest: object = {
+    $type: 'yandex.cloud.billing.v1.BindBillableObjectRequest',
+    billingAccountId: '',
+};
 
 export const BindBillableObjectRequest = {
+    $type: 'yandex.cloud.billing.v1.BindBillableObjectRequest' as const,
+
     encode(
         message: BindBillableObjectRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -726,9 +788,19 @@ export const BindBillableObjectRequest = {
     },
 };
 
-const baseBindBillableObjectMetadata: object = { billableObjectId: '' };
+messageTypeRegistry.set(
+    BindBillableObjectRequest.$type,
+    BindBillableObjectRequest
+);
+
+const baseBindBillableObjectMetadata: object = {
+    $type: 'yandex.cloud.billing.v1.BindBillableObjectMetadata',
+    billableObjectId: '',
+};
 
 export const BindBillableObjectMetadata = {
+    $type: 'yandex.cloud.billing.v1.BindBillableObjectMetadata' as const,
+
     encode(
         message: BindBillableObjectMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -802,6 +874,11 @@ export const BindBillableObjectMetadata = {
         return message;
     },
 };
+
+messageTypeRegistry.set(
+    BindBillableObjectMetadata.$type,
+    BindBillableObjectMetadata
+);
 
 /** A set of methods for managing BillingAccount resources. */
 export const BillingAccountServiceService = {
@@ -1083,7 +1160,7 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 function longToNumber(long: Long): number {

@@ -1,6 +1,7 @@
 /* eslint-disable */
 import { Duration } from '../../../../../google/protobuf/duration';
 import { Timestamp } from '../../../../../google/protobuf/timestamp';
+import { messageTypeRegistry } from '../../../../../typeRegistry';
 import Long from 'long';
 import _m0 from 'protobufjs/minimal';
 
@@ -8,6 +9,7 @@ export const protobufPackage = 'yandex.cloud.serverless.functions.v1';
 
 /** A serverless function. For details about the concept, see [Functions](/docs/functions/concepts/function). */
 export interface Function {
+    $type: 'yandex.cloud.serverless.functions.v1.Function';
     /** ID of the function. Generated at creation time. */
     id: string;
     /** ID of the folder that the function belongs to. */
@@ -83,12 +85,14 @@ export function function_StatusToJSON(object: Function_Status): string {
 }
 
 export interface Function_LabelsEntry {
+    $type: 'yandex.cloud.serverless.functions.v1.Function.LabelsEntry';
     key: string;
     value: string;
 }
 
 /** Version of a function. For details about the concept, see [Function versions](/docs/functions/concepts/function#version). */
 export interface Version {
+    $type: 'yandex.cloud.serverless.functions.v1.Version';
     /** ID of the version. */
     id: string;
     /** ID of the function that the version belongs to. */
@@ -176,23 +180,27 @@ export function version_StatusToJSON(object: Version_Status): string {
 }
 
 export interface Version_EnvironmentEntry {
+    $type: 'yandex.cloud.serverless.functions.v1.Version.EnvironmentEntry';
     key: string;
     value: string;
 }
 
 export interface Version_NamedServiceAccountsEntry {
+    $type: 'yandex.cloud.serverless.functions.v1.Version.NamedServiceAccountsEntry';
     key: string;
     value: string;
 }
 
 /** Resources allocated to a version. */
 export interface Resources {
+    $type: 'yandex.cloud.serverless.functions.v1.Resources';
     /** Amount of memory available to the version, specified in bytes. */
     memory: number;
 }
 
 /** Version deployment package. */
 export interface Package {
+    $type: 'yandex.cloud.serverless.functions.v1.Package';
     /** Name of the bucket that stores the code for the version. */
     bucketName: string;
     /** Name of the object in the bucket that stores the code for the version. */
@@ -203,6 +211,7 @@ export interface Package {
 
 /** Version connectivity specification. */
 export interface Connectivity {
+    $type: 'yandex.cloud.serverless.functions.v1.Connectivity';
     /**
      * Network the version will have access to.
      * It's essential to specify network with subnets in all availability zones.
@@ -216,6 +225,7 @@ export interface Connectivity {
 }
 
 export interface ScalingPolicy {
+    $type: 'yandex.cloud.serverless.functions.v1.ScalingPolicy';
     /** ID of the function that the scaling policy belongs to. */
     functionId: string;
     /** Tag of the version that the scaling policy belongs to. For details, see [Version tag](/docs/functions/concepts/function#tag). */
@@ -242,6 +252,7 @@ export interface ScalingPolicy {
 }
 
 const baseFunction: object = {
+    $type: 'yandex.cloud.serverless.functions.v1.Function',
     id: '',
     folderId: '',
     name: '',
@@ -252,6 +263,8 @@ const baseFunction: object = {
 };
 
 export const Function = {
+    $type: 'yandex.cloud.serverless.functions.v1.Function' as const,
+
     encode(
         message: Function,
         writer: _m0.Writer = _m0.Writer.create()
@@ -276,7 +289,11 @@ export const Function = {
         }
         Object.entries(message.labels).forEach(([key, value]) => {
             Function_LabelsEntry.encode(
-                { key: key as any, value },
+                {
+                    $type: 'yandex.cloud.serverless.functions.v1.Function.LabelsEntry',
+                    key: key as any,
+                    value,
+                },
                 writer.uint32(50).fork()
             ).ldelim();
         });
@@ -479,9 +496,17 @@ export const Function = {
     },
 };
 
-const baseFunction_LabelsEntry: object = { key: '', value: '' };
+messageTypeRegistry.set(Function.$type, Function);
+
+const baseFunction_LabelsEntry: object = {
+    $type: 'yandex.cloud.serverless.functions.v1.Function.LabelsEntry',
+    key: '',
+    value: '',
+};
 
 export const Function_LabelsEntry = {
+    $type: 'yandex.cloud.serverless.functions.v1.Function.LabelsEntry' as const,
+
     encode(
         message: Function_LabelsEntry,
         writer: _m0.Writer = _m0.Writer.create()
@@ -560,7 +585,10 @@ export const Function_LabelsEntry = {
     },
 };
 
+messageTypeRegistry.set(Function_LabelsEntry.$type, Function_LabelsEntry);
+
 const baseVersion: object = {
+    $type: 'yandex.cloud.serverless.functions.v1.Version',
     id: '',
     functionId: '',
     description: '',
@@ -574,6 +602,8 @@ const baseVersion: object = {
 };
 
 export const Version = {
+    $type: 'yandex.cloud.serverless.functions.v1.Version' as const,
+
     encode(
         message: Version,
         writer: _m0.Writer = _m0.Writer.create()
@@ -628,7 +658,11 @@ export const Version = {
         }
         Object.entries(message.environment).forEach(([key, value]) => {
             Version_EnvironmentEntry.encode(
-                { key: key as any, value },
+                {
+                    $type: 'yandex.cloud.serverless.functions.v1.Version.EnvironmentEntry',
+                    key: key as any,
+                    value,
+                },
                 writer.uint32(130).fork()
             ).ldelim();
         });
@@ -640,7 +674,11 @@ export const Version = {
         }
         Object.entries(message.namedServiceAccounts).forEach(([key, value]) => {
             Version_NamedServiceAccountsEntry.encode(
-                { key: key as any, value },
+                {
+                    $type: 'yandex.cloud.serverless.functions.v1.Version.NamedServiceAccountsEntry',
+                    key: key as any,
+                    value,
+                },
                 writer.uint32(146).fork()
             ).ldelim();
         });
@@ -998,9 +1036,17 @@ export const Version = {
     },
 };
 
-const baseVersion_EnvironmentEntry: object = { key: '', value: '' };
+messageTypeRegistry.set(Version.$type, Version);
+
+const baseVersion_EnvironmentEntry: object = {
+    $type: 'yandex.cloud.serverless.functions.v1.Version.EnvironmentEntry',
+    key: '',
+    value: '',
+};
 
 export const Version_EnvironmentEntry = {
+    $type: 'yandex.cloud.serverless.functions.v1.Version.EnvironmentEntry' as const,
+
     encode(
         message: Version_EnvironmentEntry,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1085,9 +1131,20 @@ export const Version_EnvironmentEntry = {
     },
 };
 
-const baseVersion_NamedServiceAccountsEntry: object = { key: '', value: '' };
+messageTypeRegistry.set(
+    Version_EnvironmentEntry.$type,
+    Version_EnvironmentEntry
+);
+
+const baseVersion_NamedServiceAccountsEntry: object = {
+    $type: 'yandex.cloud.serverless.functions.v1.Version.NamedServiceAccountsEntry',
+    key: '',
+    value: '',
+};
 
 export const Version_NamedServiceAccountsEntry = {
+    $type: 'yandex.cloud.serverless.functions.v1.Version.NamedServiceAccountsEntry' as const,
+
     encode(
         message: Version_NamedServiceAccountsEntry,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1172,9 +1229,19 @@ export const Version_NamedServiceAccountsEntry = {
     },
 };
 
-const baseResources: object = { memory: 0 };
+messageTypeRegistry.set(
+    Version_NamedServiceAccountsEntry.$type,
+    Version_NamedServiceAccountsEntry
+);
+
+const baseResources: object = {
+    $type: 'yandex.cloud.serverless.functions.v1.Resources',
+    memory: 0,
+};
 
 export const Resources = {
+    $type: 'yandex.cloud.serverless.functions.v1.Resources' as const,
+
     encode(
         message: Resources,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1231,9 +1298,18 @@ export const Resources = {
     },
 };
 
-const basePackage: object = { bucketName: '', objectName: '', sha256: '' };
+messageTypeRegistry.set(Resources.$type, Resources);
+
+const basePackage: object = {
+    $type: 'yandex.cloud.serverless.functions.v1.Package',
+    bucketName: '',
+    objectName: '',
+    sha256: '',
+};
 
 export const Package = {
+    $type: 'yandex.cloud.serverless.functions.v1.Package' as const,
+
     encode(
         message: Package,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1326,9 +1402,17 @@ export const Package = {
     },
 };
 
-const baseConnectivity: object = { networkId: '', subnetId: '' };
+messageTypeRegistry.set(Package.$type, Package);
+
+const baseConnectivity: object = {
+    $type: 'yandex.cloud.serverless.functions.v1.Connectivity',
+    networkId: '',
+    subnetId: '',
+};
 
 export const Connectivity = {
+    $type: 'yandex.cloud.serverless.functions.v1.Connectivity' as const,
+
     encode(
         message: Connectivity,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1409,7 +1493,10 @@ export const Connectivity = {
     },
 };
 
+messageTypeRegistry.set(Connectivity.$type, Connectivity);
+
 const baseScalingPolicy: object = {
+    $type: 'yandex.cloud.serverless.functions.v1.ScalingPolicy',
     functionId: '',
     tag: '',
     provisionedInstancesCount: 0,
@@ -1418,6 +1505,8 @@ const baseScalingPolicy: object = {
 };
 
 export const ScalingPolicy = {
+    $type: 'yandex.cloud.serverless.functions.v1.ScalingPolicy' as const,
+
     encode(
         message: ScalingPolicy,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1619,6 +1708,8 @@ export const ScalingPolicy = {
     },
 };
 
+messageTypeRegistry.set(ScalingPolicy.$type, ScalingPolicy);
+
 declare var self: any | undefined;
 declare var window: any | undefined;
 declare var global: any | undefined;
@@ -1645,13 +1736,13 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 function toTimestamp(date: Date): Timestamp {
     const seconds = date.getTime() / 1_000;
     const nanos = (date.getTime() % 1_000) * 1_000_000;
-    return { seconds, nanos };
+    return { $type: 'google.protobuf.Timestamp', seconds, nanos };
 }
 
 function fromTimestamp(t: Timestamp): Date {

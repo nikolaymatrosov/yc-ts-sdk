@@ -3,6 +3,7 @@ import { ChannelCredentials, ChannelOptions, UntypedServiceImplementation, handl
 import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.iam.v1";
 export interface CreateIamTokenRequest {
+    $type: 'yandex.cloud.iam.v1.CreateIamTokenRequest';
     /**
      * OAuth token for a Yandex.Passport account.
      * For more information, see [OAuth token](/docs/iam/concepts/authorization/oauth-token).
@@ -15,6 +16,7 @@ export interface CreateIamTokenRequest {
     jwt: string | undefined;
 }
 export interface CreateIamTokenResponse {
+    $type: 'yandex.cloud.iam.v1.CreateIamTokenResponse';
     /**
      * IAM token for the specified identity.
      *
@@ -26,9 +28,11 @@ export interface CreateIamTokenResponse {
     expiresAt: Date | undefined;
 }
 export interface CreateIamTokenForServiceAccountRequest {
+    $type: 'yandex.cloud.iam.v1.CreateIamTokenForServiceAccountRequest';
     serviceAccountId: string;
 }
 export declare const CreateIamTokenRequest: {
+    $type: "yandex.cloud.iam.v1.CreateIamTokenRequest";
     encode(message: CreateIamTokenRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateIamTokenRequest;
     fromJSON(object: any): CreateIamTokenRequest;
@@ -36,6 +40,7 @@ export declare const CreateIamTokenRequest: {
     fromPartial(object: DeepPartial<CreateIamTokenRequest>): CreateIamTokenRequest;
 };
 export declare const CreateIamTokenResponse: {
+    $type: "yandex.cloud.iam.v1.CreateIamTokenResponse";
     encode(message: CreateIamTokenResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateIamTokenResponse;
     fromJSON(object: any): CreateIamTokenResponse;
@@ -43,6 +48,7 @@ export declare const CreateIamTokenResponse: {
     fromPartial(object: DeepPartial<CreateIamTokenResponse>): CreateIamTokenResponse;
 };
 export declare const CreateIamTokenForServiceAccountRequest: {
+    $type: "yandex.cloud.iam.v1.CreateIamTokenForServiceAccountRequest";
     encode(message: CreateIamTokenForServiceAccountRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateIamTokenForServiceAccountRequest;
     fromJSON(object: any): CreateIamTokenForServiceAccountRequest;
@@ -91,6 +97,6 @@ export interface IamTokenServiceClient extends Client {
 export declare const IamTokenServiceClient: new (address: string, credentials: ChannelCredentials, options?: Partial<ChannelOptions> | undefined) => IamTokenServiceClient;
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

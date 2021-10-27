@@ -6,6 +6,7 @@ import { ChannelCredentials, ChannelOptions, UntypedServiceImplementation, handl
 import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.mdb.kafka.v1";
 export interface GetTopicRequest {
+    $type: 'yandex.cloud.mdb.kafka.v1.GetTopicRequest';
     /**
      * ID of the Apache Kafka® cluster that the topic belongs to.
      *
@@ -20,6 +21,7 @@ export interface GetTopicRequest {
     topicName: string;
 }
 export interface ListTopicsRequest {
+    $type: 'yandex.cloud.mdb.kafka.v1.ListTopicsRequest';
     /**
      * ID of the Apache Kafka® cluster to list topics in.
      *
@@ -40,6 +42,7 @@ export interface ListTopicsRequest {
     pageToken: string;
 }
 export interface ListTopicsResponse {
+    $type: 'yandex.cloud.mdb.kafka.v1.ListTopicsResponse';
     /** List of Kafka topics. */
     topics: Topic[];
     /**
@@ -51,6 +54,7 @@ export interface ListTopicsResponse {
     nextPageToken: string;
 }
 export interface CreateTopicRequest {
+    $type: 'yandex.cloud.mdb.kafka.v1.CreateTopicRequest';
     /**
      * ID of the Apache Kafka® cluster to create a topic in.
      *
@@ -61,12 +65,14 @@ export interface CreateTopicRequest {
     topicSpec: TopicSpec | undefined;
 }
 export interface CreateTopicMetadata {
+    $type: 'yandex.cloud.mdb.kafka.v1.CreateTopicMetadata';
     /** ID of the Apache Kafka® cluster where a topic is being created. */
     clusterId: string;
     /** Name of the Kafka topic that is being created. */
     topicName: string;
 }
 export interface UpdateTopicRequest {
+    $type: 'yandex.cloud.mdb.kafka.v1.UpdateTopicRequest';
     /**
      * ID of the Apache Kafka® cluster to update a topic in.
      *
@@ -88,12 +94,14 @@ export interface UpdateTopicRequest {
     topicSpec: TopicSpec | undefined;
 }
 export interface UpdateTopicMetadata {
+    $type: 'yandex.cloud.mdb.kafka.v1.UpdateTopicMetadata';
     /** ID of the Apache Kafka® cluster where a topic is being updated. */
     clusterId: string;
     /** Name of the Kafka topic that is being updated. */
     topicName: string;
 }
 export interface DeleteTopicRequest {
+    $type: 'yandex.cloud.mdb.kafka.v1.DeleteTopicRequest';
     /**
      * ID of the Apache Kafka® cluster to delete a topic in.
      *
@@ -108,12 +116,14 @@ export interface DeleteTopicRequest {
     topicName: string;
 }
 export interface DeleteTopicMetadata {
+    $type: 'yandex.cloud.mdb.kafka.v1.DeleteTopicMetadata';
     /** ID of the Apache Kafka® cluster where a topic is being deleted. */
     clusterId: string;
     /** Name of the Kafka topic that is being deleted. */
     topicName: string;
 }
 export declare const GetTopicRequest: {
+    $type: "yandex.cloud.mdb.kafka.v1.GetTopicRequest";
     encode(message: GetTopicRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): GetTopicRequest;
     fromJSON(object: any): GetTopicRequest;
@@ -121,6 +131,7 @@ export declare const GetTopicRequest: {
     fromPartial(object: DeepPartial<GetTopicRequest>): GetTopicRequest;
 };
 export declare const ListTopicsRequest: {
+    $type: "yandex.cloud.mdb.kafka.v1.ListTopicsRequest";
     encode(message: ListTopicsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListTopicsRequest;
     fromJSON(object: any): ListTopicsRequest;
@@ -128,6 +139,7 @@ export declare const ListTopicsRequest: {
     fromPartial(object: DeepPartial<ListTopicsRequest>): ListTopicsRequest;
 };
 export declare const ListTopicsResponse: {
+    $type: "yandex.cloud.mdb.kafka.v1.ListTopicsResponse";
     encode(message: ListTopicsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListTopicsResponse;
     fromJSON(object: any): ListTopicsResponse;
@@ -135,6 +147,7 @@ export declare const ListTopicsResponse: {
     fromPartial(object: DeepPartial<ListTopicsResponse>): ListTopicsResponse;
 };
 export declare const CreateTopicRequest: {
+    $type: "yandex.cloud.mdb.kafka.v1.CreateTopicRequest";
     encode(message: CreateTopicRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateTopicRequest;
     fromJSON(object: any): CreateTopicRequest;
@@ -142,6 +155,7 @@ export declare const CreateTopicRequest: {
     fromPartial(object: DeepPartial<CreateTopicRequest>): CreateTopicRequest;
 };
 export declare const CreateTopicMetadata: {
+    $type: "yandex.cloud.mdb.kafka.v1.CreateTopicMetadata";
     encode(message: CreateTopicMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateTopicMetadata;
     fromJSON(object: any): CreateTopicMetadata;
@@ -149,6 +163,7 @@ export declare const CreateTopicMetadata: {
     fromPartial(object: DeepPartial<CreateTopicMetadata>): CreateTopicMetadata;
 };
 export declare const UpdateTopicRequest: {
+    $type: "yandex.cloud.mdb.kafka.v1.UpdateTopicRequest";
     encode(message: UpdateTopicRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateTopicRequest;
     fromJSON(object: any): UpdateTopicRequest;
@@ -156,6 +171,7 @@ export declare const UpdateTopicRequest: {
     fromPartial(object: DeepPartial<UpdateTopicRequest>): UpdateTopicRequest;
 };
 export declare const UpdateTopicMetadata: {
+    $type: "yandex.cloud.mdb.kafka.v1.UpdateTopicMetadata";
     encode(message: UpdateTopicMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateTopicMetadata;
     fromJSON(object: any): UpdateTopicMetadata;
@@ -163,6 +179,7 @@ export declare const UpdateTopicMetadata: {
     fromPartial(object: DeepPartial<UpdateTopicMetadata>): UpdateTopicMetadata;
 };
 export declare const DeleteTopicRequest: {
+    $type: "yandex.cloud.mdb.kafka.v1.DeleteTopicRequest";
     encode(message: DeleteTopicRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteTopicRequest;
     fromJSON(object: any): DeleteTopicRequest;
@@ -170,6 +187,7 @@ export declare const DeleteTopicRequest: {
     fromPartial(object: DeepPartial<DeleteTopicRequest>): DeleteTopicRequest;
 };
 export declare const DeleteTopicMetadata: {
+    $type: "yandex.cloud.mdb.kafka.v1.DeleteTopicMetadata";
     encode(message: DeleteTopicMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteTopicMetadata;
     fromJSON(object: any): DeleteTopicMetadata;
@@ -278,6 +296,6 @@ export interface TopicServiceClient extends Client {
 export declare const TopicServiceClient: new (address: string, credentials: ChannelCredentials, options?: Partial<ChannelOptions> | undefined) => TopicServiceClient;
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

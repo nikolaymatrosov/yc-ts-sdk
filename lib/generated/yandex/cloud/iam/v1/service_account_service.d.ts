@@ -7,6 +7,7 @@ import { ChannelCredentials, ChannelOptions, UntypedServiceImplementation, handl
 import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.iam.v1";
 export interface GetServiceAccountRequest {
+    $type: 'yandex.cloud.iam.v1.GetServiceAccountRequest';
     /**
      * ID of the ServiceAccount resource to return.
      * To get the service account ID, use a [ServiceAccountService.List] request.
@@ -14,6 +15,7 @@ export interface GetServiceAccountRequest {
     serviceAccountId: string;
 }
 export interface ListServiceAccountsRequest {
+    $type: 'yandex.cloud.iam.v1.ListServiceAccountsRequest';
     /**
      * ID of the folder to list service accounts in.
      * To get the folder ID, use a [yandex.cloud.resourcemanager.v1.FolderService.List] request.
@@ -43,6 +45,7 @@ export interface ListServiceAccountsRequest {
     filter: string;
 }
 export interface ListServiceAccountsResponse {
+    $type: 'yandex.cloud.iam.v1.ListServiceAccountsResponse';
     /** List of ServiceAccount resources. */
     serviceAccounts: ServiceAccount[];
     /**
@@ -56,6 +59,7 @@ export interface ListServiceAccountsResponse {
     nextPageToken: string;
 }
 export interface CreateServiceAccountRequest {
+    $type: 'yandex.cloud.iam.v1.CreateServiceAccountRequest';
     /**
      * ID of the folder to create a service account in.
      * To get the folder ID, use a [yandex.cloud.resourcemanager.v1.FolderService.List] request.
@@ -74,14 +78,17 @@ export interface CreateServiceAccountRequest {
     };
 }
 export interface CreateServiceAccountRequest_LabelsEntry {
+    $type: 'yandex.cloud.iam.v1.CreateServiceAccountRequest.LabelsEntry';
     key: string;
     value: string;
 }
 export interface CreateServiceAccountMetadata {
+    $type: 'yandex.cloud.iam.v1.CreateServiceAccountMetadata';
     /** ID of the service account that is being created. */
     serviceAccountId: string;
 }
 export interface UpdateServiceAccountRequest {
+    $type: 'yandex.cloud.iam.v1.UpdateServiceAccountRequest';
     /**
      * ID of the ServiceAccount resource to update.
      * To get the service account ID, use a [ServiceAccountService.List] request.
@@ -102,14 +109,17 @@ export interface UpdateServiceAccountRequest {
     };
 }
 export interface UpdateServiceAccountRequest_LabelsEntry {
+    $type: 'yandex.cloud.iam.v1.UpdateServiceAccountRequest.LabelsEntry';
     key: string;
     value: string;
 }
 export interface UpdateServiceAccountMetadata {
+    $type: 'yandex.cloud.iam.v1.UpdateServiceAccountMetadata';
     /** ID of the ServiceAccount resource that is being updated. */
     serviceAccountId: string;
 }
 export interface DeleteServiceAccountRequest {
+    $type: 'yandex.cloud.iam.v1.DeleteServiceAccountRequest';
     /**
      * ID of the service account to delete.
      * To get the service account ID, use a [ServiceAccountService.List] request.
@@ -117,10 +127,12 @@ export interface DeleteServiceAccountRequest {
     serviceAccountId: string;
 }
 export interface DeleteServiceAccountMetadata {
+    $type: 'yandex.cloud.iam.v1.DeleteServiceAccountMetadata';
     /** ID of the service account that is being deleted. */
     serviceAccountId: string;
 }
 export interface ListServiceAccountOperationsRequest {
+    $type: 'yandex.cloud.iam.v1.ListServiceAccountOperationsRequest';
     /** ID of the ServiceAccount resource to list operations for. */
     serviceAccountId: string;
     /**
@@ -138,6 +150,7 @@ export interface ListServiceAccountOperationsRequest {
     pageToken: string;
 }
 export interface ListServiceAccountOperationsResponse {
+    $type: 'yandex.cloud.iam.v1.ListServiceAccountOperationsResponse';
     /** List of operations for the specified service account. */
     operations: Operation[];
     /**
@@ -149,6 +162,7 @@ export interface ListServiceAccountOperationsResponse {
     nextPageToken: string;
 }
 export declare const GetServiceAccountRequest: {
+    $type: "yandex.cloud.iam.v1.GetServiceAccountRequest";
     encode(message: GetServiceAccountRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): GetServiceAccountRequest;
     fromJSON(object: any): GetServiceAccountRequest;
@@ -156,6 +170,7 @@ export declare const GetServiceAccountRequest: {
     fromPartial(object: DeepPartial<GetServiceAccountRequest>): GetServiceAccountRequest;
 };
 export declare const ListServiceAccountsRequest: {
+    $type: "yandex.cloud.iam.v1.ListServiceAccountsRequest";
     encode(message: ListServiceAccountsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListServiceAccountsRequest;
     fromJSON(object: any): ListServiceAccountsRequest;
@@ -163,6 +178,7 @@ export declare const ListServiceAccountsRequest: {
     fromPartial(object: DeepPartial<ListServiceAccountsRequest>): ListServiceAccountsRequest;
 };
 export declare const ListServiceAccountsResponse: {
+    $type: "yandex.cloud.iam.v1.ListServiceAccountsResponse";
     encode(message: ListServiceAccountsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListServiceAccountsResponse;
     fromJSON(object: any): ListServiceAccountsResponse;
@@ -170,6 +186,7 @@ export declare const ListServiceAccountsResponse: {
     fromPartial(object: DeepPartial<ListServiceAccountsResponse>): ListServiceAccountsResponse;
 };
 export declare const CreateServiceAccountRequest: {
+    $type: "yandex.cloud.iam.v1.CreateServiceAccountRequest";
     encode(message: CreateServiceAccountRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateServiceAccountRequest;
     fromJSON(object: any): CreateServiceAccountRequest;
@@ -177,6 +194,7 @@ export declare const CreateServiceAccountRequest: {
     fromPartial(object: DeepPartial<CreateServiceAccountRequest>): CreateServiceAccountRequest;
 };
 export declare const CreateServiceAccountRequest_LabelsEntry: {
+    $type: "yandex.cloud.iam.v1.CreateServiceAccountRequest.LabelsEntry";
     encode(message: CreateServiceAccountRequest_LabelsEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateServiceAccountRequest_LabelsEntry;
     fromJSON(object: any): CreateServiceAccountRequest_LabelsEntry;
@@ -184,6 +202,7 @@ export declare const CreateServiceAccountRequest_LabelsEntry: {
     fromPartial(object: DeepPartial<CreateServiceAccountRequest_LabelsEntry>): CreateServiceAccountRequest_LabelsEntry;
 };
 export declare const CreateServiceAccountMetadata: {
+    $type: "yandex.cloud.iam.v1.CreateServiceAccountMetadata";
     encode(message: CreateServiceAccountMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateServiceAccountMetadata;
     fromJSON(object: any): CreateServiceAccountMetadata;
@@ -191,6 +210,7 @@ export declare const CreateServiceAccountMetadata: {
     fromPartial(object: DeepPartial<CreateServiceAccountMetadata>): CreateServiceAccountMetadata;
 };
 export declare const UpdateServiceAccountRequest: {
+    $type: "yandex.cloud.iam.v1.UpdateServiceAccountRequest";
     encode(message: UpdateServiceAccountRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateServiceAccountRequest;
     fromJSON(object: any): UpdateServiceAccountRequest;
@@ -198,6 +218,7 @@ export declare const UpdateServiceAccountRequest: {
     fromPartial(object: DeepPartial<UpdateServiceAccountRequest>): UpdateServiceAccountRequest;
 };
 export declare const UpdateServiceAccountRequest_LabelsEntry: {
+    $type: "yandex.cloud.iam.v1.UpdateServiceAccountRequest.LabelsEntry";
     encode(message: UpdateServiceAccountRequest_LabelsEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateServiceAccountRequest_LabelsEntry;
     fromJSON(object: any): UpdateServiceAccountRequest_LabelsEntry;
@@ -205,6 +226,7 @@ export declare const UpdateServiceAccountRequest_LabelsEntry: {
     fromPartial(object: DeepPartial<UpdateServiceAccountRequest_LabelsEntry>): UpdateServiceAccountRequest_LabelsEntry;
 };
 export declare const UpdateServiceAccountMetadata: {
+    $type: "yandex.cloud.iam.v1.UpdateServiceAccountMetadata";
     encode(message: UpdateServiceAccountMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateServiceAccountMetadata;
     fromJSON(object: any): UpdateServiceAccountMetadata;
@@ -212,6 +234,7 @@ export declare const UpdateServiceAccountMetadata: {
     fromPartial(object: DeepPartial<UpdateServiceAccountMetadata>): UpdateServiceAccountMetadata;
 };
 export declare const DeleteServiceAccountRequest: {
+    $type: "yandex.cloud.iam.v1.DeleteServiceAccountRequest";
     encode(message: DeleteServiceAccountRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteServiceAccountRequest;
     fromJSON(object: any): DeleteServiceAccountRequest;
@@ -219,6 +242,7 @@ export declare const DeleteServiceAccountRequest: {
     fromPartial(object: DeepPartial<DeleteServiceAccountRequest>): DeleteServiceAccountRequest;
 };
 export declare const DeleteServiceAccountMetadata: {
+    $type: "yandex.cloud.iam.v1.DeleteServiceAccountMetadata";
     encode(message: DeleteServiceAccountMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteServiceAccountMetadata;
     fromJSON(object: any): DeleteServiceAccountMetadata;
@@ -226,6 +250,7 @@ export declare const DeleteServiceAccountMetadata: {
     fromPartial(object: DeepPartial<DeleteServiceAccountMetadata>): DeleteServiceAccountMetadata;
 };
 export declare const ListServiceAccountOperationsRequest: {
+    $type: "yandex.cloud.iam.v1.ListServiceAccountOperationsRequest";
     encode(message: ListServiceAccountOperationsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListServiceAccountOperationsRequest;
     fromJSON(object: any): ListServiceAccountOperationsRequest;
@@ -233,6 +258,7 @@ export declare const ListServiceAccountOperationsRequest: {
     fromPartial(object: DeepPartial<ListServiceAccountOperationsRequest>): ListServiceAccountOperationsRequest;
 };
 export declare const ListServiceAccountOperationsResponse: {
+    $type: "yandex.cloud.iam.v1.ListServiceAccountOperationsResponse";
     encode(message: ListServiceAccountOperationsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListServiceAccountOperationsResponse;
     fromJSON(object: any): ListServiceAccountOperationsResponse;
@@ -405,6 +431,6 @@ export interface ServiceAccountServiceClient extends Client {
 export declare const ServiceAccountServiceClient: new (address: string, credentials: ChannelCredentials, options?: Partial<ChannelOptions> | undefined) => ServiceAccountServiceClient;
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

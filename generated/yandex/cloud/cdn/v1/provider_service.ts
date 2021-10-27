@@ -1,4 +1,5 @@
 /* eslint-disable */
+import { messageTypeRegistry } from '../../../../typeRegistry';
 import { Operation } from '../../../../yandex/cloud/operation/operation';
 import {
     makeGenericClientConstructor,
@@ -18,6 +19,7 @@ import _m0 from 'protobufjs/minimal';
 export const protobufPackage = 'yandex.cloud.cdn.v1';
 
 export interface ActivateProviderRequest {
+    $type: 'yandex.cloud.cdn.v1.ActivateProviderRequest';
     /** ID of the folder that the activate provider belongs to. */
     folderId: string;
     /**
@@ -29,23 +31,32 @@ export interface ActivateProviderRequest {
 }
 
 export interface ActivateProviderMetadata {
+    $type: 'yandex.cloud.cdn.v1.ActivateProviderMetadata';
     /** ID of the folder that the activate provider belongs to. */
     folderId: string;
 }
 
 export interface ListActivatedProvidersRequest {
+    $type: 'yandex.cloud.cdn.v1.ListActivatedProvidersRequest';
     /** ID of the folder that the activate provider belongs to. */
     folderId: string;
 }
 
 export interface ListActivatedProvidersResponse {
+    $type: 'yandex.cloud.cdn.v1.ListActivatedProvidersResponse';
     /** Creates a list of providers. */
     providers: string[];
 }
 
-const baseActivateProviderRequest: object = { folderId: '', providerType: '' };
+const baseActivateProviderRequest: object = {
+    $type: 'yandex.cloud.cdn.v1.ActivateProviderRequest',
+    folderId: '',
+    providerType: '',
+};
 
 export const ActivateProviderRequest = {
+    $type: 'yandex.cloud.cdn.v1.ActivateProviderRequest' as const,
+
     encode(
         message: ActivateProviderRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -131,9 +142,16 @@ export const ActivateProviderRequest = {
     },
 };
 
-const baseActivateProviderMetadata: object = { folderId: '' };
+messageTypeRegistry.set(ActivateProviderRequest.$type, ActivateProviderRequest);
+
+const baseActivateProviderMetadata: object = {
+    $type: 'yandex.cloud.cdn.v1.ActivateProviderMetadata',
+    folderId: '',
+};
 
 export const ActivateProviderMetadata = {
+    $type: 'yandex.cloud.cdn.v1.ActivateProviderMetadata' as const,
+
     encode(
         message: ActivateProviderMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -201,9 +219,19 @@ export const ActivateProviderMetadata = {
     },
 };
 
-const baseListActivatedProvidersRequest: object = { folderId: '' };
+messageTypeRegistry.set(
+    ActivateProviderMetadata.$type,
+    ActivateProviderMetadata
+);
+
+const baseListActivatedProvidersRequest: object = {
+    $type: 'yandex.cloud.cdn.v1.ListActivatedProvidersRequest',
+    folderId: '',
+};
 
 export const ListActivatedProvidersRequest = {
+    $type: 'yandex.cloud.cdn.v1.ListActivatedProvidersRequest' as const,
+
     encode(
         message: ListActivatedProvidersRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -271,9 +299,19 @@ export const ListActivatedProvidersRequest = {
     },
 };
 
-const baseListActivatedProvidersResponse: object = { providers: '' };
+messageTypeRegistry.set(
+    ListActivatedProvidersRequest.$type,
+    ListActivatedProvidersRequest
+);
+
+const baseListActivatedProvidersResponse: object = {
+    $type: 'yandex.cloud.cdn.v1.ListActivatedProvidersResponse',
+    providers: '',
+};
 
 export const ListActivatedProvidersResponse = {
+    $type: 'yandex.cloud.cdn.v1.ListActivatedProvidersResponse' as const,
+
     encode(
         message: ListActivatedProvidersResponse,
         writer: _m0.Writer = _m0.Writer.create()
@@ -347,6 +385,11 @@ export const ListActivatedProvidersResponse = {
         return message;
     },
 };
+
+messageTypeRegistry.set(
+    ListActivatedProvidersResponse.$type,
+    ListActivatedProvidersResponse
+);
 
 /** A set of methods for managing Provider Service resources. */
 export const ProviderServiceService = {
@@ -459,7 +502,7 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 if (_m0.util.Long !== Long) {

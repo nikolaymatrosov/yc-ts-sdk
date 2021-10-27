@@ -12,8 +12,10 @@ export declare const protobufPackage = "google.protobuf";
  * The JSON representation for `Empty` is empty JSON object `{}`.
  */
 export interface Empty {
+    $type: 'google.protobuf.Empty';
 }
 export declare const Empty: {
+    $type: "google.protobuf.Empty";
     encode(_: Empty, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Empty;
     fromJSON(_: any): Empty;
@@ -22,6 +24,6 @@ export declare const Empty: {
 };
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

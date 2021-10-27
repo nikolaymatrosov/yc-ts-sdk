@@ -1,4 +1,5 @@
 /* eslint-disable */
+import { messageTypeRegistry } from '../../../../../typeRegistry';
 import { Version } from '../../../../../yandex/cloud/mdb/clickhouse/v1/version';
 import {
     makeGenericClientConstructor,
@@ -18,6 +19,7 @@ import _m0 from 'protobufjs/minimal';
 export const protobufPackage = 'yandex.cloud.mdb.clickhouse.v1';
 
 export interface ListVersionsRequest {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.ListVersionsRequest';
     /**
      * The maximum number of results per page that should be returned. If the number of available
      * results is larger than [page_size], the service returns a [ListVersionsResponse.next_page_token] that can be used
@@ -33,6 +35,7 @@ export interface ListVersionsRequest {
 }
 
 export interface ListVersionsResponse {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.ListVersionsResponse';
     /** Requested list of available versions. */
     version: Version[];
     /**
@@ -45,9 +48,15 @@ export interface ListVersionsResponse {
     nextPageToken: string;
 }
 
-const baseListVersionsRequest: object = { pageSize: 0, pageToken: '' };
+const baseListVersionsRequest: object = {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.ListVersionsRequest',
+    pageSize: 0,
+    pageToken: '',
+};
 
 export const ListVersionsRequest = {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.ListVersionsRequest' as const,
+
     encode(
         message: ListVersionsRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -124,9 +133,16 @@ export const ListVersionsRequest = {
     },
 };
 
-const baseListVersionsResponse: object = { nextPageToken: '' };
+messageTypeRegistry.set(ListVersionsRequest.$type, ListVersionsRequest);
+
+const baseListVersionsResponse: object = {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.ListVersionsResponse',
+    nextPageToken: '',
+};
 
 export const ListVersionsResponse = {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.ListVersionsResponse' as const,
+
     encode(
         message: ListVersionsResponse,
         writer: _m0.Writer = _m0.Writer.create()
@@ -223,6 +239,8 @@ export const ListVersionsResponse = {
     },
 };
 
+messageTypeRegistry.set(ListVersionsResponse.$type, ListVersionsResponse);
+
 /** A set of methods for managing ClickHouse versions. */
 export const VersionsServiceService = {
     /** Returns list of available ClickHouse versions. */
@@ -311,7 +329,7 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 function longToNumber(long: Long): number {

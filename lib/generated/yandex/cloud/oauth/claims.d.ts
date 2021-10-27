@@ -2,6 +2,7 @@ import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.oauth";
 /** Claims representation, see https://openid.net/specs/openid-connect-core-1_0.html#StandardClaims for details. */
 export interface SubjectClaims {
+    $type: 'yandex.cloud.oauth.SubjectClaims';
     /** Subject - Identifier for the End-User at the Issuer. */
     sub: string;
     /** End-User's full name in displayable form including all name parts, possibly including titles and suffixes, ordered according to the End-User's locale and preferences. */
@@ -42,12 +43,14 @@ export interface SubjectClaims {
 }
 /** Minimalistic analog of yandex.cloud.organizationmanager.v1.saml.Federation */
 export interface Federation {
+    $type: 'yandex.cloud.oauth.Federation';
     /** ID of the federation. */
     id: string;
     /** Name of the federation. The name is unique within the cloud or organization */
     name: string;
 }
 export declare const SubjectClaims: {
+    $type: "yandex.cloud.oauth.SubjectClaims";
     encode(message: SubjectClaims, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): SubjectClaims;
     fromJSON(object: any): SubjectClaims;
@@ -55,6 +58,7 @@ export declare const SubjectClaims: {
     fromPartial(object: DeepPartial<SubjectClaims>): SubjectClaims;
 };
 export declare const Federation: {
+    $type: "yandex.cloud.oauth.Federation";
     encode(message: Federation, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Federation;
     fromJSON(object: any): Federation;
@@ -63,6 +67,6 @@ export declare const Federation: {
 };
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

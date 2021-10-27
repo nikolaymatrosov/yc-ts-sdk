@@ -1,5 +1,6 @@
 /* eslint-disable */
 import { FieldMask } from '../../../../../google/protobuf/field_mask';
+import { messageTypeRegistry } from '../../../../../typeRegistry';
 import {
     User,
     UserSpec,
@@ -23,6 +24,7 @@ import _m0 from 'protobufjs/minimal';
 export const protobufPackage = 'yandex.cloud.mdb.elasticsearch.v1';
 
 export interface GetUserRequest {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.GetUserRequest';
     /**
      * ID of the Elasticsearch cluster the user belongs to.
      *
@@ -38,6 +40,7 @@ export interface GetUserRequest {
 }
 
 export interface ListUsersRequest {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.ListUsersRequest';
     /**
      * ID of the Elasticsearch cluster to list Elasticsearch users in.
      *
@@ -59,6 +62,7 @@ export interface ListUsersRequest {
 }
 
 export interface ListUsersResponse {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.ListUsersResponse';
     /** List of Elasticsearch users. */
     users: User[];
     /**
@@ -71,6 +75,7 @@ export interface ListUsersResponse {
 }
 
 export interface CreateUserRequest {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.CreateUserRequest';
     /**
      * ID of the Elasticsearch cluster to create a user in.
      *
@@ -82,6 +87,7 @@ export interface CreateUserRequest {
 }
 
 export interface CreateUserMetadata {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.CreateUserMetadata';
     /** ID of the Elasticsearch cluster the user is being created in. */
     clusterId: string;
     /** Name of the user that is being created. */
@@ -89,6 +95,7 @@ export interface CreateUserMetadata {
 }
 
 export interface UpdateUserRequest {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.UpdateUserRequest';
     /**
      * ID of the Elasticsearch cluster the user belongs to.
      *
@@ -107,6 +114,7 @@ export interface UpdateUserRequest {
 }
 
 export interface UpdateUserMetadata {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.UpdateUserMetadata';
     /** ID of the Elasticsearch cluster the user belongs to. */
     clusterId: string;
     /** Name of the user that is being updated. */
@@ -114,6 +122,7 @@ export interface UpdateUserMetadata {
 }
 
 export interface DeleteUserRequest {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.DeleteUserRequest';
     /**
      * ID of the Elasticsearch cluster the user belongs to.
      *
@@ -129,15 +138,22 @@ export interface DeleteUserRequest {
 }
 
 export interface DeleteUserMetadata {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.DeleteUserMetadata';
     /** ID of the Elasticsearch cluster the user belongs to. */
     clusterId: string;
     /** Name of the user that is being deleted. */
     userName: string;
 }
 
-const baseGetUserRequest: object = { clusterId: '', userName: '' };
+const baseGetUserRequest: object = {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.GetUserRequest',
+    clusterId: '',
+    userName: '',
+};
 
 export const GetUserRequest = {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.GetUserRequest' as const,
+
     encode(
         message: GetUserRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -211,13 +227,18 @@ export const GetUserRequest = {
     },
 };
 
+messageTypeRegistry.set(GetUserRequest.$type, GetUserRequest);
+
 const baseListUsersRequest: object = {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.ListUsersRequest',
     clusterId: '',
     pageSize: 0,
     pageToken: '',
 };
 
 export const ListUsersRequest = {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.ListUsersRequest' as const,
+
     encode(
         message: ListUsersRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -308,9 +329,16 @@ export const ListUsersRequest = {
     },
 };
 
-const baseListUsersResponse: object = { nextPageToken: '' };
+messageTypeRegistry.set(ListUsersRequest.$type, ListUsersRequest);
+
+const baseListUsersResponse: object = {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.ListUsersResponse',
+    nextPageToken: '',
+};
 
 export const ListUsersResponse = {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.ListUsersResponse' as const,
+
     encode(
         message: ListUsersResponse,
         writer: _m0.Writer = _m0.Writer.create()
@@ -400,9 +428,16 @@ export const ListUsersResponse = {
     },
 };
 
-const baseCreateUserRequest: object = { clusterId: '' };
+messageTypeRegistry.set(ListUsersResponse.$type, ListUsersResponse);
+
+const baseCreateUserRequest: object = {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.CreateUserRequest',
+    clusterId: '',
+};
 
 export const CreateUserRequest = {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.CreateUserRequest' as const,
+
     encode(
         message: CreateUserRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -482,9 +517,17 @@ export const CreateUserRequest = {
     },
 };
 
-const baseCreateUserMetadata: object = { clusterId: '', userName: '' };
+messageTypeRegistry.set(CreateUserRequest.$type, CreateUserRequest);
+
+const baseCreateUserMetadata: object = {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.CreateUserMetadata',
+    clusterId: '',
+    userName: '',
+};
 
 export const CreateUserMetadata = {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.CreateUserMetadata' as const,
+
     encode(
         message: CreateUserMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -561,13 +604,18 @@ export const CreateUserMetadata = {
     },
 };
 
+messageTypeRegistry.set(CreateUserMetadata.$type, CreateUserMetadata);
+
 const baseUpdateUserRequest: object = {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.UpdateUserRequest',
     clusterId: '',
     userName: '',
     password: '',
 };
 
 export const UpdateUserRequest = {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.UpdateUserRequest' as const,
+
     encode(
         message: UpdateUserRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -684,9 +732,17 @@ export const UpdateUserRequest = {
     },
 };
 
-const baseUpdateUserMetadata: object = { clusterId: '', userName: '' };
+messageTypeRegistry.set(UpdateUserRequest.$type, UpdateUserRequest);
+
+const baseUpdateUserMetadata: object = {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.UpdateUserMetadata',
+    clusterId: '',
+    userName: '',
+};
 
 export const UpdateUserMetadata = {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.UpdateUserMetadata' as const,
+
     encode(
         message: UpdateUserMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -763,9 +819,17 @@ export const UpdateUserMetadata = {
     },
 };
 
-const baseDeleteUserRequest: object = { clusterId: '', userName: '' };
+messageTypeRegistry.set(UpdateUserMetadata.$type, UpdateUserMetadata);
+
+const baseDeleteUserRequest: object = {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.DeleteUserRequest',
+    clusterId: '',
+    userName: '',
+};
 
 export const DeleteUserRequest = {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.DeleteUserRequest' as const,
+
     encode(
         message: DeleteUserRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -839,9 +903,17 @@ export const DeleteUserRequest = {
     },
 };
 
-const baseDeleteUserMetadata: object = { clusterId: '', userName: '' };
+messageTypeRegistry.set(DeleteUserRequest.$type, DeleteUserRequest);
+
+const baseDeleteUserMetadata: object = {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.DeleteUserMetadata',
+    clusterId: '',
+    userName: '',
+};
 
 export const DeleteUserMetadata = {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.DeleteUserMetadata' as const,
+
     encode(
         message: DeleteUserMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -917,6 +989,8 @@ export const DeleteUserMetadata = {
         return message;
     },
 };
+
+messageTypeRegistry.set(DeleteUserMetadata.$type, DeleteUserMetadata);
 
 /** A set of methods for managing Elasticsearch users. */
 export const UserServiceService = {
@@ -1136,7 +1210,7 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 function longToNumber(long: Long): number {

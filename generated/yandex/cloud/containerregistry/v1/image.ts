@@ -1,5 +1,6 @@
 /* eslint-disable */
 import { Timestamp } from '../../../../google/protobuf/timestamp';
+import { messageTypeRegistry } from '../../../../typeRegistry';
 import { Blob } from '../../../../yandex/cloud/containerregistry/v1/blob';
 import Long from 'long';
 import _m0 from 'protobufjs/minimal';
@@ -8,6 +9,7 @@ export const protobufPackage = 'yandex.cloud.containerregistry.v1';
 
 /** An Image resource. For more information, see [Docker image](/docs/cloud/container-registry/docker-image). */
 export interface Image {
+    $type: 'yandex.cloud.containerregistry.v1.Image';
     /** Output only. ID of the Docker image. */
     id: string;
     /**
@@ -34,6 +36,7 @@ export interface Image {
 }
 
 const baseImage: object = {
+    $type: 'yandex.cloud.containerregistry.v1.Image',
     id: '',
     name: '',
     digest: '',
@@ -42,6 +45,8 @@ const baseImage: object = {
 };
 
 export const Image = {
+    $type: 'yandex.cloud.containerregistry.v1.Image' as const,
+
     encode(
         message: Image,
         writer: _m0.Writer = _m0.Writer.create()
@@ -251,6 +256,8 @@ export const Image = {
     },
 };
 
+messageTypeRegistry.set(Image.$type, Image);
+
 declare var self: any | undefined;
 declare var window: any | undefined;
 declare var global: any | undefined;
@@ -277,13 +284,13 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 function toTimestamp(date: Date): Timestamp {
     const seconds = date.getTime() / 1_000;
     const nanos = (date.getTime() % 1_000) * 1_000_000;
-    return { seconds, nanos };
+    return { $type: 'google.protobuf.Timestamp', seconds, nanos };
 }
 
 function fromTimestamp(t: Timestamp): Date {

@@ -1,12 +1,14 @@
 /* eslint-disable */
 import { Duration } from '../../../../google/protobuf/duration';
 import { Timestamp } from '../../../../google/protobuf/timestamp';
+import { messageTypeRegistry } from '../../../../typeRegistry';
 import Long from 'long';
 import _m0 from 'protobufjs/minimal';
 
 export const protobufPackage = 'yandex.cloud.containerregistry.v1';
 
 export interface LifecyclePolicy {
+    $type: 'yandex.cloud.containerregistry.v1.LifecyclePolicy';
     /** ID of the lifecycle policy. */
     id: string;
     /** Name of the lifecycle policy. */
@@ -77,6 +79,7 @@ export function lifecyclePolicy_StatusToJSON(
 }
 
 export interface LifecycleRule {
+    $type: 'yandex.cloud.containerregistry.v1.LifecycleRule';
     /** Description of the lifecycle policy rule. */
     description: string;
     /**
@@ -93,6 +96,7 @@ export interface LifecycleRule {
 }
 
 const baseLifecyclePolicy: object = {
+    $type: 'yandex.cloud.containerregistry.v1.LifecyclePolicy',
     id: '',
     name: '',
     repositoryId: '',
@@ -101,6 +105,8 @@ const baseLifecyclePolicy: object = {
 };
 
 export const LifecyclePolicy = {
+    $type: 'yandex.cloud.containerregistry.v1.LifecyclePolicy' as const,
+
     encode(
         message: LifecyclePolicy,
         writer: _m0.Writer = _m0.Writer.create()
@@ -279,7 +285,10 @@ export const LifecyclePolicy = {
     },
 };
 
+messageTypeRegistry.set(LifecyclePolicy.$type, LifecyclePolicy);
+
 const baseLifecycleRule: object = {
+    $type: 'yandex.cloud.containerregistry.v1.LifecycleRule',
     description: '',
     tagRegexp: '',
     untagged: false,
@@ -287,6 +296,8 @@ const baseLifecycleRule: object = {
 };
 
 export const LifecycleRule = {
+    $type: 'yandex.cloud.containerregistry.v1.LifecycleRule' as const,
+
     encode(
         message: LifecycleRule,
         writer: _m0.Writer = _m0.Writer.create()
@@ -422,6 +433,8 @@ export const LifecycleRule = {
     },
 };
 
+messageTypeRegistry.set(LifecycleRule.$type, LifecycleRule);
+
 declare var self: any | undefined;
 declare var window: any | undefined;
 declare var global: any | undefined;
@@ -448,13 +461,13 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 function toTimestamp(date: Date): Timestamp {
     const seconds = date.getTime() / 1_000;
     const nanos = (date.getTime() % 1_000) * 1_000_000;
-    return { seconds, nanos };
+    return { $type: 'google.protobuf.Timestamp', seconds, nanos };
 }
 
 function fromTimestamp(t: Timestamp): Date {

@@ -6,6 +6,7 @@ import { ChannelCredentials, ChannelOptions, UntypedServiceImplementation, handl
 import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.logging.v1";
 export interface WriteRequest {
+    $type: 'yandex.cloud.logging.v1.WriteRequest';
     /**
      * Log entries destination.
      *
@@ -24,6 +25,7 @@ export interface WriteRequest {
     defaults: LogEntryDefaults | undefined;
 }
 export interface WriteResponse {
+    $type: 'yandex.cloud.logging.v1.WriteResponse';
     /**
      * Map<idx, status> of ingest failures.
      *
@@ -34,10 +36,12 @@ export interface WriteResponse {
     };
 }
 export interface WriteResponse_ErrorsEntry {
+    $type: 'yandex.cloud.logging.v1.WriteResponse.ErrorsEntry';
     key: number;
     value: Status | undefined;
 }
 export declare const WriteRequest: {
+    $type: "yandex.cloud.logging.v1.WriteRequest";
     encode(message: WriteRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): WriteRequest;
     fromJSON(object: any): WriteRequest;
@@ -45,6 +49,7 @@ export declare const WriteRequest: {
     fromPartial(object: DeepPartial<WriteRequest>): WriteRequest;
 };
 export declare const WriteResponse: {
+    $type: "yandex.cloud.logging.v1.WriteResponse";
     encode(message: WriteResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): WriteResponse;
     fromJSON(object: any): WriteResponse;
@@ -52,6 +57,7 @@ export declare const WriteResponse: {
     fromPartial(object: DeepPartial<WriteResponse>): WriteResponse;
 };
 export declare const WriteResponse_ErrorsEntry: {
+    $type: "yandex.cloud.logging.v1.WriteResponse.ErrorsEntry";
     encode(message: WriteResponse_ErrorsEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): WriteResponse_ErrorsEntry;
     fromJSON(object: any): WriteResponse_ErrorsEntry;
@@ -84,6 +90,6 @@ export interface LogIngestionServiceClient extends Client {
 export declare const LogIngestionServiceClient: new (address: string, credentials: ChannelCredentials, options?: Partial<ChannelOptions> | undefined) => LogIngestionServiceClient;
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

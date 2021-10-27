@@ -11,7 +11,7 @@ export const OperationServiceDef: SdkServiceDefinition<
 
 export function OperationService(
     session?: Session
-): Client<typeof OperationServiceService, {}> {
+): Client<typeof OperationServiceService, any> {
     if (session === undefined) {
         session = new Session();
     }

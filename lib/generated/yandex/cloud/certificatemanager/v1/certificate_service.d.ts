@@ -16,6 +16,7 @@ export declare enum CertificateView {
 export declare function certificateViewFromJSON(object: any): CertificateView;
 export declare function certificateViewToJSON(object: CertificateView): string;
 export interface GetCertificateRequest {
+    $type: 'yandex.cloud.certificatemanager.v1.GetCertificateRequest';
     /**
      * ID of the certificate to return.
      *
@@ -26,6 +27,7 @@ export interface GetCertificateRequest {
     view: CertificateView;
 }
 export interface ListCertificatesRequest {
+    $type: 'yandex.cloud.certificatemanager.v1.ListCertificatesRequest';
     /** ID of the folder to list certificate in. */
     folderId: string;
     /**
@@ -44,6 +46,7 @@ export interface ListCertificatesRequest {
     view: CertificateView;
 }
 export interface ListCertificatesResponse {
+    $type: 'yandex.cloud.certificatemanager.v1.ListCertificatesResponse';
     /** List of certificates in the specified folder. */
     certificates: Certificate[];
     /**
@@ -56,6 +59,7 @@ export interface ListCertificatesResponse {
     nextPageToken: string;
 }
 export interface CreateCertificateRequest {
+    $type: 'yandex.cloud.certificatemanager.v1.CreateCertificateRequest';
     /** ID of the folder to create a certificate in. */
     folderId: string;
     /**
@@ -77,14 +81,17 @@ export interface CreateCertificateRequest {
     privateKey: string;
 }
 export interface CreateCertificateRequest_LabelsEntry {
+    $type: 'yandex.cloud.certificatemanager.v1.CreateCertificateRequest.LabelsEntry';
     key: string;
     value: string;
 }
 export interface CreateCertificateMetadata {
+    $type: 'yandex.cloud.certificatemanager.v1.CreateCertificateMetadata';
     /** ID of the certificate being created. */
     certificateId: string;
 }
 export interface UpdateCertificateRequest {
+    $type: 'yandex.cloud.certificatemanager.v1.UpdateCertificateRequest';
     /**
      * ID of the certificate to update.
      * To get the ID of a certificate use a [CertificateService.List] request.
@@ -108,22 +115,27 @@ export interface UpdateCertificateRequest {
     privateKey: string;
 }
 export interface UpdateCertificateRequest_LabelsEntry {
+    $type: 'yandex.cloud.certificatemanager.v1.UpdateCertificateRequest.LabelsEntry';
     key: string;
     value: string;
 }
 export interface UpdateCertificateMetadata {
+    $type: 'yandex.cloud.certificatemanager.v1.UpdateCertificateMetadata';
     /** ID of the certificate being updated. */
     certificateId: string;
 }
 export interface DeleteCertificateRequest {
+    $type: 'yandex.cloud.certificatemanager.v1.DeleteCertificateRequest';
     /** ID of the certificate to be deleted. */
     certificateId: string;
 }
 export interface DeleteCertificateMetadata {
+    $type: 'yandex.cloud.certificatemanager.v1.DeleteCertificateMetadata';
     /** ID of the certificate being deleted. */
     certificateId: string;
 }
 export interface RequestNewCertificateRequest {
+    $type: 'yandex.cloud.certificatemanager.v1.RequestNewCertificateRequest';
     /** ID of the folder to create a certificate in. */
     folderId: string;
     /** Name of the certificate. */
@@ -140,14 +152,17 @@ export interface RequestNewCertificateRequest {
     challengeType: ChallengeType;
 }
 export interface RequestNewCertificateRequest_LabelsEntry {
+    $type: 'yandex.cloud.certificatemanager.v1.RequestNewCertificateRequest.LabelsEntry';
     key: string;
     value: string;
 }
 export interface RequestNewCertificateMetadata {
+    $type: 'yandex.cloud.certificatemanager.v1.RequestNewCertificateMetadata';
     /** ID of the certificate that is being requested. */
     certificateId: string;
 }
 export interface ListCertificateOperationsRequest {
+    $type: 'yandex.cloud.certificatemanager.v1.ListCertificateOperationsRequest';
     /**
      * ID of the certificate to list operations for.
      *
@@ -168,6 +183,7 @@ export interface ListCertificateOperationsRequest {
     pageToken: string;
 }
 export interface ListCertificateOperationsResponse {
+    $type: 'yandex.cloud.certificatemanager.v1.ListCertificateOperationsResponse';
     /** List of operations for the specified certificate. */
     operations: Operation[];
     /**
@@ -179,6 +195,7 @@ export interface ListCertificateOperationsResponse {
     nextPageToken: string;
 }
 export declare const GetCertificateRequest: {
+    $type: "yandex.cloud.certificatemanager.v1.GetCertificateRequest";
     encode(message: GetCertificateRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): GetCertificateRequest;
     fromJSON(object: any): GetCertificateRequest;
@@ -186,6 +203,7 @@ export declare const GetCertificateRequest: {
     fromPartial(object: DeepPartial<GetCertificateRequest>): GetCertificateRequest;
 };
 export declare const ListCertificatesRequest: {
+    $type: "yandex.cloud.certificatemanager.v1.ListCertificatesRequest";
     encode(message: ListCertificatesRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListCertificatesRequest;
     fromJSON(object: any): ListCertificatesRequest;
@@ -193,6 +211,7 @@ export declare const ListCertificatesRequest: {
     fromPartial(object: DeepPartial<ListCertificatesRequest>): ListCertificatesRequest;
 };
 export declare const ListCertificatesResponse: {
+    $type: "yandex.cloud.certificatemanager.v1.ListCertificatesResponse";
     encode(message: ListCertificatesResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListCertificatesResponse;
     fromJSON(object: any): ListCertificatesResponse;
@@ -200,6 +219,7 @@ export declare const ListCertificatesResponse: {
     fromPartial(object: DeepPartial<ListCertificatesResponse>): ListCertificatesResponse;
 };
 export declare const CreateCertificateRequest: {
+    $type: "yandex.cloud.certificatemanager.v1.CreateCertificateRequest";
     encode(message: CreateCertificateRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateCertificateRequest;
     fromJSON(object: any): CreateCertificateRequest;
@@ -207,6 +227,7 @@ export declare const CreateCertificateRequest: {
     fromPartial(object: DeepPartial<CreateCertificateRequest>): CreateCertificateRequest;
 };
 export declare const CreateCertificateRequest_LabelsEntry: {
+    $type: "yandex.cloud.certificatemanager.v1.CreateCertificateRequest.LabelsEntry";
     encode(message: CreateCertificateRequest_LabelsEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateCertificateRequest_LabelsEntry;
     fromJSON(object: any): CreateCertificateRequest_LabelsEntry;
@@ -214,6 +235,7 @@ export declare const CreateCertificateRequest_LabelsEntry: {
     fromPartial(object: DeepPartial<CreateCertificateRequest_LabelsEntry>): CreateCertificateRequest_LabelsEntry;
 };
 export declare const CreateCertificateMetadata: {
+    $type: "yandex.cloud.certificatemanager.v1.CreateCertificateMetadata";
     encode(message: CreateCertificateMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateCertificateMetadata;
     fromJSON(object: any): CreateCertificateMetadata;
@@ -221,6 +243,7 @@ export declare const CreateCertificateMetadata: {
     fromPartial(object: DeepPartial<CreateCertificateMetadata>): CreateCertificateMetadata;
 };
 export declare const UpdateCertificateRequest: {
+    $type: "yandex.cloud.certificatemanager.v1.UpdateCertificateRequest";
     encode(message: UpdateCertificateRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateCertificateRequest;
     fromJSON(object: any): UpdateCertificateRequest;
@@ -228,6 +251,7 @@ export declare const UpdateCertificateRequest: {
     fromPartial(object: DeepPartial<UpdateCertificateRequest>): UpdateCertificateRequest;
 };
 export declare const UpdateCertificateRequest_LabelsEntry: {
+    $type: "yandex.cloud.certificatemanager.v1.UpdateCertificateRequest.LabelsEntry";
     encode(message: UpdateCertificateRequest_LabelsEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateCertificateRequest_LabelsEntry;
     fromJSON(object: any): UpdateCertificateRequest_LabelsEntry;
@@ -235,6 +259,7 @@ export declare const UpdateCertificateRequest_LabelsEntry: {
     fromPartial(object: DeepPartial<UpdateCertificateRequest_LabelsEntry>): UpdateCertificateRequest_LabelsEntry;
 };
 export declare const UpdateCertificateMetadata: {
+    $type: "yandex.cloud.certificatemanager.v1.UpdateCertificateMetadata";
     encode(message: UpdateCertificateMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateCertificateMetadata;
     fromJSON(object: any): UpdateCertificateMetadata;
@@ -242,6 +267,7 @@ export declare const UpdateCertificateMetadata: {
     fromPartial(object: DeepPartial<UpdateCertificateMetadata>): UpdateCertificateMetadata;
 };
 export declare const DeleteCertificateRequest: {
+    $type: "yandex.cloud.certificatemanager.v1.DeleteCertificateRequest";
     encode(message: DeleteCertificateRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteCertificateRequest;
     fromJSON(object: any): DeleteCertificateRequest;
@@ -249,6 +275,7 @@ export declare const DeleteCertificateRequest: {
     fromPartial(object: DeepPartial<DeleteCertificateRequest>): DeleteCertificateRequest;
 };
 export declare const DeleteCertificateMetadata: {
+    $type: "yandex.cloud.certificatemanager.v1.DeleteCertificateMetadata";
     encode(message: DeleteCertificateMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteCertificateMetadata;
     fromJSON(object: any): DeleteCertificateMetadata;
@@ -256,6 +283,7 @@ export declare const DeleteCertificateMetadata: {
     fromPartial(object: DeepPartial<DeleteCertificateMetadata>): DeleteCertificateMetadata;
 };
 export declare const RequestNewCertificateRequest: {
+    $type: "yandex.cloud.certificatemanager.v1.RequestNewCertificateRequest";
     encode(message: RequestNewCertificateRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): RequestNewCertificateRequest;
     fromJSON(object: any): RequestNewCertificateRequest;
@@ -263,6 +291,7 @@ export declare const RequestNewCertificateRequest: {
     fromPartial(object: DeepPartial<RequestNewCertificateRequest>): RequestNewCertificateRequest;
 };
 export declare const RequestNewCertificateRequest_LabelsEntry: {
+    $type: "yandex.cloud.certificatemanager.v1.RequestNewCertificateRequest.LabelsEntry";
     encode(message: RequestNewCertificateRequest_LabelsEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): RequestNewCertificateRequest_LabelsEntry;
     fromJSON(object: any): RequestNewCertificateRequest_LabelsEntry;
@@ -270,6 +299,7 @@ export declare const RequestNewCertificateRequest_LabelsEntry: {
     fromPartial(object: DeepPartial<RequestNewCertificateRequest_LabelsEntry>): RequestNewCertificateRequest_LabelsEntry;
 };
 export declare const RequestNewCertificateMetadata: {
+    $type: "yandex.cloud.certificatemanager.v1.RequestNewCertificateMetadata";
     encode(message: RequestNewCertificateMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): RequestNewCertificateMetadata;
     fromJSON(object: any): RequestNewCertificateMetadata;
@@ -277,6 +307,7 @@ export declare const RequestNewCertificateMetadata: {
     fromPartial(object: DeepPartial<RequestNewCertificateMetadata>): RequestNewCertificateMetadata;
 };
 export declare const ListCertificateOperationsRequest: {
+    $type: "yandex.cloud.certificatemanager.v1.ListCertificateOperationsRequest";
     encode(message: ListCertificateOperationsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListCertificateOperationsRequest;
     fromJSON(object: any): ListCertificateOperationsRequest;
@@ -284,6 +315,7 @@ export declare const ListCertificateOperationsRequest: {
     fromPartial(object: DeepPartial<ListCertificateOperationsRequest>): ListCertificateOperationsRequest;
 };
 export declare const ListCertificateOperationsResponse: {
+    $type: "yandex.cloud.certificatemanager.v1.ListCertificateOperationsResponse";
     encode(message: ListCertificateOperationsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListCertificateOperationsResponse;
     fromJSON(object: any): ListCertificateOperationsResponse;
@@ -472,6 +504,6 @@ export interface CertificateServiceClient extends Client {
 export declare const CertificateServiceClient: new (address: string, credentials: ChannelCredentials, options?: Partial<ChannelOptions> | undefined) => CertificateServiceClient;
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

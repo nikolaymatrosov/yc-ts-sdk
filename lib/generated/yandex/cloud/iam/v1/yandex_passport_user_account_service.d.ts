@@ -4,10 +4,12 @@ import { ChannelCredentials, ChannelOptions, UntypedServiceImplementation, handl
 import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.iam.v1";
 export interface GetUserAccountByLoginRequest {
+    $type: 'yandex.cloud.iam.v1.GetUserAccountByLoginRequest';
     /** Login of the YandexPassportUserAccount resource to return. */
     login: string;
 }
 export declare const GetUserAccountByLoginRequest: {
+    $type: "yandex.cloud.iam.v1.GetUserAccountByLoginRequest";
     encode(message: GetUserAccountByLoginRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): GetUserAccountByLoginRequest;
     fromJSON(object: any): GetUserAccountByLoginRequest;
@@ -40,6 +42,6 @@ export interface YandexPassportUserAccountServiceClient extends Client {
 export declare const YandexPassportUserAccountServiceClient: new (address: string, credentials: ChannelCredentials, options?: Partial<ChannelOptions> | undefined) => YandexPassportUserAccountServiceClient;
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

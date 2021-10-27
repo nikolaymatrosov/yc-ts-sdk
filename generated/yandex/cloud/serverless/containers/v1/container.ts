@@ -1,12 +1,14 @@
 /* eslint-disable */
 import { Duration } from '../../../../../google/protobuf/duration';
 import { Timestamp } from '../../../../../google/protobuf/timestamp';
+import { messageTypeRegistry } from '../../../../../typeRegistry';
 import Long from 'long';
 import _m0 from 'protobufjs/minimal';
 
 export const protobufPackage = 'yandex.cloud.serverless.containers.v1';
 
 export interface Container {
+    $type: 'yandex.cloud.serverless.containers.v1.Container';
     id: string;
     folderId: string;
     createdAt: Date | undefined;
@@ -68,11 +70,13 @@ export function container_StatusToJSON(object: Container_Status): string {
 }
 
 export interface Container_LabelsEntry {
+    $type: 'yandex.cloud.serverless.containers.v1.Container.LabelsEntry';
     key: string;
     value: string;
 }
 
 export interface Revision {
+    $type: 'yandex.cloud.serverless.containers.v1.Revision';
     id: string;
     containerId: string;
     description: string;
@@ -130,6 +134,7 @@ export function revision_StatusToJSON(object: Revision_Status): string {
 }
 
 export interface Image {
+    $type: 'yandex.cloud.serverless.containers.v1.Image';
     imageUrl: string;
     imageDigest: string;
     command: Command | undefined;
@@ -139,25 +144,30 @@ export interface Image {
 }
 
 export interface Image_EnvironmentEntry {
+    $type: 'yandex.cloud.serverless.containers.v1.Image.EnvironmentEntry';
     key: string;
     value: string;
 }
 
 export interface Command {
+    $type: 'yandex.cloud.serverless.containers.v1.Command';
     command: string[];
 }
 
 export interface Args {
+    $type: 'yandex.cloud.serverless.containers.v1.Args';
     args: string[];
 }
 
 export interface Resources {
+    $type: 'yandex.cloud.serverless.containers.v1.Resources';
     memory: number;
     cores: number;
     coreFraction: number;
 }
 
 const baseContainer: object = {
+    $type: 'yandex.cloud.serverless.containers.v1.Container',
     id: '',
     folderId: '',
     name: '',
@@ -167,6 +177,8 @@ const baseContainer: object = {
 };
 
 export const Container = {
+    $type: 'yandex.cloud.serverless.containers.v1.Container' as const,
+
     encode(
         message: Container,
         writer: _m0.Writer = _m0.Writer.create()
@@ -191,7 +203,11 @@ export const Container = {
         }
         Object.entries(message.labels).forEach(([key, value]) => {
             Container_LabelsEntry.encode(
-                { key: key as any, value },
+                {
+                    $type: 'yandex.cloud.serverless.containers.v1.Container.LabelsEntry',
+                    key: key as any,
+                    value,
+                },
                 writer.uint32(50).fork()
             ).ldelim();
         });
@@ -369,9 +385,17 @@ export const Container = {
     },
 };
 
-const baseContainer_LabelsEntry: object = { key: '', value: '' };
+messageTypeRegistry.set(Container.$type, Container);
+
+const baseContainer_LabelsEntry: object = {
+    $type: 'yandex.cloud.serverless.containers.v1.Container.LabelsEntry',
+    key: '',
+    value: '',
+};
 
 export const Container_LabelsEntry = {
+    $type: 'yandex.cloud.serverless.containers.v1.Container.LabelsEntry' as const,
+
     encode(
         message: Container_LabelsEntry,
         writer: _m0.Writer = _m0.Writer.create()
@@ -456,7 +480,10 @@ export const Container_LabelsEntry = {
     },
 };
 
+messageTypeRegistry.set(Container_LabelsEntry.$type, Container_LabelsEntry);
+
 const baseRevision: object = {
+    $type: 'yandex.cloud.serverless.containers.v1.Revision',
     id: '',
     containerId: '',
     description: '',
@@ -466,6 +493,8 @@ const baseRevision: object = {
 };
 
 export const Revision = {
+    $type: 'yandex.cloud.serverless.containers.v1.Revision' as const,
+
     encode(
         message: Revision,
         writer: _m0.Writer = _m0.Writer.create()
@@ -723,9 +752,18 @@ export const Revision = {
     },
 };
 
-const baseImage: object = { imageUrl: '', imageDigest: '', workingDir: '' };
+messageTypeRegistry.set(Revision.$type, Revision);
+
+const baseImage: object = {
+    $type: 'yandex.cloud.serverless.containers.v1.Image',
+    imageUrl: '',
+    imageDigest: '',
+    workingDir: '',
+};
 
 export const Image = {
+    $type: 'yandex.cloud.serverless.containers.v1.Image' as const,
+
     encode(
         message: Image,
         writer: _m0.Writer = _m0.Writer.create()
@@ -744,7 +782,11 @@ export const Image = {
         }
         Object.entries(message.environment).forEach(([key, value]) => {
             Image_EnvironmentEntry.encode(
-                { key: key as any, value },
+                {
+                    $type: 'yandex.cloud.serverless.containers.v1.Image.EnvironmentEntry',
+                    key: key as any,
+                    value,
+                },
                 writer.uint32(42).fork()
             ).ldelim();
         });
@@ -892,9 +934,17 @@ export const Image = {
     },
 };
 
-const baseImage_EnvironmentEntry: object = { key: '', value: '' };
+messageTypeRegistry.set(Image.$type, Image);
+
+const baseImage_EnvironmentEntry: object = {
+    $type: 'yandex.cloud.serverless.containers.v1.Image.EnvironmentEntry',
+    key: '',
+    value: '',
+};
 
 export const Image_EnvironmentEntry = {
+    $type: 'yandex.cloud.serverless.containers.v1.Image.EnvironmentEntry' as const,
+
     encode(
         message: Image_EnvironmentEntry,
         writer: _m0.Writer = _m0.Writer.create()
@@ -979,9 +1029,16 @@ export const Image_EnvironmentEntry = {
     },
 };
 
-const baseCommand: object = { command: '' };
+messageTypeRegistry.set(Image_EnvironmentEntry.$type, Image_EnvironmentEntry);
+
+const baseCommand: object = {
+    $type: 'yandex.cloud.serverless.containers.v1.Command',
+    command: '',
+};
 
 export const Command = {
+    $type: 'yandex.cloud.serverless.containers.v1.Command' as const,
+
     encode(
         message: Command,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1045,9 +1102,16 @@ export const Command = {
     },
 };
 
-const baseArgs: object = { args: '' };
+messageTypeRegistry.set(Command.$type, Command);
+
+const baseArgs: object = {
+    $type: 'yandex.cloud.serverless.containers.v1.Args',
+    args: '',
+};
 
 export const Args = {
+    $type: 'yandex.cloud.serverless.containers.v1.Args' as const,
+
     encode(
         message: Args,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1111,9 +1175,18 @@ export const Args = {
     },
 };
 
-const baseResources: object = { memory: 0, cores: 0, coreFraction: 0 };
+messageTypeRegistry.set(Args.$type, Args);
+
+const baseResources: object = {
+    $type: 'yandex.cloud.serverless.containers.v1.Resources',
+    memory: 0,
+    cores: 0,
+    coreFraction: 0,
+};
 
 export const Resources = {
+    $type: 'yandex.cloud.serverless.containers.v1.Resources' as const,
+
     encode(
         message: Resources,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1205,6 +1278,8 @@ export const Resources = {
     },
 };
 
+messageTypeRegistry.set(Resources.$type, Resources);
+
 declare var self: any | undefined;
 declare var window: any | undefined;
 declare var global: any | undefined;
@@ -1231,13 +1306,13 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 function toTimestamp(date: Date): Timestamp {
     const seconds = date.getTime() / 1_000;
     const nanos = (date.getTime() % 1_000) * 1_000_000;
-    return { seconds, nanos };
+    return { $type: 'google.protobuf.Timestamp', seconds, nanos };
 }
 
 function fromTimestamp(t: Timestamp): Date {

@@ -1,5 +1,6 @@
 /* eslint-disable */
 import { FieldMask } from '../../../../google/protobuf/field_mask';
+import { messageTypeRegistry } from '../../../../typeRegistry';
 import {
     ListAccessBindingsRequest,
     ListAccessBindingsResponse,
@@ -26,6 +27,7 @@ import _m0 from 'protobufjs/minimal';
 export const protobufPackage = 'yandex.cloud.iam.v1';
 
 export interface GetServiceAccountRequest {
+    $type: 'yandex.cloud.iam.v1.GetServiceAccountRequest';
     /**
      * ID of the ServiceAccount resource to return.
      * To get the service account ID, use a [ServiceAccountService.List] request.
@@ -34,6 +36,7 @@ export interface GetServiceAccountRequest {
 }
 
 export interface ListServiceAccountsRequest {
+    $type: 'yandex.cloud.iam.v1.ListServiceAccountsRequest';
     /**
      * ID of the folder to list service accounts in.
      * To get the folder ID, use a [yandex.cloud.resourcemanager.v1.FolderService.List] request.
@@ -64,6 +67,7 @@ export interface ListServiceAccountsRequest {
 }
 
 export interface ListServiceAccountsResponse {
+    $type: 'yandex.cloud.iam.v1.ListServiceAccountsResponse';
     /** List of ServiceAccount resources. */
     serviceAccounts: ServiceAccount[];
     /**
@@ -78,6 +82,7 @@ export interface ListServiceAccountsResponse {
 }
 
 export interface CreateServiceAccountRequest {
+    $type: 'yandex.cloud.iam.v1.CreateServiceAccountRequest';
     /**
      * ID of the folder to create a service account in.
      * To get the folder ID, use a [yandex.cloud.resourcemanager.v1.FolderService.List] request.
@@ -95,16 +100,19 @@ export interface CreateServiceAccountRequest {
 }
 
 export interface CreateServiceAccountRequest_LabelsEntry {
+    $type: 'yandex.cloud.iam.v1.CreateServiceAccountRequest.LabelsEntry';
     key: string;
     value: string;
 }
 
 export interface CreateServiceAccountMetadata {
+    $type: 'yandex.cloud.iam.v1.CreateServiceAccountMetadata';
     /** ID of the service account that is being created. */
     serviceAccountId: string;
 }
 
 export interface UpdateServiceAccountRequest {
+    $type: 'yandex.cloud.iam.v1.UpdateServiceAccountRequest';
     /**
      * ID of the ServiceAccount resource to update.
      * To get the service account ID, use a [ServiceAccountService.List] request.
@@ -124,16 +132,19 @@ export interface UpdateServiceAccountRequest {
 }
 
 export interface UpdateServiceAccountRequest_LabelsEntry {
+    $type: 'yandex.cloud.iam.v1.UpdateServiceAccountRequest.LabelsEntry';
     key: string;
     value: string;
 }
 
 export interface UpdateServiceAccountMetadata {
+    $type: 'yandex.cloud.iam.v1.UpdateServiceAccountMetadata';
     /** ID of the ServiceAccount resource that is being updated. */
     serviceAccountId: string;
 }
 
 export interface DeleteServiceAccountRequest {
+    $type: 'yandex.cloud.iam.v1.DeleteServiceAccountRequest';
     /**
      * ID of the service account to delete.
      * To get the service account ID, use a [ServiceAccountService.List] request.
@@ -142,11 +153,13 @@ export interface DeleteServiceAccountRequest {
 }
 
 export interface DeleteServiceAccountMetadata {
+    $type: 'yandex.cloud.iam.v1.DeleteServiceAccountMetadata';
     /** ID of the service account that is being deleted. */
     serviceAccountId: string;
 }
 
 export interface ListServiceAccountOperationsRequest {
+    $type: 'yandex.cloud.iam.v1.ListServiceAccountOperationsRequest';
     /** ID of the ServiceAccount resource to list operations for. */
     serviceAccountId: string;
     /**
@@ -165,6 +178,7 @@ export interface ListServiceAccountOperationsRequest {
 }
 
 export interface ListServiceAccountOperationsResponse {
+    $type: 'yandex.cloud.iam.v1.ListServiceAccountOperationsResponse';
     /** List of operations for the specified service account. */
     operations: Operation[];
     /**
@@ -176,9 +190,14 @@ export interface ListServiceAccountOperationsResponse {
     nextPageToken: string;
 }
 
-const baseGetServiceAccountRequest: object = { serviceAccountId: '' };
+const baseGetServiceAccountRequest: object = {
+    $type: 'yandex.cloud.iam.v1.GetServiceAccountRequest',
+    serviceAccountId: '',
+};
 
 export const GetServiceAccountRequest = {
+    $type: 'yandex.cloud.iam.v1.GetServiceAccountRequest' as const,
+
     encode(
         message: GetServiceAccountRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -253,7 +272,13 @@ export const GetServiceAccountRequest = {
     },
 };
 
+messageTypeRegistry.set(
+    GetServiceAccountRequest.$type,
+    GetServiceAccountRequest
+);
+
 const baseListServiceAccountsRequest: object = {
+    $type: 'yandex.cloud.iam.v1.ListServiceAccountsRequest',
     folderId: '',
     pageSize: 0,
     pageToken: '',
@@ -261,6 +286,8 @@ const baseListServiceAccountsRequest: object = {
 };
 
 export const ListServiceAccountsRequest = {
+    $type: 'yandex.cloud.iam.v1.ListServiceAccountsRequest' as const,
+
     encode(
         message: ListServiceAccountsRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -379,9 +406,19 @@ export const ListServiceAccountsRequest = {
     },
 };
 
-const baseListServiceAccountsResponse: object = { nextPageToken: '' };
+messageTypeRegistry.set(
+    ListServiceAccountsRequest.$type,
+    ListServiceAccountsRequest
+);
+
+const baseListServiceAccountsResponse: object = {
+    $type: 'yandex.cloud.iam.v1.ListServiceAccountsResponse',
+    nextPageToken: '',
+};
 
 export const ListServiceAccountsResponse = {
+    $type: 'yandex.cloud.iam.v1.ListServiceAccountsResponse' as const,
+
     encode(
         message: ListServiceAccountsResponse,
         writer: _m0.Writer = _m0.Writer.create()
@@ -490,13 +527,21 @@ export const ListServiceAccountsResponse = {
     },
 };
 
+messageTypeRegistry.set(
+    ListServiceAccountsResponse.$type,
+    ListServiceAccountsResponse
+);
+
 const baseCreateServiceAccountRequest: object = {
+    $type: 'yandex.cloud.iam.v1.CreateServiceAccountRequest',
     folderId: '',
     name: '',
     description: '',
 };
 
 export const CreateServiceAccountRequest = {
+    $type: 'yandex.cloud.iam.v1.CreateServiceAccountRequest' as const,
+
     encode(
         message: CreateServiceAccountRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -512,7 +557,11 @@ export const CreateServiceAccountRequest = {
         }
         Object.entries(message.labels).forEach(([key, value]) => {
             CreateServiceAccountRequest_LabelsEntry.encode(
-                { key: key as any, value },
+                {
+                    $type: 'yandex.cloud.iam.v1.CreateServiceAccountRequest.LabelsEntry',
+                    key: key as any,
+                    value,
+                },
                 writer.uint32(34).fork()
             ).ldelim();
         });
@@ -636,12 +685,20 @@ export const CreateServiceAccountRequest = {
     },
 };
 
+messageTypeRegistry.set(
+    CreateServiceAccountRequest.$type,
+    CreateServiceAccountRequest
+);
+
 const baseCreateServiceAccountRequest_LabelsEntry: object = {
+    $type: 'yandex.cloud.iam.v1.CreateServiceAccountRequest.LabelsEntry',
     key: '',
     value: '',
 };
 
 export const CreateServiceAccountRequest_LabelsEntry = {
+    $type: 'yandex.cloud.iam.v1.CreateServiceAccountRequest.LabelsEntry' as const,
+
     encode(
         message: CreateServiceAccountRequest_LabelsEntry,
         writer: _m0.Writer = _m0.Writer.create()
@@ -726,9 +783,19 @@ export const CreateServiceAccountRequest_LabelsEntry = {
     },
 };
 
-const baseCreateServiceAccountMetadata: object = { serviceAccountId: '' };
+messageTypeRegistry.set(
+    CreateServiceAccountRequest_LabelsEntry.$type,
+    CreateServiceAccountRequest_LabelsEntry
+);
+
+const baseCreateServiceAccountMetadata: object = {
+    $type: 'yandex.cloud.iam.v1.CreateServiceAccountMetadata',
+    serviceAccountId: '',
+};
 
 export const CreateServiceAccountMetadata = {
+    $type: 'yandex.cloud.iam.v1.CreateServiceAccountMetadata' as const,
+
     encode(
         message: CreateServiceAccountMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -803,13 +870,21 @@ export const CreateServiceAccountMetadata = {
     },
 };
 
+messageTypeRegistry.set(
+    CreateServiceAccountMetadata.$type,
+    CreateServiceAccountMetadata
+);
+
 const baseUpdateServiceAccountRequest: object = {
+    $type: 'yandex.cloud.iam.v1.UpdateServiceAccountRequest',
     serviceAccountId: '',
     name: '',
     description: '',
 };
 
 export const UpdateServiceAccountRequest = {
+    $type: 'yandex.cloud.iam.v1.UpdateServiceAccountRequest' as const,
+
     encode(
         message: UpdateServiceAccountRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -831,7 +906,11 @@ export const UpdateServiceAccountRequest = {
         }
         Object.entries(message.labels).forEach(([key, value]) => {
             UpdateServiceAccountRequest_LabelsEntry.encode(
-                { key: key as any, value },
+                {
+                    $type: 'yandex.cloud.iam.v1.UpdateServiceAccountRequest.LabelsEntry',
+                    key: key as any,
+                    value,
+                },
                 writer.uint32(42).fork()
             ).ldelim();
         });
@@ -982,12 +1061,20 @@ export const UpdateServiceAccountRequest = {
     },
 };
 
+messageTypeRegistry.set(
+    UpdateServiceAccountRequest.$type,
+    UpdateServiceAccountRequest
+);
+
 const baseUpdateServiceAccountRequest_LabelsEntry: object = {
+    $type: 'yandex.cloud.iam.v1.UpdateServiceAccountRequest.LabelsEntry',
     key: '',
     value: '',
 };
 
 export const UpdateServiceAccountRequest_LabelsEntry = {
+    $type: 'yandex.cloud.iam.v1.UpdateServiceAccountRequest.LabelsEntry' as const,
+
     encode(
         message: UpdateServiceAccountRequest_LabelsEntry,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1072,9 +1159,19 @@ export const UpdateServiceAccountRequest_LabelsEntry = {
     },
 };
 
-const baseUpdateServiceAccountMetadata: object = { serviceAccountId: '' };
+messageTypeRegistry.set(
+    UpdateServiceAccountRequest_LabelsEntry.$type,
+    UpdateServiceAccountRequest_LabelsEntry
+);
+
+const baseUpdateServiceAccountMetadata: object = {
+    $type: 'yandex.cloud.iam.v1.UpdateServiceAccountMetadata',
+    serviceAccountId: '',
+};
 
 export const UpdateServiceAccountMetadata = {
+    $type: 'yandex.cloud.iam.v1.UpdateServiceAccountMetadata' as const,
+
     encode(
         message: UpdateServiceAccountMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1149,9 +1246,19 @@ export const UpdateServiceAccountMetadata = {
     },
 };
 
-const baseDeleteServiceAccountRequest: object = { serviceAccountId: '' };
+messageTypeRegistry.set(
+    UpdateServiceAccountMetadata.$type,
+    UpdateServiceAccountMetadata
+);
+
+const baseDeleteServiceAccountRequest: object = {
+    $type: 'yandex.cloud.iam.v1.DeleteServiceAccountRequest',
+    serviceAccountId: '',
+};
 
 export const DeleteServiceAccountRequest = {
+    $type: 'yandex.cloud.iam.v1.DeleteServiceAccountRequest' as const,
+
     encode(
         message: DeleteServiceAccountRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1226,9 +1333,19 @@ export const DeleteServiceAccountRequest = {
     },
 };
 
-const baseDeleteServiceAccountMetadata: object = { serviceAccountId: '' };
+messageTypeRegistry.set(
+    DeleteServiceAccountRequest.$type,
+    DeleteServiceAccountRequest
+);
+
+const baseDeleteServiceAccountMetadata: object = {
+    $type: 'yandex.cloud.iam.v1.DeleteServiceAccountMetadata',
+    serviceAccountId: '',
+};
 
 export const DeleteServiceAccountMetadata = {
+    $type: 'yandex.cloud.iam.v1.DeleteServiceAccountMetadata' as const,
+
     encode(
         message: DeleteServiceAccountMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1303,13 +1420,21 @@ export const DeleteServiceAccountMetadata = {
     },
 };
 
+messageTypeRegistry.set(
+    DeleteServiceAccountMetadata.$type,
+    DeleteServiceAccountMetadata
+);
+
 const baseListServiceAccountOperationsRequest: object = {
+    $type: 'yandex.cloud.iam.v1.ListServiceAccountOperationsRequest',
     serviceAccountId: '',
     pageSize: 0,
     pageToken: '',
 };
 
 export const ListServiceAccountOperationsRequest = {
+    $type: 'yandex.cloud.iam.v1.ListServiceAccountOperationsRequest' as const,
+
     encode(
         message: ListServiceAccountOperationsRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1418,9 +1543,19 @@ export const ListServiceAccountOperationsRequest = {
     },
 };
 
-const baseListServiceAccountOperationsResponse: object = { nextPageToken: '' };
+messageTypeRegistry.set(
+    ListServiceAccountOperationsRequest.$type,
+    ListServiceAccountOperationsRequest
+);
+
+const baseListServiceAccountOperationsResponse: object = {
+    $type: 'yandex.cloud.iam.v1.ListServiceAccountOperationsResponse',
+    nextPageToken: '',
+};
 
 export const ListServiceAccountOperationsResponse = {
+    $type: 'yandex.cloud.iam.v1.ListServiceAccountOperationsResponse' as const,
+
     encode(
         message: ListServiceAccountOperationsResponse,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1522,6 +1657,11 @@ export const ListServiceAccountOperationsResponse = {
         return message;
     },
 };
+
+messageTypeRegistry.set(
+    ListServiceAccountOperationsResponse.$type,
+    ListServiceAccountOperationsResponse
+);
 
 /** A set of methods for managing ServiceAccount resources. */
 export const ServiceAccountServiceService = {
@@ -1908,7 +2048,7 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 function longToNumber(long: Long): number {

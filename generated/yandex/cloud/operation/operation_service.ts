@@ -1,4 +1,5 @@
 /* eslint-disable */
+import { messageTypeRegistry } from '../../../typeRegistry';
 import { Operation } from '../../../yandex/cloud/operation/operation';
 import {
     makeGenericClientConstructor,
@@ -18,18 +19,25 @@ import _m0 from 'protobufjs/minimal';
 export const protobufPackage = 'yandex.cloud.operation';
 
 export interface GetOperationRequest {
+    $type: 'yandex.cloud.operation.GetOperationRequest';
     /** ID of the Operation resource to return. */
     operationId: string;
 }
 
 export interface CancelOperationRequest {
+    $type: 'yandex.cloud.operation.CancelOperationRequest';
     /** ID of the operation to cancel. */
     operationId: string;
 }
 
-const baseGetOperationRequest: object = { operationId: '' };
+const baseGetOperationRequest: object = {
+    $type: 'yandex.cloud.operation.GetOperationRequest',
+    operationId: '',
+};
 
 export const GetOperationRequest = {
+    $type: 'yandex.cloud.operation.GetOperationRequest' as const,
+
     encode(
         message: GetOperationRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -90,9 +98,16 @@ export const GetOperationRequest = {
     },
 };
 
-const baseCancelOperationRequest: object = { operationId: '' };
+messageTypeRegistry.set(GetOperationRequest.$type, GetOperationRequest);
+
+const baseCancelOperationRequest: object = {
+    $type: 'yandex.cloud.operation.CancelOperationRequest',
+    operationId: '',
+};
 
 export const CancelOperationRequest = {
+    $type: 'yandex.cloud.operation.CancelOperationRequest' as const,
+
     encode(
         message: CancelOperationRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -160,6 +175,8 @@ export const CancelOperationRequest = {
         return message;
     },
 };
+
+messageTypeRegistry.set(CancelOperationRequest.$type, CancelOperationRequest);
 
 /** A set of methods for managing operations for asynchronous API requests. */
 export const OperationServiceService = {
@@ -259,7 +276,7 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 if (_m0.util.Long !== Long) {

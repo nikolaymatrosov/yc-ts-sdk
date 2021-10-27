@@ -1,4 +1,5 @@
 /* eslint-disable */
+import { messageTypeRegistry } from '../../../../../typeRegistry';
 import Long from 'long';
 import _m0 from 'protobufjs/minimal';
 
@@ -6,6 +7,7 @@ export const protobufPackage = 'yandex.cloud.mdb.elasticsearch.v1';
 
 /** An Elasticsearch user. */
 export interface User {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.User';
     /** Name of the Elasticsearch user. */
     name: string;
     /** ID of the Elasticsearch cluster the user belongs to. */
@@ -13,15 +15,22 @@ export interface User {
 }
 
 export interface UserSpec {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.UserSpec';
     /** Name of the Elasticsearch user. */
     name: string;
     /** Password of the Elasticsearch user. */
     password: string;
 }
 
-const baseUser: object = { name: '', clusterId: '' };
+const baseUser: object = {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.User',
+    name: '',
+    clusterId: '',
+};
 
 export const User = {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.User' as const,
+
     encode(
         message: User,
         writer: _m0.Writer = _m0.Writer.create()
@@ -95,9 +104,17 @@ export const User = {
     },
 };
 
-const baseUserSpec: object = { name: '', password: '' };
+messageTypeRegistry.set(User.$type, User);
+
+const baseUserSpec: object = {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.UserSpec',
+    name: '',
+    password: '',
+};
 
 export const UserSpec = {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.UserSpec' as const,
+
     encode(
         message: UserSpec,
         writer: _m0.Writer = _m0.Writer.create()
@@ -171,6 +188,8 @@ export const UserSpec = {
     },
 };
 
+messageTypeRegistry.set(UserSpec.$type, UserSpec);
+
 type Builtin =
     | Date
     | Function
@@ -186,7 +205,7 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 if (_m0.util.Long !== Long) {

@@ -1,4 +1,5 @@
 /* eslint-disable */
+import { messageTypeRegistry } from '../../../../typeRegistry';
 import Long from 'long';
 import _m0 from 'protobufjs/minimal';
 
@@ -6,6 +7,7 @@ export const protobufPackage = 'yandex.cloud.billing.v1';
 
 /** A Service resource. */
 export interface Service {
+    $type: 'yandex.cloud.billing.v1.Service';
     /** ID of the service. */
     id: string;
     /** Name of the service, e.g. `Compute Cloud`, `VPC`. */
@@ -14,9 +16,16 @@ export interface Service {
     description: string;
 }
 
-const baseService: object = { id: '', name: '', description: '' };
+const baseService: object = {
+    $type: 'yandex.cloud.billing.v1.Service',
+    id: '',
+    name: '',
+    description: '',
+};
 
 export const Service = {
+    $type: 'yandex.cloud.billing.v1.Service' as const,
+
     encode(
         message: Service,
         writer: _m0.Writer = _m0.Writer.create()
@@ -108,6 +117,8 @@ export const Service = {
     },
 };
 
+messageTypeRegistry.set(Service.$type, Service);
+
 type Builtin =
     | Date
     | Function
@@ -123,7 +134,7 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 if (_m0.util.Long !== Long) {

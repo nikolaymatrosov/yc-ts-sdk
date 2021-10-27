@@ -1,4 +1,5 @@
 /* eslint-disable */
+import { messageTypeRegistry } from '../../../../typeRegistry';
 import { Origin } from '../../../../yandex/cloud/cdn/v1/origin';
 import Long from 'long';
 import _m0 from 'protobufjs/minimal';
@@ -7,6 +8,7 @@ export const protobufPackage = 'yandex.cloud.cdn.v1';
 
 /** Origin group parameters. For details about the concept, see [documentation](/docs/cdn/concepts/origins#groups). */
 export interface OriginGroup {
+    $type: 'yandex.cloud.cdn.v1.OriginGroup';
     /** ID of the origin group. Generated at creation time. */
     id: number;
     /** ID of the folder that the origin group belongs to. */
@@ -25,6 +27,7 @@ export interface OriginGroup {
 }
 
 const baseOriginGroup: object = {
+    $type: 'yandex.cloud.cdn.v1.OriginGroup',
     id: 0,
     folderId: '',
     name: '',
@@ -32,6 +35,8 @@ const baseOriginGroup: object = {
 };
 
 export const OriginGroup = {
+    $type: 'yandex.cloud.cdn.v1.OriginGroup' as const,
+
     encode(
         message: OriginGroup,
         writer: _m0.Writer = _m0.Writer.create()
@@ -167,6 +172,8 @@ export const OriginGroup = {
     },
 };
 
+messageTypeRegistry.set(OriginGroup.$type, OriginGroup);
+
 declare var self: any | undefined;
 declare var window: any | undefined;
 declare var global: any | undefined;
@@ -193,7 +200,7 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 function longToNumber(long: Long): number {

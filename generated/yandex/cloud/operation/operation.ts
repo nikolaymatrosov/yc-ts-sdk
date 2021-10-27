@@ -2,6 +2,7 @@
 import { Any } from '../../../google/protobuf/any';
 import { Timestamp } from '../../../google/protobuf/timestamp';
 import { Status } from '../../../google/rpc/status';
+import { messageTypeRegistry } from '../../../typeRegistry';
 import Long from 'long';
 import _m0 from 'protobufjs/minimal';
 
@@ -9,6 +10,7 @@ export const protobufPackage = 'yandex.cloud.operation';
 
 /** An Operation resource. For more information, see [Operation](/docs/api-design-guide/concepts/operation). */
 export interface Operation {
+    $type: 'yandex.cloud.operation.Operation';
     /** ID of the operation. */
     id: string;
     /** Description of the operation. 0-256 characters long. */
@@ -44,6 +46,7 @@ export interface Operation {
 }
 
 const baseOperation: object = {
+    $type: 'yandex.cloud.operation.Operation',
     id: '',
     description: '',
     createdBy: '',
@@ -51,6 +54,8 @@ const baseOperation: object = {
 };
 
 export const Operation = {
+    $type: 'yandex.cloud.operation.Operation' as const,
+
     encode(
         message: Operation,
         writer: _m0.Writer = _m0.Writer.create()
@@ -265,6 +270,8 @@ export const Operation = {
     },
 };
 
+messageTypeRegistry.set(Operation.$type, Operation);
+
 type Builtin =
     | Date
     | Function
@@ -280,13 +287,13 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 function toTimestamp(date: Date): Timestamp {
     const seconds = date.getTime() / 1_000;
     const nanos = (date.getTime() % 1_000) * 1_000_000;
-    return { seconds, nanos };
+    return { $type: 'google.protobuf.Timestamp', seconds, nanos };
 }
 
 function fromTimestamp(t: Timestamp): Date {

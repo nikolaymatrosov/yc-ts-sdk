@@ -4,6 +4,7 @@ import { ChannelCredentials, ChannelOptions, UntypedServiceImplementation, handl
 import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.compute.v1";
 export interface ListZonesRequest {
+    $type: 'yandex.cloud.compute.v1.ListZonesRequest';
     /**
      * The maximum number of results per page to return. If the number of available
      * results is larger than [page_size],
@@ -18,6 +19,7 @@ export interface ListZonesRequest {
     pageToken: string;
 }
 export interface ListZonesResponse {
+    $type: 'yandex.cloud.compute.v1.ListZonesResponse';
     /** List of availability zones. */
     zones: Zone[];
     /**
@@ -31,10 +33,12 @@ export interface ListZonesResponse {
     nextPageToken: string;
 }
 export interface GetZoneRequest {
+    $type: 'yandex.cloud.compute.v1.GetZoneRequest';
     /** ID of the availability zone to return information about. */
     zoneId: string;
 }
 export declare const ListZonesRequest: {
+    $type: "yandex.cloud.compute.v1.ListZonesRequest";
     encode(message: ListZonesRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListZonesRequest;
     fromJSON(object: any): ListZonesRequest;
@@ -42,6 +46,7 @@ export declare const ListZonesRequest: {
     fromPartial(object: DeepPartial<ListZonesRequest>): ListZonesRequest;
 };
 export declare const ListZonesResponse: {
+    $type: "yandex.cloud.compute.v1.ListZonesResponse";
     encode(message: ListZonesResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListZonesResponse;
     fromJSON(object: any): ListZonesResponse;
@@ -49,6 +54,7 @@ export declare const ListZonesResponse: {
     fromPartial(object: DeepPartial<ListZonesResponse>): ListZonesResponse;
 };
 export declare const GetZoneRequest: {
+    $type: "yandex.cloud.compute.v1.GetZoneRequest";
     encode(message: GetZoneRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): GetZoneRequest;
     fromJSON(object: any): GetZoneRequest;
@@ -109,6 +115,6 @@ export interface ZoneServiceClient extends Client {
 export declare const ZoneServiceClient: new (address: string, credentials: ChannelCredentials, options?: Partial<ChannelOptions> | undefined) => ZoneServiceClient;
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

@@ -1,4 +1,5 @@
 /* eslint-disable */
+import { messageTypeRegistry } from '../../../../typeRegistry';
 import {
     ScanResult,
     Vulnerability,
@@ -22,26 +23,31 @@ import _m0 from 'protobufjs/minimal';
 export const protobufPackage = 'yandex.cloud.containerregistry.v1';
 
 export interface ScanRequest {
+    $type: 'yandex.cloud.containerregistry.v1.ScanRequest';
     /** ID of the Image to be scanned for vulnerabilities. */
     imageId: string;
 }
 
 export interface ScanMetadata {
+    $type: 'yandex.cloud.containerregistry.v1.ScanMetadata';
     /** ID of the ScanResult that is being created. */
     scanResultId: string;
 }
 
 export interface GetScanResultRequest {
+    $type: 'yandex.cloud.containerregistry.v1.GetScanResultRequest';
     /** ID of the ScanResult to return. */
     scanResultId: string;
 }
 
 export interface GetLastScanResultRequest {
+    $type: 'yandex.cloud.containerregistry.v1.GetLastScanResultRequest';
     /** ID of the Image to get last finished ScanResult. */
     imageId: string;
 }
 
 export interface ListScanResultsRequest {
+    $type: 'yandex.cloud.containerregistry.v1.ListScanResultsRequest';
     imageId: string | undefined;
     repositoryId: string | undefined;
     /**
@@ -75,6 +81,7 @@ export interface ListScanResultsRequest {
 }
 
 export interface ListScanResultsResponse {
+    $type: 'yandex.cloud.containerregistry.v1.ListScanResultsResponse';
     /** List of ScanResult resources. */
     scanResults: ScanResult[];
     /**
@@ -89,6 +96,7 @@ export interface ListScanResultsResponse {
 }
 
 export interface ListVulnerabilitiesRequest {
+    $type: 'yandex.cloud.containerregistry.v1.ListVulnerabilitiesRequest';
     /** ID of the ScanResult to get list of vulnerabilities for. */
     scanResultId: string;
     /**
@@ -122,6 +130,7 @@ export interface ListVulnerabilitiesRequest {
 }
 
 export interface ListVulnerabilitiesResponse {
+    $type: 'yandex.cloud.containerregistry.v1.ListVulnerabilitiesResponse';
     /** List of Vulnerability resources. */
     vulnerabilities: Vulnerability[];
     /**
@@ -135,9 +144,14 @@ export interface ListVulnerabilitiesResponse {
     nextPageToken: string;
 }
 
-const baseScanRequest: object = { imageId: '' };
+const baseScanRequest: object = {
+    $type: 'yandex.cloud.containerregistry.v1.ScanRequest',
+    imageId: '',
+};
 
 export const ScanRequest = {
+    $type: 'yandex.cloud.containerregistry.v1.ScanRequest' as const,
+
     encode(
         message: ScanRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -194,9 +208,16 @@ export const ScanRequest = {
     },
 };
 
-const baseScanMetadata: object = { scanResultId: '' };
+messageTypeRegistry.set(ScanRequest.$type, ScanRequest);
+
+const baseScanMetadata: object = {
+    $type: 'yandex.cloud.containerregistry.v1.ScanMetadata',
+    scanResultId: '',
+};
 
 export const ScanMetadata = {
+    $type: 'yandex.cloud.containerregistry.v1.ScanMetadata' as const,
+
     encode(
         message: ScanMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -254,9 +275,16 @@ export const ScanMetadata = {
     },
 };
 
-const baseGetScanResultRequest: object = { scanResultId: '' };
+messageTypeRegistry.set(ScanMetadata.$type, ScanMetadata);
+
+const baseGetScanResultRequest: object = {
+    $type: 'yandex.cloud.containerregistry.v1.GetScanResultRequest',
+    scanResultId: '',
+};
 
 export const GetScanResultRequest = {
+    $type: 'yandex.cloud.containerregistry.v1.GetScanResultRequest' as const,
+
     encode(
         message: GetScanResultRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -319,9 +347,16 @@ export const GetScanResultRequest = {
     },
 };
 
-const baseGetLastScanResultRequest: object = { imageId: '' };
+messageTypeRegistry.set(GetScanResultRequest.$type, GetScanResultRequest);
+
+const baseGetLastScanResultRequest: object = {
+    $type: 'yandex.cloud.containerregistry.v1.GetLastScanResultRequest',
+    imageId: '',
+};
 
 export const GetLastScanResultRequest = {
+    $type: 'yandex.cloud.containerregistry.v1.GetLastScanResultRequest' as const,
+
     encode(
         message: GetLastScanResultRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -389,7 +424,13 @@ export const GetLastScanResultRequest = {
     },
 };
 
+messageTypeRegistry.set(
+    GetLastScanResultRequest.$type,
+    GetLastScanResultRequest
+);
+
 const baseListScanResultsRequest: object = {
+    $type: 'yandex.cloud.containerregistry.v1.ListScanResultsRequest',
     pageSize: 0,
     pageToken: '',
     filter: '',
@@ -397,6 +438,8 @@ const baseListScanResultsRequest: object = {
 };
 
 export const ListScanResultsRequest = {
+    $type: 'yandex.cloud.containerregistry.v1.ListScanResultsRequest' as const,
+
     encode(
         message: ListScanResultsRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -550,9 +593,16 @@ export const ListScanResultsRequest = {
     },
 };
 
-const baseListScanResultsResponse: object = { nextPageToken: '' };
+messageTypeRegistry.set(ListScanResultsRequest.$type, ListScanResultsRequest);
+
+const baseListScanResultsResponse: object = {
+    $type: 'yandex.cloud.containerregistry.v1.ListScanResultsResponse',
+    nextPageToken: '',
+};
 
 export const ListScanResultsResponse = {
+    $type: 'yandex.cloud.containerregistry.v1.ListScanResultsResponse' as const,
+
     encode(
         message: ListScanResultsResponse,
         writer: _m0.Writer = _m0.Writer.create()
@@ -655,7 +705,10 @@ export const ListScanResultsResponse = {
     },
 };
 
+messageTypeRegistry.set(ListScanResultsResponse.$type, ListScanResultsResponse);
+
 const baseListVulnerabilitiesRequest: object = {
+    $type: 'yandex.cloud.containerregistry.v1.ListVulnerabilitiesRequest',
     scanResultId: '',
     pageSize: 0,
     pageToken: '',
@@ -664,6 +717,8 @@ const baseListVulnerabilitiesRequest: object = {
 };
 
 export const ListVulnerabilitiesRequest = {
+    $type: 'yandex.cloud.containerregistry.v1.ListVulnerabilitiesRequest' as const,
+
     encode(
         message: ListVulnerabilitiesRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -800,9 +855,19 @@ export const ListVulnerabilitiesRequest = {
     },
 };
 
-const baseListVulnerabilitiesResponse: object = { nextPageToken: '' };
+messageTypeRegistry.set(
+    ListVulnerabilitiesRequest.$type,
+    ListVulnerabilitiesRequest
+);
+
+const baseListVulnerabilitiesResponse: object = {
+    $type: 'yandex.cloud.containerregistry.v1.ListVulnerabilitiesResponse',
+    nextPageToken: '',
+};
 
 export const ListVulnerabilitiesResponse = {
+    $type: 'yandex.cloud.containerregistry.v1.ListVulnerabilitiesResponse' as const,
+
     encode(
         message: ListVulnerabilitiesResponse,
         writer: _m0.Writer = _m0.Writer.create()
@@ -910,6 +975,11 @@ export const ListVulnerabilitiesResponse = {
         return message;
     },
 };
+
+messageTypeRegistry.set(
+    ListVulnerabilitiesResponse.$type,
+    ListVulnerabilitiesResponse
+);
 
 /** A set of methods for scanning Docker images. */
 export const ScannerServiceService = {
@@ -1147,7 +1217,7 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 function longToNumber(long: Long): number {

@@ -6,6 +6,7 @@ import { ChannelCredentials, ChannelOptions, UntypedServiceImplementation, handl
 import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.loadbalancer.v1";
 export interface GetTargetGroupRequest {
+    $type: 'yandex.cloud.loadbalancer.v1.GetTargetGroupRequest';
     /**
      * ID of the TargetGroup resource to return.
      * To get the target group ID, use a [TargetGroupService.List] request.
@@ -13,6 +14,7 @@ export interface GetTargetGroupRequest {
     targetGroupId: string;
 }
 export interface ListTargetGroupsRequest {
+    $type: 'yandex.cloud.loadbalancer.v1.ListTargetGroupsRequest';
     /**
      * ID of the folder to list target groups in.
      * To get the folder ID, use a [TargetGroupService.List] request.
@@ -41,6 +43,7 @@ export interface ListTargetGroupsRequest {
     filter: string;
 }
 export interface ListTargetGroupsResponse {
+    $type: 'yandex.cloud.loadbalancer.v1.ListTargetGroupsResponse';
     /** List of TargetGroup resources. */
     targetGroups: TargetGroup[];
     /**
@@ -54,6 +57,7 @@ export interface ListTargetGroupsResponse {
     nextPageToken: string;
 }
 export interface CreateTargetGroupRequest {
+    $type: 'yandex.cloud.loadbalancer.v1.CreateTargetGroupRequest';
     /**
      * ID of the folder to list target groups in.
      * To get the folder ID, use a [TargetGroupService.List] request.
@@ -76,14 +80,17 @@ export interface CreateTargetGroupRequest {
     targets: Target[];
 }
 export interface CreateTargetGroupRequest_LabelsEntry {
+    $type: 'yandex.cloud.loadbalancer.v1.CreateTargetGroupRequest.LabelsEntry';
     key: string;
     value: string;
 }
 export interface CreateTargetGroupMetadata {
+    $type: 'yandex.cloud.loadbalancer.v1.CreateTargetGroupMetadata';
     /** ID of the target group that is being created. */
     targetGroupId: string;
 }
 export interface UpdateTargetGroupRequest {
+    $type: 'yandex.cloud.loadbalancer.v1.UpdateTargetGroupRequest';
     /**
      * ID of the TargetGroup resource to update.
      * To get the target group ID, use a [TargetGroupService.List] request.
@@ -110,14 +117,17 @@ export interface UpdateTargetGroupRequest {
     targets: Target[];
 }
 export interface UpdateTargetGroupRequest_LabelsEntry {
+    $type: 'yandex.cloud.loadbalancer.v1.UpdateTargetGroupRequest.LabelsEntry';
     key: string;
     value: string;
 }
 export interface UpdateTargetGroupMetadata {
+    $type: 'yandex.cloud.loadbalancer.v1.UpdateTargetGroupMetadata';
     /** ID of the target group that is being updated. */
     targetGroupId: string;
 }
 export interface DeleteTargetGroupRequest {
+    $type: 'yandex.cloud.loadbalancer.v1.DeleteTargetGroupRequest';
     /**
      * ID of the target group to delete.
      * To get the target group ID, use a [TargetGroupService.List] request.
@@ -125,10 +135,12 @@ export interface DeleteTargetGroupRequest {
     targetGroupId: string;
 }
 export interface DeleteTargetGroupMetadata {
+    $type: 'yandex.cloud.loadbalancer.v1.DeleteTargetGroupMetadata';
     /** ID of the target group that is being deleted. */
     targetGroupId: string;
 }
 export interface AddTargetsRequest {
+    $type: 'yandex.cloud.loadbalancer.v1.AddTargetsRequest';
     /**
      * ID of the TargetGroup resource to add targets to.
      * To get the target group ID, use a [TargetGroupService.List] request.
@@ -138,10 +150,12 @@ export interface AddTargetsRequest {
     targets: Target[];
 }
 export interface AddTargetsMetadata {
+    $type: 'yandex.cloud.loadbalancer.v1.AddTargetsMetadata';
     /** ID of the target group that targets are being added to. */
     targetGroupId: string;
 }
 export interface RemoveTargetsRequest {
+    $type: 'yandex.cloud.loadbalancer.v1.RemoveTargetsRequest';
     /**
      * ID of the target group to remove targets from.
      * To get the target group ID, use a [TargetGroupService.List] request.
@@ -151,10 +165,12 @@ export interface RemoveTargetsRequest {
     targets: Target[];
 }
 export interface RemoveTargetsMetadata {
+    $type: 'yandex.cloud.loadbalancer.v1.RemoveTargetsMetadata';
     /** ID of the target group that targets are being removed from. */
     targetGroupId: string;
 }
 export interface ListTargetGroupOperationsRequest {
+    $type: 'yandex.cloud.loadbalancer.v1.ListTargetGroupOperationsRequest';
     /**
      * ID of the TargetGroup resource to update.
      * To get the target group ID, use a [TargetGroupService.List] request.
@@ -174,6 +190,7 @@ export interface ListTargetGroupOperationsRequest {
     pageToken: string;
 }
 export interface ListTargetGroupOperationsResponse {
+    $type: 'yandex.cloud.loadbalancer.v1.ListTargetGroupOperationsResponse';
     /** List of operations for the specified target group. */
     operations: Operation[];
     /**
@@ -185,6 +202,7 @@ export interface ListTargetGroupOperationsResponse {
     nextPageToken: string;
 }
 export declare const GetTargetGroupRequest: {
+    $type: "yandex.cloud.loadbalancer.v1.GetTargetGroupRequest";
     encode(message: GetTargetGroupRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): GetTargetGroupRequest;
     fromJSON(object: any): GetTargetGroupRequest;
@@ -192,6 +210,7 @@ export declare const GetTargetGroupRequest: {
     fromPartial(object: DeepPartial<GetTargetGroupRequest>): GetTargetGroupRequest;
 };
 export declare const ListTargetGroupsRequest: {
+    $type: "yandex.cloud.loadbalancer.v1.ListTargetGroupsRequest";
     encode(message: ListTargetGroupsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListTargetGroupsRequest;
     fromJSON(object: any): ListTargetGroupsRequest;
@@ -199,6 +218,7 @@ export declare const ListTargetGroupsRequest: {
     fromPartial(object: DeepPartial<ListTargetGroupsRequest>): ListTargetGroupsRequest;
 };
 export declare const ListTargetGroupsResponse: {
+    $type: "yandex.cloud.loadbalancer.v1.ListTargetGroupsResponse";
     encode(message: ListTargetGroupsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListTargetGroupsResponse;
     fromJSON(object: any): ListTargetGroupsResponse;
@@ -206,6 +226,7 @@ export declare const ListTargetGroupsResponse: {
     fromPartial(object: DeepPartial<ListTargetGroupsResponse>): ListTargetGroupsResponse;
 };
 export declare const CreateTargetGroupRequest: {
+    $type: "yandex.cloud.loadbalancer.v1.CreateTargetGroupRequest";
     encode(message: CreateTargetGroupRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateTargetGroupRequest;
     fromJSON(object: any): CreateTargetGroupRequest;
@@ -213,6 +234,7 @@ export declare const CreateTargetGroupRequest: {
     fromPartial(object: DeepPartial<CreateTargetGroupRequest>): CreateTargetGroupRequest;
 };
 export declare const CreateTargetGroupRequest_LabelsEntry: {
+    $type: "yandex.cloud.loadbalancer.v1.CreateTargetGroupRequest.LabelsEntry";
     encode(message: CreateTargetGroupRequest_LabelsEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateTargetGroupRequest_LabelsEntry;
     fromJSON(object: any): CreateTargetGroupRequest_LabelsEntry;
@@ -220,6 +242,7 @@ export declare const CreateTargetGroupRequest_LabelsEntry: {
     fromPartial(object: DeepPartial<CreateTargetGroupRequest_LabelsEntry>): CreateTargetGroupRequest_LabelsEntry;
 };
 export declare const CreateTargetGroupMetadata: {
+    $type: "yandex.cloud.loadbalancer.v1.CreateTargetGroupMetadata";
     encode(message: CreateTargetGroupMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateTargetGroupMetadata;
     fromJSON(object: any): CreateTargetGroupMetadata;
@@ -227,6 +250,7 @@ export declare const CreateTargetGroupMetadata: {
     fromPartial(object: DeepPartial<CreateTargetGroupMetadata>): CreateTargetGroupMetadata;
 };
 export declare const UpdateTargetGroupRequest: {
+    $type: "yandex.cloud.loadbalancer.v1.UpdateTargetGroupRequest";
     encode(message: UpdateTargetGroupRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateTargetGroupRequest;
     fromJSON(object: any): UpdateTargetGroupRequest;
@@ -234,6 +258,7 @@ export declare const UpdateTargetGroupRequest: {
     fromPartial(object: DeepPartial<UpdateTargetGroupRequest>): UpdateTargetGroupRequest;
 };
 export declare const UpdateTargetGroupRequest_LabelsEntry: {
+    $type: "yandex.cloud.loadbalancer.v1.UpdateTargetGroupRequest.LabelsEntry";
     encode(message: UpdateTargetGroupRequest_LabelsEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateTargetGroupRequest_LabelsEntry;
     fromJSON(object: any): UpdateTargetGroupRequest_LabelsEntry;
@@ -241,6 +266,7 @@ export declare const UpdateTargetGroupRequest_LabelsEntry: {
     fromPartial(object: DeepPartial<UpdateTargetGroupRequest_LabelsEntry>): UpdateTargetGroupRequest_LabelsEntry;
 };
 export declare const UpdateTargetGroupMetadata: {
+    $type: "yandex.cloud.loadbalancer.v1.UpdateTargetGroupMetadata";
     encode(message: UpdateTargetGroupMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateTargetGroupMetadata;
     fromJSON(object: any): UpdateTargetGroupMetadata;
@@ -248,6 +274,7 @@ export declare const UpdateTargetGroupMetadata: {
     fromPartial(object: DeepPartial<UpdateTargetGroupMetadata>): UpdateTargetGroupMetadata;
 };
 export declare const DeleteTargetGroupRequest: {
+    $type: "yandex.cloud.loadbalancer.v1.DeleteTargetGroupRequest";
     encode(message: DeleteTargetGroupRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteTargetGroupRequest;
     fromJSON(object: any): DeleteTargetGroupRequest;
@@ -255,6 +282,7 @@ export declare const DeleteTargetGroupRequest: {
     fromPartial(object: DeepPartial<DeleteTargetGroupRequest>): DeleteTargetGroupRequest;
 };
 export declare const DeleteTargetGroupMetadata: {
+    $type: "yandex.cloud.loadbalancer.v1.DeleteTargetGroupMetadata";
     encode(message: DeleteTargetGroupMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteTargetGroupMetadata;
     fromJSON(object: any): DeleteTargetGroupMetadata;
@@ -262,6 +290,7 @@ export declare const DeleteTargetGroupMetadata: {
     fromPartial(object: DeepPartial<DeleteTargetGroupMetadata>): DeleteTargetGroupMetadata;
 };
 export declare const AddTargetsRequest: {
+    $type: "yandex.cloud.loadbalancer.v1.AddTargetsRequest";
     encode(message: AddTargetsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): AddTargetsRequest;
     fromJSON(object: any): AddTargetsRequest;
@@ -269,6 +298,7 @@ export declare const AddTargetsRequest: {
     fromPartial(object: DeepPartial<AddTargetsRequest>): AddTargetsRequest;
 };
 export declare const AddTargetsMetadata: {
+    $type: "yandex.cloud.loadbalancer.v1.AddTargetsMetadata";
     encode(message: AddTargetsMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): AddTargetsMetadata;
     fromJSON(object: any): AddTargetsMetadata;
@@ -276,6 +306,7 @@ export declare const AddTargetsMetadata: {
     fromPartial(object: DeepPartial<AddTargetsMetadata>): AddTargetsMetadata;
 };
 export declare const RemoveTargetsRequest: {
+    $type: "yandex.cloud.loadbalancer.v1.RemoveTargetsRequest";
     encode(message: RemoveTargetsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): RemoveTargetsRequest;
     fromJSON(object: any): RemoveTargetsRequest;
@@ -283,6 +314,7 @@ export declare const RemoveTargetsRequest: {
     fromPartial(object: DeepPartial<RemoveTargetsRequest>): RemoveTargetsRequest;
 };
 export declare const RemoveTargetsMetadata: {
+    $type: "yandex.cloud.loadbalancer.v1.RemoveTargetsMetadata";
     encode(message: RemoveTargetsMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): RemoveTargetsMetadata;
     fromJSON(object: any): RemoveTargetsMetadata;
@@ -290,6 +322,7 @@ export declare const RemoveTargetsMetadata: {
     fromPartial(object: DeepPartial<RemoveTargetsMetadata>): RemoveTargetsMetadata;
 };
 export declare const ListTargetGroupOperationsRequest: {
+    $type: "yandex.cloud.loadbalancer.v1.ListTargetGroupOperationsRequest";
     encode(message: ListTargetGroupOperationsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListTargetGroupOperationsRequest;
     fromJSON(object: any): ListTargetGroupOperationsRequest;
@@ -297,6 +330,7 @@ export declare const ListTargetGroupOperationsRequest: {
     fromPartial(object: DeepPartial<ListTargetGroupOperationsRequest>): ListTargetGroupOperationsRequest;
 };
 export declare const ListTargetGroupOperationsResponse: {
+    $type: "yandex.cloud.loadbalancer.v1.ListTargetGroupOperationsResponse";
     encode(message: ListTargetGroupOperationsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListTargetGroupOperationsResponse;
     fromJSON(object: any): ListTargetGroupOperationsResponse;
@@ -441,6 +475,6 @@ export interface TargetGroupServiceClient extends Client {
 export declare const TargetGroupServiceClient: new (address: string, credentials: ChannelCredentials, options?: Partial<ChannelOptions> | undefined) => TargetGroupServiceClient;
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

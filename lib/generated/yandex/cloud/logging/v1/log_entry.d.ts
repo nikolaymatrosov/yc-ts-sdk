@@ -3,6 +3,7 @@ import { LogEntryResource } from '../../../../yandex/cloud/logging/v1/log_resour
 import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.logging.v1";
 export interface LogEntry {
+    $type: 'yandex.cloud.logging.v1.LogEntry';
     /**
      * Unique entry ID.
      *
@@ -38,6 +39,7 @@ export interface LogEntry {
     jsonPayload: Struct | undefined;
 }
 export interface IncomingLogEntry {
+    $type: 'yandex.cloud.logging.v1.IncomingLogEntry';
     /** Timestamp of the entry. */
     timestamp: Date | undefined;
     /**
@@ -52,6 +54,7 @@ export interface IncomingLogEntry {
     jsonPayload: Struct | undefined;
 }
 export interface LogEntryDefaults {
+    $type: 'yandex.cloud.logging.v1.LogEntryDefaults';
     /**
      * Default entry severity.
      * Will be applied if entry level is unspecified.
@@ -67,12 +70,14 @@ export interface LogEntryDefaults {
     jsonPayload: Struct | undefined;
 }
 export interface Destination {
+    $type: 'yandex.cloud.logging.v1.Destination';
     /** Entry should be written to log group resolved by ID. */
     logGroupId: string | undefined;
     /** Entry should be written to default log group for the folder. */
     folderId: string | undefined;
 }
 export interface LogLevel {
+    $type: 'yandex.cloud.logging.v1.LogLevel';
     /**
      * Entry level.
      *
@@ -129,6 +134,7 @@ export declare enum LogLevel_Level {
 export declare function logLevel_LevelFromJSON(object: any): LogLevel_Level;
 export declare function logLevel_LevelToJSON(object: LogLevel_Level): string;
 export declare const LogEntry: {
+    $type: "yandex.cloud.logging.v1.LogEntry";
     encode(message: LogEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): LogEntry;
     fromJSON(object: any): LogEntry;
@@ -136,6 +142,7 @@ export declare const LogEntry: {
     fromPartial(object: DeepPartial<LogEntry>): LogEntry;
 };
 export declare const IncomingLogEntry: {
+    $type: "yandex.cloud.logging.v1.IncomingLogEntry";
     encode(message: IncomingLogEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): IncomingLogEntry;
     fromJSON(object: any): IncomingLogEntry;
@@ -143,6 +150,7 @@ export declare const IncomingLogEntry: {
     fromPartial(object: DeepPartial<IncomingLogEntry>): IncomingLogEntry;
 };
 export declare const LogEntryDefaults: {
+    $type: "yandex.cloud.logging.v1.LogEntryDefaults";
     encode(message: LogEntryDefaults, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): LogEntryDefaults;
     fromJSON(object: any): LogEntryDefaults;
@@ -150,6 +158,7 @@ export declare const LogEntryDefaults: {
     fromPartial(object: DeepPartial<LogEntryDefaults>): LogEntryDefaults;
 };
 export declare const Destination: {
+    $type: "yandex.cloud.logging.v1.Destination";
     encode(message: Destination, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Destination;
     fromJSON(object: any): Destination;
@@ -157,6 +166,7 @@ export declare const Destination: {
     fromPartial(object: DeepPartial<Destination>): Destination;
 };
 export declare const LogLevel: {
+    $type: "yandex.cloud.logging.v1.LogLevel";
     encode(message: LogLevel, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): LogLevel;
     fromJSON(object: any): LogLevel;
@@ -165,6 +175,6 @@ export declare const LogLevel: {
 };
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

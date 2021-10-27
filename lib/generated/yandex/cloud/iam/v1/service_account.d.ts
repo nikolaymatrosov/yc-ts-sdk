@@ -2,6 +2,7 @@ import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.iam.v1";
 /** A ServiceAccount resource. For more information, see [Service accounts](/docs/iam/concepts/users/service-accounts). */
 export interface ServiceAccount {
+    $type: 'yandex.cloud.iam.v1.ServiceAccount';
     /** ID of the service account. */
     id: string;
     /** ID of the folder that the service account belongs to. */
@@ -21,10 +22,12 @@ export interface ServiceAccount {
     };
 }
 export interface ServiceAccount_LabelsEntry {
+    $type: 'yandex.cloud.iam.v1.ServiceAccount.LabelsEntry';
     key: string;
     value: string;
 }
 export declare const ServiceAccount: {
+    $type: "yandex.cloud.iam.v1.ServiceAccount";
     encode(message: ServiceAccount, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ServiceAccount;
     fromJSON(object: any): ServiceAccount;
@@ -32,6 +35,7 @@ export declare const ServiceAccount: {
     fromPartial(object: DeepPartial<ServiceAccount>): ServiceAccount;
 };
 export declare const ServiceAccount_LabelsEntry: {
+    $type: "yandex.cloud.iam.v1.ServiceAccount.LabelsEntry";
     encode(message: ServiceAccount_LabelsEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ServiceAccount_LabelsEntry;
     fromJSON(object: any): ServiceAccount_LabelsEntry;
@@ -40,6 +44,6 @@ export declare const ServiceAccount_LabelsEntry: {
 };
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

@@ -6,6 +6,7 @@ import { ChannelCredentials, ChannelOptions, UntypedServiceImplementation, handl
 import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.cdn.v1";
 export interface GetOriginGroupRequest {
+    $type: 'yandex.cloud.cdn.v1.GetOriginGroupRequest';
     /** ID of the folder that the origin group belongs to. */
     folderId: string;
     /**
@@ -16,6 +17,7 @@ export interface GetOriginGroupRequest {
     originGroupId: number;
 }
 export interface ListOriginGroupsRequest {
+    $type: 'yandex.cloud.cdn.v1.ListOriginGroupsRequest';
     /** ID of the folder that the origin group belongs to.. */
     folderId: string;
     /**
@@ -33,6 +35,7 @@ export interface ListOriginGroupsRequest {
     pageToken: string;
 }
 export interface ListOriginGroupsResponse {
+    $type: 'yandex.cloud.cdn.v1.ListOriginGroupsResponse';
     /** List of all Origin Groups associated with folder. */
     originGroups: OriginGroup[];
     /**
@@ -45,6 +48,7 @@ export interface ListOriginGroupsResponse {
     nextPageToken: string;
 }
 export interface CreateOriginGroupRequest {
+    $type: 'yandex.cloud.cdn.v1.CreateOriginGroupRequest';
     /** ID of the folder that the origin group belongs to. */
     folderId: string;
     /** Name of the origin group. */
@@ -65,10 +69,12 @@ export interface CreateOriginGroupRequest {
     origins: OriginParams[];
 }
 export interface CreateOriginGroupMetadata {
+    $type: 'yandex.cloud.cdn.v1.CreateOriginGroupMetadata';
     /** ID of created origin group. */
     originGroupId: number;
 }
 export interface UpdateOriginGroupRequest {
+    $type: 'yandex.cloud.cdn.v1.UpdateOriginGroupRequest';
     /** ID of the folder that the origin group belongs to. */
     folderId: string;
     /** ID of the origin group. */
@@ -90,20 +96,24 @@ export interface UpdateOriginGroupRequest {
     origins: OriginParams[];
 }
 export interface UpdateOriginGroupMetadata {
+    $type: 'yandex.cloud.cdn.v1.UpdateOriginGroupMetadata';
     /** ID of the origin group. */
     originGroupId: number;
 }
 export interface DeleteOriginGroupRequest {
+    $type: 'yandex.cloud.cdn.v1.DeleteOriginGroupRequest';
     /** ID of the folder that the origin group belongs to. */
     folderId: string;
     /** ID of the origin group. */
     originGroupId: number;
 }
 export interface DeleteOriginGroupMetadata {
+    $type: 'yandex.cloud.cdn.v1.DeleteOriginGroupMetadata';
     /** ID of the origin group. */
     originGroupId: number;
 }
 export declare const GetOriginGroupRequest: {
+    $type: "yandex.cloud.cdn.v1.GetOriginGroupRequest";
     encode(message: GetOriginGroupRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): GetOriginGroupRequest;
     fromJSON(object: any): GetOriginGroupRequest;
@@ -111,6 +121,7 @@ export declare const GetOriginGroupRequest: {
     fromPartial(object: DeepPartial<GetOriginGroupRequest>): GetOriginGroupRequest;
 };
 export declare const ListOriginGroupsRequest: {
+    $type: "yandex.cloud.cdn.v1.ListOriginGroupsRequest";
     encode(message: ListOriginGroupsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListOriginGroupsRequest;
     fromJSON(object: any): ListOriginGroupsRequest;
@@ -118,6 +129,7 @@ export declare const ListOriginGroupsRequest: {
     fromPartial(object: DeepPartial<ListOriginGroupsRequest>): ListOriginGroupsRequest;
 };
 export declare const ListOriginGroupsResponse: {
+    $type: "yandex.cloud.cdn.v1.ListOriginGroupsResponse";
     encode(message: ListOriginGroupsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListOriginGroupsResponse;
     fromJSON(object: any): ListOriginGroupsResponse;
@@ -125,6 +137,7 @@ export declare const ListOriginGroupsResponse: {
     fromPartial(object: DeepPartial<ListOriginGroupsResponse>): ListOriginGroupsResponse;
 };
 export declare const CreateOriginGroupRequest: {
+    $type: "yandex.cloud.cdn.v1.CreateOriginGroupRequest";
     encode(message: CreateOriginGroupRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateOriginGroupRequest;
     fromJSON(object: any): CreateOriginGroupRequest;
@@ -132,6 +145,7 @@ export declare const CreateOriginGroupRequest: {
     fromPartial(object: DeepPartial<CreateOriginGroupRequest>): CreateOriginGroupRequest;
 };
 export declare const CreateOriginGroupMetadata: {
+    $type: "yandex.cloud.cdn.v1.CreateOriginGroupMetadata";
     encode(message: CreateOriginGroupMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateOriginGroupMetadata;
     fromJSON(object: any): CreateOriginGroupMetadata;
@@ -139,6 +153,7 @@ export declare const CreateOriginGroupMetadata: {
     fromPartial(object: DeepPartial<CreateOriginGroupMetadata>): CreateOriginGroupMetadata;
 };
 export declare const UpdateOriginGroupRequest: {
+    $type: "yandex.cloud.cdn.v1.UpdateOriginGroupRequest";
     encode(message: UpdateOriginGroupRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateOriginGroupRequest;
     fromJSON(object: any): UpdateOriginGroupRequest;
@@ -146,6 +161,7 @@ export declare const UpdateOriginGroupRequest: {
     fromPartial(object: DeepPartial<UpdateOriginGroupRequest>): UpdateOriginGroupRequest;
 };
 export declare const UpdateOriginGroupMetadata: {
+    $type: "yandex.cloud.cdn.v1.UpdateOriginGroupMetadata";
     encode(message: UpdateOriginGroupMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateOriginGroupMetadata;
     fromJSON(object: any): UpdateOriginGroupMetadata;
@@ -153,6 +169,7 @@ export declare const UpdateOriginGroupMetadata: {
     fromPartial(object: DeepPartial<UpdateOriginGroupMetadata>): UpdateOriginGroupMetadata;
 };
 export declare const DeleteOriginGroupRequest: {
+    $type: "yandex.cloud.cdn.v1.DeleteOriginGroupRequest";
     encode(message: DeleteOriginGroupRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteOriginGroupRequest;
     fromJSON(object: any): DeleteOriginGroupRequest;
@@ -160,6 +177,7 @@ export declare const DeleteOriginGroupRequest: {
     fromPartial(object: DeepPartial<DeleteOriginGroupRequest>): DeleteOriginGroupRequest;
 };
 export declare const DeleteOriginGroupMetadata: {
+    $type: "yandex.cloud.cdn.v1.DeleteOriginGroupMetadata";
     encode(message: DeleteOriginGroupMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteOriginGroupMetadata;
     fromJSON(object: any): DeleteOriginGroupMetadata;
@@ -256,6 +274,6 @@ export interface OriginGroupServiceClient extends Client {
 export declare const OriginGroupServiceClient: new (address: string, credentials: ChannelCredentials, options?: Partial<ChannelOptions> | undefined) => OriginGroupServiceClient;
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

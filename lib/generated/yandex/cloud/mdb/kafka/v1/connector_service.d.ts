@@ -5,6 +5,7 @@ import { ChannelCredentials, ChannelOptions, UntypedServiceImplementation, handl
 import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.mdb.kafka.v1";
 export interface GetConnectorRequest {
+    $type: 'yandex.cloud.mdb.kafka.v1.GetConnectorRequest';
     /**
      * ID of the Apache Kafka Cluster resource to return.
      * To get the cluster ID use a [ClusterService.List] request.
@@ -17,6 +18,7 @@ export interface GetConnectorRequest {
     connectorName: string;
 }
 export interface ListConnectorsRequest {
+    $type: 'yandex.cloud.mdb.kafka.v1.ListConnectorsRequest';
     /**
      * ID of the Apache Kafka cluster to list connectors in.
      * To get the cluster ID use a [ClusterService.List] request.
@@ -30,6 +32,7 @@ export interface ListConnectorsRequest {
     pageToken: string;
 }
 export interface ListConnectorsResponse {
+    $type: 'yandex.cloud.mdb.kafka.v1.ListConnectorsResponse';
     /** List of Apache Kafka Connector resources. */
     connectors: Connector[];
     /**
@@ -41,6 +44,7 @@ export interface ListConnectorsResponse {
     nextPageToken: string;
 }
 export interface CreateConnectorRequest {
+    $type: 'yandex.cloud.mdb.kafka.v1.CreateConnectorRequest';
     /**
      * Required. ID of the Apache Kafka cluster to create a connector in.
      * To get the cluster ID use a [ClusterService.List] request.
@@ -50,12 +54,14 @@ export interface CreateConnectorRequest {
     connectorSpec: ConnectorSpec | undefined;
 }
 export interface CreateConnectorMetadata {
+    $type: 'yandex.cloud.mdb.kafka.v1.CreateConnectorMetadata';
     /** ID of the Apache Kafka cluster where a connector is being created. */
     clusterId: string;
     /** Name of the Apache Kafka connector that is being created. */
     connectorName: string;
 }
 export interface DeleteConnectorRequest {
+    $type: 'yandex.cloud.mdb.kafka.v1.DeleteConnectorRequest';
     /**
      * Required. ID of the Apache Kafka cluster to delete a connector in.
      * To get the cluster ID, use a [ClusterService.List] request.
@@ -68,12 +74,14 @@ export interface DeleteConnectorRequest {
     connectorName: string;
 }
 export interface DeleteConnectorMetadata {
+    $type: 'yandex.cloud.mdb.kafka.v1.DeleteConnectorMetadata';
     /** ID of the Apache Kafka cluster where a connector is being deleted. */
     clusterId: string;
     /** Name of the Apache Kafka connector that is being deleted. */
     connectorName: string;
 }
 export interface ResumeConnectorRequest {
+    $type: 'yandex.cloud.mdb.kafka.v1.ResumeConnectorRequest';
     /** Required. ID of the Apache Kafka cluster to resume connector in. */
     clusterId: string;
     /**
@@ -83,12 +91,14 @@ export interface ResumeConnectorRequest {
     connectorName: string;
 }
 export interface ResumeConnectorMetadata {
+    $type: 'yandex.cloud.mdb.kafka.v1.ResumeConnectorMetadata';
     /** Required. ID of the Apache Kafka cluster. */
     clusterId: string;
     /** Name of the Apache Kafka Connector resource that is beign resumed. */
     connectorName: string;
 }
 export interface PauseConnectorRequest {
+    $type: 'yandex.cloud.mdb.kafka.v1.PauseConnectorRequest';
     /** Required. ID of the Apache Kafka cluster to pause connector in. */
     clusterId: string;
     /**
@@ -98,12 +108,14 @@ export interface PauseConnectorRequest {
     connectorName: string;
 }
 export interface PauseConnectorMetadata {
+    $type: 'yandex.cloud.mdb.kafka.v1.PauseConnectorMetadata';
     /** Required. ID of the Apache Kafka cluster. */
     clusterId: string;
     /** Name of the Apache Kafka Connector resource that is being paused. */
     connectorName: string;
 }
 export declare const GetConnectorRequest: {
+    $type: "yandex.cloud.mdb.kafka.v1.GetConnectorRequest";
     encode(message: GetConnectorRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): GetConnectorRequest;
     fromJSON(object: any): GetConnectorRequest;
@@ -111,6 +123,7 @@ export declare const GetConnectorRequest: {
     fromPartial(object: DeepPartial<GetConnectorRequest>): GetConnectorRequest;
 };
 export declare const ListConnectorsRequest: {
+    $type: "yandex.cloud.mdb.kafka.v1.ListConnectorsRequest";
     encode(message: ListConnectorsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListConnectorsRequest;
     fromJSON(object: any): ListConnectorsRequest;
@@ -118,6 +131,7 @@ export declare const ListConnectorsRequest: {
     fromPartial(object: DeepPartial<ListConnectorsRequest>): ListConnectorsRequest;
 };
 export declare const ListConnectorsResponse: {
+    $type: "yandex.cloud.mdb.kafka.v1.ListConnectorsResponse";
     encode(message: ListConnectorsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListConnectorsResponse;
     fromJSON(object: any): ListConnectorsResponse;
@@ -125,6 +139,7 @@ export declare const ListConnectorsResponse: {
     fromPartial(object: DeepPartial<ListConnectorsResponse>): ListConnectorsResponse;
 };
 export declare const CreateConnectorRequest: {
+    $type: "yandex.cloud.mdb.kafka.v1.CreateConnectorRequest";
     encode(message: CreateConnectorRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateConnectorRequest;
     fromJSON(object: any): CreateConnectorRequest;
@@ -132,6 +147,7 @@ export declare const CreateConnectorRequest: {
     fromPartial(object: DeepPartial<CreateConnectorRequest>): CreateConnectorRequest;
 };
 export declare const CreateConnectorMetadata: {
+    $type: "yandex.cloud.mdb.kafka.v1.CreateConnectorMetadata";
     encode(message: CreateConnectorMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateConnectorMetadata;
     fromJSON(object: any): CreateConnectorMetadata;
@@ -139,6 +155,7 @@ export declare const CreateConnectorMetadata: {
     fromPartial(object: DeepPartial<CreateConnectorMetadata>): CreateConnectorMetadata;
 };
 export declare const DeleteConnectorRequest: {
+    $type: "yandex.cloud.mdb.kafka.v1.DeleteConnectorRequest";
     encode(message: DeleteConnectorRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteConnectorRequest;
     fromJSON(object: any): DeleteConnectorRequest;
@@ -146,6 +163,7 @@ export declare const DeleteConnectorRequest: {
     fromPartial(object: DeepPartial<DeleteConnectorRequest>): DeleteConnectorRequest;
 };
 export declare const DeleteConnectorMetadata: {
+    $type: "yandex.cloud.mdb.kafka.v1.DeleteConnectorMetadata";
     encode(message: DeleteConnectorMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteConnectorMetadata;
     fromJSON(object: any): DeleteConnectorMetadata;
@@ -153,6 +171,7 @@ export declare const DeleteConnectorMetadata: {
     fromPartial(object: DeepPartial<DeleteConnectorMetadata>): DeleteConnectorMetadata;
 };
 export declare const ResumeConnectorRequest: {
+    $type: "yandex.cloud.mdb.kafka.v1.ResumeConnectorRequest";
     encode(message: ResumeConnectorRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ResumeConnectorRequest;
     fromJSON(object: any): ResumeConnectorRequest;
@@ -160,6 +179,7 @@ export declare const ResumeConnectorRequest: {
     fromPartial(object: DeepPartial<ResumeConnectorRequest>): ResumeConnectorRequest;
 };
 export declare const ResumeConnectorMetadata: {
+    $type: "yandex.cloud.mdb.kafka.v1.ResumeConnectorMetadata";
     encode(message: ResumeConnectorMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ResumeConnectorMetadata;
     fromJSON(object: any): ResumeConnectorMetadata;
@@ -167,6 +187,7 @@ export declare const ResumeConnectorMetadata: {
     fromPartial(object: DeepPartial<ResumeConnectorMetadata>): ResumeConnectorMetadata;
 };
 export declare const PauseConnectorRequest: {
+    $type: "yandex.cloud.mdb.kafka.v1.PauseConnectorRequest";
     encode(message: PauseConnectorRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): PauseConnectorRequest;
     fromJSON(object: any): PauseConnectorRequest;
@@ -174,6 +195,7 @@ export declare const PauseConnectorRequest: {
     fromPartial(object: DeepPartial<PauseConnectorRequest>): PauseConnectorRequest;
 };
 export declare const PauseConnectorMetadata: {
+    $type: "yandex.cloud.mdb.kafka.v1.PauseConnectorMetadata";
     encode(message: PauseConnectorMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): PauseConnectorMetadata;
     fromJSON(object: any): PauseConnectorMetadata;
@@ -298,6 +320,6 @@ export interface ConnectorServiceClient extends Client {
 export declare const ConnectorServiceClient: new (address: string, credentials: ChannelCredentials, options?: Partial<ChannelOptions> | undefined) => ConnectorServiceClient;
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

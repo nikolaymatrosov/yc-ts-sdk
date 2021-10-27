@@ -8,6 +8,7 @@ import { ChannelCredentials, ChannelOptions, UntypedServiceImplementation, handl
 import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.containerregistry.v1";
 export interface GetRegistryRequest {
+    $type: 'yandex.cloud.containerregistry.v1.GetRegistryRequest';
     /**
      * ID of the Registry resource to return.
      *
@@ -16,6 +17,7 @@ export interface GetRegistryRequest {
     registryId: string;
 }
 export interface ListRegistriesRequest {
+    $type: 'yandex.cloud.containerregistry.v1.ListRegistriesRequest';
     /**
      * ID of the folder to list registries in.
      *
@@ -45,6 +47,7 @@ export interface ListRegistriesRequest {
     filter: string;
 }
 export interface ListRegistriesResponse {
+    $type: 'yandex.cloud.containerregistry.v1.ListRegistriesResponse';
     /** List of Registry resources. */
     registries: Registry[];
     /**
@@ -58,6 +61,7 @@ export interface ListRegistriesResponse {
     nextPageToken: string;
 }
 export interface CreateRegistryRequest {
+    $type: 'yandex.cloud.containerregistry.v1.CreateRegistryRequest';
     /**
      * ID of the folder to create a registry in.
      *
@@ -76,14 +80,17 @@ export interface CreateRegistryRequest {
     };
 }
 export interface CreateRegistryRequest_LabelsEntry {
+    $type: 'yandex.cloud.containerregistry.v1.CreateRegistryRequest.LabelsEntry';
     key: string;
     value: string;
 }
 export interface CreateRegistryMetadata {
+    $type: 'yandex.cloud.containerregistry.v1.CreateRegistryMetadata';
     /** ID of the registry that is being created. */
     registryId: string;
 }
 export interface UpdateRegistryRequest {
+    $type: 'yandex.cloud.containerregistry.v1.UpdateRegistryRequest';
     /**
      * ID of the Registry resource to update.
      *
@@ -108,50 +115,61 @@ export interface UpdateRegistryRequest {
     };
 }
 export interface UpdateRegistryRequest_LabelsEntry {
+    $type: 'yandex.cloud.containerregistry.v1.UpdateRegistryRequest.LabelsEntry';
     key: string;
     value: string;
 }
 export interface UpdateRegistryMetadata {
+    $type: 'yandex.cloud.containerregistry.v1.UpdateRegistryMetadata';
     /** ID of the Registry resource that is being updated. */
     registryId: string;
 }
 export interface DeleteRegistryRequest {
+    $type: 'yandex.cloud.containerregistry.v1.DeleteRegistryRequest';
     /** ID of the registry to delete. */
     registryId: string;
 }
 export interface DeleteRegistryMetadata {
+    $type: 'yandex.cloud.containerregistry.v1.DeleteRegistryMetadata';
     /** ID of the registry that is being deleted. */
     registryId: string;
 }
 export interface SetIpPermissionRequest {
+    $type: 'yandex.cloud.containerregistry.v1.SetIpPermissionRequest';
     /** ID of the registry for which ip permissions are being set. */
     registryId: string;
     /** IP permission to be set. */
     ipPermission: IpPermission[];
 }
 export interface UpdateIpPermissionRequest {
+    $type: 'yandex.cloud.containerregistry.v1.UpdateIpPermissionRequest';
     /** ID of the registry for which ip permissions are being updated. */
     registryId: string;
     /** Updates to IP permissions. */
     ipPermissionDeltas: IpPermissionDelta[];
 }
 export interface ListIpPermissionRequest {
+    $type: 'yandex.cloud.containerregistry.v1.ListIpPermissionRequest';
     /** ID of the Registry to return ip permission list. */
     registryId: string;
 }
 export interface ListIpPermissionsResponse {
+    $type: 'yandex.cloud.containerregistry.v1.ListIpPermissionsResponse';
     /** List of ip permissions for registry */
     permissions: IpPermission[];
 }
 export interface SetIpPermissionMetadata {
+    $type: 'yandex.cloud.containerregistry.v1.SetIpPermissionMetadata';
     /** ID of the registry that ip permission is being set. */
     registryId: string;
 }
 export interface UpdateIpPermissionMetadata {
+    $type: 'yandex.cloud.containerregistry.v1.UpdateIpPermissionMetadata';
     /** ID of the registry that ip permission is being updated. */
     registryId: string;
 }
 export declare const GetRegistryRequest: {
+    $type: "yandex.cloud.containerregistry.v1.GetRegistryRequest";
     encode(message: GetRegistryRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): GetRegistryRequest;
     fromJSON(object: any): GetRegistryRequest;
@@ -159,6 +177,7 @@ export declare const GetRegistryRequest: {
     fromPartial(object: DeepPartial<GetRegistryRequest>): GetRegistryRequest;
 };
 export declare const ListRegistriesRequest: {
+    $type: "yandex.cloud.containerregistry.v1.ListRegistriesRequest";
     encode(message: ListRegistriesRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListRegistriesRequest;
     fromJSON(object: any): ListRegistriesRequest;
@@ -166,6 +185,7 @@ export declare const ListRegistriesRequest: {
     fromPartial(object: DeepPartial<ListRegistriesRequest>): ListRegistriesRequest;
 };
 export declare const ListRegistriesResponse: {
+    $type: "yandex.cloud.containerregistry.v1.ListRegistriesResponse";
     encode(message: ListRegistriesResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListRegistriesResponse;
     fromJSON(object: any): ListRegistriesResponse;
@@ -173,6 +193,7 @@ export declare const ListRegistriesResponse: {
     fromPartial(object: DeepPartial<ListRegistriesResponse>): ListRegistriesResponse;
 };
 export declare const CreateRegistryRequest: {
+    $type: "yandex.cloud.containerregistry.v1.CreateRegistryRequest";
     encode(message: CreateRegistryRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateRegistryRequest;
     fromJSON(object: any): CreateRegistryRequest;
@@ -180,6 +201,7 @@ export declare const CreateRegistryRequest: {
     fromPartial(object: DeepPartial<CreateRegistryRequest>): CreateRegistryRequest;
 };
 export declare const CreateRegistryRequest_LabelsEntry: {
+    $type: "yandex.cloud.containerregistry.v1.CreateRegistryRequest.LabelsEntry";
     encode(message: CreateRegistryRequest_LabelsEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateRegistryRequest_LabelsEntry;
     fromJSON(object: any): CreateRegistryRequest_LabelsEntry;
@@ -187,6 +209,7 @@ export declare const CreateRegistryRequest_LabelsEntry: {
     fromPartial(object: DeepPartial<CreateRegistryRequest_LabelsEntry>): CreateRegistryRequest_LabelsEntry;
 };
 export declare const CreateRegistryMetadata: {
+    $type: "yandex.cloud.containerregistry.v1.CreateRegistryMetadata";
     encode(message: CreateRegistryMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateRegistryMetadata;
     fromJSON(object: any): CreateRegistryMetadata;
@@ -194,6 +217,7 @@ export declare const CreateRegistryMetadata: {
     fromPartial(object: DeepPartial<CreateRegistryMetadata>): CreateRegistryMetadata;
 };
 export declare const UpdateRegistryRequest: {
+    $type: "yandex.cloud.containerregistry.v1.UpdateRegistryRequest";
     encode(message: UpdateRegistryRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateRegistryRequest;
     fromJSON(object: any): UpdateRegistryRequest;
@@ -201,6 +225,7 @@ export declare const UpdateRegistryRequest: {
     fromPartial(object: DeepPartial<UpdateRegistryRequest>): UpdateRegistryRequest;
 };
 export declare const UpdateRegistryRequest_LabelsEntry: {
+    $type: "yandex.cloud.containerregistry.v1.UpdateRegistryRequest.LabelsEntry";
     encode(message: UpdateRegistryRequest_LabelsEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateRegistryRequest_LabelsEntry;
     fromJSON(object: any): UpdateRegistryRequest_LabelsEntry;
@@ -208,6 +233,7 @@ export declare const UpdateRegistryRequest_LabelsEntry: {
     fromPartial(object: DeepPartial<UpdateRegistryRequest_LabelsEntry>): UpdateRegistryRequest_LabelsEntry;
 };
 export declare const UpdateRegistryMetadata: {
+    $type: "yandex.cloud.containerregistry.v1.UpdateRegistryMetadata";
     encode(message: UpdateRegistryMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateRegistryMetadata;
     fromJSON(object: any): UpdateRegistryMetadata;
@@ -215,6 +241,7 @@ export declare const UpdateRegistryMetadata: {
     fromPartial(object: DeepPartial<UpdateRegistryMetadata>): UpdateRegistryMetadata;
 };
 export declare const DeleteRegistryRequest: {
+    $type: "yandex.cloud.containerregistry.v1.DeleteRegistryRequest";
     encode(message: DeleteRegistryRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteRegistryRequest;
     fromJSON(object: any): DeleteRegistryRequest;
@@ -222,6 +249,7 @@ export declare const DeleteRegistryRequest: {
     fromPartial(object: DeepPartial<DeleteRegistryRequest>): DeleteRegistryRequest;
 };
 export declare const DeleteRegistryMetadata: {
+    $type: "yandex.cloud.containerregistry.v1.DeleteRegistryMetadata";
     encode(message: DeleteRegistryMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteRegistryMetadata;
     fromJSON(object: any): DeleteRegistryMetadata;
@@ -229,6 +257,7 @@ export declare const DeleteRegistryMetadata: {
     fromPartial(object: DeepPartial<DeleteRegistryMetadata>): DeleteRegistryMetadata;
 };
 export declare const SetIpPermissionRequest: {
+    $type: "yandex.cloud.containerregistry.v1.SetIpPermissionRequest";
     encode(message: SetIpPermissionRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): SetIpPermissionRequest;
     fromJSON(object: any): SetIpPermissionRequest;
@@ -236,6 +265,7 @@ export declare const SetIpPermissionRequest: {
     fromPartial(object: DeepPartial<SetIpPermissionRequest>): SetIpPermissionRequest;
 };
 export declare const UpdateIpPermissionRequest: {
+    $type: "yandex.cloud.containerregistry.v1.UpdateIpPermissionRequest";
     encode(message: UpdateIpPermissionRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateIpPermissionRequest;
     fromJSON(object: any): UpdateIpPermissionRequest;
@@ -243,6 +273,7 @@ export declare const UpdateIpPermissionRequest: {
     fromPartial(object: DeepPartial<UpdateIpPermissionRequest>): UpdateIpPermissionRequest;
 };
 export declare const ListIpPermissionRequest: {
+    $type: "yandex.cloud.containerregistry.v1.ListIpPermissionRequest";
     encode(message: ListIpPermissionRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListIpPermissionRequest;
     fromJSON(object: any): ListIpPermissionRequest;
@@ -250,6 +281,7 @@ export declare const ListIpPermissionRequest: {
     fromPartial(object: DeepPartial<ListIpPermissionRequest>): ListIpPermissionRequest;
 };
 export declare const ListIpPermissionsResponse: {
+    $type: "yandex.cloud.containerregistry.v1.ListIpPermissionsResponse";
     encode(message: ListIpPermissionsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListIpPermissionsResponse;
     fromJSON(object: any): ListIpPermissionsResponse;
@@ -257,6 +289,7 @@ export declare const ListIpPermissionsResponse: {
     fromPartial(object: DeepPartial<ListIpPermissionsResponse>): ListIpPermissionsResponse;
 };
 export declare const SetIpPermissionMetadata: {
+    $type: "yandex.cloud.containerregistry.v1.SetIpPermissionMetadata";
     encode(message: SetIpPermissionMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): SetIpPermissionMetadata;
     fromJSON(object: any): SetIpPermissionMetadata;
@@ -264,6 +297,7 @@ export declare const SetIpPermissionMetadata: {
     fromPartial(object: DeepPartial<SetIpPermissionMetadata>): SetIpPermissionMetadata;
 };
 export declare const UpdateIpPermissionMetadata: {
+    $type: "yandex.cloud.containerregistry.v1.UpdateIpPermissionMetadata";
     encode(message: UpdateIpPermissionMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateIpPermissionMetadata;
     fromJSON(object: any): UpdateIpPermissionMetadata;
@@ -468,6 +502,6 @@ export interface RegistryServiceClient extends Client {
 export declare const RegistryServiceClient: new (address: string, credentials: ChannelCredentials, options?: Partial<ChannelOptions> | undefined) => RegistryServiceClient;
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

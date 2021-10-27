@@ -2,7 +2,7 @@ import * as iam from '../api/iam/v1';
 import {
     CreateIamTokenRequest,
     IamTokenServiceService,
-} from '../generated/yandex/cloud/iam/v1/iam_token_service';
+} from 'cloud/iam/v1/iam_token_service';
 import { ITokenService } from './TokenService/ITokenService';
 import {
     IamTokenService,

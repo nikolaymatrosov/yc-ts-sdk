@@ -1,4 +1,5 @@
 /* eslint-disable */
+import { messageTypeRegistry } from '../../../../../typeRegistry';
 import { Polygon } from '../../../../../yandex/cloud/ai/vision/v1/primitives';
 import Long from 'long';
 import _m0 from 'protobufjs/minimal';
@@ -6,18 +7,24 @@ import _m0 from 'protobufjs/minimal';
 export const protobufPackage = 'yandex.cloud.ai.vision.v1';
 
 export interface FaceAnnotation {
+    $type: 'yandex.cloud.ai.vision.v1.FaceAnnotation';
     /** An array of detected faces for the specified image. */
     faces: Face[];
 }
 
 export interface Face {
+    $type: 'yandex.cloud.ai.vision.v1.Face';
     /** Area on the image where the face is located. */
     boundingBox: Polygon | undefined;
 }
 
-const baseFaceAnnotation: object = {};
+const baseFaceAnnotation: object = {
+    $type: 'yandex.cloud.ai.vision.v1.FaceAnnotation',
+};
 
 export const FaceAnnotation = {
+    $type: 'yandex.cloud.ai.vision.v1.FaceAnnotation' as const,
+
     encode(
         message: FaceAnnotation,
         writer: _m0.Writer = _m0.Writer.create()
@@ -83,9 +90,13 @@ export const FaceAnnotation = {
     },
 };
 
-const baseFace: object = {};
+messageTypeRegistry.set(FaceAnnotation.$type, FaceAnnotation);
+
+const baseFace: object = { $type: 'yandex.cloud.ai.vision.v1.Face' };
 
 export const Face = {
+    $type: 'yandex.cloud.ai.vision.v1.Face' as const,
+
     encode(
         message: Face,
         writer: _m0.Writer = _m0.Writer.create()
@@ -151,6 +162,8 @@ export const Face = {
     },
 };
 
+messageTypeRegistry.set(Face.$type, Face);
+
 type Builtin =
     | Date
     | Function
@@ -166,7 +179,7 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 if (_m0.util.Long !== Long) {

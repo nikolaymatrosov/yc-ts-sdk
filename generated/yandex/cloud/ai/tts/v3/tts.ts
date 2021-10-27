@@ -1,10 +1,12 @@
 /* eslint-disable */
+import { messageTypeRegistry } from '../../../../../typeRegistry';
 import Long from 'long';
 import _m0 from 'protobufjs/minimal';
 
 export const protobufPackage = 'speechkit.tts.v3';
 
 export interface AudioContent {
+    $type: 'speechkit.tts.v3.AudioContent';
     /** Bytes with audio data. */
     content: Uint8Array | undefined;
     /** Description of the audio format. */
@@ -12,6 +14,7 @@ export interface AudioContent {
 }
 
 export interface AudioFormatOptions {
+    $type: 'speechkit.tts.v3.AudioFormatOptions';
     /** The audio format specified in request parameters. */
     rawAudio: RawAudio | undefined;
     /** The audio format specified inside the container metadata. */
@@ -19,6 +22,7 @@ export interface AudioFormatOptions {
 }
 
 export interface RawAudio {
+    $type: 'speechkit.tts.v3.RawAudio';
     /** Encoding type. */
     audioEncoding: RawAudio_AudioEncoding;
     /** Sampling frequency of the signal. */
@@ -63,6 +67,7 @@ export function rawAudio_AudioEncodingToJSON(
 }
 
 export interface ContainerAudio {
+    $type: 'speechkit.tts.v3.ContainerAudio';
     containerAudioType: ContainerAudio_ContainerAudioType;
 }
 
@@ -110,6 +115,7 @@ export function containerAudio_ContainerAudioTypeToJSON(
 }
 
 export interface TextVariable {
+    $type: 'speechkit.tts.v3.TextVariable';
     /** The name of the variable. */
     variableName: string;
     /** The text of the variable. */
@@ -117,6 +123,7 @@ export interface TextVariable {
 }
 
 export interface AudioVariable {
+    $type: 'speechkit.tts.v3.AudioVariable';
     /** The name of the variable. */
     variableName: string;
     /** Start time of the variable in milliseconds. */
@@ -126,11 +133,13 @@ export interface AudioVariable {
 }
 
 export interface UtteranceSynthesisResponse {
+    $type: 'speechkit.tts.v3.UtteranceSynthesisResponse';
     /** Part of synthesized audio. */
     audioChunk: AudioChunk | undefined;
 }
 
 export interface AudioTemplate {
+    $type: 'speechkit.tts.v3.AudioTemplate';
     /** Audio file. */
     audio: AudioContent | undefined;
     /** Template and description of its variables. */
@@ -140,11 +149,13 @@ export interface AudioTemplate {
 }
 
 export interface AudioChunk {
+    $type: 'speechkit.tts.v3.AudioChunk';
     /** Sequence of bytes of the synthesized audio in format specified in output_audio_spec. */
     data: Uint8Array;
 }
 
 export interface TextTemplate {
+    $type: 'speechkit.tts.v3.TextTemplate';
     /**
      * Template text.
      *
@@ -160,6 +171,7 @@ export interface TextTemplate {
 }
 
 export interface Hints {
+    $type: 'speechkit.tts.v3.Hints';
     /** Name of speaker to use. */
     voice: string | undefined;
     /** Template for synthesizing. */
@@ -171,6 +183,7 @@ export interface Hints {
 }
 
 export interface UtteranceSynthesisRequest {
+    $type: 'speechkit.tts.v3.UtteranceSynthesisRequest';
     /**
      * The name of the model.
      *
@@ -232,9 +245,11 @@ export function utteranceSynthesisRequest_LoudnessNormalizationTypeToJSON(
     }
 }
 
-const baseAudioContent: object = {};
+const baseAudioContent: object = { $type: 'speechkit.tts.v3.AudioContent' };
 
 export const AudioContent = {
+    $type: 'speechkit.tts.v3.AudioContent' as const,
+
     encode(
         message: AudioContent,
         writer: _m0.Writer = _m0.Writer.create()
@@ -321,9 +336,15 @@ export const AudioContent = {
     },
 };
 
-const baseAudioFormatOptions: object = {};
+messageTypeRegistry.set(AudioContent.$type, AudioContent);
+
+const baseAudioFormatOptions: object = {
+    $type: 'speechkit.tts.v3.AudioFormatOptions',
+};
 
 export const AudioFormatOptions = {
+    $type: 'speechkit.tts.v3.AudioFormatOptions' as const,
+
     encode(
         message: AudioFormatOptions,
         writer: _m0.Writer = _m0.Writer.create()
@@ -425,9 +446,17 @@ export const AudioFormatOptions = {
     },
 };
 
-const baseRawAudio: object = { audioEncoding: 0, sampleRateHertz: 0 };
+messageTypeRegistry.set(AudioFormatOptions.$type, AudioFormatOptions);
+
+const baseRawAudio: object = {
+    $type: 'speechkit.tts.v3.RawAudio',
+    audioEncoding: 0,
+    sampleRateHertz: 0,
+};
 
 export const RawAudio = {
+    $type: 'speechkit.tts.v3.RawAudio' as const,
+
     encode(
         message: RawAudio,
         writer: _m0.Writer = _m0.Writer.create()
@@ -521,9 +550,16 @@ export const RawAudio = {
     },
 };
 
-const baseContainerAudio: object = { containerAudioType: 0 };
+messageTypeRegistry.set(RawAudio.$type, RawAudio);
+
+const baseContainerAudio: object = {
+    $type: 'speechkit.tts.v3.ContainerAudio',
+    containerAudioType: 0,
+};
 
 export const ContainerAudio = {
+    $type: 'speechkit.tts.v3.ContainerAudio' as const,
+
     encode(
         message: ContainerAudio,
         writer: _m0.Writer = _m0.Writer.create()
@@ -592,9 +628,17 @@ export const ContainerAudio = {
     },
 };
 
-const baseTextVariable: object = { variableName: '', variableValue: '' };
+messageTypeRegistry.set(ContainerAudio.$type, ContainerAudio);
+
+const baseTextVariable: object = {
+    $type: 'speechkit.tts.v3.TextVariable',
+    variableName: '',
+    variableValue: '',
+};
 
 export const TextVariable = {
+    $type: 'speechkit.tts.v3.TextVariable' as const,
+
     encode(
         message: TextVariable,
         writer: _m0.Writer = _m0.Writer.create()
@@ -676,13 +720,18 @@ export const TextVariable = {
     },
 };
 
+messageTypeRegistry.set(TextVariable.$type, TextVariable);
+
 const baseAudioVariable: object = {
+    $type: 'speechkit.tts.v3.AudioVariable',
     variableName: '',
     variableStartMs: 0,
     variableLengthMs: 0,
 };
 
 export const AudioVariable = {
+    $type: 'speechkit.tts.v3.AudioVariable' as const,
+
     encode(
         message: AudioVariable,
         writer: _m0.Writer = _m0.Writer.create()
@@ -792,9 +841,15 @@ export const AudioVariable = {
     },
 };
 
-const baseUtteranceSynthesisResponse: object = {};
+messageTypeRegistry.set(AudioVariable.$type, AudioVariable);
+
+const baseUtteranceSynthesisResponse: object = {
+    $type: 'speechkit.tts.v3.UtteranceSynthesisResponse',
+};
 
 export const UtteranceSynthesisResponse = {
+    $type: 'speechkit.tts.v3.UtteranceSynthesisResponse' as const,
+
     encode(
         message: UtteranceSynthesisResponse,
         writer: _m0.Writer = _m0.Writer.create()
@@ -871,9 +926,16 @@ export const UtteranceSynthesisResponse = {
     },
 };
 
-const baseAudioTemplate: object = {};
+messageTypeRegistry.set(
+    UtteranceSynthesisResponse.$type,
+    UtteranceSynthesisResponse
+);
+
+const baseAudioTemplate: object = { $type: 'speechkit.tts.v3.AudioTemplate' };
 
 export const AudioTemplate = {
+    $type: 'speechkit.tts.v3.AudioTemplate' as const,
+
     encode(
         message: AudioTemplate,
         writer: _m0.Writer = _m0.Writer.create()
@@ -995,9 +1057,13 @@ export const AudioTemplate = {
     },
 };
 
-const baseAudioChunk: object = {};
+messageTypeRegistry.set(AudioTemplate.$type, AudioTemplate);
+
+const baseAudioChunk: object = { $type: 'speechkit.tts.v3.AudioChunk' };
 
 export const AudioChunk = {
+    $type: 'speechkit.tts.v3.AudioChunk' as const,
+
     encode(
         message: AudioChunk,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1057,9 +1123,16 @@ export const AudioChunk = {
     },
 };
 
-const baseTextTemplate: object = { textTemplate: '' };
+messageTypeRegistry.set(AudioChunk.$type, AudioChunk);
+
+const baseTextTemplate: object = {
+    $type: 'speechkit.tts.v3.TextTemplate',
+    textTemplate: '',
+};
 
 export const TextTemplate = {
+    $type: 'speechkit.tts.v3.TextTemplate' as const,
+
     encode(
         message: TextTemplate,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1145,9 +1218,13 @@ export const TextTemplate = {
     },
 };
 
-const baseHints: object = {};
+messageTypeRegistry.set(TextTemplate.$type, TextTemplate);
+
+const baseHints: object = { $type: 'speechkit.tts.v3.Hints' };
 
 export const Hints = {
+    $type: 'speechkit.tts.v3.Hints' as const,
+
     encode(
         message: Hints,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1274,12 +1351,17 @@ export const Hints = {
     },
 };
 
+messageTypeRegistry.set(Hints.$type, Hints);
+
 const baseUtteranceSynthesisRequest: object = {
+    $type: 'speechkit.tts.v3.UtteranceSynthesisRequest',
     model: '',
     loudnessNormalizationType: 0,
 };
 
 export const UtteranceSynthesisRequest = {
+    $type: 'speechkit.tts.v3.UtteranceSynthesisRequest' as const,
+
     encode(
         message: UtteranceSynthesisRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1485,6 +1567,11 @@ export const UtteranceSynthesisRequest = {
     },
 };
 
+messageTypeRegistry.set(
+    UtteranceSynthesisRequest.$type,
+    UtteranceSynthesisRequest
+);
+
 declare var self: any | undefined;
 declare var window: any | undefined;
 declare var global: any | undefined;
@@ -1534,7 +1621,7 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 function longToNumber(long: Long): number {

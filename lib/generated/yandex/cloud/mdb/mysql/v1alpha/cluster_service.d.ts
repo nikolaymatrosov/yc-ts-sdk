@@ -11,6 +11,7 @@ import { ChannelCredentials, ChannelOptions, UntypedServiceImplementation, handl
 import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.mdb.mysql.v1alpha";
 export interface GetClusterRequest {
+    $type: 'yandex.cloud.mdb.mysql.v1alpha.GetClusterRequest';
     /**
      * ID of the MySQL cluster to return.
      * To get the cluster ID use a [ClusterService.List] request.
@@ -18,6 +19,7 @@ export interface GetClusterRequest {
     clusterId: string;
 }
 export interface ListClustersRequest {
+    $type: 'yandex.cloud.mdb.mysql.v1alpha.ListClustersRequest';
     /**
      * ID of the folder to list MySQL clusters in.
      * To get the folder ID, use a [yandex.cloud.resourcemanager.v1.FolderService.List] request.
@@ -44,6 +46,7 @@ export interface ListClustersRequest {
     filter: string;
 }
 export interface ListClustersResponse {
+    $type: 'yandex.cloud.mdb.mysql.v1alpha.ListClustersResponse';
     /** List of MySQL clusters. */
     clusters: Cluster[];
     /**
@@ -55,6 +58,7 @@ export interface ListClustersResponse {
     nextPageToken: string;
 }
 export interface CreateClusterRequest {
+    $type: 'yandex.cloud.mdb.mysql.v1alpha.CreateClusterRequest';
     /** ID of the folder to create the MySQL cluster in. */
     folderId: string;
     /** Name of the MySQL cluster. The name must be unique within the folder. */
@@ -82,14 +86,17 @@ export interface CreateClusterRequest {
     networkId: string;
 }
 export interface CreateClusterRequest_LabelsEntry {
+    $type: 'yandex.cloud.mdb.mysql.v1alpha.CreateClusterRequest.LabelsEntry';
     key: string;
     value: string;
 }
 export interface CreateClusterMetadata {
+    $type: 'yandex.cloud.mdb.mysql.v1alpha.CreateClusterMetadata';
     /** ID of the MySQL cluster that is being created. */
     clusterId: string;
 }
 export interface UpdateClusterRequest {
+    $type: 'yandex.cloud.mdb.mysql.v1alpha.UpdateClusterRequest';
     /**
      * ID of the MySQL cluster to update.
      * To get the MySQL cluster ID, use a [ClusterService.List] request.
@@ -115,14 +122,17 @@ export interface UpdateClusterRequest {
     name: string;
 }
 export interface UpdateClusterRequest_LabelsEntry {
+    $type: 'yandex.cloud.mdb.mysql.v1alpha.UpdateClusterRequest.LabelsEntry';
     key: string;
     value: string;
 }
 export interface UpdateClusterMetadata {
+    $type: 'yandex.cloud.mdb.mysql.v1alpha.UpdateClusterMetadata';
     /** ID of the MySQL cluster that is being modified. */
     clusterId: string;
 }
 export interface DeleteClusterRequest {
+    $type: 'yandex.cloud.mdb.mysql.v1alpha.DeleteClusterRequest';
     /**
      * ID of the MySQL cluster to delete.
      * To get the MySQL cluster ID, use a [ClusterService.List] request.
@@ -130,10 +140,12 @@ export interface DeleteClusterRequest {
     clusterId: string;
 }
 export interface DeleteClusterMetadata {
+    $type: 'yandex.cloud.mdb.mysql.v1alpha.DeleteClusterMetadata';
     /** ID of the MySQL cluster that is being deleted. */
     clusterId: string;
 }
 export interface BackupClusterRequest {
+    $type: 'yandex.cloud.mdb.mysql.v1alpha.BackupClusterRequest';
     /**
      * ID of the MySQL cluster to back up.
      * To get the MySQL cluster ID, use a [ClusterService.List] request.
@@ -141,10 +153,12 @@ export interface BackupClusterRequest {
     clusterId: string;
 }
 export interface BackupClusterMetadata {
+    $type: 'yandex.cloud.mdb.mysql.v1alpha.BackupClusterMetadata';
     /** ID of the MySQL cluster that is being backed up. */
     clusterId: string;
 }
 export interface RestoreClusterRequest {
+    $type: 'yandex.cloud.mdb.mysql.v1alpha.RestoreClusterRequest';
     /**
      * ID of the backup to create a cluster from.
      * To get the backup ID, use a [ClusterService.ListBackups] request.
@@ -176,16 +190,19 @@ export interface RestoreClusterRequest {
     networkId: string;
 }
 export interface RestoreClusterRequest_LabelsEntry {
+    $type: 'yandex.cloud.mdb.mysql.v1alpha.RestoreClusterRequest.LabelsEntry';
     key: string;
     value: string;
 }
 export interface RestoreClusterMetadata {
+    $type: 'yandex.cloud.mdb.mysql.v1alpha.RestoreClusterMetadata';
     /** ID of the new MySQL cluster that is being created from a backup. */
     clusterId: string;
     /** ID of the backup that is being used for creating a cluster. */
     backupId: string;
 }
 export interface LogRecord {
+    $type: 'yandex.cloud.mdb.mysql.v1alpha.LogRecord';
     /** Log record timestamp in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format. */
     timestamp: Date | undefined;
     /** Contents of the log record. */
@@ -194,10 +211,12 @@ export interface LogRecord {
     };
 }
 export interface LogRecord_MessageEntry {
+    $type: 'yandex.cloud.mdb.mysql.v1alpha.LogRecord.MessageEntry';
     key: string;
     value: string;
 }
 export interface ListClusterLogsRequest {
+    $type: 'yandex.cloud.mdb.mysql.v1alpha.ListClusterLogsRequest';
     /**
      * ID of the MySQL cluster to request logs for.
      * To get the MySQL cluster ID use a [ClusterService.List] request.
@@ -237,6 +256,7 @@ export declare enum ListClusterLogsRequest_ServiceType {
 export declare function listClusterLogsRequest_ServiceTypeFromJSON(object: any): ListClusterLogsRequest_ServiceType;
 export declare function listClusterLogsRequest_ServiceTypeToJSON(object: ListClusterLogsRequest_ServiceType): string;
 export interface ListClusterLogsResponse {
+    $type: 'yandex.cloud.mdb.mysql.v1alpha.ListClusterLogsResponse';
     /** Requested log records. */
     logs: LogRecord[];
     /**
@@ -248,6 +268,7 @@ export interface ListClusterLogsResponse {
     nextPageToken: string;
 }
 export interface ListClusterOperationsRequest {
+    $type: 'yandex.cloud.mdb.mysql.v1alpha.ListClusterOperationsRequest';
     /** ID of the MySQL cluster to list operations for. */
     clusterId: string;
     /**
@@ -263,6 +284,7 @@ export interface ListClusterOperationsRequest {
     pageToken: string;
 }
 export interface ListClusterOperationsResponse {
+    $type: 'yandex.cloud.mdb.mysql.v1alpha.ListClusterOperationsResponse';
     /** List of operations for the specified MySQL cluster. */
     operations: Operation[];
     /**
@@ -274,6 +296,7 @@ export interface ListClusterOperationsResponse {
     nextPageToken: string;
 }
 export interface ListClusterBackupsRequest {
+    $type: 'yandex.cloud.mdb.mysql.v1alpha.ListClusterBackupsRequest';
     /**
      * ID of the MySQL cluster.
      * To get the MySQL cluster ID use a [ClusterService.List] request.
@@ -292,6 +315,7 @@ export interface ListClusterBackupsRequest {
     pageToken: string;
 }
 export interface ListClusterBackupsResponse {
+    $type: 'yandex.cloud.mdb.mysql.v1alpha.ListClusterBackupsResponse';
     /** List of MySQL backups. */
     backups: Backup[];
     /**
@@ -303,6 +327,7 @@ export interface ListClusterBackupsResponse {
     nextPageToken: string;
 }
 export interface ListClusterHostsRequest {
+    $type: 'yandex.cloud.mdb.mysql.v1alpha.ListClusterHostsRequest';
     /**
      * ID of the MySQL cluster.
      * To get the MySQL cluster ID use a [ClusterService.List] request.
@@ -321,6 +346,7 @@ export interface ListClusterHostsRequest {
     pageToken: string;
 }
 export interface ListClusterHostsResponse {
+    $type: 'yandex.cloud.mdb.mysql.v1alpha.ListClusterHostsResponse';
     /** List of MySQL hosts. */
     hosts: Host[];
     /**
@@ -332,6 +358,7 @@ export interface ListClusterHostsResponse {
     nextPageToken: string;
 }
 export interface AddClusterHostsRequest {
+    $type: 'yandex.cloud.mdb.mysql.v1alpha.AddClusterHostsRequest';
     /**
      * ID of the MySQL cluster to add hosts to.
      * To get the MySQL cluster ID, use a [ClusterService.List] request.
@@ -341,12 +368,14 @@ export interface AddClusterHostsRequest {
     hostSpecs: HostSpec[];
 }
 export interface AddClusterHostsMetadata {
+    $type: 'yandex.cloud.mdb.mysql.v1alpha.AddClusterHostsMetadata';
     /** ID of the MySQL cluster to which the hosts are being added. */
     clusterId: string;
     /** Names of hosts that are being added to the cluster. */
     hostNames: string[];
 }
 export interface DeleteClusterHostsRequest {
+    $type: 'yandex.cloud.mdb.mysql.v1alpha.DeleteClusterHostsRequest';
     /**
      * ID of the MySQL cluster to remove hosts from.
      * To get the MySQL cluster ID, use a [ClusterService.List] request.
@@ -356,34 +385,41 @@ export interface DeleteClusterHostsRequest {
     hostNames: string[];
 }
 export interface DeleteClusterHostsMetadata {
+    $type: 'yandex.cloud.mdb.mysql.v1alpha.DeleteClusterHostsMetadata';
     /** ID of the MySQL cluster to remove hosts from. */
     clusterId: string;
     /** Names of hosts that are being deleted. */
     hostNames: string[];
 }
 export interface StartClusterRequest {
+    $type: 'yandex.cloud.mdb.mysql.v1alpha.StartClusterRequest';
     /** ID of the MySQL cluster to start. */
     clusterId: string;
 }
 export interface StartClusterMetadata {
+    $type: 'yandex.cloud.mdb.mysql.v1alpha.StartClusterMetadata';
     /** ID of the MySQL cluster being started. */
     clusterId: string;
 }
 export interface StopClusterRequest {
+    $type: 'yandex.cloud.mdb.mysql.v1alpha.StopClusterRequest';
     /** ID of the MySQL cluster to stop. */
     clusterId: string;
 }
 export interface StopClusterMetadata {
+    $type: 'yandex.cloud.mdb.mysql.v1alpha.StopClusterMetadata';
     /** ID of the MySQL cluster being stopped. */
     clusterId: string;
 }
 export interface UpdateClusterHostsMetadata {
+    $type: 'yandex.cloud.mdb.mysql.v1alpha.UpdateClusterHostsMetadata';
     /** ID of the MySQL cluster to modify hosts in. */
     clusterId: string;
     /** Names of hosts that are being modified. */
     hostNames: string[];
 }
 export interface HostSpec {
+    $type: 'yandex.cloud.mdb.mysql.v1alpha.HostSpec';
     /**
      * ID of the availability zone where the host resides.
      * To get a list of available zones, use the [yandex.cloud.compute.v1.ZoneService.List] request.
@@ -408,6 +444,7 @@ export interface HostSpec {
     assignPublicIp: boolean;
 }
 export interface ConfigSpec {
+    $type: 'yandex.cloud.mdb.mysql.v1alpha.ConfigSpec';
     /**
      * Version of MySQL used in the cluster.
      * Possible values:
@@ -422,6 +459,7 @@ export interface ConfigSpec {
     backupWindowStart: TimeOfDay | undefined;
 }
 export declare const GetClusterRequest: {
+    $type: "yandex.cloud.mdb.mysql.v1alpha.GetClusterRequest";
     encode(message: GetClusterRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): GetClusterRequest;
     fromJSON(object: any): GetClusterRequest;
@@ -429,6 +467,7 @@ export declare const GetClusterRequest: {
     fromPartial(object: DeepPartial<GetClusterRequest>): GetClusterRequest;
 };
 export declare const ListClustersRequest: {
+    $type: "yandex.cloud.mdb.mysql.v1alpha.ListClustersRequest";
     encode(message: ListClustersRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListClustersRequest;
     fromJSON(object: any): ListClustersRequest;
@@ -436,6 +475,7 @@ export declare const ListClustersRequest: {
     fromPartial(object: DeepPartial<ListClustersRequest>): ListClustersRequest;
 };
 export declare const ListClustersResponse: {
+    $type: "yandex.cloud.mdb.mysql.v1alpha.ListClustersResponse";
     encode(message: ListClustersResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListClustersResponse;
     fromJSON(object: any): ListClustersResponse;
@@ -443,6 +483,7 @@ export declare const ListClustersResponse: {
     fromPartial(object: DeepPartial<ListClustersResponse>): ListClustersResponse;
 };
 export declare const CreateClusterRequest: {
+    $type: "yandex.cloud.mdb.mysql.v1alpha.CreateClusterRequest";
     encode(message: CreateClusterRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateClusterRequest;
     fromJSON(object: any): CreateClusterRequest;
@@ -450,6 +491,7 @@ export declare const CreateClusterRequest: {
     fromPartial(object: DeepPartial<CreateClusterRequest>): CreateClusterRequest;
 };
 export declare const CreateClusterRequest_LabelsEntry: {
+    $type: "yandex.cloud.mdb.mysql.v1alpha.CreateClusterRequest.LabelsEntry";
     encode(message: CreateClusterRequest_LabelsEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateClusterRequest_LabelsEntry;
     fromJSON(object: any): CreateClusterRequest_LabelsEntry;
@@ -457,6 +499,7 @@ export declare const CreateClusterRequest_LabelsEntry: {
     fromPartial(object: DeepPartial<CreateClusterRequest_LabelsEntry>): CreateClusterRequest_LabelsEntry;
 };
 export declare const CreateClusterMetadata: {
+    $type: "yandex.cloud.mdb.mysql.v1alpha.CreateClusterMetadata";
     encode(message: CreateClusterMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateClusterMetadata;
     fromJSON(object: any): CreateClusterMetadata;
@@ -464,6 +507,7 @@ export declare const CreateClusterMetadata: {
     fromPartial(object: DeepPartial<CreateClusterMetadata>): CreateClusterMetadata;
 };
 export declare const UpdateClusterRequest: {
+    $type: "yandex.cloud.mdb.mysql.v1alpha.UpdateClusterRequest";
     encode(message: UpdateClusterRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateClusterRequest;
     fromJSON(object: any): UpdateClusterRequest;
@@ -471,6 +515,7 @@ export declare const UpdateClusterRequest: {
     fromPartial(object: DeepPartial<UpdateClusterRequest>): UpdateClusterRequest;
 };
 export declare const UpdateClusterRequest_LabelsEntry: {
+    $type: "yandex.cloud.mdb.mysql.v1alpha.UpdateClusterRequest.LabelsEntry";
     encode(message: UpdateClusterRequest_LabelsEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateClusterRequest_LabelsEntry;
     fromJSON(object: any): UpdateClusterRequest_LabelsEntry;
@@ -478,6 +523,7 @@ export declare const UpdateClusterRequest_LabelsEntry: {
     fromPartial(object: DeepPartial<UpdateClusterRequest_LabelsEntry>): UpdateClusterRequest_LabelsEntry;
 };
 export declare const UpdateClusterMetadata: {
+    $type: "yandex.cloud.mdb.mysql.v1alpha.UpdateClusterMetadata";
     encode(message: UpdateClusterMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateClusterMetadata;
     fromJSON(object: any): UpdateClusterMetadata;
@@ -485,6 +531,7 @@ export declare const UpdateClusterMetadata: {
     fromPartial(object: DeepPartial<UpdateClusterMetadata>): UpdateClusterMetadata;
 };
 export declare const DeleteClusterRequest: {
+    $type: "yandex.cloud.mdb.mysql.v1alpha.DeleteClusterRequest";
     encode(message: DeleteClusterRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteClusterRequest;
     fromJSON(object: any): DeleteClusterRequest;
@@ -492,6 +539,7 @@ export declare const DeleteClusterRequest: {
     fromPartial(object: DeepPartial<DeleteClusterRequest>): DeleteClusterRequest;
 };
 export declare const DeleteClusterMetadata: {
+    $type: "yandex.cloud.mdb.mysql.v1alpha.DeleteClusterMetadata";
     encode(message: DeleteClusterMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteClusterMetadata;
     fromJSON(object: any): DeleteClusterMetadata;
@@ -499,6 +547,7 @@ export declare const DeleteClusterMetadata: {
     fromPartial(object: DeepPartial<DeleteClusterMetadata>): DeleteClusterMetadata;
 };
 export declare const BackupClusterRequest: {
+    $type: "yandex.cloud.mdb.mysql.v1alpha.BackupClusterRequest";
     encode(message: BackupClusterRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): BackupClusterRequest;
     fromJSON(object: any): BackupClusterRequest;
@@ -506,6 +555,7 @@ export declare const BackupClusterRequest: {
     fromPartial(object: DeepPartial<BackupClusterRequest>): BackupClusterRequest;
 };
 export declare const BackupClusterMetadata: {
+    $type: "yandex.cloud.mdb.mysql.v1alpha.BackupClusterMetadata";
     encode(message: BackupClusterMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): BackupClusterMetadata;
     fromJSON(object: any): BackupClusterMetadata;
@@ -513,6 +563,7 @@ export declare const BackupClusterMetadata: {
     fromPartial(object: DeepPartial<BackupClusterMetadata>): BackupClusterMetadata;
 };
 export declare const RestoreClusterRequest: {
+    $type: "yandex.cloud.mdb.mysql.v1alpha.RestoreClusterRequest";
     encode(message: RestoreClusterRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): RestoreClusterRequest;
     fromJSON(object: any): RestoreClusterRequest;
@@ -520,6 +571,7 @@ export declare const RestoreClusterRequest: {
     fromPartial(object: DeepPartial<RestoreClusterRequest>): RestoreClusterRequest;
 };
 export declare const RestoreClusterRequest_LabelsEntry: {
+    $type: "yandex.cloud.mdb.mysql.v1alpha.RestoreClusterRequest.LabelsEntry";
     encode(message: RestoreClusterRequest_LabelsEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): RestoreClusterRequest_LabelsEntry;
     fromJSON(object: any): RestoreClusterRequest_LabelsEntry;
@@ -527,6 +579,7 @@ export declare const RestoreClusterRequest_LabelsEntry: {
     fromPartial(object: DeepPartial<RestoreClusterRequest_LabelsEntry>): RestoreClusterRequest_LabelsEntry;
 };
 export declare const RestoreClusterMetadata: {
+    $type: "yandex.cloud.mdb.mysql.v1alpha.RestoreClusterMetadata";
     encode(message: RestoreClusterMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): RestoreClusterMetadata;
     fromJSON(object: any): RestoreClusterMetadata;
@@ -534,6 +587,7 @@ export declare const RestoreClusterMetadata: {
     fromPartial(object: DeepPartial<RestoreClusterMetadata>): RestoreClusterMetadata;
 };
 export declare const LogRecord: {
+    $type: "yandex.cloud.mdb.mysql.v1alpha.LogRecord";
     encode(message: LogRecord, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): LogRecord;
     fromJSON(object: any): LogRecord;
@@ -541,6 +595,7 @@ export declare const LogRecord: {
     fromPartial(object: DeepPartial<LogRecord>): LogRecord;
 };
 export declare const LogRecord_MessageEntry: {
+    $type: "yandex.cloud.mdb.mysql.v1alpha.LogRecord.MessageEntry";
     encode(message: LogRecord_MessageEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): LogRecord_MessageEntry;
     fromJSON(object: any): LogRecord_MessageEntry;
@@ -548,6 +603,7 @@ export declare const LogRecord_MessageEntry: {
     fromPartial(object: DeepPartial<LogRecord_MessageEntry>): LogRecord_MessageEntry;
 };
 export declare const ListClusterLogsRequest: {
+    $type: "yandex.cloud.mdb.mysql.v1alpha.ListClusterLogsRequest";
     encode(message: ListClusterLogsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListClusterLogsRequest;
     fromJSON(object: any): ListClusterLogsRequest;
@@ -555,6 +611,7 @@ export declare const ListClusterLogsRequest: {
     fromPartial(object: DeepPartial<ListClusterLogsRequest>): ListClusterLogsRequest;
 };
 export declare const ListClusterLogsResponse: {
+    $type: "yandex.cloud.mdb.mysql.v1alpha.ListClusterLogsResponse";
     encode(message: ListClusterLogsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListClusterLogsResponse;
     fromJSON(object: any): ListClusterLogsResponse;
@@ -562,6 +619,7 @@ export declare const ListClusterLogsResponse: {
     fromPartial(object: DeepPartial<ListClusterLogsResponse>): ListClusterLogsResponse;
 };
 export declare const ListClusterOperationsRequest: {
+    $type: "yandex.cloud.mdb.mysql.v1alpha.ListClusterOperationsRequest";
     encode(message: ListClusterOperationsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListClusterOperationsRequest;
     fromJSON(object: any): ListClusterOperationsRequest;
@@ -569,6 +627,7 @@ export declare const ListClusterOperationsRequest: {
     fromPartial(object: DeepPartial<ListClusterOperationsRequest>): ListClusterOperationsRequest;
 };
 export declare const ListClusterOperationsResponse: {
+    $type: "yandex.cloud.mdb.mysql.v1alpha.ListClusterOperationsResponse";
     encode(message: ListClusterOperationsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListClusterOperationsResponse;
     fromJSON(object: any): ListClusterOperationsResponse;
@@ -576,6 +635,7 @@ export declare const ListClusterOperationsResponse: {
     fromPartial(object: DeepPartial<ListClusterOperationsResponse>): ListClusterOperationsResponse;
 };
 export declare const ListClusterBackupsRequest: {
+    $type: "yandex.cloud.mdb.mysql.v1alpha.ListClusterBackupsRequest";
     encode(message: ListClusterBackupsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListClusterBackupsRequest;
     fromJSON(object: any): ListClusterBackupsRequest;
@@ -583,6 +643,7 @@ export declare const ListClusterBackupsRequest: {
     fromPartial(object: DeepPartial<ListClusterBackupsRequest>): ListClusterBackupsRequest;
 };
 export declare const ListClusterBackupsResponse: {
+    $type: "yandex.cloud.mdb.mysql.v1alpha.ListClusterBackupsResponse";
     encode(message: ListClusterBackupsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListClusterBackupsResponse;
     fromJSON(object: any): ListClusterBackupsResponse;
@@ -590,6 +651,7 @@ export declare const ListClusterBackupsResponse: {
     fromPartial(object: DeepPartial<ListClusterBackupsResponse>): ListClusterBackupsResponse;
 };
 export declare const ListClusterHostsRequest: {
+    $type: "yandex.cloud.mdb.mysql.v1alpha.ListClusterHostsRequest";
     encode(message: ListClusterHostsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListClusterHostsRequest;
     fromJSON(object: any): ListClusterHostsRequest;
@@ -597,6 +659,7 @@ export declare const ListClusterHostsRequest: {
     fromPartial(object: DeepPartial<ListClusterHostsRequest>): ListClusterHostsRequest;
 };
 export declare const ListClusterHostsResponse: {
+    $type: "yandex.cloud.mdb.mysql.v1alpha.ListClusterHostsResponse";
     encode(message: ListClusterHostsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListClusterHostsResponse;
     fromJSON(object: any): ListClusterHostsResponse;
@@ -604,6 +667,7 @@ export declare const ListClusterHostsResponse: {
     fromPartial(object: DeepPartial<ListClusterHostsResponse>): ListClusterHostsResponse;
 };
 export declare const AddClusterHostsRequest: {
+    $type: "yandex.cloud.mdb.mysql.v1alpha.AddClusterHostsRequest";
     encode(message: AddClusterHostsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): AddClusterHostsRequest;
     fromJSON(object: any): AddClusterHostsRequest;
@@ -611,6 +675,7 @@ export declare const AddClusterHostsRequest: {
     fromPartial(object: DeepPartial<AddClusterHostsRequest>): AddClusterHostsRequest;
 };
 export declare const AddClusterHostsMetadata: {
+    $type: "yandex.cloud.mdb.mysql.v1alpha.AddClusterHostsMetadata";
     encode(message: AddClusterHostsMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): AddClusterHostsMetadata;
     fromJSON(object: any): AddClusterHostsMetadata;
@@ -618,6 +683,7 @@ export declare const AddClusterHostsMetadata: {
     fromPartial(object: DeepPartial<AddClusterHostsMetadata>): AddClusterHostsMetadata;
 };
 export declare const DeleteClusterHostsRequest: {
+    $type: "yandex.cloud.mdb.mysql.v1alpha.DeleteClusterHostsRequest";
     encode(message: DeleteClusterHostsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteClusterHostsRequest;
     fromJSON(object: any): DeleteClusterHostsRequest;
@@ -625,6 +691,7 @@ export declare const DeleteClusterHostsRequest: {
     fromPartial(object: DeepPartial<DeleteClusterHostsRequest>): DeleteClusterHostsRequest;
 };
 export declare const DeleteClusterHostsMetadata: {
+    $type: "yandex.cloud.mdb.mysql.v1alpha.DeleteClusterHostsMetadata";
     encode(message: DeleteClusterHostsMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteClusterHostsMetadata;
     fromJSON(object: any): DeleteClusterHostsMetadata;
@@ -632,6 +699,7 @@ export declare const DeleteClusterHostsMetadata: {
     fromPartial(object: DeepPartial<DeleteClusterHostsMetadata>): DeleteClusterHostsMetadata;
 };
 export declare const StartClusterRequest: {
+    $type: "yandex.cloud.mdb.mysql.v1alpha.StartClusterRequest";
     encode(message: StartClusterRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): StartClusterRequest;
     fromJSON(object: any): StartClusterRequest;
@@ -639,6 +707,7 @@ export declare const StartClusterRequest: {
     fromPartial(object: DeepPartial<StartClusterRequest>): StartClusterRequest;
 };
 export declare const StartClusterMetadata: {
+    $type: "yandex.cloud.mdb.mysql.v1alpha.StartClusterMetadata";
     encode(message: StartClusterMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): StartClusterMetadata;
     fromJSON(object: any): StartClusterMetadata;
@@ -646,6 +715,7 @@ export declare const StartClusterMetadata: {
     fromPartial(object: DeepPartial<StartClusterMetadata>): StartClusterMetadata;
 };
 export declare const StopClusterRequest: {
+    $type: "yandex.cloud.mdb.mysql.v1alpha.StopClusterRequest";
     encode(message: StopClusterRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): StopClusterRequest;
     fromJSON(object: any): StopClusterRequest;
@@ -653,6 +723,7 @@ export declare const StopClusterRequest: {
     fromPartial(object: DeepPartial<StopClusterRequest>): StopClusterRequest;
 };
 export declare const StopClusterMetadata: {
+    $type: "yandex.cloud.mdb.mysql.v1alpha.StopClusterMetadata";
     encode(message: StopClusterMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): StopClusterMetadata;
     fromJSON(object: any): StopClusterMetadata;
@@ -660,6 +731,7 @@ export declare const StopClusterMetadata: {
     fromPartial(object: DeepPartial<StopClusterMetadata>): StopClusterMetadata;
 };
 export declare const UpdateClusterHostsMetadata: {
+    $type: "yandex.cloud.mdb.mysql.v1alpha.UpdateClusterHostsMetadata";
     encode(message: UpdateClusterHostsMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateClusterHostsMetadata;
     fromJSON(object: any): UpdateClusterHostsMetadata;
@@ -667,6 +739,7 @@ export declare const UpdateClusterHostsMetadata: {
     fromPartial(object: DeepPartial<UpdateClusterHostsMetadata>): UpdateClusterHostsMetadata;
 };
 export declare const HostSpec: {
+    $type: "yandex.cloud.mdb.mysql.v1alpha.HostSpec";
     encode(message: HostSpec, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): HostSpec;
     fromJSON(object: any): HostSpec;
@@ -674,6 +747,7 @@ export declare const HostSpec: {
     fromPartial(object: DeepPartial<HostSpec>): HostSpec;
 };
 export declare const ConfigSpec: {
+    $type: "yandex.cloud.mdb.mysql.v1alpha.ConfigSpec";
     encode(message: ConfigSpec, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ConfigSpec;
     fromJSON(object: any): ConfigSpec;
@@ -942,6 +1016,6 @@ export interface ClusterServiceClient extends Client {
 export declare const ClusterServiceClient: new (address: string, credentials: ChannelCredentials, options?: Partial<ChannelOptions> | undefined) => ClusterServiceClient;
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

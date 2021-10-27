@@ -1,4 +1,5 @@
 /* eslint-disable */
+import { messageTypeRegistry } from '../../../../../typeRegistry';
 import {
     makeGenericClientConstructor,
     ChannelCredentials,
@@ -17,6 +18,7 @@ import _m0 from 'protobufjs/minimal';
 export const protobufPackage = 'yandex.cloud.iot.devices.v1';
 
 export interface PublishRegistryDataRequest {
+    $type: 'yandex.cloud.iot.devices.v1.PublishRegistryDataRequest';
     /** ID of registry publishing message */
     registryId: string;
     /** Topic where message should be published */
@@ -25,11 +27,19 @@ export interface PublishRegistryDataRequest {
     data: Uint8Array;
 }
 
-export interface PublishRegistryDataResponse {}
+export interface PublishRegistryDataResponse {
+    $type: 'yandex.cloud.iot.devices.v1.PublishRegistryDataResponse';
+}
 
-const basePublishRegistryDataRequest: object = { registryId: '', topic: '' };
+const basePublishRegistryDataRequest: object = {
+    $type: 'yandex.cloud.iot.devices.v1.PublishRegistryDataRequest',
+    registryId: '',
+    topic: '',
+};
 
 export const PublishRegistryDataRequest = {
+    $type: 'yandex.cloud.iot.devices.v1.PublishRegistryDataRequest' as const,
+
     encode(
         message: PublishRegistryDataRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -135,9 +145,18 @@ export const PublishRegistryDataRequest = {
     },
 };
 
-const basePublishRegistryDataResponse: object = {};
+messageTypeRegistry.set(
+    PublishRegistryDataRequest.$type,
+    PublishRegistryDataRequest
+);
+
+const basePublishRegistryDataResponse: object = {
+    $type: 'yandex.cloud.iot.devices.v1.PublishRegistryDataResponse',
+};
 
 export const PublishRegistryDataResponse = {
+    $type: 'yandex.cloud.iot.devices.v1.PublishRegistryDataResponse' as const,
+
     encode(
         _: PublishRegistryDataResponse,
         writer: _m0.Writer = _m0.Writer.create()
@@ -187,6 +206,11 @@ export const PublishRegistryDataResponse = {
         return message;
     },
 };
+
+messageTypeRegistry.set(
+    PublishRegistryDataResponse.$type,
+    PublishRegistryDataResponse
+);
 
 /** A set of methods to work with IoT Core messages on behalf of registry */
 export const RegistryDataServiceService = {
@@ -303,7 +327,7 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 if (_m0.util.Long !== Long) {

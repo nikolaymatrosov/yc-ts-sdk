@@ -1,5 +1,6 @@
 /* eslint-disable */
 import { FieldMask } from '../../../../../google/protobuf/field_mask';
+import { messageTypeRegistry } from '../../../../../typeRegistry';
 import { Operation } from '../../../../../yandex/cloud/operation/operation';
 import { Certificate } from '../../../../../yandex/cloud/organizationmanager/v1/saml/certificate';
 import {
@@ -20,6 +21,7 @@ import _m0 from 'protobufjs/minimal';
 export const protobufPackage = 'yandex.cloud.organizationmanager.v1.saml';
 
 export interface GetCertificateRequest {
+    $type: 'yandex.cloud.organizationmanager.v1.saml.GetCertificateRequest';
     /**
      * ID of the certificate to return.
      * To get the certificate ID, make a [CertificateService.List] request.
@@ -28,6 +30,7 @@ export interface GetCertificateRequest {
 }
 
 export interface ListCertificatesRequest {
+    $type: 'yandex.cloud.organizationmanager.v1.saml.ListCertificatesRequest';
     /**
      * ID of the federation to list certificates in.
      * To get the federation ID make a [yandex.cloud.organizationmanager.v1.saml.FederationService.List] request.
@@ -57,6 +60,7 @@ export interface ListCertificatesRequest {
 }
 
 export interface ListCertificatesResponse {
+    $type: 'yandex.cloud.organizationmanager.v1.saml.ListCertificatesResponse';
     /** List of certificates. */
     certificates: Certificate[];
     /**
@@ -71,6 +75,7 @@ export interface ListCertificatesResponse {
 }
 
 export interface CreateCertificateRequest {
+    $type: 'yandex.cloud.organizationmanager.v1.saml.CreateCertificateRequest';
     /**
      * ID of the federation to add new certificate.
      * To get the federation ID make a [yandex.cloud.organizationmanager.v1.saml.FederationService.List] request.
@@ -88,11 +93,13 @@ export interface CreateCertificateRequest {
 }
 
 export interface CreateCertificateMetadata {
+    $type: 'yandex.cloud.organizationmanager.v1.saml.CreateCertificateMetadata';
     /** ID of the certificate that is being created. */
     certificateId: string;
 }
 
 export interface UpdateCertificateRequest {
+    $type: 'yandex.cloud.organizationmanager.v1.saml.UpdateCertificateRequest';
     /**
      * ID of the certificate to update.
      * To get the certificate ID, make a [CertificateService.List] request.
@@ -112,11 +119,13 @@ export interface UpdateCertificateRequest {
 }
 
 export interface UpdateCertificateMetadata {
+    $type: 'yandex.cloud.organizationmanager.v1.saml.UpdateCertificateMetadata';
     /** ID of the certificate that is being updated. */
     certificateId: string;
 }
 
 export interface DeleteCertificateRequest {
+    $type: 'yandex.cloud.organizationmanager.v1.saml.DeleteCertificateRequest';
     /**
      * ID of the certificate to delete.
      * To get the certificate ID, make a [CertificateService.List] request.
@@ -125,11 +134,13 @@ export interface DeleteCertificateRequest {
 }
 
 export interface DeleteCertificateMetadata {
+    $type: 'yandex.cloud.organizationmanager.v1.saml.DeleteCertificateMetadata';
     /** ID of the certificate that is being deleted. */
     certificateId: string;
 }
 
 export interface ListCertificateOperationsRequest {
+    $type: 'yandex.cloud.organizationmanager.v1.saml.ListCertificateOperationsRequest';
     /** ID of the certificate to list operations for. */
     certificateId: string;
     /**
@@ -148,6 +159,7 @@ export interface ListCertificateOperationsRequest {
 }
 
 export interface ListCertificateOperationsResponse {
+    $type: 'yandex.cloud.organizationmanager.v1.saml.ListCertificateOperationsResponse';
     /** List of operations for the specified certificate. */
     operations: Operation[];
     /**
@@ -159,9 +171,14 @@ export interface ListCertificateOperationsResponse {
     nextPageToken: string;
 }
 
-const baseGetCertificateRequest: object = { certificateId: '' };
+const baseGetCertificateRequest: object = {
+    $type: 'yandex.cloud.organizationmanager.v1.saml.GetCertificateRequest',
+    certificateId: '',
+};
 
 export const GetCertificateRequest = {
+    $type: 'yandex.cloud.organizationmanager.v1.saml.GetCertificateRequest' as const,
+
     encode(
         message: GetCertificateRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -236,7 +253,10 @@ export const GetCertificateRequest = {
     },
 };
 
+messageTypeRegistry.set(GetCertificateRequest.$type, GetCertificateRequest);
+
 const baseListCertificatesRequest: object = {
+    $type: 'yandex.cloud.organizationmanager.v1.saml.ListCertificatesRequest',
     federationId: '',
     pageSize: 0,
     pageToken: '',
@@ -244,6 +264,8 @@ const baseListCertificatesRequest: object = {
 };
 
 export const ListCertificatesRequest = {
+    $type: 'yandex.cloud.organizationmanager.v1.saml.ListCertificatesRequest' as const,
+
     encode(
         message: ListCertificatesRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -363,9 +385,16 @@ export const ListCertificatesRequest = {
     },
 };
 
-const baseListCertificatesResponse: object = { nextPageToken: '' };
+messageTypeRegistry.set(ListCertificatesRequest.$type, ListCertificatesRequest);
+
+const baseListCertificatesResponse: object = {
+    $type: 'yandex.cloud.organizationmanager.v1.saml.ListCertificatesResponse',
+    nextPageToken: '',
+};
 
 export const ListCertificatesResponse = {
+    $type: 'yandex.cloud.organizationmanager.v1.saml.ListCertificatesResponse' as const,
+
     encode(
         message: ListCertificatesResponse,
         writer: _m0.Writer = _m0.Writer.create()
@@ -468,7 +497,13 @@ export const ListCertificatesResponse = {
     },
 };
 
+messageTypeRegistry.set(
+    ListCertificatesResponse.$type,
+    ListCertificatesResponse
+);
+
 const baseCreateCertificateRequest: object = {
+    $type: 'yandex.cloud.organizationmanager.v1.saml.CreateCertificateRequest',
     federationId: '',
     name: '',
     description: '',
@@ -476,6 +511,8 @@ const baseCreateCertificateRequest: object = {
 };
 
 export const CreateCertificateRequest = {
+    $type: 'yandex.cloud.organizationmanager.v1.saml.CreateCertificateRequest' as const,
+
     encode(
         message: CreateCertificateRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -596,9 +633,19 @@ export const CreateCertificateRequest = {
     },
 };
 
-const baseCreateCertificateMetadata: object = { certificateId: '' };
+messageTypeRegistry.set(
+    CreateCertificateRequest.$type,
+    CreateCertificateRequest
+);
+
+const baseCreateCertificateMetadata: object = {
+    $type: 'yandex.cloud.organizationmanager.v1.saml.CreateCertificateMetadata',
+    certificateId: '',
+};
 
 export const CreateCertificateMetadata = {
+    $type: 'yandex.cloud.organizationmanager.v1.saml.CreateCertificateMetadata' as const,
+
     encode(
         message: CreateCertificateMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -673,7 +720,13 @@ export const CreateCertificateMetadata = {
     },
 };
 
+messageTypeRegistry.set(
+    CreateCertificateMetadata.$type,
+    CreateCertificateMetadata
+);
+
 const baseUpdateCertificateRequest: object = {
+    $type: 'yandex.cloud.organizationmanager.v1.saml.UpdateCertificateRequest',
     certificateId: '',
     name: '',
     description: '',
@@ -681,6 +734,8 @@ const baseUpdateCertificateRequest: object = {
 };
 
 export const UpdateCertificateRequest = {
+    $type: 'yandex.cloud.organizationmanager.v1.saml.UpdateCertificateRequest' as const,
+
     encode(
         message: UpdateCertificateRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -833,9 +888,19 @@ export const UpdateCertificateRequest = {
     },
 };
 
-const baseUpdateCertificateMetadata: object = { certificateId: '' };
+messageTypeRegistry.set(
+    UpdateCertificateRequest.$type,
+    UpdateCertificateRequest
+);
+
+const baseUpdateCertificateMetadata: object = {
+    $type: 'yandex.cloud.organizationmanager.v1.saml.UpdateCertificateMetadata',
+    certificateId: '',
+};
 
 export const UpdateCertificateMetadata = {
+    $type: 'yandex.cloud.organizationmanager.v1.saml.UpdateCertificateMetadata' as const,
+
     encode(
         message: UpdateCertificateMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -910,9 +975,19 @@ export const UpdateCertificateMetadata = {
     },
 };
 
-const baseDeleteCertificateRequest: object = { certificateId: '' };
+messageTypeRegistry.set(
+    UpdateCertificateMetadata.$type,
+    UpdateCertificateMetadata
+);
+
+const baseDeleteCertificateRequest: object = {
+    $type: 'yandex.cloud.organizationmanager.v1.saml.DeleteCertificateRequest',
+    certificateId: '',
+};
 
 export const DeleteCertificateRequest = {
+    $type: 'yandex.cloud.organizationmanager.v1.saml.DeleteCertificateRequest' as const,
+
     encode(
         message: DeleteCertificateRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -987,9 +1062,19 @@ export const DeleteCertificateRequest = {
     },
 };
 
-const baseDeleteCertificateMetadata: object = { certificateId: '' };
+messageTypeRegistry.set(
+    DeleteCertificateRequest.$type,
+    DeleteCertificateRequest
+);
+
+const baseDeleteCertificateMetadata: object = {
+    $type: 'yandex.cloud.organizationmanager.v1.saml.DeleteCertificateMetadata',
+    certificateId: '',
+};
 
 export const DeleteCertificateMetadata = {
+    $type: 'yandex.cloud.organizationmanager.v1.saml.DeleteCertificateMetadata' as const,
+
     encode(
         message: DeleteCertificateMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1064,13 +1149,21 @@ export const DeleteCertificateMetadata = {
     },
 };
 
+messageTypeRegistry.set(
+    DeleteCertificateMetadata.$type,
+    DeleteCertificateMetadata
+);
+
 const baseListCertificateOperationsRequest: object = {
+    $type: 'yandex.cloud.organizationmanager.v1.saml.ListCertificateOperationsRequest',
     certificateId: '',
     pageSize: 0,
     pageToken: '',
 };
 
 export const ListCertificateOperationsRequest = {
+    $type: 'yandex.cloud.organizationmanager.v1.saml.ListCertificateOperationsRequest' as const,
+
     encode(
         message: ListCertificateOperationsRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1179,9 +1272,19 @@ export const ListCertificateOperationsRequest = {
     },
 };
 
-const baseListCertificateOperationsResponse: object = { nextPageToken: '' };
+messageTypeRegistry.set(
+    ListCertificateOperationsRequest.$type,
+    ListCertificateOperationsRequest
+);
+
+const baseListCertificateOperationsResponse: object = {
+    $type: 'yandex.cloud.organizationmanager.v1.saml.ListCertificateOperationsResponse',
+    nextPageToken: '',
+};
 
 export const ListCertificateOperationsResponse = {
+    $type: 'yandex.cloud.organizationmanager.v1.saml.ListCertificateOperationsResponse' as const,
+
     encode(
         message: ListCertificateOperationsResponse,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1283,6 +1386,11 @@ export const ListCertificateOperationsResponse = {
         return message;
     },
 };
+
+messageTypeRegistry.set(
+    ListCertificateOperationsResponse.$type,
+    ListCertificateOperationsResponse
+);
 
 /** A set of methods for managing certificates. */
 export const CertificateServiceService = {
@@ -1556,7 +1664,7 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 function longToNumber(long: Long): number {

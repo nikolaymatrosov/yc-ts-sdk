@@ -3,12 +3,14 @@ import { ChannelCredentials, ChannelOptions, UntypedServiceImplementation, handl
 import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.dataproc.manager.v1";
 export interface HbaseNodeInfo {
+    $type: 'yandex.cloud.dataproc.manager.v1.HbaseNodeInfo';
     name: string;
     requests: number;
     heapSizeMb: number;
     maxHeapSizeMb: number;
 }
 export interface HbaseInfo {
+    $type: 'yandex.cloud.dataproc.manager.v1.HbaseInfo';
     available: boolean;
     regions: number;
     requests: number;
@@ -17,6 +19,7 @@ export interface HbaseInfo {
     deadNodes: HbaseNodeInfo[];
 }
 export interface HDFSNodeInfo {
+    $type: 'yandex.cloud.dataproc.manager.v1.HDFSNodeInfo';
     name: string;
     used: number;
     remaining: number;
@@ -25,6 +28,7 @@ export interface HDFSNodeInfo {
     state: string;
 }
 export interface HDFSInfo {
+    $type: 'yandex.cloud.dataproc.manager.v1.HDFSInfo';
     available: boolean;
     percentRemaining: number;
     used: number;
@@ -41,6 +45,7 @@ export interface HDFSInfo {
     requestedDecommissionHosts: string[];
 }
 export interface HiveInfo {
+    $type: 'yandex.cloud.dataproc.manager.v1.HiveInfo';
     available: boolean;
     queriesSucceeded: number;
     queriesFailed: number;
@@ -49,6 +54,7 @@ export interface HiveInfo {
     sessionsActive: number;
 }
 export interface YarnNodeInfo {
+    $type: 'yandex.cloud.dataproc.manager.v1.YarnNodeInfo';
     name: string;
     state: string;
     numContainers: number;
@@ -57,21 +63,26 @@ export interface YarnNodeInfo {
     updateTime: number;
 }
 export interface YarnInfo {
+    $type: 'yandex.cloud.dataproc.manager.v1.YarnInfo';
     available: boolean;
     liveNodes: YarnNodeInfo[];
     /** Actual list of decommission hosts in Yarn resource manager memory */
     requestedDecommissionHosts: string[];
 }
 export interface ZookeeperInfo {
+    $type: 'yandex.cloud.dataproc.manager.v1.ZookeeperInfo';
     alive: boolean;
 }
 export interface OozieInfo {
+    $type: 'yandex.cloud.dataproc.manager.v1.OozieInfo';
     alive: boolean;
 }
 export interface LivyInfo {
+    $type: 'yandex.cloud.dataproc.manager.v1.LivyInfo';
     alive: boolean;
 }
 export interface Info {
+    $type: 'yandex.cloud.dataproc.manager.v1.Info';
     hdfs: HDFSInfo | undefined;
     yarn: YarnInfo | undefined;
     hive: HiveInfo | undefined;
@@ -88,6 +99,7 @@ export interface Info {
 }
 /** The request message containing the host status report. */
 export interface ReportRequest {
+    $type: 'yandex.cloud.dataproc.manager.v1.ReportRequest';
     cid: string;
     topologyRevision: number;
     info: Info | undefined;
@@ -95,11 +107,13 @@ export interface ReportRequest {
 }
 /** The response message containing the agent commands to apply on host. */
 export interface ReportReply {
+    $type: 'yandex.cloud.dataproc.manager.v1.ReportReply';
     decommissionTimeout: number;
     yarnHostsToDecommission: string[];
     hdfsHostsToDecommission: string[];
 }
 export declare const HbaseNodeInfo: {
+    $type: "yandex.cloud.dataproc.manager.v1.HbaseNodeInfo";
     encode(message: HbaseNodeInfo, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): HbaseNodeInfo;
     fromJSON(object: any): HbaseNodeInfo;
@@ -107,6 +121,7 @@ export declare const HbaseNodeInfo: {
     fromPartial(object: DeepPartial<HbaseNodeInfo>): HbaseNodeInfo;
 };
 export declare const HbaseInfo: {
+    $type: "yandex.cloud.dataproc.manager.v1.HbaseInfo";
     encode(message: HbaseInfo, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): HbaseInfo;
     fromJSON(object: any): HbaseInfo;
@@ -114,6 +129,7 @@ export declare const HbaseInfo: {
     fromPartial(object: DeepPartial<HbaseInfo>): HbaseInfo;
 };
 export declare const HDFSNodeInfo: {
+    $type: "yandex.cloud.dataproc.manager.v1.HDFSNodeInfo";
     encode(message: HDFSNodeInfo, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): HDFSNodeInfo;
     fromJSON(object: any): HDFSNodeInfo;
@@ -121,6 +137,7 @@ export declare const HDFSNodeInfo: {
     fromPartial(object: DeepPartial<HDFSNodeInfo>): HDFSNodeInfo;
 };
 export declare const HDFSInfo: {
+    $type: "yandex.cloud.dataproc.manager.v1.HDFSInfo";
     encode(message: HDFSInfo, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): HDFSInfo;
     fromJSON(object: any): HDFSInfo;
@@ -128,6 +145,7 @@ export declare const HDFSInfo: {
     fromPartial(object: DeepPartial<HDFSInfo>): HDFSInfo;
 };
 export declare const HiveInfo: {
+    $type: "yandex.cloud.dataproc.manager.v1.HiveInfo";
     encode(message: HiveInfo, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): HiveInfo;
     fromJSON(object: any): HiveInfo;
@@ -135,6 +153,7 @@ export declare const HiveInfo: {
     fromPartial(object: DeepPartial<HiveInfo>): HiveInfo;
 };
 export declare const YarnNodeInfo: {
+    $type: "yandex.cloud.dataproc.manager.v1.YarnNodeInfo";
     encode(message: YarnNodeInfo, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): YarnNodeInfo;
     fromJSON(object: any): YarnNodeInfo;
@@ -142,6 +161,7 @@ export declare const YarnNodeInfo: {
     fromPartial(object: DeepPartial<YarnNodeInfo>): YarnNodeInfo;
 };
 export declare const YarnInfo: {
+    $type: "yandex.cloud.dataproc.manager.v1.YarnInfo";
     encode(message: YarnInfo, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): YarnInfo;
     fromJSON(object: any): YarnInfo;
@@ -149,6 +169,7 @@ export declare const YarnInfo: {
     fromPartial(object: DeepPartial<YarnInfo>): YarnInfo;
 };
 export declare const ZookeeperInfo: {
+    $type: "yandex.cloud.dataproc.manager.v1.ZookeeperInfo";
     encode(message: ZookeeperInfo, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ZookeeperInfo;
     fromJSON(object: any): ZookeeperInfo;
@@ -156,6 +177,7 @@ export declare const ZookeeperInfo: {
     fromPartial(object: DeepPartial<ZookeeperInfo>): ZookeeperInfo;
 };
 export declare const OozieInfo: {
+    $type: "yandex.cloud.dataproc.manager.v1.OozieInfo";
     encode(message: OozieInfo, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): OozieInfo;
     fromJSON(object: any): OozieInfo;
@@ -163,6 +185,7 @@ export declare const OozieInfo: {
     fromPartial(object: DeepPartial<OozieInfo>): OozieInfo;
 };
 export declare const LivyInfo: {
+    $type: "yandex.cloud.dataproc.manager.v1.LivyInfo";
     encode(message: LivyInfo, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): LivyInfo;
     fromJSON(object: any): LivyInfo;
@@ -170,6 +193,7 @@ export declare const LivyInfo: {
     fromPartial(object: DeepPartial<LivyInfo>): LivyInfo;
 };
 export declare const Info: {
+    $type: "yandex.cloud.dataproc.manager.v1.Info";
     encode(message: Info, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Info;
     fromJSON(object: any): Info;
@@ -177,6 +201,7 @@ export declare const Info: {
     fromPartial(object: DeepPartial<Info>): Info;
 };
 export declare const ReportRequest: {
+    $type: "yandex.cloud.dataproc.manager.v1.ReportRequest";
     encode(message: ReportRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ReportRequest;
     fromJSON(object: any): ReportRequest;
@@ -184,6 +209,7 @@ export declare const ReportRequest: {
     fromPartial(object: DeepPartial<ReportRequest>): ReportRequest;
 };
 export declare const ReportReply: {
+    $type: "yandex.cloud.dataproc.manager.v1.ReportReply";
     encode(message: ReportReply, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ReportReply;
     fromJSON(object: any): ReportReply;
@@ -216,6 +242,6 @@ export interface DataprocManagerServiceClient extends Client {
 export declare const DataprocManagerServiceClient: new (address: string, credentials: ChannelCredentials, options?: Partial<ChannelOptions> | undefined) => DataprocManagerServiceClient;
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

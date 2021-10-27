@@ -1,6 +1,7 @@
 /* eslint-disable */
 import { Timestamp } from '../../../../google/protobuf/timestamp';
 import { Int64Value } from '../../../../google/protobuf/wrappers';
+import { messageTypeRegistry } from '../../../../typeRegistry';
 import Long from 'long';
 import _m0 from 'protobufjs/minimal';
 
@@ -8,6 +9,7 @@ export const protobufPackage = 'yandex.cloud.datasphere.v1';
 
 /** A Project resource. */
 export interface Project {
+    $type: 'yandex.cloud.datasphere.v1.Project';
     /** ID of the project. */
     id: string;
     /** ID of the folder that the project belongs to. */
@@ -24,6 +26,7 @@ export interface Project {
 }
 
 export interface Project_Settings {
+    $type: 'yandex.cloud.datasphere.v1.Project.Settings';
     /** ID of the service account, on whose behalf all operations with clusters will be performed. */
     serviceAccountId: string;
     /**
@@ -85,15 +88,24 @@ export function project_Settings_CommitModeToJSON(
 }
 
 export interface Project_Limits {
+    $type: 'yandex.cloud.datasphere.v1.Project.Limits';
     /** The number of units that can be spent per hour. */
     maxUnitsPerHour: number | undefined;
     /** The number of units that can be spent on the one execution. */
     maxUnitsPerExecution: number | undefined;
 }
 
-const baseProject: object = { id: '', folderId: '', name: '', description: '' };
+const baseProject: object = {
+    $type: 'yandex.cloud.datasphere.v1.Project',
+    id: '',
+    folderId: '',
+    name: '',
+    description: '',
+};
 
 export const Project = {
+    $type: 'yandex.cloud.datasphere.v1.Project' as const,
+
     encode(
         message: Project,
         writer: _m0.Writer = _m0.Writer.create()
@@ -277,7 +289,10 @@ export const Project = {
     },
 };
 
+messageTypeRegistry.set(Project.$type, Project);
+
 const baseProject_Settings: object = {
+    $type: 'yandex.cloud.datasphere.v1.Project.Settings',
     serviceAccountId: '',
     subnetId: '',
     dataProcClusterId: '',
@@ -285,6 +300,8 @@ const baseProject_Settings: object = {
 };
 
 export const Project_Settings = {
+    $type: 'yandex.cloud.datasphere.v1.Project.Settings' as const,
+
     encode(
         message: Project_Settings,
         writer: _m0.Writer = _m0.Writer.create()
@@ -411,22 +428,34 @@ export const Project_Settings = {
     },
 };
 
-const baseProject_Limits: object = {};
+messageTypeRegistry.set(Project_Settings.$type, Project_Settings);
+
+const baseProject_Limits: object = {
+    $type: 'yandex.cloud.datasphere.v1.Project.Limits',
+};
 
 export const Project_Limits = {
+    $type: 'yandex.cloud.datasphere.v1.Project.Limits' as const,
+
     encode(
         message: Project_Limits,
         writer: _m0.Writer = _m0.Writer.create()
     ): _m0.Writer {
         if (message.maxUnitsPerHour !== undefined) {
             Int64Value.encode(
-                { value: message.maxUnitsPerHour! },
+                {
+                    $type: 'google.protobuf.Int64Value',
+                    value: message.maxUnitsPerHour!,
+                },
                 writer.uint32(18).fork()
             ).ldelim();
         }
         if (message.maxUnitsPerExecution !== undefined) {
             Int64Value.encode(
-                { value: message.maxUnitsPerExecution! },
+                {
+                    $type: 'google.protobuf.Int64Value',
+                    value: message.maxUnitsPerExecution!,
+                },
                 writer.uint32(26).fork()
             ).ldelim();
         }
@@ -513,6 +542,8 @@ export const Project_Limits = {
     },
 };
 
+messageTypeRegistry.set(Project_Limits.$type, Project_Limits);
+
 type Builtin =
     | Date
     | Function
@@ -528,13 +559,13 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 function toTimestamp(date: Date): Timestamp {
     const seconds = date.getTime() / 1_000;
     const nanos = (date.getTime() % 1_000) * 1_000_000;
-    return { seconds, nanos };
+    return { $type: 'google.protobuf.Timestamp', seconds, nanos };
 }
 
 function fromTimestamp(t: Timestamp): Date {

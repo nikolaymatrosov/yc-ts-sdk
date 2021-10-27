@@ -1,4 +1,5 @@
 /* eslint-disable */
+import { messageTypeRegistry } from '../../../../typeRegistry';
 import { DiskType } from '../../../../yandex/cloud/compute/v1/disk_type';
 import {
     makeGenericClientConstructor,
@@ -18,6 +19,7 @@ import _m0 from 'protobufjs/minimal';
 export const protobufPackage = 'yandex.cloud.compute.v1';
 
 export interface GetDiskTypeRequest {
+    $type: 'yandex.cloud.compute.v1.GetDiskTypeRequest';
     /**
      * ID of the disk type to return information about.
      * To get the disk type ID use a [DiskTypeService.List] request.
@@ -26,6 +28,7 @@ export interface GetDiskTypeRequest {
 }
 
 export interface ListDiskTypesRequest {
+    $type: 'yandex.cloud.compute.v1.ListDiskTypesRequest';
     /**
      * The maximum number of results per page to return. If the number of available
      * results is larger than [page_size],
@@ -41,6 +44,7 @@ export interface ListDiskTypesRequest {
 }
 
 export interface ListDiskTypesResponse {
+    $type: 'yandex.cloud.compute.v1.ListDiskTypesResponse';
     /** List of disk types. */
     diskTypes: DiskType[];
     /**
@@ -54,9 +58,14 @@ export interface ListDiskTypesResponse {
     nextPageToken: string;
 }
 
-const baseGetDiskTypeRequest: object = { diskTypeId: '' };
+const baseGetDiskTypeRequest: object = {
+    $type: 'yandex.cloud.compute.v1.GetDiskTypeRequest',
+    diskTypeId: '',
+};
 
 export const GetDiskTypeRequest = {
+    $type: 'yandex.cloud.compute.v1.GetDiskTypeRequest' as const,
+
     encode(
         message: GetDiskTypeRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -117,9 +126,17 @@ export const GetDiskTypeRequest = {
     },
 };
 
-const baseListDiskTypesRequest: object = { pageSize: 0, pageToken: '' };
+messageTypeRegistry.set(GetDiskTypeRequest.$type, GetDiskTypeRequest);
+
+const baseListDiskTypesRequest: object = {
+    $type: 'yandex.cloud.compute.v1.ListDiskTypesRequest',
+    pageSize: 0,
+    pageToken: '',
+};
 
 export const ListDiskTypesRequest = {
+    $type: 'yandex.cloud.compute.v1.ListDiskTypesRequest' as const,
+
     encode(
         message: ListDiskTypesRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -198,9 +215,16 @@ export const ListDiskTypesRequest = {
     },
 };
 
-const baseListDiskTypesResponse: object = { nextPageToken: '' };
+messageTypeRegistry.set(ListDiskTypesRequest.$type, ListDiskTypesRequest);
+
+const baseListDiskTypesResponse: object = {
+    $type: 'yandex.cloud.compute.v1.ListDiskTypesResponse',
+    nextPageToken: '',
+};
 
 export const ListDiskTypesResponse = {
+    $type: 'yandex.cloud.compute.v1.ListDiskTypesResponse' as const,
+
     encode(
         message: ListDiskTypesResponse,
         writer: _m0.Writer = _m0.Writer.create()
@@ -302,6 +326,8 @@ export const ListDiskTypesResponse = {
         return message;
     },
 };
+
+messageTypeRegistry.set(ListDiskTypesResponse.$type, ListDiskTypesResponse);
 
 /** A set of methods to retrieve information about disk types. */
 export const DiskTypeServiceService = {
@@ -433,7 +459,7 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 function longToNumber(long: Long): number {

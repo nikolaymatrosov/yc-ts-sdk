@@ -7,6 +7,7 @@ export declare const protobufPackage = "yandex.cloud.mdb.clickhouse.v1.config";
  * Any options not listed here are not supported.
  */
 export interface ClickhouseConfig {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.config.ClickhouseConfig';
     /** Logging level for the ClickHouse cluster. Possible values: TRACE, DEBUG, INFORMATION, WARNING, ERROR. */
     logLevel: ClickhouseConfig_LogLevel;
     /**
@@ -142,6 +143,7 @@ export declare function clickhouseConfig_LogLevelFromJSON(object: any): Clickhou
 export declare function clickhouseConfig_LogLevelToJSON(object: ClickhouseConfig_LogLevel): string;
 /** Options specific to the MergeTree table engine. */
 export interface ClickhouseConfig_MergeTree {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.config.ClickhouseConfig.MergeTree';
     /** Number of blocks of hashes to keep in ZooKeeper. */
     replicatedDeduplicationWindow: number | undefined;
     /** Period of time to keep blocks of hashes for. */
@@ -165,6 +167,7 @@ export interface ClickhouseConfig_MergeTree {
     maxBytesToMergeAtMaxSpaceInPool: number | undefined;
 }
 export interface ClickhouseConfig_Kafka {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.config.ClickhouseConfig.Kafka';
     securityProtocol: ClickhouseConfig_Kafka_SecurityProtocol;
     saslMechanism: ClickhouseConfig_Kafka_SaslMechanism;
     saslUsername: string;
@@ -191,14 +194,17 @@ export declare enum ClickhouseConfig_Kafka_SaslMechanism {
 export declare function clickhouseConfig_Kafka_SaslMechanismFromJSON(object: any): ClickhouseConfig_Kafka_SaslMechanism;
 export declare function clickhouseConfig_Kafka_SaslMechanismToJSON(object: ClickhouseConfig_Kafka_SaslMechanism): string;
 export interface ClickhouseConfig_KafkaTopic {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.config.ClickhouseConfig.KafkaTopic';
     name: string;
     settings: ClickhouseConfig_Kafka | undefined;
 }
 export interface ClickhouseConfig_Rabbitmq {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.config.ClickhouseConfig.Rabbitmq';
     username: string;
     password: string;
 }
 export interface ClickhouseConfig_Compression {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.config.ClickhouseConfig.Compression';
     /** Compression method to use for the specified combination of `min_part_size` and `min_part_size_ratio`. */
     method: ClickhouseConfig_Compression_Method;
     /** Minimum size of a part of a table. */
@@ -217,6 +223,7 @@ export declare enum ClickhouseConfig_Compression_Method {
 export declare function clickhouseConfig_Compression_MethodFromJSON(object: any): ClickhouseConfig_Compression_Method;
 export declare function clickhouseConfig_Compression_MethodToJSON(object: ClickhouseConfig_Compression_Method): string;
 export interface ClickhouseConfig_ExternalDictionary {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.config.ClickhouseConfig.ExternalDictionary';
     /** Name of the external dictionary. */
     name: string;
     /**
@@ -245,12 +252,14 @@ export interface ClickhouseConfig_ExternalDictionary {
     postgresqlSource: ClickhouseConfig_ExternalDictionary_PostgresqlSource | undefined;
 }
 export interface ClickhouseConfig_ExternalDictionary_HttpSource {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.config.ClickhouseConfig.ExternalDictionary.HttpSource';
     /** URL of the source dictionary available over HTTP. */
     url: string;
     /** The data format. Valid values are all formats supported by ClickHouse SQL dialect. */
     format: string;
 }
 export interface ClickhouseConfig_ExternalDictionary_MysqlSource {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.config.ClickhouseConfig.ExternalDictionary.MysqlSource';
     /** Name of the MySQL database to connect to. */
     db: string;
     /** Name of the database table to use as a ClickHouse dictionary. */
@@ -272,6 +281,7 @@ export interface ClickhouseConfig_ExternalDictionary_MysqlSource {
     invalidateQuery: string;
 }
 export interface ClickhouseConfig_ExternalDictionary_MysqlSource_Replica {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.config.ClickhouseConfig.ExternalDictionary.MysqlSource.Replica';
     /** MySQL host of the replica. */
     host: string;
     /**
@@ -290,6 +300,7 @@ export interface ClickhouseConfig_ExternalDictionary_MysqlSource_Replica {
     password: string;
 }
 export interface ClickhouseConfig_ExternalDictionary_ClickhouseSource {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.config.ClickhouseConfig.ExternalDictionary.ClickhouseSource';
     /** Name of the ClickHouse database. */
     db: string;
     /** Name of the table in the specified database to be used as the dictionary source. */
@@ -306,6 +317,7 @@ export interface ClickhouseConfig_ExternalDictionary_ClickhouseSource {
     where: string;
 }
 export interface ClickhouseConfig_ExternalDictionary_MongodbSource {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.config.ClickhouseConfig.ExternalDictionary.MongodbSource';
     /** Name of the MongoDB database. */
     db: string;
     /** Name of the collection in the specified database to be used as the dictionary source. */
@@ -320,6 +332,7 @@ export interface ClickhouseConfig_ExternalDictionary_MongodbSource {
     password: string;
 }
 export interface ClickhouseConfig_ExternalDictionary_PostgresqlSource {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.config.ClickhouseConfig.ExternalDictionary.PostgresqlSource';
     /** Name of the PostrgreSQL database. */
     db: string;
     /** Name of the table in the specified database to be used as the dictionary source. */
@@ -360,6 +373,7 @@ export declare enum ClickhouseConfig_ExternalDictionary_PostgresqlSource_SslMode
 export declare function clickhouseConfig_ExternalDictionary_PostgresqlSource_SslModeFromJSON(object: any): ClickhouseConfig_ExternalDictionary_PostgresqlSource_SslMode;
 export declare function clickhouseConfig_ExternalDictionary_PostgresqlSource_SslModeToJSON(object: ClickhouseConfig_ExternalDictionary_PostgresqlSource_SslMode): string;
 export interface ClickhouseConfig_ExternalDictionary_Structure {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.config.ClickhouseConfig.ExternalDictionary.Structure';
     /** Single numeric key column for the dictionary. */
     id: ClickhouseConfig_ExternalDictionary_Structure_Id | undefined;
     /**
@@ -384,6 +398,7 @@ export interface ClickhouseConfig_ExternalDictionary_Structure {
     attributes: ClickhouseConfig_ExternalDictionary_Structure_Attribute[];
 }
 export interface ClickhouseConfig_ExternalDictionary_Structure_Attribute {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.config.ClickhouseConfig.ExternalDictionary.Structure.Attribute';
     /** Name of the column. */
     name: string;
     /** Type of the column. */
@@ -405,16 +420,19 @@ export interface ClickhouseConfig_ExternalDictionary_Structure_Attribute {
 }
 /** Numeric key. */
 export interface ClickhouseConfig_ExternalDictionary_Structure_Id {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.config.ClickhouseConfig.ExternalDictionary.Structure.Id';
     /** Name of the numeric key. */
     name: string;
 }
 /** Complex key. */
 export interface ClickhouseConfig_ExternalDictionary_Structure_Key {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.config.ClickhouseConfig.ExternalDictionary.Structure.Key';
     /** Attributes of a complex key. */
     attributes: ClickhouseConfig_ExternalDictionary_Structure_Attribute[];
 }
 /** Layout determining how to store the dictionary in memory. */
 export interface ClickhouseConfig_ExternalDictionary_Layout {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.config.ClickhouseConfig.ExternalDictionary.Layout';
     /** Layout type for an external dictionary. */
     type: ClickhouseConfig_ExternalDictionary_Layout_Type;
     /**
@@ -461,6 +479,7 @@ export declare enum ClickhouseConfig_ExternalDictionary_Layout_Type {
 export declare function clickhouseConfig_ExternalDictionary_Layout_TypeFromJSON(object: any): ClickhouseConfig_ExternalDictionary_Layout_Type;
 export declare function clickhouseConfig_ExternalDictionary_Layout_TypeToJSON(object: ClickhouseConfig_ExternalDictionary_Layout_Type): string;
 export interface ClickhouseConfig_ExternalDictionary_Range {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.config.ClickhouseConfig.ExternalDictionary.Range';
     /** Minimum dictionary lifetime. */
     min: number;
     /** Maximum dictionary lifetime. */
@@ -468,12 +487,14 @@ export interface ClickhouseConfig_ExternalDictionary_Range {
 }
 /** Rollup settings for the GraphiteMergeTree table engine. */
 export interface ClickhouseConfig_GraphiteRollup {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.config.ClickhouseConfig.GraphiteRollup';
     /** Name for the specified combination of settings for Graphite rollup. */
     name: string;
     /** Pattern to use for the rollup. */
     patterns: ClickhouseConfig_GraphiteRollup_Pattern[];
 }
 export interface ClickhouseConfig_GraphiteRollup_Pattern {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.config.ClickhouseConfig.GraphiteRollup.Pattern';
     /** Pattern for metric names. */
     regexp: string;
     /** Name of the aggregating function to apply to data of the age specified in [retention]. */
@@ -482,12 +503,14 @@ export interface ClickhouseConfig_GraphiteRollup_Pattern {
     retention: ClickhouseConfig_GraphiteRollup_Pattern_Retention[];
 }
 export interface ClickhouseConfig_GraphiteRollup_Pattern_Retention {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.config.ClickhouseConfig.GraphiteRollup.Pattern.Retention';
     /** Minimum age of the data in seconds. */
     age: number;
     /** Precision of determining the age of the data, in seconds. */
     precision: number;
 }
 export interface ClickhouseConfigSet {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.config.ClickhouseConfigSet';
     /**
      * Effective settings for a ClickHouse cluster (a combination of settings defined
      * in [user_config] and [default_config]).
@@ -499,6 +522,7 @@ export interface ClickhouseConfigSet {
     defaultConfig: ClickhouseConfig | undefined;
 }
 export declare const ClickhouseConfig: {
+    $type: "yandex.cloud.mdb.clickhouse.v1.config.ClickhouseConfig";
     encode(message: ClickhouseConfig, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ClickhouseConfig;
     fromJSON(object: any): ClickhouseConfig;
@@ -506,6 +530,7 @@ export declare const ClickhouseConfig: {
     fromPartial(object: DeepPartial<ClickhouseConfig>): ClickhouseConfig;
 };
 export declare const ClickhouseConfig_MergeTree: {
+    $type: "yandex.cloud.mdb.clickhouse.v1.config.ClickhouseConfig.MergeTree";
     encode(message: ClickhouseConfig_MergeTree, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ClickhouseConfig_MergeTree;
     fromJSON(object: any): ClickhouseConfig_MergeTree;
@@ -513,6 +538,7 @@ export declare const ClickhouseConfig_MergeTree: {
     fromPartial(object: DeepPartial<ClickhouseConfig_MergeTree>): ClickhouseConfig_MergeTree;
 };
 export declare const ClickhouseConfig_Kafka: {
+    $type: "yandex.cloud.mdb.clickhouse.v1.config.ClickhouseConfig.Kafka";
     encode(message: ClickhouseConfig_Kafka, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ClickhouseConfig_Kafka;
     fromJSON(object: any): ClickhouseConfig_Kafka;
@@ -520,6 +546,7 @@ export declare const ClickhouseConfig_Kafka: {
     fromPartial(object: DeepPartial<ClickhouseConfig_Kafka>): ClickhouseConfig_Kafka;
 };
 export declare const ClickhouseConfig_KafkaTopic: {
+    $type: "yandex.cloud.mdb.clickhouse.v1.config.ClickhouseConfig.KafkaTopic";
     encode(message: ClickhouseConfig_KafkaTopic, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ClickhouseConfig_KafkaTopic;
     fromJSON(object: any): ClickhouseConfig_KafkaTopic;
@@ -527,6 +554,7 @@ export declare const ClickhouseConfig_KafkaTopic: {
     fromPartial(object: DeepPartial<ClickhouseConfig_KafkaTopic>): ClickhouseConfig_KafkaTopic;
 };
 export declare const ClickhouseConfig_Rabbitmq: {
+    $type: "yandex.cloud.mdb.clickhouse.v1.config.ClickhouseConfig.Rabbitmq";
     encode(message: ClickhouseConfig_Rabbitmq, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ClickhouseConfig_Rabbitmq;
     fromJSON(object: any): ClickhouseConfig_Rabbitmq;
@@ -534,6 +562,7 @@ export declare const ClickhouseConfig_Rabbitmq: {
     fromPartial(object: DeepPartial<ClickhouseConfig_Rabbitmq>): ClickhouseConfig_Rabbitmq;
 };
 export declare const ClickhouseConfig_Compression: {
+    $type: "yandex.cloud.mdb.clickhouse.v1.config.ClickhouseConfig.Compression";
     encode(message: ClickhouseConfig_Compression, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ClickhouseConfig_Compression;
     fromJSON(object: any): ClickhouseConfig_Compression;
@@ -541,6 +570,7 @@ export declare const ClickhouseConfig_Compression: {
     fromPartial(object: DeepPartial<ClickhouseConfig_Compression>): ClickhouseConfig_Compression;
 };
 export declare const ClickhouseConfig_ExternalDictionary: {
+    $type: "yandex.cloud.mdb.clickhouse.v1.config.ClickhouseConfig.ExternalDictionary";
     encode(message: ClickhouseConfig_ExternalDictionary, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ClickhouseConfig_ExternalDictionary;
     fromJSON(object: any): ClickhouseConfig_ExternalDictionary;
@@ -548,6 +578,7 @@ export declare const ClickhouseConfig_ExternalDictionary: {
     fromPartial(object: DeepPartial<ClickhouseConfig_ExternalDictionary>): ClickhouseConfig_ExternalDictionary;
 };
 export declare const ClickhouseConfig_ExternalDictionary_HttpSource: {
+    $type: "yandex.cloud.mdb.clickhouse.v1.config.ClickhouseConfig.ExternalDictionary.HttpSource";
     encode(message: ClickhouseConfig_ExternalDictionary_HttpSource, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ClickhouseConfig_ExternalDictionary_HttpSource;
     fromJSON(object: any): ClickhouseConfig_ExternalDictionary_HttpSource;
@@ -555,6 +586,7 @@ export declare const ClickhouseConfig_ExternalDictionary_HttpSource: {
     fromPartial(object: DeepPartial<ClickhouseConfig_ExternalDictionary_HttpSource>): ClickhouseConfig_ExternalDictionary_HttpSource;
 };
 export declare const ClickhouseConfig_ExternalDictionary_MysqlSource: {
+    $type: "yandex.cloud.mdb.clickhouse.v1.config.ClickhouseConfig.ExternalDictionary.MysqlSource";
     encode(message: ClickhouseConfig_ExternalDictionary_MysqlSource, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ClickhouseConfig_ExternalDictionary_MysqlSource;
     fromJSON(object: any): ClickhouseConfig_ExternalDictionary_MysqlSource;
@@ -562,6 +594,7 @@ export declare const ClickhouseConfig_ExternalDictionary_MysqlSource: {
     fromPartial(object: DeepPartial<ClickhouseConfig_ExternalDictionary_MysqlSource>): ClickhouseConfig_ExternalDictionary_MysqlSource;
 };
 export declare const ClickhouseConfig_ExternalDictionary_MysqlSource_Replica: {
+    $type: "yandex.cloud.mdb.clickhouse.v1.config.ClickhouseConfig.ExternalDictionary.MysqlSource.Replica";
     encode(message: ClickhouseConfig_ExternalDictionary_MysqlSource_Replica, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ClickhouseConfig_ExternalDictionary_MysqlSource_Replica;
     fromJSON(object: any): ClickhouseConfig_ExternalDictionary_MysqlSource_Replica;
@@ -569,6 +602,7 @@ export declare const ClickhouseConfig_ExternalDictionary_MysqlSource_Replica: {
     fromPartial(object: DeepPartial<ClickhouseConfig_ExternalDictionary_MysqlSource_Replica>): ClickhouseConfig_ExternalDictionary_MysqlSource_Replica;
 };
 export declare const ClickhouseConfig_ExternalDictionary_ClickhouseSource: {
+    $type: "yandex.cloud.mdb.clickhouse.v1.config.ClickhouseConfig.ExternalDictionary.ClickhouseSource";
     encode(message: ClickhouseConfig_ExternalDictionary_ClickhouseSource, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ClickhouseConfig_ExternalDictionary_ClickhouseSource;
     fromJSON(object: any): ClickhouseConfig_ExternalDictionary_ClickhouseSource;
@@ -576,6 +610,7 @@ export declare const ClickhouseConfig_ExternalDictionary_ClickhouseSource: {
     fromPartial(object: DeepPartial<ClickhouseConfig_ExternalDictionary_ClickhouseSource>): ClickhouseConfig_ExternalDictionary_ClickhouseSource;
 };
 export declare const ClickhouseConfig_ExternalDictionary_MongodbSource: {
+    $type: "yandex.cloud.mdb.clickhouse.v1.config.ClickhouseConfig.ExternalDictionary.MongodbSource";
     encode(message: ClickhouseConfig_ExternalDictionary_MongodbSource, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ClickhouseConfig_ExternalDictionary_MongodbSource;
     fromJSON(object: any): ClickhouseConfig_ExternalDictionary_MongodbSource;
@@ -583,6 +618,7 @@ export declare const ClickhouseConfig_ExternalDictionary_MongodbSource: {
     fromPartial(object: DeepPartial<ClickhouseConfig_ExternalDictionary_MongodbSource>): ClickhouseConfig_ExternalDictionary_MongodbSource;
 };
 export declare const ClickhouseConfig_ExternalDictionary_PostgresqlSource: {
+    $type: "yandex.cloud.mdb.clickhouse.v1.config.ClickhouseConfig.ExternalDictionary.PostgresqlSource";
     encode(message: ClickhouseConfig_ExternalDictionary_PostgresqlSource, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ClickhouseConfig_ExternalDictionary_PostgresqlSource;
     fromJSON(object: any): ClickhouseConfig_ExternalDictionary_PostgresqlSource;
@@ -590,6 +626,7 @@ export declare const ClickhouseConfig_ExternalDictionary_PostgresqlSource: {
     fromPartial(object: DeepPartial<ClickhouseConfig_ExternalDictionary_PostgresqlSource>): ClickhouseConfig_ExternalDictionary_PostgresqlSource;
 };
 export declare const ClickhouseConfig_ExternalDictionary_Structure: {
+    $type: "yandex.cloud.mdb.clickhouse.v1.config.ClickhouseConfig.ExternalDictionary.Structure";
     encode(message: ClickhouseConfig_ExternalDictionary_Structure, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ClickhouseConfig_ExternalDictionary_Structure;
     fromJSON(object: any): ClickhouseConfig_ExternalDictionary_Structure;
@@ -597,6 +634,7 @@ export declare const ClickhouseConfig_ExternalDictionary_Structure: {
     fromPartial(object: DeepPartial<ClickhouseConfig_ExternalDictionary_Structure>): ClickhouseConfig_ExternalDictionary_Structure;
 };
 export declare const ClickhouseConfig_ExternalDictionary_Structure_Attribute: {
+    $type: "yandex.cloud.mdb.clickhouse.v1.config.ClickhouseConfig.ExternalDictionary.Structure.Attribute";
     encode(message: ClickhouseConfig_ExternalDictionary_Structure_Attribute, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ClickhouseConfig_ExternalDictionary_Structure_Attribute;
     fromJSON(object: any): ClickhouseConfig_ExternalDictionary_Structure_Attribute;
@@ -604,6 +642,7 @@ export declare const ClickhouseConfig_ExternalDictionary_Structure_Attribute: {
     fromPartial(object: DeepPartial<ClickhouseConfig_ExternalDictionary_Structure_Attribute>): ClickhouseConfig_ExternalDictionary_Structure_Attribute;
 };
 export declare const ClickhouseConfig_ExternalDictionary_Structure_Id: {
+    $type: "yandex.cloud.mdb.clickhouse.v1.config.ClickhouseConfig.ExternalDictionary.Structure.Id";
     encode(message: ClickhouseConfig_ExternalDictionary_Structure_Id, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ClickhouseConfig_ExternalDictionary_Structure_Id;
     fromJSON(object: any): ClickhouseConfig_ExternalDictionary_Structure_Id;
@@ -611,6 +650,7 @@ export declare const ClickhouseConfig_ExternalDictionary_Structure_Id: {
     fromPartial(object: DeepPartial<ClickhouseConfig_ExternalDictionary_Structure_Id>): ClickhouseConfig_ExternalDictionary_Structure_Id;
 };
 export declare const ClickhouseConfig_ExternalDictionary_Structure_Key: {
+    $type: "yandex.cloud.mdb.clickhouse.v1.config.ClickhouseConfig.ExternalDictionary.Structure.Key";
     encode(message: ClickhouseConfig_ExternalDictionary_Structure_Key, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ClickhouseConfig_ExternalDictionary_Structure_Key;
     fromJSON(object: any): ClickhouseConfig_ExternalDictionary_Structure_Key;
@@ -618,6 +658,7 @@ export declare const ClickhouseConfig_ExternalDictionary_Structure_Key: {
     fromPartial(object: DeepPartial<ClickhouseConfig_ExternalDictionary_Structure_Key>): ClickhouseConfig_ExternalDictionary_Structure_Key;
 };
 export declare const ClickhouseConfig_ExternalDictionary_Layout: {
+    $type: "yandex.cloud.mdb.clickhouse.v1.config.ClickhouseConfig.ExternalDictionary.Layout";
     encode(message: ClickhouseConfig_ExternalDictionary_Layout, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ClickhouseConfig_ExternalDictionary_Layout;
     fromJSON(object: any): ClickhouseConfig_ExternalDictionary_Layout;
@@ -625,6 +666,7 @@ export declare const ClickhouseConfig_ExternalDictionary_Layout: {
     fromPartial(object: DeepPartial<ClickhouseConfig_ExternalDictionary_Layout>): ClickhouseConfig_ExternalDictionary_Layout;
 };
 export declare const ClickhouseConfig_ExternalDictionary_Range: {
+    $type: "yandex.cloud.mdb.clickhouse.v1.config.ClickhouseConfig.ExternalDictionary.Range";
     encode(message: ClickhouseConfig_ExternalDictionary_Range, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ClickhouseConfig_ExternalDictionary_Range;
     fromJSON(object: any): ClickhouseConfig_ExternalDictionary_Range;
@@ -632,6 +674,7 @@ export declare const ClickhouseConfig_ExternalDictionary_Range: {
     fromPartial(object: DeepPartial<ClickhouseConfig_ExternalDictionary_Range>): ClickhouseConfig_ExternalDictionary_Range;
 };
 export declare const ClickhouseConfig_GraphiteRollup: {
+    $type: "yandex.cloud.mdb.clickhouse.v1.config.ClickhouseConfig.GraphiteRollup";
     encode(message: ClickhouseConfig_GraphiteRollup, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ClickhouseConfig_GraphiteRollup;
     fromJSON(object: any): ClickhouseConfig_GraphiteRollup;
@@ -639,6 +682,7 @@ export declare const ClickhouseConfig_GraphiteRollup: {
     fromPartial(object: DeepPartial<ClickhouseConfig_GraphiteRollup>): ClickhouseConfig_GraphiteRollup;
 };
 export declare const ClickhouseConfig_GraphiteRollup_Pattern: {
+    $type: "yandex.cloud.mdb.clickhouse.v1.config.ClickhouseConfig.GraphiteRollup.Pattern";
     encode(message: ClickhouseConfig_GraphiteRollup_Pattern, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ClickhouseConfig_GraphiteRollup_Pattern;
     fromJSON(object: any): ClickhouseConfig_GraphiteRollup_Pattern;
@@ -646,6 +690,7 @@ export declare const ClickhouseConfig_GraphiteRollup_Pattern: {
     fromPartial(object: DeepPartial<ClickhouseConfig_GraphiteRollup_Pattern>): ClickhouseConfig_GraphiteRollup_Pattern;
 };
 export declare const ClickhouseConfig_GraphiteRollup_Pattern_Retention: {
+    $type: "yandex.cloud.mdb.clickhouse.v1.config.ClickhouseConfig.GraphiteRollup.Pattern.Retention";
     encode(message: ClickhouseConfig_GraphiteRollup_Pattern_Retention, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ClickhouseConfig_GraphiteRollup_Pattern_Retention;
     fromJSON(object: any): ClickhouseConfig_GraphiteRollup_Pattern_Retention;
@@ -653,6 +698,7 @@ export declare const ClickhouseConfig_GraphiteRollup_Pattern_Retention: {
     fromPartial(object: DeepPartial<ClickhouseConfig_GraphiteRollup_Pattern_Retention>): ClickhouseConfig_GraphiteRollup_Pattern_Retention;
 };
 export declare const ClickhouseConfigSet: {
+    $type: "yandex.cloud.mdb.clickhouse.v1.config.ClickhouseConfigSet";
     encode(message: ClickhouseConfigSet, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ClickhouseConfigSet;
     fromJSON(object: any): ClickhouseConfigSet;
@@ -661,6 +707,6 @@ export declare const ClickhouseConfigSet: {
 };
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

@@ -6,6 +6,7 @@ import { ChannelCredentials, ChannelOptions, UntypedServiceImplementation, handl
 import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.compute.v1";
 export interface GetImageRequest {
+    $type: 'yandex.cloud.compute.v1.GetImageRequest';
     /**
      * ID of the Image resource to return.
      * To get the image ID, use a [ImageService.List] request.
@@ -13,6 +14,7 @@ export interface GetImageRequest {
     imageId: string;
 }
 export interface GetImageLatestByFamilyRequest {
+    $type: 'yandex.cloud.compute.v1.GetImageLatestByFamilyRequest';
     /**
      * ID of the folder to get the image from.
      * To get the folder ID, use a [yandex.cloud.resourcemanager.v1.FolderService.List] request.
@@ -22,6 +24,7 @@ export interface GetImageLatestByFamilyRequest {
     family: string;
 }
 export interface ListImagesRequest {
+    $type: 'yandex.cloud.compute.v1.ListImagesRequest';
     /**
      * ID of the folder to list images in.
      * To get the folder ID, use a [yandex.cloud.resourcemanager.v1.FolderService.List] request.
@@ -49,6 +52,7 @@ export interface ListImagesRequest {
     filter: string;
 }
 export interface ListImagesResponse {
+    $type: 'yandex.cloud.compute.v1.ListImagesResponse';
     /** List of images. */
     images: Image[];
     /**
@@ -62,6 +66,7 @@ export interface ListImagesResponse {
     nextPageToken: string;
 }
 export interface CreateImageRequest {
+    $type: 'yandex.cloud.compute.v1.CreateImageRequest';
     /**
      * ID of the folder to create an image in.
      * To get the folder ID, use a [yandex.cloud.resourcemanager.v1.FolderService.List] request.
@@ -119,14 +124,17 @@ export interface CreateImageRequest {
     pooled: boolean;
 }
 export interface CreateImageRequest_LabelsEntry {
+    $type: 'yandex.cloud.compute.v1.CreateImageRequest.LabelsEntry';
     key: string;
     value: string;
 }
 export interface CreateImageMetadata {
+    $type: 'yandex.cloud.compute.v1.CreateImageMetadata';
     /** ID of the image that is being created. */
     imageId: string;
 }
 export interface UpdateImageRequest {
+    $type: 'yandex.cloud.compute.v1.UpdateImageRequest';
     /**
      * ID of the Image resource to update.
      * To get the image ID, use a [ImageService.List] request.
@@ -153,14 +161,17 @@ export interface UpdateImageRequest {
     };
 }
 export interface UpdateImageRequest_LabelsEntry {
+    $type: 'yandex.cloud.compute.v1.UpdateImageRequest.LabelsEntry';
     key: string;
     value: string;
 }
 export interface UpdateImageMetadata {
+    $type: 'yandex.cloud.compute.v1.UpdateImageMetadata';
     /** ID of the Image resource that is being updated. */
     imageId: string;
 }
 export interface DeleteImageRequest {
+    $type: 'yandex.cloud.compute.v1.DeleteImageRequest';
     /**
      * ID of the image to delete.
      * To get the image ID, use a [ImageService.List] request.
@@ -168,10 +179,12 @@ export interface DeleteImageRequest {
     imageId: string;
 }
 export interface DeleteImageMetadata {
+    $type: 'yandex.cloud.compute.v1.DeleteImageMetadata';
     /** ID of the image that is being deleted. */
     imageId: string;
 }
 export interface ListImageOperationsRequest {
+    $type: 'yandex.cloud.compute.v1.ListImageOperationsRequest';
     /** ID of the Image resource to list operations for. */
     imageId: string;
     /**
@@ -187,6 +200,7 @@ export interface ListImageOperationsRequest {
     pageToken: string;
 }
 export interface ListImageOperationsResponse {
+    $type: 'yandex.cloud.compute.v1.ListImageOperationsResponse';
     /** List of operations for the specified image. */
     operations: Operation[];
     /**
@@ -198,6 +212,7 @@ export interface ListImageOperationsResponse {
     nextPageToken: string;
 }
 export declare const GetImageRequest: {
+    $type: "yandex.cloud.compute.v1.GetImageRequest";
     encode(message: GetImageRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): GetImageRequest;
     fromJSON(object: any): GetImageRequest;
@@ -205,6 +220,7 @@ export declare const GetImageRequest: {
     fromPartial(object: DeepPartial<GetImageRequest>): GetImageRequest;
 };
 export declare const GetImageLatestByFamilyRequest: {
+    $type: "yandex.cloud.compute.v1.GetImageLatestByFamilyRequest";
     encode(message: GetImageLatestByFamilyRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): GetImageLatestByFamilyRequest;
     fromJSON(object: any): GetImageLatestByFamilyRequest;
@@ -212,6 +228,7 @@ export declare const GetImageLatestByFamilyRequest: {
     fromPartial(object: DeepPartial<GetImageLatestByFamilyRequest>): GetImageLatestByFamilyRequest;
 };
 export declare const ListImagesRequest: {
+    $type: "yandex.cloud.compute.v1.ListImagesRequest";
     encode(message: ListImagesRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListImagesRequest;
     fromJSON(object: any): ListImagesRequest;
@@ -219,6 +236,7 @@ export declare const ListImagesRequest: {
     fromPartial(object: DeepPartial<ListImagesRequest>): ListImagesRequest;
 };
 export declare const ListImagesResponse: {
+    $type: "yandex.cloud.compute.v1.ListImagesResponse";
     encode(message: ListImagesResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListImagesResponse;
     fromJSON(object: any): ListImagesResponse;
@@ -226,6 +244,7 @@ export declare const ListImagesResponse: {
     fromPartial(object: DeepPartial<ListImagesResponse>): ListImagesResponse;
 };
 export declare const CreateImageRequest: {
+    $type: "yandex.cloud.compute.v1.CreateImageRequest";
     encode(message: CreateImageRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateImageRequest;
     fromJSON(object: any): CreateImageRequest;
@@ -233,6 +252,7 @@ export declare const CreateImageRequest: {
     fromPartial(object: DeepPartial<CreateImageRequest>): CreateImageRequest;
 };
 export declare const CreateImageRequest_LabelsEntry: {
+    $type: "yandex.cloud.compute.v1.CreateImageRequest.LabelsEntry";
     encode(message: CreateImageRequest_LabelsEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateImageRequest_LabelsEntry;
     fromJSON(object: any): CreateImageRequest_LabelsEntry;
@@ -240,6 +260,7 @@ export declare const CreateImageRequest_LabelsEntry: {
     fromPartial(object: DeepPartial<CreateImageRequest_LabelsEntry>): CreateImageRequest_LabelsEntry;
 };
 export declare const CreateImageMetadata: {
+    $type: "yandex.cloud.compute.v1.CreateImageMetadata";
     encode(message: CreateImageMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateImageMetadata;
     fromJSON(object: any): CreateImageMetadata;
@@ -247,6 +268,7 @@ export declare const CreateImageMetadata: {
     fromPartial(object: DeepPartial<CreateImageMetadata>): CreateImageMetadata;
 };
 export declare const UpdateImageRequest: {
+    $type: "yandex.cloud.compute.v1.UpdateImageRequest";
     encode(message: UpdateImageRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateImageRequest;
     fromJSON(object: any): UpdateImageRequest;
@@ -254,6 +276,7 @@ export declare const UpdateImageRequest: {
     fromPartial(object: DeepPartial<UpdateImageRequest>): UpdateImageRequest;
 };
 export declare const UpdateImageRequest_LabelsEntry: {
+    $type: "yandex.cloud.compute.v1.UpdateImageRequest.LabelsEntry";
     encode(message: UpdateImageRequest_LabelsEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateImageRequest_LabelsEntry;
     fromJSON(object: any): UpdateImageRequest_LabelsEntry;
@@ -261,6 +284,7 @@ export declare const UpdateImageRequest_LabelsEntry: {
     fromPartial(object: DeepPartial<UpdateImageRequest_LabelsEntry>): UpdateImageRequest_LabelsEntry;
 };
 export declare const UpdateImageMetadata: {
+    $type: "yandex.cloud.compute.v1.UpdateImageMetadata";
     encode(message: UpdateImageMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateImageMetadata;
     fromJSON(object: any): UpdateImageMetadata;
@@ -268,6 +292,7 @@ export declare const UpdateImageMetadata: {
     fromPartial(object: DeepPartial<UpdateImageMetadata>): UpdateImageMetadata;
 };
 export declare const DeleteImageRequest: {
+    $type: "yandex.cloud.compute.v1.DeleteImageRequest";
     encode(message: DeleteImageRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteImageRequest;
     fromJSON(object: any): DeleteImageRequest;
@@ -275,6 +300,7 @@ export declare const DeleteImageRequest: {
     fromPartial(object: DeepPartial<DeleteImageRequest>): DeleteImageRequest;
 };
 export declare const DeleteImageMetadata: {
+    $type: "yandex.cloud.compute.v1.DeleteImageMetadata";
     encode(message: DeleteImageMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteImageMetadata;
     fromJSON(object: any): DeleteImageMetadata;
@@ -282,6 +308,7 @@ export declare const DeleteImageMetadata: {
     fromPartial(object: DeepPartial<DeleteImageMetadata>): DeleteImageMetadata;
 };
 export declare const ListImageOperationsRequest: {
+    $type: "yandex.cloud.compute.v1.ListImageOperationsRequest";
     encode(message: ListImageOperationsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListImageOperationsRequest;
     fromJSON(object: any): ListImageOperationsRequest;
@@ -289,6 +316,7 @@ export declare const ListImageOperationsRequest: {
     fromPartial(object: DeepPartial<ListImageOperationsRequest>): ListImageOperationsRequest;
 };
 export declare const ListImageOperationsResponse: {
+    $type: "yandex.cloud.compute.v1.ListImageOperationsResponse";
     encode(message: ListImageOperationsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListImageOperationsResponse;
     fromJSON(object: any): ListImageOperationsResponse;
@@ -456,6 +484,6 @@ export interface ImageServiceClient extends Client {
 export declare const ImageServiceClient: new (address: string, credentials: ChannelCredentials, options?: Partial<ChannelOptions> | undefined) => ImageServiceClient;
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

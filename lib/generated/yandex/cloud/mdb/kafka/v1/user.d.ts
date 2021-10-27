@@ -5,6 +5,7 @@ export declare const protobufPackage = "yandex.cloud.mdb.kafka.v1";
  * For more information, see the [Operations -> Accounts](/docs/managed-kafka/operations/cluster-accounts) section of the documentation.
  */
 export interface User {
+    $type: 'yandex.cloud.mdb.kafka.v1.User';
     /** Name of the Kafka user. */
     name: string;
     /**
@@ -17,6 +18,7 @@ export interface User {
     permissions: Permission[];
 }
 export interface UserSpec {
+    $type: 'yandex.cloud.mdb.kafka.v1.UserSpec';
     /** Name of the Kafka user. */
     name: string;
     /** Password of the Kafka user. */
@@ -25,6 +27,7 @@ export interface UserSpec {
     permissions: Permission[];
 }
 export interface Permission {
+    $type: 'yandex.cloud.mdb.kafka.v1.Permission';
     /**
      * Name or prefix-pattern with wildcard for the topic that the permission grants access to.
      *
@@ -47,6 +50,7 @@ export declare enum Permission_AccessRole {
 export declare function permission_AccessRoleFromJSON(object: any): Permission_AccessRole;
 export declare function permission_AccessRoleToJSON(object: Permission_AccessRole): string;
 export declare const User: {
+    $type: "yandex.cloud.mdb.kafka.v1.User";
     encode(message: User, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): User;
     fromJSON(object: any): User;
@@ -54,6 +58,7 @@ export declare const User: {
     fromPartial(object: DeepPartial<User>): User;
 };
 export declare const UserSpec: {
+    $type: "yandex.cloud.mdb.kafka.v1.UserSpec";
     encode(message: UserSpec, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UserSpec;
     fromJSON(object: any): UserSpec;
@@ -61,6 +66,7 @@ export declare const UserSpec: {
     fromPartial(object: DeepPartial<UserSpec>): UserSpec;
 };
 export declare const Permission: {
+    $type: "yandex.cloud.mdb.kafka.v1.Permission";
     encode(message: Permission, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Permission;
     fromJSON(object: any): Permission;
@@ -69,6 +75,6 @@ export declare const Permission: {
 };
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

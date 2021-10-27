@@ -2,6 +2,7 @@ import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.containerregistry.v1";
 /** A ScanResult resource. */
 export interface ScanResult {
+    $type: 'yandex.cloud.containerregistry.v1.ScanResult';
     /** Output only. ID of the ScanResult. */
     id: string;
     /** Output only. ID of the Image that the ScanResult belongs to. */
@@ -27,6 +28,7 @@ export declare function scanResult_StatusFromJSON(object: any): ScanResult_Statu
 export declare function scanResult_StatusToJSON(object: ScanResult_Status): string;
 /** A VulnerabilityStats resource. */
 export interface VulnerabilityStats {
+    $type: 'yandex.cloud.containerregistry.v1.VulnerabilityStats';
     /** Count of CRITICAL vulnerabilities. */
     critical: number;
     /** Count of HIGH vulnerabilities. */
@@ -42,6 +44,7 @@ export interface VulnerabilityStats {
 }
 /** A Vulnerability resource. */
 export interface Vulnerability {
+    $type: 'yandex.cloud.containerregistry.v1.Vulnerability';
     /** Output only. Severity of the Vulnerability. */
     severity: Vulnerability_Severity;
     package: PackageVulnerability | undefined;
@@ -87,6 +90,7 @@ export declare function vulnerability_SeverityFromJSON(object: any): Vulnerabili
 export declare function vulnerability_SeverityToJSON(object: Vulnerability_Severity): string;
 /** A PackageVulnerability resource. */
 export interface PackageVulnerability {
+    $type: 'yandex.cloud.containerregistry.v1.PackageVulnerability';
     /** Name of vulnerability in CVE database. */
     name: string;
     /** URL to the page with description of vulnerability. */
@@ -101,6 +105,7 @@ export interface PackageVulnerability {
     fixedBy: string;
 }
 export declare const ScanResult: {
+    $type: "yandex.cloud.containerregistry.v1.ScanResult";
     encode(message: ScanResult, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ScanResult;
     fromJSON(object: any): ScanResult;
@@ -108,6 +113,7 @@ export declare const ScanResult: {
     fromPartial(object: DeepPartial<ScanResult>): ScanResult;
 };
 export declare const VulnerabilityStats: {
+    $type: "yandex.cloud.containerregistry.v1.VulnerabilityStats";
     encode(message: VulnerabilityStats, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): VulnerabilityStats;
     fromJSON(object: any): VulnerabilityStats;
@@ -115,6 +121,7 @@ export declare const VulnerabilityStats: {
     fromPartial(object: DeepPartial<VulnerabilityStats>): VulnerabilityStats;
 };
 export declare const Vulnerability: {
+    $type: "yandex.cloud.containerregistry.v1.Vulnerability";
     encode(message: Vulnerability, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Vulnerability;
     fromJSON(object: any): Vulnerability;
@@ -122,6 +129,7 @@ export declare const Vulnerability: {
     fromPartial(object: DeepPartial<Vulnerability>): Vulnerability;
 };
 export declare const PackageVulnerability: {
+    $type: "yandex.cloud.containerregistry.v1.PackageVulnerability";
     encode(message: PackageVulnerability, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): PackageVulnerability;
     fromJSON(object: any): PackageVulnerability;
@@ -130,6 +138,6 @@ export declare const PackageVulnerability: {
 };
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

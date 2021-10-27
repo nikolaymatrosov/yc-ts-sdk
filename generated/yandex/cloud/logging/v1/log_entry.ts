@@ -1,6 +1,7 @@
 /* eslint-disable */
 import { Struct } from '../../../../google/protobuf/struct';
 import { Timestamp } from '../../../../google/protobuf/timestamp';
+import { messageTypeRegistry } from '../../../../typeRegistry';
 import { LogEntryResource } from '../../../../yandex/cloud/logging/v1/log_resource';
 import Long from 'long';
 import _m0 from 'protobufjs/minimal';
@@ -8,6 +9,7 @@ import _m0 from 'protobufjs/minimal';
 export const protobufPackage = 'yandex.cloud.logging.v1';
 
 export interface LogEntry {
+    $type: 'yandex.cloud.logging.v1.LogEntry';
     /**
      * Unique entry ID.
      *
@@ -44,6 +46,7 @@ export interface LogEntry {
 }
 
 export interface IncomingLogEntry {
+    $type: 'yandex.cloud.logging.v1.IncomingLogEntry';
     /** Timestamp of the entry. */
     timestamp: Date | undefined;
     /**
@@ -59,6 +62,7 @@ export interface IncomingLogEntry {
 }
 
 export interface LogEntryDefaults {
+    $type: 'yandex.cloud.logging.v1.LogEntryDefaults';
     /**
      * Default entry severity.
      * Will be applied if entry level is unspecified.
@@ -75,6 +79,7 @@ export interface LogEntryDefaults {
 }
 
 export interface Destination {
+    $type: 'yandex.cloud.logging.v1.Destination';
     /** Entry should be written to log group resolved by ID. */
     logGroupId: string | undefined;
     /** Entry should be written to default log group for the folder. */
@@ -82,6 +87,7 @@ export interface Destination {
 }
 
 export interface LogLevel {
+    $type: 'yandex.cloud.logging.v1.LogLevel';
     /**
      * Entry level.
      *
@@ -188,9 +194,16 @@ export function logLevel_LevelToJSON(object: LogLevel_Level): string {
     }
 }
 
-const baseLogEntry: object = { uid: '', level: 0, message: '' };
+const baseLogEntry: object = {
+    $type: 'yandex.cloud.logging.v1.LogEntry',
+    uid: '',
+    level: 0,
+    message: '',
+};
 
 export const LogEntry = {
+    $type: 'yandex.cloud.logging.v1.LogEntry' as const,
+
     encode(
         message: LogEntry,
         writer: _m0.Writer = _m0.Writer.create()
@@ -403,9 +416,17 @@ export const LogEntry = {
     },
 };
 
-const baseIncomingLogEntry: object = { level: 0, message: '' };
+messageTypeRegistry.set(LogEntry.$type, LogEntry);
+
+const baseIncomingLogEntry: object = {
+    $type: 'yandex.cloud.logging.v1.IncomingLogEntry',
+    level: 0,
+    message: '',
+};
 
 export const IncomingLogEntry = {
+    $type: 'yandex.cloud.logging.v1.IncomingLogEntry' as const,
+
     encode(
         message: IncomingLogEntry,
         writer: _m0.Writer = _m0.Writer.create()
@@ -529,9 +550,16 @@ export const IncomingLogEntry = {
     },
 };
 
-const baseLogEntryDefaults: object = { level: 0 };
+messageTypeRegistry.set(IncomingLogEntry.$type, IncomingLogEntry);
+
+const baseLogEntryDefaults: object = {
+    $type: 'yandex.cloud.logging.v1.LogEntryDefaults',
+    level: 0,
+};
 
 export const LogEntryDefaults = {
+    $type: 'yandex.cloud.logging.v1.LogEntryDefaults' as const,
+
     encode(
         message: LogEntryDefaults,
         writer: _m0.Writer = _m0.Writer.create()
@@ -615,9 +643,15 @@ export const LogEntryDefaults = {
     },
 };
 
-const baseDestination: object = {};
+messageTypeRegistry.set(LogEntryDefaults.$type, LogEntryDefaults);
+
+const baseDestination: object = {
+    $type: 'yandex.cloud.logging.v1.Destination',
+};
 
 export const Destination = {
+    $type: 'yandex.cloud.logging.v1.Destination' as const,
+
     encode(
         message: Destination,
         writer: _m0.Writer = _m0.Writer.create()
@@ -692,9 +726,16 @@ export const Destination = {
     },
 };
 
-const baseLogLevel: object = { level: 0 };
+messageTypeRegistry.set(Destination.$type, Destination);
+
+const baseLogLevel: object = {
+    $type: 'yandex.cloud.logging.v1.LogLevel',
+    level: 0,
+};
 
 export const LogLevel = {
+    $type: 'yandex.cloud.logging.v1.LogLevel' as const,
+
     encode(
         message: LogLevel,
         writer: _m0.Writer = _m0.Writer.create()
@@ -752,6 +793,8 @@ export const LogLevel = {
     },
 };
 
+messageTypeRegistry.set(LogLevel.$type, LogLevel);
+
 type Builtin =
     | Date
     | Function
@@ -767,13 +810,13 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 function toTimestamp(date: Date): Timestamp {
     const seconds = date.getTime() / 1_000;
     const nanos = (date.getTime() % 1_000) * 1_000_000;
-    return { seconds, nanos };
+    return { $type: 'google.protobuf.Timestamp', seconds, nanos };
 }
 
 function fromTimestamp(t: Timestamp): Date {

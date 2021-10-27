@@ -3,12 +3,14 @@ import {
     Int64Value,
     StringValue,
 } from '../../../../../google/protobuf/wrappers';
+import { messageTypeRegistry } from '../../../../../typeRegistry';
 import Long from 'long';
 import _m0 from 'protobufjs/minimal';
 
 export const protobufPackage = 'yandex.cloud.mdb.greenplum.v1';
 
 export interface Resources {
+    $type: 'yandex.cloud.mdb.greenplum.v1.Resources';
     /**
      * ID of the preset for computational resources available to a host (CPU, memory etc.).
      * All available presets are listed in the [documentation](/docs/managed-greenplum/concepts/instance-types).
@@ -29,6 +31,7 @@ export interface Resources {
 
 /** Configuration of master subcluster */
 export interface MasterSubclusterConfig {
+    $type: 'yandex.cloud.mdb.greenplum.v1.MasterSubclusterConfig';
     /** Resources allocated to Greenplum master subcluster hosts. */
     resources: Resources | undefined;
     /** Configuration settings of a Greenplum master server. */
@@ -37,6 +40,7 @@ export interface MasterSubclusterConfig {
 
 /** Configuration of segmet subcluster */
 export interface SegmentSubclusterConfig {
+    $type: 'yandex.cloud.mdb.greenplum.v1.SegmentSubclusterConfig';
     /** Resources allocated to Greenplum segment subcluster hosts. */
     resources: Resources | undefined;
     /** Configuration settings of a Greenplum segment server. */
@@ -49,6 +53,7 @@ export interface SegmentSubclusterConfig {
  * Any options not listed here are not supported.
  */
 export interface GreenplumMasterConfig {
+    $type: 'yandex.cloud.mdb.greenplum.v1.GreenplumMasterConfig';
     /** Logging level for the Greenplum master subcluster. Possible values: TRACE, DEBUG, INFORMATION, WARNING, ERROR. */
     logLevel: GreenplumMasterConfig_LogLevel;
     /** Maximum number of inbound connections. */
@@ -123,6 +128,7 @@ export function greenplumMasterConfig_LogLevelToJSON(
  * Any options not listed here are not supported.
  */
 export interface GreenplumSegmentConfig {
+    $type: 'yandex.cloud.mdb.greenplum.v1.GreenplumSegmentConfig';
     /** Logging level for the Greenplum segment subcluster. Possible values: TRACE, DEBUG, INFORMATION, WARNING, ERROR. */
     logLevel: GreenplumSegmentConfig_LogLevel;
     /** Maximum number of inbound connections. */
@@ -190,6 +196,7 @@ export function greenplumSegmentConfig_LogLevelToJSON(
 }
 
 export interface GreenplumMasterConfigSet {
+    $type: 'yandex.cloud.mdb.greenplum.v1.GreenplumMasterConfigSet';
     /**
      * Effective settings for a Greenplum master subcluster (a combination of settings defined
      * in [user_config] and [default_config]).
@@ -202,6 +209,7 @@ export interface GreenplumMasterConfigSet {
 }
 
 export interface GreenplumSegmentConfigSet {
+    $type: 'yandex.cloud.mdb.greenplum.v1.GreenplumSegmentConfigSet';
     /**
      * Effective settings for a Greenplum segment subcluster (a combination of settings defined
      * in [user_config] and [default_config]).
@@ -214,12 +222,15 @@ export interface GreenplumSegmentConfigSet {
 }
 
 const baseResources: object = {
+    $type: 'yandex.cloud.mdb.greenplum.v1.Resources',
     resourcePresetId: '',
     diskSize: 0,
     diskTypeId: '',
 };
 
 export const Resources = {
+    $type: 'yandex.cloud.mdb.greenplum.v1.Resources' as const,
+
     encode(
         message: Resources,
         writer: _m0.Writer = _m0.Writer.create()
@@ -318,9 +329,15 @@ export const Resources = {
     },
 };
 
-const baseMasterSubclusterConfig: object = {};
+messageTypeRegistry.set(Resources.$type, Resources);
+
+const baseMasterSubclusterConfig: object = {
+    $type: 'yandex.cloud.mdb.greenplum.v1.MasterSubclusterConfig',
+};
 
 export const MasterSubclusterConfig = {
+    $type: 'yandex.cloud.mdb.greenplum.v1.MasterSubclusterConfig' as const,
+
     encode(
         message: MasterSubclusterConfig,
         writer: _m0.Writer = _m0.Writer.create()
@@ -425,9 +442,15 @@ export const MasterSubclusterConfig = {
     },
 };
 
-const baseSegmentSubclusterConfig: object = {};
+messageTypeRegistry.set(MasterSubclusterConfig.$type, MasterSubclusterConfig);
+
+const baseSegmentSubclusterConfig: object = {
+    $type: 'yandex.cloud.mdb.greenplum.v1.SegmentSubclusterConfig',
+};
 
 export const SegmentSubclusterConfig = {
+    $type: 'yandex.cloud.mdb.greenplum.v1.SegmentSubclusterConfig' as const,
+
     encode(
         message: SegmentSubclusterConfig,
         writer: _m0.Writer = _m0.Writer.create()
@@ -532,9 +555,16 @@ export const SegmentSubclusterConfig = {
     },
 };
 
-const baseGreenplumMasterConfig: object = { logLevel: 0 };
+messageTypeRegistry.set(SegmentSubclusterConfig.$type, SegmentSubclusterConfig);
+
+const baseGreenplumMasterConfig: object = {
+    $type: 'yandex.cloud.mdb.greenplum.v1.GreenplumMasterConfig',
+    logLevel: 0,
+};
 
 export const GreenplumMasterConfig = {
+    $type: 'yandex.cloud.mdb.greenplum.v1.GreenplumMasterConfig' as const,
+
     encode(
         message: GreenplumMasterConfig,
         writer: _m0.Writer = _m0.Writer.create()
@@ -544,13 +574,19 @@ export const GreenplumMasterConfig = {
         }
         if (message.maxConnections !== undefined) {
             Int64Value.encode(
-                { value: message.maxConnections! },
+                {
+                    $type: 'google.protobuf.Int64Value',
+                    value: message.maxConnections!,
+                },
                 writer.uint32(18).fork()
             ).ldelim();
         }
         if (message.timezone !== undefined) {
             StringValue.encode(
-                { value: message.timezone! },
+                {
+                    $type: 'google.protobuf.StringValue',
+                    value: message.timezone!,
+                },
                 writer.uint32(26).fork()
             ).ldelim();
         }
@@ -660,9 +696,16 @@ export const GreenplumMasterConfig = {
     },
 };
 
-const baseGreenplumSegmentConfig: object = { logLevel: 0 };
+messageTypeRegistry.set(GreenplumMasterConfig.$type, GreenplumMasterConfig);
+
+const baseGreenplumSegmentConfig: object = {
+    $type: 'yandex.cloud.mdb.greenplum.v1.GreenplumSegmentConfig',
+    logLevel: 0,
+};
 
 export const GreenplumSegmentConfig = {
+    $type: 'yandex.cloud.mdb.greenplum.v1.GreenplumSegmentConfig' as const,
+
     encode(
         message: GreenplumSegmentConfig,
         writer: _m0.Writer = _m0.Writer.create()
@@ -672,7 +715,10 @@ export const GreenplumSegmentConfig = {
         }
         if (message.maxConnections !== undefined) {
             Int64Value.encode(
-                { value: message.maxConnections! },
+                {
+                    $type: 'google.protobuf.Int64Value',
+                    value: message.maxConnections!,
+                },
                 writer.uint32(18).fork()
             ).ldelim();
         }
@@ -765,9 +811,15 @@ export const GreenplumSegmentConfig = {
     },
 };
 
-const baseGreenplumMasterConfigSet: object = {};
+messageTypeRegistry.set(GreenplumSegmentConfig.$type, GreenplumSegmentConfig);
+
+const baseGreenplumMasterConfigSet: object = {
+    $type: 'yandex.cloud.mdb.greenplum.v1.GreenplumMasterConfigSet',
+};
 
 export const GreenplumMasterConfigSet = {
+    $type: 'yandex.cloud.mdb.greenplum.v1.GreenplumMasterConfigSet' as const,
+
     encode(
         message: GreenplumMasterConfigSet,
         writer: _m0.Writer = _m0.Writer.create()
@@ -920,9 +972,18 @@ export const GreenplumMasterConfigSet = {
     },
 };
 
-const baseGreenplumSegmentConfigSet: object = {};
+messageTypeRegistry.set(
+    GreenplumMasterConfigSet.$type,
+    GreenplumMasterConfigSet
+);
+
+const baseGreenplumSegmentConfigSet: object = {
+    $type: 'yandex.cloud.mdb.greenplum.v1.GreenplumSegmentConfigSet',
+};
 
 export const GreenplumSegmentConfigSet = {
+    $type: 'yandex.cloud.mdb.greenplum.v1.GreenplumSegmentConfigSet' as const,
+
     encode(
         message: GreenplumSegmentConfigSet,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1075,6 +1136,11 @@ export const GreenplumSegmentConfigSet = {
     },
 };
 
+messageTypeRegistry.set(
+    GreenplumSegmentConfigSet.$type,
+    GreenplumSegmentConfigSet
+);
+
 declare var self: any | undefined;
 declare var window: any | undefined;
 declare var global: any | undefined;
@@ -1101,7 +1167,7 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 function longToNumber(long: Long): number {

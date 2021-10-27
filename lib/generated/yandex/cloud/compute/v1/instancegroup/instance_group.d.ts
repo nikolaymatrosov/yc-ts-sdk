@@ -12,6 +12,7 @@ export declare enum IpVersion {
 export declare function ipVersionFromJSON(object: any): IpVersion;
 export declare function ipVersionToJSON(object: IpVersion): string;
 export interface InstanceGroup {
+    $type: 'yandex.cloud.compute.v1.instancegroup.InstanceGroup';
     /** ID of the instance group. */
     id: string;
     /** ID of the folder that the instance group belongs to. */
@@ -114,24 +115,29 @@ export declare enum InstanceGroup_Status {
 export declare function instanceGroup_StatusFromJSON(object: any): InstanceGroup_Status;
 export declare function instanceGroup_StatusToJSON(object: InstanceGroup_Status): string;
 export interface InstanceGroup_LabelsEntry {
+    $type: 'yandex.cloud.compute.v1.instancegroup.InstanceGroup.LabelsEntry';
     key: string;
     value: string;
 }
 export interface ApplicationLoadBalancerState {
+    $type: 'yandex.cloud.compute.v1.instancegroup.ApplicationLoadBalancerState';
     targetGroupId: string;
     statusMessage: string;
 }
 export interface Variable {
+    $type: 'yandex.cloud.compute.v1.instancegroup.Variable';
     key: string;
     value: string;
 }
 export interface LoadBalancerState {
+    $type: 'yandex.cloud.compute.v1.instancegroup.LoadBalancerState';
     /** ID of the target group used for load balancing. */
     targetGroupId: string;
     /** Status message of the target group. */
     statusMessage: string;
 }
 export interface ManagedInstancesState {
+    $type: 'yandex.cloud.compute.v1.instancegroup.ManagedInstancesState';
     /** Target number of instances for this instance group. */
     targetSize: number;
     /** The number of running instances that match the current instance template. For more information, see [ManagedInstance.Status.RUNNING_ACTUAL]. */
@@ -142,6 +148,7 @@ export interface ManagedInstancesState {
     processingCount: number;
 }
 export interface ManagedInstancesState_Statuses {
+    $type: 'yandex.cloud.compute.v1.instancegroup.ManagedInstancesState.Statuses';
     /** Instance is being created. */
     creating: number;
     /** Instance is being started. */
@@ -164,6 +171,7 @@ export interface ManagedInstancesState_Statuses {
     failed: number;
 }
 export interface ScalePolicy {
+    $type: 'yandex.cloud.compute.v1.instancegroup.ScalePolicy';
     /** [Manual scaling policy](/docs/compute/concepts/instance-groups/scale#fixed-policy) of the instance group. */
     fixedScale: ScalePolicy_FixedScale | undefined;
     /** [Automatic scaling policy](/docs/compute/concepts/instance-groups/scale#auto-scale) of the instance group. */
@@ -172,6 +180,7 @@ export interface ScalePolicy {
     testAutoScale: ScalePolicy_AutoScale | undefined;
 }
 export interface ScalePolicy_AutoScale {
+    $type: 'yandex.cloud.compute.v1.instancegroup.ScalePolicy.AutoScale';
     /** Lower limit for instance count in each zone. */
     minZoneSize: number;
     /**
@@ -204,10 +213,12 @@ export interface ScalePolicy_AutoScale {
     customRules: ScalePolicy_CustomRule[];
 }
 export interface ScalePolicy_CpuUtilizationRule {
+    $type: 'yandex.cloud.compute.v1.instancegroup.ScalePolicy.CpuUtilizationRule';
     /** Target CPU utilization level. Instance Groups maintains this level for each availability zone. */
     utilizationTarget: number;
 }
 export interface ScalePolicy_CustomRule {
+    $type: 'yandex.cloud.compute.v1.instancegroup.ScalePolicy.CustomRule';
     /**
      * Custom metric rule type. This field affects which label from
      * the custom metric should be used: `zone_id` or `instance_id`.
@@ -269,14 +280,17 @@ export declare enum ScalePolicy_CustomRule_MetricType {
 export declare function scalePolicy_CustomRule_MetricTypeFromJSON(object: any): ScalePolicy_CustomRule_MetricType;
 export declare function scalePolicy_CustomRule_MetricTypeToJSON(object: ScalePolicy_CustomRule_MetricType): string;
 export interface ScalePolicy_CustomRule_LabelsEntry {
+    $type: 'yandex.cloud.compute.v1.instancegroup.ScalePolicy.CustomRule.LabelsEntry';
     key: string;
     value: string;
 }
 export interface ScalePolicy_FixedScale {
+    $type: 'yandex.cloud.compute.v1.instancegroup.ScalePolicy.FixedScale';
     /** Number of instances in the instance group. */
     size: number;
 }
 export interface DeployPolicy {
+    $type: 'yandex.cloud.compute.v1.instancegroup.DeployPolicy';
     /**
      * The maximum number of running instances that can be taken offline (i.e., stopped or deleted) at the same time
      * during the update process.
@@ -325,14 +339,17 @@ export declare enum DeployPolicy_Strategy {
 export declare function deployPolicy_StrategyFromJSON(object: any): DeployPolicy_Strategy;
 export declare function deployPolicy_StrategyToJSON(object: DeployPolicy_Strategy): string;
 export interface AllocationPolicy {
+    $type: 'yandex.cloud.compute.v1.instancegroup.AllocationPolicy';
     /** List of availability zones. */
     zones: AllocationPolicy_Zone[];
 }
 export interface AllocationPolicy_Zone {
+    $type: 'yandex.cloud.compute.v1.instancegroup.AllocationPolicy.Zone';
     /** ID of the availability zone where the instance resides. */
     zoneId: string;
 }
 export interface InstanceTemplate {
+    $type: 'yandex.cloud.compute.v1.instancegroup.InstanceTemplate';
     /** Description of the instance template. */
     description: string;
     /** Resource labels as `key:value` pairs. */
@@ -413,14 +430,17 @@ export interface InstanceTemplate {
     placementPolicy: PlacementPolicy | undefined;
 }
 export interface InstanceTemplate_LabelsEntry {
+    $type: 'yandex.cloud.compute.v1.instancegroup.InstanceTemplate.LabelsEntry';
     key: string;
     value: string;
 }
 export interface InstanceTemplate_MetadataEntry {
+    $type: 'yandex.cloud.compute.v1.instancegroup.InstanceTemplate.MetadataEntry';
     key: string;
     value: string;
 }
 export interface PlacementPolicy {
+    $type: 'yandex.cloud.compute.v1.instancegroup.PlacementPolicy';
     /** Identifier of placement group */
     placementGroupId: string;
     /** List of affinity rules. Scheduler will attempt to allocate instances according to order of rules. */
@@ -428,6 +448,7 @@ export interface PlacementPolicy {
 }
 /** Affinitity definition */
 export interface PlacementPolicy_HostAffinityRule {
+    $type: 'yandex.cloud.compute.v1.instancegroup.PlacementPolicy.HostAffinityRule';
     /** Affinity label or one of reserved values - 'yc.hostId', 'yc.hostGroupId' */
     key: string;
     /** Include or exclude action */
@@ -444,6 +465,7 @@ export declare enum PlacementPolicy_HostAffinityRule_Operator {
 export declare function placementPolicy_HostAffinityRule_OperatorFromJSON(object: any): PlacementPolicy_HostAffinityRule_Operator;
 export declare function placementPolicy_HostAffinityRule_OperatorToJSON(object: PlacementPolicy_HostAffinityRule_Operator): string;
 export interface ResourcesSpec {
+    $type: 'yandex.cloud.compute.v1.instancegroup.ResourcesSpec';
     /** The amount of memory available to the instance, specified in bytes. */
     memory: number;
     /** The number of cores available to the instance. */
@@ -457,6 +479,7 @@ export interface ResourcesSpec {
     gpus: number;
 }
 export interface AttachedDiskSpec {
+    $type: 'yandex.cloud.compute.v1.instancegroup.AttachedDiskSpec';
     /** Access mode to the Disk resource. */
     mode: AttachedDiskSpec_Mode;
     /**
@@ -485,6 +508,7 @@ export declare enum AttachedDiskSpec_Mode {
 export declare function attachedDiskSpec_ModeFromJSON(object: any): AttachedDiskSpec_Mode;
 export declare function attachedDiskSpec_ModeToJSON(object: AttachedDiskSpec_Mode): string;
 export interface AttachedDiskSpec_DiskSpec {
+    $type: 'yandex.cloud.compute.v1.instancegroup.AttachedDiskSpec.DiskSpec';
     /** Description of the disk. */
     description: string;
     /** ID of the disk type. */
@@ -502,6 +526,7 @@ export interface AttachedDiskSpec_DiskSpec {
     preserveAfterInstanceDelete: boolean;
 }
 export interface NetworkInterfaceSpec {
+    $type: 'yandex.cloud.compute.v1.instancegroup.NetworkInterfaceSpec';
     /** ID of the network. */
     networkId: string;
     /** IDs of the subnets. */
@@ -514,6 +539,7 @@ export interface NetworkInterfaceSpec {
     securityGroupIds: string[];
 }
 export interface PrimaryAddressSpec {
+    $type: 'yandex.cloud.compute.v1.instancegroup.PrimaryAddressSpec';
     /**
      * An external IP address configuration.
      * If not specified, then this managed instance will have no external internet access.
@@ -525,6 +551,7 @@ export interface PrimaryAddressSpec {
     address: string;
 }
 export interface OneToOneNatSpec {
+    $type: 'yandex.cloud.compute.v1.instancegroup.OneToOneNatSpec';
     /** IP version for the public IP address. */
     ipVersion: IpVersion;
     /** Manual set static public IP. To set use variables. (optional) */
@@ -533,6 +560,7 @@ export interface OneToOneNatSpec {
     dnsRecordSpecs: DnsRecordSpec[];
 }
 export interface DnsRecordSpec {
+    $type: 'yandex.cloud.compute.v1.instancegroup.DnsRecordSpec';
     /** FQDN (required) */
     fqdn: string;
     /** DNS zone id (optional, if not set, private zone used) */
@@ -543,6 +571,7 @@ export interface DnsRecordSpec {
     ptr: boolean;
 }
 export interface SchedulingPolicy {
+    $type: 'yandex.cloud.compute.v1.instancegroup.SchedulingPolicy';
     /**
      * Preemptible instances are stopped at least once every 24 hours, and can be stopped at any time
      * if their resources are needed by Compute.
@@ -551,6 +580,7 @@ export interface SchedulingPolicy {
     preemptible: boolean;
 }
 export interface NetworkSettings {
+    $type: 'yandex.cloud.compute.v1.instancegroup.NetworkSettings';
     /** Type of instance network. */
     type: NetworkSettings_Type;
 }
@@ -564,6 +594,7 @@ export declare enum NetworkSettings_Type {
 export declare function networkSettings_TypeFromJSON(object: any): NetworkSettings_Type;
 export declare function networkSettings_TypeToJSON(object: NetworkSettings_Type): string;
 export interface LoadBalancerSpec {
+    $type: 'yandex.cloud.compute.v1.instancegroup.LoadBalancerSpec';
     /** Specification of the target group that the instance group will be added to. For more information, see [Target groups and resources](/docs/load-balancer/concepts/target-resources). */
     targetGroupSpec: TargetGroupSpec | undefined;
     /**
@@ -573,6 +604,7 @@ export interface LoadBalancerSpec {
     maxOpeningTrafficDuration: Duration | undefined;
 }
 export interface TargetGroupSpec {
+    $type: 'yandex.cloud.compute.v1.instancegroup.TargetGroupSpec';
     /** Name of the target group. */
     name: string;
     /** Description of the target group. */
@@ -583,10 +615,12 @@ export interface TargetGroupSpec {
     };
 }
 export interface TargetGroupSpec_LabelsEntry {
+    $type: 'yandex.cloud.compute.v1.instancegroup.TargetGroupSpec.LabelsEntry';
     key: string;
     value: string;
 }
 export interface ApplicationLoadBalancerSpec {
+    $type: 'yandex.cloud.compute.v1.instancegroup.ApplicationLoadBalancerSpec';
     /** Specification of the alb's target group that the instance group will be added to. */
     targetGroupSpec: ApplicationTargetGroupSpec | undefined;
     /**
@@ -596,6 +630,7 @@ export interface ApplicationLoadBalancerSpec {
     maxOpeningTrafficDuration: Duration | undefined;
 }
 export interface ApplicationTargetGroupSpec {
+    $type: 'yandex.cloud.compute.v1.instancegroup.ApplicationTargetGroupSpec';
     /** Name of the target group. */
     name: string;
     /** Description of the target group. */
@@ -606,10 +641,12 @@ export interface ApplicationTargetGroupSpec {
     };
 }
 export interface ApplicationTargetGroupSpec_LabelsEntry {
+    $type: 'yandex.cloud.compute.v1.instancegroup.ApplicationTargetGroupSpec.LabelsEntry';
     key: string;
     value: string;
 }
 export interface HealthChecksSpec {
+    $type: 'yandex.cloud.compute.v1.instancegroup.HealthChecksSpec';
     /** Health checking specification. For more information, see [Health check](/docs/load-balancer/concepts/health-check). */
     healthCheckSpecs: HealthCheckSpec[];
     /**
@@ -619,6 +656,7 @@ export interface HealthChecksSpec {
     maxCheckingHealthDuration: Duration | undefined;
 }
 export interface HealthCheckSpec {
+    $type: 'yandex.cloud.compute.v1.instancegroup.HealthCheckSpec';
     /** The interval between health checks. The default is 2 seconds. */
     interval: Duration | undefined;
     /** Timeout for the managed instance to return a response for the health check. The default is 1 second. */
@@ -633,10 +671,12 @@ export interface HealthCheckSpec {
     httpOptions: HealthCheckSpec_HttpOptions | undefined;
 }
 export interface HealthCheckSpec_TcpOptions {
+    $type: 'yandex.cloud.compute.v1.instancegroup.HealthCheckSpec.TcpOptions';
     /** Port to use for TCP health checks. */
     port: number;
 }
 export interface HealthCheckSpec_HttpOptions {
+    $type: 'yandex.cloud.compute.v1.instancegroup.HealthCheckSpec.HttpOptions';
     /** Port to use for HTTP health checks. */
     port: number;
     /** URL path to set for health checking requests. */
@@ -644,6 +684,7 @@ export interface HealthCheckSpec_HttpOptions {
 }
 /** A ManagedInstance resource. For more information, see [Instance Groups Concepts](/docs/compute/concepts/instance-groups/). */
 export interface ManagedInstance {
+    $type: 'yandex.cloud.compute.v1.instancegroup.ManagedInstance';
     /** ID of the managed instance. */
     id: string;
     /** Status of the managed instance. */
@@ -701,6 +742,7 @@ export declare enum ManagedInstance_Status {
 export declare function managedInstance_StatusFromJSON(object: any): ManagedInstance_Status;
 export declare function managedInstance_StatusToJSON(object: ManagedInstance_Status): string;
 export interface NetworkInterface {
+    $type: 'yandex.cloud.compute.v1.instancegroup.NetworkInterface';
     /**
      * The index of the network interface, generated by the server, 0,1,2... etc.
      * Currently only one network interface is supported per instance.
@@ -716,6 +758,7 @@ export interface NetworkInterface {
     primaryV6Address: PrimaryAddress | undefined;
 }
 export interface PrimaryAddress {
+    $type: 'yandex.cloud.compute.v1.instancegroup.PrimaryAddress';
     /**
      * An IPv4 internal network address that is assigned to the managed instance for this network interface.
      * If not specified by the user, an unused internal IP is assigned by the system.
@@ -727,6 +770,7 @@ export interface PrimaryAddress {
     dnsRecords: DnsRecord[];
 }
 export interface OneToOneNat {
+    $type: 'yandex.cloud.compute.v1.instancegroup.OneToOneNat';
     /** An IPv4 external network address that is assigned to the managed instance for this network interface. */
     address: string;
     /** External IP address version. */
@@ -735,6 +779,7 @@ export interface OneToOneNat {
     dnsRecords: DnsRecord[];
 }
 export interface DnsRecord {
+    $type: 'yandex.cloud.compute.v1.instancegroup.DnsRecord';
     /**
      * Name of the A/AAAA record as specified when creating the instance.
      * Note that if `fqdn' has no trailing '.', it is specified relative to the zone (@see dns_zone_id).
@@ -748,12 +793,14 @@ export interface DnsRecord {
     ptr: boolean;
 }
 export interface LogRecord {
+    $type: 'yandex.cloud.compute.v1.instancegroup.LogRecord';
     /** Log timestamp in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format. */
     timestamp: Date | undefined;
     /** The log message. */
     message: string;
 }
 export declare const InstanceGroup: {
+    $type: "yandex.cloud.compute.v1.instancegroup.InstanceGroup";
     encode(message: InstanceGroup, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): InstanceGroup;
     fromJSON(object: any): InstanceGroup;
@@ -761,6 +808,7 @@ export declare const InstanceGroup: {
     fromPartial(object: DeepPartial<InstanceGroup>): InstanceGroup;
 };
 export declare const InstanceGroup_LabelsEntry: {
+    $type: "yandex.cloud.compute.v1.instancegroup.InstanceGroup.LabelsEntry";
     encode(message: InstanceGroup_LabelsEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): InstanceGroup_LabelsEntry;
     fromJSON(object: any): InstanceGroup_LabelsEntry;
@@ -768,6 +816,7 @@ export declare const InstanceGroup_LabelsEntry: {
     fromPartial(object: DeepPartial<InstanceGroup_LabelsEntry>): InstanceGroup_LabelsEntry;
 };
 export declare const ApplicationLoadBalancerState: {
+    $type: "yandex.cloud.compute.v1.instancegroup.ApplicationLoadBalancerState";
     encode(message: ApplicationLoadBalancerState, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ApplicationLoadBalancerState;
     fromJSON(object: any): ApplicationLoadBalancerState;
@@ -775,6 +824,7 @@ export declare const ApplicationLoadBalancerState: {
     fromPartial(object: DeepPartial<ApplicationLoadBalancerState>): ApplicationLoadBalancerState;
 };
 export declare const Variable: {
+    $type: "yandex.cloud.compute.v1.instancegroup.Variable";
     encode(message: Variable, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Variable;
     fromJSON(object: any): Variable;
@@ -782,6 +832,7 @@ export declare const Variable: {
     fromPartial(object: DeepPartial<Variable>): Variable;
 };
 export declare const LoadBalancerState: {
+    $type: "yandex.cloud.compute.v1.instancegroup.LoadBalancerState";
     encode(message: LoadBalancerState, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): LoadBalancerState;
     fromJSON(object: any): LoadBalancerState;
@@ -789,6 +840,7 @@ export declare const LoadBalancerState: {
     fromPartial(object: DeepPartial<LoadBalancerState>): LoadBalancerState;
 };
 export declare const ManagedInstancesState: {
+    $type: "yandex.cloud.compute.v1.instancegroup.ManagedInstancesState";
     encode(message: ManagedInstancesState, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ManagedInstancesState;
     fromJSON(object: any): ManagedInstancesState;
@@ -796,6 +848,7 @@ export declare const ManagedInstancesState: {
     fromPartial(object: DeepPartial<ManagedInstancesState>): ManagedInstancesState;
 };
 export declare const ManagedInstancesState_Statuses: {
+    $type: "yandex.cloud.compute.v1.instancegroup.ManagedInstancesState.Statuses";
     encode(message: ManagedInstancesState_Statuses, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ManagedInstancesState_Statuses;
     fromJSON(object: any): ManagedInstancesState_Statuses;
@@ -803,6 +856,7 @@ export declare const ManagedInstancesState_Statuses: {
     fromPartial(object: DeepPartial<ManagedInstancesState_Statuses>): ManagedInstancesState_Statuses;
 };
 export declare const ScalePolicy: {
+    $type: "yandex.cloud.compute.v1.instancegroup.ScalePolicy";
     encode(message: ScalePolicy, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ScalePolicy;
     fromJSON(object: any): ScalePolicy;
@@ -810,6 +864,7 @@ export declare const ScalePolicy: {
     fromPartial(object: DeepPartial<ScalePolicy>): ScalePolicy;
 };
 export declare const ScalePolicy_AutoScale: {
+    $type: "yandex.cloud.compute.v1.instancegroup.ScalePolicy.AutoScale";
     encode(message: ScalePolicy_AutoScale, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ScalePolicy_AutoScale;
     fromJSON(object: any): ScalePolicy_AutoScale;
@@ -817,6 +872,7 @@ export declare const ScalePolicy_AutoScale: {
     fromPartial(object: DeepPartial<ScalePolicy_AutoScale>): ScalePolicy_AutoScale;
 };
 export declare const ScalePolicy_CpuUtilizationRule: {
+    $type: "yandex.cloud.compute.v1.instancegroup.ScalePolicy.CpuUtilizationRule";
     encode(message: ScalePolicy_CpuUtilizationRule, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ScalePolicy_CpuUtilizationRule;
     fromJSON(object: any): ScalePolicy_CpuUtilizationRule;
@@ -824,6 +880,7 @@ export declare const ScalePolicy_CpuUtilizationRule: {
     fromPartial(object: DeepPartial<ScalePolicy_CpuUtilizationRule>): ScalePolicy_CpuUtilizationRule;
 };
 export declare const ScalePolicy_CustomRule: {
+    $type: "yandex.cloud.compute.v1.instancegroup.ScalePolicy.CustomRule";
     encode(message: ScalePolicy_CustomRule, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ScalePolicy_CustomRule;
     fromJSON(object: any): ScalePolicy_CustomRule;
@@ -831,6 +888,7 @@ export declare const ScalePolicy_CustomRule: {
     fromPartial(object: DeepPartial<ScalePolicy_CustomRule>): ScalePolicy_CustomRule;
 };
 export declare const ScalePolicy_CustomRule_LabelsEntry: {
+    $type: "yandex.cloud.compute.v1.instancegroup.ScalePolicy.CustomRule.LabelsEntry";
     encode(message: ScalePolicy_CustomRule_LabelsEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ScalePolicy_CustomRule_LabelsEntry;
     fromJSON(object: any): ScalePolicy_CustomRule_LabelsEntry;
@@ -838,6 +896,7 @@ export declare const ScalePolicy_CustomRule_LabelsEntry: {
     fromPartial(object: DeepPartial<ScalePolicy_CustomRule_LabelsEntry>): ScalePolicy_CustomRule_LabelsEntry;
 };
 export declare const ScalePolicy_FixedScale: {
+    $type: "yandex.cloud.compute.v1.instancegroup.ScalePolicy.FixedScale";
     encode(message: ScalePolicy_FixedScale, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ScalePolicy_FixedScale;
     fromJSON(object: any): ScalePolicy_FixedScale;
@@ -845,6 +904,7 @@ export declare const ScalePolicy_FixedScale: {
     fromPartial(object: DeepPartial<ScalePolicy_FixedScale>): ScalePolicy_FixedScale;
 };
 export declare const DeployPolicy: {
+    $type: "yandex.cloud.compute.v1.instancegroup.DeployPolicy";
     encode(message: DeployPolicy, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeployPolicy;
     fromJSON(object: any): DeployPolicy;
@@ -852,6 +912,7 @@ export declare const DeployPolicy: {
     fromPartial(object: DeepPartial<DeployPolicy>): DeployPolicy;
 };
 export declare const AllocationPolicy: {
+    $type: "yandex.cloud.compute.v1.instancegroup.AllocationPolicy";
     encode(message: AllocationPolicy, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): AllocationPolicy;
     fromJSON(object: any): AllocationPolicy;
@@ -859,6 +920,7 @@ export declare const AllocationPolicy: {
     fromPartial(object: DeepPartial<AllocationPolicy>): AllocationPolicy;
 };
 export declare const AllocationPolicy_Zone: {
+    $type: "yandex.cloud.compute.v1.instancegroup.AllocationPolicy.Zone";
     encode(message: AllocationPolicy_Zone, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): AllocationPolicy_Zone;
     fromJSON(object: any): AllocationPolicy_Zone;
@@ -866,6 +928,7 @@ export declare const AllocationPolicy_Zone: {
     fromPartial(object: DeepPartial<AllocationPolicy_Zone>): AllocationPolicy_Zone;
 };
 export declare const InstanceTemplate: {
+    $type: "yandex.cloud.compute.v1.instancegroup.InstanceTemplate";
     encode(message: InstanceTemplate, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): InstanceTemplate;
     fromJSON(object: any): InstanceTemplate;
@@ -873,6 +936,7 @@ export declare const InstanceTemplate: {
     fromPartial(object: DeepPartial<InstanceTemplate>): InstanceTemplate;
 };
 export declare const InstanceTemplate_LabelsEntry: {
+    $type: "yandex.cloud.compute.v1.instancegroup.InstanceTemplate.LabelsEntry";
     encode(message: InstanceTemplate_LabelsEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): InstanceTemplate_LabelsEntry;
     fromJSON(object: any): InstanceTemplate_LabelsEntry;
@@ -880,6 +944,7 @@ export declare const InstanceTemplate_LabelsEntry: {
     fromPartial(object: DeepPartial<InstanceTemplate_LabelsEntry>): InstanceTemplate_LabelsEntry;
 };
 export declare const InstanceTemplate_MetadataEntry: {
+    $type: "yandex.cloud.compute.v1.instancegroup.InstanceTemplate.MetadataEntry";
     encode(message: InstanceTemplate_MetadataEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): InstanceTemplate_MetadataEntry;
     fromJSON(object: any): InstanceTemplate_MetadataEntry;
@@ -887,6 +952,7 @@ export declare const InstanceTemplate_MetadataEntry: {
     fromPartial(object: DeepPartial<InstanceTemplate_MetadataEntry>): InstanceTemplate_MetadataEntry;
 };
 export declare const PlacementPolicy: {
+    $type: "yandex.cloud.compute.v1.instancegroup.PlacementPolicy";
     encode(message: PlacementPolicy, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): PlacementPolicy;
     fromJSON(object: any): PlacementPolicy;
@@ -894,6 +960,7 @@ export declare const PlacementPolicy: {
     fromPartial(object: DeepPartial<PlacementPolicy>): PlacementPolicy;
 };
 export declare const PlacementPolicy_HostAffinityRule: {
+    $type: "yandex.cloud.compute.v1.instancegroup.PlacementPolicy.HostAffinityRule";
     encode(message: PlacementPolicy_HostAffinityRule, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): PlacementPolicy_HostAffinityRule;
     fromJSON(object: any): PlacementPolicy_HostAffinityRule;
@@ -901,6 +968,7 @@ export declare const PlacementPolicy_HostAffinityRule: {
     fromPartial(object: DeepPartial<PlacementPolicy_HostAffinityRule>): PlacementPolicy_HostAffinityRule;
 };
 export declare const ResourcesSpec: {
+    $type: "yandex.cloud.compute.v1.instancegroup.ResourcesSpec";
     encode(message: ResourcesSpec, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ResourcesSpec;
     fromJSON(object: any): ResourcesSpec;
@@ -908,6 +976,7 @@ export declare const ResourcesSpec: {
     fromPartial(object: DeepPartial<ResourcesSpec>): ResourcesSpec;
 };
 export declare const AttachedDiskSpec: {
+    $type: "yandex.cloud.compute.v1.instancegroup.AttachedDiskSpec";
     encode(message: AttachedDiskSpec, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): AttachedDiskSpec;
     fromJSON(object: any): AttachedDiskSpec;
@@ -915,6 +984,7 @@ export declare const AttachedDiskSpec: {
     fromPartial(object: DeepPartial<AttachedDiskSpec>): AttachedDiskSpec;
 };
 export declare const AttachedDiskSpec_DiskSpec: {
+    $type: "yandex.cloud.compute.v1.instancegroup.AttachedDiskSpec.DiskSpec";
     encode(message: AttachedDiskSpec_DiskSpec, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): AttachedDiskSpec_DiskSpec;
     fromJSON(object: any): AttachedDiskSpec_DiskSpec;
@@ -922,6 +992,7 @@ export declare const AttachedDiskSpec_DiskSpec: {
     fromPartial(object: DeepPartial<AttachedDiskSpec_DiskSpec>): AttachedDiskSpec_DiskSpec;
 };
 export declare const NetworkInterfaceSpec: {
+    $type: "yandex.cloud.compute.v1.instancegroup.NetworkInterfaceSpec";
     encode(message: NetworkInterfaceSpec, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): NetworkInterfaceSpec;
     fromJSON(object: any): NetworkInterfaceSpec;
@@ -929,6 +1000,7 @@ export declare const NetworkInterfaceSpec: {
     fromPartial(object: DeepPartial<NetworkInterfaceSpec>): NetworkInterfaceSpec;
 };
 export declare const PrimaryAddressSpec: {
+    $type: "yandex.cloud.compute.v1.instancegroup.PrimaryAddressSpec";
     encode(message: PrimaryAddressSpec, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): PrimaryAddressSpec;
     fromJSON(object: any): PrimaryAddressSpec;
@@ -936,6 +1008,7 @@ export declare const PrimaryAddressSpec: {
     fromPartial(object: DeepPartial<PrimaryAddressSpec>): PrimaryAddressSpec;
 };
 export declare const OneToOneNatSpec: {
+    $type: "yandex.cloud.compute.v1.instancegroup.OneToOneNatSpec";
     encode(message: OneToOneNatSpec, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): OneToOneNatSpec;
     fromJSON(object: any): OneToOneNatSpec;
@@ -943,6 +1016,7 @@ export declare const OneToOneNatSpec: {
     fromPartial(object: DeepPartial<OneToOneNatSpec>): OneToOneNatSpec;
 };
 export declare const DnsRecordSpec: {
+    $type: "yandex.cloud.compute.v1.instancegroup.DnsRecordSpec";
     encode(message: DnsRecordSpec, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DnsRecordSpec;
     fromJSON(object: any): DnsRecordSpec;
@@ -950,6 +1024,7 @@ export declare const DnsRecordSpec: {
     fromPartial(object: DeepPartial<DnsRecordSpec>): DnsRecordSpec;
 };
 export declare const SchedulingPolicy: {
+    $type: "yandex.cloud.compute.v1.instancegroup.SchedulingPolicy";
     encode(message: SchedulingPolicy, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): SchedulingPolicy;
     fromJSON(object: any): SchedulingPolicy;
@@ -957,6 +1032,7 @@ export declare const SchedulingPolicy: {
     fromPartial(object: DeepPartial<SchedulingPolicy>): SchedulingPolicy;
 };
 export declare const NetworkSettings: {
+    $type: "yandex.cloud.compute.v1.instancegroup.NetworkSettings";
     encode(message: NetworkSettings, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): NetworkSettings;
     fromJSON(object: any): NetworkSettings;
@@ -964,6 +1040,7 @@ export declare const NetworkSettings: {
     fromPartial(object: DeepPartial<NetworkSettings>): NetworkSettings;
 };
 export declare const LoadBalancerSpec: {
+    $type: "yandex.cloud.compute.v1.instancegroup.LoadBalancerSpec";
     encode(message: LoadBalancerSpec, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): LoadBalancerSpec;
     fromJSON(object: any): LoadBalancerSpec;
@@ -971,6 +1048,7 @@ export declare const LoadBalancerSpec: {
     fromPartial(object: DeepPartial<LoadBalancerSpec>): LoadBalancerSpec;
 };
 export declare const TargetGroupSpec: {
+    $type: "yandex.cloud.compute.v1.instancegroup.TargetGroupSpec";
     encode(message: TargetGroupSpec, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): TargetGroupSpec;
     fromJSON(object: any): TargetGroupSpec;
@@ -978,6 +1056,7 @@ export declare const TargetGroupSpec: {
     fromPartial(object: DeepPartial<TargetGroupSpec>): TargetGroupSpec;
 };
 export declare const TargetGroupSpec_LabelsEntry: {
+    $type: "yandex.cloud.compute.v1.instancegroup.TargetGroupSpec.LabelsEntry";
     encode(message: TargetGroupSpec_LabelsEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): TargetGroupSpec_LabelsEntry;
     fromJSON(object: any): TargetGroupSpec_LabelsEntry;
@@ -985,6 +1064,7 @@ export declare const TargetGroupSpec_LabelsEntry: {
     fromPartial(object: DeepPartial<TargetGroupSpec_LabelsEntry>): TargetGroupSpec_LabelsEntry;
 };
 export declare const ApplicationLoadBalancerSpec: {
+    $type: "yandex.cloud.compute.v1.instancegroup.ApplicationLoadBalancerSpec";
     encode(message: ApplicationLoadBalancerSpec, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ApplicationLoadBalancerSpec;
     fromJSON(object: any): ApplicationLoadBalancerSpec;
@@ -992,6 +1072,7 @@ export declare const ApplicationLoadBalancerSpec: {
     fromPartial(object: DeepPartial<ApplicationLoadBalancerSpec>): ApplicationLoadBalancerSpec;
 };
 export declare const ApplicationTargetGroupSpec: {
+    $type: "yandex.cloud.compute.v1.instancegroup.ApplicationTargetGroupSpec";
     encode(message: ApplicationTargetGroupSpec, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ApplicationTargetGroupSpec;
     fromJSON(object: any): ApplicationTargetGroupSpec;
@@ -999,6 +1080,7 @@ export declare const ApplicationTargetGroupSpec: {
     fromPartial(object: DeepPartial<ApplicationTargetGroupSpec>): ApplicationTargetGroupSpec;
 };
 export declare const ApplicationTargetGroupSpec_LabelsEntry: {
+    $type: "yandex.cloud.compute.v1.instancegroup.ApplicationTargetGroupSpec.LabelsEntry";
     encode(message: ApplicationTargetGroupSpec_LabelsEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ApplicationTargetGroupSpec_LabelsEntry;
     fromJSON(object: any): ApplicationTargetGroupSpec_LabelsEntry;
@@ -1006,6 +1088,7 @@ export declare const ApplicationTargetGroupSpec_LabelsEntry: {
     fromPartial(object: DeepPartial<ApplicationTargetGroupSpec_LabelsEntry>): ApplicationTargetGroupSpec_LabelsEntry;
 };
 export declare const HealthChecksSpec: {
+    $type: "yandex.cloud.compute.v1.instancegroup.HealthChecksSpec";
     encode(message: HealthChecksSpec, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): HealthChecksSpec;
     fromJSON(object: any): HealthChecksSpec;
@@ -1013,6 +1096,7 @@ export declare const HealthChecksSpec: {
     fromPartial(object: DeepPartial<HealthChecksSpec>): HealthChecksSpec;
 };
 export declare const HealthCheckSpec: {
+    $type: "yandex.cloud.compute.v1.instancegroup.HealthCheckSpec";
     encode(message: HealthCheckSpec, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): HealthCheckSpec;
     fromJSON(object: any): HealthCheckSpec;
@@ -1020,6 +1104,7 @@ export declare const HealthCheckSpec: {
     fromPartial(object: DeepPartial<HealthCheckSpec>): HealthCheckSpec;
 };
 export declare const HealthCheckSpec_TcpOptions: {
+    $type: "yandex.cloud.compute.v1.instancegroup.HealthCheckSpec.TcpOptions";
     encode(message: HealthCheckSpec_TcpOptions, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): HealthCheckSpec_TcpOptions;
     fromJSON(object: any): HealthCheckSpec_TcpOptions;
@@ -1027,6 +1112,7 @@ export declare const HealthCheckSpec_TcpOptions: {
     fromPartial(object: DeepPartial<HealthCheckSpec_TcpOptions>): HealthCheckSpec_TcpOptions;
 };
 export declare const HealthCheckSpec_HttpOptions: {
+    $type: "yandex.cloud.compute.v1.instancegroup.HealthCheckSpec.HttpOptions";
     encode(message: HealthCheckSpec_HttpOptions, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): HealthCheckSpec_HttpOptions;
     fromJSON(object: any): HealthCheckSpec_HttpOptions;
@@ -1034,6 +1120,7 @@ export declare const HealthCheckSpec_HttpOptions: {
     fromPartial(object: DeepPartial<HealthCheckSpec_HttpOptions>): HealthCheckSpec_HttpOptions;
 };
 export declare const ManagedInstance: {
+    $type: "yandex.cloud.compute.v1.instancegroup.ManagedInstance";
     encode(message: ManagedInstance, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ManagedInstance;
     fromJSON(object: any): ManagedInstance;
@@ -1041,6 +1128,7 @@ export declare const ManagedInstance: {
     fromPartial(object: DeepPartial<ManagedInstance>): ManagedInstance;
 };
 export declare const NetworkInterface: {
+    $type: "yandex.cloud.compute.v1.instancegroup.NetworkInterface";
     encode(message: NetworkInterface, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): NetworkInterface;
     fromJSON(object: any): NetworkInterface;
@@ -1048,6 +1136,7 @@ export declare const NetworkInterface: {
     fromPartial(object: DeepPartial<NetworkInterface>): NetworkInterface;
 };
 export declare const PrimaryAddress: {
+    $type: "yandex.cloud.compute.v1.instancegroup.PrimaryAddress";
     encode(message: PrimaryAddress, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): PrimaryAddress;
     fromJSON(object: any): PrimaryAddress;
@@ -1055,6 +1144,7 @@ export declare const PrimaryAddress: {
     fromPartial(object: DeepPartial<PrimaryAddress>): PrimaryAddress;
 };
 export declare const OneToOneNat: {
+    $type: "yandex.cloud.compute.v1.instancegroup.OneToOneNat";
     encode(message: OneToOneNat, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): OneToOneNat;
     fromJSON(object: any): OneToOneNat;
@@ -1062,6 +1152,7 @@ export declare const OneToOneNat: {
     fromPartial(object: DeepPartial<OneToOneNat>): OneToOneNat;
 };
 export declare const DnsRecord: {
+    $type: "yandex.cloud.compute.v1.instancegroup.DnsRecord";
     encode(message: DnsRecord, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DnsRecord;
     fromJSON(object: any): DnsRecord;
@@ -1069,6 +1160,7 @@ export declare const DnsRecord: {
     fromPartial(object: DeepPartial<DnsRecord>): DnsRecord;
 };
 export declare const LogRecord: {
+    $type: "yandex.cloud.compute.v1.instancegroup.LogRecord";
     encode(message: LogRecord, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): LogRecord;
     fromJSON(object: any): LogRecord;
@@ -1077,6 +1169,6 @@ export declare const LogRecord: {
 };
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

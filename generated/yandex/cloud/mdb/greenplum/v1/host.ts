@@ -1,4 +1,5 @@
 /* eslint-disable */
+import { messageTypeRegistry } from '../../../../../typeRegistry';
 import { Resources } from '../../../../../yandex/cloud/mdb/greenplum/v1/config';
 import Long from 'long';
 import _m0 from 'protobufjs/minimal';
@@ -6,6 +7,7 @@ import _m0 from 'protobufjs/minimal';
 export const protobufPackage = 'yandex.cloud.mdb.greenplum.v1';
 
 export interface Host {
+    $type: 'yandex.cloud.mdb.greenplum.v1.Host';
     /**
      * Name of the Greenplum host. The host name is assigned by MDB at creation time, and cannot be changed.
      * 1-63 characters long.
@@ -132,6 +134,7 @@ export function host_HealthToJSON(object: Host_Health): string {
 }
 
 const baseHost: object = {
+    $type: 'yandex.cloud.mdb.greenplum.v1.Host',
     name: '',
     clusterId: '',
     zoneId: '',
@@ -142,6 +145,8 @@ const baseHost: object = {
 };
 
 export const Host = {
+    $type: 'yandex.cloud.mdb.greenplum.v1.Host' as const,
+
     encode(
         message: Host,
         writer: _m0.Writer = _m0.Writer.create()
@@ -335,6 +340,8 @@ export const Host = {
     },
 };
 
+messageTypeRegistry.set(Host.$type, Host);
+
 type Builtin =
     | Date
     | Function
@@ -350,7 +357,7 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 if (_m0.util.Long !== Long) {

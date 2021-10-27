@@ -7,6 +7,7 @@ import { ChannelCredentials, ChannelOptions, UntypedServiceImplementation, handl
 import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.vpc.v1";
 export interface GetSubnetRequest {
+    $type: 'yandex.cloud.vpc.v1.GetSubnetRequest';
     /**
      * ID of the Subnet resource to return.
      * To get the subnet ID use a [SubnetService.List] request.
@@ -14,6 +15,7 @@ export interface GetSubnetRequest {
     subnetId: string;
 }
 export interface ListSubnetsRequest {
+    $type: 'yandex.cloud.vpc.v1.ListSubnetsRequest';
     /**
      * ID of the folder to list subnets in.
      * To get the folder ID use a [yandex.cloud.resourcemanager.v1.FolderService.List] request.
@@ -41,6 +43,7 @@ export interface ListSubnetsRequest {
     filter: string;
 }
 export interface ListSubnetsResponse {
+    $type: 'yandex.cloud.vpc.v1.ListSubnetsResponse';
     /** List of Subnet resources. */
     subnets: Subnet[];
     /**
@@ -54,6 +57,7 @@ export interface ListSubnetsResponse {
     nextPageToken: string;
 }
 export interface CreateSubnetRequest {
+    $type: 'yandex.cloud.vpc.v1.CreateSubnetRequest';
     /**
      * ID of the folder to create a subnet in.
      * To get folder ID use a [yandex.cloud.resourcemanager.v1.FolderService.List] request.
@@ -90,14 +94,17 @@ export interface CreateSubnetRequest {
     dhcpOptions: DhcpOptions | undefined;
 }
 export interface CreateSubnetRequest_LabelsEntry {
+    $type: 'yandex.cloud.vpc.v1.CreateSubnetRequest.LabelsEntry';
     key: string;
     value: string;
 }
 export interface CreateSubnetMetadata {
+    $type: 'yandex.cloud.vpc.v1.CreateSubnetMetadata';
     /** ID of the subnet that is being created. */
     subnetId: string;
 }
 export interface UpdateSubnetRequest {
+    $type: 'yandex.cloud.vpc.v1.UpdateSubnetRequest';
     /** ID of the Subnet resource to update. */
     subnetId: string;
     /** Field mask that specifies which fields of the Subnet resource are going to be updated. */
@@ -118,14 +125,17 @@ export interface UpdateSubnetRequest {
     dhcpOptions: DhcpOptions | undefined;
 }
 export interface UpdateSubnetRequest_LabelsEntry {
+    $type: 'yandex.cloud.vpc.v1.UpdateSubnetRequest.LabelsEntry';
     key: string;
     value: string;
 }
 export interface UpdateSubnetMetadata {
+    $type: 'yandex.cloud.vpc.v1.UpdateSubnetMetadata';
     /** ID of the Subnet resource that is being updated. */
     subnetId: string;
 }
 export interface AddSubnetCidrBlocksRequest {
+    $type: 'yandex.cloud.vpc.v1.AddSubnetCidrBlocksRequest';
     /** ID of the Subnet resource that is being updated. */
     subnetId: string;
     /**
@@ -137,10 +147,12 @@ export interface AddSubnetCidrBlocksRequest {
     v4CidrBlocks: string[];
 }
 export interface AddSubnetCidrBlocksMetadata {
+    $type: 'yandex.cloud.vpc.v1.AddSubnetCidrBlocksMetadata';
     /** ID of the Subnet resource that is being updated. */
     subnetId: string;
 }
 export interface RemoveSubnetCidrBlocksRequest {
+    $type: 'yandex.cloud.vpc.v1.RemoveSubnetCidrBlocksRequest';
     /** ID of the Subnet resource that is being updated. */
     subnetId: string;
     /**
@@ -150,10 +162,12 @@ export interface RemoveSubnetCidrBlocksRequest {
     v4CidrBlocks: string[];
 }
 export interface RemoveSubnetCidrBlocksMetadata {
+    $type: 'yandex.cloud.vpc.v1.RemoveSubnetCidrBlocksMetadata';
     /** ID of the Subnet resource that is being updated. */
     subnetId: string;
 }
 export interface DeleteSubnetRequest {
+    $type: 'yandex.cloud.vpc.v1.DeleteSubnetRequest';
     /**
      * ID of the subnet to delete.
      * To get the subnet ID use a [SubnetService.List] request.
@@ -161,10 +175,12 @@ export interface DeleteSubnetRequest {
     subnetId: string;
 }
 export interface DeleteSubnetMetadata {
+    $type: 'yandex.cloud.vpc.v1.DeleteSubnetMetadata';
     /** ID of the Subnet resource that is being deleted. */
     subnetId: string;
 }
 export interface ListSubnetOperationsRequest {
+    $type: 'yandex.cloud.vpc.v1.ListSubnetOperationsRequest';
     /** ID of the Subnet resource to list operations for. */
     subnetId: string;
     /**
@@ -180,6 +196,7 @@ export interface ListSubnetOperationsRequest {
     pageToken: string;
 }
 export interface ListSubnetOperationsResponse {
+    $type: 'yandex.cloud.vpc.v1.ListSubnetOperationsResponse';
     /** List of operations for the specified Subnet resource. */
     operations: Operation[];
     /**
@@ -191,31 +208,37 @@ export interface ListSubnetOperationsResponse {
     nextPageToken: string;
 }
 export interface MoveSubnetRequest {
+    $type: 'yandex.cloud.vpc.v1.MoveSubnetRequest';
     /** ID of the Subnet resource to move. */
     subnetId: string;
     /** ID of the destination folder. */
     destinationFolderId: string;
 }
 export interface MoveSubnetMetadata {
+    $type: 'yandex.cloud.vpc.v1.MoveSubnetMetadata';
     /** ID of the Subnet resource that is being moved. */
     subnetId: string;
 }
 export interface ListUsedAddressesRequest {
+    $type: 'yandex.cloud.vpc.v1.ListUsedAddressesRequest';
     subnetId: string;
     pageSize: number;
     pageToken: string;
     filter: string;
 }
 export interface ListUsedAddressesResponse {
+    $type: 'yandex.cloud.vpc.v1.ListUsedAddressesResponse';
     addresses: UsedAddress[];
     nextPageToken: string;
 }
 export interface UsedAddress {
+    $type: 'yandex.cloud.vpc.v1.UsedAddress';
     address: string;
     ipVersion: IpVersion;
     references: Reference[];
 }
 export declare const GetSubnetRequest: {
+    $type: "yandex.cloud.vpc.v1.GetSubnetRequest";
     encode(message: GetSubnetRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): GetSubnetRequest;
     fromJSON(object: any): GetSubnetRequest;
@@ -223,6 +246,7 @@ export declare const GetSubnetRequest: {
     fromPartial(object: DeepPartial<GetSubnetRequest>): GetSubnetRequest;
 };
 export declare const ListSubnetsRequest: {
+    $type: "yandex.cloud.vpc.v1.ListSubnetsRequest";
     encode(message: ListSubnetsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListSubnetsRequest;
     fromJSON(object: any): ListSubnetsRequest;
@@ -230,6 +254,7 @@ export declare const ListSubnetsRequest: {
     fromPartial(object: DeepPartial<ListSubnetsRequest>): ListSubnetsRequest;
 };
 export declare const ListSubnetsResponse: {
+    $type: "yandex.cloud.vpc.v1.ListSubnetsResponse";
     encode(message: ListSubnetsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListSubnetsResponse;
     fromJSON(object: any): ListSubnetsResponse;
@@ -237,6 +262,7 @@ export declare const ListSubnetsResponse: {
     fromPartial(object: DeepPartial<ListSubnetsResponse>): ListSubnetsResponse;
 };
 export declare const CreateSubnetRequest: {
+    $type: "yandex.cloud.vpc.v1.CreateSubnetRequest";
     encode(message: CreateSubnetRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateSubnetRequest;
     fromJSON(object: any): CreateSubnetRequest;
@@ -244,6 +270,7 @@ export declare const CreateSubnetRequest: {
     fromPartial(object: DeepPartial<CreateSubnetRequest>): CreateSubnetRequest;
 };
 export declare const CreateSubnetRequest_LabelsEntry: {
+    $type: "yandex.cloud.vpc.v1.CreateSubnetRequest.LabelsEntry";
     encode(message: CreateSubnetRequest_LabelsEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateSubnetRequest_LabelsEntry;
     fromJSON(object: any): CreateSubnetRequest_LabelsEntry;
@@ -251,6 +278,7 @@ export declare const CreateSubnetRequest_LabelsEntry: {
     fromPartial(object: DeepPartial<CreateSubnetRequest_LabelsEntry>): CreateSubnetRequest_LabelsEntry;
 };
 export declare const CreateSubnetMetadata: {
+    $type: "yandex.cloud.vpc.v1.CreateSubnetMetadata";
     encode(message: CreateSubnetMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateSubnetMetadata;
     fromJSON(object: any): CreateSubnetMetadata;
@@ -258,6 +286,7 @@ export declare const CreateSubnetMetadata: {
     fromPartial(object: DeepPartial<CreateSubnetMetadata>): CreateSubnetMetadata;
 };
 export declare const UpdateSubnetRequest: {
+    $type: "yandex.cloud.vpc.v1.UpdateSubnetRequest";
     encode(message: UpdateSubnetRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateSubnetRequest;
     fromJSON(object: any): UpdateSubnetRequest;
@@ -265,6 +294,7 @@ export declare const UpdateSubnetRequest: {
     fromPartial(object: DeepPartial<UpdateSubnetRequest>): UpdateSubnetRequest;
 };
 export declare const UpdateSubnetRequest_LabelsEntry: {
+    $type: "yandex.cloud.vpc.v1.UpdateSubnetRequest.LabelsEntry";
     encode(message: UpdateSubnetRequest_LabelsEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateSubnetRequest_LabelsEntry;
     fromJSON(object: any): UpdateSubnetRequest_LabelsEntry;
@@ -272,6 +302,7 @@ export declare const UpdateSubnetRequest_LabelsEntry: {
     fromPartial(object: DeepPartial<UpdateSubnetRequest_LabelsEntry>): UpdateSubnetRequest_LabelsEntry;
 };
 export declare const UpdateSubnetMetadata: {
+    $type: "yandex.cloud.vpc.v1.UpdateSubnetMetadata";
     encode(message: UpdateSubnetMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateSubnetMetadata;
     fromJSON(object: any): UpdateSubnetMetadata;
@@ -279,6 +310,7 @@ export declare const UpdateSubnetMetadata: {
     fromPartial(object: DeepPartial<UpdateSubnetMetadata>): UpdateSubnetMetadata;
 };
 export declare const AddSubnetCidrBlocksRequest: {
+    $type: "yandex.cloud.vpc.v1.AddSubnetCidrBlocksRequest";
     encode(message: AddSubnetCidrBlocksRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): AddSubnetCidrBlocksRequest;
     fromJSON(object: any): AddSubnetCidrBlocksRequest;
@@ -286,6 +318,7 @@ export declare const AddSubnetCidrBlocksRequest: {
     fromPartial(object: DeepPartial<AddSubnetCidrBlocksRequest>): AddSubnetCidrBlocksRequest;
 };
 export declare const AddSubnetCidrBlocksMetadata: {
+    $type: "yandex.cloud.vpc.v1.AddSubnetCidrBlocksMetadata";
     encode(message: AddSubnetCidrBlocksMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): AddSubnetCidrBlocksMetadata;
     fromJSON(object: any): AddSubnetCidrBlocksMetadata;
@@ -293,6 +326,7 @@ export declare const AddSubnetCidrBlocksMetadata: {
     fromPartial(object: DeepPartial<AddSubnetCidrBlocksMetadata>): AddSubnetCidrBlocksMetadata;
 };
 export declare const RemoveSubnetCidrBlocksRequest: {
+    $type: "yandex.cloud.vpc.v1.RemoveSubnetCidrBlocksRequest";
     encode(message: RemoveSubnetCidrBlocksRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): RemoveSubnetCidrBlocksRequest;
     fromJSON(object: any): RemoveSubnetCidrBlocksRequest;
@@ -300,6 +334,7 @@ export declare const RemoveSubnetCidrBlocksRequest: {
     fromPartial(object: DeepPartial<RemoveSubnetCidrBlocksRequest>): RemoveSubnetCidrBlocksRequest;
 };
 export declare const RemoveSubnetCidrBlocksMetadata: {
+    $type: "yandex.cloud.vpc.v1.RemoveSubnetCidrBlocksMetadata";
     encode(message: RemoveSubnetCidrBlocksMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): RemoveSubnetCidrBlocksMetadata;
     fromJSON(object: any): RemoveSubnetCidrBlocksMetadata;
@@ -307,6 +342,7 @@ export declare const RemoveSubnetCidrBlocksMetadata: {
     fromPartial(object: DeepPartial<RemoveSubnetCidrBlocksMetadata>): RemoveSubnetCidrBlocksMetadata;
 };
 export declare const DeleteSubnetRequest: {
+    $type: "yandex.cloud.vpc.v1.DeleteSubnetRequest";
     encode(message: DeleteSubnetRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteSubnetRequest;
     fromJSON(object: any): DeleteSubnetRequest;
@@ -314,6 +350,7 @@ export declare const DeleteSubnetRequest: {
     fromPartial(object: DeepPartial<DeleteSubnetRequest>): DeleteSubnetRequest;
 };
 export declare const DeleteSubnetMetadata: {
+    $type: "yandex.cloud.vpc.v1.DeleteSubnetMetadata";
     encode(message: DeleteSubnetMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteSubnetMetadata;
     fromJSON(object: any): DeleteSubnetMetadata;
@@ -321,6 +358,7 @@ export declare const DeleteSubnetMetadata: {
     fromPartial(object: DeepPartial<DeleteSubnetMetadata>): DeleteSubnetMetadata;
 };
 export declare const ListSubnetOperationsRequest: {
+    $type: "yandex.cloud.vpc.v1.ListSubnetOperationsRequest";
     encode(message: ListSubnetOperationsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListSubnetOperationsRequest;
     fromJSON(object: any): ListSubnetOperationsRequest;
@@ -328,6 +366,7 @@ export declare const ListSubnetOperationsRequest: {
     fromPartial(object: DeepPartial<ListSubnetOperationsRequest>): ListSubnetOperationsRequest;
 };
 export declare const ListSubnetOperationsResponse: {
+    $type: "yandex.cloud.vpc.v1.ListSubnetOperationsResponse";
     encode(message: ListSubnetOperationsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListSubnetOperationsResponse;
     fromJSON(object: any): ListSubnetOperationsResponse;
@@ -335,6 +374,7 @@ export declare const ListSubnetOperationsResponse: {
     fromPartial(object: DeepPartial<ListSubnetOperationsResponse>): ListSubnetOperationsResponse;
 };
 export declare const MoveSubnetRequest: {
+    $type: "yandex.cloud.vpc.v1.MoveSubnetRequest";
     encode(message: MoveSubnetRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): MoveSubnetRequest;
     fromJSON(object: any): MoveSubnetRequest;
@@ -342,6 +382,7 @@ export declare const MoveSubnetRequest: {
     fromPartial(object: DeepPartial<MoveSubnetRequest>): MoveSubnetRequest;
 };
 export declare const MoveSubnetMetadata: {
+    $type: "yandex.cloud.vpc.v1.MoveSubnetMetadata";
     encode(message: MoveSubnetMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): MoveSubnetMetadata;
     fromJSON(object: any): MoveSubnetMetadata;
@@ -349,6 +390,7 @@ export declare const MoveSubnetMetadata: {
     fromPartial(object: DeepPartial<MoveSubnetMetadata>): MoveSubnetMetadata;
 };
 export declare const ListUsedAddressesRequest: {
+    $type: "yandex.cloud.vpc.v1.ListUsedAddressesRequest";
     encode(message: ListUsedAddressesRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListUsedAddressesRequest;
     fromJSON(object: any): ListUsedAddressesRequest;
@@ -356,6 +398,7 @@ export declare const ListUsedAddressesRequest: {
     fromPartial(object: DeepPartial<ListUsedAddressesRequest>): ListUsedAddressesRequest;
 };
 export declare const ListUsedAddressesResponse: {
+    $type: "yandex.cloud.vpc.v1.ListUsedAddressesResponse";
     encode(message: ListUsedAddressesResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListUsedAddressesResponse;
     fromJSON(object: any): ListUsedAddressesResponse;
@@ -363,6 +406,7 @@ export declare const ListUsedAddressesResponse: {
     fromPartial(object: DeepPartial<ListUsedAddressesResponse>): ListUsedAddressesResponse;
 };
 export declare const UsedAddress: {
+    $type: "yandex.cloud.vpc.v1.UsedAddress";
     encode(message: UsedAddress, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UsedAddress;
     fromJSON(object: any): UsedAddress;
@@ -587,6 +631,6 @@ export interface SubnetServiceClient extends Client {
 export declare const SubnetServiceClient: new (address: string, credentials: ChannelCredentials, options?: Partial<ChannelOptions> | undefined) => SubnetServiceClient;
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

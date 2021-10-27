@@ -7,10 +7,12 @@ import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.cdn.v1";
 /** A request to get a resource. */
 export interface GetResourceRequest {
+    $type: 'yandex.cloud.cdn.v1.GetResourceRequest';
     /** ID of the requested resource. */
     resourceId: string;
 }
 export interface ListResourcesRequest {
+    $type: 'yandex.cloud.cdn.v1.ListResourcesRequest';
     /** ID of the folder to request listing for. */
     folderId: string;
     /**
@@ -28,6 +30,7 @@ export interface ListResourcesRequest {
     pageToken: string;
 }
 export interface ListResourcesResponse {
+    $type: 'yandex.cloud.cdn.v1.ListResourcesResponse';
     /** List of the resources */
     resources: Resource[];
     /**
@@ -40,6 +43,7 @@ export interface ListResourcesResponse {
     nextPageToken: string;
 }
 export interface CreateResourceRequest {
+    $type: 'yandex.cloud.cdn.v1.CreateResourceRequest';
     /** ID of the to bind with new resource. */
     folderId: string;
     /** CDN endpoint CNAME, must be unique among clients's resources. */
@@ -62,6 +66,7 @@ export interface CreateResourceRequest {
     sslCertificate: SSLTargetCertificate | undefined;
 }
 export interface CreateResourceRequest_Origin {
+    $type: 'yandex.cloud.cdn.v1.CreateResourceRequest.Origin';
     /** ID of pre-created origin group. */
     originGroupId: number | undefined;
     /**
@@ -74,16 +79,19 @@ export interface CreateResourceRequest_Origin {
 }
 /** A set of resourse origin parameters. */
 export interface ResourceOriginParams {
+    $type: 'yandex.cloud.cdn.v1.ResourceOriginParams';
     /** Sourse of the content. */
     source: string;
     /** Set up type of the origin. */
     meta: OriginMeta | undefined;
 }
 export interface CreateResourceMetadata {
+    $type: 'yandex.cloud.cdn.v1.CreateResourceMetadata';
     /** ID of created resource. */
     resourceId: string;
 }
 export interface UpdateResourceRequest {
+    $type: 'yandex.cloud.cdn.v1.UpdateResourceRequest';
     /** ID of updated resource. */
     resourceId: string;
     /** ID of updated origin group. */
@@ -104,28 +112,34 @@ export interface UpdateResourceRequest {
     sslCertificate: SSLTargetCertificate | undefined;
 }
 export interface UpdateResourceMetadata {
+    $type: 'yandex.cloud.cdn.v1.UpdateResourceMetadata';
     /** ID of updated resource. */
     resourceId: string;
 }
 export interface DeleteResourceRequest {
+    $type: 'yandex.cloud.cdn.v1.DeleteResourceRequest';
     /** ID of resource to delete. */
     resourceId: string;
 }
 export interface DeleteResourceMetadata {
+    $type: 'yandex.cloud.cdn.v1.DeleteResourceMetadata';
     /** ID of deleted resource. */
     resourceId: string;
 }
 export interface GetProviderCNameRequest {
+    $type: 'yandex.cloud.cdn.v1.GetProviderCNameRequest';
     /** Folder ID to get provider's CNAME. */
     folderId: string;
 }
 export interface GetProviderCNameResponse {
+    $type: 'yandex.cloud.cdn.v1.GetProviderCNameResponse';
     /** Provider's CNAME. */
     cname: string;
     /** ID of the folder that the provider belongs to. */
     folderId: string;
 }
 export declare const GetResourceRequest: {
+    $type: "yandex.cloud.cdn.v1.GetResourceRequest";
     encode(message: GetResourceRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): GetResourceRequest;
     fromJSON(object: any): GetResourceRequest;
@@ -133,6 +147,7 @@ export declare const GetResourceRequest: {
     fromPartial(object: DeepPartial<GetResourceRequest>): GetResourceRequest;
 };
 export declare const ListResourcesRequest: {
+    $type: "yandex.cloud.cdn.v1.ListResourcesRequest";
     encode(message: ListResourcesRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListResourcesRequest;
     fromJSON(object: any): ListResourcesRequest;
@@ -140,6 +155,7 @@ export declare const ListResourcesRequest: {
     fromPartial(object: DeepPartial<ListResourcesRequest>): ListResourcesRequest;
 };
 export declare const ListResourcesResponse: {
+    $type: "yandex.cloud.cdn.v1.ListResourcesResponse";
     encode(message: ListResourcesResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListResourcesResponse;
     fromJSON(object: any): ListResourcesResponse;
@@ -147,6 +163,7 @@ export declare const ListResourcesResponse: {
     fromPartial(object: DeepPartial<ListResourcesResponse>): ListResourcesResponse;
 };
 export declare const CreateResourceRequest: {
+    $type: "yandex.cloud.cdn.v1.CreateResourceRequest";
     encode(message: CreateResourceRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateResourceRequest;
     fromJSON(object: any): CreateResourceRequest;
@@ -154,6 +171,7 @@ export declare const CreateResourceRequest: {
     fromPartial(object: DeepPartial<CreateResourceRequest>): CreateResourceRequest;
 };
 export declare const CreateResourceRequest_Origin: {
+    $type: "yandex.cloud.cdn.v1.CreateResourceRequest.Origin";
     encode(message: CreateResourceRequest_Origin, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateResourceRequest_Origin;
     fromJSON(object: any): CreateResourceRequest_Origin;
@@ -161,6 +179,7 @@ export declare const CreateResourceRequest_Origin: {
     fromPartial(object: DeepPartial<CreateResourceRequest_Origin>): CreateResourceRequest_Origin;
 };
 export declare const ResourceOriginParams: {
+    $type: "yandex.cloud.cdn.v1.ResourceOriginParams";
     encode(message: ResourceOriginParams, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ResourceOriginParams;
     fromJSON(object: any): ResourceOriginParams;
@@ -168,6 +187,7 @@ export declare const ResourceOriginParams: {
     fromPartial(object: DeepPartial<ResourceOriginParams>): ResourceOriginParams;
 };
 export declare const CreateResourceMetadata: {
+    $type: "yandex.cloud.cdn.v1.CreateResourceMetadata";
     encode(message: CreateResourceMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateResourceMetadata;
     fromJSON(object: any): CreateResourceMetadata;
@@ -175,6 +195,7 @@ export declare const CreateResourceMetadata: {
     fromPartial(object: DeepPartial<CreateResourceMetadata>): CreateResourceMetadata;
 };
 export declare const UpdateResourceRequest: {
+    $type: "yandex.cloud.cdn.v1.UpdateResourceRequest";
     encode(message: UpdateResourceRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateResourceRequest;
     fromJSON(object: any): UpdateResourceRequest;
@@ -182,6 +203,7 @@ export declare const UpdateResourceRequest: {
     fromPartial(object: DeepPartial<UpdateResourceRequest>): UpdateResourceRequest;
 };
 export declare const UpdateResourceMetadata: {
+    $type: "yandex.cloud.cdn.v1.UpdateResourceMetadata";
     encode(message: UpdateResourceMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateResourceMetadata;
     fromJSON(object: any): UpdateResourceMetadata;
@@ -189,6 +211,7 @@ export declare const UpdateResourceMetadata: {
     fromPartial(object: DeepPartial<UpdateResourceMetadata>): UpdateResourceMetadata;
 };
 export declare const DeleteResourceRequest: {
+    $type: "yandex.cloud.cdn.v1.DeleteResourceRequest";
     encode(message: DeleteResourceRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteResourceRequest;
     fromJSON(object: any): DeleteResourceRequest;
@@ -196,6 +219,7 @@ export declare const DeleteResourceRequest: {
     fromPartial(object: DeepPartial<DeleteResourceRequest>): DeleteResourceRequest;
 };
 export declare const DeleteResourceMetadata: {
+    $type: "yandex.cloud.cdn.v1.DeleteResourceMetadata";
     encode(message: DeleteResourceMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteResourceMetadata;
     fromJSON(object: any): DeleteResourceMetadata;
@@ -203,6 +227,7 @@ export declare const DeleteResourceMetadata: {
     fromPartial(object: DeepPartial<DeleteResourceMetadata>): DeleteResourceMetadata;
 };
 export declare const GetProviderCNameRequest: {
+    $type: "yandex.cloud.cdn.v1.GetProviderCNameRequest";
     encode(message: GetProviderCNameRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): GetProviderCNameRequest;
     fromJSON(object: any): GetProviderCNameRequest;
@@ -210,6 +235,7 @@ export declare const GetProviderCNameRequest: {
     fromPartial(object: DeepPartial<GetProviderCNameRequest>): GetProviderCNameRequest;
 };
 export declare const GetProviderCNameResponse: {
+    $type: "yandex.cloud.cdn.v1.GetProviderCNameResponse";
     encode(message: GetProviderCNameResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): GetProviderCNameResponse;
     fromJSON(object: any): GetProviderCNameResponse;
@@ -331,6 +357,6 @@ export interface ResourceServiceClient extends Client {
 export declare const ResourceServiceClient: new (address: string, credentials: ChannelCredentials, options?: Partial<ChannelOptions> | undefined) => ResourceServiceClient;
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

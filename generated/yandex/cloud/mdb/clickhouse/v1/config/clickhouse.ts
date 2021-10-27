@@ -3,6 +3,7 @@ import {
     Int64Value,
     BoolValue,
 } from '../../../../../../google/protobuf/wrappers';
+import { messageTypeRegistry } from '../../../../../../typeRegistry';
 import Long from 'long';
 import _m0 from 'protobufjs/minimal';
 
@@ -15,6 +16,7 @@ export const protobufPackage = 'yandex.cloud.mdb.clickhouse.v1.config';
  * Any options not listed here are not supported.
  */
 export interface ClickhouseConfig {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.config.ClickhouseConfig';
     /** Logging level for the ClickHouse cluster. Possible values: TRACE, DEBUG, INFORMATION, WARNING, ERROR. */
     logLevel: ClickhouseConfig_LogLevel;
     /**
@@ -200,6 +202,7 @@ export function clickhouseConfig_LogLevelToJSON(
 
 /** Options specific to the MergeTree table engine. */
 export interface ClickhouseConfig_MergeTree {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.config.ClickhouseConfig.MergeTree';
     /** Number of blocks of hashes to keep in ZooKeeper. */
     replicatedDeduplicationWindow: number | undefined;
     /** Period of time to keep blocks of hashes for. */
@@ -224,6 +227,7 @@ export interface ClickhouseConfig_MergeTree {
 }
 
 export interface ClickhouseConfig_Kafka {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.config.ClickhouseConfig.Kafka';
     securityProtocol: ClickhouseConfig_Kafka_SecurityProtocol;
     saslMechanism: ClickhouseConfig_Kafka_SaslMechanism;
     saslUsername: string;
@@ -339,16 +343,19 @@ export function clickhouseConfig_Kafka_SaslMechanismToJSON(
 }
 
 export interface ClickhouseConfig_KafkaTopic {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.config.ClickhouseConfig.KafkaTopic';
     name: string;
     settings: ClickhouseConfig_Kafka | undefined;
 }
 
 export interface ClickhouseConfig_Rabbitmq {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.config.ClickhouseConfig.Rabbitmq';
     username: string;
     password: string;
 }
 
 export interface ClickhouseConfig_Compression {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.config.ClickhouseConfig.Compression';
     /** Compression method to use for the specified combination of `min_part_size` and `min_part_size_ratio`. */
     method: ClickhouseConfig_Compression_Method;
     /** Minimum size of a part of a table. */
@@ -402,6 +409,7 @@ export function clickhouseConfig_Compression_MethodToJSON(
 }
 
 export interface ClickhouseConfig_ExternalDictionary {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.config.ClickhouseConfig.ExternalDictionary';
     /** Name of the external dictionary. */
     name: string;
     /**
@@ -437,6 +445,7 @@ export interface ClickhouseConfig_ExternalDictionary {
 }
 
 export interface ClickhouseConfig_ExternalDictionary_HttpSource {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.config.ClickhouseConfig.ExternalDictionary.HttpSource';
     /** URL of the source dictionary available over HTTP. */
     url: string;
     /** The data format. Valid values are all formats supported by ClickHouse SQL dialect. */
@@ -444,6 +453,7 @@ export interface ClickhouseConfig_ExternalDictionary_HttpSource {
 }
 
 export interface ClickhouseConfig_ExternalDictionary_MysqlSource {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.config.ClickhouseConfig.ExternalDictionary.MysqlSource';
     /** Name of the MySQL database to connect to. */
     db: string;
     /** Name of the database table to use as a ClickHouse dictionary. */
@@ -466,6 +476,7 @@ export interface ClickhouseConfig_ExternalDictionary_MysqlSource {
 }
 
 export interface ClickhouseConfig_ExternalDictionary_MysqlSource_Replica {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.config.ClickhouseConfig.ExternalDictionary.MysqlSource.Replica';
     /** MySQL host of the replica. */
     host: string;
     /**
@@ -485,6 +496,7 @@ export interface ClickhouseConfig_ExternalDictionary_MysqlSource_Replica {
 }
 
 export interface ClickhouseConfig_ExternalDictionary_ClickhouseSource {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.config.ClickhouseConfig.ExternalDictionary.ClickhouseSource';
     /** Name of the ClickHouse database. */
     db: string;
     /** Name of the table in the specified database to be used as the dictionary source. */
@@ -502,6 +514,7 @@ export interface ClickhouseConfig_ExternalDictionary_ClickhouseSource {
 }
 
 export interface ClickhouseConfig_ExternalDictionary_MongodbSource {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.config.ClickhouseConfig.ExternalDictionary.MongodbSource';
     /** Name of the MongoDB database. */
     db: string;
     /** Name of the collection in the specified database to be used as the dictionary source. */
@@ -517,6 +530,7 @@ export interface ClickhouseConfig_ExternalDictionary_MongodbSource {
 }
 
 export interface ClickhouseConfig_ExternalDictionary_PostgresqlSource {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.config.ClickhouseConfig.ExternalDictionary.PostgresqlSource';
     /** Name of the PostrgreSQL database. */
     db: string;
     /** Name of the table in the specified database to be used as the dictionary source. */
@@ -607,6 +621,7 @@ export function clickhouseConfig_ExternalDictionary_PostgresqlSource_SslModeToJS
 }
 
 export interface ClickhouseConfig_ExternalDictionary_Structure {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.config.ClickhouseConfig.ExternalDictionary.Structure';
     /** Single numeric key column for the dictionary. */
     id: ClickhouseConfig_ExternalDictionary_Structure_Id | undefined;
     /**
@@ -636,6 +651,7 @@ export interface ClickhouseConfig_ExternalDictionary_Structure {
 }
 
 export interface ClickhouseConfig_ExternalDictionary_Structure_Attribute {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.config.ClickhouseConfig.ExternalDictionary.Structure.Attribute';
     /** Name of the column. */
     name: string;
     /** Type of the column. */
@@ -658,18 +674,21 @@ export interface ClickhouseConfig_ExternalDictionary_Structure_Attribute {
 
 /** Numeric key. */
 export interface ClickhouseConfig_ExternalDictionary_Structure_Id {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.config.ClickhouseConfig.ExternalDictionary.Structure.Id';
     /** Name of the numeric key. */
     name: string;
 }
 
 /** Complex key. */
 export interface ClickhouseConfig_ExternalDictionary_Structure_Key {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.config.ClickhouseConfig.ExternalDictionary.Structure.Key';
     /** Attributes of a complex key. */
     attributes: ClickhouseConfig_ExternalDictionary_Structure_Attribute[];
 }
 
 /** Layout determining how to store the dictionary in memory. */
 export interface ClickhouseConfig_ExternalDictionary_Layout {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.config.ClickhouseConfig.ExternalDictionary.Layout';
     /** Layout type for an external dictionary. */
     type: ClickhouseConfig_ExternalDictionary_Layout_Type;
     /**
@@ -771,6 +790,7 @@ export function clickhouseConfig_ExternalDictionary_Layout_TypeToJSON(
 }
 
 export interface ClickhouseConfig_ExternalDictionary_Range {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.config.ClickhouseConfig.ExternalDictionary.Range';
     /** Minimum dictionary lifetime. */
     min: number;
     /** Maximum dictionary lifetime. */
@@ -779,6 +799,7 @@ export interface ClickhouseConfig_ExternalDictionary_Range {
 
 /** Rollup settings for the GraphiteMergeTree table engine. */
 export interface ClickhouseConfig_GraphiteRollup {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.config.ClickhouseConfig.GraphiteRollup';
     /** Name for the specified combination of settings for Graphite rollup. */
     name: string;
     /** Pattern to use for the rollup. */
@@ -786,6 +807,7 @@ export interface ClickhouseConfig_GraphiteRollup {
 }
 
 export interface ClickhouseConfig_GraphiteRollup_Pattern {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.config.ClickhouseConfig.GraphiteRollup.Pattern';
     /** Pattern for metric names. */
     regexp: string;
     /** Name of the aggregating function to apply to data of the age specified in [retention]. */
@@ -795,6 +817,7 @@ export interface ClickhouseConfig_GraphiteRollup_Pattern {
 }
 
 export interface ClickhouseConfig_GraphiteRollup_Pattern_Retention {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.config.ClickhouseConfig.GraphiteRollup.Pattern.Retention';
     /** Minimum age of the data in seconds. */
     age: number;
     /** Precision of determining the age of the data, in seconds. */
@@ -802,6 +825,7 @@ export interface ClickhouseConfig_GraphiteRollup_Pattern_Retention {
 }
 
 export interface ClickhouseConfigSet {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.config.ClickhouseConfigSet';
     /**
      * Effective settings for a ClickHouse cluster (a combination of settings defined
      * in [user_config] and [default_config]).
@@ -814,6 +838,7 @@ export interface ClickhouseConfigSet {
 }
 
 const baseClickhouseConfig: object = {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.config.ClickhouseConfig',
     logLevel: 0,
     timezone: '',
     geobaseUri: '',
@@ -821,6 +846,8 @@ const baseClickhouseConfig: object = {
 };
 
 export const ClickhouseConfig = {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.config.ClickhouseConfig' as const,
+
     encode(
         message: ClickhouseConfig,
         writer: _m0.Writer = _m0.Writer.create()
@@ -872,49 +899,73 @@ export const ClickhouseConfig = {
         }
         if (message.maxConnections !== undefined) {
             Int64Value.encode(
-                { value: message.maxConnections! },
+                {
+                    $type: 'google.protobuf.Int64Value',
+                    value: message.maxConnections!,
+                },
                 writer.uint32(50).fork()
             ).ldelim();
         }
         if (message.maxConcurrentQueries !== undefined) {
             Int64Value.encode(
-                { value: message.maxConcurrentQueries! },
+                {
+                    $type: 'google.protobuf.Int64Value',
+                    value: message.maxConcurrentQueries!,
+                },
                 writer.uint32(58).fork()
             ).ldelim();
         }
         if (message.keepAliveTimeout !== undefined) {
             Int64Value.encode(
-                { value: message.keepAliveTimeout! },
+                {
+                    $type: 'google.protobuf.Int64Value',
+                    value: message.keepAliveTimeout!,
+                },
                 writer.uint32(66).fork()
             ).ldelim();
         }
         if (message.uncompressedCacheSize !== undefined) {
             Int64Value.encode(
-                { value: message.uncompressedCacheSize! },
+                {
+                    $type: 'google.protobuf.Int64Value',
+                    value: message.uncompressedCacheSize!,
+                },
                 writer.uint32(74).fork()
             ).ldelim();
         }
         if (message.markCacheSize !== undefined) {
             Int64Value.encode(
-                { value: message.markCacheSize! },
+                {
+                    $type: 'google.protobuf.Int64Value',
+                    value: message.markCacheSize!,
+                },
                 writer.uint32(82).fork()
             ).ldelim();
         }
         if (message.maxTableSizeToDrop !== undefined) {
             Int64Value.encode(
-                { value: message.maxTableSizeToDrop! },
+                {
+                    $type: 'google.protobuf.Int64Value',
+                    value: message.maxTableSizeToDrop!,
+                },
                 writer.uint32(90).fork()
             ).ldelim();
         }
         if (message.maxPartitionSizeToDrop !== undefined) {
             Int64Value.encode(
-                { value: message.maxPartitionSizeToDrop! },
+                {
+                    $type: 'google.protobuf.Int64Value',
+                    value: message.maxPartitionSizeToDrop!,
+                },
                 writer.uint32(106).fork()
             ).ldelim();
         }
         if (message.builtinDictionariesReloadInterval !== undefined) {
             Int64Value.encode(
-                { value: message.builtinDictionariesReloadInterval! },
+                {
+                    $type: 'google.protobuf.Int64Value',
+                    value: message.builtinDictionariesReloadInterval!,
+                },
                 writer.uint32(98).fork()
             ).ldelim();
         }
@@ -926,97 +977,145 @@ export const ClickhouseConfig = {
         }
         if (message.queryLogRetentionSize !== undefined) {
             Int64Value.encode(
-                { value: message.queryLogRetentionSize! },
+                {
+                    $type: 'google.protobuf.Int64Value',
+                    value: message.queryLogRetentionSize!,
+                },
                 writer.uint32(130).fork()
             ).ldelim();
         }
         if (message.queryLogRetentionTime !== undefined) {
             Int64Value.encode(
-                { value: message.queryLogRetentionTime! },
+                {
+                    $type: 'google.protobuf.Int64Value',
+                    value: message.queryLogRetentionTime!,
+                },
                 writer.uint32(138).fork()
             ).ldelim();
         }
         if (message.queryThreadLogEnabled !== undefined) {
             BoolValue.encode(
-                { value: message.queryThreadLogEnabled! },
+                {
+                    $type: 'google.protobuf.BoolValue',
+                    value: message.queryThreadLogEnabled!,
+                },
                 writer.uint32(146).fork()
             ).ldelim();
         }
         if (message.queryThreadLogRetentionSize !== undefined) {
             Int64Value.encode(
-                { value: message.queryThreadLogRetentionSize! },
+                {
+                    $type: 'google.protobuf.Int64Value',
+                    value: message.queryThreadLogRetentionSize!,
+                },
                 writer.uint32(154).fork()
             ).ldelim();
         }
         if (message.queryThreadLogRetentionTime !== undefined) {
             Int64Value.encode(
-                { value: message.queryThreadLogRetentionTime! },
+                {
+                    $type: 'google.protobuf.Int64Value',
+                    value: message.queryThreadLogRetentionTime!,
+                },
                 writer.uint32(162).fork()
             ).ldelim();
         }
         if (message.partLogRetentionSize !== undefined) {
             Int64Value.encode(
-                { value: message.partLogRetentionSize! },
+                {
+                    $type: 'google.protobuf.Int64Value',
+                    value: message.partLogRetentionSize!,
+                },
                 writer.uint32(170).fork()
             ).ldelim();
         }
         if (message.partLogRetentionTime !== undefined) {
             Int64Value.encode(
-                { value: message.partLogRetentionTime! },
+                {
+                    $type: 'google.protobuf.Int64Value',
+                    value: message.partLogRetentionTime!,
+                },
                 writer.uint32(178).fork()
             ).ldelim();
         }
         if (message.metricLogEnabled !== undefined) {
             BoolValue.encode(
-                { value: message.metricLogEnabled! },
+                {
+                    $type: 'google.protobuf.BoolValue',
+                    value: message.metricLogEnabled!,
+                },
                 writer.uint32(186).fork()
             ).ldelim();
         }
         if (message.metricLogRetentionSize !== undefined) {
             Int64Value.encode(
-                { value: message.metricLogRetentionSize! },
+                {
+                    $type: 'google.protobuf.Int64Value',
+                    value: message.metricLogRetentionSize!,
+                },
                 writer.uint32(194).fork()
             ).ldelim();
         }
         if (message.metricLogRetentionTime !== undefined) {
             Int64Value.encode(
-                { value: message.metricLogRetentionTime! },
+                {
+                    $type: 'google.protobuf.Int64Value',
+                    value: message.metricLogRetentionTime!,
+                },
                 writer.uint32(202).fork()
             ).ldelim();
         }
         if (message.traceLogEnabled !== undefined) {
             BoolValue.encode(
-                { value: message.traceLogEnabled! },
+                {
+                    $type: 'google.protobuf.BoolValue',
+                    value: message.traceLogEnabled!,
+                },
                 writer.uint32(210).fork()
             ).ldelim();
         }
         if (message.traceLogRetentionSize !== undefined) {
             Int64Value.encode(
-                { value: message.traceLogRetentionSize! },
+                {
+                    $type: 'google.protobuf.Int64Value',
+                    value: message.traceLogRetentionSize!,
+                },
                 writer.uint32(218).fork()
             ).ldelim();
         }
         if (message.traceLogRetentionTime !== undefined) {
             Int64Value.encode(
-                { value: message.traceLogRetentionTime! },
+                {
+                    $type: 'google.protobuf.Int64Value',
+                    value: message.traceLogRetentionTime!,
+                },
                 writer.uint32(226).fork()
             ).ldelim();
         }
         if (message.textLogEnabled !== undefined) {
             BoolValue.encode(
-                { value: message.textLogEnabled! },
+                {
+                    $type: 'google.protobuf.BoolValue',
+                    value: message.textLogEnabled!,
+                },
                 writer.uint32(234).fork()
             ).ldelim();
         }
         if (message.textLogRetentionSize !== undefined) {
             Int64Value.encode(
-                { value: message.textLogRetentionSize! },
+                {
+                    $type: 'google.protobuf.Int64Value',
+                    value: message.textLogRetentionSize!,
+                },
                 writer.uint32(242).fork()
             ).ldelim();
         }
         if (message.textLogRetentionTime !== undefined) {
             Int64Value.encode(
-                { value: message.textLogRetentionTime! },
+                {
+                    $type: 'google.protobuf.Int64Value',
+                    value: message.textLogRetentionTime!,
+                },
                 writer.uint32(250).fork()
             ).ldelim();
         }
@@ -1025,13 +1124,19 @@ export const ClickhouseConfig = {
         }
         if (message.backgroundPoolSize !== undefined) {
             Int64Value.encode(
-                { value: message.backgroundPoolSize! },
+                {
+                    $type: 'google.protobuf.Int64Value',
+                    value: message.backgroundPoolSize!,
+                },
                 writer.uint32(266).fork()
             ).ldelim();
         }
         if (message.backgroundSchedulePoolSize !== undefined) {
             Int64Value.encode(
-                { value: message.backgroundSchedulePoolSize! },
+                {
+                    $type: 'google.protobuf.Int64Value',
+                    value: message.backgroundSchedulePoolSize!,
+                },
                 writer.uint32(274).fork()
             ).ldelim();
         }
@@ -1993,40 +2098,61 @@ export const ClickhouseConfig = {
     },
 };
 
-const baseClickhouseConfig_MergeTree: object = {};
+messageTypeRegistry.set(ClickhouseConfig.$type, ClickhouseConfig);
+
+const baseClickhouseConfig_MergeTree: object = {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.config.ClickhouseConfig.MergeTree',
+};
 
 export const ClickhouseConfig_MergeTree = {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.config.ClickhouseConfig.MergeTree' as const,
+
     encode(
         message: ClickhouseConfig_MergeTree,
         writer: _m0.Writer = _m0.Writer.create()
     ): _m0.Writer {
         if (message.replicatedDeduplicationWindow !== undefined) {
             Int64Value.encode(
-                { value: message.replicatedDeduplicationWindow! },
+                {
+                    $type: 'google.protobuf.Int64Value',
+                    value: message.replicatedDeduplicationWindow!,
+                },
                 writer.uint32(10).fork()
             ).ldelim();
         }
         if (message.replicatedDeduplicationWindowSeconds !== undefined) {
             Int64Value.encode(
-                { value: message.replicatedDeduplicationWindowSeconds! },
+                {
+                    $type: 'google.protobuf.Int64Value',
+                    value: message.replicatedDeduplicationWindowSeconds!,
+                },
                 writer.uint32(18).fork()
             ).ldelim();
         }
         if (message.partsToDelayInsert !== undefined) {
             Int64Value.encode(
-                { value: message.partsToDelayInsert! },
+                {
+                    $type: 'google.protobuf.Int64Value',
+                    value: message.partsToDelayInsert!,
+                },
                 writer.uint32(26).fork()
             ).ldelim();
         }
         if (message.partsToThrowInsert !== undefined) {
             Int64Value.encode(
-                { value: message.partsToThrowInsert! },
+                {
+                    $type: 'google.protobuf.Int64Value',
+                    value: message.partsToThrowInsert!,
+                },
                 writer.uint32(34).fork()
             ).ldelim();
         }
         if (message.maxReplicatedMergesInQueue !== undefined) {
             Int64Value.encode(
-                { value: message.maxReplicatedMergesInQueue! },
+                {
+                    $type: 'google.protobuf.Int64Value',
+                    value: message.maxReplicatedMergesInQueue!,
+                },
                 writer.uint32(42).fork()
             ).ldelim();
         }
@@ -2035,6 +2161,7 @@ export const ClickhouseConfig_MergeTree = {
         ) {
             Int64Value.encode(
                 {
+                    $type: 'google.protobuf.Int64Value',
                     value: message.numberOfFreeEntriesInPoolToLowerMaxSizeOfMerge!,
                 },
                 writer.uint32(50).fork()
@@ -2042,13 +2169,19 @@ export const ClickhouseConfig_MergeTree = {
         }
         if (message.maxBytesToMergeAtMinSpaceInPool !== undefined) {
             Int64Value.encode(
-                { value: message.maxBytesToMergeAtMinSpaceInPool! },
+                {
+                    $type: 'google.protobuf.Int64Value',
+                    value: message.maxBytesToMergeAtMinSpaceInPool!,
+                },
                 writer.uint32(58).fork()
             ).ldelim();
         }
         if (message.maxBytesToMergeAtMaxSpaceInPool !== undefined) {
             Int64Value.encode(
-                { value: message.maxBytesToMergeAtMaxSpaceInPool! },
+                {
+                    $type: 'google.protobuf.Int64Value',
+                    value: message.maxBytesToMergeAtMaxSpaceInPool!,
+                },
                 writer.uint32(66).fork()
             ).ldelim();
         }
@@ -2312,7 +2445,13 @@ export const ClickhouseConfig_MergeTree = {
     },
 };
 
+messageTypeRegistry.set(
+    ClickhouseConfig_MergeTree.$type,
+    ClickhouseConfig_MergeTree
+);
+
 const baseClickhouseConfig_Kafka: object = {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.config.ClickhouseConfig.Kafka',
     securityProtocol: 0,
     saslMechanism: 0,
     saslUsername: '',
@@ -2320,6 +2459,8 @@ const baseClickhouseConfig_Kafka: object = {
 };
 
 export const ClickhouseConfig_Kafka = {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.config.ClickhouseConfig.Kafka' as const,
+
     encode(
         message: ClickhouseConfig_Kafka,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2465,9 +2606,16 @@ export const ClickhouseConfig_Kafka = {
     },
 };
 
-const baseClickhouseConfig_KafkaTopic: object = { name: '' };
+messageTypeRegistry.set(ClickhouseConfig_Kafka.$type, ClickhouseConfig_Kafka);
+
+const baseClickhouseConfig_KafkaTopic: object = {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.config.ClickhouseConfig.KafkaTopic',
+    name: '',
+};
 
 export const ClickhouseConfig_KafkaTopic = {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.config.ClickhouseConfig.KafkaTopic' as const,
+
     encode(
         message: ClickhouseConfig_KafkaTopic,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2563,9 +2711,20 @@ export const ClickhouseConfig_KafkaTopic = {
     },
 };
 
-const baseClickhouseConfig_Rabbitmq: object = { username: '', password: '' };
+messageTypeRegistry.set(
+    ClickhouseConfig_KafkaTopic.$type,
+    ClickhouseConfig_KafkaTopic
+);
+
+const baseClickhouseConfig_Rabbitmq: object = {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.config.ClickhouseConfig.Rabbitmq',
+    username: '',
+    password: '',
+};
 
 export const ClickhouseConfig_Rabbitmq = {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.config.ClickhouseConfig.Rabbitmq' as const,
+
     encode(
         message: ClickhouseConfig_Rabbitmq,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2650,13 +2809,21 @@ export const ClickhouseConfig_Rabbitmq = {
     },
 };
 
+messageTypeRegistry.set(
+    ClickhouseConfig_Rabbitmq.$type,
+    ClickhouseConfig_Rabbitmq
+);
+
 const baseClickhouseConfig_Compression: object = {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.config.ClickhouseConfig.Compression',
     method: 0,
     minPartSize: 0,
     minPartSizeRatio: 0,
 };
 
 export const ClickhouseConfig_Compression = {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.config.ClickhouseConfig.Compression' as const,
+
     encode(
         message: ClickhouseConfig_Compression,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2771,9 +2938,19 @@ export const ClickhouseConfig_Compression = {
     },
 };
 
-const baseClickhouseConfig_ExternalDictionary: object = { name: '' };
+messageTypeRegistry.set(
+    ClickhouseConfig_Compression.$type,
+    ClickhouseConfig_Compression
+);
+
+const baseClickhouseConfig_ExternalDictionary: object = {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.config.ClickhouseConfig.ExternalDictionary',
+    name: '',
+};
 
 export const ClickhouseConfig_ExternalDictionary = {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.config.ClickhouseConfig.ExternalDictionary' as const,
+
     encode(
         message: ClickhouseConfig_ExternalDictionary,
         writer: _m0.Writer = _m0.Writer.create()
@@ -3171,12 +3348,20 @@ export const ClickhouseConfig_ExternalDictionary = {
     },
 };
 
+messageTypeRegistry.set(
+    ClickhouseConfig_ExternalDictionary.$type,
+    ClickhouseConfig_ExternalDictionary
+);
+
 const baseClickhouseConfig_ExternalDictionary_HttpSource: object = {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.config.ClickhouseConfig.ExternalDictionary.HttpSource',
     url: '',
     format: '',
 };
 
 export const ClickhouseConfig_ExternalDictionary_HttpSource = {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.config.ClickhouseConfig.ExternalDictionary.HttpSource' as const,
+
     encode(
         message: ClickhouseConfig_ExternalDictionary_HttpSource,
         writer: _m0.Writer = _m0.Writer.create()
@@ -3261,7 +3446,13 @@ export const ClickhouseConfig_ExternalDictionary_HttpSource = {
     },
 };
 
+messageTypeRegistry.set(
+    ClickhouseConfig_ExternalDictionary_HttpSource.$type,
+    ClickhouseConfig_ExternalDictionary_HttpSource
+);
+
 const baseClickhouseConfig_ExternalDictionary_MysqlSource: object = {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.config.ClickhouseConfig.ExternalDictionary.MysqlSource',
     db: '',
     table: '',
     port: 0,
@@ -3272,6 +3463,8 @@ const baseClickhouseConfig_ExternalDictionary_MysqlSource: object = {
 };
 
 export const ClickhouseConfig_ExternalDictionary_MysqlSource = {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.config.ClickhouseConfig.ExternalDictionary.MysqlSource' as const,
+
     encode(
         message: ClickhouseConfig_ExternalDictionary_MysqlSource,
         writer: _m0.Writer = _m0.Writer.create()
@@ -3494,7 +3687,13 @@ export const ClickhouseConfig_ExternalDictionary_MysqlSource = {
     },
 };
 
+messageTypeRegistry.set(
+    ClickhouseConfig_ExternalDictionary_MysqlSource.$type,
+    ClickhouseConfig_ExternalDictionary_MysqlSource
+);
+
 const baseClickhouseConfig_ExternalDictionary_MysqlSource_Replica: object = {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.config.ClickhouseConfig.ExternalDictionary.MysqlSource.Replica',
     host: '',
     priority: 0,
     port: 0,
@@ -3503,6 +3702,8 @@ const baseClickhouseConfig_ExternalDictionary_MysqlSource_Replica: object = {
 };
 
 export const ClickhouseConfig_ExternalDictionary_MysqlSource_Replica = {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.config.ClickhouseConfig.ExternalDictionary.MysqlSource.Replica' as const,
+
     encode(
         message: ClickhouseConfig_ExternalDictionary_MysqlSource_Replica,
         writer: _m0.Writer = _m0.Writer.create()
@@ -3642,7 +3843,13 @@ export const ClickhouseConfig_ExternalDictionary_MysqlSource_Replica = {
     },
 };
 
+messageTypeRegistry.set(
+    ClickhouseConfig_ExternalDictionary_MysqlSource_Replica.$type,
+    ClickhouseConfig_ExternalDictionary_MysqlSource_Replica
+);
+
 const baseClickhouseConfig_ExternalDictionary_ClickhouseSource: object = {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.config.ClickhouseConfig.ExternalDictionary.ClickhouseSource',
     db: '',
     table: '',
     host: '',
@@ -3653,6 +3860,8 @@ const baseClickhouseConfig_ExternalDictionary_ClickhouseSource: object = {
 };
 
 export const ClickhouseConfig_ExternalDictionary_ClickhouseSource = {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.config.ClickhouseConfig.ExternalDictionary.ClickhouseSource' as const,
+
     encode(
         message: ClickhouseConfig_ExternalDictionary_ClickhouseSource,
         writer: _m0.Writer = _m0.Writer.create()
@@ -3826,7 +4035,13 @@ export const ClickhouseConfig_ExternalDictionary_ClickhouseSource = {
     },
 };
 
+messageTypeRegistry.set(
+    ClickhouseConfig_ExternalDictionary_ClickhouseSource.$type,
+    ClickhouseConfig_ExternalDictionary_ClickhouseSource
+);
+
 const baseClickhouseConfig_ExternalDictionary_MongodbSource: object = {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.config.ClickhouseConfig.ExternalDictionary.MongodbSource',
     db: '',
     collection: '',
     host: '',
@@ -3836,6 +4051,8 @@ const baseClickhouseConfig_ExternalDictionary_MongodbSource: object = {
 };
 
 export const ClickhouseConfig_ExternalDictionary_MongodbSource = {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.config.ClickhouseConfig.ExternalDictionary.MongodbSource' as const,
+
     encode(
         message: ClickhouseConfig_ExternalDictionary_MongodbSource,
         writer: _m0.Writer = _m0.Writer.create()
@@ -3991,7 +4208,13 @@ export const ClickhouseConfig_ExternalDictionary_MongodbSource = {
     },
 };
 
+messageTypeRegistry.set(
+    ClickhouseConfig_ExternalDictionary_MongodbSource.$type,
+    ClickhouseConfig_ExternalDictionary_MongodbSource
+);
+
 const baseClickhouseConfig_ExternalDictionary_PostgresqlSource: object = {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.config.ClickhouseConfig.ExternalDictionary.PostgresqlSource',
     db: '',
     table: '',
     hosts: '',
@@ -4003,6 +4226,8 @@ const baseClickhouseConfig_ExternalDictionary_PostgresqlSource: object = {
 };
 
 export const ClickhouseConfig_ExternalDictionary_PostgresqlSource = {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.config.ClickhouseConfig.ExternalDictionary.PostgresqlSource' as const,
+
     encode(
         message: ClickhouseConfig_ExternalDictionary_PostgresqlSource,
         writer: _m0.Writer = _m0.Writer.create()
@@ -4214,9 +4439,18 @@ export const ClickhouseConfig_ExternalDictionary_PostgresqlSource = {
     },
 };
 
-const baseClickhouseConfig_ExternalDictionary_Structure: object = {};
+messageTypeRegistry.set(
+    ClickhouseConfig_ExternalDictionary_PostgresqlSource.$type,
+    ClickhouseConfig_ExternalDictionary_PostgresqlSource
+);
+
+const baseClickhouseConfig_ExternalDictionary_Structure: object = {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.config.ClickhouseConfig.ExternalDictionary.Structure',
+};
 
 export const ClickhouseConfig_ExternalDictionary_Structure = {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.config.ClickhouseConfig.ExternalDictionary.Structure' as const,
+
     encode(
         message: ClickhouseConfig_ExternalDictionary_Structure,
         writer: _m0.Writer = _m0.Writer.create()
@@ -4453,7 +4687,13 @@ export const ClickhouseConfig_ExternalDictionary_Structure = {
     },
 };
 
+messageTypeRegistry.set(
+    ClickhouseConfig_ExternalDictionary_Structure.$type,
+    ClickhouseConfig_ExternalDictionary_Structure
+);
+
 const baseClickhouseConfig_ExternalDictionary_Structure_Attribute: object = {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.config.ClickhouseConfig.ExternalDictionary.Structure.Attribute',
     name: '',
     type: '',
     nullValue: '',
@@ -4463,6 +4703,8 @@ const baseClickhouseConfig_ExternalDictionary_Structure_Attribute: object = {
 };
 
 export const ClickhouseConfig_ExternalDictionary_Structure_Attribute = {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.config.ClickhouseConfig.ExternalDictionary.Structure.Attribute' as const,
+
     encode(
         message: ClickhouseConfig_ExternalDictionary_Structure_Attribute,
         writer: _m0.Writer = _m0.Writer.create()
@@ -4621,11 +4863,19 @@ export const ClickhouseConfig_ExternalDictionary_Structure_Attribute = {
     },
 };
 
+messageTypeRegistry.set(
+    ClickhouseConfig_ExternalDictionary_Structure_Attribute.$type,
+    ClickhouseConfig_ExternalDictionary_Structure_Attribute
+);
+
 const baseClickhouseConfig_ExternalDictionary_Structure_Id: object = {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.config.ClickhouseConfig.ExternalDictionary.Structure.Id',
     name: '',
 };
 
 export const ClickhouseConfig_ExternalDictionary_Structure_Id = {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.config.ClickhouseConfig.ExternalDictionary.Structure.Id' as const,
+
     encode(
         message: ClickhouseConfig_ExternalDictionary_Structure_Id,
         writer: _m0.Writer = _m0.Writer.create()
@@ -4693,9 +4943,18 @@ export const ClickhouseConfig_ExternalDictionary_Structure_Id = {
     },
 };
 
-const baseClickhouseConfig_ExternalDictionary_Structure_Key: object = {};
+messageTypeRegistry.set(
+    ClickhouseConfig_ExternalDictionary_Structure_Id.$type,
+    ClickhouseConfig_ExternalDictionary_Structure_Id
+);
+
+const baseClickhouseConfig_ExternalDictionary_Structure_Key: object = {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.config.ClickhouseConfig.ExternalDictionary.Structure.Key',
+};
 
 export const ClickhouseConfig_ExternalDictionary_Structure_Key = {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.config.ClickhouseConfig.ExternalDictionary.Structure.Key' as const,
+
     encode(
         message: ClickhouseConfig_ExternalDictionary_Structure_Key,
         writer: _m0.Writer = _m0.Writer.create()
@@ -4794,12 +5053,20 @@ export const ClickhouseConfig_ExternalDictionary_Structure_Key = {
     },
 };
 
+messageTypeRegistry.set(
+    ClickhouseConfig_ExternalDictionary_Structure_Key.$type,
+    ClickhouseConfig_ExternalDictionary_Structure_Key
+);
+
 const baseClickhouseConfig_ExternalDictionary_Layout: object = {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.config.ClickhouseConfig.ExternalDictionary.Layout',
     type: 0,
     sizeInCells: 0,
 };
 
 export const ClickhouseConfig_ExternalDictionary_Layout = {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.config.ClickhouseConfig.ExternalDictionary.Layout' as const,
+
     encode(
         message: ClickhouseConfig_ExternalDictionary_Layout,
         writer: _m0.Writer = _m0.Writer.create()
@@ -4891,12 +5158,20 @@ export const ClickhouseConfig_ExternalDictionary_Layout = {
     },
 };
 
+messageTypeRegistry.set(
+    ClickhouseConfig_ExternalDictionary_Layout.$type,
+    ClickhouseConfig_ExternalDictionary_Layout
+);
+
 const baseClickhouseConfig_ExternalDictionary_Range: object = {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.config.ClickhouseConfig.ExternalDictionary.Range',
     min: 0,
     max: 0,
 };
 
 export const ClickhouseConfig_ExternalDictionary_Range = {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.config.ClickhouseConfig.ExternalDictionary.Range' as const,
+
     encode(
         message: ClickhouseConfig_ExternalDictionary_Range,
         writer: _m0.Writer = _m0.Writer.create()
@@ -4981,9 +5256,19 @@ export const ClickhouseConfig_ExternalDictionary_Range = {
     },
 };
 
-const baseClickhouseConfig_GraphiteRollup: object = { name: '' };
+messageTypeRegistry.set(
+    ClickhouseConfig_ExternalDictionary_Range.$type,
+    ClickhouseConfig_ExternalDictionary_Range
+);
+
+const baseClickhouseConfig_GraphiteRollup: object = {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.config.ClickhouseConfig.GraphiteRollup',
+    name: '',
+};
 
 export const ClickhouseConfig_GraphiteRollup = {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.config.ClickhouseConfig.GraphiteRollup' as const,
+
     encode(
         message: ClickhouseConfig_GraphiteRollup,
         writer: _m0.Writer = _m0.Writer.create()
@@ -5091,12 +5376,20 @@ export const ClickhouseConfig_GraphiteRollup = {
     },
 };
 
+messageTypeRegistry.set(
+    ClickhouseConfig_GraphiteRollup.$type,
+    ClickhouseConfig_GraphiteRollup
+);
+
 const baseClickhouseConfig_GraphiteRollup_Pattern: object = {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.config.ClickhouseConfig.GraphiteRollup.Pattern',
     regexp: '',
     function: '',
 };
 
 export const ClickhouseConfig_GraphiteRollup_Pattern = {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.config.ClickhouseConfig.GraphiteRollup.Pattern' as const,
+
     encode(
         message: ClickhouseConfig_GraphiteRollup_Pattern,
         writer: _m0.Writer = _m0.Writer.create()
@@ -5227,12 +5520,20 @@ export const ClickhouseConfig_GraphiteRollup_Pattern = {
     },
 };
 
+messageTypeRegistry.set(
+    ClickhouseConfig_GraphiteRollup_Pattern.$type,
+    ClickhouseConfig_GraphiteRollup_Pattern
+);
+
 const baseClickhouseConfig_GraphiteRollup_Pattern_Retention: object = {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.config.ClickhouseConfig.GraphiteRollup.Pattern.Retention',
     age: 0,
     precision: 0,
 };
 
 export const ClickhouseConfig_GraphiteRollup_Pattern_Retention = {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.config.ClickhouseConfig.GraphiteRollup.Pattern.Retention' as const,
+
     encode(
         message: ClickhouseConfig_GraphiteRollup_Pattern_Retention,
         writer: _m0.Writer = _m0.Writer.create()
@@ -5319,9 +5620,18 @@ export const ClickhouseConfig_GraphiteRollup_Pattern_Retention = {
     },
 };
 
-const baseClickhouseConfigSet: object = {};
+messageTypeRegistry.set(
+    ClickhouseConfig_GraphiteRollup_Pattern_Retention.$type,
+    ClickhouseConfig_GraphiteRollup_Pattern_Retention
+);
+
+const baseClickhouseConfigSet: object = {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.config.ClickhouseConfigSet',
+};
 
 export const ClickhouseConfigSet = {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.config.ClickhouseConfigSet' as const,
+
     encode(
         message: ClickhouseConfigSet,
         writer: _m0.Writer = _m0.Writer.create()
@@ -5464,6 +5774,8 @@ export const ClickhouseConfigSet = {
     },
 };
 
+messageTypeRegistry.set(ClickhouseConfigSet.$type, ClickhouseConfigSet);
+
 declare var self: any | undefined;
 declare var window: any | undefined;
 declare var global: any | undefined;
@@ -5490,7 +5802,7 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 function longToNumber(long: Long): number {

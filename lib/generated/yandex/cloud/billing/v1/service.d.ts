@@ -2,6 +2,7 @@ import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.billing.v1";
 /** A Service resource. */
 export interface Service {
+    $type: 'yandex.cloud.billing.v1.Service';
     /** ID of the service. */
     id: string;
     /** Name of the service, e.g. `Compute Cloud`, `VPC`. */
@@ -10,6 +11,7 @@ export interface Service {
     description: string;
 }
 export declare const Service: {
+    $type: "yandex.cloud.billing.v1.Service";
     encode(message: Service, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Service;
     fromJSON(object: any): Service;
@@ -18,6 +20,6 @@ export declare const Service: {
 };
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

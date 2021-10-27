@@ -6,6 +6,7 @@ import { ChannelCredentials, ChannelOptions, UntypedServiceImplementation, handl
 import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.compute.v1";
 export interface GetFilesystemRequest {
+    $type: 'yandex.cloud.compute.v1.GetFilesystemRequest';
     /**
      * ID of the filesystem to return.
      *
@@ -14,6 +15,7 @@ export interface GetFilesystemRequest {
     filesystemId: string;
 }
 export interface ListFilesystemsRequest {
+    $type: 'yandex.cloud.compute.v1.ListFilesystemsRequest';
     /**
      * ID of the folder to list filesystems in.
      *
@@ -44,6 +46,7 @@ export interface ListFilesystemsRequest {
     filter: string;
 }
 export interface ListFilesystemsResponse {
+    $type: 'yandex.cloud.compute.v1.ListFilesystemsResponse';
     /** List of filesystems in the specified folder. */
     filesystems: Filesystem[];
     /**
@@ -56,6 +59,7 @@ export interface ListFilesystemsResponse {
     nextPageToken: string;
 }
 export interface CreateFilesystemRequest {
+    $type: 'yandex.cloud.compute.v1.CreateFilesystemRequest';
     /**
      * ID of the folder to create a filesystem in.
      *
@@ -106,14 +110,17 @@ export interface CreateFilesystemRequest {
     blockSize: number;
 }
 export interface CreateFilesystemRequest_LabelsEntry {
+    $type: 'yandex.cloud.compute.v1.CreateFilesystemRequest.LabelsEntry';
     key: string;
     value: string;
 }
 export interface CreateFilesystemMetadata {
+    $type: 'yandex.cloud.compute.v1.CreateFilesystemMetadata';
     /** ID of the filesystem that is being created. */
     filesystemId: string;
 }
 export interface UpdateFilesystemRequest {
+    $type: 'yandex.cloud.compute.v1.UpdateFilesystemRequest';
     /**
      * ID of the filesystem to update.
      *
@@ -141,14 +148,17 @@ export interface UpdateFilesystemRequest {
     };
 }
 export interface UpdateFilesystemRequest_LabelsEntry {
+    $type: 'yandex.cloud.compute.v1.UpdateFilesystemRequest.LabelsEntry';
     key: string;
     value: string;
 }
 export interface UpdateFilesystemMetadata {
+    $type: 'yandex.cloud.compute.v1.UpdateFilesystemMetadata';
     /** ID of the filesystem that is being updated. */
     filesystemId: string;
 }
 export interface DeleteFilesystemRequest {
+    $type: 'yandex.cloud.compute.v1.DeleteFilesystemRequest';
     /**
      * ID of the filesystem to delete.
      *
@@ -157,10 +167,12 @@ export interface DeleteFilesystemRequest {
     filesystemId: string;
 }
 export interface DeleteFilesystemMetadata {
+    $type: 'yandex.cloud.compute.v1.DeleteFilesystemMetadata';
     /** ID of the filesystem that is being deleted. */
     filesystemId: string;
 }
 export interface ListFilesystemOperationsRequest {
+    $type: 'yandex.cloud.compute.v1.ListFilesystemOperationsRequest';
     /**
      * ID of the filesystem to list operations for.
      *
@@ -180,6 +192,7 @@ export interface ListFilesystemOperationsRequest {
     pageToken: string;
 }
 export interface ListFilesystemOperationsResponse {
+    $type: 'yandex.cloud.compute.v1.ListFilesystemOperationsResponse';
     /** List of operations for the specified filesystem. */
     operations: Operation[];
     /**
@@ -192,6 +205,7 @@ export interface ListFilesystemOperationsResponse {
     nextPageToken: string;
 }
 export declare const GetFilesystemRequest: {
+    $type: "yandex.cloud.compute.v1.GetFilesystemRequest";
     encode(message: GetFilesystemRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): GetFilesystemRequest;
     fromJSON(object: any): GetFilesystemRequest;
@@ -199,6 +213,7 @@ export declare const GetFilesystemRequest: {
     fromPartial(object: DeepPartial<GetFilesystemRequest>): GetFilesystemRequest;
 };
 export declare const ListFilesystemsRequest: {
+    $type: "yandex.cloud.compute.v1.ListFilesystemsRequest";
     encode(message: ListFilesystemsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListFilesystemsRequest;
     fromJSON(object: any): ListFilesystemsRequest;
@@ -206,6 +221,7 @@ export declare const ListFilesystemsRequest: {
     fromPartial(object: DeepPartial<ListFilesystemsRequest>): ListFilesystemsRequest;
 };
 export declare const ListFilesystemsResponse: {
+    $type: "yandex.cloud.compute.v1.ListFilesystemsResponse";
     encode(message: ListFilesystemsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListFilesystemsResponse;
     fromJSON(object: any): ListFilesystemsResponse;
@@ -213,6 +229,7 @@ export declare const ListFilesystemsResponse: {
     fromPartial(object: DeepPartial<ListFilesystemsResponse>): ListFilesystemsResponse;
 };
 export declare const CreateFilesystemRequest: {
+    $type: "yandex.cloud.compute.v1.CreateFilesystemRequest";
     encode(message: CreateFilesystemRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateFilesystemRequest;
     fromJSON(object: any): CreateFilesystemRequest;
@@ -220,6 +237,7 @@ export declare const CreateFilesystemRequest: {
     fromPartial(object: DeepPartial<CreateFilesystemRequest>): CreateFilesystemRequest;
 };
 export declare const CreateFilesystemRequest_LabelsEntry: {
+    $type: "yandex.cloud.compute.v1.CreateFilesystemRequest.LabelsEntry";
     encode(message: CreateFilesystemRequest_LabelsEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateFilesystemRequest_LabelsEntry;
     fromJSON(object: any): CreateFilesystemRequest_LabelsEntry;
@@ -227,6 +245,7 @@ export declare const CreateFilesystemRequest_LabelsEntry: {
     fromPartial(object: DeepPartial<CreateFilesystemRequest_LabelsEntry>): CreateFilesystemRequest_LabelsEntry;
 };
 export declare const CreateFilesystemMetadata: {
+    $type: "yandex.cloud.compute.v1.CreateFilesystemMetadata";
     encode(message: CreateFilesystemMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateFilesystemMetadata;
     fromJSON(object: any): CreateFilesystemMetadata;
@@ -234,6 +253,7 @@ export declare const CreateFilesystemMetadata: {
     fromPartial(object: DeepPartial<CreateFilesystemMetadata>): CreateFilesystemMetadata;
 };
 export declare const UpdateFilesystemRequest: {
+    $type: "yandex.cloud.compute.v1.UpdateFilesystemRequest";
     encode(message: UpdateFilesystemRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateFilesystemRequest;
     fromJSON(object: any): UpdateFilesystemRequest;
@@ -241,6 +261,7 @@ export declare const UpdateFilesystemRequest: {
     fromPartial(object: DeepPartial<UpdateFilesystemRequest>): UpdateFilesystemRequest;
 };
 export declare const UpdateFilesystemRequest_LabelsEntry: {
+    $type: "yandex.cloud.compute.v1.UpdateFilesystemRequest.LabelsEntry";
     encode(message: UpdateFilesystemRequest_LabelsEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateFilesystemRequest_LabelsEntry;
     fromJSON(object: any): UpdateFilesystemRequest_LabelsEntry;
@@ -248,6 +269,7 @@ export declare const UpdateFilesystemRequest_LabelsEntry: {
     fromPartial(object: DeepPartial<UpdateFilesystemRequest_LabelsEntry>): UpdateFilesystemRequest_LabelsEntry;
 };
 export declare const UpdateFilesystemMetadata: {
+    $type: "yandex.cloud.compute.v1.UpdateFilesystemMetadata";
     encode(message: UpdateFilesystemMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateFilesystemMetadata;
     fromJSON(object: any): UpdateFilesystemMetadata;
@@ -255,6 +277,7 @@ export declare const UpdateFilesystemMetadata: {
     fromPartial(object: DeepPartial<UpdateFilesystemMetadata>): UpdateFilesystemMetadata;
 };
 export declare const DeleteFilesystemRequest: {
+    $type: "yandex.cloud.compute.v1.DeleteFilesystemRequest";
     encode(message: DeleteFilesystemRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteFilesystemRequest;
     fromJSON(object: any): DeleteFilesystemRequest;
@@ -262,6 +285,7 @@ export declare const DeleteFilesystemRequest: {
     fromPartial(object: DeepPartial<DeleteFilesystemRequest>): DeleteFilesystemRequest;
 };
 export declare const DeleteFilesystemMetadata: {
+    $type: "yandex.cloud.compute.v1.DeleteFilesystemMetadata";
     encode(message: DeleteFilesystemMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteFilesystemMetadata;
     fromJSON(object: any): DeleteFilesystemMetadata;
@@ -269,6 +293,7 @@ export declare const DeleteFilesystemMetadata: {
     fromPartial(object: DeepPartial<DeleteFilesystemMetadata>): DeleteFilesystemMetadata;
 };
 export declare const ListFilesystemOperationsRequest: {
+    $type: "yandex.cloud.compute.v1.ListFilesystemOperationsRequest";
     encode(message: ListFilesystemOperationsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListFilesystemOperationsRequest;
     fromJSON(object: any): ListFilesystemOperationsRequest;
@@ -276,6 +301,7 @@ export declare const ListFilesystemOperationsRequest: {
     fromPartial(object: DeepPartial<ListFilesystemOperationsRequest>): ListFilesystemOperationsRequest;
 };
 export declare const ListFilesystemOperationsResponse: {
+    $type: "yandex.cloud.compute.v1.ListFilesystemOperationsResponse";
     encode(message: ListFilesystemOperationsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListFilesystemOperationsResponse;
     fromJSON(object: any): ListFilesystemOperationsResponse;
@@ -418,6 +444,6 @@ export interface FilesystemServiceClient extends Client {
 export declare const FilesystemServiceClient: new (address: string, credentials: ChannelCredentials, options?: Partial<ChannelOptions> | undefined) => FilesystemServiceClient;
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

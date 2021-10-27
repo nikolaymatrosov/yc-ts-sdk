@@ -1,5 +1,6 @@
 /* eslint-disable */
 import { FieldMask } from '../../../../../google/protobuf/field_mask';
+import { messageTypeRegistry } from '../../../../../typeRegistry';
 import {
     User,
     UserSpec,
@@ -24,6 +25,7 @@ import _m0 from 'protobufjs/minimal';
 export const protobufPackage = 'yandex.cloud.mdb.mysql.v1alpha';
 
 export interface GetUserRequest {
+    $type: 'yandex.cloud.mdb.mysql.v1alpha.GetUserRequest';
     /** ID of the MySQL cluster. */
     clusterId: string;
     /** Name of the user. */
@@ -31,6 +33,7 @@ export interface GetUserRequest {
 }
 
 export interface ListUsersRequest {
+    $type: 'yandex.cloud.mdb.mysql.v1alpha.ListUsersRequest';
     /**
      * ID of the cluster to list MySQL users in.
      * To get the cluster ID, use a [ClusterService.List] request.
@@ -50,6 +53,7 @@ export interface ListUsersRequest {
 }
 
 export interface ListUsersResponse {
+    $type: 'yandex.cloud.mdb.mysql.v1alpha.ListUsersResponse';
     /** Requested list of MySQL users. */
     users: User[];
     /**
@@ -62,6 +66,7 @@ export interface ListUsersResponse {
 }
 
 export interface CreateUserRequest {
+    $type: 'yandex.cloud.mdb.mysql.v1alpha.CreateUserRequest';
     /**
      * ID of the MySQL cluster to create a user for.
      * To get the cluster ID, use a [ClusterService.List] request.
@@ -72,6 +77,7 @@ export interface CreateUserRequest {
 }
 
 export interface CreateUserMetadata {
+    $type: 'yandex.cloud.mdb.mysql.v1alpha.CreateUserMetadata';
     /** ID of the MySQL cluster the user is being created for. */
     clusterId: string;
     /** Name of the user that is being created. */
@@ -79,6 +85,7 @@ export interface CreateUserMetadata {
 }
 
 export interface UpdateUserRequest {
+    $type: 'yandex.cloud.mdb.mysql.v1alpha.UpdateUserRequest';
     /**
      * ID of the MySQL cluster the user belongs to.
      * To get the cluster ID use a [ClusterService.List] request.
@@ -98,6 +105,7 @@ export interface UpdateUserRequest {
 }
 
 export interface UpdateUserMetadata {
+    $type: 'yandex.cloud.mdb.mysql.v1alpha.UpdateUserMetadata';
     /** ID of the MySQL cluster the user belongs to. */
     clusterId: string;
     /** Name of the user that is being updated. */
@@ -105,6 +113,7 @@ export interface UpdateUserMetadata {
 }
 
 export interface DeleteUserRequest {
+    $type: 'yandex.cloud.mdb.mysql.v1alpha.DeleteUserRequest';
     /**
      * ID of the MySQL cluster the user belongs to.
      * To get the cluster ID, use a [ClusterService.List] request.
@@ -118,6 +127,7 @@ export interface DeleteUserRequest {
 }
 
 export interface DeleteUserMetadata {
+    $type: 'yandex.cloud.mdb.mysql.v1alpha.DeleteUserMetadata';
     /** ID of the MySQL cluster the user belongs to. */
     clusterId: string;
     /** Name of the user that is being deleted. */
@@ -125,6 +135,7 @@ export interface DeleteUserMetadata {
 }
 
 export interface GrantUserPermissionRequest {
+    $type: 'yandex.cloud.mdb.mysql.v1alpha.GrantUserPermissionRequest';
     /**
      * ID of the MySQL cluster the user belongs to.
      * To get the cluster ID, use a [ClusterService.List] request.
@@ -140,6 +151,7 @@ export interface GrantUserPermissionRequest {
 }
 
 export interface GrantUserPermissionMetadata {
+    $type: 'yandex.cloud.mdb.mysql.v1alpha.GrantUserPermissionMetadata';
     /**
      * ID of the MySQL cluster the user belongs to.
      * To get the cluster ID, use a [ClusterService.List] request.
@@ -150,6 +162,7 @@ export interface GrantUserPermissionMetadata {
 }
 
 export interface RevokeUserPermissionRequest {
+    $type: 'yandex.cloud.mdb.mysql.v1alpha.RevokeUserPermissionRequest';
     /**
      * ID of the MySQL cluster the user belongs to.
      * To get the cluster ID, use a [ClusterService.List] request.
@@ -165,15 +178,22 @@ export interface RevokeUserPermissionRequest {
 }
 
 export interface RevokeUserPermissionMetadata {
+    $type: 'yandex.cloud.mdb.mysql.v1alpha.RevokeUserPermissionMetadata';
     /** ID of the MySQL cluster the user belongs to. */
     clusterId: string;
     /** Name of the user whose permission is being revoked. */
     userName: string;
 }
 
-const baseGetUserRequest: object = { clusterId: '', userName: '' };
+const baseGetUserRequest: object = {
+    $type: 'yandex.cloud.mdb.mysql.v1alpha.GetUserRequest',
+    clusterId: '',
+    userName: '',
+};
 
 export const GetUserRequest = {
+    $type: 'yandex.cloud.mdb.mysql.v1alpha.GetUserRequest' as const,
+
     encode(
         message: GetUserRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -247,13 +267,18 @@ export const GetUserRequest = {
     },
 };
 
+messageTypeRegistry.set(GetUserRequest.$type, GetUserRequest);
+
 const baseListUsersRequest: object = {
+    $type: 'yandex.cloud.mdb.mysql.v1alpha.ListUsersRequest',
     clusterId: '',
     pageSize: 0,
     pageToken: '',
 };
 
 export const ListUsersRequest = {
+    $type: 'yandex.cloud.mdb.mysql.v1alpha.ListUsersRequest' as const,
+
     encode(
         message: ListUsersRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -344,9 +369,16 @@ export const ListUsersRequest = {
     },
 };
 
-const baseListUsersResponse: object = { nextPageToken: '' };
+messageTypeRegistry.set(ListUsersRequest.$type, ListUsersRequest);
+
+const baseListUsersResponse: object = {
+    $type: 'yandex.cloud.mdb.mysql.v1alpha.ListUsersResponse',
+    nextPageToken: '',
+};
 
 export const ListUsersResponse = {
+    $type: 'yandex.cloud.mdb.mysql.v1alpha.ListUsersResponse' as const,
+
     encode(
         message: ListUsersResponse,
         writer: _m0.Writer = _m0.Writer.create()
@@ -436,9 +468,16 @@ export const ListUsersResponse = {
     },
 };
 
-const baseCreateUserRequest: object = { clusterId: '' };
+messageTypeRegistry.set(ListUsersResponse.$type, ListUsersResponse);
+
+const baseCreateUserRequest: object = {
+    $type: 'yandex.cloud.mdb.mysql.v1alpha.CreateUserRequest',
+    clusterId: '',
+};
 
 export const CreateUserRequest = {
+    $type: 'yandex.cloud.mdb.mysql.v1alpha.CreateUserRequest' as const,
+
     encode(
         message: CreateUserRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -518,9 +557,17 @@ export const CreateUserRequest = {
     },
 };
 
-const baseCreateUserMetadata: object = { clusterId: '', userName: '' };
+messageTypeRegistry.set(CreateUserRequest.$type, CreateUserRequest);
+
+const baseCreateUserMetadata: object = {
+    $type: 'yandex.cloud.mdb.mysql.v1alpha.CreateUserMetadata',
+    clusterId: '',
+    userName: '',
+};
 
 export const CreateUserMetadata = {
+    $type: 'yandex.cloud.mdb.mysql.v1alpha.CreateUserMetadata' as const,
+
     encode(
         message: CreateUserMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -597,13 +644,18 @@ export const CreateUserMetadata = {
     },
 };
 
+messageTypeRegistry.set(CreateUserMetadata.$type, CreateUserMetadata);
+
 const baseUpdateUserRequest: object = {
+    $type: 'yandex.cloud.mdb.mysql.v1alpha.UpdateUserRequest',
     clusterId: '',
     userName: '',
     password: '',
 };
 
 export const UpdateUserRequest = {
+    $type: 'yandex.cloud.mdb.mysql.v1alpha.UpdateUserRequest' as const,
+
     encode(
         message: UpdateUserRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -748,9 +800,17 @@ export const UpdateUserRequest = {
     },
 };
 
-const baseUpdateUserMetadata: object = { clusterId: '', userName: '' };
+messageTypeRegistry.set(UpdateUserRequest.$type, UpdateUserRequest);
+
+const baseUpdateUserMetadata: object = {
+    $type: 'yandex.cloud.mdb.mysql.v1alpha.UpdateUserMetadata',
+    clusterId: '',
+    userName: '',
+};
 
 export const UpdateUserMetadata = {
+    $type: 'yandex.cloud.mdb.mysql.v1alpha.UpdateUserMetadata' as const,
+
     encode(
         message: UpdateUserMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -827,9 +887,17 @@ export const UpdateUserMetadata = {
     },
 };
 
-const baseDeleteUserRequest: object = { clusterId: '', userName: '' };
+messageTypeRegistry.set(UpdateUserMetadata.$type, UpdateUserMetadata);
+
+const baseDeleteUserRequest: object = {
+    $type: 'yandex.cloud.mdb.mysql.v1alpha.DeleteUserRequest',
+    clusterId: '',
+    userName: '',
+};
 
 export const DeleteUserRequest = {
+    $type: 'yandex.cloud.mdb.mysql.v1alpha.DeleteUserRequest' as const,
+
     encode(
         message: DeleteUserRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -903,9 +971,17 @@ export const DeleteUserRequest = {
     },
 };
 
-const baseDeleteUserMetadata: object = { clusterId: '', userName: '' };
+messageTypeRegistry.set(DeleteUserRequest.$type, DeleteUserRequest);
+
+const baseDeleteUserMetadata: object = {
+    $type: 'yandex.cloud.mdb.mysql.v1alpha.DeleteUserMetadata',
+    clusterId: '',
+    userName: '',
+};
 
 export const DeleteUserMetadata = {
+    $type: 'yandex.cloud.mdb.mysql.v1alpha.DeleteUserMetadata' as const,
+
     encode(
         message: DeleteUserMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -982,9 +1058,17 @@ export const DeleteUserMetadata = {
     },
 };
 
-const baseGrantUserPermissionRequest: object = { clusterId: '', userName: '' };
+messageTypeRegistry.set(DeleteUserMetadata.$type, DeleteUserMetadata);
+
+const baseGrantUserPermissionRequest: object = {
+    $type: 'yandex.cloud.mdb.mysql.v1alpha.GrantUserPermissionRequest',
+    clusterId: '',
+    userName: '',
+};
 
 export const GrantUserPermissionRequest = {
+    $type: 'yandex.cloud.mdb.mysql.v1alpha.GrantUserPermissionRequest' as const,
+
     encode(
         message: GrantUserPermissionRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1095,9 +1179,20 @@ export const GrantUserPermissionRequest = {
     },
 };
 
-const baseGrantUserPermissionMetadata: object = { clusterId: '', userName: '' };
+messageTypeRegistry.set(
+    GrantUserPermissionRequest.$type,
+    GrantUserPermissionRequest
+);
+
+const baseGrantUserPermissionMetadata: object = {
+    $type: 'yandex.cloud.mdb.mysql.v1alpha.GrantUserPermissionMetadata',
+    clusterId: '',
+    userName: '',
+};
 
 export const GrantUserPermissionMetadata = {
+    $type: 'yandex.cloud.mdb.mysql.v1alpha.GrantUserPermissionMetadata' as const,
+
     encode(
         message: GrantUserPermissionMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1182,13 +1277,21 @@ export const GrantUserPermissionMetadata = {
     },
 };
 
+messageTypeRegistry.set(
+    GrantUserPermissionMetadata.$type,
+    GrantUserPermissionMetadata
+);
+
 const baseRevokeUserPermissionRequest: object = {
+    $type: 'yandex.cloud.mdb.mysql.v1alpha.RevokeUserPermissionRequest',
     clusterId: '',
     userName: '',
     databaseName: '',
 };
 
 export const RevokeUserPermissionRequest = {
+    $type: 'yandex.cloud.mdb.mysql.v1alpha.RevokeUserPermissionRequest' as const,
+
     encode(
         message: RevokeUserPermissionRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1291,12 +1394,20 @@ export const RevokeUserPermissionRequest = {
     },
 };
 
+messageTypeRegistry.set(
+    RevokeUserPermissionRequest.$type,
+    RevokeUserPermissionRequest
+);
+
 const baseRevokeUserPermissionMetadata: object = {
+    $type: 'yandex.cloud.mdb.mysql.v1alpha.RevokeUserPermissionMetadata',
     clusterId: '',
     userName: '',
 };
 
 export const RevokeUserPermissionMetadata = {
+    $type: 'yandex.cloud.mdb.mysql.v1alpha.RevokeUserPermissionMetadata' as const,
+
     encode(
         message: RevokeUserPermissionMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1380,6 +1491,11 @@ export const RevokeUserPermissionMetadata = {
         return message;
     },
 };
+
+messageTypeRegistry.set(
+    RevokeUserPermissionMetadata.$type,
+    RevokeUserPermissionMetadata
+);
 
 /** A set of methods for managing MySQL users. */
 export const UserServiceService = {
@@ -1661,7 +1777,7 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 function longToNumber(long: Long): number {

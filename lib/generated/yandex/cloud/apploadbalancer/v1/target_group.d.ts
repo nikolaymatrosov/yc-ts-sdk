@@ -5,6 +5,7 @@ export declare const protobufPackage = "yandex.cloud.apploadbalancer.v1";
  * For details about the concept, see [documentation](/docs/application-load-balancer/concepts/target-group).
  */
 export interface TargetGroup {
+    $type: 'yandex.cloud.apploadbalancer.v1.TargetGroup';
     /** ID of the target group. Generated at creation time. */
     id: string;
     /** Name of the target group. The name is unique within the folder. */
@@ -26,6 +27,7 @@ export interface TargetGroup {
     createdAt: Date | undefined;
 }
 export interface TargetGroup_LabelsEntry {
+    $type: 'yandex.cloud.apploadbalancer.v1.TargetGroup.LabelsEntry';
     key: string;
     value: string;
 }
@@ -34,12 +36,14 @@ export interface TargetGroup_LabelsEntry {
  * For details about the concept, see [documentation](/docs/application-load-balancer/concepts/target-group).
  */
 export interface Target {
+    $type: 'yandex.cloud.apploadbalancer.v1.Target';
     /** IP address of the target. */
     ipAddress: string | undefined;
     /** ID of the subnet that the target is connected to. */
     subnetId: string;
 }
 export declare const TargetGroup: {
+    $type: "yandex.cloud.apploadbalancer.v1.TargetGroup";
     encode(message: TargetGroup, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): TargetGroup;
     fromJSON(object: any): TargetGroup;
@@ -47,6 +51,7 @@ export declare const TargetGroup: {
     fromPartial(object: DeepPartial<TargetGroup>): TargetGroup;
 };
 export declare const TargetGroup_LabelsEntry: {
+    $type: "yandex.cloud.apploadbalancer.v1.TargetGroup.LabelsEntry";
     encode(message: TargetGroup_LabelsEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): TargetGroup_LabelsEntry;
     fromJSON(object: any): TargetGroup_LabelsEntry;
@@ -54,6 +59,7 @@ export declare const TargetGroup_LabelsEntry: {
     fromPartial(object: DeepPartial<TargetGroup_LabelsEntry>): TargetGroup_LabelsEntry;
 };
 export declare const Target: {
+    $type: "yandex.cloud.apploadbalancer.v1.Target";
     encode(message: Target, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Target;
     fromJSON(object: any): Target;
@@ -62,6 +68,6 @@ export declare const Target: {
 };
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

@@ -1,6 +1,7 @@
 import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.compute.v1";
 export interface DiskPlacementGroup {
+    $type: 'yandex.cloud.compute.v1.DiskPlacementGroup';
     /** ID of the placement group. */
     id: string;
     /** ID of the folder that the placement group belongs to. */
@@ -35,12 +36,15 @@ export declare enum DiskPlacementGroup_Status {
 export declare function diskPlacementGroup_StatusFromJSON(object: any): DiskPlacementGroup_Status;
 export declare function diskPlacementGroup_StatusToJSON(object: DiskPlacementGroup_Status): string;
 export interface DiskPlacementGroup_LabelsEntry {
+    $type: 'yandex.cloud.compute.v1.DiskPlacementGroup.LabelsEntry';
     key: string;
     value: string;
 }
 export interface DiskSpreadPlacementStrategy {
+    $type: 'yandex.cloud.compute.v1.DiskSpreadPlacementStrategy';
 }
 export declare const DiskPlacementGroup: {
+    $type: "yandex.cloud.compute.v1.DiskPlacementGroup";
     encode(message: DiskPlacementGroup, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DiskPlacementGroup;
     fromJSON(object: any): DiskPlacementGroup;
@@ -48,6 +52,7 @@ export declare const DiskPlacementGroup: {
     fromPartial(object: DeepPartial<DiskPlacementGroup>): DiskPlacementGroup;
 };
 export declare const DiskPlacementGroup_LabelsEntry: {
+    $type: "yandex.cloud.compute.v1.DiskPlacementGroup.LabelsEntry";
     encode(message: DiskPlacementGroup_LabelsEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DiskPlacementGroup_LabelsEntry;
     fromJSON(object: any): DiskPlacementGroup_LabelsEntry;
@@ -55,6 +60,7 @@ export declare const DiskPlacementGroup_LabelsEntry: {
     fromPartial(object: DeepPartial<DiskPlacementGroup_LabelsEntry>): DiskPlacementGroup_LabelsEntry;
 };
 export declare const DiskSpreadPlacementStrategy: {
+    $type: "yandex.cloud.compute.v1.DiskSpreadPlacementStrategy";
     encode(_: DiskSpreadPlacementStrategy, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DiskSpreadPlacementStrategy;
     fromJSON(_: any): DiskSpreadPlacementStrategy;
@@ -63,6 +69,6 @@ export declare const DiskSpreadPlacementStrategy: {
 };
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

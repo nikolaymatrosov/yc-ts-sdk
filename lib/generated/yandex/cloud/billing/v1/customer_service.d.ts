@@ -5,6 +5,7 @@ import { ChannelCredentials, ChannelOptions, UntypedServiceImplementation, handl
 import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.billing.v1";
 export interface ListCustomersRequest {
+    $type: 'yandex.cloud.billing.v1.ListCustomersRequest';
     /** ID of the reseller. */
     resellerId: string;
     /**
@@ -22,6 +23,7 @@ export interface ListCustomersRequest {
     pageToken: string;
 }
 export interface ListCustomersResponse {
+    $type: 'yandex.cloud.billing.v1.ListCustomersResponse';
     /** List of customers. */
     customers: Customer[];
     /**
@@ -35,6 +37,7 @@ export interface ListCustomersResponse {
     nextPageToken: string;
 }
 export interface InviteCustomerRequest {
+    $type: 'yandex.cloud.billing.v1.InviteCustomerRequest';
     /** ID of the reseller that customer will be associated with. */
     resellerId: string;
     /** Name of the customer. */
@@ -45,6 +48,7 @@ export interface InviteCustomerRequest {
     person: CustomerPerson | undefined;
 }
 export interface ActivateCustomerRequest {
+    $type: 'yandex.cloud.billing.v1.ActivateCustomerRequest';
     /**
      * ID of the customer.
      * To get the customer ID, use [CustomerService.List] request.
@@ -52,6 +56,7 @@ export interface ActivateCustomerRequest {
     customerId: string;
 }
 export interface SuspendCustomerRequest {
+    $type: 'yandex.cloud.billing.v1.SuspendCustomerRequest';
     /**
      * ID of the customer.
      * To get the customer ID, use [CustomerService.List] request.
@@ -59,12 +64,14 @@ export interface SuspendCustomerRequest {
     customerId: string;
 }
 export interface CustomerMetadata {
+    $type: 'yandex.cloud.billing.v1.CustomerMetadata';
     /** ID of the reseller. */
     resellerId: string;
     /** ID of the customer. */
     customerId: string;
 }
 export declare const ListCustomersRequest: {
+    $type: "yandex.cloud.billing.v1.ListCustomersRequest";
     encode(message: ListCustomersRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListCustomersRequest;
     fromJSON(object: any): ListCustomersRequest;
@@ -72,6 +79,7 @@ export declare const ListCustomersRequest: {
     fromPartial(object: DeepPartial<ListCustomersRequest>): ListCustomersRequest;
 };
 export declare const ListCustomersResponse: {
+    $type: "yandex.cloud.billing.v1.ListCustomersResponse";
     encode(message: ListCustomersResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListCustomersResponse;
     fromJSON(object: any): ListCustomersResponse;
@@ -79,6 +87,7 @@ export declare const ListCustomersResponse: {
     fromPartial(object: DeepPartial<ListCustomersResponse>): ListCustomersResponse;
 };
 export declare const InviteCustomerRequest: {
+    $type: "yandex.cloud.billing.v1.InviteCustomerRequest";
     encode(message: InviteCustomerRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): InviteCustomerRequest;
     fromJSON(object: any): InviteCustomerRequest;
@@ -86,6 +95,7 @@ export declare const InviteCustomerRequest: {
     fromPartial(object: DeepPartial<InviteCustomerRequest>): InviteCustomerRequest;
 };
 export declare const ActivateCustomerRequest: {
+    $type: "yandex.cloud.billing.v1.ActivateCustomerRequest";
     encode(message: ActivateCustomerRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ActivateCustomerRequest;
     fromJSON(object: any): ActivateCustomerRequest;
@@ -93,6 +103,7 @@ export declare const ActivateCustomerRequest: {
     fromPartial(object: DeepPartial<ActivateCustomerRequest>): ActivateCustomerRequest;
 };
 export declare const SuspendCustomerRequest: {
+    $type: "yandex.cloud.billing.v1.SuspendCustomerRequest";
     encode(message: SuspendCustomerRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): SuspendCustomerRequest;
     fromJSON(object: any): SuspendCustomerRequest;
@@ -100,6 +111,7 @@ export declare const SuspendCustomerRequest: {
     fromPartial(object: DeepPartial<SuspendCustomerRequest>): SuspendCustomerRequest;
 };
 export declare const CustomerMetadata: {
+    $type: "yandex.cloud.billing.v1.CustomerMetadata";
     encode(message: CustomerMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CustomerMetadata;
     fromJSON(object: any): CustomerMetadata;
@@ -180,6 +192,6 @@ export interface CustomerServiceClient extends Client {
 export declare const CustomerServiceClient: new (address: string, credentials: ChannelCredentials, options?: Partial<ChannelOptions> | undefined) => CustomerServiceClient;
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

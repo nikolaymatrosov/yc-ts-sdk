@@ -1,5 +1,6 @@
 /* eslint-disable */
 import { FieldMask } from '../../../../../google/protobuf/field_mask';
+import { messageTypeRegistry } from '../../../../../typeRegistry';
 import { AccessKey } from '../../../../../yandex/cloud/iam/v1/awscompatibility/access_key';
 import { Operation } from '../../../../../yandex/cloud/operation/operation';
 import {
@@ -20,6 +21,7 @@ import _m0 from 'protobufjs/minimal';
 export const protobufPackage = 'yandex.cloud.iam.v1.awscompatibility';
 
 export interface GetAccessKeyRequest {
+    $type: 'yandex.cloud.iam.v1.awscompatibility.GetAccessKeyRequest';
     /**
      * ID of the AccessKey resource to return.
      * To get the access key ID, use a [AccessKeyService.List] request.
@@ -28,6 +30,7 @@ export interface GetAccessKeyRequest {
 }
 
 export interface ListAccessKeysRequest {
+    $type: 'yandex.cloud.iam.v1.awscompatibility.ListAccessKeysRequest';
     /**
      * ID of the service account to list access keys for.
      * To get the service account ID, use a [yandex.cloud.iam.v1.ServiceAccountService.List] request.
@@ -51,6 +54,7 @@ export interface ListAccessKeysRequest {
 }
 
 export interface ListAccessKeysResponse {
+    $type: 'yandex.cloud.iam.v1.awscompatibility.ListAccessKeysResponse';
     /** List of access keys. */
     accessKeys: AccessKey[];
     /**
@@ -65,6 +69,7 @@ export interface ListAccessKeysResponse {
 }
 
 export interface CreateAccessKeyRequest {
+    $type: 'yandex.cloud.iam.v1.awscompatibility.CreateAccessKeyRequest';
     /**
      * ID of the service account to create an access key for.
      * To get the service account ID, use a [yandex.cloud.iam.v1.ServiceAccountService.List] request.
@@ -76,6 +81,7 @@ export interface CreateAccessKeyRequest {
 }
 
 export interface CreateAccessKeyResponse {
+    $type: 'yandex.cloud.iam.v1.awscompatibility.CreateAccessKeyResponse';
     /** AccessKey resource. */
     accessKey: AccessKey | undefined;
     /**
@@ -86,6 +92,7 @@ export interface CreateAccessKeyResponse {
 }
 
 export interface UpdateAccessKeyRequest {
+    $type: 'yandex.cloud.iam.v1.awscompatibility.UpdateAccessKeyRequest';
     /**
      * ID of the AccessKey resource to update.
      * To get the access key ID, use a [AccessKeyService.List] request.
@@ -98,11 +105,13 @@ export interface UpdateAccessKeyRequest {
 }
 
 export interface UpdateAccessKeyMetadata {
+    $type: 'yandex.cloud.iam.v1.awscompatibility.UpdateAccessKeyMetadata';
     /** ID of the AccessKey resource that is being updated. */
     accessKeyId: string;
 }
 
 export interface DeleteAccessKeyRequest {
+    $type: 'yandex.cloud.iam.v1.awscompatibility.DeleteAccessKeyRequest';
     /**
      * ID of the access key to delete.
      * To get the access key ID, use a [AccessKeyService.List] request.
@@ -111,11 +120,13 @@ export interface DeleteAccessKeyRequest {
 }
 
 export interface DeleteAccessKeyMetadata {
+    $type: 'yandex.cloud.iam.v1.awscompatibility.DeleteAccessKeyMetadata';
     /** ID of the access key that is being deleted. */
     accessKeyId: string;
 }
 
 export interface ListAccessKeyOperationsRequest {
+    $type: 'yandex.cloud.iam.v1.awscompatibility.ListAccessKeyOperationsRequest';
     /** ID of the key to list operations for. */
     accessKeyId: string;
     /**
@@ -134,6 +145,7 @@ export interface ListAccessKeyOperationsRequest {
 }
 
 export interface ListAccessKeyOperationsResponse {
+    $type: 'yandex.cloud.iam.v1.awscompatibility.ListAccessKeyOperationsResponse';
     /** List of operations for the specified access key. */
     operations: Operation[];
     /**
@@ -145,9 +157,14 @@ export interface ListAccessKeyOperationsResponse {
     nextPageToken: string;
 }
 
-const baseGetAccessKeyRequest: object = { accessKeyId: '' };
+const baseGetAccessKeyRequest: object = {
+    $type: 'yandex.cloud.iam.v1.awscompatibility.GetAccessKeyRequest',
+    accessKeyId: '',
+};
 
 export const GetAccessKeyRequest = {
+    $type: 'yandex.cloud.iam.v1.awscompatibility.GetAccessKeyRequest' as const,
+
     encode(
         message: GetAccessKeyRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -208,13 +225,18 @@ export const GetAccessKeyRequest = {
     },
 };
 
+messageTypeRegistry.set(GetAccessKeyRequest.$type, GetAccessKeyRequest);
+
 const baseListAccessKeysRequest: object = {
+    $type: 'yandex.cloud.iam.v1.awscompatibility.ListAccessKeysRequest',
     serviceAccountId: '',
     pageSize: 0,
     pageToken: '',
 };
 
 export const ListAccessKeysRequest = {
+    $type: 'yandex.cloud.iam.v1.awscompatibility.ListAccessKeysRequest' as const,
+
     encode(
         message: ListAccessKeysRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -323,9 +345,16 @@ export const ListAccessKeysRequest = {
     },
 };
 
-const baseListAccessKeysResponse: object = { nextPageToken: '' };
+messageTypeRegistry.set(ListAccessKeysRequest.$type, ListAccessKeysRequest);
+
+const baseListAccessKeysResponse: object = {
+    $type: 'yandex.cloud.iam.v1.awscompatibility.ListAccessKeysResponse',
+    nextPageToken: '',
+};
 
 export const ListAccessKeysResponse = {
+    $type: 'yandex.cloud.iam.v1.awscompatibility.ListAccessKeysResponse' as const,
+
     encode(
         message: ListAccessKeysResponse,
         writer: _m0.Writer = _m0.Writer.create()
@@ -428,12 +457,17 @@ export const ListAccessKeysResponse = {
     },
 };
 
+messageTypeRegistry.set(ListAccessKeysResponse.$type, ListAccessKeysResponse);
+
 const baseCreateAccessKeyRequest: object = {
+    $type: 'yandex.cloud.iam.v1.awscompatibility.CreateAccessKeyRequest',
     serviceAccountId: '',
     description: '',
 };
 
 export const CreateAccessKeyRequest = {
+    $type: 'yandex.cloud.iam.v1.awscompatibility.CreateAccessKeyRequest' as const,
+
     encode(
         message: CreateAccessKeyRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -526,9 +560,16 @@ export const CreateAccessKeyRequest = {
     },
 };
 
-const baseCreateAccessKeyResponse: object = { secret: '' };
+messageTypeRegistry.set(CreateAccessKeyRequest.$type, CreateAccessKeyRequest);
+
+const baseCreateAccessKeyResponse: object = {
+    $type: 'yandex.cloud.iam.v1.awscompatibility.CreateAccessKeyResponse',
+    secret: '',
+};
 
 export const CreateAccessKeyResponse = {
+    $type: 'yandex.cloud.iam.v1.awscompatibility.CreateAccessKeyResponse' as const,
+
     encode(
         message: CreateAccessKeyResponse,
         writer: _m0.Writer = _m0.Writer.create()
@@ -622,9 +663,17 @@ export const CreateAccessKeyResponse = {
     },
 };
 
-const baseUpdateAccessKeyRequest: object = { accessKeyId: '', description: '' };
+messageTypeRegistry.set(CreateAccessKeyResponse.$type, CreateAccessKeyResponse);
+
+const baseUpdateAccessKeyRequest: object = {
+    $type: 'yandex.cloud.iam.v1.awscompatibility.UpdateAccessKeyRequest',
+    accessKeyId: '',
+    description: '',
+};
 
 export const UpdateAccessKeyRequest = {
+    $type: 'yandex.cloud.iam.v1.awscompatibility.UpdateAccessKeyRequest' as const,
+
     encode(
         message: UpdateAccessKeyRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -737,9 +786,16 @@ export const UpdateAccessKeyRequest = {
     },
 };
 
-const baseUpdateAccessKeyMetadata: object = { accessKeyId: '' };
+messageTypeRegistry.set(UpdateAccessKeyRequest.$type, UpdateAccessKeyRequest);
+
+const baseUpdateAccessKeyMetadata: object = {
+    $type: 'yandex.cloud.iam.v1.awscompatibility.UpdateAccessKeyMetadata',
+    accessKeyId: '',
+};
 
 export const UpdateAccessKeyMetadata = {
+    $type: 'yandex.cloud.iam.v1.awscompatibility.UpdateAccessKeyMetadata' as const,
+
     encode(
         message: UpdateAccessKeyMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -808,9 +864,16 @@ export const UpdateAccessKeyMetadata = {
     },
 };
 
-const baseDeleteAccessKeyRequest: object = { accessKeyId: '' };
+messageTypeRegistry.set(UpdateAccessKeyMetadata.$type, UpdateAccessKeyMetadata);
+
+const baseDeleteAccessKeyRequest: object = {
+    $type: 'yandex.cloud.iam.v1.awscompatibility.DeleteAccessKeyRequest',
+    accessKeyId: '',
+};
 
 export const DeleteAccessKeyRequest = {
+    $type: 'yandex.cloud.iam.v1.awscompatibility.DeleteAccessKeyRequest' as const,
+
     encode(
         message: DeleteAccessKeyRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -879,9 +942,16 @@ export const DeleteAccessKeyRequest = {
     },
 };
 
-const baseDeleteAccessKeyMetadata: object = { accessKeyId: '' };
+messageTypeRegistry.set(DeleteAccessKeyRequest.$type, DeleteAccessKeyRequest);
+
+const baseDeleteAccessKeyMetadata: object = {
+    $type: 'yandex.cloud.iam.v1.awscompatibility.DeleteAccessKeyMetadata',
+    accessKeyId: '',
+};
 
 export const DeleteAccessKeyMetadata = {
+    $type: 'yandex.cloud.iam.v1.awscompatibility.DeleteAccessKeyMetadata' as const,
+
     encode(
         message: DeleteAccessKeyMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -950,13 +1020,18 @@ export const DeleteAccessKeyMetadata = {
     },
 };
 
+messageTypeRegistry.set(DeleteAccessKeyMetadata.$type, DeleteAccessKeyMetadata);
+
 const baseListAccessKeyOperationsRequest: object = {
+    $type: 'yandex.cloud.iam.v1.awscompatibility.ListAccessKeyOperationsRequest',
     accessKeyId: '',
     pageSize: 0,
     pageToken: '',
 };
 
 export const ListAccessKeyOperationsRequest = {
+    $type: 'yandex.cloud.iam.v1.awscompatibility.ListAccessKeyOperationsRequest' as const,
+
     encode(
         message: ListAccessKeyOperationsRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1059,9 +1134,19 @@ export const ListAccessKeyOperationsRequest = {
     },
 };
 
-const baseListAccessKeyOperationsResponse: object = { nextPageToken: '' };
+messageTypeRegistry.set(
+    ListAccessKeyOperationsRequest.$type,
+    ListAccessKeyOperationsRequest
+);
+
+const baseListAccessKeyOperationsResponse: object = {
+    $type: 'yandex.cloud.iam.v1.awscompatibility.ListAccessKeyOperationsResponse',
+    nextPageToken: '',
+};
 
 export const ListAccessKeyOperationsResponse = {
+    $type: 'yandex.cloud.iam.v1.awscompatibility.ListAccessKeyOperationsResponse' as const,
+
     encode(
         message: ListAccessKeyOperationsResponse,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1163,6 +1248,11 @@ export const ListAccessKeyOperationsResponse = {
         return message;
     },
 };
+
+messageTypeRegistry.set(
+    ListAccessKeyOperationsResponse.$type,
+    ListAccessKeyOperationsResponse
+);
 
 /** A set of methods for managing access keys. */
 export const AccessKeyServiceService = {
@@ -1442,7 +1532,7 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 function longToNumber(long: Long): number {

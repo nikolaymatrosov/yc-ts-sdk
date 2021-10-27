@@ -1,4 +1,5 @@
 /* eslint-disable */
+import { messageTypeRegistry } from '../../../../typeRegistry';
 import Long from 'long';
 import _m0 from 'protobufjs/minimal';
 
@@ -10,6 +11,7 @@ export const protobufPackage = 'yandex.cloud.compute.v1';
  * TODO: Do we need sockets here?
  */
 export interface HostType {
+    $type: 'yandex.cloud.compute.v1.HostType';
     /** Unique type identifier. */
     id: string;
     /** Total number of cores available for instances. */
@@ -18,9 +20,16 @@ export interface HostType {
     memory: number;
 }
 
-const baseHostType: object = { id: '', cores: 0, memory: 0 };
+const baseHostType: object = {
+    $type: 'yandex.cloud.compute.v1.HostType',
+    id: '',
+    cores: 0,
+    memory: 0,
+};
 
 export const HostType = {
+    $type: 'yandex.cloud.compute.v1.HostType' as const,
+
     encode(
         message: HostType,
         writer: _m0.Writer = _m0.Writer.create()
@@ -111,6 +120,8 @@ export const HostType = {
     },
 };
 
+messageTypeRegistry.set(HostType.$type, HostType);
+
 declare var self: any | undefined;
 declare var window: any | undefined;
 declare var global: any | undefined;
@@ -137,7 +148,7 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 function longToNumber(long: Long): number {

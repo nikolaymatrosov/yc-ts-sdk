@@ -2,6 +2,7 @@
 import { Timestamp } from '../../../../../google/protobuf/timestamp';
 import { BoolValue, Int64Value } from '../../../../../google/protobuf/wrappers';
 import { TimeOfDay } from '../../../../../google/type/timeofday';
+import { messageTypeRegistry } from '../../../../../typeRegistry';
 import { Postgresqlhostconfig96 } from '../../../../../yandex/cloud/mdb/postgresql/v1/config/host9_6';
 import { PostgresqlHostConfig10 } from '../../../../../yandex/cloud/mdb/postgresql/v1/config/host10';
 import { Postgresqlhostconfig101c } from '../../../../../yandex/cloud/mdb/postgresql/v1/config/host10_1c';
@@ -32,6 +33,7 @@ export const protobufPackage = 'yandex.cloud.mdb.postgresql.v1';
  * the [Concepts](/docs/managed-postgresql/concepts) section of the documentation.
  */
 export interface Cluster {
+    $type: 'yandex.cloud.mdb.postgresql.v1.Cluster';
     /**
      * ID of the PostgreSQL cluster.
      * This ID is assigned by MDB at creation time.
@@ -246,12 +248,14 @@ export function cluster_StatusToJSON(object: Cluster_Status): string {
 }
 
 export interface Cluster_LabelsEntry {
+    $type: 'yandex.cloud.mdb.postgresql.v1.Cluster.LabelsEntry';
     key: string;
     value: string;
 }
 
 /** Monitoring system. */
 export interface Monitoring {
+    $type: 'yandex.cloud.mdb.postgresql.v1.Monitoring';
     /** Name of the monitoring system. */
     name: string;
     /** Description of the monitoring system. */
@@ -261,6 +265,7 @@ export interface Monitoring {
 }
 
 export interface ClusterConfig {
+    $type: 'yandex.cloud.mdb.postgresql.v1.ClusterConfig';
     /** Version of PostgreSQL server software. */
     version: string;
     /** Configuration of a PostgreSQL 9.6 server. */
@@ -296,6 +301,7 @@ export interface ClusterConfig {
 }
 
 export interface ConnectionPoolerConfig {
+    $type: 'yandex.cloud.mdb.postgresql.v1.ConnectionPoolerConfig';
     /**
      * Mode that the connection pooler is working in.
      * See descriptions of all modes in the [documentation for PgBouncer](https://pgbouncer.github.io/usage).
@@ -357,6 +363,7 @@ export function connectionPoolerConfig_PoolingModeToJSON(
 }
 
 export interface Host {
+    $type: 'yandex.cloud.mdb.postgresql.v1.Host';
     /**
      * Name of the PostgreSQL host. The host name is assigned by MDB at creation time, and cannot be changed.
      * 1-63 characters long.
@@ -531,6 +538,7 @@ export function host_HealthToJSON(object: Host_Health): string {
 }
 
 export interface HostConfig {
+    $type: 'yandex.cloud.mdb.postgresql.v1.HostConfig';
     /** Configuration for a host with PostgreSQL 9.6 server deployed. */
     postgresqlConfig96: Postgresqlhostconfig96 | undefined;
     /** Configuration for a host with PostgreSQL 10 1C server deployed. */
@@ -550,6 +558,7 @@ export interface HostConfig {
 }
 
 export interface Service {
+    $type: 'yandex.cloud.mdb.postgresql.v1.Service';
     /** Type of the service provided by the host. */
     type: Service_Type;
     /** Status code of server availability. */
@@ -638,6 +647,7 @@ export function service_HealthToJSON(object: Service_Health): string {
 }
 
 export interface Resources {
+    $type: 'yandex.cloud.mdb.postgresql.v1.Resources';
     /**
      * ID of the preset for computational resources available to a host (CPU, memory etc.).
      * All available presets are listed in the [documentation](/docs/managed-postgresql/concepts/instance-types).
@@ -656,6 +666,7 @@ export interface Resources {
 }
 
 export interface Access {
+    $type: 'yandex.cloud.mdb.postgresql.v1.Access';
     /** Allow access for DataLens */
     dataLens: boolean;
     /**
@@ -669,6 +680,7 @@ export interface Access {
 }
 
 export interface PerformanceDiagnostics {
+    $type: 'yandex.cloud.mdb.postgresql.v1.PerformanceDiagnostics';
     /** Configuration setting which enables/disables performance diagnostics service in cluster. */
     enabled: boolean;
     /** Interval (in seconds) for pg_stat_activity sampling */
@@ -678,6 +690,7 @@ export interface PerformanceDiagnostics {
 }
 
 const baseCluster: object = {
+    $type: 'yandex.cloud.mdb.postgresql.v1.Cluster',
     id: '',
     folderId: '',
     name: '',
@@ -691,6 +704,8 @@ const baseCluster: object = {
 };
 
 export const Cluster = {
+    $type: 'yandex.cloud.mdb.postgresql.v1.Cluster' as const,
+
     encode(
         message: Cluster,
         writer: _m0.Writer = _m0.Writer.create()
@@ -715,7 +730,11 @@ export const Cluster = {
         }
         Object.entries(message.labels).forEach(([key, value]) => {
             Cluster_LabelsEntry.encode(
-                { key: key as any, value },
+                {
+                    $type: 'yandex.cloud.mdb.postgresql.v1.Cluster.LabelsEntry',
+                    key: key as any,
+                    value,
+                },
                 writer.uint32(50).fork()
             ).ldelim();
         });
@@ -1111,9 +1130,17 @@ export const Cluster = {
     },
 };
 
-const baseCluster_LabelsEntry: object = { key: '', value: '' };
+messageTypeRegistry.set(Cluster.$type, Cluster);
+
+const baseCluster_LabelsEntry: object = {
+    $type: 'yandex.cloud.mdb.postgresql.v1.Cluster.LabelsEntry',
+    key: '',
+    value: '',
+};
 
 export const Cluster_LabelsEntry = {
+    $type: 'yandex.cloud.mdb.postgresql.v1.Cluster.LabelsEntry' as const,
+
     encode(
         message: Cluster_LabelsEntry,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1190,9 +1217,18 @@ export const Cluster_LabelsEntry = {
     },
 };
 
-const baseMonitoring: object = { name: '', description: '', link: '' };
+messageTypeRegistry.set(Cluster_LabelsEntry.$type, Cluster_LabelsEntry);
+
+const baseMonitoring: object = {
+    $type: 'yandex.cloud.mdb.postgresql.v1.Monitoring',
+    name: '',
+    description: '',
+    link: '',
+};
 
 export const Monitoring = {
+    $type: 'yandex.cloud.mdb.postgresql.v1.Monitoring' as const,
+
     encode(
         message: Monitoring,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1284,9 +1320,16 @@ export const Monitoring = {
     },
 };
 
-const baseClusterConfig: object = { version: '' };
+messageTypeRegistry.set(Monitoring.$type, Monitoring);
+
+const baseClusterConfig: object = {
+    $type: 'yandex.cloud.mdb.postgresql.v1.ClusterConfig',
+    version: '',
+};
 
 export const ClusterConfig = {
+    $type: 'yandex.cloud.mdb.postgresql.v1.ClusterConfig' as const,
+
     encode(
         message: ClusterConfig,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1356,7 +1399,10 @@ export const ClusterConfig = {
         }
         if (message.autofailover !== undefined) {
             BoolValue.encode(
-                { value: message.autofailover! },
+                {
+                    $type: 'google.protobuf.BoolValue',
+                    value: message.autofailover!,
+                },
                 writer.uint32(50).fork()
             ).ldelim();
         }
@@ -1368,7 +1414,10 @@ export const ClusterConfig = {
         }
         if (message.backupRetainPeriodDays !== undefined) {
             Int64Value.encode(
-                { value: message.backupRetainPeriodDays! },
+                {
+                    $type: 'google.protobuf.Int64Value',
+                    value: message.backupRetainPeriodDays!,
+                },
                 writer.uint32(138).fork()
             ).ldelim();
         }
@@ -1827,9 +1876,16 @@ export const ClusterConfig = {
     },
 };
 
-const baseConnectionPoolerConfig: object = { poolingMode: 0 };
+messageTypeRegistry.set(ClusterConfig.$type, ClusterConfig);
+
+const baseConnectionPoolerConfig: object = {
+    $type: 'yandex.cloud.mdb.postgresql.v1.ConnectionPoolerConfig',
+    poolingMode: 0,
+};
 
 export const ConnectionPoolerConfig = {
+    $type: 'yandex.cloud.mdb.postgresql.v1.ConnectionPoolerConfig' as const,
+
     encode(
         message: ConnectionPoolerConfig,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1839,7 +1895,10 @@ export const ConnectionPoolerConfig = {
         }
         if (message.poolDiscard !== undefined) {
             BoolValue.encode(
-                { value: message.poolDiscard! },
+                {
+                    $type: 'google.protobuf.BoolValue',
+                    value: message.poolDiscard!,
+                },
                 writer.uint32(18).fork()
             ).ldelim();
         }
@@ -1926,7 +1985,10 @@ export const ConnectionPoolerConfig = {
     },
 };
 
+messageTypeRegistry.set(ConnectionPoolerConfig.$type, ConnectionPoolerConfig);
+
 const baseHost: object = {
+    $type: 'yandex.cloud.mdb.postgresql.v1.Host',
     name: '',
     clusterId: '',
     zoneId: '',
@@ -1939,6 +2001,8 @@ const baseHost: object = {
 };
 
 export const Host = {
+    $type: 'yandex.cloud.mdb.postgresql.v1.Host' as const,
+
     encode(
         message: Host,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1975,7 +2039,10 @@ export const Host = {
         }
         if (message.priority !== undefined) {
             Int64Value.encode(
-                { value: message.priority! },
+                {
+                    $type: 'google.protobuf.Int64Value',
+                    value: message.priority!,
+                },
                 writer.uint32(82).fork()
             ).ldelim();
         }
@@ -2248,9 +2315,15 @@ export const Host = {
     },
 };
 
-const baseHostConfig: object = {};
+messageTypeRegistry.set(Host.$type, Host);
+
+const baseHostConfig: object = {
+    $type: 'yandex.cloud.mdb.postgresql.v1.HostConfig',
+};
 
 export const HostConfig = {
+    $type: 'yandex.cloud.mdb.postgresql.v1.HostConfig' as const,
+
     encode(
         message: HostConfig,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2581,9 +2654,17 @@ export const HostConfig = {
     },
 };
 
-const baseService: object = { type: 0, health: 0 };
+messageTypeRegistry.set(HostConfig.$type, HostConfig);
+
+const baseService: object = {
+    $type: 'yandex.cloud.mdb.postgresql.v1.Service',
+    type: 0,
+    health: 0,
+};
 
 export const Service = {
+    $type: 'yandex.cloud.mdb.postgresql.v1.Service' as const,
+
     encode(
         message: Service,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2659,13 +2740,18 @@ export const Service = {
     },
 };
 
+messageTypeRegistry.set(Service.$type, Service);
+
 const baseResources: object = {
+    $type: 'yandex.cloud.mdb.postgresql.v1.Resources',
     resourcePresetId: '',
     diskSize: 0,
     diskTypeId: '',
 };
 
 export const Resources = {
+    $type: 'yandex.cloud.mdb.postgresql.v1.Resources' as const,
+
     encode(
         message: Resources,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2764,13 +2850,18 @@ export const Resources = {
     },
 };
 
+messageTypeRegistry.set(Resources.$type, Resources);
+
 const baseAccess: object = {
+    $type: 'yandex.cloud.mdb.postgresql.v1.Access',
     dataLens: false,
     webSql: false,
     serverless: false,
 };
 
 export const Access = {
+    $type: 'yandex.cloud.mdb.postgresql.v1.Access' as const,
+
     encode(
         message: Access,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2862,13 +2953,18 @@ export const Access = {
     },
 };
 
+messageTypeRegistry.set(Access.$type, Access);
+
 const basePerformanceDiagnostics: object = {
+    $type: 'yandex.cloud.mdb.postgresql.v1.PerformanceDiagnostics',
     enabled: false,
     sessionsSamplingInterval: 0,
     statementsSamplingInterval: 0,
 };
 
 export const PerformanceDiagnostics = {
+    $type: 'yandex.cloud.mdb.postgresql.v1.PerformanceDiagnostics' as const,
+
     encode(
         message: PerformanceDiagnostics,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2994,6 +3090,8 @@ export const PerformanceDiagnostics = {
     },
 };
 
+messageTypeRegistry.set(PerformanceDiagnostics.$type, PerformanceDiagnostics);
+
 declare var self: any | undefined;
 declare var window: any | undefined;
 declare var global: any | undefined;
@@ -3020,13 +3118,13 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 function toTimestamp(date: Date): Timestamp {
     const seconds = date.getTime() / 1_000;
     const nanos = (date.getTime() % 1_000) * 1_000_000;
-    return { seconds, nanos };
+    return { $type: 'google.protobuf.Timestamp', seconds, nanos };
 }
 
 function fromTimestamp(t: Timestamp): Date {

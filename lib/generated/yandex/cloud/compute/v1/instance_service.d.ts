@@ -16,6 +16,7 @@ export declare enum InstanceView {
 export declare function instanceViewFromJSON(object: any): InstanceView;
 export declare function instanceViewToJSON(object: InstanceView): string;
 export interface GetInstanceRequest {
+    $type: 'yandex.cloud.compute.v1.GetInstanceRequest';
     /**
      * ID of the Instance resource to return.
      * To get the instance ID, use a [InstanceService.List] request.
@@ -25,6 +26,7 @@ export interface GetInstanceRequest {
     view: InstanceView;
 }
 export interface ListInstancesRequest {
+    $type: 'yandex.cloud.compute.v1.ListInstancesRequest';
     /**
      * ID of the Folder to list instances in.
      * To get the folder ID, use a [yandex.cloud.resourcemanager.v1.FolderService.List] request.
@@ -53,6 +55,7 @@ export interface ListInstancesRequest {
     filter: string;
 }
 export interface ListInstancesResponse {
+    $type: 'yandex.cloud.compute.v1.ListInstancesResponse';
     /** List of Instance resources. */
     instances: Instance[];
     /**
@@ -66,6 +69,7 @@ export interface ListInstancesResponse {
     nextPageToken: string;
 }
 export interface CreateInstanceRequest {
+    $type: 'yandex.cloud.compute.v1.CreateInstanceRequest';
     /**
      * ID of the folder to create an instance in.
      * To get the folder ID, use a [yandex.cloud.resourcemanager.v1.FolderService.List] request.
@@ -151,18 +155,22 @@ export interface CreateInstanceRequest {
     placementPolicy: PlacementPolicy | undefined;
 }
 export interface CreateInstanceRequest_LabelsEntry {
+    $type: 'yandex.cloud.compute.v1.CreateInstanceRequest.LabelsEntry';
     key: string;
     value: string;
 }
 export interface CreateInstanceRequest_MetadataEntry {
+    $type: 'yandex.cloud.compute.v1.CreateInstanceRequest.MetadataEntry';
     key: string;
     value: string;
 }
 export interface CreateInstanceMetadata {
+    $type: 'yandex.cloud.compute.v1.CreateInstanceMetadata';
     /** ID of the instance that is being created. */
     instanceId: string;
 }
 export interface UpdateInstanceRequest {
+    $type: 'yandex.cloud.compute.v1.UpdateInstanceRequest';
     /**
      * ID of the Instance resource to update.
      * To get the instance ID, use a [InstanceService.List] request.
@@ -222,18 +230,22 @@ export interface UpdateInstanceRequest {
     placementPolicy: PlacementPolicy | undefined;
 }
 export interface UpdateInstanceRequest_LabelsEntry {
+    $type: 'yandex.cloud.compute.v1.UpdateInstanceRequest.LabelsEntry';
     key: string;
     value: string;
 }
 export interface UpdateInstanceRequest_MetadataEntry {
+    $type: 'yandex.cloud.compute.v1.UpdateInstanceRequest.MetadataEntry';
     key: string;
     value: string;
 }
 export interface UpdateInstanceMetadata {
+    $type: 'yandex.cloud.compute.v1.UpdateInstanceMetadata';
     /** ID of the Instance resource that is being updated. */
     instanceId: string;
 }
 export interface DeleteInstanceRequest {
+    $type: 'yandex.cloud.compute.v1.DeleteInstanceRequest';
     /**
      * ID of the instance to delete.
      * To get the instance ID, use a [InstanceService.List] request.
@@ -241,10 +253,12 @@ export interface DeleteInstanceRequest {
     instanceId: string;
 }
 export interface DeleteInstanceMetadata {
+    $type: 'yandex.cloud.compute.v1.DeleteInstanceMetadata';
     /** ID of the instance that is being deleted. */
     instanceId: string;
 }
 export interface UpdateInstanceMetadataRequest {
+    $type: 'yandex.cloud.compute.v1.UpdateInstanceMetadataRequest';
     /** ID of the instance that is being updated. */
     instanceId: string;
     /** List of keys to be deleted. */
@@ -255,20 +269,24 @@ export interface UpdateInstanceMetadataRequest {
     };
 }
 export interface UpdateInstanceMetadataRequest_UpsertEntry {
+    $type: 'yandex.cloud.compute.v1.UpdateInstanceMetadataRequest.UpsertEntry';
     key: string;
     value: string;
 }
 export interface UpdateInstanceMetadataMetadata {
+    $type: 'yandex.cloud.compute.v1.UpdateInstanceMetadataMetadata';
     /** ID of the instance that is being updated. */
     instanceId: string;
 }
 export interface GetInstanceSerialPortOutputRequest {
+    $type: 'yandex.cloud.compute.v1.GetInstanceSerialPortOutputRequest';
     /** ID of the instance to return the serial port output for. */
     instanceId: string;
     /** Serial port to retrieve data from. The default is 1. */
     port: number;
 }
 export interface GetInstanceSerialPortOutputResponse {
+    $type: 'yandex.cloud.compute.v1.GetInstanceSerialPortOutputResponse';
     /**
      * The contents of the serial port output, starting from the time when the instance
      * started to boot.
@@ -276,6 +294,7 @@ export interface GetInstanceSerialPortOutputResponse {
     contents: string;
 }
 export interface StopInstanceRequest {
+    $type: 'yandex.cloud.compute.v1.StopInstanceRequest';
     /**
      * ID of the instance to stop.
      * To get the instance ID, use a [InstanceService.List] request.
@@ -283,10 +302,12 @@ export interface StopInstanceRequest {
     instanceId: string;
 }
 export interface StopInstanceMetadata {
+    $type: 'yandex.cloud.compute.v1.StopInstanceMetadata';
     /** ID of the instance that is being deleted. */
     instanceId: string;
 }
 export interface StartInstanceRequest {
+    $type: 'yandex.cloud.compute.v1.StartInstanceRequest';
     /**
      * ID of the instance to start.
      * To get the instance ID, use a [InstanceService.List] request.
@@ -294,10 +315,12 @@ export interface StartInstanceRequest {
     instanceId: string;
 }
 export interface StartInstanceMetadata {
+    $type: 'yandex.cloud.compute.v1.StartInstanceMetadata';
     /** ID of the instance. */
     instanceId: string;
 }
 export interface RestartInstanceRequest {
+    $type: 'yandex.cloud.compute.v1.RestartInstanceRequest';
     /**
      * ID of the instance to restart.
      * To get the instance ID, use a [InstanceService.List] request.
@@ -305,10 +328,12 @@ export interface RestartInstanceRequest {
     instanceId: string;
 }
 export interface RestartInstanceMetadata {
+    $type: 'yandex.cloud.compute.v1.RestartInstanceMetadata';
     /** ID of the instance. */
     instanceId: string;
 }
 export interface AttachInstanceDiskRequest {
+    $type: 'yandex.cloud.compute.v1.AttachInstanceDiskRequest';
     /**
      * ID of the instance to attach the disk to.
      * To get the instance ID, use a [InstanceService.List] request.
@@ -318,12 +343,14 @@ export interface AttachInstanceDiskRequest {
     attachedDiskSpec: AttachedDiskSpec | undefined;
 }
 export interface AttachInstanceDiskMetadata {
+    $type: 'yandex.cloud.compute.v1.AttachInstanceDiskMetadata';
     /** ID of the instance. */
     instanceId: string;
     /** ID of the disk. */
     diskId: string;
 }
 export interface DetachInstanceDiskRequest {
+    $type: 'yandex.cloud.compute.v1.DetachInstanceDiskRequest';
     /**
      * ID of the instance to detach the disk from.
      * To get the instance ID, use a [InstanceService.List] request.
@@ -338,12 +365,14 @@ export interface DetachInstanceDiskRequest {
     deviceName: string | undefined;
 }
 export interface DetachInstanceDiskMetadata {
+    $type: 'yandex.cloud.compute.v1.DetachInstanceDiskMetadata';
     /** ID of the instance. */
     instanceId: string;
     /** ID of the disk. */
     diskId: string;
 }
 export interface AttachInstanceFilesystemRequest {
+    $type: 'yandex.cloud.compute.v1.AttachInstanceFilesystemRequest';
     /**
      * ID of the instance to attach the filesystem to.
      *
@@ -354,12 +383,14 @@ export interface AttachInstanceFilesystemRequest {
     attachedFilesystemSpec: AttachedFilesystemSpec | undefined;
 }
 export interface AttachInstanceFilesystemMetadata {
+    $type: 'yandex.cloud.compute.v1.AttachInstanceFilesystemMetadata';
     /** ID of the instance that the filesystem is being attached to. */
     instanceId: string;
     /** ID of the filesystem that is being attached to the instance. */
     filesystemId: string;
 }
 export interface DetachInstanceFilesystemRequest {
+    $type: 'yandex.cloud.compute.v1.DetachInstanceFilesystemRequest';
     /**
      * ID of the instance to detach the filesystem from.
      *
@@ -372,6 +403,7 @@ export interface DetachInstanceFilesystemRequest {
     deviceName: string | undefined;
 }
 export interface DetachInstanceFilesystemMetadata {
+    $type: 'yandex.cloud.compute.v1.DetachInstanceFilesystemMetadata';
     /** ID of the instance that the filesystem is being detached from. */
     instanceId: string;
     /** ID of the filesystem that is being detached from the instance. */
@@ -379,6 +411,7 @@ export interface DetachInstanceFilesystemMetadata {
 }
 /** Enables One-to-one NAT on the network interface. */
 export interface AddInstanceOneToOneNatRequest {
+    $type: 'yandex.cloud.compute.v1.AddInstanceOneToOneNatRequest';
     /** ID of the instance to enable One-to-One NAT on. */
     instanceId: string;
     /** The index of the network interface to enable One-to-One NAT on. */
@@ -392,10 +425,12 @@ export interface AddInstanceOneToOneNatRequest {
     oneToOneNatSpec: OneToOneNatSpec | undefined;
 }
 export interface AddInstanceOneToOneNatMetadata {
+    $type: 'yandex.cloud.compute.v1.AddInstanceOneToOneNatMetadata';
     /** ID of the instance. */
     instanceId: string;
 }
 export interface RemoveInstanceOneToOneNatRequest {
+    $type: 'yandex.cloud.compute.v1.RemoveInstanceOneToOneNatRequest';
     /** ID of the instance to remove One-to-one NAT. */
     instanceId: string;
     /** The index of the network interface to remove One-to-One NAT from. */
@@ -404,10 +439,12 @@ export interface RemoveInstanceOneToOneNatRequest {
     internalAddress: string;
 }
 export interface RemoveInstanceOneToOneNatMetadata {
+    $type: 'yandex.cloud.compute.v1.RemoveInstanceOneToOneNatMetadata';
     /** ID of the instance. */
     instanceId: string;
 }
 export interface UpdateInstanceNetworkInterfaceRequest {
+    $type: 'yandex.cloud.compute.v1.UpdateInstanceNetworkInterfaceRequest';
     /** ID of the network interface that is being updated. */
     instanceId: string;
     /** The index of the network interface to be updated. */
@@ -424,12 +461,14 @@ export interface UpdateInstanceNetworkInterfaceRequest {
     securityGroupIds: string[];
 }
 export interface UpdateInstanceNetworkInterfaceMetadata {
+    $type: 'yandex.cloud.compute.v1.UpdateInstanceNetworkInterfaceMetadata';
     /** ID of the instant network interface that is being updated. */
     instanceId: string;
     /** The index of the network interface. */
     networkInterfaceIndex: string;
 }
 export interface ListInstanceOperationsRequest {
+    $type: 'yandex.cloud.compute.v1.ListInstanceOperationsRequest';
     /** ID of the Instance resource to list operations for. */
     instanceId: string;
     /**
@@ -445,6 +484,7 @@ export interface ListInstanceOperationsRequest {
     pageToken: string;
 }
 export interface ListInstanceOperationsResponse {
+    $type: 'yandex.cloud.compute.v1.ListInstanceOperationsResponse';
     /** List of operations for the specified instance. */
     operations: Operation[];
     /**
@@ -456,6 +496,7 @@ export interface ListInstanceOperationsResponse {
     nextPageToken: string;
 }
 export interface ResourcesSpec {
+    $type: 'yandex.cloud.compute.v1.ResourcesSpec';
     /** The amount of memory available to the instance, specified in bytes. */
     memory: number;
     /** The number of cores available to the instance. */
@@ -472,6 +513,7 @@ export interface ResourcesSpec {
     gpus: number;
 }
 export interface AttachedDiskSpec {
+    $type: 'yandex.cloud.compute.v1.AttachedDiskSpec';
     /** The mode in which to attach this disk. */
     mode: AttachedDiskSpec_Mode;
     /**
@@ -500,6 +542,7 @@ export declare enum AttachedDiskSpec_Mode {
 export declare function attachedDiskSpec_ModeFromJSON(object: any): AttachedDiskSpec_Mode;
 export declare function attachedDiskSpec_ModeToJSON(object: AttachedDiskSpec_Mode): string;
 export interface AttachedDiskSpec_DiskSpec {
+    $type: 'yandex.cloud.compute.v1.AttachedDiskSpec.DiskSpec';
     /** Name of the disk. */
     name: string;
     /** Description of the disk. */
@@ -521,6 +564,7 @@ export interface AttachedDiskSpec_DiskSpec {
     snapshotId: string | undefined;
 }
 export interface AttachedFilesystemSpec {
+    $type: 'yandex.cloud.compute.v1.AttachedFilesystemSpec';
     /** Mode of access to the filesystem that should be attached. */
     mode: AttachedFilesystemSpec_Mode;
     /**
@@ -546,6 +590,7 @@ export declare enum AttachedFilesystemSpec_Mode {
 export declare function attachedFilesystemSpec_ModeFromJSON(object: any): AttachedFilesystemSpec_Mode;
 export declare function attachedFilesystemSpec_ModeToJSON(object: AttachedFilesystemSpec_Mode): string;
 export interface NetworkInterfaceSpec {
+    $type: 'yandex.cloud.compute.v1.NetworkInterfaceSpec';
     /** ID of the subnet. */
     subnetId: string;
     /** Primary IPv4 address that will be assigned to the instance for this network interface. */
@@ -556,6 +601,7 @@ export interface NetworkInterfaceSpec {
     securityGroupIds: string[];
 }
 export interface PrimaryAddressSpec {
+    $type: 'yandex.cloud.compute.v1.PrimaryAddressSpec';
     /**
      * An IPv4 internal network address that is assigned to the instance for this network interface.
      * If not specified by the user, an unused internal IP is assigned by the system.
@@ -570,6 +616,7 @@ export interface PrimaryAddressSpec {
     dnsRecordSpecs: DnsRecordSpec[];
 }
 export interface OneToOneNatSpec {
+    $type: 'yandex.cloud.compute.v1.OneToOneNatSpec';
     /** External IP address version. */
     ipVersion: IpVersion;
     /** set static IP by value */
@@ -578,6 +625,7 @@ export interface OneToOneNatSpec {
     dnsRecordSpecs: DnsRecordSpec[];
 }
 export interface DnsRecordSpec {
+    $type: 'yandex.cloud.compute.v1.DnsRecordSpec';
     /** FQDN (required) */
     fqdn: string;
     /** DNS zone id (optional, if not set, private zone used) */
@@ -588,6 +636,7 @@ export interface DnsRecordSpec {
     ptr: boolean;
 }
 export declare const GetInstanceRequest: {
+    $type: "yandex.cloud.compute.v1.GetInstanceRequest";
     encode(message: GetInstanceRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): GetInstanceRequest;
     fromJSON(object: any): GetInstanceRequest;
@@ -595,6 +644,7 @@ export declare const GetInstanceRequest: {
     fromPartial(object: DeepPartial<GetInstanceRequest>): GetInstanceRequest;
 };
 export declare const ListInstancesRequest: {
+    $type: "yandex.cloud.compute.v1.ListInstancesRequest";
     encode(message: ListInstancesRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListInstancesRequest;
     fromJSON(object: any): ListInstancesRequest;
@@ -602,6 +652,7 @@ export declare const ListInstancesRequest: {
     fromPartial(object: DeepPartial<ListInstancesRequest>): ListInstancesRequest;
 };
 export declare const ListInstancesResponse: {
+    $type: "yandex.cloud.compute.v1.ListInstancesResponse";
     encode(message: ListInstancesResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListInstancesResponse;
     fromJSON(object: any): ListInstancesResponse;
@@ -609,6 +660,7 @@ export declare const ListInstancesResponse: {
     fromPartial(object: DeepPartial<ListInstancesResponse>): ListInstancesResponse;
 };
 export declare const CreateInstanceRequest: {
+    $type: "yandex.cloud.compute.v1.CreateInstanceRequest";
     encode(message: CreateInstanceRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateInstanceRequest;
     fromJSON(object: any): CreateInstanceRequest;
@@ -616,6 +668,7 @@ export declare const CreateInstanceRequest: {
     fromPartial(object: DeepPartial<CreateInstanceRequest>): CreateInstanceRequest;
 };
 export declare const CreateInstanceRequest_LabelsEntry: {
+    $type: "yandex.cloud.compute.v1.CreateInstanceRequest.LabelsEntry";
     encode(message: CreateInstanceRequest_LabelsEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateInstanceRequest_LabelsEntry;
     fromJSON(object: any): CreateInstanceRequest_LabelsEntry;
@@ -623,6 +676,7 @@ export declare const CreateInstanceRequest_LabelsEntry: {
     fromPartial(object: DeepPartial<CreateInstanceRequest_LabelsEntry>): CreateInstanceRequest_LabelsEntry;
 };
 export declare const CreateInstanceRequest_MetadataEntry: {
+    $type: "yandex.cloud.compute.v1.CreateInstanceRequest.MetadataEntry";
     encode(message: CreateInstanceRequest_MetadataEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateInstanceRequest_MetadataEntry;
     fromJSON(object: any): CreateInstanceRequest_MetadataEntry;
@@ -630,6 +684,7 @@ export declare const CreateInstanceRequest_MetadataEntry: {
     fromPartial(object: DeepPartial<CreateInstanceRequest_MetadataEntry>): CreateInstanceRequest_MetadataEntry;
 };
 export declare const CreateInstanceMetadata: {
+    $type: "yandex.cloud.compute.v1.CreateInstanceMetadata";
     encode(message: CreateInstanceMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateInstanceMetadata;
     fromJSON(object: any): CreateInstanceMetadata;
@@ -637,6 +692,7 @@ export declare const CreateInstanceMetadata: {
     fromPartial(object: DeepPartial<CreateInstanceMetadata>): CreateInstanceMetadata;
 };
 export declare const UpdateInstanceRequest: {
+    $type: "yandex.cloud.compute.v1.UpdateInstanceRequest";
     encode(message: UpdateInstanceRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateInstanceRequest;
     fromJSON(object: any): UpdateInstanceRequest;
@@ -644,6 +700,7 @@ export declare const UpdateInstanceRequest: {
     fromPartial(object: DeepPartial<UpdateInstanceRequest>): UpdateInstanceRequest;
 };
 export declare const UpdateInstanceRequest_LabelsEntry: {
+    $type: "yandex.cloud.compute.v1.UpdateInstanceRequest.LabelsEntry";
     encode(message: UpdateInstanceRequest_LabelsEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateInstanceRequest_LabelsEntry;
     fromJSON(object: any): UpdateInstanceRequest_LabelsEntry;
@@ -651,6 +708,7 @@ export declare const UpdateInstanceRequest_LabelsEntry: {
     fromPartial(object: DeepPartial<UpdateInstanceRequest_LabelsEntry>): UpdateInstanceRequest_LabelsEntry;
 };
 export declare const UpdateInstanceRequest_MetadataEntry: {
+    $type: "yandex.cloud.compute.v1.UpdateInstanceRequest.MetadataEntry";
     encode(message: UpdateInstanceRequest_MetadataEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateInstanceRequest_MetadataEntry;
     fromJSON(object: any): UpdateInstanceRequest_MetadataEntry;
@@ -658,6 +716,7 @@ export declare const UpdateInstanceRequest_MetadataEntry: {
     fromPartial(object: DeepPartial<UpdateInstanceRequest_MetadataEntry>): UpdateInstanceRequest_MetadataEntry;
 };
 export declare const UpdateInstanceMetadata: {
+    $type: "yandex.cloud.compute.v1.UpdateInstanceMetadata";
     encode(message: UpdateInstanceMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateInstanceMetadata;
     fromJSON(object: any): UpdateInstanceMetadata;
@@ -665,6 +724,7 @@ export declare const UpdateInstanceMetadata: {
     fromPartial(object: DeepPartial<UpdateInstanceMetadata>): UpdateInstanceMetadata;
 };
 export declare const DeleteInstanceRequest: {
+    $type: "yandex.cloud.compute.v1.DeleteInstanceRequest";
     encode(message: DeleteInstanceRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteInstanceRequest;
     fromJSON(object: any): DeleteInstanceRequest;
@@ -672,6 +732,7 @@ export declare const DeleteInstanceRequest: {
     fromPartial(object: DeepPartial<DeleteInstanceRequest>): DeleteInstanceRequest;
 };
 export declare const DeleteInstanceMetadata: {
+    $type: "yandex.cloud.compute.v1.DeleteInstanceMetadata";
     encode(message: DeleteInstanceMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteInstanceMetadata;
     fromJSON(object: any): DeleteInstanceMetadata;
@@ -679,6 +740,7 @@ export declare const DeleteInstanceMetadata: {
     fromPartial(object: DeepPartial<DeleteInstanceMetadata>): DeleteInstanceMetadata;
 };
 export declare const UpdateInstanceMetadataRequest: {
+    $type: "yandex.cloud.compute.v1.UpdateInstanceMetadataRequest";
     encode(message: UpdateInstanceMetadataRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateInstanceMetadataRequest;
     fromJSON(object: any): UpdateInstanceMetadataRequest;
@@ -686,6 +748,7 @@ export declare const UpdateInstanceMetadataRequest: {
     fromPartial(object: DeepPartial<UpdateInstanceMetadataRequest>): UpdateInstanceMetadataRequest;
 };
 export declare const UpdateInstanceMetadataRequest_UpsertEntry: {
+    $type: "yandex.cloud.compute.v1.UpdateInstanceMetadataRequest.UpsertEntry";
     encode(message: UpdateInstanceMetadataRequest_UpsertEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateInstanceMetadataRequest_UpsertEntry;
     fromJSON(object: any): UpdateInstanceMetadataRequest_UpsertEntry;
@@ -693,6 +756,7 @@ export declare const UpdateInstanceMetadataRequest_UpsertEntry: {
     fromPartial(object: DeepPartial<UpdateInstanceMetadataRequest_UpsertEntry>): UpdateInstanceMetadataRequest_UpsertEntry;
 };
 export declare const UpdateInstanceMetadataMetadata: {
+    $type: "yandex.cloud.compute.v1.UpdateInstanceMetadataMetadata";
     encode(message: UpdateInstanceMetadataMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateInstanceMetadataMetadata;
     fromJSON(object: any): UpdateInstanceMetadataMetadata;
@@ -700,6 +764,7 @@ export declare const UpdateInstanceMetadataMetadata: {
     fromPartial(object: DeepPartial<UpdateInstanceMetadataMetadata>): UpdateInstanceMetadataMetadata;
 };
 export declare const GetInstanceSerialPortOutputRequest: {
+    $type: "yandex.cloud.compute.v1.GetInstanceSerialPortOutputRequest";
     encode(message: GetInstanceSerialPortOutputRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): GetInstanceSerialPortOutputRequest;
     fromJSON(object: any): GetInstanceSerialPortOutputRequest;
@@ -707,6 +772,7 @@ export declare const GetInstanceSerialPortOutputRequest: {
     fromPartial(object: DeepPartial<GetInstanceSerialPortOutputRequest>): GetInstanceSerialPortOutputRequest;
 };
 export declare const GetInstanceSerialPortOutputResponse: {
+    $type: "yandex.cloud.compute.v1.GetInstanceSerialPortOutputResponse";
     encode(message: GetInstanceSerialPortOutputResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): GetInstanceSerialPortOutputResponse;
     fromJSON(object: any): GetInstanceSerialPortOutputResponse;
@@ -714,6 +780,7 @@ export declare const GetInstanceSerialPortOutputResponse: {
     fromPartial(object: DeepPartial<GetInstanceSerialPortOutputResponse>): GetInstanceSerialPortOutputResponse;
 };
 export declare const StopInstanceRequest: {
+    $type: "yandex.cloud.compute.v1.StopInstanceRequest";
     encode(message: StopInstanceRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): StopInstanceRequest;
     fromJSON(object: any): StopInstanceRequest;
@@ -721,6 +788,7 @@ export declare const StopInstanceRequest: {
     fromPartial(object: DeepPartial<StopInstanceRequest>): StopInstanceRequest;
 };
 export declare const StopInstanceMetadata: {
+    $type: "yandex.cloud.compute.v1.StopInstanceMetadata";
     encode(message: StopInstanceMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): StopInstanceMetadata;
     fromJSON(object: any): StopInstanceMetadata;
@@ -728,6 +796,7 @@ export declare const StopInstanceMetadata: {
     fromPartial(object: DeepPartial<StopInstanceMetadata>): StopInstanceMetadata;
 };
 export declare const StartInstanceRequest: {
+    $type: "yandex.cloud.compute.v1.StartInstanceRequest";
     encode(message: StartInstanceRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): StartInstanceRequest;
     fromJSON(object: any): StartInstanceRequest;
@@ -735,6 +804,7 @@ export declare const StartInstanceRequest: {
     fromPartial(object: DeepPartial<StartInstanceRequest>): StartInstanceRequest;
 };
 export declare const StartInstanceMetadata: {
+    $type: "yandex.cloud.compute.v1.StartInstanceMetadata";
     encode(message: StartInstanceMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): StartInstanceMetadata;
     fromJSON(object: any): StartInstanceMetadata;
@@ -742,6 +812,7 @@ export declare const StartInstanceMetadata: {
     fromPartial(object: DeepPartial<StartInstanceMetadata>): StartInstanceMetadata;
 };
 export declare const RestartInstanceRequest: {
+    $type: "yandex.cloud.compute.v1.RestartInstanceRequest";
     encode(message: RestartInstanceRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): RestartInstanceRequest;
     fromJSON(object: any): RestartInstanceRequest;
@@ -749,6 +820,7 @@ export declare const RestartInstanceRequest: {
     fromPartial(object: DeepPartial<RestartInstanceRequest>): RestartInstanceRequest;
 };
 export declare const RestartInstanceMetadata: {
+    $type: "yandex.cloud.compute.v1.RestartInstanceMetadata";
     encode(message: RestartInstanceMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): RestartInstanceMetadata;
     fromJSON(object: any): RestartInstanceMetadata;
@@ -756,6 +828,7 @@ export declare const RestartInstanceMetadata: {
     fromPartial(object: DeepPartial<RestartInstanceMetadata>): RestartInstanceMetadata;
 };
 export declare const AttachInstanceDiskRequest: {
+    $type: "yandex.cloud.compute.v1.AttachInstanceDiskRequest";
     encode(message: AttachInstanceDiskRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): AttachInstanceDiskRequest;
     fromJSON(object: any): AttachInstanceDiskRequest;
@@ -763,6 +836,7 @@ export declare const AttachInstanceDiskRequest: {
     fromPartial(object: DeepPartial<AttachInstanceDiskRequest>): AttachInstanceDiskRequest;
 };
 export declare const AttachInstanceDiskMetadata: {
+    $type: "yandex.cloud.compute.v1.AttachInstanceDiskMetadata";
     encode(message: AttachInstanceDiskMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): AttachInstanceDiskMetadata;
     fromJSON(object: any): AttachInstanceDiskMetadata;
@@ -770,6 +844,7 @@ export declare const AttachInstanceDiskMetadata: {
     fromPartial(object: DeepPartial<AttachInstanceDiskMetadata>): AttachInstanceDiskMetadata;
 };
 export declare const DetachInstanceDiskRequest: {
+    $type: "yandex.cloud.compute.v1.DetachInstanceDiskRequest";
     encode(message: DetachInstanceDiskRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DetachInstanceDiskRequest;
     fromJSON(object: any): DetachInstanceDiskRequest;
@@ -777,6 +852,7 @@ export declare const DetachInstanceDiskRequest: {
     fromPartial(object: DeepPartial<DetachInstanceDiskRequest>): DetachInstanceDiskRequest;
 };
 export declare const DetachInstanceDiskMetadata: {
+    $type: "yandex.cloud.compute.v1.DetachInstanceDiskMetadata";
     encode(message: DetachInstanceDiskMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DetachInstanceDiskMetadata;
     fromJSON(object: any): DetachInstanceDiskMetadata;
@@ -784,6 +860,7 @@ export declare const DetachInstanceDiskMetadata: {
     fromPartial(object: DeepPartial<DetachInstanceDiskMetadata>): DetachInstanceDiskMetadata;
 };
 export declare const AttachInstanceFilesystemRequest: {
+    $type: "yandex.cloud.compute.v1.AttachInstanceFilesystemRequest";
     encode(message: AttachInstanceFilesystemRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): AttachInstanceFilesystemRequest;
     fromJSON(object: any): AttachInstanceFilesystemRequest;
@@ -791,6 +868,7 @@ export declare const AttachInstanceFilesystemRequest: {
     fromPartial(object: DeepPartial<AttachInstanceFilesystemRequest>): AttachInstanceFilesystemRequest;
 };
 export declare const AttachInstanceFilesystemMetadata: {
+    $type: "yandex.cloud.compute.v1.AttachInstanceFilesystemMetadata";
     encode(message: AttachInstanceFilesystemMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): AttachInstanceFilesystemMetadata;
     fromJSON(object: any): AttachInstanceFilesystemMetadata;
@@ -798,6 +876,7 @@ export declare const AttachInstanceFilesystemMetadata: {
     fromPartial(object: DeepPartial<AttachInstanceFilesystemMetadata>): AttachInstanceFilesystemMetadata;
 };
 export declare const DetachInstanceFilesystemRequest: {
+    $type: "yandex.cloud.compute.v1.DetachInstanceFilesystemRequest";
     encode(message: DetachInstanceFilesystemRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DetachInstanceFilesystemRequest;
     fromJSON(object: any): DetachInstanceFilesystemRequest;
@@ -805,6 +884,7 @@ export declare const DetachInstanceFilesystemRequest: {
     fromPartial(object: DeepPartial<DetachInstanceFilesystemRequest>): DetachInstanceFilesystemRequest;
 };
 export declare const DetachInstanceFilesystemMetadata: {
+    $type: "yandex.cloud.compute.v1.DetachInstanceFilesystemMetadata";
     encode(message: DetachInstanceFilesystemMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DetachInstanceFilesystemMetadata;
     fromJSON(object: any): DetachInstanceFilesystemMetadata;
@@ -812,6 +892,7 @@ export declare const DetachInstanceFilesystemMetadata: {
     fromPartial(object: DeepPartial<DetachInstanceFilesystemMetadata>): DetachInstanceFilesystemMetadata;
 };
 export declare const AddInstanceOneToOneNatRequest: {
+    $type: "yandex.cloud.compute.v1.AddInstanceOneToOneNatRequest";
     encode(message: AddInstanceOneToOneNatRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): AddInstanceOneToOneNatRequest;
     fromJSON(object: any): AddInstanceOneToOneNatRequest;
@@ -819,6 +900,7 @@ export declare const AddInstanceOneToOneNatRequest: {
     fromPartial(object: DeepPartial<AddInstanceOneToOneNatRequest>): AddInstanceOneToOneNatRequest;
 };
 export declare const AddInstanceOneToOneNatMetadata: {
+    $type: "yandex.cloud.compute.v1.AddInstanceOneToOneNatMetadata";
     encode(message: AddInstanceOneToOneNatMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): AddInstanceOneToOneNatMetadata;
     fromJSON(object: any): AddInstanceOneToOneNatMetadata;
@@ -826,6 +908,7 @@ export declare const AddInstanceOneToOneNatMetadata: {
     fromPartial(object: DeepPartial<AddInstanceOneToOneNatMetadata>): AddInstanceOneToOneNatMetadata;
 };
 export declare const RemoveInstanceOneToOneNatRequest: {
+    $type: "yandex.cloud.compute.v1.RemoveInstanceOneToOneNatRequest";
     encode(message: RemoveInstanceOneToOneNatRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): RemoveInstanceOneToOneNatRequest;
     fromJSON(object: any): RemoveInstanceOneToOneNatRequest;
@@ -833,6 +916,7 @@ export declare const RemoveInstanceOneToOneNatRequest: {
     fromPartial(object: DeepPartial<RemoveInstanceOneToOneNatRequest>): RemoveInstanceOneToOneNatRequest;
 };
 export declare const RemoveInstanceOneToOneNatMetadata: {
+    $type: "yandex.cloud.compute.v1.RemoveInstanceOneToOneNatMetadata";
     encode(message: RemoveInstanceOneToOneNatMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): RemoveInstanceOneToOneNatMetadata;
     fromJSON(object: any): RemoveInstanceOneToOneNatMetadata;
@@ -840,6 +924,7 @@ export declare const RemoveInstanceOneToOneNatMetadata: {
     fromPartial(object: DeepPartial<RemoveInstanceOneToOneNatMetadata>): RemoveInstanceOneToOneNatMetadata;
 };
 export declare const UpdateInstanceNetworkInterfaceRequest: {
+    $type: "yandex.cloud.compute.v1.UpdateInstanceNetworkInterfaceRequest";
     encode(message: UpdateInstanceNetworkInterfaceRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateInstanceNetworkInterfaceRequest;
     fromJSON(object: any): UpdateInstanceNetworkInterfaceRequest;
@@ -847,6 +932,7 @@ export declare const UpdateInstanceNetworkInterfaceRequest: {
     fromPartial(object: DeepPartial<UpdateInstanceNetworkInterfaceRequest>): UpdateInstanceNetworkInterfaceRequest;
 };
 export declare const UpdateInstanceNetworkInterfaceMetadata: {
+    $type: "yandex.cloud.compute.v1.UpdateInstanceNetworkInterfaceMetadata";
     encode(message: UpdateInstanceNetworkInterfaceMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateInstanceNetworkInterfaceMetadata;
     fromJSON(object: any): UpdateInstanceNetworkInterfaceMetadata;
@@ -854,6 +940,7 @@ export declare const UpdateInstanceNetworkInterfaceMetadata: {
     fromPartial(object: DeepPartial<UpdateInstanceNetworkInterfaceMetadata>): UpdateInstanceNetworkInterfaceMetadata;
 };
 export declare const ListInstanceOperationsRequest: {
+    $type: "yandex.cloud.compute.v1.ListInstanceOperationsRequest";
     encode(message: ListInstanceOperationsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListInstanceOperationsRequest;
     fromJSON(object: any): ListInstanceOperationsRequest;
@@ -861,6 +948,7 @@ export declare const ListInstanceOperationsRequest: {
     fromPartial(object: DeepPartial<ListInstanceOperationsRequest>): ListInstanceOperationsRequest;
 };
 export declare const ListInstanceOperationsResponse: {
+    $type: "yandex.cloud.compute.v1.ListInstanceOperationsResponse";
     encode(message: ListInstanceOperationsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListInstanceOperationsResponse;
     fromJSON(object: any): ListInstanceOperationsResponse;
@@ -868,6 +956,7 @@ export declare const ListInstanceOperationsResponse: {
     fromPartial(object: DeepPartial<ListInstanceOperationsResponse>): ListInstanceOperationsResponse;
 };
 export declare const ResourcesSpec: {
+    $type: "yandex.cloud.compute.v1.ResourcesSpec";
     encode(message: ResourcesSpec, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ResourcesSpec;
     fromJSON(object: any): ResourcesSpec;
@@ -875,6 +964,7 @@ export declare const ResourcesSpec: {
     fromPartial(object: DeepPartial<ResourcesSpec>): ResourcesSpec;
 };
 export declare const AttachedDiskSpec: {
+    $type: "yandex.cloud.compute.v1.AttachedDiskSpec";
     encode(message: AttachedDiskSpec, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): AttachedDiskSpec;
     fromJSON(object: any): AttachedDiskSpec;
@@ -882,6 +972,7 @@ export declare const AttachedDiskSpec: {
     fromPartial(object: DeepPartial<AttachedDiskSpec>): AttachedDiskSpec;
 };
 export declare const AttachedDiskSpec_DiskSpec: {
+    $type: "yandex.cloud.compute.v1.AttachedDiskSpec.DiskSpec";
     encode(message: AttachedDiskSpec_DiskSpec, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): AttachedDiskSpec_DiskSpec;
     fromJSON(object: any): AttachedDiskSpec_DiskSpec;
@@ -889,6 +980,7 @@ export declare const AttachedDiskSpec_DiskSpec: {
     fromPartial(object: DeepPartial<AttachedDiskSpec_DiskSpec>): AttachedDiskSpec_DiskSpec;
 };
 export declare const AttachedFilesystemSpec: {
+    $type: "yandex.cloud.compute.v1.AttachedFilesystemSpec";
     encode(message: AttachedFilesystemSpec, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): AttachedFilesystemSpec;
     fromJSON(object: any): AttachedFilesystemSpec;
@@ -896,6 +988,7 @@ export declare const AttachedFilesystemSpec: {
     fromPartial(object: DeepPartial<AttachedFilesystemSpec>): AttachedFilesystemSpec;
 };
 export declare const NetworkInterfaceSpec: {
+    $type: "yandex.cloud.compute.v1.NetworkInterfaceSpec";
     encode(message: NetworkInterfaceSpec, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): NetworkInterfaceSpec;
     fromJSON(object: any): NetworkInterfaceSpec;
@@ -903,6 +996,7 @@ export declare const NetworkInterfaceSpec: {
     fromPartial(object: DeepPartial<NetworkInterfaceSpec>): NetworkInterfaceSpec;
 };
 export declare const PrimaryAddressSpec: {
+    $type: "yandex.cloud.compute.v1.PrimaryAddressSpec";
     encode(message: PrimaryAddressSpec, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): PrimaryAddressSpec;
     fromJSON(object: any): PrimaryAddressSpec;
@@ -910,6 +1004,7 @@ export declare const PrimaryAddressSpec: {
     fromPartial(object: DeepPartial<PrimaryAddressSpec>): PrimaryAddressSpec;
 };
 export declare const OneToOneNatSpec: {
+    $type: "yandex.cloud.compute.v1.OneToOneNatSpec";
     encode(message: OneToOneNatSpec, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): OneToOneNatSpec;
     fromJSON(object: any): OneToOneNatSpec;
@@ -917,6 +1012,7 @@ export declare const OneToOneNatSpec: {
     fromPartial(object: DeepPartial<OneToOneNatSpec>): OneToOneNatSpec;
 };
 export declare const DnsRecordSpec: {
+    $type: "yandex.cloud.compute.v1.DnsRecordSpec";
     encode(message: DnsRecordSpec, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DnsRecordSpec;
     fromJSON(object: any): DnsRecordSpec;
@@ -1305,6 +1401,6 @@ export interface InstanceServiceClient extends Client {
 export declare const InstanceServiceClient: new (address: string, credentials: ChannelCredentials, options?: Partial<ChannelOptions> | undefined) => InstanceServiceClient;
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

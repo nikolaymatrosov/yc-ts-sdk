@@ -4,6 +4,7 @@ import { ChannelCredentials, ChannelOptions, UntypedServiceImplementation, handl
 import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.logging.v1";
 export interface ReadRequest {
+    $type: 'yandex.cloud.logging.v1.ReadRequest';
     /**
      * Page token. To get the next page of results, set `page_token` to the
      * [ReadResponse.next_page_token] or [ReadResponse.previous_page_token] returned by a previous read request.
@@ -17,6 +18,7 @@ export interface ReadRequest {
     criteria: Criteria | undefined;
 }
 export interface ReadResponse {
+    $type: 'yandex.cloud.logging.v1.ReadResponse';
     /** Log group ID the read was performed from. */
     logGroupId: string;
     /** List of matching log entries. */
@@ -42,6 +44,7 @@ export interface ReadResponse {
 }
 /** Read criteria. Should be used in initial [ReadRequest]. */
 export interface Criteria {
+    $type: 'yandex.cloud.logging.v1.Criteria';
     /**
      * ID of the log group to return.
      *
@@ -76,6 +79,7 @@ export interface Criteria {
     pageSize: number;
 }
 export declare const ReadRequest: {
+    $type: "yandex.cloud.logging.v1.ReadRequest";
     encode(message: ReadRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ReadRequest;
     fromJSON(object: any): ReadRequest;
@@ -83,6 +87,7 @@ export declare const ReadRequest: {
     fromPartial(object: DeepPartial<ReadRequest>): ReadRequest;
 };
 export declare const ReadResponse: {
+    $type: "yandex.cloud.logging.v1.ReadResponse";
     encode(message: ReadResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ReadResponse;
     fromJSON(object: any): ReadResponse;
@@ -90,6 +95,7 @@ export declare const ReadResponse: {
     fromPartial(object: DeepPartial<ReadResponse>): ReadResponse;
 };
 export declare const Criteria: {
+    $type: "yandex.cloud.logging.v1.Criteria";
     encode(message: Criteria, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Criteria;
     fromJSON(object: any): Criteria;
@@ -122,6 +128,6 @@ export interface LogReadingServiceClient extends Client {
 export declare const LogReadingServiceClient: new (address: string, credentials: ChannelCredentials, options?: Partial<ChannelOptions> | undefined) => LogReadingServiceClient;
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

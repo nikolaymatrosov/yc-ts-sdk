@@ -1,5 +1,6 @@
 /* eslint-disable */
 import { Timestamp } from '../../../../google/protobuf/timestamp';
+import { messageTypeRegistry } from '../../../../typeRegistry';
 import Long from 'long';
 import _m0 from 'protobufjs/minimal';
 
@@ -45,6 +46,7 @@ export function ipVersionToJSON(object: IpVersion): string {
 
 /** A Subnet resource. For more information, see [Subnets](/docs/vpc/concepts/subnets). */
 export interface Subnet {
+    $type: 'yandex.cloud.vpc.v1.Subnet';
     /** ID of the subnet. */
     id: string;
     /** ID of the folder that the subnet belongs to. */
@@ -77,17 +79,20 @@ export interface Subnet {
 }
 
 export interface Subnet_LabelsEntry {
+    $type: 'yandex.cloud.vpc.v1.Subnet.LabelsEntry';
     key: string;
     value: string;
 }
 
 export interface DhcpOptions {
+    $type: 'yandex.cloud.vpc.v1.DhcpOptions';
     domainNameServers: string[];
     domainName: string;
     ntpServers: string[];
 }
 
 const baseSubnet: object = {
+    $type: 'yandex.cloud.vpc.v1.Subnet',
     id: '',
     folderId: '',
     name: '',
@@ -100,6 +105,8 @@ const baseSubnet: object = {
 };
 
 export const Subnet = {
+    $type: 'yandex.cloud.vpc.v1.Subnet' as const,
+
     encode(
         message: Subnet,
         writer: _m0.Writer = _m0.Writer.create()
@@ -124,7 +131,11 @@ export const Subnet = {
         }
         Object.entries(message.labels).forEach(([key, value]) => {
             Subnet_LabelsEntry.encode(
-                { key: key as any, value },
+                {
+                    $type: 'yandex.cloud.vpc.v1.Subnet.LabelsEntry',
+                    key: key as any,
+                    value,
+                },
                 writer.uint32(50).fork()
             ).ldelim();
         });
@@ -393,9 +404,17 @@ export const Subnet = {
     },
 };
 
-const baseSubnet_LabelsEntry: object = { key: '', value: '' };
+messageTypeRegistry.set(Subnet.$type, Subnet);
+
+const baseSubnet_LabelsEntry: object = {
+    $type: 'yandex.cloud.vpc.v1.Subnet.LabelsEntry',
+    key: '',
+    value: '',
+};
 
 export const Subnet_LabelsEntry = {
+    $type: 'yandex.cloud.vpc.v1.Subnet.LabelsEntry' as const,
+
     encode(
         message: Subnet_LabelsEntry,
         writer: _m0.Writer = _m0.Writer.create()
@@ -472,13 +491,18 @@ export const Subnet_LabelsEntry = {
     },
 };
 
+messageTypeRegistry.set(Subnet_LabelsEntry.$type, Subnet_LabelsEntry);
+
 const baseDhcpOptions: object = {
+    $type: 'yandex.cloud.vpc.v1.DhcpOptions',
     domainNameServers: '',
     domainName: '',
     ntpServers: '',
 };
 
 export const DhcpOptions = {
+    $type: 'yandex.cloud.vpc.v1.DhcpOptions' as const,
+
     encode(
         message: DhcpOptions,
         writer: _m0.Writer = _m0.Writer.create()
@@ -590,6 +614,8 @@ export const DhcpOptions = {
     },
 };
 
+messageTypeRegistry.set(DhcpOptions.$type, DhcpOptions);
+
 type Builtin =
     | Date
     | Function
@@ -605,13 +631,13 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 function toTimestamp(date: Date): Timestamp {
     const seconds = date.getTime() / 1_000;
     const nanos = (date.getTime() % 1_000) * 1_000_000;
-    return { seconds, nanos };
+    return { $type: 'google.protobuf.Timestamp', seconds, nanos };
 }
 
 function fromTimestamp(t: Timestamp): Date {

@@ -1,5 +1,6 @@
 /* eslint-disable */
 import { Timestamp } from '../../../../google/protobuf/timestamp';
+import { messageTypeRegistry } from '../../../../typeRegistry';
 import Long from 'long';
 import _m0 from 'protobufjs/minimal';
 
@@ -7,6 +8,7 @@ export const protobufPackage = 'yandex.cloud.compute.v1';
 
 /** A Disk resource. For more information, see [Disks](/docs/compute/concepts/disk). */
 export interface Disk {
+    $type: 'yandex.cloud.compute.v1.Disk';
     /** ID of the disk. */
     id: string;
     /** ID of the folder that the disk belongs to. */
@@ -104,16 +106,19 @@ export function disk_StatusToJSON(object: Disk_Status): string {
 }
 
 export interface Disk_LabelsEntry {
+    $type: 'yandex.cloud.compute.v1.Disk.LabelsEntry';
     key: string;
     value: string;
 }
 
 export interface DiskPlacementPolicy {
+    $type: 'yandex.cloud.compute.v1.DiskPlacementPolicy';
     /** Placement group ID. */
     placementGroupId: string;
 }
 
 const baseDisk: object = {
+    $type: 'yandex.cloud.compute.v1.Disk',
     id: '',
     folderId: '',
     name: '',
@@ -128,6 +133,8 @@ const baseDisk: object = {
 };
 
 export const Disk = {
+    $type: 'yandex.cloud.compute.v1.Disk' as const,
+
     encode(
         message: Disk,
         writer: _m0.Writer = _m0.Writer.create()
@@ -152,7 +159,11 @@ export const Disk = {
         }
         Object.entries(message.labels).forEach(([key, value]) => {
             Disk_LabelsEntry.encode(
-                { key: key as any, value },
+                {
+                    $type: 'yandex.cloud.compute.v1.Disk.LabelsEntry',
+                    key: key as any,
+                    value,
+                },
                 writer.uint32(50).fork()
             ).ldelim();
         });
@@ -513,9 +524,17 @@ export const Disk = {
     },
 };
 
-const baseDisk_LabelsEntry: object = { key: '', value: '' };
+messageTypeRegistry.set(Disk.$type, Disk);
+
+const baseDisk_LabelsEntry: object = {
+    $type: 'yandex.cloud.compute.v1.Disk.LabelsEntry',
+    key: '',
+    value: '',
+};
 
 export const Disk_LabelsEntry = {
+    $type: 'yandex.cloud.compute.v1.Disk.LabelsEntry' as const,
+
     encode(
         message: Disk_LabelsEntry,
         writer: _m0.Writer = _m0.Writer.create()
@@ -589,9 +608,16 @@ export const Disk_LabelsEntry = {
     },
 };
 
-const baseDiskPlacementPolicy: object = { placementGroupId: '' };
+messageTypeRegistry.set(Disk_LabelsEntry.$type, Disk_LabelsEntry);
+
+const baseDiskPlacementPolicy: object = {
+    $type: 'yandex.cloud.compute.v1.DiskPlacementPolicy',
+    placementGroupId: '',
+};
 
 export const DiskPlacementPolicy = {
+    $type: 'yandex.cloud.compute.v1.DiskPlacementPolicy' as const,
+
     encode(
         message: DiskPlacementPolicy,
         writer: _m0.Writer = _m0.Writer.create()
@@ -658,6 +684,8 @@ export const DiskPlacementPolicy = {
     },
 };
 
+messageTypeRegistry.set(DiskPlacementPolicy.$type, DiskPlacementPolicy);
+
 declare var self: any | undefined;
 declare var window: any | undefined;
 declare var global: any | undefined;
@@ -684,13 +712,13 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 function toTimestamp(date: Date): Timestamp {
     const seconds = date.getTime() / 1_000;
     const nanos = (date.getTime() % 1_000) * 1_000_000;
-    return { seconds, nanos };
+    return { $type: 'google.protobuf.Timestamp', seconds, nanos };
 }
 
 function fromTimestamp(t: Timestamp): Date {

@@ -5,6 +5,7 @@ export declare const protobufPackage = "yandex.cloud.mdb.mongodb.v1.config";
  * options described in [MongoDB documentation](https://docs.mongodb.com/v5.0/reference/configuration-options/).
  */
 export interface Mongodconfig50 {
+    $type: 'yandex.cloud.mdb.mongodb.v1.config.MongodConfig5_0';
     /** `storage` section of mongod configuration. */
     storage: Mongodconfig50_Storage | undefined;
     /** `operationProfiling` section of mongod configuration. */
@@ -13,6 +14,7 @@ export interface Mongodconfig50 {
     net: Mongodconfig50_Network | undefined;
 }
 export interface Mongodconfig50_Storage {
+    $type: 'yandex.cloud.mdb.mongodb.v1.config.MongodConfig5_0.Storage';
     /** Configuration of the WiredTiger storage engine. */
     wiredTiger: Mongodconfig50_Storage_WiredTiger | undefined;
     /** Configuration of the MongoDB [journal](https://docs.mongodb.com/v5.0/reference/glossary/#term-journal). */
@@ -20,16 +22,19 @@ export interface Mongodconfig50_Storage {
 }
 /** Configuration of WiredTiger storage engine. */
 export interface Mongodconfig50_Storage_WiredTiger {
+    $type: 'yandex.cloud.mdb.mongodb.v1.config.MongodConfig5_0.Storage.WiredTiger';
     /** Engine configuration for WiredTiger. */
     engineConfig: Mongodconfig50_Storage_WiredTiger_EngineConfig | undefined;
     /** Collection configuration for WiredTiger. */
     collectionConfig: Mongodconfig50_Storage_WiredTiger_CollectionConfig | undefined;
 }
 export interface Mongodconfig50_Storage_WiredTiger_EngineConfig {
+    $type: 'yandex.cloud.mdb.mongodb.v1.config.MongodConfig5_0.Storage.WiredTiger.EngineConfig';
     /** The maximum size of the internal cache that WiredTiger will use for all data. */
     cacheSizeGb: number | undefined;
 }
 export interface Mongodconfig50_Storage_WiredTiger_CollectionConfig {
+    $type: 'yandex.cloud.mdb.mongodb.v1.config.MongodConfig5_0.Storage.WiredTiger.CollectionConfig';
     /** Default type of compression to use for collection data. */
     blockCompressor: Mongodconfig50_Storage_WiredTiger_CollectionConfig_Compressor;
 }
@@ -46,6 +51,7 @@ export declare enum Mongodconfig50_Storage_WiredTiger_CollectionConfig_Compresso
 export declare function mongodconfig50_Storage_WiredTiger_CollectionConfig_CompressorFromJSON(object: any): Mongodconfig50_Storage_WiredTiger_CollectionConfig_Compressor;
 export declare function mongodconfig50_Storage_WiredTiger_CollectionConfig_CompressorToJSON(object: Mongodconfig50_Storage_WiredTiger_CollectionConfig_Compressor): string;
 export interface Mongodconfig50_Storage_Journal {
+    $type: 'yandex.cloud.mdb.mongodb.v1.config.MongodConfig5_0.Storage.Journal';
     /**
      * Commit interval between journal operations, in milliseconds.
      * Default: 100.
@@ -53,6 +59,7 @@ export interface Mongodconfig50_Storage_Journal {
     commitInterval: number | undefined;
 }
 export interface Mongodconfig50_OperationProfiling {
+    $type: 'yandex.cloud.mdb.mongodb.v1.config.MongodConfig5_0.OperationProfiling';
     /** Mode which specifies operations that should be profiled. */
     mode: Mongodconfig50_OperationProfiling_Mode;
     /**
@@ -75,10 +82,12 @@ export declare enum Mongodconfig50_OperationProfiling_Mode {
 export declare function mongodconfig50_OperationProfiling_ModeFromJSON(object: any): Mongodconfig50_OperationProfiling_Mode;
 export declare function mongodconfig50_OperationProfiling_ModeToJSON(object: Mongodconfig50_OperationProfiling_Mode): string;
 export interface Mongodconfig50_Network {
+    $type: 'yandex.cloud.mdb.mongodb.v1.config.MongodConfig5_0.Network';
     /** The maximum number of simultaneous connections that mongod will accept. */
     maxIncomingConnections: number | undefined;
 }
 export interface Mongocfgconfig50 {
+    $type: 'yandex.cloud.mdb.mongodb.v1.config.MongoCfgConfig5_0';
     /** `storage` section of mongocfg configuration. */
     storage: Mongocfgconfig50_Storage | undefined;
     /** `operationProfiling` section of mongocfg configuration. */
@@ -87,19 +96,23 @@ export interface Mongocfgconfig50 {
     net: Mongocfgconfig50_Network | undefined;
 }
 export interface Mongocfgconfig50_Storage {
+    $type: 'yandex.cloud.mdb.mongodb.v1.config.MongoCfgConfig5_0.Storage';
     /** Configuration of the WiredTiger storage engine. */
     wiredTiger: Mongocfgconfig50_Storage_WiredTiger | undefined;
 }
 /** Configuration of WiredTiger storage engine. */
 export interface Mongocfgconfig50_Storage_WiredTiger {
+    $type: 'yandex.cloud.mdb.mongodb.v1.config.MongoCfgConfig5_0.Storage.WiredTiger';
     /** Engine configuration for WiredTiger. */
     engineConfig: Mongocfgconfig50_Storage_WiredTiger_EngineConfig | undefined;
 }
 export interface Mongocfgconfig50_Storage_WiredTiger_EngineConfig {
+    $type: 'yandex.cloud.mdb.mongodb.v1.config.MongoCfgConfig5_0.Storage.WiredTiger.EngineConfig';
     /** The maximum size of the internal cache that WiredTiger will use for all data. */
     cacheSizeGb: number | undefined;
 }
 export interface Mongocfgconfig50_OperationProfiling {
+    $type: 'yandex.cloud.mdb.mongodb.v1.config.MongoCfgConfig5_0.OperationProfiling';
     /** Mode which specifies operations that should be profiled. */
     mode: Mongocfgconfig50_OperationProfiling_Mode;
     /**
@@ -122,18 +135,22 @@ export declare enum Mongocfgconfig50_OperationProfiling_Mode {
 export declare function mongocfgconfig50_OperationProfiling_ModeFromJSON(object: any): Mongocfgconfig50_OperationProfiling_Mode;
 export declare function mongocfgconfig50_OperationProfiling_ModeToJSON(object: Mongocfgconfig50_OperationProfiling_Mode): string;
 export interface Mongocfgconfig50_Network {
+    $type: 'yandex.cloud.mdb.mongodb.v1.config.MongoCfgConfig5_0.Network';
     /** The maximum number of simultaneous connections that mongocfg will accept. */
     maxIncomingConnections: number | undefined;
 }
 export interface Mongosconfig50 {
+    $type: 'yandex.cloud.mdb.mongodb.v1.config.MongosConfig5_0';
     /** Network settings for mongos. */
     net: Mongosconfig50_Network | undefined;
 }
 export interface Mongosconfig50_Network {
+    $type: 'yandex.cloud.mdb.mongodb.v1.config.MongosConfig5_0.Network';
     /** The maximum number of simultaneous connections that mongos will accept. */
     maxIncomingConnections: number | undefined;
 }
 export interface Mongodconfigset50 {
+    $type: 'yandex.cloud.mdb.mongodb.v1.config.MongodConfigSet5_0';
     /**
      * Effective mongod settings for a MongoDB 5.0 cluster (a combination of settings defined
      * in [user_config] and [default_config]).
@@ -145,6 +162,7 @@ export interface Mongodconfigset50 {
     defaultConfig: Mongodconfig50 | undefined;
 }
 export interface Mongocfgconfigset50 {
+    $type: 'yandex.cloud.mdb.mongodb.v1.config.MongoCfgConfigSet5_0';
     /**
      * Effective mongocfg settings for a MongoDB 5.0 cluster (a combination of settings defined
      * in [user_config] and [default_config]).
@@ -156,6 +174,7 @@ export interface Mongocfgconfigset50 {
     defaultConfig: Mongocfgconfig50 | undefined;
 }
 export interface Mongosconfigset50 {
+    $type: 'yandex.cloud.mdb.mongodb.v1.config.MongosConfigSet5_0';
     /**
      * Effective mongos settings for a MongoDB 5.0 cluster (a combination of settings defined
      * in [user_config] and [default_config]).
@@ -167,6 +186,7 @@ export interface Mongosconfigset50 {
     defaultConfig: Mongosconfig50 | undefined;
 }
 export declare const Mongodconfig50: {
+    $type: "yandex.cloud.mdb.mongodb.v1.config.MongodConfig5_0";
     encode(message: Mongodconfig50, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Mongodconfig50;
     fromJSON(object: any): Mongodconfig50;
@@ -174,6 +194,7 @@ export declare const Mongodconfig50: {
     fromPartial(object: DeepPartial<Mongodconfig50>): Mongodconfig50;
 };
 export declare const Mongodconfig50_Storage: {
+    $type: "yandex.cloud.mdb.mongodb.v1.config.MongodConfig5_0.Storage";
     encode(message: Mongodconfig50_Storage, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Mongodconfig50_Storage;
     fromJSON(object: any): Mongodconfig50_Storage;
@@ -181,6 +202,7 @@ export declare const Mongodconfig50_Storage: {
     fromPartial(object: DeepPartial<Mongodconfig50_Storage>): Mongodconfig50_Storage;
 };
 export declare const Mongodconfig50_Storage_WiredTiger: {
+    $type: "yandex.cloud.mdb.mongodb.v1.config.MongodConfig5_0.Storage.WiredTiger";
     encode(message: Mongodconfig50_Storage_WiredTiger, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Mongodconfig50_Storage_WiredTiger;
     fromJSON(object: any): Mongodconfig50_Storage_WiredTiger;
@@ -188,6 +210,7 @@ export declare const Mongodconfig50_Storage_WiredTiger: {
     fromPartial(object: DeepPartial<Mongodconfig50_Storage_WiredTiger>): Mongodconfig50_Storage_WiredTiger;
 };
 export declare const Mongodconfig50_Storage_WiredTiger_EngineConfig: {
+    $type: "yandex.cloud.mdb.mongodb.v1.config.MongodConfig5_0.Storage.WiredTiger.EngineConfig";
     encode(message: Mongodconfig50_Storage_WiredTiger_EngineConfig, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Mongodconfig50_Storage_WiredTiger_EngineConfig;
     fromJSON(object: any): Mongodconfig50_Storage_WiredTiger_EngineConfig;
@@ -195,6 +218,7 @@ export declare const Mongodconfig50_Storage_WiredTiger_EngineConfig: {
     fromPartial(object: DeepPartial<Mongodconfig50_Storage_WiredTiger_EngineConfig>): Mongodconfig50_Storage_WiredTiger_EngineConfig;
 };
 export declare const Mongodconfig50_Storage_WiredTiger_CollectionConfig: {
+    $type: "yandex.cloud.mdb.mongodb.v1.config.MongodConfig5_0.Storage.WiredTiger.CollectionConfig";
     encode(message: Mongodconfig50_Storage_WiredTiger_CollectionConfig, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Mongodconfig50_Storage_WiredTiger_CollectionConfig;
     fromJSON(object: any): Mongodconfig50_Storage_WiredTiger_CollectionConfig;
@@ -202,6 +226,7 @@ export declare const Mongodconfig50_Storage_WiredTiger_CollectionConfig: {
     fromPartial(object: DeepPartial<Mongodconfig50_Storage_WiredTiger_CollectionConfig>): Mongodconfig50_Storage_WiredTiger_CollectionConfig;
 };
 export declare const Mongodconfig50_Storage_Journal: {
+    $type: "yandex.cloud.mdb.mongodb.v1.config.MongodConfig5_0.Storage.Journal";
     encode(message: Mongodconfig50_Storage_Journal, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Mongodconfig50_Storage_Journal;
     fromJSON(object: any): Mongodconfig50_Storage_Journal;
@@ -209,6 +234,7 @@ export declare const Mongodconfig50_Storage_Journal: {
     fromPartial(object: DeepPartial<Mongodconfig50_Storage_Journal>): Mongodconfig50_Storage_Journal;
 };
 export declare const Mongodconfig50_OperationProfiling: {
+    $type: "yandex.cloud.mdb.mongodb.v1.config.MongodConfig5_0.OperationProfiling";
     encode(message: Mongodconfig50_OperationProfiling, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Mongodconfig50_OperationProfiling;
     fromJSON(object: any): Mongodconfig50_OperationProfiling;
@@ -216,6 +242,7 @@ export declare const Mongodconfig50_OperationProfiling: {
     fromPartial(object: DeepPartial<Mongodconfig50_OperationProfiling>): Mongodconfig50_OperationProfiling;
 };
 export declare const Mongodconfig50_Network: {
+    $type: "yandex.cloud.mdb.mongodb.v1.config.MongodConfig5_0.Network";
     encode(message: Mongodconfig50_Network, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Mongodconfig50_Network;
     fromJSON(object: any): Mongodconfig50_Network;
@@ -223,6 +250,7 @@ export declare const Mongodconfig50_Network: {
     fromPartial(object: DeepPartial<Mongodconfig50_Network>): Mongodconfig50_Network;
 };
 export declare const Mongocfgconfig50: {
+    $type: "yandex.cloud.mdb.mongodb.v1.config.MongoCfgConfig5_0";
     encode(message: Mongocfgconfig50, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Mongocfgconfig50;
     fromJSON(object: any): Mongocfgconfig50;
@@ -230,6 +258,7 @@ export declare const Mongocfgconfig50: {
     fromPartial(object: DeepPartial<Mongocfgconfig50>): Mongocfgconfig50;
 };
 export declare const Mongocfgconfig50_Storage: {
+    $type: "yandex.cloud.mdb.mongodb.v1.config.MongoCfgConfig5_0.Storage";
     encode(message: Mongocfgconfig50_Storage, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Mongocfgconfig50_Storage;
     fromJSON(object: any): Mongocfgconfig50_Storage;
@@ -237,6 +266,7 @@ export declare const Mongocfgconfig50_Storage: {
     fromPartial(object: DeepPartial<Mongocfgconfig50_Storage>): Mongocfgconfig50_Storage;
 };
 export declare const Mongocfgconfig50_Storage_WiredTiger: {
+    $type: "yandex.cloud.mdb.mongodb.v1.config.MongoCfgConfig5_0.Storage.WiredTiger";
     encode(message: Mongocfgconfig50_Storage_WiredTiger, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Mongocfgconfig50_Storage_WiredTiger;
     fromJSON(object: any): Mongocfgconfig50_Storage_WiredTiger;
@@ -244,6 +274,7 @@ export declare const Mongocfgconfig50_Storage_WiredTiger: {
     fromPartial(object: DeepPartial<Mongocfgconfig50_Storage_WiredTiger>): Mongocfgconfig50_Storage_WiredTiger;
 };
 export declare const Mongocfgconfig50_Storage_WiredTiger_EngineConfig: {
+    $type: "yandex.cloud.mdb.mongodb.v1.config.MongoCfgConfig5_0.Storage.WiredTiger.EngineConfig";
     encode(message: Mongocfgconfig50_Storage_WiredTiger_EngineConfig, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Mongocfgconfig50_Storage_WiredTiger_EngineConfig;
     fromJSON(object: any): Mongocfgconfig50_Storage_WiredTiger_EngineConfig;
@@ -251,6 +282,7 @@ export declare const Mongocfgconfig50_Storage_WiredTiger_EngineConfig: {
     fromPartial(object: DeepPartial<Mongocfgconfig50_Storage_WiredTiger_EngineConfig>): Mongocfgconfig50_Storage_WiredTiger_EngineConfig;
 };
 export declare const Mongocfgconfig50_OperationProfiling: {
+    $type: "yandex.cloud.mdb.mongodb.v1.config.MongoCfgConfig5_0.OperationProfiling";
     encode(message: Mongocfgconfig50_OperationProfiling, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Mongocfgconfig50_OperationProfiling;
     fromJSON(object: any): Mongocfgconfig50_OperationProfiling;
@@ -258,6 +290,7 @@ export declare const Mongocfgconfig50_OperationProfiling: {
     fromPartial(object: DeepPartial<Mongocfgconfig50_OperationProfiling>): Mongocfgconfig50_OperationProfiling;
 };
 export declare const Mongocfgconfig50_Network: {
+    $type: "yandex.cloud.mdb.mongodb.v1.config.MongoCfgConfig5_0.Network";
     encode(message: Mongocfgconfig50_Network, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Mongocfgconfig50_Network;
     fromJSON(object: any): Mongocfgconfig50_Network;
@@ -265,6 +298,7 @@ export declare const Mongocfgconfig50_Network: {
     fromPartial(object: DeepPartial<Mongocfgconfig50_Network>): Mongocfgconfig50_Network;
 };
 export declare const Mongosconfig50: {
+    $type: "yandex.cloud.mdb.mongodb.v1.config.MongosConfig5_0";
     encode(message: Mongosconfig50, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Mongosconfig50;
     fromJSON(object: any): Mongosconfig50;
@@ -272,6 +306,7 @@ export declare const Mongosconfig50: {
     fromPartial(object: DeepPartial<Mongosconfig50>): Mongosconfig50;
 };
 export declare const Mongosconfig50_Network: {
+    $type: "yandex.cloud.mdb.mongodb.v1.config.MongosConfig5_0.Network";
     encode(message: Mongosconfig50_Network, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Mongosconfig50_Network;
     fromJSON(object: any): Mongosconfig50_Network;
@@ -279,6 +314,7 @@ export declare const Mongosconfig50_Network: {
     fromPartial(object: DeepPartial<Mongosconfig50_Network>): Mongosconfig50_Network;
 };
 export declare const Mongodconfigset50: {
+    $type: "yandex.cloud.mdb.mongodb.v1.config.MongodConfigSet5_0";
     encode(message: Mongodconfigset50, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Mongodconfigset50;
     fromJSON(object: any): Mongodconfigset50;
@@ -286,6 +322,7 @@ export declare const Mongodconfigset50: {
     fromPartial(object: DeepPartial<Mongodconfigset50>): Mongodconfigset50;
 };
 export declare const Mongocfgconfigset50: {
+    $type: "yandex.cloud.mdb.mongodb.v1.config.MongoCfgConfigSet5_0";
     encode(message: Mongocfgconfigset50, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Mongocfgconfigset50;
     fromJSON(object: any): Mongocfgconfigset50;
@@ -293,6 +330,7 @@ export declare const Mongocfgconfigset50: {
     fromPartial(object: DeepPartial<Mongocfgconfigset50>): Mongocfgconfigset50;
 };
 export declare const Mongosconfigset50: {
+    $type: "yandex.cloud.mdb.mongodb.v1.config.MongosConfigSet5_0";
     encode(message: Mongosconfigset50, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Mongosconfigset50;
     fromJSON(object: any): Mongosconfigset50;
@@ -301,6 +339,6 @@ export declare const Mongosconfigset50: {
 };
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

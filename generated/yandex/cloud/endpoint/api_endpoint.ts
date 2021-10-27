@@ -1,17 +1,25 @@
 /* eslint-disable */
+import { messageTypeRegistry } from '../../../typeRegistry';
 import Long from 'long';
 import _m0 from 'protobufjs/minimal';
 
 export const protobufPackage = 'yandex.cloud.endpoint';
 
 export interface ApiEndpoint {
+    $type: 'yandex.cloud.endpoint.ApiEndpoint';
     id: string;
     address: string;
 }
 
-const baseApiEndpoint: object = { id: '', address: '' };
+const baseApiEndpoint: object = {
+    $type: 'yandex.cloud.endpoint.ApiEndpoint',
+    id: '',
+    address: '',
+};
 
 export const ApiEndpoint = {
+    $type: 'yandex.cloud.endpoint.ApiEndpoint' as const,
+
     encode(
         message: ApiEndpoint,
         writer: _m0.Writer = _m0.Writer.create()
@@ -85,6 +93,8 @@ export const ApiEndpoint = {
     },
 };
 
+messageTypeRegistry.set(ApiEndpoint.$type, ApiEndpoint);
+
 type Builtin =
     | Date
     | Function
@@ -100,7 +110,7 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 if (_m0.util.Long !== Long) {

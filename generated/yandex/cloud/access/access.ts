@@ -1,4 +1,5 @@
 /* eslint-disable */
+import { messageTypeRegistry } from '../../../typeRegistry';
 import Long from 'long';
 import _m0 from 'protobufjs/minimal';
 
@@ -45,6 +46,7 @@ export function accessBindingActionToJSON(object: AccessBindingAction): string {
 }
 
 export interface Subject {
+    $type: 'yandex.cloud.access.Subject';
     /**
      * ID of the subject.
      *
@@ -72,6 +74,7 @@ export interface Subject {
 }
 
 export interface AccessBinding {
+    $type: 'yandex.cloud.access.AccessBinding';
     /** ID of the [yandex.cloud.iam.v1.Role] that is assigned to the [subject]. */
     roleId: string;
     /**
@@ -82,6 +85,7 @@ export interface AccessBinding {
 }
 
 export interface ListAccessBindingsRequest {
+    $type: 'yandex.cloud.access.ListAccessBindingsRequest';
     /**
      * ID of the resource to list access bindings for.
      *
@@ -106,6 +110,7 @@ export interface ListAccessBindingsRequest {
 }
 
 export interface ListAccessBindingsResponse {
+    $type: 'yandex.cloud.access.ListAccessBindingsResponse';
     /** List of access bindings for the specified resource. */
     accessBindings: AccessBinding[];
     /**
@@ -120,6 +125,7 @@ export interface ListAccessBindingsResponse {
 }
 
 export interface SetAccessBindingsRequest {
+    $type: 'yandex.cloud.access.SetAccessBindingsRequest';
     /**
      * ID of the resource for which access bindings are being set.
      *
@@ -131,11 +137,13 @@ export interface SetAccessBindingsRequest {
 }
 
 export interface SetAccessBindingsMetadata {
+    $type: 'yandex.cloud.access.SetAccessBindingsMetadata';
     /** ID of the resource for which access bindings are being set. */
     resourceId: string;
 }
 
 export interface UpdateAccessBindingsRequest {
+    $type: 'yandex.cloud.access.UpdateAccessBindingsRequest';
     /** ID of the resource for which access bindings are being updated. */
     resourceId: string;
     /** Updates to access bindings. */
@@ -143,20 +151,28 @@ export interface UpdateAccessBindingsRequest {
 }
 
 export interface UpdateAccessBindingsMetadata {
+    $type: 'yandex.cloud.access.UpdateAccessBindingsMetadata';
     /** ID of the resource for which access bindings are being updated. */
     resourceId: string;
 }
 
 export interface AccessBindingDelta {
+    $type: 'yandex.cloud.access.AccessBindingDelta';
     /** The action that is being performed on an access binding. */
     action: AccessBindingAction;
     /** Access binding. For more information, see [Access Bindings](/docs/iam/concepts/access-control/#access-bindings). */
     accessBinding: AccessBinding | undefined;
 }
 
-const baseSubject: object = { id: '', type: '' };
+const baseSubject: object = {
+    $type: 'yandex.cloud.access.Subject',
+    id: '',
+    type: '',
+};
 
 export const Subject = {
+    $type: 'yandex.cloud.access.Subject' as const,
+
     encode(
         message: Subject,
         writer: _m0.Writer = _m0.Writer.create()
@@ -230,9 +246,16 @@ export const Subject = {
     },
 };
 
-const baseAccessBinding: object = { roleId: '' };
+messageTypeRegistry.set(Subject.$type, Subject);
+
+const baseAccessBinding: object = {
+    $type: 'yandex.cloud.access.AccessBinding',
+    roleId: '',
+};
 
 export const AccessBinding = {
+    $type: 'yandex.cloud.access.AccessBinding' as const,
+
     encode(
         message: AccessBinding,
         writer: _m0.Writer = _m0.Writer.create()
@@ -309,13 +332,18 @@ export const AccessBinding = {
     },
 };
 
+messageTypeRegistry.set(AccessBinding.$type, AccessBinding);
+
 const baseListAccessBindingsRequest: object = {
+    $type: 'yandex.cloud.access.ListAccessBindingsRequest',
     resourceId: '',
     pageSize: 0,
     pageToken: '',
 };
 
 export const ListAccessBindingsRequest = {
+    $type: 'yandex.cloud.access.ListAccessBindingsRequest' as const,
+
     encode(
         message: ListAccessBindingsRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -418,9 +446,19 @@ export const ListAccessBindingsRequest = {
     },
 };
 
-const baseListAccessBindingsResponse: object = { nextPageToken: '' };
+messageTypeRegistry.set(
+    ListAccessBindingsRequest.$type,
+    ListAccessBindingsRequest
+);
+
+const baseListAccessBindingsResponse: object = {
+    $type: 'yandex.cloud.access.ListAccessBindingsResponse',
+    nextPageToken: '',
+};
 
 export const ListAccessBindingsResponse = {
+    $type: 'yandex.cloud.access.ListAccessBindingsResponse' as const,
+
     encode(
         message: ListAccessBindingsResponse,
         writer: _m0.Writer = _m0.Writer.create()
@@ -529,9 +567,19 @@ export const ListAccessBindingsResponse = {
     },
 };
 
-const baseSetAccessBindingsRequest: object = { resourceId: '' };
+messageTypeRegistry.set(
+    ListAccessBindingsResponse.$type,
+    ListAccessBindingsResponse
+);
+
+const baseSetAccessBindingsRequest: object = {
+    $type: 'yandex.cloud.access.SetAccessBindingsRequest',
+    resourceId: '',
+};
 
 export const SetAccessBindingsRequest = {
+    $type: 'yandex.cloud.access.SetAccessBindingsRequest' as const,
+
     encode(
         message: SetAccessBindingsRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -634,9 +682,19 @@ export const SetAccessBindingsRequest = {
     },
 };
 
-const baseSetAccessBindingsMetadata: object = { resourceId: '' };
+messageTypeRegistry.set(
+    SetAccessBindingsRequest.$type,
+    SetAccessBindingsRequest
+);
+
+const baseSetAccessBindingsMetadata: object = {
+    $type: 'yandex.cloud.access.SetAccessBindingsMetadata',
+    resourceId: '',
+};
 
 export const SetAccessBindingsMetadata = {
+    $type: 'yandex.cloud.access.SetAccessBindingsMetadata' as const,
+
     encode(
         message: SetAccessBindingsMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -705,9 +763,19 @@ export const SetAccessBindingsMetadata = {
     },
 };
 
-const baseUpdateAccessBindingsRequest: object = { resourceId: '' };
+messageTypeRegistry.set(
+    SetAccessBindingsMetadata.$type,
+    SetAccessBindingsMetadata
+);
+
+const baseUpdateAccessBindingsRequest: object = {
+    $type: 'yandex.cloud.access.UpdateAccessBindingsRequest',
+    resourceId: '',
+};
 
 export const UpdateAccessBindingsRequest = {
+    $type: 'yandex.cloud.access.UpdateAccessBindingsRequest' as const,
+
     encode(
         message: UpdateAccessBindingsRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -814,9 +882,19 @@ export const UpdateAccessBindingsRequest = {
     },
 };
 
-const baseUpdateAccessBindingsMetadata: object = { resourceId: '' };
+messageTypeRegistry.set(
+    UpdateAccessBindingsRequest.$type,
+    UpdateAccessBindingsRequest
+);
+
+const baseUpdateAccessBindingsMetadata: object = {
+    $type: 'yandex.cloud.access.UpdateAccessBindingsMetadata',
+    resourceId: '',
+};
 
 export const UpdateAccessBindingsMetadata = {
+    $type: 'yandex.cloud.access.UpdateAccessBindingsMetadata' as const,
+
     encode(
         message: UpdateAccessBindingsMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -885,9 +963,19 @@ export const UpdateAccessBindingsMetadata = {
     },
 };
 
-const baseAccessBindingDelta: object = { action: 0 };
+messageTypeRegistry.set(
+    UpdateAccessBindingsMetadata.$type,
+    UpdateAccessBindingsMetadata
+);
+
+const baseAccessBindingDelta: object = {
+    $type: 'yandex.cloud.access.AccessBindingDelta',
+    action: 0,
+};
 
 export const AccessBindingDelta = {
+    $type: 'yandex.cloud.access.AccessBindingDelta' as const,
+
     encode(
         message: AccessBindingDelta,
         writer: _m0.Writer = _m0.Writer.create()
@@ -984,6 +1072,8 @@ export const AccessBindingDelta = {
     },
 };
 
+messageTypeRegistry.set(AccessBindingDelta.$type, AccessBindingDelta);
+
 declare var self: any | undefined;
 declare var window: any | undefined;
 declare var global: any | undefined;
@@ -1010,7 +1100,7 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 function longToNumber(long: Long): number {

@@ -13,6 +13,7 @@ export declare function pricingVersionTypeFromJSON(object: any): PricingVersionT
 export declare function pricingVersionTypeToJSON(object: PricingVersionType): string;
 /** A Stock keeping unit resource. */
 export interface Sku {
+    $type: 'yandex.cloud.billing.v1.Sku';
     /** ID of the SKU. */
     id: string;
     /** Name of the SKU. */
@@ -31,6 +32,7 @@ export interface Sku {
  * Defines current and past prices for the sku.
  */
 export interface PricingVersion {
+    $type: 'yandex.cloud.billing.v1.PricingVersion';
     /** Type of the pricing version. */
     type: PricingVersionType;
     /**
@@ -46,6 +48,7 @@ export interface PricingVersion {
  * Defines price for the sku.
  */
 export interface PricingExpression {
+    $type: 'yandex.cloud.billing.v1.PricingExpression';
     /** List of rates. */
     rates: Rate[];
 }
@@ -54,6 +57,7 @@ export interface PricingExpression {
  * Define unit price for pricing quantity interval.
  */
 export interface Rate {
+    $type: 'yandex.cloud.billing.v1.Rate';
     /** Start of the pricing quantity interval. The end of the interval is the start pricing quantity of the next rate. */
     startPricingQuantity: string;
     /** Unit price for the pricing quantity interval. */
@@ -68,6 +72,7 @@ export interface Rate {
     currency: string;
 }
 export declare const Sku: {
+    $type: "yandex.cloud.billing.v1.Sku";
     encode(message: Sku, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Sku;
     fromJSON(object: any): Sku;
@@ -75,6 +80,7 @@ export declare const Sku: {
     fromPartial(object: DeepPartial<Sku>): Sku;
 };
 export declare const PricingVersion: {
+    $type: "yandex.cloud.billing.v1.PricingVersion";
     encode(message: PricingVersion, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): PricingVersion;
     fromJSON(object: any): PricingVersion;
@@ -82,6 +88,7 @@ export declare const PricingVersion: {
     fromPartial(object: DeepPartial<PricingVersion>): PricingVersion;
 };
 export declare const PricingExpression: {
+    $type: "yandex.cloud.billing.v1.PricingExpression";
     encode(message: PricingExpression, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): PricingExpression;
     fromJSON(object: any): PricingExpression;
@@ -89,6 +96,7 @@ export declare const PricingExpression: {
     fromPartial(object: DeepPartial<PricingExpression>): PricingExpression;
 };
 export declare const Rate: {
+    $type: "yandex.cloud.billing.v1.Rate";
     encode(message: Rate, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Rate;
     fromJSON(object: any): Rate;
@@ -97,6 +105,6 @@ export declare const Rate: {
 };
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

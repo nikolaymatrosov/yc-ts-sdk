@@ -4,6 +4,7 @@ import { ChannelCredentials, ChannelOptions, UntypedServiceImplementation, handl
 import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.datasphere.v1";
 export interface NodeExecutionRequest {
+    $type: 'yandex.cloud.datasphere.v1.NodeExecutionRequest';
     /** ID of the folder that will be matched with Node ACL. */
     folderId: string;
     /** ID of the Node to perform request on. */
@@ -12,10 +13,12 @@ export interface NodeExecutionRequest {
     input: Struct | undefined;
 }
 export interface NodeExecutionResponse {
+    $type: 'yandex.cloud.datasphere.v1.NodeExecutionResponse';
     /** Result of the execution. */
     output: Struct | undefined;
 }
 export declare const NodeExecutionRequest: {
+    $type: "yandex.cloud.datasphere.v1.NodeExecutionRequest";
     encode(message: NodeExecutionRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): NodeExecutionRequest;
     fromJSON(object: any): NodeExecutionRequest;
@@ -23,6 +26,7 @@ export declare const NodeExecutionRequest: {
     fromPartial(object: DeepPartial<NodeExecutionRequest>): NodeExecutionRequest;
 };
 export declare const NodeExecutionResponse: {
+    $type: "yandex.cloud.datasphere.v1.NodeExecutionResponse";
     encode(message: NodeExecutionResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): NodeExecutionResponse;
     fromJSON(object: any): NodeExecutionResponse;
@@ -55,6 +59,6 @@ export interface NodeServiceClient extends Client {
 export declare const NodeServiceClient: new (address: string, credentials: ChannelCredentials, options?: Partial<ChannelOptions> | undefined) => NodeServiceClient;
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

@@ -1,5 +1,6 @@
 /* eslint-disable */
 import { BoolValue, Int64Value } from '../../../../../google/protobuf/wrappers';
+import { messageTypeRegistry } from '../../../../../typeRegistry';
 import Long from 'long';
 import _m0 from 'protobufjs/minimal';
 
@@ -10,6 +11,7 @@ export const protobufPackage = 'yandex.cloud.mdb.postgresql.v1';
  * the [Developer's Guide](/docs/managed-postgresql/concepts).
  */
 export interface User {
+    $type: 'yandex.cloud.mdb.postgresql.v1.User';
     /** Name of the PostgreSQL user. */
     name: string;
     /** ID of the PostgreSQL cluster the user belongs to. */
@@ -42,11 +44,13 @@ export interface User {
 }
 
 export interface Permission {
+    $type: 'yandex.cloud.mdb.postgresql.v1.Permission';
     /** Name of the database that the permission grants access to. */
     databaseName: string;
 }
 
 export interface UserSpec {
+    $type: 'yandex.cloud.mdb.postgresql.v1.UserSpec';
     /** Name of the PostgreSQL user. */
     name: string;
     /** Password of the PostgreSQL user. */
@@ -81,6 +85,7 @@ export interface UserSpec {
 
 /** PostgreSQL user settings. */
 export interface UserSettings {
+    $type: 'yandex.cloud.mdb.postgresql.v1.UserSettings';
     /**
      * SQL sets an isolation level for each transaction.
      * This setting defines the default isolation level to be set for all new SQL transactions.
@@ -329,9 +334,17 @@ export function userSettings_TransactionIsolationToJSON(
     }
 }
 
-const baseUser: object = { name: '', clusterId: '', connLimit: 0, grants: '' };
+const baseUser: object = {
+    $type: 'yandex.cloud.mdb.postgresql.v1.User',
+    name: '',
+    clusterId: '',
+    connLimit: 0,
+    grants: '',
+};
 
 export const User = {
+    $type: 'yandex.cloud.mdb.postgresql.v1.User' as const,
+
     encode(
         message: User,
         writer: _m0.Writer = _m0.Writer.create()
@@ -356,7 +369,7 @@ export const User = {
         }
         if (message.login !== undefined) {
             BoolValue.encode(
-                { value: message.login! },
+                { $type: 'google.protobuf.BoolValue', value: message.login! },
                 writer.uint32(50).fork()
             ).ldelim();
         }
@@ -523,9 +536,16 @@ export const User = {
     },
 };
 
-const basePermission: object = { databaseName: '' };
+messageTypeRegistry.set(User.$type, User);
+
+const basePermission: object = {
+    $type: 'yandex.cloud.mdb.postgresql.v1.Permission',
+    databaseName: '',
+};
 
 export const Permission = {
+    $type: 'yandex.cloud.mdb.postgresql.v1.Permission' as const,
+
     encode(
         message: Permission,
         writer: _m0.Writer = _m0.Writer.create()
@@ -583,9 +603,18 @@ export const Permission = {
     },
 };
 
-const baseUserSpec: object = { name: '', password: '', grants: '' };
+messageTypeRegistry.set(Permission.$type, Permission);
+
+const baseUserSpec: object = {
+    $type: 'yandex.cloud.mdb.postgresql.v1.UserSpec',
+    name: '',
+    password: '',
+    grants: '',
+};
 
 export const UserSpec = {
+    $type: 'yandex.cloud.mdb.postgresql.v1.UserSpec' as const,
+
     encode(
         message: UserSpec,
         writer: _m0.Writer = _m0.Writer.create()
@@ -601,7 +630,10 @@ export const UserSpec = {
         }
         if (message.connLimit !== undefined) {
             Int64Value.encode(
-                { value: message.connLimit! },
+                {
+                    $type: 'google.protobuf.Int64Value',
+                    value: message.connLimit!,
+                },
                 writer.uint32(34).fork()
             ).ldelim();
         }
@@ -613,7 +645,7 @@ export const UserSpec = {
         }
         if (message.login !== undefined) {
             BoolValue.encode(
-                { value: message.login! },
+                { $type: 'google.protobuf.BoolValue', value: message.login! },
                 writer.uint32(50).fork()
             ).ldelim();
         }
@@ -783,13 +815,18 @@ export const UserSpec = {
     },
 };
 
+messageTypeRegistry.set(UserSpec.$type, UserSpec);
+
 const baseUserSettings: object = {
+    $type: 'yandex.cloud.mdb.postgresql.v1.UserSettings',
     defaultTransactionIsolation: 0,
     synchronousCommit: 0,
     logStatement: 0,
 };
 
 export const UserSettings = {
+    $type: 'yandex.cloud.mdb.postgresql.v1.UserSettings' as const,
+
     encode(
         message: UserSettings,
         writer: _m0.Writer = _m0.Writer.create()
@@ -799,13 +836,19 @@ export const UserSettings = {
         }
         if (message.lockTimeout !== undefined) {
             Int64Value.encode(
-                { value: message.lockTimeout! },
+                {
+                    $type: 'google.protobuf.Int64Value',
+                    value: message.lockTimeout!,
+                },
                 writer.uint32(18).fork()
             ).ldelim();
         }
         if (message.logMinDurationStatement !== undefined) {
             Int64Value.encode(
-                { value: message.logMinDurationStatement! },
+                {
+                    $type: 'google.protobuf.Int64Value',
+                    value: message.logMinDurationStatement!,
+                },
                 writer.uint32(26).fork()
             ).ldelim();
         }
@@ -814,7 +857,10 @@ export const UserSettings = {
         }
         if (message.tempFileLimit !== undefined) {
             Int64Value.encode(
-                { value: message.tempFileLimit! },
+                {
+                    $type: 'google.protobuf.Int64Value',
+                    value: message.tempFileLimit!,
+                },
                 writer.uint32(42).fork()
             ).ldelim();
         }
@@ -996,6 +1042,8 @@ export const UserSettings = {
     },
 };
 
+messageTypeRegistry.set(UserSettings.$type, UserSettings);
+
 declare var self: any | undefined;
 declare var window: any | undefined;
 declare var global: any | undefined;
@@ -1022,7 +1070,7 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 function longToNumber(long: Long): number {

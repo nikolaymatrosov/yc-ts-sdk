@@ -1,5 +1,6 @@
 /* eslint-disable */
 import { BoolValue } from '../../../../google/protobuf/wrappers';
+import { messageTypeRegistry } from '../../../../typeRegistry';
 import { Origin, OriginMeta } from '../../../../yandex/cloud/cdn/v1/origin';
 import { Operation } from '../../../../yandex/cloud/operation/operation';
 import {
@@ -20,6 +21,7 @@ import _m0 from 'protobufjs/minimal';
 export const protobufPackage = 'yandex.cloud.cdn.v1';
 
 export interface GetOriginRequest {
+    $type: 'yandex.cloud.cdn.v1.GetOriginRequest';
     /** ID of the folder that the origin belongs to. */
     folderId: string;
     /** [origin_id] group ID to request origin from. */
@@ -27,6 +29,7 @@ export interface GetOriginRequest {
 }
 
 export interface ListOriginsRequest {
+    $type: 'yandex.cloud.cdn.v1.ListOriginsRequest';
     /** ID of the folder that the origin belongs to. */
     folderId: string;
     /** ID of the group to request origins from. */
@@ -34,11 +37,13 @@ export interface ListOriginsRequest {
 }
 
 export interface ListOriginsResponse {
+    $type: 'yandex.cloud.cdn.v1.ListOriginsResponse';
     /** Origin from response. */
     origins: Origin[];
 }
 
 export interface CreateOriginRequest {
+    $type: 'yandex.cloud.cdn.v1.CreateOriginRequest';
     /** ID of the folder that the origin belongs to. */
     folderId: string;
     /** [origin_group_id] group ID to request origins from. */
@@ -70,6 +75,7 @@ export interface CreateOriginRequest {
 }
 
 export interface CreateOriginMetadata {
+    $type: 'yandex.cloud.cdn.v1.CreateOriginMetadata';
     /** ID of the origin. */
     originId: number;
     /** ID pf the parent origins group. */
@@ -77,6 +83,7 @@ export interface CreateOriginMetadata {
 }
 
 export interface UpdateOriginRequest {
+    $type: 'yandex.cloud.cdn.v1.UpdateOriginRequest';
     /** ID of the folder that the origin belongs to. */
     folderId: string;
     /** ID of the origin. */
@@ -111,6 +118,7 @@ export interface UpdateOriginRequest {
 }
 
 export interface UpdateOriginMetadata {
+    $type: 'yandex.cloud.cdn.v1.UpdateOriginMetadata';
     /** ID of the origin. */
     originId: number;
     /** Parent origins group ID. */
@@ -118,6 +126,7 @@ export interface UpdateOriginMetadata {
 }
 
 export interface DeleteOriginRequest {
+    $type: 'yandex.cloud.cdn.v1.DeleteOriginRequest';
     /** ID of the folder that the origin belongs to. */
     folderId: string;
     /** ID of the origin. */
@@ -125,13 +134,20 @@ export interface DeleteOriginRequest {
 }
 
 export interface DeleteOriginMetadata {
+    $type: 'yandex.cloud.cdn.v1.DeleteOriginMetadata';
     /** ID of the origin. */
     originId: number;
 }
 
-const baseGetOriginRequest: object = { folderId: '', originId: 0 };
+const baseGetOriginRequest: object = {
+    $type: 'yandex.cloud.cdn.v1.GetOriginRequest',
+    folderId: '',
+    originId: 0,
+};
 
 export const GetOriginRequest = {
+    $type: 'yandex.cloud.cdn.v1.GetOriginRequest' as const,
+
     encode(
         message: GetOriginRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -205,9 +221,17 @@ export const GetOriginRequest = {
     },
 };
 
-const baseListOriginsRequest: object = { folderId: '', originGroupId: 0 };
+messageTypeRegistry.set(GetOriginRequest.$type, GetOriginRequest);
+
+const baseListOriginsRequest: object = {
+    $type: 'yandex.cloud.cdn.v1.ListOriginsRequest',
+    folderId: '',
+    originGroupId: 0,
+};
 
 export const ListOriginsRequest = {
+    $type: 'yandex.cloud.cdn.v1.ListOriginsRequest' as const,
+
     encode(
         message: ListOriginsRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -293,9 +317,15 @@ export const ListOriginsRequest = {
     },
 };
 
-const baseListOriginsResponse: object = {};
+messageTypeRegistry.set(ListOriginsRequest.$type, ListOriginsRequest);
+
+const baseListOriginsResponse: object = {
+    $type: 'yandex.cloud.cdn.v1.ListOriginsResponse',
+};
 
 export const ListOriginsResponse = {
+    $type: 'yandex.cloud.cdn.v1.ListOriginsResponse' as const,
+
     encode(
         message: ListOriginsResponse,
         writer: _m0.Writer = _m0.Writer.create()
@@ -366,13 +396,18 @@ export const ListOriginsResponse = {
     },
 };
 
+messageTypeRegistry.set(ListOriginsResponse.$type, ListOriginsResponse);
+
 const baseCreateOriginRequest: object = {
+    $type: 'yandex.cloud.cdn.v1.CreateOriginRequest',
     folderId: '',
     originGroupId: 0,
     source: '',
 };
 
 export const CreateOriginRequest = {
+    $type: 'yandex.cloud.cdn.v1.CreateOriginRequest' as const,
+
     encode(
         message: CreateOriginRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -388,13 +423,13 @@ export const CreateOriginRequest = {
         }
         if (message.enabled !== undefined) {
             BoolValue.encode(
-                { value: message.enabled! },
+                { $type: 'google.protobuf.BoolValue', value: message.enabled! },
                 writer.uint32(34).fork()
             ).ldelim();
         }
         if (message.backup !== undefined) {
             BoolValue.encode(
-                { value: message.backup! },
+                { $type: 'google.protobuf.BoolValue', value: message.backup! },
                 writer.uint32(42).fork()
             ).ldelim();
         }
@@ -541,9 +576,17 @@ export const CreateOriginRequest = {
     },
 };
 
-const baseCreateOriginMetadata: object = { originId: 0, originGroupId: 0 };
+messageTypeRegistry.set(CreateOriginRequest.$type, CreateOriginRequest);
+
+const baseCreateOriginMetadata: object = {
+    $type: 'yandex.cloud.cdn.v1.CreateOriginMetadata',
+    originId: 0,
+    originGroupId: 0,
+};
 
 export const CreateOriginMetadata = {
+    $type: 'yandex.cloud.cdn.v1.CreateOriginMetadata' as const,
+
     encode(
         message: CreateOriginMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -631,7 +674,10 @@ export const CreateOriginMetadata = {
     },
 };
 
+messageTypeRegistry.set(CreateOriginMetadata.$type, CreateOriginMetadata);
+
 const baseUpdateOriginRequest: object = {
+    $type: 'yandex.cloud.cdn.v1.UpdateOriginRequest',
     folderId: '',
     originId: 0,
     source: '',
@@ -640,6 +686,8 @@ const baseUpdateOriginRequest: object = {
 };
 
 export const UpdateOriginRequest = {
+    $type: 'yandex.cloud.cdn.v1.UpdateOriginRequest' as const,
+
     encode(
         message: UpdateOriginRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -787,9 +835,17 @@ export const UpdateOriginRequest = {
     },
 };
 
-const baseUpdateOriginMetadata: object = { originId: 0, originGroupId: 0 };
+messageTypeRegistry.set(UpdateOriginRequest.$type, UpdateOriginRequest);
+
+const baseUpdateOriginMetadata: object = {
+    $type: 'yandex.cloud.cdn.v1.UpdateOriginMetadata',
+    originId: 0,
+    originGroupId: 0,
+};
 
 export const UpdateOriginMetadata = {
+    $type: 'yandex.cloud.cdn.v1.UpdateOriginMetadata' as const,
+
     encode(
         message: UpdateOriginMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -877,9 +933,17 @@ export const UpdateOriginMetadata = {
     },
 };
 
-const baseDeleteOriginRequest: object = { folderId: '', originId: 0 };
+messageTypeRegistry.set(UpdateOriginMetadata.$type, UpdateOriginMetadata);
+
+const baseDeleteOriginRequest: object = {
+    $type: 'yandex.cloud.cdn.v1.DeleteOriginRequest',
+    folderId: '',
+    originId: 0,
+};
 
 export const DeleteOriginRequest = {
+    $type: 'yandex.cloud.cdn.v1.DeleteOriginRequest' as const,
+
     encode(
         message: DeleteOriginRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -956,9 +1020,16 @@ export const DeleteOriginRequest = {
     },
 };
 
-const baseDeleteOriginMetadata: object = { originId: 0 };
+messageTypeRegistry.set(DeleteOriginRequest.$type, DeleteOriginRequest);
+
+const baseDeleteOriginMetadata: object = {
+    $type: 'yandex.cloud.cdn.v1.DeleteOriginMetadata',
+    originId: 0,
+};
 
 export const DeleteOriginMetadata = {
+    $type: 'yandex.cloud.cdn.v1.DeleteOriginMetadata' as const,
+
     encode(
         message: DeleteOriginMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1019,6 +1090,8 @@ export const DeleteOriginMetadata = {
         return message;
     },
 };
+
+messageTypeRegistry.set(DeleteOriginMetadata.$type, DeleteOriginMetadata);
 
 /**
  * Origin management service.
@@ -1233,7 +1306,7 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 function longToNumber(long: Long): number {

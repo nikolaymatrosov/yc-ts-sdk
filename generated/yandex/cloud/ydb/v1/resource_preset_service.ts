@@ -1,4 +1,5 @@
 /* eslint-disable */
+import { messageTypeRegistry } from '../../../../typeRegistry';
 import { ResourcePreset } from '../../../../yandex/cloud/ydb/v1/resource_preset';
 import {
     makeGenericClientConstructor,
@@ -18,11 +19,13 @@ import _m0 from 'protobufjs/minimal';
 export const protobufPackage = 'yandex.cloud.ydb.v1';
 
 export interface GetResourcePresetRequest {
+    $type: 'yandex.cloud.ydb.v1.GetResourcePresetRequest';
     /** Required. ID of the resource preset to return. */
     resourcePresetId: string;
 }
 
 export interface ListResourcePresetsRequest {
+    $type: 'yandex.cloud.ydb.v1.ListResourcePresetsRequest';
     /**
      * The maximum number of results per page that should be returned. If the number of available
      * results is larger than `page_size`, the service returns a `next_page_token` that can be used
@@ -38,6 +41,7 @@ export interface ListResourcePresetsRequest {
 }
 
 export interface ListResourcePresetsResponse {
+    $type: 'yandex.cloud.ydb.v1.ListResourcePresetsResponse';
     /** Requested list of resource presets. */
     resourcePresets: ResourcePreset[];
     /**
@@ -50,9 +54,14 @@ export interface ListResourcePresetsResponse {
     nextPageToken: string;
 }
 
-const baseGetResourcePresetRequest: object = { resourcePresetId: '' };
+const baseGetResourcePresetRequest: object = {
+    $type: 'yandex.cloud.ydb.v1.GetResourcePresetRequest',
+    resourcePresetId: '',
+};
 
 export const GetResourcePresetRequest = {
+    $type: 'yandex.cloud.ydb.v1.GetResourcePresetRequest' as const,
+
     encode(
         message: GetResourcePresetRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -127,9 +136,20 @@ export const GetResourcePresetRequest = {
     },
 };
 
-const baseListResourcePresetsRequest: object = { pageSize: 0, pageToken: '' };
+messageTypeRegistry.set(
+    GetResourcePresetRequest.$type,
+    GetResourcePresetRequest
+);
+
+const baseListResourcePresetsRequest: object = {
+    $type: 'yandex.cloud.ydb.v1.ListResourcePresetsRequest',
+    pageSize: 0,
+    pageToken: '',
+};
 
 export const ListResourcePresetsRequest = {
+    $type: 'yandex.cloud.ydb.v1.ListResourcePresetsRequest' as const,
+
     encode(
         message: ListResourcePresetsRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -214,9 +234,19 @@ export const ListResourcePresetsRequest = {
     },
 };
 
-const baseListResourcePresetsResponse: object = { nextPageToken: '' };
+messageTypeRegistry.set(
+    ListResourcePresetsRequest.$type,
+    ListResourcePresetsRequest
+);
+
+const baseListResourcePresetsResponse: object = {
+    $type: 'yandex.cloud.ydb.v1.ListResourcePresetsResponse',
+    nextPageToken: '',
+};
 
 export const ListResourcePresetsResponse = {
+    $type: 'yandex.cloud.ydb.v1.ListResourcePresetsResponse' as const,
+
     encode(
         message: ListResourcePresetsResponse,
         writer: _m0.Writer = _m0.Writer.create()
@@ -324,6 +354,11 @@ export const ListResourcePresetsResponse = {
         return message;
     },
 };
+
+messageTypeRegistry.set(
+    ListResourcePresetsResponse.$type,
+    ListResourcePresetsResponse
+);
 
 export const ResourcePresetServiceService = {
     /** Returns the specified resource preset. */
@@ -447,7 +482,7 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 function longToNumber(long: Long): number {

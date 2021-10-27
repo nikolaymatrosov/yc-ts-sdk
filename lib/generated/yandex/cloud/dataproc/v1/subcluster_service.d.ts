@@ -7,6 +7,7 @@ import { ChannelCredentials, ChannelOptions, UntypedServiceImplementation, handl
 import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.dataproc.v1";
 export interface GetSubclusterRequest {
+    $type: 'yandex.cloud.dataproc.v1.GetSubclusterRequest';
     /** ID of the Data Proc cluster that the subcluster belongs to. */
     clusterId: string;
     /**
@@ -17,6 +18,7 @@ export interface GetSubclusterRequest {
     subclusterId: string;
 }
 export interface ListSubclustersRequest {
+    $type: 'yandex.cloud.dataproc.v1.ListSubclustersRequest';
     /** ID of the Data Proc cluster to list subclusters in. */
     clusterId: string;
     /**
@@ -43,6 +45,7 @@ export interface ListSubclustersRequest {
     filter: string;
 }
 export interface ListSubclustersResponse {
+    $type: 'yandex.cloud.dataproc.v1.ListSubclustersResponse';
     /** List of subclusters in the specified cluster. */
     subclusters: Subcluster[];
     /**
@@ -55,6 +58,7 @@ export interface ListSubclustersResponse {
     nextPageToken: string;
 }
 export interface CreateSubclusterRequest {
+    $type: 'yandex.cloud.dataproc.v1.CreateSubclusterRequest';
     /**
      * ID of the Data Proc cluster to create a subcluster in.
      *
@@ -78,12 +82,14 @@ export interface CreateSubclusterRequest {
     autoscalingConfig: AutoscalingConfig | undefined;
 }
 export interface CreateSubclusterMetadata {
+    $type: 'yandex.cloud.dataproc.v1.CreateSubclusterMetadata';
     /** ID of the cluster that the subcluster is being added to. */
     clusterId: string;
     /** ID of the subcluster that is being created. */
     subclusterId: string;
 }
 export interface UpdateSubclusterRequest {
+    $type: 'yandex.cloud.dataproc.v1.UpdateSubclusterRequest';
     /**
      * ID of the cluster to update a subcluster in.
      *
@@ -110,12 +116,14 @@ export interface UpdateSubclusterRequest {
     autoscalingConfig: AutoscalingConfig | undefined;
 }
 export interface UpdateSubclusterMetadata {
+    $type: 'yandex.cloud.dataproc.v1.UpdateSubclusterMetadata';
     /** ID of the cluster whose subcluster is being updated. */
     clusterId: string;
     /** ID of the subcluster that is being updated. */
     subclusterId: string;
 }
 export interface DeleteSubclusterRequest {
+    $type: 'yandex.cloud.dataproc.v1.DeleteSubclusterRequest';
     /**
      * ID of the cluster to remove a subcluster from.
      *
@@ -128,12 +136,14 @@ export interface DeleteSubclusterRequest {
     decommissionTimeout: number;
 }
 export interface DeleteSubclusterMetadata {
+    $type: 'yandex.cloud.dataproc.v1.DeleteSubclusterMetadata';
     /** ID of the cluster whose subcluster is being deleted. */
     clusterId: string;
     /** ID of the subcluster that is being deleted. */
     subclusterId: string;
 }
 export declare const GetSubclusterRequest: {
+    $type: "yandex.cloud.dataproc.v1.GetSubclusterRequest";
     encode(message: GetSubclusterRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): GetSubclusterRequest;
     fromJSON(object: any): GetSubclusterRequest;
@@ -141,6 +151,7 @@ export declare const GetSubclusterRequest: {
     fromPartial(object: DeepPartial<GetSubclusterRequest>): GetSubclusterRequest;
 };
 export declare const ListSubclustersRequest: {
+    $type: "yandex.cloud.dataproc.v1.ListSubclustersRequest";
     encode(message: ListSubclustersRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListSubclustersRequest;
     fromJSON(object: any): ListSubclustersRequest;
@@ -148,6 +159,7 @@ export declare const ListSubclustersRequest: {
     fromPartial(object: DeepPartial<ListSubclustersRequest>): ListSubclustersRequest;
 };
 export declare const ListSubclustersResponse: {
+    $type: "yandex.cloud.dataproc.v1.ListSubclustersResponse";
     encode(message: ListSubclustersResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListSubclustersResponse;
     fromJSON(object: any): ListSubclustersResponse;
@@ -155,6 +167,7 @@ export declare const ListSubclustersResponse: {
     fromPartial(object: DeepPartial<ListSubclustersResponse>): ListSubclustersResponse;
 };
 export declare const CreateSubclusterRequest: {
+    $type: "yandex.cloud.dataproc.v1.CreateSubclusterRequest";
     encode(message: CreateSubclusterRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateSubclusterRequest;
     fromJSON(object: any): CreateSubclusterRequest;
@@ -162,6 +175,7 @@ export declare const CreateSubclusterRequest: {
     fromPartial(object: DeepPartial<CreateSubclusterRequest>): CreateSubclusterRequest;
 };
 export declare const CreateSubclusterMetadata: {
+    $type: "yandex.cloud.dataproc.v1.CreateSubclusterMetadata";
     encode(message: CreateSubclusterMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateSubclusterMetadata;
     fromJSON(object: any): CreateSubclusterMetadata;
@@ -169,6 +183,7 @@ export declare const CreateSubclusterMetadata: {
     fromPartial(object: DeepPartial<CreateSubclusterMetadata>): CreateSubclusterMetadata;
 };
 export declare const UpdateSubclusterRequest: {
+    $type: "yandex.cloud.dataproc.v1.UpdateSubclusterRequest";
     encode(message: UpdateSubclusterRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateSubclusterRequest;
     fromJSON(object: any): UpdateSubclusterRequest;
@@ -176,6 +191,7 @@ export declare const UpdateSubclusterRequest: {
     fromPartial(object: DeepPartial<UpdateSubclusterRequest>): UpdateSubclusterRequest;
 };
 export declare const UpdateSubclusterMetadata: {
+    $type: "yandex.cloud.dataproc.v1.UpdateSubclusterMetadata";
     encode(message: UpdateSubclusterMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateSubclusterMetadata;
     fromJSON(object: any): UpdateSubclusterMetadata;
@@ -183,6 +199,7 @@ export declare const UpdateSubclusterMetadata: {
     fromPartial(object: DeepPartial<UpdateSubclusterMetadata>): UpdateSubclusterMetadata;
 };
 export declare const DeleteSubclusterRequest: {
+    $type: "yandex.cloud.dataproc.v1.DeleteSubclusterRequest";
     encode(message: DeleteSubclusterRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteSubclusterRequest;
     fromJSON(object: any): DeleteSubclusterRequest;
@@ -190,6 +207,7 @@ export declare const DeleteSubclusterRequest: {
     fromPartial(object: DeepPartial<DeleteSubclusterRequest>): DeleteSubclusterRequest;
 };
 export declare const DeleteSubclusterMetadata: {
+    $type: "yandex.cloud.dataproc.v1.DeleteSubclusterMetadata";
     encode(message: DeleteSubclusterMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteSubclusterMetadata;
     fromJSON(object: any): DeleteSubclusterMetadata;
@@ -298,6 +316,6 @@ export interface SubclusterServiceClient extends Client {
 export declare const SubclusterServiceClient: new (address: string, credentials: ChannelCredentials, options?: Partial<ChannelOptions> | undefined) => SubclusterServiceClient;
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

@@ -1,4 +1,5 @@
 /* eslint-disable */
+import { messageTypeRegistry } from '../../../../typeRegistry';
 import {
     makeGenericClientConstructor,
     ChannelCredentials,
@@ -17,6 +18,7 @@ import _m0 from 'protobufjs/minimal';
 export const protobufPackage = 'yandex.cloud.certificatemanager.v1';
 
 export interface GetCertificateContentResponse {
+    $type: 'yandex.cloud.certificatemanager.v1.GetCertificateContentResponse';
     /** ID of the certificate. */
     certificateId: string;
     /** PEM-encoded certificate chain content of the certificate. */
@@ -26,17 +28,21 @@ export interface GetCertificateContentResponse {
 }
 
 export interface GetCertificateContentRequest {
+    $type: 'yandex.cloud.certificatemanager.v1.GetCertificateContentRequest';
     /** ID of the certificate to download content. */
     certificateId: string;
 }
 
 const baseGetCertificateContentResponse: object = {
+    $type: 'yandex.cloud.certificatemanager.v1.GetCertificateContentResponse',
     certificateId: '',
     certificateChain: '',
     privateKey: '',
 };
 
 export const GetCertificateContentResponse = {
+    $type: 'yandex.cloud.certificatemanager.v1.GetCertificateContentResponse' as const,
+
     encode(
         message: GetCertificateContentResponse,
         writer: _m0.Writer = _m0.Writer.create()
@@ -159,9 +165,19 @@ export const GetCertificateContentResponse = {
     },
 };
 
-const baseGetCertificateContentRequest: object = { certificateId: '' };
+messageTypeRegistry.set(
+    GetCertificateContentResponse.$type,
+    GetCertificateContentResponse
+);
+
+const baseGetCertificateContentRequest: object = {
+    $type: 'yandex.cloud.certificatemanager.v1.GetCertificateContentRequest',
+    certificateId: '',
+};
 
 export const GetCertificateContentRequest = {
+    $type: 'yandex.cloud.certificatemanager.v1.GetCertificateContentRequest' as const,
+
     encode(
         message: GetCertificateContentRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -235,6 +251,11 @@ export const GetCertificateContentRequest = {
         return message;
     },
 };
+
+messageTypeRegistry.set(
+    GetCertificateContentRequest.$type,
+    GetCertificateContentRequest
+);
 
 /** A set of methods for managing certificate content. */
 export const CertificateContentServiceService = {
@@ -317,7 +338,7 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 if (_m0.util.Long !== Long) {

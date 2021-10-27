@@ -1,9 +1,11 @@
 import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.mdb.elasticsearch.v1";
 export interface AuthProviders {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.AuthProviders';
     providers: AuthProvider[];
 }
 export interface AuthProvider {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.AuthProvider';
     type: AuthProvider_Type;
     name: string;
     order: number;
@@ -28,6 +30,7 @@ export declare enum AuthProvider_Type {
 export declare function authProvider_TypeFromJSON(object: any): AuthProvider_Type;
 export declare function authProvider_TypeToJSON(object: AuthProvider_Type): string;
 export interface SamlSettings {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.SamlSettings';
     idpEntityId: string;
     idpMetadataFile: Uint8Array;
     spEntityId: string;
@@ -39,6 +42,7 @@ export interface SamlSettings {
     attributeDn: string;
 }
 export declare const AuthProviders: {
+    $type: "yandex.cloud.mdb.elasticsearch.v1.AuthProviders";
     encode(message: AuthProviders, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): AuthProviders;
     fromJSON(object: any): AuthProviders;
@@ -46,6 +50,7 @@ export declare const AuthProviders: {
     fromPartial(object: DeepPartial<AuthProviders>): AuthProviders;
 };
 export declare const AuthProvider: {
+    $type: "yandex.cloud.mdb.elasticsearch.v1.AuthProvider";
     encode(message: AuthProvider, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): AuthProvider;
     fromJSON(object: any): AuthProvider;
@@ -53,6 +58,7 @@ export declare const AuthProvider: {
     fromPartial(object: DeepPartial<AuthProvider>): AuthProvider;
 };
 export declare const SamlSettings: {
+    $type: "yandex.cloud.mdb.elasticsearch.v1.SamlSettings";
     encode(message: SamlSettings, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): SamlSettings;
     fromJSON(object: any): SamlSettings;
@@ -61,6 +67,6 @@ export declare const SamlSettings: {
 };
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

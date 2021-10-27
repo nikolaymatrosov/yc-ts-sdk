@@ -1,5 +1,6 @@
 /* eslint-disable */
 import { FieldMask } from '../../../../google/protobuf/field_mask';
+import { messageTypeRegistry } from '../../../../typeRegistry';
 import { Image, Os } from '../../../../yandex/cloud/compute/v1/image';
 import { Operation } from '../../../../yandex/cloud/operation/operation';
 import {
@@ -20,6 +21,7 @@ import _m0 from 'protobufjs/minimal';
 export const protobufPackage = 'yandex.cloud.compute.v1';
 
 export interface GetImageRequest {
+    $type: 'yandex.cloud.compute.v1.GetImageRequest';
     /**
      * ID of the Image resource to return.
      * To get the image ID, use a [ImageService.List] request.
@@ -28,6 +30,7 @@ export interface GetImageRequest {
 }
 
 export interface GetImageLatestByFamilyRequest {
+    $type: 'yandex.cloud.compute.v1.GetImageLatestByFamilyRequest';
     /**
      * ID of the folder to get the image from.
      * To get the folder ID, use a [yandex.cloud.resourcemanager.v1.FolderService.List] request.
@@ -38,6 +41,7 @@ export interface GetImageLatestByFamilyRequest {
 }
 
 export interface ListImagesRequest {
+    $type: 'yandex.cloud.compute.v1.ListImagesRequest';
     /**
      * ID of the folder to list images in.
      * To get the folder ID, use a [yandex.cloud.resourcemanager.v1.FolderService.List] request.
@@ -66,6 +70,7 @@ export interface ListImagesRequest {
 }
 
 export interface ListImagesResponse {
+    $type: 'yandex.cloud.compute.v1.ListImagesResponse';
     /** List of images. */
     images: Image[];
     /**
@@ -80,6 +85,7 @@ export interface ListImagesResponse {
 }
 
 export interface CreateImageRequest {
+    $type: 'yandex.cloud.compute.v1.CreateImageRequest';
     /**
      * ID of the folder to create an image in.
      * To get the folder ID, use a [yandex.cloud.resourcemanager.v1.FolderService.List] request.
@@ -136,16 +142,19 @@ export interface CreateImageRequest {
 }
 
 export interface CreateImageRequest_LabelsEntry {
+    $type: 'yandex.cloud.compute.v1.CreateImageRequest.LabelsEntry';
     key: string;
     value: string;
 }
 
 export interface CreateImageMetadata {
+    $type: 'yandex.cloud.compute.v1.CreateImageMetadata';
     /** ID of the image that is being created. */
     imageId: string;
 }
 
 export interface UpdateImageRequest {
+    $type: 'yandex.cloud.compute.v1.UpdateImageRequest';
     /**
      * ID of the Image resource to update.
      * To get the image ID, use a [ImageService.List] request.
@@ -171,16 +180,19 @@ export interface UpdateImageRequest {
 }
 
 export interface UpdateImageRequest_LabelsEntry {
+    $type: 'yandex.cloud.compute.v1.UpdateImageRequest.LabelsEntry';
     key: string;
     value: string;
 }
 
 export interface UpdateImageMetadata {
+    $type: 'yandex.cloud.compute.v1.UpdateImageMetadata';
     /** ID of the Image resource that is being updated. */
     imageId: string;
 }
 
 export interface DeleteImageRequest {
+    $type: 'yandex.cloud.compute.v1.DeleteImageRequest';
     /**
      * ID of the image to delete.
      * To get the image ID, use a [ImageService.List] request.
@@ -189,11 +201,13 @@ export interface DeleteImageRequest {
 }
 
 export interface DeleteImageMetadata {
+    $type: 'yandex.cloud.compute.v1.DeleteImageMetadata';
     /** ID of the image that is being deleted. */
     imageId: string;
 }
 
 export interface ListImageOperationsRequest {
+    $type: 'yandex.cloud.compute.v1.ListImageOperationsRequest';
     /** ID of the Image resource to list operations for. */
     imageId: string;
     /**
@@ -210,6 +224,7 @@ export interface ListImageOperationsRequest {
 }
 
 export interface ListImageOperationsResponse {
+    $type: 'yandex.cloud.compute.v1.ListImageOperationsResponse';
     /** List of operations for the specified image. */
     operations: Operation[];
     /**
@@ -221,9 +236,14 @@ export interface ListImageOperationsResponse {
     nextPageToken: string;
 }
 
-const baseGetImageRequest: object = { imageId: '' };
+const baseGetImageRequest: object = {
+    $type: 'yandex.cloud.compute.v1.GetImageRequest',
+    imageId: '',
+};
 
 export const GetImageRequest = {
+    $type: 'yandex.cloud.compute.v1.GetImageRequest' as const,
+
     encode(
         message: GetImageRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -280,9 +300,17 @@ export const GetImageRequest = {
     },
 };
 
-const baseGetImageLatestByFamilyRequest: object = { folderId: '', family: '' };
+messageTypeRegistry.set(GetImageRequest.$type, GetImageRequest);
+
+const baseGetImageLatestByFamilyRequest: object = {
+    $type: 'yandex.cloud.compute.v1.GetImageLatestByFamilyRequest',
+    folderId: '',
+    family: '',
+};
 
 export const GetImageLatestByFamilyRequest = {
+    $type: 'yandex.cloud.compute.v1.GetImageLatestByFamilyRequest' as const,
+
     encode(
         message: GetImageLatestByFamilyRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -367,7 +395,13 @@ export const GetImageLatestByFamilyRequest = {
     },
 };
 
+messageTypeRegistry.set(
+    GetImageLatestByFamilyRequest.$type,
+    GetImageLatestByFamilyRequest
+);
+
 const baseListImagesRequest: object = {
+    $type: 'yandex.cloud.compute.v1.ListImagesRequest',
     folderId: '',
     pageSize: 0,
     pageToken: '',
@@ -375,6 +409,8 @@ const baseListImagesRequest: object = {
 };
 
 export const ListImagesRequest = {
+    $type: 'yandex.cloud.compute.v1.ListImagesRequest' as const,
+
     encode(
         message: ListImagesRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -482,9 +518,16 @@ export const ListImagesRequest = {
     },
 };
 
-const baseListImagesResponse: object = { nextPageToken: '' };
+messageTypeRegistry.set(ListImagesRequest.$type, ListImagesRequest);
+
+const baseListImagesResponse: object = {
+    $type: 'yandex.cloud.compute.v1.ListImagesResponse',
+    nextPageToken: '',
+};
 
 export const ListImagesResponse = {
+    $type: 'yandex.cloud.compute.v1.ListImagesResponse' as const,
+
     encode(
         message: ListImagesResponse,
         writer: _m0.Writer = _m0.Writer.create()
@@ -577,7 +620,10 @@ export const ListImagesResponse = {
     },
 };
 
+messageTypeRegistry.set(ListImagesResponse.$type, ListImagesResponse);
+
 const baseCreateImageRequest: object = {
+    $type: 'yandex.cloud.compute.v1.CreateImageRequest',
     folderId: '',
     name: '',
     description: '',
@@ -588,6 +634,8 @@ const baseCreateImageRequest: object = {
 };
 
 export const CreateImageRequest = {
+    $type: 'yandex.cloud.compute.v1.CreateImageRequest' as const,
+
     encode(
         message: CreateImageRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -603,7 +651,11 @@ export const CreateImageRequest = {
         }
         Object.entries(message.labels).forEach(([key, value]) => {
             CreateImageRequest_LabelsEntry.encode(
-                { key: key as any, value },
+                {
+                    $type: 'yandex.cloud.compute.v1.CreateImageRequest.LabelsEntry',
+                    key: key as any,
+                    value,
+                },
                 writer.uint32(34).fork()
             ).ldelim();
         });
@@ -881,9 +933,17 @@ export const CreateImageRequest = {
     },
 };
 
-const baseCreateImageRequest_LabelsEntry: object = { key: '', value: '' };
+messageTypeRegistry.set(CreateImageRequest.$type, CreateImageRequest);
+
+const baseCreateImageRequest_LabelsEntry: object = {
+    $type: 'yandex.cloud.compute.v1.CreateImageRequest.LabelsEntry',
+    key: '',
+    value: '',
+};
 
 export const CreateImageRequest_LabelsEntry = {
+    $type: 'yandex.cloud.compute.v1.CreateImageRequest.LabelsEntry' as const,
+
     encode(
         message: CreateImageRequest_LabelsEntry,
         writer: _m0.Writer = _m0.Writer.create()
@@ -968,9 +1028,19 @@ export const CreateImageRequest_LabelsEntry = {
     },
 };
 
-const baseCreateImageMetadata: object = { imageId: '' };
+messageTypeRegistry.set(
+    CreateImageRequest_LabelsEntry.$type,
+    CreateImageRequest_LabelsEntry
+);
+
+const baseCreateImageMetadata: object = {
+    $type: 'yandex.cloud.compute.v1.CreateImageMetadata',
+    imageId: '',
+};
 
 export const CreateImageMetadata = {
+    $type: 'yandex.cloud.compute.v1.CreateImageMetadata' as const,
+
     encode(
         message: CreateImageMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1030,7 +1100,10 @@ export const CreateImageMetadata = {
     },
 };
 
+messageTypeRegistry.set(CreateImageMetadata.$type, CreateImageMetadata);
+
 const baseUpdateImageRequest: object = {
+    $type: 'yandex.cloud.compute.v1.UpdateImageRequest',
     imageId: '',
     name: '',
     description: '',
@@ -1038,6 +1111,8 @@ const baseUpdateImageRequest: object = {
 };
 
 export const UpdateImageRequest = {
+    $type: 'yandex.cloud.compute.v1.UpdateImageRequest' as const,
+
     encode(
         message: UpdateImageRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1062,7 +1137,11 @@ export const UpdateImageRequest = {
         }
         Object.entries(message.labels).forEach(([key, value]) => {
             UpdateImageRequest_LabelsEntry.encode(
-                { key: key as any, value },
+                {
+                    $type: 'yandex.cloud.compute.v1.UpdateImageRequest.LabelsEntry',
+                    key: key as any,
+                    value,
+                },
                 writer.uint32(50).fork()
             ).ldelim();
         });
@@ -1212,9 +1291,17 @@ export const UpdateImageRequest = {
     },
 };
 
-const baseUpdateImageRequest_LabelsEntry: object = { key: '', value: '' };
+messageTypeRegistry.set(UpdateImageRequest.$type, UpdateImageRequest);
+
+const baseUpdateImageRequest_LabelsEntry: object = {
+    $type: 'yandex.cloud.compute.v1.UpdateImageRequest.LabelsEntry',
+    key: '',
+    value: '',
+};
 
 export const UpdateImageRequest_LabelsEntry = {
+    $type: 'yandex.cloud.compute.v1.UpdateImageRequest.LabelsEntry' as const,
+
     encode(
         message: UpdateImageRequest_LabelsEntry,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1299,9 +1386,19 @@ export const UpdateImageRequest_LabelsEntry = {
     },
 };
 
-const baseUpdateImageMetadata: object = { imageId: '' };
+messageTypeRegistry.set(
+    UpdateImageRequest_LabelsEntry.$type,
+    UpdateImageRequest_LabelsEntry
+);
+
+const baseUpdateImageMetadata: object = {
+    $type: 'yandex.cloud.compute.v1.UpdateImageMetadata',
+    imageId: '',
+};
 
 export const UpdateImageMetadata = {
+    $type: 'yandex.cloud.compute.v1.UpdateImageMetadata' as const,
+
     encode(
         message: UpdateImageMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1361,9 +1458,16 @@ export const UpdateImageMetadata = {
     },
 };
 
-const baseDeleteImageRequest: object = { imageId: '' };
+messageTypeRegistry.set(UpdateImageMetadata.$type, UpdateImageMetadata);
+
+const baseDeleteImageRequest: object = {
+    $type: 'yandex.cloud.compute.v1.DeleteImageRequest',
+    imageId: '',
+};
 
 export const DeleteImageRequest = {
+    $type: 'yandex.cloud.compute.v1.DeleteImageRequest' as const,
+
     encode(
         message: DeleteImageRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1423,9 +1527,16 @@ export const DeleteImageRequest = {
     },
 };
 
-const baseDeleteImageMetadata: object = { imageId: '' };
+messageTypeRegistry.set(DeleteImageRequest.$type, DeleteImageRequest);
+
+const baseDeleteImageMetadata: object = {
+    $type: 'yandex.cloud.compute.v1.DeleteImageMetadata',
+    imageId: '',
+};
 
 export const DeleteImageMetadata = {
+    $type: 'yandex.cloud.compute.v1.DeleteImageMetadata' as const,
+
     encode(
         message: DeleteImageMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1485,13 +1596,18 @@ export const DeleteImageMetadata = {
     },
 };
 
+messageTypeRegistry.set(DeleteImageMetadata.$type, DeleteImageMetadata);
+
 const baseListImageOperationsRequest: object = {
+    $type: 'yandex.cloud.compute.v1.ListImageOperationsRequest',
     imageId: '',
     pageSize: 0,
     pageToken: '',
 };
 
 export const ListImageOperationsRequest = {
+    $type: 'yandex.cloud.compute.v1.ListImageOperationsRequest' as const,
+
     encode(
         message: ListImageOperationsRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1593,9 +1709,19 @@ export const ListImageOperationsRequest = {
     },
 };
 
-const baseListImageOperationsResponse: object = { nextPageToken: '' };
+messageTypeRegistry.set(
+    ListImageOperationsRequest.$type,
+    ListImageOperationsRequest
+);
+
+const baseListImageOperationsResponse: object = {
+    $type: 'yandex.cloud.compute.v1.ListImageOperationsResponse',
+    nextPageToken: '',
+};
 
 export const ListImageOperationsResponse = {
+    $type: 'yandex.cloud.compute.v1.ListImageOperationsResponse' as const,
+
     encode(
         message: ListImageOperationsResponse,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1697,6 +1823,11 @@ export const ListImageOperationsResponse = {
         return message;
     },
 };
+
+messageTypeRegistry.set(
+    ListImageOperationsResponse.$type,
+    ListImageOperationsResponse
+);
 
 /** A set of methods for managing Image resources. */
 export const ImageServiceService = {
@@ -2019,7 +2150,7 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 function longToNumber(long: Long): number {

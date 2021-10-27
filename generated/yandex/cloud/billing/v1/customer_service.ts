@@ -1,4 +1,5 @@
 /* eslint-disable */
+import { messageTypeRegistry } from '../../../../typeRegistry';
 import {
     Customer,
     CustomerPerson,
@@ -22,6 +23,7 @@ import _m0 from 'protobufjs/minimal';
 export const protobufPackage = 'yandex.cloud.billing.v1';
 
 export interface ListCustomersRequest {
+    $type: 'yandex.cloud.billing.v1.ListCustomersRequest';
     /** ID of the reseller. */
     resellerId: string;
     /**
@@ -40,6 +42,7 @@ export interface ListCustomersRequest {
 }
 
 export interface ListCustomersResponse {
+    $type: 'yandex.cloud.billing.v1.ListCustomersResponse';
     /** List of customers. */
     customers: Customer[];
     /**
@@ -54,6 +57,7 @@ export interface ListCustomersResponse {
 }
 
 export interface InviteCustomerRequest {
+    $type: 'yandex.cloud.billing.v1.InviteCustomerRequest';
     /** ID of the reseller that customer will be associated with. */
     resellerId: string;
     /** Name of the customer. */
@@ -65,6 +69,7 @@ export interface InviteCustomerRequest {
 }
 
 export interface ActivateCustomerRequest {
+    $type: 'yandex.cloud.billing.v1.ActivateCustomerRequest';
     /**
      * ID of the customer.
      * To get the customer ID, use [CustomerService.List] request.
@@ -73,6 +78,7 @@ export interface ActivateCustomerRequest {
 }
 
 export interface SuspendCustomerRequest {
+    $type: 'yandex.cloud.billing.v1.SuspendCustomerRequest';
     /**
      * ID of the customer.
      * To get the customer ID, use [CustomerService.List] request.
@@ -81,6 +87,7 @@ export interface SuspendCustomerRequest {
 }
 
 export interface CustomerMetadata {
+    $type: 'yandex.cloud.billing.v1.CustomerMetadata';
     /** ID of the reseller. */
     resellerId: string;
     /** ID of the customer. */
@@ -88,12 +95,15 @@ export interface CustomerMetadata {
 }
 
 const baseListCustomersRequest: object = {
+    $type: 'yandex.cloud.billing.v1.ListCustomersRequest',
     resellerId: '',
     pageSize: 0,
     pageToken: '',
 };
 
 export const ListCustomersRequest = {
+    $type: 'yandex.cloud.billing.v1.ListCustomersRequest' as const,
+
     encode(
         message: ListCustomersRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -190,9 +200,16 @@ export const ListCustomersRequest = {
     },
 };
 
-const baseListCustomersResponse: object = { nextPageToken: '' };
+messageTypeRegistry.set(ListCustomersRequest.$type, ListCustomersRequest);
+
+const baseListCustomersResponse: object = {
+    $type: 'yandex.cloud.billing.v1.ListCustomersResponse',
+    nextPageToken: '',
+};
 
 export const ListCustomersResponse = {
+    $type: 'yandex.cloud.billing.v1.ListCustomersResponse' as const,
+
     encode(
         message: ListCustomersResponse,
         writer: _m0.Writer = _m0.Writer.create()
@@ -295,13 +312,18 @@ export const ListCustomersResponse = {
     },
 };
 
+messageTypeRegistry.set(ListCustomersResponse.$type, ListCustomersResponse);
+
 const baseInviteCustomerRequest: object = {
+    $type: 'yandex.cloud.billing.v1.InviteCustomerRequest',
     resellerId: '',
     name: '',
     invitationEmail: '',
 };
 
 export const InviteCustomerRequest = {
+    $type: 'yandex.cloud.billing.v1.InviteCustomerRequest' as const,
+
     encode(
         message: InviteCustomerRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -437,9 +459,16 @@ export const InviteCustomerRequest = {
     },
 };
 
-const baseActivateCustomerRequest: object = { customerId: '' };
+messageTypeRegistry.set(InviteCustomerRequest.$type, InviteCustomerRequest);
+
+const baseActivateCustomerRequest: object = {
+    $type: 'yandex.cloud.billing.v1.ActivateCustomerRequest',
+    customerId: '',
+};
 
 export const ActivateCustomerRequest = {
+    $type: 'yandex.cloud.billing.v1.ActivateCustomerRequest' as const,
+
     encode(
         message: ActivateCustomerRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -508,9 +537,16 @@ export const ActivateCustomerRequest = {
     },
 };
 
-const baseSuspendCustomerRequest: object = { customerId: '' };
+messageTypeRegistry.set(ActivateCustomerRequest.$type, ActivateCustomerRequest);
+
+const baseSuspendCustomerRequest: object = {
+    $type: 'yandex.cloud.billing.v1.SuspendCustomerRequest',
+    customerId: '',
+};
 
 export const SuspendCustomerRequest = {
+    $type: 'yandex.cloud.billing.v1.SuspendCustomerRequest' as const,
+
     encode(
         message: SuspendCustomerRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -579,9 +615,17 @@ export const SuspendCustomerRequest = {
     },
 };
 
-const baseCustomerMetadata: object = { resellerId: '', customerId: '' };
+messageTypeRegistry.set(SuspendCustomerRequest.$type, SuspendCustomerRequest);
+
+const baseCustomerMetadata: object = {
+    $type: 'yandex.cloud.billing.v1.CustomerMetadata',
+    resellerId: '',
+    customerId: '',
+};
 
 export const CustomerMetadata = {
+    $type: 'yandex.cloud.billing.v1.CustomerMetadata' as const,
+
     encode(
         message: CustomerMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -656,6 +700,8 @@ export const CustomerMetadata = {
         return message;
     },
 };
+
+messageTypeRegistry.set(CustomerMetadata.$type, CustomerMetadata);
 
 /** A set of methods for managing Customer resources. */
 export const CustomerServiceService = {
@@ -838,7 +884,7 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 function longToNumber(long: Long): number {

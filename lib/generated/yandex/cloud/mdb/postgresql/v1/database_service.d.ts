@@ -6,6 +6,7 @@ import { ChannelCredentials, ChannelOptions, UntypedServiceImplementation, handl
 import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.mdb.postgresql.v1";
 export interface GetDatabaseRequest {
+    $type: 'yandex.cloud.mdb.postgresql.v1.GetDatabaseRequest';
     /**
      * ID of the PostgreSQL cluster that the database belongs to.
      * To get the cluster ID use a [ClusterService.List] request.
@@ -18,6 +19,7 @@ export interface GetDatabaseRequest {
     databaseName: string;
 }
 export interface ListDatabasesRequest {
+    $type: 'yandex.cloud.mdb.postgresql.v1.ListDatabasesRequest';
     /**
      * ID of the PostgreSQL cluster to list databases in.
      * To get the cluster ID use a [ClusterService.List] request.
@@ -31,6 +33,7 @@ export interface ListDatabasesRequest {
     pageToken: string;
 }
 export interface ListDatabasesResponse {
+    $type: 'yandex.cloud.mdb.postgresql.v1.ListDatabasesResponse';
     /** List of PostgreSQL Database resources. */
     databases: Database[];
     /**
@@ -42,6 +45,7 @@ export interface ListDatabasesResponse {
     nextPageToken: string;
 }
 export interface CreateDatabaseRequest {
+    $type: 'yandex.cloud.mdb.postgresql.v1.CreateDatabaseRequest';
     /**
      * ID of the PostgreSQL cluster to create a database in.
      * To get the cluster ID use a [ClusterService.List] request.
@@ -51,12 +55,14 @@ export interface CreateDatabaseRequest {
     databaseSpec: DatabaseSpec | undefined;
 }
 export interface CreateDatabaseMetadata {
+    $type: 'yandex.cloud.mdb.postgresql.v1.CreateDatabaseMetadata';
     /** ID of the PostgreSQL cluster where a database is being created. */
     clusterId: string;
     /** Name of the PostgreSQL database that is being created. */
     databaseName: string;
 }
 export interface UpdateDatabaseRequest {
+    $type: 'yandex.cloud.mdb.postgresql.v1.UpdateDatabaseRequest';
     /**
      * ID of the PostgreSQL cluster to update a database in.
      * To get the cluster ID use a [ClusterService.List] request.
@@ -78,12 +84,14 @@ export interface UpdateDatabaseRequest {
     extensions: Extension[];
 }
 export interface UpdateDatabaseMetadata {
+    $type: 'yandex.cloud.mdb.postgresql.v1.UpdateDatabaseMetadata';
     /** ID of the PostgreSQL cluster where a database is being updated. */
     clusterId: string;
     /** Name of the PostgreSQL database that is being updated. */
     databaseName: string;
 }
 export interface DeleteDatabaseRequest {
+    $type: 'yandex.cloud.mdb.postgresql.v1.DeleteDatabaseRequest';
     /**
      * ID of the PostgreSQL cluster to delete a database in.
      * To get the cluster ID, use a [ClusterService.List] request.
@@ -96,12 +104,14 @@ export interface DeleteDatabaseRequest {
     databaseName: string;
 }
 export interface DeleteDatabaseMetadata {
+    $type: 'yandex.cloud.mdb.postgresql.v1.DeleteDatabaseMetadata';
     /** ID of the PostgreSQL cluster where a database is being deleted. */
     clusterId: string;
     /** Name of the PostgreSQL database that is being deleted. */
     databaseName: string;
 }
 export declare const GetDatabaseRequest: {
+    $type: "yandex.cloud.mdb.postgresql.v1.GetDatabaseRequest";
     encode(message: GetDatabaseRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): GetDatabaseRequest;
     fromJSON(object: any): GetDatabaseRequest;
@@ -109,6 +119,7 @@ export declare const GetDatabaseRequest: {
     fromPartial(object: DeepPartial<GetDatabaseRequest>): GetDatabaseRequest;
 };
 export declare const ListDatabasesRequest: {
+    $type: "yandex.cloud.mdb.postgresql.v1.ListDatabasesRequest";
     encode(message: ListDatabasesRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListDatabasesRequest;
     fromJSON(object: any): ListDatabasesRequest;
@@ -116,6 +127,7 @@ export declare const ListDatabasesRequest: {
     fromPartial(object: DeepPartial<ListDatabasesRequest>): ListDatabasesRequest;
 };
 export declare const ListDatabasesResponse: {
+    $type: "yandex.cloud.mdb.postgresql.v1.ListDatabasesResponse";
     encode(message: ListDatabasesResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListDatabasesResponse;
     fromJSON(object: any): ListDatabasesResponse;
@@ -123,6 +135,7 @@ export declare const ListDatabasesResponse: {
     fromPartial(object: DeepPartial<ListDatabasesResponse>): ListDatabasesResponse;
 };
 export declare const CreateDatabaseRequest: {
+    $type: "yandex.cloud.mdb.postgresql.v1.CreateDatabaseRequest";
     encode(message: CreateDatabaseRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateDatabaseRequest;
     fromJSON(object: any): CreateDatabaseRequest;
@@ -130,6 +143,7 @@ export declare const CreateDatabaseRequest: {
     fromPartial(object: DeepPartial<CreateDatabaseRequest>): CreateDatabaseRequest;
 };
 export declare const CreateDatabaseMetadata: {
+    $type: "yandex.cloud.mdb.postgresql.v1.CreateDatabaseMetadata";
     encode(message: CreateDatabaseMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateDatabaseMetadata;
     fromJSON(object: any): CreateDatabaseMetadata;
@@ -137,6 +151,7 @@ export declare const CreateDatabaseMetadata: {
     fromPartial(object: DeepPartial<CreateDatabaseMetadata>): CreateDatabaseMetadata;
 };
 export declare const UpdateDatabaseRequest: {
+    $type: "yandex.cloud.mdb.postgresql.v1.UpdateDatabaseRequest";
     encode(message: UpdateDatabaseRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateDatabaseRequest;
     fromJSON(object: any): UpdateDatabaseRequest;
@@ -144,6 +159,7 @@ export declare const UpdateDatabaseRequest: {
     fromPartial(object: DeepPartial<UpdateDatabaseRequest>): UpdateDatabaseRequest;
 };
 export declare const UpdateDatabaseMetadata: {
+    $type: "yandex.cloud.mdb.postgresql.v1.UpdateDatabaseMetadata";
     encode(message: UpdateDatabaseMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateDatabaseMetadata;
     fromJSON(object: any): UpdateDatabaseMetadata;
@@ -151,6 +167,7 @@ export declare const UpdateDatabaseMetadata: {
     fromPartial(object: DeepPartial<UpdateDatabaseMetadata>): UpdateDatabaseMetadata;
 };
 export declare const DeleteDatabaseRequest: {
+    $type: "yandex.cloud.mdb.postgresql.v1.DeleteDatabaseRequest";
     encode(message: DeleteDatabaseRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteDatabaseRequest;
     fromJSON(object: any): DeleteDatabaseRequest;
@@ -158,6 +175,7 @@ export declare const DeleteDatabaseRequest: {
     fromPartial(object: DeepPartial<DeleteDatabaseRequest>): DeleteDatabaseRequest;
 };
 export declare const DeleteDatabaseMetadata: {
+    $type: "yandex.cloud.mdb.postgresql.v1.DeleteDatabaseMetadata";
     encode(message: DeleteDatabaseMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteDatabaseMetadata;
     fromJSON(object: any): DeleteDatabaseMetadata;
@@ -266,6 +284,6 @@ export interface DatabaseServiceClient extends Client {
 export declare const DatabaseServiceClient: new (address: string, credentials: ChannelCredentials, options?: Partial<ChannelOptions> | undefined) => DatabaseServiceClient;
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

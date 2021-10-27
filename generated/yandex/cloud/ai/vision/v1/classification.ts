@@ -1,10 +1,12 @@
 /* eslint-disable */
+import { messageTypeRegistry } from '../../../../../typeRegistry';
 import Long from 'long';
 import _m0 from 'protobufjs/minimal';
 
 export const protobufPackage = 'yandex.cloud.ai.vision.v1';
 
 export interface ClassAnnotation {
+    $type: 'yandex.cloud.ai.vision.v1.ClassAnnotation';
     /**
      * Properties extracted by a specified model.
      *
@@ -15,15 +17,20 @@ export interface ClassAnnotation {
 }
 
 export interface Property {
+    $type: 'yandex.cloud.ai.vision.v1.Property';
     /** Property name. */
     name: string;
     /** Probability of the property, from 0 to 1. */
     probability: number;
 }
 
-const baseClassAnnotation: object = {};
+const baseClassAnnotation: object = {
+    $type: 'yandex.cloud.ai.vision.v1.ClassAnnotation',
+};
 
 export const ClassAnnotation = {
+    $type: 'yandex.cloud.ai.vision.v1.ClassAnnotation' as const,
+
     encode(
         message: ClassAnnotation,
         writer: _m0.Writer = _m0.Writer.create()
@@ -91,9 +98,17 @@ export const ClassAnnotation = {
     },
 };
 
-const baseProperty: object = { name: '', probability: 0 };
+messageTypeRegistry.set(ClassAnnotation.$type, ClassAnnotation);
+
+const baseProperty: object = {
+    $type: 'yandex.cloud.ai.vision.v1.Property',
+    name: '',
+    probability: 0,
+};
 
 export const Property = {
+    $type: 'yandex.cloud.ai.vision.v1.Property' as const,
+
     encode(
         message: Property,
         writer: _m0.Writer = _m0.Writer.create()
@@ -168,6 +183,8 @@ export const Property = {
     },
 };
 
+messageTypeRegistry.set(Property.$type, Property);
+
 type Builtin =
     | Date
     | Function
@@ -183,7 +200,7 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 if (_m0.util.Long !== Long) {

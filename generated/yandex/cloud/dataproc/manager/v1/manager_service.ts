@@ -1,5 +1,6 @@
 /* eslint-disable */
 import { Timestamp } from '../../../../../google/protobuf/timestamp';
+import { messageTypeRegistry } from '../../../../../typeRegistry';
 import {
     makeGenericClientConstructor,
     ChannelCredentials,
@@ -18,6 +19,7 @@ import _m0 from 'protobufjs/minimal';
 export const protobufPackage = 'yandex.cloud.dataproc.manager.v1';
 
 export interface HbaseNodeInfo {
+    $type: 'yandex.cloud.dataproc.manager.v1.HbaseNodeInfo';
     name: string;
     requests: number;
     heapSizeMb: number;
@@ -25,6 +27,7 @@ export interface HbaseNodeInfo {
 }
 
 export interface HbaseInfo {
+    $type: 'yandex.cloud.dataproc.manager.v1.HbaseInfo';
     available: boolean;
     regions: number;
     requests: number;
@@ -34,6 +37,7 @@ export interface HbaseInfo {
 }
 
 export interface HDFSNodeInfo {
+    $type: 'yandex.cloud.dataproc.manager.v1.HDFSNodeInfo';
     name: string;
     used: number;
     remaining: number;
@@ -43,6 +47,7 @@ export interface HDFSNodeInfo {
 }
 
 export interface HDFSInfo {
+    $type: 'yandex.cloud.dataproc.manager.v1.HDFSInfo';
     available: boolean;
     percentRemaining: number;
     used: number;
@@ -60,6 +65,7 @@ export interface HDFSInfo {
 }
 
 export interface HiveInfo {
+    $type: 'yandex.cloud.dataproc.manager.v1.HiveInfo';
     available: boolean;
     queriesSucceeded: number;
     queriesFailed: number;
@@ -69,6 +75,7 @@ export interface HiveInfo {
 }
 
 export interface YarnNodeInfo {
+    $type: 'yandex.cloud.dataproc.manager.v1.YarnNodeInfo';
     name: string;
     state: string;
     numContainers: number;
@@ -78,6 +85,7 @@ export interface YarnNodeInfo {
 }
 
 export interface YarnInfo {
+    $type: 'yandex.cloud.dataproc.manager.v1.YarnInfo';
     available: boolean;
     liveNodes: YarnNodeInfo[];
     /** Actual list of decommission hosts in Yarn resource manager memory */
@@ -85,18 +93,22 @@ export interface YarnInfo {
 }
 
 export interface ZookeeperInfo {
+    $type: 'yandex.cloud.dataproc.manager.v1.ZookeeperInfo';
     alive: boolean;
 }
 
 export interface OozieInfo {
+    $type: 'yandex.cloud.dataproc.manager.v1.OozieInfo';
     alive: boolean;
 }
 
 export interface LivyInfo {
+    $type: 'yandex.cloud.dataproc.manager.v1.LivyInfo';
     alive: boolean;
 }
 
 export interface Info {
+    $type: 'yandex.cloud.dataproc.manager.v1.Info';
     hdfs: HDFSInfo | undefined;
     yarn: YarnInfo | undefined;
     hive: HiveInfo | undefined;
@@ -114,6 +126,7 @@ export interface Info {
 
 /** The request message containing the host status report. */
 export interface ReportRequest {
+    $type: 'yandex.cloud.dataproc.manager.v1.ReportRequest';
     cid: string;
     topologyRevision: number;
     info: Info | undefined;
@@ -122,12 +135,14 @@ export interface ReportRequest {
 
 /** The response message containing the agent commands to apply on host. */
 export interface ReportReply {
+    $type: 'yandex.cloud.dataproc.manager.v1.ReportReply';
     decommissionTimeout: number;
     yarnHostsToDecommission: string[];
     hdfsHostsToDecommission: string[];
 }
 
 const baseHbaseNodeInfo: object = {
+    $type: 'yandex.cloud.dataproc.manager.v1.HbaseNodeInfo',
     name: '',
     requests: 0,
     heapSizeMb: 0,
@@ -135,6 +150,8 @@ const baseHbaseNodeInfo: object = {
 };
 
 export const HbaseNodeInfo = {
+    $type: 'yandex.cloud.dataproc.manager.v1.HbaseNodeInfo' as const,
+
     encode(
         message: HbaseNodeInfo,
         writer: _m0.Writer = _m0.Writer.create()
@@ -252,7 +269,10 @@ export const HbaseNodeInfo = {
     },
 };
 
+messageTypeRegistry.set(HbaseNodeInfo.$type, HbaseNodeInfo);
+
 const baseHbaseInfo: object = {
+    $type: 'yandex.cloud.dataproc.manager.v1.HbaseInfo',
     available: false,
     regions: 0,
     requests: 0,
@@ -260,6 +280,8 @@ const baseHbaseInfo: object = {
 };
 
 export const HbaseInfo = {
+    $type: 'yandex.cloud.dataproc.manager.v1.HbaseInfo' as const,
+
     encode(
         message: HbaseInfo,
         writer: _m0.Writer = _m0.Writer.create()
@@ -424,7 +446,10 @@ export const HbaseInfo = {
     },
 };
 
+messageTypeRegistry.set(HbaseInfo.$type, HbaseInfo);
+
 const baseHDFSNodeInfo: object = {
+    $type: 'yandex.cloud.dataproc.manager.v1.HDFSNodeInfo',
     name: '',
     used: 0,
     remaining: 0,
@@ -434,6 +459,8 @@ const baseHDFSNodeInfo: object = {
 };
 
 export const HDFSNodeInfo = {
+    $type: 'yandex.cloud.dataproc.manager.v1.HDFSNodeInfo' as const,
+
     encode(
         message: HDFSNodeInfo,
         writer: _m0.Writer = _m0.Writer.create()
@@ -575,7 +602,10 @@ export const HDFSNodeInfo = {
     },
 };
 
+messageTypeRegistry.set(HDFSNodeInfo.$type, HDFSNodeInfo);
+
 const baseHDFSInfo: object = {
+    $type: 'yandex.cloud.dataproc.manager.v1.HDFSInfo',
     available: false,
     percentRemaining: 0,
     used: 0,
@@ -588,6 +618,8 @@ const baseHDFSInfo: object = {
 };
 
 export const HDFSInfo = {
+    $type: 'yandex.cloud.dataproc.manager.v1.HDFSInfo' as const,
+
     encode(
         message: HDFSInfo,
         writer: _m0.Writer = _m0.Writer.create()
@@ -946,7 +978,10 @@ export const HDFSInfo = {
     },
 };
 
+messageTypeRegistry.set(HDFSInfo.$type, HDFSInfo);
+
 const baseHiveInfo: object = {
+    $type: 'yandex.cloud.dataproc.manager.v1.HiveInfo',
     available: false,
     queriesSucceeded: 0,
     queriesFailed: 0,
@@ -956,6 +991,8 @@ const baseHiveInfo: object = {
 };
 
 export const HiveInfo = {
+    $type: 'yandex.cloud.dataproc.manager.v1.HiveInfo' as const,
+
     encode(
         message: HiveInfo,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1134,7 +1171,10 @@ export const HiveInfo = {
     },
 };
 
+messageTypeRegistry.set(HiveInfo.$type, HiveInfo);
+
 const baseYarnNodeInfo: object = {
+    $type: 'yandex.cloud.dataproc.manager.v1.YarnNodeInfo',
     name: '',
     state: '',
     numContainers: 0,
@@ -1144,6 +1184,8 @@ const baseYarnNodeInfo: object = {
 };
 
 export const YarnNodeInfo = {
+    $type: 'yandex.cloud.dataproc.manager.v1.YarnNodeInfo' as const,
+
     encode(
         message: YarnNodeInfo,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1305,12 +1347,17 @@ export const YarnNodeInfo = {
     },
 };
 
+messageTypeRegistry.set(YarnNodeInfo.$type, YarnNodeInfo);
+
 const baseYarnInfo: object = {
+    $type: 'yandex.cloud.dataproc.manager.v1.YarnInfo',
     available: false,
     requestedDecommissionHosts: '',
 };
 
 export const YarnInfo = {
+    $type: 'yandex.cloud.dataproc.manager.v1.YarnInfo' as const,
+
     encode(
         message: YarnInfo,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1426,9 +1473,16 @@ export const YarnInfo = {
     },
 };
 
-const baseZookeeperInfo: object = { alive: false };
+messageTypeRegistry.set(YarnInfo.$type, YarnInfo);
+
+const baseZookeeperInfo: object = {
+    $type: 'yandex.cloud.dataproc.manager.v1.ZookeeperInfo',
+    alive: false,
+};
 
 export const ZookeeperInfo = {
+    $type: 'yandex.cloud.dataproc.manager.v1.ZookeeperInfo' as const,
+
     encode(
         message: ZookeeperInfo,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1485,9 +1539,16 @@ export const ZookeeperInfo = {
     },
 };
 
-const baseOozieInfo: object = { alive: false };
+messageTypeRegistry.set(ZookeeperInfo.$type, ZookeeperInfo);
+
+const baseOozieInfo: object = {
+    $type: 'yandex.cloud.dataproc.manager.v1.OozieInfo',
+    alive: false,
+};
 
 export const OozieInfo = {
+    $type: 'yandex.cloud.dataproc.manager.v1.OozieInfo' as const,
+
     encode(
         message: OozieInfo,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1544,9 +1605,16 @@ export const OozieInfo = {
     },
 };
 
-const baseLivyInfo: object = { alive: false };
+messageTypeRegistry.set(OozieInfo.$type, OozieInfo);
+
+const baseLivyInfo: object = {
+    $type: 'yandex.cloud.dataproc.manager.v1.LivyInfo',
+    alive: false,
+};
 
 export const LivyInfo = {
+    $type: 'yandex.cloud.dataproc.manager.v1.LivyInfo' as const,
+
     encode(
         message: LivyInfo,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1603,9 +1671,16 @@ export const LivyInfo = {
     },
 };
 
-const baseInfo: object = { reportCount: 0 };
+messageTypeRegistry.set(LivyInfo.$type, LivyInfo);
+
+const baseInfo: object = {
+    $type: 'yandex.cloud.dataproc.manager.v1.Info',
+    reportCount: 0,
+};
 
 export const Info = {
+    $type: 'yandex.cloud.dataproc.manager.v1.Info' as const,
+
     encode(
         message: Info,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1809,9 +1884,17 @@ export const Info = {
     },
 };
 
-const baseReportRequest: object = { cid: '', topologyRevision: 0 };
+messageTypeRegistry.set(Info.$type, Info);
+
+const baseReportRequest: object = {
+    $type: 'yandex.cloud.dataproc.manager.v1.ReportRequest',
+    cid: '',
+    topologyRevision: 0,
+};
 
 export const ReportRequest = {
+    $type: 'yandex.cloud.dataproc.manager.v1.ReportRequest' as const,
+
     encode(
         message: ReportRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1935,13 +2018,18 @@ export const ReportRequest = {
     },
 };
 
+messageTypeRegistry.set(ReportRequest.$type, ReportRequest);
+
 const baseReportReply: object = {
+    $type: 'yandex.cloud.dataproc.manager.v1.ReportReply',
     decommissionTimeout: 0,
     yarnHostsToDecommission: '',
     hdfsHostsToDecommission: '',
 };
 
 export const ReportReply = {
+    $type: 'yandex.cloud.dataproc.manager.v1.ReportReply' as const,
+
     encode(
         message: ReportReply,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2071,6 +2159,8 @@ export const ReportReply = {
     },
 };
 
+messageTypeRegistry.set(ReportReply.$type, ReportReply);
+
 /** Data Proc manager service defifnition */
 export const DataprocManagerServiceService = {
     /** Sends a status report from a host */
@@ -2149,13 +2239,13 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 function toTimestamp(date: Date): Timestamp {
     const seconds = date.getTime() / 1_000;
     const nanos = (date.getTime() % 1_000) * 1_000_000;
-    return { seconds, nanos };
+    return { $type: 'google.protobuf.Timestamp', seconds, nanos };
 }
 
 function fromTimestamp(t: Timestamp): Date {

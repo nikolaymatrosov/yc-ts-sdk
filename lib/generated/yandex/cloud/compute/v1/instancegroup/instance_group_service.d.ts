@@ -16,6 +16,7 @@ export declare enum InstanceGroupView {
 export declare function instanceGroupViewFromJSON(object: any): InstanceGroupView;
 export declare function instanceGroupViewToJSON(object: InstanceGroupView): string;
 export interface ResumeInstanceGroupProcessesRequest {
+    $type: 'yandex.cloud.compute.v1.instancegroup.ResumeInstanceGroupProcessesRequest';
     /**
      * ID of the instance group to resume processes in.
      *
@@ -26,10 +27,12 @@ export interface ResumeInstanceGroupProcessesRequest {
     instanceGroupId: string;
 }
 export interface ResumeInstanceGroupProcessMetadata {
+    $type: 'yandex.cloud.compute.v1.instancegroup.ResumeInstanceGroupProcessMetadata';
     /** ID of the instance group that processes are being resumed in. */
     instanceGroupId: string;
 }
 export interface PauseInstanceGroupProcessesRequest {
+    $type: 'yandex.cloud.compute.v1.instancegroup.PauseInstanceGroupProcessesRequest';
     /**
      * ID of the instance group to pause processes in.
      *
@@ -40,10 +43,12 @@ export interface PauseInstanceGroupProcessesRequest {
     instanceGroupId: string;
 }
 export interface PauseInstanceGroupProcessMetadata {
+    $type: 'yandex.cloud.compute.v1.instancegroup.PauseInstanceGroupProcessMetadata';
     /** ID of the instance group that processes are being paused in. */
     instanceGroupId: string;
 }
 export interface GetInstanceGroupRequest {
+    $type: 'yandex.cloud.compute.v1.instancegroup.GetInstanceGroupRequest';
     /**
      * ID of the InstanceGroup resource to return.
      * To get the instance group ID, use a [InstanceGroupService.List] request.
@@ -53,6 +58,7 @@ export interface GetInstanceGroupRequest {
     view: InstanceGroupView;
 }
 export interface CreateInstanceGroupRequest {
+    $type: 'yandex.cloud.compute.v1.instancegroup.CreateInstanceGroupRequest';
     /**
      * ID of the folder to create an instance group in.
      * To get the folder ID, use a [yandex.cloud.resourcemanager.v1.FolderService.List] request.
@@ -97,10 +103,12 @@ export interface CreateInstanceGroupRequest {
     applicationLoadBalancerSpec: ApplicationLoadBalancerSpec | undefined;
 }
 export interface CreateInstanceGroupRequest_LabelsEntry {
+    $type: 'yandex.cloud.compute.v1.instancegroup.CreateInstanceGroupRequest.LabelsEntry';
     key: string;
     value: string;
 }
 export interface CreateInstanceGroupFromYamlRequest {
+    $type: 'yandex.cloud.compute.v1.instancegroup.CreateInstanceGroupFromYamlRequest';
     /**
      * ID of the folder to create an instance group in.
      * To get the folder ID, use a [yandex.cloud.resourcemanager.v1.FolderService.List] request.
@@ -110,10 +118,12 @@ export interface CreateInstanceGroupFromYamlRequest {
     instanceGroupYaml: string;
 }
 export interface CreateInstanceGroupMetadata {
+    $type: 'yandex.cloud.compute.v1.instancegroup.CreateInstanceGroupMetadata';
     /** ID of the instance group that is being created. */
     instanceGroupId: string;
 }
 export interface UpdateInstanceGroupRequest {
+    $type: 'yandex.cloud.compute.v1.instancegroup.UpdateInstanceGroupRequest';
     /**
      * ID of the instance group to update.
      * To get the instance group ID, use a [InstanceGroupService.List] request.
@@ -156,10 +166,12 @@ export interface UpdateInstanceGroupRequest {
     deletionProtection: boolean;
 }
 export interface UpdateInstanceGroupRequest_LabelsEntry {
+    $type: 'yandex.cloud.compute.v1.instancegroup.UpdateInstanceGroupRequest.LabelsEntry';
     key: string;
     value: string;
 }
 export interface UpdateInstanceGroupFromYamlRequest {
+    $type: 'yandex.cloud.compute.v1.instancegroup.UpdateInstanceGroupFromYamlRequest';
     /**
      * ID of the instance group to update.
      * To get the instance group ID, use a [InstanceGroupService.List] request.
@@ -169,6 +181,7 @@ export interface UpdateInstanceGroupFromYamlRequest {
     instanceGroupYaml: string;
 }
 export interface UpdateInstanceGroupMetadata {
+    $type: 'yandex.cloud.compute.v1.instancegroup.UpdateInstanceGroupMetadata';
     /**
      * ID of the InstanceGroup resource that is being updated.
      * To get the instance group ID, use a [InstanceGroupService.List] request.
@@ -176,6 +189,7 @@ export interface UpdateInstanceGroupMetadata {
     instanceGroupId: string;
 }
 export interface StartInstanceGroupRequest {
+    $type: 'yandex.cloud.compute.v1.instancegroup.StartInstanceGroupRequest';
     /**
      * ID of the instance group to start.
      * To get the instance group ID, use a [InstanceGroupService.List] request.
@@ -183,10 +197,12 @@ export interface StartInstanceGroupRequest {
     instanceGroupId: string;
 }
 export interface StartInstanceGroupMetadata {
+    $type: 'yandex.cloud.compute.v1.instancegroup.StartInstanceGroupMetadata';
     /** ID of the InstanceGroup resource that is being started. */
     instanceGroupId: string;
 }
 export interface StopInstanceGroupRequest {
+    $type: 'yandex.cloud.compute.v1.instancegroup.StopInstanceGroupRequest';
     /**
      * ID of the instance group to stop.
      * To get the instance group ID, use a [InstanceGroupService.List] request.
@@ -194,10 +210,12 @@ export interface StopInstanceGroupRequest {
     instanceGroupId: string;
 }
 export interface StopInstanceGroupMetadata {
+    $type: 'yandex.cloud.compute.v1.instancegroup.StopInstanceGroupMetadata';
     /** ID of the InstanceGroup resource that is being stopped. */
     instanceGroupId: string;
 }
 export interface DeleteInstanceGroupRequest {
+    $type: 'yandex.cloud.compute.v1.instancegroup.DeleteInstanceGroupRequest';
     /**
      * ID of the instance group to delete.
      * To get the instance group ID, use a [InstanceGroupService.List] request.
@@ -205,6 +223,7 @@ export interface DeleteInstanceGroupRequest {
     instanceGroupId: string;
 }
 export interface DeleteInstanceGroupMetadata {
+    $type: 'yandex.cloud.compute.v1.instancegroup.DeleteInstanceGroupMetadata';
     /**
      * ID of the instance group that is being deleted.
      * To get the instance group ID, use a [InstanceGroupService.List] request.
@@ -212,14 +231,17 @@ export interface DeleteInstanceGroupMetadata {
     instanceGroupId: string;
 }
 export interface DeleteInstancesMetadata {
+    $type: 'yandex.cloud.compute.v1.instancegroup.DeleteInstancesMetadata';
     /** ID of the instance group that the instances are being deleted from. */
     instanceGroupId: string;
 }
 export interface StopInstancesMetadata {
+    $type: 'yandex.cloud.compute.v1.instancegroup.StopInstancesMetadata';
     /** ID of the instance group that the instances are being stopped from. */
     instanceGroupId: string;
 }
 export interface ListInstanceGroupsRequest {
+    $type: 'yandex.cloud.compute.v1.instancegroup.ListInstanceGroupsRequest';
     /**
      * ID of the folder to list instance groups in.
      * To get the folder ID, use a [yandex.cloud.resourcemanager.v1.FolderService.List] request.
@@ -247,6 +269,7 @@ export interface ListInstanceGroupsRequest {
     view: InstanceGroupView;
 }
 export interface ListInstanceGroupsResponse {
+    $type: 'yandex.cloud.compute.v1.instancegroup.ListInstanceGroupsResponse';
     /** Lists instance groups for the specified folder. */
     instanceGroups: InstanceGroup[];
     /**
@@ -260,6 +283,7 @@ export interface ListInstanceGroupsResponse {
     nextPageToken: string;
 }
 export interface ListInstanceGroupInstancesRequest {
+    $type: 'yandex.cloud.compute.v1.instancegroup.ListInstanceGroupInstancesRequest';
     /**
      * ID of the InstanceGroup resource to list instances for.
      * To get the instance group ID, use a [InstanceGroupService.List] request.
@@ -285,6 +309,7 @@ export interface ListInstanceGroupInstancesRequest {
     filter: string;
 }
 export interface ListInstanceGroupInstancesResponse {
+    $type: 'yandex.cloud.compute.v1.instancegroup.ListInstanceGroupInstancesResponse';
     /** Lists instances for the specified instance group. */
     instances: ManagedInstance[];
     /**
@@ -298,6 +323,7 @@ export interface ListInstanceGroupInstancesResponse {
     nextPageToken: string;
 }
 export interface DeleteInstancesRequest {
+    $type: 'yandex.cloud.compute.v1.instancegroup.DeleteInstancesRequest';
     /**
      * ID of the instance group that the instances are being deleted from.
      * To get the ID of the instance group, use the [InstanceGroupService.List] request.
@@ -316,6 +342,7 @@ export interface DeleteInstancesRequest {
     createAnother: boolean;
 }
 export interface StopInstancesRequest {
+    $type: 'yandex.cloud.compute.v1.instancegroup.StopInstancesRequest';
     /**
      * ID of the instance group that the instances are being stopped from.
      * To get the ID of the instance group, use the [InstanceGroupService.List] request.
@@ -329,6 +356,7 @@ export interface StopInstancesRequest {
     managedInstanceIds: string[];
 }
 export interface ListInstanceGroupOperationsRequest {
+    $type: 'yandex.cloud.compute.v1.instancegroup.ListInstanceGroupOperationsRequest';
     /**
      * ID of the InstanceGroup resource to list operations for.
      * To get the instance group ID, use a [InstanceGroupService.List] request.
@@ -352,6 +380,7 @@ export interface ListInstanceGroupOperationsRequest {
     filter: string;
 }
 export interface ListInstanceGroupOperationsResponse {
+    $type: 'yandex.cloud.compute.v1.instancegroup.ListInstanceGroupOperationsResponse';
     /** Lists operations for the specified instance group. */
     operations: Operation[];
     /**
@@ -363,6 +392,7 @@ export interface ListInstanceGroupOperationsResponse {
     nextPageToken: string;
 }
 export interface ListInstanceGroupLogRecordsRequest {
+    $type: 'yandex.cloud.compute.v1.instancegroup.ListInstanceGroupLogRecordsRequest';
     /**
      * ID of the InstanceGroup resource to list logs for.
      * To get the instance group ID, use a [InstanceGroupService.List] request.
@@ -388,6 +418,7 @@ export interface ListInstanceGroupLogRecordsRequest {
     filter: string;
 }
 export interface ListInstanceGroupLogRecordsResponse {
+    $type: 'yandex.cloud.compute.v1.instancegroup.ListInstanceGroupLogRecordsResponse';
     /** Lists logs for the specified instance group. */
     logRecords: LogRecord[];
     /**
@@ -401,6 +432,7 @@ export interface ListInstanceGroupLogRecordsResponse {
     nextPageToken: string;
 }
 export declare const ResumeInstanceGroupProcessesRequest: {
+    $type: "yandex.cloud.compute.v1.instancegroup.ResumeInstanceGroupProcessesRequest";
     encode(message: ResumeInstanceGroupProcessesRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ResumeInstanceGroupProcessesRequest;
     fromJSON(object: any): ResumeInstanceGroupProcessesRequest;
@@ -408,6 +440,7 @@ export declare const ResumeInstanceGroupProcessesRequest: {
     fromPartial(object: DeepPartial<ResumeInstanceGroupProcessesRequest>): ResumeInstanceGroupProcessesRequest;
 };
 export declare const ResumeInstanceGroupProcessMetadata: {
+    $type: "yandex.cloud.compute.v1.instancegroup.ResumeInstanceGroupProcessMetadata";
     encode(message: ResumeInstanceGroupProcessMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ResumeInstanceGroupProcessMetadata;
     fromJSON(object: any): ResumeInstanceGroupProcessMetadata;
@@ -415,6 +448,7 @@ export declare const ResumeInstanceGroupProcessMetadata: {
     fromPartial(object: DeepPartial<ResumeInstanceGroupProcessMetadata>): ResumeInstanceGroupProcessMetadata;
 };
 export declare const PauseInstanceGroupProcessesRequest: {
+    $type: "yandex.cloud.compute.v1.instancegroup.PauseInstanceGroupProcessesRequest";
     encode(message: PauseInstanceGroupProcessesRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): PauseInstanceGroupProcessesRequest;
     fromJSON(object: any): PauseInstanceGroupProcessesRequest;
@@ -422,6 +456,7 @@ export declare const PauseInstanceGroupProcessesRequest: {
     fromPartial(object: DeepPartial<PauseInstanceGroupProcessesRequest>): PauseInstanceGroupProcessesRequest;
 };
 export declare const PauseInstanceGroupProcessMetadata: {
+    $type: "yandex.cloud.compute.v1.instancegroup.PauseInstanceGroupProcessMetadata";
     encode(message: PauseInstanceGroupProcessMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): PauseInstanceGroupProcessMetadata;
     fromJSON(object: any): PauseInstanceGroupProcessMetadata;
@@ -429,6 +464,7 @@ export declare const PauseInstanceGroupProcessMetadata: {
     fromPartial(object: DeepPartial<PauseInstanceGroupProcessMetadata>): PauseInstanceGroupProcessMetadata;
 };
 export declare const GetInstanceGroupRequest: {
+    $type: "yandex.cloud.compute.v1.instancegroup.GetInstanceGroupRequest";
     encode(message: GetInstanceGroupRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): GetInstanceGroupRequest;
     fromJSON(object: any): GetInstanceGroupRequest;
@@ -436,6 +472,7 @@ export declare const GetInstanceGroupRequest: {
     fromPartial(object: DeepPartial<GetInstanceGroupRequest>): GetInstanceGroupRequest;
 };
 export declare const CreateInstanceGroupRequest: {
+    $type: "yandex.cloud.compute.v1.instancegroup.CreateInstanceGroupRequest";
     encode(message: CreateInstanceGroupRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateInstanceGroupRequest;
     fromJSON(object: any): CreateInstanceGroupRequest;
@@ -443,6 +480,7 @@ export declare const CreateInstanceGroupRequest: {
     fromPartial(object: DeepPartial<CreateInstanceGroupRequest>): CreateInstanceGroupRequest;
 };
 export declare const CreateInstanceGroupRequest_LabelsEntry: {
+    $type: "yandex.cloud.compute.v1.instancegroup.CreateInstanceGroupRequest.LabelsEntry";
     encode(message: CreateInstanceGroupRequest_LabelsEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateInstanceGroupRequest_LabelsEntry;
     fromJSON(object: any): CreateInstanceGroupRequest_LabelsEntry;
@@ -450,6 +488,7 @@ export declare const CreateInstanceGroupRequest_LabelsEntry: {
     fromPartial(object: DeepPartial<CreateInstanceGroupRequest_LabelsEntry>): CreateInstanceGroupRequest_LabelsEntry;
 };
 export declare const CreateInstanceGroupFromYamlRequest: {
+    $type: "yandex.cloud.compute.v1.instancegroup.CreateInstanceGroupFromYamlRequest";
     encode(message: CreateInstanceGroupFromYamlRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateInstanceGroupFromYamlRequest;
     fromJSON(object: any): CreateInstanceGroupFromYamlRequest;
@@ -457,6 +496,7 @@ export declare const CreateInstanceGroupFromYamlRequest: {
     fromPartial(object: DeepPartial<CreateInstanceGroupFromYamlRequest>): CreateInstanceGroupFromYamlRequest;
 };
 export declare const CreateInstanceGroupMetadata: {
+    $type: "yandex.cloud.compute.v1.instancegroup.CreateInstanceGroupMetadata";
     encode(message: CreateInstanceGroupMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateInstanceGroupMetadata;
     fromJSON(object: any): CreateInstanceGroupMetadata;
@@ -464,6 +504,7 @@ export declare const CreateInstanceGroupMetadata: {
     fromPartial(object: DeepPartial<CreateInstanceGroupMetadata>): CreateInstanceGroupMetadata;
 };
 export declare const UpdateInstanceGroupRequest: {
+    $type: "yandex.cloud.compute.v1.instancegroup.UpdateInstanceGroupRequest";
     encode(message: UpdateInstanceGroupRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateInstanceGroupRequest;
     fromJSON(object: any): UpdateInstanceGroupRequest;
@@ -471,6 +512,7 @@ export declare const UpdateInstanceGroupRequest: {
     fromPartial(object: DeepPartial<UpdateInstanceGroupRequest>): UpdateInstanceGroupRequest;
 };
 export declare const UpdateInstanceGroupRequest_LabelsEntry: {
+    $type: "yandex.cloud.compute.v1.instancegroup.UpdateInstanceGroupRequest.LabelsEntry";
     encode(message: UpdateInstanceGroupRequest_LabelsEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateInstanceGroupRequest_LabelsEntry;
     fromJSON(object: any): UpdateInstanceGroupRequest_LabelsEntry;
@@ -478,6 +520,7 @@ export declare const UpdateInstanceGroupRequest_LabelsEntry: {
     fromPartial(object: DeepPartial<UpdateInstanceGroupRequest_LabelsEntry>): UpdateInstanceGroupRequest_LabelsEntry;
 };
 export declare const UpdateInstanceGroupFromYamlRequest: {
+    $type: "yandex.cloud.compute.v1.instancegroup.UpdateInstanceGroupFromYamlRequest";
     encode(message: UpdateInstanceGroupFromYamlRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateInstanceGroupFromYamlRequest;
     fromJSON(object: any): UpdateInstanceGroupFromYamlRequest;
@@ -485,6 +528,7 @@ export declare const UpdateInstanceGroupFromYamlRequest: {
     fromPartial(object: DeepPartial<UpdateInstanceGroupFromYamlRequest>): UpdateInstanceGroupFromYamlRequest;
 };
 export declare const UpdateInstanceGroupMetadata: {
+    $type: "yandex.cloud.compute.v1.instancegroup.UpdateInstanceGroupMetadata";
     encode(message: UpdateInstanceGroupMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateInstanceGroupMetadata;
     fromJSON(object: any): UpdateInstanceGroupMetadata;
@@ -492,6 +536,7 @@ export declare const UpdateInstanceGroupMetadata: {
     fromPartial(object: DeepPartial<UpdateInstanceGroupMetadata>): UpdateInstanceGroupMetadata;
 };
 export declare const StartInstanceGroupRequest: {
+    $type: "yandex.cloud.compute.v1.instancegroup.StartInstanceGroupRequest";
     encode(message: StartInstanceGroupRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): StartInstanceGroupRequest;
     fromJSON(object: any): StartInstanceGroupRequest;
@@ -499,6 +544,7 @@ export declare const StartInstanceGroupRequest: {
     fromPartial(object: DeepPartial<StartInstanceGroupRequest>): StartInstanceGroupRequest;
 };
 export declare const StartInstanceGroupMetadata: {
+    $type: "yandex.cloud.compute.v1.instancegroup.StartInstanceGroupMetadata";
     encode(message: StartInstanceGroupMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): StartInstanceGroupMetadata;
     fromJSON(object: any): StartInstanceGroupMetadata;
@@ -506,6 +552,7 @@ export declare const StartInstanceGroupMetadata: {
     fromPartial(object: DeepPartial<StartInstanceGroupMetadata>): StartInstanceGroupMetadata;
 };
 export declare const StopInstanceGroupRequest: {
+    $type: "yandex.cloud.compute.v1.instancegroup.StopInstanceGroupRequest";
     encode(message: StopInstanceGroupRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): StopInstanceGroupRequest;
     fromJSON(object: any): StopInstanceGroupRequest;
@@ -513,6 +560,7 @@ export declare const StopInstanceGroupRequest: {
     fromPartial(object: DeepPartial<StopInstanceGroupRequest>): StopInstanceGroupRequest;
 };
 export declare const StopInstanceGroupMetadata: {
+    $type: "yandex.cloud.compute.v1.instancegroup.StopInstanceGroupMetadata";
     encode(message: StopInstanceGroupMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): StopInstanceGroupMetadata;
     fromJSON(object: any): StopInstanceGroupMetadata;
@@ -520,6 +568,7 @@ export declare const StopInstanceGroupMetadata: {
     fromPartial(object: DeepPartial<StopInstanceGroupMetadata>): StopInstanceGroupMetadata;
 };
 export declare const DeleteInstanceGroupRequest: {
+    $type: "yandex.cloud.compute.v1.instancegroup.DeleteInstanceGroupRequest";
     encode(message: DeleteInstanceGroupRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteInstanceGroupRequest;
     fromJSON(object: any): DeleteInstanceGroupRequest;
@@ -527,6 +576,7 @@ export declare const DeleteInstanceGroupRequest: {
     fromPartial(object: DeepPartial<DeleteInstanceGroupRequest>): DeleteInstanceGroupRequest;
 };
 export declare const DeleteInstanceGroupMetadata: {
+    $type: "yandex.cloud.compute.v1.instancegroup.DeleteInstanceGroupMetadata";
     encode(message: DeleteInstanceGroupMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteInstanceGroupMetadata;
     fromJSON(object: any): DeleteInstanceGroupMetadata;
@@ -534,6 +584,7 @@ export declare const DeleteInstanceGroupMetadata: {
     fromPartial(object: DeepPartial<DeleteInstanceGroupMetadata>): DeleteInstanceGroupMetadata;
 };
 export declare const DeleteInstancesMetadata: {
+    $type: "yandex.cloud.compute.v1.instancegroup.DeleteInstancesMetadata";
     encode(message: DeleteInstancesMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteInstancesMetadata;
     fromJSON(object: any): DeleteInstancesMetadata;
@@ -541,6 +592,7 @@ export declare const DeleteInstancesMetadata: {
     fromPartial(object: DeepPartial<DeleteInstancesMetadata>): DeleteInstancesMetadata;
 };
 export declare const StopInstancesMetadata: {
+    $type: "yandex.cloud.compute.v1.instancegroup.StopInstancesMetadata";
     encode(message: StopInstancesMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): StopInstancesMetadata;
     fromJSON(object: any): StopInstancesMetadata;
@@ -548,6 +600,7 @@ export declare const StopInstancesMetadata: {
     fromPartial(object: DeepPartial<StopInstancesMetadata>): StopInstancesMetadata;
 };
 export declare const ListInstanceGroupsRequest: {
+    $type: "yandex.cloud.compute.v1.instancegroup.ListInstanceGroupsRequest";
     encode(message: ListInstanceGroupsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListInstanceGroupsRequest;
     fromJSON(object: any): ListInstanceGroupsRequest;
@@ -555,6 +608,7 @@ export declare const ListInstanceGroupsRequest: {
     fromPartial(object: DeepPartial<ListInstanceGroupsRequest>): ListInstanceGroupsRequest;
 };
 export declare const ListInstanceGroupsResponse: {
+    $type: "yandex.cloud.compute.v1.instancegroup.ListInstanceGroupsResponse";
     encode(message: ListInstanceGroupsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListInstanceGroupsResponse;
     fromJSON(object: any): ListInstanceGroupsResponse;
@@ -562,6 +616,7 @@ export declare const ListInstanceGroupsResponse: {
     fromPartial(object: DeepPartial<ListInstanceGroupsResponse>): ListInstanceGroupsResponse;
 };
 export declare const ListInstanceGroupInstancesRequest: {
+    $type: "yandex.cloud.compute.v1.instancegroup.ListInstanceGroupInstancesRequest";
     encode(message: ListInstanceGroupInstancesRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListInstanceGroupInstancesRequest;
     fromJSON(object: any): ListInstanceGroupInstancesRequest;
@@ -569,6 +624,7 @@ export declare const ListInstanceGroupInstancesRequest: {
     fromPartial(object: DeepPartial<ListInstanceGroupInstancesRequest>): ListInstanceGroupInstancesRequest;
 };
 export declare const ListInstanceGroupInstancesResponse: {
+    $type: "yandex.cloud.compute.v1.instancegroup.ListInstanceGroupInstancesResponse";
     encode(message: ListInstanceGroupInstancesResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListInstanceGroupInstancesResponse;
     fromJSON(object: any): ListInstanceGroupInstancesResponse;
@@ -576,6 +632,7 @@ export declare const ListInstanceGroupInstancesResponse: {
     fromPartial(object: DeepPartial<ListInstanceGroupInstancesResponse>): ListInstanceGroupInstancesResponse;
 };
 export declare const DeleteInstancesRequest: {
+    $type: "yandex.cloud.compute.v1.instancegroup.DeleteInstancesRequest";
     encode(message: DeleteInstancesRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteInstancesRequest;
     fromJSON(object: any): DeleteInstancesRequest;
@@ -583,6 +640,7 @@ export declare const DeleteInstancesRequest: {
     fromPartial(object: DeepPartial<DeleteInstancesRequest>): DeleteInstancesRequest;
 };
 export declare const StopInstancesRequest: {
+    $type: "yandex.cloud.compute.v1.instancegroup.StopInstancesRequest";
     encode(message: StopInstancesRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): StopInstancesRequest;
     fromJSON(object: any): StopInstancesRequest;
@@ -590,6 +648,7 @@ export declare const StopInstancesRequest: {
     fromPartial(object: DeepPartial<StopInstancesRequest>): StopInstancesRequest;
 };
 export declare const ListInstanceGroupOperationsRequest: {
+    $type: "yandex.cloud.compute.v1.instancegroup.ListInstanceGroupOperationsRequest";
     encode(message: ListInstanceGroupOperationsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListInstanceGroupOperationsRequest;
     fromJSON(object: any): ListInstanceGroupOperationsRequest;
@@ -597,6 +656,7 @@ export declare const ListInstanceGroupOperationsRequest: {
     fromPartial(object: DeepPartial<ListInstanceGroupOperationsRequest>): ListInstanceGroupOperationsRequest;
 };
 export declare const ListInstanceGroupOperationsResponse: {
+    $type: "yandex.cloud.compute.v1.instancegroup.ListInstanceGroupOperationsResponse";
     encode(message: ListInstanceGroupOperationsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListInstanceGroupOperationsResponse;
     fromJSON(object: any): ListInstanceGroupOperationsResponse;
@@ -604,6 +664,7 @@ export declare const ListInstanceGroupOperationsResponse: {
     fromPartial(object: DeepPartial<ListInstanceGroupOperationsResponse>): ListInstanceGroupOperationsResponse;
 };
 export declare const ListInstanceGroupLogRecordsRequest: {
+    $type: "yandex.cloud.compute.v1.instancegroup.ListInstanceGroupLogRecordsRequest";
     encode(message: ListInstanceGroupLogRecordsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListInstanceGroupLogRecordsRequest;
     fromJSON(object: any): ListInstanceGroupLogRecordsRequest;
@@ -611,6 +672,7 @@ export declare const ListInstanceGroupLogRecordsRequest: {
     fromPartial(object: DeepPartial<ListInstanceGroupLogRecordsRequest>): ListInstanceGroupLogRecordsRequest;
 };
 export declare const ListInstanceGroupLogRecordsResponse: {
+    $type: "yandex.cloud.compute.v1.instancegroup.ListInstanceGroupLogRecordsResponse";
     encode(message: ListInstanceGroupLogRecordsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListInstanceGroupLogRecordsResponse;
     fromJSON(object: any): ListInstanceGroupLogRecordsResponse;
@@ -997,6 +1059,6 @@ export interface InstanceGroupServiceClient extends Client {
 export declare const InstanceGroupServiceClient: new (address: string, credentials: ChannelCredentials, options?: Partial<ChannelOptions> | undefined) => InstanceGroupServiceClient;
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

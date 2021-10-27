@@ -6,6 +6,7 @@ import { ChannelCredentials, ChannelOptions, UntypedServiceImplementation, handl
 import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.iam.v1";
 export interface GetApiKeyRequest {
+    $type: 'yandex.cloud.iam.v1.GetApiKeyRequest';
     /**
      * ID of the API key to return.
      * To get the API key ID, use a [ApiKeyService.List] request.
@@ -13,6 +14,7 @@ export interface GetApiKeyRequest {
     apiKeyId: string;
 }
 export interface ListApiKeysRequest {
+    $type: 'yandex.cloud.iam.v1.ListApiKeysRequest';
     /**
      * ID of the service account to list API keys for.
      * To get the service account ID, use a [yandex.cloud.iam.v1.ServiceAccountService.List] request.
@@ -35,6 +37,7 @@ export interface ListApiKeysRequest {
     pageToken: string;
 }
 export interface ListApiKeysResponse {
+    $type: 'yandex.cloud.iam.v1.ListApiKeysResponse';
     /** List of API keys. */
     apiKeys: ApiKey[];
     /**
@@ -48,6 +51,7 @@ export interface ListApiKeysResponse {
     nextPageToken: string;
 }
 export interface CreateApiKeyRequest {
+    $type: 'yandex.cloud.iam.v1.CreateApiKeyRequest';
     /**
      * ID of the service account to create an API key for.
      * To get the service account ID, use a [yandex.cloud.iam.v1.ServiceAccountService.List] request.
@@ -58,12 +62,14 @@ export interface CreateApiKeyRequest {
     description: string;
 }
 export interface CreateApiKeyResponse {
+    $type: 'yandex.cloud.iam.v1.CreateApiKeyResponse';
     /** ApiKey resource. */
     apiKey: ApiKey | undefined;
     /** Secret part of the API key. This secret key you may use in the requests for authentication. */
     secret: string;
 }
 export interface UpdateApiKeyRequest {
+    $type: 'yandex.cloud.iam.v1.UpdateApiKeyRequest';
     /**
      * ID of the ApiKey resource to update.
      * To get the API key ID, use a [ApiKeyService.List] request.
@@ -75,10 +81,12 @@ export interface UpdateApiKeyRequest {
     description: string;
 }
 export interface UpdateApiKeyMetadata {
+    $type: 'yandex.cloud.iam.v1.UpdateApiKeyMetadata';
     /** ID of the ApiKey resource that is being updated. */
     apiKeyId: string;
 }
 export interface DeleteApiKeyRequest {
+    $type: 'yandex.cloud.iam.v1.DeleteApiKeyRequest';
     /**
      * ID of the API key to delete.
      * To get the API key ID, use a [ApiKeyService.List] request.
@@ -86,10 +94,12 @@ export interface DeleteApiKeyRequest {
     apiKeyId: string;
 }
 export interface DeleteApiKeyMetadata {
+    $type: 'yandex.cloud.iam.v1.DeleteApiKeyMetadata';
     /** ID of the API key that is being deleted. */
     apiKeyId: string;
 }
 export interface ListApiKeyOperationsRequest {
+    $type: 'yandex.cloud.iam.v1.ListApiKeyOperationsRequest';
     /** ID of the key to list operations for. */
     apiKeyId: string;
     /**
@@ -107,6 +117,7 @@ export interface ListApiKeyOperationsRequest {
     pageToken: string;
 }
 export interface ListApiKeyOperationsResponse {
+    $type: 'yandex.cloud.iam.v1.ListApiKeyOperationsResponse';
     /** List of operations for the specified API key. */
     operations: Operation[];
     /**
@@ -118,6 +129,7 @@ export interface ListApiKeyOperationsResponse {
     nextPageToken: string;
 }
 export declare const GetApiKeyRequest: {
+    $type: "yandex.cloud.iam.v1.GetApiKeyRequest";
     encode(message: GetApiKeyRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): GetApiKeyRequest;
     fromJSON(object: any): GetApiKeyRequest;
@@ -125,6 +137,7 @@ export declare const GetApiKeyRequest: {
     fromPartial(object: DeepPartial<GetApiKeyRequest>): GetApiKeyRequest;
 };
 export declare const ListApiKeysRequest: {
+    $type: "yandex.cloud.iam.v1.ListApiKeysRequest";
     encode(message: ListApiKeysRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListApiKeysRequest;
     fromJSON(object: any): ListApiKeysRequest;
@@ -132,6 +145,7 @@ export declare const ListApiKeysRequest: {
     fromPartial(object: DeepPartial<ListApiKeysRequest>): ListApiKeysRequest;
 };
 export declare const ListApiKeysResponse: {
+    $type: "yandex.cloud.iam.v1.ListApiKeysResponse";
     encode(message: ListApiKeysResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListApiKeysResponse;
     fromJSON(object: any): ListApiKeysResponse;
@@ -139,6 +153,7 @@ export declare const ListApiKeysResponse: {
     fromPartial(object: DeepPartial<ListApiKeysResponse>): ListApiKeysResponse;
 };
 export declare const CreateApiKeyRequest: {
+    $type: "yandex.cloud.iam.v1.CreateApiKeyRequest";
     encode(message: CreateApiKeyRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateApiKeyRequest;
     fromJSON(object: any): CreateApiKeyRequest;
@@ -146,6 +161,7 @@ export declare const CreateApiKeyRequest: {
     fromPartial(object: DeepPartial<CreateApiKeyRequest>): CreateApiKeyRequest;
 };
 export declare const CreateApiKeyResponse: {
+    $type: "yandex.cloud.iam.v1.CreateApiKeyResponse";
     encode(message: CreateApiKeyResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateApiKeyResponse;
     fromJSON(object: any): CreateApiKeyResponse;
@@ -153,6 +169,7 @@ export declare const CreateApiKeyResponse: {
     fromPartial(object: DeepPartial<CreateApiKeyResponse>): CreateApiKeyResponse;
 };
 export declare const UpdateApiKeyRequest: {
+    $type: "yandex.cloud.iam.v1.UpdateApiKeyRequest";
     encode(message: UpdateApiKeyRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateApiKeyRequest;
     fromJSON(object: any): UpdateApiKeyRequest;
@@ -160,6 +177,7 @@ export declare const UpdateApiKeyRequest: {
     fromPartial(object: DeepPartial<UpdateApiKeyRequest>): UpdateApiKeyRequest;
 };
 export declare const UpdateApiKeyMetadata: {
+    $type: "yandex.cloud.iam.v1.UpdateApiKeyMetadata";
     encode(message: UpdateApiKeyMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateApiKeyMetadata;
     fromJSON(object: any): UpdateApiKeyMetadata;
@@ -167,6 +185,7 @@ export declare const UpdateApiKeyMetadata: {
     fromPartial(object: DeepPartial<UpdateApiKeyMetadata>): UpdateApiKeyMetadata;
 };
 export declare const DeleteApiKeyRequest: {
+    $type: "yandex.cloud.iam.v1.DeleteApiKeyRequest";
     encode(message: DeleteApiKeyRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteApiKeyRequest;
     fromJSON(object: any): DeleteApiKeyRequest;
@@ -174,6 +193,7 @@ export declare const DeleteApiKeyRequest: {
     fromPartial(object: DeepPartial<DeleteApiKeyRequest>): DeleteApiKeyRequest;
 };
 export declare const DeleteApiKeyMetadata: {
+    $type: "yandex.cloud.iam.v1.DeleteApiKeyMetadata";
     encode(message: DeleteApiKeyMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteApiKeyMetadata;
     fromJSON(object: any): DeleteApiKeyMetadata;
@@ -181,6 +201,7 @@ export declare const DeleteApiKeyMetadata: {
     fromPartial(object: DeepPartial<DeleteApiKeyMetadata>): DeleteApiKeyMetadata;
 };
 export declare const ListApiKeyOperationsRequest: {
+    $type: "yandex.cloud.iam.v1.ListApiKeyOperationsRequest";
     encode(message: ListApiKeyOperationsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListApiKeyOperationsRequest;
     fromJSON(object: any): ListApiKeyOperationsRequest;
@@ -188,6 +209,7 @@ export declare const ListApiKeyOperationsRequest: {
     fromPartial(object: DeepPartial<ListApiKeyOperationsRequest>): ListApiKeyOperationsRequest;
 };
 export declare const ListApiKeyOperationsResponse: {
+    $type: "yandex.cloud.iam.v1.ListApiKeyOperationsResponse";
     encode(message: ListApiKeyOperationsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListApiKeyOperationsResponse;
     fromJSON(object: any): ListApiKeyOperationsResponse;
@@ -312,6 +334,6 @@ export interface ApiKeyServiceClient extends Client {
 export declare const ApiKeyServiceClient: new (address: string, credentials: ChannelCredentials, options?: Partial<ChannelOptions> | undefined) => ApiKeyServiceClient;
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

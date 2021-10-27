@@ -5,6 +5,7 @@ export declare const protobufPackage = "yandex.cloud.mdb.postgresql.v1";
  * the [Developer's Guide](/docs/managed-postgresql/concepts/backup).
  */
 export interface Backup {
+    $type: 'yandex.cloud.mdb.postgresql.v1.Backup';
     /** Required. ID of the backup. */
     id: string;
     /** ID of the folder that the backup belongs to. */
@@ -46,6 +47,7 @@ export declare enum Backup_BackupCreationType {
 export declare function backup_BackupCreationTypeFromJSON(object: any): Backup_BackupCreationType;
 export declare function backup_BackupCreationTypeToJSON(object: Backup_BackupCreationType): string;
 export declare const Backup: {
+    $type: "yandex.cloud.mdb.postgresql.v1.Backup";
     encode(message: Backup, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Backup;
     fromJSON(object: any): Backup;
@@ -54,6 +56,6 @@ export declare const Backup: {
 };
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

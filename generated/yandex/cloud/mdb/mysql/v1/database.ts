@@ -1,4 +1,5 @@
 /* eslint-disable */
+import { messageTypeRegistry } from '../../../../../typeRegistry';
 import Long from 'long';
 import _m0 from 'protobufjs/minimal';
 
@@ -9,6 +10,7 @@ export const protobufPackage = 'yandex.cloud.mdb.mysql.v1';
  * the [documentation](/docs/managed-mysql/concepts).
  */
 export interface Database {
+    $type: 'yandex.cloud.mdb.mysql.v1.Database';
     /** Name of the database. */
     name: string;
     /** ID of the MySQL cluster that the database belongs to. */
@@ -16,13 +18,20 @@ export interface Database {
 }
 
 export interface DatabaseSpec {
+    $type: 'yandex.cloud.mdb.mysql.v1.DatabaseSpec';
     /** Name of the MySQL database. */
     name: string;
 }
 
-const baseDatabase: object = { name: '', clusterId: '' };
+const baseDatabase: object = {
+    $type: 'yandex.cloud.mdb.mysql.v1.Database',
+    name: '',
+    clusterId: '',
+};
 
 export const Database = {
+    $type: 'yandex.cloud.mdb.mysql.v1.Database' as const,
+
     encode(
         message: Database,
         writer: _m0.Writer = _m0.Writer.create()
@@ -96,9 +105,16 @@ export const Database = {
     },
 };
 
-const baseDatabaseSpec: object = { name: '' };
+messageTypeRegistry.set(Database.$type, Database);
+
+const baseDatabaseSpec: object = {
+    $type: 'yandex.cloud.mdb.mysql.v1.DatabaseSpec',
+    name: '',
+};
 
 export const DatabaseSpec = {
+    $type: 'yandex.cloud.mdb.mysql.v1.DatabaseSpec' as const,
+
     encode(
         message: DatabaseSpec,
         writer: _m0.Writer = _m0.Writer.create()
@@ -155,6 +171,8 @@ export const DatabaseSpec = {
     },
 };
 
+messageTypeRegistry.set(DatabaseSpec.$type, DatabaseSpec);
+
 type Builtin =
     | Date
     | Function
@@ -170,7 +188,7 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 if (_m0.util.Long !== Long) {

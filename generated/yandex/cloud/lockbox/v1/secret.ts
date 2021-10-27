@@ -1,5 +1,6 @@
 /* eslint-disable */
 import { Timestamp } from '../../../../google/protobuf/timestamp';
+import { messageTypeRegistry } from '../../../../typeRegistry';
 import Long from 'long';
 import _m0 from 'protobufjs/minimal';
 
@@ -7,6 +8,7 @@ export const protobufPackage = 'yandex.cloud.lockbox.v1';
 
 /** A secret that may contain several versions of the payload. */
 export interface Secret {
+    $type: 'yandex.cloud.lockbox.v1.Secret';
     /** ID of the secret. */
     id: string;
     /** ID of the folder that the secret belongs to. */
@@ -85,11 +87,13 @@ export function secret_StatusToJSON(object: Secret_Status): string {
 }
 
 export interface Secret_LabelsEntry {
+    $type: 'yandex.cloud.lockbox.v1.Secret.LabelsEntry';
     key: string;
     value: string;
 }
 
 export interface Version {
+    $type: 'yandex.cloud.lockbox.v1.Version';
     /** ID of the version. */
     id: string;
     /** ID of the secret that the version belongs to. */
@@ -160,6 +164,7 @@ export function version_StatusToJSON(object: Version_Status): string {
 }
 
 const baseSecret: object = {
+    $type: 'yandex.cloud.lockbox.v1.Secret',
     id: '',
     folderId: '',
     name: '',
@@ -170,6 +175,8 @@ const baseSecret: object = {
 };
 
 export const Secret = {
+    $type: 'yandex.cloud.lockbox.v1.Secret' as const,
+
     encode(
         message: Secret,
         writer: _m0.Writer = _m0.Writer.create()
@@ -194,7 +201,11 @@ export const Secret = {
         }
         Object.entries(message.labels).forEach(([key, value]) => {
             Secret_LabelsEntry.encode(
-                { key: key as any, value },
+                {
+                    $type: 'yandex.cloud.lockbox.v1.Secret.LabelsEntry',
+                    key: key as any,
+                    value,
+                },
                 writer.uint32(50).fork()
             ).ldelim();
         });
@@ -428,9 +439,17 @@ export const Secret = {
     },
 };
 
-const baseSecret_LabelsEntry: object = { key: '', value: '' };
+messageTypeRegistry.set(Secret.$type, Secret);
+
+const baseSecret_LabelsEntry: object = {
+    $type: 'yandex.cloud.lockbox.v1.Secret.LabelsEntry',
+    key: '',
+    value: '',
+};
 
 export const Secret_LabelsEntry = {
+    $type: 'yandex.cloud.lockbox.v1.Secret.LabelsEntry' as const,
+
     encode(
         message: Secret_LabelsEntry,
         writer: _m0.Writer = _m0.Writer.create()
@@ -507,7 +526,10 @@ export const Secret_LabelsEntry = {
     },
 };
 
+messageTypeRegistry.set(Secret_LabelsEntry.$type, Secret_LabelsEntry);
+
 const baseVersion: object = {
+    $type: 'yandex.cloud.lockbox.v1.Version',
     id: '',
     secretId: '',
     description: '',
@@ -516,6 +538,8 @@ const baseVersion: object = {
 };
 
 export const Version = {
+    $type: 'yandex.cloud.lockbox.v1.Version' as const,
+
     encode(
         message: Version,
         writer: _m0.Writer = _m0.Writer.create()
@@ -701,6 +725,8 @@ export const Version = {
     },
 };
 
+messageTypeRegistry.set(Version.$type, Version);
+
 type Builtin =
     | Date
     | Function
@@ -716,13 +742,13 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 function toTimestamp(date: Date): Timestamp {
     const seconds = date.getTime() / 1_000;
     const nanos = (date.getTime() % 1_000) * 1_000_000;
-    return { seconds, nanos };
+    return { $type: 'google.protobuf.Timestamp', seconds, nanos };
 }
 
 function fromTimestamp(t: Timestamp): Date {

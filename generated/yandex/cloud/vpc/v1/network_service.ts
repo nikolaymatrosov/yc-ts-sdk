@@ -1,5 +1,6 @@
 /* eslint-disable */
 import { FieldMask } from '../../../../google/protobuf/field_mask';
+import { messageTypeRegistry } from '../../../../typeRegistry';
 import { Operation } from '../../../../yandex/cloud/operation/operation';
 import { Network } from '../../../../yandex/cloud/vpc/v1/network';
 import { RouteTable } from '../../../../yandex/cloud/vpc/v1/route_table';
@@ -23,6 +24,7 @@ import _m0 from 'protobufjs/minimal';
 export const protobufPackage = 'yandex.cloud.vpc.v1';
 
 export interface GetNetworkRequest {
+    $type: 'yandex.cloud.vpc.v1.GetNetworkRequest';
     /**
      * ID of the Network resource to return.
      * To get the network ID, use a [NetworkService.List] request.
@@ -31,6 +33,7 @@ export interface GetNetworkRequest {
 }
 
 export interface ListNetworksRequest {
+    $type: 'yandex.cloud.vpc.v1.ListNetworksRequest';
     /**
      * ID of the folder to list networks in.
      * To get the folder ID, use a [yandex.cloud.resourcemanager.v1.FolderService.List] request.
@@ -59,6 +62,7 @@ export interface ListNetworksRequest {
 }
 
 export interface ListNetworksResponse {
+    $type: 'yandex.cloud.vpc.v1.ListNetworksResponse';
     /** List of Network resources. */
     networks: Network[];
     /**
@@ -73,6 +77,7 @@ export interface ListNetworksResponse {
 }
 
 export interface CreateNetworkRequest {
+    $type: 'yandex.cloud.vpc.v1.CreateNetworkRequest';
     /**
      * ID of the folder for this request to create a network in.
      * To get the folder ID, use a [yandex.cloud.resourcemanager.v1.FolderService.List] request.
@@ -90,16 +95,19 @@ export interface CreateNetworkRequest {
 }
 
 export interface CreateNetworkRequest_LabelsEntry {
+    $type: 'yandex.cloud.vpc.v1.CreateNetworkRequest.LabelsEntry';
     key: string;
     value: string;
 }
 
 export interface CreateNetworkMetadata {
+    $type: 'yandex.cloud.vpc.v1.CreateNetworkMetadata';
     /** ID of the Network that is being created. */
     networkId: string;
 }
 
 export interface UpdateNetworkRequest {
+    $type: 'yandex.cloud.vpc.v1.UpdateNetworkRequest';
     /**
      * ID of the Network resource to update.
      * To get the network ID use a [NetworkService.List] request.
@@ -119,16 +127,19 @@ export interface UpdateNetworkRequest {
 }
 
 export interface UpdateNetworkRequest_LabelsEntry {
+    $type: 'yandex.cloud.vpc.v1.UpdateNetworkRequest.LabelsEntry';
     key: string;
     value: string;
 }
 
 export interface UpdateNetworkMetadata {
+    $type: 'yandex.cloud.vpc.v1.UpdateNetworkMetadata';
     /** ID of the Network resource that is being updated. */
     networkId: string;
 }
 
 export interface DeleteNetworkRequest {
+    $type: 'yandex.cloud.vpc.v1.DeleteNetworkRequest';
     /**
      * ID of the Network resource to update.
      * To get the network ID, use a [NetworkService.List] request.
@@ -137,11 +148,13 @@ export interface DeleteNetworkRequest {
 }
 
 export interface DeleteNetworkMetadata {
+    $type: 'yandex.cloud.vpc.v1.DeleteNetworkMetadata';
     /** ID of the network that is being deleted. */
     networkId: string;
 }
 
 export interface ListNetworkSubnetsRequest {
+    $type: 'yandex.cloud.vpc.v1.ListNetworkSubnetsRequest';
     /** ID of the Network resource to list subnets for. */
     networkId: string;
     /**
@@ -160,6 +173,7 @@ export interface ListNetworkSubnetsRequest {
 }
 
 export interface ListNetworkSubnetsResponse {
+    $type: 'yandex.cloud.vpc.v1.ListNetworkSubnetsResponse';
     /** List of subnets that belong to the network which is specified in the request. */
     subnets: Subnet[];
     /**
@@ -174,6 +188,7 @@ export interface ListNetworkSubnetsResponse {
 }
 
 export interface ListNetworkSecurityGroupsRequest {
+    $type: 'yandex.cloud.vpc.v1.ListNetworkSecurityGroupsRequest';
     /** ID of the Network resource to list security groups for. */
     networkId: string;
     /**
@@ -192,6 +207,7 @@ export interface ListNetworkSecurityGroupsRequest {
 }
 
 export interface ListNetworkSecurityGroupsResponse {
+    $type: 'yandex.cloud.vpc.v1.ListNetworkSecurityGroupsResponse';
     /** List of security groups that belong to the network which is specified in the request. */
     securityGroups: SecurityGroup[];
     /**
@@ -206,6 +222,7 @@ export interface ListNetworkSecurityGroupsResponse {
 }
 
 export interface ListNetworkRouteTablesRequest {
+    $type: 'yandex.cloud.vpc.v1.ListNetworkRouteTablesRequest';
     /** ID of the Network resource to list route tables for. */
     networkId: string;
     /**
@@ -224,6 +241,7 @@ export interface ListNetworkRouteTablesRequest {
 }
 
 export interface ListNetworkRouteTablesResponse {
+    $type: 'yandex.cloud.vpc.v1.ListNetworkRouteTablesResponse';
     /** List of route tables that belong to the network which is specified in the request. */
     routeTables: RouteTable[];
     /**
@@ -238,6 +256,7 @@ export interface ListNetworkRouteTablesResponse {
 }
 
 export interface ListNetworkOperationsRequest {
+    $type: 'yandex.cloud.vpc.v1.ListNetworkOperationsRequest';
     /** ID of the Network resource to list operations for. */
     networkId: string;
     /**
@@ -254,6 +273,7 @@ export interface ListNetworkOperationsRequest {
 }
 
 export interface ListNetworkOperationsResponse {
+    $type: 'yandex.cloud.vpc.v1.ListNetworkOperationsResponse';
     /** List of operations for the specified network. */
     operations: Operation[];
     /**
@@ -266,6 +286,7 @@ export interface ListNetworkOperationsResponse {
 }
 
 export interface MoveNetworkRequest {
+    $type: 'yandex.cloud.vpc.v1.MoveNetworkRequest';
     /** ID of the Network resource to move. */
     networkId: string;
     /** ID of the destination folder. */
@@ -273,13 +294,19 @@ export interface MoveNetworkRequest {
 }
 
 export interface MoveNetworkMetadata {
+    $type: 'yandex.cloud.vpc.v1.MoveNetworkMetadata';
     /** ID of the network that is being moved. */
     networkId: string;
 }
 
-const baseGetNetworkRequest: object = { networkId: '' };
+const baseGetNetworkRequest: object = {
+    $type: 'yandex.cloud.vpc.v1.GetNetworkRequest',
+    networkId: '',
+};
 
 export const GetNetworkRequest = {
+    $type: 'yandex.cloud.vpc.v1.GetNetworkRequest' as const,
+
     encode(
         message: GetNetworkRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -336,7 +363,10 @@ export const GetNetworkRequest = {
     },
 };
 
+messageTypeRegistry.set(GetNetworkRequest.$type, GetNetworkRequest);
+
 const baseListNetworksRequest: object = {
+    $type: 'yandex.cloud.vpc.v1.ListNetworksRequest',
     folderId: '',
     pageSize: 0,
     pageToken: '',
@@ -344,6 +374,8 @@ const baseListNetworksRequest: object = {
 };
 
 export const ListNetworksRequest = {
+    $type: 'yandex.cloud.vpc.v1.ListNetworksRequest' as const,
+
     encode(
         message: ListNetworksRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -454,9 +486,16 @@ export const ListNetworksRequest = {
     },
 };
 
-const baseListNetworksResponse: object = { nextPageToken: '' };
+messageTypeRegistry.set(ListNetworksRequest.$type, ListNetworksRequest);
+
+const baseListNetworksResponse: object = {
+    $type: 'yandex.cloud.vpc.v1.ListNetworksResponse',
+    nextPageToken: '',
+};
 
 export const ListNetworksResponse = {
+    $type: 'yandex.cloud.vpc.v1.ListNetworksResponse' as const,
+
     encode(
         message: ListNetworksResponse,
         writer: _m0.Writer = _m0.Writer.create()
@@ -553,13 +592,18 @@ export const ListNetworksResponse = {
     },
 };
 
+messageTypeRegistry.set(ListNetworksResponse.$type, ListNetworksResponse);
+
 const baseCreateNetworkRequest: object = {
+    $type: 'yandex.cloud.vpc.v1.CreateNetworkRequest',
     folderId: '',
     name: '',
     description: '',
 };
 
 export const CreateNetworkRequest = {
+    $type: 'yandex.cloud.vpc.v1.CreateNetworkRequest' as const,
+
     encode(
         message: CreateNetworkRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -575,7 +619,11 @@ export const CreateNetworkRequest = {
         }
         Object.entries(message.labels).forEach(([key, value]) => {
             CreateNetworkRequest_LabelsEntry.encode(
-                { key: key as any, value },
+                {
+                    $type: 'yandex.cloud.vpc.v1.CreateNetworkRequest.LabelsEntry',
+                    key: key as any,
+                    value,
+                },
                 writer.uint32(34).fork()
             ).ldelim();
         });
@@ -692,9 +740,17 @@ export const CreateNetworkRequest = {
     },
 };
 
-const baseCreateNetworkRequest_LabelsEntry: object = { key: '', value: '' };
+messageTypeRegistry.set(CreateNetworkRequest.$type, CreateNetworkRequest);
+
+const baseCreateNetworkRequest_LabelsEntry: object = {
+    $type: 'yandex.cloud.vpc.v1.CreateNetworkRequest.LabelsEntry',
+    key: '',
+    value: '',
+};
 
 export const CreateNetworkRequest_LabelsEntry = {
+    $type: 'yandex.cloud.vpc.v1.CreateNetworkRequest.LabelsEntry' as const,
+
     encode(
         message: CreateNetworkRequest_LabelsEntry,
         writer: _m0.Writer = _m0.Writer.create()
@@ -779,9 +835,19 @@ export const CreateNetworkRequest_LabelsEntry = {
     },
 };
 
-const baseCreateNetworkMetadata: object = { networkId: '' };
+messageTypeRegistry.set(
+    CreateNetworkRequest_LabelsEntry.$type,
+    CreateNetworkRequest_LabelsEntry
+);
+
+const baseCreateNetworkMetadata: object = {
+    $type: 'yandex.cloud.vpc.v1.CreateNetworkMetadata',
+    networkId: '',
+};
 
 export const CreateNetworkMetadata = {
+    $type: 'yandex.cloud.vpc.v1.CreateNetworkMetadata' as const,
+
     encode(
         message: CreateNetworkMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -849,13 +915,18 @@ export const CreateNetworkMetadata = {
     },
 };
 
+messageTypeRegistry.set(CreateNetworkMetadata.$type, CreateNetworkMetadata);
+
 const baseUpdateNetworkRequest: object = {
+    $type: 'yandex.cloud.vpc.v1.UpdateNetworkRequest',
     networkId: '',
     name: '',
     description: '',
 };
 
 export const UpdateNetworkRequest = {
+    $type: 'yandex.cloud.vpc.v1.UpdateNetworkRequest' as const,
+
     encode(
         message: UpdateNetworkRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -877,7 +948,11 @@ export const UpdateNetworkRequest = {
         }
         Object.entries(message.labels).forEach(([key, value]) => {
             UpdateNetworkRequest_LabelsEntry.encode(
-                { key: key as any, value },
+                {
+                    $type: 'yandex.cloud.vpc.v1.UpdateNetworkRequest.LabelsEntry',
+                    key: key as any,
+                    value,
+                },
                 writer.uint32(42).fork()
             ).ldelim();
         });
@@ -1014,9 +1089,17 @@ export const UpdateNetworkRequest = {
     },
 };
 
-const baseUpdateNetworkRequest_LabelsEntry: object = { key: '', value: '' };
+messageTypeRegistry.set(UpdateNetworkRequest.$type, UpdateNetworkRequest);
+
+const baseUpdateNetworkRequest_LabelsEntry: object = {
+    $type: 'yandex.cloud.vpc.v1.UpdateNetworkRequest.LabelsEntry',
+    key: '',
+    value: '',
+};
 
 export const UpdateNetworkRequest_LabelsEntry = {
+    $type: 'yandex.cloud.vpc.v1.UpdateNetworkRequest.LabelsEntry' as const,
+
     encode(
         message: UpdateNetworkRequest_LabelsEntry,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1101,9 +1184,19 @@ export const UpdateNetworkRequest_LabelsEntry = {
     },
 };
 
-const baseUpdateNetworkMetadata: object = { networkId: '' };
+messageTypeRegistry.set(
+    UpdateNetworkRequest_LabelsEntry.$type,
+    UpdateNetworkRequest_LabelsEntry
+);
+
+const baseUpdateNetworkMetadata: object = {
+    $type: 'yandex.cloud.vpc.v1.UpdateNetworkMetadata',
+    networkId: '',
+};
 
 export const UpdateNetworkMetadata = {
+    $type: 'yandex.cloud.vpc.v1.UpdateNetworkMetadata' as const,
+
     encode(
         message: UpdateNetworkMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1171,9 +1264,16 @@ export const UpdateNetworkMetadata = {
     },
 };
 
-const baseDeleteNetworkRequest: object = { networkId: '' };
+messageTypeRegistry.set(UpdateNetworkMetadata.$type, UpdateNetworkMetadata);
+
+const baseDeleteNetworkRequest: object = {
+    $type: 'yandex.cloud.vpc.v1.DeleteNetworkRequest',
+    networkId: '',
+};
 
 export const DeleteNetworkRequest = {
+    $type: 'yandex.cloud.vpc.v1.DeleteNetworkRequest' as const,
+
     encode(
         message: DeleteNetworkRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1235,9 +1335,16 @@ export const DeleteNetworkRequest = {
     },
 };
 
-const baseDeleteNetworkMetadata: object = { networkId: '' };
+messageTypeRegistry.set(DeleteNetworkRequest.$type, DeleteNetworkRequest);
+
+const baseDeleteNetworkMetadata: object = {
+    $type: 'yandex.cloud.vpc.v1.DeleteNetworkMetadata',
+    networkId: '',
+};
 
 export const DeleteNetworkMetadata = {
+    $type: 'yandex.cloud.vpc.v1.DeleteNetworkMetadata' as const,
+
     encode(
         message: DeleteNetworkMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1305,13 +1412,18 @@ export const DeleteNetworkMetadata = {
     },
 };
 
+messageTypeRegistry.set(DeleteNetworkMetadata.$type, DeleteNetworkMetadata);
+
 const baseListNetworkSubnetsRequest: object = {
+    $type: 'yandex.cloud.vpc.v1.ListNetworkSubnetsRequest',
     networkId: '',
     pageSize: 0,
     pageToken: '',
 };
 
 export const ListNetworkSubnetsRequest = {
+    $type: 'yandex.cloud.vpc.v1.ListNetworkSubnetsRequest' as const,
+
     encode(
         message: ListNetworkSubnetsRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1413,9 +1525,19 @@ export const ListNetworkSubnetsRequest = {
     },
 };
 
-const baseListNetworkSubnetsResponse: object = { nextPageToken: '' };
+messageTypeRegistry.set(
+    ListNetworkSubnetsRequest.$type,
+    ListNetworkSubnetsRequest
+);
+
+const baseListNetworkSubnetsResponse: object = {
+    $type: 'yandex.cloud.vpc.v1.ListNetworkSubnetsResponse',
+    nextPageToken: '',
+};
 
 export const ListNetworkSubnetsResponse = {
+    $type: 'yandex.cloud.vpc.v1.ListNetworkSubnetsResponse' as const,
+
     encode(
         message: ListNetworkSubnetsResponse,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1518,13 +1640,21 @@ export const ListNetworkSubnetsResponse = {
     },
 };
 
+messageTypeRegistry.set(
+    ListNetworkSubnetsResponse.$type,
+    ListNetworkSubnetsResponse
+);
+
 const baseListNetworkSecurityGroupsRequest: object = {
+    $type: 'yandex.cloud.vpc.v1.ListNetworkSecurityGroupsRequest',
     networkId: '',
     pageSize: 0,
     pageToken: '',
 };
 
 export const ListNetworkSecurityGroupsRequest = {
+    $type: 'yandex.cloud.vpc.v1.ListNetworkSecurityGroupsRequest' as const,
+
     encode(
         message: ListNetworkSecurityGroupsRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1626,9 +1756,19 @@ export const ListNetworkSecurityGroupsRequest = {
     },
 };
 
-const baseListNetworkSecurityGroupsResponse: object = { nextPageToken: '' };
+messageTypeRegistry.set(
+    ListNetworkSecurityGroupsRequest.$type,
+    ListNetworkSecurityGroupsRequest
+);
+
+const baseListNetworkSecurityGroupsResponse: object = {
+    $type: 'yandex.cloud.vpc.v1.ListNetworkSecurityGroupsResponse',
+    nextPageToken: '',
+};
 
 export const ListNetworkSecurityGroupsResponse = {
+    $type: 'yandex.cloud.vpc.v1.ListNetworkSecurityGroupsResponse' as const,
+
     encode(
         message: ListNetworkSecurityGroupsResponse,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1737,13 +1877,21 @@ export const ListNetworkSecurityGroupsResponse = {
     },
 };
 
+messageTypeRegistry.set(
+    ListNetworkSecurityGroupsResponse.$type,
+    ListNetworkSecurityGroupsResponse
+);
+
 const baseListNetworkRouteTablesRequest: object = {
+    $type: 'yandex.cloud.vpc.v1.ListNetworkRouteTablesRequest',
     networkId: '',
     pageSize: 0,
     pageToken: '',
 };
 
 export const ListNetworkRouteTablesRequest = {
+    $type: 'yandex.cloud.vpc.v1.ListNetworkRouteTablesRequest' as const,
+
     encode(
         message: ListNetworkRouteTablesRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1845,9 +1993,19 @@ export const ListNetworkRouteTablesRequest = {
     },
 };
 
-const baseListNetworkRouteTablesResponse: object = { nextPageToken: '' };
+messageTypeRegistry.set(
+    ListNetworkRouteTablesRequest.$type,
+    ListNetworkRouteTablesRequest
+);
+
+const baseListNetworkRouteTablesResponse: object = {
+    $type: 'yandex.cloud.vpc.v1.ListNetworkRouteTablesResponse',
+    nextPageToken: '',
+};
 
 export const ListNetworkRouteTablesResponse = {
+    $type: 'yandex.cloud.vpc.v1.ListNetworkRouteTablesResponse' as const,
+
     encode(
         message: ListNetworkRouteTablesResponse,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1950,13 +2108,21 @@ export const ListNetworkRouteTablesResponse = {
     },
 };
 
+messageTypeRegistry.set(
+    ListNetworkRouteTablesResponse.$type,
+    ListNetworkRouteTablesResponse
+);
+
 const baseListNetworkOperationsRequest: object = {
+    $type: 'yandex.cloud.vpc.v1.ListNetworkOperationsRequest',
     networkId: '',
     pageSize: 0,
     pageToken: '',
 };
 
 export const ListNetworkOperationsRequest = {
+    $type: 'yandex.cloud.vpc.v1.ListNetworkOperationsRequest' as const,
+
     encode(
         message: ListNetworkOperationsRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2058,9 +2224,19 @@ export const ListNetworkOperationsRequest = {
     },
 };
 
-const baseListNetworkOperationsResponse: object = { nextPageToken: '' };
+messageTypeRegistry.set(
+    ListNetworkOperationsRequest.$type,
+    ListNetworkOperationsRequest
+);
+
+const baseListNetworkOperationsResponse: object = {
+    $type: 'yandex.cloud.vpc.v1.ListNetworkOperationsResponse',
+    nextPageToken: '',
+};
 
 export const ListNetworkOperationsResponse = {
+    $type: 'yandex.cloud.vpc.v1.ListNetworkOperationsResponse' as const,
+
     encode(
         message: ListNetworkOperationsResponse,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2163,12 +2339,20 @@ export const ListNetworkOperationsResponse = {
     },
 };
 
+messageTypeRegistry.set(
+    ListNetworkOperationsResponse.$type,
+    ListNetworkOperationsResponse
+);
+
 const baseMoveNetworkRequest: object = {
+    $type: 'yandex.cloud.vpc.v1.MoveNetworkRequest',
     networkId: '',
     destinationFolderId: '',
 };
 
 export const MoveNetworkRequest = {
+    $type: 'yandex.cloud.vpc.v1.MoveNetworkRequest' as const,
+
     encode(
         message: MoveNetworkRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2252,9 +2436,16 @@ export const MoveNetworkRequest = {
     },
 };
 
-const baseMoveNetworkMetadata: object = { networkId: '' };
+messageTypeRegistry.set(MoveNetworkRequest.$type, MoveNetworkRequest);
+
+const baseMoveNetworkMetadata: object = {
+    $type: 'yandex.cloud.vpc.v1.MoveNetworkMetadata',
+    networkId: '',
+};
 
 export const MoveNetworkMetadata = {
+    $type: 'yandex.cloud.vpc.v1.MoveNetworkMetadata' as const,
+
     encode(
         message: MoveNetworkMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2313,6 +2504,8 @@ export const MoveNetworkMetadata = {
         return message;
     },
 };
+
+messageTypeRegistry.set(MoveNetworkMetadata.$type, MoveNetworkMetadata);
 
 /** A set of methods for managing Network resources. */
 export const NetworkServiceService = {
@@ -2765,7 +2958,7 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 function longToNumber(long: Long): number {

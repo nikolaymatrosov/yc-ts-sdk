@@ -8,6 +8,7 @@ import { ChannelCredentials, ChannelOptions, UntypedServiceImplementation, handl
 import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.dataproc.v1";
 export interface GetClusterRequest {
+    $type: 'yandex.cloud.dataproc.v1.GetClusterRequest';
     /**
      * ID of the Data Proc cluster.
      *
@@ -16,6 +17,7 @@ export interface GetClusterRequest {
     clusterId: string;
 }
 export interface ListClustersRequest {
+    $type: 'yandex.cloud.dataproc.v1.ListClustersRequest';
     /**
      * ID of the folder to list clusters in.
      *
@@ -46,6 +48,7 @@ export interface ListClustersRequest {
     filter: string;
 }
 export interface ListClustersResponse {
+    $type: 'yandex.cloud.dataproc.v1.ListClustersResponse';
     /** List of clusters in the specified folder. */
     clusters: Cluster[];
     /**
@@ -58,6 +61,7 @@ export interface ListClustersResponse {
     nextPageToken: string;
 }
 export interface CreateSubclusterConfigSpec {
+    $type: 'yandex.cloud.dataproc.v1.CreateSubclusterConfigSpec';
     /** Name of the subcluster. */
     name: string;
     /** Role of the subcluster in the Data Proc cluster. */
@@ -72,6 +76,7 @@ export interface CreateSubclusterConfigSpec {
     autoscalingConfig: AutoscalingConfig | undefined;
 }
 export interface UpdateSubclusterConfigSpec {
+    $type: 'yandex.cloud.dataproc.v1.UpdateSubclusterConfigSpec';
     /**
      * ID of the subcluster to update.
      *
@@ -88,6 +93,7 @@ export interface UpdateSubclusterConfigSpec {
     autoscalingConfig: AutoscalingConfig | undefined;
 }
 export interface CreateClusterConfigSpec {
+    $type: 'yandex.cloud.dataproc.v1.CreateClusterConfigSpec';
     /**
      * Version of the image for cluster provisioning.
      *
@@ -100,12 +106,14 @@ export interface CreateClusterConfigSpec {
     subclustersSpec: CreateSubclusterConfigSpec[];
 }
 export interface UpdateClusterConfigSpec {
+    $type: 'yandex.cloud.dataproc.v1.UpdateClusterConfigSpec';
     /** New configuration for subclusters in a cluster. */
     subclustersSpec: UpdateSubclusterConfigSpec[];
     /** Hadoop specific options */
     hadoop: HadoopConfig | undefined;
 }
 export interface CreateClusterRequest {
+    $type: 'yandex.cloud.dataproc.v1.CreateClusterRequest';
     /**
      * ID of the folder to create a cluster in.
      *
@@ -147,14 +155,17 @@ export interface CreateClusterRequest {
     logGroupId: string;
 }
 export interface CreateClusterRequest_LabelsEntry {
+    $type: 'yandex.cloud.dataproc.v1.CreateClusterRequest.LabelsEntry';
     key: string;
     value: string;
 }
 export interface CreateClusterMetadata {
+    $type: 'yandex.cloud.dataproc.v1.CreateClusterMetadata';
     /** ID of the cluster that is being created. */
     clusterId: string;
 }
 export interface UpdateClusterRequest {
+    $type: 'yandex.cloud.dataproc.v1.UpdateClusterRequest';
     /**
      * ID of the cluster to update.
      *
@@ -189,14 +200,17 @@ export interface UpdateClusterRequest {
     logGroupId: string;
 }
 export interface UpdateClusterRequest_LabelsEntry {
+    $type: 'yandex.cloud.dataproc.v1.UpdateClusterRequest.LabelsEntry';
     key: string;
     value: string;
 }
 export interface UpdateClusterMetadata {
+    $type: 'yandex.cloud.dataproc.v1.UpdateClusterMetadata';
     /** ID of the cluster that is being updated. */
     clusterId: string;
 }
 export interface DeleteClusterRequest {
+    $type: 'yandex.cloud.dataproc.v1.DeleteClusterRequest';
     /**
      * ID of the cluster to delete.
      *
@@ -207,10 +221,12 @@ export interface DeleteClusterRequest {
     decommissionTimeout: number;
 }
 export interface DeleteClusterMetadata {
+    $type: 'yandex.cloud.dataproc.v1.DeleteClusterMetadata';
     /** ID of the Data Proc cluster that is being deleted. */
     clusterId: string;
 }
 export interface StartClusterRequest {
+    $type: 'yandex.cloud.dataproc.v1.StartClusterRequest';
     /**
      * ID of the cluster to start.
      *
@@ -219,10 +235,12 @@ export interface StartClusterRequest {
     clusterId: string;
 }
 export interface StartClusterMetadata {
+    $type: 'yandex.cloud.dataproc.v1.StartClusterMetadata';
     /** ID of the Data Proc cluster that is being started. */
     clusterId: string;
 }
 export interface StopClusterRequest {
+    $type: 'yandex.cloud.dataproc.v1.StopClusterRequest';
     /**
      * ID of the cluster to stop.
      *
@@ -233,10 +251,12 @@ export interface StopClusterRequest {
     decommissionTimeout: number;
 }
 export interface StopClusterMetadata {
+    $type: 'yandex.cloud.dataproc.v1.StopClusterMetadata';
     /** ID of the Data Proc cluster that is being stopped. */
     clusterId: string;
 }
 export interface ListClusterOperationsRequest {
+    $type: 'yandex.cloud.dataproc.v1.ListClusterOperationsRequest';
     /** ID of the cluster to list operations for. */
     clusterId: string;
     /**
@@ -253,6 +273,7 @@ export interface ListClusterOperationsRequest {
     pageToken: string;
 }
 export interface ListClusterOperationsResponse {
+    $type: 'yandex.cloud.dataproc.v1.ListClusterOperationsResponse';
     /** List of operations for the specified cluster. */
     operations: Operation[];
     /**
@@ -265,6 +286,7 @@ export interface ListClusterOperationsResponse {
     nextPageToken: string;
 }
 export interface ListClusterHostsRequest {
+    $type: 'yandex.cloud.dataproc.v1.ListClusterHostsRequest';
     /**
      * ID of the cluster to list hosts for.
      *
@@ -295,6 +317,7 @@ export interface ListClusterHostsRequest {
     filter: string;
 }
 export interface ListClusterHostsResponse {
+    $type: 'yandex.cloud.dataproc.v1.ListClusterHostsResponse';
     /** Requested list of hosts. */
     hosts: Host[];
     /**
@@ -307,18 +330,22 @@ export interface ListClusterHostsResponse {
     nextPageToken: string;
 }
 export interface ListUILinksRequest {
+    $type: 'yandex.cloud.dataproc.v1.ListUILinksRequest';
     /** Required. ID of the Hadoop cluster. */
     clusterId: string;
 }
 export interface UILink {
+    $type: 'yandex.cloud.dataproc.v1.UILink';
     name: string;
     url: string;
 }
 export interface ListUILinksResponse {
+    $type: 'yandex.cloud.dataproc.v1.ListUILinksResponse';
     /** Requested list of ui links. */
     links: UILink[];
 }
 export declare const GetClusterRequest: {
+    $type: "yandex.cloud.dataproc.v1.GetClusterRequest";
     encode(message: GetClusterRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): GetClusterRequest;
     fromJSON(object: any): GetClusterRequest;
@@ -326,6 +353,7 @@ export declare const GetClusterRequest: {
     fromPartial(object: DeepPartial<GetClusterRequest>): GetClusterRequest;
 };
 export declare const ListClustersRequest: {
+    $type: "yandex.cloud.dataproc.v1.ListClustersRequest";
     encode(message: ListClustersRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListClustersRequest;
     fromJSON(object: any): ListClustersRequest;
@@ -333,6 +361,7 @@ export declare const ListClustersRequest: {
     fromPartial(object: DeepPartial<ListClustersRequest>): ListClustersRequest;
 };
 export declare const ListClustersResponse: {
+    $type: "yandex.cloud.dataproc.v1.ListClustersResponse";
     encode(message: ListClustersResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListClustersResponse;
     fromJSON(object: any): ListClustersResponse;
@@ -340,6 +369,7 @@ export declare const ListClustersResponse: {
     fromPartial(object: DeepPartial<ListClustersResponse>): ListClustersResponse;
 };
 export declare const CreateSubclusterConfigSpec: {
+    $type: "yandex.cloud.dataproc.v1.CreateSubclusterConfigSpec";
     encode(message: CreateSubclusterConfigSpec, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateSubclusterConfigSpec;
     fromJSON(object: any): CreateSubclusterConfigSpec;
@@ -347,6 +377,7 @@ export declare const CreateSubclusterConfigSpec: {
     fromPartial(object: DeepPartial<CreateSubclusterConfigSpec>): CreateSubclusterConfigSpec;
 };
 export declare const UpdateSubclusterConfigSpec: {
+    $type: "yandex.cloud.dataproc.v1.UpdateSubclusterConfigSpec";
     encode(message: UpdateSubclusterConfigSpec, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateSubclusterConfigSpec;
     fromJSON(object: any): UpdateSubclusterConfigSpec;
@@ -354,6 +385,7 @@ export declare const UpdateSubclusterConfigSpec: {
     fromPartial(object: DeepPartial<UpdateSubclusterConfigSpec>): UpdateSubclusterConfigSpec;
 };
 export declare const CreateClusterConfigSpec: {
+    $type: "yandex.cloud.dataproc.v1.CreateClusterConfigSpec";
     encode(message: CreateClusterConfigSpec, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateClusterConfigSpec;
     fromJSON(object: any): CreateClusterConfigSpec;
@@ -361,6 +393,7 @@ export declare const CreateClusterConfigSpec: {
     fromPartial(object: DeepPartial<CreateClusterConfigSpec>): CreateClusterConfigSpec;
 };
 export declare const UpdateClusterConfigSpec: {
+    $type: "yandex.cloud.dataproc.v1.UpdateClusterConfigSpec";
     encode(message: UpdateClusterConfigSpec, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateClusterConfigSpec;
     fromJSON(object: any): UpdateClusterConfigSpec;
@@ -368,6 +401,7 @@ export declare const UpdateClusterConfigSpec: {
     fromPartial(object: DeepPartial<UpdateClusterConfigSpec>): UpdateClusterConfigSpec;
 };
 export declare const CreateClusterRequest: {
+    $type: "yandex.cloud.dataproc.v1.CreateClusterRequest";
     encode(message: CreateClusterRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateClusterRequest;
     fromJSON(object: any): CreateClusterRequest;
@@ -375,6 +409,7 @@ export declare const CreateClusterRequest: {
     fromPartial(object: DeepPartial<CreateClusterRequest>): CreateClusterRequest;
 };
 export declare const CreateClusterRequest_LabelsEntry: {
+    $type: "yandex.cloud.dataproc.v1.CreateClusterRequest.LabelsEntry";
     encode(message: CreateClusterRequest_LabelsEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateClusterRequest_LabelsEntry;
     fromJSON(object: any): CreateClusterRequest_LabelsEntry;
@@ -382,6 +417,7 @@ export declare const CreateClusterRequest_LabelsEntry: {
     fromPartial(object: DeepPartial<CreateClusterRequest_LabelsEntry>): CreateClusterRequest_LabelsEntry;
 };
 export declare const CreateClusterMetadata: {
+    $type: "yandex.cloud.dataproc.v1.CreateClusterMetadata";
     encode(message: CreateClusterMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateClusterMetadata;
     fromJSON(object: any): CreateClusterMetadata;
@@ -389,6 +425,7 @@ export declare const CreateClusterMetadata: {
     fromPartial(object: DeepPartial<CreateClusterMetadata>): CreateClusterMetadata;
 };
 export declare const UpdateClusterRequest: {
+    $type: "yandex.cloud.dataproc.v1.UpdateClusterRequest";
     encode(message: UpdateClusterRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateClusterRequest;
     fromJSON(object: any): UpdateClusterRequest;
@@ -396,6 +433,7 @@ export declare const UpdateClusterRequest: {
     fromPartial(object: DeepPartial<UpdateClusterRequest>): UpdateClusterRequest;
 };
 export declare const UpdateClusterRequest_LabelsEntry: {
+    $type: "yandex.cloud.dataproc.v1.UpdateClusterRequest.LabelsEntry";
     encode(message: UpdateClusterRequest_LabelsEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateClusterRequest_LabelsEntry;
     fromJSON(object: any): UpdateClusterRequest_LabelsEntry;
@@ -403,6 +441,7 @@ export declare const UpdateClusterRequest_LabelsEntry: {
     fromPartial(object: DeepPartial<UpdateClusterRequest_LabelsEntry>): UpdateClusterRequest_LabelsEntry;
 };
 export declare const UpdateClusterMetadata: {
+    $type: "yandex.cloud.dataproc.v1.UpdateClusterMetadata";
     encode(message: UpdateClusterMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateClusterMetadata;
     fromJSON(object: any): UpdateClusterMetadata;
@@ -410,6 +449,7 @@ export declare const UpdateClusterMetadata: {
     fromPartial(object: DeepPartial<UpdateClusterMetadata>): UpdateClusterMetadata;
 };
 export declare const DeleteClusterRequest: {
+    $type: "yandex.cloud.dataproc.v1.DeleteClusterRequest";
     encode(message: DeleteClusterRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteClusterRequest;
     fromJSON(object: any): DeleteClusterRequest;
@@ -417,6 +457,7 @@ export declare const DeleteClusterRequest: {
     fromPartial(object: DeepPartial<DeleteClusterRequest>): DeleteClusterRequest;
 };
 export declare const DeleteClusterMetadata: {
+    $type: "yandex.cloud.dataproc.v1.DeleteClusterMetadata";
     encode(message: DeleteClusterMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteClusterMetadata;
     fromJSON(object: any): DeleteClusterMetadata;
@@ -424,6 +465,7 @@ export declare const DeleteClusterMetadata: {
     fromPartial(object: DeepPartial<DeleteClusterMetadata>): DeleteClusterMetadata;
 };
 export declare const StartClusterRequest: {
+    $type: "yandex.cloud.dataproc.v1.StartClusterRequest";
     encode(message: StartClusterRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): StartClusterRequest;
     fromJSON(object: any): StartClusterRequest;
@@ -431,6 +473,7 @@ export declare const StartClusterRequest: {
     fromPartial(object: DeepPartial<StartClusterRequest>): StartClusterRequest;
 };
 export declare const StartClusterMetadata: {
+    $type: "yandex.cloud.dataproc.v1.StartClusterMetadata";
     encode(message: StartClusterMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): StartClusterMetadata;
     fromJSON(object: any): StartClusterMetadata;
@@ -438,6 +481,7 @@ export declare const StartClusterMetadata: {
     fromPartial(object: DeepPartial<StartClusterMetadata>): StartClusterMetadata;
 };
 export declare const StopClusterRequest: {
+    $type: "yandex.cloud.dataproc.v1.StopClusterRequest";
     encode(message: StopClusterRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): StopClusterRequest;
     fromJSON(object: any): StopClusterRequest;
@@ -445,6 +489,7 @@ export declare const StopClusterRequest: {
     fromPartial(object: DeepPartial<StopClusterRequest>): StopClusterRequest;
 };
 export declare const StopClusterMetadata: {
+    $type: "yandex.cloud.dataproc.v1.StopClusterMetadata";
     encode(message: StopClusterMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): StopClusterMetadata;
     fromJSON(object: any): StopClusterMetadata;
@@ -452,6 +497,7 @@ export declare const StopClusterMetadata: {
     fromPartial(object: DeepPartial<StopClusterMetadata>): StopClusterMetadata;
 };
 export declare const ListClusterOperationsRequest: {
+    $type: "yandex.cloud.dataproc.v1.ListClusterOperationsRequest";
     encode(message: ListClusterOperationsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListClusterOperationsRequest;
     fromJSON(object: any): ListClusterOperationsRequest;
@@ -459,6 +505,7 @@ export declare const ListClusterOperationsRequest: {
     fromPartial(object: DeepPartial<ListClusterOperationsRequest>): ListClusterOperationsRequest;
 };
 export declare const ListClusterOperationsResponse: {
+    $type: "yandex.cloud.dataproc.v1.ListClusterOperationsResponse";
     encode(message: ListClusterOperationsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListClusterOperationsResponse;
     fromJSON(object: any): ListClusterOperationsResponse;
@@ -466,6 +513,7 @@ export declare const ListClusterOperationsResponse: {
     fromPartial(object: DeepPartial<ListClusterOperationsResponse>): ListClusterOperationsResponse;
 };
 export declare const ListClusterHostsRequest: {
+    $type: "yandex.cloud.dataproc.v1.ListClusterHostsRequest";
     encode(message: ListClusterHostsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListClusterHostsRequest;
     fromJSON(object: any): ListClusterHostsRequest;
@@ -473,6 +521,7 @@ export declare const ListClusterHostsRequest: {
     fromPartial(object: DeepPartial<ListClusterHostsRequest>): ListClusterHostsRequest;
 };
 export declare const ListClusterHostsResponse: {
+    $type: "yandex.cloud.dataproc.v1.ListClusterHostsResponse";
     encode(message: ListClusterHostsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListClusterHostsResponse;
     fromJSON(object: any): ListClusterHostsResponse;
@@ -480,6 +529,7 @@ export declare const ListClusterHostsResponse: {
     fromPartial(object: DeepPartial<ListClusterHostsResponse>): ListClusterHostsResponse;
 };
 export declare const ListUILinksRequest: {
+    $type: "yandex.cloud.dataproc.v1.ListUILinksRequest";
     encode(message: ListUILinksRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListUILinksRequest;
     fromJSON(object: any): ListUILinksRequest;
@@ -487,6 +537,7 @@ export declare const ListUILinksRequest: {
     fromPartial(object: DeepPartial<ListUILinksRequest>): ListUILinksRequest;
 };
 export declare const UILink: {
+    $type: "yandex.cloud.dataproc.v1.UILink";
     encode(message: UILink, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UILink;
     fromJSON(object: any): UILink;
@@ -494,6 +545,7 @@ export declare const UILink: {
     fromPartial(object: DeepPartial<UILink>): UILink;
 };
 export declare const ListUILinksResponse: {
+    $type: "yandex.cloud.dataproc.v1.ListUILinksResponse";
     encode(message: ListUILinksResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListUILinksResponse;
     fromJSON(object: any): ListUILinksResponse;
@@ -682,6 +734,6 @@ export interface ClusterServiceClient extends Client {
 export declare const ClusterServiceClient: new (address: string, credentials: ChannelCredentials, options?: Partial<ChannelOptions> | undefined) => ClusterServiceClient;
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

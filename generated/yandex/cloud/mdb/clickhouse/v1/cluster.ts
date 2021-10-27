@@ -2,6 +2,7 @@
 import { Timestamp } from '../../../../../google/protobuf/timestamp';
 import { BoolValue, Int64Value } from '../../../../../google/protobuf/wrappers';
 import { TimeOfDay } from '../../../../../google/type/timeofday';
+import { messageTypeRegistry } from '../../../../../typeRegistry';
 import { ClickhouseConfigSet } from '../../../../../yandex/cloud/mdb/clickhouse/v1/config/clickhouse';
 import {
     MaintenanceWindow,
@@ -17,6 +18,7 @@ export const protobufPackage = 'yandex.cloud.mdb.clickhouse.v1';
  * [Cluster](/docs/managed-clickhouse/concepts) section in the Developer's Guide.
  */
 export interface Cluster {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.Cluster';
     /**
      * ID of the ClickHouse cluster.
      * This ID is assigned by MDB at creation time.
@@ -231,12 +233,14 @@ export function cluster_StatusToJSON(object: Cluster_Status): string {
 }
 
 export interface Cluster_LabelsEntry {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.Cluster.LabelsEntry';
     key: string;
     value: string;
 }
 
 /** Monitoring system metadata. */
 export interface Monitoring {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.Monitoring';
     /** Name of the monitoring system. */
     name: string;
     /** Description of the monitoring system. */
@@ -246,6 +250,7 @@ export interface Monitoring {
 }
 
 export interface ClusterConfig {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.ClusterConfig';
     /** Version of the ClickHouse server software. */
     version: string;
     /** Configuration and resource allocation for ClickHouse hosts. */
@@ -264,6 +269,7 @@ export interface ClusterConfig {
 }
 
 export interface ClusterConfig_Clickhouse {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.ClusterConfig.Clickhouse';
     /** Configuration settings of a ClickHouse server. */
     config: ClickhouseConfigSet | undefined;
     /** Resources allocated to ClickHouse hosts. */
@@ -271,11 +277,13 @@ export interface ClusterConfig_Clickhouse {
 }
 
 export interface ClusterConfig_Zookeeper {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.ClusterConfig.Zookeeper';
     /** Resources allocated to ZooKeeper hosts. */
     resources: Resources | undefined;
 }
 
 export interface Shard {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.Shard';
     /** Name of the shard. */
     name: string;
     /** ID of the cluster that the shard belongs to. */
@@ -285,6 +293,7 @@ export interface Shard {
 }
 
 export interface ShardGroup {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.ShardGroup';
     /** Name of the shard group. */
     name: string;
     /** ID of the ClickHouse cluster that the shard group belongs to. */
@@ -296,11 +305,13 @@ export interface ShardGroup {
 }
 
 export interface ShardConfig {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.ShardConfig';
     /** ClickHouse configuration for a shard. */
     clickhouse: ShardConfig_Clickhouse | undefined;
 }
 
 export interface ShardConfig_Clickhouse {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.ShardConfig.Clickhouse';
     /** ClickHouse settings for a shard. */
     config: ClickhouseConfigSet | undefined;
     /** Computational resources for a shard. */
@@ -313,6 +324,7 @@ export interface ShardConfig_Clickhouse {
 }
 
 export interface Host {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.Host';
     /**
      * Name of the ClickHouse host. The host name is assigned by MDB at creation time, and cannot be changed.
      * 1-63 characters long.
@@ -428,6 +440,7 @@ export function host_HealthToJSON(object: Host_Health): string {
 }
 
 export interface Service {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.Service';
     /** Type of the service provided by the host. */
     type: Service_Type;
     /** Status code of server availability. */
@@ -516,6 +529,7 @@ export function service_HealthToJSON(object: Service_Health): string {
 }
 
 export interface Resources {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.Resources';
     /**
      * ID of the preset for computational resources available to a host (CPU, memory etc.).
      * All available presets are listed in the [documentation](/docs/managed-clickhouse/concepts/instance-types)
@@ -534,6 +548,7 @@ export interface Resources {
 }
 
 export interface Access {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.Access';
     /** Allow to export data from the cluster to Yandex DataLens. */
     dataLens: boolean;
     /**
@@ -553,11 +568,13 @@ export interface Access {
 }
 
 export interface CloudStorage {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.CloudStorage';
     /** Whether to use Yandex Object Storage for storing ClickHouse data. */
     enabled: boolean;
 }
 
 const baseCluster: object = {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.Cluster',
     id: '',
     folderId: '',
     name: '',
@@ -572,6 +589,8 @@ const baseCluster: object = {
 };
 
 export const Cluster = {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.Cluster' as const,
+
     encode(
         message: Cluster,
         writer: _m0.Writer = _m0.Writer.create()
@@ -596,7 +615,11 @@ export const Cluster = {
         }
         Object.entries(message.labels).forEach(([key, value]) => {
             Cluster_LabelsEntry.encode(
-                { key: key as any, value },
+                {
+                    $type: 'yandex.cloud.mdb.clickhouse.v1.Cluster.LabelsEntry',
+                    key: key as any,
+                    value,
+                },
                 writer.uint32(50).fork()
             ).ldelim();
         });
@@ -1016,9 +1039,17 @@ export const Cluster = {
     },
 };
 
-const baseCluster_LabelsEntry: object = { key: '', value: '' };
+messageTypeRegistry.set(Cluster.$type, Cluster);
+
+const baseCluster_LabelsEntry: object = {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.Cluster.LabelsEntry',
+    key: '',
+    value: '',
+};
 
 export const Cluster_LabelsEntry = {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.Cluster.LabelsEntry' as const,
+
     encode(
         message: Cluster_LabelsEntry,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1095,9 +1126,18 @@ export const Cluster_LabelsEntry = {
     },
 };
 
-const baseMonitoring: object = { name: '', description: '', link: '' };
+messageTypeRegistry.set(Cluster_LabelsEntry.$type, Cluster_LabelsEntry);
+
+const baseMonitoring: object = {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.Monitoring',
+    name: '',
+    description: '',
+    link: '',
+};
 
 export const Monitoring = {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.Monitoring' as const,
+
     encode(
         message: Monitoring,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1189,9 +1229,16 @@ export const Monitoring = {
     },
 };
 
-const baseClusterConfig: object = { version: '' };
+messageTypeRegistry.set(Monitoring.$type, Monitoring);
+
+const baseClusterConfig: object = {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.ClusterConfig',
+    version: '',
+};
 
 export const ClusterConfig = {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.ClusterConfig' as const,
+
     encode(
         message: ClusterConfig,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1228,13 +1275,19 @@ export const ClusterConfig = {
         }
         if (message.sqlDatabaseManagement !== undefined) {
             BoolValue.encode(
-                { value: message.sqlDatabaseManagement! },
+                {
+                    $type: 'google.protobuf.BoolValue',
+                    value: message.sqlDatabaseManagement!,
+                },
                 writer.uint32(58).fork()
             ).ldelim();
         }
         if (message.sqlUserManagement !== undefined) {
             BoolValue.encode(
-                { value: message.sqlUserManagement! },
+                {
+                    $type: 'google.protobuf.BoolValue',
+                    value: message.sqlUserManagement!,
+                },
                 writer.uint32(66).fork()
             ).ldelim();
         }
@@ -1454,9 +1507,15 @@ export const ClusterConfig = {
     },
 };
 
-const baseClusterConfig_Clickhouse: object = {};
+messageTypeRegistry.set(ClusterConfig.$type, ClusterConfig);
+
+const baseClusterConfig_Clickhouse: object = {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.ClusterConfig.Clickhouse',
+};
 
 export const ClusterConfig_Clickhouse = {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.ClusterConfig.Clickhouse' as const,
+
     encode(
         message: ClusterConfig_Clickhouse,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1559,9 +1618,18 @@ export const ClusterConfig_Clickhouse = {
     },
 };
 
-const baseClusterConfig_Zookeeper: object = {};
+messageTypeRegistry.set(
+    ClusterConfig_Clickhouse.$type,
+    ClusterConfig_Clickhouse
+);
+
+const baseClusterConfig_Zookeeper: object = {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.ClusterConfig.Zookeeper',
+};
 
 export const ClusterConfig_Zookeeper = {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.ClusterConfig.Zookeeper' as const,
+
     encode(
         message: ClusterConfig_Zookeeper,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1638,9 +1706,17 @@ export const ClusterConfig_Zookeeper = {
     },
 };
 
-const baseShard: object = { name: '', clusterId: '' };
+messageTypeRegistry.set(ClusterConfig_Zookeeper.$type, ClusterConfig_Zookeeper);
+
+const baseShard: object = {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.Shard',
+    name: '',
+    clusterId: '',
+};
 
 export const Shard = {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.Shard' as const,
+
     encode(
         message: Shard,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1740,7 +1816,10 @@ export const Shard = {
     },
 };
 
+messageTypeRegistry.set(Shard.$type, Shard);
+
 const baseShardGroup: object = {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.ShardGroup',
     name: '',
     clusterId: '',
     description: '',
@@ -1748,6 +1827,8 @@ const baseShardGroup: object = {
 };
 
 export const ShardGroup = {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.ShardGroup' as const,
+
     encode(
         message: ShardGroup,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1863,9 +1944,15 @@ export const ShardGroup = {
     },
 };
 
-const baseShardConfig: object = {};
+messageTypeRegistry.set(ShardGroup.$type, ShardGroup);
+
+const baseShardConfig: object = {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.ShardConfig',
+};
 
 export const ShardConfig = {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.ShardConfig' as const,
+
     encode(
         message: ShardConfig,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1935,9 +2022,15 @@ export const ShardConfig = {
     },
 };
 
-const baseShardConfig_Clickhouse: object = {};
+messageTypeRegistry.set(ShardConfig.$type, ShardConfig);
+
+const baseShardConfig_Clickhouse: object = {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.ShardConfig.Clickhouse',
+};
 
 export const ShardConfig_Clickhouse = {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.ShardConfig.Clickhouse' as const,
+
     encode(
         message: ShardConfig_Clickhouse,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1956,7 +2049,7 @@ export const ShardConfig_Clickhouse = {
         }
         if (message.weight !== undefined) {
             Int64Value.encode(
-                { value: message.weight! },
+                { $type: 'google.protobuf.Int64Value', value: message.weight! },
                 writer.uint32(26).fork()
             ).ldelim();
         }
@@ -2063,7 +2156,10 @@ export const ShardConfig_Clickhouse = {
     },
 };
 
+messageTypeRegistry.set(ShardConfig_Clickhouse.$type, ShardConfig_Clickhouse);
+
 const baseHost: object = {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.Host',
     name: '',
     clusterId: '',
     zoneId: '',
@@ -2075,6 +2171,8 @@ const baseHost: object = {
 };
 
 export const Host = {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.Host' as const,
+
     encode(
         message: Host,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2313,9 +2411,17 @@ export const Host = {
     },
 };
 
-const baseService: object = { type: 0, health: 0 };
+messageTypeRegistry.set(Host.$type, Host);
+
+const baseService: object = {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.Service',
+    type: 0,
+    health: 0,
+};
 
 export const Service = {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.Service' as const,
+
     encode(
         message: Service,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2391,13 +2497,18 @@ export const Service = {
     },
 };
 
+messageTypeRegistry.set(Service.$type, Service);
+
 const baseResources: object = {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.Resources',
     resourcePresetId: '',
     diskSize: 0,
     diskTypeId: '',
 };
 
 export const Resources = {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.Resources' as const,
+
     encode(
         message: Resources,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2496,7 +2607,10 @@ export const Resources = {
     },
 };
 
+messageTypeRegistry.set(Resources.$type, Resources);
+
 const baseAccess: object = {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.Access',
     dataLens: false,
     webSql: false,
     metrika: false,
@@ -2504,6 +2618,8 @@ const baseAccess: object = {
 };
 
 export const Access = {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.Access' as const,
+
     encode(
         message: Access,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2612,9 +2728,16 @@ export const Access = {
     },
 };
 
-const baseCloudStorage: object = { enabled: false };
+messageTypeRegistry.set(Access.$type, Access);
+
+const baseCloudStorage: object = {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.CloudStorage',
+    enabled: false,
+};
 
 export const CloudStorage = {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.CloudStorage' as const,
+
     encode(
         message: CloudStorage,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2671,6 +2794,8 @@ export const CloudStorage = {
     },
 };
 
+messageTypeRegistry.set(CloudStorage.$type, CloudStorage);
+
 declare var self: any | undefined;
 declare var window: any | undefined;
 declare var global: any | undefined;
@@ -2697,13 +2822,13 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 function toTimestamp(date: Date): Timestamp {
     const seconds = date.getTime() / 1_000;
     const nanos = (date.getTime() % 1_000) * 1_000_000;
-    return { seconds, nanos };
+    return { $type: 'google.protobuf.Timestamp', seconds, nanos };
 }
 
 function fromTimestamp(t: Timestamp): Date {

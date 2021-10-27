@@ -2,6 +2,7 @@ import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.iot.devices.v1";
 /** A registry. For more information, see [Registry](/docs/iot-core/concepts/index#registry). */
 export interface Registry {
+    $type: 'yandex.cloud.iot.devices.v1.Registry';
     /** ID of the registry. */
     id: string;
     /** ID of the folder that the registry belongs to. */
@@ -34,11 +35,13 @@ export declare enum Registry_Status {
 export declare function registry_StatusFromJSON(object: any): Registry_Status;
 export declare function registry_StatusToJSON(object: Registry_Status): string;
 export interface Registry_LabelsEntry {
+    $type: 'yandex.cloud.iot.devices.v1.Registry.LabelsEntry';
     key: string;
     value: string;
 }
 /** A registry certificate. For more information, see [Managing registry certificates](/docs/iot-core/operations/certificates/registry-certificates). */
 export interface RegistryCertificate {
+    $type: 'yandex.cloud.iot.devices.v1.RegistryCertificate';
     /** ID of the registry that the certificate belongs to. */
     registryId: string;
     /** SHA256 hash of the certificates. */
@@ -54,6 +57,7 @@ export interface RegistryCertificate {
  * Alias is an alternate name of a device topic assigned by the user. Map alias to canonical topic name prefix, e.g. `my/custom/alias` match to `$device/abcdef/events`. For more information, see [Using topic aliases](/docs/iot-core/concepts/topic#aliases).
  */
 export interface DeviceAlias {
+    $type: 'yandex.cloud.iot.devices.v1.DeviceAlias';
     /** ID of the device that the alias belongs to. */
     deviceId: string;
     /** Prefix of a canonical topic name to be aliased, e.g. `$devices/abcdef`. */
@@ -63,6 +67,7 @@ export interface DeviceAlias {
 }
 /** A registry password. */
 export interface RegistryPassword {
+    $type: 'yandex.cloud.iot.devices.v1.RegistryPassword';
     /** ID of the registry that the password belongs to. */
     registryId: string;
     /** ID of the password. */
@@ -71,6 +76,7 @@ export interface RegistryPassword {
     createdAt: Date | undefined;
 }
 export declare const Registry: {
+    $type: "yandex.cloud.iot.devices.v1.Registry";
     encode(message: Registry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Registry;
     fromJSON(object: any): Registry;
@@ -78,6 +84,7 @@ export declare const Registry: {
     fromPartial(object: DeepPartial<Registry>): Registry;
 };
 export declare const Registry_LabelsEntry: {
+    $type: "yandex.cloud.iot.devices.v1.Registry.LabelsEntry";
     encode(message: Registry_LabelsEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Registry_LabelsEntry;
     fromJSON(object: any): Registry_LabelsEntry;
@@ -85,6 +92,7 @@ export declare const Registry_LabelsEntry: {
     fromPartial(object: DeepPartial<Registry_LabelsEntry>): Registry_LabelsEntry;
 };
 export declare const RegistryCertificate: {
+    $type: "yandex.cloud.iot.devices.v1.RegistryCertificate";
     encode(message: RegistryCertificate, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): RegistryCertificate;
     fromJSON(object: any): RegistryCertificate;
@@ -92,6 +100,7 @@ export declare const RegistryCertificate: {
     fromPartial(object: DeepPartial<RegistryCertificate>): RegistryCertificate;
 };
 export declare const DeviceAlias: {
+    $type: "yandex.cloud.iot.devices.v1.DeviceAlias";
     encode(message: DeviceAlias, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeviceAlias;
     fromJSON(object: any): DeviceAlias;
@@ -99,6 +108,7 @@ export declare const DeviceAlias: {
     fromPartial(object: DeepPartial<DeviceAlias>): DeviceAlias;
 };
 export declare const RegistryPassword: {
+    $type: "yandex.cloud.iot.devices.v1.RegistryPassword";
     encode(message: RegistryPassword, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): RegistryPassword;
     fromJSON(object: any): RegistryPassword;
@@ -107,6 +117,6 @@ export declare const RegistryPassword: {
 };
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

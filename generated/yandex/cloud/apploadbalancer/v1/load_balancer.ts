@@ -1,5 +1,6 @@
 /* eslint-disable */
 import { Timestamp } from '../../../../google/protobuf/timestamp';
+import { messageTypeRegistry } from '../../../../typeRegistry';
 import { Target } from '../../../../yandex/cloud/apploadbalancer/v1/target_group';
 import Long from 'long';
 import _m0 from 'protobufjs/minimal';
@@ -11,6 +12,7 @@ export const protobufPackage = 'yandex.cloud.apploadbalancer.v1';
  * For details about the concept, see [documentation](/docs/application-load-balancer/concepts/application-load-balancer).
  */
 export interface LoadBalancer {
+    $type: 'yandex.cloud.apploadbalancer.v1.LoadBalancer';
     /** ID of the application load balancer. Generated at creation time. */
     id: string;
     /** Name of the application load balancer. The name is unique within the folder. */
@@ -132,12 +134,14 @@ export function loadBalancer_StatusToJSON(object: LoadBalancer_Status): string {
 }
 
 export interface LoadBalancer_LabelsEntry {
+    $type: 'yandex.cloud.apploadbalancer.v1.LoadBalancer.LabelsEntry';
     key: string;
     value: string;
 }
 
 /** An endpoint address resource. */
 export interface Address {
+    $type: 'yandex.cloud.apploadbalancer.v1.Address';
     /** Public IPv4 endpoint address. */
     externalIpv4Address: ExternalIpv4Address | undefined;
     /**
@@ -152,12 +156,14 @@ export interface Address {
 
 /** A public (external) IPv4 endpoint address resource. */
 export interface ExternalIpv4Address {
+    $type: 'yandex.cloud.apploadbalancer.v1.ExternalIpv4Address';
     /** IPv4 address. */
     address: string;
 }
 
 /** An internal IPv4 endpoint address resource. */
 export interface InternalIpv4Address {
+    $type: 'yandex.cloud.apploadbalancer.v1.InternalIpv4Address';
     /** IPv4 address. */
     address: string;
     /** ID of the subnet that the address belongs to. */
@@ -166,6 +172,7 @@ export interface InternalIpv4Address {
 
 /** A public (external) IPv4 endpoint address resource. */
 export interface ExternalIpv6Address {
+    $type: 'yandex.cloud.apploadbalancer.v1.ExternalIpv6Address';
     /** IPv6 address. */
     address: string;
 }
@@ -176,6 +183,7 @@ export interface ExternalIpv6Address {
  * For details about the concept, see [documentation](/docs/application-load-balancer/concepts/application-load-balancer#lb-location).
  */
 export interface Location {
+    $type: 'yandex.cloud.apploadbalancer.v1.Location';
     /**
      * ID of the availability zone where the application load balancer resides.
      *
@@ -196,6 +204,7 @@ export interface Location {
 
 /** A locality settings (allocation policy) resource. */
 export interface AllocationPolicy {
+    $type: 'yandex.cloud.apploadbalancer.v1.AllocationPolicy';
     /** Availability zones and subnets that the application load balancer resides. */
     locations: Location[];
 }
@@ -206,6 +215,7 @@ export interface AllocationPolicy {
  * For details about the concept, see [documentation](/docs/application-load-balancer/concepts/application-load-balancer#listener).
  */
 export interface Listener {
+    $type: 'yandex.cloud.apploadbalancer.v1.Listener';
     /**
      * Name of the listener. The name is unique within the application load balancer.
      * The string length in characters is 3-63.
@@ -227,6 +237,7 @@ export interface Listener {
 
 /** An endpoint resource. */
 export interface Endpoint {
+    $type: 'yandex.cloud.apploadbalancer.v1.Endpoint';
     /** Endpoint public (external) and internal addresses. */
     addresses: Address[];
     /** Endpoint ports. */
@@ -235,6 +246,7 @@ export interface Endpoint {
 
 /** An HTTP listener resource. */
 export interface HttpListener {
+    $type: 'yandex.cloud.apploadbalancer.v1.HttpListener';
     /**
      * Settings for handling HTTP requests.
      *
@@ -251,6 +263,7 @@ export interface HttpListener {
 
 /** An HTTPS (HTTP over TLS) listener resource. */
 export interface TlsListener {
+    $type: 'yandex.cloud.apploadbalancer.v1.TlsListener';
     /**
      * Settings for handling HTTPS requests by default,
      * with Server Name Indication (SNI) not matching any of the [sni_handlers].
@@ -265,22 +278,26 @@ export interface TlsListener {
 
 /** A TCP listener resource. */
 export interface TcpListener {
+    $type: 'yandex.cloud.apploadbalancer.v1.TcpListener';
     handler: StreamHandler | undefined;
 }
 
 /** An HTTP/2 options resource. */
 export interface Http2Options {
+    $type: 'yandex.cloud.apploadbalancer.v1.Http2Options';
     /** Maximum number of concurrent HTTP/2 streams in a connection. */
     maxConcurrentStreams: number;
 }
 
 /** A stream handler resource. */
 export interface StreamHandler {
+    $type: 'yandex.cloud.apploadbalancer.v1.StreamHandler';
     backendGroupId: string;
 }
 
 /** An HTTP handler resource. */
 export interface HttpHandler {
+    $type: 'yandex.cloud.apploadbalancer.v1.HttpHandler';
     /**
      * ID of the HTTP router processing requests.
      *
@@ -299,6 +316,7 @@ export interface HttpHandler {
 
 /** A listener redirects resource. */
 export interface Redirects {
+    $type: 'yandex.cloud.apploadbalancer.v1.Redirects';
     /**
      * Redirects all unencrypted HTTP requests to the same URI with scheme changed to `https`.
      *
@@ -310,6 +328,7 @@ export interface Redirects {
 
 /** A SNI handler resource. */
 export interface SniMatch {
+    $type: 'yandex.cloud.apploadbalancer.v1.SniMatch';
     /** Name of the SNI handler. */
     name: string;
     /** Server names that are matched by the SNI handler. */
@@ -320,6 +339,7 @@ export interface SniMatch {
 
 /** An HTTPS (HTTP over TLS) handler resource. */
 export interface TlsHandler {
+    $type: 'yandex.cloud.apploadbalancer.v1.TlsHandler';
     /** HTTP handler. */
     httpHandler: HttpHandler | undefined;
     /** Stream handler */
@@ -334,6 +354,7 @@ export interface TlsHandler {
 
 /** A target state resource. */
 export interface TargetState {
+    $type: 'yandex.cloud.apploadbalancer.v1.TargetState';
     /** Health of the target, i.e. its statuses in all availability zones. */
     status: TargetState_HealthcheckStatus | undefined;
     /** Target. */
@@ -414,12 +435,14 @@ export function targetState_StatusToJSON(object: TargetState_Status): string {
 
 /** Health of the target. */
 export interface TargetState_HealthcheckStatus {
+    $type: 'yandex.cloud.apploadbalancer.v1.TargetState.HealthcheckStatus';
     /** Statuses of the target in its availability zones. */
     zoneStatuses: TargetState_ZoneHealthcheckStatus[];
 }
 
 /** Health of the target in the availability zone. */
 export interface TargetState_ZoneHealthcheckStatus {
+    $type: 'yandex.cloud.apploadbalancer.v1.TargetState.ZoneHealthcheckStatus';
     /** ID of the availability zone. */
     zoneId: string;
     /** Status of the target in the availability zone. */
@@ -436,6 +459,7 @@ export interface TargetState_ZoneHealthcheckStatus {
 }
 
 const baseLoadBalancer: object = {
+    $type: 'yandex.cloud.apploadbalancer.v1.LoadBalancer',
     id: '',
     name: '',
     description: '',
@@ -448,6 +472,8 @@ const baseLoadBalancer: object = {
 };
 
 export const LoadBalancer = {
+    $type: 'yandex.cloud.apploadbalancer.v1.LoadBalancer' as const,
+
     encode(
         message: LoadBalancer,
         writer: _m0.Writer = _m0.Writer.create()
@@ -466,7 +492,11 @@ export const LoadBalancer = {
         }
         Object.entries(message.labels).forEach(([key, value]) => {
             LoadBalancer_LabelsEntry.encode(
-                { key: key as any, value },
+                {
+                    $type: 'yandex.cloud.apploadbalancer.v1.LoadBalancer.LabelsEntry',
+                    key: key as any,
+                    value,
+                },
                 writer.uint32(42).fork()
             ).ldelim();
         });
@@ -779,9 +809,17 @@ export const LoadBalancer = {
     },
 };
 
-const baseLoadBalancer_LabelsEntry: object = { key: '', value: '' };
+messageTypeRegistry.set(LoadBalancer.$type, LoadBalancer);
+
+const baseLoadBalancer_LabelsEntry: object = {
+    $type: 'yandex.cloud.apploadbalancer.v1.LoadBalancer.LabelsEntry',
+    key: '',
+    value: '',
+};
 
 export const LoadBalancer_LabelsEntry = {
+    $type: 'yandex.cloud.apploadbalancer.v1.LoadBalancer.LabelsEntry' as const,
+
     encode(
         message: LoadBalancer_LabelsEntry,
         writer: _m0.Writer = _m0.Writer.create()
@@ -866,9 +904,18 @@ export const LoadBalancer_LabelsEntry = {
     },
 };
 
-const baseAddress: object = {};
+messageTypeRegistry.set(
+    LoadBalancer_LabelsEntry.$type,
+    LoadBalancer_LabelsEntry
+);
+
+const baseAddress: object = {
+    $type: 'yandex.cloud.apploadbalancer.v1.Address',
+};
 
 export const Address = {
+    $type: 'yandex.cloud.apploadbalancer.v1.Address' as const,
+
     encode(
         message: Address,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1016,9 +1063,16 @@ export const Address = {
     },
 };
 
-const baseExternalIpv4Address: object = { address: '' };
+messageTypeRegistry.set(Address.$type, Address);
+
+const baseExternalIpv4Address: object = {
+    $type: 'yandex.cloud.apploadbalancer.v1.ExternalIpv4Address',
+    address: '',
+};
 
 export const ExternalIpv4Address = {
+    $type: 'yandex.cloud.apploadbalancer.v1.ExternalIpv4Address' as const,
+
     encode(
         message: ExternalIpv4Address,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1078,9 +1132,17 @@ export const ExternalIpv4Address = {
     },
 };
 
-const baseInternalIpv4Address: object = { address: '', subnetId: '' };
+messageTypeRegistry.set(ExternalIpv4Address.$type, ExternalIpv4Address);
+
+const baseInternalIpv4Address: object = {
+    $type: 'yandex.cloud.apploadbalancer.v1.InternalIpv4Address',
+    address: '',
+    subnetId: '',
+};
 
 export const InternalIpv4Address = {
+    $type: 'yandex.cloud.apploadbalancer.v1.InternalIpv4Address' as const,
+
     encode(
         message: InternalIpv4Address,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1157,9 +1219,16 @@ export const InternalIpv4Address = {
     },
 };
 
-const baseExternalIpv6Address: object = { address: '' };
+messageTypeRegistry.set(InternalIpv4Address.$type, InternalIpv4Address);
+
+const baseExternalIpv6Address: object = {
+    $type: 'yandex.cloud.apploadbalancer.v1.ExternalIpv6Address',
+    address: '',
+};
 
 export const ExternalIpv6Address = {
+    $type: 'yandex.cloud.apploadbalancer.v1.ExternalIpv6Address' as const,
+
     encode(
         message: ExternalIpv6Address,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1219,13 +1288,18 @@ export const ExternalIpv6Address = {
     },
 };
 
+messageTypeRegistry.set(ExternalIpv6Address.$type, ExternalIpv6Address);
+
 const baseLocation: object = {
+    $type: 'yandex.cloud.apploadbalancer.v1.Location',
     zoneId: '',
     subnetId: '',
     disableTraffic: false,
 };
 
 export const Location = {
+    $type: 'yandex.cloud.apploadbalancer.v1.Location' as const,
+
     encode(
         message: Location,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1323,9 +1397,15 @@ export const Location = {
     },
 };
 
-const baseAllocationPolicy: object = {};
+messageTypeRegistry.set(Location.$type, Location);
+
+const baseAllocationPolicy: object = {
+    $type: 'yandex.cloud.apploadbalancer.v1.AllocationPolicy',
+};
 
 export const AllocationPolicy = {
+    $type: 'yandex.cloud.apploadbalancer.v1.AllocationPolicy' as const,
+
     encode(
         message: AllocationPolicy,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1393,9 +1473,16 @@ export const AllocationPolicy = {
     },
 };
 
-const baseListener: object = { name: '' };
+messageTypeRegistry.set(AllocationPolicy.$type, AllocationPolicy);
+
+const baseListener: object = {
+    $type: 'yandex.cloud.apploadbalancer.v1.Listener',
+    name: '',
+};
 
 export const Listener = {
+    $type: 'yandex.cloud.apploadbalancer.v1.Listener' as const,
+
     encode(
         message: Listener,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1543,9 +1630,16 @@ export const Listener = {
     },
 };
 
-const baseEndpoint: object = { ports: 0 };
+messageTypeRegistry.set(Listener.$type, Listener);
+
+const baseEndpoint: object = {
+    $type: 'yandex.cloud.apploadbalancer.v1.Endpoint',
+    ports: 0,
+};
 
 export const Endpoint = {
+    $type: 'yandex.cloud.apploadbalancer.v1.Endpoint' as const,
+
     encode(
         message: Endpoint,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1650,9 +1744,15 @@ export const Endpoint = {
     },
 };
 
-const baseHttpListener: object = {};
+messageTypeRegistry.set(Endpoint.$type, Endpoint);
+
+const baseHttpListener: object = {
+    $type: 'yandex.cloud.apploadbalancer.v1.HttpListener',
+};
 
 export const HttpListener = {
+    $type: 'yandex.cloud.apploadbalancer.v1.HttpListener' as const,
+
     encode(
         message: HttpListener,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1744,9 +1844,15 @@ export const HttpListener = {
     },
 };
 
-const baseTlsListener: object = {};
+messageTypeRegistry.set(HttpListener.$type, HttpListener);
+
+const baseTlsListener: object = {
+    $type: 'yandex.cloud.apploadbalancer.v1.TlsListener',
+};
 
 export const TlsListener = {
+    $type: 'yandex.cloud.apploadbalancer.v1.TlsListener' as const,
+
     encode(
         message: TlsListener,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1848,9 +1954,15 @@ export const TlsListener = {
     },
 };
 
-const baseTcpListener: object = {};
+messageTypeRegistry.set(TlsListener.$type, TlsListener);
+
+const baseTcpListener: object = {
+    $type: 'yandex.cloud.apploadbalancer.v1.TcpListener',
+};
 
 export const TcpListener = {
+    $type: 'yandex.cloud.apploadbalancer.v1.TcpListener' as const,
+
     encode(
         message: TcpListener,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1916,9 +2028,16 @@ export const TcpListener = {
     },
 };
 
-const baseHttp2Options: object = { maxConcurrentStreams: 0 };
+messageTypeRegistry.set(TcpListener.$type, TcpListener);
+
+const baseHttp2Options: object = {
+    $type: 'yandex.cloud.apploadbalancer.v1.Http2Options',
+    maxConcurrentStreams: 0,
+};
 
 export const Http2Options = {
+    $type: 'yandex.cloud.apploadbalancer.v1.Http2Options' as const,
+
     encode(
         message: Http2Options,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1984,9 +2103,16 @@ export const Http2Options = {
     },
 };
 
-const baseStreamHandler: object = { backendGroupId: '' };
+messageTypeRegistry.set(Http2Options.$type, Http2Options);
+
+const baseStreamHandler: object = {
+    $type: 'yandex.cloud.apploadbalancer.v1.StreamHandler',
+    backendGroupId: '',
+};
 
 export const StreamHandler = {
+    $type: 'yandex.cloud.apploadbalancer.v1.StreamHandler' as const,
+
     encode(
         message: StreamHandler,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2050,9 +2176,16 @@ export const StreamHandler = {
     },
 };
 
-const baseHttpHandler: object = { httpRouterId: '' };
+messageTypeRegistry.set(StreamHandler.$type, StreamHandler);
+
+const baseHttpHandler: object = {
+    $type: 'yandex.cloud.apploadbalancer.v1.HttpHandler',
+    httpRouterId: '',
+};
 
 export const HttpHandler = {
+    $type: 'yandex.cloud.apploadbalancer.v1.HttpHandler' as const,
+
     encode(
         message: HttpHandler,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2156,9 +2289,16 @@ export const HttpHandler = {
     },
 };
 
-const baseRedirects: object = { httpToHttps: false };
+messageTypeRegistry.set(HttpHandler.$type, HttpHandler);
+
+const baseRedirects: object = {
+    $type: 'yandex.cloud.apploadbalancer.v1.Redirects',
+    httpToHttps: false,
+};
 
 export const Redirects = {
+    $type: 'yandex.cloud.apploadbalancer.v1.Redirects' as const,
+
     encode(
         message: Redirects,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2216,9 +2356,17 @@ export const Redirects = {
     },
 };
 
-const baseSniMatch: object = { name: '', serverNames: '' };
+messageTypeRegistry.set(Redirects.$type, Redirects);
+
+const baseSniMatch: object = {
+    $type: 'yandex.cloud.apploadbalancer.v1.SniMatch',
+    name: '',
+    serverNames: '',
+};
 
 export const SniMatch = {
+    $type: 'yandex.cloud.apploadbalancer.v1.SniMatch' as const,
+
     encode(
         message: SniMatch,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2325,9 +2473,16 @@ export const SniMatch = {
     },
 };
 
-const baseTlsHandler: object = { certificateIds: '' };
+messageTypeRegistry.set(SniMatch.$type, SniMatch);
+
+const baseTlsHandler: object = {
+    $type: 'yandex.cloud.apploadbalancer.v1.TlsHandler',
+    certificateIds: '',
+};
 
 export const TlsHandler = {
+    $type: 'yandex.cloud.apploadbalancer.v1.TlsHandler' as const,
+
     encode(
         message: TlsHandler,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2459,9 +2614,15 @@ export const TlsHandler = {
     },
 };
 
-const baseTargetState: object = {};
+messageTypeRegistry.set(TlsHandler.$type, TlsHandler);
+
+const baseTargetState: object = {
+    $type: 'yandex.cloud.apploadbalancer.v1.TargetState',
+};
 
 export const TargetState = {
+    $type: 'yandex.cloud.apploadbalancer.v1.TargetState' as const,
+
     encode(
         message: TargetState,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2551,9 +2712,15 @@ export const TargetState = {
     },
 };
 
-const baseTargetState_HealthcheckStatus: object = {};
+messageTypeRegistry.set(TargetState.$type, TargetState);
+
+const baseTargetState_HealthcheckStatus: object = {
+    $type: 'yandex.cloud.apploadbalancer.v1.TargetState.HealthcheckStatus',
+};
 
 export const TargetState_HealthcheckStatus = {
+    $type: 'yandex.cloud.apploadbalancer.v1.TargetState.HealthcheckStatus' as const,
+
     encode(
         message: TargetState_HealthcheckStatus,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2642,13 +2809,21 @@ export const TargetState_HealthcheckStatus = {
     },
 };
 
+messageTypeRegistry.set(
+    TargetState_HealthcheckStatus.$type,
+    TargetState_HealthcheckStatus
+);
+
 const baseTargetState_ZoneHealthcheckStatus: object = {
+    $type: 'yandex.cloud.apploadbalancer.v1.TargetState.ZoneHealthcheckStatus',
     zoneId: '',
     status: 0,
     failedActiveHc: false,
 };
 
 export const TargetState_ZoneHealthcheckStatus = {
+    $type: 'yandex.cloud.apploadbalancer.v1.TargetState.ZoneHealthcheckStatus' as const,
+
     encode(
         message: TargetState_ZoneHealthcheckStatus,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2758,6 +2933,11 @@ export const TargetState_ZoneHealthcheckStatus = {
     },
 };
 
+messageTypeRegistry.set(
+    TargetState_ZoneHealthcheckStatus.$type,
+    TargetState_ZoneHealthcheckStatus
+);
+
 declare var self: any | undefined;
 declare var window: any | undefined;
 declare var global: any | undefined;
@@ -2784,13 +2964,13 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 function toTimestamp(date: Date): Timestamp {
     const seconds = date.getTime() / 1_000;
     const nanos = (date.getTime() % 1_000) * 1_000_000;
-    return { seconds, nanos };
+    return { $type: 'google.protobuf.Timestamp', seconds, nanos };
 }
 
 function fromTimestamp(t: Timestamp): Date {

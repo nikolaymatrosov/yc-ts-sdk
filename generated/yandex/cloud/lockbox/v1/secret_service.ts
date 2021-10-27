@@ -2,6 +2,7 @@
 import { Duration } from '../../../../google/protobuf/duration';
 import { FieldMask } from '../../../../google/protobuf/field_mask';
 import { Timestamp } from '../../../../google/protobuf/timestamp';
+import { messageTypeRegistry } from '../../../../typeRegistry';
 import {
     ListAccessBindingsRequest,
     ListAccessBindingsResponse,
@@ -28,6 +29,7 @@ import _m0 from 'protobufjs/minimal';
 export const protobufPackage = 'yandex.cloud.lockbox.v1';
 
 export interface PayloadEntryChange {
+    $type: 'yandex.cloud.lockbox.v1.PayloadEntryChange';
     /** Non-confidential key of the entry. */
     key: string;
     /** Use the field to set a text value. */
@@ -37,6 +39,7 @@ export interface PayloadEntryChange {
 }
 
 export interface GetSecretRequest {
+    $type: 'yandex.cloud.lockbox.v1.GetSecretRequest';
     /**
      * ID of the secret to return.
      *
@@ -46,6 +49,7 @@ export interface GetSecretRequest {
 }
 
 export interface ListSecretsRequest {
+    $type: 'yandex.cloud.lockbox.v1.ListSecretsRequest';
     /** ID of the folder to list secrets in. */
     folderId: string;
     /**
@@ -63,6 +67,7 @@ export interface ListSecretsRequest {
 }
 
 export interface ListSecretsResponse {
+    $type: 'yandex.cloud.lockbox.v1.ListSecretsResponse';
     /** List of secrets in the specified folder. */
     secrets: Secret[];
     /**
@@ -76,6 +81,7 @@ export interface ListSecretsResponse {
 }
 
 export interface CreateSecretRequest {
+    $type: 'yandex.cloud.lockbox.v1.CreateSecretRequest';
     /** ID of the folder to create a secret in. */
     folderId: string;
     /** Name of the secret. */
@@ -98,11 +104,13 @@ export interface CreateSecretRequest {
 }
 
 export interface CreateSecretRequest_LabelsEntry {
+    $type: 'yandex.cloud.lockbox.v1.CreateSecretRequest.LabelsEntry';
     key: string;
     value: string;
 }
 
 export interface CreateSecretMetadata {
+    $type: 'yandex.cloud.lockbox.v1.CreateSecretMetadata';
     /** ID of the secret being created. */
     secretId: string;
     /** ID of the current version of the secret being created. */
@@ -110,6 +118,7 @@ export interface CreateSecretMetadata {
 }
 
 export interface UpdateSecretRequest {
+    $type: 'yandex.cloud.lockbox.v1.UpdateSecretRequest';
     /** ID of the secret to update. */
     secretId: string;
     /** Field mask that specifies which attributes of the secret are going to be updated. */
@@ -125,46 +134,55 @@ export interface UpdateSecretRequest {
 }
 
 export interface UpdateSecretRequest_LabelsEntry {
+    $type: 'yandex.cloud.lockbox.v1.UpdateSecretRequest.LabelsEntry';
     key: string;
     value: string;
 }
 
 export interface UpdateSecretMetadata {
+    $type: 'yandex.cloud.lockbox.v1.UpdateSecretMetadata';
     /** ID of the secret being updated. */
     secretId: string;
 }
 
 export interface DeleteSecretRequest {
+    $type: 'yandex.cloud.lockbox.v1.DeleteSecretRequest';
     /** ID of the secret to be deleted. */
     secretId: string;
 }
 
 export interface DeleteSecretMetadata {
+    $type: 'yandex.cloud.lockbox.v1.DeleteSecretMetadata';
     /** ID of the secret being deleted. */
     secretId: string;
 }
 
 export interface ActivateSecretRequest {
+    $type: 'yandex.cloud.lockbox.v1.ActivateSecretRequest';
     /** ID of the secret to be activated. */
     secretId: string;
 }
 
 export interface ActivateSecretMetadata {
+    $type: 'yandex.cloud.lockbox.v1.ActivateSecretMetadata';
     /** ID of the secret being activated. */
     secretId: string;
 }
 
 export interface DeactivateSecretRequest {
+    $type: 'yandex.cloud.lockbox.v1.DeactivateSecretRequest';
     /** ID of the secret to be deactivated. */
     secretId: string;
 }
 
 export interface DeactivateSecretMetadata {
+    $type: 'yandex.cloud.lockbox.v1.DeactivateSecretMetadata';
     /** ID of the secret being deactivated. */
     secretId: string;
 }
 
 export interface AddVersionRequest {
+    $type: 'yandex.cloud.lockbox.v1.AddVersionRequest';
     /** ID of the secret. */
     secretId: string;
     /** Description of the version. */
@@ -176,6 +194,7 @@ export interface AddVersionRequest {
 }
 
 export interface AddVersionMetadata {
+    $type: 'yandex.cloud.lockbox.v1.AddVersionMetadata';
     /** ID of the secret. */
     secretId: string;
     /** ID of the added version. */
@@ -183,6 +202,7 @@ export interface AddVersionMetadata {
 }
 
 export interface ListVersionsRequest {
+    $type: 'yandex.cloud.lockbox.v1.ListVersionsRequest';
     /** ID of the secret to list versions for. */
     secretId: string;
     /**
@@ -200,6 +220,7 @@ export interface ListVersionsRequest {
 }
 
 export interface ListVersionsResponse {
+    $type: 'yandex.cloud.lockbox.v1.ListVersionsResponse';
     /** List of versions for the specified secret. */
     versions: Version[];
     /**
@@ -213,6 +234,7 @@ export interface ListVersionsResponse {
 }
 
 export interface ScheduleVersionDestructionRequest {
+    $type: 'yandex.cloud.lockbox.v1.ScheduleVersionDestructionRequest';
     /** ID of the secret whose version should be scheduled for destruction. */
     secretId: string;
     /** ID of the version to be destroyed. */
@@ -225,6 +247,7 @@ export interface ScheduleVersionDestructionRequest {
 }
 
 export interface ScheduleVersionDestructionMetadata {
+    $type: 'yandex.cloud.lockbox.v1.ScheduleVersionDestructionMetadata';
     /** ID of the secret whose version is being scheduled for destruction. */
     secretId: string;
     /** ID of the version that is being scheduled for destruction. */
@@ -234,6 +257,7 @@ export interface ScheduleVersionDestructionMetadata {
 }
 
 export interface CancelVersionDestructionRequest {
+    $type: 'yandex.cloud.lockbox.v1.CancelVersionDestructionRequest';
     /** ID of the secret to cancel a version's destruction for. */
     secretId: string;
     /** ID of the secret whose scheduled destruction should be cancelled. */
@@ -241,6 +265,7 @@ export interface CancelVersionDestructionRequest {
 }
 
 export interface CancelVersionDestructionMetadata {
+    $type: 'yandex.cloud.lockbox.v1.CancelVersionDestructionMetadata';
     /** ID of the secret whose version's destruction is being cancelled. */
     secretId: string;
     /** ID of the version whose scheduled destruction is being cancelled. */
@@ -248,6 +273,7 @@ export interface CancelVersionDestructionMetadata {
 }
 
 export interface ListSecretOperationsRequest {
+    $type: 'yandex.cloud.lockbox.v1.ListSecretOperationsRequest';
     /** ID of the secret to get operations for. */
     secretId: string;
     /**
@@ -265,6 +291,7 @@ export interface ListSecretOperationsRequest {
 }
 
 export interface ListSecretOperationsResponse {
+    $type: 'yandex.cloud.lockbox.v1.ListSecretOperationsResponse';
     /** List of operations for the specified secret. */
     operations: Operation[];
     /**
@@ -276,9 +303,14 @@ export interface ListSecretOperationsResponse {
     nextPageToken: string;
 }
 
-const basePayloadEntryChange: object = { key: '' };
+const basePayloadEntryChange: object = {
+    $type: 'yandex.cloud.lockbox.v1.PayloadEntryChange',
+    key: '',
+};
 
 export const PayloadEntryChange = {
+    $type: 'yandex.cloud.lockbox.v1.PayloadEntryChange' as const,
+
     encode(
         message: PayloadEntryChange,
         writer: _m0.Writer = _m0.Writer.create()
@@ -374,9 +406,16 @@ export const PayloadEntryChange = {
     },
 };
 
-const baseGetSecretRequest: object = { secretId: '' };
+messageTypeRegistry.set(PayloadEntryChange.$type, PayloadEntryChange);
+
+const baseGetSecretRequest: object = {
+    $type: 'yandex.cloud.lockbox.v1.GetSecretRequest',
+    secretId: '',
+};
 
 export const GetSecretRequest = {
+    $type: 'yandex.cloud.lockbox.v1.GetSecretRequest' as const,
+
     encode(
         message: GetSecretRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -433,13 +472,18 @@ export const GetSecretRequest = {
     },
 };
 
+messageTypeRegistry.set(GetSecretRequest.$type, GetSecretRequest);
+
 const baseListSecretsRequest: object = {
+    $type: 'yandex.cloud.lockbox.v1.ListSecretsRequest',
     folderId: '',
     pageSize: 0,
     pageToken: '',
 };
 
 export const ListSecretsRequest = {
+    $type: 'yandex.cloud.lockbox.v1.ListSecretsRequest' as const,
+
     encode(
         message: ListSecretsRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -533,9 +577,16 @@ export const ListSecretsRequest = {
     },
 };
 
-const baseListSecretsResponse: object = { nextPageToken: '' };
+messageTypeRegistry.set(ListSecretsRequest.$type, ListSecretsRequest);
+
+const baseListSecretsResponse: object = {
+    $type: 'yandex.cloud.lockbox.v1.ListSecretsResponse',
+    nextPageToken: '',
+};
 
 export const ListSecretsResponse = {
+    $type: 'yandex.cloud.lockbox.v1.ListSecretsResponse' as const,
+
     encode(
         message: ListSecretsResponse,
         writer: _m0.Writer = _m0.Writer.create()
@@ -630,7 +681,10 @@ export const ListSecretsResponse = {
     },
 };
 
+messageTypeRegistry.set(ListSecretsResponse.$type, ListSecretsResponse);
+
 const baseCreateSecretRequest: object = {
+    $type: 'yandex.cloud.lockbox.v1.CreateSecretRequest',
     folderId: '',
     name: '',
     description: '',
@@ -640,6 +694,8 @@ const baseCreateSecretRequest: object = {
 };
 
 export const CreateSecretRequest = {
+    $type: 'yandex.cloud.lockbox.v1.CreateSecretRequest' as const,
+
     encode(
         message: CreateSecretRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -655,7 +711,11 @@ export const CreateSecretRequest = {
         }
         Object.entries(message.labels).forEach(([key, value]) => {
             CreateSecretRequest_LabelsEntry.encode(
-                { key: key as any, value },
+                {
+                    $type: 'yandex.cloud.lockbox.v1.CreateSecretRequest.LabelsEntry',
+                    key: key as any,
+                    value,
+                },
                 writer.uint32(34).fork()
             ).ldelim();
         });
@@ -873,9 +933,17 @@ export const CreateSecretRequest = {
     },
 };
 
-const baseCreateSecretRequest_LabelsEntry: object = { key: '', value: '' };
+messageTypeRegistry.set(CreateSecretRequest.$type, CreateSecretRequest);
+
+const baseCreateSecretRequest_LabelsEntry: object = {
+    $type: 'yandex.cloud.lockbox.v1.CreateSecretRequest.LabelsEntry',
+    key: '',
+    value: '',
+};
 
 export const CreateSecretRequest_LabelsEntry = {
+    $type: 'yandex.cloud.lockbox.v1.CreateSecretRequest.LabelsEntry' as const,
+
     encode(
         message: CreateSecretRequest_LabelsEntry,
         writer: _m0.Writer = _m0.Writer.create()
@@ -960,9 +1028,20 @@ export const CreateSecretRequest_LabelsEntry = {
     },
 };
 
-const baseCreateSecretMetadata: object = { secretId: '', versionId: '' };
+messageTypeRegistry.set(
+    CreateSecretRequest_LabelsEntry.$type,
+    CreateSecretRequest_LabelsEntry
+);
+
+const baseCreateSecretMetadata: object = {
+    $type: 'yandex.cloud.lockbox.v1.CreateSecretMetadata',
+    secretId: '',
+    versionId: '',
+};
 
 export const CreateSecretMetadata = {
+    $type: 'yandex.cloud.lockbox.v1.CreateSecretMetadata' as const,
+
     encode(
         message: CreateSecretMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1041,7 +1120,10 @@ export const CreateSecretMetadata = {
     },
 };
 
+messageTypeRegistry.set(CreateSecretMetadata.$type, CreateSecretMetadata);
+
 const baseUpdateSecretRequest: object = {
+    $type: 'yandex.cloud.lockbox.v1.UpdateSecretRequest',
     secretId: '',
     name: '',
     description: '',
@@ -1049,6 +1131,8 @@ const baseUpdateSecretRequest: object = {
 };
 
 export const UpdateSecretRequest = {
+    $type: 'yandex.cloud.lockbox.v1.UpdateSecretRequest' as const,
+
     encode(
         message: UpdateSecretRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1070,7 +1154,11 @@ export const UpdateSecretRequest = {
         }
         Object.entries(message.labels).forEach(([key, value]) => {
             UpdateSecretRequest_LabelsEntry.encode(
-                { key: key as any, value },
+                {
+                    $type: 'yandex.cloud.lockbox.v1.UpdateSecretRequest.LabelsEntry',
+                    key: key as any,
+                    value,
+                },
                 writer.uint32(42).fork()
             ).ldelim();
         });
@@ -1229,9 +1317,17 @@ export const UpdateSecretRequest = {
     },
 };
 
-const baseUpdateSecretRequest_LabelsEntry: object = { key: '', value: '' };
+messageTypeRegistry.set(UpdateSecretRequest.$type, UpdateSecretRequest);
+
+const baseUpdateSecretRequest_LabelsEntry: object = {
+    $type: 'yandex.cloud.lockbox.v1.UpdateSecretRequest.LabelsEntry',
+    key: '',
+    value: '',
+};
 
 export const UpdateSecretRequest_LabelsEntry = {
+    $type: 'yandex.cloud.lockbox.v1.UpdateSecretRequest.LabelsEntry' as const,
+
     encode(
         message: UpdateSecretRequest_LabelsEntry,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1316,9 +1412,19 @@ export const UpdateSecretRequest_LabelsEntry = {
     },
 };
 
-const baseUpdateSecretMetadata: object = { secretId: '' };
+messageTypeRegistry.set(
+    UpdateSecretRequest_LabelsEntry.$type,
+    UpdateSecretRequest_LabelsEntry
+);
+
+const baseUpdateSecretMetadata: object = {
+    $type: 'yandex.cloud.lockbox.v1.UpdateSecretMetadata',
+    secretId: '',
+};
 
 export const UpdateSecretMetadata = {
+    $type: 'yandex.cloud.lockbox.v1.UpdateSecretMetadata' as const,
+
     encode(
         message: UpdateSecretMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1380,9 +1486,16 @@ export const UpdateSecretMetadata = {
     },
 };
 
-const baseDeleteSecretRequest: object = { secretId: '' };
+messageTypeRegistry.set(UpdateSecretMetadata.$type, UpdateSecretMetadata);
+
+const baseDeleteSecretRequest: object = {
+    $type: 'yandex.cloud.lockbox.v1.DeleteSecretRequest',
+    secretId: '',
+};
 
 export const DeleteSecretRequest = {
+    $type: 'yandex.cloud.lockbox.v1.DeleteSecretRequest' as const,
+
     encode(
         message: DeleteSecretRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1442,9 +1555,16 @@ export const DeleteSecretRequest = {
     },
 };
 
-const baseDeleteSecretMetadata: object = { secretId: '' };
+messageTypeRegistry.set(DeleteSecretRequest.$type, DeleteSecretRequest);
+
+const baseDeleteSecretMetadata: object = {
+    $type: 'yandex.cloud.lockbox.v1.DeleteSecretMetadata',
+    secretId: '',
+};
 
 export const DeleteSecretMetadata = {
+    $type: 'yandex.cloud.lockbox.v1.DeleteSecretMetadata' as const,
+
     encode(
         message: DeleteSecretMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1506,9 +1626,16 @@ export const DeleteSecretMetadata = {
     },
 };
 
-const baseActivateSecretRequest: object = { secretId: '' };
+messageTypeRegistry.set(DeleteSecretMetadata.$type, DeleteSecretMetadata);
+
+const baseActivateSecretRequest: object = {
+    $type: 'yandex.cloud.lockbox.v1.ActivateSecretRequest',
+    secretId: '',
+};
 
 export const ActivateSecretRequest = {
+    $type: 'yandex.cloud.lockbox.v1.ActivateSecretRequest' as const,
+
     encode(
         message: ActivateSecretRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1576,9 +1703,16 @@ export const ActivateSecretRequest = {
     },
 };
 
-const baseActivateSecretMetadata: object = { secretId: '' };
+messageTypeRegistry.set(ActivateSecretRequest.$type, ActivateSecretRequest);
+
+const baseActivateSecretMetadata: object = {
+    $type: 'yandex.cloud.lockbox.v1.ActivateSecretMetadata',
+    secretId: '',
+};
 
 export const ActivateSecretMetadata = {
+    $type: 'yandex.cloud.lockbox.v1.ActivateSecretMetadata' as const,
+
     encode(
         message: ActivateSecretMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1646,9 +1780,16 @@ export const ActivateSecretMetadata = {
     },
 };
 
-const baseDeactivateSecretRequest: object = { secretId: '' };
+messageTypeRegistry.set(ActivateSecretMetadata.$type, ActivateSecretMetadata);
+
+const baseDeactivateSecretRequest: object = {
+    $type: 'yandex.cloud.lockbox.v1.DeactivateSecretRequest',
+    secretId: '',
+};
 
 export const DeactivateSecretRequest = {
+    $type: 'yandex.cloud.lockbox.v1.DeactivateSecretRequest' as const,
+
     encode(
         message: DeactivateSecretRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1716,9 +1857,16 @@ export const DeactivateSecretRequest = {
     },
 };
 
-const baseDeactivateSecretMetadata: object = { secretId: '' };
+messageTypeRegistry.set(DeactivateSecretRequest.$type, DeactivateSecretRequest);
+
+const baseDeactivateSecretMetadata: object = {
+    $type: 'yandex.cloud.lockbox.v1.DeactivateSecretMetadata',
+    secretId: '',
+};
 
 export const DeactivateSecretMetadata = {
+    $type: 'yandex.cloud.lockbox.v1.DeactivateSecretMetadata' as const,
+
     encode(
         message: DeactivateSecretMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1786,13 +1934,21 @@ export const DeactivateSecretMetadata = {
     },
 };
 
+messageTypeRegistry.set(
+    DeactivateSecretMetadata.$type,
+    DeactivateSecretMetadata
+);
+
 const baseAddVersionRequest: object = {
+    $type: 'yandex.cloud.lockbox.v1.AddVersionRequest',
     secretId: '',
     description: '',
     baseVersionId: '',
 };
 
 export const AddVersionRequest = {
+    $type: 'yandex.cloud.lockbox.v1.AddVersionRequest' as const,
+
     encode(
         message: AddVersionRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1925,9 +2081,17 @@ export const AddVersionRequest = {
     },
 };
 
-const baseAddVersionMetadata: object = { secretId: '', versionId: '' };
+messageTypeRegistry.set(AddVersionRequest.$type, AddVersionRequest);
+
+const baseAddVersionMetadata: object = {
+    $type: 'yandex.cloud.lockbox.v1.AddVersionMetadata',
+    secretId: '',
+    versionId: '',
+};
 
 export const AddVersionMetadata = {
+    $type: 'yandex.cloud.lockbox.v1.AddVersionMetadata' as const,
+
     encode(
         message: AddVersionMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2004,13 +2168,18 @@ export const AddVersionMetadata = {
     },
 };
 
+messageTypeRegistry.set(AddVersionMetadata.$type, AddVersionMetadata);
+
 const baseListVersionsRequest: object = {
+    $type: 'yandex.cloud.lockbox.v1.ListVersionsRequest',
     secretId: '',
     pageSize: 0,
     pageToken: '',
 };
 
 export const ListVersionsRequest = {
+    $type: 'yandex.cloud.lockbox.v1.ListVersionsRequest' as const,
+
     encode(
         message: ListVersionsRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2104,9 +2273,16 @@ export const ListVersionsRequest = {
     },
 };
 
-const baseListVersionsResponse: object = { nextPageToken: '' };
+messageTypeRegistry.set(ListVersionsRequest.$type, ListVersionsRequest);
+
+const baseListVersionsResponse: object = {
+    $type: 'yandex.cloud.lockbox.v1.ListVersionsResponse',
+    nextPageToken: '',
+};
 
 export const ListVersionsResponse = {
+    $type: 'yandex.cloud.lockbox.v1.ListVersionsResponse' as const,
+
     encode(
         message: ListVersionsResponse,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2203,12 +2379,17 @@ export const ListVersionsResponse = {
     },
 };
 
+messageTypeRegistry.set(ListVersionsResponse.$type, ListVersionsResponse);
+
 const baseScheduleVersionDestructionRequest: object = {
+    $type: 'yandex.cloud.lockbox.v1.ScheduleVersionDestructionRequest',
     secretId: '',
     versionId: '',
 };
 
 export const ScheduleVersionDestructionRequest = {
+    $type: 'yandex.cloud.lockbox.v1.ScheduleVersionDestructionRequest' as const,
+
     encode(
         message: ScheduleVersionDestructionRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2325,12 +2506,20 @@ export const ScheduleVersionDestructionRequest = {
     },
 };
 
+messageTypeRegistry.set(
+    ScheduleVersionDestructionRequest.$type,
+    ScheduleVersionDestructionRequest
+);
+
 const baseScheduleVersionDestructionMetadata: object = {
+    $type: 'yandex.cloud.lockbox.v1.ScheduleVersionDestructionMetadata',
     secretId: '',
     versionId: '',
 };
 
 export const ScheduleVersionDestructionMetadata = {
+    $type: 'yandex.cloud.lockbox.v1.ScheduleVersionDestructionMetadata' as const,
+
     encode(
         message: ScheduleVersionDestructionMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2438,12 +2627,20 @@ export const ScheduleVersionDestructionMetadata = {
     },
 };
 
+messageTypeRegistry.set(
+    ScheduleVersionDestructionMetadata.$type,
+    ScheduleVersionDestructionMetadata
+);
+
 const baseCancelVersionDestructionRequest: object = {
+    $type: 'yandex.cloud.lockbox.v1.CancelVersionDestructionRequest',
     secretId: '',
     versionId: '',
 };
 
 export const CancelVersionDestructionRequest = {
+    $type: 'yandex.cloud.lockbox.v1.CancelVersionDestructionRequest' as const,
+
     encode(
         message: CancelVersionDestructionRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2528,12 +2725,20 @@ export const CancelVersionDestructionRequest = {
     },
 };
 
+messageTypeRegistry.set(
+    CancelVersionDestructionRequest.$type,
+    CancelVersionDestructionRequest
+);
+
 const baseCancelVersionDestructionMetadata: object = {
+    $type: 'yandex.cloud.lockbox.v1.CancelVersionDestructionMetadata',
     secretId: '',
     versionId: '',
 };
 
 export const CancelVersionDestructionMetadata = {
+    $type: 'yandex.cloud.lockbox.v1.CancelVersionDestructionMetadata' as const,
+
     encode(
         message: CancelVersionDestructionMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2618,13 +2823,21 @@ export const CancelVersionDestructionMetadata = {
     },
 };
 
+messageTypeRegistry.set(
+    CancelVersionDestructionMetadata.$type,
+    CancelVersionDestructionMetadata
+);
+
 const baseListSecretOperationsRequest: object = {
+    $type: 'yandex.cloud.lockbox.v1.ListSecretOperationsRequest',
     secretId: '',
     pageSize: 0,
     pageToken: '',
 };
 
 export const ListSecretOperationsRequest = {
+    $type: 'yandex.cloud.lockbox.v1.ListSecretOperationsRequest' as const,
+
     encode(
         message: ListSecretOperationsRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2726,9 +2939,19 @@ export const ListSecretOperationsRequest = {
     },
 };
 
-const baseListSecretOperationsResponse: object = { nextPageToken: '' };
+messageTypeRegistry.set(
+    ListSecretOperationsRequest.$type,
+    ListSecretOperationsRequest
+);
+
+const baseListSecretOperationsResponse: object = {
+    $type: 'yandex.cloud.lockbox.v1.ListSecretOperationsResponse',
+    nextPageToken: '',
+};
 
 export const ListSecretOperationsResponse = {
+    $type: 'yandex.cloud.lockbox.v1.ListSecretOperationsResponse' as const,
+
     encode(
         message: ListSecretOperationsResponse,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2830,6 +3053,11 @@ export const ListSecretOperationsResponse = {
         return message;
     },
 };
+
+messageTypeRegistry.set(
+    ListSecretOperationsResponse.$type,
+    ListSecretOperationsResponse
+);
 
 /** A set of methods for managing secrets. */
 export const SecretServiceService = {
@@ -3447,13 +3675,13 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 function toTimestamp(date: Date): Timestamp {
     const seconds = date.getTime() / 1_000;
     const nanos = (date.getTime() % 1_000) * 1_000_000;
-    return { seconds, nanos };
+    return { $type: 'google.protobuf.Timestamp', seconds, nanos };
 }
 
 function fromTimestamp(t: Timestamp): Date {

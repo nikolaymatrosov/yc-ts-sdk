@@ -4,6 +4,7 @@ import { ChannelCredentials, ChannelOptions, UntypedServiceImplementation, handl
 import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.ai.translate.v2";
 export interface TranslateRequest {
+    $type: 'yandex.cloud.ai.translate.v2.TranslateRequest';
     /**
      * The text language to translate from.
      * Specified in [ISO 639-1](https://en.wikipedia.org/wiki/ISO_639-1) format (for example, `` ru ``).
@@ -45,10 +46,12 @@ export declare enum TranslateRequest_Format {
 export declare function translateRequest_FormatFromJSON(object: any): TranslateRequest_Format;
 export declare function translateRequest_FormatToJSON(object: TranslateRequest_Format): string;
 export interface TranslateGlossaryConfig {
+    $type: 'yandex.cloud.ai.translate.v2.TranslateGlossaryConfig';
     /** Pass glossary data in the request. Currently, only this way to pass glossary is supported. */
     glossaryData: GlossaryData | undefined;
 }
 export interface GlossaryData {
+    $type: 'yandex.cloud.ai.translate.v2.GlossaryData';
     /**
      * Array of text pairs.
      *
@@ -58,16 +61,19 @@ export interface GlossaryData {
     glossaryPairs: GlossaryPair[];
 }
 export interface GlossaryPair {
+    $type: 'yandex.cloud.ai.translate.v2.GlossaryPair';
     /** Text in the source language. */
     sourceText: string;
     /** Text in the target language. */
     translatedText: string;
 }
 export interface TranslateResponse {
+    $type: 'yandex.cloud.ai.translate.v2.TranslateResponse';
     /** Array of the translations. */
     translations: TranslatedText[];
 }
 export interface DetectLanguageRequest {
+    $type: 'yandex.cloud.ai.translate.v2.DetectLanguageRequest';
     /** The text to detect the language for. */
     text: string;
     /**
@@ -85,6 +91,7 @@ export interface DetectLanguageRequest {
     folderId: string;
 }
 export interface DetectLanguageResponse {
+    $type: 'yandex.cloud.ai.translate.v2.DetectLanguageResponse';
     /**
      * The text language in [ISO 639-1](https://en.wikipedia.org/wiki/ISO_639-1) format (for example, `` ru ``).
      *
@@ -93,6 +100,7 @@ export interface DetectLanguageResponse {
     languageCode: string;
 }
 export interface ListLanguagesRequest {
+    $type: 'yandex.cloud.ai.translate.v2.ListLanguagesRequest';
     /**
      * ID of the folder to which you have access.
      * Required for authorization with a user account (see [yandex.cloud.iam.v1.UserAccount] resource).
@@ -101,10 +109,12 @@ export interface ListLanguagesRequest {
     folderId: string;
 }
 export interface ListLanguagesResponse {
+    $type: 'yandex.cloud.ai.translate.v2.ListLanguagesResponse';
     /** List of supported languages. */
     languages: Language[];
 }
 export declare const TranslateRequest: {
+    $type: "yandex.cloud.ai.translate.v2.TranslateRequest";
     encode(message: TranslateRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): TranslateRequest;
     fromJSON(object: any): TranslateRequest;
@@ -112,6 +122,7 @@ export declare const TranslateRequest: {
     fromPartial(object: DeepPartial<TranslateRequest>): TranslateRequest;
 };
 export declare const TranslateGlossaryConfig: {
+    $type: "yandex.cloud.ai.translate.v2.TranslateGlossaryConfig";
     encode(message: TranslateGlossaryConfig, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): TranslateGlossaryConfig;
     fromJSON(object: any): TranslateGlossaryConfig;
@@ -119,6 +130,7 @@ export declare const TranslateGlossaryConfig: {
     fromPartial(object: DeepPartial<TranslateGlossaryConfig>): TranslateGlossaryConfig;
 };
 export declare const GlossaryData: {
+    $type: "yandex.cloud.ai.translate.v2.GlossaryData";
     encode(message: GlossaryData, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): GlossaryData;
     fromJSON(object: any): GlossaryData;
@@ -126,6 +138,7 @@ export declare const GlossaryData: {
     fromPartial(object: DeepPartial<GlossaryData>): GlossaryData;
 };
 export declare const GlossaryPair: {
+    $type: "yandex.cloud.ai.translate.v2.GlossaryPair";
     encode(message: GlossaryPair, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): GlossaryPair;
     fromJSON(object: any): GlossaryPair;
@@ -133,6 +146,7 @@ export declare const GlossaryPair: {
     fromPartial(object: DeepPartial<GlossaryPair>): GlossaryPair;
 };
 export declare const TranslateResponse: {
+    $type: "yandex.cloud.ai.translate.v2.TranslateResponse";
     encode(message: TranslateResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): TranslateResponse;
     fromJSON(object: any): TranslateResponse;
@@ -140,6 +154,7 @@ export declare const TranslateResponse: {
     fromPartial(object: DeepPartial<TranslateResponse>): TranslateResponse;
 };
 export declare const DetectLanguageRequest: {
+    $type: "yandex.cloud.ai.translate.v2.DetectLanguageRequest";
     encode(message: DetectLanguageRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DetectLanguageRequest;
     fromJSON(object: any): DetectLanguageRequest;
@@ -147,6 +162,7 @@ export declare const DetectLanguageRequest: {
     fromPartial(object: DeepPartial<DetectLanguageRequest>): DetectLanguageRequest;
 };
 export declare const DetectLanguageResponse: {
+    $type: "yandex.cloud.ai.translate.v2.DetectLanguageResponse";
     encode(message: DetectLanguageResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DetectLanguageResponse;
     fromJSON(object: any): DetectLanguageResponse;
@@ -154,6 +170,7 @@ export declare const DetectLanguageResponse: {
     fromPartial(object: DeepPartial<DetectLanguageResponse>): DetectLanguageResponse;
 };
 export declare const ListLanguagesRequest: {
+    $type: "yandex.cloud.ai.translate.v2.ListLanguagesRequest";
     encode(message: ListLanguagesRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListLanguagesRequest;
     fromJSON(object: any): ListLanguagesRequest;
@@ -161,6 +178,7 @@ export declare const ListLanguagesRequest: {
     fromPartial(object: DeepPartial<ListLanguagesRequest>): ListLanguagesRequest;
 };
 export declare const ListLanguagesResponse: {
+    $type: "yandex.cloud.ai.translate.v2.ListLanguagesResponse";
     encode(message: ListLanguagesResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListLanguagesResponse;
     fromJSON(object: any): ListLanguagesResponse;
@@ -225,6 +243,6 @@ export interface TranslationServiceClient extends Client {
 export declare const TranslationServiceClient: new (address: string, credentials: ChannelCredentials, options?: Partial<ChannelOptions> | undefined) => TranslationServiceClient;
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

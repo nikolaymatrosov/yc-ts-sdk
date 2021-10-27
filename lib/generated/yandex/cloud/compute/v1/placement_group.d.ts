@@ -1,6 +1,7 @@
 import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.compute.v1";
 export interface PlacementGroup {
+    $type: 'yandex.cloud.compute.v1.PlacementGroup';
     /** ID of the placement group. Generated at creation time. */
     id: string;
     /** ID of the folder that the placement group belongs to. */
@@ -25,6 +26,7 @@ export interface PlacementGroup {
     spreadPlacementStrategy: SpreadPlacementStrategy | undefined;
 }
 export interface PlacementGroup_LabelsEntry {
+    $type: 'yandex.cloud.compute.v1.PlacementGroup.LabelsEntry';
     key: string;
     value: string;
 }
@@ -33,8 +35,10 @@ export interface PlacementGroup_LabelsEntry {
  * specify the required placement strategy.
  */
 export interface SpreadPlacementStrategy {
+    $type: 'yandex.cloud.compute.v1.SpreadPlacementStrategy';
 }
 export declare const PlacementGroup: {
+    $type: "yandex.cloud.compute.v1.PlacementGroup";
     encode(message: PlacementGroup, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): PlacementGroup;
     fromJSON(object: any): PlacementGroup;
@@ -42,6 +46,7 @@ export declare const PlacementGroup: {
     fromPartial(object: DeepPartial<PlacementGroup>): PlacementGroup;
 };
 export declare const PlacementGroup_LabelsEntry: {
+    $type: "yandex.cloud.compute.v1.PlacementGroup.LabelsEntry";
     encode(message: PlacementGroup_LabelsEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): PlacementGroup_LabelsEntry;
     fromJSON(object: any): PlacementGroup_LabelsEntry;
@@ -49,6 +54,7 @@ export declare const PlacementGroup_LabelsEntry: {
     fromPartial(object: DeepPartial<PlacementGroup_LabelsEntry>): PlacementGroup_LabelsEntry;
 };
 export declare const SpreadPlacementStrategy: {
+    $type: "yandex.cloud.compute.v1.SpreadPlacementStrategy";
     encode(_: SpreadPlacementStrategy, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): SpreadPlacementStrategy;
     fromJSON(_: any): SpreadPlacementStrategy;
@@ -57,6 +63,6 @@ export declare const SpreadPlacementStrategy: {
 };
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

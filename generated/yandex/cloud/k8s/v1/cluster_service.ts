@@ -1,5 +1,6 @@
 /* eslint-disable */
 import { FieldMask } from '../../../../google/protobuf/field_mask';
+import { messageTypeRegistry } from '../../../../typeRegistry';
 import {
     ReleaseChannel,
     Cluster,
@@ -33,11 +34,13 @@ import _m0 from 'protobufjs/minimal';
 export const protobufPackage = 'yandex.cloud.k8s.v1';
 
 export interface GetClusterRequest {
+    $type: 'yandex.cloud.k8s.v1.GetClusterRequest';
     /** ID of the Kubernetes cluster to return. */
     clusterId: string;
 }
 
 export interface ListClustersRequest {
+    $type: 'yandex.cloud.k8s.v1.ListClustersRequest';
     /**
      * ID of the folder to list Kubernetes cluster in.
      * To get the folder ID use a [yandex.cloud.resourcemanager.v1.FolderService.List] request.
@@ -67,6 +70,7 @@ export interface ListClustersRequest {
 }
 
 export interface ListClustersResponse {
+    $type: 'yandex.cloud.k8s.v1.ListClustersResponse';
     /** List of Kubernetes cluster. */
     clusters: Cluster[];
     /**
@@ -81,6 +85,7 @@ export interface ListClustersResponse {
 }
 
 export interface DeleteClusterRequest {
+    $type: 'yandex.cloud.k8s.v1.DeleteClusterRequest';
     /**
      * ID of the Kubernetes cluster to delete.
      * To get Kubernetes cluster ID use a [ClusterService.List] request.
@@ -89,11 +94,13 @@ export interface DeleteClusterRequest {
 }
 
 export interface DeleteClusterMetadata {
+    $type: 'yandex.cloud.k8s.v1.DeleteClusterMetadata';
     /** ID of the Kubernetes cluster that is being deleted. */
     clusterId: string;
 }
 
 export interface StopClusterRequest {
+    $type: 'yandex.cloud.k8s.v1.StopClusterRequest';
     /**
      * ID of the Kubernetes cluster to stop.
      * To get Kubernetes cluster ID use a [ClusterService.List] request.
@@ -102,11 +109,13 @@ export interface StopClusterRequest {
 }
 
 export interface StopClusterMetadata {
+    $type: 'yandex.cloud.k8s.v1.StopClusterMetadata';
     /** ID of the Kubernetes cluster that is being stopped. */
     clusterId: string;
 }
 
 export interface StartClusterRequest {
+    $type: 'yandex.cloud.k8s.v1.StartClusterRequest';
     /**
      * ID of the Kubernetes cluster to start.
      * To get Kubernetes cluster ID use a [ClusterService.List] request.
@@ -115,11 +124,13 @@ export interface StartClusterRequest {
 }
 
 export interface StartClusterMetadata {
+    $type: 'yandex.cloud.k8s.v1.StartClusterMetadata';
     /** ID of the Kubernetes cluster that is being started. */
     clusterId: string;
 }
 
 export interface UpdateClusterRequest {
+    $type: 'yandex.cloud.k8s.v1.UpdateClusterRequest';
     /**
      * ID of the Kubernetes cluster to update.
      * To get the Kubernetes cluster ID use a [ClusterService.List] request.
@@ -158,11 +169,13 @@ export interface UpdateClusterRequest {
 }
 
 export interface UpdateClusterRequest_LabelsEntry {
+    $type: 'yandex.cloud.k8s.v1.UpdateClusterRequest.LabelsEntry';
     key: string;
     value: string;
 }
 
 export interface MasterUpdateSpec {
+    $type: 'yandex.cloud.k8s.v1.MasterUpdateSpec';
     /** Specification of the master update. */
     version: UpdateVersionSpec | undefined;
     /** Maintenance policy of the master. */
@@ -172,11 +185,13 @@ export interface MasterUpdateSpec {
 }
 
 export interface UpdateClusterMetadata {
+    $type: 'yandex.cloud.k8s.v1.UpdateClusterMetadata';
     /** ID of the Kubernetes cluster that is being updated. */
     clusterId: string;
 }
 
 export interface CreateClusterRequest {
+    $type: 'yandex.cloud.k8s.v1.CreateClusterRequest';
     /**
      * ID of the folder to create a Kubernetes cluster in.
      * To get the folder ID use a [yandex.cloud.resourcemanager.v1.FolderService.List] request.
@@ -216,21 +231,25 @@ export interface CreateClusterRequest {
 }
 
 export interface CreateClusterRequest_LabelsEntry {
+    $type: 'yandex.cloud.k8s.v1.CreateClusterRequest.LabelsEntry';
     key: string;
     value: string;
 }
 
 export interface CreateClusterMetadata {
+    $type: 'yandex.cloud.k8s.v1.CreateClusterMetadata';
     /** ID of the Kubernetes cluster that is being created. */
     clusterId: string;
 }
 
 export interface AutoUpgradeMasterMetadata {
+    $type: 'yandex.cloud.k8s.v1.AutoUpgradeMasterMetadata';
     /** ID of the Kubernetes cluster that is being auto upgraded. */
     clusterId: string;
 }
 
 export interface ListClusterOperationsRequest {
+    $type: 'yandex.cloud.k8s.v1.ListClusterOperationsRequest';
     /** ID of the Kubernetes cluster to list operations for. */
     clusterId: string;
     /**
@@ -253,6 +272,7 @@ export interface ListClusterOperationsRequest {
 }
 
 export interface ListClusterOperationsResponse {
+    $type: 'yandex.cloud.k8s.v1.ListClusterOperationsResponse';
     /** List of operations for the specified Kubernetes cluster. */
     operations: Operation[];
     /**
@@ -265,6 +285,7 @@ export interface ListClusterOperationsResponse {
 }
 
 export interface ListClusterNodeGroupsRequest {
+    $type: 'yandex.cloud.k8s.v1.ListClusterNodeGroupsRequest';
     /**
      * ID of the Kubernetes cluster to list node groups in.
      * To get the Kubernetes cluster ID use a [ClusterService.List] request.
@@ -291,6 +312,7 @@ export interface ListClusterNodeGroupsRequest {
 }
 
 export interface ListClusterNodeGroupsResponse {
+    $type: 'yandex.cloud.k8s.v1.ListClusterNodeGroupsResponse';
     /** List of node groups for the specified Kubernetes cluster. */
     nodeGroups: NodeGroup[];
     /**
@@ -305,6 +327,7 @@ export interface ListClusterNodeGroupsResponse {
 }
 
 export interface ListClusterNodesRequest {
+    $type: 'yandex.cloud.k8s.v1.ListClusterNodesRequest';
     /**
      * ID of the Kubernetes cluster to list nodes in.
      * To get the Kubernetes cluster ID use a [ClusterService.List] request.
@@ -326,6 +349,7 @@ export interface ListClusterNodesRequest {
 }
 
 export interface ListClusterNodesResponse {
+    $type: 'yandex.cloud.k8s.v1.ListClusterNodesResponse';
     /** List of nodes for the specified Kubernetes cluster. */
     nodes: Node[];
     /**
@@ -340,6 +364,7 @@ export interface ListClusterNodesResponse {
 }
 
 export interface MasterSpec {
+    $type: 'yandex.cloud.k8s.v1.MasterSpec';
     /** Specification of the zonal master. */
     zonalMasterSpec: ZonalMasterSpec | undefined;
     /** Specification of the regional master. */
@@ -353,6 +378,7 @@ export interface MasterSpec {
 }
 
 export interface ZonalMasterSpec {
+    $type: 'yandex.cloud.k8s.v1.ZonalMasterSpec';
     /** ID of the availability zone. */
     zoneId: string;
     /** Specification of parameters for internal IPv4 networking. */
@@ -362,6 +388,7 @@ export interface ZonalMasterSpec {
 }
 
 export interface RegionalMasterSpec {
+    $type: 'yandex.cloud.k8s.v1.RegionalMasterSpec';
     /** ID of the availability zone where the master resides. */
     regionId: string;
     /** List of locations where the master will be allocated. */
@@ -371,13 +398,17 @@ export interface RegionalMasterSpec {
 }
 
 export interface InternalAddressSpec {
+    $type: 'yandex.cloud.k8s.v1.InternalAddressSpec';
     /** ID of the subnet. If no ID is specified, and there only one subnet in specified zone, an address in this subnet will be allocated. */
     subnetId: string;
 }
 
-export interface ExternalAddressSpec {}
+export interface ExternalAddressSpec {
+    $type: 'yandex.cloud.k8s.v1.ExternalAddressSpec';
+}
 
 export interface MasterLocation {
+    $type: 'yandex.cloud.k8s.v1.MasterLocation';
     /** ID of the availability zone. */
     zoneId: string;
     /**
@@ -387,9 +418,14 @@ export interface MasterLocation {
     internalV4AddressSpec: InternalAddressSpec | undefined;
 }
 
-const baseGetClusterRequest: object = { clusterId: '' };
+const baseGetClusterRequest: object = {
+    $type: 'yandex.cloud.k8s.v1.GetClusterRequest',
+    clusterId: '',
+};
 
 export const GetClusterRequest = {
+    $type: 'yandex.cloud.k8s.v1.GetClusterRequest' as const,
+
     encode(
         message: GetClusterRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -446,7 +482,10 @@ export const GetClusterRequest = {
     },
 };
 
+messageTypeRegistry.set(GetClusterRequest.$type, GetClusterRequest);
+
 const baseListClustersRequest: object = {
+    $type: 'yandex.cloud.k8s.v1.ListClustersRequest',
     folderId: '',
     pageSize: 0,
     pageToken: '',
@@ -454,6 +493,8 @@ const baseListClustersRequest: object = {
 };
 
 export const ListClustersRequest = {
+    $type: 'yandex.cloud.k8s.v1.ListClustersRequest' as const,
+
     encode(
         message: ListClustersRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -564,9 +605,16 @@ export const ListClustersRequest = {
     },
 };
 
-const baseListClustersResponse: object = { nextPageToken: '' };
+messageTypeRegistry.set(ListClustersRequest.$type, ListClustersRequest);
+
+const baseListClustersResponse: object = {
+    $type: 'yandex.cloud.k8s.v1.ListClustersResponse',
+    nextPageToken: '',
+};
 
 export const ListClustersResponse = {
+    $type: 'yandex.cloud.k8s.v1.ListClustersResponse' as const,
+
     encode(
         message: ListClustersResponse,
         writer: _m0.Writer = _m0.Writer.create()
@@ -663,9 +711,16 @@ export const ListClustersResponse = {
     },
 };
 
-const baseDeleteClusterRequest: object = { clusterId: '' };
+messageTypeRegistry.set(ListClustersResponse.$type, ListClustersResponse);
+
+const baseDeleteClusterRequest: object = {
+    $type: 'yandex.cloud.k8s.v1.DeleteClusterRequest',
+    clusterId: '',
+};
 
 export const DeleteClusterRequest = {
+    $type: 'yandex.cloud.k8s.v1.DeleteClusterRequest' as const,
+
     encode(
         message: DeleteClusterRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -727,9 +782,16 @@ export const DeleteClusterRequest = {
     },
 };
 
-const baseDeleteClusterMetadata: object = { clusterId: '' };
+messageTypeRegistry.set(DeleteClusterRequest.$type, DeleteClusterRequest);
+
+const baseDeleteClusterMetadata: object = {
+    $type: 'yandex.cloud.k8s.v1.DeleteClusterMetadata',
+    clusterId: '',
+};
 
 export const DeleteClusterMetadata = {
+    $type: 'yandex.cloud.k8s.v1.DeleteClusterMetadata' as const,
+
     encode(
         message: DeleteClusterMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -797,9 +859,16 @@ export const DeleteClusterMetadata = {
     },
 };
 
-const baseStopClusterRequest: object = { clusterId: '' };
+messageTypeRegistry.set(DeleteClusterMetadata.$type, DeleteClusterMetadata);
+
+const baseStopClusterRequest: object = {
+    $type: 'yandex.cloud.k8s.v1.StopClusterRequest',
+    clusterId: '',
+};
 
 export const StopClusterRequest = {
+    $type: 'yandex.cloud.k8s.v1.StopClusterRequest' as const,
+
     encode(
         message: StopClusterRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -859,9 +928,16 @@ export const StopClusterRequest = {
     },
 };
 
-const baseStopClusterMetadata: object = { clusterId: '' };
+messageTypeRegistry.set(StopClusterRequest.$type, StopClusterRequest);
+
+const baseStopClusterMetadata: object = {
+    $type: 'yandex.cloud.k8s.v1.StopClusterMetadata',
+    clusterId: '',
+};
 
 export const StopClusterMetadata = {
+    $type: 'yandex.cloud.k8s.v1.StopClusterMetadata' as const,
+
     encode(
         message: StopClusterMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -921,9 +997,16 @@ export const StopClusterMetadata = {
     },
 };
 
-const baseStartClusterRequest: object = { clusterId: '' };
+messageTypeRegistry.set(StopClusterMetadata.$type, StopClusterMetadata);
+
+const baseStartClusterRequest: object = {
+    $type: 'yandex.cloud.k8s.v1.StartClusterRequest',
+    clusterId: '',
+};
 
 export const StartClusterRequest = {
+    $type: 'yandex.cloud.k8s.v1.StartClusterRequest' as const,
+
     encode(
         message: StartClusterRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -983,9 +1066,16 @@ export const StartClusterRequest = {
     },
 };
 
-const baseStartClusterMetadata: object = { clusterId: '' };
+messageTypeRegistry.set(StartClusterRequest.$type, StartClusterRequest);
+
+const baseStartClusterMetadata: object = {
+    $type: 'yandex.cloud.k8s.v1.StartClusterMetadata',
+    clusterId: '',
+};
 
 export const StartClusterMetadata = {
+    $type: 'yandex.cloud.k8s.v1.StartClusterMetadata' as const,
+
     encode(
         message: StartClusterMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1047,7 +1137,10 @@ export const StartClusterMetadata = {
     },
 };
 
+messageTypeRegistry.set(StartClusterMetadata.$type, StartClusterMetadata);
+
 const baseUpdateClusterRequest: object = {
+    $type: 'yandex.cloud.k8s.v1.UpdateClusterRequest',
     clusterId: '',
     name: '',
     description: '',
@@ -1056,6 +1149,8 @@ const baseUpdateClusterRequest: object = {
 };
 
 export const UpdateClusterRequest = {
+    $type: 'yandex.cloud.k8s.v1.UpdateClusterRequest' as const,
+
     encode(
         message: UpdateClusterRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1077,7 +1172,11 @@ export const UpdateClusterRequest = {
         }
         Object.entries(message.labels).forEach(([key, value]) => {
             UpdateClusterRequest_LabelsEntry.encode(
-                { key: key as any, value },
+                {
+                    $type: 'yandex.cloud.k8s.v1.UpdateClusterRequest.LabelsEntry',
+                    key: key as any,
+                    value,
+                },
                 writer.uint32(42).fork()
             ).ldelim();
         });
@@ -1350,9 +1449,17 @@ export const UpdateClusterRequest = {
     },
 };
 
-const baseUpdateClusterRequest_LabelsEntry: object = { key: '', value: '' };
+messageTypeRegistry.set(UpdateClusterRequest.$type, UpdateClusterRequest);
+
+const baseUpdateClusterRequest_LabelsEntry: object = {
+    $type: 'yandex.cloud.k8s.v1.UpdateClusterRequest.LabelsEntry',
+    key: '',
+    value: '',
+};
 
 export const UpdateClusterRequest_LabelsEntry = {
+    $type: 'yandex.cloud.k8s.v1.UpdateClusterRequest.LabelsEntry' as const,
+
     encode(
         message: UpdateClusterRequest_LabelsEntry,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1437,9 +1544,19 @@ export const UpdateClusterRequest_LabelsEntry = {
     },
 };
 
-const baseMasterUpdateSpec: object = { securityGroupIds: '' };
+messageTypeRegistry.set(
+    UpdateClusterRequest_LabelsEntry.$type,
+    UpdateClusterRequest_LabelsEntry
+);
+
+const baseMasterUpdateSpec: object = {
+    $type: 'yandex.cloud.k8s.v1.MasterUpdateSpec',
+    securityGroupIds: '',
+};
 
 export const MasterUpdateSpec = {
+    $type: 'yandex.cloud.k8s.v1.MasterUpdateSpec' as const,
+
     encode(
         message: MasterUpdateSpec,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1571,9 +1688,16 @@ export const MasterUpdateSpec = {
     },
 };
 
-const baseUpdateClusterMetadata: object = { clusterId: '' };
+messageTypeRegistry.set(MasterUpdateSpec.$type, MasterUpdateSpec);
+
+const baseUpdateClusterMetadata: object = {
+    $type: 'yandex.cloud.k8s.v1.UpdateClusterMetadata',
+    clusterId: '',
+};
 
 export const UpdateClusterMetadata = {
+    $type: 'yandex.cloud.k8s.v1.UpdateClusterMetadata' as const,
+
     encode(
         message: UpdateClusterMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1641,7 +1765,10 @@ export const UpdateClusterMetadata = {
     },
 };
 
+messageTypeRegistry.set(UpdateClusterMetadata.$type, UpdateClusterMetadata);
+
 const baseCreateClusterRequest: object = {
+    $type: 'yandex.cloud.k8s.v1.CreateClusterRequest',
     folderId: '',
     name: '',
     description: '',
@@ -1652,6 +1779,8 @@ const baseCreateClusterRequest: object = {
 };
 
 export const CreateClusterRequest = {
+    $type: 'yandex.cloud.k8s.v1.CreateClusterRequest' as const,
+
     encode(
         message: CreateClusterRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1667,7 +1796,11 @@ export const CreateClusterRequest = {
         }
         Object.entries(message.labels).forEach(([key, value]) => {
             CreateClusterRequest_LabelsEntry.encode(
-                { key: key as any, value },
+                {
+                    $type: 'yandex.cloud.k8s.v1.CreateClusterRequest.LabelsEntry',
+                    key: key as any,
+                    value,
+                },
                 writer.uint32(34).fork()
             ).ldelim();
         });
@@ -2043,9 +2176,17 @@ export const CreateClusterRequest = {
     },
 };
 
-const baseCreateClusterRequest_LabelsEntry: object = { key: '', value: '' };
+messageTypeRegistry.set(CreateClusterRequest.$type, CreateClusterRequest);
+
+const baseCreateClusterRequest_LabelsEntry: object = {
+    $type: 'yandex.cloud.k8s.v1.CreateClusterRequest.LabelsEntry',
+    key: '',
+    value: '',
+};
 
 export const CreateClusterRequest_LabelsEntry = {
+    $type: 'yandex.cloud.k8s.v1.CreateClusterRequest.LabelsEntry' as const,
+
     encode(
         message: CreateClusterRequest_LabelsEntry,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2130,9 +2271,19 @@ export const CreateClusterRequest_LabelsEntry = {
     },
 };
 
-const baseCreateClusterMetadata: object = { clusterId: '' };
+messageTypeRegistry.set(
+    CreateClusterRequest_LabelsEntry.$type,
+    CreateClusterRequest_LabelsEntry
+);
+
+const baseCreateClusterMetadata: object = {
+    $type: 'yandex.cloud.k8s.v1.CreateClusterMetadata',
+    clusterId: '',
+};
 
 export const CreateClusterMetadata = {
+    $type: 'yandex.cloud.k8s.v1.CreateClusterMetadata' as const,
+
     encode(
         message: CreateClusterMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2200,9 +2351,16 @@ export const CreateClusterMetadata = {
     },
 };
 
-const baseAutoUpgradeMasterMetadata: object = { clusterId: '' };
+messageTypeRegistry.set(CreateClusterMetadata.$type, CreateClusterMetadata);
+
+const baseAutoUpgradeMasterMetadata: object = {
+    $type: 'yandex.cloud.k8s.v1.AutoUpgradeMasterMetadata',
+    clusterId: '',
+};
 
 export const AutoUpgradeMasterMetadata = {
+    $type: 'yandex.cloud.k8s.v1.AutoUpgradeMasterMetadata' as const,
+
     encode(
         message: AutoUpgradeMasterMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2270,7 +2428,13 @@ export const AutoUpgradeMasterMetadata = {
     },
 };
 
+messageTypeRegistry.set(
+    AutoUpgradeMasterMetadata.$type,
+    AutoUpgradeMasterMetadata
+);
+
 const baseListClusterOperationsRequest: object = {
+    $type: 'yandex.cloud.k8s.v1.ListClusterOperationsRequest',
     clusterId: '',
     pageSize: 0,
     pageToken: '',
@@ -2278,6 +2442,8 @@ const baseListClusterOperationsRequest: object = {
 };
 
 export const ListClusterOperationsRequest = {
+    $type: 'yandex.cloud.k8s.v1.ListClusterOperationsRequest' as const,
+
     encode(
         message: ListClusterOperationsRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2396,9 +2562,19 @@ export const ListClusterOperationsRequest = {
     },
 };
 
-const baseListClusterOperationsResponse: object = { nextPageToken: '' };
+messageTypeRegistry.set(
+    ListClusterOperationsRequest.$type,
+    ListClusterOperationsRequest
+);
+
+const baseListClusterOperationsResponse: object = {
+    $type: 'yandex.cloud.k8s.v1.ListClusterOperationsResponse',
+    nextPageToken: '',
+};
 
 export const ListClusterOperationsResponse = {
+    $type: 'yandex.cloud.k8s.v1.ListClusterOperationsResponse' as const,
+
     encode(
         message: ListClusterOperationsResponse,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2501,7 +2677,13 @@ export const ListClusterOperationsResponse = {
     },
 };
 
+messageTypeRegistry.set(
+    ListClusterOperationsResponse.$type,
+    ListClusterOperationsResponse
+);
+
 const baseListClusterNodeGroupsRequest: object = {
+    $type: 'yandex.cloud.k8s.v1.ListClusterNodeGroupsRequest',
     clusterId: '',
     pageSize: 0,
     pageToken: '',
@@ -2509,6 +2691,8 @@ const baseListClusterNodeGroupsRequest: object = {
 };
 
 export const ListClusterNodeGroupsRequest = {
+    $type: 'yandex.cloud.k8s.v1.ListClusterNodeGroupsRequest' as const,
+
     encode(
         message: ListClusterNodeGroupsRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2627,9 +2811,19 @@ export const ListClusterNodeGroupsRequest = {
     },
 };
 
-const baseListClusterNodeGroupsResponse: object = { nextPageToken: '' };
+messageTypeRegistry.set(
+    ListClusterNodeGroupsRequest.$type,
+    ListClusterNodeGroupsRequest
+);
+
+const baseListClusterNodeGroupsResponse: object = {
+    $type: 'yandex.cloud.k8s.v1.ListClusterNodeGroupsResponse',
+    nextPageToken: '',
+};
 
 export const ListClusterNodeGroupsResponse = {
+    $type: 'yandex.cloud.k8s.v1.ListClusterNodeGroupsResponse' as const,
+
     encode(
         message: ListClusterNodeGroupsResponse,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2732,13 +2926,21 @@ export const ListClusterNodeGroupsResponse = {
     },
 };
 
+messageTypeRegistry.set(
+    ListClusterNodeGroupsResponse.$type,
+    ListClusterNodeGroupsResponse
+);
+
 const baseListClusterNodesRequest: object = {
+    $type: 'yandex.cloud.k8s.v1.ListClusterNodesRequest',
     clusterId: '',
     pageSize: 0,
     pageToken: '',
 };
 
 export const ListClusterNodesRequest = {
+    $type: 'yandex.cloud.k8s.v1.ListClusterNodesRequest' as const,
+
     encode(
         message: ListClusterNodesRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2840,9 +3042,16 @@ export const ListClusterNodesRequest = {
     },
 };
 
-const baseListClusterNodesResponse: object = { nextPageToken: '' };
+messageTypeRegistry.set(ListClusterNodesRequest.$type, ListClusterNodesRequest);
+
+const baseListClusterNodesResponse: object = {
+    $type: 'yandex.cloud.k8s.v1.ListClusterNodesResponse',
+    nextPageToken: '',
+};
 
 export const ListClusterNodesResponse = {
+    $type: 'yandex.cloud.k8s.v1.ListClusterNodesResponse' as const,
+
     encode(
         message: ListClusterNodesResponse,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2943,9 +3152,20 @@ export const ListClusterNodesResponse = {
     },
 };
 
-const baseMasterSpec: object = { version: '', securityGroupIds: '' };
+messageTypeRegistry.set(
+    ListClusterNodesResponse.$type,
+    ListClusterNodesResponse
+);
+
+const baseMasterSpec: object = {
+    $type: 'yandex.cloud.k8s.v1.MasterSpec',
+    version: '',
+    securityGroupIds: '',
+};
 
 export const MasterSpec = {
+    $type: 'yandex.cloud.k8s.v1.MasterSpec' as const,
+
     encode(
         message: MasterSpec,
         writer: _m0.Writer = _m0.Writer.create()
@@ -3140,9 +3360,16 @@ export const MasterSpec = {
     },
 };
 
-const baseZonalMasterSpec: object = { zoneId: '' };
+messageTypeRegistry.set(MasterSpec.$type, MasterSpec);
+
+const baseZonalMasterSpec: object = {
+    $type: 'yandex.cloud.k8s.v1.ZonalMasterSpec',
+    zoneId: '',
+};
 
 export const ZonalMasterSpec = {
+    $type: 'yandex.cloud.k8s.v1.ZonalMasterSpec' as const,
+
     encode(
         message: ZonalMasterSpec,
         writer: _m0.Writer = _m0.Writer.create()
@@ -3271,9 +3498,16 @@ export const ZonalMasterSpec = {
     },
 };
 
-const baseRegionalMasterSpec: object = { regionId: '' };
+messageTypeRegistry.set(ZonalMasterSpec.$type, ZonalMasterSpec);
+
+const baseRegionalMasterSpec: object = {
+    $type: 'yandex.cloud.k8s.v1.RegionalMasterSpec',
+    regionId: '',
+};
 
 export const RegionalMasterSpec = {
+    $type: 'yandex.cloud.k8s.v1.RegionalMasterSpec' as const,
+
     encode(
         message: RegionalMasterSpec,
         writer: _m0.Writer = _m0.Writer.create()
@@ -3397,9 +3631,16 @@ export const RegionalMasterSpec = {
     },
 };
 
-const baseInternalAddressSpec: object = { subnetId: '' };
+messageTypeRegistry.set(RegionalMasterSpec.$type, RegionalMasterSpec);
+
+const baseInternalAddressSpec: object = {
+    $type: 'yandex.cloud.k8s.v1.InternalAddressSpec',
+    subnetId: '',
+};
 
 export const InternalAddressSpec = {
+    $type: 'yandex.cloud.k8s.v1.InternalAddressSpec' as const,
+
     encode(
         message: InternalAddressSpec,
         writer: _m0.Writer = _m0.Writer.create()
@@ -3459,9 +3700,15 @@ export const InternalAddressSpec = {
     },
 };
 
-const baseExternalAddressSpec: object = {};
+messageTypeRegistry.set(InternalAddressSpec.$type, InternalAddressSpec);
+
+const baseExternalAddressSpec: object = {
+    $type: 'yandex.cloud.k8s.v1.ExternalAddressSpec',
+};
 
 export const ExternalAddressSpec = {
+    $type: 'yandex.cloud.k8s.v1.ExternalAddressSpec' as const,
+
     encode(
         _: ExternalAddressSpec,
         writer: _m0.Writer = _m0.Writer.create()
@@ -3504,9 +3751,16 @@ export const ExternalAddressSpec = {
     },
 };
 
-const baseMasterLocation: object = { zoneId: '' };
+messageTypeRegistry.set(ExternalAddressSpec.$type, ExternalAddressSpec);
+
+const baseMasterLocation: object = {
+    $type: 'yandex.cloud.k8s.v1.MasterLocation',
+    zoneId: '',
+};
 
 export const MasterLocation = {
+    $type: 'yandex.cloud.k8s.v1.MasterLocation' as const,
+
     encode(
         message: MasterLocation,
         writer: _m0.Writer = _m0.Writer.create()
@@ -3598,6 +3852,8 @@ export const MasterLocation = {
         return message;
     },
 };
+
+messageTypeRegistry.set(MasterLocation.$type, MasterLocation);
 
 /** A set of methods for managing Kubernetes cluster. */
 export const ClusterServiceService = {
@@ -4015,7 +4271,7 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 function longToNumber(long: Long): number {

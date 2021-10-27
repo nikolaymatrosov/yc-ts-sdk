@@ -5,6 +5,7 @@ export declare const protobufPackage = "yandex.cloud.mdb.sqlserver.v1";
  * For more information, see the [Backup](/docs/managed-sqlserver/concepts/backup) section in the documentation.
  */
 export interface Backup {
+    $type: 'yandex.cloud.mdb.sqlserver.v1.Backup';
     /** ID of the backup. */
     id: string;
     /** ID of the folder that the backup belongs to. */
@@ -19,6 +20,7 @@ export interface Backup {
     databases: string[];
 }
 export declare const Backup: {
+    $type: "yandex.cloud.mdb.sqlserver.v1.Backup";
     encode(message: Backup, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Backup;
     fromJSON(object: any): Backup;
@@ -27,6 +29,6 @@ export declare const Backup: {
 };
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

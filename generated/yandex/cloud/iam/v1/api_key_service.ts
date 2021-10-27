@@ -1,5 +1,6 @@
 /* eslint-disable */
 import { FieldMask } from '../../../../google/protobuf/field_mask';
+import { messageTypeRegistry } from '../../../../typeRegistry';
 import { ApiKey } from '../../../../yandex/cloud/iam/v1/api_key';
 import { Operation } from '../../../../yandex/cloud/operation/operation';
 import {
@@ -20,6 +21,7 @@ import _m0 from 'protobufjs/minimal';
 export const protobufPackage = 'yandex.cloud.iam.v1';
 
 export interface GetApiKeyRequest {
+    $type: 'yandex.cloud.iam.v1.GetApiKeyRequest';
     /**
      * ID of the API key to return.
      * To get the API key ID, use a [ApiKeyService.List] request.
@@ -28,6 +30,7 @@ export interface GetApiKeyRequest {
 }
 
 export interface ListApiKeysRequest {
+    $type: 'yandex.cloud.iam.v1.ListApiKeysRequest';
     /**
      * ID of the service account to list API keys for.
      * To get the service account ID, use a [yandex.cloud.iam.v1.ServiceAccountService.List] request.
@@ -51,6 +54,7 @@ export interface ListApiKeysRequest {
 }
 
 export interface ListApiKeysResponse {
+    $type: 'yandex.cloud.iam.v1.ListApiKeysResponse';
     /** List of API keys. */
     apiKeys: ApiKey[];
     /**
@@ -65,6 +69,7 @@ export interface ListApiKeysResponse {
 }
 
 export interface CreateApiKeyRequest {
+    $type: 'yandex.cloud.iam.v1.CreateApiKeyRequest';
     /**
      * ID of the service account to create an API key for.
      * To get the service account ID, use a [yandex.cloud.iam.v1.ServiceAccountService.List] request.
@@ -76,6 +81,7 @@ export interface CreateApiKeyRequest {
 }
 
 export interface CreateApiKeyResponse {
+    $type: 'yandex.cloud.iam.v1.CreateApiKeyResponse';
     /** ApiKey resource. */
     apiKey: ApiKey | undefined;
     /** Secret part of the API key. This secret key you may use in the requests for authentication. */
@@ -83,6 +89,7 @@ export interface CreateApiKeyResponse {
 }
 
 export interface UpdateApiKeyRequest {
+    $type: 'yandex.cloud.iam.v1.UpdateApiKeyRequest';
     /**
      * ID of the ApiKey resource to update.
      * To get the API key ID, use a [ApiKeyService.List] request.
@@ -95,11 +102,13 @@ export interface UpdateApiKeyRequest {
 }
 
 export interface UpdateApiKeyMetadata {
+    $type: 'yandex.cloud.iam.v1.UpdateApiKeyMetadata';
     /** ID of the ApiKey resource that is being updated. */
     apiKeyId: string;
 }
 
 export interface DeleteApiKeyRequest {
+    $type: 'yandex.cloud.iam.v1.DeleteApiKeyRequest';
     /**
      * ID of the API key to delete.
      * To get the API key ID, use a [ApiKeyService.List] request.
@@ -108,11 +117,13 @@ export interface DeleteApiKeyRequest {
 }
 
 export interface DeleteApiKeyMetadata {
+    $type: 'yandex.cloud.iam.v1.DeleteApiKeyMetadata';
     /** ID of the API key that is being deleted. */
     apiKeyId: string;
 }
 
 export interface ListApiKeyOperationsRequest {
+    $type: 'yandex.cloud.iam.v1.ListApiKeyOperationsRequest';
     /** ID of the key to list operations for. */
     apiKeyId: string;
     /**
@@ -131,6 +142,7 @@ export interface ListApiKeyOperationsRequest {
 }
 
 export interface ListApiKeyOperationsResponse {
+    $type: 'yandex.cloud.iam.v1.ListApiKeyOperationsResponse';
     /** List of operations for the specified API key. */
     operations: Operation[];
     /**
@@ -142,9 +154,14 @@ export interface ListApiKeyOperationsResponse {
     nextPageToken: string;
 }
 
-const baseGetApiKeyRequest: object = { apiKeyId: '' };
+const baseGetApiKeyRequest: object = {
+    $type: 'yandex.cloud.iam.v1.GetApiKeyRequest',
+    apiKeyId: '',
+};
 
 export const GetApiKeyRequest = {
+    $type: 'yandex.cloud.iam.v1.GetApiKeyRequest' as const,
+
     encode(
         message: GetApiKeyRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -201,13 +218,18 @@ export const GetApiKeyRequest = {
     },
 };
 
+messageTypeRegistry.set(GetApiKeyRequest.$type, GetApiKeyRequest);
+
 const baseListApiKeysRequest: object = {
+    $type: 'yandex.cloud.iam.v1.ListApiKeysRequest',
     serviceAccountId: '',
     pageSize: 0,
     pageToken: '',
 };
 
 export const ListApiKeysRequest = {
+    $type: 'yandex.cloud.iam.v1.ListApiKeysRequest' as const,
+
     encode(
         message: ListApiKeysRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -308,9 +330,16 @@ export const ListApiKeysRequest = {
     },
 };
 
-const baseListApiKeysResponse: object = { nextPageToken: '' };
+messageTypeRegistry.set(ListApiKeysRequest.$type, ListApiKeysRequest);
+
+const baseListApiKeysResponse: object = {
+    $type: 'yandex.cloud.iam.v1.ListApiKeysResponse',
+    nextPageToken: '',
+};
 
 export const ListApiKeysResponse = {
+    $type: 'yandex.cloud.iam.v1.ListApiKeysResponse' as const,
+
     encode(
         message: ListApiKeysResponse,
         writer: _m0.Writer = _m0.Writer.create()
@@ -405,12 +434,17 @@ export const ListApiKeysResponse = {
     },
 };
 
+messageTypeRegistry.set(ListApiKeysResponse.$type, ListApiKeysResponse);
+
 const baseCreateApiKeyRequest: object = {
+    $type: 'yandex.cloud.iam.v1.CreateApiKeyRequest',
     serviceAccountId: '',
     description: '',
 };
 
 export const CreateApiKeyRequest = {
+    $type: 'yandex.cloud.iam.v1.CreateApiKeyRequest' as const,
+
     encode(
         message: CreateApiKeyRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -495,9 +529,16 @@ export const CreateApiKeyRequest = {
     },
 };
 
-const baseCreateApiKeyResponse: object = { secret: '' };
+messageTypeRegistry.set(CreateApiKeyRequest.$type, CreateApiKeyRequest);
+
+const baseCreateApiKeyResponse: object = {
+    $type: 'yandex.cloud.iam.v1.CreateApiKeyResponse',
+    secret: '',
+};
 
 export const CreateApiKeyResponse = {
+    $type: 'yandex.cloud.iam.v1.CreateApiKeyResponse' as const,
+
     encode(
         message: CreateApiKeyResponse,
         writer: _m0.Writer = _m0.Writer.create()
@@ -579,9 +620,17 @@ export const CreateApiKeyResponse = {
     },
 };
 
-const baseUpdateApiKeyRequest: object = { apiKeyId: '', description: '' };
+messageTypeRegistry.set(CreateApiKeyResponse.$type, CreateApiKeyResponse);
+
+const baseUpdateApiKeyRequest: object = {
+    $type: 'yandex.cloud.iam.v1.UpdateApiKeyRequest',
+    apiKeyId: '',
+    description: '',
+};
 
 export const UpdateApiKeyRequest = {
+    $type: 'yandex.cloud.iam.v1.UpdateApiKeyRequest' as const,
+
     encode(
         message: UpdateApiKeyRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -685,9 +734,16 @@ export const UpdateApiKeyRequest = {
     },
 };
 
-const baseUpdateApiKeyMetadata: object = { apiKeyId: '' };
+messageTypeRegistry.set(UpdateApiKeyRequest.$type, UpdateApiKeyRequest);
+
+const baseUpdateApiKeyMetadata: object = {
+    $type: 'yandex.cloud.iam.v1.UpdateApiKeyMetadata',
+    apiKeyId: '',
+};
 
 export const UpdateApiKeyMetadata = {
+    $type: 'yandex.cloud.iam.v1.UpdateApiKeyMetadata' as const,
+
     encode(
         message: UpdateApiKeyMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -749,9 +805,16 @@ export const UpdateApiKeyMetadata = {
     },
 };
 
-const baseDeleteApiKeyRequest: object = { apiKeyId: '' };
+messageTypeRegistry.set(UpdateApiKeyMetadata.$type, UpdateApiKeyMetadata);
+
+const baseDeleteApiKeyRequest: object = {
+    $type: 'yandex.cloud.iam.v1.DeleteApiKeyRequest',
+    apiKeyId: '',
+};
 
 export const DeleteApiKeyRequest = {
+    $type: 'yandex.cloud.iam.v1.DeleteApiKeyRequest' as const,
+
     encode(
         message: DeleteApiKeyRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -811,9 +874,16 @@ export const DeleteApiKeyRequest = {
     },
 };
 
-const baseDeleteApiKeyMetadata: object = { apiKeyId: '' };
+messageTypeRegistry.set(DeleteApiKeyRequest.$type, DeleteApiKeyRequest);
+
+const baseDeleteApiKeyMetadata: object = {
+    $type: 'yandex.cloud.iam.v1.DeleteApiKeyMetadata',
+    apiKeyId: '',
+};
 
 export const DeleteApiKeyMetadata = {
+    $type: 'yandex.cloud.iam.v1.DeleteApiKeyMetadata' as const,
+
     encode(
         message: DeleteApiKeyMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -875,13 +945,18 @@ export const DeleteApiKeyMetadata = {
     },
 };
 
+messageTypeRegistry.set(DeleteApiKeyMetadata.$type, DeleteApiKeyMetadata);
+
 const baseListApiKeyOperationsRequest: object = {
+    $type: 'yandex.cloud.iam.v1.ListApiKeyOperationsRequest',
     apiKeyId: '',
     pageSize: 0,
     pageToken: '',
 };
 
 export const ListApiKeyOperationsRequest = {
+    $type: 'yandex.cloud.iam.v1.ListApiKeyOperationsRequest' as const,
+
     encode(
         message: ListApiKeyOperationsRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -983,9 +1058,19 @@ export const ListApiKeyOperationsRequest = {
     },
 };
 
-const baseListApiKeyOperationsResponse: object = { nextPageToken: '' };
+messageTypeRegistry.set(
+    ListApiKeyOperationsRequest.$type,
+    ListApiKeyOperationsRequest
+);
+
+const baseListApiKeyOperationsResponse: object = {
+    $type: 'yandex.cloud.iam.v1.ListApiKeyOperationsResponse',
+    nextPageToken: '',
+};
 
 export const ListApiKeyOperationsResponse = {
+    $type: 'yandex.cloud.iam.v1.ListApiKeyOperationsResponse' as const,
+
     encode(
         message: ListApiKeyOperationsResponse,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1087,6 +1172,11 @@ export const ListApiKeyOperationsResponse = {
         return message;
     },
 };
+
+messageTypeRegistry.set(
+    ListApiKeyOperationsResponse.$type,
+    ListApiKeyOperationsResponse
+);
 
 /** A set of methods for managing API keys. */
 export const ApiKeyServiceService = {
@@ -1364,7 +1454,7 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 function longToNumber(long: Long): number {

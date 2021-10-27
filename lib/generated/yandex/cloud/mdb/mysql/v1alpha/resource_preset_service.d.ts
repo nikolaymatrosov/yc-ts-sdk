@@ -4,6 +4,7 @@ import { ChannelCredentials, ChannelOptions, UntypedServiceImplementation, handl
 import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.mdb.mysql.v1alpha";
 export interface GetResourcePresetRequest {
+    $type: 'yandex.cloud.mdb.mysql.v1alpha.GetResourcePresetRequest';
     /**
      * ID of the resource preset to return.
      * To get the resource preset ID, use a [ResourcePresetService.List] request.
@@ -11,6 +12,7 @@ export interface GetResourcePresetRequest {
     resourcePresetId: string;
 }
 export interface ListResourcePresetsRequest {
+    $type: 'yandex.cloud.mdb.mysql.v1alpha.ListResourcePresetsRequest';
     /**
      * The maximum number of results per page to return. If the number of available
      * results is larger than [page_size], the service returns a [ListResourcePresetsResponse.next_page_token]
@@ -24,6 +26,7 @@ export interface ListResourcePresetsRequest {
     pageToken: string;
 }
 export interface ListResourcePresetsResponse {
+    $type: 'yandex.cloud.mdb.mysql.v1alpha.ListResourcePresetsResponse';
     /** List of resource presets. */
     resourcePresets: ResourcePreset[];
     /**
@@ -35,6 +38,7 @@ export interface ListResourcePresetsResponse {
     nextPageToken: string;
 }
 export declare const GetResourcePresetRequest: {
+    $type: "yandex.cloud.mdb.mysql.v1alpha.GetResourcePresetRequest";
     encode(message: GetResourcePresetRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): GetResourcePresetRequest;
     fromJSON(object: any): GetResourcePresetRequest;
@@ -42,6 +46,7 @@ export declare const GetResourcePresetRequest: {
     fromPartial(object: DeepPartial<GetResourcePresetRequest>): GetResourcePresetRequest;
 };
 export declare const ListResourcePresetsRequest: {
+    $type: "yandex.cloud.mdb.mysql.v1alpha.ListResourcePresetsRequest";
     encode(message: ListResourcePresetsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListResourcePresetsRequest;
     fromJSON(object: any): ListResourcePresetsRequest;
@@ -49,6 +54,7 @@ export declare const ListResourcePresetsRequest: {
     fromPartial(object: DeepPartial<ListResourcePresetsRequest>): ListResourcePresetsRequest;
 };
 export declare const ListResourcePresetsResponse: {
+    $type: "yandex.cloud.mdb.mysql.v1alpha.ListResourcePresetsResponse";
     encode(message: ListResourcePresetsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListResourcePresetsResponse;
     fromJSON(object: any): ListResourcePresetsResponse;
@@ -109,6 +115,6 @@ export interface ResourcePresetServiceClient extends Client {
 export declare const ResourcePresetServiceClient: new (address: string, credentials: ChannelCredentials, options?: Partial<ChannelOptions> | undefined) => ResourcePresetServiceClient;
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

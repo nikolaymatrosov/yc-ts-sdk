@@ -1,10 +1,12 @@
 /* eslint-disable */
+import { messageTypeRegistry } from '../../../../../typeRegistry';
 import Long from 'long';
 import _m0 from 'protobufjs/minimal';
 
 export const protobufPackage = 'yandex.cloud.ai.translate.v2';
 
 export interface TranslatedText {
+    $type: 'yandex.cloud.ai.translate.v2.TranslatedText';
     /** Translated text. */
     text: string;
     /**
@@ -15,6 +17,7 @@ export interface TranslatedText {
 }
 
 export interface Language {
+    $type: 'yandex.cloud.ai.translate.v2.Language';
     /**
      * The language code.
      * Specified in [ISO 639-1](https://en.wikipedia.org/wiki/ISO_639-1) format (for example, `` en ``).
@@ -24,9 +27,15 @@ export interface Language {
     name: string;
 }
 
-const baseTranslatedText: object = { text: '', detectedLanguageCode: '' };
+const baseTranslatedText: object = {
+    $type: 'yandex.cloud.ai.translate.v2.TranslatedText',
+    text: '',
+    detectedLanguageCode: '',
+};
 
 export const TranslatedText = {
+    $type: 'yandex.cloud.ai.translate.v2.TranslatedText' as const,
+
     encode(
         message: TranslatedText,
         writer: _m0.Writer = _m0.Writer.create()
@@ -107,9 +116,17 @@ export const TranslatedText = {
     },
 };
 
-const baseLanguage: object = { code: '', name: '' };
+messageTypeRegistry.set(TranslatedText.$type, TranslatedText);
+
+const baseLanguage: object = {
+    $type: 'yandex.cloud.ai.translate.v2.Language',
+    code: '',
+    name: '',
+};
 
 export const Language = {
+    $type: 'yandex.cloud.ai.translate.v2.Language' as const,
+
     encode(
         message: Language,
         writer: _m0.Writer = _m0.Writer.create()
@@ -183,6 +200,8 @@ export const Language = {
     },
 };
 
+messageTypeRegistry.set(Language.$type, Language);
+
 type Builtin =
     | Date
     | Function
@@ -198,7 +217,7 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 if (_m0.util.Long !== Long) {

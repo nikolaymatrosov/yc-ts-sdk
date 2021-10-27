@@ -1,5 +1,6 @@
 /* eslint-disable */
 import { FieldMask } from '../../../../google/protobuf/field_mask';
+import { messageTypeRegistry } from '../../../../typeRegistry';
 import {
     ListAccessBindingsRequest,
     ListAccessBindingsResponse,
@@ -30,6 +31,7 @@ import _m0 from 'protobufjs/minimal';
 export const protobufPackage = 'yandex.cloud.containerregistry.v1';
 
 export interface GetRegistryRequest {
+    $type: 'yandex.cloud.containerregistry.v1.GetRegistryRequest';
     /**
      * ID of the Registry resource to return.
      *
@@ -39,6 +41,7 @@ export interface GetRegistryRequest {
 }
 
 export interface ListRegistriesRequest {
+    $type: 'yandex.cloud.containerregistry.v1.ListRegistriesRequest';
     /**
      * ID of the folder to list registries in.
      *
@@ -69,6 +72,7 @@ export interface ListRegistriesRequest {
 }
 
 export interface ListRegistriesResponse {
+    $type: 'yandex.cloud.containerregistry.v1.ListRegistriesResponse';
     /** List of Registry resources. */
     registries: Registry[];
     /**
@@ -83,6 +87,7 @@ export interface ListRegistriesResponse {
 }
 
 export interface CreateRegistryRequest {
+    $type: 'yandex.cloud.containerregistry.v1.CreateRegistryRequest';
     /**
      * ID of the folder to create a registry in.
      *
@@ -100,16 +105,19 @@ export interface CreateRegistryRequest {
 }
 
 export interface CreateRegistryRequest_LabelsEntry {
+    $type: 'yandex.cloud.containerregistry.v1.CreateRegistryRequest.LabelsEntry';
     key: string;
     value: string;
 }
 
 export interface CreateRegistryMetadata {
+    $type: 'yandex.cloud.containerregistry.v1.CreateRegistryMetadata';
     /** ID of the registry that is being created. */
     registryId: string;
 }
 
 export interface UpdateRegistryRequest {
+    $type: 'yandex.cloud.containerregistry.v1.UpdateRegistryRequest';
     /**
      * ID of the Registry resource to update.
      *
@@ -133,26 +141,31 @@ export interface UpdateRegistryRequest {
 }
 
 export interface UpdateRegistryRequest_LabelsEntry {
+    $type: 'yandex.cloud.containerregistry.v1.UpdateRegistryRequest.LabelsEntry';
     key: string;
     value: string;
 }
 
 export interface UpdateRegistryMetadata {
+    $type: 'yandex.cloud.containerregistry.v1.UpdateRegistryMetadata';
     /** ID of the Registry resource that is being updated. */
     registryId: string;
 }
 
 export interface DeleteRegistryRequest {
+    $type: 'yandex.cloud.containerregistry.v1.DeleteRegistryRequest';
     /** ID of the registry to delete. */
     registryId: string;
 }
 
 export interface DeleteRegistryMetadata {
+    $type: 'yandex.cloud.containerregistry.v1.DeleteRegistryMetadata';
     /** ID of the registry that is being deleted. */
     registryId: string;
 }
 
 export interface SetIpPermissionRequest {
+    $type: 'yandex.cloud.containerregistry.v1.SetIpPermissionRequest';
     /** ID of the registry for which ip permissions are being set. */
     registryId: string;
     /** IP permission to be set. */
@@ -160,6 +173,7 @@ export interface SetIpPermissionRequest {
 }
 
 export interface UpdateIpPermissionRequest {
+    $type: 'yandex.cloud.containerregistry.v1.UpdateIpPermissionRequest';
     /** ID of the registry for which ip permissions are being updated. */
     registryId: string;
     /** Updates to IP permissions. */
@@ -167,28 +181,37 @@ export interface UpdateIpPermissionRequest {
 }
 
 export interface ListIpPermissionRequest {
+    $type: 'yandex.cloud.containerregistry.v1.ListIpPermissionRequest';
     /** ID of the Registry to return ip permission list. */
     registryId: string;
 }
 
 export interface ListIpPermissionsResponse {
+    $type: 'yandex.cloud.containerregistry.v1.ListIpPermissionsResponse';
     /** List of ip permissions for registry */
     permissions: IpPermission[];
 }
 
 export interface SetIpPermissionMetadata {
+    $type: 'yandex.cloud.containerregistry.v1.SetIpPermissionMetadata';
     /** ID of the registry that ip permission is being set. */
     registryId: string;
 }
 
 export interface UpdateIpPermissionMetadata {
+    $type: 'yandex.cloud.containerregistry.v1.UpdateIpPermissionMetadata';
     /** ID of the registry that ip permission is being updated. */
     registryId: string;
 }
 
-const baseGetRegistryRequest: object = { registryId: '' };
+const baseGetRegistryRequest: object = {
+    $type: 'yandex.cloud.containerregistry.v1.GetRegistryRequest',
+    registryId: '',
+};
 
 export const GetRegistryRequest = {
+    $type: 'yandex.cloud.containerregistry.v1.GetRegistryRequest' as const,
+
     encode(
         message: GetRegistryRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -249,7 +272,10 @@ export const GetRegistryRequest = {
     },
 };
 
+messageTypeRegistry.set(GetRegistryRequest.$type, GetRegistryRequest);
+
 const baseListRegistriesRequest: object = {
+    $type: 'yandex.cloud.containerregistry.v1.ListRegistriesRequest',
     folderId: '',
     pageSize: 0,
     pageToken: '',
@@ -257,6 +283,8 @@ const baseListRegistriesRequest: object = {
 };
 
 export const ListRegistriesRequest = {
+    $type: 'yandex.cloud.containerregistry.v1.ListRegistriesRequest' as const,
+
     encode(
         message: ListRegistriesRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -375,9 +403,16 @@ export const ListRegistriesRequest = {
     },
 };
 
-const baseListRegistriesResponse: object = { nextPageToken: '' };
+messageTypeRegistry.set(ListRegistriesRequest.$type, ListRegistriesRequest);
+
+const baseListRegistriesResponse: object = {
+    $type: 'yandex.cloud.containerregistry.v1.ListRegistriesResponse',
+    nextPageToken: '',
+};
 
 export const ListRegistriesResponse = {
+    $type: 'yandex.cloud.containerregistry.v1.ListRegistriesResponse' as const,
+
     encode(
         message: ListRegistriesResponse,
         writer: _m0.Writer = _m0.Writer.create()
@@ -480,9 +515,17 @@ export const ListRegistriesResponse = {
     },
 };
 
-const baseCreateRegistryRequest: object = { folderId: '', name: '' };
+messageTypeRegistry.set(ListRegistriesResponse.$type, ListRegistriesResponse);
+
+const baseCreateRegistryRequest: object = {
+    $type: 'yandex.cloud.containerregistry.v1.CreateRegistryRequest',
+    folderId: '',
+    name: '',
+};
 
 export const CreateRegistryRequest = {
+    $type: 'yandex.cloud.containerregistry.v1.CreateRegistryRequest' as const,
+
     encode(
         message: CreateRegistryRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -495,7 +538,11 @@ export const CreateRegistryRequest = {
         }
         Object.entries(message.labels).forEach(([key, value]) => {
             CreateRegistryRequest_LabelsEntry.encode(
-                { key: key as any, value },
+                {
+                    $type: 'yandex.cloud.containerregistry.v1.CreateRegistryRequest.LabelsEntry',
+                    key: key as any,
+                    value,
+                },
                 writer.uint32(26).fork()
             ).ldelim();
         });
@@ -603,9 +650,17 @@ export const CreateRegistryRequest = {
     },
 };
 
-const baseCreateRegistryRequest_LabelsEntry: object = { key: '', value: '' };
+messageTypeRegistry.set(CreateRegistryRequest.$type, CreateRegistryRequest);
+
+const baseCreateRegistryRequest_LabelsEntry: object = {
+    $type: 'yandex.cloud.containerregistry.v1.CreateRegistryRequest.LabelsEntry',
+    key: '',
+    value: '',
+};
 
 export const CreateRegistryRequest_LabelsEntry = {
+    $type: 'yandex.cloud.containerregistry.v1.CreateRegistryRequest.LabelsEntry' as const,
+
     encode(
         message: CreateRegistryRequest_LabelsEntry,
         writer: _m0.Writer = _m0.Writer.create()
@@ -690,9 +745,19 @@ export const CreateRegistryRequest_LabelsEntry = {
     },
 };
 
-const baseCreateRegistryMetadata: object = { registryId: '' };
+messageTypeRegistry.set(
+    CreateRegistryRequest_LabelsEntry.$type,
+    CreateRegistryRequest_LabelsEntry
+);
+
+const baseCreateRegistryMetadata: object = {
+    $type: 'yandex.cloud.containerregistry.v1.CreateRegistryMetadata',
+    registryId: '',
+};
 
 export const CreateRegistryMetadata = {
+    $type: 'yandex.cloud.containerregistry.v1.CreateRegistryMetadata' as const,
+
     encode(
         message: CreateRegistryMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -761,9 +826,17 @@ export const CreateRegistryMetadata = {
     },
 };
 
-const baseUpdateRegistryRequest: object = { registryId: '', name: '' };
+messageTypeRegistry.set(CreateRegistryMetadata.$type, CreateRegistryMetadata);
+
+const baseUpdateRegistryRequest: object = {
+    $type: 'yandex.cloud.containerregistry.v1.UpdateRegistryRequest',
+    registryId: '',
+    name: '',
+};
 
 export const UpdateRegistryRequest = {
+    $type: 'yandex.cloud.containerregistry.v1.UpdateRegistryRequest' as const,
+
     encode(
         message: UpdateRegistryRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -782,7 +855,11 @@ export const UpdateRegistryRequest = {
         }
         Object.entries(message.labels).forEach(([key, value]) => {
             UpdateRegistryRequest_LabelsEntry.encode(
-                { key: key as any, value },
+                {
+                    $type: 'yandex.cloud.containerregistry.v1.UpdateRegistryRequest.LabelsEntry',
+                    key: key as any,
+                    value,
+                },
                 writer.uint32(34).fork()
             ).ldelim();
         });
@@ -911,9 +988,17 @@ export const UpdateRegistryRequest = {
     },
 };
 
-const baseUpdateRegistryRequest_LabelsEntry: object = { key: '', value: '' };
+messageTypeRegistry.set(UpdateRegistryRequest.$type, UpdateRegistryRequest);
+
+const baseUpdateRegistryRequest_LabelsEntry: object = {
+    $type: 'yandex.cloud.containerregistry.v1.UpdateRegistryRequest.LabelsEntry',
+    key: '',
+    value: '',
+};
 
 export const UpdateRegistryRequest_LabelsEntry = {
+    $type: 'yandex.cloud.containerregistry.v1.UpdateRegistryRequest.LabelsEntry' as const,
+
     encode(
         message: UpdateRegistryRequest_LabelsEntry,
         writer: _m0.Writer = _m0.Writer.create()
@@ -998,9 +1083,19 @@ export const UpdateRegistryRequest_LabelsEntry = {
     },
 };
 
-const baseUpdateRegistryMetadata: object = { registryId: '' };
+messageTypeRegistry.set(
+    UpdateRegistryRequest_LabelsEntry.$type,
+    UpdateRegistryRequest_LabelsEntry
+);
+
+const baseUpdateRegistryMetadata: object = {
+    $type: 'yandex.cloud.containerregistry.v1.UpdateRegistryMetadata',
+    registryId: '',
+};
 
 export const UpdateRegistryMetadata = {
+    $type: 'yandex.cloud.containerregistry.v1.UpdateRegistryMetadata' as const,
+
     encode(
         message: UpdateRegistryMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1069,9 +1164,16 @@ export const UpdateRegistryMetadata = {
     },
 };
 
-const baseDeleteRegistryRequest: object = { registryId: '' };
+messageTypeRegistry.set(UpdateRegistryMetadata.$type, UpdateRegistryMetadata);
+
+const baseDeleteRegistryRequest: object = {
+    $type: 'yandex.cloud.containerregistry.v1.DeleteRegistryRequest',
+    registryId: '',
+};
 
 export const DeleteRegistryRequest = {
+    $type: 'yandex.cloud.containerregistry.v1.DeleteRegistryRequest' as const,
+
     encode(
         message: DeleteRegistryRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1140,9 +1242,16 @@ export const DeleteRegistryRequest = {
     },
 };
 
-const baseDeleteRegistryMetadata: object = { registryId: '' };
+messageTypeRegistry.set(DeleteRegistryRequest.$type, DeleteRegistryRequest);
+
+const baseDeleteRegistryMetadata: object = {
+    $type: 'yandex.cloud.containerregistry.v1.DeleteRegistryMetadata',
+    registryId: '',
+};
 
 export const DeleteRegistryMetadata = {
+    $type: 'yandex.cloud.containerregistry.v1.DeleteRegistryMetadata' as const,
+
     encode(
         message: DeleteRegistryMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1211,9 +1320,16 @@ export const DeleteRegistryMetadata = {
     },
 };
 
-const baseSetIpPermissionRequest: object = { registryId: '' };
+messageTypeRegistry.set(DeleteRegistryMetadata.$type, DeleteRegistryMetadata);
+
+const baseSetIpPermissionRequest: object = {
+    $type: 'yandex.cloud.containerregistry.v1.SetIpPermissionRequest',
+    registryId: '',
+};
 
 export const SetIpPermissionRequest = {
+    $type: 'yandex.cloud.containerregistry.v1.SetIpPermissionRequest' as const,
+
     encode(
         message: SetIpPermissionRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1310,9 +1426,16 @@ export const SetIpPermissionRequest = {
     },
 };
 
-const baseUpdateIpPermissionRequest: object = { registryId: '' };
+messageTypeRegistry.set(SetIpPermissionRequest.$type, SetIpPermissionRequest);
+
+const baseUpdateIpPermissionRequest: object = {
+    $type: 'yandex.cloud.containerregistry.v1.UpdateIpPermissionRequest',
+    registryId: '',
+};
 
 export const UpdateIpPermissionRequest = {
+    $type: 'yandex.cloud.containerregistry.v1.UpdateIpPermissionRequest' as const,
+
     encode(
         message: UpdateIpPermissionRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1417,9 +1540,19 @@ export const UpdateIpPermissionRequest = {
     },
 };
 
-const baseListIpPermissionRequest: object = { registryId: '' };
+messageTypeRegistry.set(
+    UpdateIpPermissionRequest.$type,
+    UpdateIpPermissionRequest
+);
+
+const baseListIpPermissionRequest: object = {
+    $type: 'yandex.cloud.containerregistry.v1.ListIpPermissionRequest',
+    registryId: '',
+};
 
 export const ListIpPermissionRequest = {
+    $type: 'yandex.cloud.containerregistry.v1.ListIpPermissionRequest' as const,
+
     encode(
         message: ListIpPermissionRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1488,9 +1621,15 @@ export const ListIpPermissionRequest = {
     },
 };
 
-const baseListIpPermissionsResponse: object = {};
+messageTypeRegistry.set(ListIpPermissionRequest.$type, ListIpPermissionRequest);
+
+const baseListIpPermissionsResponse: object = {
+    $type: 'yandex.cloud.containerregistry.v1.ListIpPermissionsResponse',
+};
 
 export const ListIpPermissionsResponse = {
+    $type: 'yandex.cloud.containerregistry.v1.ListIpPermissionsResponse' as const,
+
     encode(
         message: ListIpPermissionsResponse,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1569,9 +1708,19 @@ export const ListIpPermissionsResponse = {
     },
 };
 
-const baseSetIpPermissionMetadata: object = { registryId: '' };
+messageTypeRegistry.set(
+    ListIpPermissionsResponse.$type,
+    ListIpPermissionsResponse
+);
+
+const baseSetIpPermissionMetadata: object = {
+    $type: 'yandex.cloud.containerregistry.v1.SetIpPermissionMetadata',
+    registryId: '',
+};
 
 export const SetIpPermissionMetadata = {
+    $type: 'yandex.cloud.containerregistry.v1.SetIpPermissionMetadata' as const,
+
     encode(
         message: SetIpPermissionMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1640,9 +1789,16 @@ export const SetIpPermissionMetadata = {
     },
 };
 
-const baseUpdateIpPermissionMetadata: object = { registryId: '' };
+messageTypeRegistry.set(SetIpPermissionMetadata.$type, SetIpPermissionMetadata);
+
+const baseUpdateIpPermissionMetadata: object = {
+    $type: 'yandex.cloud.containerregistry.v1.UpdateIpPermissionMetadata',
+    registryId: '',
+};
 
 export const UpdateIpPermissionMetadata = {
+    $type: 'yandex.cloud.containerregistry.v1.UpdateIpPermissionMetadata' as const,
+
     encode(
         message: UpdateIpPermissionMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1710,6 +1866,11 @@ export const UpdateIpPermissionMetadata = {
         return message;
     },
 };
+
+messageTypeRegistry.set(
+    UpdateIpPermissionMetadata.$type,
+    UpdateIpPermissionMetadata
+);
 
 /** A set of methods for managing Registry resources. */
 export const RegistryServiceService = {
@@ -2149,7 +2310,7 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 function longToNumber(long: Long): number {

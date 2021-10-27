@@ -1,4 +1,5 @@
 /* eslint-disable */
+import { messageTypeRegistry } from '../../../../../typeRegistry';
 import Long from 'long';
 import _m0 from 'protobufjs/minimal';
 
@@ -9,6 +10,7 @@ export const protobufPackage = 'yandex.cloud.mdb.mysql.v1alpha';
  * the [documentation](/docs/managed-mysql/concepts).
  */
 export interface User {
+    $type: 'yandex.cloud.mdb.mysql.v1alpha.User';
     /** Name of the MySQL user. */
     name: string;
     /** ID of the MySQL cluster the user belongs to. */
@@ -18,6 +20,7 @@ export interface User {
 }
 
 export interface Permission {
+    $type: 'yandex.cloud.mdb.mysql.v1alpha.Permission';
     /** Name of the database that the permission grants access to. */
     databaseName: string;
     /** Roles granted to the user within the database. */
@@ -187,6 +190,7 @@ export function permission_PrivilegeToJSON(
 }
 
 export interface UserSpec {
+    $type: 'yandex.cloud.mdb.mysql.v1alpha.UserSpec';
     /** Name of the MySQL user. */
     name: string;
     /** Password of the MySQL user. */
@@ -195,9 +199,15 @@ export interface UserSpec {
     permissions: Permission[];
 }
 
-const baseUser: object = { name: '', clusterId: '' };
+const baseUser: object = {
+    $type: 'yandex.cloud.mdb.mysql.v1alpha.User',
+    name: '',
+    clusterId: '',
+};
 
 export const User = {
+    $type: 'yandex.cloud.mdb.mysql.v1alpha.User' as const,
+
     encode(
         message: User,
         writer: _m0.Writer = _m0.Writer.create()
@@ -299,9 +309,17 @@ export const User = {
     },
 };
 
-const basePermission: object = { databaseName: '', roles: 0 };
+messageTypeRegistry.set(User.$type, User);
+
+const basePermission: object = {
+    $type: 'yandex.cloud.mdb.mysql.v1alpha.Permission',
+    databaseName: '',
+    roles: 0,
+};
 
 export const Permission = {
+    $type: 'yandex.cloud.mdb.mysql.v1alpha.Permission' as const,
+
     encode(
         message: Permission,
         writer: _m0.Writer = _m0.Writer.create()
@@ -392,9 +410,17 @@ export const Permission = {
     },
 };
 
-const baseUserSpec: object = { name: '', password: '' };
+messageTypeRegistry.set(Permission.$type, Permission);
+
+const baseUserSpec: object = {
+    $type: 'yandex.cloud.mdb.mysql.v1alpha.UserSpec',
+    name: '',
+    password: '',
+};
 
 export const UserSpec = {
+    $type: 'yandex.cloud.mdb.mysql.v1alpha.UserSpec' as const,
+
     encode(
         message: UserSpec,
         writer: _m0.Writer = _m0.Writer.create()
@@ -496,6 +522,8 @@ export const UserSpec = {
     },
 };
 
+messageTypeRegistry.set(UserSpec.$type, UserSpec);
+
 type Builtin =
     | Date
     | Function
@@ -511,7 +539,7 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 if (_m0.util.Long !== Long) {

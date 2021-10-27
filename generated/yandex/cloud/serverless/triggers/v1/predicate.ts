@@ -1,19 +1,23 @@
 /* eslint-disable */
+import { messageTypeRegistry } from '../../../../../typeRegistry';
 import Long from 'long';
 import _m0 from 'protobufjs/minimal';
 
 export const protobufPackage = 'yandex.cloud.serverless.triggers.v1';
 
 export interface Predicate {
+    $type: 'yandex.cloud.serverless.triggers.v1.Predicate';
     andPredicate: AndPredicate | undefined;
     fieldValuePredicate: FieldValuePredicate | undefined;
 }
 
 export interface AndPredicate {
+    $type: 'yandex.cloud.serverless.triggers.v1.AndPredicate';
     predicate: Predicate[];
 }
 
 export interface FieldValuePredicate {
+    $type: 'yandex.cloud.serverless.triggers.v1.FieldValuePredicate';
     fieldPath: string;
     /** string representation of the value matches exactly to the given string */
     exact: string | undefined;
@@ -23,9 +27,13 @@ export interface FieldValuePredicate {
     suffix: string | undefined;
 }
 
-const basePredicate: object = {};
+const basePredicate: object = {
+    $type: 'yandex.cloud.serverless.triggers.v1.Predicate',
+};
 
 export const Predicate = {
+    $type: 'yandex.cloud.serverless.triggers.v1.Predicate' as const,
+
     encode(
         message: Predicate,
         writer: _m0.Writer = _m0.Writer.create()
@@ -129,9 +137,15 @@ export const Predicate = {
     },
 };
 
-const baseAndPredicate: object = {};
+messageTypeRegistry.set(Predicate.$type, Predicate);
+
+const baseAndPredicate: object = {
+    $type: 'yandex.cloud.serverless.triggers.v1.AndPredicate',
+};
 
 export const AndPredicate = {
+    $type: 'yandex.cloud.serverless.triggers.v1.AndPredicate' as const,
+
     encode(
         message: AndPredicate,
         writer: _m0.Writer = _m0.Writer.create()
@@ -199,9 +213,16 @@ export const AndPredicate = {
     },
 };
 
-const baseFieldValuePredicate: object = { fieldPath: '' };
+messageTypeRegistry.set(AndPredicate.$type, AndPredicate);
+
+const baseFieldValuePredicate: object = {
+    $type: 'yandex.cloud.serverless.triggers.v1.FieldValuePredicate',
+    fieldPath: '',
+};
 
 export const FieldValuePredicate = {
+    $type: 'yandex.cloud.serverless.triggers.v1.FieldValuePredicate' as const,
+
     encode(
         message: FieldValuePredicate,
         writer: _m0.Writer = _m0.Writer.create()
@@ -312,6 +333,8 @@ export const FieldValuePredicate = {
     },
 };
 
+messageTypeRegistry.set(FieldValuePredicate.$type, FieldValuePredicate);
+
 type Builtin =
     | Date
     | Function
@@ -327,7 +350,7 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 if (_m0.util.Long !== Long) {

@@ -1,4 +1,5 @@
 /* eslint-disable */
+import { messageTypeRegistry } from '../../typeRegistry';
 import Long from 'long';
 import _m0 from 'protobufjs/minimal';
 
@@ -206,13 +207,16 @@ export const protobufPackage = 'google.protobuf';
  * `INVALID_ARGUMENT` error if any path is unmappable.
  */
 export interface FieldMask {
+    $type: 'google.protobuf.FieldMask';
     /** The set of field mask paths. */
     paths: string[];
 }
 
-const baseFieldMask: object = { paths: '' };
+const baseFieldMask: object = { $type: 'google.protobuf.FieldMask', paths: '' };
 
 export const FieldMask = {
+    $type: 'google.protobuf.FieldMask' as const,
+
     encode(
         message: FieldMask,
         writer: _m0.Writer = _m0.Writer.create()
@@ -276,6 +280,8 @@ export const FieldMask = {
     },
 };
 
+messageTypeRegistry.set(FieldMask.$type, FieldMask);
+
 type Builtin =
     | Date
     | Function
@@ -291,7 +297,7 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 if (_m0.util.Long !== Long) {

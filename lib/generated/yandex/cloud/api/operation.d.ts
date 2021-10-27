@@ -6,6 +6,7 @@ export declare const protobufPackage = "yandex.cloud.api";
  * in response [google.protobuf.Any] (for successful operation).
  */
 export interface Operation {
+    $type: 'yandex.cloud.api.Operation';
     /**
      * Optional. If present, rpc returns operation which metadata field will
      * contains message of specified type.
@@ -18,6 +19,7 @@ export interface Operation {
     response: string;
 }
 export declare const Operation: {
+    $type: "yandex.cloud.api.Operation";
     encode(message: Operation, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Operation;
     fromJSON(object: any): Operation;
@@ -26,6 +28,6 @@ export declare const Operation: {
 };
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

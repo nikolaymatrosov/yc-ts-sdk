@@ -1,6 +1,7 @@
 /* eslint-disable */
 import { Duration } from '../../../../../google/protobuf/duration';
 import { FieldMask } from '../../../../../google/protobuf/field_mask';
+import { messageTypeRegistry } from '../../../../../typeRegistry';
 import {
     ListAccessBindingsRequest,
     ListAccessBindingsResponse,
@@ -33,10 +34,12 @@ import _m0 from 'protobufjs/minimal';
 export const protobufPackage = 'yandex.cloud.serverless.containers.v1';
 
 export interface GetContainerRequest {
+    $type: 'yandex.cloud.serverless.containers.v1.GetContainerRequest';
     containerId: string;
 }
 
 export interface ListContainersRequest {
+    $type: 'yandex.cloud.serverless.containers.v1.ListContainersRequest';
     folderId: string;
     pageSize: number;
     pageToken: string;
@@ -44,11 +47,13 @@ export interface ListContainersRequest {
 }
 
 export interface ListContainersResponse {
+    $type: 'yandex.cloud.serverless.containers.v1.ListContainersResponse';
     containers: Container[];
     nextPageToken: string;
 }
 
 export interface CreateContainerRequest {
+    $type: 'yandex.cloud.serverless.containers.v1.CreateContainerRequest';
     folderId: string;
     name: string;
     description: string;
@@ -56,15 +61,18 @@ export interface CreateContainerRequest {
 }
 
 export interface CreateContainerRequest_LabelsEntry {
+    $type: 'yandex.cloud.serverless.containers.v1.CreateContainerRequest.LabelsEntry';
     key: string;
     value: string;
 }
 
 export interface CreateContainerMetadata {
+    $type: 'yandex.cloud.serverless.containers.v1.CreateContainerMetadata';
     containerId: string;
 }
 
 export interface UpdateContainerRequest {
+    $type: 'yandex.cloud.serverless.containers.v1.UpdateContainerRequest';
     containerId: string;
     updateMask: FieldMask | undefined;
     name: string;
@@ -73,27 +81,33 @@ export interface UpdateContainerRequest {
 }
 
 export interface UpdateContainerRequest_LabelsEntry {
+    $type: 'yandex.cloud.serverless.containers.v1.UpdateContainerRequest.LabelsEntry';
     key: string;
     value: string;
 }
 
 export interface UpdateContainerMetadata {
+    $type: 'yandex.cloud.serverless.containers.v1.UpdateContainerMetadata';
     containerId: string;
 }
 
 export interface DeleteContainerRequest {
+    $type: 'yandex.cloud.serverless.containers.v1.DeleteContainerRequest';
     containerId: string;
 }
 
 export interface DeleteContainerMetadata {
+    $type: 'yandex.cloud.serverless.containers.v1.DeleteContainerMetadata';
     containerId: string;
 }
 
 export interface GetContainerRevisionRequest {
+    $type: 'yandex.cloud.serverless.containers.v1.GetContainerRevisionRequest';
     containerRevisionId: string;
 }
 
 export interface ListContainersRevisionsRequest {
+    $type: 'yandex.cloud.serverless.containers.v1.ListContainersRevisionsRequest';
     folderId: string | undefined;
     containerId: string | undefined;
     pageSize: number;
@@ -102,11 +116,13 @@ export interface ListContainersRevisionsRequest {
 }
 
 export interface ListContainersRevisionsResponse {
+    $type: 'yandex.cloud.serverless.containers.v1.ListContainersRevisionsResponse';
     revisions: Revision[];
     nextPageToken: string;
 }
 
 export interface DeployContainerRevisionRequest {
+    $type: 'yandex.cloud.serverless.containers.v1.DeployContainerRevisionRequest';
     containerId: string;
     description: string;
     resources: Resources | undefined;
@@ -117,6 +133,7 @@ export interface DeployContainerRevisionRequest {
 }
 
 export interface ImageSpec {
+    $type: 'yandex.cloud.serverless.containers.v1.ImageSpec';
     imageUrl: string;
     command: Command | undefined;
     args: Args | undefined;
@@ -125,15 +142,18 @@ export interface ImageSpec {
 }
 
 export interface ImageSpec_EnvironmentEntry {
+    $type: 'yandex.cloud.serverless.containers.v1.ImageSpec.EnvironmentEntry';
     key: string;
     value: string;
 }
 
 export interface DeployContainerRevisionMetadata {
+    $type: 'yandex.cloud.serverless.containers.v1.DeployContainerRevisionMetadata';
     containerRevisionId: string;
 }
 
 export interface ListContainerOperationsRequest {
+    $type: 'yandex.cloud.serverless.containers.v1.ListContainerOperationsRequest';
     containerId: string;
     pageSize: number;
     pageToken: string;
@@ -141,13 +161,19 @@ export interface ListContainerOperationsRequest {
 }
 
 export interface ListContainerOperationsResponse {
+    $type: 'yandex.cloud.serverless.containers.v1.ListContainerOperationsResponse';
     operations: Operation[];
     nextPageToken: string;
 }
 
-const baseGetContainerRequest: object = { containerId: '' };
+const baseGetContainerRequest: object = {
+    $type: 'yandex.cloud.serverless.containers.v1.GetContainerRequest',
+    containerId: '',
+};
 
 export const GetContainerRequest = {
+    $type: 'yandex.cloud.serverless.containers.v1.GetContainerRequest' as const,
+
     encode(
         message: GetContainerRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -208,7 +234,10 @@ export const GetContainerRequest = {
     },
 };
 
+messageTypeRegistry.set(GetContainerRequest.$type, GetContainerRequest);
+
 const baseListContainersRequest: object = {
+    $type: 'yandex.cloud.serverless.containers.v1.ListContainersRequest',
     folderId: '',
     pageSize: 0,
     pageToken: '',
@@ -216,6 +245,8 @@ const baseListContainersRequest: object = {
 };
 
 export const ListContainersRequest = {
+    $type: 'yandex.cloud.serverless.containers.v1.ListContainersRequest' as const,
+
     encode(
         message: ListContainersRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -334,9 +365,16 @@ export const ListContainersRequest = {
     },
 };
 
-const baseListContainersResponse: object = { nextPageToken: '' };
+messageTypeRegistry.set(ListContainersRequest.$type, ListContainersRequest);
+
+const baseListContainersResponse: object = {
+    $type: 'yandex.cloud.serverless.containers.v1.ListContainersResponse',
+    nextPageToken: '',
+};
 
 export const ListContainersResponse = {
+    $type: 'yandex.cloud.serverless.containers.v1.ListContainersResponse' as const,
+
     encode(
         message: ListContainersResponse,
         writer: _m0.Writer = _m0.Writer.create()
@@ -439,13 +477,18 @@ export const ListContainersResponse = {
     },
 };
 
+messageTypeRegistry.set(ListContainersResponse.$type, ListContainersResponse);
+
 const baseCreateContainerRequest: object = {
+    $type: 'yandex.cloud.serverless.containers.v1.CreateContainerRequest',
     folderId: '',
     name: '',
     description: '',
 };
 
 export const CreateContainerRequest = {
+    $type: 'yandex.cloud.serverless.containers.v1.CreateContainerRequest' as const,
+
     encode(
         message: CreateContainerRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -461,7 +504,11 @@ export const CreateContainerRequest = {
         }
         Object.entries(message.labels).forEach(([key, value]) => {
             CreateContainerRequest_LabelsEntry.encode(
-                { key: key as any, value },
+                {
+                    $type: 'yandex.cloud.serverless.containers.v1.CreateContainerRequest.LabelsEntry',
+                    key: key as any,
+                    value,
+                },
                 writer.uint32(34).fork()
             ).ldelim();
         });
@@ -584,9 +631,17 @@ export const CreateContainerRequest = {
     },
 };
 
-const baseCreateContainerRequest_LabelsEntry: object = { key: '', value: '' };
+messageTypeRegistry.set(CreateContainerRequest.$type, CreateContainerRequest);
+
+const baseCreateContainerRequest_LabelsEntry: object = {
+    $type: 'yandex.cloud.serverless.containers.v1.CreateContainerRequest.LabelsEntry',
+    key: '',
+    value: '',
+};
 
 export const CreateContainerRequest_LabelsEntry = {
+    $type: 'yandex.cloud.serverless.containers.v1.CreateContainerRequest.LabelsEntry' as const,
+
     encode(
         message: CreateContainerRequest_LabelsEntry,
         writer: _m0.Writer = _m0.Writer.create()
@@ -671,9 +726,19 @@ export const CreateContainerRequest_LabelsEntry = {
     },
 };
 
-const baseCreateContainerMetadata: object = { containerId: '' };
+messageTypeRegistry.set(
+    CreateContainerRequest_LabelsEntry.$type,
+    CreateContainerRequest_LabelsEntry
+);
+
+const baseCreateContainerMetadata: object = {
+    $type: 'yandex.cloud.serverless.containers.v1.CreateContainerMetadata',
+    containerId: '',
+};
 
 export const CreateContainerMetadata = {
+    $type: 'yandex.cloud.serverless.containers.v1.CreateContainerMetadata' as const,
+
     encode(
         message: CreateContainerMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -742,13 +807,18 @@ export const CreateContainerMetadata = {
     },
 };
 
+messageTypeRegistry.set(CreateContainerMetadata.$type, CreateContainerMetadata);
+
 const baseUpdateContainerRequest: object = {
+    $type: 'yandex.cloud.serverless.containers.v1.UpdateContainerRequest',
     containerId: '',
     name: '',
     description: '',
 };
 
 export const UpdateContainerRequest = {
+    $type: 'yandex.cloud.serverless.containers.v1.UpdateContainerRequest' as const,
+
     encode(
         message: UpdateContainerRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -770,7 +840,11 @@ export const UpdateContainerRequest = {
         }
         Object.entries(message.labels).forEach(([key, value]) => {
             UpdateContainerRequest_LabelsEntry.encode(
-                { key: key as any, value },
+                {
+                    $type: 'yandex.cloud.serverless.containers.v1.UpdateContainerRequest.LabelsEntry',
+                    key: key as any,
+                    value,
+                },
                 writer.uint32(42).fork()
             ).ldelim();
         });
@@ -914,9 +988,17 @@ export const UpdateContainerRequest = {
     },
 };
 
-const baseUpdateContainerRequest_LabelsEntry: object = { key: '', value: '' };
+messageTypeRegistry.set(UpdateContainerRequest.$type, UpdateContainerRequest);
+
+const baseUpdateContainerRequest_LabelsEntry: object = {
+    $type: 'yandex.cloud.serverless.containers.v1.UpdateContainerRequest.LabelsEntry',
+    key: '',
+    value: '',
+};
 
 export const UpdateContainerRequest_LabelsEntry = {
+    $type: 'yandex.cloud.serverless.containers.v1.UpdateContainerRequest.LabelsEntry' as const,
+
     encode(
         message: UpdateContainerRequest_LabelsEntry,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1001,9 +1083,19 @@ export const UpdateContainerRequest_LabelsEntry = {
     },
 };
 
-const baseUpdateContainerMetadata: object = { containerId: '' };
+messageTypeRegistry.set(
+    UpdateContainerRequest_LabelsEntry.$type,
+    UpdateContainerRequest_LabelsEntry
+);
+
+const baseUpdateContainerMetadata: object = {
+    $type: 'yandex.cloud.serverless.containers.v1.UpdateContainerMetadata',
+    containerId: '',
+};
 
 export const UpdateContainerMetadata = {
+    $type: 'yandex.cloud.serverless.containers.v1.UpdateContainerMetadata' as const,
+
     encode(
         message: UpdateContainerMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1072,9 +1164,16 @@ export const UpdateContainerMetadata = {
     },
 };
 
-const baseDeleteContainerRequest: object = { containerId: '' };
+messageTypeRegistry.set(UpdateContainerMetadata.$type, UpdateContainerMetadata);
+
+const baseDeleteContainerRequest: object = {
+    $type: 'yandex.cloud.serverless.containers.v1.DeleteContainerRequest',
+    containerId: '',
+};
 
 export const DeleteContainerRequest = {
+    $type: 'yandex.cloud.serverless.containers.v1.DeleteContainerRequest' as const,
+
     encode(
         message: DeleteContainerRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1143,9 +1242,16 @@ export const DeleteContainerRequest = {
     },
 };
 
-const baseDeleteContainerMetadata: object = { containerId: '' };
+messageTypeRegistry.set(DeleteContainerRequest.$type, DeleteContainerRequest);
+
+const baseDeleteContainerMetadata: object = {
+    $type: 'yandex.cloud.serverless.containers.v1.DeleteContainerMetadata',
+    containerId: '',
+};
 
 export const DeleteContainerMetadata = {
+    $type: 'yandex.cloud.serverless.containers.v1.DeleteContainerMetadata' as const,
+
     encode(
         message: DeleteContainerMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1214,9 +1320,16 @@ export const DeleteContainerMetadata = {
     },
 };
 
-const baseGetContainerRevisionRequest: object = { containerRevisionId: '' };
+messageTypeRegistry.set(DeleteContainerMetadata.$type, DeleteContainerMetadata);
+
+const baseGetContainerRevisionRequest: object = {
+    $type: 'yandex.cloud.serverless.containers.v1.GetContainerRevisionRequest',
+    containerRevisionId: '',
+};
 
 export const GetContainerRevisionRequest = {
+    $type: 'yandex.cloud.serverless.containers.v1.GetContainerRevisionRequest' as const,
+
     encode(
         message: GetContainerRevisionRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1291,13 +1404,21 @@ export const GetContainerRevisionRequest = {
     },
 };
 
+messageTypeRegistry.set(
+    GetContainerRevisionRequest.$type,
+    GetContainerRevisionRequest
+);
+
 const baseListContainersRevisionsRequest: object = {
+    $type: 'yandex.cloud.serverless.containers.v1.ListContainersRevisionsRequest',
     pageSize: 0,
     pageToken: '',
     filter: '',
 };
 
 export const ListContainersRevisionsRequest = {
+    $type: 'yandex.cloud.serverless.containers.v1.ListContainersRevisionsRequest' as const,
+
     encode(
         message: ListContainersRevisionsRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1434,9 +1555,19 @@ export const ListContainersRevisionsRequest = {
     },
 };
 
-const baseListContainersRevisionsResponse: object = { nextPageToken: '' };
+messageTypeRegistry.set(
+    ListContainersRevisionsRequest.$type,
+    ListContainersRevisionsRequest
+);
+
+const baseListContainersRevisionsResponse: object = {
+    $type: 'yandex.cloud.serverless.containers.v1.ListContainersRevisionsResponse',
+    nextPageToken: '',
+};
 
 export const ListContainersRevisionsResponse = {
+    $type: 'yandex.cloud.serverless.containers.v1.ListContainersRevisionsResponse' as const,
+
     encode(
         message: ListContainersRevisionsResponse,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1539,7 +1670,13 @@ export const ListContainersRevisionsResponse = {
     },
 };
 
+messageTypeRegistry.set(
+    ListContainersRevisionsResponse.$type,
+    ListContainersRevisionsResponse
+);
+
 const baseDeployContainerRevisionRequest: object = {
+    $type: 'yandex.cloud.serverless.containers.v1.DeployContainerRevisionRequest',
     containerId: '',
     description: '',
     serviceAccountId: '',
@@ -1547,6 +1684,8 @@ const baseDeployContainerRevisionRequest: object = {
 };
 
 export const DeployContainerRevisionRequest = {
+    $type: 'yandex.cloud.serverless.containers.v1.DeployContainerRevisionRequest' as const,
+
     encode(
         message: DeployContainerRevisionRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1763,9 +1902,20 @@ export const DeployContainerRevisionRequest = {
     },
 };
 
-const baseImageSpec: object = { imageUrl: '', workingDir: '' };
+messageTypeRegistry.set(
+    DeployContainerRevisionRequest.$type,
+    DeployContainerRevisionRequest
+);
+
+const baseImageSpec: object = {
+    $type: 'yandex.cloud.serverless.containers.v1.ImageSpec',
+    imageUrl: '',
+    workingDir: '',
+};
 
 export const ImageSpec = {
+    $type: 'yandex.cloud.serverless.containers.v1.ImageSpec' as const,
+
     encode(
         message: ImageSpec,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1781,7 +1931,11 @@ export const ImageSpec = {
         }
         Object.entries(message.environment).forEach(([key, value]) => {
             ImageSpec_EnvironmentEntry.encode(
-                { key: key as any, value },
+                {
+                    $type: 'yandex.cloud.serverless.containers.v1.ImageSpec.EnvironmentEntry',
+                    key: key as any,
+                    value,
+                },
                 writer.uint32(34).fork()
             ).ldelim();
         });
@@ -1914,9 +2068,17 @@ export const ImageSpec = {
     },
 };
 
-const baseImageSpec_EnvironmentEntry: object = { key: '', value: '' };
+messageTypeRegistry.set(ImageSpec.$type, ImageSpec);
+
+const baseImageSpec_EnvironmentEntry: object = {
+    $type: 'yandex.cloud.serverless.containers.v1.ImageSpec.EnvironmentEntry',
+    key: '',
+    value: '',
+};
 
 export const ImageSpec_EnvironmentEntry = {
+    $type: 'yandex.cloud.serverless.containers.v1.ImageSpec.EnvironmentEntry' as const,
+
     encode(
         message: ImageSpec_EnvironmentEntry,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2001,9 +2163,19 @@ export const ImageSpec_EnvironmentEntry = {
     },
 };
 
-const baseDeployContainerRevisionMetadata: object = { containerRevisionId: '' };
+messageTypeRegistry.set(
+    ImageSpec_EnvironmentEntry.$type,
+    ImageSpec_EnvironmentEntry
+);
+
+const baseDeployContainerRevisionMetadata: object = {
+    $type: 'yandex.cloud.serverless.containers.v1.DeployContainerRevisionMetadata',
+    containerRevisionId: '',
+};
 
 export const DeployContainerRevisionMetadata = {
+    $type: 'yandex.cloud.serverless.containers.v1.DeployContainerRevisionMetadata' as const,
+
     encode(
         message: DeployContainerRevisionMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2078,7 +2250,13 @@ export const DeployContainerRevisionMetadata = {
     },
 };
 
+messageTypeRegistry.set(
+    DeployContainerRevisionMetadata.$type,
+    DeployContainerRevisionMetadata
+);
+
 const baseListContainerOperationsRequest: object = {
+    $type: 'yandex.cloud.serverless.containers.v1.ListContainerOperationsRequest',
     containerId: '',
     pageSize: 0,
     pageToken: '',
@@ -2086,6 +2264,8 @@ const baseListContainerOperationsRequest: object = {
 };
 
 export const ListContainerOperationsRequest = {
+    $type: 'yandex.cloud.serverless.containers.v1.ListContainerOperationsRequest' as const,
+
     encode(
         message: ListContainerOperationsRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2205,9 +2385,19 @@ export const ListContainerOperationsRequest = {
     },
 };
 
-const baseListContainerOperationsResponse: object = { nextPageToken: '' };
+messageTypeRegistry.set(
+    ListContainerOperationsRequest.$type,
+    ListContainerOperationsRequest
+);
+
+const baseListContainerOperationsResponse: object = {
+    $type: 'yandex.cloud.serverless.containers.v1.ListContainerOperationsResponse',
+    nextPageToken: '',
+};
 
 export const ListContainerOperationsResponse = {
+    $type: 'yandex.cloud.serverless.containers.v1.ListContainerOperationsResponse' as const,
+
     encode(
         message: ListContainerOperationsResponse,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2309,6 +2499,11 @@ export const ListContainerOperationsResponse = {
         return message;
     },
 };
+
+messageTypeRegistry.set(
+    ListContainerOperationsResponse.$type,
+    ListContainerOperationsResponse
+);
 
 export const ContainerServiceService = {
     get: {
@@ -2744,7 +2939,7 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 function longToNumber(long: Long): number {

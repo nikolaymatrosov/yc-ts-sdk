@@ -2,6 +2,7 @@
 import { FieldMask } from '../../../../../google/protobuf/field_mask';
 import { Timestamp } from '../../../../../google/protobuf/timestamp';
 import { TimeOfDay } from '../../../../../google/type/timeofday';
+import { messageTypeRegistry } from '../../../../../typeRegistry';
 import { Backup } from '../../../../../yandex/cloud/mdb/mysql/v1/backup';
 import {
     Cluster_Environment,
@@ -38,6 +39,7 @@ import _m0 from 'protobufjs/minimal';
 export const protobufPackage = 'yandex.cloud.mdb.mysql.v1';
 
 export interface GetClusterRequest {
+    $type: 'yandex.cloud.mdb.mysql.v1.GetClusterRequest';
     /**
      * ID of the MySQL cluster to return.
      * To get the cluster ID use a [ClusterService.List] request.
@@ -46,6 +48,7 @@ export interface GetClusterRequest {
 }
 
 export interface ListClustersRequest {
+    $type: 'yandex.cloud.mdb.mysql.v1.ListClustersRequest';
     /**
      * ID of the folder to list MySQL clusters in.
      * To get the folder ID, use a [yandex.cloud.resourcemanager.v1.FolderService.List] request.
@@ -73,6 +76,7 @@ export interface ListClustersRequest {
 }
 
 export interface ListClustersResponse {
+    $type: 'yandex.cloud.mdb.mysql.v1.ListClustersResponse';
     /** List of MySQL clusters. */
     clusters: Cluster[];
     /**
@@ -85,6 +89,7 @@ export interface ListClustersResponse {
 }
 
 export interface CreateClusterRequest {
+    $type: 'yandex.cloud.mdb.mysql.v1.CreateClusterRequest';
     /** ID of the folder to create the MySQL cluster in. */
     folderId: string;
     /** Name of the MySQL cluster. The name must be unique within the folder. */
@@ -115,16 +120,19 @@ export interface CreateClusterRequest {
 }
 
 export interface CreateClusterRequest_LabelsEntry {
+    $type: 'yandex.cloud.mdb.mysql.v1.CreateClusterRequest.LabelsEntry';
     key: string;
     value: string;
 }
 
 export interface CreateClusterMetadata {
+    $type: 'yandex.cloud.mdb.mysql.v1.CreateClusterMetadata';
     /** ID of the MySQL cluster that is being created. */
     clusterId: string;
 }
 
 export interface UpdateClusterRequest {
+    $type: 'yandex.cloud.mdb.mysql.v1.UpdateClusterRequest';
     /**
      * ID of the MySQL cluster to update.
      * To get the MySQL cluster ID, use a [ClusterService.List] request.
@@ -155,16 +163,19 @@ export interface UpdateClusterRequest {
 }
 
 export interface UpdateClusterRequest_LabelsEntry {
+    $type: 'yandex.cloud.mdb.mysql.v1.UpdateClusterRequest.LabelsEntry';
     key: string;
     value: string;
 }
 
 export interface UpdateClusterMetadata {
+    $type: 'yandex.cloud.mdb.mysql.v1.UpdateClusterMetadata';
     /** ID of the MySQL cluster that is being modified. */
     clusterId: string;
 }
 
 export interface DeleteClusterRequest {
+    $type: 'yandex.cloud.mdb.mysql.v1.DeleteClusterRequest';
     /**
      * ID of the MySQL cluster to delete.
      * To get the MySQL cluster ID, use a [ClusterService.List] request.
@@ -173,11 +184,13 @@ export interface DeleteClusterRequest {
 }
 
 export interface DeleteClusterMetadata {
+    $type: 'yandex.cloud.mdb.mysql.v1.DeleteClusterMetadata';
     /** ID of the MySQL cluster that is being deleted. */
     clusterId: string;
 }
 
 export interface BackupClusterRequest {
+    $type: 'yandex.cloud.mdb.mysql.v1.BackupClusterRequest';
     /**
      * ID of the MySQL cluster to back up.
      * To get the MySQL cluster ID, use a [ClusterService.List] request.
@@ -186,11 +199,13 @@ export interface BackupClusterRequest {
 }
 
 export interface BackupClusterMetadata {
+    $type: 'yandex.cloud.mdb.mysql.v1.BackupClusterMetadata';
     /** ID of the MySQL cluster that is being backed up. */
     clusterId: string;
 }
 
 export interface RestoreClusterRequest {
+    $type: 'yandex.cloud.mdb.mysql.v1.RestoreClusterRequest';
     /**
      * ID of the backup to create a cluster from.
      * To get the backup ID, use a [ClusterService.ListBackups] request.
@@ -225,11 +240,13 @@ export interface RestoreClusterRequest {
 }
 
 export interface RestoreClusterRequest_LabelsEntry {
+    $type: 'yandex.cloud.mdb.mysql.v1.RestoreClusterRequest.LabelsEntry';
     key: string;
     value: string;
 }
 
 export interface RestoreClusterMetadata {
+    $type: 'yandex.cloud.mdb.mysql.v1.RestoreClusterMetadata';
     /** ID of the new MySQL cluster that is being created from a backup. */
     clusterId: string;
     /** ID of the backup that is being used for creating a cluster. */
@@ -237,6 +254,7 @@ export interface RestoreClusterMetadata {
 }
 
 export interface StartClusterFailoverRequest {
+    $type: 'yandex.cloud.mdb.mysql.v1.StartClusterFailoverRequest';
     /** ID of MySQL cluster. */
     clusterId: string;
     /** New master host. Switch to the most up-to-date replica if not provided. */
@@ -244,11 +262,13 @@ export interface StartClusterFailoverRequest {
 }
 
 export interface StartClusterFailoverMetadata {
+    $type: 'yandex.cloud.mdb.mysql.v1.StartClusterFailoverMetadata';
     /** ID of the MySQL cluster being failovered. */
     clusterId: string;
 }
 
 export interface RescheduleMaintenanceRequest {
+    $type: 'yandex.cloud.mdb.mysql.v1.RescheduleMaintenanceRequest';
     /** ID of the MySQL cluster to reschedule the maintenance operation for. */
     clusterId: string;
     /** The type of reschedule request. */
@@ -310,6 +330,7 @@ export function rescheduleMaintenanceRequest_RescheduleTypeToJSON(
 
 /** Rescheduled maintenance operation metadata. */
 export interface RescheduleMaintenanceMetadata {
+    $type: 'yandex.cloud.mdb.mysql.v1.RescheduleMaintenanceMetadata';
     /** Required. ID of the MySQL cluster. */
     clusterId: string;
     /** Required. The time until which this maintenance operation is to be delayed. */
@@ -317,6 +338,7 @@ export interface RescheduleMaintenanceMetadata {
 }
 
 export interface LogRecord {
+    $type: 'yandex.cloud.mdb.mysql.v1.LogRecord';
     /** Log record timestamp in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format. */
     timestamp: Date | undefined;
     /** Contents of the log record. */
@@ -324,11 +346,13 @@ export interface LogRecord {
 }
 
 export interface LogRecord_MessageEntry {
+    $type: 'yandex.cloud.mdb.mysql.v1.LogRecord.MessageEntry';
     key: string;
     value: string;
 }
 
 export interface ListClusterLogsRequest {
+    $type: 'yandex.cloud.mdb.mysql.v1.ListClusterLogsRequest';
     /**
      * ID of the MySQL cluster to request logs for.
      * To get the MySQL cluster ID use a [ClusterService.List] request.
@@ -419,6 +443,7 @@ export function listClusterLogsRequest_ServiceTypeToJSON(
 }
 
 export interface ListClusterLogsResponse {
+    $type: 'yandex.cloud.mdb.mysql.v1.ListClusterLogsResponse';
     /** Requested log records. */
     logs: LogRecord[];
     /**
@@ -432,6 +457,7 @@ export interface ListClusterLogsResponse {
 }
 
 export interface StreamLogRecord {
+    $type: 'yandex.cloud.mdb.mysql.v1.StreamLogRecord';
     /** One of the requested log records. */
     record: LogRecord | undefined;
     /**
@@ -444,6 +470,7 @@ export interface StreamLogRecord {
 }
 
 export interface StreamClusterLogsRequest {
+    $type: 'yandex.cloud.mdb.mysql.v1.StreamClusterLogsRequest';
     /** Required. ID of the MySQL cluster. */
     clusterId: string;
     /** Columns from logs table to get in the response. */
@@ -532,6 +559,7 @@ export function streamClusterLogsRequest_ServiceTypeToJSON(
 }
 
 export interface ListClusterOperationsRequest {
+    $type: 'yandex.cloud.mdb.mysql.v1.ListClusterOperationsRequest';
     /** ID of the MySQL cluster to list operations for. */
     clusterId: string;
     /**
@@ -548,6 +576,7 @@ export interface ListClusterOperationsRequest {
 }
 
 export interface ListClusterOperationsResponse {
+    $type: 'yandex.cloud.mdb.mysql.v1.ListClusterOperationsResponse';
     /** List of operations for the specified MySQL cluster. */
     operations: Operation[];
     /**
@@ -560,6 +589,7 @@ export interface ListClusterOperationsResponse {
 }
 
 export interface ListClusterBackupsRequest {
+    $type: 'yandex.cloud.mdb.mysql.v1.ListClusterBackupsRequest';
     /**
      * ID of the MySQL cluster.
      * To get the MySQL cluster ID use a [ClusterService.List] request.
@@ -579,6 +609,7 @@ export interface ListClusterBackupsRequest {
 }
 
 export interface ListClusterBackupsResponse {
+    $type: 'yandex.cloud.mdb.mysql.v1.ListClusterBackupsResponse';
     /** List of MySQL backups. */
     backups: Backup[];
     /**
@@ -591,6 +622,7 @@ export interface ListClusterBackupsResponse {
 }
 
 export interface ListClusterHostsRequest {
+    $type: 'yandex.cloud.mdb.mysql.v1.ListClusterHostsRequest';
     /**
      * ID of the MySQL cluster.
      * To get the MySQL cluster ID use a [ClusterService.List] request.
@@ -610,6 +642,7 @@ export interface ListClusterHostsRequest {
 }
 
 export interface ListClusterHostsResponse {
+    $type: 'yandex.cloud.mdb.mysql.v1.ListClusterHostsResponse';
     /** List of MySQL hosts. */
     hosts: Host[];
     /**
@@ -622,6 +655,7 @@ export interface ListClusterHostsResponse {
 }
 
 export interface AddClusterHostsRequest {
+    $type: 'yandex.cloud.mdb.mysql.v1.AddClusterHostsRequest';
     /**
      * ID of the MySQL cluster to add hosts to.
      * To get the MySQL cluster ID, use a [ClusterService.List] request.
@@ -632,6 +666,7 @@ export interface AddClusterHostsRequest {
 }
 
 export interface AddClusterHostsMetadata {
+    $type: 'yandex.cloud.mdb.mysql.v1.AddClusterHostsMetadata';
     /** ID of the MySQL cluster to which the hosts are being added. */
     clusterId: string;
     /** Names of hosts that are being added to the cluster. */
@@ -639,6 +674,7 @@ export interface AddClusterHostsMetadata {
 }
 
 export interface DeleteClusterHostsRequest {
+    $type: 'yandex.cloud.mdb.mysql.v1.DeleteClusterHostsRequest';
     /**
      * ID of the MySQL cluster to remove hosts from.
      * To get the MySQL cluster ID, use a [ClusterService.List] request.
@@ -649,6 +685,7 @@ export interface DeleteClusterHostsRequest {
 }
 
 export interface DeleteClusterHostsMetadata {
+    $type: 'yandex.cloud.mdb.mysql.v1.DeleteClusterHostsMetadata';
     /** ID of the MySQL cluster to remove hosts from. */
     clusterId: string;
     /** Names of hosts that are being deleted. */
@@ -656,26 +693,31 @@ export interface DeleteClusterHostsMetadata {
 }
 
 export interface StartClusterRequest {
+    $type: 'yandex.cloud.mdb.mysql.v1.StartClusterRequest';
     /** ID of the MySQL cluster to start. */
     clusterId: string;
 }
 
 export interface StartClusterMetadata {
+    $type: 'yandex.cloud.mdb.mysql.v1.StartClusterMetadata';
     /** ID of the MySQL cluster being started. */
     clusterId: string;
 }
 
 export interface StopClusterRequest {
+    $type: 'yandex.cloud.mdb.mysql.v1.StopClusterRequest';
     /** ID of the MySQL cluster to stop. */
     clusterId: string;
 }
 
 export interface StopClusterMetadata {
+    $type: 'yandex.cloud.mdb.mysql.v1.StopClusterMetadata';
     /** ID of the MySQL cluster being stopped. */
     clusterId: string;
 }
 
 export interface MoveClusterRequest {
+    $type: 'yandex.cloud.mdb.mysql.v1.MoveClusterRequest';
     /** ID of the MySQL cluster to move. */
     clusterId: string;
     /** ID of the destination folder. */
@@ -683,6 +725,7 @@ export interface MoveClusterRequest {
 }
 
 export interface MoveClusterMetadata {
+    $type: 'yandex.cloud.mdb.mysql.v1.MoveClusterMetadata';
     /** ID of the MySQL cluster being moved. */
     clusterId: string;
     /** ID of the source folder. */
@@ -692,6 +735,7 @@ export interface MoveClusterMetadata {
 }
 
 export interface UpdateClusterHostsRequest {
+    $type: 'yandex.cloud.mdb.mysql.v1.UpdateClusterHostsRequest';
     /**
      * ID of the MySQL cluster to update hosts in.
      * To get the MySQL cluster ID, use a [ClusterService.List] request.
@@ -702,6 +746,7 @@ export interface UpdateClusterHostsRequest {
 }
 
 export interface UpdateClusterHostsMetadata {
+    $type: 'yandex.cloud.mdb.mysql.v1.UpdateClusterHostsMetadata';
     /** ID of the MySQL cluster to modify hosts in. */
     clusterId: string;
     /** Names of hosts that are being modified. */
@@ -709,6 +754,7 @@ export interface UpdateClusterHostsMetadata {
 }
 
 export interface UpdateHostSpec {
+    $type: 'yandex.cloud.mdb.mysql.v1.UpdateHostSpec';
     /**
      * Name of the host to update.
      * To get the MySQL host name, use a [ClusterService.ListHosts] request.
@@ -728,6 +774,7 @@ export interface UpdateHostSpec {
 }
 
 export interface HostSpec {
+    $type: 'yandex.cloud.mdb.mysql.v1.HostSpec';
     /**
      * ID of the availability zone where the host resides.
      * To get a list of available zones, use the [yandex.cloud.compute.v1.ZoneService.List] request.
@@ -755,6 +802,7 @@ export interface HostSpec {
 }
 
 export interface ConfigSpec {
+    $type: 'yandex.cloud.mdb.mysql.v1.ConfigSpec';
     /**
      * Version of MySQL used in the cluster.
      * Possible values:
@@ -774,9 +822,14 @@ export interface ConfigSpec {
     access: Access | undefined;
 }
 
-const baseGetClusterRequest: object = { clusterId: '' };
+const baseGetClusterRequest: object = {
+    $type: 'yandex.cloud.mdb.mysql.v1.GetClusterRequest',
+    clusterId: '',
+};
 
 export const GetClusterRequest = {
+    $type: 'yandex.cloud.mdb.mysql.v1.GetClusterRequest' as const,
+
     encode(
         message: GetClusterRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -833,7 +886,10 @@ export const GetClusterRequest = {
     },
 };
 
+messageTypeRegistry.set(GetClusterRequest.$type, GetClusterRequest);
+
 const baseListClustersRequest: object = {
+    $type: 'yandex.cloud.mdb.mysql.v1.ListClustersRequest',
     folderId: '',
     pageSize: 0,
     pageToken: '',
@@ -841,6 +897,8 @@ const baseListClustersRequest: object = {
 };
 
 export const ListClustersRequest = {
+    $type: 'yandex.cloud.mdb.mysql.v1.ListClustersRequest' as const,
+
     encode(
         message: ListClustersRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -951,9 +1009,16 @@ export const ListClustersRequest = {
     },
 };
 
-const baseListClustersResponse: object = { nextPageToken: '' };
+messageTypeRegistry.set(ListClustersRequest.$type, ListClustersRequest);
+
+const baseListClustersResponse: object = {
+    $type: 'yandex.cloud.mdb.mysql.v1.ListClustersResponse',
+    nextPageToken: '',
+};
 
 export const ListClustersResponse = {
+    $type: 'yandex.cloud.mdb.mysql.v1.ListClustersResponse' as const,
+
     encode(
         message: ListClustersResponse,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1050,7 +1115,10 @@ export const ListClustersResponse = {
     },
 };
 
+messageTypeRegistry.set(ListClustersResponse.$type, ListClustersResponse);
+
 const baseCreateClusterRequest: object = {
+    $type: 'yandex.cloud.mdb.mysql.v1.CreateClusterRequest',
     folderId: '',
     name: '',
     description: '',
@@ -1061,6 +1129,8 @@ const baseCreateClusterRequest: object = {
 };
 
 export const CreateClusterRequest = {
+    $type: 'yandex.cloud.mdb.mysql.v1.CreateClusterRequest' as const,
+
     encode(
         message: CreateClusterRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1076,7 +1146,11 @@ export const CreateClusterRequest = {
         }
         Object.entries(message.labels).forEach(([key, value]) => {
             CreateClusterRequest_LabelsEntry.encode(
-                { key: key as any, value },
+                {
+                    $type: 'yandex.cloud.mdb.mysql.v1.CreateClusterRequest.LabelsEntry',
+                    key: key as any,
+                    value,
+                },
                 writer.uint32(34).fork()
             ).ldelim();
         });
@@ -1400,9 +1474,17 @@ export const CreateClusterRequest = {
     },
 };
 
-const baseCreateClusterRequest_LabelsEntry: object = { key: '', value: '' };
+messageTypeRegistry.set(CreateClusterRequest.$type, CreateClusterRequest);
+
+const baseCreateClusterRequest_LabelsEntry: object = {
+    $type: 'yandex.cloud.mdb.mysql.v1.CreateClusterRequest.LabelsEntry',
+    key: '',
+    value: '',
+};
 
 export const CreateClusterRequest_LabelsEntry = {
+    $type: 'yandex.cloud.mdb.mysql.v1.CreateClusterRequest.LabelsEntry' as const,
+
     encode(
         message: CreateClusterRequest_LabelsEntry,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1487,9 +1569,19 @@ export const CreateClusterRequest_LabelsEntry = {
     },
 };
 
-const baseCreateClusterMetadata: object = { clusterId: '' };
+messageTypeRegistry.set(
+    CreateClusterRequest_LabelsEntry.$type,
+    CreateClusterRequest_LabelsEntry
+);
+
+const baseCreateClusterMetadata: object = {
+    $type: 'yandex.cloud.mdb.mysql.v1.CreateClusterMetadata',
+    clusterId: '',
+};
 
 export const CreateClusterMetadata = {
+    $type: 'yandex.cloud.mdb.mysql.v1.CreateClusterMetadata' as const,
+
     encode(
         message: CreateClusterMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1557,7 +1649,10 @@ export const CreateClusterMetadata = {
     },
 };
 
+messageTypeRegistry.set(CreateClusterMetadata.$type, CreateClusterMetadata);
+
 const baseUpdateClusterRequest: object = {
+    $type: 'yandex.cloud.mdb.mysql.v1.UpdateClusterRequest',
     clusterId: '',
     description: '',
     name: '',
@@ -1566,6 +1661,8 @@ const baseUpdateClusterRequest: object = {
 };
 
 export const UpdateClusterRequest = {
+    $type: 'yandex.cloud.mdb.mysql.v1.UpdateClusterRequest' as const,
+
     encode(
         message: UpdateClusterRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1584,7 +1681,11 @@ export const UpdateClusterRequest = {
         }
         Object.entries(message.labels).forEach(([key, value]) => {
             UpdateClusterRequest_LabelsEntry.encode(
-                { key: key as any, value },
+                {
+                    $type: 'yandex.cloud.mdb.mysql.v1.UpdateClusterRequest.LabelsEntry',
+                    key: key as any,
+                    value,
+                },
                 writer.uint32(34).fork()
             ).ldelim();
         });
@@ -1840,9 +1941,17 @@ export const UpdateClusterRequest = {
     },
 };
 
-const baseUpdateClusterRequest_LabelsEntry: object = { key: '', value: '' };
+messageTypeRegistry.set(UpdateClusterRequest.$type, UpdateClusterRequest);
+
+const baseUpdateClusterRequest_LabelsEntry: object = {
+    $type: 'yandex.cloud.mdb.mysql.v1.UpdateClusterRequest.LabelsEntry',
+    key: '',
+    value: '',
+};
 
 export const UpdateClusterRequest_LabelsEntry = {
+    $type: 'yandex.cloud.mdb.mysql.v1.UpdateClusterRequest.LabelsEntry' as const,
+
     encode(
         message: UpdateClusterRequest_LabelsEntry,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1927,9 +2036,19 @@ export const UpdateClusterRequest_LabelsEntry = {
     },
 };
 
-const baseUpdateClusterMetadata: object = { clusterId: '' };
+messageTypeRegistry.set(
+    UpdateClusterRequest_LabelsEntry.$type,
+    UpdateClusterRequest_LabelsEntry
+);
+
+const baseUpdateClusterMetadata: object = {
+    $type: 'yandex.cloud.mdb.mysql.v1.UpdateClusterMetadata',
+    clusterId: '',
+};
 
 export const UpdateClusterMetadata = {
+    $type: 'yandex.cloud.mdb.mysql.v1.UpdateClusterMetadata' as const,
+
     encode(
         message: UpdateClusterMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1997,9 +2116,16 @@ export const UpdateClusterMetadata = {
     },
 };
 
-const baseDeleteClusterRequest: object = { clusterId: '' };
+messageTypeRegistry.set(UpdateClusterMetadata.$type, UpdateClusterMetadata);
+
+const baseDeleteClusterRequest: object = {
+    $type: 'yandex.cloud.mdb.mysql.v1.DeleteClusterRequest',
+    clusterId: '',
+};
 
 export const DeleteClusterRequest = {
+    $type: 'yandex.cloud.mdb.mysql.v1.DeleteClusterRequest' as const,
+
     encode(
         message: DeleteClusterRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2061,9 +2187,16 @@ export const DeleteClusterRequest = {
     },
 };
 
-const baseDeleteClusterMetadata: object = { clusterId: '' };
+messageTypeRegistry.set(DeleteClusterRequest.$type, DeleteClusterRequest);
+
+const baseDeleteClusterMetadata: object = {
+    $type: 'yandex.cloud.mdb.mysql.v1.DeleteClusterMetadata',
+    clusterId: '',
+};
 
 export const DeleteClusterMetadata = {
+    $type: 'yandex.cloud.mdb.mysql.v1.DeleteClusterMetadata' as const,
+
     encode(
         message: DeleteClusterMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2131,9 +2264,16 @@ export const DeleteClusterMetadata = {
     },
 };
 
-const baseBackupClusterRequest: object = { clusterId: '' };
+messageTypeRegistry.set(DeleteClusterMetadata.$type, DeleteClusterMetadata);
+
+const baseBackupClusterRequest: object = {
+    $type: 'yandex.cloud.mdb.mysql.v1.BackupClusterRequest',
+    clusterId: '',
+};
 
 export const BackupClusterRequest = {
+    $type: 'yandex.cloud.mdb.mysql.v1.BackupClusterRequest' as const,
+
     encode(
         message: BackupClusterRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2195,9 +2335,16 @@ export const BackupClusterRequest = {
     },
 };
 
-const baseBackupClusterMetadata: object = { clusterId: '' };
+messageTypeRegistry.set(BackupClusterRequest.$type, BackupClusterRequest);
+
+const baseBackupClusterMetadata: object = {
+    $type: 'yandex.cloud.mdb.mysql.v1.BackupClusterMetadata',
+    clusterId: '',
+};
 
 export const BackupClusterMetadata = {
+    $type: 'yandex.cloud.mdb.mysql.v1.BackupClusterMetadata' as const,
+
     encode(
         message: BackupClusterMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2265,7 +2412,10 @@ export const BackupClusterMetadata = {
     },
 };
 
+messageTypeRegistry.set(BackupClusterMetadata.$type, BackupClusterMetadata);
+
 const baseRestoreClusterRequest: object = {
+    $type: 'yandex.cloud.mdb.mysql.v1.RestoreClusterRequest',
     backupId: '',
     name: '',
     description: '',
@@ -2276,6 +2426,8 @@ const baseRestoreClusterRequest: object = {
 };
 
 export const RestoreClusterRequest = {
+    $type: 'yandex.cloud.mdb.mysql.v1.RestoreClusterRequest' as const,
+
     encode(
         message: RestoreClusterRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2297,7 +2449,11 @@ export const RestoreClusterRequest = {
         }
         Object.entries(message.labels).forEach(([key, value]) => {
             RestoreClusterRequest_LabelsEntry.encode(
-                { key: key as any, value },
+                {
+                    $type: 'yandex.cloud.mdb.mysql.v1.RestoreClusterRequest.LabelsEntry',
+                    key: key as any,
+                    value,
+                },
                 writer.uint32(50).fork()
             ).ldelim();
         });
@@ -2574,9 +2730,17 @@ export const RestoreClusterRequest = {
     },
 };
 
-const baseRestoreClusterRequest_LabelsEntry: object = { key: '', value: '' };
+messageTypeRegistry.set(RestoreClusterRequest.$type, RestoreClusterRequest);
+
+const baseRestoreClusterRequest_LabelsEntry: object = {
+    $type: 'yandex.cloud.mdb.mysql.v1.RestoreClusterRequest.LabelsEntry',
+    key: '',
+    value: '',
+};
 
 export const RestoreClusterRequest_LabelsEntry = {
+    $type: 'yandex.cloud.mdb.mysql.v1.RestoreClusterRequest.LabelsEntry' as const,
+
     encode(
         message: RestoreClusterRequest_LabelsEntry,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2661,9 +2825,20 @@ export const RestoreClusterRequest_LabelsEntry = {
     },
 };
 
-const baseRestoreClusterMetadata: object = { clusterId: '', backupId: '' };
+messageTypeRegistry.set(
+    RestoreClusterRequest_LabelsEntry.$type,
+    RestoreClusterRequest_LabelsEntry
+);
+
+const baseRestoreClusterMetadata: object = {
+    $type: 'yandex.cloud.mdb.mysql.v1.RestoreClusterMetadata',
+    clusterId: '',
+    backupId: '',
+};
 
 export const RestoreClusterMetadata = {
+    $type: 'yandex.cloud.mdb.mysql.v1.RestoreClusterMetadata' as const,
+
     encode(
         message: RestoreClusterMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2748,9 +2923,17 @@ export const RestoreClusterMetadata = {
     },
 };
 
-const baseStartClusterFailoverRequest: object = { clusterId: '', hostName: '' };
+messageTypeRegistry.set(RestoreClusterMetadata.$type, RestoreClusterMetadata);
+
+const baseStartClusterFailoverRequest: object = {
+    $type: 'yandex.cloud.mdb.mysql.v1.StartClusterFailoverRequest',
+    clusterId: '',
+    hostName: '',
+};
 
 export const StartClusterFailoverRequest = {
+    $type: 'yandex.cloud.mdb.mysql.v1.StartClusterFailoverRequest' as const,
+
     encode(
         message: StartClusterFailoverRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2835,9 +3018,19 @@ export const StartClusterFailoverRequest = {
     },
 };
 
-const baseStartClusterFailoverMetadata: object = { clusterId: '' };
+messageTypeRegistry.set(
+    StartClusterFailoverRequest.$type,
+    StartClusterFailoverRequest
+);
+
+const baseStartClusterFailoverMetadata: object = {
+    $type: 'yandex.cloud.mdb.mysql.v1.StartClusterFailoverMetadata',
+    clusterId: '',
+};
 
 export const StartClusterFailoverMetadata = {
+    $type: 'yandex.cloud.mdb.mysql.v1.StartClusterFailoverMetadata' as const,
+
     encode(
         message: StartClusterFailoverMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2905,12 +3098,20 @@ export const StartClusterFailoverMetadata = {
     },
 };
 
+messageTypeRegistry.set(
+    StartClusterFailoverMetadata.$type,
+    StartClusterFailoverMetadata
+);
+
 const baseRescheduleMaintenanceRequest: object = {
+    $type: 'yandex.cloud.mdb.mysql.v1.RescheduleMaintenanceRequest',
     clusterId: '',
     rescheduleType: 0,
 };
 
 export const RescheduleMaintenanceRequest = {
+    $type: 'yandex.cloud.mdb.mysql.v1.RescheduleMaintenanceRequest' as const,
+
     encode(
         message: RescheduleMaintenanceRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -3031,9 +3232,19 @@ export const RescheduleMaintenanceRequest = {
     },
 };
 
-const baseRescheduleMaintenanceMetadata: object = { clusterId: '' };
+messageTypeRegistry.set(
+    RescheduleMaintenanceRequest.$type,
+    RescheduleMaintenanceRequest
+);
+
+const baseRescheduleMaintenanceMetadata: object = {
+    $type: 'yandex.cloud.mdb.mysql.v1.RescheduleMaintenanceMetadata',
+    clusterId: '',
+};
 
 export const RescheduleMaintenanceMetadata = {
+    $type: 'yandex.cloud.mdb.mysql.v1.RescheduleMaintenanceMetadata' as const,
+
     encode(
         message: RescheduleMaintenanceMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -3124,9 +3335,16 @@ export const RescheduleMaintenanceMetadata = {
     },
 };
 
-const baseLogRecord: object = {};
+messageTypeRegistry.set(
+    RescheduleMaintenanceMetadata.$type,
+    RescheduleMaintenanceMetadata
+);
+
+const baseLogRecord: object = { $type: 'yandex.cloud.mdb.mysql.v1.LogRecord' };
 
 export const LogRecord = {
+    $type: 'yandex.cloud.mdb.mysql.v1.LogRecord' as const,
+
     encode(
         message: LogRecord,
         writer: _m0.Writer = _m0.Writer.create()
@@ -3139,7 +3357,11 @@ export const LogRecord = {
         }
         Object.entries(message.message).forEach(([key, value]) => {
             LogRecord_MessageEntry.encode(
-                { key: key as any, value },
+                {
+                    $type: 'yandex.cloud.mdb.mysql.v1.LogRecord.MessageEntry',
+                    key: key as any,
+                    value,
+                },
                 writer.uint32(18).fork()
             ).ldelim();
         });
@@ -3225,9 +3447,17 @@ export const LogRecord = {
     },
 };
 
-const baseLogRecord_MessageEntry: object = { key: '', value: '' };
+messageTypeRegistry.set(LogRecord.$type, LogRecord);
+
+const baseLogRecord_MessageEntry: object = {
+    $type: 'yandex.cloud.mdb.mysql.v1.LogRecord.MessageEntry',
+    key: '',
+    value: '',
+};
 
 export const LogRecord_MessageEntry = {
+    $type: 'yandex.cloud.mdb.mysql.v1.LogRecord.MessageEntry' as const,
+
     encode(
         message: LogRecord_MessageEntry,
         writer: _m0.Writer = _m0.Writer.create()
@@ -3312,7 +3542,10 @@ export const LogRecord_MessageEntry = {
     },
 };
 
+messageTypeRegistry.set(LogRecord_MessageEntry.$type, LogRecord_MessageEntry);
+
 const baseListClusterLogsRequest: object = {
+    $type: 'yandex.cloud.mdb.mysql.v1.ListClusterLogsRequest',
     clusterId: '',
     columnFilter: '',
     serviceType: 0,
@@ -3322,6 +3555,8 @@ const baseListClusterLogsRequest: object = {
 };
 
 export const ListClusterLogsRequest = {
+    $type: 'yandex.cloud.mdb.mysql.v1.ListClusterLogsRequest' as const,
+
     encode(
         message: ListClusterLogsRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -3539,9 +3774,16 @@ export const ListClusterLogsRequest = {
     },
 };
 
-const baseListClusterLogsResponse: object = { nextPageToken: '' };
+messageTypeRegistry.set(ListClusterLogsRequest.$type, ListClusterLogsRequest);
+
+const baseListClusterLogsResponse: object = {
+    $type: 'yandex.cloud.mdb.mysql.v1.ListClusterLogsResponse',
+    nextPageToken: '',
+};
 
 export const ListClusterLogsResponse = {
+    $type: 'yandex.cloud.mdb.mysql.v1.ListClusterLogsResponse' as const,
+
     encode(
         message: ListClusterLogsResponse,
         writer: _m0.Writer = _m0.Writer.create()
@@ -3644,9 +3886,16 @@ export const ListClusterLogsResponse = {
     },
 };
 
-const baseStreamLogRecord: object = { nextRecordToken: '' };
+messageTypeRegistry.set(ListClusterLogsResponse.$type, ListClusterLogsResponse);
+
+const baseStreamLogRecord: object = {
+    $type: 'yandex.cloud.mdb.mysql.v1.StreamLogRecord',
+    nextRecordToken: '',
+};
 
 export const StreamLogRecord = {
+    $type: 'yandex.cloud.mdb.mysql.v1.StreamLogRecord' as const,
+
     encode(
         message: StreamLogRecord,
         writer: _m0.Writer = _m0.Writer.create()
@@ -3730,7 +3979,10 @@ export const StreamLogRecord = {
     },
 };
 
+messageTypeRegistry.set(StreamLogRecord.$type, StreamLogRecord);
+
 const baseStreamClusterLogsRequest: object = {
+    $type: 'yandex.cloud.mdb.mysql.v1.StreamClusterLogsRequest',
     clusterId: '',
     columnFilter: '',
     serviceType: 0,
@@ -3739,6 +3991,8 @@ const baseStreamClusterLogsRequest: object = {
 };
 
 export const StreamClusterLogsRequest = {
+    $type: 'yandex.cloud.mdb.mysql.v1.StreamClusterLogsRequest' as const,
+
     encode(
         message: StreamClusterLogsRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -3933,13 +4187,21 @@ export const StreamClusterLogsRequest = {
     },
 };
 
+messageTypeRegistry.set(
+    StreamClusterLogsRequest.$type,
+    StreamClusterLogsRequest
+);
+
 const baseListClusterOperationsRequest: object = {
+    $type: 'yandex.cloud.mdb.mysql.v1.ListClusterOperationsRequest',
     clusterId: '',
     pageSize: 0,
     pageToken: '',
 };
 
 export const ListClusterOperationsRequest = {
+    $type: 'yandex.cloud.mdb.mysql.v1.ListClusterOperationsRequest' as const,
+
     encode(
         message: ListClusterOperationsRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -4041,9 +4303,19 @@ export const ListClusterOperationsRequest = {
     },
 };
 
-const baseListClusterOperationsResponse: object = { nextPageToken: '' };
+messageTypeRegistry.set(
+    ListClusterOperationsRequest.$type,
+    ListClusterOperationsRequest
+);
+
+const baseListClusterOperationsResponse: object = {
+    $type: 'yandex.cloud.mdb.mysql.v1.ListClusterOperationsResponse',
+    nextPageToken: '',
+};
 
 export const ListClusterOperationsResponse = {
+    $type: 'yandex.cloud.mdb.mysql.v1.ListClusterOperationsResponse' as const,
+
     encode(
         message: ListClusterOperationsResponse,
         writer: _m0.Writer = _m0.Writer.create()
@@ -4146,13 +4418,21 @@ export const ListClusterOperationsResponse = {
     },
 };
 
+messageTypeRegistry.set(
+    ListClusterOperationsResponse.$type,
+    ListClusterOperationsResponse
+);
+
 const baseListClusterBackupsRequest: object = {
+    $type: 'yandex.cloud.mdb.mysql.v1.ListClusterBackupsRequest',
     clusterId: '',
     pageSize: 0,
     pageToken: '',
 };
 
 export const ListClusterBackupsRequest = {
+    $type: 'yandex.cloud.mdb.mysql.v1.ListClusterBackupsRequest' as const,
+
     encode(
         message: ListClusterBackupsRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -4254,9 +4534,19 @@ export const ListClusterBackupsRequest = {
     },
 };
 
-const baseListClusterBackupsResponse: object = { nextPageToken: '' };
+messageTypeRegistry.set(
+    ListClusterBackupsRequest.$type,
+    ListClusterBackupsRequest
+);
+
+const baseListClusterBackupsResponse: object = {
+    $type: 'yandex.cloud.mdb.mysql.v1.ListClusterBackupsResponse',
+    nextPageToken: '',
+};
 
 export const ListClusterBackupsResponse = {
+    $type: 'yandex.cloud.mdb.mysql.v1.ListClusterBackupsResponse' as const,
+
     encode(
         message: ListClusterBackupsResponse,
         writer: _m0.Writer = _m0.Writer.create()
@@ -4359,13 +4649,21 @@ export const ListClusterBackupsResponse = {
     },
 };
 
+messageTypeRegistry.set(
+    ListClusterBackupsResponse.$type,
+    ListClusterBackupsResponse
+);
+
 const baseListClusterHostsRequest: object = {
+    $type: 'yandex.cloud.mdb.mysql.v1.ListClusterHostsRequest',
     clusterId: '',
     pageSize: 0,
     pageToken: '',
 };
 
 export const ListClusterHostsRequest = {
+    $type: 'yandex.cloud.mdb.mysql.v1.ListClusterHostsRequest' as const,
+
     encode(
         message: ListClusterHostsRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -4467,9 +4765,16 @@ export const ListClusterHostsRequest = {
     },
 };
 
-const baseListClusterHostsResponse: object = { nextPageToken: '' };
+messageTypeRegistry.set(ListClusterHostsRequest.$type, ListClusterHostsRequest);
+
+const baseListClusterHostsResponse: object = {
+    $type: 'yandex.cloud.mdb.mysql.v1.ListClusterHostsResponse',
+    nextPageToken: '',
+};
 
 export const ListClusterHostsResponse = {
+    $type: 'yandex.cloud.mdb.mysql.v1.ListClusterHostsResponse' as const,
+
     encode(
         message: ListClusterHostsResponse,
         writer: _m0.Writer = _m0.Writer.create()
@@ -4570,9 +4875,19 @@ export const ListClusterHostsResponse = {
     },
 };
 
-const baseAddClusterHostsRequest: object = { clusterId: '' };
+messageTypeRegistry.set(
+    ListClusterHostsResponse.$type,
+    ListClusterHostsResponse
+);
+
+const baseAddClusterHostsRequest: object = {
+    $type: 'yandex.cloud.mdb.mysql.v1.AddClusterHostsRequest',
+    clusterId: '',
+};
 
 export const AddClusterHostsRequest = {
+    $type: 'yandex.cloud.mdb.mysql.v1.AddClusterHostsRequest' as const,
+
     encode(
         message: AddClusterHostsRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -4668,9 +4983,17 @@ export const AddClusterHostsRequest = {
     },
 };
 
-const baseAddClusterHostsMetadata: object = { clusterId: '', hostNames: '' };
+messageTypeRegistry.set(AddClusterHostsRequest.$type, AddClusterHostsRequest);
+
+const baseAddClusterHostsMetadata: object = {
+    $type: 'yandex.cloud.mdb.mysql.v1.AddClusterHostsMetadata',
+    clusterId: '',
+    hostNames: '',
+};
 
 export const AddClusterHostsMetadata = {
+    $type: 'yandex.cloud.mdb.mysql.v1.AddClusterHostsMetadata' as const,
+
     encode(
         message: AddClusterHostsMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -4762,9 +5085,17 @@ export const AddClusterHostsMetadata = {
     },
 };
 
-const baseDeleteClusterHostsRequest: object = { clusterId: '', hostNames: '' };
+messageTypeRegistry.set(AddClusterHostsMetadata.$type, AddClusterHostsMetadata);
+
+const baseDeleteClusterHostsRequest: object = {
+    $type: 'yandex.cloud.mdb.mysql.v1.DeleteClusterHostsRequest',
+    clusterId: '',
+    hostNames: '',
+};
 
 export const DeleteClusterHostsRequest = {
+    $type: 'yandex.cloud.mdb.mysql.v1.DeleteClusterHostsRequest' as const,
+
     encode(
         message: DeleteClusterHostsRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -4856,9 +5187,20 @@ export const DeleteClusterHostsRequest = {
     },
 };
 
-const baseDeleteClusterHostsMetadata: object = { clusterId: '', hostNames: '' };
+messageTypeRegistry.set(
+    DeleteClusterHostsRequest.$type,
+    DeleteClusterHostsRequest
+);
+
+const baseDeleteClusterHostsMetadata: object = {
+    $type: 'yandex.cloud.mdb.mysql.v1.DeleteClusterHostsMetadata',
+    clusterId: '',
+    hostNames: '',
+};
 
 export const DeleteClusterHostsMetadata = {
+    $type: 'yandex.cloud.mdb.mysql.v1.DeleteClusterHostsMetadata' as const,
+
     encode(
         message: DeleteClusterHostsMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -4950,9 +5292,19 @@ export const DeleteClusterHostsMetadata = {
     },
 };
 
-const baseStartClusterRequest: object = { clusterId: '' };
+messageTypeRegistry.set(
+    DeleteClusterHostsMetadata.$type,
+    DeleteClusterHostsMetadata
+);
+
+const baseStartClusterRequest: object = {
+    $type: 'yandex.cloud.mdb.mysql.v1.StartClusterRequest',
+    clusterId: '',
+};
 
 export const StartClusterRequest = {
+    $type: 'yandex.cloud.mdb.mysql.v1.StartClusterRequest' as const,
+
     encode(
         message: StartClusterRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -5012,9 +5364,16 @@ export const StartClusterRequest = {
     },
 };
 
-const baseStartClusterMetadata: object = { clusterId: '' };
+messageTypeRegistry.set(StartClusterRequest.$type, StartClusterRequest);
+
+const baseStartClusterMetadata: object = {
+    $type: 'yandex.cloud.mdb.mysql.v1.StartClusterMetadata',
+    clusterId: '',
+};
 
 export const StartClusterMetadata = {
+    $type: 'yandex.cloud.mdb.mysql.v1.StartClusterMetadata' as const,
+
     encode(
         message: StartClusterMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -5076,9 +5435,16 @@ export const StartClusterMetadata = {
     },
 };
 
-const baseStopClusterRequest: object = { clusterId: '' };
+messageTypeRegistry.set(StartClusterMetadata.$type, StartClusterMetadata);
+
+const baseStopClusterRequest: object = {
+    $type: 'yandex.cloud.mdb.mysql.v1.StopClusterRequest',
+    clusterId: '',
+};
 
 export const StopClusterRequest = {
+    $type: 'yandex.cloud.mdb.mysql.v1.StopClusterRequest' as const,
+
     encode(
         message: StopClusterRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -5138,9 +5504,16 @@ export const StopClusterRequest = {
     },
 };
 
-const baseStopClusterMetadata: object = { clusterId: '' };
+messageTypeRegistry.set(StopClusterRequest.$type, StopClusterRequest);
+
+const baseStopClusterMetadata: object = {
+    $type: 'yandex.cloud.mdb.mysql.v1.StopClusterMetadata',
+    clusterId: '',
+};
 
 export const StopClusterMetadata = {
+    $type: 'yandex.cloud.mdb.mysql.v1.StopClusterMetadata' as const,
+
     encode(
         message: StopClusterMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -5200,12 +5573,17 @@ export const StopClusterMetadata = {
     },
 };
 
+messageTypeRegistry.set(StopClusterMetadata.$type, StopClusterMetadata);
+
 const baseMoveClusterRequest: object = {
+    $type: 'yandex.cloud.mdb.mysql.v1.MoveClusterRequest',
     clusterId: '',
     destinationFolderId: '',
 };
 
 export const MoveClusterRequest = {
+    $type: 'yandex.cloud.mdb.mysql.v1.MoveClusterRequest' as const,
+
     encode(
         message: MoveClusterRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -5289,13 +5667,18 @@ export const MoveClusterRequest = {
     },
 };
 
+messageTypeRegistry.set(MoveClusterRequest.$type, MoveClusterRequest);
+
 const baseMoveClusterMetadata: object = {
+    $type: 'yandex.cloud.mdb.mysql.v1.MoveClusterMetadata',
     clusterId: '',
     sourceFolderId: '',
     destinationFolderId: '',
 };
 
 export const MoveClusterMetadata = {
+    $type: 'yandex.cloud.mdb.mysql.v1.MoveClusterMetadata' as const,
+
     encode(
         message: MoveClusterMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -5403,9 +5786,16 @@ export const MoveClusterMetadata = {
     },
 };
 
-const baseUpdateClusterHostsRequest: object = { clusterId: '' };
+messageTypeRegistry.set(MoveClusterMetadata.$type, MoveClusterMetadata);
+
+const baseUpdateClusterHostsRequest: object = {
+    $type: 'yandex.cloud.mdb.mysql.v1.UpdateClusterHostsRequest',
+    clusterId: '',
+};
 
 export const UpdateClusterHostsRequest = {
+    $type: 'yandex.cloud.mdb.mysql.v1.UpdateClusterHostsRequest' as const,
+
     encode(
         message: UpdateClusterHostsRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -5507,9 +5897,20 @@ export const UpdateClusterHostsRequest = {
     },
 };
 
-const baseUpdateClusterHostsMetadata: object = { clusterId: '', hostNames: '' };
+messageTypeRegistry.set(
+    UpdateClusterHostsRequest.$type,
+    UpdateClusterHostsRequest
+);
+
+const baseUpdateClusterHostsMetadata: object = {
+    $type: 'yandex.cloud.mdb.mysql.v1.UpdateClusterHostsMetadata',
+    clusterId: '',
+    hostNames: '',
+};
 
 export const UpdateClusterHostsMetadata = {
+    $type: 'yandex.cloud.mdb.mysql.v1.UpdateClusterHostsMetadata' as const,
+
     encode(
         message: UpdateClusterHostsMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -5601,7 +6002,13 @@ export const UpdateClusterHostsMetadata = {
     },
 };
 
+messageTypeRegistry.set(
+    UpdateClusterHostsMetadata.$type,
+    UpdateClusterHostsMetadata
+);
+
 const baseUpdateHostSpec: object = {
+    $type: 'yandex.cloud.mdb.mysql.v1.UpdateHostSpec',
     hostName: '',
     replicationSource: '',
     backupPriority: 0,
@@ -5609,6 +6016,8 @@ const baseUpdateHostSpec: object = {
 };
 
 export const UpdateHostSpec = {
+    $type: 'yandex.cloud.mdb.mysql.v1.UpdateHostSpec' as const,
+
     encode(
         message: UpdateHostSpec,
         writer: _m0.Writer = _m0.Writer.create()
@@ -5765,7 +6174,10 @@ export const UpdateHostSpec = {
     },
 };
 
+messageTypeRegistry.set(UpdateHostSpec.$type, UpdateHostSpec);
+
 const baseHostSpec: object = {
+    $type: 'yandex.cloud.mdb.mysql.v1.HostSpec',
     zoneId: '',
     subnetId: '',
     assignPublicIp: false,
@@ -5773,6 +6185,8 @@ const baseHostSpec: object = {
 };
 
 export const HostSpec = {
+    $type: 'yandex.cloud.mdb.mysql.v1.HostSpec' as const,
+
     encode(
         message: HostSpec,
         writer: _m0.Writer = _m0.Writer.create()
@@ -5894,9 +6308,16 @@ export const HostSpec = {
     },
 };
 
-const baseConfigSpec: object = { version: '' };
+messageTypeRegistry.set(HostSpec.$type, HostSpec);
+
+const baseConfigSpec: object = {
+    $type: 'yandex.cloud.mdb.mysql.v1.ConfigSpec',
+    version: '',
+};
 
 export const ConfigSpec = {
+    $type: 'yandex.cloud.mdb.mysql.v1.ConfigSpec' as const,
+
     encode(
         message: ConfigSpec,
         writer: _m0.Writer = _m0.Writer.create()
@@ -6106,6 +6527,8 @@ export const ConfigSpec = {
         return message;
     },
 };
+
+messageTypeRegistry.set(ConfigSpec.$type, ConfigSpec);
 
 /** A set of methods for managing MySQL clusters. */
 export const ClusterServiceService = {
@@ -6842,13 +7265,13 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 function toTimestamp(date: Date): Timestamp {
     const seconds = date.getTime() / 1_000;
     const nanos = (date.getTime() % 1_000) * 1_000_000;
-    return { seconds, nanos };
+    return { $type: 'google.protobuf.Timestamp', seconds, nanos };
 }
 
 function fromTimestamp(t: Timestamp): Date {

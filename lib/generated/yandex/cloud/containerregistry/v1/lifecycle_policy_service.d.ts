@@ -7,10 +7,12 @@ import { ChannelCredentials, ChannelOptions, UntypedServiceImplementation, handl
 import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.containerregistry.v1";
 export interface GetLifecyclePolicyRequest {
+    $type: 'yandex.cloud.containerregistry.v1.GetLifecyclePolicyRequest';
     /** ID of the lifecycle policy. */
     lifecyclePolicyId: string;
 }
 export interface ListLifecyclePoliciesRequest {
+    $type: 'yandex.cloud.containerregistry.v1.ListLifecyclePoliciesRequest';
     /** ID of the lifecycle policy. */
     registryId: string | undefined;
     /** Repository of the lifecycle policy. */
@@ -43,6 +45,7 @@ export interface ListLifecyclePoliciesRequest {
     orderBy: string;
 }
 export interface ListLifecyclePoliciesResponse {
+    $type: 'yandex.cloud.containerregistry.v1.ListLifecyclePoliciesResponse';
     /** List of lifecycle policies. */
     lifecyclePolicies: LifecyclePolicy[];
     /**
@@ -55,6 +58,7 @@ export interface ListLifecyclePoliciesResponse {
     nextPageToken: string;
 }
 export interface CreateLifecyclePolicyRequest {
+    $type: 'yandex.cloud.containerregistry.v1.CreateLifecyclePolicyRequest';
     /** ID of the lifecycle policy repository. */
     repositoryId: string;
     /** Name of lifecycle policy. */
@@ -67,6 +71,7 @@ export interface CreateLifecyclePolicyRequest {
     rules: LifecycleRule[];
 }
 export interface UpdateLifecyclePolicyRequest {
+    $type: 'yandex.cloud.containerregistry.v1.UpdateLifecyclePolicyRequest';
     /** ID of the lifecycle policy. */
     lifecyclePolicyId: string;
     /** Field mask that specifies which fields of the lifecycle policy resource are going to be updated. */
@@ -81,32 +86,39 @@ export interface UpdateLifecyclePolicyRequest {
     rules: LifecycleRule[];
 }
 export interface DeleteLifecyclePolicyRequest {
+    $type: 'yandex.cloud.containerregistry.v1.DeleteLifecyclePolicyRequest';
     /** ID of the lifecycle policy. */
     lifecyclePolicyId: string;
 }
 export interface CreateLifecyclePolicyMetadata {
+    $type: 'yandex.cloud.containerregistry.v1.CreateLifecyclePolicyMetadata';
     /** ID of the lifecycle policy resource that is being created. */
     lifecyclePolicyId: string;
 }
 export interface UpdateLifecyclePolicyMetadata {
+    $type: 'yandex.cloud.containerregistry.v1.UpdateLifecyclePolicyMetadata';
     /** ID of the lifecycle policy resource that is being updated. */
     lifecyclePolicyId: string;
 }
 export interface DeleteLifecyclePolicyMetadata {
+    $type: 'yandex.cloud.containerregistry.v1.DeleteLifecyclePolicyMetadata';
     /** ID of the lifecycle policy resource that is being deleted. */
     lifecyclePolicyId: string;
 }
 export interface DryRunLifecyclePolicyRequest {
+    $type: 'yandex.cloud.containerregistry.v1.DryRunLifecyclePolicyRequest';
     /** ID of the lifecycle policy. */
     lifecyclePolicyId: string;
 }
 export interface DryRunLifecyclePolicyMetadata {
+    $type: 'yandex.cloud.containerregistry.v1.DryRunLifecyclePolicyMetadata';
     /** ID of the dry run result of the lifecycle policy. */
     dryRunLifecyclePolicyResultId: string;
     /** ID of the lifecycle policy. */
     lifecyclePolicyId: string;
 }
 export interface DryRunLifecyclePolicyResult {
+    $type: 'yandex.cloud.containerregistry.v1.DryRunLifecyclePolicyResult';
     /** ID of the dry run result of the lifecycle policy. */
     dryRunLifecyclePolicyResultId: string;
     /** ID of the lifecycle policy. */
@@ -117,10 +129,12 @@ export interface DryRunLifecyclePolicyResult {
     affectedImagesCount: number;
 }
 export interface GetDryRunLifecyclePolicyResultRequest {
+    $type: 'yandex.cloud.containerregistry.v1.GetDryRunLifecyclePolicyResultRequest';
     /** ID of the dry run result of the lifecycle policy. */
     dryRunLifecyclePolicyResultId: string;
 }
 export interface ListDryRunLifecyclePolicyResultsRequest {
+    $type: 'yandex.cloud.containerregistry.v1.ListDryRunLifecyclePolicyResultsRequest';
     /** ID of the lifecycle policy. */
     lifecyclePolicyId: string;
     /**
@@ -151,6 +165,7 @@ export interface ListDryRunLifecyclePolicyResultsRequest {
     orderBy: string;
 }
 export interface ListDryRunLifecyclePolicyResultsResponse {
+    $type: 'yandex.cloud.containerregistry.v1.ListDryRunLifecyclePolicyResultsResponse';
     /** List of results of dry runs of a lifecycle policy. */
     dryRunLifecyclePolicyResults: DryRunLifecyclePolicyResult[];
     /**
@@ -163,6 +178,7 @@ export interface ListDryRunLifecyclePolicyResultsResponse {
     nextPageToken: string;
 }
 export interface ListDryRunLifecyclePolicyResultAffectedImagesRequest {
+    $type: 'yandex.cloud.containerregistry.v1.ListDryRunLifecyclePolicyResultAffectedImagesRequest';
     /** ID of the dry run result of the lifecycle policy */
     dryRunLifecyclePolicyResultId: string;
     /**
@@ -192,6 +208,7 @@ export interface ListDryRunLifecyclePolicyResultAffectedImagesRequest {
     orderBy: string;
 }
 export interface ListDryRunLifecyclePolicyResultAffectedImagesResponse {
+    $type: 'yandex.cloud.containerregistry.v1.ListDryRunLifecyclePolicyResultAffectedImagesResponse';
     /** List of affected images. */
     affectedImages: Image[];
     /**
@@ -204,6 +221,7 @@ export interface ListDryRunLifecyclePolicyResultAffectedImagesResponse {
     nextPageToken: string;
 }
 export declare const GetLifecyclePolicyRequest: {
+    $type: "yandex.cloud.containerregistry.v1.GetLifecyclePolicyRequest";
     encode(message: GetLifecyclePolicyRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): GetLifecyclePolicyRequest;
     fromJSON(object: any): GetLifecyclePolicyRequest;
@@ -211,6 +229,7 @@ export declare const GetLifecyclePolicyRequest: {
     fromPartial(object: DeepPartial<GetLifecyclePolicyRequest>): GetLifecyclePolicyRequest;
 };
 export declare const ListLifecyclePoliciesRequest: {
+    $type: "yandex.cloud.containerregistry.v1.ListLifecyclePoliciesRequest";
     encode(message: ListLifecyclePoliciesRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListLifecyclePoliciesRequest;
     fromJSON(object: any): ListLifecyclePoliciesRequest;
@@ -218,6 +237,7 @@ export declare const ListLifecyclePoliciesRequest: {
     fromPartial(object: DeepPartial<ListLifecyclePoliciesRequest>): ListLifecyclePoliciesRequest;
 };
 export declare const ListLifecyclePoliciesResponse: {
+    $type: "yandex.cloud.containerregistry.v1.ListLifecyclePoliciesResponse";
     encode(message: ListLifecyclePoliciesResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListLifecyclePoliciesResponse;
     fromJSON(object: any): ListLifecyclePoliciesResponse;
@@ -225,6 +245,7 @@ export declare const ListLifecyclePoliciesResponse: {
     fromPartial(object: DeepPartial<ListLifecyclePoliciesResponse>): ListLifecyclePoliciesResponse;
 };
 export declare const CreateLifecyclePolicyRequest: {
+    $type: "yandex.cloud.containerregistry.v1.CreateLifecyclePolicyRequest";
     encode(message: CreateLifecyclePolicyRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateLifecyclePolicyRequest;
     fromJSON(object: any): CreateLifecyclePolicyRequest;
@@ -232,6 +253,7 @@ export declare const CreateLifecyclePolicyRequest: {
     fromPartial(object: DeepPartial<CreateLifecyclePolicyRequest>): CreateLifecyclePolicyRequest;
 };
 export declare const UpdateLifecyclePolicyRequest: {
+    $type: "yandex.cloud.containerregistry.v1.UpdateLifecyclePolicyRequest";
     encode(message: UpdateLifecyclePolicyRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateLifecyclePolicyRequest;
     fromJSON(object: any): UpdateLifecyclePolicyRequest;
@@ -239,6 +261,7 @@ export declare const UpdateLifecyclePolicyRequest: {
     fromPartial(object: DeepPartial<UpdateLifecyclePolicyRequest>): UpdateLifecyclePolicyRequest;
 };
 export declare const DeleteLifecyclePolicyRequest: {
+    $type: "yandex.cloud.containerregistry.v1.DeleteLifecyclePolicyRequest";
     encode(message: DeleteLifecyclePolicyRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteLifecyclePolicyRequest;
     fromJSON(object: any): DeleteLifecyclePolicyRequest;
@@ -246,6 +269,7 @@ export declare const DeleteLifecyclePolicyRequest: {
     fromPartial(object: DeepPartial<DeleteLifecyclePolicyRequest>): DeleteLifecyclePolicyRequest;
 };
 export declare const CreateLifecyclePolicyMetadata: {
+    $type: "yandex.cloud.containerregistry.v1.CreateLifecyclePolicyMetadata";
     encode(message: CreateLifecyclePolicyMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateLifecyclePolicyMetadata;
     fromJSON(object: any): CreateLifecyclePolicyMetadata;
@@ -253,6 +277,7 @@ export declare const CreateLifecyclePolicyMetadata: {
     fromPartial(object: DeepPartial<CreateLifecyclePolicyMetadata>): CreateLifecyclePolicyMetadata;
 };
 export declare const UpdateLifecyclePolicyMetadata: {
+    $type: "yandex.cloud.containerregistry.v1.UpdateLifecyclePolicyMetadata";
     encode(message: UpdateLifecyclePolicyMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateLifecyclePolicyMetadata;
     fromJSON(object: any): UpdateLifecyclePolicyMetadata;
@@ -260,6 +285,7 @@ export declare const UpdateLifecyclePolicyMetadata: {
     fromPartial(object: DeepPartial<UpdateLifecyclePolicyMetadata>): UpdateLifecyclePolicyMetadata;
 };
 export declare const DeleteLifecyclePolicyMetadata: {
+    $type: "yandex.cloud.containerregistry.v1.DeleteLifecyclePolicyMetadata";
     encode(message: DeleteLifecyclePolicyMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteLifecyclePolicyMetadata;
     fromJSON(object: any): DeleteLifecyclePolicyMetadata;
@@ -267,6 +293,7 @@ export declare const DeleteLifecyclePolicyMetadata: {
     fromPartial(object: DeepPartial<DeleteLifecyclePolicyMetadata>): DeleteLifecyclePolicyMetadata;
 };
 export declare const DryRunLifecyclePolicyRequest: {
+    $type: "yandex.cloud.containerregistry.v1.DryRunLifecyclePolicyRequest";
     encode(message: DryRunLifecyclePolicyRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DryRunLifecyclePolicyRequest;
     fromJSON(object: any): DryRunLifecyclePolicyRequest;
@@ -274,6 +301,7 @@ export declare const DryRunLifecyclePolicyRequest: {
     fromPartial(object: DeepPartial<DryRunLifecyclePolicyRequest>): DryRunLifecyclePolicyRequest;
 };
 export declare const DryRunLifecyclePolicyMetadata: {
+    $type: "yandex.cloud.containerregistry.v1.DryRunLifecyclePolicyMetadata";
     encode(message: DryRunLifecyclePolicyMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DryRunLifecyclePolicyMetadata;
     fromJSON(object: any): DryRunLifecyclePolicyMetadata;
@@ -281,6 +309,7 @@ export declare const DryRunLifecyclePolicyMetadata: {
     fromPartial(object: DeepPartial<DryRunLifecyclePolicyMetadata>): DryRunLifecyclePolicyMetadata;
 };
 export declare const DryRunLifecyclePolicyResult: {
+    $type: "yandex.cloud.containerregistry.v1.DryRunLifecyclePolicyResult";
     encode(message: DryRunLifecyclePolicyResult, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DryRunLifecyclePolicyResult;
     fromJSON(object: any): DryRunLifecyclePolicyResult;
@@ -288,6 +317,7 @@ export declare const DryRunLifecyclePolicyResult: {
     fromPartial(object: DeepPartial<DryRunLifecyclePolicyResult>): DryRunLifecyclePolicyResult;
 };
 export declare const GetDryRunLifecyclePolicyResultRequest: {
+    $type: "yandex.cloud.containerregistry.v1.GetDryRunLifecyclePolicyResultRequest";
     encode(message: GetDryRunLifecyclePolicyResultRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): GetDryRunLifecyclePolicyResultRequest;
     fromJSON(object: any): GetDryRunLifecyclePolicyResultRequest;
@@ -295,6 +325,7 @@ export declare const GetDryRunLifecyclePolicyResultRequest: {
     fromPartial(object: DeepPartial<GetDryRunLifecyclePolicyResultRequest>): GetDryRunLifecyclePolicyResultRequest;
 };
 export declare const ListDryRunLifecyclePolicyResultsRequest: {
+    $type: "yandex.cloud.containerregistry.v1.ListDryRunLifecyclePolicyResultsRequest";
     encode(message: ListDryRunLifecyclePolicyResultsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListDryRunLifecyclePolicyResultsRequest;
     fromJSON(object: any): ListDryRunLifecyclePolicyResultsRequest;
@@ -302,6 +333,7 @@ export declare const ListDryRunLifecyclePolicyResultsRequest: {
     fromPartial(object: DeepPartial<ListDryRunLifecyclePolicyResultsRequest>): ListDryRunLifecyclePolicyResultsRequest;
 };
 export declare const ListDryRunLifecyclePolicyResultsResponse: {
+    $type: "yandex.cloud.containerregistry.v1.ListDryRunLifecyclePolicyResultsResponse";
     encode(message: ListDryRunLifecyclePolicyResultsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListDryRunLifecyclePolicyResultsResponse;
     fromJSON(object: any): ListDryRunLifecyclePolicyResultsResponse;
@@ -309,6 +341,7 @@ export declare const ListDryRunLifecyclePolicyResultsResponse: {
     fromPartial(object: DeepPartial<ListDryRunLifecyclePolicyResultsResponse>): ListDryRunLifecyclePolicyResultsResponse;
 };
 export declare const ListDryRunLifecyclePolicyResultAffectedImagesRequest: {
+    $type: "yandex.cloud.containerregistry.v1.ListDryRunLifecyclePolicyResultAffectedImagesRequest";
     encode(message: ListDryRunLifecyclePolicyResultAffectedImagesRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListDryRunLifecyclePolicyResultAffectedImagesRequest;
     fromJSON(object: any): ListDryRunLifecyclePolicyResultAffectedImagesRequest;
@@ -316,6 +349,7 @@ export declare const ListDryRunLifecyclePolicyResultAffectedImagesRequest: {
     fromPartial(object: DeepPartial<ListDryRunLifecyclePolicyResultAffectedImagesRequest>): ListDryRunLifecyclePolicyResultAffectedImagesRequest;
 };
 export declare const ListDryRunLifecyclePolicyResultAffectedImagesResponse: {
+    $type: "yandex.cloud.containerregistry.v1.ListDryRunLifecyclePolicyResultAffectedImagesResponse";
     encode(message: ListDryRunLifecyclePolicyResultAffectedImagesResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListDryRunLifecyclePolicyResultAffectedImagesResponse;
     fromJSON(object: any): ListDryRunLifecyclePolicyResultAffectedImagesResponse;
@@ -488,6 +522,6 @@ export interface LifecyclePolicyServiceClient extends Client {
 export declare const LifecyclePolicyServiceClient: new (address: string, credentials: ChannelCredentials, options?: Partial<ChannelOptions> | undefined) => LifecyclePolicyServiceClient;
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

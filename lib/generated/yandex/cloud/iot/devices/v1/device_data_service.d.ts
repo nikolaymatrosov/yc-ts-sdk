@@ -3,6 +3,7 @@ import { ChannelCredentials, ChannelOptions, UntypedServiceImplementation, handl
 import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.iot.devices.v1";
 export interface PublishDeviceDataRequest {
+    $type: 'yandex.cloud.iot.devices.v1.PublishDeviceDataRequest';
     /** ID of device publishing message */
     deviceId: string;
     /** Topic where message should be published */
@@ -11,8 +12,10 @@ export interface PublishDeviceDataRequest {
     data: Uint8Array;
 }
 export interface PublishDeviceDataResponse {
+    $type: 'yandex.cloud.iot.devices.v1.PublishDeviceDataResponse';
 }
 export declare const PublishDeviceDataRequest: {
+    $type: "yandex.cloud.iot.devices.v1.PublishDeviceDataRequest";
     encode(message: PublishDeviceDataRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): PublishDeviceDataRequest;
     fromJSON(object: any): PublishDeviceDataRequest;
@@ -20,6 +23,7 @@ export declare const PublishDeviceDataRequest: {
     fromPartial(object: DeepPartial<PublishDeviceDataRequest>): PublishDeviceDataRequest;
 };
 export declare const PublishDeviceDataResponse: {
+    $type: "yandex.cloud.iot.devices.v1.PublishDeviceDataResponse";
     encode(_: PublishDeviceDataResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): PublishDeviceDataResponse;
     fromJSON(_: any): PublishDeviceDataResponse;
@@ -52,6 +56,6 @@ export interface DeviceDataServiceClient extends Client {
 export declare const DeviceDataServiceClient: new (address: string, credentials: ChannelCredentials, options?: Partial<ChannelOptions> | undefined) => DeviceDataServiceClient;
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

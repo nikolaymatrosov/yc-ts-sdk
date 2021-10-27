@@ -6,6 +6,7 @@ export declare const protobufPackage = "yandex.cloud.apploadbalancer.v1";
  * For details about the concept, see [documentation](/docs/application-load-balancer/concepts/http-router).
  */
 export interface HttpRouter {
+    $type: 'yandex.cloud.apploadbalancer.v1.HttpRouter';
     /** ID of the router. Generated at creation time. */
     id: string;
     /** Name of the router. The name is unique within the folder. */
@@ -33,10 +34,12 @@ export interface HttpRouter {
     routeOptions: RouteOptions | undefined;
 }
 export interface HttpRouter_LabelsEntry {
+    $type: 'yandex.cloud.apploadbalancer.v1.HttpRouter.LabelsEntry';
     key: string;
     value: string;
 }
 export declare const HttpRouter: {
+    $type: "yandex.cloud.apploadbalancer.v1.HttpRouter";
     encode(message: HttpRouter, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): HttpRouter;
     fromJSON(object: any): HttpRouter;
@@ -44,6 +47,7 @@ export declare const HttpRouter: {
     fromPartial(object: DeepPartial<HttpRouter>): HttpRouter;
 };
 export declare const HttpRouter_LabelsEntry: {
+    $type: "yandex.cloud.apploadbalancer.v1.HttpRouter.LabelsEntry";
     encode(message: HttpRouter_LabelsEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): HttpRouter_LabelsEntry;
     fromJSON(object: any): HttpRouter_LabelsEntry;
@@ -52,6 +56,6 @@ export declare const HttpRouter_LabelsEntry: {
 };
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

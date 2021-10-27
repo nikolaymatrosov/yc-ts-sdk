@@ -6,6 +6,7 @@ export declare const protobufPackage = "yandex.cloud.mdb.kafka.v1";
  * For more information, see the [Concepts](/docs/managed-kafka/concepts) section of the documentation.
  */
 export interface Cluster {
+    $type: 'yandex.cloud.mdb.kafka.v1.Cluster';
     /**
      * ID of the Apache Kafka® cluster.
      * This ID is assigned at creation time.
@@ -93,11 +94,13 @@ export declare enum Cluster_Status {
 export declare function cluster_StatusFromJSON(object: any): Cluster_Status;
 export declare function cluster_StatusToJSON(object: Cluster_Status): string;
 export interface Cluster_LabelsEntry {
+    $type: 'yandex.cloud.mdb.kafka.v1.Cluster.LabelsEntry';
     key: string;
     value: string;
 }
 /** Metadata of monitoring system. */
 export interface Monitoring {
+    $type: 'yandex.cloud.mdb.kafka.v1.Monitoring';
     /** Name of the monitoring system. */
     name: string;
     /** Description of the monitoring system. */
@@ -106,6 +109,7 @@ export interface Monitoring {
     link: string;
 }
 export interface ConfigSpec {
+    $type: 'yandex.cloud.mdb.kafka.v1.ConfigSpec';
     /** Version of Apache Kafka® used in the cluster. Possible values: `2.1`, `2.6`. */
     version: string;
     /** Configuration and resource allocation for Kafka brokers. */
@@ -127,6 +131,7 @@ export interface ConfigSpec {
     schemaRegistry: boolean;
 }
 export interface ConfigSpec_Kafka {
+    $type: 'yandex.cloud.mdb.kafka.v1.ConfigSpec.Kafka';
     /** Resources allocated to Kafka brokers. */
     resources: Resources | undefined;
     kafkaConfig21: Kafkaconfig21 | undefined;
@@ -134,10 +139,12 @@ export interface ConfigSpec_Kafka {
     kafkaConfig28: Kafkaconfig28 | undefined;
 }
 export interface ConfigSpec_Zookeeper {
+    $type: 'yandex.cloud.mdb.kafka.v1.ConfigSpec.Zookeeper';
     /** Resources allocated to ZooKeeper hosts. */
     resources: Resources | undefined;
 }
 export interface Resources {
+    $type: 'yandex.cloud.mdb.kafka.v1.Resources';
     /**
      * ID of the preset for computational resources available to a host (CPU, memory, etc.).
      * All available presets are listed in the [documentation](/docs/managed-kafka/concepts/instance-types).
@@ -150,6 +157,7 @@ export interface Resources {
 }
 /** Kafka version 2.1 broker configuration. */
 export interface Kafkaconfig21 {
+    $type: 'yandex.cloud.mdb.kafka.v1.KafkaConfig2_1';
     /** Cluster topics compression type. */
     compressionType: CompressionType;
     /**
@@ -218,6 +226,7 @@ export interface Kafkaconfig21 {
 }
 /** Kafka version 2.6 broker configuration. */
 export interface Kafkaconfig26 {
+    $type: 'yandex.cloud.mdb.kafka.v1.KafkaConfig2_6';
     /** Cluster topics compression type. */
     compressionType: CompressionType;
     /**
@@ -286,6 +295,7 @@ export interface Kafkaconfig26 {
 }
 /** Kafka version 2.8 broker configuration. */
 export interface Kafkaconfig28 {
+    $type: 'yandex.cloud.mdb.kafka.v1.KafkaConfig2_8';
     /** Cluster topics compression type. */
     compressionType: CompressionType;
     /**
@@ -354,6 +364,7 @@ export interface Kafkaconfig28 {
 }
 /** Cluster host metadata. */
 export interface Host {
+    $type: 'yandex.cloud.mdb.kafka.v1.Host';
     /** Name of the host. */
     name: string;
     /** ID of the Apache Kafka® cluster. */
@@ -399,6 +410,7 @@ export declare enum Host_Health {
 export declare function host_HealthFromJSON(object: any): Host_Health;
 export declare function host_HealthToJSON(object: Host_Health): string;
 export declare const Cluster: {
+    $type: "yandex.cloud.mdb.kafka.v1.Cluster";
     encode(message: Cluster, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Cluster;
     fromJSON(object: any): Cluster;
@@ -406,6 +418,7 @@ export declare const Cluster: {
     fromPartial(object: DeepPartial<Cluster>): Cluster;
 };
 export declare const Cluster_LabelsEntry: {
+    $type: "yandex.cloud.mdb.kafka.v1.Cluster.LabelsEntry";
     encode(message: Cluster_LabelsEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Cluster_LabelsEntry;
     fromJSON(object: any): Cluster_LabelsEntry;
@@ -413,6 +426,7 @@ export declare const Cluster_LabelsEntry: {
     fromPartial(object: DeepPartial<Cluster_LabelsEntry>): Cluster_LabelsEntry;
 };
 export declare const Monitoring: {
+    $type: "yandex.cloud.mdb.kafka.v1.Monitoring";
     encode(message: Monitoring, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Monitoring;
     fromJSON(object: any): Monitoring;
@@ -420,6 +434,7 @@ export declare const Monitoring: {
     fromPartial(object: DeepPartial<Monitoring>): Monitoring;
 };
 export declare const ConfigSpec: {
+    $type: "yandex.cloud.mdb.kafka.v1.ConfigSpec";
     encode(message: ConfigSpec, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ConfigSpec;
     fromJSON(object: any): ConfigSpec;
@@ -427,6 +442,7 @@ export declare const ConfigSpec: {
     fromPartial(object: DeepPartial<ConfigSpec>): ConfigSpec;
 };
 export declare const ConfigSpec_Kafka: {
+    $type: "yandex.cloud.mdb.kafka.v1.ConfigSpec.Kafka";
     encode(message: ConfigSpec_Kafka, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ConfigSpec_Kafka;
     fromJSON(object: any): ConfigSpec_Kafka;
@@ -434,6 +450,7 @@ export declare const ConfigSpec_Kafka: {
     fromPartial(object: DeepPartial<ConfigSpec_Kafka>): ConfigSpec_Kafka;
 };
 export declare const ConfigSpec_Zookeeper: {
+    $type: "yandex.cloud.mdb.kafka.v1.ConfigSpec.Zookeeper";
     encode(message: ConfigSpec_Zookeeper, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ConfigSpec_Zookeeper;
     fromJSON(object: any): ConfigSpec_Zookeeper;
@@ -441,6 +458,7 @@ export declare const ConfigSpec_Zookeeper: {
     fromPartial(object: DeepPartial<ConfigSpec_Zookeeper>): ConfigSpec_Zookeeper;
 };
 export declare const Resources: {
+    $type: "yandex.cloud.mdb.kafka.v1.Resources";
     encode(message: Resources, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Resources;
     fromJSON(object: any): Resources;
@@ -448,6 +466,7 @@ export declare const Resources: {
     fromPartial(object: DeepPartial<Resources>): Resources;
 };
 export declare const Kafkaconfig21: {
+    $type: "yandex.cloud.mdb.kafka.v1.KafkaConfig2_1";
     encode(message: Kafkaconfig21, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Kafkaconfig21;
     fromJSON(object: any): Kafkaconfig21;
@@ -455,6 +474,7 @@ export declare const Kafkaconfig21: {
     fromPartial(object: DeepPartial<Kafkaconfig21>): Kafkaconfig21;
 };
 export declare const Kafkaconfig26: {
+    $type: "yandex.cloud.mdb.kafka.v1.KafkaConfig2_6";
     encode(message: Kafkaconfig26, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Kafkaconfig26;
     fromJSON(object: any): Kafkaconfig26;
@@ -462,6 +482,7 @@ export declare const Kafkaconfig26: {
     fromPartial(object: DeepPartial<Kafkaconfig26>): Kafkaconfig26;
 };
 export declare const Kafkaconfig28: {
+    $type: "yandex.cloud.mdb.kafka.v1.KafkaConfig2_8";
     encode(message: Kafkaconfig28, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Kafkaconfig28;
     fromJSON(object: any): Kafkaconfig28;
@@ -469,6 +490,7 @@ export declare const Kafkaconfig28: {
     fromPartial(object: DeepPartial<Kafkaconfig28>): Kafkaconfig28;
 };
 export declare const Host: {
+    $type: "yandex.cloud.mdb.kafka.v1.Host";
     encode(message: Host, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Host;
     fromJSON(object: any): Host;
@@ -477,6 +499,6 @@ export declare const Host: {
 };
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

@@ -1,5 +1,6 @@
 /* eslint-disable */
 import { FieldMask } from '../../../../google/protobuf/field_mask';
+import { messageTypeRegistry } from '../../../../typeRegistry';
 import {
     Cluster,
     HadoopConfig,
@@ -31,6 +32,7 @@ import _m0 from 'protobufjs/minimal';
 export const protobufPackage = 'yandex.cloud.dataproc.v1';
 
 export interface GetClusterRequest {
+    $type: 'yandex.cloud.dataproc.v1.GetClusterRequest';
     /**
      * ID of the Data Proc cluster.
      *
@@ -40,6 +42,7 @@ export interface GetClusterRequest {
 }
 
 export interface ListClustersRequest {
+    $type: 'yandex.cloud.dataproc.v1.ListClustersRequest';
     /**
      * ID of the folder to list clusters in.
      *
@@ -71,6 +74,7 @@ export interface ListClustersRequest {
 }
 
 export interface ListClustersResponse {
+    $type: 'yandex.cloud.dataproc.v1.ListClustersResponse';
     /** List of clusters in the specified folder. */
     clusters: Cluster[];
     /**
@@ -84,6 +88,7 @@ export interface ListClustersResponse {
 }
 
 export interface CreateSubclusterConfigSpec {
+    $type: 'yandex.cloud.dataproc.v1.CreateSubclusterConfigSpec';
     /** Name of the subcluster. */
     name: string;
     /** Role of the subcluster in the Data Proc cluster. */
@@ -99,6 +104,7 @@ export interface CreateSubclusterConfigSpec {
 }
 
 export interface UpdateSubclusterConfigSpec {
+    $type: 'yandex.cloud.dataproc.v1.UpdateSubclusterConfigSpec';
     /**
      * ID of the subcluster to update.
      *
@@ -116,6 +122,7 @@ export interface UpdateSubclusterConfigSpec {
 }
 
 export interface CreateClusterConfigSpec {
+    $type: 'yandex.cloud.dataproc.v1.CreateClusterConfigSpec';
     /**
      * Version of the image for cluster provisioning.
      *
@@ -129,6 +136,7 @@ export interface CreateClusterConfigSpec {
 }
 
 export interface UpdateClusterConfigSpec {
+    $type: 'yandex.cloud.dataproc.v1.UpdateClusterConfigSpec';
     /** New configuration for subclusters in a cluster. */
     subclustersSpec: UpdateSubclusterConfigSpec[];
     /** Hadoop specific options */
@@ -136,6 +144,7 @@ export interface UpdateClusterConfigSpec {
 }
 
 export interface CreateClusterRequest {
+    $type: 'yandex.cloud.dataproc.v1.CreateClusterRequest';
     /**
      * ID of the folder to create a cluster in.
      *
@@ -176,16 +185,19 @@ export interface CreateClusterRequest {
 }
 
 export interface CreateClusterRequest_LabelsEntry {
+    $type: 'yandex.cloud.dataproc.v1.CreateClusterRequest.LabelsEntry';
     key: string;
     value: string;
 }
 
 export interface CreateClusterMetadata {
+    $type: 'yandex.cloud.dataproc.v1.CreateClusterMetadata';
     /** ID of the cluster that is being created. */
     clusterId: string;
 }
 
 export interface UpdateClusterRequest {
+    $type: 'yandex.cloud.dataproc.v1.UpdateClusterRequest';
     /**
      * ID of the cluster to update.
      *
@@ -219,16 +231,19 @@ export interface UpdateClusterRequest {
 }
 
 export interface UpdateClusterRequest_LabelsEntry {
+    $type: 'yandex.cloud.dataproc.v1.UpdateClusterRequest.LabelsEntry';
     key: string;
     value: string;
 }
 
 export interface UpdateClusterMetadata {
+    $type: 'yandex.cloud.dataproc.v1.UpdateClusterMetadata';
     /** ID of the cluster that is being updated. */
     clusterId: string;
 }
 
 export interface DeleteClusterRequest {
+    $type: 'yandex.cloud.dataproc.v1.DeleteClusterRequest';
     /**
      * ID of the cluster to delete.
      *
@@ -240,11 +255,13 @@ export interface DeleteClusterRequest {
 }
 
 export interface DeleteClusterMetadata {
+    $type: 'yandex.cloud.dataproc.v1.DeleteClusterMetadata';
     /** ID of the Data Proc cluster that is being deleted. */
     clusterId: string;
 }
 
 export interface StartClusterRequest {
+    $type: 'yandex.cloud.dataproc.v1.StartClusterRequest';
     /**
      * ID of the cluster to start.
      *
@@ -254,11 +271,13 @@ export interface StartClusterRequest {
 }
 
 export interface StartClusterMetadata {
+    $type: 'yandex.cloud.dataproc.v1.StartClusterMetadata';
     /** ID of the Data Proc cluster that is being started. */
     clusterId: string;
 }
 
 export interface StopClusterRequest {
+    $type: 'yandex.cloud.dataproc.v1.StopClusterRequest';
     /**
      * ID of the cluster to stop.
      *
@@ -270,11 +289,13 @@ export interface StopClusterRequest {
 }
 
 export interface StopClusterMetadata {
+    $type: 'yandex.cloud.dataproc.v1.StopClusterMetadata';
     /** ID of the Data Proc cluster that is being stopped. */
     clusterId: string;
 }
 
 export interface ListClusterOperationsRequest {
+    $type: 'yandex.cloud.dataproc.v1.ListClusterOperationsRequest';
     /** ID of the cluster to list operations for. */
     clusterId: string;
     /**
@@ -292,6 +313,7 @@ export interface ListClusterOperationsRequest {
 }
 
 export interface ListClusterOperationsResponse {
+    $type: 'yandex.cloud.dataproc.v1.ListClusterOperationsResponse';
     /** List of operations for the specified cluster. */
     operations: Operation[];
     /**
@@ -305,6 +327,7 @@ export interface ListClusterOperationsResponse {
 }
 
 export interface ListClusterHostsRequest {
+    $type: 'yandex.cloud.dataproc.v1.ListClusterHostsRequest';
     /**
      * ID of the cluster to list hosts for.
      *
@@ -336,6 +359,7 @@ export interface ListClusterHostsRequest {
 }
 
 export interface ListClusterHostsResponse {
+    $type: 'yandex.cloud.dataproc.v1.ListClusterHostsResponse';
     /** Requested list of hosts. */
     hosts: Host[];
     /**
@@ -349,23 +373,31 @@ export interface ListClusterHostsResponse {
 }
 
 export interface ListUILinksRequest {
+    $type: 'yandex.cloud.dataproc.v1.ListUILinksRequest';
     /** Required. ID of the Hadoop cluster. */
     clusterId: string;
 }
 
 export interface UILink {
+    $type: 'yandex.cloud.dataproc.v1.UILink';
     name: string;
     url: string;
 }
 
 export interface ListUILinksResponse {
+    $type: 'yandex.cloud.dataproc.v1.ListUILinksResponse';
     /** Requested list of ui links. */
     links: UILink[];
 }
 
-const baseGetClusterRequest: object = { clusterId: '' };
+const baseGetClusterRequest: object = {
+    $type: 'yandex.cloud.dataproc.v1.GetClusterRequest',
+    clusterId: '',
+};
 
 export const GetClusterRequest = {
+    $type: 'yandex.cloud.dataproc.v1.GetClusterRequest' as const,
+
     encode(
         message: GetClusterRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -422,7 +454,10 @@ export const GetClusterRequest = {
     },
 };
 
+messageTypeRegistry.set(GetClusterRequest.$type, GetClusterRequest);
+
 const baseListClustersRequest: object = {
+    $type: 'yandex.cloud.dataproc.v1.ListClustersRequest',
     folderId: '',
     pageSize: 0,
     pageToken: '',
@@ -430,6 +465,8 @@ const baseListClustersRequest: object = {
 };
 
 export const ListClustersRequest = {
+    $type: 'yandex.cloud.dataproc.v1.ListClustersRequest' as const,
+
     encode(
         message: ListClustersRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -540,9 +577,16 @@ export const ListClustersRequest = {
     },
 };
 
-const baseListClustersResponse: object = { nextPageToken: '' };
+messageTypeRegistry.set(ListClustersRequest.$type, ListClustersRequest);
+
+const baseListClustersResponse: object = {
+    $type: 'yandex.cloud.dataproc.v1.ListClustersResponse',
+    nextPageToken: '',
+};
 
 export const ListClustersResponse = {
+    $type: 'yandex.cloud.dataproc.v1.ListClustersResponse' as const,
+
     encode(
         message: ListClustersResponse,
         writer: _m0.Writer = _m0.Writer.create()
@@ -639,7 +683,10 @@ export const ListClustersResponse = {
     },
 };
 
+messageTypeRegistry.set(ListClustersResponse.$type, ListClustersResponse);
+
 const baseCreateSubclusterConfigSpec: object = {
+    $type: 'yandex.cloud.dataproc.v1.CreateSubclusterConfigSpec',
     name: '',
     role: 0,
     subnetId: '',
@@ -647,6 +694,8 @@ const baseCreateSubclusterConfigSpec: object = {
 };
 
 export const CreateSubclusterConfigSpec = {
+    $type: 'yandex.cloud.dataproc.v1.CreateSubclusterConfigSpec' as const,
+
     encode(
         message: CreateSubclusterConfigSpec,
         writer: _m0.Writer = _m0.Writer.create()
@@ -828,13 +877,21 @@ export const CreateSubclusterConfigSpec = {
     },
 };
 
+messageTypeRegistry.set(
+    CreateSubclusterConfigSpec.$type,
+    CreateSubclusterConfigSpec
+);
+
 const baseUpdateSubclusterConfigSpec: object = {
+    $type: 'yandex.cloud.dataproc.v1.UpdateSubclusterConfigSpec',
     id: '',
     name: '',
     hostsCount: 0,
 };
 
 export const UpdateSubclusterConfigSpec = {
+    $type: 'yandex.cloud.dataproc.v1.UpdateSubclusterConfigSpec' as const,
+
     encode(
         message: UpdateSubclusterConfigSpec,
         writer: _m0.Writer = _m0.Writer.create()
@@ -999,9 +1056,19 @@ export const UpdateSubclusterConfigSpec = {
     },
 };
 
-const baseCreateClusterConfigSpec: object = { versionId: '' };
+messageTypeRegistry.set(
+    UpdateSubclusterConfigSpec.$type,
+    UpdateSubclusterConfigSpec
+);
+
+const baseCreateClusterConfigSpec: object = {
+    $type: 'yandex.cloud.dataproc.v1.CreateClusterConfigSpec',
+    versionId: '',
+};
 
 export const CreateClusterConfigSpec = {
+    $type: 'yandex.cloud.dataproc.v1.CreateClusterConfigSpec' as const,
+
     encode(
         message: CreateClusterConfigSpec,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1139,9 +1206,15 @@ export const CreateClusterConfigSpec = {
     },
 };
 
-const baseUpdateClusterConfigSpec: object = {};
+messageTypeRegistry.set(CreateClusterConfigSpec.$type, CreateClusterConfigSpec);
+
+const baseUpdateClusterConfigSpec: object = {
+    $type: 'yandex.cloud.dataproc.v1.UpdateClusterConfigSpec',
+};
 
 export const UpdateClusterConfigSpec = {
+    $type: 'yandex.cloud.dataproc.v1.UpdateClusterConfigSpec' as const,
+
     encode(
         message: UpdateClusterConfigSpec,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1262,7 +1335,10 @@ export const UpdateClusterConfigSpec = {
     },
 };
 
+messageTypeRegistry.set(UpdateClusterConfigSpec.$type, UpdateClusterConfigSpec);
+
 const baseCreateClusterRequest: object = {
+    $type: 'yandex.cloud.dataproc.v1.CreateClusterRequest',
     folderId: '',
     name: '',
     description: '',
@@ -1277,6 +1353,8 @@ const baseCreateClusterRequest: object = {
 };
 
 export const CreateClusterRequest = {
+    $type: 'yandex.cloud.dataproc.v1.CreateClusterRequest' as const,
+
     encode(
         message: CreateClusterRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1292,7 +1370,11 @@ export const CreateClusterRequest = {
         }
         Object.entries(message.labels).forEach(([key, value]) => {
             CreateClusterRequest_LabelsEntry.encode(
-                { key: key as any, value },
+                {
+                    $type: 'yandex.cloud.dataproc.v1.CreateClusterRequest.LabelsEntry',
+                    key: key as any,
+                    value,
+                },
                 writer.uint32(34).fork()
             ).ldelim();
         });
@@ -1610,9 +1692,17 @@ export const CreateClusterRequest = {
     },
 };
 
-const baseCreateClusterRequest_LabelsEntry: object = { key: '', value: '' };
+messageTypeRegistry.set(CreateClusterRequest.$type, CreateClusterRequest);
+
+const baseCreateClusterRequest_LabelsEntry: object = {
+    $type: 'yandex.cloud.dataproc.v1.CreateClusterRequest.LabelsEntry',
+    key: '',
+    value: '',
+};
 
 export const CreateClusterRequest_LabelsEntry = {
+    $type: 'yandex.cloud.dataproc.v1.CreateClusterRequest.LabelsEntry' as const,
+
     encode(
         message: CreateClusterRequest_LabelsEntry,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1697,9 +1787,19 @@ export const CreateClusterRequest_LabelsEntry = {
     },
 };
 
-const baseCreateClusterMetadata: object = { clusterId: '' };
+messageTypeRegistry.set(
+    CreateClusterRequest_LabelsEntry.$type,
+    CreateClusterRequest_LabelsEntry
+);
+
+const baseCreateClusterMetadata: object = {
+    $type: 'yandex.cloud.dataproc.v1.CreateClusterMetadata',
+    clusterId: '',
+};
 
 export const CreateClusterMetadata = {
+    $type: 'yandex.cloud.dataproc.v1.CreateClusterMetadata' as const,
+
     encode(
         message: CreateClusterMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1767,7 +1867,10 @@ export const CreateClusterMetadata = {
     },
 };
 
+messageTypeRegistry.set(CreateClusterMetadata.$type, CreateClusterMetadata);
+
 const baseUpdateClusterRequest: object = {
+    $type: 'yandex.cloud.dataproc.v1.UpdateClusterRequest',
     clusterId: '',
     description: '',
     name: '',
@@ -1781,6 +1884,8 @@ const baseUpdateClusterRequest: object = {
 };
 
 export const UpdateClusterRequest = {
+    $type: 'yandex.cloud.dataproc.v1.UpdateClusterRequest' as const,
+
     encode(
         message: UpdateClusterRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1799,7 +1904,11 @@ export const UpdateClusterRequest = {
         }
         Object.entries(message.labels).forEach(([key, value]) => {
             UpdateClusterRequest_LabelsEntry.encode(
-                { key: key as any, value },
+                {
+                    $type: 'yandex.cloud.dataproc.v1.UpdateClusterRequest.LabelsEntry',
+                    key: key as any,
+                    value,
+                },
                 writer.uint32(34).fork()
             ).ldelim();
         });
@@ -2125,9 +2234,17 @@ export const UpdateClusterRequest = {
     },
 };
 
-const baseUpdateClusterRequest_LabelsEntry: object = { key: '', value: '' };
+messageTypeRegistry.set(UpdateClusterRequest.$type, UpdateClusterRequest);
+
+const baseUpdateClusterRequest_LabelsEntry: object = {
+    $type: 'yandex.cloud.dataproc.v1.UpdateClusterRequest.LabelsEntry',
+    key: '',
+    value: '',
+};
 
 export const UpdateClusterRequest_LabelsEntry = {
+    $type: 'yandex.cloud.dataproc.v1.UpdateClusterRequest.LabelsEntry' as const,
+
     encode(
         message: UpdateClusterRequest_LabelsEntry,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2212,9 +2329,19 @@ export const UpdateClusterRequest_LabelsEntry = {
     },
 };
 
-const baseUpdateClusterMetadata: object = { clusterId: '' };
+messageTypeRegistry.set(
+    UpdateClusterRequest_LabelsEntry.$type,
+    UpdateClusterRequest_LabelsEntry
+);
+
+const baseUpdateClusterMetadata: object = {
+    $type: 'yandex.cloud.dataproc.v1.UpdateClusterMetadata',
+    clusterId: '',
+};
 
 export const UpdateClusterMetadata = {
+    $type: 'yandex.cloud.dataproc.v1.UpdateClusterMetadata' as const,
+
     encode(
         message: UpdateClusterMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2282,12 +2409,17 @@ export const UpdateClusterMetadata = {
     },
 };
 
+messageTypeRegistry.set(UpdateClusterMetadata.$type, UpdateClusterMetadata);
+
 const baseDeleteClusterRequest: object = {
+    $type: 'yandex.cloud.dataproc.v1.DeleteClusterRequest',
     clusterId: '',
     decommissionTimeout: 0,
 };
 
 export const DeleteClusterRequest = {
+    $type: 'yandex.cloud.dataproc.v1.DeleteClusterRequest' as const,
+
     encode(
         message: DeleteClusterRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2375,9 +2507,16 @@ export const DeleteClusterRequest = {
     },
 };
 
-const baseDeleteClusterMetadata: object = { clusterId: '' };
+messageTypeRegistry.set(DeleteClusterRequest.$type, DeleteClusterRequest);
+
+const baseDeleteClusterMetadata: object = {
+    $type: 'yandex.cloud.dataproc.v1.DeleteClusterMetadata',
+    clusterId: '',
+};
 
 export const DeleteClusterMetadata = {
+    $type: 'yandex.cloud.dataproc.v1.DeleteClusterMetadata' as const,
+
     encode(
         message: DeleteClusterMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2445,9 +2584,16 @@ export const DeleteClusterMetadata = {
     },
 };
 
-const baseStartClusterRequest: object = { clusterId: '' };
+messageTypeRegistry.set(DeleteClusterMetadata.$type, DeleteClusterMetadata);
+
+const baseStartClusterRequest: object = {
+    $type: 'yandex.cloud.dataproc.v1.StartClusterRequest',
+    clusterId: '',
+};
 
 export const StartClusterRequest = {
+    $type: 'yandex.cloud.dataproc.v1.StartClusterRequest' as const,
+
     encode(
         message: StartClusterRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2507,9 +2653,16 @@ export const StartClusterRequest = {
     },
 };
 
-const baseStartClusterMetadata: object = { clusterId: '' };
+messageTypeRegistry.set(StartClusterRequest.$type, StartClusterRequest);
+
+const baseStartClusterMetadata: object = {
+    $type: 'yandex.cloud.dataproc.v1.StartClusterMetadata',
+    clusterId: '',
+};
 
 export const StartClusterMetadata = {
+    $type: 'yandex.cloud.dataproc.v1.StartClusterMetadata' as const,
+
     encode(
         message: StartClusterMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2571,12 +2724,17 @@ export const StartClusterMetadata = {
     },
 };
 
+messageTypeRegistry.set(StartClusterMetadata.$type, StartClusterMetadata);
+
 const baseStopClusterRequest: object = {
+    $type: 'yandex.cloud.dataproc.v1.StopClusterRequest',
     clusterId: '',
     decommissionTimeout: 0,
 };
 
 export const StopClusterRequest = {
+    $type: 'yandex.cloud.dataproc.v1.StopClusterRequest' as const,
+
     encode(
         message: StopClusterRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2662,9 +2820,16 @@ export const StopClusterRequest = {
     },
 };
 
-const baseStopClusterMetadata: object = { clusterId: '' };
+messageTypeRegistry.set(StopClusterRequest.$type, StopClusterRequest);
+
+const baseStopClusterMetadata: object = {
+    $type: 'yandex.cloud.dataproc.v1.StopClusterMetadata',
+    clusterId: '',
+};
 
 export const StopClusterMetadata = {
+    $type: 'yandex.cloud.dataproc.v1.StopClusterMetadata' as const,
+
     encode(
         message: StopClusterMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2724,13 +2889,18 @@ export const StopClusterMetadata = {
     },
 };
 
+messageTypeRegistry.set(StopClusterMetadata.$type, StopClusterMetadata);
+
 const baseListClusterOperationsRequest: object = {
+    $type: 'yandex.cloud.dataproc.v1.ListClusterOperationsRequest',
     clusterId: '',
     pageSize: 0,
     pageToken: '',
 };
 
 export const ListClusterOperationsRequest = {
+    $type: 'yandex.cloud.dataproc.v1.ListClusterOperationsRequest' as const,
+
     encode(
         message: ListClusterOperationsRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2832,9 +3002,19 @@ export const ListClusterOperationsRequest = {
     },
 };
 
-const baseListClusterOperationsResponse: object = { nextPageToken: '' };
+messageTypeRegistry.set(
+    ListClusterOperationsRequest.$type,
+    ListClusterOperationsRequest
+);
+
+const baseListClusterOperationsResponse: object = {
+    $type: 'yandex.cloud.dataproc.v1.ListClusterOperationsResponse',
+    nextPageToken: '',
+};
 
 export const ListClusterOperationsResponse = {
+    $type: 'yandex.cloud.dataproc.v1.ListClusterOperationsResponse' as const,
+
     encode(
         message: ListClusterOperationsResponse,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2937,7 +3117,13 @@ export const ListClusterOperationsResponse = {
     },
 };
 
+messageTypeRegistry.set(
+    ListClusterOperationsResponse.$type,
+    ListClusterOperationsResponse
+);
+
 const baseListClusterHostsRequest: object = {
+    $type: 'yandex.cloud.dataproc.v1.ListClusterHostsRequest',
     clusterId: '',
     pageSize: 0,
     pageToken: '',
@@ -2945,6 +3131,8 @@ const baseListClusterHostsRequest: object = {
 };
 
 export const ListClusterHostsRequest = {
+    $type: 'yandex.cloud.dataproc.v1.ListClusterHostsRequest' as const,
+
     encode(
         message: ListClusterHostsRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -3063,9 +3251,16 @@ export const ListClusterHostsRequest = {
     },
 };
 
-const baseListClusterHostsResponse: object = { nextPageToken: '' };
+messageTypeRegistry.set(ListClusterHostsRequest.$type, ListClusterHostsRequest);
+
+const baseListClusterHostsResponse: object = {
+    $type: 'yandex.cloud.dataproc.v1.ListClusterHostsResponse',
+    nextPageToken: '',
+};
 
 export const ListClusterHostsResponse = {
+    $type: 'yandex.cloud.dataproc.v1.ListClusterHostsResponse' as const,
+
     encode(
         message: ListClusterHostsResponse,
         writer: _m0.Writer = _m0.Writer.create()
@@ -3166,9 +3361,19 @@ export const ListClusterHostsResponse = {
     },
 };
 
-const baseListUILinksRequest: object = { clusterId: '' };
+messageTypeRegistry.set(
+    ListClusterHostsResponse.$type,
+    ListClusterHostsResponse
+);
+
+const baseListUILinksRequest: object = {
+    $type: 'yandex.cloud.dataproc.v1.ListUILinksRequest',
+    clusterId: '',
+};
 
 export const ListUILinksRequest = {
+    $type: 'yandex.cloud.dataproc.v1.ListUILinksRequest' as const,
+
     encode(
         message: ListUILinksRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -3228,9 +3433,17 @@ export const ListUILinksRequest = {
     },
 };
 
-const baseUILink: object = { name: '', url: '' };
+messageTypeRegistry.set(ListUILinksRequest.$type, ListUILinksRequest);
+
+const baseUILink: object = {
+    $type: 'yandex.cloud.dataproc.v1.UILink',
+    name: '',
+    url: '',
+};
 
 export const UILink = {
+    $type: 'yandex.cloud.dataproc.v1.UILink' as const,
+
     encode(
         message: UILink,
         writer: _m0.Writer = _m0.Writer.create()
@@ -3304,9 +3517,15 @@ export const UILink = {
     },
 };
 
-const baseListUILinksResponse: object = {};
+messageTypeRegistry.set(UILink.$type, UILink);
+
+const baseListUILinksResponse: object = {
+    $type: 'yandex.cloud.dataproc.v1.ListUILinksResponse',
+};
 
 export const ListUILinksResponse = {
+    $type: 'yandex.cloud.dataproc.v1.ListUILinksResponse' as const,
+
     encode(
         message: ListUILinksResponse,
         writer: _m0.Writer = _m0.Writer.create()
@@ -3374,6 +3593,8 @@ export const ListUILinksResponse = {
         return message;
     },
 };
+
+messageTypeRegistry.set(ListUILinksResponse.$type, ListUILinksResponse);
 
 /** A set of methods for managing Data Proc clusters. */
 export const ClusterServiceService = {
@@ -3787,7 +4008,7 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 function longToNumber(long: Long): number {

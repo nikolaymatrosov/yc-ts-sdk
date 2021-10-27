@@ -4,6 +4,7 @@ import { ChannelCredentials, ChannelOptions, UntypedServiceImplementation, handl
 import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.cdn.v1";
 export interface PurgeCacheRequest {
+    $type: 'yandex.cloud.cdn.v1.PurgeCacheRequest';
     /** ID of the resource to perform purge operation on. */
     resourceId: string;
     /**
@@ -17,20 +18,24 @@ export interface PurgeCacheRequest {
     paths: string[];
 }
 export interface PurgeCacheMetadata {
+    $type: 'yandex.cloud.cdn.v1.PurgeCacheMetadata';
     /** ID of the resource. */
     resourceId: string;
 }
 export interface PrefetchCacheRequest {
+    $type: 'yandex.cloud.cdn.v1.PrefetchCacheRequest';
     /** ID of the resource to perform prefetch operation on. */
     resourceId: string;
     /** Set of paths to prefetch. */
     paths: string[];
 }
 export interface PrefetchCacheMetadata {
+    $type: 'yandex.cloud.cdn.v1.PrefetchCacheMetadata';
     /** ID of the resource. */
     resourceId: string;
 }
 export declare const PurgeCacheRequest: {
+    $type: "yandex.cloud.cdn.v1.PurgeCacheRequest";
     encode(message: PurgeCacheRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): PurgeCacheRequest;
     fromJSON(object: any): PurgeCacheRequest;
@@ -38,6 +43,7 @@ export declare const PurgeCacheRequest: {
     fromPartial(object: DeepPartial<PurgeCacheRequest>): PurgeCacheRequest;
 };
 export declare const PurgeCacheMetadata: {
+    $type: "yandex.cloud.cdn.v1.PurgeCacheMetadata";
     encode(message: PurgeCacheMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): PurgeCacheMetadata;
     fromJSON(object: any): PurgeCacheMetadata;
@@ -45,6 +51,7 @@ export declare const PurgeCacheMetadata: {
     fromPartial(object: DeepPartial<PurgeCacheMetadata>): PurgeCacheMetadata;
 };
 export declare const PrefetchCacheRequest: {
+    $type: "yandex.cloud.cdn.v1.PrefetchCacheRequest";
     encode(message: PrefetchCacheRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): PrefetchCacheRequest;
     fromJSON(object: any): PrefetchCacheRequest;
@@ -52,6 +59,7 @@ export declare const PrefetchCacheRequest: {
     fromPartial(object: DeepPartial<PrefetchCacheRequest>): PrefetchCacheRequest;
 };
 export declare const PrefetchCacheMetadata: {
+    $type: "yandex.cloud.cdn.v1.PrefetchCacheMetadata";
     encode(message: PrefetchCacheMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): PrefetchCacheMetadata;
     fromJSON(object: any): PrefetchCacheMetadata;
@@ -100,6 +108,6 @@ export interface CacheServiceClient extends Client {
 export declare const CacheServiceClient: new (address: string, credentials: ChannelCredentials, options?: Partial<ChannelOptions> | undefined) => CacheServiceClient;
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

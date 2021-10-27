@@ -1,6 +1,7 @@
 import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.k8s.v1";
 export interface VersionInfo {
+    $type: 'yandex.cloud.k8s.v1.VersionInfo';
     /** Current Kubernetes version, format: major.minor (e.g. 1.15). */
     currentVersion: string;
     /**
@@ -21,12 +22,14 @@ export interface VersionInfo {
     versionDeprecated: boolean;
 }
 export interface UpdateVersionSpec {
+    $type: 'yandex.cloud.k8s.v1.UpdateVersionSpec';
     /** Request update to a newer version of Kubernetes (1.x -> 1.y). */
     version: string | undefined;
     /** Request update to the latest revision for the current version. */
     latestRevision: boolean | undefined;
 }
 export declare const VersionInfo: {
+    $type: "yandex.cloud.k8s.v1.VersionInfo";
     encode(message: VersionInfo, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): VersionInfo;
     fromJSON(object: any): VersionInfo;
@@ -34,6 +37,7 @@ export declare const VersionInfo: {
     fromPartial(object: DeepPartial<VersionInfo>): VersionInfo;
 };
 export declare const UpdateVersionSpec: {
+    $type: "yandex.cloud.k8s.v1.UpdateVersionSpec";
     encode(message: UpdateVersionSpec, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateVersionSpec;
     fromJSON(object: any): UpdateVersionSpec;
@@ -42,6 +46,6 @@ export declare const UpdateVersionSpec: {
 };
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

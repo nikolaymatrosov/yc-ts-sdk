@@ -1,4 +1,5 @@
 /* eslint-disable */
+import { messageTypeRegistry } from '../../../../typeRegistry';
 import Long from 'long';
 import _m0 from 'protobufjs/minimal';
 
@@ -45,6 +46,7 @@ export function ipPermissionActionToJSON(object: IpPermissionAction): string {
 }
 
 export interface IpPermission {
+    $type: 'yandex.cloud.containerregistry.v1.IpPermission';
     action: IpPermission_Action;
     ip: string;
 }
@@ -88,15 +90,22 @@ export function ipPermission_ActionToJSON(object: IpPermission_Action): string {
 }
 
 export interface IpPermissionDelta {
+    $type: 'yandex.cloud.containerregistry.v1.IpPermissionDelta';
     /** The action that is being performed on an ip permission. */
     action: IpPermissionAction;
     /** Ip permission. */
     ipPermission: IpPermission | undefined;
 }
 
-const baseIpPermission: object = { action: 0, ip: '' };
+const baseIpPermission: object = {
+    $type: 'yandex.cloud.containerregistry.v1.IpPermission',
+    action: 0,
+    ip: '',
+};
 
 export const IpPermission = {
+    $type: 'yandex.cloud.containerregistry.v1.IpPermission' as const,
+
     encode(
         message: IpPermission,
         writer: _m0.Writer = _m0.Writer.create()
@@ -171,9 +180,16 @@ export const IpPermission = {
     },
 };
 
-const baseIpPermissionDelta: object = { action: 0 };
+messageTypeRegistry.set(IpPermission.$type, IpPermission);
+
+const baseIpPermissionDelta: object = {
+    $type: 'yandex.cloud.containerregistry.v1.IpPermissionDelta',
+    action: 0,
+};
 
 export const IpPermissionDelta = {
+    $type: 'yandex.cloud.containerregistry.v1.IpPermissionDelta' as const,
+
     encode(
         message: IpPermissionDelta,
         writer: _m0.Writer = _m0.Writer.create()
@@ -259,6 +275,8 @@ export const IpPermissionDelta = {
     },
 };
 
+messageTypeRegistry.set(IpPermissionDelta.$type, IpPermissionDelta);
+
 type Builtin =
     | Date
     | Function
@@ -274,7 +292,7 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 if (_m0.util.Long !== Long) {

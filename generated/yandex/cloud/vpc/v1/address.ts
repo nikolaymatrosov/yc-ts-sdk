@@ -1,5 +1,6 @@
 /* eslint-disable */
 import { Timestamp } from '../../../../google/protobuf/timestamp';
+import { messageTypeRegistry } from '../../../../typeRegistry';
 import Long from 'long';
 import _m0 from 'protobufjs/minimal';
 
@@ -7,6 +8,7 @@ export const protobufPackage = 'yandex.cloud.vpc.v1';
 
 /** An Address resource. For more information, see [Address](/docs/vpc/concepts/address). */
 export interface Address {
+    $type: 'yandex.cloud.vpc.v1.Address';
     /** ID of the address. Generated at creation time. */
     id: string;
     /** ID of the folder that the address belongs to. */
@@ -114,11 +116,13 @@ export function address_IpVersionToJSON(object: Address_IpVersion): string {
 }
 
 export interface Address_LabelsEntry {
+    $type: 'yandex.cloud.vpc.v1.Address.LabelsEntry';
     key: string;
     value: string;
 }
 
 export interface ExternalIpv4Address {
+    $type: 'yandex.cloud.vpc.v1.ExternalIpv4Address';
     /** Value of address. */
     address: string;
     /** Availability zone from which the address will be allocated. */
@@ -128,6 +132,7 @@ export interface ExternalIpv4Address {
 }
 
 export interface AddressRequirements {
+    $type: 'yandex.cloud.vpc.v1.AddressRequirements';
     /** DDoS protection provider ID. */
     ddosProtectionProvider: string;
     /** Capability to send SMTP traffic. */
@@ -135,6 +140,7 @@ export interface AddressRequirements {
 }
 
 const baseAddress: object = {
+    $type: 'yandex.cloud.vpc.v1.Address',
     id: '',
     folderId: '',
     name: '',
@@ -146,6 +152,8 @@ const baseAddress: object = {
 };
 
 export const Address = {
+    $type: 'yandex.cloud.vpc.v1.Address' as const,
+
     encode(
         message: Address,
         writer: _m0.Writer = _m0.Writer.create()
@@ -170,7 +178,11 @@ export const Address = {
         }
         Object.entries(message.labels).forEach(([key, value]) => {
             Address_LabelsEntry.encode(
-                { key: key as any, value },
+                {
+                    $type: 'yandex.cloud.vpc.v1.Address.LabelsEntry',
+                    key: key as any,
+                    value,
+                },
                 writer.uint32(50).fork()
             ).ldelim();
         });
@@ -419,9 +431,17 @@ export const Address = {
     },
 };
 
-const baseAddress_LabelsEntry: object = { key: '', value: '' };
+messageTypeRegistry.set(Address.$type, Address);
+
+const baseAddress_LabelsEntry: object = {
+    $type: 'yandex.cloud.vpc.v1.Address.LabelsEntry',
+    key: '',
+    value: '',
+};
 
 export const Address_LabelsEntry = {
+    $type: 'yandex.cloud.vpc.v1.Address.LabelsEntry' as const,
+
     encode(
         message: Address_LabelsEntry,
         writer: _m0.Writer = _m0.Writer.create()
@@ -498,9 +518,17 @@ export const Address_LabelsEntry = {
     },
 };
 
-const baseExternalIpv4Address: object = { address: '', zoneId: '' };
+messageTypeRegistry.set(Address_LabelsEntry.$type, Address_LabelsEntry);
+
+const baseExternalIpv4Address: object = {
+    $type: 'yandex.cloud.vpc.v1.ExternalIpv4Address',
+    address: '',
+    zoneId: '',
+};
 
 export const ExternalIpv4Address = {
+    $type: 'yandex.cloud.vpc.v1.ExternalIpv4Address' as const,
+
     encode(
         message: ExternalIpv4Address,
         writer: _m0.Writer = _m0.Writer.create()
@@ -607,12 +635,17 @@ export const ExternalIpv4Address = {
     },
 };
 
+messageTypeRegistry.set(ExternalIpv4Address.$type, ExternalIpv4Address);
+
 const baseAddressRequirements: object = {
+    $type: 'yandex.cloud.vpc.v1.AddressRequirements',
     ddosProtectionProvider: '',
     outgoingSmtpCapability: '',
 };
 
 export const AddressRequirements = {
+    $type: 'yandex.cloud.vpc.v1.AddressRequirements' as const,
+
     encode(
         message: AddressRequirements,
         writer: _m0.Writer = _m0.Writer.create()
@@ -707,6 +740,8 @@ export const AddressRequirements = {
     },
 };
 
+messageTypeRegistry.set(AddressRequirements.$type, AddressRequirements);
+
 type Builtin =
     | Date
     | Function
@@ -722,13 +757,13 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 function toTimestamp(date: Date): Timestamp {
     const seconds = date.getTime() / 1_000;
     const nanos = (date.getTime() % 1_000) * 1_000_000;
-    return { seconds, nanos };
+    return { $type: 'google.protobuf.Timestamp', seconds, nanos };
 }
 
 function fromTimestamp(t: Timestamp): Date {

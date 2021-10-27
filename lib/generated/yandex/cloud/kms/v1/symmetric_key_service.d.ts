@@ -8,6 +8,7 @@ import { ChannelCredentials, ChannelOptions, UntypedServiceImplementation, handl
 import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.kms.v1";
 export interface CreateSymmetricKeyRequest {
+    $type: 'yandex.cloud.kms.v1.CreateSymmetricKeyRequest';
     /** ID of the folder to create a symmetric KMS key in. */
     folderId: string;
     /** Name of the key. */
@@ -32,16 +33,19 @@ export interface CreateSymmetricKeyRequest {
     deletionProtection: boolean;
 }
 export interface CreateSymmetricKeyRequest_LabelsEntry {
+    $type: 'yandex.cloud.kms.v1.CreateSymmetricKeyRequest.LabelsEntry';
     key: string;
     value: string;
 }
 export interface CreateSymmetricKeyMetadata {
+    $type: 'yandex.cloud.kms.v1.CreateSymmetricKeyMetadata';
     /** ID of the key being created. */
     keyId: string;
     /** ID of the primary version of the key being created. */
     primaryVersionId: string;
 }
 export interface GetSymmetricKeyRequest {
+    $type: 'yandex.cloud.kms.v1.GetSymmetricKeyRequest';
     /**
      * ID of the symmetric KMS key to return.
      * To get the ID of a symmetric KMS key use a [SymmetricKeyService.List] request.
@@ -49,6 +53,7 @@ export interface GetSymmetricKeyRequest {
     keyId: string;
 }
 export interface ListSymmetricKeysRequest {
+    $type: 'yandex.cloud.kms.v1.ListSymmetricKeysRequest';
     /** ID of the folder to list symmetric KMS keys in. */
     folderId: string;
     /**
@@ -65,6 +70,7 @@ export interface ListSymmetricKeysRequest {
     pageToken: string;
 }
 export interface ListSymmetricKeysResponse {
+    $type: 'yandex.cloud.kms.v1.ListSymmetricKeysResponse';
     /** List of symmetric KMS keys in the specified folder. */
     keys: SymmetricKey[];
     /**
@@ -77,6 +83,7 @@ export interface ListSymmetricKeysResponse {
     nextPageToken: string;
 }
 export interface ListSymmetricKeyVersionsRequest {
+    $type: 'yandex.cloud.kms.v1.ListSymmetricKeyVersionsRequest';
     /** ID of the symmetric KMS key to list versions for. */
     keyId: string;
     /**
@@ -93,6 +100,7 @@ export interface ListSymmetricKeyVersionsRequest {
     pageToken: string;
 }
 export interface ListSymmetricKeyVersionsResponse {
+    $type: 'yandex.cloud.kms.v1.ListSymmetricKeyVersionsResponse';
     /** List of versions for the specified symmetric KMS key. */
     keyVersions: SymmetricKeyVersion[];
     /**
@@ -105,6 +113,7 @@ export interface ListSymmetricKeyVersionsResponse {
     nextPageToken: string;
 }
 export interface UpdateSymmetricKeyRequest {
+    $type: 'yandex.cloud.kms.v1.UpdateSymmetricKeyRequest';
     /**
      * ID of the symmetric KMS key to update.
      * To get the ID of a symmetric KMS key use a [SymmetricKeyService.List] request.
@@ -133,44 +142,53 @@ export interface UpdateSymmetricKeyRequest {
     deletionProtection: boolean;
 }
 export interface UpdateSymmetricKeyRequest_LabelsEntry {
+    $type: 'yandex.cloud.kms.v1.UpdateSymmetricKeyRequest.LabelsEntry';
     key: string;
     value: string;
 }
 export interface UpdateSymmetricKeyMetadata {
+    $type: 'yandex.cloud.kms.v1.UpdateSymmetricKeyMetadata';
     /** ID of the key being updated. */
     keyId: string;
 }
 export interface DeleteSymmetricKeyRequest {
+    $type: 'yandex.cloud.kms.v1.DeleteSymmetricKeyRequest';
     /** ID of the key to be deleted. */
     keyId: string;
 }
 export interface DeleteSymmetricKeyMetadata {
+    $type: 'yandex.cloud.kms.v1.DeleteSymmetricKeyMetadata';
     /** ID of the key being deleted. */
     keyId: string;
 }
 export interface SetPrimarySymmetricKeyVersionRequest {
+    $type: 'yandex.cloud.kms.v1.SetPrimarySymmetricKeyVersionRequest';
     /** ID of the key to set a primary version for. */
     keyId: string;
     /** ID of the version that should become primary for the specified key. */
     versionId: string;
 }
 export interface SetPrimarySymmetricKeyVersionMetadata {
+    $type: 'yandex.cloud.kms.v1.SetPrimarySymmetricKeyVersionMetadata';
     /** ID of the key that the primary version if being changed for. */
     keyId: string;
     /** ID of the version that is being made primary for the key. */
     versionId: string;
 }
 export interface RotateSymmetricKeyRequest {
+    $type: 'yandex.cloud.kms.v1.RotateSymmetricKeyRequest';
     /** ID of the key to be rotated. */
     keyId: string;
 }
 export interface RotateSymmetricKeyMetadata {
+    $type: 'yandex.cloud.kms.v1.RotateSymmetricKeyMetadata';
     /** ID of the key being rotated. */
     keyId: string;
     /** ID of the version generated as a result of key rotation. */
     newPrimaryVersionId: string;
 }
 export interface ScheduleSymmetricKeyVersionDestructionRequest {
+    $type: 'yandex.cloud.kms.v1.ScheduleSymmetricKeyVersionDestructionRequest';
     /** ID of the key whose version should be scheduled for destruction. */
     keyId: string;
     /** ID of the version to be destroyed. */
@@ -182,6 +200,7 @@ export interface ScheduleSymmetricKeyVersionDestructionRequest {
     pendingPeriod: Duration | undefined;
 }
 export interface ScheduleSymmetricKeyVersionDestructionMetadata {
+    $type: 'yandex.cloud.kms.v1.ScheduleSymmetricKeyVersionDestructionMetadata';
     /** ID of the key whose version is being scheduled for destruction. */
     keyId: string;
     /** ID of the version that is being scheduled for destruction. */
@@ -190,18 +209,21 @@ export interface ScheduleSymmetricKeyVersionDestructionMetadata {
     destroyAt: Date | undefined;
 }
 export interface CancelSymmetricKeyVersionDestructionRequest {
+    $type: 'yandex.cloud.kms.v1.CancelSymmetricKeyVersionDestructionRequest';
     /** ID of the key to cancel a version's destruction for. */
     keyId: string;
     /** ID of the version whose scheduled destruction should be cancelled. */
     versionId: string;
 }
 export interface CancelSymmetricKeyVersionDestructionMetadata {
+    $type: 'yandex.cloud.kms.v1.CancelSymmetricKeyVersionDestructionMetadata';
     /** ID of the key whose version's destruction is being cancelled. */
     keyId: string;
     /** ID of the version whose scheduled destruction is being cancelled. */
     versionId: string;
 }
 export interface ListSymmetricKeyOperationsRequest {
+    $type: 'yandex.cloud.kms.v1.ListSymmetricKeyOperationsRequest';
     /**
      * ID of the symmetric KMS key to get operations for.
      *
@@ -222,6 +244,7 @@ export interface ListSymmetricKeyOperationsRequest {
     pageToken: string;
 }
 export interface ListSymmetricKeyOperationsResponse {
+    $type: 'yandex.cloud.kms.v1.ListSymmetricKeyOperationsResponse';
     /** List of operations for the specified key. */
     operations: Operation[];
     /**
@@ -233,6 +256,7 @@ export interface ListSymmetricKeyOperationsResponse {
     nextPageToken: string;
 }
 export declare const CreateSymmetricKeyRequest: {
+    $type: "yandex.cloud.kms.v1.CreateSymmetricKeyRequest";
     encode(message: CreateSymmetricKeyRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateSymmetricKeyRequest;
     fromJSON(object: any): CreateSymmetricKeyRequest;
@@ -240,6 +264,7 @@ export declare const CreateSymmetricKeyRequest: {
     fromPartial(object: DeepPartial<CreateSymmetricKeyRequest>): CreateSymmetricKeyRequest;
 };
 export declare const CreateSymmetricKeyRequest_LabelsEntry: {
+    $type: "yandex.cloud.kms.v1.CreateSymmetricKeyRequest.LabelsEntry";
     encode(message: CreateSymmetricKeyRequest_LabelsEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateSymmetricKeyRequest_LabelsEntry;
     fromJSON(object: any): CreateSymmetricKeyRequest_LabelsEntry;
@@ -247,6 +272,7 @@ export declare const CreateSymmetricKeyRequest_LabelsEntry: {
     fromPartial(object: DeepPartial<CreateSymmetricKeyRequest_LabelsEntry>): CreateSymmetricKeyRequest_LabelsEntry;
 };
 export declare const CreateSymmetricKeyMetadata: {
+    $type: "yandex.cloud.kms.v1.CreateSymmetricKeyMetadata";
     encode(message: CreateSymmetricKeyMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateSymmetricKeyMetadata;
     fromJSON(object: any): CreateSymmetricKeyMetadata;
@@ -254,6 +280,7 @@ export declare const CreateSymmetricKeyMetadata: {
     fromPartial(object: DeepPartial<CreateSymmetricKeyMetadata>): CreateSymmetricKeyMetadata;
 };
 export declare const GetSymmetricKeyRequest: {
+    $type: "yandex.cloud.kms.v1.GetSymmetricKeyRequest";
     encode(message: GetSymmetricKeyRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): GetSymmetricKeyRequest;
     fromJSON(object: any): GetSymmetricKeyRequest;
@@ -261,6 +288,7 @@ export declare const GetSymmetricKeyRequest: {
     fromPartial(object: DeepPartial<GetSymmetricKeyRequest>): GetSymmetricKeyRequest;
 };
 export declare const ListSymmetricKeysRequest: {
+    $type: "yandex.cloud.kms.v1.ListSymmetricKeysRequest";
     encode(message: ListSymmetricKeysRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListSymmetricKeysRequest;
     fromJSON(object: any): ListSymmetricKeysRequest;
@@ -268,6 +296,7 @@ export declare const ListSymmetricKeysRequest: {
     fromPartial(object: DeepPartial<ListSymmetricKeysRequest>): ListSymmetricKeysRequest;
 };
 export declare const ListSymmetricKeysResponse: {
+    $type: "yandex.cloud.kms.v1.ListSymmetricKeysResponse";
     encode(message: ListSymmetricKeysResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListSymmetricKeysResponse;
     fromJSON(object: any): ListSymmetricKeysResponse;
@@ -275,6 +304,7 @@ export declare const ListSymmetricKeysResponse: {
     fromPartial(object: DeepPartial<ListSymmetricKeysResponse>): ListSymmetricKeysResponse;
 };
 export declare const ListSymmetricKeyVersionsRequest: {
+    $type: "yandex.cloud.kms.v1.ListSymmetricKeyVersionsRequest";
     encode(message: ListSymmetricKeyVersionsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListSymmetricKeyVersionsRequest;
     fromJSON(object: any): ListSymmetricKeyVersionsRequest;
@@ -282,6 +312,7 @@ export declare const ListSymmetricKeyVersionsRequest: {
     fromPartial(object: DeepPartial<ListSymmetricKeyVersionsRequest>): ListSymmetricKeyVersionsRequest;
 };
 export declare const ListSymmetricKeyVersionsResponse: {
+    $type: "yandex.cloud.kms.v1.ListSymmetricKeyVersionsResponse";
     encode(message: ListSymmetricKeyVersionsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListSymmetricKeyVersionsResponse;
     fromJSON(object: any): ListSymmetricKeyVersionsResponse;
@@ -289,6 +320,7 @@ export declare const ListSymmetricKeyVersionsResponse: {
     fromPartial(object: DeepPartial<ListSymmetricKeyVersionsResponse>): ListSymmetricKeyVersionsResponse;
 };
 export declare const UpdateSymmetricKeyRequest: {
+    $type: "yandex.cloud.kms.v1.UpdateSymmetricKeyRequest";
     encode(message: UpdateSymmetricKeyRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateSymmetricKeyRequest;
     fromJSON(object: any): UpdateSymmetricKeyRequest;
@@ -296,6 +328,7 @@ export declare const UpdateSymmetricKeyRequest: {
     fromPartial(object: DeepPartial<UpdateSymmetricKeyRequest>): UpdateSymmetricKeyRequest;
 };
 export declare const UpdateSymmetricKeyRequest_LabelsEntry: {
+    $type: "yandex.cloud.kms.v1.UpdateSymmetricKeyRequest.LabelsEntry";
     encode(message: UpdateSymmetricKeyRequest_LabelsEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateSymmetricKeyRequest_LabelsEntry;
     fromJSON(object: any): UpdateSymmetricKeyRequest_LabelsEntry;
@@ -303,6 +336,7 @@ export declare const UpdateSymmetricKeyRequest_LabelsEntry: {
     fromPartial(object: DeepPartial<UpdateSymmetricKeyRequest_LabelsEntry>): UpdateSymmetricKeyRequest_LabelsEntry;
 };
 export declare const UpdateSymmetricKeyMetadata: {
+    $type: "yandex.cloud.kms.v1.UpdateSymmetricKeyMetadata";
     encode(message: UpdateSymmetricKeyMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateSymmetricKeyMetadata;
     fromJSON(object: any): UpdateSymmetricKeyMetadata;
@@ -310,6 +344,7 @@ export declare const UpdateSymmetricKeyMetadata: {
     fromPartial(object: DeepPartial<UpdateSymmetricKeyMetadata>): UpdateSymmetricKeyMetadata;
 };
 export declare const DeleteSymmetricKeyRequest: {
+    $type: "yandex.cloud.kms.v1.DeleteSymmetricKeyRequest";
     encode(message: DeleteSymmetricKeyRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteSymmetricKeyRequest;
     fromJSON(object: any): DeleteSymmetricKeyRequest;
@@ -317,6 +352,7 @@ export declare const DeleteSymmetricKeyRequest: {
     fromPartial(object: DeepPartial<DeleteSymmetricKeyRequest>): DeleteSymmetricKeyRequest;
 };
 export declare const DeleteSymmetricKeyMetadata: {
+    $type: "yandex.cloud.kms.v1.DeleteSymmetricKeyMetadata";
     encode(message: DeleteSymmetricKeyMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteSymmetricKeyMetadata;
     fromJSON(object: any): DeleteSymmetricKeyMetadata;
@@ -324,6 +360,7 @@ export declare const DeleteSymmetricKeyMetadata: {
     fromPartial(object: DeepPartial<DeleteSymmetricKeyMetadata>): DeleteSymmetricKeyMetadata;
 };
 export declare const SetPrimarySymmetricKeyVersionRequest: {
+    $type: "yandex.cloud.kms.v1.SetPrimarySymmetricKeyVersionRequest";
     encode(message: SetPrimarySymmetricKeyVersionRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): SetPrimarySymmetricKeyVersionRequest;
     fromJSON(object: any): SetPrimarySymmetricKeyVersionRequest;
@@ -331,6 +368,7 @@ export declare const SetPrimarySymmetricKeyVersionRequest: {
     fromPartial(object: DeepPartial<SetPrimarySymmetricKeyVersionRequest>): SetPrimarySymmetricKeyVersionRequest;
 };
 export declare const SetPrimarySymmetricKeyVersionMetadata: {
+    $type: "yandex.cloud.kms.v1.SetPrimarySymmetricKeyVersionMetadata";
     encode(message: SetPrimarySymmetricKeyVersionMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): SetPrimarySymmetricKeyVersionMetadata;
     fromJSON(object: any): SetPrimarySymmetricKeyVersionMetadata;
@@ -338,6 +376,7 @@ export declare const SetPrimarySymmetricKeyVersionMetadata: {
     fromPartial(object: DeepPartial<SetPrimarySymmetricKeyVersionMetadata>): SetPrimarySymmetricKeyVersionMetadata;
 };
 export declare const RotateSymmetricKeyRequest: {
+    $type: "yandex.cloud.kms.v1.RotateSymmetricKeyRequest";
     encode(message: RotateSymmetricKeyRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): RotateSymmetricKeyRequest;
     fromJSON(object: any): RotateSymmetricKeyRequest;
@@ -345,6 +384,7 @@ export declare const RotateSymmetricKeyRequest: {
     fromPartial(object: DeepPartial<RotateSymmetricKeyRequest>): RotateSymmetricKeyRequest;
 };
 export declare const RotateSymmetricKeyMetadata: {
+    $type: "yandex.cloud.kms.v1.RotateSymmetricKeyMetadata";
     encode(message: RotateSymmetricKeyMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): RotateSymmetricKeyMetadata;
     fromJSON(object: any): RotateSymmetricKeyMetadata;
@@ -352,6 +392,7 @@ export declare const RotateSymmetricKeyMetadata: {
     fromPartial(object: DeepPartial<RotateSymmetricKeyMetadata>): RotateSymmetricKeyMetadata;
 };
 export declare const ScheduleSymmetricKeyVersionDestructionRequest: {
+    $type: "yandex.cloud.kms.v1.ScheduleSymmetricKeyVersionDestructionRequest";
     encode(message: ScheduleSymmetricKeyVersionDestructionRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ScheduleSymmetricKeyVersionDestructionRequest;
     fromJSON(object: any): ScheduleSymmetricKeyVersionDestructionRequest;
@@ -359,6 +400,7 @@ export declare const ScheduleSymmetricKeyVersionDestructionRequest: {
     fromPartial(object: DeepPartial<ScheduleSymmetricKeyVersionDestructionRequest>): ScheduleSymmetricKeyVersionDestructionRequest;
 };
 export declare const ScheduleSymmetricKeyVersionDestructionMetadata: {
+    $type: "yandex.cloud.kms.v1.ScheduleSymmetricKeyVersionDestructionMetadata";
     encode(message: ScheduleSymmetricKeyVersionDestructionMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ScheduleSymmetricKeyVersionDestructionMetadata;
     fromJSON(object: any): ScheduleSymmetricKeyVersionDestructionMetadata;
@@ -366,6 +408,7 @@ export declare const ScheduleSymmetricKeyVersionDestructionMetadata: {
     fromPartial(object: DeepPartial<ScheduleSymmetricKeyVersionDestructionMetadata>): ScheduleSymmetricKeyVersionDestructionMetadata;
 };
 export declare const CancelSymmetricKeyVersionDestructionRequest: {
+    $type: "yandex.cloud.kms.v1.CancelSymmetricKeyVersionDestructionRequest";
     encode(message: CancelSymmetricKeyVersionDestructionRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CancelSymmetricKeyVersionDestructionRequest;
     fromJSON(object: any): CancelSymmetricKeyVersionDestructionRequest;
@@ -373,6 +416,7 @@ export declare const CancelSymmetricKeyVersionDestructionRequest: {
     fromPartial(object: DeepPartial<CancelSymmetricKeyVersionDestructionRequest>): CancelSymmetricKeyVersionDestructionRequest;
 };
 export declare const CancelSymmetricKeyVersionDestructionMetadata: {
+    $type: "yandex.cloud.kms.v1.CancelSymmetricKeyVersionDestructionMetadata";
     encode(message: CancelSymmetricKeyVersionDestructionMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CancelSymmetricKeyVersionDestructionMetadata;
     fromJSON(object: any): CancelSymmetricKeyVersionDestructionMetadata;
@@ -380,6 +424,7 @@ export declare const CancelSymmetricKeyVersionDestructionMetadata: {
     fromPartial(object: DeepPartial<CancelSymmetricKeyVersionDestructionMetadata>): CancelSymmetricKeyVersionDestructionMetadata;
 };
 export declare const ListSymmetricKeyOperationsRequest: {
+    $type: "yandex.cloud.kms.v1.ListSymmetricKeyOperationsRequest";
     encode(message: ListSymmetricKeyOperationsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListSymmetricKeyOperationsRequest;
     fromJSON(object: any): ListSymmetricKeyOperationsRequest;
@@ -387,6 +432,7 @@ export declare const ListSymmetricKeyOperationsRequest: {
     fromPartial(object: DeepPartial<ListSymmetricKeyOperationsRequest>): ListSymmetricKeyOperationsRequest;
 };
 export declare const ListSymmetricKeyOperationsResponse: {
+    $type: "yandex.cloud.kms.v1.ListSymmetricKeyOperationsResponse";
     encode(message: ListSymmetricKeyOperationsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListSymmetricKeyOperationsResponse;
     fromJSON(object: any): ListSymmetricKeyOperationsResponse;
@@ -687,6 +733,6 @@ export interface SymmetricKeyServiceClient extends Client {
 export declare const SymmetricKeyServiceClient: new (address: string, credentials: ChannelCredentials, options?: Partial<ChannelOptions> | undefined) => SymmetricKeyServiceClient;
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

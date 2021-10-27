@@ -5,6 +5,7 @@ export declare const protobufPackage = "yandex.cloud.mdb.mongodb.v1.config";
  * options described in [MongoDB documentation](https://docs.mongodb.com/v4.4/reference/configuration-options/).
  */
 export interface Mongodconfig44 {
+    $type: 'yandex.cloud.mdb.mongodb.v1.config.MongodConfig4_4';
     /** `storage` section of mongod configuration. */
     storage: Mongodconfig44_Storage | undefined;
     /** `operationProfiling` section of mongod configuration. */
@@ -13,6 +14,7 @@ export interface Mongodconfig44 {
     net: Mongodconfig44_Network | undefined;
 }
 export interface Mongodconfig44_Storage {
+    $type: 'yandex.cloud.mdb.mongodb.v1.config.MongodConfig4_4.Storage';
     /** Configuration of the WiredTiger storage engine. */
     wiredTiger: Mongodconfig44_Storage_WiredTiger | undefined;
     /** Configuration of the MongoDB [journal](https://docs.mongodb.com/v4.4/reference/glossary/#term-journal). */
@@ -20,16 +22,19 @@ export interface Mongodconfig44_Storage {
 }
 /** Configuration of WiredTiger storage engine. */
 export interface Mongodconfig44_Storage_WiredTiger {
+    $type: 'yandex.cloud.mdb.mongodb.v1.config.MongodConfig4_4.Storage.WiredTiger';
     /** Engine configuration for WiredTiger. */
     engineConfig: Mongodconfig44_Storage_WiredTiger_EngineConfig | undefined;
     /** Collection configuration for WiredTiger. */
     collectionConfig: Mongodconfig44_Storage_WiredTiger_CollectionConfig | undefined;
 }
 export interface Mongodconfig44_Storage_WiredTiger_EngineConfig {
+    $type: 'yandex.cloud.mdb.mongodb.v1.config.MongodConfig4_4.Storage.WiredTiger.EngineConfig';
     /** The maximum size of the internal cache that WiredTiger will use for all data. */
     cacheSizeGb: number | undefined;
 }
 export interface Mongodconfig44_Storage_WiredTiger_CollectionConfig {
+    $type: 'yandex.cloud.mdb.mongodb.v1.config.MongodConfig4_4.Storage.WiredTiger.CollectionConfig';
     /** Default type of compression to use for collection data. */
     blockCompressor: Mongodconfig44_Storage_WiredTiger_CollectionConfig_Compressor;
 }
@@ -46,6 +51,7 @@ export declare enum Mongodconfig44_Storage_WiredTiger_CollectionConfig_Compresso
 export declare function mongodconfig44_Storage_WiredTiger_CollectionConfig_CompressorFromJSON(object: any): Mongodconfig44_Storage_WiredTiger_CollectionConfig_Compressor;
 export declare function mongodconfig44_Storage_WiredTiger_CollectionConfig_CompressorToJSON(object: Mongodconfig44_Storage_WiredTiger_CollectionConfig_Compressor): string;
 export interface Mongodconfig44_Storage_Journal {
+    $type: 'yandex.cloud.mdb.mongodb.v1.config.MongodConfig4_4.Storage.Journal';
     /**
      * Commit interval between journal operations, in milliseconds.
      * Default: 100.
@@ -53,6 +59,7 @@ export interface Mongodconfig44_Storage_Journal {
     commitInterval: number | undefined;
 }
 export interface Mongodconfig44_OperationProfiling {
+    $type: 'yandex.cloud.mdb.mongodb.v1.config.MongodConfig4_4.OperationProfiling';
     /** Mode which specifies operations that should be profiled. */
     mode: Mongodconfig44_OperationProfiling_Mode;
     /**
@@ -75,10 +82,12 @@ export declare enum Mongodconfig44_OperationProfiling_Mode {
 export declare function mongodconfig44_OperationProfiling_ModeFromJSON(object: any): Mongodconfig44_OperationProfiling_Mode;
 export declare function mongodconfig44_OperationProfiling_ModeToJSON(object: Mongodconfig44_OperationProfiling_Mode): string;
 export interface Mongodconfig44_Network {
+    $type: 'yandex.cloud.mdb.mongodb.v1.config.MongodConfig4_4.Network';
     /** The maximum number of simultaneous connections that mongod will accept. */
     maxIncomingConnections: number | undefined;
 }
 export interface Mongocfgconfig44 {
+    $type: 'yandex.cloud.mdb.mongodb.v1.config.MongoCfgConfig4_4';
     /** `storage` section of mongocfg configuration. */
     storage: Mongocfgconfig44_Storage | undefined;
     /** `operationProfiling` section of mongocfg configuration. */
@@ -87,19 +96,23 @@ export interface Mongocfgconfig44 {
     net: Mongocfgconfig44_Network | undefined;
 }
 export interface Mongocfgconfig44_Storage {
+    $type: 'yandex.cloud.mdb.mongodb.v1.config.MongoCfgConfig4_4.Storage';
     /** Configuration of the WiredTiger storage engine. */
     wiredTiger: Mongocfgconfig44_Storage_WiredTiger | undefined;
 }
 /** Configuration of WiredTiger storage engine. */
 export interface Mongocfgconfig44_Storage_WiredTiger {
+    $type: 'yandex.cloud.mdb.mongodb.v1.config.MongoCfgConfig4_4.Storage.WiredTiger';
     /** Engine configuration for WiredTiger. */
     engineConfig: Mongocfgconfig44_Storage_WiredTiger_EngineConfig | undefined;
 }
 export interface Mongocfgconfig44_Storage_WiredTiger_EngineConfig {
+    $type: 'yandex.cloud.mdb.mongodb.v1.config.MongoCfgConfig4_4.Storage.WiredTiger.EngineConfig';
     /** The maximum size of the internal cache that WiredTiger will use for all data. */
     cacheSizeGb: number | undefined;
 }
 export interface Mongocfgconfig44_OperationProfiling {
+    $type: 'yandex.cloud.mdb.mongodb.v1.config.MongoCfgConfig4_4.OperationProfiling';
     /** Mode which specifies operations that should be profiled. */
     mode: Mongocfgconfig44_OperationProfiling_Mode;
     /**
@@ -122,18 +135,22 @@ export declare enum Mongocfgconfig44_OperationProfiling_Mode {
 export declare function mongocfgconfig44_OperationProfiling_ModeFromJSON(object: any): Mongocfgconfig44_OperationProfiling_Mode;
 export declare function mongocfgconfig44_OperationProfiling_ModeToJSON(object: Mongocfgconfig44_OperationProfiling_Mode): string;
 export interface Mongocfgconfig44_Network {
+    $type: 'yandex.cloud.mdb.mongodb.v1.config.MongoCfgConfig4_4.Network';
     /** The maximum number of simultaneous connections that mongocfg will accept. */
     maxIncomingConnections: number | undefined;
 }
 export interface Mongosconfig44 {
+    $type: 'yandex.cloud.mdb.mongodb.v1.config.MongosConfig4_4';
     /** Network settings for mongos. */
     net: Mongosconfig44_Network | undefined;
 }
 export interface Mongosconfig44_Network {
+    $type: 'yandex.cloud.mdb.mongodb.v1.config.MongosConfig4_4.Network';
     /** The maximum number of simultaneous connections that mongos will accept. */
     maxIncomingConnections: number | undefined;
 }
 export interface Mongodconfigset44 {
+    $type: 'yandex.cloud.mdb.mongodb.v1.config.MongodConfigSet4_4';
     /**
      * Effective mongod settings for a MongoDB 4.4 cluster (a combination of settings defined
      * in [user_config] and [default_config]).
@@ -145,6 +162,7 @@ export interface Mongodconfigset44 {
     defaultConfig: Mongodconfig44 | undefined;
 }
 export interface Mongocfgconfigset44 {
+    $type: 'yandex.cloud.mdb.mongodb.v1.config.MongoCfgConfigSet4_4';
     /**
      * Effective mongocfg settings for a MongoDB 4.4 cluster (a combination of settings defined
      * in [user_config] and [default_config]).
@@ -156,6 +174,7 @@ export interface Mongocfgconfigset44 {
     defaultConfig: Mongocfgconfig44 | undefined;
 }
 export interface Mongosconfigset44 {
+    $type: 'yandex.cloud.mdb.mongodb.v1.config.MongosConfigSet4_4';
     /**
      * Effective mongos settings for a MongoDB 4.4 cluster (a combination of settings defined
      * in [user_config] and [default_config]).
@@ -167,6 +186,7 @@ export interface Mongosconfigset44 {
     defaultConfig: Mongosconfig44 | undefined;
 }
 export declare const Mongodconfig44: {
+    $type: "yandex.cloud.mdb.mongodb.v1.config.MongodConfig4_4";
     encode(message: Mongodconfig44, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Mongodconfig44;
     fromJSON(object: any): Mongodconfig44;
@@ -174,6 +194,7 @@ export declare const Mongodconfig44: {
     fromPartial(object: DeepPartial<Mongodconfig44>): Mongodconfig44;
 };
 export declare const Mongodconfig44_Storage: {
+    $type: "yandex.cloud.mdb.mongodb.v1.config.MongodConfig4_4.Storage";
     encode(message: Mongodconfig44_Storage, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Mongodconfig44_Storage;
     fromJSON(object: any): Mongodconfig44_Storage;
@@ -181,6 +202,7 @@ export declare const Mongodconfig44_Storage: {
     fromPartial(object: DeepPartial<Mongodconfig44_Storage>): Mongodconfig44_Storage;
 };
 export declare const Mongodconfig44_Storage_WiredTiger: {
+    $type: "yandex.cloud.mdb.mongodb.v1.config.MongodConfig4_4.Storage.WiredTiger";
     encode(message: Mongodconfig44_Storage_WiredTiger, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Mongodconfig44_Storage_WiredTiger;
     fromJSON(object: any): Mongodconfig44_Storage_WiredTiger;
@@ -188,6 +210,7 @@ export declare const Mongodconfig44_Storage_WiredTiger: {
     fromPartial(object: DeepPartial<Mongodconfig44_Storage_WiredTiger>): Mongodconfig44_Storage_WiredTiger;
 };
 export declare const Mongodconfig44_Storage_WiredTiger_EngineConfig: {
+    $type: "yandex.cloud.mdb.mongodb.v1.config.MongodConfig4_4.Storage.WiredTiger.EngineConfig";
     encode(message: Mongodconfig44_Storage_WiredTiger_EngineConfig, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Mongodconfig44_Storage_WiredTiger_EngineConfig;
     fromJSON(object: any): Mongodconfig44_Storage_WiredTiger_EngineConfig;
@@ -195,6 +218,7 @@ export declare const Mongodconfig44_Storage_WiredTiger_EngineConfig: {
     fromPartial(object: DeepPartial<Mongodconfig44_Storage_WiredTiger_EngineConfig>): Mongodconfig44_Storage_WiredTiger_EngineConfig;
 };
 export declare const Mongodconfig44_Storage_WiredTiger_CollectionConfig: {
+    $type: "yandex.cloud.mdb.mongodb.v1.config.MongodConfig4_4.Storage.WiredTiger.CollectionConfig";
     encode(message: Mongodconfig44_Storage_WiredTiger_CollectionConfig, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Mongodconfig44_Storage_WiredTiger_CollectionConfig;
     fromJSON(object: any): Mongodconfig44_Storage_WiredTiger_CollectionConfig;
@@ -202,6 +226,7 @@ export declare const Mongodconfig44_Storage_WiredTiger_CollectionConfig: {
     fromPartial(object: DeepPartial<Mongodconfig44_Storage_WiredTiger_CollectionConfig>): Mongodconfig44_Storage_WiredTiger_CollectionConfig;
 };
 export declare const Mongodconfig44_Storage_Journal: {
+    $type: "yandex.cloud.mdb.mongodb.v1.config.MongodConfig4_4.Storage.Journal";
     encode(message: Mongodconfig44_Storage_Journal, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Mongodconfig44_Storage_Journal;
     fromJSON(object: any): Mongodconfig44_Storage_Journal;
@@ -209,6 +234,7 @@ export declare const Mongodconfig44_Storage_Journal: {
     fromPartial(object: DeepPartial<Mongodconfig44_Storage_Journal>): Mongodconfig44_Storage_Journal;
 };
 export declare const Mongodconfig44_OperationProfiling: {
+    $type: "yandex.cloud.mdb.mongodb.v1.config.MongodConfig4_4.OperationProfiling";
     encode(message: Mongodconfig44_OperationProfiling, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Mongodconfig44_OperationProfiling;
     fromJSON(object: any): Mongodconfig44_OperationProfiling;
@@ -216,6 +242,7 @@ export declare const Mongodconfig44_OperationProfiling: {
     fromPartial(object: DeepPartial<Mongodconfig44_OperationProfiling>): Mongodconfig44_OperationProfiling;
 };
 export declare const Mongodconfig44_Network: {
+    $type: "yandex.cloud.mdb.mongodb.v1.config.MongodConfig4_4.Network";
     encode(message: Mongodconfig44_Network, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Mongodconfig44_Network;
     fromJSON(object: any): Mongodconfig44_Network;
@@ -223,6 +250,7 @@ export declare const Mongodconfig44_Network: {
     fromPartial(object: DeepPartial<Mongodconfig44_Network>): Mongodconfig44_Network;
 };
 export declare const Mongocfgconfig44: {
+    $type: "yandex.cloud.mdb.mongodb.v1.config.MongoCfgConfig4_4";
     encode(message: Mongocfgconfig44, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Mongocfgconfig44;
     fromJSON(object: any): Mongocfgconfig44;
@@ -230,6 +258,7 @@ export declare const Mongocfgconfig44: {
     fromPartial(object: DeepPartial<Mongocfgconfig44>): Mongocfgconfig44;
 };
 export declare const Mongocfgconfig44_Storage: {
+    $type: "yandex.cloud.mdb.mongodb.v1.config.MongoCfgConfig4_4.Storage";
     encode(message: Mongocfgconfig44_Storage, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Mongocfgconfig44_Storage;
     fromJSON(object: any): Mongocfgconfig44_Storage;
@@ -237,6 +266,7 @@ export declare const Mongocfgconfig44_Storage: {
     fromPartial(object: DeepPartial<Mongocfgconfig44_Storage>): Mongocfgconfig44_Storage;
 };
 export declare const Mongocfgconfig44_Storage_WiredTiger: {
+    $type: "yandex.cloud.mdb.mongodb.v1.config.MongoCfgConfig4_4.Storage.WiredTiger";
     encode(message: Mongocfgconfig44_Storage_WiredTiger, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Mongocfgconfig44_Storage_WiredTiger;
     fromJSON(object: any): Mongocfgconfig44_Storage_WiredTiger;
@@ -244,6 +274,7 @@ export declare const Mongocfgconfig44_Storage_WiredTiger: {
     fromPartial(object: DeepPartial<Mongocfgconfig44_Storage_WiredTiger>): Mongocfgconfig44_Storage_WiredTiger;
 };
 export declare const Mongocfgconfig44_Storage_WiredTiger_EngineConfig: {
+    $type: "yandex.cloud.mdb.mongodb.v1.config.MongoCfgConfig4_4.Storage.WiredTiger.EngineConfig";
     encode(message: Mongocfgconfig44_Storage_WiredTiger_EngineConfig, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Mongocfgconfig44_Storage_WiredTiger_EngineConfig;
     fromJSON(object: any): Mongocfgconfig44_Storage_WiredTiger_EngineConfig;
@@ -251,6 +282,7 @@ export declare const Mongocfgconfig44_Storage_WiredTiger_EngineConfig: {
     fromPartial(object: DeepPartial<Mongocfgconfig44_Storage_WiredTiger_EngineConfig>): Mongocfgconfig44_Storage_WiredTiger_EngineConfig;
 };
 export declare const Mongocfgconfig44_OperationProfiling: {
+    $type: "yandex.cloud.mdb.mongodb.v1.config.MongoCfgConfig4_4.OperationProfiling";
     encode(message: Mongocfgconfig44_OperationProfiling, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Mongocfgconfig44_OperationProfiling;
     fromJSON(object: any): Mongocfgconfig44_OperationProfiling;
@@ -258,6 +290,7 @@ export declare const Mongocfgconfig44_OperationProfiling: {
     fromPartial(object: DeepPartial<Mongocfgconfig44_OperationProfiling>): Mongocfgconfig44_OperationProfiling;
 };
 export declare const Mongocfgconfig44_Network: {
+    $type: "yandex.cloud.mdb.mongodb.v1.config.MongoCfgConfig4_4.Network";
     encode(message: Mongocfgconfig44_Network, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Mongocfgconfig44_Network;
     fromJSON(object: any): Mongocfgconfig44_Network;
@@ -265,6 +298,7 @@ export declare const Mongocfgconfig44_Network: {
     fromPartial(object: DeepPartial<Mongocfgconfig44_Network>): Mongocfgconfig44_Network;
 };
 export declare const Mongosconfig44: {
+    $type: "yandex.cloud.mdb.mongodb.v1.config.MongosConfig4_4";
     encode(message: Mongosconfig44, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Mongosconfig44;
     fromJSON(object: any): Mongosconfig44;
@@ -272,6 +306,7 @@ export declare const Mongosconfig44: {
     fromPartial(object: DeepPartial<Mongosconfig44>): Mongosconfig44;
 };
 export declare const Mongosconfig44_Network: {
+    $type: "yandex.cloud.mdb.mongodb.v1.config.MongosConfig4_4.Network";
     encode(message: Mongosconfig44_Network, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Mongosconfig44_Network;
     fromJSON(object: any): Mongosconfig44_Network;
@@ -279,6 +314,7 @@ export declare const Mongosconfig44_Network: {
     fromPartial(object: DeepPartial<Mongosconfig44_Network>): Mongosconfig44_Network;
 };
 export declare const Mongodconfigset44: {
+    $type: "yandex.cloud.mdb.mongodb.v1.config.MongodConfigSet4_4";
     encode(message: Mongodconfigset44, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Mongodconfigset44;
     fromJSON(object: any): Mongodconfigset44;
@@ -286,6 +322,7 @@ export declare const Mongodconfigset44: {
     fromPartial(object: DeepPartial<Mongodconfigset44>): Mongodconfigset44;
 };
 export declare const Mongocfgconfigset44: {
+    $type: "yandex.cloud.mdb.mongodb.v1.config.MongoCfgConfigSet4_4";
     encode(message: Mongocfgconfigset44, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Mongocfgconfigset44;
     fromJSON(object: any): Mongocfgconfigset44;
@@ -293,6 +330,7 @@ export declare const Mongocfgconfigset44: {
     fromPartial(object: DeepPartial<Mongocfgconfigset44>): Mongocfgconfigset44;
 };
 export declare const Mongosconfigset44: {
+    $type: "yandex.cloud.mdb.mongodb.v1.config.MongosConfigSet4_4";
     encode(message: Mongosconfigset44, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Mongosconfigset44;
     fromJSON(object: any): Mongosconfigset44;
@@ -301,6 +339,6 @@ export declare const Mongosconfigset44: {
 };
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

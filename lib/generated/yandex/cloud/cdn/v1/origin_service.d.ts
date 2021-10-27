@@ -5,22 +5,26 @@ import { ChannelCredentials, ChannelOptions, UntypedServiceImplementation, handl
 import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.cdn.v1";
 export interface GetOriginRequest {
+    $type: 'yandex.cloud.cdn.v1.GetOriginRequest';
     /** ID of the folder that the origin belongs to. */
     folderId: string;
     /** [origin_id] group ID to request origin from. */
     originId: number;
 }
 export interface ListOriginsRequest {
+    $type: 'yandex.cloud.cdn.v1.ListOriginsRequest';
     /** ID of the folder that the origin belongs to. */
     folderId: string;
     /** ID of the group to request origins from. */
     originGroupId: number;
 }
 export interface ListOriginsResponse {
+    $type: 'yandex.cloud.cdn.v1.ListOriginsResponse';
     /** Origin from response. */
     origins: Origin[];
 }
 export interface CreateOriginRequest {
+    $type: 'yandex.cloud.cdn.v1.CreateOriginRequest';
     /** ID of the folder that the origin belongs to. */
     folderId: string;
     /** [origin_group_id] group ID to request origins from. */
@@ -51,12 +55,14 @@ export interface CreateOriginRequest {
     meta: OriginMeta | undefined;
 }
 export interface CreateOriginMetadata {
+    $type: 'yandex.cloud.cdn.v1.CreateOriginMetadata';
     /** ID of the origin. */
     originId: number;
     /** ID pf the parent origins group. */
     originGroupId: number;
 }
 export interface UpdateOriginRequest {
+    $type: 'yandex.cloud.cdn.v1.UpdateOriginRequest';
     /** ID of the folder that the origin belongs to. */
     folderId: string;
     /** ID of the origin. */
@@ -90,22 +96,26 @@ export interface UpdateOriginRequest {
     meta: OriginMeta | undefined;
 }
 export interface UpdateOriginMetadata {
+    $type: 'yandex.cloud.cdn.v1.UpdateOriginMetadata';
     /** ID of the origin. */
     originId: number;
     /** Parent origins group ID. */
     originGroupId: number;
 }
 export interface DeleteOriginRequest {
+    $type: 'yandex.cloud.cdn.v1.DeleteOriginRequest';
     /** ID of the folder that the origin belongs to. */
     folderId: string;
     /** ID of the origin. */
     originId: number;
 }
 export interface DeleteOriginMetadata {
+    $type: 'yandex.cloud.cdn.v1.DeleteOriginMetadata';
     /** ID of the origin. */
     originId: number;
 }
 export declare const GetOriginRequest: {
+    $type: "yandex.cloud.cdn.v1.GetOriginRequest";
     encode(message: GetOriginRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): GetOriginRequest;
     fromJSON(object: any): GetOriginRequest;
@@ -113,6 +123,7 @@ export declare const GetOriginRequest: {
     fromPartial(object: DeepPartial<GetOriginRequest>): GetOriginRequest;
 };
 export declare const ListOriginsRequest: {
+    $type: "yandex.cloud.cdn.v1.ListOriginsRequest";
     encode(message: ListOriginsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListOriginsRequest;
     fromJSON(object: any): ListOriginsRequest;
@@ -120,6 +131,7 @@ export declare const ListOriginsRequest: {
     fromPartial(object: DeepPartial<ListOriginsRequest>): ListOriginsRequest;
 };
 export declare const ListOriginsResponse: {
+    $type: "yandex.cloud.cdn.v1.ListOriginsResponse";
     encode(message: ListOriginsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListOriginsResponse;
     fromJSON(object: any): ListOriginsResponse;
@@ -127,6 +139,7 @@ export declare const ListOriginsResponse: {
     fromPartial(object: DeepPartial<ListOriginsResponse>): ListOriginsResponse;
 };
 export declare const CreateOriginRequest: {
+    $type: "yandex.cloud.cdn.v1.CreateOriginRequest";
     encode(message: CreateOriginRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateOriginRequest;
     fromJSON(object: any): CreateOriginRequest;
@@ -134,6 +147,7 @@ export declare const CreateOriginRequest: {
     fromPartial(object: DeepPartial<CreateOriginRequest>): CreateOriginRequest;
 };
 export declare const CreateOriginMetadata: {
+    $type: "yandex.cloud.cdn.v1.CreateOriginMetadata";
     encode(message: CreateOriginMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateOriginMetadata;
     fromJSON(object: any): CreateOriginMetadata;
@@ -141,6 +155,7 @@ export declare const CreateOriginMetadata: {
     fromPartial(object: DeepPartial<CreateOriginMetadata>): CreateOriginMetadata;
 };
 export declare const UpdateOriginRequest: {
+    $type: "yandex.cloud.cdn.v1.UpdateOriginRequest";
     encode(message: UpdateOriginRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateOriginRequest;
     fromJSON(object: any): UpdateOriginRequest;
@@ -148,6 +163,7 @@ export declare const UpdateOriginRequest: {
     fromPartial(object: DeepPartial<UpdateOriginRequest>): UpdateOriginRequest;
 };
 export declare const UpdateOriginMetadata: {
+    $type: "yandex.cloud.cdn.v1.UpdateOriginMetadata";
     encode(message: UpdateOriginMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateOriginMetadata;
     fromJSON(object: any): UpdateOriginMetadata;
@@ -155,6 +171,7 @@ export declare const UpdateOriginMetadata: {
     fromPartial(object: DeepPartial<UpdateOriginMetadata>): UpdateOriginMetadata;
 };
 export declare const DeleteOriginRequest: {
+    $type: "yandex.cloud.cdn.v1.DeleteOriginRequest";
     encode(message: DeleteOriginRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteOriginRequest;
     fromJSON(object: any): DeleteOriginRequest;
@@ -162,6 +179,7 @@ export declare const DeleteOriginRequest: {
     fromPartial(object: DeepPartial<DeleteOriginRequest>): DeleteOriginRequest;
 };
 export declare const DeleteOriginMetadata: {
+    $type: "yandex.cloud.cdn.v1.DeleteOriginMetadata";
     encode(message: DeleteOriginMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteOriginMetadata;
     fromJSON(object: any): DeleteOriginMetadata;
@@ -261,6 +279,6 @@ export interface OriginServiceClient extends Client {
 export declare const OriginServiceClient: new (address: string, credentials: ChannelCredentials, options?: Partial<ChannelOptions> | undefined) => OriginServiceClient;
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

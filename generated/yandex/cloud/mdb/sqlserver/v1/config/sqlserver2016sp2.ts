@@ -3,6 +3,7 @@ import {
     Int64Value,
     BoolValue,
 } from '../../../../../../google/protobuf/wrappers';
+import { messageTypeRegistry } from '../../../../../../typeRegistry';
 import Long from 'long';
 import _m0 from 'protobufjs/minimal';
 
@@ -16,6 +17,7 @@ export const protobufPackage = 'yandex.cloud.mdb.sqlserver.v1.config';
  * Any options that are not listed here are not supported.
  */
 export interface SQLServerConfig2016sp2std {
+    $type: 'yandex.cloud.mdb.sqlserver.v1.config.SQLServerConfig2016sp2std';
     /**
      * Limits the number of processors to use in parallel plan execution per task.
      *
@@ -60,6 +62,7 @@ export interface SQLServerConfig2016sp2std {
 }
 
 export interface SQLServerConfigSet2016sp2std {
+    $type: 'yandex.cloud.mdb.sqlserver.v1.config.SQLServerConfigSet2016sp2std';
     /** Effective settings for an SQL Server 2016 SP2 cluster (a combination of settings defined in [user_config] and [default_config]). */
     effectiveConfig: SQLServerConfig2016sp2std | undefined;
     /** User-defined settings for an SQL Server 2016 SP2 cluster. */
@@ -76,6 +79,7 @@ export interface SQLServerConfigSet2016sp2std {
  * Any options that are not listed here are not supported.
  */
 export interface SQLServerConfig2016sp2ent {
+    $type: 'yandex.cloud.mdb.sqlserver.v1.config.SQLServerConfig2016sp2ent';
     /**
      * Limits the number of processors to use in parallel plan execution per task.
      *
@@ -120,6 +124,7 @@ export interface SQLServerConfig2016sp2ent {
 }
 
 export interface SQLServerConfigSet2016sp2ent {
+    $type: 'yandex.cloud.mdb.sqlserver.v1.config.SQLServerConfigSet2016sp2ent';
     /** Effective settings for an SQL Server 2016 SP2 cluster (a combination of settings defined in [user_config] and [default_config]). */
     effectiveConfig: SQLServerConfig2016sp2ent | undefined;
     /** User-defined settings for an SQL Server 2016 SP2 cluster. */
@@ -128,40 +133,59 @@ export interface SQLServerConfigSet2016sp2ent {
     defaultConfig: SQLServerConfig2016sp2ent | undefined;
 }
 
-const baseSQLServerConfig2016sp2std: object = {};
+const baseSQLServerConfig2016sp2std: object = {
+    $type: 'yandex.cloud.mdb.sqlserver.v1.config.SQLServerConfig2016sp2std',
+};
 
 export const SQLServerConfig2016sp2std = {
+    $type: 'yandex.cloud.mdb.sqlserver.v1.config.SQLServerConfig2016sp2std' as const,
+
     encode(
         message: SQLServerConfig2016sp2std,
         writer: _m0.Writer = _m0.Writer.create()
     ): _m0.Writer {
         if (message.maxDegreeOfParallelism !== undefined) {
             Int64Value.encode(
-                { value: message.maxDegreeOfParallelism! },
+                {
+                    $type: 'google.protobuf.Int64Value',
+                    value: message.maxDegreeOfParallelism!,
+                },
                 writer.uint32(10).fork()
             ).ldelim();
         }
         if (message.costThresholdForParallelism !== undefined) {
             Int64Value.encode(
-                { value: message.costThresholdForParallelism! },
+                {
+                    $type: 'google.protobuf.Int64Value',
+                    value: message.costThresholdForParallelism!,
+                },
                 writer.uint32(18).fork()
             ).ldelim();
         }
         if (message.auditLevel !== undefined) {
             Int64Value.encode(
-                { value: message.auditLevel! },
+                {
+                    $type: 'google.protobuf.Int64Value',
+                    value: message.auditLevel!,
+                },
                 writer.uint32(26).fork()
             ).ldelim();
         }
         if (message.fillFactorPercent !== undefined) {
             Int64Value.encode(
-                { value: message.fillFactorPercent! },
+                {
+                    $type: 'google.protobuf.Int64Value',
+                    value: message.fillFactorPercent!,
+                },
                 writer.uint32(34).fork()
             ).ldelim();
         }
         if (message.optimizeForAdHocWorkloads !== undefined) {
             BoolValue.encode(
-                { value: message.optimizeForAdHocWorkloads! },
+                {
+                    $type: 'google.protobuf.BoolValue',
+                    value: message.optimizeForAdHocWorkloads!,
+                },
                 writer.uint32(42).fork()
             ).ldelim();
         }
@@ -334,9 +358,18 @@ export const SQLServerConfig2016sp2std = {
     },
 };
 
-const baseSQLServerConfigSet2016sp2std: object = {};
+messageTypeRegistry.set(
+    SQLServerConfig2016sp2std.$type,
+    SQLServerConfig2016sp2std
+);
+
+const baseSQLServerConfigSet2016sp2std: object = {
+    $type: 'yandex.cloud.mdb.sqlserver.v1.config.SQLServerConfigSet2016sp2std',
+};
 
 export const SQLServerConfigSet2016sp2std = {
+    $type: 'yandex.cloud.mdb.sqlserver.v1.config.SQLServerConfigSet2016sp2std' as const,
+
     encode(
         message: SQLServerConfigSet2016sp2std,
         writer: _m0.Writer = _m0.Writer.create()
@@ -489,40 +522,64 @@ export const SQLServerConfigSet2016sp2std = {
     },
 };
 
-const baseSQLServerConfig2016sp2ent: object = {};
+messageTypeRegistry.set(
+    SQLServerConfigSet2016sp2std.$type,
+    SQLServerConfigSet2016sp2std
+);
+
+const baseSQLServerConfig2016sp2ent: object = {
+    $type: 'yandex.cloud.mdb.sqlserver.v1.config.SQLServerConfig2016sp2ent',
+};
 
 export const SQLServerConfig2016sp2ent = {
+    $type: 'yandex.cloud.mdb.sqlserver.v1.config.SQLServerConfig2016sp2ent' as const,
+
     encode(
         message: SQLServerConfig2016sp2ent,
         writer: _m0.Writer = _m0.Writer.create()
     ): _m0.Writer {
         if (message.maxDegreeOfParallelism !== undefined) {
             Int64Value.encode(
-                { value: message.maxDegreeOfParallelism! },
+                {
+                    $type: 'google.protobuf.Int64Value',
+                    value: message.maxDegreeOfParallelism!,
+                },
                 writer.uint32(10).fork()
             ).ldelim();
         }
         if (message.costThresholdForParallelism !== undefined) {
             Int64Value.encode(
-                { value: message.costThresholdForParallelism! },
+                {
+                    $type: 'google.protobuf.Int64Value',
+                    value: message.costThresholdForParallelism!,
+                },
                 writer.uint32(18).fork()
             ).ldelim();
         }
         if (message.auditLevel !== undefined) {
             Int64Value.encode(
-                { value: message.auditLevel! },
+                {
+                    $type: 'google.protobuf.Int64Value',
+                    value: message.auditLevel!,
+                },
                 writer.uint32(26).fork()
             ).ldelim();
         }
         if (message.fillFactorPercent !== undefined) {
             Int64Value.encode(
-                { value: message.fillFactorPercent! },
+                {
+                    $type: 'google.protobuf.Int64Value',
+                    value: message.fillFactorPercent!,
+                },
                 writer.uint32(34).fork()
             ).ldelim();
         }
         if (message.optimizeForAdHocWorkloads !== undefined) {
             BoolValue.encode(
-                { value: message.optimizeForAdHocWorkloads! },
+                {
+                    $type: 'google.protobuf.BoolValue',
+                    value: message.optimizeForAdHocWorkloads!,
+                },
                 writer.uint32(42).fork()
             ).ldelim();
         }
@@ -695,9 +752,18 @@ export const SQLServerConfig2016sp2ent = {
     },
 };
 
-const baseSQLServerConfigSet2016sp2ent: object = {};
+messageTypeRegistry.set(
+    SQLServerConfig2016sp2ent.$type,
+    SQLServerConfig2016sp2ent
+);
+
+const baseSQLServerConfigSet2016sp2ent: object = {
+    $type: 'yandex.cloud.mdb.sqlserver.v1.config.SQLServerConfigSet2016sp2ent',
+};
 
 export const SQLServerConfigSet2016sp2ent = {
+    $type: 'yandex.cloud.mdb.sqlserver.v1.config.SQLServerConfigSet2016sp2ent' as const,
+
     encode(
         message: SQLServerConfigSet2016sp2ent,
         writer: _m0.Writer = _m0.Writer.create()
@@ -850,6 +916,11 @@ export const SQLServerConfigSet2016sp2ent = {
     },
 };
 
+messageTypeRegistry.set(
+    SQLServerConfigSet2016sp2ent.$type,
+    SQLServerConfigSet2016sp2ent
+);
+
 type Builtin =
     | Date
     | Function
@@ -865,7 +936,7 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 if (_m0.util.Long !== Long) {

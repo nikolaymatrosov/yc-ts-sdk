@@ -1,10 +1,12 @@
 /* eslint-disable */
+import { messageTypeRegistry } from '../../../../../typeRegistry';
 import Long from 'long';
 import _m0 from 'protobufjs/minimal';
 
 export const protobufPackage = 'yandex.cloud.ai.vision.v1';
 
 export interface ImageCopySearchAnnotation {
+    $type: 'yandex.cloud.ai.vision.v1.ImageCopySearchAnnotation';
     /** Number of image copies */
     copyCount: number;
     /** Top relevance result of image copy search */
@@ -12,6 +14,7 @@ export interface ImageCopySearchAnnotation {
 }
 
 export interface CopyMatch {
+    $type: 'yandex.cloud.ai.vision.v1.CopyMatch';
     /** url of image */
     imageUrl: string;
     /** url of page that contains image */
@@ -22,9 +25,14 @@ export interface CopyMatch {
     description: string;
 }
 
-const baseImageCopySearchAnnotation: object = { copyCount: 0 };
+const baseImageCopySearchAnnotation: object = {
+    $type: 'yandex.cloud.ai.vision.v1.ImageCopySearchAnnotation',
+    copyCount: 0,
+};
 
 export const ImageCopySearchAnnotation = {
+    $type: 'yandex.cloud.ai.vision.v1.ImageCopySearchAnnotation' as const,
+
     encode(
         message: ImageCopySearchAnnotation,
         writer: _m0.Writer = _m0.Writer.create()
@@ -120,7 +128,13 @@ export const ImageCopySearchAnnotation = {
     },
 };
 
+messageTypeRegistry.set(
+    ImageCopySearchAnnotation.$type,
+    ImageCopySearchAnnotation
+);
+
 const baseCopyMatch: object = {
+    $type: 'yandex.cloud.ai.vision.v1.CopyMatch',
     imageUrl: '',
     pageUrl: '',
     title: '',
@@ -128,6 +142,8 @@ const baseCopyMatch: object = {
 };
 
 export const CopyMatch = {
+    $type: 'yandex.cloud.ai.vision.v1.CopyMatch' as const,
+
     encode(
         message: CopyMatch,
         writer: _m0.Writer = _m0.Writer.create()
@@ -236,6 +252,8 @@ export const CopyMatch = {
     },
 };
 
+messageTypeRegistry.set(CopyMatch.$type, CopyMatch);
+
 declare var self: any | undefined;
 declare var window: any | undefined;
 declare var global: any | undefined;
@@ -262,7 +280,7 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 function longToNumber(long: Long): number {

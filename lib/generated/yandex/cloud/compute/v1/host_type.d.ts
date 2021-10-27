@@ -6,6 +6,7 @@ export declare const protobufPackage = "yandex.cloud.compute.v1";
  * TODO: Do we need sockets here?
  */
 export interface HostType {
+    $type: 'yandex.cloud.compute.v1.HostType';
     /** Unique type identifier. */
     id: string;
     /** Total number of cores available for instances. */
@@ -14,6 +15,7 @@ export interface HostType {
     memory: number;
 }
 export declare const HostType: {
+    $type: "yandex.cloud.compute.v1.HostType";
     encode(message: HostType, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): HostType;
     fromJSON(object: any): HostType;
@@ -22,6 +24,6 @@ export declare const HostType: {
 };
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

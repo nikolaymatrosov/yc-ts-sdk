@@ -1,5 +1,6 @@
 /* eslint-disable */
 import { Int64Value } from '../../../../../../google/protobuf/wrappers';
+import { messageTypeRegistry } from '../../../../../../typeRegistry';
 import Long from 'long';
 import _m0 from 'protobufjs/minimal';
 
@@ -10,6 +11,7 @@ export const protobufPackage = 'yandex.cloud.mdb.redis.v1.config';
  * parameters.
  */
 export interface Redisconfig62 {
+    $type: 'yandex.cloud.mdb.redis.v1.config.RedisConfig6_2';
     /**
      * Redis key eviction policy for a dataset that reaches maximum memory,
      * available to the host. Redis maxmemory setting depends on Managed
@@ -128,6 +130,7 @@ export function redisconfig62_MaxmemoryPolicyToJSON(
 }
 
 export interface Redisconfigset62 {
+    $type: 'yandex.cloud.mdb.redis.v1.config.RedisConfigSet6_2';
     /**
      * Effective settings for a Redis 6.2 cluster (a combination of settings
      * defined in [user_config] and [default_config]).
@@ -140,12 +143,15 @@ export interface Redisconfigset62 {
 }
 
 const baseRedisconfig62: object = {
+    $type: 'yandex.cloud.mdb.redis.v1.config.RedisConfig6_2',
     maxmemoryPolicy: 0,
     password: '',
     notifyKeyspaceEvents: '',
 };
 
 export const Redisconfig62 = {
+    $type: 'yandex.cloud.mdb.redis.v1.config.RedisConfig6_2' as const,
+
     encode(
         message: Redisconfig62,
         writer: _m0.Writer = _m0.Writer.create()
@@ -155,7 +161,10 @@ export const Redisconfig62 = {
         }
         if (message.timeout !== undefined) {
             Int64Value.encode(
-                { value: message.timeout! },
+                {
+                    $type: 'google.protobuf.Int64Value',
+                    value: message.timeout!,
+                },
                 writer.uint32(18).fork()
             ).ldelim();
         }
@@ -164,19 +173,28 @@ export const Redisconfig62 = {
         }
         if (message.databases !== undefined) {
             Int64Value.encode(
-                { value: message.databases! },
+                {
+                    $type: 'google.protobuf.Int64Value',
+                    value: message.databases!,
+                },
                 writer.uint32(34).fork()
             ).ldelim();
         }
         if (message.slowlogLogSlowerThan !== undefined) {
             Int64Value.encode(
-                { value: message.slowlogLogSlowerThan! },
+                {
+                    $type: 'google.protobuf.Int64Value',
+                    value: message.slowlogLogSlowerThan!,
+                },
                 writer.uint32(42).fork()
             ).ldelim();
         }
         if (message.slowlogMaxLen !== undefined) {
             Int64Value.encode(
-                { value: message.slowlogMaxLen! },
+                {
+                    $type: 'google.protobuf.Int64Value',
+                    value: message.slowlogMaxLen!,
+                },
                 writer.uint32(50).fork()
             ).ldelim();
         }
@@ -360,9 +378,15 @@ export const Redisconfig62 = {
     },
 };
 
-const baseRedisconfigset62: object = {};
+messageTypeRegistry.set(Redisconfig62.$type, Redisconfig62);
+
+const baseRedisconfigset62: object = {
+    $type: 'yandex.cloud.mdb.redis.v1.config.RedisConfigSet6_2',
+};
 
 export const Redisconfigset62 = {
+    $type: 'yandex.cloud.mdb.redis.v1.config.RedisConfigSet6_2' as const,
+
     encode(
         message: Redisconfigset62,
         writer: _m0.Writer = _m0.Writer.create()
@@ -500,6 +524,8 @@ export const Redisconfigset62 = {
     },
 };
 
+messageTypeRegistry.set(Redisconfigset62.$type, Redisconfigset62);
+
 type Builtin =
     | Date
     | Function
@@ -515,7 +541,7 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 if (_m0.util.Long !== Long) {

@@ -6,6 +6,7 @@ import { ChannelCredentials, ChannelOptions, UntypedServiceImplementation, handl
 import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.apploadbalancer.v1";
 export interface GetLoadBalancerRequest {
+    $type: 'yandex.cloud.apploadbalancer.v1.GetLoadBalancerRequest';
     /**
      * ID of the application load balancer to return.
      *
@@ -14,6 +15,7 @@ export interface GetLoadBalancerRequest {
     loadBalancerId: string;
 }
 export interface ListLoadBalancersRequest {
+    $type: 'yandex.cloud.apploadbalancer.v1.ListLoadBalancersRequest';
     /**
      * ID of the folder to list application load balancers in.
      *
@@ -44,6 +46,7 @@ export interface ListLoadBalancersRequest {
     filter: string;
 }
 export interface ListLoadBalancersResponse {
+    $type: 'yandex.cloud.apploadbalancer.v1.ListLoadBalancersResponse';
     /** List of application load balancers in the specified folder. */
     loadBalancers: LoadBalancer[];
     /**
@@ -56,6 +59,7 @@ export interface ListLoadBalancersResponse {
     nextPageToken: string;
 }
 export interface DeleteLoadBalancerRequest {
+    $type: 'yandex.cloud.apploadbalancer.v1.DeleteLoadBalancerRequest';
     /**
      * ID of the application load balancer to delete.
      *
@@ -64,10 +68,12 @@ export interface DeleteLoadBalancerRequest {
     loadBalancerId: string;
 }
 export interface DeleteLoadBalancerMetadata {
+    $type: 'yandex.cloud.apploadbalancer.v1.DeleteLoadBalancerMetadata';
     /** ID of the application load balancer that is being deleted. */
     loadBalancerId: string;
 }
 export interface UpdateLoadBalancerRequest {
+    $type: 'yandex.cloud.apploadbalancer.v1.UpdateLoadBalancerRequest';
     /**
      * ID of the application load balancer to update.
      *
@@ -135,14 +141,17 @@ export interface UpdateLoadBalancerRequest {
     securityGroupIds: string[];
 }
 export interface UpdateLoadBalancerRequest_LabelsEntry {
+    $type: 'yandex.cloud.apploadbalancer.v1.UpdateLoadBalancerRequest.LabelsEntry';
     key: string;
     value: string;
 }
 export interface UpdateLoadBalancerMetadata {
+    $type: 'yandex.cloud.apploadbalancer.v1.UpdateLoadBalancerMetadata';
     /** ID of the application load balancer that is being updated. */
     loadBalancerId: string;
 }
 export interface CreateLoadBalancerRequest {
+    $type: 'yandex.cloud.apploadbalancer.v1.CreateLoadBalancerRequest';
     /**
      * ID of the folder to create an application load balancer in.
      *
@@ -194,14 +203,17 @@ export interface CreateLoadBalancerRequest {
     securityGroupIds: string[];
 }
 export interface CreateLoadBalancerRequest_LabelsEntry {
+    $type: 'yandex.cloud.apploadbalancer.v1.CreateLoadBalancerRequest.LabelsEntry';
     key: string;
     value: string;
 }
 export interface CreateLoadBalancerMetadata {
+    $type: 'yandex.cloud.apploadbalancer.v1.CreateLoadBalancerMetadata';
     /** ID of the application load balancer that is being created. */
     loadBalancerId: string;
 }
 export interface StartLoadBalancerRequest {
+    $type: 'yandex.cloud.apploadbalancer.v1.StartLoadBalancerRequest';
     /**
      * ID of the application load balancer to start.
      *
@@ -212,10 +224,12 @@ export interface StartLoadBalancerRequest {
     loadBalancerId: string;
 }
 export interface StartLoadBalancerMetadata {
+    $type: 'yandex.cloud.apploadbalancer.v1.StartLoadBalancerMetadata';
     /** ID of the application load balancer that is being started. */
     loadBalancerId: string;
 }
 export interface StopLoadBalancerRequest {
+    $type: 'yandex.cloud.apploadbalancer.v1.StopLoadBalancerRequest';
     /**
      * ID of the application load balancer to stop.
      *
@@ -226,34 +240,40 @@ export interface StopLoadBalancerRequest {
     loadBalancerId: string;
 }
 export interface StopLoadBalancerMetadata {
+    $type: 'yandex.cloud.apploadbalancer.v1.StopLoadBalancerMetadata';
     /** ID of the application load balancer that is being stopped. */
     loadBalancerId: string;
 }
 export interface AddListenerRequest {
+    $type: 'yandex.cloud.apploadbalancer.v1.AddListenerRequest';
     /** ID of the application load balancer to add a listener to. */
     loadBalancerId: string;
     /** Listener to add to the application load balancer. */
     listenerSpec: ListenerSpec | undefined;
 }
 export interface AddListenerMetadata {
+    $type: 'yandex.cloud.apploadbalancer.v1.AddListenerMetadata';
     /** ID of the application load balancer that the listener is being added to. */
     loadBalancerId: string;
     /** Name of the listener that is being added to the application load balancer. */
     listenerName: string;
 }
 export interface RemoveListenerRequest {
+    $type: 'yandex.cloud.apploadbalancer.v1.RemoveListenerRequest';
     /** ID of the application load balancer to remove the listener from. */
     loadBalancerId: string;
     /** Name of the listener to remove from the application load balancer. */
     name: string;
 }
 export interface RemoveListenerMetadata {
+    $type: 'yandex.cloud.apploadbalancer.v1.RemoveListenerMetadata';
     /** ID of the application load balancer that the listener is being removed from. */
     loadBalancerId: string;
     /** Name of the listener that is being removed from the application load balancer. */
     listenerName: string;
 }
 export interface UpdateListenerRequest {
+    $type: 'yandex.cloud.apploadbalancer.v1.UpdateListenerRequest';
     /** ID of the application load balancer to update the listener in. */
     loadBalancerId: string;
     /** Field mask that specifies which attributes of the listener should be updated. */
@@ -262,12 +282,14 @@ export interface UpdateListenerRequest {
     listenerSpec: ListenerSpec | undefined;
 }
 export interface UpdateListenerMetadata {
+    $type: 'yandex.cloud.apploadbalancer.v1.UpdateListenerMetadata';
     /** ID of the application load balancer that the listener is being updated in. */
     loadBalancerId: string;
     /** Name of the listener that is being updated. */
     listenerName: string;
 }
 export interface AddressSpec {
+    $type: 'yandex.cloud.apploadbalancer.v1.AddressSpec';
     /** Public IPv4 endpoint address. */
     externalIpv4AddressSpec: ExternalIpv4AddressSpec | undefined;
     /**
@@ -280,26 +302,31 @@ export interface AddressSpec {
     externalIpv6AddressSpec: ExternalIpv6AddressSpec | undefined;
 }
 export interface ExternalIpv4AddressSpec {
+    $type: 'yandex.cloud.apploadbalancer.v1.ExternalIpv4AddressSpec';
     /** IPv4 address. */
     address: string;
 }
 export interface InternalIpv4AddressSpec {
+    $type: 'yandex.cloud.apploadbalancer.v1.InternalIpv4AddressSpec';
     /** IPv4 address. */
     address: string;
     /** ID of the subnet that the address belongs to. */
     subnetId: string;
 }
 export interface ExternalIpv6AddressSpec {
+    $type: 'yandex.cloud.apploadbalancer.v1.ExternalIpv6AddressSpec';
     /** IPv6 address. */
     address: string;
 }
 export interface EndpointSpec {
+    $type: 'yandex.cloud.apploadbalancer.v1.EndpointSpec';
     /** Endpoint public (external) and internal addresses. */
     addressSpecs: AddressSpec[];
     /** Endpoint ports. */
     ports: number[];
 }
 export interface ListenerSpec {
+    $type: 'yandex.cloud.apploadbalancer.v1.ListenerSpec';
     /** Name of the listener. The name is unique within the application load balancer. */
     name: string;
     /**
@@ -314,6 +341,7 @@ export interface ListenerSpec {
     tls: TlsListener | undefined;
 }
 export interface GetTargetStatesRequest {
+    $type: 'yandex.cloud.apploadbalancer.v1.GetTargetStatesRequest';
     /** ID of the application load balancer that the backend group is attributed to. */
     loadBalancerId: string;
     /** ID of the backend group that the target group is attributed to. */
@@ -322,10 +350,12 @@ export interface GetTargetStatesRequest {
     targetGroupId: string;
 }
 export interface GetTargetStatesResponse {
+    $type: 'yandex.cloud.apploadbalancer.v1.GetTargetStatesResponse';
     /** Target states of the specified target group. */
     targetStates: TargetState[];
 }
 export interface AddSniMatchRequest {
+    $type: 'yandex.cloud.apploadbalancer.v1.AddSniMatchRequest';
     /** ID of the application load balancer to add a SNI handler to. */
     loadBalancerId: string;
     /** Name of the listener to add a SNI handler to. */
@@ -338,6 +368,7 @@ export interface AddSniMatchRequest {
     handler: TlsHandler | undefined;
 }
 export interface AddSniMatchMetadata {
+    $type: 'yandex.cloud.apploadbalancer.v1.AddSniMatchMetadata';
     /** ID of the application load balancer that the SNI handler is being added to. */
     loadBalancerId: string;
     /** Name of the listener that the SNI handler is being added to. */
@@ -346,6 +377,7 @@ export interface AddSniMatchMetadata {
     sniMatchName: string;
 }
 export interface RemoveSniMatchRequest {
+    $type: 'yandex.cloud.apploadbalancer.v1.RemoveSniMatchRequest';
     /** ID of the application load balancer to remove the SNI handler from. */
     loadBalancerId: string;
     /** Name of the listener te remove the SNI handler from. */
@@ -354,6 +386,7 @@ export interface RemoveSniMatchRequest {
     sniMatchName: string;
 }
 export interface RemoveSniMatchMetadata {
+    $type: 'yandex.cloud.apploadbalancer.v1.RemoveSniMatchMetadata';
     /** ID of the application load balancer that the SNI handler is being removed from. */
     loadBalancerId: string;
     /** Name of the listener that the SNI handler is being removed from. */
@@ -362,6 +395,7 @@ export interface RemoveSniMatchMetadata {
     sniMatchName: string;
 }
 export interface UpdateSniMatchRequest {
+    $type: 'yandex.cloud.apploadbalancer.v1.UpdateSniMatchRequest';
     /** ID of the application load balancer to update the SNI handler in. */
     loadBalancerId: string;
     /** Name of the listener to update the SNI handler in. */
@@ -384,6 +418,7 @@ export interface UpdateSniMatchRequest {
     handler: TlsHandler | undefined;
 }
 export interface UpdateSniMatchMetadata {
+    $type: 'yandex.cloud.apploadbalancer.v1.UpdateSniMatchMetadata';
     /** ID of the application load balancer that the SNI handler is being updated in. */
     loadBalancerId: string;
     /** Name of the listener that the SNI handler is being updated in. */
@@ -392,6 +427,7 @@ export interface UpdateSniMatchMetadata {
     sniMatchName: string;
 }
 export interface ListLoadBalancerOperationsRequest {
+    $type: 'yandex.cloud.apploadbalancer.v1.ListLoadBalancerOperationsRequest';
     /**
      * ID of the application load balancer to get operations for.
      *
@@ -412,6 +448,7 @@ export interface ListLoadBalancerOperationsRequest {
     pageToken: string;
 }
 export interface ListLoadBalancerOperationsResponse {
+    $type: 'yandex.cloud.apploadbalancer.v1.ListLoadBalancerOperationsResponse';
     /** List of operations for the specified application load balancer. */
     operations: Operation[];
     /**
@@ -424,6 +461,7 @@ export interface ListLoadBalancerOperationsResponse {
     nextPageToken: string;
 }
 export declare const GetLoadBalancerRequest: {
+    $type: "yandex.cloud.apploadbalancer.v1.GetLoadBalancerRequest";
     encode(message: GetLoadBalancerRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): GetLoadBalancerRequest;
     fromJSON(object: any): GetLoadBalancerRequest;
@@ -431,6 +469,7 @@ export declare const GetLoadBalancerRequest: {
     fromPartial(object: DeepPartial<GetLoadBalancerRequest>): GetLoadBalancerRequest;
 };
 export declare const ListLoadBalancersRequest: {
+    $type: "yandex.cloud.apploadbalancer.v1.ListLoadBalancersRequest";
     encode(message: ListLoadBalancersRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListLoadBalancersRequest;
     fromJSON(object: any): ListLoadBalancersRequest;
@@ -438,6 +477,7 @@ export declare const ListLoadBalancersRequest: {
     fromPartial(object: DeepPartial<ListLoadBalancersRequest>): ListLoadBalancersRequest;
 };
 export declare const ListLoadBalancersResponse: {
+    $type: "yandex.cloud.apploadbalancer.v1.ListLoadBalancersResponse";
     encode(message: ListLoadBalancersResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListLoadBalancersResponse;
     fromJSON(object: any): ListLoadBalancersResponse;
@@ -445,6 +485,7 @@ export declare const ListLoadBalancersResponse: {
     fromPartial(object: DeepPartial<ListLoadBalancersResponse>): ListLoadBalancersResponse;
 };
 export declare const DeleteLoadBalancerRequest: {
+    $type: "yandex.cloud.apploadbalancer.v1.DeleteLoadBalancerRequest";
     encode(message: DeleteLoadBalancerRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteLoadBalancerRequest;
     fromJSON(object: any): DeleteLoadBalancerRequest;
@@ -452,6 +493,7 @@ export declare const DeleteLoadBalancerRequest: {
     fromPartial(object: DeepPartial<DeleteLoadBalancerRequest>): DeleteLoadBalancerRequest;
 };
 export declare const DeleteLoadBalancerMetadata: {
+    $type: "yandex.cloud.apploadbalancer.v1.DeleteLoadBalancerMetadata";
     encode(message: DeleteLoadBalancerMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteLoadBalancerMetadata;
     fromJSON(object: any): DeleteLoadBalancerMetadata;
@@ -459,6 +501,7 @@ export declare const DeleteLoadBalancerMetadata: {
     fromPartial(object: DeepPartial<DeleteLoadBalancerMetadata>): DeleteLoadBalancerMetadata;
 };
 export declare const UpdateLoadBalancerRequest: {
+    $type: "yandex.cloud.apploadbalancer.v1.UpdateLoadBalancerRequest";
     encode(message: UpdateLoadBalancerRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateLoadBalancerRequest;
     fromJSON(object: any): UpdateLoadBalancerRequest;
@@ -466,6 +509,7 @@ export declare const UpdateLoadBalancerRequest: {
     fromPartial(object: DeepPartial<UpdateLoadBalancerRequest>): UpdateLoadBalancerRequest;
 };
 export declare const UpdateLoadBalancerRequest_LabelsEntry: {
+    $type: "yandex.cloud.apploadbalancer.v1.UpdateLoadBalancerRequest.LabelsEntry";
     encode(message: UpdateLoadBalancerRequest_LabelsEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateLoadBalancerRequest_LabelsEntry;
     fromJSON(object: any): UpdateLoadBalancerRequest_LabelsEntry;
@@ -473,6 +517,7 @@ export declare const UpdateLoadBalancerRequest_LabelsEntry: {
     fromPartial(object: DeepPartial<UpdateLoadBalancerRequest_LabelsEntry>): UpdateLoadBalancerRequest_LabelsEntry;
 };
 export declare const UpdateLoadBalancerMetadata: {
+    $type: "yandex.cloud.apploadbalancer.v1.UpdateLoadBalancerMetadata";
     encode(message: UpdateLoadBalancerMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateLoadBalancerMetadata;
     fromJSON(object: any): UpdateLoadBalancerMetadata;
@@ -480,6 +525,7 @@ export declare const UpdateLoadBalancerMetadata: {
     fromPartial(object: DeepPartial<UpdateLoadBalancerMetadata>): UpdateLoadBalancerMetadata;
 };
 export declare const CreateLoadBalancerRequest: {
+    $type: "yandex.cloud.apploadbalancer.v1.CreateLoadBalancerRequest";
     encode(message: CreateLoadBalancerRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateLoadBalancerRequest;
     fromJSON(object: any): CreateLoadBalancerRequest;
@@ -487,6 +533,7 @@ export declare const CreateLoadBalancerRequest: {
     fromPartial(object: DeepPartial<CreateLoadBalancerRequest>): CreateLoadBalancerRequest;
 };
 export declare const CreateLoadBalancerRequest_LabelsEntry: {
+    $type: "yandex.cloud.apploadbalancer.v1.CreateLoadBalancerRequest.LabelsEntry";
     encode(message: CreateLoadBalancerRequest_LabelsEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateLoadBalancerRequest_LabelsEntry;
     fromJSON(object: any): CreateLoadBalancerRequest_LabelsEntry;
@@ -494,6 +541,7 @@ export declare const CreateLoadBalancerRequest_LabelsEntry: {
     fromPartial(object: DeepPartial<CreateLoadBalancerRequest_LabelsEntry>): CreateLoadBalancerRequest_LabelsEntry;
 };
 export declare const CreateLoadBalancerMetadata: {
+    $type: "yandex.cloud.apploadbalancer.v1.CreateLoadBalancerMetadata";
     encode(message: CreateLoadBalancerMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateLoadBalancerMetadata;
     fromJSON(object: any): CreateLoadBalancerMetadata;
@@ -501,6 +549,7 @@ export declare const CreateLoadBalancerMetadata: {
     fromPartial(object: DeepPartial<CreateLoadBalancerMetadata>): CreateLoadBalancerMetadata;
 };
 export declare const StartLoadBalancerRequest: {
+    $type: "yandex.cloud.apploadbalancer.v1.StartLoadBalancerRequest";
     encode(message: StartLoadBalancerRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): StartLoadBalancerRequest;
     fromJSON(object: any): StartLoadBalancerRequest;
@@ -508,6 +557,7 @@ export declare const StartLoadBalancerRequest: {
     fromPartial(object: DeepPartial<StartLoadBalancerRequest>): StartLoadBalancerRequest;
 };
 export declare const StartLoadBalancerMetadata: {
+    $type: "yandex.cloud.apploadbalancer.v1.StartLoadBalancerMetadata";
     encode(message: StartLoadBalancerMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): StartLoadBalancerMetadata;
     fromJSON(object: any): StartLoadBalancerMetadata;
@@ -515,6 +565,7 @@ export declare const StartLoadBalancerMetadata: {
     fromPartial(object: DeepPartial<StartLoadBalancerMetadata>): StartLoadBalancerMetadata;
 };
 export declare const StopLoadBalancerRequest: {
+    $type: "yandex.cloud.apploadbalancer.v1.StopLoadBalancerRequest";
     encode(message: StopLoadBalancerRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): StopLoadBalancerRequest;
     fromJSON(object: any): StopLoadBalancerRequest;
@@ -522,6 +573,7 @@ export declare const StopLoadBalancerRequest: {
     fromPartial(object: DeepPartial<StopLoadBalancerRequest>): StopLoadBalancerRequest;
 };
 export declare const StopLoadBalancerMetadata: {
+    $type: "yandex.cloud.apploadbalancer.v1.StopLoadBalancerMetadata";
     encode(message: StopLoadBalancerMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): StopLoadBalancerMetadata;
     fromJSON(object: any): StopLoadBalancerMetadata;
@@ -529,6 +581,7 @@ export declare const StopLoadBalancerMetadata: {
     fromPartial(object: DeepPartial<StopLoadBalancerMetadata>): StopLoadBalancerMetadata;
 };
 export declare const AddListenerRequest: {
+    $type: "yandex.cloud.apploadbalancer.v1.AddListenerRequest";
     encode(message: AddListenerRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): AddListenerRequest;
     fromJSON(object: any): AddListenerRequest;
@@ -536,6 +589,7 @@ export declare const AddListenerRequest: {
     fromPartial(object: DeepPartial<AddListenerRequest>): AddListenerRequest;
 };
 export declare const AddListenerMetadata: {
+    $type: "yandex.cloud.apploadbalancer.v1.AddListenerMetadata";
     encode(message: AddListenerMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): AddListenerMetadata;
     fromJSON(object: any): AddListenerMetadata;
@@ -543,6 +597,7 @@ export declare const AddListenerMetadata: {
     fromPartial(object: DeepPartial<AddListenerMetadata>): AddListenerMetadata;
 };
 export declare const RemoveListenerRequest: {
+    $type: "yandex.cloud.apploadbalancer.v1.RemoveListenerRequest";
     encode(message: RemoveListenerRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): RemoveListenerRequest;
     fromJSON(object: any): RemoveListenerRequest;
@@ -550,6 +605,7 @@ export declare const RemoveListenerRequest: {
     fromPartial(object: DeepPartial<RemoveListenerRequest>): RemoveListenerRequest;
 };
 export declare const RemoveListenerMetadata: {
+    $type: "yandex.cloud.apploadbalancer.v1.RemoveListenerMetadata";
     encode(message: RemoveListenerMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): RemoveListenerMetadata;
     fromJSON(object: any): RemoveListenerMetadata;
@@ -557,6 +613,7 @@ export declare const RemoveListenerMetadata: {
     fromPartial(object: DeepPartial<RemoveListenerMetadata>): RemoveListenerMetadata;
 };
 export declare const UpdateListenerRequest: {
+    $type: "yandex.cloud.apploadbalancer.v1.UpdateListenerRequest";
     encode(message: UpdateListenerRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateListenerRequest;
     fromJSON(object: any): UpdateListenerRequest;
@@ -564,6 +621,7 @@ export declare const UpdateListenerRequest: {
     fromPartial(object: DeepPartial<UpdateListenerRequest>): UpdateListenerRequest;
 };
 export declare const UpdateListenerMetadata: {
+    $type: "yandex.cloud.apploadbalancer.v1.UpdateListenerMetadata";
     encode(message: UpdateListenerMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateListenerMetadata;
     fromJSON(object: any): UpdateListenerMetadata;
@@ -571,6 +629,7 @@ export declare const UpdateListenerMetadata: {
     fromPartial(object: DeepPartial<UpdateListenerMetadata>): UpdateListenerMetadata;
 };
 export declare const AddressSpec: {
+    $type: "yandex.cloud.apploadbalancer.v1.AddressSpec";
     encode(message: AddressSpec, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): AddressSpec;
     fromJSON(object: any): AddressSpec;
@@ -578,6 +637,7 @@ export declare const AddressSpec: {
     fromPartial(object: DeepPartial<AddressSpec>): AddressSpec;
 };
 export declare const ExternalIpv4AddressSpec: {
+    $type: "yandex.cloud.apploadbalancer.v1.ExternalIpv4AddressSpec";
     encode(message: ExternalIpv4AddressSpec, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ExternalIpv4AddressSpec;
     fromJSON(object: any): ExternalIpv4AddressSpec;
@@ -585,6 +645,7 @@ export declare const ExternalIpv4AddressSpec: {
     fromPartial(object: DeepPartial<ExternalIpv4AddressSpec>): ExternalIpv4AddressSpec;
 };
 export declare const InternalIpv4AddressSpec: {
+    $type: "yandex.cloud.apploadbalancer.v1.InternalIpv4AddressSpec";
     encode(message: InternalIpv4AddressSpec, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): InternalIpv4AddressSpec;
     fromJSON(object: any): InternalIpv4AddressSpec;
@@ -592,6 +653,7 @@ export declare const InternalIpv4AddressSpec: {
     fromPartial(object: DeepPartial<InternalIpv4AddressSpec>): InternalIpv4AddressSpec;
 };
 export declare const ExternalIpv6AddressSpec: {
+    $type: "yandex.cloud.apploadbalancer.v1.ExternalIpv6AddressSpec";
     encode(message: ExternalIpv6AddressSpec, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ExternalIpv6AddressSpec;
     fromJSON(object: any): ExternalIpv6AddressSpec;
@@ -599,6 +661,7 @@ export declare const ExternalIpv6AddressSpec: {
     fromPartial(object: DeepPartial<ExternalIpv6AddressSpec>): ExternalIpv6AddressSpec;
 };
 export declare const EndpointSpec: {
+    $type: "yandex.cloud.apploadbalancer.v1.EndpointSpec";
     encode(message: EndpointSpec, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): EndpointSpec;
     fromJSON(object: any): EndpointSpec;
@@ -606,6 +669,7 @@ export declare const EndpointSpec: {
     fromPartial(object: DeepPartial<EndpointSpec>): EndpointSpec;
 };
 export declare const ListenerSpec: {
+    $type: "yandex.cloud.apploadbalancer.v1.ListenerSpec";
     encode(message: ListenerSpec, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListenerSpec;
     fromJSON(object: any): ListenerSpec;
@@ -613,6 +677,7 @@ export declare const ListenerSpec: {
     fromPartial(object: DeepPartial<ListenerSpec>): ListenerSpec;
 };
 export declare const GetTargetStatesRequest: {
+    $type: "yandex.cloud.apploadbalancer.v1.GetTargetStatesRequest";
     encode(message: GetTargetStatesRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): GetTargetStatesRequest;
     fromJSON(object: any): GetTargetStatesRequest;
@@ -620,6 +685,7 @@ export declare const GetTargetStatesRequest: {
     fromPartial(object: DeepPartial<GetTargetStatesRequest>): GetTargetStatesRequest;
 };
 export declare const GetTargetStatesResponse: {
+    $type: "yandex.cloud.apploadbalancer.v1.GetTargetStatesResponse";
     encode(message: GetTargetStatesResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): GetTargetStatesResponse;
     fromJSON(object: any): GetTargetStatesResponse;
@@ -627,6 +693,7 @@ export declare const GetTargetStatesResponse: {
     fromPartial(object: DeepPartial<GetTargetStatesResponse>): GetTargetStatesResponse;
 };
 export declare const AddSniMatchRequest: {
+    $type: "yandex.cloud.apploadbalancer.v1.AddSniMatchRequest";
     encode(message: AddSniMatchRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): AddSniMatchRequest;
     fromJSON(object: any): AddSniMatchRequest;
@@ -634,6 +701,7 @@ export declare const AddSniMatchRequest: {
     fromPartial(object: DeepPartial<AddSniMatchRequest>): AddSniMatchRequest;
 };
 export declare const AddSniMatchMetadata: {
+    $type: "yandex.cloud.apploadbalancer.v1.AddSniMatchMetadata";
     encode(message: AddSniMatchMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): AddSniMatchMetadata;
     fromJSON(object: any): AddSniMatchMetadata;
@@ -641,6 +709,7 @@ export declare const AddSniMatchMetadata: {
     fromPartial(object: DeepPartial<AddSniMatchMetadata>): AddSniMatchMetadata;
 };
 export declare const RemoveSniMatchRequest: {
+    $type: "yandex.cloud.apploadbalancer.v1.RemoveSniMatchRequest";
     encode(message: RemoveSniMatchRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): RemoveSniMatchRequest;
     fromJSON(object: any): RemoveSniMatchRequest;
@@ -648,6 +717,7 @@ export declare const RemoveSniMatchRequest: {
     fromPartial(object: DeepPartial<RemoveSniMatchRequest>): RemoveSniMatchRequest;
 };
 export declare const RemoveSniMatchMetadata: {
+    $type: "yandex.cloud.apploadbalancer.v1.RemoveSniMatchMetadata";
     encode(message: RemoveSniMatchMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): RemoveSniMatchMetadata;
     fromJSON(object: any): RemoveSniMatchMetadata;
@@ -655,6 +725,7 @@ export declare const RemoveSniMatchMetadata: {
     fromPartial(object: DeepPartial<RemoveSniMatchMetadata>): RemoveSniMatchMetadata;
 };
 export declare const UpdateSniMatchRequest: {
+    $type: "yandex.cloud.apploadbalancer.v1.UpdateSniMatchRequest";
     encode(message: UpdateSniMatchRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateSniMatchRequest;
     fromJSON(object: any): UpdateSniMatchRequest;
@@ -662,6 +733,7 @@ export declare const UpdateSniMatchRequest: {
     fromPartial(object: DeepPartial<UpdateSniMatchRequest>): UpdateSniMatchRequest;
 };
 export declare const UpdateSniMatchMetadata: {
+    $type: "yandex.cloud.apploadbalancer.v1.UpdateSniMatchMetadata";
     encode(message: UpdateSniMatchMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateSniMatchMetadata;
     fromJSON(object: any): UpdateSniMatchMetadata;
@@ -669,6 +741,7 @@ export declare const UpdateSniMatchMetadata: {
     fromPartial(object: DeepPartial<UpdateSniMatchMetadata>): UpdateSniMatchMetadata;
 };
 export declare const ListLoadBalancerOperationsRequest: {
+    $type: "yandex.cloud.apploadbalancer.v1.ListLoadBalancerOperationsRequest";
     encode(message: ListLoadBalancerOperationsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListLoadBalancerOperationsRequest;
     fromJSON(object: any): ListLoadBalancerOperationsRequest;
@@ -676,6 +749,7 @@ export declare const ListLoadBalancerOperationsRequest: {
     fromPartial(object: DeepPartial<ListLoadBalancerOperationsRequest>): ListLoadBalancerOperationsRequest;
 };
 export declare const ListLoadBalancerOperationsResponse: {
+    $type: "yandex.cloud.apploadbalancer.v1.ListLoadBalancerOperationsResponse";
     encode(message: ListLoadBalancerOperationsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListLoadBalancerOperationsResponse;
     fromJSON(object: any): ListLoadBalancerOperationsResponse;
@@ -980,6 +1054,6 @@ export interface LoadBalancerServiceClient extends Client {
 export declare const LoadBalancerServiceClient: new (address: string, credentials: ChannelCredentials, options?: Partial<ChannelOptions> | undefined) => LoadBalancerServiceClient;
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

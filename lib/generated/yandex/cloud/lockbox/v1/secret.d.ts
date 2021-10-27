@@ -2,6 +2,7 @@ import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.lockbox.v1";
 /** A secret that may contain several versions of the payload. */
 export interface Secret {
+    $type: 'yandex.cloud.lockbox.v1.Secret';
     /** ID of the secret. */
     id: string;
     /** ID of the folder that the secret belongs to. */
@@ -46,10 +47,12 @@ export declare enum Secret_Status {
 export declare function secret_StatusFromJSON(object: any): Secret_Status;
 export declare function secret_StatusToJSON(object: Secret_Status): string;
 export interface Secret_LabelsEntry {
+    $type: 'yandex.cloud.lockbox.v1.Secret.LabelsEntry';
     key: string;
     value: string;
 }
 export interface Version {
+    $type: 'yandex.cloud.lockbox.v1.Version';
     /** ID of the version. */
     id: string;
     /** ID of the secret that the version belongs to. */
@@ -84,6 +87,7 @@ export declare enum Version_Status {
 export declare function version_StatusFromJSON(object: any): Version_Status;
 export declare function version_StatusToJSON(object: Version_Status): string;
 export declare const Secret: {
+    $type: "yandex.cloud.lockbox.v1.Secret";
     encode(message: Secret, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Secret;
     fromJSON(object: any): Secret;
@@ -91,6 +95,7 @@ export declare const Secret: {
     fromPartial(object: DeepPartial<Secret>): Secret;
 };
 export declare const Secret_LabelsEntry: {
+    $type: "yandex.cloud.lockbox.v1.Secret.LabelsEntry";
     encode(message: Secret_LabelsEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Secret_LabelsEntry;
     fromJSON(object: any): Secret_LabelsEntry;
@@ -98,6 +103,7 @@ export declare const Secret_LabelsEntry: {
     fromPartial(object: DeepPartial<Secret_LabelsEntry>): Secret_LabelsEntry;
 };
 export declare const Version: {
+    $type: "yandex.cloud.lockbox.v1.Version";
     encode(message: Version, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Version;
     fromJSON(object: any): Version;
@@ -106,6 +112,6 @@ export declare const Version: {
 };
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

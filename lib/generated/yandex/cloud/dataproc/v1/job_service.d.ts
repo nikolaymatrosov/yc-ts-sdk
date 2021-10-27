@@ -5,6 +5,7 @@ import { ChannelCredentials, ChannelOptions, UntypedServiceImplementation, handl
 import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.dataproc.v1";
 export interface GetJobRequest {
+    $type: 'yandex.cloud.dataproc.v1.GetJobRequest';
     /** ID of the cluster to request a job from. */
     clusterId: string;
     /**
@@ -15,6 +16,7 @@ export interface GetJobRequest {
     jobId: string;
 }
 export interface ListJobsRequest {
+    $type: 'yandex.cloud.dataproc.v1.ListJobsRequest';
     /** ID of the cluster to list jobs for. */
     clusterId: string;
     /**
@@ -41,6 +43,7 @@ export interface ListJobsRequest {
     filter: string;
 }
 export interface ListJobsResponse {
+    $type: 'yandex.cloud.dataproc.v1.ListJobsResponse';
     /** List of jobs for the specified cluster. */
     jobs: Job[];
     /**
@@ -53,6 +56,7 @@ export interface ListJobsResponse {
     nextPageToken: string;
 }
 export interface CreateJobRequest {
+    $type: 'yandex.cloud.dataproc.v1.CreateJobRequest';
     /** ID of the cluster to create a job for. */
     clusterId: string;
     /** Name of the job. */
@@ -67,12 +71,14 @@ export interface CreateJobRequest {
     hiveJob: HiveJob | undefined;
 }
 export interface CreateJobMetadata {
+    $type: 'yandex.cloud.dataproc.v1.CreateJobMetadata';
     /** ID of the cluster that the job is being created for. */
     clusterId: string;
     /** ID of the job being created. */
     jobId: string;
 }
 export interface ListJobLogRequest {
+    $type: 'yandex.cloud.dataproc.v1.ListJobLogRequest';
     /** ID of the cluster that the job is being created for. */
     clusterId: string;
     /** ID of the job being created. */
@@ -91,6 +97,7 @@ export interface ListJobLogRequest {
     pageToken: string;
 }
 export interface ListJobLogResponse {
+    $type: 'yandex.cloud.dataproc.v1.ListJobLogResponse';
     /** Requested part of Data Proc Job log. */
     content: string;
     /**
@@ -103,6 +110,7 @@ export interface ListJobLogResponse {
     nextPageToken: string;
 }
 export declare const GetJobRequest: {
+    $type: "yandex.cloud.dataproc.v1.GetJobRequest";
     encode(message: GetJobRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): GetJobRequest;
     fromJSON(object: any): GetJobRequest;
@@ -110,6 +118,7 @@ export declare const GetJobRequest: {
     fromPartial(object: DeepPartial<GetJobRequest>): GetJobRequest;
 };
 export declare const ListJobsRequest: {
+    $type: "yandex.cloud.dataproc.v1.ListJobsRequest";
     encode(message: ListJobsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListJobsRequest;
     fromJSON(object: any): ListJobsRequest;
@@ -117,6 +126,7 @@ export declare const ListJobsRequest: {
     fromPartial(object: DeepPartial<ListJobsRequest>): ListJobsRequest;
 };
 export declare const ListJobsResponse: {
+    $type: "yandex.cloud.dataproc.v1.ListJobsResponse";
     encode(message: ListJobsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListJobsResponse;
     fromJSON(object: any): ListJobsResponse;
@@ -124,6 +134,7 @@ export declare const ListJobsResponse: {
     fromPartial(object: DeepPartial<ListJobsResponse>): ListJobsResponse;
 };
 export declare const CreateJobRequest: {
+    $type: "yandex.cloud.dataproc.v1.CreateJobRequest";
     encode(message: CreateJobRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateJobRequest;
     fromJSON(object: any): CreateJobRequest;
@@ -131,6 +142,7 @@ export declare const CreateJobRequest: {
     fromPartial(object: DeepPartial<CreateJobRequest>): CreateJobRequest;
 };
 export declare const CreateJobMetadata: {
+    $type: "yandex.cloud.dataproc.v1.CreateJobMetadata";
     encode(message: CreateJobMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateJobMetadata;
     fromJSON(object: any): CreateJobMetadata;
@@ -138,6 +150,7 @@ export declare const CreateJobMetadata: {
     fromPartial(object: DeepPartial<CreateJobMetadata>): CreateJobMetadata;
 };
 export declare const ListJobLogRequest: {
+    $type: "yandex.cloud.dataproc.v1.ListJobLogRequest";
     encode(message: ListJobLogRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListJobLogRequest;
     fromJSON(object: any): ListJobLogRequest;
@@ -145,6 +158,7 @@ export declare const ListJobLogRequest: {
     fromPartial(object: DeepPartial<ListJobLogRequest>): ListJobLogRequest;
 };
 export declare const ListJobLogResponse: {
+    $type: "yandex.cloud.dataproc.v1.ListJobLogResponse";
     encode(message: ListJobLogResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListJobLogResponse;
     fromJSON(object: any): ListJobLogResponse;
@@ -225,6 +239,6 @@ export interface JobServiceClient extends Client {
 export declare const JobServiceClient: new (address: string, credentials: ChannelCredentials, options?: Partial<ChannelOptions> | undefined) => JobServiceClient;
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

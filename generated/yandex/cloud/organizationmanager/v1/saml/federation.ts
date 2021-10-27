@@ -1,6 +1,7 @@
 /* eslint-disable */
 import { Duration } from '../../../../../google/protobuf/duration';
 import { Timestamp } from '../../../../../google/protobuf/timestamp';
+import { messageTypeRegistry } from '../../../../../typeRegistry';
 import Long from 'long';
 import _m0 from 'protobufjs/minimal';
 
@@ -58,6 +59,7 @@ export function bindingTypeToJSON(object: BindingType): string {
  * For more information, see [SAML-compatible identity federations](/docs/iam/concepts/users/identity-federations).
  */
 export interface Federation {
+    $type: 'yandex.cloud.organizationmanager.v1.saml.Federation';
     /** ID of the federation. */
     id: string;
     /** ID of the organization that the federation belongs to. */
@@ -109,17 +111,20 @@ export interface Federation {
 }
 
 export interface Federation_LabelsEntry {
+    $type: 'yandex.cloud.organizationmanager.v1.saml.Federation.LabelsEntry';
     key: string;
     value: string;
 }
 
 /** Federation security settings. */
 export interface FederationSecuritySettings {
+    $type: 'yandex.cloud.organizationmanager.v1.saml.FederationSecuritySettings';
     /** Enable encrypted assertions. */
     encryptedAssertions: boolean;
 }
 
 const baseFederation: object = {
+    $type: 'yandex.cloud.organizationmanager.v1.saml.Federation',
     id: '',
     organizationId: '',
     name: '',
@@ -132,6 +137,8 @@ const baseFederation: object = {
 };
 
 export const Federation = {
+    $type: 'yandex.cloud.organizationmanager.v1.saml.Federation' as const,
+
     encode(
         message: Federation,
         writer: _m0.Writer = _m0.Writer.create()
@@ -183,7 +190,11 @@ export const Federation = {
         }
         Object.entries(message.labels).forEach(([key, value]) => {
             Federation_LabelsEntry.encode(
-                { key: key as any, value },
+                {
+                    $type: 'yandex.cloud.organizationmanager.v1.saml.Federation.LabelsEntry',
+                    key: key as any,
+                    value,
+                },
                 writer.uint32(106).fork()
             ).ldelim();
         });
@@ -473,9 +484,17 @@ export const Federation = {
     },
 };
 
-const baseFederation_LabelsEntry: object = { key: '', value: '' };
+messageTypeRegistry.set(Federation.$type, Federation);
+
+const baseFederation_LabelsEntry: object = {
+    $type: 'yandex.cloud.organizationmanager.v1.saml.Federation.LabelsEntry',
+    key: '',
+    value: '',
+};
 
 export const Federation_LabelsEntry = {
+    $type: 'yandex.cloud.organizationmanager.v1.saml.Federation.LabelsEntry' as const,
+
     encode(
         message: Federation_LabelsEntry,
         writer: _m0.Writer = _m0.Writer.create()
@@ -560,9 +579,16 @@ export const Federation_LabelsEntry = {
     },
 };
 
-const baseFederationSecuritySettings: object = { encryptedAssertions: false };
+messageTypeRegistry.set(Federation_LabelsEntry.$type, Federation_LabelsEntry);
+
+const baseFederationSecuritySettings: object = {
+    $type: 'yandex.cloud.organizationmanager.v1.saml.FederationSecuritySettings',
+    encryptedAssertions: false,
+};
 
 export const FederationSecuritySettings = {
+    $type: 'yandex.cloud.organizationmanager.v1.saml.FederationSecuritySettings' as const,
+
     encode(
         message: FederationSecuritySettings,
         writer: _m0.Writer = _m0.Writer.create()
@@ -637,6 +663,11 @@ export const FederationSecuritySettings = {
     },
 };
 
+messageTypeRegistry.set(
+    FederationSecuritySettings.$type,
+    FederationSecuritySettings
+);
+
 type Builtin =
     | Date
     | Function
@@ -652,13 +683,13 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 function toTimestamp(date: Date): Timestamp {
     const seconds = date.getTime() / 1_000;
     const nanos = (date.getTime() % 1_000) * 1_000_000;
-    return { seconds, nanos };
+    return { $type: 'google.protobuf.Timestamp', seconds, nanos };
 }
 
 function fromTimestamp(t: Timestamp): Date {

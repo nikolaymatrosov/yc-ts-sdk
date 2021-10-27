@@ -1,5 +1,6 @@
 /* eslint-disable */
 import { Timestamp } from '../../../../google/protobuf/timestamp';
+import { messageTypeRegistry } from '../../../../typeRegistry';
 import Long from 'long';
 import _m0 from 'protobufjs/minimal';
 
@@ -47,6 +48,7 @@ export function maintenancePolicyToJSON(object: MaintenancePolicy): string {
 
 /** Represents group of dedicated hosts */
 export interface HostGroup {
+    $type: 'yandex.cloud.compute.v1.HostGroup';
     /** ID of the group. */
     id: string;
     /** ID of the folder that the group belongs to. */
@@ -122,12 +124,14 @@ export function hostGroup_StatusToJSON(object: HostGroup_Status): string {
 }
 
 export interface HostGroup_LabelsEntry {
+    $type: 'yandex.cloud.compute.v1.HostGroup.LabelsEntry';
     key: string;
     value: string;
 }
 
 /** Represents a dedicated host */
 export interface Host {
+    $type: 'yandex.cloud.compute.v1.Host';
     /** ID of the host. */
     id: string;
     /** Current status of the host. New instances are unable to start on host in DOWN status. */
@@ -175,14 +179,17 @@ export function host_StatusToJSON(object: Host_Status): string {
 }
 
 export interface ScalePolicy {
+    $type: 'yandex.cloud.compute.v1.ScalePolicy';
     fixedScale: ScalePolicy_FixedScale | undefined;
 }
 
 export interface ScalePolicy_FixedScale {
+    $type: 'yandex.cloud.compute.v1.ScalePolicy.FixedScale';
     size: number;
 }
 
 const baseHostGroup: object = {
+    $type: 'yandex.cloud.compute.v1.HostGroup',
     id: '',
     folderId: '',
     name: '',
@@ -194,6 +201,8 @@ const baseHostGroup: object = {
 };
 
 export const HostGroup = {
+    $type: 'yandex.cloud.compute.v1.HostGroup' as const,
+
     encode(
         message: HostGroup,
         writer: _m0.Writer = _m0.Writer.create()
@@ -218,7 +227,11 @@ export const HostGroup = {
         }
         Object.entries(message.labels).forEach(([key, value]) => {
             HostGroup_LabelsEntry.encode(
-                { key: key as any, value },
+                {
+                    $type: 'yandex.cloud.compute.v1.HostGroup.LabelsEntry',
+                    key: key as any,
+                    value,
+                },
                 writer.uint32(50).fork()
             ).ldelim();
         });
@@ -467,9 +480,17 @@ export const HostGroup = {
     },
 };
 
-const baseHostGroup_LabelsEntry: object = { key: '', value: '' };
+messageTypeRegistry.set(HostGroup.$type, HostGroup);
+
+const baseHostGroup_LabelsEntry: object = {
+    $type: 'yandex.cloud.compute.v1.HostGroup.LabelsEntry',
+    key: '',
+    value: '',
+};
 
 export const HostGroup_LabelsEntry = {
+    $type: 'yandex.cloud.compute.v1.HostGroup.LabelsEntry' as const,
+
     encode(
         message: HostGroup_LabelsEntry,
         writer: _m0.Writer = _m0.Writer.create()
@@ -554,9 +575,18 @@ export const HostGroup_LabelsEntry = {
     },
 };
 
-const baseHost: object = { id: '', status: 0, serverId: '' };
+messageTypeRegistry.set(HostGroup_LabelsEntry.$type, HostGroup_LabelsEntry);
+
+const baseHost: object = {
+    $type: 'yandex.cloud.compute.v1.Host',
+    id: '',
+    status: 0,
+    serverId: '',
+};
 
 export const Host = {
+    $type: 'yandex.cloud.compute.v1.Host' as const,
+
     encode(
         message: Host,
         writer: _m0.Writer = _m0.Writer.create()
@@ -648,9 +678,15 @@ export const Host = {
     },
 };
 
-const baseScalePolicy: object = {};
+messageTypeRegistry.set(Host.$type, Host);
+
+const baseScalePolicy: object = {
+    $type: 'yandex.cloud.compute.v1.ScalePolicy',
+};
 
 export const ScalePolicy = {
+    $type: 'yandex.cloud.compute.v1.ScalePolicy' as const,
+
     encode(
         message: ScalePolicy,
         writer: _m0.Writer = _m0.Writer.create()
@@ -720,9 +756,16 @@ export const ScalePolicy = {
     },
 };
 
-const baseScalePolicy_FixedScale: object = { size: 0 };
+messageTypeRegistry.set(ScalePolicy.$type, ScalePolicy);
+
+const baseScalePolicy_FixedScale: object = {
+    $type: 'yandex.cloud.compute.v1.ScalePolicy.FixedScale',
+    size: 0,
+};
 
 export const ScalePolicy_FixedScale = {
+    $type: 'yandex.cloud.compute.v1.ScalePolicy.FixedScale' as const,
+
     encode(
         message: ScalePolicy_FixedScale,
         writer: _m0.Writer = _m0.Writer.create()
@@ -790,6 +833,8 @@ export const ScalePolicy_FixedScale = {
     },
 };
 
+messageTypeRegistry.set(ScalePolicy_FixedScale.$type, ScalePolicy_FixedScale);
+
 declare var self: any | undefined;
 declare var window: any | undefined;
 declare var global: any | undefined;
@@ -816,13 +861,13 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 function toTimestamp(date: Date): Timestamp {
     const seconds = date.getTime() / 1_000;
     const nanos = (date.getTime() % 1_000) * 1_000_000;
-    return { seconds, nanos };
+    return { $type: 'google.protobuf.Timestamp', seconds, nanos };
 }
 
 function fromTimestamp(t: Timestamp): Date {

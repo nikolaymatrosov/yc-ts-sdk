@@ -24,6 +24,7 @@ export declare function challengeTypeFromJSON(object: any): ChallengeType;
 export declare function challengeTypeToJSON(object: ChallengeType): string;
 /** A certificate. For details about the concept, see [documentation](docs/certificate-manager/concepts/). */
 export interface Certificate {
+    $type: 'yandex.cloud.certificatemanager.v1.Certificate';
     /** ID of the certificate. Generated at creation time. */
     id: string;
     /** ID of the folder that the certificate belongs to. */
@@ -83,11 +84,13 @@ export declare enum Certificate_Status {
 export declare function certificate_StatusFromJSON(object: any): Certificate_Status;
 export declare function certificate_StatusToJSON(object: Certificate_Status): string;
 export interface Certificate_LabelsEntry {
+    $type: 'yandex.cloud.certificatemanager.v1.Certificate.LabelsEntry';
     key: string;
     value: string;
 }
 /** Domain validation challenge. */
 export interface Challenge {
+    $type: 'yandex.cloud.certificatemanager.v1.Challenge';
     /** Domain of the challenge. */
     domain: string;
     /** Type of the challenge. */
@@ -122,6 +125,7 @@ export declare enum Challenge_Status {
 export declare function challenge_StatusFromJSON(object: any): Challenge_Status;
 export declare function challenge_StatusToJSON(object: Challenge_Status): string;
 export interface Challenge_DnsRecord {
+    $type: 'yandex.cloud.certificatemanager.v1.Challenge.DnsRecord';
     /** Name of the DNS record. */
     name: string;
     /** Type of the DNS-record. */
@@ -130,12 +134,14 @@ export interface Challenge_DnsRecord {
     value: string;
 }
 export interface Challenge_HttpFile {
+    $type: 'yandex.cloud.certificatemanager.v1.Challenge.HttpFile';
     /** Location of the HTTP file. */
     url: string;
     /** Content of the HTTP file. */
     content: string;
 }
 export declare const Certificate: {
+    $type: "yandex.cloud.certificatemanager.v1.Certificate";
     encode(message: Certificate, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Certificate;
     fromJSON(object: any): Certificate;
@@ -143,6 +149,7 @@ export declare const Certificate: {
     fromPartial(object: DeepPartial<Certificate>): Certificate;
 };
 export declare const Certificate_LabelsEntry: {
+    $type: "yandex.cloud.certificatemanager.v1.Certificate.LabelsEntry";
     encode(message: Certificate_LabelsEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Certificate_LabelsEntry;
     fromJSON(object: any): Certificate_LabelsEntry;
@@ -150,6 +157,7 @@ export declare const Certificate_LabelsEntry: {
     fromPartial(object: DeepPartial<Certificate_LabelsEntry>): Certificate_LabelsEntry;
 };
 export declare const Challenge: {
+    $type: "yandex.cloud.certificatemanager.v1.Challenge";
     encode(message: Challenge, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Challenge;
     fromJSON(object: any): Challenge;
@@ -157,6 +165,7 @@ export declare const Challenge: {
     fromPartial(object: DeepPartial<Challenge>): Challenge;
 };
 export declare const Challenge_DnsRecord: {
+    $type: "yandex.cloud.certificatemanager.v1.Challenge.DnsRecord";
     encode(message: Challenge_DnsRecord, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Challenge_DnsRecord;
     fromJSON(object: any): Challenge_DnsRecord;
@@ -164,6 +173,7 @@ export declare const Challenge_DnsRecord: {
     fromPartial(object: DeepPartial<Challenge_DnsRecord>): Challenge_DnsRecord;
 };
 export declare const Challenge_HttpFile: {
+    $type: "yandex.cloud.certificatemanager.v1.Challenge.HttpFile";
     encode(message: Challenge_HttpFile, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Challenge_HttpFile;
     fromJSON(object: any): Challenge_HttpFile;
@@ -172,6 +182,6 @@ export declare const Challenge_HttpFile: {
 };
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

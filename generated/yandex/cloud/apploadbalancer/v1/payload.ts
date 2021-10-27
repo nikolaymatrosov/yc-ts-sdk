@@ -1,4 +1,5 @@
 /* eslint-disable */
+import { messageTypeRegistry } from '../../../../typeRegistry';
 import Long from 'long';
 import _m0 from 'protobufjs/minimal';
 
@@ -6,13 +7,18 @@ export const protobufPackage = 'yandex.cloud.apploadbalancer.v1';
 
 /** A health check payload resource. */
 export interface Payload {
+    $type: 'yandex.cloud.apploadbalancer.v1.Payload';
     /** Payload text. */
     text: string | undefined;
 }
 
-const basePayload: object = {};
+const basePayload: object = {
+    $type: 'yandex.cloud.apploadbalancer.v1.Payload',
+};
 
 export const Payload = {
+    $type: 'yandex.cloud.apploadbalancer.v1.Payload' as const,
+
     encode(
         message: Payload,
         writer: _m0.Writer = _m0.Writer.create()
@@ -69,6 +75,8 @@ export const Payload = {
     },
 };
 
+messageTypeRegistry.set(Payload.$type, Payload);
+
 type Builtin =
     | Date
     | Function
@@ -84,7 +92,7 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 if (_m0.util.Long !== Long) {

@@ -5,6 +5,7 @@ export declare const protobufPackage = "yandex.cloud.mdb.postgresql.v1";
  * the [Developer's Guide](/docs/managed-postgresql/concepts).
  */
 export interface User {
+    $type: 'yandex.cloud.mdb.postgresql.v1.User';
     /** Name of the PostgreSQL user. */
     name: string;
     /** ID of the PostgreSQL cluster the user belongs to. */
@@ -36,10 +37,12 @@ export interface User {
     grants: string[];
 }
 export interface Permission {
+    $type: 'yandex.cloud.mdb.postgresql.v1.Permission';
     /** Name of the database that the permission grants access to. */
     databaseName: string;
 }
 export interface UserSpec {
+    $type: 'yandex.cloud.mdb.postgresql.v1.UserSpec';
     /** Name of the PostgreSQL user. */
     name: string;
     /** Password of the PostgreSQL user. */
@@ -73,6 +76,7 @@ export interface UserSpec {
 }
 /** PostgreSQL user settings. */
 export interface UserSettings {
+    $type: 'yandex.cloud.mdb.postgresql.v1.UserSettings';
     /**
      * SQL sets an isolation level for each transaction.
      * This setting defines the default isolation level to be set for all new SQL transactions.
@@ -184,6 +188,7 @@ export declare enum UserSettings_TransactionIsolation {
 export declare function userSettings_TransactionIsolationFromJSON(object: any): UserSettings_TransactionIsolation;
 export declare function userSettings_TransactionIsolationToJSON(object: UserSettings_TransactionIsolation): string;
 export declare const User: {
+    $type: "yandex.cloud.mdb.postgresql.v1.User";
     encode(message: User, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): User;
     fromJSON(object: any): User;
@@ -191,6 +196,7 @@ export declare const User: {
     fromPartial(object: DeepPartial<User>): User;
 };
 export declare const Permission: {
+    $type: "yandex.cloud.mdb.postgresql.v1.Permission";
     encode(message: Permission, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Permission;
     fromJSON(object: any): Permission;
@@ -198,6 +204,7 @@ export declare const Permission: {
     fromPartial(object: DeepPartial<Permission>): Permission;
 };
 export declare const UserSpec: {
+    $type: "yandex.cloud.mdb.postgresql.v1.UserSpec";
     encode(message: UserSpec, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UserSpec;
     fromJSON(object: any): UserSpec;
@@ -205,6 +212,7 @@ export declare const UserSpec: {
     fromPartial(object: DeepPartial<UserSpec>): UserSpec;
 };
 export declare const UserSettings: {
+    $type: "yandex.cloud.mdb.postgresql.v1.UserSettings";
     encode(message: UserSettings, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UserSettings;
     fromJSON(object: any): UserSettings;
@@ -213,6 +221,6 @@ export declare const UserSettings: {
 };
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

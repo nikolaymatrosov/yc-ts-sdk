@@ -1,5 +1,6 @@
 /* eslint-disable */
 import { FieldMask } from '../../../../google/protobuf/field_mask';
+import { messageTypeRegistry } from '../../../../typeRegistry';
 import { Operation } from '../../../../yandex/cloud/operation/operation';
 import {
     BackupSettings,
@@ -33,6 +34,7 @@ import _m0 from 'protobufjs/minimal';
 export const protobufPackage = 'yandex.cloud.ydb.v1';
 
 export interface RestoreBackupRequest {
+    $type: 'yandex.cloud.ydb.v1.RestoreBackupRequest';
     /** Required. ID of the YDB backup. */
     backupId: string;
     /** Required. ID of the YDB database. */
@@ -47,45 +49,54 @@ export interface RestoreBackupRequest {
 }
 
 export interface RestoreBackupMetadata {
+    $type: 'yandex.cloud.ydb.v1.RestoreBackupMetadata';
     backupId: string;
     databaseId: string;
 }
 
 export interface BackupDatabaseRequest {
+    $type: 'yandex.cloud.ydb.v1.BackupDatabaseRequest';
     databaseId: string;
     /** custom backup options, if required. */
     backupSettings: BackupSettings | undefined;
 }
 
 export interface BackupDatabaseMetadata {
+    $type: 'yandex.cloud.ydb.v1.BackupDatabaseMetadata';
     backupId: string;
     databaseId: string;
 }
 
 export interface StartDatabaseRequest {
+    $type: 'yandex.cloud.ydb.v1.StartDatabaseRequest';
     databaseId: string;
 }
 
 export interface StartDatabaseMetadata {
+    $type: 'yandex.cloud.ydb.v1.StartDatabaseMetadata';
     databaseId: string;
     databaseName: string;
 }
 
 export interface StopDatabaseRequest {
+    $type: 'yandex.cloud.ydb.v1.StopDatabaseRequest';
     databaseId: string;
 }
 
 export interface StopDatabaseMetadata {
+    $type: 'yandex.cloud.ydb.v1.StopDatabaseMetadata';
     databaseId: string;
     databaseName: string;
 }
 
 export interface GetDatabaseRequest {
+    $type: 'yandex.cloud.ydb.v1.GetDatabaseRequest';
     /** Required. ID of the YDB cluster. */
     databaseId: string;
 }
 
 export interface ListDatabasesRequest {
+    $type: 'yandex.cloud.ydb.v1.ListDatabasesRequest';
     folderId: string;
     /**
      * The maximum number of results per page that should be returned. If the number of available
@@ -102,6 +113,7 @@ export interface ListDatabasesRequest {
 }
 
 export interface ListDatabasesResponse {
+    $type: 'yandex.cloud.ydb.v1.ListDatabasesResponse';
     databases: Database[];
     /**
      * This token allows you to get the next page of results for ListDatabases requests,
@@ -114,6 +126,7 @@ export interface ListDatabasesResponse {
 }
 
 export interface CreateDatabaseRequest {
+    $type: 'yandex.cloud.ydb.v1.CreateDatabaseRequest';
     folderId: string;
     name: string;
     description: string;
@@ -136,11 +149,13 @@ export interface CreateDatabaseRequest {
 }
 
 export interface CreateDatabaseRequest_LabelsEntry {
+    $type: 'yandex.cloud.ydb.v1.CreateDatabaseRequest.LabelsEntry';
     key: string;
     value: string;
 }
 
 export interface CreateDatabaseMetadata {
+    $type: 'yandex.cloud.ydb.v1.CreateDatabaseMetadata';
     /** Required. ID of the YDB cluster. */
     databaseId: string;
     /** Required. Name of the creating database. */
@@ -148,6 +163,7 @@ export interface CreateDatabaseMetadata {
 }
 
 export interface UpdateDatabaseRequest {
+    $type: 'yandex.cloud.ydb.v1.UpdateDatabaseRequest';
     folderId: string;
     updateMask: FieldMask | undefined;
     databaseId: string;
@@ -170,25 +186,30 @@ export interface UpdateDatabaseRequest {
 }
 
 export interface UpdateDatabaseRequest_LabelsEntry {
+    $type: 'yandex.cloud.ydb.v1.UpdateDatabaseRequest.LabelsEntry';
     key: string;
     value: string;
 }
 
 export interface UpdateDatabaseMetadata {
+    $type: 'yandex.cloud.ydb.v1.UpdateDatabaseMetadata';
     databaseId: string;
     databaseName: string;
 }
 
 export interface DeleteDatabaseRequest {
+    $type: 'yandex.cloud.ydb.v1.DeleteDatabaseRequest';
     databaseId: string;
 }
 
 export interface DeleteDatabaseMetadata {
+    $type: 'yandex.cloud.ydb.v1.DeleteDatabaseMetadata';
     databaseId: string;
     databaseName: string;
 }
 
 const baseRestoreBackupRequest: object = {
+    $type: 'yandex.cloud.ydb.v1.RestoreBackupRequest',
     backupId: '',
     databaseId: '',
     pathsToRestore: '',
@@ -196,6 +217,8 @@ const baseRestoreBackupRequest: object = {
 };
 
 export const RestoreBackupRequest = {
+    $type: 'yandex.cloud.ydb.v1.RestoreBackupRequest' as const,
+
     encode(
         message: RestoreBackupRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -323,9 +346,17 @@ export const RestoreBackupRequest = {
     },
 };
 
-const baseRestoreBackupMetadata: object = { backupId: '', databaseId: '' };
+messageTypeRegistry.set(RestoreBackupRequest.$type, RestoreBackupRequest);
+
+const baseRestoreBackupMetadata: object = {
+    $type: 'yandex.cloud.ydb.v1.RestoreBackupMetadata',
+    backupId: '',
+    databaseId: '',
+};
 
 export const RestoreBackupMetadata = {
+    $type: 'yandex.cloud.ydb.v1.RestoreBackupMetadata' as const,
+
     encode(
         message: RestoreBackupMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -411,9 +442,16 @@ export const RestoreBackupMetadata = {
     },
 };
 
-const baseBackupDatabaseRequest: object = { databaseId: '' };
+messageTypeRegistry.set(RestoreBackupMetadata.$type, RestoreBackupMetadata);
+
+const baseBackupDatabaseRequest: object = {
+    $type: 'yandex.cloud.ydb.v1.BackupDatabaseRequest',
+    databaseId: '',
+};
 
 export const BackupDatabaseRequest = {
+    $type: 'yandex.cloud.ydb.v1.BackupDatabaseRequest' as const,
+
     encode(
         message: BackupDatabaseRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -518,9 +556,17 @@ export const BackupDatabaseRequest = {
     },
 };
 
-const baseBackupDatabaseMetadata: object = { backupId: '', databaseId: '' };
+messageTypeRegistry.set(BackupDatabaseRequest.$type, BackupDatabaseRequest);
+
+const baseBackupDatabaseMetadata: object = {
+    $type: 'yandex.cloud.ydb.v1.BackupDatabaseMetadata',
+    backupId: '',
+    databaseId: '',
+};
 
 export const BackupDatabaseMetadata = {
+    $type: 'yandex.cloud.ydb.v1.BackupDatabaseMetadata' as const,
+
     encode(
         message: BackupDatabaseMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -606,9 +652,16 @@ export const BackupDatabaseMetadata = {
     },
 };
 
-const baseStartDatabaseRequest: object = { databaseId: '' };
+messageTypeRegistry.set(BackupDatabaseMetadata.$type, BackupDatabaseMetadata);
+
+const baseStartDatabaseRequest: object = {
+    $type: 'yandex.cloud.ydb.v1.StartDatabaseRequest',
+    databaseId: '',
+};
 
 export const StartDatabaseRequest = {
+    $type: 'yandex.cloud.ydb.v1.StartDatabaseRequest' as const,
+
     encode(
         message: StartDatabaseRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -671,9 +724,17 @@ export const StartDatabaseRequest = {
     },
 };
 
-const baseStartDatabaseMetadata: object = { databaseId: '', databaseName: '' };
+messageTypeRegistry.set(StartDatabaseRequest.$type, StartDatabaseRequest);
+
+const baseStartDatabaseMetadata: object = {
+    $type: 'yandex.cloud.ydb.v1.StartDatabaseMetadata',
+    databaseId: '',
+    databaseName: '',
+};
 
 export const StartDatabaseMetadata = {
+    $type: 'yandex.cloud.ydb.v1.StartDatabaseMetadata' as const,
+
     encode(
         message: StartDatabaseMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -760,9 +821,16 @@ export const StartDatabaseMetadata = {
     },
 };
 
-const baseStopDatabaseRequest: object = { databaseId: '' };
+messageTypeRegistry.set(StartDatabaseMetadata.$type, StartDatabaseMetadata);
+
+const baseStopDatabaseRequest: object = {
+    $type: 'yandex.cloud.ydb.v1.StopDatabaseRequest',
+    databaseId: '',
+};
 
 export const StopDatabaseRequest = {
+    $type: 'yandex.cloud.ydb.v1.StopDatabaseRequest' as const,
+
     encode(
         message: StopDatabaseRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -823,9 +891,17 @@ export const StopDatabaseRequest = {
     },
 };
 
-const baseStopDatabaseMetadata: object = { databaseId: '', databaseName: '' };
+messageTypeRegistry.set(StopDatabaseRequest.$type, StopDatabaseRequest);
+
+const baseStopDatabaseMetadata: object = {
+    $type: 'yandex.cloud.ydb.v1.StopDatabaseMetadata',
+    databaseId: '',
+    databaseName: '',
+};
 
 export const StopDatabaseMetadata = {
+    $type: 'yandex.cloud.ydb.v1.StopDatabaseMetadata' as const,
+
     encode(
         message: StopDatabaseMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -906,9 +982,16 @@ export const StopDatabaseMetadata = {
     },
 };
 
-const baseGetDatabaseRequest: object = { databaseId: '' };
+messageTypeRegistry.set(StopDatabaseMetadata.$type, StopDatabaseMetadata);
+
+const baseGetDatabaseRequest: object = {
+    $type: 'yandex.cloud.ydb.v1.GetDatabaseRequest',
+    databaseId: '',
+};
 
 export const GetDatabaseRequest = {
+    $type: 'yandex.cloud.ydb.v1.GetDatabaseRequest' as const,
+
     encode(
         message: GetDatabaseRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -969,13 +1052,18 @@ export const GetDatabaseRequest = {
     },
 };
 
+messageTypeRegistry.set(GetDatabaseRequest.$type, GetDatabaseRequest);
+
 const baseListDatabasesRequest: object = {
+    $type: 'yandex.cloud.ydb.v1.ListDatabasesRequest',
     folderId: '',
     pageSize: 0,
     pageToken: '',
 };
 
 export const ListDatabasesRequest = {
+    $type: 'yandex.cloud.ydb.v1.ListDatabasesRequest' as const,
+
     encode(
         message: ListDatabasesRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1071,9 +1159,16 @@ export const ListDatabasesRequest = {
     },
 };
 
-const baseListDatabasesResponse: object = { nextPageToken: '' };
+messageTypeRegistry.set(ListDatabasesRequest.$type, ListDatabasesRequest);
+
+const baseListDatabasesResponse: object = {
+    $type: 'yandex.cloud.ydb.v1.ListDatabasesResponse',
+    nextPageToken: '',
+};
 
 export const ListDatabasesResponse = {
+    $type: 'yandex.cloud.ydb.v1.ListDatabasesResponse' as const,
+
     encode(
         message: ListDatabasesResponse,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1176,7 +1271,10 @@ export const ListDatabasesResponse = {
     },
 };
 
+messageTypeRegistry.set(ListDatabasesResponse.$type, ListDatabasesResponse);
+
 const baseCreateDatabaseRequest: object = {
+    $type: 'yandex.cloud.ydb.v1.CreateDatabaseRequest',
     folderId: '',
     name: '',
     description: '',
@@ -1188,6 +1286,8 @@ const baseCreateDatabaseRequest: object = {
 };
 
 export const CreateDatabaseRequest = {
+    $type: 'yandex.cloud.ydb.v1.CreateDatabaseRequest' as const,
+
     encode(
         message: CreateDatabaseRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1254,7 +1354,11 @@ export const CreateDatabaseRequest = {
         }
         Object.entries(message.labels).forEach(([key, value]) => {
             CreateDatabaseRequest_LabelsEntry.encode(
-                { key: key as any, value },
+                {
+                    $type: 'yandex.cloud.ydb.v1.CreateDatabaseRequest.LabelsEntry',
+                    key: key as any,
+                    value,
+                },
                 writer.uint32(122).fork()
             ).ldelim();
         });
@@ -1703,9 +1807,17 @@ export const CreateDatabaseRequest = {
     },
 };
 
-const baseCreateDatabaseRequest_LabelsEntry: object = { key: '', value: '' };
+messageTypeRegistry.set(CreateDatabaseRequest.$type, CreateDatabaseRequest);
+
+const baseCreateDatabaseRequest_LabelsEntry: object = {
+    $type: 'yandex.cloud.ydb.v1.CreateDatabaseRequest.LabelsEntry',
+    key: '',
+    value: '',
+};
 
 export const CreateDatabaseRequest_LabelsEntry = {
+    $type: 'yandex.cloud.ydb.v1.CreateDatabaseRequest.LabelsEntry' as const,
+
     encode(
         message: CreateDatabaseRequest_LabelsEntry,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1790,9 +1902,20 @@ export const CreateDatabaseRequest_LabelsEntry = {
     },
 };
 
-const baseCreateDatabaseMetadata: object = { databaseId: '', databaseName: '' };
+messageTypeRegistry.set(
+    CreateDatabaseRequest_LabelsEntry.$type,
+    CreateDatabaseRequest_LabelsEntry
+);
+
+const baseCreateDatabaseMetadata: object = {
+    $type: 'yandex.cloud.ydb.v1.CreateDatabaseMetadata',
+    databaseId: '',
+    databaseName: '',
+};
 
 export const CreateDatabaseMetadata = {
+    $type: 'yandex.cloud.ydb.v1.CreateDatabaseMetadata' as const,
+
     encode(
         message: CreateDatabaseMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1879,7 +2002,10 @@ export const CreateDatabaseMetadata = {
     },
 };
 
+messageTypeRegistry.set(CreateDatabaseMetadata.$type, CreateDatabaseMetadata);
+
 const baseUpdateDatabaseRequest: object = {
+    $type: 'yandex.cloud.ydb.v1.UpdateDatabaseRequest',
     folderId: '',
     databaseId: '',
     name: '',
@@ -1892,6 +2018,8 @@ const baseUpdateDatabaseRequest: object = {
 };
 
 export const UpdateDatabaseRequest = {
+    $type: 'yandex.cloud.ydb.v1.UpdateDatabaseRequest' as const,
+
     encode(
         message: UpdateDatabaseRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1967,7 +2095,11 @@ export const UpdateDatabaseRequest = {
         }
         Object.entries(message.labels).forEach(([key, value]) => {
             UpdateDatabaseRequest_LabelsEntry.encode(
-                { key: key as any, value },
+                {
+                    $type: 'yandex.cloud.ydb.v1.UpdateDatabaseRequest.LabelsEntry',
+                    key: key as any,
+                    value,
+                },
                 writer.uint32(138).fork()
             ).ldelim();
         });
@@ -2451,9 +2583,17 @@ export const UpdateDatabaseRequest = {
     },
 };
 
-const baseUpdateDatabaseRequest_LabelsEntry: object = { key: '', value: '' };
+messageTypeRegistry.set(UpdateDatabaseRequest.$type, UpdateDatabaseRequest);
+
+const baseUpdateDatabaseRequest_LabelsEntry: object = {
+    $type: 'yandex.cloud.ydb.v1.UpdateDatabaseRequest.LabelsEntry',
+    key: '',
+    value: '',
+};
 
 export const UpdateDatabaseRequest_LabelsEntry = {
+    $type: 'yandex.cloud.ydb.v1.UpdateDatabaseRequest.LabelsEntry' as const,
+
     encode(
         message: UpdateDatabaseRequest_LabelsEntry,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2538,9 +2678,20 @@ export const UpdateDatabaseRequest_LabelsEntry = {
     },
 };
 
-const baseUpdateDatabaseMetadata: object = { databaseId: '', databaseName: '' };
+messageTypeRegistry.set(
+    UpdateDatabaseRequest_LabelsEntry.$type,
+    UpdateDatabaseRequest_LabelsEntry
+);
+
+const baseUpdateDatabaseMetadata: object = {
+    $type: 'yandex.cloud.ydb.v1.UpdateDatabaseMetadata',
+    databaseId: '',
+    databaseName: '',
+};
 
 export const UpdateDatabaseMetadata = {
+    $type: 'yandex.cloud.ydb.v1.UpdateDatabaseMetadata' as const,
+
     encode(
         message: UpdateDatabaseMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2627,9 +2778,16 @@ export const UpdateDatabaseMetadata = {
     },
 };
 
-const baseDeleteDatabaseRequest: object = { databaseId: '' };
+messageTypeRegistry.set(UpdateDatabaseMetadata.$type, UpdateDatabaseMetadata);
+
+const baseDeleteDatabaseRequest: object = {
+    $type: 'yandex.cloud.ydb.v1.DeleteDatabaseRequest',
+    databaseId: '',
+};
 
 export const DeleteDatabaseRequest = {
+    $type: 'yandex.cloud.ydb.v1.DeleteDatabaseRequest' as const,
+
     encode(
         message: DeleteDatabaseRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2698,9 +2856,17 @@ export const DeleteDatabaseRequest = {
     },
 };
 
-const baseDeleteDatabaseMetadata: object = { databaseId: '', databaseName: '' };
+messageTypeRegistry.set(DeleteDatabaseRequest.$type, DeleteDatabaseRequest);
+
+const baseDeleteDatabaseMetadata: object = {
+    $type: 'yandex.cloud.ydb.v1.DeleteDatabaseMetadata',
+    databaseId: '',
+    databaseName: '',
+};
 
 export const DeleteDatabaseMetadata = {
+    $type: 'yandex.cloud.ydb.v1.DeleteDatabaseMetadata' as const,
+
     encode(
         message: DeleteDatabaseMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2786,6 +2952,8 @@ export const DeleteDatabaseMetadata = {
         return message;
     },
 };
+
+messageTypeRegistry.set(DeleteDatabaseMetadata.$type, DeleteDatabaseMetadata);
 
 /** A set of methods for managing databases. */
 export const DatabaseServiceService = {
@@ -3119,7 +3287,7 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 function longToNumber(long: Long): number {

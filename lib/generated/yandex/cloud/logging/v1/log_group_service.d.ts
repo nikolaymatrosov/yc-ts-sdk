@@ -9,6 +9,7 @@ import { ChannelCredentials, ChannelOptions, UntypedServiceImplementation, handl
 import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.logging.v1";
 export interface GetLogGroupRequest {
+    $type: 'yandex.cloud.logging.v1.GetLogGroupRequest';
     /**
      * ID of the log group to return.
      *
@@ -17,6 +18,7 @@ export interface GetLogGroupRequest {
     logGroupId: string;
 }
 export interface GetLogGroupStatsRequest {
+    $type: 'yandex.cloud.logging.v1.GetLogGroupStatsRequest';
     /**
      * ID of the log group to return stats for.
      *
@@ -25,6 +27,7 @@ export interface GetLogGroupStatsRequest {
     logGroupId: string;
 }
 export interface ListLogGroupsRequest {
+    $type: 'yandex.cloud.logging.v1.ListLogGroupsRequest';
     /**
      * Folder ID of the log groups to return.
      *
@@ -56,6 +59,7 @@ export interface ListLogGroupsRequest {
     filter: string;
 }
 export interface ListLogGroupsResponse {
+    $type: 'yandex.cloud.logging.v1.ListLogGroupsResponse';
     /** List of log groups in the specified folder. */
     groups: LogGroup[];
     /**
@@ -68,6 +72,7 @@ export interface ListLogGroupsResponse {
     nextPageToken: string;
 }
 export interface CreateLogGroupRequest {
+    $type: 'yandex.cloud.logging.v1.CreateLogGroupRequest';
     /**
      * ID of the folder to create a log group in.
      *
@@ -95,14 +100,17 @@ export interface CreateLogGroupRequest {
     retentionPeriod: Duration | undefined;
 }
 export interface CreateLogGroupRequest_LabelsEntry {
+    $type: 'yandex.cloud.logging.v1.CreateLogGroupRequest.LabelsEntry';
     key: string;
     value: string;
 }
 export interface CreateLogGroupMetadata {
+    $type: 'yandex.cloud.logging.v1.CreateLogGroupMetadata';
     /** ID of the log group being created. */
     logGroupId: string;
 }
 export interface UpdateLogGroupRequest {
+    $type: 'yandex.cloud.logging.v1.UpdateLogGroupRequest';
     /**
      * ID of the log group to update.
      *
@@ -132,14 +140,17 @@ export interface UpdateLogGroupRequest {
     retentionPeriod: Duration | undefined;
 }
 export interface UpdateLogGroupRequest_LabelsEntry {
+    $type: 'yandex.cloud.logging.v1.UpdateLogGroupRequest.LabelsEntry';
     key: string;
     value: string;
 }
 export interface UpdateLogGroupMetadata {
+    $type: 'yandex.cloud.logging.v1.UpdateLogGroupMetadata';
     /** ID of the log group being updated. */
     logGroupId: string;
 }
 export interface DeleteLogGroupRequest {
+    $type: 'yandex.cloud.logging.v1.DeleteLogGroupRequest';
     /**
      * ID of the log group to delete.
      *
@@ -148,10 +159,12 @@ export interface DeleteLogGroupRequest {
     logGroupId: string;
 }
 export interface DeleteLogGroupMetadata {
+    $type: 'yandex.cloud.logging.v1.DeleteLogGroupMetadata';
     /** ID of the log group being deleted. */
     logGroupId: string;
 }
 export interface ListResourcesRequest {
+    $type: 'yandex.cloud.logging.v1.ListResourcesRequest';
     /**
      * ID of the log group to list resources for.
      *
@@ -166,10 +179,12 @@ export interface ListResourcesRequest {
     type: string;
 }
 export interface ListResourcesResponse {
+    $type: 'yandex.cloud.logging.v1.ListResourcesResponse';
     /** List of resources present in log group. */
     resources: LogGroupResource[];
 }
 export interface ListOperationsRequest {
+    $type: 'yandex.cloud.logging.v1.ListOperationsRequest';
     /**
      * ID of the log group to list operations for.
      *
@@ -201,6 +216,7 @@ export interface ListOperationsRequest {
     filter: string;
 }
 export interface ListOperationsResponse {
+    $type: 'yandex.cloud.logging.v1.ListOperationsResponse';
     /** List of operations for the specified log group. */
     operations: Operation[];
     /**
@@ -213,6 +229,7 @@ export interface ListOperationsResponse {
     nextPageToken: string;
 }
 export interface GetLogGroupStatsResponse {
+    $type: 'yandex.cloud.logging.v1.GetLogGroupStatsResponse';
     /** Log group ID the stats are returned for. */
     logGroupId: string;
     /** Size of data in log group in bytes. */
@@ -221,6 +238,7 @@ export interface GetLogGroupStatsResponse {
     records: number;
 }
 export declare const GetLogGroupRequest: {
+    $type: "yandex.cloud.logging.v1.GetLogGroupRequest";
     encode(message: GetLogGroupRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): GetLogGroupRequest;
     fromJSON(object: any): GetLogGroupRequest;
@@ -228,6 +246,7 @@ export declare const GetLogGroupRequest: {
     fromPartial(object: DeepPartial<GetLogGroupRequest>): GetLogGroupRequest;
 };
 export declare const GetLogGroupStatsRequest: {
+    $type: "yandex.cloud.logging.v1.GetLogGroupStatsRequest";
     encode(message: GetLogGroupStatsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): GetLogGroupStatsRequest;
     fromJSON(object: any): GetLogGroupStatsRequest;
@@ -235,6 +254,7 @@ export declare const GetLogGroupStatsRequest: {
     fromPartial(object: DeepPartial<GetLogGroupStatsRequest>): GetLogGroupStatsRequest;
 };
 export declare const ListLogGroupsRequest: {
+    $type: "yandex.cloud.logging.v1.ListLogGroupsRequest";
     encode(message: ListLogGroupsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListLogGroupsRequest;
     fromJSON(object: any): ListLogGroupsRequest;
@@ -242,6 +262,7 @@ export declare const ListLogGroupsRequest: {
     fromPartial(object: DeepPartial<ListLogGroupsRequest>): ListLogGroupsRequest;
 };
 export declare const ListLogGroupsResponse: {
+    $type: "yandex.cloud.logging.v1.ListLogGroupsResponse";
     encode(message: ListLogGroupsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListLogGroupsResponse;
     fromJSON(object: any): ListLogGroupsResponse;
@@ -249,6 +270,7 @@ export declare const ListLogGroupsResponse: {
     fromPartial(object: DeepPartial<ListLogGroupsResponse>): ListLogGroupsResponse;
 };
 export declare const CreateLogGroupRequest: {
+    $type: "yandex.cloud.logging.v1.CreateLogGroupRequest";
     encode(message: CreateLogGroupRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateLogGroupRequest;
     fromJSON(object: any): CreateLogGroupRequest;
@@ -256,6 +278,7 @@ export declare const CreateLogGroupRequest: {
     fromPartial(object: DeepPartial<CreateLogGroupRequest>): CreateLogGroupRequest;
 };
 export declare const CreateLogGroupRequest_LabelsEntry: {
+    $type: "yandex.cloud.logging.v1.CreateLogGroupRequest.LabelsEntry";
     encode(message: CreateLogGroupRequest_LabelsEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateLogGroupRequest_LabelsEntry;
     fromJSON(object: any): CreateLogGroupRequest_LabelsEntry;
@@ -263,6 +286,7 @@ export declare const CreateLogGroupRequest_LabelsEntry: {
     fromPartial(object: DeepPartial<CreateLogGroupRequest_LabelsEntry>): CreateLogGroupRequest_LabelsEntry;
 };
 export declare const CreateLogGroupMetadata: {
+    $type: "yandex.cloud.logging.v1.CreateLogGroupMetadata";
     encode(message: CreateLogGroupMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateLogGroupMetadata;
     fromJSON(object: any): CreateLogGroupMetadata;
@@ -270,6 +294,7 @@ export declare const CreateLogGroupMetadata: {
     fromPartial(object: DeepPartial<CreateLogGroupMetadata>): CreateLogGroupMetadata;
 };
 export declare const UpdateLogGroupRequest: {
+    $type: "yandex.cloud.logging.v1.UpdateLogGroupRequest";
     encode(message: UpdateLogGroupRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateLogGroupRequest;
     fromJSON(object: any): UpdateLogGroupRequest;
@@ -277,6 +302,7 @@ export declare const UpdateLogGroupRequest: {
     fromPartial(object: DeepPartial<UpdateLogGroupRequest>): UpdateLogGroupRequest;
 };
 export declare const UpdateLogGroupRequest_LabelsEntry: {
+    $type: "yandex.cloud.logging.v1.UpdateLogGroupRequest.LabelsEntry";
     encode(message: UpdateLogGroupRequest_LabelsEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateLogGroupRequest_LabelsEntry;
     fromJSON(object: any): UpdateLogGroupRequest_LabelsEntry;
@@ -284,6 +310,7 @@ export declare const UpdateLogGroupRequest_LabelsEntry: {
     fromPartial(object: DeepPartial<UpdateLogGroupRequest_LabelsEntry>): UpdateLogGroupRequest_LabelsEntry;
 };
 export declare const UpdateLogGroupMetadata: {
+    $type: "yandex.cloud.logging.v1.UpdateLogGroupMetadata";
     encode(message: UpdateLogGroupMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateLogGroupMetadata;
     fromJSON(object: any): UpdateLogGroupMetadata;
@@ -291,6 +318,7 @@ export declare const UpdateLogGroupMetadata: {
     fromPartial(object: DeepPartial<UpdateLogGroupMetadata>): UpdateLogGroupMetadata;
 };
 export declare const DeleteLogGroupRequest: {
+    $type: "yandex.cloud.logging.v1.DeleteLogGroupRequest";
     encode(message: DeleteLogGroupRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteLogGroupRequest;
     fromJSON(object: any): DeleteLogGroupRequest;
@@ -298,6 +326,7 @@ export declare const DeleteLogGroupRequest: {
     fromPartial(object: DeepPartial<DeleteLogGroupRequest>): DeleteLogGroupRequest;
 };
 export declare const DeleteLogGroupMetadata: {
+    $type: "yandex.cloud.logging.v1.DeleteLogGroupMetadata";
     encode(message: DeleteLogGroupMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteLogGroupMetadata;
     fromJSON(object: any): DeleteLogGroupMetadata;
@@ -305,6 +334,7 @@ export declare const DeleteLogGroupMetadata: {
     fromPartial(object: DeepPartial<DeleteLogGroupMetadata>): DeleteLogGroupMetadata;
 };
 export declare const ListResourcesRequest: {
+    $type: "yandex.cloud.logging.v1.ListResourcesRequest";
     encode(message: ListResourcesRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListResourcesRequest;
     fromJSON(object: any): ListResourcesRequest;
@@ -312,6 +342,7 @@ export declare const ListResourcesRequest: {
     fromPartial(object: DeepPartial<ListResourcesRequest>): ListResourcesRequest;
 };
 export declare const ListResourcesResponse: {
+    $type: "yandex.cloud.logging.v1.ListResourcesResponse";
     encode(message: ListResourcesResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListResourcesResponse;
     fromJSON(object: any): ListResourcesResponse;
@@ -319,6 +350,7 @@ export declare const ListResourcesResponse: {
     fromPartial(object: DeepPartial<ListResourcesResponse>): ListResourcesResponse;
 };
 export declare const ListOperationsRequest: {
+    $type: "yandex.cloud.logging.v1.ListOperationsRequest";
     encode(message: ListOperationsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListOperationsRequest;
     fromJSON(object: any): ListOperationsRequest;
@@ -326,6 +358,7 @@ export declare const ListOperationsRequest: {
     fromPartial(object: DeepPartial<ListOperationsRequest>): ListOperationsRequest;
 };
 export declare const ListOperationsResponse: {
+    $type: "yandex.cloud.logging.v1.ListOperationsResponse";
     encode(message: ListOperationsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListOperationsResponse;
     fromJSON(object: any): ListOperationsResponse;
@@ -333,6 +366,7 @@ export declare const ListOperationsResponse: {
     fromPartial(object: DeepPartial<ListOperationsResponse>): ListOperationsResponse;
 };
 export declare const GetLogGroupStatsResponse: {
+    $type: "yandex.cloud.logging.v1.GetLogGroupStatsResponse";
     encode(message: GetLogGroupStatsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): GetLogGroupStatsResponse;
     fromJSON(object: any): GetLogGroupStatsResponse;
@@ -537,6 +571,6 @@ export interface LogGroupServiceClient extends Client {
 export declare const LogGroupServiceClient: new (address: string, credentials: ChannelCredentials, options?: Partial<ChannelOptions> | undefined) => LogGroupServiceClient;
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

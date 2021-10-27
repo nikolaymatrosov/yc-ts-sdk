@@ -2,6 +2,7 @@ import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.compute.v1";
 /** A Snapshot resource. For more information, see [Snapshots](/docs/compute/concepts/snapshot). */
 export interface Snapshot {
+    $type: 'yandex.cloud.compute.v1.Snapshot';
     /** ID of the snapshot. */
     id: string;
     /** ID of the folder that the snapshot belongs to. */
@@ -50,10 +51,12 @@ export declare enum Snapshot_Status {
 export declare function snapshot_StatusFromJSON(object: any): Snapshot_Status;
 export declare function snapshot_StatusToJSON(object: Snapshot_Status): string;
 export interface Snapshot_LabelsEntry {
+    $type: 'yandex.cloud.compute.v1.Snapshot.LabelsEntry';
     key: string;
     value: string;
 }
 export declare const Snapshot: {
+    $type: "yandex.cloud.compute.v1.Snapshot";
     encode(message: Snapshot, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Snapshot;
     fromJSON(object: any): Snapshot;
@@ -61,6 +64,7 @@ export declare const Snapshot: {
     fromPartial(object: DeepPartial<Snapshot>): Snapshot;
 };
 export declare const Snapshot_LabelsEntry: {
+    $type: "yandex.cloud.compute.v1.Snapshot.LabelsEntry";
     encode(message: Snapshot_LabelsEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Snapshot_LabelsEntry;
     fromJSON(object: any): Snapshot_LabelsEntry;
@@ -69,6 +73,6 @@ export declare const Snapshot_LabelsEntry: {
 };
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

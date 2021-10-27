@@ -5,22 +5,27 @@ import { ChannelCredentials, ChannelOptions, UntypedServiceImplementation, handl
 import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.containerregistry.v1";
 export interface ScanRequest {
+    $type: 'yandex.cloud.containerregistry.v1.ScanRequest';
     /** ID of the Image to be scanned for vulnerabilities. */
     imageId: string;
 }
 export interface ScanMetadata {
+    $type: 'yandex.cloud.containerregistry.v1.ScanMetadata';
     /** ID of the ScanResult that is being created. */
     scanResultId: string;
 }
 export interface GetScanResultRequest {
+    $type: 'yandex.cloud.containerregistry.v1.GetScanResultRequest';
     /** ID of the ScanResult to return. */
     scanResultId: string;
 }
 export interface GetLastScanResultRequest {
+    $type: 'yandex.cloud.containerregistry.v1.GetLastScanResultRequest';
     /** ID of the Image to get last finished ScanResult. */
     imageId: string;
 }
 export interface ListScanResultsRequest {
+    $type: 'yandex.cloud.containerregistry.v1.ListScanResultsRequest';
     imageId: string | undefined;
     repositoryId: string | undefined;
     /**
@@ -53,6 +58,7 @@ export interface ListScanResultsRequest {
     orderBy: string;
 }
 export interface ListScanResultsResponse {
+    $type: 'yandex.cloud.containerregistry.v1.ListScanResultsResponse';
     /** List of ScanResult resources. */
     scanResults: ScanResult[];
     /**
@@ -66,6 +72,7 @@ export interface ListScanResultsResponse {
     nextPageToken: string;
 }
 export interface ListVulnerabilitiesRequest {
+    $type: 'yandex.cloud.containerregistry.v1.ListVulnerabilitiesRequest';
     /** ID of the ScanResult to get list of vulnerabilities for. */
     scanResultId: string;
     /**
@@ -98,6 +105,7 @@ export interface ListVulnerabilitiesRequest {
     orderBy: string;
 }
 export interface ListVulnerabilitiesResponse {
+    $type: 'yandex.cloud.containerregistry.v1.ListVulnerabilitiesResponse';
     /** List of Vulnerability resources. */
     vulnerabilities: Vulnerability[];
     /**
@@ -111,6 +119,7 @@ export interface ListVulnerabilitiesResponse {
     nextPageToken: string;
 }
 export declare const ScanRequest: {
+    $type: "yandex.cloud.containerregistry.v1.ScanRequest";
     encode(message: ScanRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ScanRequest;
     fromJSON(object: any): ScanRequest;
@@ -118,6 +127,7 @@ export declare const ScanRequest: {
     fromPartial(object: DeepPartial<ScanRequest>): ScanRequest;
 };
 export declare const ScanMetadata: {
+    $type: "yandex.cloud.containerregistry.v1.ScanMetadata";
     encode(message: ScanMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ScanMetadata;
     fromJSON(object: any): ScanMetadata;
@@ -125,6 +135,7 @@ export declare const ScanMetadata: {
     fromPartial(object: DeepPartial<ScanMetadata>): ScanMetadata;
 };
 export declare const GetScanResultRequest: {
+    $type: "yandex.cloud.containerregistry.v1.GetScanResultRequest";
     encode(message: GetScanResultRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): GetScanResultRequest;
     fromJSON(object: any): GetScanResultRequest;
@@ -132,6 +143,7 @@ export declare const GetScanResultRequest: {
     fromPartial(object: DeepPartial<GetScanResultRequest>): GetScanResultRequest;
 };
 export declare const GetLastScanResultRequest: {
+    $type: "yandex.cloud.containerregistry.v1.GetLastScanResultRequest";
     encode(message: GetLastScanResultRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): GetLastScanResultRequest;
     fromJSON(object: any): GetLastScanResultRequest;
@@ -139,6 +151,7 @@ export declare const GetLastScanResultRequest: {
     fromPartial(object: DeepPartial<GetLastScanResultRequest>): GetLastScanResultRequest;
 };
 export declare const ListScanResultsRequest: {
+    $type: "yandex.cloud.containerregistry.v1.ListScanResultsRequest";
     encode(message: ListScanResultsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListScanResultsRequest;
     fromJSON(object: any): ListScanResultsRequest;
@@ -146,6 +159,7 @@ export declare const ListScanResultsRequest: {
     fromPartial(object: DeepPartial<ListScanResultsRequest>): ListScanResultsRequest;
 };
 export declare const ListScanResultsResponse: {
+    $type: "yandex.cloud.containerregistry.v1.ListScanResultsResponse";
     encode(message: ListScanResultsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListScanResultsResponse;
     fromJSON(object: any): ListScanResultsResponse;
@@ -153,6 +167,7 @@ export declare const ListScanResultsResponse: {
     fromPartial(object: DeepPartial<ListScanResultsResponse>): ListScanResultsResponse;
 };
 export declare const ListVulnerabilitiesRequest: {
+    $type: "yandex.cloud.containerregistry.v1.ListVulnerabilitiesRequest";
     encode(message: ListVulnerabilitiesRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListVulnerabilitiesRequest;
     fromJSON(object: any): ListVulnerabilitiesRequest;
@@ -160,6 +175,7 @@ export declare const ListVulnerabilitiesRequest: {
     fromPartial(object: DeepPartial<ListVulnerabilitiesRequest>): ListVulnerabilitiesRequest;
 };
 export declare const ListVulnerabilitiesResponse: {
+    $type: "yandex.cloud.containerregistry.v1.ListVulnerabilitiesResponse";
     encode(message: ListVulnerabilitiesResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListVulnerabilitiesResponse;
     fromJSON(object: any): ListVulnerabilitiesResponse;
@@ -268,6 +284,6 @@ export interface ScannerServiceClient extends Client {
 export declare const ScannerServiceClient: new (address: string, credentials: ChannelCredentials, options?: Partial<ChannelOptions> | undefined) => ScannerServiceClient;
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

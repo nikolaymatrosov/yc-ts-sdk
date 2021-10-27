@@ -6,6 +6,7 @@ export declare const protobufPackage = "yandex.cloud.mdb.postgresql.v1.config";
  * [PostgreSQL documentation](https://www.postgresql.org/docs/10/runtime-config.html).
  */
 export interface Postgresqlconfig101c {
+    $type: 'yandex.cloud.mdb.postgresql.v1.config.PostgresqlConfig10_1C';
     maxConnections: number | undefined;
     /** in bytes. */
     sharedBuffers: number | undefined;
@@ -277,6 +278,7 @@ export declare enum Postgresqlconfig101c_SharedPreloadLibraries {
 export declare function postgresqlconfig101c_SharedPreloadLibrariesFromJSON(object: any): Postgresqlconfig101c_SharedPreloadLibraries;
 export declare function postgresqlconfig101c_SharedPreloadLibrariesToJSON(object: Postgresqlconfig101c_SharedPreloadLibraries): string;
 export interface Postgresqlconfigset101c {
+    $type: 'yandex.cloud.mdb.postgresql.v1.config.PostgresqlConfigSet10_1C';
     /**
      * Effective settings for a PostgreSQL 10 1C cluster (a combination of settings defined
      * in [user_config] and [default_config]).
@@ -288,6 +290,7 @@ export interface Postgresqlconfigset101c {
     defaultConfig: Postgresqlconfig101c | undefined;
 }
 export declare const Postgresqlconfig101c: {
+    $type: "yandex.cloud.mdb.postgresql.v1.config.PostgresqlConfig10_1C";
     encode(message: Postgresqlconfig101c, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Postgresqlconfig101c;
     fromJSON(object: any): Postgresqlconfig101c;
@@ -295,6 +298,7 @@ export declare const Postgresqlconfig101c: {
     fromPartial(object: DeepPartial<Postgresqlconfig101c>): Postgresqlconfig101c;
 };
 export declare const Postgresqlconfigset101c: {
+    $type: "yandex.cloud.mdb.postgresql.v1.config.PostgresqlConfigSet10_1C";
     encode(message: Postgresqlconfigset101c, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Postgresqlconfigset101c;
     fromJSON(object: any): Postgresqlconfigset101c;
@@ -303,6 +307,6 @@ export declare const Postgresqlconfigset101c: {
 };
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

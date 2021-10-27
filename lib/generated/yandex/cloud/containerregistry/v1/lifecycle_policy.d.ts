@@ -2,6 +2,7 @@ import { Duration } from '../../../../google/protobuf/duration';
 import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.containerregistry.v1";
 export interface LifecyclePolicy {
+    $type: 'yandex.cloud.containerregistry.v1.LifecyclePolicy';
     /** ID of the lifecycle policy. */
     id: string;
     /** Name of the lifecycle policy. */
@@ -37,6 +38,7 @@ export declare enum LifecyclePolicy_Status {
 export declare function lifecyclePolicy_StatusFromJSON(object: any): LifecyclePolicy_Status;
 export declare function lifecyclePolicy_StatusToJSON(object: LifecyclePolicy_Status): string;
 export interface LifecycleRule {
+    $type: 'yandex.cloud.containerregistry.v1.LifecycleRule';
     /** Description of the lifecycle policy rule. */
     description: string;
     /**
@@ -52,6 +54,7 @@ export interface LifecycleRule {
     retainedTop: number;
 }
 export declare const LifecyclePolicy: {
+    $type: "yandex.cloud.containerregistry.v1.LifecyclePolicy";
     encode(message: LifecyclePolicy, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): LifecyclePolicy;
     fromJSON(object: any): LifecyclePolicy;
@@ -59,6 +62,7 @@ export declare const LifecyclePolicy: {
     fromPartial(object: DeepPartial<LifecyclePolicy>): LifecyclePolicy;
 };
 export declare const LifecycleRule: {
+    $type: "yandex.cloud.containerregistry.v1.LifecycleRule";
     encode(message: LifecycleRule, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): LifecycleRule;
     fromJSON(object: any): LifecycleRule;
@@ -67,6 +71,6 @@ export declare const LifecycleRule: {
 };
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

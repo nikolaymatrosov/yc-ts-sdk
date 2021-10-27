@@ -5,6 +5,7 @@ export declare const protobufPackage = "yandex.cloud.mdb.redis.v1.config";
  * parameters.
  */
 export interface Redisconfig62 {
+    $type: 'yandex.cloud.mdb.redis.v1.config.RedisConfig6_2';
     /**
      * Redis key eviction policy for a dataset that reaches maximum memory,
      * available to the host. Redis maxmemory setting depends on Managed
@@ -58,6 +59,7 @@ export declare enum Redisconfig62_MaxmemoryPolicy {
 export declare function redisconfig62_MaxmemoryPolicyFromJSON(object: any): Redisconfig62_MaxmemoryPolicy;
 export declare function redisconfig62_MaxmemoryPolicyToJSON(object: Redisconfig62_MaxmemoryPolicy): string;
 export interface Redisconfigset62 {
+    $type: 'yandex.cloud.mdb.redis.v1.config.RedisConfigSet6_2';
     /**
      * Effective settings for a Redis 6.2 cluster (a combination of settings
      * defined in [user_config] and [default_config]).
@@ -69,6 +71,7 @@ export interface Redisconfigset62 {
     defaultConfig: Redisconfig62 | undefined;
 }
 export declare const Redisconfig62: {
+    $type: "yandex.cloud.mdb.redis.v1.config.RedisConfig6_2";
     encode(message: Redisconfig62, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Redisconfig62;
     fromJSON(object: any): Redisconfig62;
@@ -76,6 +79,7 @@ export declare const Redisconfig62: {
     fromPartial(object: DeepPartial<Redisconfig62>): Redisconfig62;
 };
 export declare const Redisconfigset62: {
+    $type: "yandex.cloud.mdb.redis.v1.config.RedisConfigSet6_2";
     encode(message: Redisconfigset62, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Redisconfigset62;
     fromJSON(object: any): Redisconfigset62;
@@ -84,6 +88,6 @@ export declare const Redisconfigset62: {
 };
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

@@ -14,6 +14,7 @@ export declare function deviceViewFromJSON(object: any): DeviceView;
 export declare function deviceViewToJSON(object: DeviceView): string;
 /** A device. For more information, see [Device](/docs/iot-core/concepts/index#device). */
 export interface Device {
+    $type: 'yandex.cloud.iot.devices.v1.Device';
     /** ID of the device. */
     id: string;
     /** ID of the registry that the device belongs to. */
@@ -50,11 +51,13 @@ export declare enum Device_Status {
 export declare function device_StatusFromJSON(object: any): Device_Status;
 export declare function device_StatusToJSON(object: Device_Status): string;
 export interface Device_TopicAliasesEntry {
+    $type: 'yandex.cloud.iot.devices.v1.Device.TopicAliasesEntry';
     key: string;
     value: string;
 }
 /** A device certificate. For more information, see [Managing device certificates](/docs/iot-core/operations/certificates/device-certificates). */
 export interface DeviceCertificate {
+    $type: 'yandex.cloud.iot.devices.v1.DeviceCertificate';
     /** ID of the device that the certificate belongs to. */
     deviceId: string;
     /** SHA256 hash of the certificate. */
@@ -66,6 +69,7 @@ export interface DeviceCertificate {
 }
 /** A device password. */
 export interface DevicePassword {
+    $type: 'yandex.cloud.iot.devices.v1.DevicePassword';
     /** ID of the device that the password belongs to. */
     deviceId: string;
     /** ID of the password. */
@@ -74,6 +78,7 @@ export interface DevicePassword {
     createdAt: Date | undefined;
 }
 export interface DeviceMonitoringData {
+    $type: 'yandex.cloud.iot.devices.v1.DeviceMonitoringData';
     lastAuthIp: string;
     lastAuthTime: Date | undefined;
     lastPubActivityTime: Date | undefined;
@@ -81,6 +86,7 @@ export interface DeviceMonitoringData {
     lastOnlineTime: Date | undefined;
 }
 export declare const Device: {
+    $type: "yandex.cloud.iot.devices.v1.Device";
     encode(message: Device, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Device;
     fromJSON(object: any): Device;
@@ -88,6 +94,7 @@ export declare const Device: {
     fromPartial(object: DeepPartial<Device>): Device;
 };
 export declare const Device_TopicAliasesEntry: {
+    $type: "yandex.cloud.iot.devices.v1.Device.TopicAliasesEntry";
     encode(message: Device_TopicAliasesEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Device_TopicAliasesEntry;
     fromJSON(object: any): Device_TopicAliasesEntry;
@@ -95,6 +102,7 @@ export declare const Device_TopicAliasesEntry: {
     fromPartial(object: DeepPartial<Device_TopicAliasesEntry>): Device_TopicAliasesEntry;
 };
 export declare const DeviceCertificate: {
+    $type: "yandex.cloud.iot.devices.v1.DeviceCertificate";
     encode(message: DeviceCertificate, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeviceCertificate;
     fromJSON(object: any): DeviceCertificate;
@@ -102,6 +110,7 @@ export declare const DeviceCertificate: {
     fromPartial(object: DeepPartial<DeviceCertificate>): DeviceCertificate;
 };
 export declare const DevicePassword: {
+    $type: "yandex.cloud.iot.devices.v1.DevicePassword";
     encode(message: DevicePassword, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DevicePassword;
     fromJSON(object: any): DevicePassword;
@@ -109,6 +118,7 @@ export declare const DevicePassword: {
     fromPartial(object: DeepPartial<DevicePassword>): DevicePassword;
 };
 export declare const DeviceMonitoringData: {
+    $type: "yandex.cloud.iot.devices.v1.DeviceMonitoringData";
     encode(message: DeviceMonitoringData, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeviceMonitoringData;
     fromJSON(object: any): DeviceMonitoringData;
@@ -117,6 +127,6 @@ export declare const DeviceMonitoringData: {
 };
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

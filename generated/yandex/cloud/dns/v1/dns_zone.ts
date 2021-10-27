@@ -1,5 +1,6 @@
 /* eslint-disable */
 import { Timestamp } from '../../../../google/protobuf/timestamp';
+import { messageTypeRegistry } from '../../../../typeRegistry';
 import Long from 'long';
 import _m0 from 'protobufjs/minimal';
 
@@ -7,6 +8,7 @@ export const protobufPackage = 'yandex.cloud.dns.v1';
 
 /** A DNS zone. For details about the concept, see [DNS zones](/docs/dns/concepts/dns-zone). */
 export interface DnsZone {
+    $type: 'yandex.cloud.dns.v1.DnsZone';
     /** ID of the DNS zone. Generated at creation time. */
     id: string;
     /** ID of the folder that the DNS zone belongs to. */
@@ -37,12 +39,14 @@ export interface DnsZone {
 }
 
 export interface DnsZone_LabelsEntry {
+    $type: 'yandex.cloud.dns.v1.DnsZone.LabelsEntry';
     key: string;
     value: string;
 }
 
 /** A record set. For details about the concept, see [Resource record](/docs/dns/concepts/resource-record). */
 export interface RecordSet {
+    $type: 'yandex.cloud.dns.v1.RecordSet';
     /** Domain name. */
     name: string;
     /** Record type. */
@@ -55,14 +59,18 @@ export interface RecordSet {
 
 /** Configuration for privately visible zones. */
 export interface PrivateVisibility {
+    $type: 'yandex.cloud.dns.v1.PrivateVisibility';
     /** Network IDs. */
     networkIds: string[];
 }
 
 /** Configuration for publicly visible zones. */
-export interface PublicVisibility {}
+export interface PublicVisibility {
+    $type: 'yandex.cloud.dns.v1.PublicVisibility';
+}
 
 const baseDnsZone: object = {
+    $type: 'yandex.cloud.dns.v1.DnsZone',
     id: '',
     folderId: '',
     name: '',
@@ -71,6 +79,8 @@ const baseDnsZone: object = {
 };
 
 export const DnsZone = {
+    $type: 'yandex.cloud.dns.v1.DnsZone' as const,
+
     encode(
         message: DnsZone,
         writer: _m0.Writer = _m0.Writer.create()
@@ -95,7 +105,11 @@ export const DnsZone = {
         }
         Object.entries(message.labels).forEach(([key, value]) => {
             DnsZone_LabelsEntry.encode(
-                { key: key as any, value },
+                {
+                    $type: 'yandex.cloud.dns.v1.DnsZone.LabelsEntry',
+                    key: key as any,
+                    value,
+                },
                 writer.uint32(50).fork()
             ).ldelim();
         });
@@ -327,9 +341,17 @@ export const DnsZone = {
     },
 };
 
-const baseDnsZone_LabelsEntry: object = { key: '', value: '' };
+messageTypeRegistry.set(DnsZone.$type, DnsZone);
+
+const baseDnsZone_LabelsEntry: object = {
+    $type: 'yandex.cloud.dns.v1.DnsZone.LabelsEntry',
+    key: '',
+    value: '',
+};
 
 export const DnsZone_LabelsEntry = {
+    $type: 'yandex.cloud.dns.v1.DnsZone.LabelsEntry' as const,
+
     encode(
         message: DnsZone_LabelsEntry,
         writer: _m0.Writer = _m0.Writer.create()
@@ -406,9 +428,19 @@ export const DnsZone_LabelsEntry = {
     },
 };
 
-const baseRecordSet: object = { name: '', type: '', ttl: 0, data: '' };
+messageTypeRegistry.set(DnsZone_LabelsEntry.$type, DnsZone_LabelsEntry);
+
+const baseRecordSet: object = {
+    $type: 'yandex.cloud.dns.v1.RecordSet',
+    name: '',
+    type: '',
+    ttl: 0,
+    data: '',
+};
 
 export const RecordSet = {
+    $type: 'yandex.cloud.dns.v1.RecordSet' as const,
+
     encode(
         message: RecordSet,
         writer: _m0.Writer = _m0.Writer.create()
@@ -523,9 +555,16 @@ export const RecordSet = {
     },
 };
 
-const basePrivateVisibility: object = { networkIds: '' };
+messageTypeRegistry.set(RecordSet.$type, RecordSet);
+
+const basePrivateVisibility: object = {
+    $type: 'yandex.cloud.dns.v1.PrivateVisibility',
+    networkIds: '',
+};
 
 export const PrivateVisibility = {
+    $type: 'yandex.cloud.dns.v1.PrivateVisibility' as const,
+
     encode(
         message: PrivateVisibility,
         writer: _m0.Writer = _m0.Writer.create()
@@ -589,9 +628,15 @@ export const PrivateVisibility = {
     },
 };
 
-const basePublicVisibility: object = {};
+messageTypeRegistry.set(PrivateVisibility.$type, PrivateVisibility);
+
+const basePublicVisibility: object = {
+    $type: 'yandex.cloud.dns.v1.PublicVisibility',
+};
 
 export const PublicVisibility = {
+    $type: 'yandex.cloud.dns.v1.PublicVisibility' as const,
+
     encode(
         _: PublicVisibility,
         writer: _m0.Writer = _m0.Writer.create()
@@ -631,6 +676,8 @@ export const PublicVisibility = {
     },
 };
 
+messageTypeRegistry.set(PublicVisibility.$type, PublicVisibility);
+
 declare var self: any | undefined;
 declare var window: any | undefined;
 declare var global: any | undefined;
@@ -657,13 +704,13 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 function toTimestamp(date: Date): Timestamp {
     const seconds = date.getTime() / 1_000;
     const nanos = (date.getTime() % 1_000) * 1_000_000;
-    return { seconds, nanos };
+    return { $type: 'google.protobuf.Timestamp', seconds, nanos };
 }
 
 function fromTimestamp(t: Timestamp): Date {

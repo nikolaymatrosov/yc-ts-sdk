@@ -1,4 +1,5 @@
 /* eslint-disable */
+import { messageTypeRegistry } from '../../../../typeRegistry';
 import { Operation } from '../../../../yandex/cloud/operation/operation';
 import {
     makeGenericClientConstructor,
@@ -18,6 +19,7 @@ import _m0 from 'protobufjs/minimal';
 export const protobufPackage = 'yandex.cloud.cdn.v1';
 
 export interface PurgeCacheRequest {
+    $type: 'yandex.cloud.cdn.v1.PurgeCacheRequest';
     /** ID of the resource to perform purge operation on. */
     resourceId: string;
     /**
@@ -32,11 +34,13 @@ export interface PurgeCacheRequest {
 }
 
 export interface PurgeCacheMetadata {
+    $type: 'yandex.cloud.cdn.v1.PurgeCacheMetadata';
     /** ID of the resource. */
     resourceId: string;
 }
 
 export interface PrefetchCacheRequest {
+    $type: 'yandex.cloud.cdn.v1.PrefetchCacheRequest';
     /** ID of the resource to perform prefetch operation on. */
     resourceId: string;
     /** Set of paths to prefetch. */
@@ -44,13 +48,20 @@ export interface PrefetchCacheRequest {
 }
 
 export interface PrefetchCacheMetadata {
+    $type: 'yandex.cloud.cdn.v1.PrefetchCacheMetadata';
     /** ID of the resource. */
     resourceId: string;
 }
 
-const basePurgeCacheRequest: object = { resourceId: '', paths: '' };
+const basePurgeCacheRequest: object = {
+    $type: 'yandex.cloud.cdn.v1.PurgeCacheRequest',
+    resourceId: '',
+    paths: '',
+};
 
 export const PurgeCacheRequest = {
+    $type: 'yandex.cloud.cdn.v1.PurgeCacheRequest' as const,
+
     encode(
         message: PurgeCacheRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -132,9 +143,16 @@ export const PurgeCacheRequest = {
     },
 };
 
-const basePurgeCacheMetadata: object = { resourceId: '' };
+messageTypeRegistry.set(PurgeCacheRequest.$type, PurgeCacheRequest);
+
+const basePurgeCacheMetadata: object = {
+    $type: 'yandex.cloud.cdn.v1.PurgeCacheMetadata',
+    resourceId: '',
+};
 
 export const PurgeCacheMetadata = {
+    $type: 'yandex.cloud.cdn.v1.PurgeCacheMetadata' as const,
+
     encode(
         message: PurgeCacheMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -195,9 +213,17 @@ export const PurgeCacheMetadata = {
     },
 };
 
-const basePrefetchCacheRequest: object = { resourceId: '', paths: '' };
+messageTypeRegistry.set(PurgeCacheMetadata.$type, PurgeCacheMetadata);
+
+const basePrefetchCacheRequest: object = {
+    $type: 'yandex.cloud.cdn.v1.PrefetchCacheRequest',
+    resourceId: '',
+    paths: '',
+};
 
 export const PrefetchCacheRequest = {
+    $type: 'yandex.cloud.cdn.v1.PrefetchCacheRequest' as const,
+
     encode(
         message: PrefetchCacheRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -284,9 +310,16 @@ export const PrefetchCacheRequest = {
     },
 };
 
-const basePrefetchCacheMetadata: object = { resourceId: '' };
+messageTypeRegistry.set(PrefetchCacheRequest.$type, PrefetchCacheRequest);
+
+const basePrefetchCacheMetadata: object = {
+    $type: 'yandex.cloud.cdn.v1.PrefetchCacheMetadata',
+    resourceId: '',
+};
 
 export const PrefetchCacheMetadata = {
+    $type: 'yandex.cloud.cdn.v1.PrefetchCacheMetadata' as const,
+
     encode(
         message: PrefetchCacheMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -354,6 +387,8 @@ export const PrefetchCacheMetadata = {
         return message;
     },
 };
+
+messageTypeRegistry.set(PrefetchCacheMetadata.$type, PrefetchCacheMetadata);
 
 /** A set of methods for managing Cache Service resources. */
 export const CacheServiceService = {
@@ -452,7 +487,7 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 if (_m0.util.Long !== Long) {

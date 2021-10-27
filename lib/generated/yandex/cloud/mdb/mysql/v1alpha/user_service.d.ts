@@ -6,12 +6,14 @@ import { ChannelCredentials, ChannelOptions, UntypedServiceImplementation, handl
 import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.mdb.mysql.v1alpha";
 export interface GetUserRequest {
+    $type: 'yandex.cloud.mdb.mysql.v1alpha.GetUserRequest';
     /** ID of the MySQL cluster. */
     clusterId: string;
     /** Name of the user. */
     userName: string;
 }
 export interface ListUsersRequest {
+    $type: 'yandex.cloud.mdb.mysql.v1alpha.ListUsersRequest';
     /**
      * ID of the cluster to list MySQL users in.
      * To get the cluster ID, use a [ClusterService.List] request.
@@ -30,6 +32,7 @@ export interface ListUsersRequest {
     pageToken: string;
 }
 export interface ListUsersResponse {
+    $type: 'yandex.cloud.mdb.mysql.v1alpha.ListUsersResponse';
     /** Requested list of MySQL users. */
     users: User[];
     /**
@@ -41,6 +44,7 @@ export interface ListUsersResponse {
     nextPageToken: string;
 }
 export interface CreateUserRequest {
+    $type: 'yandex.cloud.mdb.mysql.v1alpha.CreateUserRequest';
     /**
      * ID of the MySQL cluster to create a user for.
      * To get the cluster ID, use a [ClusterService.List] request.
@@ -50,12 +54,14 @@ export interface CreateUserRequest {
     userSpec: UserSpec | undefined;
 }
 export interface CreateUserMetadata {
+    $type: 'yandex.cloud.mdb.mysql.v1alpha.CreateUserMetadata';
     /** ID of the MySQL cluster the user is being created for. */
     clusterId: string;
     /** Name of the user that is being created. */
     userName: string;
 }
 export interface UpdateUserRequest {
+    $type: 'yandex.cloud.mdb.mysql.v1alpha.UpdateUserRequest';
     /**
      * ID of the MySQL cluster the user belongs to.
      * To get the cluster ID use a [ClusterService.List] request.
@@ -74,12 +80,14 @@ export interface UpdateUserRequest {
     permissions: Permission[];
 }
 export interface UpdateUserMetadata {
+    $type: 'yandex.cloud.mdb.mysql.v1alpha.UpdateUserMetadata';
     /** ID of the MySQL cluster the user belongs to. */
     clusterId: string;
     /** Name of the user that is being updated. */
     userName: string;
 }
 export interface DeleteUserRequest {
+    $type: 'yandex.cloud.mdb.mysql.v1alpha.DeleteUserRequest';
     /**
      * ID of the MySQL cluster the user belongs to.
      * To get the cluster ID, use a [ClusterService.List] request.
@@ -92,12 +100,14 @@ export interface DeleteUserRequest {
     userName: string;
 }
 export interface DeleteUserMetadata {
+    $type: 'yandex.cloud.mdb.mysql.v1alpha.DeleteUserMetadata';
     /** ID of the MySQL cluster the user belongs to. */
     clusterId: string;
     /** Name of the user that is being deleted. */
     userName: string;
 }
 export interface GrantUserPermissionRequest {
+    $type: 'yandex.cloud.mdb.mysql.v1alpha.GrantUserPermissionRequest';
     /**
      * ID of the MySQL cluster the user belongs to.
      * To get the cluster ID, use a [ClusterService.List] request.
@@ -112,6 +122,7 @@ export interface GrantUserPermissionRequest {
     permission: Permission | undefined;
 }
 export interface GrantUserPermissionMetadata {
+    $type: 'yandex.cloud.mdb.mysql.v1alpha.GrantUserPermissionMetadata';
     /**
      * ID of the MySQL cluster the user belongs to.
      * To get the cluster ID, use a [ClusterService.List] request.
@@ -121,6 +132,7 @@ export interface GrantUserPermissionMetadata {
     userName: string;
 }
 export interface RevokeUserPermissionRequest {
+    $type: 'yandex.cloud.mdb.mysql.v1alpha.RevokeUserPermissionRequest';
     /**
      * ID of the MySQL cluster the user belongs to.
      * To get the cluster ID, use a [ClusterService.List] request.
@@ -135,12 +147,14 @@ export interface RevokeUserPermissionRequest {
     databaseName: string;
 }
 export interface RevokeUserPermissionMetadata {
+    $type: 'yandex.cloud.mdb.mysql.v1alpha.RevokeUserPermissionMetadata';
     /** ID of the MySQL cluster the user belongs to. */
     clusterId: string;
     /** Name of the user whose permission is being revoked. */
     userName: string;
 }
 export declare const GetUserRequest: {
+    $type: "yandex.cloud.mdb.mysql.v1alpha.GetUserRequest";
     encode(message: GetUserRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): GetUserRequest;
     fromJSON(object: any): GetUserRequest;
@@ -148,6 +162,7 @@ export declare const GetUserRequest: {
     fromPartial(object: DeepPartial<GetUserRequest>): GetUserRequest;
 };
 export declare const ListUsersRequest: {
+    $type: "yandex.cloud.mdb.mysql.v1alpha.ListUsersRequest";
     encode(message: ListUsersRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListUsersRequest;
     fromJSON(object: any): ListUsersRequest;
@@ -155,6 +170,7 @@ export declare const ListUsersRequest: {
     fromPartial(object: DeepPartial<ListUsersRequest>): ListUsersRequest;
 };
 export declare const ListUsersResponse: {
+    $type: "yandex.cloud.mdb.mysql.v1alpha.ListUsersResponse";
     encode(message: ListUsersResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListUsersResponse;
     fromJSON(object: any): ListUsersResponse;
@@ -162,6 +178,7 @@ export declare const ListUsersResponse: {
     fromPartial(object: DeepPartial<ListUsersResponse>): ListUsersResponse;
 };
 export declare const CreateUserRequest: {
+    $type: "yandex.cloud.mdb.mysql.v1alpha.CreateUserRequest";
     encode(message: CreateUserRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateUserRequest;
     fromJSON(object: any): CreateUserRequest;
@@ -169,6 +186,7 @@ export declare const CreateUserRequest: {
     fromPartial(object: DeepPartial<CreateUserRequest>): CreateUserRequest;
 };
 export declare const CreateUserMetadata: {
+    $type: "yandex.cloud.mdb.mysql.v1alpha.CreateUserMetadata";
     encode(message: CreateUserMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateUserMetadata;
     fromJSON(object: any): CreateUserMetadata;
@@ -176,6 +194,7 @@ export declare const CreateUserMetadata: {
     fromPartial(object: DeepPartial<CreateUserMetadata>): CreateUserMetadata;
 };
 export declare const UpdateUserRequest: {
+    $type: "yandex.cloud.mdb.mysql.v1alpha.UpdateUserRequest";
     encode(message: UpdateUserRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateUserRequest;
     fromJSON(object: any): UpdateUserRequest;
@@ -183,6 +202,7 @@ export declare const UpdateUserRequest: {
     fromPartial(object: DeepPartial<UpdateUserRequest>): UpdateUserRequest;
 };
 export declare const UpdateUserMetadata: {
+    $type: "yandex.cloud.mdb.mysql.v1alpha.UpdateUserMetadata";
     encode(message: UpdateUserMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateUserMetadata;
     fromJSON(object: any): UpdateUserMetadata;
@@ -190,6 +210,7 @@ export declare const UpdateUserMetadata: {
     fromPartial(object: DeepPartial<UpdateUserMetadata>): UpdateUserMetadata;
 };
 export declare const DeleteUserRequest: {
+    $type: "yandex.cloud.mdb.mysql.v1alpha.DeleteUserRequest";
     encode(message: DeleteUserRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteUserRequest;
     fromJSON(object: any): DeleteUserRequest;
@@ -197,6 +218,7 @@ export declare const DeleteUserRequest: {
     fromPartial(object: DeepPartial<DeleteUserRequest>): DeleteUserRequest;
 };
 export declare const DeleteUserMetadata: {
+    $type: "yandex.cloud.mdb.mysql.v1alpha.DeleteUserMetadata";
     encode(message: DeleteUserMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteUserMetadata;
     fromJSON(object: any): DeleteUserMetadata;
@@ -204,6 +226,7 @@ export declare const DeleteUserMetadata: {
     fromPartial(object: DeepPartial<DeleteUserMetadata>): DeleteUserMetadata;
 };
 export declare const GrantUserPermissionRequest: {
+    $type: "yandex.cloud.mdb.mysql.v1alpha.GrantUserPermissionRequest";
     encode(message: GrantUserPermissionRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): GrantUserPermissionRequest;
     fromJSON(object: any): GrantUserPermissionRequest;
@@ -211,6 +234,7 @@ export declare const GrantUserPermissionRequest: {
     fromPartial(object: DeepPartial<GrantUserPermissionRequest>): GrantUserPermissionRequest;
 };
 export declare const GrantUserPermissionMetadata: {
+    $type: "yandex.cloud.mdb.mysql.v1alpha.GrantUserPermissionMetadata";
     encode(message: GrantUserPermissionMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): GrantUserPermissionMetadata;
     fromJSON(object: any): GrantUserPermissionMetadata;
@@ -218,6 +242,7 @@ export declare const GrantUserPermissionMetadata: {
     fromPartial(object: DeepPartial<GrantUserPermissionMetadata>): GrantUserPermissionMetadata;
 };
 export declare const RevokeUserPermissionRequest: {
+    $type: "yandex.cloud.mdb.mysql.v1alpha.RevokeUserPermissionRequest";
     encode(message: RevokeUserPermissionRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): RevokeUserPermissionRequest;
     fromJSON(object: any): RevokeUserPermissionRequest;
@@ -225,6 +250,7 @@ export declare const RevokeUserPermissionRequest: {
     fromPartial(object: DeepPartial<RevokeUserPermissionRequest>): RevokeUserPermissionRequest;
 };
 export declare const RevokeUserPermissionMetadata: {
+    $type: "yandex.cloud.mdb.mysql.v1alpha.RevokeUserPermissionMetadata";
     encode(message: RevokeUserPermissionMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): RevokeUserPermissionMetadata;
     fromJSON(object: any): RevokeUserPermissionMetadata;
@@ -365,6 +391,6 @@ export interface UserServiceClient extends Client {
 export declare const UserServiceClient: new (address: string, credentials: ChannelCredentials, options?: Partial<ChannelOptions> | undefined) => UserServiceClient;
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

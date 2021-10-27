@@ -37,6 +37,7 @@ export declare function thresholdTypeFromJSON(object: any): ThresholdType;
 export declare function thresholdTypeToJSON(object: ThresholdType): string;
 /** A Budget resource. For more information, see [/docs/billing/concepts/budget]. */
 export interface Budget {
+    $type: 'yandex.cloud.billing.v1.Budget';
     /** ID of the budget. */
     id: string;
     /** Name of the budget. */
@@ -56,6 +57,7 @@ export interface Budget {
 }
 /** Cost budget specification describes budget that can be used to control cost of cloud resources usage. */
 export interface CostBudgetSpec {
+    $type: 'yandex.cloud.billing.v1.CostBudgetSpec';
     /** Max cost threshold of the budget. Amount currency is the same as corresponding [yandex.cloud.billing.v1.BillingAccount.currency]. */
     amount: string;
     /**
@@ -88,6 +90,7 @@ export interface CostBudgetSpec {
 }
 /** Expense budget specification describes budget that can be used to control expense of cloud resources usage. */
 export interface ExpenseBudgetSpec {
+    $type: 'yandex.cloud.billing.v1.ExpenseBudgetSpec';
     /** Max expense threshold of the budget. Amount currency is the same as corresponding [yandex.cloud.billing.v1.BillingAccount.currency]. */
     amount: string;
     /**
@@ -120,6 +123,7 @@ export interface ExpenseBudgetSpec {
 }
 /** Balance budget specification describes budget that can be used to control [yandex.cloud.billing.v1.BillingAccount.balance]. */
 export interface BalanceBudgetSpec {
+    $type: 'yandex.cloud.billing.v1.BalanceBudgetSpec';
     /** Max balance threshold of the budget. Amount currency is the same as corresponding [yandex.cloud.billing.v1.BillingAccount.currency]. */
     amount: string;
     /**
@@ -145,6 +149,7 @@ export interface BalanceBudgetSpec {
 }
 /** Filter that can be used for specific resources selection. */
 export interface ConsumptionFilter {
+    $type: 'yandex.cloud.billing.v1.ConsumptionFilter';
     /**
      * IDs of the [yandex.cloud.billing.v1.Service].
      * Only consumption of resources corresponding to the given services is used for the budget calculation.
@@ -160,6 +165,7 @@ export interface ConsumptionFilter {
 }
 /** Filter that can be used for specific cloud and its folders selection. */
 export interface CloudFoldersConsumptionFilter {
+    $type: 'yandex.cloud.billing.v1.CloudFoldersConsumptionFilter';
     /**
      * ID of the [yandex.cloud.resourcemanager.v1.Cloud].
      * Only consumption within specified cloud is used for the budget calculation.
@@ -174,6 +180,7 @@ export interface CloudFoldersConsumptionFilter {
 }
 /** Rules that define intermediate cost thresholds of the budget. */
 export interface ThresholdRule {
+    $type: 'yandex.cloud.billing.v1.ThresholdRule';
     /** Type of the rule. */
     type: ThresholdType;
     /**
@@ -189,6 +196,7 @@ export interface ThresholdRule {
     notificationUserAccountIds: string[];
 }
 export declare const Budget: {
+    $type: "yandex.cloud.billing.v1.Budget";
     encode(message: Budget, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Budget;
     fromJSON(object: any): Budget;
@@ -196,6 +204,7 @@ export declare const Budget: {
     fromPartial(object: DeepPartial<Budget>): Budget;
 };
 export declare const CostBudgetSpec: {
+    $type: "yandex.cloud.billing.v1.CostBudgetSpec";
     encode(message: CostBudgetSpec, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CostBudgetSpec;
     fromJSON(object: any): CostBudgetSpec;
@@ -203,6 +212,7 @@ export declare const CostBudgetSpec: {
     fromPartial(object: DeepPartial<CostBudgetSpec>): CostBudgetSpec;
 };
 export declare const ExpenseBudgetSpec: {
+    $type: "yandex.cloud.billing.v1.ExpenseBudgetSpec";
     encode(message: ExpenseBudgetSpec, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ExpenseBudgetSpec;
     fromJSON(object: any): ExpenseBudgetSpec;
@@ -210,6 +220,7 @@ export declare const ExpenseBudgetSpec: {
     fromPartial(object: DeepPartial<ExpenseBudgetSpec>): ExpenseBudgetSpec;
 };
 export declare const BalanceBudgetSpec: {
+    $type: "yandex.cloud.billing.v1.BalanceBudgetSpec";
     encode(message: BalanceBudgetSpec, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): BalanceBudgetSpec;
     fromJSON(object: any): BalanceBudgetSpec;
@@ -217,6 +228,7 @@ export declare const BalanceBudgetSpec: {
     fromPartial(object: DeepPartial<BalanceBudgetSpec>): BalanceBudgetSpec;
 };
 export declare const ConsumptionFilter: {
+    $type: "yandex.cloud.billing.v1.ConsumptionFilter";
     encode(message: ConsumptionFilter, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ConsumptionFilter;
     fromJSON(object: any): ConsumptionFilter;
@@ -224,6 +236,7 @@ export declare const ConsumptionFilter: {
     fromPartial(object: DeepPartial<ConsumptionFilter>): ConsumptionFilter;
 };
 export declare const CloudFoldersConsumptionFilter: {
+    $type: "yandex.cloud.billing.v1.CloudFoldersConsumptionFilter";
     encode(message: CloudFoldersConsumptionFilter, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CloudFoldersConsumptionFilter;
     fromJSON(object: any): CloudFoldersConsumptionFilter;
@@ -231,6 +244,7 @@ export declare const CloudFoldersConsumptionFilter: {
     fromPartial(object: DeepPartial<CloudFoldersConsumptionFilter>): CloudFoldersConsumptionFilter;
 };
 export declare const ThresholdRule: {
+    $type: "yandex.cloud.billing.v1.ThresholdRule";
     encode(message: ThresholdRule, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ThresholdRule;
     fromJSON(object: any): ThresholdRule;
@@ -239,6 +253,6 @@ export declare const ThresholdRule: {
 };
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

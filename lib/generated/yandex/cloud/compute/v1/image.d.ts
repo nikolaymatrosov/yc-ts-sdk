@@ -2,6 +2,7 @@ import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.compute.v1";
 /** An Image resource. */
 export interface Image {
+    $type: 'yandex.cloud.compute.v1.Image';
     /** ID of the image. */
     id: string;
     /** ID of the folder that the image belongs to. */
@@ -60,10 +61,12 @@ export declare enum Image_Status {
 export declare function image_StatusFromJSON(object: any): Image_Status;
 export declare function image_StatusToJSON(object: Image_Status): string;
 export interface Image_LabelsEntry {
+    $type: 'yandex.cloud.compute.v1.Image.LabelsEntry';
     key: string;
     value: string;
 }
 export interface Os {
+    $type: 'yandex.cloud.compute.v1.Os';
     /**
      * Operating system type. The default is `LINUX`.
      *
@@ -82,6 +85,7 @@ export declare enum Os_Type {
 export declare function os_TypeFromJSON(object: any): Os_Type;
 export declare function os_TypeToJSON(object: Os_Type): string;
 export declare const Image: {
+    $type: "yandex.cloud.compute.v1.Image";
     encode(message: Image, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Image;
     fromJSON(object: any): Image;
@@ -89,6 +93,7 @@ export declare const Image: {
     fromPartial(object: DeepPartial<Image>): Image;
 };
 export declare const Image_LabelsEntry: {
+    $type: "yandex.cloud.compute.v1.Image.LabelsEntry";
     encode(message: Image_LabelsEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Image_LabelsEntry;
     fromJSON(object: any): Image_LabelsEntry;
@@ -96,6 +101,7 @@ export declare const Image_LabelsEntry: {
     fromPartial(object: DeepPartial<Image_LabelsEntry>): Image_LabelsEntry;
 };
 export declare const Os: {
+    $type: "yandex.cloud.compute.v1.Os";
     encode(message: Os, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Os;
     fromJSON(object: any): Os;
@@ -104,6 +110,6 @@ export declare const Os: {
 };
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

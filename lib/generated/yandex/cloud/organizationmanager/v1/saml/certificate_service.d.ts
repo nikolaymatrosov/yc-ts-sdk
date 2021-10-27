@@ -6,6 +6,7 @@ import { ChannelCredentials, ChannelOptions, UntypedServiceImplementation, handl
 import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.organizationmanager.v1.saml";
 export interface GetCertificateRequest {
+    $type: 'yandex.cloud.organizationmanager.v1.saml.GetCertificateRequest';
     /**
      * ID of the certificate to return.
      * To get the certificate ID, make a [CertificateService.List] request.
@@ -13,6 +14,7 @@ export interface GetCertificateRequest {
     certificateId: string;
 }
 export interface ListCertificatesRequest {
+    $type: 'yandex.cloud.organizationmanager.v1.saml.ListCertificatesRequest';
     /**
      * ID of the federation to list certificates in.
      * To get the federation ID make a [yandex.cloud.organizationmanager.v1.saml.FederationService.List] request.
@@ -41,6 +43,7 @@ export interface ListCertificatesRequest {
     filter: string;
 }
 export interface ListCertificatesResponse {
+    $type: 'yandex.cloud.organizationmanager.v1.saml.ListCertificatesResponse';
     /** List of certificates. */
     certificates: Certificate[];
     /**
@@ -54,6 +57,7 @@ export interface ListCertificatesResponse {
     nextPageToken: string;
 }
 export interface CreateCertificateRequest {
+    $type: 'yandex.cloud.organizationmanager.v1.saml.CreateCertificateRequest';
     /**
      * ID of the federation to add new certificate.
      * To get the federation ID make a [yandex.cloud.organizationmanager.v1.saml.FederationService.List] request.
@@ -70,10 +74,12 @@ export interface CreateCertificateRequest {
     data: string;
 }
 export interface CreateCertificateMetadata {
+    $type: 'yandex.cloud.organizationmanager.v1.saml.CreateCertificateMetadata';
     /** ID of the certificate that is being created. */
     certificateId: string;
 }
 export interface UpdateCertificateRequest {
+    $type: 'yandex.cloud.organizationmanager.v1.saml.UpdateCertificateRequest';
     /**
      * ID of the certificate to update.
      * To get the certificate ID, make a [CertificateService.List] request.
@@ -92,10 +98,12 @@ export interface UpdateCertificateRequest {
     data: string;
 }
 export interface UpdateCertificateMetadata {
+    $type: 'yandex.cloud.organizationmanager.v1.saml.UpdateCertificateMetadata';
     /** ID of the certificate that is being updated. */
     certificateId: string;
 }
 export interface DeleteCertificateRequest {
+    $type: 'yandex.cloud.organizationmanager.v1.saml.DeleteCertificateRequest';
     /**
      * ID of the certificate to delete.
      * To get the certificate ID, make a [CertificateService.List] request.
@@ -103,10 +111,12 @@ export interface DeleteCertificateRequest {
     certificateId: string;
 }
 export interface DeleteCertificateMetadata {
+    $type: 'yandex.cloud.organizationmanager.v1.saml.DeleteCertificateMetadata';
     /** ID of the certificate that is being deleted. */
     certificateId: string;
 }
 export interface ListCertificateOperationsRequest {
+    $type: 'yandex.cloud.organizationmanager.v1.saml.ListCertificateOperationsRequest';
     /** ID of the certificate to list operations for. */
     certificateId: string;
     /**
@@ -124,6 +134,7 @@ export interface ListCertificateOperationsRequest {
     pageToken: string;
 }
 export interface ListCertificateOperationsResponse {
+    $type: 'yandex.cloud.organizationmanager.v1.saml.ListCertificateOperationsResponse';
     /** List of operations for the specified certificate. */
     operations: Operation[];
     /**
@@ -135,6 +146,7 @@ export interface ListCertificateOperationsResponse {
     nextPageToken: string;
 }
 export declare const GetCertificateRequest: {
+    $type: "yandex.cloud.organizationmanager.v1.saml.GetCertificateRequest";
     encode(message: GetCertificateRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): GetCertificateRequest;
     fromJSON(object: any): GetCertificateRequest;
@@ -142,6 +154,7 @@ export declare const GetCertificateRequest: {
     fromPartial(object: DeepPartial<GetCertificateRequest>): GetCertificateRequest;
 };
 export declare const ListCertificatesRequest: {
+    $type: "yandex.cloud.organizationmanager.v1.saml.ListCertificatesRequest";
     encode(message: ListCertificatesRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListCertificatesRequest;
     fromJSON(object: any): ListCertificatesRequest;
@@ -149,6 +162,7 @@ export declare const ListCertificatesRequest: {
     fromPartial(object: DeepPartial<ListCertificatesRequest>): ListCertificatesRequest;
 };
 export declare const ListCertificatesResponse: {
+    $type: "yandex.cloud.organizationmanager.v1.saml.ListCertificatesResponse";
     encode(message: ListCertificatesResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListCertificatesResponse;
     fromJSON(object: any): ListCertificatesResponse;
@@ -156,6 +170,7 @@ export declare const ListCertificatesResponse: {
     fromPartial(object: DeepPartial<ListCertificatesResponse>): ListCertificatesResponse;
 };
 export declare const CreateCertificateRequest: {
+    $type: "yandex.cloud.organizationmanager.v1.saml.CreateCertificateRequest";
     encode(message: CreateCertificateRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateCertificateRequest;
     fromJSON(object: any): CreateCertificateRequest;
@@ -163,6 +178,7 @@ export declare const CreateCertificateRequest: {
     fromPartial(object: DeepPartial<CreateCertificateRequest>): CreateCertificateRequest;
 };
 export declare const CreateCertificateMetadata: {
+    $type: "yandex.cloud.organizationmanager.v1.saml.CreateCertificateMetadata";
     encode(message: CreateCertificateMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateCertificateMetadata;
     fromJSON(object: any): CreateCertificateMetadata;
@@ -170,6 +186,7 @@ export declare const CreateCertificateMetadata: {
     fromPartial(object: DeepPartial<CreateCertificateMetadata>): CreateCertificateMetadata;
 };
 export declare const UpdateCertificateRequest: {
+    $type: "yandex.cloud.organizationmanager.v1.saml.UpdateCertificateRequest";
     encode(message: UpdateCertificateRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateCertificateRequest;
     fromJSON(object: any): UpdateCertificateRequest;
@@ -177,6 +194,7 @@ export declare const UpdateCertificateRequest: {
     fromPartial(object: DeepPartial<UpdateCertificateRequest>): UpdateCertificateRequest;
 };
 export declare const UpdateCertificateMetadata: {
+    $type: "yandex.cloud.organizationmanager.v1.saml.UpdateCertificateMetadata";
     encode(message: UpdateCertificateMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateCertificateMetadata;
     fromJSON(object: any): UpdateCertificateMetadata;
@@ -184,6 +202,7 @@ export declare const UpdateCertificateMetadata: {
     fromPartial(object: DeepPartial<UpdateCertificateMetadata>): UpdateCertificateMetadata;
 };
 export declare const DeleteCertificateRequest: {
+    $type: "yandex.cloud.organizationmanager.v1.saml.DeleteCertificateRequest";
     encode(message: DeleteCertificateRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteCertificateRequest;
     fromJSON(object: any): DeleteCertificateRequest;
@@ -191,6 +210,7 @@ export declare const DeleteCertificateRequest: {
     fromPartial(object: DeepPartial<DeleteCertificateRequest>): DeleteCertificateRequest;
 };
 export declare const DeleteCertificateMetadata: {
+    $type: "yandex.cloud.organizationmanager.v1.saml.DeleteCertificateMetadata";
     encode(message: DeleteCertificateMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteCertificateMetadata;
     fromJSON(object: any): DeleteCertificateMetadata;
@@ -198,6 +218,7 @@ export declare const DeleteCertificateMetadata: {
     fromPartial(object: DeepPartial<DeleteCertificateMetadata>): DeleteCertificateMetadata;
 };
 export declare const ListCertificateOperationsRequest: {
+    $type: "yandex.cloud.organizationmanager.v1.saml.ListCertificateOperationsRequest";
     encode(message: ListCertificateOperationsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListCertificateOperationsRequest;
     fromJSON(object: any): ListCertificateOperationsRequest;
@@ -205,6 +226,7 @@ export declare const ListCertificateOperationsRequest: {
     fromPartial(object: DeepPartial<ListCertificateOperationsRequest>): ListCertificateOperationsRequest;
 };
 export declare const ListCertificateOperationsResponse: {
+    $type: "yandex.cloud.organizationmanager.v1.saml.ListCertificateOperationsResponse";
     encode(message: ListCertificateOperationsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListCertificateOperationsResponse;
     fromJSON(object: any): ListCertificateOperationsResponse;
@@ -329,6 +351,6 @@ export interface CertificateServiceClient extends Client {
 export declare const CertificateServiceClient: new (address: string, credentials: ChannelCredentials, options?: Partial<ChannelOptions> | undefined) => CertificateServiceClient;
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

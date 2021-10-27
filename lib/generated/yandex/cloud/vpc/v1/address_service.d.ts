@@ -6,6 +6,7 @@ import { ChannelCredentials, ChannelOptions, UntypedServiceImplementation, handl
 import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.vpc.v1";
 export interface GetAddressRequest {
+    $type: 'yandex.cloud.vpc.v1.GetAddressRequest';
     /**
      * ID of the Address resource to return.
      *
@@ -14,9 +15,11 @@ export interface GetAddressRequest {
     addressId: string;
 }
 export interface GetAddressByValueRequest {
+    $type: 'yandex.cloud.vpc.v1.GetAddressByValueRequest';
     externalIpv4Address: string | undefined;
 }
 export interface ListAddressesRequest {
+    $type: 'yandex.cloud.vpc.v1.ListAddressesRequest';
     /**
      * ID of the folder to list addresses in.
      *
@@ -47,6 +50,7 @@ export interface ListAddressesRequest {
     filter: string;
 }
 export interface ListAddressesResponse {
+    $type: 'yandex.cloud.vpc.v1.ListAddressesResponse';
     /** List of addresses. */
     addresses: Address[];
     /**
@@ -59,6 +63,7 @@ export interface ListAddressesResponse {
     nextPageToken: string;
 }
 export interface CreateAddressRequest {
+    $type: 'yandex.cloud.vpc.v1.CreateAddressRequest';
     /**
      * ID of the folder to create a address in.
      *
@@ -79,10 +84,12 @@ export interface CreateAddressRequest {
     externalIpv4AddressSpec: ExternalIpv4AddressSpec | undefined;
 }
 export interface CreateAddressRequest_LabelsEntry {
+    $type: 'yandex.cloud.vpc.v1.CreateAddressRequest.LabelsEntry';
     key: string;
     value: string;
 }
 export interface ExternalIpv4AddressSpec {
+    $type: 'yandex.cloud.vpc.v1.ExternalIpv4AddressSpec';
     /** Value of address. */
     address: string;
     /** Availability zone from which the address will be allocated. */
@@ -91,10 +98,12 @@ export interface ExternalIpv4AddressSpec {
     requirements: AddressRequirements | undefined;
 }
 export interface CreateAddressMetadata {
+    $type: 'yandex.cloud.vpc.v1.CreateAddressMetadata';
     /** ID of the address that is being created. */
     addressId: string;
 }
 export interface UpdateAddressRequest {
+    $type: 'yandex.cloud.vpc.v1.UpdateAddressRequest';
     /**
      * ID of the address to update.
      *
@@ -126,14 +135,17 @@ export interface UpdateAddressRequest {
     reserved: boolean;
 }
 export interface UpdateAddressRequest_LabelsEntry {
+    $type: 'yandex.cloud.vpc.v1.UpdateAddressRequest.LabelsEntry';
     key: string;
     value: string;
 }
 export interface UpdateAddressMetadata {
+    $type: 'yandex.cloud.vpc.v1.UpdateAddressMetadata';
     /** ID of the Address that is being updated. */
     addressId: string;
 }
 export interface DeleteAddressRequest {
+    $type: 'yandex.cloud.vpc.v1.DeleteAddressRequest';
     /**
      * ID of the address to delete.
      *
@@ -142,10 +154,12 @@ export interface DeleteAddressRequest {
     addressId: string;
 }
 export interface DeleteAddressMetadata {
+    $type: 'yandex.cloud.vpc.v1.DeleteAddressMetadata';
     /** ID of the address that is being deleted. */
     addressId: string;
 }
 export interface ListAddressOperationsRequest {
+    $type: 'yandex.cloud.vpc.v1.ListAddressOperationsRequest';
     /**
      * ID of the address to list operations for.
      *
@@ -166,6 +180,7 @@ export interface ListAddressOperationsRequest {
     pageToken: string;
 }
 export interface ListAddressOperationsResponse {
+    $type: 'yandex.cloud.vpc.v1.ListAddressOperationsResponse';
     /** List of operations for the specified address. */
     operations: Operation[];
     /**
@@ -178,13 +193,16 @@ export interface ListAddressOperationsResponse {
     nextPageToken: string;
 }
 export interface MoveAddressRequest {
+    $type: 'yandex.cloud.vpc.v1.MoveAddressRequest';
     addressId: string;
     destinationFolderId: string;
 }
 export interface MoveAddressMetadata {
+    $type: 'yandex.cloud.vpc.v1.MoveAddressMetadata';
     addressId: string;
 }
 export declare const GetAddressRequest: {
+    $type: "yandex.cloud.vpc.v1.GetAddressRequest";
     encode(message: GetAddressRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): GetAddressRequest;
     fromJSON(object: any): GetAddressRequest;
@@ -192,6 +210,7 @@ export declare const GetAddressRequest: {
     fromPartial(object: DeepPartial<GetAddressRequest>): GetAddressRequest;
 };
 export declare const GetAddressByValueRequest: {
+    $type: "yandex.cloud.vpc.v1.GetAddressByValueRequest";
     encode(message: GetAddressByValueRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): GetAddressByValueRequest;
     fromJSON(object: any): GetAddressByValueRequest;
@@ -199,6 +218,7 @@ export declare const GetAddressByValueRequest: {
     fromPartial(object: DeepPartial<GetAddressByValueRequest>): GetAddressByValueRequest;
 };
 export declare const ListAddressesRequest: {
+    $type: "yandex.cloud.vpc.v1.ListAddressesRequest";
     encode(message: ListAddressesRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListAddressesRequest;
     fromJSON(object: any): ListAddressesRequest;
@@ -206,6 +226,7 @@ export declare const ListAddressesRequest: {
     fromPartial(object: DeepPartial<ListAddressesRequest>): ListAddressesRequest;
 };
 export declare const ListAddressesResponse: {
+    $type: "yandex.cloud.vpc.v1.ListAddressesResponse";
     encode(message: ListAddressesResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListAddressesResponse;
     fromJSON(object: any): ListAddressesResponse;
@@ -213,6 +234,7 @@ export declare const ListAddressesResponse: {
     fromPartial(object: DeepPartial<ListAddressesResponse>): ListAddressesResponse;
 };
 export declare const CreateAddressRequest: {
+    $type: "yandex.cloud.vpc.v1.CreateAddressRequest";
     encode(message: CreateAddressRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateAddressRequest;
     fromJSON(object: any): CreateAddressRequest;
@@ -220,6 +242,7 @@ export declare const CreateAddressRequest: {
     fromPartial(object: DeepPartial<CreateAddressRequest>): CreateAddressRequest;
 };
 export declare const CreateAddressRequest_LabelsEntry: {
+    $type: "yandex.cloud.vpc.v1.CreateAddressRequest.LabelsEntry";
     encode(message: CreateAddressRequest_LabelsEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateAddressRequest_LabelsEntry;
     fromJSON(object: any): CreateAddressRequest_LabelsEntry;
@@ -227,6 +250,7 @@ export declare const CreateAddressRequest_LabelsEntry: {
     fromPartial(object: DeepPartial<CreateAddressRequest_LabelsEntry>): CreateAddressRequest_LabelsEntry;
 };
 export declare const ExternalIpv4AddressSpec: {
+    $type: "yandex.cloud.vpc.v1.ExternalIpv4AddressSpec";
     encode(message: ExternalIpv4AddressSpec, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ExternalIpv4AddressSpec;
     fromJSON(object: any): ExternalIpv4AddressSpec;
@@ -234,6 +258,7 @@ export declare const ExternalIpv4AddressSpec: {
     fromPartial(object: DeepPartial<ExternalIpv4AddressSpec>): ExternalIpv4AddressSpec;
 };
 export declare const CreateAddressMetadata: {
+    $type: "yandex.cloud.vpc.v1.CreateAddressMetadata";
     encode(message: CreateAddressMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateAddressMetadata;
     fromJSON(object: any): CreateAddressMetadata;
@@ -241,6 +266,7 @@ export declare const CreateAddressMetadata: {
     fromPartial(object: DeepPartial<CreateAddressMetadata>): CreateAddressMetadata;
 };
 export declare const UpdateAddressRequest: {
+    $type: "yandex.cloud.vpc.v1.UpdateAddressRequest";
     encode(message: UpdateAddressRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateAddressRequest;
     fromJSON(object: any): UpdateAddressRequest;
@@ -248,6 +274,7 @@ export declare const UpdateAddressRequest: {
     fromPartial(object: DeepPartial<UpdateAddressRequest>): UpdateAddressRequest;
 };
 export declare const UpdateAddressRequest_LabelsEntry: {
+    $type: "yandex.cloud.vpc.v1.UpdateAddressRequest.LabelsEntry";
     encode(message: UpdateAddressRequest_LabelsEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateAddressRequest_LabelsEntry;
     fromJSON(object: any): UpdateAddressRequest_LabelsEntry;
@@ -255,6 +282,7 @@ export declare const UpdateAddressRequest_LabelsEntry: {
     fromPartial(object: DeepPartial<UpdateAddressRequest_LabelsEntry>): UpdateAddressRequest_LabelsEntry;
 };
 export declare const UpdateAddressMetadata: {
+    $type: "yandex.cloud.vpc.v1.UpdateAddressMetadata";
     encode(message: UpdateAddressMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateAddressMetadata;
     fromJSON(object: any): UpdateAddressMetadata;
@@ -262,6 +290,7 @@ export declare const UpdateAddressMetadata: {
     fromPartial(object: DeepPartial<UpdateAddressMetadata>): UpdateAddressMetadata;
 };
 export declare const DeleteAddressRequest: {
+    $type: "yandex.cloud.vpc.v1.DeleteAddressRequest";
     encode(message: DeleteAddressRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteAddressRequest;
     fromJSON(object: any): DeleteAddressRequest;
@@ -269,6 +298,7 @@ export declare const DeleteAddressRequest: {
     fromPartial(object: DeepPartial<DeleteAddressRequest>): DeleteAddressRequest;
 };
 export declare const DeleteAddressMetadata: {
+    $type: "yandex.cloud.vpc.v1.DeleteAddressMetadata";
     encode(message: DeleteAddressMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteAddressMetadata;
     fromJSON(object: any): DeleteAddressMetadata;
@@ -276,6 +306,7 @@ export declare const DeleteAddressMetadata: {
     fromPartial(object: DeepPartial<DeleteAddressMetadata>): DeleteAddressMetadata;
 };
 export declare const ListAddressOperationsRequest: {
+    $type: "yandex.cloud.vpc.v1.ListAddressOperationsRequest";
     encode(message: ListAddressOperationsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListAddressOperationsRequest;
     fromJSON(object: any): ListAddressOperationsRequest;
@@ -283,6 +314,7 @@ export declare const ListAddressOperationsRequest: {
     fromPartial(object: DeepPartial<ListAddressOperationsRequest>): ListAddressOperationsRequest;
 };
 export declare const ListAddressOperationsResponse: {
+    $type: "yandex.cloud.vpc.v1.ListAddressOperationsResponse";
     encode(message: ListAddressOperationsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListAddressOperationsResponse;
     fromJSON(object: any): ListAddressOperationsResponse;
@@ -290,6 +322,7 @@ export declare const ListAddressOperationsResponse: {
     fromPartial(object: DeepPartial<ListAddressOperationsResponse>): ListAddressOperationsResponse;
 };
 export declare const MoveAddressRequest: {
+    $type: "yandex.cloud.vpc.v1.MoveAddressRequest";
     encode(message: MoveAddressRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): MoveAddressRequest;
     fromJSON(object: any): MoveAddressRequest;
@@ -297,6 +330,7 @@ export declare const MoveAddressRequest: {
     fromPartial(object: DeepPartial<MoveAddressRequest>): MoveAddressRequest;
 };
 export declare const MoveAddressMetadata: {
+    $type: "yandex.cloud.vpc.v1.MoveAddressMetadata";
     encode(message: MoveAddressMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): MoveAddressMetadata;
     fromJSON(object: any): MoveAddressMetadata;
@@ -465,6 +499,6 @@ export interface AddressServiceClient extends Client {
 export declare const AddressServiceClient: new (address: string, credentials: ChannelCredentials, options?: Partial<ChannelOptions> | undefined) => AddressServiceClient;
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

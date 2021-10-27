@@ -11,6 +11,7 @@ export declare enum IpPermissionAction {
 export declare function ipPermissionActionFromJSON(object: any): IpPermissionAction;
 export declare function ipPermissionActionToJSON(object: IpPermissionAction): string;
 export interface IpPermission {
+    $type: 'yandex.cloud.containerregistry.v1.IpPermission';
     action: IpPermission_Action;
     ip: string;
 }
@@ -23,12 +24,14 @@ export declare enum IpPermission_Action {
 export declare function ipPermission_ActionFromJSON(object: any): IpPermission_Action;
 export declare function ipPermission_ActionToJSON(object: IpPermission_Action): string;
 export interface IpPermissionDelta {
+    $type: 'yandex.cloud.containerregistry.v1.IpPermissionDelta';
     /** The action that is being performed on an ip permission. */
     action: IpPermissionAction;
     /** Ip permission. */
     ipPermission: IpPermission | undefined;
 }
 export declare const IpPermission: {
+    $type: "yandex.cloud.containerregistry.v1.IpPermission";
     encode(message: IpPermission, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): IpPermission;
     fromJSON(object: any): IpPermission;
@@ -36,6 +39,7 @@ export declare const IpPermission: {
     fromPartial(object: DeepPartial<IpPermission>): IpPermission;
 };
 export declare const IpPermissionDelta: {
+    $type: "yandex.cloud.containerregistry.v1.IpPermissionDelta";
     encode(message: IpPermissionDelta, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): IpPermissionDelta;
     fromJSON(object: any): IpPermissionDelta;
@@ -44,6 +48,6 @@ export declare const IpPermissionDelta: {
 };
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

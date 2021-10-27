@@ -18,6 +18,7 @@ export declare function bindingTypeToJSON(object: BindingType): string;
  * For more information, see [SAML-compatible identity federations](/docs/iam/concepts/users/identity-federations).
  */
 export interface Federation {
+    $type: 'yandex.cloud.organizationmanager.v1.saml.Federation';
     /** ID of the federation. */
     id: string;
     /** ID of the organization that the federation belongs to. */
@@ -70,15 +71,18 @@ export interface Federation {
     };
 }
 export interface Federation_LabelsEntry {
+    $type: 'yandex.cloud.organizationmanager.v1.saml.Federation.LabelsEntry';
     key: string;
     value: string;
 }
 /** Federation security settings. */
 export interface FederationSecuritySettings {
+    $type: 'yandex.cloud.organizationmanager.v1.saml.FederationSecuritySettings';
     /** Enable encrypted assertions. */
     encryptedAssertions: boolean;
 }
 export declare const Federation: {
+    $type: "yandex.cloud.organizationmanager.v1.saml.Federation";
     encode(message: Federation, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Federation;
     fromJSON(object: any): Federation;
@@ -86,6 +90,7 @@ export declare const Federation: {
     fromPartial(object: DeepPartial<Federation>): Federation;
 };
 export declare const Federation_LabelsEntry: {
+    $type: "yandex.cloud.organizationmanager.v1.saml.Federation.LabelsEntry";
     encode(message: Federation_LabelsEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Federation_LabelsEntry;
     fromJSON(object: any): Federation_LabelsEntry;
@@ -93,6 +98,7 @@ export declare const Federation_LabelsEntry: {
     fromPartial(object: DeepPartial<Federation_LabelsEntry>): Federation_LabelsEntry;
 };
 export declare const FederationSecuritySettings: {
+    $type: "yandex.cloud.organizationmanager.v1.saml.FederationSecuritySettings";
     encode(message: FederationSecuritySettings, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): FederationSecuritySettings;
     fromJSON(object: any): FederationSecuritySettings;
@@ -101,6 +107,6 @@ export declare const FederationSecuritySettings: {
 };
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

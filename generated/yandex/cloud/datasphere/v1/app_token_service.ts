@@ -1,5 +1,6 @@
 /* eslint-disable */
 import { Empty } from '../../../../google/protobuf/empty';
+import { messageTypeRegistry } from '../../../../typeRegistry';
 import {
     makeGenericClientConstructor,
     ChannelCredentials,
@@ -18,13 +19,19 @@ import _m0 from 'protobufjs/minimal';
 export const protobufPackage = 'yandex.cloud.datasphere.v1';
 
 export interface AppTokenValidateRequest {
+    $type: 'yandex.cloud.datasphere.v1.AppTokenValidateRequest';
     /** App token to validate. */
     token: string;
 }
 
-const baseAppTokenValidateRequest: object = { token: '' };
+const baseAppTokenValidateRequest: object = {
+    $type: 'yandex.cloud.datasphere.v1.AppTokenValidateRequest',
+    token: '',
+};
 
 export const AppTokenValidateRequest = {
+    $type: 'yandex.cloud.datasphere.v1.AppTokenValidateRequest' as const,
+
     encode(
         message: AppTokenValidateRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -91,6 +98,8 @@ export const AppTokenValidateRequest = {
         return message;
     },
 };
+
+messageTypeRegistry.set(AppTokenValidateRequest.$type, AppTokenValidateRequest);
 
 /** A set of methods for managing app tokens. */
 export const AppTokenServiceService = {
@@ -159,7 +168,7 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 if (_m0.util.Long !== Long) {

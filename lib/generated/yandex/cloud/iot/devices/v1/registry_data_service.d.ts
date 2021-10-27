@@ -3,6 +3,7 @@ import { ChannelCredentials, ChannelOptions, UntypedServiceImplementation, handl
 import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.iot.devices.v1";
 export interface PublishRegistryDataRequest {
+    $type: 'yandex.cloud.iot.devices.v1.PublishRegistryDataRequest';
     /** ID of registry publishing message */
     registryId: string;
     /** Topic where message should be published */
@@ -11,8 +12,10 @@ export interface PublishRegistryDataRequest {
     data: Uint8Array;
 }
 export interface PublishRegistryDataResponse {
+    $type: 'yandex.cloud.iot.devices.v1.PublishRegistryDataResponse';
 }
 export declare const PublishRegistryDataRequest: {
+    $type: "yandex.cloud.iot.devices.v1.PublishRegistryDataRequest";
     encode(message: PublishRegistryDataRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): PublishRegistryDataRequest;
     fromJSON(object: any): PublishRegistryDataRequest;
@@ -20,6 +23,7 @@ export declare const PublishRegistryDataRequest: {
     fromPartial(object: DeepPartial<PublishRegistryDataRequest>): PublishRegistryDataRequest;
 };
 export declare const PublishRegistryDataResponse: {
+    $type: "yandex.cloud.iot.devices.v1.PublishRegistryDataResponse";
     encode(_: PublishRegistryDataResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): PublishRegistryDataResponse;
     fromJSON(_: any): PublishRegistryDataResponse;
@@ -52,6 +56,6 @@ export interface RegistryDataServiceClient extends Client {
 export declare const RegistryDataServiceClient: new (address: string, credentials: ChannelCredentials, options?: Partial<ChannelOptions> | undefined) => RegistryDataServiceClient;
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

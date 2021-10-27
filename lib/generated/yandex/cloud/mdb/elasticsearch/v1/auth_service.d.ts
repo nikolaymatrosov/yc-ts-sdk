@@ -5,38 +5,45 @@ import { ChannelCredentials, ChannelOptions, UntypedServiceImplementation, handl
 import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.mdb.elasticsearch.v1";
 export interface ListAuthProvidersRequest {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.ListAuthProvidersRequest';
     /** Required. ID of the ElasticSearch cluster. */
     clusterId: string;
 }
 export interface ListAuthProvidersResponse {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.ListAuthProvidersResponse';
     /** List of auth providers of the Elasticsearch cluster. */
     providers: AuthProvider[];
 }
 export interface GetAuthProviderRequest {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.GetAuthProviderRequest';
     /** Required. ID of the ElasticSearch cluster. */
     clusterId: string;
     /** Required. Name of the provider to delete. */
     name: string;
 }
 export interface AddAuthProvidersRequest {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.AddAuthProvidersRequest';
     /** Required. ID of the ElasticSearch cluster. */
     clusterId: string;
     /** Required. List of providers to add. */
     providers: AuthProvider[];
 }
 export interface UpdateAuthProvidersRequest {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.UpdateAuthProvidersRequest';
     /** Required. ID of the ElasticSearch cluster. */
     clusterId: string;
     /** Required. List of providers to set. */
     providers: AuthProvider[];
 }
 export interface DeleteAuthProvidersRequest {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.DeleteAuthProvidersRequest';
     /** Required. ID of the ElasticSearch cluster. */
     clusterId: string;
     /** Required. List of providers to delete. */
     providerNames: string[];
 }
 export interface UpdateAuthProviderRequest {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.UpdateAuthProviderRequest';
     /** Required. ID of the ElasticSearch cluster. */
     clusterId: string;
     /** Required. Name of the provider to update. */
@@ -45,30 +52,35 @@ export interface UpdateAuthProviderRequest {
     provider: AuthProvider | undefined;
 }
 export interface DeleteAuthProviderRequest {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.DeleteAuthProviderRequest';
     /** Required. ID of the ElasticSearch cluster. */
     clusterId: string;
     /** Required. Name of the provider to delete. */
     name: string;
 }
 export interface AddAuthProvidersMetadata {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.AddAuthProvidersMetadata';
     /** ID of the ElasticSearch cluster. */
     clusterId: string;
     /** Names of the providers being added. */
     names: string[];
 }
 export interface UpdateAuthProvidersMetadata {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.UpdateAuthProvidersMetadata';
     /** ID of the ElasticSearch cluster. */
     clusterId: string;
     /** Names of the providers being added. */
     names: string[];
 }
 export interface DeleteAuthProvidersMetadata {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.DeleteAuthProvidersMetadata';
     /** ID of the ElasticSearch cluster. */
     clusterId: string;
     /** Names of the providers being removed. */
     names: string[];
 }
 export declare const ListAuthProvidersRequest: {
+    $type: "yandex.cloud.mdb.elasticsearch.v1.ListAuthProvidersRequest";
     encode(message: ListAuthProvidersRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListAuthProvidersRequest;
     fromJSON(object: any): ListAuthProvidersRequest;
@@ -76,6 +88,7 @@ export declare const ListAuthProvidersRequest: {
     fromPartial(object: DeepPartial<ListAuthProvidersRequest>): ListAuthProvidersRequest;
 };
 export declare const ListAuthProvidersResponse: {
+    $type: "yandex.cloud.mdb.elasticsearch.v1.ListAuthProvidersResponse";
     encode(message: ListAuthProvidersResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListAuthProvidersResponse;
     fromJSON(object: any): ListAuthProvidersResponse;
@@ -83,6 +96,7 @@ export declare const ListAuthProvidersResponse: {
     fromPartial(object: DeepPartial<ListAuthProvidersResponse>): ListAuthProvidersResponse;
 };
 export declare const GetAuthProviderRequest: {
+    $type: "yandex.cloud.mdb.elasticsearch.v1.GetAuthProviderRequest";
     encode(message: GetAuthProviderRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): GetAuthProviderRequest;
     fromJSON(object: any): GetAuthProviderRequest;
@@ -90,6 +104,7 @@ export declare const GetAuthProviderRequest: {
     fromPartial(object: DeepPartial<GetAuthProviderRequest>): GetAuthProviderRequest;
 };
 export declare const AddAuthProvidersRequest: {
+    $type: "yandex.cloud.mdb.elasticsearch.v1.AddAuthProvidersRequest";
     encode(message: AddAuthProvidersRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): AddAuthProvidersRequest;
     fromJSON(object: any): AddAuthProvidersRequest;
@@ -97,6 +112,7 @@ export declare const AddAuthProvidersRequest: {
     fromPartial(object: DeepPartial<AddAuthProvidersRequest>): AddAuthProvidersRequest;
 };
 export declare const UpdateAuthProvidersRequest: {
+    $type: "yandex.cloud.mdb.elasticsearch.v1.UpdateAuthProvidersRequest";
     encode(message: UpdateAuthProvidersRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateAuthProvidersRequest;
     fromJSON(object: any): UpdateAuthProvidersRequest;
@@ -104,6 +120,7 @@ export declare const UpdateAuthProvidersRequest: {
     fromPartial(object: DeepPartial<UpdateAuthProvidersRequest>): UpdateAuthProvidersRequest;
 };
 export declare const DeleteAuthProvidersRequest: {
+    $type: "yandex.cloud.mdb.elasticsearch.v1.DeleteAuthProvidersRequest";
     encode(message: DeleteAuthProvidersRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteAuthProvidersRequest;
     fromJSON(object: any): DeleteAuthProvidersRequest;
@@ -111,6 +128,7 @@ export declare const DeleteAuthProvidersRequest: {
     fromPartial(object: DeepPartial<DeleteAuthProvidersRequest>): DeleteAuthProvidersRequest;
 };
 export declare const UpdateAuthProviderRequest: {
+    $type: "yandex.cloud.mdb.elasticsearch.v1.UpdateAuthProviderRequest";
     encode(message: UpdateAuthProviderRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateAuthProviderRequest;
     fromJSON(object: any): UpdateAuthProviderRequest;
@@ -118,6 +136,7 @@ export declare const UpdateAuthProviderRequest: {
     fromPartial(object: DeepPartial<UpdateAuthProviderRequest>): UpdateAuthProviderRequest;
 };
 export declare const DeleteAuthProviderRequest: {
+    $type: "yandex.cloud.mdb.elasticsearch.v1.DeleteAuthProviderRequest";
     encode(message: DeleteAuthProviderRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteAuthProviderRequest;
     fromJSON(object: any): DeleteAuthProviderRequest;
@@ -125,6 +144,7 @@ export declare const DeleteAuthProviderRequest: {
     fromPartial(object: DeepPartial<DeleteAuthProviderRequest>): DeleteAuthProviderRequest;
 };
 export declare const AddAuthProvidersMetadata: {
+    $type: "yandex.cloud.mdb.elasticsearch.v1.AddAuthProvidersMetadata";
     encode(message: AddAuthProvidersMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): AddAuthProvidersMetadata;
     fromJSON(object: any): AddAuthProvidersMetadata;
@@ -132,6 +152,7 @@ export declare const AddAuthProvidersMetadata: {
     fromPartial(object: DeepPartial<AddAuthProvidersMetadata>): AddAuthProvidersMetadata;
 };
 export declare const UpdateAuthProvidersMetadata: {
+    $type: "yandex.cloud.mdb.elasticsearch.v1.UpdateAuthProvidersMetadata";
     encode(message: UpdateAuthProvidersMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateAuthProvidersMetadata;
     fromJSON(object: any): UpdateAuthProvidersMetadata;
@@ -139,6 +160,7 @@ export declare const UpdateAuthProvidersMetadata: {
     fromPartial(object: DeepPartial<UpdateAuthProvidersMetadata>): UpdateAuthProvidersMetadata;
 };
 export declare const DeleteAuthProvidersMetadata: {
+    $type: "yandex.cloud.mdb.elasticsearch.v1.DeleteAuthProvidersMetadata";
     encode(message: DeleteAuthProvidersMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteAuthProvidersMetadata;
     fromJSON(object: any): DeleteAuthProvidersMetadata;
@@ -267,6 +289,6 @@ export interface AuthServiceClient extends Client {
 export declare const AuthServiceClient: new (address: string, credentials: ChannelCredentials, options?: Partial<ChannelOptions> | undefined) => AuthServiceClient;
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

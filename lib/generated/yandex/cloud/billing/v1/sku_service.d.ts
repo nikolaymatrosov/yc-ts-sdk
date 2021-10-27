@@ -4,6 +4,7 @@ import { ChannelCredentials, ChannelOptions, UntypedServiceImplementation, handl
 import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.billing.v1";
 export interface GetSkuRequest {
+    $type: 'yandex.cloud.billing.v1.GetSkuRequest';
     /**
      * ID of the SKU to return.
      * To get the SKU ID, use [SkuService.List] request.
@@ -25,6 +26,7 @@ export interface GetSkuRequest {
     billingAccountId: string;
 }
 export interface ListSkusRequest {
+    $type: 'yandex.cloud.billing.v1.ListSkusRequest';
     /**
      * Currency of the prices.
      * Can be one of the following:
@@ -62,6 +64,7 @@ export interface ListSkusRequest {
     pageToken: string;
 }
 export interface ListSkusResponse {
+    $type: 'yandex.cloud.billing.v1.ListSkusResponse';
     /** List of skus. */
     skus: Sku[];
     /**
@@ -75,6 +78,7 @@ export interface ListSkusResponse {
     nextPageToken: string;
 }
 export declare const GetSkuRequest: {
+    $type: "yandex.cloud.billing.v1.GetSkuRequest";
     encode(message: GetSkuRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): GetSkuRequest;
     fromJSON(object: any): GetSkuRequest;
@@ -82,6 +86,7 @@ export declare const GetSkuRequest: {
     fromPartial(object: DeepPartial<GetSkuRequest>): GetSkuRequest;
 };
 export declare const ListSkusRequest: {
+    $type: "yandex.cloud.billing.v1.ListSkusRequest";
     encode(message: ListSkusRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListSkusRequest;
     fromJSON(object: any): ListSkusRequest;
@@ -89,6 +94,7 @@ export declare const ListSkusRequest: {
     fromPartial(object: DeepPartial<ListSkusRequest>): ListSkusRequest;
 };
 export declare const ListSkusResponse: {
+    $type: "yandex.cloud.billing.v1.ListSkusResponse";
     encode(message: ListSkusResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListSkusResponse;
     fromJSON(object: any): ListSkusResponse;
@@ -137,6 +143,6 @@ export interface SkuServiceClient extends Client {
 export declare const SkuServiceClient: new (address: string, credentials: ChannelCredentials, options?: Partial<ChannelOptions> | undefined) => SkuServiceClient;
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

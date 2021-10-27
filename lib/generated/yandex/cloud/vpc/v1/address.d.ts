@@ -2,6 +2,7 @@ import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.vpc.v1";
 /** An Address resource. For more information, see [Address](/docs/vpc/concepts/address). */
 export interface Address {
+    $type: 'yandex.cloud.vpc.v1.Address';
     /** ID of the address. Generated at creation time. */
     id: string;
     /** ID of the folder that the address belongs to. */
@@ -50,10 +51,12 @@ export declare enum Address_IpVersion {
 export declare function address_IpVersionFromJSON(object: any): Address_IpVersion;
 export declare function address_IpVersionToJSON(object: Address_IpVersion): string;
 export interface Address_LabelsEntry {
+    $type: 'yandex.cloud.vpc.v1.Address.LabelsEntry';
     key: string;
     value: string;
 }
 export interface ExternalIpv4Address {
+    $type: 'yandex.cloud.vpc.v1.ExternalIpv4Address';
     /** Value of address. */
     address: string;
     /** Availability zone from which the address will be allocated. */
@@ -62,12 +65,14 @@ export interface ExternalIpv4Address {
     requirements: AddressRequirements | undefined;
 }
 export interface AddressRequirements {
+    $type: 'yandex.cloud.vpc.v1.AddressRequirements';
     /** DDoS protection provider ID. */
     ddosProtectionProvider: string;
     /** Capability to send SMTP traffic. */
     outgoingSmtpCapability: string;
 }
 export declare const Address: {
+    $type: "yandex.cloud.vpc.v1.Address";
     encode(message: Address, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Address;
     fromJSON(object: any): Address;
@@ -75,6 +80,7 @@ export declare const Address: {
     fromPartial(object: DeepPartial<Address>): Address;
 };
 export declare const Address_LabelsEntry: {
+    $type: "yandex.cloud.vpc.v1.Address.LabelsEntry";
     encode(message: Address_LabelsEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Address_LabelsEntry;
     fromJSON(object: any): Address_LabelsEntry;
@@ -82,6 +88,7 @@ export declare const Address_LabelsEntry: {
     fromPartial(object: DeepPartial<Address_LabelsEntry>): Address_LabelsEntry;
 };
 export declare const ExternalIpv4Address: {
+    $type: "yandex.cloud.vpc.v1.ExternalIpv4Address";
     encode(message: ExternalIpv4Address, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ExternalIpv4Address;
     fromJSON(object: any): ExternalIpv4Address;
@@ -89,6 +96,7 @@ export declare const ExternalIpv4Address: {
     fromPartial(object: DeepPartial<ExternalIpv4Address>): ExternalIpv4Address;
 };
 export declare const AddressRequirements: {
+    $type: "yandex.cloud.vpc.v1.AddressRequirements";
     encode(message: AddressRequirements, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): AddressRequirements;
     fromJSON(object: any): AddressRequirements;
@@ -97,6 +105,6 @@ export declare const AddressRequirements: {
 };
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

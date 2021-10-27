@@ -1,5 +1,6 @@
 /* eslint-disable */
 import { Struct } from '../../../../google/protobuf/struct';
+import { messageTypeRegistry } from '../../../../typeRegistry';
 import {
     makeGenericClientConstructor,
     ChannelCredentials,
@@ -18,6 +19,7 @@ import _m0 from 'protobufjs/minimal';
 export const protobufPackage = 'yandex.cloud.datasphere.v1';
 
 export interface NodeExecutionRequest {
+    $type: 'yandex.cloud.datasphere.v1.NodeExecutionRequest';
     /** ID of the folder that will be matched with Node ACL. */
     folderId: string;
     /** ID of the Node to perform request on. */
@@ -27,13 +29,20 @@ export interface NodeExecutionRequest {
 }
 
 export interface NodeExecutionResponse {
+    $type: 'yandex.cloud.datasphere.v1.NodeExecutionResponse';
     /** Result of the execution. */
     output: Struct | undefined;
 }
 
-const baseNodeExecutionRequest: object = { folderId: '', nodeId: '' };
+const baseNodeExecutionRequest: object = {
+    $type: 'yandex.cloud.datasphere.v1.NodeExecutionRequest',
+    folderId: '',
+    nodeId: '',
+};
 
 export const NodeExecutionRequest = {
+    $type: 'yandex.cloud.datasphere.v1.NodeExecutionRequest' as const,
+
     encode(
         message: NodeExecutionRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -132,9 +141,15 @@ export const NodeExecutionRequest = {
     },
 };
 
-const baseNodeExecutionResponse: object = {};
+messageTypeRegistry.set(NodeExecutionRequest.$type, NodeExecutionRequest);
+
+const baseNodeExecutionResponse: object = {
+    $type: 'yandex.cloud.datasphere.v1.NodeExecutionResponse',
+};
 
 export const NodeExecutionResponse = {
+    $type: 'yandex.cloud.datasphere.v1.NodeExecutionResponse' as const,
+
     encode(
         message: NodeExecutionResponse,
         writer: _m0.Writer = _m0.Writer.create()
@@ -204,6 +219,8 @@ export const NodeExecutionResponse = {
         return message;
     },
 };
+
+messageTypeRegistry.set(NodeExecutionResponse.$type, NodeExecutionResponse);
 
 /** A set of methods for managing Node resources. */
 export const NodeServiceService = {
@@ -282,7 +299,7 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 if (_m0.util.Long !== Long) {

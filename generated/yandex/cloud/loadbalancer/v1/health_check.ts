@@ -1,5 +1,6 @@
 /* eslint-disable */
 import { Duration } from '../../../../google/protobuf/duration';
+import { messageTypeRegistry } from '../../../../typeRegistry';
 import Long from 'long';
 import _m0 from 'protobufjs/minimal';
 
@@ -7,6 +8,7 @@ export const protobufPackage = 'yandex.cloud.loadbalancer.v1';
 
 /** A HealthCheck resource. For more information, see [Health check](/docs/network-load-balancer/concepts/health-check). */
 export interface HealthCheck {
+    $type: 'yandex.cloud.loadbalancer.v1.HealthCheck';
     /** Name of the health check. The name must be unique for each target group that attached to a single load balancer. 3-63 characters long. */
     name: string;
     /** The interval between health checks. The default is 2 seconds. */
@@ -25,12 +27,14 @@ export interface HealthCheck {
 
 /** Configuration option for a TCP health check. */
 export interface HealthCheck_TcpOptions {
+    $type: 'yandex.cloud.loadbalancer.v1.HealthCheck.TcpOptions';
     /** Port to use for TCP health checks. */
     port: number;
 }
 
 /** Configuration option for an HTTP health check. */
 export interface HealthCheck_HttpOptions {
+    $type: 'yandex.cloud.loadbalancer.v1.HealthCheck.HttpOptions';
     /** Port to use for HTTP health checks. */
     port: number;
     /**
@@ -41,12 +45,15 @@ export interface HealthCheck_HttpOptions {
 }
 
 const baseHealthCheck: object = {
+    $type: 'yandex.cloud.loadbalancer.v1.HealthCheck',
     name: '',
     unhealthyThreshold: 0,
     healthyThreshold: 0,
 };
 
 export const HealthCheck = {
+    $type: 'yandex.cloud.loadbalancer.v1.HealthCheck' as const,
+
     encode(
         message: HealthCheck,
         writer: _m0.Writer = _m0.Writer.create()
@@ -258,9 +265,16 @@ export const HealthCheck = {
     },
 };
 
-const baseHealthCheck_TcpOptions: object = { port: 0 };
+messageTypeRegistry.set(HealthCheck.$type, HealthCheck);
+
+const baseHealthCheck_TcpOptions: object = {
+    $type: 'yandex.cloud.loadbalancer.v1.HealthCheck.TcpOptions',
+    port: 0,
+};
 
 export const HealthCheck_TcpOptions = {
+    $type: 'yandex.cloud.loadbalancer.v1.HealthCheck.TcpOptions' as const,
+
     encode(
         message: HealthCheck_TcpOptions,
         writer: _m0.Writer = _m0.Writer.create()
@@ -328,9 +342,17 @@ export const HealthCheck_TcpOptions = {
     },
 };
 
-const baseHealthCheck_HttpOptions: object = { port: 0, path: '' };
+messageTypeRegistry.set(HealthCheck_TcpOptions.$type, HealthCheck_TcpOptions);
+
+const baseHealthCheck_HttpOptions: object = {
+    $type: 'yandex.cloud.loadbalancer.v1.HealthCheck.HttpOptions',
+    port: 0,
+    path: '',
+};
 
 export const HealthCheck_HttpOptions = {
+    $type: 'yandex.cloud.loadbalancer.v1.HealthCheck.HttpOptions' as const,
+
     encode(
         message: HealthCheck_HttpOptions,
         writer: _m0.Writer = _m0.Writer.create()
@@ -415,6 +437,8 @@ export const HealthCheck_HttpOptions = {
     },
 };
 
+messageTypeRegistry.set(HealthCheck_HttpOptions.$type, HealthCheck_HttpOptions);
+
 declare var self: any | undefined;
 declare var window: any | undefined;
 declare var global: any | undefined;
@@ -441,7 +465,7 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 function longToNumber(long: Long): number {

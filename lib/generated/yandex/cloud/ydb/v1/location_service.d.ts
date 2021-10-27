@@ -4,10 +4,12 @@ import { ChannelCredentials, ChannelOptions, UntypedServiceImplementation, handl
 import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.ydb.v1";
 export interface GetLocationRequest {
+    $type: 'yandex.cloud.ydb.v1.GetLocationRequest';
     /** Required. ID of the location to return. */
     locationId: string;
 }
 export interface ListLocationsRequest {
+    $type: 'yandex.cloud.ydb.v1.ListLocationsRequest';
     /**
      * The maximum number of results per page that should be returned. If the number of available
      * results is larger than `page_size`, the service returns a `next_page_token` that can be used
@@ -22,6 +24,7 @@ export interface ListLocationsRequest {
     pageToken: string;
 }
 export interface ListLocationsResponse {
+    $type: 'yandex.cloud.ydb.v1.ListLocationsResponse';
     /** Requested list of locations. */
     locations: Location[];
     /**
@@ -34,6 +37,7 @@ export interface ListLocationsResponse {
     nextPageToken: string;
 }
 export declare const GetLocationRequest: {
+    $type: "yandex.cloud.ydb.v1.GetLocationRequest";
     encode(message: GetLocationRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): GetLocationRequest;
     fromJSON(object: any): GetLocationRequest;
@@ -41,6 +45,7 @@ export declare const GetLocationRequest: {
     fromPartial(object: DeepPartial<GetLocationRequest>): GetLocationRequest;
 };
 export declare const ListLocationsRequest: {
+    $type: "yandex.cloud.ydb.v1.ListLocationsRequest";
     encode(message: ListLocationsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListLocationsRequest;
     fromJSON(object: any): ListLocationsRequest;
@@ -48,6 +53,7 @@ export declare const ListLocationsRequest: {
     fromPartial(object: DeepPartial<ListLocationsRequest>): ListLocationsRequest;
 };
 export declare const ListLocationsResponse: {
+    $type: "yandex.cloud.ydb.v1.ListLocationsResponse";
     encode(message: ListLocationsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListLocationsResponse;
     fromJSON(object: any): ListLocationsResponse;
@@ -95,6 +101,6 @@ export interface LocationServiceClient extends Client {
 export declare const LocationServiceClient: new (address: string, credentials: ChannelCredentials, options?: Partial<ChannelOptions> | undefined) => LocationServiceClient;
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

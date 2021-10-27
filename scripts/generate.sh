@@ -10,7 +10,7 @@ git submodule update --init --force --recursive proto
 
 npx grpc_tools_node_protoc \
   --ts_proto_out=./$directory \
-  --ts_proto_opt=outputServices=grpc-js,esModuleInterop=true \
+  --ts_proto_opt=outputServices=grpc-js,esModuleInterop=true,outputTypeRegistry=true \
   -I ./proto/ -I ./proto/third_party/googleapis \
   $(find proto/yandex -iname "*.proto")
 

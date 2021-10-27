@@ -1,5 +1,6 @@
 /* eslint-disable */
 import { Timestamp } from '../../../../google/protobuf/timestamp';
+import { messageTypeRegistry } from '../../../../typeRegistry';
 import Long from 'long';
 import _m0 from 'protobufjs/minimal';
 
@@ -7,6 +8,7 @@ export const protobufPackage = 'yandex.cloud.resourcemanager.v1';
 
 /** A Cloud resource. For more information, see [Cloud](/docs/resource-manager/concepts/resources-hierarchy#cloud). */
 export interface Cloud {
+    $type: 'yandex.cloud.resourcemanager.v1.Cloud';
     /** ID of the cloud. */
     id: string;
     /** Creation timestamp. */
@@ -22,11 +24,13 @@ export interface Cloud {
 }
 
 export interface Cloud_LabelsEntry {
+    $type: 'yandex.cloud.resourcemanager.v1.Cloud.LabelsEntry';
     key: string;
     value: string;
 }
 
 const baseCloud: object = {
+    $type: 'yandex.cloud.resourcemanager.v1.Cloud',
     id: '',
     name: '',
     description: '',
@@ -34,6 +38,8 @@ const baseCloud: object = {
 };
 
 export const Cloud = {
+    $type: 'yandex.cloud.resourcemanager.v1.Cloud' as const,
+
     encode(
         message: Cloud,
         writer: _m0.Writer = _m0.Writer.create()
@@ -58,7 +64,11 @@ export const Cloud = {
         }
         Object.entries(message.labels).forEach(([key, value]) => {
             Cloud_LabelsEntry.encode(
-                { key: key as any, value },
+                {
+                    $type: 'yandex.cloud.resourcemanager.v1.Cloud.LabelsEntry',
+                    key: key as any,
+                    value,
+                },
                 writer.uint32(58).fork()
             ).ldelim();
         });
@@ -208,9 +218,17 @@ export const Cloud = {
     },
 };
 
-const baseCloud_LabelsEntry: object = { key: '', value: '' };
+messageTypeRegistry.set(Cloud.$type, Cloud);
+
+const baseCloud_LabelsEntry: object = {
+    $type: 'yandex.cloud.resourcemanager.v1.Cloud.LabelsEntry',
+    key: '',
+    value: '',
+};
 
 export const Cloud_LabelsEntry = {
+    $type: 'yandex.cloud.resourcemanager.v1.Cloud.LabelsEntry' as const,
+
     encode(
         message: Cloud_LabelsEntry,
         writer: _m0.Writer = _m0.Writer.create()
@@ -284,6 +302,8 @@ export const Cloud_LabelsEntry = {
     },
 };
 
+messageTypeRegistry.set(Cloud_LabelsEntry.$type, Cloud_LabelsEntry);
+
 type Builtin =
     | Date
     | Function
@@ -299,13 +319,13 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 function toTimestamp(date: Date): Timestamp {
     const seconds = date.getTime() / 1_000;
     const nanos = (date.getTime() % 1_000) * 1_000_000;
-    return { seconds, nanos };
+    return { $type: 'google.protobuf.Timestamp', seconds, nanos };
 }
 
 function fromTimestamp(t: Timestamp): Date {

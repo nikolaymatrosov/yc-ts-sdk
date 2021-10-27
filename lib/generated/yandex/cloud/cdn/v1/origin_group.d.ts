@@ -3,6 +3,7 @@ import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.cdn.v1";
 /** Origin group parameters. For details about the concept, see [documentation](/docs/cdn/concepts/origins#groups). */
 export interface OriginGroup {
+    $type: 'yandex.cloud.cdn.v1.OriginGroup';
     /** ID of the origin group. Generated at creation time. */
     id: number;
     /** ID of the folder that the origin group belongs to. */
@@ -20,6 +21,7 @@ export interface OriginGroup {
     origins: Origin[];
 }
 export declare const OriginGroup: {
+    $type: "yandex.cloud.cdn.v1.OriginGroup";
     encode(message: OriginGroup, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): OriginGroup;
     fromJSON(object: any): OriginGroup;
@@ -28,6 +30,6 @@ export declare const OriginGroup: {
 };
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

@@ -6,6 +6,7 @@ import { ChannelCredentials, ChannelOptions, UntypedServiceImplementation, handl
 import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.serverless.triggers.v1";
 export interface GetTriggerRequest {
+    $type: 'yandex.cloud.serverless.triggers.v1.GetTriggerRequest';
     /**
      * ID of the trigger to return.
      *
@@ -14,6 +15,7 @@ export interface GetTriggerRequest {
     triggerId: string;
 }
 export interface ListTriggersRequest {
+    $type: 'yandex.cloud.serverless.triggers.v1.ListTriggersRequest';
     /**
      * ID of the folder to list triggers in.
      *
@@ -46,6 +48,7 @@ export interface ListTriggersRequest {
     filter: string;
 }
 export interface ListTriggersResponse {
+    $type: 'yandex.cloud.serverless.triggers.v1.ListTriggersResponse';
     /** List of triggers in the specified folder. */
     triggers: Trigger[];
     /**
@@ -58,6 +61,7 @@ export interface ListTriggersResponse {
     nextPageToken: string;
 }
 export interface CreateTriggerRequest {
+    $type: 'yandex.cloud.serverless.triggers.v1.CreateTriggerRequest';
     /**
      * ID of the folder to create a trigger in.
      *
@@ -79,14 +83,17 @@ export interface CreateTriggerRequest {
     rule: Trigger_Rule | undefined;
 }
 export interface CreateTriggerRequest_LabelsEntry {
+    $type: 'yandex.cloud.serverless.triggers.v1.CreateTriggerRequest.LabelsEntry';
     key: string;
     value: string;
 }
 export interface CreateTriggerMetadata {
+    $type: 'yandex.cloud.serverless.triggers.v1.CreateTriggerMetadata';
     /** ID of the trigger that is being created. */
     triggerId: string;
 }
 export interface UpdateTriggerRequest {
+    $type: 'yandex.cloud.serverless.triggers.v1.UpdateTriggerRequest';
     /**
      * ID of the trigger to update.
      *
@@ -113,14 +120,17 @@ export interface UpdateTriggerRequest {
     };
 }
 export interface UpdateTriggerRequest_LabelsEntry {
+    $type: 'yandex.cloud.serverless.triggers.v1.UpdateTriggerRequest.LabelsEntry';
     key: string;
     value: string;
 }
 export interface UpdateTriggerMetadata {
+    $type: 'yandex.cloud.serverless.triggers.v1.UpdateTriggerMetadata';
     /** ID of the trigger that is being updated. */
     triggerId: string;
 }
 export interface DeleteTriggerRequest {
+    $type: 'yandex.cloud.serverless.triggers.v1.DeleteTriggerRequest';
     /**
      * ID of the trigger to delete.
      *
@@ -129,10 +139,12 @@ export interface DeleteTriggerRequest {
     triggerId: string;
 }
 export interface DeleteTriggerMetadata {
+    $type: 'yandex.cloud.serverless.triggers.v1.DeleteTriggerMetadata';
     /** ID of the trigger that is being deleted. */
     triggerId: string;
 }
 export interface PauseTriggerRequest {
+    $type: 'yandex.cloud.serverless.triggers.v1.PauseTriggerRequest';
     /**
      * ID of the trigger to pause
      *
@@ -141,10 +153,12 @@ export interface PauseTriggerRequest {
     triggerId: string;
 }
 export interface PauseTriggerMetadata {
+    $type: 'yandex.cloud.serverless.triggers.v1.PauseTriggerMetadata';
     /** ID of the trigger that is being paused. */
     triggerId: string;
 }
 export interface ResumeTriggerRequest {
+    $type: 'yandex.cloud.serverless.triggers.v1.ResumeTriggerRequest';
     /**
      * ID of the trigger to pause
      *
@@ -153,10 +167,12 @@ export interface ResumeTriggerRequest {
     triggerId: string;
 }
 export interface ResumeTriggerMetadata {
+    $type: 'yandex.cloud.serverless.triggers.v1.ResumeTriggerMetadata';
     /** ID of the trigger that is being paused. */
     triggerId: string;
 }
 export interface ListTriggerOperationsRequest {
+    $type: 'yandex.cloud.serverless.triggers.v1.ListTriggerOperationsRequest';
     /** ID of the trigger to list operations for. */
     triggerId: string;
     /**
@@ -185,6 +201,7 @@ export interface ListTriggerOperationsRequest {
     filter: string;
 }
 export interface ListTriggerOperationsResponse {
+    $type: 'yandex.cloud.serverless.triggers.v1.ListTriggerOperationsResponse';
     /** List of operations for the specified trigger. */
     operations: Operation[];
     /**
@@ -197,6 +214,7 @@ export interface ListTriggerOperationsResponse {
     nextPageToken: string;
 }
 export declare const GetTriggerRequest: {
+    $type: "yandex.cloud.serverless.triggers.v1.GetTriggerRequest";
     encode(message: GetTriggerRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): GetTriggerRequest;
     fromJSON(object: any): GetTriggerRequest;
@@ -204,6 +222,7 @@ export declare const GetTriggerRequest: {
     fromPartial(object: DeepPartial<GetTriggerRequest>): GetTriggerRequest;
 };
 export declare const ListTriggersRequest: {
+    $type: "yandex.cloud.serverless.triggers.v1.ListTriggersRequest";
     encode(message: ListTriggersRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListTriggersRequest;
     fromJSON(object: any): ListTriggersRequest;
@@ -211,6 +230,7 @@ export declare const ListTriggersRequest: {
     fromPartial(object: DeepPartial<ListTriggersRequest>): ListTriggersRequest;
 };
 export declare const ListTriggersResponse: {
+    $type: "yandex.cloud.serverless.triggers.v1.ListTriggersResponse";
     encode(message: ListTriggersResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListTriggersResponse;
     fromJSON(object: any): ListTriggersResponse;
@@ -218,6 +238,7 @@ export declare const ListTriggersResponse: {
     fromPartial(object: DeepPartial<ListTriggersResponse>): ListTriggersResponse;
 };
 export declare const CreateTriggerRequest: {
+    $type: "yandex.cloud.serverless.triggers.v1.CreateTriggerRequest";
     encode(message: CreateTriggerRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateTriggerRequest;
     fromJSON(object: any): CreateTriggerRequest;
@@ -225,6 +246,7 @@ export declare const CreateTriggerRequest: {
     fromPartial(object: DeepPartial<CreateTriggerRequest>): CreateTriggerRequest;
 };
 export declare const CreateTriggerRequest_LabelsEntry: {
+    $type: "yandex.cloud.serverless.triggers.v1.CreateTriggerRequest.LabelsEntry";
     encode(message: CreateTriggerRequest_LabelsEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateTriggerRequest_LabelsEntry;
     fromJSON(object: any): CreateTriggerRequest_LabelsEntry;
@@ -232,6 +254,7 @@ export declare const CreateTriggerRequest_LabelsEntry: {
     fromPartial(object: DeepPartial<CreateTriggerRequest_LabelsEntry>): CreateTriggerRequest_LabelsEntry;
 };
 export declare const CreateTriggerMetadata: {
+    $type: "yandex.cloud.serverless.triggers.v1.CreateTriggerMetadata";
     encode(message: CreateTriggerMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateTriggerMetadata;
     fromJSON(object: any): CreateTriggerMetadata;
@@ -239,6 +262,7 @@ export declare const CreateTriggerMetadata: {
     fromPartial(object: DeepPartial<CreateTriggerMetadata>): CreateTriggerMetadata;
 };
 export declare const UpdateTriggerRequest: {
+    $type: "yandex.cloud.serverless.triggers.v1.UpdateTriggerRequest";
     encode(message: UpdateTriggerRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateTriggerRequest;
     fromJSON(object: any): UpdateTriggerRequest;
@@ -246,6 +270,7 @@ export declare const UpdateTriggerRequest: {
     fromPartial(object: DeepPartial<UpdateTriggerRequest>): UpdateTriggerRequest;
 };
 export declare const UpdateTriggerRequest_LabelsEntry: {
+    $type: "yandex.cloud.serverless.triggers.v1.UpdateTriggerRequest.LabelsEntry";
     encode(message: UpdateTriggerRequest_LabelsEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateTriggerRequest_LabelsEntry;
     fromJSON(object: any): UpdateTriggerRequest_LabelsEntry;
@@ -253,6 +278,7 @@ export declare const UpdateTriggerRequest_LabelsEntry: {
     fromPartial(object: DeepPartial<UpdateTriggerRequest_LabelsEntry>): UpdateTriggerRequest_LabelsEntry;
 };
 export declare const UpdateTriggerMetadata: {
+    $type: "yandex.cloud.serverless.triggers.v1.UpdateTriggerMetadata";
     encode(message: UpdateTriggerMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateTriggerMetadata;
     fromJSON(object: any): UpdateTriggerMetadata;
@@ -260,6 +286,7 @@ export declare const UpdateTriggerMetadata: {
     fromPartial(object: DeepPartial<UpdateTriggerMetadata>): UpdateTriggerMetadata;
 };
 export declare const DeleteTriggerRequest: {
+    $type: "yandex.cloud.serverless.triggers.v1.DeleteTriggerRequest";
     encode(message: DeleteTriggerRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteTriggerRequest;
     fromJSON(object: any): DeleteTriggerRequest;
@@ -267,6 +294,7 @@ export declare const DeleteTriggerRequest: {
     fromPartial(object: DeepPartial<DeleteTriggerRequest>): DeleteTriggerRequest;
 };
 export declare const DeleteTriggerMetadata: {
+    $type: "yandex.cloud.serverless.triggers.v1.DeleteTriggerMetadata";
     encode(message: DeleteTriggerMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteTriggerMetadata;
     fromJSON(object: any): DeleteTriggerMetadata;
@@ -274,6 +302,7 @@ export declare const DeleteTriggerMetadata: {
     fromPartial(object: DeepPartial<DeleteTriggerMetadata>): DeleteTriggerMetadata;
 };
 export declare const PauseTriggerRequest: {
+    $type: "yandex.cloud.serverless.triggers.v1.PauseTriggerRequest";
     encode(message: PauseTriggerRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): PauseTriggerRequest;
     fromJSON(object: any): PauseTriggerRequest;
@@ -281,6 +310,7 @@ export declare const PauseTriggerRequest: {
     fromPartial(object: DeepPartial<PauseTriggerRequest>): PauseTriggerRequest;
 };
 export declare const PauseTriggerMetadata: {
+    $type: "yandex.cloud.serverless.triggers.v1.PauseTriggerMetadata";
     encode(message: PauseTriggerMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): PauseTriggerMetadata;
     fromJSON(object: any): PauseTriggerMetadata;
@@ -288,6 +318,7 @@ export declare const PauseTriggerMetadata: {
     fromPartial(object: DeepPartial<PauseTriggerMetadata>): PauseTriggerMetadata;
 };
 export declare const ResumeTriggerRequest: {
+    $type: "yandex.cloud.serverless.triggers.v1.ResumeTriggerRequest";
     encode(message: ResumeTriggerRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ResumeTriggerRequest;
     fromJSON(object: any): ResumeTriggerRequest;
@@ -295,6 +326,7 @@ export declare const ResumeTriggerRequest: {
     fromPartial(object: DeepPartial<ResumeTriggerRequest>): ResumeTriggerRequest;
 };
 export declare const ResumeTriggerMetadata: {
+    $type: "yandex.cloud.serverless.triggers.v1.ResumeTriggerMetadata";
     encode(message: ResumeTriggerMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ResumeTriggerMetadata;
     fromJSON(object: any): ResumeTriggerMetadata;
@@ -302,6 +334,7 @@ export declare const ResumeTriggerMetadata: {
     fromPartial(object: DeepPartial<ResumeTriggerMetadata>): ResumeTriggerMetadata;
 };
 export declare const ListTriggerOperationsRequest: {
+    $type: "yandex.cloud.serverless.triggers.v1.ListTriggerOperationsRequest";
     encode(message: ListTriggerOperationsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListTriggerOperationsRequest;
     fromJSON(object: any): ListTriggerOperationsRequest;
@@ -309,6 +342,7 @@ export declare const ListTriggerOperationsRequest: {
     fromPartial(object: DeepPartial<ListTriggerOperationsRequest>): ListTriggerOperationsRequest;
 };
 export declare const ListTriggerOperationsResponse: {
+    $type: "yandex.cloud.serverless.triggers.v1.ListTriggerOperationsResponse";
     encode(message: ListTriggerOperationsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListTriggerOperationsResponse;
     fromJSON(object: any): ListTriggerOperationsResponse;
@@ -465,6 +499,6 @@ export interface TriggerServiceClient extends Client {
 export declare const TriggerServiceClient: new (address: string, credentials: ChannelCredentials, options?: Partial<ChannelOptions> | undefined) => TriggerServiceClient;
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

@@ -1,6 +1,7 @@
 /* eslint-disable */
 import { Timestamp } from '../../../../../google/protobuf/timestamp';
 import { TimeOfDay } from '../../../../../google/type/timeofday';
+import { messageTypeRegistry } from '../../../../../typeRegistry';
 import { Mysqlconfigset57 } from '../../../../../yandex/cloud/mdb/mysql/v1/config/mysql5_7';
 import { Mysqlconfigset80 } from '../../../../../yandex/cloud/mdb/mysql/v1/config/mysql8_0';
 import {
@@ -17,6 +18,7 @@ export const protobufPackage = 'yandex.cloud.mdb.mysql.v1';
  * the [documentation](/docs/managed-mysql/concepts).
  */
 export interface Cluster {
+    $type: 'yandex.cloud.mdb.mysql.v1.Cluster';
     /**
      * ID of the MySQL cluster.
      * This ID is assigned by Managed Service for MySQL at creation time.
@@ -231,11 +233,13 @@ export function cluster_StatusToJSON(object: Cluster_Status): string {
 }
 
 export interface Cluster_LabelsEntry {
+    $type: 'yandex.cloud.mdb.mysql.v1.Cluster.LabelsEntry';
     key: string;
     value: string;
 }
 
 export interface Monitoring {
+    $type: 'yandex.cloud.mdb.mysql.v1.Monitoring';
     /** Name of the monitoring system. */
     name: string;
     /** Description of the monitoring system. */
@@ -245,6 +249,7 @@ export interface Monitoring {
 }
 
 export interface ClusterConfig {
+    $type: 'yandex.cloud.mdb.mysql.v1.ClusterConfig';
     /** Version of MySQL server software. */
     version: string;
     /** Configuration of a MySQL 5.7 server. */
@@ -260,6 +265,7 @@ export interface ClusterConfig {
 }
 
 export interface Host {
+    $type: 'yandex.cloud.mdb.mysql.v1.Host';
     /**
      * Name of the MySQL host. The host name is assigned by Managed Service for MySQL
      * at creation time, and cannot be changed. 1-63 characters long.
@@ -381,6 +387,7 @@ export function host_HealthToJSON(object: Host_Health): string {
 }
 
 export interface Service {
+    $type: 'yandex.cloud.mdb.mysql.v1.Service';
     /** Type of the service provided by the host. */
     type: Service_Type;
     /** Status code of server availability. */
@@ -462,6 +469,7 @@ export function service_HealthToJSON(object: Service_Health): string {
 }
 
 export interface Resources {
+    $type: 'yandex.cloud.mdb.mysql.v1.Resources';
     /**
      * ID of the preset for computational resources available to a host (CPU, memory etc.).
      * All available presets are listed in the [documentation](/docs/managed-mysql/concepts/instance-types).
@@ -479,6 +487,7 @@ export interface Resources {
 }
 
 export interface Access {
+    $type: 'yandex.cloud.mdb.mysql.v1.Access';
     /** Allow access for DataLens */
     dataLens: boolean;
     /**
@@ -490,6 +499,7 @@ export interface Access {
 }
 
 export interface PerformanceDiagnostics {
+    $type: 'yandex.cloud.mdb.mysql.v1.PerformanceDiagnostics';
     /** Configuration setting which enables/disables performance diagnostics service in cluster. */
     enabled: boolean;
     /** Interval (in seconds) for my_session sampling */
@@ -499,6 +509,7 @@ export interface PerformanceDiagnostics {
 }
 
 const baseCluster: object = {
+    $type: 'yandex.cloud.mdb.mysql.v1.Cluster',
     id: '',
     folderId: '',
     name: '',
@@ -512,6 +523,8 @@ const baseCluster: object = {
 };
 
 export const Cluster = {
+    $type: 'yandex.cloud.mdb.mysql.v1.Cluster' as const,
+
     encode(
         message: Cluster,
         writer: _m0.Writer = _m0.Writer.create()
@@ -536,7 +549,11 @@ export const Cluster = {
         }
         Object.entries(message.labels).forEach(([key, value]) => {
             Cluster_LabelsEntry.encode(
-                { key: key as any, value },
+                {
+                    $type: 'yandex.cloud.mdb.mysql.v1.Cluster.LabelsEntry',
+                    key: key as any,
+                    value,
+                },
                 writer.uint32(50).fork()
             ).ldelim();
         });
@@ -932,9 +949,17 @@ export const Cluster = {
     },
 };
 
-const baseCluster_LabelsEntry: object = { key: '', value: '' };
+messageTypeRegistry.set(Cluster.$type, Cluster);
+
+const baseCluster_LabelsEntry: object = {
+    $type: 'yandex.cloud.mdb.mysql.v1.Cluster.LabelsEntry',
+    key: '',
+    value: '',
+};
 
 export const Cluster_LabelsEntry = {
+    $type: 'yandex.cloud.mdb.mysql.v1.Cluster.LabelsEntry' as const,
+
     encode(
         message: Cluster_LabelsEntry,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1011,9 +1036,18 @@ export const Cluster_LabelsEntry = {
     },
 };
 
-const baseMonitoring: object = { name: '', description: '', link: '' };
+messageTypeRegistry.set(Cluster_LabelsEntry.$type, Cluster_LabelsEntry);
+
+const baseMonitoring: object = {
+    $type: 'yandex.cloud.mdb.mysql.v1.Monitoring',
+    name: '',
+    description: '',
+    link: '',
+};
 
 export const Monitoring = {
+    $type: 'yandex.cloud.mdb.mysql.v1.Monitoring' as const,
+
     encode(
         message: Monitoring,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1105,9 +1139,16 @@ export const Monitoring = {
     },
 };
 
-const baseClusterConfig: object = { version: '' };
+messageTypeRegistry.set(Monitoring.$type, Monitoring);
+
+const baseClusterConfig: object = {
+    $type: 'yandex.cloud.mdb.mysql.v1.ClusterConfig',
+    version: '',
+};
 
 export const ClusterConfig = {
+    $type: 'yandex.cloud.mdb.mysql.v1.ClusterConfig' as const,
+
     encode(
         message: ClusterConfig,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1318,7 +1359,10 @@ export const ClusterConfig = {
     },
 };
 
+messageTypeRegistry.set(ClusterConfig.$type, ClusterConfig);
+
 const baseHost: object = {
+    $type: 'yandex.cloud.mdb.mysql.v1.Host',
     name: '',
     clusterId: '',
     zoneId: '',
@@ -1330,6 +1374,8 @@ const baseHost: object = {
 };
 
 export const Host = {
+    $type: 'yandex.cloud.mdb.mysql.v1.Host' as const,
+
     encode(
         message: Host,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1575,9 +1621,17 @@ export const Host = {
     },
 };
 
-const baseService: object = { type: 0, health: 0 };
+messageTypeRegistry.set(Host.$type, Host);
+
+const baseService: object = {
+    $type: 'yandex.cloud.mdb.mysql.v1.Service',
+    type: 0,
+    health: 0,
+};
 
 export const Service = {
+    $type: 'yandex.cloud.mdb.mysql.v1.Service' as const,
+
     encode(
         message: Service,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1653,13 +1707,18 @@ export const Service = {
     },
 };
 
+messageTypeRegistry.set(Service.$type, Service);
+
 const baseResources: object = {
+    $type: 'yandex.cloud.mdb.mysql.v1.Resources',
     resourcePresetId: '',
     diskSize: 0,
     diskTypeId: '',
 };
 
 export const Resources = {
+    $type: 'yandex.cloud.mdb.mysql.v1.Resources' as const,
+
     encode(
         message: Resources,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1758,9 +1817,17 @@ export const Resources = {
     },
 };
 
-const baseAccess: object = { dataLens: false, webSql: false };
+messageTypeRegistry.set(Resources.$type, Resources);
+
+const baseAccess: object = {
+    $type: 'yandex.cloud.mdb.mysql.v1.Access',
+    dataLens: false,
+    webSql: false,
+};
 
 export const Access = {
+    $type: 'yandex.cloud.mdb.mysql.v1.Access' as const,
+
     encode(
         message: Access,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1834,13 +1901,18 @@ export const Access = {
     },
 };
 
+messageTypeRegistry.set(Access.$type, Access);
+
 const basePerformanceDiagnostics: object = {
+    $type: 'yandex.cloud.mdb.mysql.v1.PerformanceDiagnostics',
     enabled: false,
     sessionsSamplingInterval: 0,
     statementsSamplingInterval: 0,
 };
 
 export const PerformanceDiagnostics = {
+    $type: 'yandex.cloud.mdb.mysql.v1.PerformanceDiagnostics' as const,
+
     encode(
         message: PerformanceDiagnostics,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1966,6 +2038,8 @@ export const PerformanceDiagnostics = {
     },
 };
 
+messageTypeRegistry.set(PerformanceDiagnostics.$type, PerformanceDiagnostics);
+
 declare var self: any | undefined;
 declare var window: any | undefined;
 declare var global: any | undefined;
@@ -1992,13 +2066,13 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 function toTimestamp(date: Date): Timestamp {
     const seconds = date.getTime() / 1_000;
     const nanos = (date.getTime() % 1_000) * 1_000_000;
-    return { seconds, nanos };
+    return { $type: 'google.protobuf.Timestamp', seconds, nanos };
 }
 
 function fromTimestamp(t: Timestamp): Date {

@@ -1,5 +1,6 @@
 /* eslint-disable */
 import { FieldMask } from '../../../../google/protobuf/field_mask';
+import { messageTypeRegistry } from '../../../../typeRegistry';
 import {
     TargetGroup,
     Target,
@@ -23,6 +24,7 @@ import _m0 from 'protobufjs/minimal';
 export const protobufPackage = 'yandex.cloud.apploadbalancer.v1';
 
 export interface GetTargetGroupRequest {
+    $type: 'yandex.cloud.apploadbalancer.v1.GetTargetGroupRequest';
     /**
      * ID of the target group to return.
      *
@@ -32,6 +34,7 @@ export interface GetTargetGroupRequest {
 }
 
 export interface ListTargetGroupsRequest {
+    $type: 'yandex.cloud.apploadbalancer.v1.ListTargetGroupsRequest';
     /**
      * ID of the folder to list target groups in.
      *
@@ -63,6 +66,7 @@ export interface ListTargetGroupsRequest {
 }
 
 export interface ListTargetGroupsResponse {
+    $type: 'yandex.cloud.apploadbalancer.v1.ListTargetGroupsResponse';
     /** List of target groups in the specified folder. */
     targetGroups: TargetGroup[];
     /**
@@ -76,6 +80,7 @@ export interface ListTargetGroupsResponse {
 }
 
 export interface DeleteTargetGroupRequest {
+    $type: 'yandex.cloud.apploadbalancer.v1.DeleteTargetGroupRequest';
     /**
      * ID of the target group to delete.
      *
@@ -85,11 +90,13 @@ export interface DeleteTargetGroupRequest {
 }
 
 export interface DeleteTargetGroupMetadata {
+    $type: 'yandex.cloud.apploadbalancer.v1.DeleteTargetGroupMetadata';
     /** ID of the target group that is being deleted. */
     targetGroupId: string;
 }
 
 export interface UpdateTargetGroupRequest {
+    $type: 'yandex.cloud.apploadbalancer.v1.UpdateTargetGroupRequest';
     /**
      * ID of the target group to update.
      *
@@ -126,16 +133,19 @@ export interface UpdateTargetGroupRequest {
 }
 
 export interface UpdateTargetGroupRequest_LabelsEntry {
+    $type: 'yandex.cloud.apploadbalancer.v1.UpdateTargetGroupRequest.LabelsEntry';
     key: string;
     value: string;
 }
 
 export interface UpdateTargetGroupMetadata {
+    $type: 'yandex.cloud.apploadbalancer.v1.UpdateTargetGroupMetadata';
     /** ID of the target group that is being updated. */
     targetGroupId: string;
 }
 
 export interface CreateTargetGroupRequest {
+    $type: 'yandex.cloud.apploadbalancer.v1.CreateTargetGroupRequest';
     /**
      * ID of the folder to create a target group in.
      *
@@ -159,16 +169,19 @@ export interface CreateTargetGroupRequest {
 }
 
 export interface CreateTargetGroupRequest_LabelsEntry {
+    $type: 'yandex.cloud.apploadbalancer.v1.CreateTargetGroupRequest.LabelsEntry';
     key: string;
     value: string;
 }
 
 export interface CreateTargetGroupMetadata {
+    $type: 'yandex.cloud.apploadbalancer.v1.CreateTargetGroupMetadata';
     /** ID of the target group that is being created. */
     targetGroupId: string;
 }
 
 export interface AddTargetsRequest {
+    $type: 'yandex.cloud.apploadbalancer.v1.AddTargetsRequest';
     /**
      * ID of the target group to add targets to.
      *
@@ -180,11 +193,13 @@ export interface AddTargetsRequest {
 }
 
 export interface AddTargetsMetadata {
+    $type: 'yandex.cloud.apploadbalancer.v1.AddTargetsMetadata';
     /** ID of the target group that the targets are being added to. */
     targetGroupId: string;
 }
 
 export interface RemoveTargetsRequest {
+    $type: 'yandex.cloud.apploadbalancer.v1.RemoveTargetsRequest';
     /**
      * ID of the target group to remove targets from.
      *
@@ -196,11 +211,13 @@ export interface RemoveTargetsRequest {
 }
 
 export interface RemoveTargetsMetadata {
+    $type: 'yandex.cloud.apploadbalancer.v1.RemoveTargetsMetadata';
     /** ID of the target group that the targets are being removed from. */
     targetGroupId: string;
 }
 
 export interface ListTargetGroupOperationsRequest {
+    $type: 'yandex.cloud.apploadbalancer.v1.ListTargetGroupOperationsRequest';
     /**
      * ID of the target group to get operations for.
      *
@@ -222,6 +239,7 @@ export interface ListTargetGroupOperationsRequest {
 }
 
 export interface ListTargetGroupOperationsResponse {
+    $type: 'yandex.cloud.apploadbalancer.v1.ListTargetGroupOperationsResponse';
     /** List of operations for the specified target group. */
     operations: Operation[];
     /**
@@ -234,9 +252,14 @@ export interface ListTargetGroupOperationsResponse {
     nextPageToken: string;
 }
 
-const baseGetTargetGroupRequest: object = { targetGroupId: '' };
+const baseGetTargetGroupRequest: object = {
+    $type: 'yandex.cloud.apploadbalancer.v1.GetTargetGroupRequest',
+    targetGroupId: '',
+};
 
 export const GetTargetGroupRequest = {
+    $type: 'yandex.cloud.apploadbalancer.v1.GetTargetGroupRequest' as const,
+
     encode(
         message: GetTargetGroupRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -311,7 +334,10 @@ export const GetTargetGroupRequest = {
     },
 };
 
+messageTypeRegistry.set(GetTargetGroupRequest.$type, GetTargetGroupRequest);
+
 const baseListTargetGroupsRequest: object = {
+    $type: 'yandex.cloud.apploadbalancer.v1.ListTargetGroupsRequest',
     folderId: '',
     pageSize: 0,
     pageToken: '',
@@ -319,6 +345,8 @@ const baseListTargetGroupsRequest: object = {
 };
 
 export const ListTargetGroupsRequest = {
+    $type: 'yandex.cloud.apploadbalancer.v1.ListTargetGroupsRequest' as const,
+
     encode(
         message: ListTargetGroupsRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -437,9 +465,16 @@ export const ListTargetGroupsRequest = {
     },
 };
 
-const baseListTargetGroupsResponse: object = { nextPageToken: '' };
+messageTypeRegistry.set(ListTargetGroupsRequest.$type, ListTargetGroupsRequest);
+
+const baseListTargetGroupsResponse: object = {
+    $type: 'yandex.cloud.apploadbalancer.v1.ListTargetGroupsResponse',
+    nextPageToken: '',
+};
 
 export const ListTargetGroupsResponse = {
+    $type: 'yandex.cloud.apploadbalancer.v1.ListTargetGroupsResponse' as const,
+
     encode(
         message: ListTargetGroupsResponse,
         writer: _m0.Writer = _m0.Writer.create()
@@ -542,9 +577,19 @@ export const ListTargetGroupsResponse = {
     },
 };
 
-const baseDeleteTargetGroupRequest: object = { targetGroupId: '' };
+messageTypeRegistry.set(
+    ListTargetGroupsResponse.$type,
+    ListTargetGroupsResponse
+);
+
+const baseDeleteTargetGroupRequest: object = {
+    $type: 'yandex.cloud.apploadbalancer.v1.DeleteTargetGroupRequest',
+    targetGroupId: '',
+};
 
 export const DeleteTargetGroupRequest = {
+    $type: 'yandex.cloud.apploadbalancer.v1.DeleteTargetGroupRequest' as const,
+
     encode(
         message: DeleteTargetGroupRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -619,9 +664,19 @@ export const DeleteTargetGroupRequest = {
     },
 };
 
-const baseDeleteTargetGroupMetadata: object = { targetGroupId: '' };
+messageTypeRegistry.set(
+    DeleteTargetGroupRequest.$type,
+    DeleteTargetGroupRequest
+);
+
+const baseDeleteTargetGroupMetadata: object = {
+    $type: 'yandex.cloud.apploadbalancer.v1.DeleteTargetGroupMetadata',
+    targetGroupId: '',
+};
 
 export const DeleteTargetGroupMetadata = {
+    $type: 'yandex.cloud.apploadbalancer.v1.DeleteTargetGroupMetadata' as const,
+
     encode(
         message: DeleteTargetGroupMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -696,13 +751,21 @@ export const DeleteTargetGroupMetadata = {
     },
 };
 
+messageTypeRegistry.set(
+    DeleteTargetGroupMetadata.$type,
+    DeleteTargetGroupMetadata
+);
+
 const baseUpdateTargetGroupRequest: object = {
+    $type: 'yandex.cloud.apploadbalancer.v1.UpdateTargetGroupRequest',
     targetGroupId: '',
     name: '',
     description: '',
 };
 
 export const UpdateTargetGroupRequest = {
+    $type: 'yandex.cloud.apploadbalancer.v1.UpdateTargetGroupRequest' as const,
+
     encode(
         message: UpdateTargetGroupRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -724,7 +787,11 @@ export const UpdateTargetGroupRequest = {
         }
         Object.entries(message.labels).forEach(([key, value]) => {
             UpdateTargetGroupRequest_LabelsEntry.encode(
-                { key: key as any, value },
+                {
+                    $type: 'yandex.cloud.apploadbalancer.v1.UpdateTargetGroupRequest.LabelsEntry',
+                    key: key as any,
+                    value,
+                },
                 writer.uint32(42).fork()
             ).ldelim();
         });
@@ -902,9 +969,20 @@ export const UpdateTargetGroupRequest = {
     },
 };
 
-const baseUpdateTargetGroupRequest_LabelsEntry: object = { key: '', value: '' };
+messageTypeRegistry.set(
+    UpdateTargetGroupRequest.$type,
+    UpdateTargetGroupRequest
+);
+
+const baseUpdateTargetGroupRequest_LabelsEntry: object = {
+    $type: 'yandex.cloud.apploadbalancer.v1.UpdateTargetGroupRequest.LabelsEntry',
+    key: '',
+    value: '',
+};
 
 export const UpdateTargetGroupRequest_LabelsEntry = {
+    $type: 'yandex.cloud.apploadbalancer.v1.UpdateTargetGroupRequest.LabelsEntry' as const,
+
     encode(
         message: UpdateTargetGroupRequest_LabelsEntry,
         writer: _m0.Writer = _m0.Writer.create()
@@ -989,9 +1067,19 @@ export const UpdateTargetGroupRequest_LabelsEntry = {
     },
 };
 
-const baseUpdateTargetGroupMetadata: object = { targetGroupId: '' };
+messageTypeRegistry.set(
+    UpdateTargetGroupRequest_LabelsEntry.$type,
+    UpdateTargetGroupRequest_LabelsEntry
+);
+
+const baseUpdateTargetGroupMetadata: object = {
+    $type: 'yandex.cloud.apploadbalancer.v1.UpdateTargetGroupMetadata',
+    targetGroupId: '',
+};
 
 export const UpdateTargetGroupMetadata = {
+    $type: 'yandex.cloud.apploadbalancer.v1.UpdateTargetGroupMetadata' as const,
+
     encode(
         message: UpdateTargetGroupMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1066,13 +1154,21 @@ export const UpdateTargetGroupMetadata = {
     },
 };
 
+messageTypeRegistry.set(
+    UpdateTargetGroupMetadata.$type,
+    UpdateTargetGroupMetadata
+);
+
 const baseCreateTargetGroupRequest: object = {
+    $type: 'yandex.cloud.apploadbalancer.v1.CreateTargetGroupRequest',
     folderId: '',
     name: '',
     description: '',
 };
 
 export const CreateTargetGroupRequest = {
+    $type: 'yandex.cloud.apploadbalancer.v1.CreateTargetGroupRequest' as const,
+
     encode(
         message: CreateTargetGroupRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1088,7 +1184,11 @@ export const CreateTargetGroupRequest = {
         }
         Object.entries(message.labels).forEach(([key, value]) => {
             CreateTargetGroupRequest_LabelsEntry.encode(
-                { key: key as any, value },
+                {
+                    $type: 'yandex.cloud.apploadbalancer.v1.CreateTargetGroupRequest.LabelsEntry',
+                    key: key as any,
+                    value,
+                },
                 writer.uint32(34).fork()
             ).ldelim();
         });
@@ -1239,9 +1339,20 @@ export const CreateTargetGroupRequest = {
     },
 };
 
-const baseCreateTargetGroupRequest_LabelsEntry: object = { key: '', value: '' };
+messageTypeRegistry.set(
+    CreateTargetGroupRequest.$type,
+    CreateTargetGroupRequest
+);
+
+const baseCreateTargetGroupRequest_LabelsEntry: object = {
+    $type: 'yandex.cloud.apploadbalancer.v1.CreateTargetGroupRequest.LabelsEntry',
+    key: '',
+    value: '',
+};
 
 export const CreateTargetGroupRequest_LabelsEntry = {
+    $type: 'yandex.cloud.apploadbalancer.v1.CreateTargetGroupRequest.LabelsEntry' as const,
+
     encode(
         message: CreateTargetGroupRequest_LabelsEntry,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1326,9 +1437,19 @@ export const CreateTargetGroupRequest_LabelsEntry = {
     },
 };
 
-const baseCreateTargetGroupMetadata: object = { targetGroupId: '' };
+messageTypeRegistry.set(
+    CreateTargetGroupRequest_LabelsEntry.$type,
+    CreateTargetGroupRequest_LabelsEntry
+);
+
+const baseCreateTargetGroupMetadata: object = {
+    $type: 'yandex.cloud.apploadbalancer.v1.CreateTargetGroupMetadata',
+    targetGroupId: '',
+};
 
 export const CreateTargetGroupMetadata = {
+    $type: 'yandex.cloud.apploadbalancer.v1.CreateTargetGroupMetadata' as const,
+
     encode(
         message: CreateTargetGroupMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1403,9 +1524,19 @@ export const CreateTargetGroupMetadata = {
     },
 };
 
-const baseAddTargetsRequest: object = { targetGroupId: '' };
+messageTypeRegistry.set(
+    CreateTargetGroupMetadata.$type,
+    CreateTargetGroupMetadata
+);
+
+const baseAddTargetsRequest: object = {
+    $type: 'yandex.cloud.apploadbalancer.v1.AddTargetsRequest',
+    targetGroupId: '',
+};
 
 export const AddTargetsRequest = {
+    $type: 'yandex.cloud.apploadbalancer.v1.AddTargetsRequest' as const,
+
     encode(
         message: AddTargetsRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1497,9 +1628,16 @@ export const AddTargetsRequest = {
     },
 };
 
-const baseAddTargetsMetadata: object = { targetGroupId: '' };
+messageTypeRegistry.set(AddTargetsRequest.$type, AddTargetsRequest);
+
+const baseAddTargetsMetadata: object = {
+    $type: 'yandex.cloud.apploadbalancer.v1.AddTargetsMetadata',
+    targetGroupId: '',
+};
 
 export const AddTargetsMetadata = {
+    $type: 'yandex.cloud.apploadbalancer.v1.AddTargetsMetadata' as const,
+
     encode(
         message: AddTargetsMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1566,9 +1704,16 @@ export const AddTargetsMetadata = {
     },
 };
 
-const baseRemoveTargetsRequest: object = { targetGroupId: '' };
+messageTypeRegistry.set(AddTargetsMetadata.$type, AddTargetsMetadata);
+
+const baseRemoveTargetsRequest: object = {
+    $type: 'yandex.cloud.apploadbalancer.v1.RemoveTargetsRequest',
+    targetGroupId: '',
+};
 
 export const RemoveTargetsRequest = {
+    $type: 'yandex.cloud.apploadbalancer.v1.RemoveTargetsRequest' as const,
+
     encode(
         message: RemoveTargetsRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1665,9 +1810,16 @@ export const RemoveTargetsRequest = {
     },
 };
 
-const baseRemoveTargetsMetadata: object = { targetGroupId: '' };
+messageTypeRegistry.set(RemoveTargetsRequest.$type, RemoveTargetsRequest);
+
+const baseRemoveTargetsMetadata: object = {
+    $type: 'yandex.cloud.apploadbalancer.v1.RemoveTargetsMetadata',
+    targetGroupId: '',
+};
 
 export const RemoveTargetsMetadata = {
+    $type: 'yandex.cloud.apploadbalancer.v1.RemoveTargetsMetadata' as const,
+
     encode(
         message: RemoveTargetsMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1742,13 +1894,18 @@ export const RemoveTargetsMetadata = {
     },
 };
 
+messageTypeRegistry.set(RemoveTargetsMetadata.$type, RemoveTargetsMetadata);
+
 const baseListTargetGroupOperationsRequest: object = {
+    $type: 'yandex.cloud.apploadbalancer.v1.ListTargetGroupOperationsRequest',
     targetGroupId: '',
     pageSize: 0,
     pageToken: '',
 };
 
 export const ListTargetGroupOperationsRequest = {
+    $type: 'yandex.cloud.apploadbalancer.v1.ListTargetGroupOperationsRequest' as const,
+
     encode(
         message: ListTargetGroupOperationsRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1857,9 +2014,19 @@ export const ListTargetGroupOperationsRequest = {
     },
 };
 
-const baseListTargetGroupOperationsResponse: object = { nextPageToken: '' };
+messageTypeRegistry.set(
+    ListTargetGroupOperationsRequest.$type,
+    ListTargetGroupOperationsRequest
+);
+
+const baseListTargetGroupOperationsResponse: object = {
+    $type: 'yandex.cloud.apploadbalancer.v1.ListTargetGroupOperationsResponse',
+    nextPageToken: '',
+};
 
 export const ListTargetGroupOperationsResponse = {
+    $type: 'yandex.cloud.apploadbalancer.v1.ListTargetGroupOperationsResponse' as const,
+
     encode(
         message: ListTargetGroupOperationsResponse,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1961,6 +2128,11 @@ export const ListTargetGroupOperationsResponse = {
         return message;
     },
 };
+
+messageTypeRegistry.set(
+    ListTargetGroupOperationsResponse.$type,
+    ListTargetGroupOperationsResponse
+);
 
 /** A set of methods for managing target groups. */
 export const TargetGroupServiceService = {
@@ -2295,7 +2467,7 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 function longToNumber(long: Long): number {

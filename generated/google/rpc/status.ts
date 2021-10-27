@@ -1,5 +1,6 @@
 /* eslint-disable */
 import { Any } from '../../google/protobuf/any';
+import { messageTypeRegistry } from '../../typeRegistry';
 import Long from 'long';
 import _m0 from 'protobufjs/minimal';
 
@@ -60,6 +61,7 @@ export const protobufPackage = 'google.rpc';
  *     be used directly after any stripping needed for security/privacy reasons.
  */
 export interface Status {
+    $type: 'google.rpc.Status';
     /** The status code, which should be an enum value of [google.rpc.Code][google.rpc.Code]. */
     code: number;
     /**
@@ -75,9 +77,11 @@ export interface Status {
     details: Any[];
 }
 
-const baseStatus: object = { code: 0, message: '' };
+const baseStatus: object = { $type: 'google.rpc.Status', code: 0, message: '' };
 
 export const Status = {
+    $type: 'google.rpc.Status' as const,
+
     encode(
         message: Status,
         writer: _m0.Writer = _m0.Writer.create()
@@ -177,6 +181,8 @@ export const Status = {
     },
 };
 
+messageTypeRegistry.set(Status.$type, Status);
+
 type Builtin =
     | Date
     | Function
@@ -192,7 +198,7 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 if (_m0.util.Long !== Long) {

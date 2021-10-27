@@ -4,6 +4,7 @@ import { ChannelCredentials, ChannelOptions, UntypedServiceImplementation, handl
 import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.mdb.clickhouse.v1";
 export interface ListVersionsRequest {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.ListVersionsRequest';
     /**
      * The maximum number of results per page that should be returned. If the number of available
      * results is larger than [page_size], the service returns a [ListVersionsResponse.next_page_token] that can be used
@@ -18,6 +19,7 @@ export interface ListVersionsRequest {
     pageToken: string;
 }
 export interface ListVersionsResponse {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.ListVersionsResponse';
     /** Requested list of available versions. */
     version: Version[];
     /**
@@ -30,6 +32,7 @@ export interface ListVersionsResponse {
     nextPageToken: string;
 }
 export declare const ListVersionsRequest: {
+    $type: "yandex.cloud.mdb.clickhouse.v1.ListVersionsRequest";
     encode(message: ListVersionsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListVersionsRequest;
     fromJSON(object: any): ListVersionsRequest;
@@ -37,6 +40,7 @@ export declare const ListVersionsRequest: {
     fromPartial(object: DeepPartial<ListVersionsRequest>): ListVersionsRequest;
 };
 export declare const ListVersionsResponse: {
+    $type: "yandex.cloud.mdb.clickhouse.v1.ListVersionsResponse";
     encode(message: ListVersionsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListVersionsResponse;
     fromJSON(object: any): ListVersionsResponse;
@@ -69,6 +73,6 @@ export interface VersionsServiceClient extends Client {
 export declare const VersionsServiceClient: new (address: string, credentials: ChannelCredentials, options?: Partial<ChannelOptions> | undefined) => VersionsServiceClient;
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

@@ -4,6 +4,7 @@ import { ChannelCredentials, ChannelOptions, UntypedServiceImplementation, handl
 import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.iam.v1";
 export interface GetRoleRequest {
+    $type: 'yandex.cloud.iam.v1.GetRoleRequest';
     /**
      * ID of the Role resource to return.
      * To get the role ID, use a [RoleService.List] request.
@@ -11,6 +12,7 @@ export interface GetRoleRequest {
     roleId: string;
 }
 export interface ListRolesRequest {
+    $type: 'yandex.cloud.iam.v1.ListRolesRequest';
     /**
      * The maximum number of results per page to return. If the number of available
      * results is larger than [page_size],
@@ -29,6 +31,7 @@ export interface ListRolesRequest {
     filter: string;
 }
 export interface ListRolesResponse {
+    $type: 'yandex.cloud.iam.v1.ListRolesResponse';
     /** List of Role resources. */
     roles: Role[];
     /**
@@ -42,6 +45,7 @@ export interface ListRolesResponse {
     nextPageToken: string;
 }
 export declare const GetRoleRequest: {
+    $type: "yandex.cloud.iam.v1.GetRoleRequest";
     encode(message: GetRoleRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): GetRoleRequest;
     fromJSON(object: any): GetRoleRequest;
@@ -49,6 +53,7 @@ export declare const GetRoleRequest: {
     fromPartial(object: DeepPartial<GetRoleRequest>): GetRoleRequest;
 };
 export declare const ListRolesRequest: {
+    $type: "yandex.cloud.iam.v1.ListRolesRequest";
     encode(message: ListRolesRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListRolesRequest;
     fromJSON(object: any): ListRolesRequest;
@@ -56,6 +61,7 @@ export declare const ListRolesRequest: {
     fromPartial(object: DeepPartial<ListRolesRequest>): ListRolesRequest;
 };
 export declare const ListRolesResponse: {
+    $type: "yandex.cloud.iam.v1.ListRolesResponse";
     encode(message: ListRolesResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListRolesResponse;
     fromJSON(object: any): ListRolesResponse;
@@ -116,6 +122,6 @@ export interface RoleServiceClient extends Client {
 export declare const RoleServiceClient: new (address: string, credentials: ChannelCredentials, options?: Partial<ChannelOptions> | undefined) => RoleServiceClient;
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

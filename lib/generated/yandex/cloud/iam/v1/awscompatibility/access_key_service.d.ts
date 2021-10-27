@@ -6,6 +6,7 @@ import { ChannelCredentials, ChannelOptions, UntypedServiceImplementation, handl
 import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.iam.v1.awscompatibility";
 export interface GetAccessKeyRequest {
+    $type: 'yandex.cloud.iam.v1.awscompatibility.GetAccessKeyRequest';
     /**
      * ID of the AccessKey resource to return.
      * To get the access key ID, use a [AccessKeyService.List] request.
@@ -13,6 +14,7 @@ export interface GetAccessKeyRequest {
     accessKeyId: string;
 }
 export interface ListAccessKeysRequest {
+    $type: 'yandex.cloud.iam.v1.awscompatibility.ListAccessKeysRequest';
     /**
      * ID of the service account to list access keys for.
      * To get the service account ID, use a [yandex.cloud.iam.v1.ServiceAccountService.List] request.
@@ -35,6 +37,7 @@ export interface ListAccessKeysRequest {
     pageToken: string;
 }
 export interface ListAccessKeysResponse {
+    $type: 'yandex.cloud.iam.v1.awscompatibility.ListAccessKeysResponse';
     /** List of access keys. */
     accessKeys: AccessKey[];
     /**
@@ -48,6 +51,7 @@ export interface ListAccessKeysResponse {
     nextPageToken: string;
 }
 export interface CreateAccessKeyRequest {
+    $type: 'yandex.cloud.iam.v1.awscompatibility.CreateAccessKeyRequest';
     /**
      * ID of the service account to create an access key for.
      * To get the service account ID, use a [yandex.cloud.iam.v1.ServiceAccountService.List] request.
@@ -58,6 +62,7 @@ export interface CreateAccessKeyRequest {
     description: string;
 }
 export interface CreateAccessKeyResponse {
+    $type: 'yandex.cloud.iam.v1.awscompatibility.CreateAccessKeyResponse';
     /** AccessKey resource. */
     accessKey: AccessKey | undefined;
     /**
@@ -67,6 +72,7 @@ export interface CreateAccessKeyResponse {
     secret: string;
 }
 export interface UpdateAccessKeyRequest {
+    $type: 'yandex.cloud.iam.v1.awscompatibility.UpdateAccessKeyRequest';
     /**
      * ID of the AccessKey resource to update.
      * To get the access key ID, use a [AccessKeyService.List] request.
@@ -78,10 +84,12 @@ export interface UpdateAccessKeyRequest {
     description: string;
 }
 export interface UpdateAccessKeyMetadata {
+    $type: 'yandex.cloud.iam.v1.awscompatibility.UpdateAccessKeyMetadata';
     /** ID of the AccessKey resource that is being updated. */
     accessKeyId: string;
 }
 export interface DeleteAccessKeyRequest {
+    $type: 'yandex.cloud.iam.v1.awscompatibility.DeleteAccessKeyRequest';
     /**
      * ID of the access key to delete.
      * To get the access key ID, use a [AccessKeyService.List] request.
@@ -89,10 +97,12 @@ export interface DeleteAccessKeyRequest {
     accessKeyId: string;
 }
 export interface DeleteAccessKeyMetadata {
+    $type: 'yandex.cloud.iam.v1.awscompatibility.DeleteAccessKeyMetadata';
     /** ID of the access key that is being deleted. */
     accessKeyId: string;
 }
 export interface ListAccessKeyOperationsRequest {
+    $type: 'yandex.cloud.iam.v1.awscompatibility.ListAccessKeyOperationsRequest';
     /** ID of the key to list operations for. */
     accessKeyId: string;
     /**
@@ -110,6 +120,7 @@ export interface ListAccessKeyOperationsRequest {
     pageToken: string;
 }
 export interface ListAccessKeyOperationsResponse {
+    $type: 'yandex.cloud.iam.v1.awscompatibility.ListAccessKeyOperationsResponse';
     /** List of operations for the specified access key. */
     operations: Operation[];
     /**
@@ -121,6 +132,7 @@ export interface ListAccessKeyOperationsResponse {
     nextPageToken: string;
 }
 export declare const GetAccessKeyRequest: {
+    $type: "yandex.cloud.iam.v1.awscompatibility.GetAccessKeyRequest";
     encode(message: GetAccessKeyRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): GetAccessKeyRequest;
     fromJSON(object: any): GetAccessKeyRequest;
@@ -128,6 +140,7 @@ export declare const GetAccessKeyRequest: {
     fromPartial(object: DeepPartial<GetAccessKeyRequest>): GetAccessKeyRequest;
 };
 export declare const ListAccessKeysRequest: {
+    $type: "yandex.cloud.iam.v1.awscompatibility.ListAccessKeysRequest";
     encode(message: ListAccessKeysRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListAccessKeysRequest;
     fromJSON(object: any): ListAccessKeysRequest;
@@ -135,6 +148,7 @@ export declare const ListAccessKeysRequest: {
     fromPartial(object: DeepPartial<ListAccessKeysRequest>): ListAccessKeysRequest;
 };
 export declare const ListAccessKeysResponse: {
+    $type: "yandex.cloud.iam.v1.awscompatibility.ListAccessKeysResponse";
     encode(message: ListAccessKeysResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListAccessKeysResponse;
     fromJSON(object: any): ListAccessKeysResponse;
@@ -142,6 +156,7 @@ export declare const ListAccessKeysResponse: {
     fromPartial(object: DeepPartial<ListAccessKeysResponse>): ListAccessKeysResponse;
 };
 export declare const CreateAccessKeyRequest: {
+    $type: "yandex.cloud.iam.v1.awscompatibility.CreateAccessKeyRequest";
     encode(message: CreateAccessKeyRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateAccessKeyRequest;
     fromJSON(object: any): CreateAccessKeyRequest;
@@ -149,6 +164,7 @@ export declare const CreateAccessKeyRequest: {
     fromPartial(object: DeepPartial<CreateAccessKeyRequest>): CreateAccessKeyRequest;
 };
 export declare const CreateAccessKeyResponse: {
+    $type: "yandex.cloud.iam.v1.awscompatibility.CreateAccessKeyResponse";
     encode(message: CreateAccessKeyResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateAccessKeyResponse;
     fromJSON(object: any): CreateAccessKeyResponse;
@@ -156,6 +172,7 @@ export declare const CreateAccessKeyResponse: {
     fromPartial(object: DeepPartial<CreateAccessKeyResponse>): CreateAccessKeyResponse;
 };
 export declare const UpdateAccessKeyRequest: {
+    $type: "yandex.cloud.iam.v1.awscompatibility.UpdateAccessKeyRequest";
     encode(message: UpdateAccessKeyRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateAccessKeyRequest;
     fromJSON(object: any): UpdateAccessKeyRequest;
@@ -163,6 +180,7 @@ export declare const UpdateAccessKeyRequest: {
     fromPartial(object: DeepPartial<UpdateAccessKeyRequest>): UpdateAccessKeyRequest;
 };
 export declare const UpdateAccessKeyMetadata: {
+    $type: "yandex.cloud.iam.v1.awscompatibility.UpdateAccessKeyMetadata";
     encode(message: UpdateAccessKeyMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateAccessKeyMetadata;
     fromJSON(object: any): UpdateAccessKeyMetadata;
@@ -170,6 +188,7 @@ export declare const UpdateAccessKeyMetadata: {
     fromPartial(object: DeepPartial<UpdateAccessKeyMetadata>): UpdateAccessKeyMetadata;
 };
 export declare const DeleteAccessKeyRequest: {
+    $type: "yandex.cloud.iam.v1.awscompatibility.DeleteAccessKeyRequest";
     encode(message: DeleteAccessKeyRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteAccessKeyRequest;
     fromJSON(object: any): DeleteAccessKeyRequest;
@@ -177,6 +196,7 @@ export declare const DeleteAccessKeyRequest: {
     fromPartial(object: DeepPartial<DeleteAccessKeyRequest>): DeleteAccessKeyRequest;
 };
 export declare const DeleteAccessKeyMetadata: {
+    $type: "yandex.cloud.iam.v1.awscompatibility.DeleteAccessKeyMetadata";
     encode(message: DeleteAccessKeyMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteAccessKeyMetadata;
     fromJSON(object: any): DeleteAccessKeyMetadata;
@@ -184,6 +204,7 @@ export declare const DeleteAccessKeyMetadata: {
     fromPartial(object: DeepPartial<DeleteAccessKeyMetadata>): DeleteAccessKeyMetadata;
 };
 export declare const ListAccessKeyOperationsRequest: {
+    $type: "yandex.cloud.iam.v1.awscompatibility.ListAccessKeyOperationsRequest";
     encode(message: ListAccessKeyOperationsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListAccessKeyOperationsRequest;
     fromJSON(object: any): ListAccessKeyOperationsRequest;
@@ -191,6 +212,7 @@ export declare const ListAccessKeyOperationsRequest: {
     fromPartial(object: DeepPartial<ListAccessKeyOperationsRequest>): ListAccessKeyOperationsRequest;
 };
 export declare const ListAccessKeyOperationsResponse: {
+    $type: "yandex.cloud.iam.v1.awscompatibility.ListAccessKeyOperationsResponse";
     encode(message: ListAccessKeyOperationsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListAccessKeyOperationsResponse;
     fromJSON(object: any): ListAccessKeyOperationsResponse;
@@ -315,6 +337,6 @@ export interface AccessKeyServiceClient extends Client {
 export declare const AccessKeyServiceClient: new (address: string, credentials: ChannelCredentials, options?: Partial<ChannelOptions> | undefined) => AccessKeyServiceClient;
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

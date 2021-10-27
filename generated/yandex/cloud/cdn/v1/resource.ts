@@ -1,5 +1,6 @@
 /* eslint-disable */
 import { Timestamp } from '../../../../google/protobuf/timestamp';
+import { messageTypeRegistry } from '../../../../typeRegistry';
 import Long from 'long';
 import _m0 from 'protobufjs/minimal';
 
@@ -218,12 +219,14 @@ export function sSLCertificateStatusToJSON(
 
 /** List of secondary (alternative) CNAMEs. */
 export interface SecondaryHostnames {
+    $type: 'yandex.cloud.cdn.v1.SecondaryHostnames';
     /** List of secondary hostname values. */
     values: string[];
 }
 
 /** A CDN resource - representation of providers resource. */
 export interface Resource {
+    $type: 'yandex.cloud.cdn.v1.Resource';
     /** ID of the resource. */
     id: string;
     /** Folder id. */
@@ -256,6 +259,7 @@ export interface Resource {
 
 /** A major set of various resource options. */
 export interface ResourceOptions {
+    $type: 'yandex.cloud.cdn.v1.ResourceOptions';
     /** Set up a cache status. */
     disableCache: ResourceOptions_BoolOption | undefined;
     /** Set up [EdgeCacheSettings]. */
@@ -333,6 +337,7 @@ export interface ResourceOptions {
 
 /** Set up bool values. */
 export interface ResourceOptions_BoolOption {
+    $type: 'yandex.cloud.cdn.v1.ResourceOptions.BoolOption';
     /**
      * True - the option is enabled and its [value] is applied to the resource.
      * False - the option is disabled and its default value is used for the resource.
@@ -344,6 +349,7 @@ export interface ResourceOptions_BoolOption {
 
 /** A set of the string parameters. */
 export interface ResourceOptions_StringOption {
+    $type: 'yandex.cloud.cdn.v1.ResourceOptions.StringOption';
     /**
      * True - the option is enabled and its [value] is applied to the resource.
      * False - the option is disabled and its default value is used for the resource.
@@ -355,6 +361,7 @@ export interface ResourceOptions_StringOption {
 
 /** A set of the numeric parameters. */
 export interface ResourceOptions_Int64Option {
+    $type: 'yandex.cloud.cdn.v1.ResourceOptions.Int64Option';
     /**
      * True - the option is enabled and its [value] is applied to the resource.
      * False - the option is disabled and its default value is used for the resource.
@@ -366,6 +373,7 @@ export interface ResourceOptions_Int64Option {
 
 /** A set of the string list parameters. */
 export interface ResourceOptions_StringsListOption {
+    $type: 'yandex.cloud.cdn.v1.ResourceOptions.StringsListOption';
     /**
      * True - the option is enabled and its [value] is applied to the resource.
      * False - the option is disabled and its default value is used for the resource.
@@ -377,6 +385,7 @@ export interface ResourceOptions_StringsListOption {
 
 /** A set of the strings map parameters. */
 export interface ResourceOptions_StringsMapOption {
+    $type: 'yandex.cloud.cdn.v1.ResourceOptions.StringsMapOption';
     /**
      * True - the option is enabled and its [value] is applied to the resource.
      * False - the option is disabled and its default value is used for the resource.
@@ -387,12 +396,14 @@ export interface ResourceOptions_StringsMapOption {
 }
 
 export interface ResourceOptions_StringsMapOption_ValueEntry {
+    $type: 'yandex.cloud.cdn.v1.ResourceOptions.StringsMapOption.ValueEntry';
     key: string;
     value: string;
 }
 
 /** A set of the caching response time parameters. */
 export interface ResourceOptions_CachingTimes {
+    $type: 'yandex.cloud.cdn.v1.ResourceOptions.CachingTimes';
     /**
      * Caching time for a response with codes 200, 206, 301, 302.
      * Responses with codes 4xx, 5xx will not be cached. Use `0s` disable to caching.
@@ -408,12 +419,14 @@ export interface ResourceOptions_CachingTimes {
 }
 
 export interface ResourceOptions_CachingTimes_CustomValuesEntry {
+    $type: 'yandex.cloud.cdn.v1.ResourceOptions.CachingTimes.CustomValuesEntry';
     key: string;
     value: number;
 }
 
 /** A set of the edge cache parameters. */
 export interface ResourceOptions_EdgeCacheSettings {
+    $type: 'yandex.cloud.cdn.v1.ResourceOptions.EdgeCacheSettings';
     /**
      * True - the option is enabled and its `values_variant` is applied to the resource.
      * False - the option is disabled and its default value is used for the resource.
@@ -432,6 +445,7 @@ export interface ResourceOptions_EdgeCacheSettings {
 
 /** A set of the string variable map parameters. */
 export interface ResourceOptions_StringVariableMapOption {
+    $type: 'yandex.cloud.cdn.v1.ResourceOptions.StringVariableMapOption';
     /**
      * True - the option is enabled and its [value] is applied to the resource.
      * False - the option is disabled and its default value is used for the resource.
@@ -444,6 +458,7 @@ export interface ResourceOptions_StringVariableMapOption {
 }
 
 export interface ResourceOptions_StringVariableMapOption_OneofString {
+    $type: 'yandex.cloud.cdn.v1.ResourceOptions.StringVariableMapOption.OneofString';
     /** Using [StringOption] to set value. */
     value: ResourceOptions_StringOption | undefined;
     /** Using [StringsListOption] to set values. */
@@ -451,12 +466,14 @@ export interface ResourceOptions_StringVariableMapOption_OneofString {
 }
 
 export interface ResourceOptions_StringVariableMapOption_ValueEntry {
+    $type: 'yandex.cloud.cdn.v1.ResourceOptions.StringVariableMapOption.ValueEntry';
     key: string;
     value: ResourceOptions_StringVariableMapOption_OneofString | undefined;
 }
 
 /** A set of the query parameters. */
 export interface ResourceOptions_QueryParamsOptions {
+    $type: 'yandex.cloud.cdn.v1.ResourceOptions.QueryParamsOptions';
     /** Using [BoolOption]. Selected by default. Files with different query parameters are cached as objects with the same key regardless of the parameter value. */
     ignoreQueryString: ResourceOptions_BoolOption | undefined;
     /**
@@ -474,6 +491,7 @@ export interface ResourceOptions_QueryParamsOptions {
 
 /** A set of the redirect parameters. */
 export interface ResourceOptions_RedirectOptions {
+    $type: 'yandex.cloud.cdn.v1.ResourceOptions.RedirectOptions';
     /** Using [BoolOption]. Set up a redirect from HTTPS to HTTP. */
     redirectHttpToHttps: ResourceOptions_BoolOption | undefined;
     /** Using [BoolOption]. Set up a redirect from HTTP to HTTPS. */
@@ -482,6 +500,7 @@ export interface ResourceOptions_RedirectOptions {
 
 /** A set of the host parameters. */
 export interface ResourceOptions_HostOptions {
+    $type: 'yandex.cloud.cdn.v1.ResourceOptions.HostOptions';
     /**
      * Custom value for the Host header.
      *
@@ -499,6 +518,7 @@ export interface ResourceOptions_HostOptions {
 
 /** A set of the compression variant parameters. */
 export interface ResourceOptions_CompressionOptions {
+    $type: 'yandex.cloud.cdn.v1.ResourceOptions.CompressionOptions';
     /**
      * The Fetch compressed option helps you to reduce
      * the bandwidth between origin and CDN servers.
@@ -520,6 +540,7 @@ export interface ResourceOptions_CompressionOptions {
 
 /** An option for changing or redirecting query paths. */
 export interface ResourceOptions_RewriteOption {
+    $type: 'yandex.cloud.cdn.v1.ResourceOptions.RewriteOption';
     /**
      * True - the option is enabled and its [flag] is applied to the resource.
      * False - the option is disabled and its default value of the [flag] is used for the resource.
@@ -540,6 +561,7 @@ export interface ResourceOptions_RewriteOption {
 
 /** A set of the personal SSL certificate patameters. */
 export interface SSLTargetCertificate {
+    $type: 'yandex.cloud.cdn.v1.SSLTargetCertificate';
     /** Type of the sertificate. */
     type: SSLCertificateType;
     /** Certificate data. */
@@ -548,6 +570,7 @@ export interface SSLTargetCertificate {
 
 /** A SSL sertificate patameters. */
 export interface SSLCertificate {
+    $type: 'yandex.cloud.cdn.v1.SSLCertificate';
     /** Type of the sertificate. */
     type: SSLCertificateType;
     /** Active status. */
@@ -558,6 +581,7 @@ export interface SSLCertificate {
 
 /** A certificate data patameters. */
 export interface SSLCertificateData {
+    $type: 'yandex.cloud.cdn.v1.SSLCertificateData';
     /**
      * Custom (add your SSL certificate by uploading the certificate
      * in PEM format and your private key).
@@ -567,13 +591,19 @@ export interface SSLCertificateData {
 
 /** A certificate data custom patameters. */
 export interface SSLCertificateCMData {
+    $type: 'yandex.cloud.cdn.v1.SSLCertificateCMData';
     /** ID of the custom sertificate. */
     id: string;
 }
 
-const baseSecondaryHostnames: object = { values: '' };
+const baseSecondaryHostnames: object = {
+    $type: 'yandex.cloud.cdn.v1.SecondaryHostnames',
+    values: '',
+};
 
 export const SecondaryHostnames = {
+    $type: 'yandex.cloud.cdn.v1.SecondaryHostnames' as const,
+
     encode(
         message: SecondaryHostnames,
         writer: _m0.Writer = _m0.Writer.create()
@@ -640,7 +670,10 @@ export const SecondaryHostnames = {
     },
 };
 
+messageTypeRegistry.set(SecondaryHostnames.$type, SecondaryHostnames);
+
 const baseResource: object = {
+    $type: 'yandex.cloud.cdn.v1.Resource',
     id: '',
     folderId: '',
     cname: '',
@@ -652,6 +685,8 @@ const baseResource: object = {
 };
 
 export const Resource = {
+    $type: 'yandex.cloud.cdn.v1.Resource' as const,
+
     encode(
         message: Resource,
         writer: _m0.Writer = _m0.Writer.create()
@@ -973,9 +1008,15 @@ export const Resource = {
     },
 };
 
-const baseResourceOptions: object = {};
+messageTypeRegistry.set(Resource.$type, Resource);
+
+const baseResourceOptions: object = {
+    $type: 'yandex.cloud.cdn.v1.ResourceOptions',
+};
 
 export const ResourceOptions = {
+    $type: 'yandex.cloud.cdn.v1.ResourceOptions' as const,
+
     encode(
         message: ResourceOptions,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1705,9 +1746,17 @@ export const ResourceOptions = {
     },
 };
 
-const baseResourceOptions_BoolOption: object = { enabled: false, value: false };
+messageTypeRegistry.set(ResourceOptions.$type, ResourceOptions);
+
+const baseResourceOptions_BoolOption: object = {
+    $type: 'yandex.cloud.cdn.v1.ResourceOptions.BoolOption',
+    enabled: false,
+    value: false,
+};
 
 export const ResourceOptions_BoolOption = {
+    $type: 'yandex.cloud.cdn.v1.ResourceOptions.BoolOption' as const,
+
     encode(
         message: ResourceOptions_BoolOption,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1792,9 +1841,20 @@ export const ResourceOptions_BoolOption = {
     },
 };
 
-const baseResourceOptions_StringOption: object = { enabled: false, value: '' };
+messageTypeRegistry.set(
+    ResourceOptions_BoolOption.$type,
+    ResourceOptions_BoolOption
+);
+
+const baseResourceOptions_StringOption: object = {
+    $type: 'yandex.cloud.cdn.v1.ResourceOptions.StringOption',
+    enabled: false,
+    value: '',
+};
 
 export const ResourceOptions_StringOption = {
+    $type: 'yandex.cloud.cdn.v1.ResourceOptions.StringOption' as const,
+
     encode(
         message: ResourceOptions_StringOption,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1879,9 +1939,20 @@ export const ResourceOptions_StringOption = {
     },
 };
 
-const baseResourceOptions_Int64Option: object = { enabled: false, value: 0 };
+messageTypeRegistry.set(
+    ResourceOptions_StringOption.$type,
+    ResourceOptions_StringOption
+);
+
+const baseResourceOptions_Int64Option: object = {
+    $type: 'yandex.cloud.cdn.v1.ResourceOptions.Int64Option',
+    enabled: false,
+    value: 0,
+};
 
 export const ResourceOptions_Int64Option = {
+    $type: 'yandex.cloud.cdn.v1.ResourceOptions.Int64Option' as const,
+
     encode(
         message: ResourceOptions_Int64Option,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1966,12 +2037,20 @@ export const ResourceOptions_Int64Option = {
     },
 };
 
+messageTypeRegistry.set(
+    ResourceOptions_Int64Option.$type,
+    ResourceOptions_Int64Option
+);
+
 const baseResourceOptions_StringsListOption: object = {
+    $type: 'yandex.cloud.cdn.v1.ResourceOptions.StringsListOption',
     enabled: false,
     value: '',
 };
 
 export const ResourceOptions_StringsListOption = {
+    $type: 'yandex.cloud.cdn.v1.ResourceOptions.StringsListOption' as const,
+
     encode(
         message: ResourceOptions_StringsListOption,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2063,9 +2142,19 @@ export const ResourceOptions_StringsListOption = {
     },
 };
 
-const baseResourceOptions_StringsMapOption: object = { enabled: false };
+messageTypeRegistry.set(
+    ResourceOptions_StringsListOption.$type,
+    ResourceOptions_StringsListOption
+);
+
+const baseResourceOptions_StringsMapOption: object = {
+    $type: 'yandex.cloud.cdn.v1.ResourceOptions.StringsMapOption',
+    enabled: false,
+};
 
 export const ResourceOptions_StringsMapOption = {
+    $type: 'yandex.cloud.cdn.v1.ResourceOptions.StringsMapOption' as const,
+
     encode(
         message: ResourceOptions_StringsMapOption,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2075,7 +2164,11 @@ export const ResourceOptions_StringsMapOption = {
         }
         Object.entries(message.value).forEach(([key, value]) => {
             ResourceOptions_StringsMapOption_ValueEntry.encode(
-                { key: key as any, value },
+                {
+                    $type: 'yandex.cloud.cdn.v1.ResourceOptions.StringsMapOption.ValueEntry',
+                    key: key as any,
+                    value,
+                },
                 writer.uint32(18).fork()
             ).ldelim();
         });
@@ -2170,12 +2263,20 @@ export const ResourceOptions_StringsMapOption = {
     },
 };
 
+messageTypeRegistry.set(
+    ResourceOptions_StringsMapOption.$type,
+    ResourceOptions_StringsMapOption
+);
+
 const baseResourceOptions_StringsMapOption_ValueEntry: object = {
+    $type: 'yandex.cloud.cdn.v1.ResourceOptions.StringsMapOption.ValueEntry',
     key: '',
     value: '',
 };
 
 export const ResourceOptions_StringsMapOption_ValueEntry = {
+    $type: 'yandex.cloud.cdn.v1.ResourceOptions.StringsMapOption.ValueEntry' as const,
+
     encode(
         message: ResourceOptions_StringsMapOption_ValueEntry,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2260,9 +2361,19 @@ export const ResourceOptions_StringsMapOption_ValueEntry = {
     },
 };
 
-const baseResourceOptions_CachingTimes: object = { simpleValue: 0 };
+messageTypeRegistry.set(
+    ResourceOptions_StringsMapOption_ValueEntry.$type,
+    ResourceOptions_StringsMapOption_ValueEntry
+);
+
+const baseResourceOptions_CachingTimes: object = {
+    $type: 'yandex.cloud.cdn.v1.ResourceOptions.CachingTimes',
+    simpleValue: 0,
+};
 
 export const ResourceOptions_CachingTimes = {
+    $type: 'yandex.cloud.cdn.v1.ResourceOptions.CachingTimes' as const,
+
     encode(
         message: ResourceOptions_CachingTimes,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2272,7 +2383,11 @@ export const ResourceOptions_CachingTimes = {
         }
         Object.entries(message.customValues).forEach(([key, value]) => {
             ResourceOptions_CachingTimes_CustomValuesEntry.encode(
-                { key: key as any, value },
+                {
+                    $type: 'yandex.cloud.cdn.v1.ResourceOptions.CachingTimes.CustomValuesEntry',
+                    key: key as any,
+                    value,
+                },
                 writer.uint32(18).fork()
             ).ldelim();
         });
@@ -2368,12 +2483,20 @@ export const ResourceOptions_CachingTimes = {
     },
 };
 
+messageTypeRegistry.set(
+    ResourceOptions_CachingTimes.$type,
+    ResourceOptions_CachingTimes
+);
+
 const baseResourceOptions_CachingTimes_CustomValuesEntry: object = {
+    $type: 'yandex.cloud.cdn.v1.ResourceOptions.CachingTimes.CustomValuesEntry',
     key: '',
     value: 0,
 };
 
 export const ResourceOptions_CachingTimes_CustomValuesEntry = {
+    $type: 'yandex.cloud.cdn.v1.ResourceOptions.CachingTimes.CustomValuesEntry' as const,
+
     encode(
         message: ResourceOptions_CachingTimes_CustomValuesEntry,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2458,9 +2581,19 @@ export const ResourceOptions_CachingTimes_CustomValuesEntry = {
     },
 };
 
-const baseResourceOptions_EdgeCacheSettings: object = { enabled: false };
+messageTypeRegistry.set(
+    ResourceOptions_CachingTimes_CustomValuesEntry.$type,
+    ResourceOptions_CachingTimes_CustomValuesEntry
+);
+
+const baseResourceOptions_EdgeCacheSettings: object = {
+    $type: 'yandex.cloud.cdn.v1.ResourceOptions.EdgeCacheSettings',
+    enabled: false,
+};
 
 export const ResourceOptions_EdgeCacheSettings = {
+    $type: 'yandex.cloud.cdn.v1.ResourceOptions.EdgeCacheSettings' as const,
+
     encode(
         message: ResourceOptions_EdgeCacheSettings,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2574,9 +2707,19 @@ export const ResourceOptions_EdgeCacheSettings = {
     },
 };
 
-const baseResourceOptions_StringVariableMapOption: object = { enabled: false };
+messageTypeRegistry.set(
+    ResourceOptions_EdgeCacheSettings.$type,
+    ResourceOptions_EdgeCacheSettings
+);
+
+const baseResourceOptions_StringVariableMapOption: object = {
+    $type: 'yandex.cloud.cdn.v1.ResourceOptions.StringVariableMapOption',
+    enabled: false,
+};
 
 export const ResourceOptions_StringVariableMapOption = {
+    $type: 'yandex.cloud.cdn.v1.ResourceOptions.StringVariableMapOption' as const,
+
     encode(
         message: ResourceOptions_StringVariableMapOption,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2586,7 +2729,11 @@ export const ResourceOptions_StringVariableMapOption = {
         }
         Object.entries(message.value).forEach(([key, value]) => {
             ResourceOptions_StringVariableMapOption_ValueEntry.encode(
-                { key: key as any, value },
+                {
+                    $type: 'yandex.cloud.cdn.v1.ResourceOptions.StringVariableMapOption.ValueEntry',
+                    key: key as any,
+                    value,
+                },
                 writer.uint32(18).fork()
             ).ldelim();
         });
@@ -2690,9 +2837,18 @@ export const ResourceOptions_StringVariableMapOption = {
     },
 };
 
-const baseResourceOptions_StringVariableMapOption_OneofString: object = {};
+messageTypeRegistry.set(
+    ResourceOptions_StringVariableMapOption.$type,
+    ResourceOptions_StringVariableMapOption
+);
+
+const baseResourceOptions_StringVariableMapOption_OneofString: object = {
+    $type: 'yandex.cloud.cdn.v1.ResourceOptions.StringVariableMapOption.OneofString',
+};
 
 export const ResourceOptions_StringVariableMapOption_OneofString = {
+    $type: 'yandex.cloud.cdn.v1.ResourceOptions.StringVariableMapOption.OneofString' as const,
+
     encode(
         message: ResourceOptions_StringVariableMapOption_OneofString,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2803,11 +2959,19 @@ export const ResourceOptions_StringVariableMapOption_OneofString = {
     },
 };
 
+messageTypeRegistry.set(
+    ResourceOptions_StringVariableMapOption_OneofString.$type,
+    ResourceOptions_StringVariableMapOption_OneofString
+);
+
 const baseResourceOptions_StringVariableMapOption_ValueEntry: object = {
+    $type: 'yandex.cloud.cdn.v1.ResourceOptions.StringVariableMapOption.ValueEntry',
     key: '',
 };
 
 export const ResourceOptions_StringVariableMapOption_ValueEntry = {
+    $type: 'yandex.cloud.cdn.v1.ResourceOptions.StringVariableMapOption.ValueEntry' as const,
+
     encode(
         message: ResourceOptions_StringVariableMapOption_ValueEntry,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2912,9 +3076,18 @@ export const ResourceOptions_StringVariableMapOption_ValueEntry = {
     },
 };
 
-const baseResourceOptions_QueryParamsOptions: object = {};
+messageTypeRegistry.set(
+    ResourceOptions_StringVariableMapOption_ValueEntry.$type,
+    ResourceOptions_StringVariableMapOption_ValueEntry
+);
+
+const baseResourceOptions_QueryParamsOptions: object = {
+    $type: 'yandex.cloud.cdn.v1.ResourceOptions.QueryParamsOptions',
+};
 
 export const ResourceOptions_QueryParamsOptions = {
+    $type: 'yandex.cloud.cdn.v1.ResourceOptions.QueryParamsOptions' as const,
+
     encode(
         message: ResourceOptions_QueryParamsOptions,
         writer: _m0.Writer = _m0.Writer.create()
@@ -3084,9 +3257,18 @@ export const ResourceOptions_QueryParamsOptions = {
     },
 };
 
-const baseResourceOptions_RedirectOptions: object = {};
+messageTypeRegistry.set(
+    ResourceOptions_QueryParamsOptions.$type,
+    ResourceOptions_QueryParamsOptions
+);
+
+const baseResourceOptions_RedirectOptions: object = {
+    $type: 'yandex.cloud.cdn.v1.ResourceOptions.RedirectOptions',
+};
 
 export const ResourceOptions_RedirectOptions = {
+    $type: 'yandex.cloud.cdn.v1.ResourceOptions.RedirectOptions' as const,
+
     encode(
         message: ResourceOptions_RedirectOptions,
         writer: _m0.Writer = _m0.Writer.create()
@@ -3213,9 +3395,18 @@ export const ResourceOptions_RedirectOptions = {
     },
 };
 
-const baseResourceOptions_HostOptions: object = {};
+messageTypeRegistry.set(
+    ResourceOptions_RedirectOptions.$type,
+    ResourceOptions_RedirectOptions
+);
+
+const baseResourceOptions_HostOptions: object = {
+    $type: 'yandex.cloud.cdn.v1.ResourceOptions.HostOptions',
+};
 
 export const ResourceOptions_HostOptions = {
+    $type: 'yandex.cloud.cdn.v1.ResourceOptions.HostOptions' as const,
+
     encode(
         message: ResourceOptions_HostOptions,
         writer: _m0.Writer = _m0.Writer.create()
@@ -3331,9 +3522,18 @@ export const ResourceOptions_HostOptions = {
     },
 };
 
-const baseResourceOptions_CompressionOptions: object = {};
+messageTypeRegistry.set(
+    ResourceOptions_HostOptions.$type,
+    ResourceOptions_HostOptions
+);
+
+const baseResourceOptions_CompressionOptions: object = {
+    $type: 'yandex.cloud.cdn.v1.ResourceOptions.CompressionOptions',
+};
 
 export const ResourceOptions_CompressionOptions = {
+    $type: 'yandex.cloud.cdn.v1.ResourceOptions.CompressionOptions' as const,
+
     encode(
         message: ResourceOptions_CompressionOptions,
         writer: _m0.Writer = _m0.Writer.create()
@@ -3489,13 +3689,21 @@ export const ResourceOptions_CompressionOptions = {
     },
 };
 
+messageTypeRegistry.set(
+    ResourceOptions_CompressionOptions.$type,
+    ResourceOptions_CompressionOptions
+);
+
 const baseResourceOptions_RewriteOption: object = {
+    $type: 'yandex.cloud.cdn.v1.ResourceOptions.RewriteOption',
     enabled: false,
     body: '',
     flag: 0,
 };
 
 export const ResourceOptions_RewriteOption = {
+    $type: 'yandex.cloud.cdn.v1.ResourceOptions.RewriteOption' as const,
+
     encode(
         message: ResourceOptions_RewriteOption,
         writer: _m0.Writer = _m0.Writer.create()
@@ -3598,9 +3806,19 @@ export const ResourceOptions_RewriteOption = {
     },
 };
 
-const baseSSLTargetCertificate: object = { type: 0 };
+messageTypeRegistry.set(
+    ResourceOptions_RewriteOption.$type,
+    ResourceOptions_RewriteOption
+);
+
+const baseSSLTargetCertificate: object = {
+    $type: 'yandex.cloud.cdn.v1.SSLTargetCertificate',
+    type: 0,
+};
 
 export const SSLTargetCertificate = {
+    $type: 'yandex.cloud.cdn.v1.SSLTargetCertificate' as const,
+
     encode(
         message: SSLTargetCertificate,
         writer: _m0.Writer = _m0.Writer.create()
@@ -3689,9 +3907,17 @@ export const SSLTargetCertificate = {
     },
 };
 
-const baseSSLCertificate: object = { type: 0, status: 0 };
+messageTypeRegistry.set(SSLTargetCertificate.$type, SSLTargetCertificate);
+
+const baseSSLCertificate: object = {
+    $type: 'yandex.cloud.cdn.v1.SSLCertificate',
+    type: 0,
+    status: 0,
+};
 
 export const SSLCertificate = {
+    $type: 'yandex.cloud.cdn.v1.SSLCertificate' as const,
+
     encode(
         message: SSLCertificate,
         writer: _m0.Writer = _m0.Writer.create()
@@ -3793,9 +4019,15 @@ export const SSLCertificate = {
     },
 };
 
-const baseSSLCertificateData: object = {};
+messageTypeRegistry.set(SSLCertificate.$type, SSLCertificate);
+
+const baseSSLCertificateData: object = {
+    $type: 'yandex.cloud.cdn.v1.SSLCertificateData',
+};
 
 export const SSLCertificateData = {
+    $type: 'yandex.cloud.cdn.v1.SSLCertificateData' as const,
+
     encode(
         message: SSLCertificateData,
         writer: _m0.Writer = _m0.Writer.create()
@@ -3864,9 +4096,16 @@ export const SSLCertificateData = {
     },
 };
 
-const baseSSLCertificateCMData: object = { id: '' };
+messageTypeRegistry.set(SSLCertificateData.$type, SSLCertificateData);
+
+const baseSSLCertificateCMData: object = {
+    $type: 'yandex.cloud.cdn.v1.SSLCertificateCMData',
+    id: '',
+};
 
 export const SSLCertificateCMData = {
+    $type: 'yandex.cloud.cdn.v1.SSLCertificateCMData' as const,
+
     encode(
         message: SSLCertificateCMData,
         writer: _m0.Writer = _m0.Writer.create()
@@ -3928,6 +4167,8 @@ export const SSLCertificateCMData = {
     },
 };
 
+messageTypeRegistry.set(SSLCertificateCMData.$type, SSLCertificateCMData);
+
 declare var self: any | undefined;
 declare var window: any | undefined;
 declare var global: any | undefined;
@@ -3954,13 +4195,13 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 function toTimestamp(date: Date): Timestamp {
     const seconds = date.getTime() / 1_000;
     const nanos = (date.getTime() % 1_000) * 1_000_000;
-    return { seconds, nanos };
+    return { $type: 'google.protobuf.Timestamp', seconds, nanos };
 }
 
 function fromTimestamp(t: Timestamp): Date {

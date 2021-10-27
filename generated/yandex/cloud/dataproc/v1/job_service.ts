@@ -1,4 +1,5 @@
 /* eslint-disable */
+import { messageTypeRegistry } from '../../../../typeRegistry';
 import {
     Job,
     MapreduceJob,
@@ -25,6 +26,7 @@ import _m0 from 'protobufjs/minimal';
 export const protobufPackage = 'yandex.cloud.dataproc.v1';
 
 export interface GetJobRequest {
+    $type: 'yandex.cloud.dataproc.v1.GetJobRequest';
     /** ID of the cluster to request a job from. */
     clusterId: string;
     /**
@@ -36,6 +38,7 @@ export interface GetJobRequest {
 }
 
 export interface ListJobsRequest {
+    $type: 'yandex.cloud.dataproc.v1.ListJobsRequest';
     /** ID of the cluster to list jobs for. */
     clusterId: string;
     /**
@@ -63,6 +66,7 @@ export interface ListJobsRequest {
 }
 
 export interface ListJobsResponse {
+    $type: 'yandex.cloud.dataproc.v1.ListJobsResponse';
     /** List of jobs for the specified cluster. */
     jobs: Job[];
     /**
@@ -76,6 +80,7 @@ export interface ListJobsResponse {
 }
 
 export interface CreateJobRequest {
+    $type: 'yandex.cloud.dataproc.v1.CreateJobRequest';
     /** ID of the cluster to create a job for. */
     clusterId: string;
     /** Name of the job. */
@@ -91,6 +96,7 @@ export interface CreateJobRequest {
 }
 
 export interface CreateJobMetadata {
+    $type: 'yandex.cloud.dataproc.v1.CreateJobMetadata';
     /** ID of the cluster that the job is being created for. */
     clusterId: string;
     /** ID of the job being created. */
@@ -98,6 +104,7 @@ export interface CreateJobMetadata {
 }
 
 export interface ListJobLogRequest {
+    $type: 'yandex.cloud.dataproc.v1.ListJobLogRequest';
     /** ID of the cluster that the job is being created for. */
     clusterId: string;
     /** ID of the job being created. */
@@ -117,6 +124,7 @@ export interface ListJobLogRequest {
 }
 
 export interface ListJobLogResponse {
+    $type: 'yandex.cloud.dataproc.v1.ListJobLogResponse';
     /** Requested part of Data Proc Job log. */
     content: string;
     /**
@@ -129,9 +137,15 @@ export interface ListJobLogResponse {
     nextPageToken: string;
 }
 
-const baseGetJobRequest: object = { clusterId: '', jobId: '' };
+const baseGetJobRequest: object = {
+    $type: 'yandex.cloud.dataproc.v1.GetJobRequest',
+    clusterId: '',
+    jobId: '',
+};
 
 export const GetJobRequest = {
+    $type: 'yandex.cloud.dataproc.v1.GetJobRequest' as const,
+
     encode(
         message: GetJobRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -205,7 +219,10 @@ export const GetJobRequest = {
     },
 };
 
+messageTypeRegistry.set(GetJobRequest.$type, GetJobRequest);
+
 const baseListJobsRequest: object = {
+    $type: 'yandex.cloud.dataproc.v1.ListJobsRequest',
     clusterId: '',
     pageSize: 0,
     pageToken: '',
@@ -213,6 +230,8 @@ const baseListJobsRequest: object = {
 };
 
 export const ListJobsRequest = {
+    $type: 'yandex.cloud.dataproc.v1.ListJobsRequest' as const,
+
     encode(
         message: ListJobsRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -320,9 +339,16 @@ export const ListJobsRequest = {
     },
 };
 
-const baseListJobsResponse: object = { nextPageToken: '' };
+messageTypeRegistry.set(ListJobsRequest.$type, ListJobsRequest);
+
+const baseListJobsResponse: object = {
+    $type: 'yandex.cloud.dataproc.v1.ListJobsResponse',
+    nextPageToken: '',
+};
 
 export const ListJobsResponse = {
+    $type: 'yandex.cloud.dataproc.v1.ListJobsResponse' as const,
+
     encode(
         message: ListJobsResponse,
         writer: _m0.Writer = _m0.Writer.create()
@@ -410,9 +436,17 @@ export const ListJobsResponse = {
     },
 };
 
-const baseCreateJobRequest: object = { clusterId: '', name: '' };
+messageTypeRegistry.set(ListJobsResponse.$type, ListJobsResponse);
+
+const baseCreateJobRequest: object = {
+    $type: 'yandex.cloud.dataproc.v1.CreateJobRequest',
+    clusterId: '',
+    name: '',
+};
 
 export const CreateJobRequest = {
+    $type: 'yandex.cloud.dataproc.v1.CreateJobRequest' as const,
+
     encode(
         message: CreateJobRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -583,9 +617,17 @@ export const CreateJobRequest = {
     },
 };
 
-const baseCreateJobMetadata: object = { clusterId: '', jobId: '' };
+messageTypeRegistry.set(CreateJobRequest.$type, CreateJobRequest);
+
+const baseCreateJobMetadata: object = {
+    $type: 'yandex.cloud.dataproc.v1.CreateJobMetadata',
+    clusterId: '',
+    jobId: '',
+};
 
 export const CreateJobMetadata = {
+    $type: 'yandex.cloud.dataproc.v1.CreateJobMetadata' as const,
+
     encode(
         message: CreateJobMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -659,7 +701,10 @@ export const CreateJobMetadata = {
     },
 };
 
+messageTypeRegistry.set(CreateJobMetadata.$type, CreateJobMetadata);
+
 const baseListJobLogRequest: object = {
+    $type: 'yandex.cloud.dataproc.v1.ListJobLogRequest',
     clusterId: '',
     jobId: '',
     pageSize: 0,
@@ -667,6 +712,8 @@ const baseListJobLogRequest: object = {
 };
 
 export const ListJobLogRequest = {
+    $type: 'yandex.cloud.dataproc.v1.ListJobLogRequest' as const,
+
     encode(
         message: ListJobLogRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -774,9 +821,17 @@ export const ListJobLogRequest = {
     },
 };
 
-const baseListJobLogResponse: object = { content: '', nextPageToken: '' };
+messageTypeRegistry.set(ListJobLogRequest.$type, ListJobLogRequest);
+
+const baseListJobLogResponse: object = {
+    $type: 'yandex.cloud.dataproc.v1.ListJobLogResponse',
+    content: '',
+    nextPageToken: '',
+};
 
 export const ListJobLogResponse = {
+    $type: 'yandex.cloud.dataproc.v1.ListJobLogResponse' as const,
+
     encode(
         message: ListJobLogResponse,
         writer: _m0.Writer = _m0.Writer.create()
@@ -859,6 +914,8 @@ export const ListJobLogResponse = {
         return message;
     },
 };
+
+messageTypeRegistry.set(ListJobLogResponse.$type, ListJobLogResponse);
 
 /** A set of methods for managing Data Proc jobs. */
 export const JobServiceService = {
@@ -1046,7 +1103,7 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 function longToNumber(long: Long): number {

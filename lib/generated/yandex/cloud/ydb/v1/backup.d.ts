@@ -4,6 +4,7 @@ import { TimeOfDay } from '../../../../google/type/timeofday';
 import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.ydb.v1";
 export interface BackupSchedule {
+    $type: 'yandex.cloud.ydb.v1.BackupSchedule';
     dailyBackupSchedule: DailyBackupSchedule | undefined;
     weeklyBackupSchedule: WeeklyBackupSchedule | undefined;
     recurringBackupSchedule: RecurringBackupSchedule | undefined;
@@ -14,6 +15,7 @@ export interface BackupSchedule {
     nextExecuteTime: Date | undefined;
 }
 export interface RecurringBackupSchedule {
+    $type: 'yandex.cloud.ydb.v1.RecurringBackupSchedule';
     /** Timestamp of the first recurrence. */
     startTime: Date | undefined;
     /**
@@ -24,16 +26,20 @@ export interface RecurringBackupSchedule {
     recurrence: string;
 }
 export interface DaysOfWeekBackupSchedule {
+    $type: 'yandex.cloud.ydb.v1.DaysOfWeekBackupSchedule';
     days: DayOfWeek[];
     executeTime: TimeOfDay | undefined;
 }
 export interface WeeklyBackupSchedule {
+    $type: 'yandex.cloud.ydb.v1.WeeklyBackupSchedule';
     daysOfWeek: DaysOfWeekBackupSchedule[];
 }
 export interface DailyBackupSchedule {
+    $type: 'yandex.cloud.ydb.v1.DailyBackupSchedule';
     executeTime: TimeOfDay | undefined;
 }
 export interface BackupSettings {
+    $type: 'yandex.cloud.ydb.v1.BackupSettings';
     /** name of backup settings */
     name: string;
     /** human readable description. */
@@ -80,9 +86,11 @@ export declare enum BackupSettings_StorageClass {
 export declare function backupSettings_StorageClassFromJSON(object: any): BackupSettings_StorageClass;
 export declare function backupSettings_StorageClassToJSON(object: BackupSettings_StorageClass): string;
 export interface BackupConfig {
+    $type: 'yandex.cloud.ydb.v1.BackupConfig';
     backupSettings: BackupSettings[];
 }
 export interface Backup {
+    $type: 'yandex.cloud.ydb.v1.Backup';
     id: string;
     /** human readable backup name. */
     name: string;
@@ -123,6 +131,7 @@ export declare enum Backup_Type {
 export declare function backup_TypeFromJSON(object: any): Backup_Type;
 export declare function backup_TypeToJSON(object: Backup_Type): string;
 export declare const BackupSchedule: {
+    $type: "yandex.cloud.ydb.v1.BackupSchedule";
     encode(message: BackupSchedule, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): BackupSchedule;
     fromJSON(object: any): BackupSchedule;
@@ -130,6 +139,7 @@ export declare const BackupSchedule: {
     fromPartial(object: DeepPartial<BackupSchedule>): BackupSchedule;
 };
 export declare const RecurringBackupSchedule: {
+    $type: "yandex.cloud.ydb.v1.RecurringBackupSchedule";
     encode(message: RecurringBackupSchedule, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): RecurringBackupSchedule;
     fromJSON(object: any): RecurringBackupSchedule;
@@ -137,6 +147,7 @@ export declare const RecurringBackupSchedule: {
     fromPartial(object: DeepPartial<RecurringBackupSchedule>): RecurringBackupSchedule;
 };
 export declare const DaysOfWeekBackupSchedule: {
+    $type: "yandex.cloud.ydb.v1.DaysOfWeekBackupSchedule";
     encode(message: DaysOfWeekBackupSchedule, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DaysOfWeekBackupSchedule;
     fromJSON(object: any): DaysOfWeekBackupSchedule;
@@ -144,6 +155,7 @@ export declare const DaysOfWeekBackupSchedule: {
     fromPartial(object: DeepPartial<DaysOfWeekBackupSchedule>): DaysOfWeekBackupSchedule;
 };
 export declare const WeeklyBackupSchedule: {
+    $type: "yandex.cloud.ydb.v1.WeeklyBackupSchedule";
     encode(message: WeeklyBackupSchedule, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): WeeklyBackupSchedule;
     fromJSON(object: any): WeeklyBackupSchedule;
@@ -151,6 +163,7 @@ export declare const WeeklyBackupSchedule: {
     fromPartial(object: DeepPartial<WeeklyBackupSchedule>): WeeklyBackupSchedule;
 };
 export declare const DailyBackupSchedule: {
+    $type: "yandex.cloud.ydb.v1.DailyBackupSchedule";
     encode(message: DailyBackupSchedule, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DailyBackupSchedule;
     fromJSON(object: any): DailyBackupSchedule;
@@ -158,6 +171,7 @@ export declare const DailyBackupSchedule: {
     fromPartial(object: DeepPartial<DailyBackupSchedule>): DailyBackupSchedule;
 };
 export declare const BackupSettings: {
+    $type: "yandex.cloud.ydb.v1.BackupSettings";
     encode(message: BackupSettings, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): BackupSettings;
     fromJSON(object: any): BackupSettings;
@@ -165,6 +179,7 @@ export declare const BackupSettings: {
     fromPartial(object: DeepPartial<BackupSettings>): BackupSettings;
 };
 export declare const BackupConfig: {
+    $type: "yandex.cloud.ydb.v1.BackupConfig";
     encode(message: BackupConfig, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): BackupConfig;
     fromJSON(object: any): BackupConfig;
@@ -172,6 +187,7 @@ export declare const BackupConfig: {
     fromPartial(object: DeepPartial<BackupConfig>): BackupConfig;
 };
 export declare const Backup: {
+    $type: "yandex.cloud.ydb.v1.Backup";
     encode(message: Backup, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Backup;
     fromJSON(object: any): Backup;
@@ -180,6 +196,6 @@ export declare const Backup: {
 };
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

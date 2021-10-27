@@ -6,47 +6,57 @@ import { ChannelCredentials, ChannelOptions, UntypedServiceImplementation, handl
 import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.mdb.clickhouse.v1";
 export interface GetFormatSchemaRequest {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.GetFormatSchemaRequest';
     clusterId: string;
     formatSchemaName: string;
 }
 export interface ListFormatSchemasRequest {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.ListFormatSchemasRequest';
     clusterId: string;
     pageSize: number;
     pageToken: string;
 }
 export interface ListFormatSchemasResponse {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.ListFormatSchemasResponse';
     formatSchemas: FormatSchema[];
     nextPageToken: string;
 }
 export interface CreateFormatSchemaRequest {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.CreateFormatSchemaRequest';
     clusterId: string;
     formatSchemaName: string;
     type: FormatSchemaType;
     uri: string;
 }
 export interface CreateFormatSchemaMetadata {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.CreateFormatSchemaMetadata';
     clusterId: string;
     formatSchemaName: string;
 }
 export interface UpdateFormatSchemaRequest {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.UpdateFormatSchemaRequest';
     clusterId: string;
     formatSchemaName: string;
     updateMask: FieldMask | undefined;
     uri: string;
 }
 export interface UpdateFormatSchemaMetadata {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.UpdateFormatSchemaMetadata';
     clusterId: string;
     formatSchemaName: string;
 }
 export interface DeleteFormatSchemaRequest {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.DeleteFormatSchemaRequest';
     clusterId: string;
     formatSchemaName: string;
 }
 export interface DeleteFormatSchemaMetadata {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.DeleteFormatSchemaMetadata';
     clusterId: string;
     formatSchemaName: string;
 }
 export declare const GetFormatSchemaRequest: {
+    $type: "yandex.cloud.mdb.clickhouse.v1.GetFormatSchemaRequest";
     encode(message: GetFormatSchemaRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): GetFormatSchemaRequest;
     fromJSON(object: any): GetFormatSchemaRequest;
@@ -54,6 +64,7 @@ export declare const GetFormatSchemaRequest: {
     fromPartial(object: DeepPartial<GetFormatSchemaRequest>): GetFormatSchemaRequest;
 };
 export declare const ListFormatSchemasRequest: {
+    $type: "yandex.cloud.mdb.clickhouse.v1.ListFormatSchemasRequest";
     encode(message: ListFormatSchemasRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListFormatSchemasRequest;
     fromJSON(object: any): ListFormatSchemasRequest;
@@ -61,6 +72,7 @@ export declare const ListFormatSchemasRequest: {
     fromPartial(object: DeepPartial<ListFormatSchemasRequest>): ListFormatSchemasRequest;
 };
 export declare const ListFormatSchemasResponse: {
+    $type: "yandex.cloud.mdb.clickhouse.v1.ListFormatSchemasResponse";
     encode(message: ListFormatSchemasResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListFormatSchemasResponse;
     fromJSON(object: any): ListFormatSchemasResponse;
@@ -68,6 +80,7 @@ export declare const ListFormatSchemasResponse: {
     fromPartial(object: DeepPartial<ListFormatSchemasResponse>): ListFormatSchemasResponse;
 };
 export declare const CreateFormatSchemaRequest: {
+    $type: "yandex.cloud.mdb.clickhouse.v1.CreateFormatSchemaRequest";
     encode(message: CreateFormatSchemaRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateFormatSchemaRequest;
     fromJSON(object: any): CreateFormatSchemaRequest;
@@ -75,6 +88,7 @@ export declare const CreateFormatSchemaRequest: {
     fromPartial(object: DeepPartial<CreateFormatSchemaRequest>): CreateFormatSchemaRequest;
 };
 export declare const CreateFormatSchemaMetadata: {
+    $type: "yandex.cloud.mdb.clickhouse.v1.CreateFormatSchemaMetadata";
     encode(message: CreateFormatSchemaMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateFormatSchemaMetadata;
     fromJSON(object: any): CreateFormatSchemaMetadata;
@@ -82,6 +96,7 @@ export declare const CreateFormatSchemaMetadata: {
     fromPartial(object: DeepPartial<CreateFormatSchemaMetadata>): CreateFormatSchemaMetadata;
 };
 export declare const UpdateFormatSchemaRequest: {
+    $type: "yandex.cloud.mdb.clickhouse.v1.UpdateFormatSchemaRequest";
     encode(message: UpdateFormatSchemaRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateFormatSchemaRequest;
     fromJSON(object: any): UpdateFormatSchemaRequest;
@@ -89,6 +104,7 @@ export declare const UpdateFormatSchemaRequest: {
     fromPartial(object: DeepPartial<UpdateFormatSchemaRequest>): UpdateFormatSchemaRequest;
 };
 export declare const UpdateFormatSchemaMetadata: {
+    $type: "yandex.cloud.mdb.clickhouse.v1.UpdateFormatSchemaMetadata";
     encode(message: UpdateFormatSchemaMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateFormatSchemaMetadata;
     fromJSON(object: any): UpdateFormatSchemaMetadata;
@@ -96,6 +112,7 @@ export declare const UpdateFormatSchemaMetadata: {
     fromPartial(object: DeepPartial<UpdateFormatSchemaMetadata>): UpdateFormatSchemaMetadata;
 };
 export declare const DeleteFormatSchemaRequest: {
+    $type: "yandex.cloud.mdb.clickhouse.v1.DeleteFormatSchemaRequest";
     encode(message: DeleteFormatSchemaRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteFormatSchemaRequest;
     fromJSON(object: any): DeleteFormatSchemaRequest;
@@ -103,6 +120,7 @@ export declare const DeleteFormatSchemaRequest: {
     fromPartial(object: DeepPartial<DeleteFormatSchemaRequest>): DeleteFormatSchemaRequest;
 };
 export declare const DeleteFormatSchemaMetadata: {
+    $type: "yandex.cloud.mdb.clickhouse.v1.DeleteFormatSchemaMetadata";
     encode(message: DeleteFormatSchemaMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteFormatSchemaMetadata;
     fromJSON(object: any): DeleteFormatSchemaMetadata;
@@ -183,6 +201,6 @@ export interface FormatSchemaServiceClient extends Client {
 export declare const FormatSchemaServiceClient: new (address: string, credentials: ChannelCredentials, options?: Partial<ChannelOptions> | undefined) => FormatSchemaServiceClient;
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

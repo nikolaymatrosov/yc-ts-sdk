@@ -1,5 +1,6 @@
 /* eslint-disable */
 import { Timestamp } from '../../../../google/protobuf/timestamp';
+import { messageTypeRegistry } from '../../../../typeRegistry';
 import Long from 'long';
 import _m0 from 'protobufjs/minimal';
 
@@ -7,6 +8,7 @@ export const protobufPackage = 'yandex.cloud.vpc.v1';
 
 /** A Network resource. For more information, see [Networks](/docs/vpc/concepts/network). */
 export interface Network {
+    $type: 'yandex.cloud.vpc.v1.Network';
     /** ID of the network. */
     id: string;
     /** ID of the folder that the network belongs to. */
@@ -27,11 +29,13 @@ export interface Network {
 }
 
 export interface Network_LabelsEntry {
+    $type: 'yandex.cloud.vpc.v1.Network.LabelsEntry';
     key: string;
     value: string;
 }
 
 const baseNetwork: object = {
+    $type: 'yandex.cloud.vpc.v1.Network',
     id: '',
     folderId: '',
     name: '',
@@ -40,6 +44,8 @@ const baseNetwork: object = {
 };
 
 export const Network = {
+    $type: 'yandex.cloud.vpc.v1.Network' as const,
+
     encode(
         message: Network,
         writer: _m0.Writer = _m0.Writer.create()
@@ -64,7 +70,11 @@ export const Network = {
         }
         Object.entries(message.labels).forEach(([key, value]) => {
             Network_LabelsEntry.encode(
-                { key: key as any, value },
+                {
+                    $type: 'yandex.cloud.vpc.v1.Network.LabelsEntry',
+                    key: key as any,
+                    value,
+                },
                 writer.uint32(50).fork()
             ).ldelim();
         });
@@ -233,9 +243,17 @@ export const Network = {
     },
 };
 
-const baseNetwork_LabelsEntry: object = { key: '', value: '' };
+messageTypeRegistry.set(Network.$type, Network);
+
+const baseNetwork_LabelsEntry: object = {
+    $type: 'yandex.cloud.vpc.v1.Network.LabelsEntry',
+    key: '',
+    value: '',
+};
 
 export const Network_LabelsEntry = {
+    $type: 'yandex.cloud.vpc.v1.Network.LabelsEntry' as const,
+
     encode(
         message: Network_LabelsEntry,
         writer: _m0.Writer = _m0.Writer.create()
@@ -312,6 +330,8 @@ export const Network_LabelsEntry = {
     },
 };
 
+messageTypeRegistry.set(Network_LabelsEntry.$type, Network_LabelsEntry);
+
 type Builtin =
     | Date
     | Function
@@ -327,13 +347,13 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 function toTimestamp(date: Date): Timestamp {
     const seconds = date.getTime() / 1_000;
     const nanos = (date.getTime() % 1_000) * 1_000_000;
-    return { seconds, nanos };
+    return { $type: 'google.protobuf.Timestamp', seconds, nanos };
 }
 
 function fromTimestamp(t: Timestamp): Date {

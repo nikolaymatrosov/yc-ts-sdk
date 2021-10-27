@@ -7,6 +7,7 @@ import { ChannelCredentials, ChannelOptions, UntypedServiceImplementation, handl
 import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.compute.v1";
 export interface GetPlacementGroupRequest {
+    $type: 'yandex.cloud.compute.v1.GetPlacementGroupRequest';
     /**
      * ID of the placement group to return.
      *
@@ -15,6 +16,7 @@ export interface GetPlacementGroupRequest {
     placementGroupId: string;
 }
 export interface ListPlacementGroupsRequest {
+    $type: 'yandex.cloud.compute.v1.ListPlacementGroupsRequest';
     /**
      * ID of the folder to list placement groups in.
      *
@@ -41,6 +43,7 @@ export interface ListPlacementGroupsRequest {
     filter: string;
 }
 export interface ListPlacementGroupsResponse {
+    $type: 'yandex.cloud.compute.v1.ListPlacementGroupsResponse';
     /** Lists placement groups in the specified folder. */
     placementGroups: PlacementGroup[];
     /**
@@ -53,6 +56,7 @@ export interface ListPlacementGroupsResponse {
     nextPageToken: string;
 }
 export interface CreatePlacementGroupRequest {
+    $type: 'yandex.cloud.compute.v1.CreatePlacementGroupRequest';
     /**
      * ID of the folder to create a placement group in.
      *
@@ -71,14 +75,17 @@ export interface CreatePlacementGroupRequest {
     spreadPlacementStrategy: SpreadPlacementStrategy | undefined;
 }
 export interface CreatePlacementGroupRequest_LabelsEntry {
+    $type: 'yandex.cloud.compute.v1.CreatePlacementGroupRequest.LabelsEntry';
     key: string;
     value: string;
 }
 export interface CreatePlacementGroupMetadata {
+    $type: 'yandex.cloud.compute.v1.CreatePlacementGroupMetadata';
     /** ID of the placement group that is being created. */
     placementGroupId: string;
 }
 export interface UpdatePlacementGroupRequest {
+    $type: 'yandex.cloud.compute.v1.UpdatePlacementGroupRequest';
     /**
      * ID of the placement group to update.
      *
@@ -101,14 +108,17 @@ export interface UpdatePlacementGroupRequest {
     };
 }
 export interface UpdatePlacementGroupRequest_LabelsEntry {
+    $type: 'yandex.cloud.compute.v1.UpdatePlacementGroupRequest.LabelsEntry';
     key: string;
     value: string;
 }
 export interface UpdatePlacementGroupMetadata {
+    $type: 'yandex.cloud.compute.v1.UpdatePlacementGroupMetadata';
     /** ID of the placement group that is being updated. */
     placementGroupId: string;
 }
 export interface DeletePlacementGroupRequest {
+    $type: 'yandex.cloud.compute.v1.DeletePlacementGroupRequest';
     /**
      * ID of the placement group to delete.
      *
@@ -117,10 +127,12 @@ export interface DeletePlacementGroupRequest {
     placementGroupId: string;
 }
 export interface DeletePlacementGroupMetadata {
+    $type: 'yandex.cloud.compute.v1.DeletePlacementGroupMetadata';
     /** ID of the placement group that is being deleted. */
     placementGroupId: string;
 }
 export interface ListPlacementGroupInstancesRequest {
+    $type: 'yandex.cloud.compute.v1.ListPlacementGroupInstancesRequest';
     /**
      * ID of the placement group to list instances for.
      *
@@ -142,6 +154,7 @@ export interface ListPlacementGroupInstancesRequest {
     pageToken: string;
 }
 export interface ListPlacementGroupInstancesResponse {
+    $type: 'yandex.cloud.compute.v1.ListPlacementGroupInstancesResponse';
     /** Lists instances for the specified placement group. */
     instances: Instance[];
     /**
@@ -155,6 +168,7 @@ export interface ListPlacementGroupInstancesResponse {
     nextPageToken: string;
 }
 export interface ListPlacementGroupOperationsRequest {
+    $type: 'yandex.cloud.compute.v1.ListPlacementGroupOperationsRequest';
     /**
      * ID of the placement group to list operations for.
      *
@@ -174,6 +188,7 @@ export interface ListPlacementGroupOperationsRequest {
     pageToken: string;
 }
 export interface ListPlacementGroupOperationsResponse {
+    $type: 'yandex.cloud.compute.v1.ListPlacementGroupOperationsResponse';
     /** List of operations for the specified placement group. */
     operations: Operation[];
     /**
@@ -185,6 +200,7 @@ export interface ListPlacementGroupOperationsResponse {
     nextPageToken: string;
 }
 export declare const GetPlacementGroupRequest: {
+    $type: "yandex.cloud.compute.v1.GetPlacementGroupRequest";
     encode(message: GetPlacementGroupRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): GetPlacementGroupRequest;
     fromJSON(object: any): GetPlacementGroupRequest;
@@ -192,6 +208,7 @@ export declare const GetPlacementGroupRequest: {
     fromPartial(object: DeepPartial<GetPlacementGroupRequest>): GetPlacementGroupRequest;
 };
 export declare const ListPlacementGroupsRequest: {
+    $type: "yandex.cloud.compute.v1.ListPlacementGroupsRequest";
     encode(message: ListPlacementGroupsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListPlacementGroupsRequest;
     fromJSON(object: any): ListPlacementGroupsRequest;
@@ -199,6 +216,7 @@ export declare const ListPlacementGroupsRequest: {
     fromPartial(object: DeepPartial<ListPlacementGroupsRequest>): ListPlacementGroupsRequest;
 };
 export declare const ListPlacementGroupsResponse: {
+    $type: "yandex.cloud.compute.v1.ListPlacementGroupsResponse";
     encode(message: ListPlacementGroupsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListPlacementGroupsResponse;
     fromJSON(object: any): ListPlacementGroupsResponse;
@@ -206,6 +224,7 @@ export declare const ListPlacementGroupsResponse: {
     fromPartial(object: DeepPartial<ListPlacementGroupsResponse>): ListPlacementGroupsResponse;
 };
 export declare const CreatePlacementGroupRequest: {
+    $type: "yandex.cloud.compute.v1.CreatePlacementGroupRequest";
     encode(message: CreatePlacementGroupRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreatePlacementGroupRequest;
     fromJSON(object: any): CreatePlacementGroupRequest;
@@ -213,6 +232,7 @@ export declare const CreatePlacementGroupRequest: {
     fromPartial(object: DeepPartial<CreatePlacementGroupRequest>): CreatePlacementGroupRequest;
 };
 export declare const CreatePlacementGroupRequest_LabelsEntry: {
+    $type: "yandex.cloud.compute.v1.CreatePlacementGroupRequest.LabelsEntry";
     encode(message: CreatePlacementGroupRequest_LabelsEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreatePlacementGroupRequest_LabelsEntry;
     fromJSON(object: any): CreatePlacementGroupRequest_LabelsEntry;
@@ -220,6 +240,7 @@ export declare const CreatePlacementGroupRequest_LabelsEntry: {
     fromPartial(object: DeepPartial<CreatePlacementGroupRequest_LabelsEntry>): CreatePlacementGroupRequest_LabelsEntry;
 };
 export declare const CreatePlacementGroupMetadata: {
+    $type: "yandex.cloud.compute.v1.CreatePlacementGroupMetadata";
     encode(message: CreatePlacementGroupMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreatePlacementGroupMetadata;
     fromJSON(object: any): CreatePlacementGroupMetadata;
@@ -227,6 +248,7 @@ export declare const CreatePlacementGroupMetadata: {
     fromPartial(object: DeepPartial<CreatePlacementGroupMetadata>): CreatePlacementGroupMetadata;
 };
 export declare const UpdatePlacementGroupRequest: {
+    $type: "yandex.cloud.compute.v1.UpdatePlacementGroupRequest";
     encode(message: UpdatePlacementGroupRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdatePlacementGroupRequest;
     fromJSON(object: any): UpdatePlacementGroupRequest;
@@ -234,6 +256,7 @@ export declare const UpdatePlacementGroupRequest: {
     fromPartial(object: DeepPartial<UpdatePlacementGroupRequest>): UpdatePlacementGroupRequest;
 };
 export declare const UpdatePlacementGroupRequest_LabelsEntry: {
+    $type: "yandex.cloud.compute.v1.UpdatePlacementGroupRequest.LabelsEntry";
     encode(message: UpdatePlacementGroupRequest_LabelsEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdatePlacementGroupRequest_LabelsEntry;
     fromJSON(object: any): UpdatePlacementGroupRequest_LabelsEntry;
@@ -241,6 +264,7 @@ export declare const UpdatePlacementGroupRequest_LabelsEntry: {
     fromPartial(object: DeepPartial<UpdatePlacementGroupRequest_LabelsEntry>): UpdatePlacementGroupRequest_LabelsEntry;
 };
 export declare const UpdatePlacementGroupMetadata: {
+    $type: "yandex.cloud.compute.v1.UpdatePlacementGroupMetadata";
     encode(message: UpdatePlacementGroupMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdatePlacementGroupMetadata;
     fromJSON(object: any): UpdatePlacementGroupMetadata;
@@ -248,6 +272,7 @@ export declare const UpdatePlacementGroupMetadata: {
     fromPartial(object: DeepPartial<UpdatePlacementGroupMetadata>): UpdatePlacementGroupMetadata;
 };
 export declare const DeletePlacementGroupRequest: {
+    $type: "yandex.cloud.compute.v1.DeletePlacementGroupRequest";
     encode(message: DeletePlacementGroupRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeletePlacementGroupRequest;
     fromJSON(object: any): DeletePlacementGroupRequest;
@@ -255,6 +280,7 @@ export declare const DeletePlacementGroupRequest: {
     fromPartial(object: DeepPartial<DeletePlacementGroupRequest>): DeletePlacementGroupRequest;
 };
 export declare const DeletePlacementGroupMetadata: {
+    $type: "yandex.cloud.compute.v1.DeletePlacementGroupMetadata";
     encode(message: DeletePlacementGroupMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeletePlacementGroupMetadata;
     fromJSON(object: any): DeletePlacementGroupMetadata;
@@ -262,6 +288,7 @@ export declare const DeletePlacementGroupMetadata: {
     fromPartial(object: DeepPartial<DeletePlacementGroupMetadata>): DeletePlacementGroupMetadata;
 };
 export declare const ListPlacementGroupInstancesRequest: {
+    $type: "yandex.cloud.compute.v1.ListPlacementGroupInstancesRequest";
     encode(message: ListPlacementGroupInstancesRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListPlacementGroupInstancesRequest;
     fromJSON(object: any): ListPlacementGroupInstancesRequest;
@@ -269,6 +296,7 @@ export declare const ListPlacementGroupInstancesRequest: {
     fromPartial(object: DeepPartial<ListPlacementGroupInstancesRequest>): ListPlacementGroupInstancesRequest;
 };
 export declare const ListPlacementGroupInstancesResponse: {
+    $type: "yandex.cloud.compute.v1.ListPlacementGroupInstancesResponse";
     encode(message: ListPlacementGroupInstancesResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListPlacementGroupInstancesResponse;
     fromJSON(object: any): ListPlacementGroupInstancesResponse;
@@ -276,6 +304,7 @@ export declare const ListPlacementGroupInstancesResponse: {
     fromPartial(object: DeepPartial<ListPlacementGroupInstancesResponse>): ListPlacementGroupInstancesResponse;
 };
 export declare const ListPlacementGroupOperationsRequest: {
+    $type: "yandex.cloud.compute.v1.ListPlacementGroupOperationsRequest";
     encode(message: ListPlacementGroupOperationsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListPlacementGroupOperationsRequest;
     fromJSON(object: any): ListPlacementGroupOperationsRequest;
@@ -283,6 +312,7 @@ export declare const ListPlacementGroupOperationsRequest: {
     fromPartial(object: DeepPartial<ListPlacementGroupOperationsRequest>): ListPlacementGroupOperationsRequest;
 };
 export declare const ListPlacementGroupOperationsResponse: {
+    $type: "yandex.cloud.compute.v1.ListPlacementGroupOperationsResponse";
     encode(message: ListPlacementGroupOperationsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListPlacementGroupOperationsResponse;
     fromJSON(object: any): ListPlacementGroupOperationsResponse;
@@ -423,6 +453,6 @@ export interface PlacementGroupServiceClient extends Client {
 export declare const PlacementGroupServiceClient: new (address: string, credentials: ChannelCredentials, options?: Partial<ChannelOptions> | undefined) => PlacementGroupServiceClient;
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

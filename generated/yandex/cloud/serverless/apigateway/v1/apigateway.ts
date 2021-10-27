@@ -1,11 +1,13 @@
 /* eslint-disable */
 import { Timestamp } from '../../../../../google/protobuf/timestamp';
+import { messageTypeRegistry } from '../../../../../typeRegistry';
 import Long from 'long';
 import _m0 from 'protobufjs/minimal';
 
 export const protobufPackage = 'yandex.cloud.serverless.apigateway.v1';
 
 export interface ApiGateway {
+    $type: 'yandex.cloud.serverless.apigateway.v1.ApiGateway';
     /** ID of the API gateway. Generated at creation time. */
     id: string;
     /** ID of the folder that the API gateway belongs to. */
@@ -90,11 +92,13 @@ export function apiGateway_StatusToJSON(object: ApiGateway_Status): string {
 }
 
 export interface ApiGateway_LabelsEntry {
+    $type: 'yandex.cloud.serverless.apigateway.v1.ApiGateway.LabelsEntry';
     key: string;
     value: string;
 }
 
 export interface AttachedDomain {
+    $type: 'yandex.cloud.serverless.apigateway.v1.AttachedDomain';
     /** ID of the domain. */
     domainId: string;
     /** ID of the domain certificate. */
@@ -106,6 +110,7 @@ export interface AttachedDomain {
 }
 
 const baseApiGateway: object = {
+    $type: 'yandex.cloud.serverless.apigateway.v1.ApiGateway',
     id: '',
     folderId: '',
     name: '',
@@ -116,6 +121,8 @@ const baseApiGateway: object = {
 };
 
 export const ApiGateway = {
+    $type: 'yandex.cloud.serverless.apigateway.v1.ApiGateway' as const,
+
     encode(
         message: ApiGateway,
         writer: _m0.Writer = _m0.Writer.create()
@@ -140,7 +147,11 @@ export const ApiGateway = {
         }
         Object.entries(message.labels).forEach(([key, value]) => {
             ApiGateway_LabelsEntry.encode(
-                { key: key as any, value },
+                {
+                    $type: 'yandex.cloud.serverless.apigateway.v1.ApiGateway.LabelsEntry',
+                    key: key as any,
+                    value,
+                },
                 writer.uint32(58).fork()
             ).ldelim();
         });
@@ -370,9 +381,17 @@ export const ApiGateway = {
     },
 };
 
-const baseApiGateway_LabelsEntry: object = { key: '', value: '' };
+messageTypeRegistry.set(ApiGateway.$type, ApiGateway);
+
+const baseApiGateway_LabelsEntry: object = {
+    $type: 'yandex.cloud.serverless.apigateway.v1.ApiGateway.LabelsEntry',
+    key: '',
+    value: '',
+};
 
 export const ApiGateway_LabelsEntry = {
+    $type: 'yandex.cloud.serverless.apigateway.v1.ApiGateway.LabelsEntry' as const,
+
     encode(
         message: ApiGateway_LabelsEntry,
         writer: _m0.Writer = _m0.Writer.create()
@@ -457,7 +476,10 @@ export const ApiGateway_LabelsEntry = {
     },
 };
 
+messageTypeRegistry.set(ApiGateway_LabelsEntry.$type, ApiGateway_LabelsEntry);
+
 const baseAttachedDomain: object = {
+    $type: 'yandex.cloud.serverless.apigateway.v1.AttachedDomain',
     domainId: '',
     certificateId: '',
     enabled: false,
@@ -465,6 +487,8 @@ const baseAttachedDomain: object = {
 };
 
 export const AttachedDomain = {
+    $type: 'yandex.cloud.serverless.apigateway.v1.AttachedDomain' as const,
+
     encode(
         message: AttachedDomain,
         writer: _m0.Writer = _m0.Writer.create()
@@ -579,6 +603,8 @@ export const AttachedDomain = {
     },
 };
 
+messageTypeRegistry.set(AttachedDomain.$type, AttachedDomain);
+
 type Builtin =
     | Date
     | Function
@@ -594,13 +620,13 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 function toTimestamp(date: Date): Timestamp {
     const seconds = date.getTime() / 1_000;
     const nanos = (date.getTime() % 1_000) * 1_000_000;
-    return { seconds, nanos };
+    return { $type: 'google.protobuf.Timestamp', seconds, nanos };
 }
 
 function fromTimestamp(t: Timestamp): Date {

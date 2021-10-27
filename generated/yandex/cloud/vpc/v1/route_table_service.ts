@@ -1,5 +1,6 @@
 /* eslint-disable */
 import { FieldMask } from '../../../../google/protobuf/field_mask';
+import { messageTypeRegistry } from '../../../../typeRegistry';
 import { Operation } from '../../../../yandex/cloud/operation/operation';
 import {
     RouteTable,
@@ -23,6 +24,7 @@ import _m0 from 'protobufjs/minimal';
 export const protobufPackage = 'yandex.cloud.vpc.v1';
 
 export interface GetRouteTableRequest {
+    $type: 'yandex.cloud.vpc.v1.GetRouteTableRequest';
     /**
      * ID of the RouteTable resource to return.
      * To get the route table ID use a [RouteTableService.List] request.
@@ -31,6 +33,7 @@ export interface GetRouteTableRequest {
 }
 
 export interface ListRouteTablesRequest {
+    $type: 'yandex.cloud.vpc.v1.ListRouteTablesRequest';
     /**
      * ID of the folder that the route table belongs to.
      * To get the folder ID use a [yandex.cloud.resourcemanager.v1.FolderService.List] request.
@@ -59,6 +62,7 @@ export interface ListRouteTablesRequest {
 }
 
 export interface ListRouteTablesResponse {
+    $type: 'yandex.cloud.vpc.v1.ListRouteTablesResponse';
     /** List of RouteTable resources. */
     routeTables: RouteTable[];
     /**
@@ -73,6 +77,7 @@ export interface ListRouteTablesResponse {
 }
 
 export interface CreateRouteTableRequest {
+    $type: 'yandex.cloud.vpc.v1.CreateRouteTableRequest';
     /**
      * ID of the folder that the route table belongs to.
      * To get the folder ID use a [yandex.cloud.resourcemanager.v1.FolderService.List] request.
@@ -94,16 +99,19 @@ export interface CreateRouteTableRequest {
 }
 
 export interface CreateRouteTableRequest_LabelsEntry {
+    $type: 'yandex.cloud.vpc.v1.CreateRouteTableRequest.LabelsEntry';
     key: string;
     value: string;
 }
 
 export interface CreateRouteTableMetadata {
+    $type: 'yandex.cloud.vpc.v1.CreateRouteTableMetadata';
     /** ID of the route table that is being created. */
     routeTableId: string;
 }
 
 export interface UpdateRouteTableRequest {
+    $type: 'yandex.cloud.vpc.v1.UpdateRouteTableRequest';
     /** ID of the RouteTable resource to update. */
     routeTableId: string;
     /** Field mask that specifies which fields of the RouteTable resource are going to be updated. */
@@ -122,16 +130,19 @@ export interface UpdateRouteTableRequest {
 }
 
 export interface UpdateRouteTableRequest_LabelsEntry {
+    $type: 'yandex.cloud.vpc.v1.UpdateRouteTableRequest.LabelsEntry';
     key: string;
     value: string;
 }
 
 export interface UpdateRouteTableMetadata {
+    $type: 'yandex.cloud.vpc.v1.UpdateRouteTableMetadata';
     /** ID of the RouteTable resource that is being updated. */
     routeTableId: string;
 }
 
 export interface DeleteRouteTableRequest {
+    $type: 'yandex.cloud.vpc.v1.DeleteRouteTableRequest';
     /**
      * ID of the route table to delete.
      * To get the route table ID use a [RouteTableService.List] request.
@@ -140,11 +151,13 @@ export interface DeleteRouteTableRequest {
 }
 
 export interface DeleteRouteTableMetadata {
+    $type: 'yandex.cloud.vpc.v1.DeleteRouteTableMetadata';
     /** ID of the RouteTable resource that is being deleted. */
     routeTableId: string;
 }
 
 export interface ListRouteTableOperationsRequest {
+    $type: 'yandex.cloud.vpc.v1.ListRouteTableOperationsRequest';
     /** ID of the RouteTable resource to list operations for. */
     routeTableId: string;
     /**
@@ -161,6 +174,7 @@ export interface ListRouteTableOperationsRequest {
 }
 
 export interface ListRouteTableOperationsResponse {
+    $type: 'yandex.cloud.vpc.v1.ListRouteTableOperationsResponse';
     /** List of operations for the specified RouteTable resource. */
     operations: Operation[];
     /**
@@ -173,6 +187,7 @@ export interface ListRouteTableOperationsResponse {
 }
 
 export interface MoveRouteTableRequest {
+    $type: 'yandex.cloud.vpc.v1.MoveRouteTableRequest';
     /** ID of the RouteTable resource to move. */
     routeTableId: string;
     /** ID of the destination folder. */
@@ -180,13 +195,19 @@ export interface MoveRouteTableRequest {
 }
 
 export interface MoveRouteTableMetadata {
+    $type: 'yandex.cloud.vpc.v1.MoveRouteTableMetadata';
     /** ID of the RouteTable resource that is being moved. */
     routeTableId: string;
 }
 
-const baseGetRouteTableRequest: object = { routeTableId: '' };
+const baseGetRouteTableRequest: object = {
+    $type: 'yandex.cloud.vpc.v1.GetRouteTableRequest',
+    routeTableId: '',
+};
 
 export const GetRouteTableRequest = {
+    $type: 'yandex.cloud.vpc.v1.GetRouteTableRequest' as const,
+
     encode(
         message: GetRouteTableRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -249,7 +270,10 @@ export const GetRouteTableRequest = {
     },
 };
 
+messageTypeRegistry.set(GetRouteTableRequest.$type, GetRouteTableRequest);
+
 const baseListRouteTablesRequest: object = {
+    $type: 'yandex.cloud.vpc.v1.ListRouteTablesRequest',
     folderId: '',
     pageSize: 0,
     pageToken: '',
@@ -257,6 +281,8 @@ const baseListRouteTablesRequest: object = {
 };
 
 export const ListRouteTablesRequest = {
+    $type: 'yandex.cloud.vpc.v1.ListRouteTablesRequest' as const,
+
     encode(
         message: ListRouteTablesRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -375,9 +401,16 @@ export const ListRouteTablesRequest = {
     },
 };
 
-const baseListRouteTablesResponse: object = { nextPageToken: '' };
+messageTypeRegistry.set(ListRouteTablesRequest.$type, ListRouteTablesRequest);
+
+const baseListRouteTablesResponse: object = {
+    $type: 'yandex.cloud.vpc.v1.ListRouteTablesResponse',
+    nextPageToken: '',
+};
 
 export const ListRouteTablesResponse = {
+    $type: 'yandex.cloud.vpc.v1.ListRouteTablesResponse' as const,
+
     encode(
         message: ListRouteTablesResponse,
         writer: _m0.Writer = _m0.Writer.create()
@@ -480,7 +513,10 @@ export const ListRouteTablesResponse = {
     },
 };
 
+messageTypeRegistry.set(ListRouteTablesResponse.$type, ListRouteTablesResponse);
+
 const baseCreateRouteTableRequest: object = {
+    $type: 'yandex.cloud.vpc.v1.CreateRouteTableRequest',
     folderId: '',
     name: '',
     description: '',
@@ -488,6 +524,8 @@ const baseCreateRouteTableRequest: object = {
 };
 
 export const CreateRouteTableRequest = {
+    $type: 'yandex.cloud.vpc.v1.CreateRouteTableRequest' as const,
+
     encode(
         message: CreateRouteTableRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -503,7 +541,11 @@ export const CreateRouteTableRequest = {
         }
         Object.entries(message.labels).forEach(([key, value]) => {
             CreateRouteTableRequest_LabelsEntry.encode(
-                { key: key as any, value },
+                {
+                    $type: 'yandex.cloud.vpc.v1.CreateRouteTableRequest.LabelsEntry',
+                    key: key as any,
+                    value,
+                },
                 writer.uint32(34).fork()
             ).ldelim();
         });
@@ -671,9 +713,17 @@ export const CreateRouteTableRequest = {
     },
 };
 
-const baseCreateRouteTableRequest_LabelsEntry: object = { key: '', value: '' };
+messageTypeRegistry.set(CreateRouteTableRequest.$type, CreateRouteTableRequest);
+
+const baseCreateRouteTableRequest_LabelsEntry: object = {
+    $type: 'yandex.cloud.vpc.v1.CreateRouteTableRequest.LabelsEntry',
+    key: '',
+    value: '',
+};
 
 export const CreateRouteTableRequest_LabelsEntry = {
+    $type: 'yandex.cloud.vpc.v1.CreateRouteTableRequest.LabelsEntry' as const,
+
     encode(
         message: CreateRouteTableRequest_LabelsEntry,
         writer: _m0.Writer = _m0.Writer.create()
@@ -758,9 +808,19 @@ export const CreateRouteTableRequest_LabelsEntry = {
     },
 };
 
-const baseCreateRouteTableMetadata: object = { routeTableId: '' };
+messageTypeRegistry.set(
+    CreateRouteTableRequest_LabelsEntry.$type,
+    CreateRouteTableRequest_LabelsEntry
+);
+
+const baseCreateRouteTableMetadata: object = {
+    $type: 'yandex.cloud.vpc.v1.CreateRouteTableMetadata',
+    routeTableId: '',
+};
 
 export const CreateRouteTableMetadata = {
+    $type: 'yandex.cloud.vpc.v1.CreateRouteTableMetadata' as const,
+
     encode(
         message: CreateRouteTableMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -829,13 +889,21 @@ export const CreateRouteTableMetadata = {
     },
 };
 
+messageTypeRegistry.set(
+    CreateRouteTableMetadata.$type,
+    CreateRouteTableMetadata
+);
+
 const baseUpdateRouteTableRequest: object = {
+    $type: 'yandex.cloud.vpc.v1.UpdateRouteTableRequest',
     routeTableId: '',
     name: '',
     description: '',
 };
 
 export const UpdateRouteTableRequest = {
+    $type: 'yandex.cloud.vpc.v1.UpdateRouteTableRequest' as const,
+
     encode(
         message: UpdateRouteTableRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -857,7 +925,11 @@ export const UpdateRouteTableRequest = {
         }
         Object.entries(message.labels).forEach(([key, value]) => {
             UpdateRouteTableRequest_LabelsEntry.encode(
-                { key: key as any, value },
+                {
+                    $type: 'yandex.cloud.vpc.v1.UpdateRouteTableRequest.LabelsEntry',
+                    key: key as any,
+                    value,
+                },
                 writer.uint32(42).fork()
             ).ldelim();
         });
@@ -1029,9 +1101,17 @@ export const UpdateRouteTableRequest = {
     },
 };
 
-const baseUpdateRouteTableRequest_LabelsEntry: object = { key: '', value: '' };
+messageTypeRegistry.set(UpdateRouteTableRequest.$type, UpdateRouteTableRequest);
+
+const baseUpdateRouteTableRequest_LabelsEntry: object = {
+    $type: 'yandex.cloud.vpc.v1.UpdateRouteTableRequest.LabelsEntry',
+    key: '',
+    value: '',
+};
 
 export const UpdateRouteTableRequest_LabelsEntry = {
+    $type: 'yandex.cloud.vpc.v1.UpdateRouteTableRequest.LabelsEntry' as const,
+
     encode(
         message: UpdateRouteTableRequest_LabelsEntry,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1116,9 +1196,19 @@ export const UpdateRouteTableRequest_LabelsEntry = {
     },
 };
 
-const baseUpdateRouteTableMetadata: object = { routeTableId: '' };
+messageTypeRegistry.set(
+    UpdateRouteTableRequest_LabelsEntry.$type,
+    UpdateRouteTableRequest_LabelsEntry
+);
+
+const baseUpdateRouteTableMetadata: object = {
+    $type: 'yandex.cloud.vpc.v1.UpdateRouteTableMetadata',
+    routeTableId: '',
+};
 
 export const UpdateRouteTableMetadata = {
+    $type: 'yandex.cloud.vpc.v1.UpdateRouteTableMetadata' as const,
+
     encode(
         message: UpdateRouteTableMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1187,9 +1277,19 @@ export const UpdateRouteTableMetadata = {
     },
 };
 
-const baseDeleteRouteTableRequest: object = { routeTableId: '' };
+messageTypeRegistry.set(
+    UpdateRouteTableMetadata.$type,
+    UpdateRouteTableMetadata
+);
+
+const baseDeleteRouteTableRequest: object = {
+    $type: 'yandex.cloud.vpc.v1.DeleteRouteTableRequest',
+    routeTableId: '',
+};
 
 export const DeleteRouteTableRequest = {
+    $type: 'yandex.cloud.vpc.v1.DeleteRouteTableRequest' as const,
+
     encode(
         message: DeleteRouteTableRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1258,9 +1358,16 @@ export const DeleteRouteTableRequest = {
     },
 };
 
-const baseDeleteRouteTableMetadata: object = { routeTableId: '' };
+messageTypeRegistry.set(DeleteRouteTableRequest.$type, DeleteRouteTableRequest);
+
+const baseDeleteRouteTableMetadata: object = {
+    $type: 'yandex.cloud.vpc.v1.DeleteRouteTableMetadata',
+    routeTableId: '',
+};
 
 export const DeleteRouteTableMetadata = {
+    $type: 'yandex.cloud.vpc.v1.DeleteRouteTableMetadata' as const,
+
     encode(
         message: DeleteRouteTableMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1329,13 +1436,21 @@ export const DeleteRouteTableMetadata = {
     },
 };
 
+messageTypeRegistry.set(
+    DeleteRouteTableMetadata.$type,
+    DeleteRouteTableMetadata
+);
+
 const baseListRouteTableOperationsRequest: object = {
+    $type: 'yandex.cloud.vpc.v1.ListRouteTableOperationsRequest',
     routeTableId: '',
     pageSize: 0,
     pageToken: '',
 };
 
 export const ListRouteTableOperationsRequest = {
+    $type: 'yandex.cloud.vpc.v1.ListRouteTableOperationsRequest' as const,
+
     encode(
         message: ListRouteTableOperationsRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1438,9 +1553,19 @@ export const ListRouteTableOperationsRequest = {
     },
 };
 
-const baseListRouteTableOperationsResponse: object = { nextPageToken: '' };
+messageTypeRegistry.set(
+    ListRouteTableOperationsRequest.$type,
+    ListRouteTableOperationsRequest
+);
+
+const baseListRouteTableOperationsResponse: object = {
+    $type: 'yandex.cloud.vpc.v1.ListRouteTableOperationsResponse',
+    nextPageToken: '',
+};
 
 export const ListRouteTableOperationsResponse = {
+    $type: 'yandex.cloud.vpc.v1.ListRouteTableOperationsResponse' as const,
+
     encode(
         message: ListRouteTableOperationsResponse,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1543,12 +1668,20 @@ export const ListRouteTableOperationsResponse = {
     },
 };
 
+messageTypeRegistry.set(
+    ListRouteTableOperationsResponse.$type,
+    ListRouteTableOperationsResponse
+);
+
 const baseMoveRouteTableRequest: object = {
+    $type: 'yandex.cloud.vpc.v1.MoveRouteTableRequest',
     routeTableId: '',
     destinationFolderId: '',
 };
 
 export const MoveRouteTableRequest = {
+    $type: 'yandex.cloud.vpc.v1.MoveRouteTableRequest' as const,
+
     encode(
         message: MoveRouteTableRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1641,9 +1774,16 @@ export const MoveRouteTableRequest = {
     },
 };
 
-const baseMoveRouteTableMetadata: object = { routeTableId: '' };
+messageTypeRegistry.set(MoveRouteTableRequest.$type, MoveRouteTableRequest);
+
+const baseMoveRouteTableMetadata: object = {
+    $type: 'yandex.cloud.vpc.v1.MoveRouteTableMetadata',
+    routeTableId: '',
+};
 
 export const MoveRouteTableMetadata = {
+    $type: 'yandex.cloud.vpc.v1.MoveRouteTableMetadata' as const,
+
     encode(
         message: MoveRouteTableMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1711,6 +1851,8 @@ export const MoveRouteTableMetadata = {
         return message;
     },
 };
+
+messageTypeRegistry.set(MoveRouteTableMetadata.$type, MoveRouteTableMetadata);
 
 /** A set of methods for managing RouteTable resources. */
 export const RouteTableServiceService = {
@@ -2031,7 +2173,7 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 function longToNumber(long: Long): number {

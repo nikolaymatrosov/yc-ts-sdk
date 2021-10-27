@@ -1,18 +1,27 @@
 /* eslint-disable */
+import { messageTypeRegistry } from '../../typeRegistry';
 import Long from 'long';
 import _m0 from 'protobufjs/minimal';
 
 export const protobufPackage = 'yandex.cloud';
 
 export interface MapKeySpec {
+    $type: 'yandex.cloud.MapKeySpec';
     value: string;
     pattern: string;
     length: string;
 }
 
-const baseMapKeySpec: object = { value: '', pattern: '', length: '' };
+const baseMapKeySpec: object = {
+    $type: 'yandex.cloud.MapKeySpec',
+    value: '',
+    pattern: '',
+    length: '',
+};
 
 export const MapKeySpec = {
+    $type: 'yandex.cloud.MapKeySpec' as const,
+
     encode(
         message: MapKeySpec,
         writer: _m0.Writer = _m0.Writer.create()
@@ -103,6 +112,8 @@ export const MapKeySpec = {
     },
 };
 
+messageTypeRegistry.set(MapKeySpec.$type, MapKeySpec);
+
 type Builtin =
     | Date
     | Function
@@ -118,7 +129,7 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 if (_m0.util.Long !== Long) {

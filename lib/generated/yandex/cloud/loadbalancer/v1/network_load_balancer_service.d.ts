@@ -6,6 +6,7 @@ import { ChannelCredentials, ChannelOptions, UntypedServiceImplementation, handl
 import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.loadbalancer.v1";
 export interface GetNetworkLoadBalancerRequest {
+    $type: 'yandex.cloud.loadbalancer.v1.GetNetworkLoadBalancerRequest';
     /**
      * ID of the NetworkLoadBalancer resource to return.
      * To get the network load balancer ID, use a [NetworkLoadBalancerService.List] request.
@@ -13,6 +14,7 @@ export interface GetNetworkLoadBalancerRequest {
     networkLoadBalancerId: string;
 }
 export interface ListNetworkLoadBalancersRequest {
+    $type: 'yandex.cloud.loadbalancer.v1.ListNetworkLoadBalancersRequest';
     /**
      * ID of the folder that the network load balancer belongs to.
      * To get the folder ID, use a [NetworkLoadBalancerService.List] request.
@@ -41,6 +43,7 @@ export interface ListNetworkLoadBalancersRequest {
     filter: string;
 }
 export interface ListNetworkLoadBalancersResponse {
+    $type: 'yandex.cloud.loadbalancer.v1.ListNetworkLoadBalancersResponse';
     /** List of NetworkLoadBalancer resources. */
     networkLoadBalancers: NetworkLoadBalancer[];
     /**
@@ -54,6 +57,7 @@ export interface ListNetworkLoadBalancersResponse {
     nextPageToken: string;
 }
 export interface CreateNetworkLoadBalancerRequest {
+    $type: 'yandex.cloud.loadbalancer.v1.CreateNetworkLoadBalancerRequest';
     /**
      * ID of the folder to create a network load balancer in.
      * To get the folder ID, use a [NetworkLoadBalancerService.List] request.
@@ -80,14 +84,17 @@ export interface CreateNetworkLoadBalancerRequest {
     attachedTargetGroups: AttachedTargetGroup[];
 }
 export interface CreateNetworkLoadBalancerRequest_LabelsEntry {
+    $type: 'yandex.cloud.loadbalancer.v1.CreateNetworkLoadBalancerRequest.LabelsEntry';
     key: string;
     value: string;
 }
 export interface CreateNetworkLoadBalancerMetadata {
+    $type: 'yandex.cloud.loadbalancer.v1.CreateNetworkLoadBalancerMetadata';
     /** ID of the network load balancer that is being created. */
     networkLoadBalancerId: string;
 }
 export interface UpdateNetworkLoadBalancerRequest {
+    $type: 'yandex.cloud.loadbalancer.v1.UpdateNetworkLoadBalancerRequest';
     /**
      * ID of the network load balancer to update.
      * To get the network load balancer ID, use a [NetworkLoadBalancerService.List] request.
@@ -116,14 +123,17 @@ export interface UpdateNetworkLoadBalancerRequest {
     attachedTargetGroups: AttachedTargetGroup[];
 }
 export interface UpdateNetworkLoadBalancerRequest_LabelsEntry {
+    $type: 'yandex.cloud.loadbalancer.v1.UpdateNetworkLoadBalancerRequest.LabelsEntry';
     key: string;
     value: string;
 }
 export interface UpdateNetworkLoadBalancerMetadata {
+    $type: 'yandex.cloud.loadbalancer.v1.UpdateNetworkLoadBalancerMetadata';
     /** ID of the NetworkLoadBalancer resource that is being updated. */
     networkLoadBalancerId: string;
 }
 export interface DeleteNetworkLoadBalancerRequest {
+    $type: 'yandex.cloud.loadbalancer.v1.DeleteNetworkLoadBalancerRequest';
     /**
      * ID of the network load balancer to delete.
      * To get the network load balancer ID, use a [NetworkLoadBalancerService.List] request.
@@ -131,10 +141,12 @@ export interface DeleteNetworkLoadBalancerRequest {
     networkLoadBalancerId: string;
 }
 export interface DeleteNetworkLoadBalancerMetadata {
+    $type: 'yandex.cloud.loadbalancer.v1.DeleteNetworkLoadBalancerMetadata';
     /** ID of the NetworkLoadBalancer resource that is being deleted. */
     networkLoadBalancerId: string;
 }
 export interface StartNetworkLoadBalancerRequest {
+    $type: 'yandex.cloud.loadbalancer.v1.StartNetworkLoadBalancerRequest';
     /**
      * ID of the network load balancer to start.
      * To get the network load balancer ID, use a [NetworkLoadBalancerService.List] request.
@@ -142,10 +154,12 @@ export interface StartNetworkLoadBalancerRequest {
     networkLoadBalancerId: string;
 }
 export interface StartNetworkLoadBalancerMetadata {
+    $type: 'yandex.cloud.loadbalancer.v1.StartNetworkLoadBalancerMetadata';
     /** ID of the NetworkLoadBalancer resource that is being started. */
     networkLoadBalancerId: string;
 }
 export interface StopNetworkLoadBalancerRequest {
+    $type: 'yandex.cloud.loadbalancer.v1.StopNetworkLoadBalancerRequest';
     /**
      * ID of the network load balancer to stop.
      * To get the network load balancer ID, use a [NetworkLoadBalancerService.List] request.
@@ -153,10 +167,12 @@ export interface StopNetworkLoadBalancerRequest {
     networkLoadBalancerId: string;
 }
 export interface StopNetworkLoadBalancerMetadata {
+    $type: 'yandex.cloud.loadbalancer.v1.StopNetworkLoadBalancerMetadata';
     /** ID of the NetworkLoadBalancer resource that is being stopped. */
     networkLoadBalancerId: string;
 }
 export interface AttachNetworkLoadBalancerTargetGroupRequest {
+    $type: 'yandex.cloud.loadbalancer.v1.AttachNetworkLoadBalancerTargetGroupRequest';
     /**
      * ID of the network load balancer to attach the target group to.
      * To get the network load balancer ID, use a [NetworkLoadBalancerService.List] request.
@@ -169,12 +185,14 @@ export interface AttachNetworkLoadBalancerTargetGroupRequest {
     attachedTargetGroup: AttachedTargetGroup | undefined;
 }
 export interface AttachNetworkLoadBalancerTargetGroupMetadata {
+    $type: 'yandex.cloud.loadbalancer.v1.AttachNetworkLoadBalancerTargetGroupMetadata';
     /** ID of the network load balancer that the target group is being attached to. */
     networkLoadBalancerId: string;
     /** ID of the target group. */
     targetGroupId: string;
 }
 export interface DetachNetworkLoadBalancerTargetGroupRequest {
+    $type: 'yandex.cloud.loadbalancer.v1.DetachNetworkLoadBalancerTargetGroupRequest';
     /**
      * ID of the network load balancer to detach the target group from.
      * To get the network load balancer ID, use a [NetworkLoadBalancerService.List] request.
@@ -184,12 +202,14 @@ export interface DetachNetworkLoadBalancerTargetGroupRequest {
     targetGroupId: string;
 }
 export interface DetachNetworkLoadBalancerTargetGroupMetadata {
+    $type: 'yandex.cloud.loadbalancer.v1.DetachNetworkLoadBalancerTargetGroupMetadata';
     /** ID of the network load balancer that the target group is being detached from. */
     networkLoadBalancerId: string;
     /** ID of the target group. */
     targetGroupId: string;
 }
 export interface AddNetworkLoadBalancerListenerRequest {
+    $type: 'yandex.cloud.loadbalancer.v1.AddNetworkLoadBalancerListenerRequest';
     /**
      * ID of the network load balancer to add a listener to.
      * To get the network load balancer ID, use a [NetworkLoadBalancerService.List] request.
@@ -199,10 +219,12 @@ export interface AddNetworkLoadBalancerListenerRequest {
     listenerSpec: ListenerSpec | undefined;
 }
 export interface AddNetworkLoadBalancerListenerMetadata {
+    $type: 'yandex.cloud.loadbalancer.v1.AddNetworkLoadBalancerListenerMetadata';
     /** ID of the network load balancer that the listener is being added to. */
     networkLoadBalancerId: string;
 }
 export interface RemoveNetworkLoadBalancerListenerRequest {
+    $type: 'yandex.cloud.loadbalancer.v1.RemoveNetworkLoadBalancerListenerRequest';
     /**
      * ID of the network load balancer to remove the listener from.
      * To get the network load balancer ID, use a [NetworkLoadBalancerService.List] request.
@@ -212,10 +234,12 @@ export interface RemoveNetworkLoadBalancerListenerRequest {
     listenerName: string;
 }
 export interface RemoveNetworkLoadBalancerListenerMetadata {
+    $type: 'yandex.cloud.loadbalancer.v1.RemoveNetworkLoadBalancerListenerMetadata';
     /** ID of the network load balancer that the listener is being removed from. */
     networkLoadBalancerId: string;
 }
 export interface ListNetworkLoadBalancerOperationsRequest {
+    $type: 'yandex.cloud.loadbalancer.v1.ListNetworkLoadBalancerOperationsRequest';
     /** ID of the NetworkLoadBalancer resource to list operations for. */
     networkLoadBalancerId: string;
     /**
@@ -232,6 +256,7 @@ export interface ListNetworkLoadBalancerOperationsRequest {
     pageToken: string;
 }
 export interface ListNetworkLoadBalancerOperationsResponse {
+    $type: 'yandex.cloud.loadbalancer.v1.ListNetworkLoadBalancerOperationsResponse';
     /** List of operations for the specified network load balancer. */
     operations: Operation[];
     /**
@@ -243,17 +268,20 @@ export interface ListNetworkLoadBalancerOperationsResponse {
     nextPageToken: string;
 }
 export interface GetTargetStatesRequest {
+    $type: 'yandex.cloud.loadbalancer.v1.GetTargetStatesRequest';
     /** ID of the NetworkLoadBalancer resource with an attached target group. */
     networkLoadBalancerId: string;
     /** ID of the target group to get states of resources from. */
     targetGroupId: string;
 }
 export interface GetTargetStatesResponse {
+    $type: 'yandex.cloud.loadbalancer.v1.GetTargetStatesResponse';
     /** List of states of targets within the target group that is specified in the [GetTargetStatesRequest] message. */
     targetStates: TargetState[];
 }
 /** External address specification that is used by [ListenerSpec]. */
 export interface ExternalAddressSpec {
+    $type: 'yandex.cloud.loadbalancer.v1.ExternalAddressSpec';
     /**
      * Public IP address for a listener.
      * If you provide a static public IP address for the [NetworkLoadBalancerService.Update]
@@ -265,6 +293,7 @@ export interface ExternalAddressSpec {
 }
 /** Internal address specification that is used by [ListenerSpec]. */
 export interface InternalAddressSpec {
+    $type: 'yandex.cloud.loadbalancer.v1.InternalAddressSpec';
     /** Internal IP address for a listener. */
     address: string;
     /** ID of the subnet. */
@@ -274,6 +303,7 @@ export interface InternalAddressSpec {
 }
 /** Listener specification that will be used by a network load balancer. */
 export interface ListenerSpec {
+    $type: 'yandex.cloud.loadbalancer.v1.ListenerSpec';
     /** Name of the listener. The name must be unique for each listener on a single load balancer. 3-63 characters long. */
     name: string;
     /** Port for incoming traffic. */
@@ -291,6 +321,7 @@ export interface ListenerSpec {
     targetPort: number;
 }
 export declare const GetNetworkLoadBalancerRequest: {
+    $type: "yandex.cloud.loadbalancer.v1.GetNetworkLoadBalancerRequest";
     encode(message: GetNetworkLoadBalancerRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): GetNetworkLoadBalancerRequest;
     fromJSON(object: any): GetNetworkLoadBalancerRequest;
@@ -298,6 +329,7 @@ export declare const GetNetworkLoadBalancerRequest: {
     fromPartial(object: DeepPartial<GetNetworkLoadBalancerRequest>): GetNetworkLoadBalancerRequest;
 };
 export declare const ListNetworkLoadBalancersRequest: {
+    $type: "yandex.cloud.loadbalancer.v1.ListNetworkLoadBalancersRequest";
     encode(message: ListNetworkLoadBalancersRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListNetworkLoadBalancersRequest;
     fromJSON(object: any): ListNetworkLoadBalancersRequest;
@@ -305,6 +337,7 @@ export declare const ListNetworkLoadBalancersRequest: {
     fromPartial(object: DeepPartial<ListNetworkLoadBalancersRequest>): ListNetworkLoadBalancersRequest;
 };
 export declare const ListNetworkLoadBalancersResponse: {
+    $type: "yandex.cloud.loadbalancer.v1.ListNetworkLoadBalancersResponse";
     encode(message: ListNetworkLoadBalancersResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListNetworkLoadBalancersResponse;
     fromJSON(object: any): ListNetworkLoadBalancersResponse;
@@ -312,6 +345,7 @@ export declare const ListNetworkLoadBalancersResponse: {
     fromPartial(object: DeepPartial<ListNetworkLoadBalancersResponse>): ListNetworkLoadBalancersResponse;
 };
 export declare const CreateNetworkLoadBalancerRequest: {
+    $type: "yandex.cloud.loadbalancer.v1.CreateNetworkLoadBalancerRequest";
     encode(message: CreateNetworkLoadBalancerRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateNetworkLoadBalancerRequest;
     fromJSON(object: any): CreateNetworkLoadBalancerRequest;
@@ -319,6 +353,7 @@ export declare const CreateNetworkLoadBalancerRequest: {
     fromPartial(object: DeepPartial<CreateNetworkLoadBalancerRequest>): CreateNetworkLoadBalancerRequest;
 };
 export declare const CreateNetworkLoadBalancerRequest_LabelsEntry: {
+    $type: "yandex.cloud.loadbalancer.v1.CreateNetworkLoadBalancerRequest.LabelsEntry";
     encode(message: CreateNetworkLoadBalancerRequest_LabelsEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateNetworkLoadBalancerRequest_LabelsEntry;
     fromJSON(object: any): CreateNetworkLoadBalancerRequest_LabelsEntry;
@@ -326,6 +361,7 @@ export declare const CreateNetworkLoadBalancerRequest_LabelsEntry: {
     fromPartial(object: DeepPartial<CreateNetworkLoadBalancerRequest_LabelsEntry>): CreateNetworkLoadBalancerRequest_LabelsEntry;
 };
 export declare const CreateNetworkLoadBalancerMetadata: {
+    $type: "yandex.cloud.loadbalancer.v1.CreateNetworkLoadBalancerMetadata";
     encode(message: CreateNetworkLoadBalancerMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateNetworkLoadBalancerMetadata;
     fromJSON(object: any): CreateNetworkLoadBalancerMetadata;
@@ -333,6 +369,7 @@ export declare const CreateNetworkLoadBalancerMetadata: {
     fromPartial(object: DeepPartial<CreateNetworkLoadBalancerMetadata>): CreateNetworkLoadBalancerMetadata;
 };
 export declare const UpdateNetworkLoadBalancerRequest: {
+    $type: "yandex.cloud.loadbalancer.v1.UpdateNetworkLoadBalancerRequest";
     encode(message: UpdateNetworkLoadBalancerRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateNetworkLoadBalancerRequest;
     fromJSON(object: any): UpdateNetworkLoadBalancerRequest;
@@ -340,6 +377,7 @@ export declare const UpdateNetworkLoadBalancerRequest: {
     fromPartial(object: DeepPartial<UpdateNetworkLoadBalancerRequest>): UpdateNetworkLoadBalancerRequest;
 };
 export declare const UpdateNetworkLoadBalancerRequest_LabelsEntry: {
+    $type: "yandex.cloud.loadbalancer.v1.UpdateNetworkLoadBalancerRequest.LabelsEntry";
     encode(message: UpdateNetworkLoadBalancerRequest_LabelsEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateNetworkLoadBalancerRequest_LabelsEntry;
     fromJSON(object: any): UpdateNetworkLoadBalancerRequest_LabelsEntry;
@@ -347,6 +385,7 @@ export declare const UpdateNetworkLoadBalancerRequest_LabelsEntry: {
     fromPartial(object: DeepPartial<UpdateNetworkLoadBalancerRequest_LabelsEntry>): UpdateNetworkLoadBalancerRequest_LabelsEntry;
 };
 export declare const UpdateNetworkLoadBalancerMetadata: {
+    $type: "yandex.cloud.loadbalancer.v1.UpdateNetworkLoadBalancerMetadata";
     encode(message: UpdateNetworkLoadBalancerMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateNetworkLoadBalancerMetadata;
     fromJSON(object: any): UpdateNetworkLoadBalancerMetadata;
@@ -354,6 +393,7 @@ export declare const UpdateNetworkLoadBalancerMetadata: {
     fromPartial(object: DeepPartial<UpdateNetworkLoadBalancerMetadata>): UpdateNetworkLoadBalancerMetadata;
 };
 export declare const DeleteNetworkLoadBalancerRequest: {
+    $type: "yandex.cloud.loadbalancer.v1.DeleteNetworkLoadBalancerRequest";
     encode(message: DeleteNetworkLoadBalancerRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteNetworkLoadBalancerRequest;
     fromJSON(object: any): DeleteNetworkLoadBalancerRequest;
@@ -361,6 +401,7 @@ export declare const DeleteNetworkLoadBalancerRequest: {
     fromPartial(object: DeepPartial<DeleteNetworkLoadBalancerRequest>): DeleteNetworkLoadBalancerRequest;
 };
 export declare const DeleteNetworkLoadBalancerMetadata: {
+    $type: "yandex.cloud.loadbalancer.v1.DeleteNetworkLoadBalancerMetadata";
     encode(message: DeleteNetworkLoadBalancerMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteNetworkLoadBalancerMetadata;
     fromJSON(object: any): DeleteNetworkLoadBalancerMetadata;
@@ -368,6 +409,7 @@ export declare const DeleteNetworkLoadBalancerMetadata: {
     fromPartial(object: DeepPartial<DeleteNetworkLoadBalancerMetadata>): DeleteNetworkLoadBalancerMetadata;
 };
 export declare const StartNetworkLoadBalancerRequest: {
+    $type: "yandex.cloud.loadbalancer.v1.StartNetworkLoadBalancerRequest";
     encode(message: StartNetworkLoadBalancerRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): StartNetworkLoadBalancerRequest;
     fromJSON(object: any): StartNetworkLoadBalancerRequest;
@@ -375,6 +417,7 @@ export declare const StartNetworkLoadBalancerRequest: {
     fromPartial(object: DeepPartial<StartNetworkLoadBalancerRequest>): StartNetworkLoadBalancerRequest;
 };
 export declare const StartNetworkLoadBalancerMetadata: {
+    $type: "yandex.cloud.loadbalancer.v1.StartNetworkLoadBalancerMetadata";
     encode(message: StartNetworkLoadBalancerMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): StartNetworkLoadBalancerMetadata;
     fromJSON(object: any): StartNetworkLoadBalancerMetadata;
@@ -382,6 +425,7 @@ export declare const StartNetworkLoadBalancerMetadata: {
     fromPartial(object: DeepPartial<StartNetworkLoadBalancerMetadata>): StartNetworkLoadBalancerMetadata;
 };
 export declare const StopNetworkLoadBalancerRequest: {
+    $type: "yandex.cloud.loadbalancer.v1.StopNetworkLoadBalancerRequest";
     encode(message: StopNetworkLoadBalancerRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): StopNetworkLoadBalancerRequest;
     fromJSON(object: any): StopNetworkLoadBalancerRequest;
@@ -389,6 +433,7 @@ export declare const StopNetworkLoadBalancerRequest: {
     fromPartial(object: DeepPartial<StopNetworkLoadBalancerRequest>): StopNetworkLoadBalancerRequest;
 };
 export declare const StopNetworkLoadBalancerMetadata: {
+    $type: "yandex.cloud.loadbalancer.v1.StopNetworkLoadBalancerMetadata";
     encode(message: StopNetworkLoadBalancerMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): StopNetworkLoadBalancerMetadata;
     fromJSON(object: any): StopNetworkLoadBalancerMetadata;
@@ -396,6 +441,7 @@ export declare const StopNetworkLoadBalancerMetadata: {
     fromPartial(object: DeepPartial<StopNetworkLoadBalancerMetadata>): StopNetworkLoadBalancerMetadata;
 };
 export declare const AttachNetworkLoadBalancerTargetGroupRequest: {
+    $type: "yandex.cloud.loadbalancer.v1.AttachNetworkLoadBalancerTargetGroupRequest";
     encode(message: AttachNetworkLoadBalancerTargetGroupRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): AttachNetworkLoadBalancerTargetGroupRequest;
     fromJSON(object: any): AttachNetworkLoadBalancerTargetGroupRequest;
@@ -403,6 +449,7 @@ export declare const AttachNetworkLoadBalancerTargetGroupRequest: {
     fromPartial(object: DeepPartial<AttachNetworkLoadBalancerTargetGroupRequest>): AttachNetworkLoadBalancerTargetGroupRequest;
 };
 export declare const AttachNetworkLoadBalancerTargetGroupMetadata: {
+    $type: "yandex.cloud.loadbalancer.v1.AttachNetworkLoadBalancerTargetGroupMetadata";
     encode(message: AttachNetworkLoadBalancerTargetGroupMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): AttachNetworkLoadBalancerTargetGroupMetadata;
     fromJSON(object: any): AttachNetworkLoadBalancerTargetGroupMetadata;
@@ -410,6 +457,7 @@ export declare const AttachNetworkLoadBalancerTargetGroupMetadata: {
     fromPartial(object: DeepPartial<AttachNetworkLoadBalancerTargetGroupMetadata>): AttachNetworkLoadBalancerTargetGroupMetadata;
 };
 export declare const DetachNetworkLoadBalancerTargetGroupRequest: {
+    $type: "yandex.cloud.loadbalancer.v1.DetachNetworkLoadBalancerTargetGroupRequest";
     encode(message: DetachNetworkLoadBalancerTargetGroupRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DetachNetworkLoadBalancerTargetGroupRequest;
     fromJSON(object: any): DetachNetworkLoadBalancerTargetGroupRequest;
@@ -417,6 +465,7 @@ export declare const DetachNetworkLoadBalancerTargetGroupRequest: {
     fromPartial(object: DeepPartial<DetachNetworkLoadBalancerTargetGroupRequest>): DetachNetworkLoadBalancerTargetGroupRequest;
 };
 export declare const DetachNetworkLoadBalancerTargetGroupMetadata: {
+    $type: "yandex.cloud.loadbalancer.v1.DetachNetworkLoadBalancerTargetGroupMetadata";
     encode(message: DetachNetworkLoadBalancerTargetGroupMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DetachNetworkLoadBalancerTargetGroupMetadata;
     fromJSON(object: any): DetachNetworkLoadBalancerTargetGroupMetadata;
@@ -424,6 +473,7 @@ export declare const DetachNetworkLoadBalancerTargetGroupMetadata: {
     fromPartial(object: DeepPartial<DetachNetworkLoadBalancerTargetGroupMetadata>): DetachNetworkLoadBalancerTargetGroupMetadata;
 };
 export declare const AddNetworkLoadBalancerListenerRequest: {
+    $type: "yandex.cloud.loadbalancer.v1.AddNetworkLoadBalancerListenerRequest";
     encode(message: AddNetworkLoadBalancerListenerRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): AddNetworkLoadBalancerListenerRequest;
     fromJSON(object: any): AddNetworkLoadBalancerListenerRequest;
@@ -431,6 +481,7 @@ export declare const AddNetworkLoadBalancerListenerRequest: {
     fromPartial(object: DeepPartial<AddNetworkLoadBalancerListenerRequest>): AddNetworkLoadBalancerListenerRequest;
 };
 export declare const AddNetworkLoadBalancerListenerMetadata: {
+    $type: "yandex.cloud.loadbalancer.v1.AddNetworkLoadBalancerListenerMetadata";
     encode(message: AddNetworkLoadBalancerListenerMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): AddNetworkLoadBalancerListenerMetadata;
     fromJSON(object: any): AddNetworkLoadBalancerListenerMetadata;
@@ -438,6 +489,7 @@ export declare const AddNetworkLoadBalancerListenerMetadata: {
     fromPartial(object: DeepPartial<AddNetworkLoadBalancerListenerMetadata>): AddNetworkLoadBalancerListenerMetadata;
 };
 export declare const RemoveNetworkLoadBalancerListenerRequest: {
+    $type: "yandex.cloud.loadbalancer.v1.RemoveNetworkLoadBalancerListenerRequest";
     encode(message: RemoveNetworkLoadBalancerListenerRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): RemoveNetworkLoadBalancerListenerRequest;
     fromJSON(object: any): RemoveNetworkLoadBalancerListenerRequest;
@@ -445,6 +497,7 @@ export declare const RemoveNetworkLoadBalancerListenerRequest: {
     fromPartial(object: DeepPartial<RemoveNetworkLoadBalancerListenerRequest>): RemoveNetworkLoadBalancerListenerRequest;
 };
 export declare const RemoveNetworkLoadBalancerListenerMetadata: {
+    $type: "yandex.cloud.loadbalancer.v1.RemoveNetworkLoadBalancerListenerMetadata";
     encode(message: RemoveNetworkLoadBalancerListenerMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): RemoveNetworkLoadBalancerListenerMetadata;
     fromJSON(object: any): RemoveNetworkLoadBalancerListenerMetadata;
@@ -452,6 +505,7 @@ export declare const RemoveNetworkLoadBalancerListenerMetadata: {
     fromPartial(object: DeepPartial<RemoveNetworkLoadBalancerListenerMetadata>): RemoveNetworkLoadBalancerListenerMetadata;
 };
 export declare const ListNetworkLoadBalancerOperationsRequest: {
+    $type: "yandex.cloud.loadbalancer.v1.ListNetworkLoadBalancerOperationsRequest";
     encode(message: ListNetworkLoadBalancerOperationsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListNetworkLoadBalancerOperationsRequest;
     fromJSON(object: any): ListNetworkLoadBalancerOperationsRequest;
@@ -459,6 +513,7 @@ export declare const ListNetworkLoadBalancerOperationsRequest: {
     fromPartial(object: DeepPartial<ListNetworkLoadBalancerOperationsRequest>): ListNetworkLoadBalancerOperationsRequest;
 };
 export declare const ListNetworkLoadBalancerOperationsResponse: {
+    $type: "yandex.cloud.loadbalancer.v1.ListNetworkLoadBalancerOperationsResponse";
     encode(message: ListNetworkLoadBalancerOperationsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListNetworkLoadBalancerOperationsResponse;
     fromJSON(object: any): ListNetworkLoadBalancerOperationsResponse;
@@ -466,6 +521,7 @@ export declare const ListNetworkLoadBalancerOperationsResponse: {
     fromPartial(object: DeepPartial<ListNetworkLoadBalancerOperationsResponse>): ListNetworkLoadBalancerOperationsResponse;
 };
 export declare const GetTargetStatesRequest: {
+    $type: "yandex.cloud.loadbalancer.v1.GetTargetStatesRequest";
     encode(message: GetTargetStatesRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): GetTargetStatesRequest;
     fromJSON(object: any): GetTargetStatesRequest;
@@ -473,6 +529,7 @@ export declare const GetTargetStatesRequest: {
     fromPartial(object: DeepPartial<GetTargetStatesRequest>): GetTargetStatesRequest;
 };
 export declare const GetTargetStatesResponse: {
+    $type: "yandex.cloud.loadbalancer.v1.GetTargetStatesResponse";
     encode(message: GetTargetStatesResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): GetTargetStatesResponse;
     fromJSON(object: any): GetTargetStatesResponse;
@@ -480,6 +537,7 @@ export declare const GetTargetStatesResponse: {
     fromPartial(object: DeepPartial<GetTargetStatesResponse>): GetTargetStatesResponse;
 };
 export declare const ExternalAddressSpec: {
+    $type: "yandex.cloud.loadbalancer.v1.ExternalAddressSpec";
     encode(message: ExternalAddressSpec, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ExternalAddressSpec;
     fromJSON(object: any): ExternalAddressSpec;
@@ -487,6 +545,7 @@ export declare const ExternalAddressSpec: {
     fromPartial(object: DeepPartial<ExternalAddressSpec>): ExternalAddressSpec;
 };
 export declare const InternalAddressSpec: {
+    $type: "yandex.cloud.loadbalancer.v1.InternalAddressSpec";
     encode(message: InternalAddressSpec, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): InternalAddressSpec;
     fromJSON(object: any): InternalAddressSpec;
@@ -494,6 +553,7 @@ export declare const InternalAddressSpec: {
     fromPartial(object: DeepPartial<InternalAddressSpec>): InternalAddressSpec;
 };
 export declare const ListenerSpec: {
+    $type: "yandex.cloud.loadbalancer.v1.ListenerSpec";
     encode(message: ListenerSpec, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListenerSpec;
     fromJSON(object: any): ListenerSpec;
@@ -748,6 +808,6 @@ export interface NetworkLoadBalancerServiceClient extends Client {
 export declare const NetworkLoadBalancerServiceClient: new (address: string, credentials: ChannelCredentials, options?: Partial<ChannelOptions> | undefined) => NetworkLoadBalancerServiceClient;
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

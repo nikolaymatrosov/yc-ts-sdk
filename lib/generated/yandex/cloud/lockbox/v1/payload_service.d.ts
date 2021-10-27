@@ -4,12 +4,14 @@ import { ChannelCredentials, ChannelOptions, UntypedServiceImplementation, handl
 import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.lockbox.v1";
 export interface GetPayloadRequest {
+    $type: 'yandex.cloud.lockbox.v1.GetPayloadRequest';
     /** ID of the secret. */
     secretId: string;
     /** Optional ID of the version. */
     versionId: string;
 }
 export declare const GetPayloadRequest: {
+    $type: "yandex.cloud.lockbox.v1.GetPayloadRequest";
     encode(message: GetPayloadRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): GetPayloadRequest;
     fromJSON(object: any): GetPayloadRequest;
@@ -54,6 +56,6 @@ export interface PayloadServiceClient extends Client {
 export declare const PayloadServiceClient: new (address: string, credentials: ChannelCredentials, options?: Partial<ChannelOptions> | undefined) => PayloadServiceClient;
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

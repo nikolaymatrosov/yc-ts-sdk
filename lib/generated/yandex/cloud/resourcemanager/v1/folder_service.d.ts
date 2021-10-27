@@ -7,6 +7,7 @@ import { ChannelCredentials, ChannelOptions, UntypedServiceImplementation, handl
 import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.resourcemanager.v1";
 export interface GetFolderRequest {
+    $type: 'yandex.cloud.resourcemanager.v1.GetFolderRequest';
     /**
      * ID of the Folder resource to return.
      * To get the folder ID, use a [FolderService.List] request.
@@ -14,6 +15,7 @@ export interface GetFolderRequest {
     folderId: string;
 }
 export interface ListFoldersRequest {
+    $type: 'yandex.cloud.resourcemanager.v1.ListFoldersRequest';
     /**
      * ID of the cloud to list folders in.
      * To get the cloud ID, use a [yandex.cloud.resourcemanager.v1.CloudService.List] request.
@@ -43,6 +45,7 @@ export interface ListFoldersRequest {
     filter: string;
 }
 export interface ListFoldersResponse {
+    $type: 'yandex.cloud.resourcemanager.v1.ListFoldersResponse';
     /** List of Folder resources. */
     folders: Folder[];
     /**
@@ -56,6 +59,7 @@ export interface ListFoldersResponse {
     nextPageToken: string;
 }
 export interface CreateFolderRequest {
+    $type: 'yandex.cloud.resourcemanager.v1.CreateFolderRequest';
     /**
      * ID of the cloud to create a folder in.
      * To get the cloud ID, use a [yandex.cloud.resourcemanager.v1.CloudService.List] request.
@@ -74,14 +78,17 @@ export interface CreateFolderRequest {
     };
 }
 export interface CreateFolderRequest_LabelsEntry {
+    $type: 'yandex.cloud.resourcemanager.v1.CreateFolderRequest.LabelsEntry';
     key: string;
     value: string;
 }
 export interface CreateFolderMetadata {
+    $type: 'yandex.cloud.resourcemanager.v1.CreateFolderMetadata';
     /** ID of the folder that is being created. */
     folderId: string;
 }
 export interface UpdateFolderRequest {
+    $type: 'yandex.cloud.resourcemanager.v1.UpdateFolderRequest';
     /**
      * ID of the Folder resource to update.
      * To get the folder ID, use a [FolderService.List] request.
@@ -102,14 +109,17 @@ export interface UpdateFolderRequest {
     };
 }
 export interface UpdateFolderRequest_LabelsEntry {
+    $type: 'yandex.cloud.resourcemanager.v1.UpdateFolderRequest.LabelsEntry';
     key: string;
     value: string;
 }
 export interface UpdateFolderMetadata {
+    $type: 'yandex.cloud.resourcemanager.v1.UpdateFolderMetadata';
     /** ID of the Folder resource that is being updated. */
     folderId: string;
 }
 export interface DeleteFolderRequest {
+    $type: 'yandex.cloud.resourcemanager.v1.DeleteFolderRequest';
     /**
      * ID of the folder to delete.
      * To get the folder ID, use a [FolderService.List] request.
@@ -126,12 +136,14 @@ export interface DeleteFolderRequest {
     deleteAfter: Date | undefined;
 }
 export interface DeleteFolderMetadata {
+    $type: 'yandex.cloud.resourcemanager.v1.DeleteFolderMetadata';
     /** ID of the folder that is being deleted. */
     folderId: string;
     /** The timestamp after which the process of deleting the folder should begin. */
     deleteAfter: Date | undefined;
 }
 export interface ListFolderOperationsRequest {
+    $type: 'yandex.cloud.resourcemanager.v1.ListFolderOperationsRequest';
     /** ID of the Folder resource to list operations for. */
     folderId: string;
     /**
@@ -149,6 +161,7 @@ export interface ListFolderOperationsRequest {
     pageToken: string;
 }
 export interface ListFolderOperationsResponse {
+    $type: 'yandex.cloud.resourcemanager.v1.ListFolderOperationsResponse';
     /** List of operations for the specified folder. */
     operations: Operation[];
     /**
@@ -160,6 +173,7 @@ export interface ListFolderOperationsResponse {
     nextPageToken: string;
 }
 export declare const GetFolderRequest: {
+    $type: "yandex.cloud.resourcemanager.v1.GetFolderRequest";
     encode(message: GetFolderRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): GetFolderRequest;
     fromJSON(object: any): GetFolderRequest;
@@ -167,6 +181,7 @@ export declare const GetFolderRequest: {
     fromPartial(object: DeepPartial<GetFolderRequest>): GetFolderRequest;
 };
 export declare const ListFoldersRequest: {
+    $type: "yandex.cloud.resourcemanager.v1.ListFoldersRequest";
     encode(message: ListFoldersRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListFoldersRequest;
     fromJSON(object: any): ListFoldersRequest;
@@ -174,6 +189,7 @@ export declare const ListFoldersRequest: {
     fromPartial(object: DeepPartial<ListFoldersRequest>): ListFoldersRequest;
 };
 export declare const ListFoldersResponse: {
+    $type: "yandex.cloud.resourcemanager.v1.ListFoldersResponse";
     encode(message: ListFoldersResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListFoldersResponse;
     fromJSON(object: any): ListFoldersResponse;
@@ -181,6 +197,7 @@ export declare const ListFoldersResponse: {
     fromPartial(object: DeepPartial<ListFoldersResponse>): ListFoldersResponse;
 };
 export declare const CreateFolderRequest: {
+    $type: "yandex.cloud.resourcemanager.v1.CreateFolderRequest";
     encode(message: CreateFolderRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateFolderRequest;
     fromJSON(object: any): CreateFolderRequest;
@@ -188,6 +205,7 @@ export declare const CreateFolderRequest: {
     fromPartial(object: DeepPartial<CreateFolderRequest>): CreateFolderRequest;
 };
 export declare const CreateFolderRequest_LabelsEntry: {
+    $type: "yandex.cloud.resourcemanager.v1.CreateFolderRequest.LabelsEntry";
     encode(message: CreateFolderRequest_LabelsEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateFolderRequest_LabelsEntry;
     fromJSON(object: any): CreateFolderRequest_LabelsEntry;
@@ -195,6 +213,7 @@ export declare const CreateFolderRequest_LabelsEntry: {
     fromPartial(object: DeepPartial<CreateFolderRequest_LabelsEntry>): CreateFolderRequest_LabelsEntry;
 };
 export declare const CreateFolderMetadata: {
+    $type: "yandex.cloud.resourcemanager.v1.CreateFolderMetadata";
     encode(message: CreateFolderMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateFolderMetadata;
     fromJSON(object: any): CreateFolderMetadata;
@@ -202,6 +221,7 @@ export declare const CreateFolderMetadata: {
     fromPartial(object: DeepPartial<CreateFolderMetadata>): CreateFolderMetadata;
 };
 export declare const UpdateFolderRequest: {
+    $type: "yandex.cloud.resourcemanager.v1.UpdateFolderRequest";
     encode(message: UpdateFolderRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateFolderRequest;
     fromJSON(object: any): UpdateFolderRequest;
@@ -209,6 +229,7 @@ export declare const UpdateFolderRequest: {
     fromPartial(object: DeepPartial<UpdateFolderRequest>): UpdateFolderRequest;
 };
 export declare const UpdateFolderRequest_LabelsEntry: {
+    $type: "yandex.cloud.resourcemanager.v1.UpdateFolderRequest.LabelsEntry";
     encode(message: UpdateFolderRequest_LabelsEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateFolderRequest_LabelsEntry;
     fromJSON(object: any): UpdateFolderRequest_LabelsEntry;
@@ -216,6 +237,7 @@ export declare const UpdateFolderRequest_LabelsEntry: {
     fromPartial(object: DeepPartial<UpdateFolderRequest_LabelsEntry>): UpdateFolderRequest_LabelsEntry;
 };
 export declare const UpdateFolderMetadata: {
+    $type: "yandex.cloud.resourcemanager.v1.UpdateFolderMetadata";
     encode(message: UpdateFolderMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateFolderMetadata;
     fromJSON(object: any): UpdateFolderMetadata;
@@ -223,6 +245,7 @@ export declare const UpdateFolderMetadata: {
     fromPartial(object: DeepPartial<UpdateFolderMetadata>): UpdateFolderMetadata;
 };
 export declare const DeleteFolderRequest: {
+    $type: "yandex.cloud.resourcemanager.v1.DeleteFolderRequest";
     encode(message: DeleteFolderRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteFolderRequest;
     fromJSON(object: any): DeleteFolderRequest;
@@ -230,6 +253,7 @@ export declare const DeleteFolderRequest: {
     fromPartial(object: DeepPartial<DeleteFolderRequest>): DeleteFolderRequest;
 };
 export declare const DeleteFolderMetadata: {
+    $type: "yandex.cloud.resourcemanager.v1.DeleteFolderMetadata";
     encode(message: DeleteFolderMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteFolderMetadata;
     fromJSON(object: any): DeleteFolderMetadata;
@@ -237,6 +261,7 @@ export declare const DeleteFolderMetadata: {
     fromPartial(object: DeepPartial<DeleteFolderMetadata>): DeleteFolderMetadata;
 };
 export declare const ListFolderOperationsRequest: {
+    $type: "yandex.cloud.resourcemanager.v1.ListFolderOperationsRequest";
     encode(message: ListFolderOperationsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListFolderOperationsRequest;
     fromJSON(object: any): ListFolderOperationsRequest;
@@ -244,6 +269,7 @@ export declare const ListFolderOperationsRequest: {
     fromPartial(object: DeepPartial<ListFolderOperationsRequest>): ListFolderOperationsRequest;
 };
 export declare const ListFolderOperationsResponse: {
+    $type: "yandex.cloud.resourcemanager.v1.ListFolderOperationsResponse";
     encode(message: ListFolderOperationsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListFolderOperationsResponse;
     fromJSON(object: any): ListFolderOperationsResponse;
@@ -416,6 +442,6 @@ export interface FolderServiceClient extends Client {
 export declare const FolderServiceClient: new (address: string, credentials: ChannelCredentials, options?: Partial<ChannelOptions> | undefined) => FolderServiceClient;
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

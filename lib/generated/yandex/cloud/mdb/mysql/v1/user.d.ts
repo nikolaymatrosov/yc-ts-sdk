@@ -37,6 +37,7 @@ export declare function authPluginToJSON(object: AuthPlugin): string;
  * the [documentation](/docs/managed-mysql/concepts).
  */
 export interface User {
+    $type: 'yandex.cloud.mdb.mysql.v1.User';
     /** Name of the MySQL user. */
     name: string;
     /** ID of the MySQL cluster the user belongs to. */
@@ -51,6 +52,7 @@ export interface User {
     authenticationPlugin: AuthPlugin;
 }
 export interface Permission {
+    $type: 'yandex.cloud.mdb.mysql.v1.Permission';
     /** Name of the database that the permission grants access to. */
     databaseName: string;
     /** Roles granted to the user within the database. */
@@ -107,6 +109,7 @@ export declare enum Permission_Privilege {
 export declare function permission_PrivilegeFromJSON(object: any): Permission_Privilege;
 export declare function permission_PrivilegeToJSON(object: Permission_Privilege): string;
 export interface ConnectionLimits {
+    $type: 'yandex.cloud.mdb.mysql.v1.ConnectionLimits';
     /** The maximum permitted number of user questions per hour. */
     maxQuestionsPerHour: number | undefined;
     /** The maximum permitted number of user updates per hour. */
@@ -117,6 +120,7 @@ export interface ConnectionLimits {
     maxUserConnections: number | undefined;
 }
 export interface UserSpec {
+    $type: 'yandex.cloud.mdb.mysql.v1.UserSpec';
     /** Name of the MySQL user. */
     name: string;
     /** Password of the MySQL user. */
@@ -131,6 +135,7 @@ export interface UserSpec {
     authenticationPlugin: AuthPlugin;
 }
 export declare const User: {
+    $type: "yandex.cloud.mdb.mysql.v1.User";
     encode(message: User, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): User;
     fromJSON(object: any): User;
@@ -138,6 +143,7 @@ export declare const User: {
     fromPartial(object: DeepPartial<User>): User;
 };
 export declare const Permission: {
+    $type: "yandex.cloud.mdb.mysql.v1.Permission";
     encode(message: Permission, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Permission;
     fromJSON(object: any): Permission;
@@ -145,6 +151,7 @@ export declare const Permission: {
     fromPartial(object: DeepPartial<Permission>): Permission;
 };
 export declare const ConnectionLimits: {
+    $type: "yandex.cloud.mdb.mysql.v1.ConnectionLimits";
     encode(message: ConnectionLimits, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ConnectionLimits;
     fromJSON(object: any): ConnectionLimits;
@@ -152,6 +159,7 @@ export declare const ConnectionLimits: {
     fromPartial(object: DeepPartial<ConnectionLimits>): ConnectionLimits;
 };
 export declare const UserSpec: {
+    $type: "yandex.cloud.mdb.mysql.v1.UserSpec";
     encode(message: UserSpec, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UserSpec;
     fromJSON(object: any): UserSpec;
@@ -160,6 +168,6 @@ export declare const UserSpec: {
 };
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

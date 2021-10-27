@@ -1,4 +1,5 @@
 /* eslint-disable */
+import { messageTypeRegistry } from '../../../../../typeRegistry';
 import { ResourcePreset } from '../../../../../yandex/cloud/mdb/kafka/v1/resource_preset';
 import {
     makeGenericClientConstructor,
@@ -18,6 +19,7 @@ import _m0 from 'protobufjs/minimal';
 export const protobufPackage = 'yandex.cloud.mdb.kafka.v1';
 
 export interface GetResourcePresetRequest {
+    $type: 'yandex.cloud.mdb.kafka.v1.GetResourcePresetRequest';
     /**
      * ID of the resource preset to return.
      *
@@ -27,6 +29,7 @@ export interface GetResourcePresetRequest {
 }
 
 export interface ListResourcePresetsRequest {
+    $type: 'yandex.cloud.mdb.kafka.v1.ListResourcePresetsRequest';
     /**
      * The maximum number of results per page to return.
      *
@@ -42,6 +45,7 @@ export interface ListResourcePresetsRequest {
 }
 
 export interface ListResourcePresetsResponse {
+    $type: 'yandex.cloud.mdb.kafka.v1.ListResourcePresetsResponse';
     /** List of resource presets. */
     resourcePresets: ResourcePreset[];
     /**
@@ -53,9 +57,14 @@ export interface ListResourcePresetsResponse {
     nextPageToken: string;
 }
 
-const baseGetResourcePresetRequest: object = { resourcePresetId: '' };
+const baseGetResourcePresetRequest: object = {
+    $type: 'yandex.cloud.mdb.kafka.v1.GetResourcePresetRequest',
+    resourcePresetId: '',
+};
 
 export const GetResourcePresetRequest = {
+    $type: 'yandex.cloud.mdb.kafka.v1.GetResourcePresetRequest' as const,
+
     encode(
         message: GetResourcePresetRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -130,9 +139,20 @@ export const GetResourcePresetRequest = {
     },
 };
 
-const baseListResourcePresetsRequest: object = { pageSize: 0, pageToken: '' };
+messageTypeRegistry.set(
+    GetResourcePresetRequest.$type,
+    GetResourcePresetRequest
+);
+
+const baseListResourcePresetsRequest: object = {
+    $type: 'yandex.cloud.mdb.kafka.v1.ListResourcePresetsRequest',
+    pageSize: 0,
+    pageToken: '',
+};
 
 export const ListResourcePresetsRequest = {
+    $type: 'yandex.cloud.mdb.kafka.v1.ListResourcePresetsRequest' as const,
+
     encode(
         message: ListResourcePresetsRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -217,9 +237,19 @@ export const ListResourcePresetsRequest = {
     },
 };
 
-const baseListResourcePresetsResponse: object = { nextPageToken: '' };
+messageTypeRegistry.set(
+    ListResourcePresetsRequest.$type,
+    ListResourcePresetsRequest
+);
+
+const baseListResourcePresetsResponse: object = {
+    $type: 'yandex.cloud.mdb.kafka.v1.ListResourcePresetsResponse',
+    nextPageToken: '',
+};
 
 export const ListResourcePresetsResponse = {
+    $type: 'yandex.cloud.mdb.kafka.v1.ListResourcePresetsResponse' as const,
+
     encode(
         message: ListResourcePresetsResponse,
         writer: _m0.Writer = _m0.Writer.create()
@@ -327,6 +357,11 @@ export const ListResourcePresetsResponse = {
         return message;
     },
 };
+
+messageTypeRegistry.set(
+    ListResourcePresetsResponse.$type,
+    ListResourcePresetsResponse
+);
 
 /** A set of methods for managing Kafka resource presets. */
 export const ResourcePresetServiceService = {
@@ -463,7 +498,7 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 function longToNumber(long: Long): number {

@@ -69,11 +69,13 @@ export declare function sSLCertificateStatusFromJSON(object: any): SSLCertificat
 export declare function sSLCertificateStatusToJSON(object: SSLCertificateStatus): string;
 /** List of secondary (alternative) CNAMEs. */
 export interface SecondaryHostnames {
+    $type: 'yandex.cloud.cdn.v1.SecondaryHostnames';
     /** List of secondary hostname values. */
     values: string[];
 }
 /** A CDN resource - representation of providers resource. */
 export interface Resource {
+    $type: 'yandex.cloud.cdn.v1.Resource';
     /** ID of the resource. */
     id: string;
     /** Folder id. */
@@ -105,6 +107,7 @@ export interface Resource {
 }
 /** A major set of various resource options. */
 export interface ResourceOptions {
+    $type: 'yandex.cloud.cdn.v1.ResourceOptions';
     /** Set up a cache status. */
     disableCache: ResourceOptions_BoolOption | undefined;
     /** Set up [EdgeCacheSettings]. */
@@ -181,6 +184,7 @@ export interface ResourceOptions {
 }
 /** Set up bool values. */
 export interface ResourceOptions_BoolOption {
+    $type: 'yandex.cloud.cdn.v1.ResourceOptions.BoolOption';
     /**
      * True - the option is enabled and its [value] is applied to the resource.
      * False - the option is disabled and its default value is used for the resource.
@@ -191,6 +195,7 @@ export interface ResourceOptions_BoolOption {
 }
 /** A set of the string parameters. */
 export interface ResourceOptions_StringOption {
+    $type: 'yandex.cloud.cdn.v1.ResourceOptions.StringOption';
     /**
      * True - the option is enabled and its [value] is applied to the resource.
      * False - the option is disabled and its default value is used for the resource.
@@ -201,6 +206,7 @@ export interface ResourceOptions_StringOption {
 }
 /** A set of the numeric parameters. */
 export interface ResourceOptions_Int64Option {
+    $type: 'yandex.cloud.cdn.v1.ResourceOptions.Int64Option';
     /**
      * True - the option is enabled and its [value] is applied to the resource.
      * False - the option is disabled and its default value is used for the resource.
@@ -211,6 +217,7 @@ export interface ResourceOptions_Int64Option {
 }
 /** A set of the string list parameters. */
 export interface ResourceOptions_StringsListOption {
+    $type: 'yandex.cloud.cdn.v1.ResourceOptions.StringsListOption';
     /**
      * True - the option is enabled and its [value] is applied to the resource.
      * False - the option is disabled and its default value is used for the resource.
@@ -221,6 +228,7 @@ export interface ResourceOptions_StringsListOption {
 }
 /** A set of the strings map parameters. */
 export interface ResourceOptions_StringsMapOption {
+    $type: 'yandex.cloud.cdn.v1.ResourceOptions.StringsMapOption';
     /**
      * True - the option is enabled and its [value] is applied to the resource.
      * False - the option is disabled and its default value is used for the resource.
@@ -232,11 +240,13 @@ export interface ResourceOptions_StringsMapOption {
     };
 }
 export interface ResourceOptions_StringsMapOption_ValueEntry {
+    $type: 'yandex.cloud.cdn.v1.ResourceOptions.StringsMapOption.ValueEntry';
     key: string;
     value: string;
 }
 /** A set of the caching response time parameters. */
 export interface ResourceOptions_CachingTimes {
+    $type: 'yandex.cloud.cdn.v1.ResourceOptions.CachingTimes';
     /**
      * Caching time for a response with codes 200, 206, 301, 302.
      * Responses with codes 4xx, 5xx will not be cached. Use `0s` disable to caching.
@@ -253,11 +263,13 @@ export interface ResourceOptions_CachingTimes {
     };
 }
 export interface ResourceOptions_CachingTimes_CustomValuesEntry {
+    $type: 'yandex.cloud.cdn.v1.ResourceOptions.CachingTimes.CustomValuesEntry';
     key: string;
     value: number;
 }
 /** A set of the edge cache parameters. */
 export interface ResourceOptions_EdgeCacheSettings {
+    $type: 'yandex.cloud.cdn.v1.ResourceOptions.EdgeCacheSettings';
     /**
      * True - the option is enabled and its `values_variant` is applied to the resource.
      * False - the option is disabled and its default value is used for the resource.
@@ -275,6 +287,7 @@ export interface ResourceOptions_EdgeCacheSettings {
 }
 /** A set of the string variable map parameters. */
 export interface ResourceOptions_StringVariableMapOption {
+    $type: 'yandex.cloud.cdn.v1.ResourceOptions.StringVariableMapOption';
     /**
      * True - the option is enabled and its [value] is applied to the resource.
      * False - the option is disabled and its default value is used for the resource.
@@ -286,17 +299,20 @@ export interface ResourceOptions_StringVariableMapOption {
     };
 }
 export interface ResourceOptions_StringVariableMapOption_OneofString {
+    $type: 'yandex.cloud.cdn.v1.ResourceOptions.StringVariableMapOption.OneofString';
     /** Using [StringOption] to set value. */
     value: ResourceOptions_StringOption | undefined;
     /** Using [StringsListOption] to set values. */
     values: ResourceOptions_StringsListOption | undefined;
 }
 export interface ResourceOptions_StringVariableMapOption_ValueEntry {
+    $type: 'yandex.cloud.cdn.v1.ResourceOptions.StringVariableMapOption.ValueEntry';
     key: string;
     value: ResourceOptions_StringVariableMapOption_OneofString | undefined;
 }
 /** A set of the query parameters. */
 export interface ResourceOptions_QueryParamsOptions {
+    $type: 'yandex.cloud.cdn.v1.ResourceOptions.QueryParamsOptions';
     /** Using [BoolOption]. Selected by default. Files with different query parameters are cached as objects with the same key regardless of the parameter value. */
     ignoreQueryString: ResourceOptions_BoolOption | undefined;
     /**
@@ -313,6 +329,7 @@ export interface ResourceOptions_QueryParamsOptions {
 }
 /** A set of the redirect parameters. */
 export interface ResourceOptions_RedirectOptions {
+    $type: 'yandex.cloud.cdn.v1.ResourceOptions.RedirectOptions';
     /** Using [BoolOption]. Set up a redirect from HTTPS to HTTP. */
     redirectHttpToHttps: ResourceOptions_BoolOption | undefined;
     /** Using [BoolOption]. Set up a redirect from HTTP to HTTPS. */
@@ -320,6 +337,7 @@ export interface ResourceOptions_RedirectOptions {
 }
 /** A set of the host parameters. */
 export interface ResourceOptions_HostOptions {
+    $type: 'yandex.cloud.cdn.v1.ResourceOptions.HostOptions';
     /**
      * Custom value for the Host header.
      *
@@ -336,6 +354,7 @@ export interface ResourceOptions_HostOptions {
 }
 /** A set of the compression variant parameters. */
 export interface ResourceOptions_CompressionOptions {
+    $type: 'yandex.cloud.cdn.v1.ResourceOptions.CompressionOptions';
     /**
      * The Fetch compressed option helps you to reduce
      * the bandwidth between origin and CDN servers.
@@ -356,6 +375,7 @@ export interface ResourceOptions_CompressionOptions {
 }
 /** An option for changing or redirecting query paths. */
 export interface ResourceOptions_RewriteOption {
+    $type: 'yandex.cloud.cdn.v1.ResourceOptions.RewriteOption';
     /**
      * True - the option is enabled and its [flag] is applied to the resource.
      * False - the option is disabled and its default value of the [flag] is used for the resource.
@@ -375,6 +395,7 @@ export interface ResourceOptions_RewriteOption {
 }
 /** A set of the personal SSL certificate patameters. */
 export interface SSLTargetCertificate {
+    $type: 'yandex.cloud.cdn.v1.SSLTargetCertificate';
     /** Type of the sertificate. */
     type: SSLCertificateType;
     /** Certificate data. */
@@ -382,6 +403,7 @@ export interface SSLTargetCertificate {
 }
 /** A SSL sertificate patameters. */
 export interface SSLCertificate {
+    $type: 'yandex.cloud.cdn.v1.SSLCertificate';
     /** Type of the sertificate. */
     type: SSLCertificateType;
     /** Active status. */
@@ -391,6 +413,7 @@ export interface SSLCertificate {
 }
 /** A certificate data patameters. */
 export interface SSLCertificateData {
+    $type: 'yandex.cloud.cdn.v1.SSLCertificateData';
     /**
      * Custom (add your SSL certificate by uploading the certificate
      * in PEM format and your private key).
@@ -399,10 +422,12 @@ export interface SSLCertificateData {
 }
 /** A certificate data custom patameters. */
 export interface SSLCertificateCMData {
+    $type: 'yandex.cloud.cdn.v1.SSLCertificateCMData';
     /** ID of the custom sertificate. */
     id: string;
 }
 export declare const SecondaryHostnames: {
+    $type: "yandex.cloud.cdn.v1.SecondaryHostnames";
     encode(message: SecondaryHostnames, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): SecondaryHostnames;
     fromJSON(object: any): SecondaryHostnames;
@@ -410,6 +435,7 @@ export declare const SecondaryHostnames: {
     fromPartial(object: DeepPartial<SecondaryHostnames>): SecondaryHostnames;
 };
 export declare const Resource: {
+    $type: "yandex.cloud.cdn.v1.Resource";
     encode(message: Resource, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Resource;
     fromJSON(object: any): Resource;
@@ -417,6 +443,7 @@ export declare const Resource: {
     fromPartial(object: DeepPartial<Resource>): Resource;
 };
 export declare const ResourceOptions: {
+    $type: "yandex.cloud.cdn.v1.ResourceOptions";
     encode(message: ResourceOptions, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ResourceOptions;
     fromJSON(object: any): ResourceOptions;
@@ -424,6 +451,7 @@ export declare const ResourceOptions: {
     fromPartial(object: DeepPartial<ResourceOptions>): ResourceOptions;
 };
 export declare const ResourceOptions_BoolOption: {
+    $type: "yandex.cloud.cdn.v1.ResourceOptions.BoolOption";
     encode(message: ResourceOptions_BoolOption, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ResourceOptions_BoolOption;
     fromJSON(object: any): ResourceOptions_BoolOption;
@@ -431,6 +459,7 @@ export declare const ResourceOptions_BoolOption: {
     fromPartial(object: DeepPartial<ResourceOptions_BoolOption>): ResourceOptions_BoolOption;
 };
 export declare const ResourceOptions_StringOption: {
+    $type: "yandex.cloud.cdn.v1.ResourceOptions.StringOption";
     encode(message: ResourceOptions_StringOption, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ResourceOptions_StringOption;
     fromJSON(object: any): ResourceOptions_StringOption;
@@ -438,6 +467,7 @@ export declare const ResourceOptions_StringOption: {
     fromPartial(object: DeepPartial<ResourceOptions_StringOption>): ResourceOptions_StringOption;
 };
 export declare const ResourceOptions_Int64Option: {
+    $type: "yandex.cloud.cdn.v1.ResourceOptions.Int64Option";
     encode(message: ResourceOptions_Int64Option, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ResourceOptions_Int64Option;
     fromJSON(object: any): ResourceOptions_Int64Option;
@@ -445,6 +475,7 @@ export declare const ResourceOptions_Int64Option: {
     fromPartial(object: DeepPartial<ResourceOptions_Int64Option>): ResourceOptions_Int64Option;
 };
 export declare const ResourceOptions_StringsListOption: {
+    $type: "yandex.cloud.cdn.v1.ResourceOptions.StringsListOption";
     encode(message: ResourceOptions_StringsListOption, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ResourceOptions_StringsListOption;
     fromJSON(object: any): ResourceOptions_StringsListOption;
@@ -452,6 +483,7 @@ export declare const ResourceOptions_StringsListOption: {
     fromPartial(object: DeepPartial<ResourceOptions_StringsListOption>): ResourceOptions_StringsListOption;
 };
 export declare const ResourceOptions_StringsMapOption: {
+    $type: "yandex.cloud.cdn.v1.ResourceOptions.StringsMapOption";
     encode(message: ResourceOptions_StringsMapOption, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ResourceOptions_StringsMapOption;
     fromJSON(object: any): ResourceOptions_StringsMapOption;
@@ -459,6 +491,7 @@ export declare const ResourceOptions_StringsMapOption: {
     fromPartial(object: DeepPartial<ResourceOptions_StringsMapOption>): ResourceOptions_StringsMapOption;
 };
 export declare const ResourceOptions_StringsMapOption_ValueEntry: {
+    $type: "yandex.cloud.cdn.v1.ResourceOptions.StringsMapOption.ValueEntry";
     encode(message: ResourceOptions_StringsMapOption_ValueEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ResourceOptions_StringsMapOption_ValueEntry;
     fromJSON(object: any): ResourceOptions_StringsMapOption_ValueEntry;
@@ -466,6 +499,7 @@ export declare const ResourceOptions_StringsMapOption_ValueEntry: {
     fromPartial(object: DeepPartial<ResourceOptions_StringsMapOption_ValueEntry>): ResourceOptions_StringsMapOption_ValueEntry;
 };
 export declare const ResourceOptions_CachingTimes: {
+    $type: "yandex.cloud.cdn.v1.ResourceOptions.CachingTimes";
     encode(message: ResourceOptions_CachingTimes, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ResourceOptions_CachingTimes;
     fromJSON(object: any): ResourceOptions_CachingTimes;
@@ -473,6 +507,7 @@ export declare const ResourceOptions_CachingTimes: {
     fromPartial(object: DeepPartial<ResourceOptions_CachingTimes>): ResourceOptions_CachingTimes;
 };
 export declare const ResourceOptions_CachingTimes_CustomValuesEntry: {
+    $type: "yandex.cloud.cdn.v1.ResourceOptions.CachingTimes.CustomValuesEntry";
     encode(message: ResourceOptions_CachingTimes_CustomValuesEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ResourceOptions_CachingTimes_CustomValuesEntry;
     fromJSON(object: any): ResourceOptions_CachingTimes_CustomValuesEntry;
@@ -480,6 +515,7 @@ export declare const ResourceOptions_CachingTimes_CustomValuesEntry: {
     fromPartial(object: DeepPartial<ResourceOptions_CachingTimes_CustomValuesEntry>): ResourceOptions_CachingTimes_CustomValuesEntry;
 };
 export declare const ResourceOptions_EdgeCacheSettings: {
+    $type: "yandex.cloud.cdn.v1.ResourceOptions.EdgeCacheSettings";
     encode(message: ResourceOptions_EdgeCacheSettings, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ResourceOptions_EdgeCacheSettings;
     fromJSON(object: any): ResourceOptions_EdgeCacheSettings;
@@ -487,6 +523,7 @@ export declare const ResourceOptions_EdgeCacheSettings: {
     fromPartial(object: DeepPartial<ResourceOptions_EdgeCacheSettings>): ResourceOptions_EdgeCacheSettings;
 };
 export declare const ResourceOptions_StringVariableMapOption: {
+    $type: "yandex.cloud.cdn.v1.ResourceOptions.StringVariableMapOption";
     encode(message: ResourceOptions_StringVariableMapOption, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ResourceOptions_StringVariableMapOption;
     fromJSON(object: any): ResourceOptions_StringVariableMapOption;
@@ -494,6 +531,7 @@ export declare const ResourceOptions_StringVariableMapOption: {
     fromPartial(object: DeepPartial<ResourceOptions_StringVariableMapOption>): ResourceOptions_StringVariableMapOption;
 };
 export declare const ResourceOptions_StringVariableMapOption_OneofString: {
+    $type: "yandex.cloud.cdn.v1.ResourceOptions.StringVariableMapOption.OneofString";
     encode(message: ResourceOptions_StringVariableMapOption_OneofString, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ResourceOptions_StringVariableMapOption_OneofString;
     fromJSON(object: any): ResourceOptions_StringVariableMapOption_OneofString;
@@ -501,6 +539,7 @@ export declare const ResourceOptions_StringVariableMapOption_OneofString: {
     fromPartial(object: DeepPartial<ResourceOptions_StringVariableMapOption_OneofString>): ResourceOptions_StringVariableMapOption_OneofString;
 };
 export declare const ResourceOptions_StringVariableMapOption_ValueEntry: {
+    $type: "yandex.cloud.cdn.v1.ResourceOptions.StringVariableMapOption.ValueEntry";
     encode(message: ResourceOptions_StringVariableMapOption_ValueEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ResourceOptions_StringVariableMapOption_ValueEntry;
     fromJSON(object: any): ResourceOptions_StringVariableMapOption_ValueEntry;
@@ -508,6 +547,7 @@ export declare const ResourceOptions_StringVariableMapOption_ValueEntry: {
     fromPartial(object: DeepPartial<ResourceOptions_StringVariableMapOption_ValueEntry>): ResourceOptions_StringVariableMapOption_ValueEntry;
 };
 export declare const ResourceOptions_QueryParamsOptions: {
+    $type: "yandex.cloud.cdn.v1.ResourceOptions.QueryParamsOptions";
     encode(message: ResourceOptions_QueryParamsOptions, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ResourceOptions_QueryParamsOptions;
     fromJSON(object: any): ResourceOptions_QueryParamsOptions;
@@ -515,6 +555,7 @@ export declare const ResourceOptions_QueryParamsOptions: {
     fromPartial(object: DeepPartial<ResourceOptions_QueryParamsOptions>): ResourceOptions_QueryParamsOptions;
 };
 export declare const ResourceOptions_RedirectOptions: {
+    $type: "yandex.cloud.cdn.v1.ResourceOptions.RedirectOptions";
     encode(message: ResourceOptions_RedirectOptions, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ResourceOptions_RedirectOptions;
     fromJSON(object: any): ResourceOptions_RedirectOptions;
@@ -522,6 +563,7 @@ export declare const ResourceOptions_RedirectOptions: {
     fromPartial(object: DeepPartial<ResourceOptions_RedirectOptions>): ResourceOptions_RedirectOptions;
 };
 export declare const ResourceOptions_HostOptions: {
+    $type: "yandex.cloud.cdn.v1.ResourceOptions.HostOptions";
     encode(message: ResourceOptions_HostOptions, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ResourceOptions_HostOptions;
     fromJSON(object: any): ResourceOptions_HostOptions;
@@ -529,6 +571,7 @@ export declare const ResourceOptions_HostOptions: {
     fromPartial(object: DeepPartial<ResourceOptions_HostOptions>): ResourceOptions_HostOptions;
 };
 export declare const ResourceOptions_CompressionOptions: {
+    $type: "yandex.cloud.cdn.v1.ResourceOptions.CompressionOptions";
     encode(message: ResourceOptions_CompressionOptions, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ResourceOptions_CompressionOptions;
     fromJSON(object: any): ResourceOptions_CompressionOptions;
@@ -536,6 +579,7 @@ export declare const ResourceOptions_CompressionOptions: {
     fromPartial(object: DeepPartial<ResourceOptions_CompressionOptions>): ResourceOptions_CompressionOptions;
 };
 export declare const ResourceOptions_RewriteOption: {
+    $type: "yandex.cloud.cdn.v1.ResourceOptions.RewriteOption";
     encode(message: ResourceOptions_RewriteOption, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ResourceOptions_RewriteOption;
     fromJSON(object: any): ResourceOptions_RewriteOption;
@@ -543,6 +587,7 @@ export declare const ResourceOptions_RewriteOption: {
     fromPartial(object: DeepPartial<ResourceOptions_RewriteOption>): ResourceOptions_RewriteOption;
 };
 export declare const SSLTargetCertificate: {
+    $type: "yandex.cloud.cdn.v1.SSLTargetCertificate";
     encode(message: SSLTargetCertificate, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): SSLTargetCertificate;
     fromJSON(object: any): SSLTargetCertificate;
@@ -550,6 +595,7 @@ export declare const SSLTargetCertificate: {
     fromPartial(object: DeepPartial<SSLTargetCertificate>): SSLTargetCertificate;
 };
 export declare const SSLCertificate: {
+    $type: "yandex.cloud.cdn.v1.SSLCertificate";
     encode(message: SSLCertificate, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): SSLCertificate;
     fromJSON(object: any): SSLCertificate;
@@ -557,6 +603,7 @@ export declare const SSLCertificate: {
     fromPartial(object: DeepPartial<SSLCertificate>): SSLCertificate;
 };
 export declare const SSLCertificateData: {
+    $type: "yandex.cloud.cdn.v1.SSLCertificateData";
     encode(message: SSLCertificateData, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): SSLCertificateData;
     fromJSON(object: any): SSLCertificateData;
@@ -564,6 +611,7 @@ export declare const SSLCertificateData: {
     fromPartial(object: DeepPartial<SSLCertificateData>): SSLCertificateData;
 };
 export declare const SSLCertificateCMData: {
+    $type: "yandex.cloud.cdn.v1.SSLCertificateCMData";
     encode(message: SSLCertificateCMData, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): SSLCertificateCMData;
     fromJSON(object: any): SSLCertificateCMData;
@@ -572,6 +620,6 @@ export declare const SSLCertificateCMData: {
 };
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

@@ -1,5 +1,6 @@
 /* eslint-disable */
 import { FieldMask } from '../../../../google/protobuf/field_mask';
+import { messageTypeRegistry } from '../../../../typeRegistry';
 import {
     MaintenancePolicy,
     HostGroup,
@@ -28,6 +29,7 @@ import _m0 from 'protobufjs/minimal';
 export const protobufPackage = 'yandex.cloud.compute.v1';
 
 export interface GetHostGroupRequest {
+    $type: 'yandex.cloud.compute.v1.GetHostGroupRequest';
     /**
      * ID of the host group to return.
      * To get the host group ID, use [HostGroupService.List] request.
@@ -36,6 +38,7 @@ export interface GetHostGroupRequest {
 }
 
 export interface ListHostGroupsRequest {
+    $type: 'yandex.cloud.compute.v1.ListHostGroupsRequest';
     /**
      * ID of the folder to list host groups in.
      * To get the folder ID, use [yandex.cloud.resourcemanager.v1.FolderService.List] request.
@@ -62,6 +65,7 @@ export interface ListHostGroupsRequest {
 }
 
 export interface ListHostGroupsResponse {
+    $type: 'yandex.cloud.compute.v1.ListHostGroupsResponse';
     /** Lists host groups for the specified folder. */
     hostGroups: HostGroup[];
     /**
@@ -76,6 +80,7 @@ export interface ListHostGroupsResponse {
 }
 
 export interface CreateHostGroupRequest {
+    $type: 'yandex.cloud.compute.v1.CreateHostGroupRequest';
     /**
      * ID of the folder to create a host group in.
      * To get the folder ID, use a [yandex.cloud.resourcemanager.v1.FolderService.List] request.
@@ -98,16 +103,19 @@ export interface CreateHostGroupRequest {
 }
 
 export interface CreateHostGroupRequest_LabelsEntry {
+    $type: 'yandex.cloud.compute.v1.CreateHostGroupRequest.LabelsEntry';
     key: string;
     value: string;
 }
 
 export interface CreateHostGroupMetadata {
+    $type: 'yandex.cloud.compute.v1.CreateHostGroupMetadata';
     /** ID of the host group that is being created. */
     hostGroupId: string;
 }
 
 export interface UpdateHostGroupRequest {
+    $type: 'yandex.cloud.compute.v1.UpdateHostGroupRequest';
     /**
      * ID of the host group to update.
      * To get the host group ID, use an [HostGroupService.List] request.
@@ -132,16 +140,19 @@ export interface UpdateHostGroupRequest {
 }
 
 export interface UpdateHostGroupRequest_LabelsEntry {
+    $type: 'yandex.cloud.compute.v1.UpdateHostGroupRequest.LabelsEntry';
     key: string;
     value: string;
 }
 
 export interface UpdateHostGroupMetadata {
+    $type: 'yandex.cloud.compute.v1.UpdateHostGroupMetadata';
     /** ID of the host group that is being updated. */
     hostGroupId: string;
 }
 
 export interface DeleteHostGroupRequest {
+    $type: 'yandex.cloud.compute.v1.DeleteHostGroupRequest';
     /**
      * ID of the host group to delete.
      * To get the host group ID, use [HostGroupService.List] request.
@@ -150,11 +161,13 @@ export interface DeleteHostGroupRequest {
 }
 
 export interface DeleteHostGroupMetadata {
+    $type: 'yandex.cloud.compute.v1.DeleteHostGroupMetadata';
     /** ID of the host group that is being deleted. */
     hostGroupId: string;
 }
 
 export interface ListHostGroupInstancesRequest {
+    $type: 'yandex.cloud.compute.v1.ListHostGroupInstancesRequest';
     /**
      * ID of the host group to list instances for.
      * To get the host group ID, use [HostGroupService.List] request.
@@ -182,6 +195,7 @@ export interface ListHostGroupInstancesRequest {
 }
 
 export interface ListHostGroupInstancesResponse {
+    $type: 'yandex.cloud.compute.v1.ListHostGroupInstancesResponse';
     /** Lists instances for the specified host group. */
     instances: Instance[];
     /**
@@ -196,6 +210,7 @@ export interface ListHostGroupInstancesResponse {
 }
 
 export interface ListHostGroupHostsRequest {
+    $type: 'yandex.cloud.compute.v1.ListHostGroupHostsRequest';
     /**
      * ID of the host group to list hosts for.
      * To get the host group ID, use [HostGroupService.List] request.
@@ -217,6 +232,7 @@ export interface ListHostGroupHostsRequest {
 }
 
 export interface ListHostGroupHostsResponse {
+    $type: 'yandex.cloud.compute.v1.ListHostGroupHostsResponse';
     /** Lists hosts for the specified host group. */
     hosts: Host[];
     /**
@@ -231,6 +247,7 @@ export interface ListHostGroupHostsResponse {
 }
 
 export interface ListHostGroupOperationsRequest {
+    $type: 'yandex.cloud.compute.v1.ListHostGroupOperationsRequest';
     /**
      * ID of the host group to list operations for.
      * To get the host group ID, use [HostGroupService.List] request.
@@ -250,6 +267,7 @@ export interface ListHostGroupOperationsRequest {
 }
 
 export interface ListHostGroupOperationsResponse {
+    $type: 'yandex.cloud.compute.v1.ListHostGroupOperationsResponse';
     /** List of operations for the specified host group. */
     operations: Operation[];
     /**
@@ -261,9 +279,14 @@ export interface ListHostGroupOperationsResponse {
     nextPageToken: string;
 }
 
-const baseGetHostGroupRequest: object = { hostGroupId: '' };
+const baseGetHostGroupRequest: object = {
+    $type: 'yandex.cloud.compute.v1.GetHostGroupRequest',
+    hostGroupId: '',
+};
 
 export const GetHostGroupRequest = {
+    $type: 'yandex.cloud.compute.v1.GetHostGroupRequest' as const,
+
     encode(
         message: GetHostGroupRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -324,7 +347,10 @@ export const GetHostGroupRequest = {
     },
 };
 
+messageTypeRegistry.set(GetHostGroupRequest.$type, GetHostGroupRequest);
+
 const baseListHostGroupsRequest: object = {
+    $type: 'yandex.cloud.compute.v1.ListHostGroupsRequest',
     folderId: '',
     pageSize: 0,
     pageToken: '',
@@ -332,6 +358,8 @@ const baseListHostGroupsRequest: object = {
 };
 
 export const ListHostGroupsRequest = {
+    $type: 'yandex.cloud.compute.v1.ListHostGroupsRequest' as const,
+
     encode(
         message: ListHostGroupsRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -450,9 +478,16 @@ export const ListHostGroupsRequest = {
     },
 };
 
-const baseListHostGroupsResponse: object = { nextPageToken: '' };
+messageTypeRegistry.set(ListHostGroupsRequest.$type, ListHostGroupsRequest);
+
+const baseListHostGroupsResponse: object = {
+    $type: 'yandex.cloud.compute.v1.ListHostGroupsResponse',
+    nextPageToken: '',
+};
 
 export const ListHostGroupsResponse = {
+    $type: 'yandex.cloud.compute.v1.ListHostGroupsResponse' as const,
+
     encode(
         message: ListHostGroupsResponse,
         writer: _m0.Writer = _m0.Writer.create()
@@ -555,7 +590,10 @@ export const ListHostGroupsResponse = {
     },
 };
 
+messageTypeRegistry.set(ListHostGroupsResponse.$type, ListHostGroupsResponse);
+
 const baseCreateHostGroupRequest: object = {
+    $type: 'yandex.cloud.compute.v1.CreateHostGroupRequest',
     folderId: '',
     name: '',
     description: '',
@@ -565,6 +603,8 @@ const baseCreateHostGroupRequest: object = {
 };
 
 export const CreateHostGroupRequest = {
+    $type: 'yandex.cloud.compute.v1.CreateHostGroupRequest' as const,
+
     encode(
         message: CreateHostGroupRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -580,7 +620,11 @@ export const CreateHostGroupRequest = {
         }
         Object.entries(message.labels).forEach(([key, value]) => {
             CreateHostGroupRequest_LabelsEntry.encode(
-                { key: key as any, value },
+                {
+                    $type: 'yandex.cloud.compute.v1.CreateHostGroupRequest.LabelsEntry',
+                    key: key as any,
+                    value,
+                },
                 writer.uint32(34).fork()
             ).ldelim();
         });
@@ -791,9 +835,17 @@ export const CreateHostGroupRequest = {
     },
 };
 
-const baseCreateHostGroupRequest_LabelsEntry: object = { key: '', value: '' };
+messageTypeRegistry.set(CreateHostGroupRequest.$type, CreateHostGroupRequest);
+
+const baseCreateHostGroupRequest_LabelsEntry: object = {
+    $type: 'yandex.cloud.compute.v1.CreateHostGroupRequest.LabelsEntry',
+    key: '',
+    value: '',
+};
 
 export const CreateHostGroupRequest_LabelsEntry = {
+    $type: 'yandex.cloud.compute.v1.CreateHostGroupRequest.LabelsEntry' as const,
+
     encode(
         message: CreateHostGroupRequest_LabelsEntry,
         writer: _m0.Writer = _m0.Writer.create()
@@ -878,9 +930,19 @@ export const CreateHostGroupRequest_LabelsEntry = {
     },
 };
 
-const baseCreateHostGroupMetadata: object = { hostGroupId: '' };
+messageTypeRegistry.set(
+    CreateHostGroupRequest_LabelsEntry.$type,
+    CreateHostGroupRequest_LabelsEntry
+);
+
+const baseCreateHostGroupMetadata: object = {
+    $type: 'yandex.cloud.compute.v1.CreateHostGroupMetadata',
+    hostGroupId: '',
+};
 
 export const CreateHostGroupMetadata = {
+    $type: 'yandex.cloud.compute.v1.CreateHostGroupMetadata' as const,
+
     encode(
         message: CreateHostGroupMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -949,7 +1011,10 @@ export const CreateHostGroupMetadata = {
     },
 };
 
+messageTypeRegistry.set(CreateHostGroupMetadata.$type, CreateHostGroupMetadata);
+
 const baseUpdateHostGroupRequest: object = {
+    $type: 'yandex.cloud.compute.v1.UpdateHostGroupRequest',
     hostGroupId: '',
     name: '',
     description: '',
@@ -957,6 +1022,8 @@ const baseUpdateHostGroupRequest: object = {
 };
 
 export const UpdateHostGroupRequest = {
+    $type: 'yandex.cloud.compute.v1.UpdateHostGroupRequest' as const,
+
     encode(
         message: UpdateHostGroupRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -978,7 +1045,11 @@ export const UpdateHostGroupRequest = {
         }
         Object.entries(message.labels).forEach(([key, value]) => {
             UpdateHostGroupRequest_LabelsEntry.encode(
-                { key: key as any, value },
+                {
+                    $type: 'yandex.cloud.compute.v1.UpdateHostGroupRequest.LabelsEntry',
+                    key: key as any,
+                    value,
+                },
                 writer.uint32(42).fork()
             ).ldelim();
         });
@@ -1176,9 +1247,17 @@ export const UpdateHostGroupRequest = {
     },
 };
 
-const baseUpdateHostGroupRequest_LabelsEntry: object = { key: '', value: '' };
+messageTypeRegistry.set(UpdateHostGroupRequest.$type, UpdateHostGroupRequest);
+
+const baseUpdateHostGroupRequest_LabelsEntry: object = {
+    $type: 'yandex.cloud.compute.v1.UpdateHostGroupRequest.LabelsEntry',
+    key: '',
+    value: '',
+};
 
 export const UpdateHostGroupRequest_LabelsEntry = {
+    $type: 'yandex.cloud.compute.v1.UpdateHostGroupRequest.LabelsEntry' as const,
+
     encode(
         message: UpdateHostGroupRequest_LabelsEntry,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1263,9 +1342,19 @@ export const UpdateHostGroupRequest_LabelsEntry = {
     },
 };
 
-const baseUpdateHostGroupMetadata: object = { hostGroupId: '' };
+messageTypeRegistry.set(
+    UpdateHostGroupRequest_LabelsEntry.$type,
+    UpdateHostGroupRequest_LabelsEntry
+);
+
+const baseUpdateHostGroupMetadata: object = {
+    $type: 'yandex.cloud.compute.v1.UpdateHostGroupMetadata',
+    hostGroupId: '',
+};
 
 export const UpdateHostGroupMetadata = {
+    $type: 'yandex.cloud.compute.v1.UpdateHostGroupMetadata' as const,
+
     encode(
         message: UpdateHostGroupMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1334,9 +1423,16 @@ export const UpdateHostGroupMetadata = {
     },
 };
 
-const baseDeleteHostGroupRequest: object = { hostGroupId: '' };
+messageTypeRegistry.set(UpdateHostGroupMetadata.$type, UpdateHostGroupMetadata);
+
+const baseDeleteHostGroupRequest: object = {
+    $type: 'yandex.cloud.compute.v1.DeleteHostGroupRequest',
+    hostGroupId: '',
+};
 
 export const DeleteHostGroupRequest = {
+    $type: 'yandex.cloud.compute.v1.DeleteHostGroupRequest' as const,
+
     encode(
         message: DeleteHostGroupRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1405,9 +1501,16 @@ export const DeleteHostGroupRequest = {
     },
 };
 
-const baseDeleteHostGroupMetadata: object = { hostGroupId: '' };
+messageTypeRegistry.set(DeleteHostGroupRequest.$type, DeleteHostGroupRequest);
+
+const baseDeleteHostGroupMetadata: object = {
+    $type: 'yandex.cloud.compute.v1.DeleteHostGroupMetadata',
+    hostGroupId: '',
+};
 
 export const DeleteHostGroupMetadata = {
+    $type: 'yandex.cloud.compute.v1.DeleteHostGroupMetadata' as const,
+
     encode(
         message: DeleteHostGroupMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1476,7 +1579,10 @@ export const DeleteHostGroupMetadata = {
     },
 };
 
+messageTypeRegistry.set(DeleteHostGroupMetadata.$type, DeleteHostGroupMetadata);
+
 const baseListHostGroupInstancesRequest: object = {
+    $type: 'yandex.cloud.compute.v1.ListHostGroupInstancesRequest',
     hostGroupId: '',
     pageSize: 0,
     pageToken: '',
@@ -1484,6 +1590,8 @@ const baseListHostGroupInstancesRequest: object = {
 };
 
 export const ListHostGroupInstancesRequest = {
+    $type: 'yandex.cloud.compute.v1.ListHostGroupInstancesRequest' as const,
+
     encode(
         message: ListHostGroupInstancesRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1603,9 +1711,19 @@ export const ListHostGroupInstancesRequest = {
     },
 };
 
-const baseListHostGroupInstancesResponse: object = { nextPageToken: '' };
+messageTypeRegistry.set(
+    ListHostGroupInstancesRequest.$type,
+    ListHostGroupInstancesRequest
+);
+
+const baseListHostGroupInstancesResponse: object = {
+    $type: 'yandex.cloud.compute.v1.ListHostGroupInstancesResponse',
+    nextPageToken: '',
+};
 
 export const ListHostGroupInstancesResponse = {
+    $type: 'yandex.cloud.compute.v1.ListHostGroupInstancesResponse' as const,
+
     encode(
         message: ListHostGroupInstancesResponse,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1708,13 +1826,21 @@ export const ListHostGroupInstancesResponse = {
     },
 };
 
+messageTypeRegistry.set(
+    ListHostGroupInstancesResponse.$type,
+    ListHostGroupInstancesResponse
+);
+
 const baseListHostGroupHostsRequest: object = {
+    $type: 'yandex.cloud.compute.v1.ListHostGroupHostsRequest',
     hostGroupId: '',
     pageSize: 0,
     pageToken: '',
 };
 
 export const ListHostGroupHostsRequest = {
+    $type: 'yandex.cloud.compute.v1.ListHostGroupHostsRequest' as const,
+
     encode(
         message: ListHostGroupHostsRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1817,9 +1943,19 @@ export const ListHostGroupHostsRequest = {
     },
 };
 
-const baseListHostGroupHostsResponse: object = { nextPageToken: '' };
+messageTypeRegistry.set(
+    ListHostGroupHostsRequest.$type,
+    ListHostGroupHostsRequest
+);
+
+const baseListHostGroupHostsResponse: object = {
+    $type: 'yandex.cloud.compute.v1.ListHostGroupHostsResponse',
+    nextPageToken: '',
+};
 
 export const ListHostGroupHostsResponse = {
+    $type: 'yandex.cloud.compute.v1.ListHostGroupHostsResponse' as const,
+
     encode(
         message: ListHostGroupHostsResponse,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1920,13 +2056,21 @@ export const ListHostGroupHostsResponse = {
     },
 };
 
+messageTypeRegistry.set(
+    ListHostGroupHostsResponse.$type,
+    ListHostGroupHostsResponse
+);
+
 const baseListHostGroupOperationsRequest: object = {
+    $type: 'yandex.cloud.compute.v1.ListHostGroupOperationsRequest',
     hostGroupId: '',
     pageSize: 0,
     pageToken: '',
 };
 
 export const ListHostGroupOperationsRequest = {
+    $type: 'yandex.cloud.compute.v1.ListHostGroupOperationsRequest' as const,
+
     encode(
         message: ListHostGroupOperationsRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2029,9 +2173,19 @@ export const ListHostGroupOperationsRequest = {
     },
 };
 
-const baseListHostGroupOperationsResponse: object = { nextPageToken: '' };
+messageTypeRegistry.set(
+    ListHostGroupOperationsRequest.$type,
+    ListHostGroupOperationsRequest
+);
+
+const baseListHostGroupOperationsResponse: object = {
+    $type: 'yandex.cloud.compute.v1.ListHostGroupOperationsResponse',
+    nextPageToken: '',
+};
 
 export const ListHostGroupOperationsResponse = {
+    $type: 'yandex.cloud.compute.v1.ListHostGroupOperationsResponse' as const,
+
     encode(
         message: ListHostGroupOperationsResponse,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2133,6 +2287,11 @@ export const ListHostGroupOperationsResponse = {
         return message;
     },
 };
+
+messageTypeRegistry.set(
+    ListHostGroupOperationsResponse.$type,
+    ListHostGroupOperationsResponse
+);
 
 /** A set of methods for managing groups of dedicated hosts. */
 export const HostGroupServiceService = {
@@ -2478,7 +2637,7 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 function longToNumber(long: Long): number {

@@ -6,6 +6,7 @@ export declare const protobufPackage = "yandex.cloud.mdb.elasticsearch.v1";
  * For more information, see the [Concepts](/docs/managed-elasticsearch/concepts) section of the documentation.
  */
 export interface Cluster {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.Cluster';
     /**
      * ID of the Elasticsearch cluster.
      * This ID is assigned at creation time.
@@ -93,11 +94,13 @@ export declare enum Cluster_Status {
 export declare function cluster_StatusFromJSON(object: any): Cluster_Status;
 export declare function cluster_StatusToJSON(object: Cluster_Status): string;
 export interface Cluster_LabelsEntry {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.Cluster.LabelsEntry';
     key: string;
     value: string;
 }
 /** Metadata of monitoring system. */
 export interface Monitoring {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.Monitoring';
     /** Name of the monitoring system. */
     name: string;
     /** Description of the monitoring system. */
@@ -106,6 +109,7 @@ export interface Monitoring {
     link: string;
 }
 export interface ClusterConfig {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.ClusterConfig';
     /** Elasticsearch version. */
     version: string;
     /** Configuration and resource allocation for Elasticsearch nodes. */
@@ -114,6 +118,7 @@ export interface ClusterConfig {
     edition: string;
 }
 export interface Elasticsearch {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.Elasticsearch';
     /** Configuration and resource allocation for Elasticsearch data nodes. */
     dataNode: Elasticsearch_DataNode | undefined;
     /** Configuration and resource allocation for Elasticsearch master nodes. */
@@ -122,17 +127,20 @@ export interface Elasticsearch {
     plugins: string[];
 }
 export interface Elasticsearch_DataNode {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.Elasticsearch.DataNode';
     /** Elasticsearch 7.x data node configuration. */
     elasticsearchConfigSet7: ElasticsearchConfigSet7 | undefined;
     /** Resources allocated to Elasticsearch data nodes. */
     resources: Resources | undefined;
 }
 export interface Elasticsearch_MasterNode {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.Elasticsearch.MasterNode';
     /** Resources allocated to Elasticsearch master nodes. */
     resources: Resources | undefined;
 }
 /** Computational resources. */
 export interface Resources {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.Resources';
     /**
      * ID of the preset for computational resources available to a host (CPU, memory etc.).
      * All available presets are listed in the [documentation](/docs/managed-elasticsearch/concepts/instance-types).
@@ -148,6 +156,7 @@ export interface Resources {
 }
 /** Cluster host metadata. */
 export interface Host {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.Host';
     /** Name of the host. */
     name: string;
     /** ID of the Elasticsearch cluster. */
@@ -195,6 +204,7 @@ export declare function host_HealthFromJSON(object: any): Host_Health;
 export declare function host_HealthToJSON(object: Host_Health): string;
 /** Cluster service metadata. */
 export interface Service {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.Service';
     /** Type of the service provided by the host. */
     type: Service_Type;
     /** Service health data. */
@@ -220,6 +230,7 @@ export declare enum Service_Health {
 export declare function service_HealthFromJSON(object: any): Service_Health;
 export declare function service_HealthToJSON(object: Service_Health): string;
 export declare const Cluster: {
+    $type: "yandex.cloud.mdb.elasticsearch.v1.Cluster";
     encode(message: Cluster, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Cluster;
     fromJSON(object: any): Cluster;
@@ -227,6 +238,7 @@ export declare const Cluster: {
     fromPartial(object: DeepPartial<Cluster>): Cluster;
 };
 export declare const Cluster_LabelsEntry: {
+    $type: "yandex.cloud.mdb.elasticsearch.v1.Cluster.LabelsEntry";
     encode(message: Cluster_LabelsEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Cluster_LabelsEntry;
     fromJSON(object: any): Cluster_LabelsEntry;
@@ -234,6 +246,7 @@ export declare const Cluster_LabelsEntry: {
     fromPartial(object: DeepPartial<Cluster_LabelsEntry>): Cluster_LabelsEntry;
 };
 export declare const Monitoring: {
+    $type: "yandex.cloud.mdb.elasticsearch.v1.Monitoring";
     encode(message: Monitoring, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Monitoring;
     fromJSON(object: any): Monitoring;
@@ -241,6 +254,7 @@ export declare const Monitoring: {
     fromPartial(object: DeepPartial<Monitoring>): Monitoring;
 };
 export declare const ClusterConfig: {
+    $type: "yandex.cloud.mdb.elasticsearch.v1.ClusterConfig";
     encode(message: ClusterConfig, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ClusterConfig;
     fromJSON(object: any): ClusterConfig;
@@ -248,6 +262,7 @@ export declare const ClusterConfig: {
     fromPartial(object: DeepPartial<ClusterConfig>): ClusterConfig;
 };
 export declare const Elasticsearch: {
+    $type: "yandex.cloud.mdb.elasticsearch.v1.Elasticsearch";
     encode(message: Elasticsearch, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Elasticsearch;
     fromJSON(object: any): Elasticsearch;
@@ -255,6 +270,7 @@ export declare const Elasticsearch: {
     fromPartial(object: DeepPartial<Elasticsearch>): Elasticsearch;
 };
 export declare const Elasticsearch_DataNode: {
+    $type: "yandex.cloud.mdb.elasticsearch.v1.Elasticsearch.DataNode";
     encode(message: Elasticsearch_DataNode, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Elasticsearch_DataNode;
     fromJSON(object: any): Elasticsearch_DataNode;
@@ -262,6 +278,7 @@ export declare const Elasticsearch_DataNode: {
     fromPartial(object: DeepPartial<Elasticsearch_DataNode>): Elasticsearch_DataNode;
 };
 export declare const Elasticsearch_MasterNode: {
+    $type: "yandex.cloud.mdb.elasticsearch.v1.Elasticsearch.MasterNode";
     encode(message: Elasticsearch_MasterNode, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Elasticsearch_MasterNode;
     fromJSON(object: any): Elasticsearch_MasterNode;
@@ -269,6 +286,7 @@ export declare const Elasticsearch_MasterNode: {
     fromPartial(object: DeepPartial<Elasticsearch_MasterNode>): Elasticsearch_MasterNode;
 };
 export declare const Resources: {
+    $type: "yandex.cloud.mdb.elasticsearch.v1.Resources";
     encode(message: Resources, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Resources;
     fromJSON(object: any): Resources;
@@ -276,6 +294,7 @@ export declare const Resources: {
     fromPartial(object: DeepPartial<Resources>): Resources;
 };
 export declare const Host: {
+    $type: "yandex.cloud.mdb.elasticsearch.v1.Host";
     encode(message: Host, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Host;
     fromJSON(object: any): Host;
@@ -283,6 +302,7 @@ export declare const Host: {
     fromPartial(object: DeepPartial<Host>): Host;
 };
 export declare const Service: {
+    $type: "yandex.cloud.mdb.elasticsearch.v1.Service";
     encode(message: Service, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Service;
     fromJSON(object: any): Service;
@@ -291,6 +311,6 @@ export declare const Service: {
 };
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

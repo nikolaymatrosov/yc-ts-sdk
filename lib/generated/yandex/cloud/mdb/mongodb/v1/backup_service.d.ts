@@ -5,6 +5,7 @@ import { ChannelCredentials, ChannelOptions, UntypedServiceImplementation, handl
 import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.mdb.mongodb.v1";
 export interface GetBackupRequest {
+    $type: 'yandex.cloud.mdb.mongodb.v1.GetBackupRequest';
     /**
      * ID of the backup to return information about.
      * To get the backup ID, use a [ClusterService.ListBackups] request.
@@ -12,6 +13,7 @@ export interface GetBackupRequest {
     backupId: string;
 }
 export interface ListBackupsRequest {
+    $type: 'yandex.cloud.mdb.mongodb.v1.ListBackupsRequest';
     /**
      * ID of the folder to list backups in.
      * To get the folder ID, use a [yandex.cloud.resourcemanager.v1.FolderService.List] request.
@@ -25,6 +27,7 @@ export interface ListBackupsRequest {
     pageToken: string;
 }
 export interface ListBackupsResponse {
+    $type: 'yandex.cloud.mdb.mongodb.v1.ListBackupsResponse';
     /** List of Backup resources. */
     backups: Backup[];
     /**
@@ -36,14 +39,17 @@ export interface ListBackupsResponse {
     nextPageToken: string;
 }
 export interface DeleteBackupRequest {
+    $type: 'yandex.cloud.mdb.mongodb.v1.DeleteBackupRequest';
     /** Required. ID of the backup to delete. */
     backupId: string;
 }
 export interface DeleteBackupMetadata {
+    $type: 'yandex.cloud.mdb.mongodb.v1.DeleteBackupMetadata';
     /** Required. ID of the deleting MongoDB backup. */
     backupId: string;
 }
 export declare const GetBackupRequest: {
+    $type: "yandex.cloud.mdb.mongodb.v1.GetBackupRequest";
     encode(message: GetBackupRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): GetBackupRequest;
     fromJSON(object: any): GetBackupRequest;
@@ -51,6 +57,7 @@ export declare const GetBackupRequest: {
     fromPartial(object: DeepPartial<GetBackupRequest>): GetBackupRequest;
 };
 export declare const ListBackupsRequest: {
+    $type: "yandex.cloud.mdb.mongodb.v1.ListBackupsRequest";
     encode(message: ListBackupsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListBackupsRequest;
     fromJSON(object: any): ListBackupsRequest;
@@ -58,6 +65,7 @@ export declare const ListBackupsRequest: {
     fromPartial(object: DeepPartial<ListBackupsRequest>): ListBackupsRequest;
 };
 export declare const ListBackupsResponse: {
+    $type: "yandex.cloud.mdb.mongodb.v1.ListBackupsResponse";
     encode(message: ListBackupsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListBackupsResponse;
     fromJSON(object: any): ListBackupsResponse;
@@ -65,6 +73,7 @@ export declare const ListBackupsResponse: {
     fromPartial(object: DeepPartial<ListBackupsResponse>): ListBackupsResponse;
 };
 export declare const DeleteBackupRequest: {
+    $type: "yandex.cloud.mdb.mongodb.v1.DeleteBackupRequest";
     encode(message: DeleteBackupRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteBackupRequest;
     fromJSON(object: any): DeleteBackupRequest;
@@ -72,6 +81,7 @@ export declare const DeleteBackupRequest: {
     fromPartial(object: DeepPartial<DeleteBackupRequest>): DeleteBackupRequest;
 };
 export declare const DeleteBackupMetadata: {
+    $type: "yandex.cloud.mdb.mongodb.v1.DeleteBackupMetadata";
     encode(message: DeleteBackupMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteBackupMetadata;
     fromJSON(object: any): DeleteBackupMetadata;
@@ -148,6 +158,6 @@ export interface BackupServiceClient extends Client {
 export declare const BackupServiceClient: new (address: string, credentials: ChannelCredentials, options?: Partial<ChannelOptions> | undefined) => BackupServiceClient;
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

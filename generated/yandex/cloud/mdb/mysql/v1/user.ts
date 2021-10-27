@@ -1,5 +1,6 @@
 /* eslint-disable */
 import { Int64Value } from '../../../../../google/protobuf/wrappers';
+import { messageTypeRegistry } from '../../../../../typeRegistry';
 import Long from 'long';
 import _m0 from 'protobufjs/minimal';
 
@@ -112,6 +113,7 @@ export function authPluginToJSON(object: AuthPlugin): string {
  * the [documentation](/docs/managed-mysql/concepts).
  */
 export interface User {
+    $type: 'yandex.cloud.mdb.mysql.v1.User';
     /** Name of the MySQL user. */
     name: string;
     /** ID of the MySQL cluster the user belongs to. */
@@ -127,6 +129,7 @@ export interface User {
 }
 
 export interface Permission {
+    $type: 'yandex.cloud.mdb.mysql.v1.Permission';
     /** Name of the database that the permission grants access to. */
     databaseName: string;
     /** Roles granted to the user within the database. */
@@ -303,6 +306,7 @@ export function permission_PrivilegeToJSON(
 }
 
 export interface ConnectionLimits {
+    $type: 'yandex.cloud.mdb.mysql.v1.ConnectionLimits';
     /** The maximum permitted number of user questions per hour. */
     maxQuestionsPerHour: number | undefined;
     /** The maximum permitted number of user updates per hour. */
@@ -314,6 +318,7 @@ export interface ConnectionLimits {
 }
 
 export interface UserSpec {
+    $type: 'yandex.cloud.mdb.mysql.v1.UserSpec';
     /** Name of the MySQL user. */
     name: string;
     /** Password of the MySQL user. */
@@ -329,6 +334,7 @@ export interface UserSpec {
 }
 
 const baseUser: object = {
+    $type: 'yandex.cloud.mdb.mysql.v1.User',
     name: '',
     clusterId: '',
     globalPermissions: 0,
@@ -336,6 +342,8 @@ const baseUser: object = {
 };
 
 export const User = {
+    $type: 'yandex.cloud.mdb.mysql.v1.User' as const,
+
     encode(
         message: User,
         writer: _m0.Writer = _m0.Writer.create()
@@ -544,9 +552,17 @@ export const User = {
     },
 };
 
-const basePermission: object = { databaseName: '', roles: 0 };
+messageTypeRegistry.set(User.$type, User);
+
+const basePermission: object = {
+    $type: 'yandex.cloud.mdb.mysql.v1.Permission',
+    databaseName: '',
+    roles: 0,
+};
 
 export const Permission = {
+    $type: 'yandex.cloud.mdb.mysql.v1.Permission' as const,
+
     encode(
         message: Permission,
         writer: _m0.Writer = _m0.Writer.create()
@@ -637,34 +653,52 @@ export const Permission = {
     },
 };
 
-const baseConnectionLimits: object = {};
+messageTypeRegistry.set(Permission.$type, Permission);
+
+const baseConnectionLimits: object = {
+    $type: 'yandex.cloud.mdb.mysql.v1.ConnectionLimits',
+};
 
 export const ConnectionLimits = {
+    $type: 'yandex.cloud.mdb.mysql.v1.ConnectionLimits' as const,
+
     encode(
         message: ConnectionLimits,
         writer: _m0.Writer = _m0.Writer.create()
     ): _m0.Writer {
         if (message.maxQuestionsPerHour !== undefined) {
             Int64Value.encode(
-                { value: message.maxQuestionsPerHour! },
+                {
+                    $type: 'google.protobuf.Int64Value',
+                    value: message.maxQuestionsPerHour!,
+                },
                 writer.uint32(10).fork()
             ).ldelim();
         }
         if (message.maxUpdatesPerHour !== undefined) {
             Int64Value.encode(
-                { value: message.maxUpdatesPerHour! },
+                {
+                    $type: 'google.protobuf.Int64Value',
+                    value: message.maxUpdatesPerHour!,
+                },
                 writer.uint32(18).fork()
             ).ldelim();
         }
         if (message.maxConnectionsPerHour !== undefined) {
             Int64Value.encode(
-                { value: message.maxConnectionsPerHour! },
+                {
+                    $type: 'google.protobuf.Int64Value',
+                    value: message.maxConnectionsPerHour!,
+                },
                 writer.uint32(26).fork()
             ).ldelim();
         }
         if (message.maxUserConnections !== undefined) {
             Int64Value.encode(
-                { value: message.maxUserConnections! },
+                {
+                    $type: 'google.protobuf.Int64Value',
+                    value: message.maxUserConnections!,
+                },
                 writer.uint32(34).fork()
             ).ldelim();
         }
@@ -801,7 +835,10 @@ export const ConnectionLimits = {
     },
 };
 
+messageTypeRegistry.set(ConnectionLimits.$type, ConnectionLimits);
+
 const baseUserSpec: object = {
+    $type: 'yandex.cloud.mdb.mysql.v1.UserSpec',
     name: '',
     password: '',
     globalPermissions: 0,
@@ -809,6 +846,8 @@ const baseUserSpec: object = {
 };
 
 export const UserSpec = {
+    $type: 'yandex.cloud.mdb.mysql.v1.UserSpec' as const,
+
     encode(
         message: UserSpec,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1017,6 +1056,8 @@ export const UserSpec = {
     },
 };
 
+messageTypeRegistry.set(UserSpec.$type, UserSpec);
+
 type Builtin =
     | Date
     | Function
@@ -1032,7 +1073,7 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 if (_m0.util.Long !== Long) {

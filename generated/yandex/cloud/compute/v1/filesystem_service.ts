@@ -1,5 +1,6 @@
 /* eslint-disable */
 import { FieldMask } from '../../../../google/protobuf/field_mask';
+import { messageTypeRegistry } from '../../../../typeRegistry';
 import { Filesystem } from '../../../../yandex/cloud/compute/v1/filesystem';
 import { Operation } from '../../../../yandex/cloud/operation/operation';
 import {
@@ -20,6 +21,7 @@ import _m0 from 'protobufjs/minimal';
 export const protobufPackage = 'yandex.cloud.compute.v1';
 
 export interface GetFilesystemRequest {
+    $type: 'yandex.cloud.compute.v1.GetFilesystemRequest';
     /**
      * ID of the filesystem to return.
      *
@@ -29,6 +31,7 @@ export interface GetFilesystemRequest {
 }
 
 export interface ListFilesystemsRequest {
+    $type: 'yandex.cloud.compute.v1.ListFilesystemsRequest';
     /**
      * ID of the folder to list filesystems in.
      *
@@ -60,6 +63,7 @@ export interface ListFilesystemsRequest {
 }
 
 export interface ListFilesystemsResponse {
+    $type: 'yandex.cloud.compute.v1.ListFilesystemsResponse';
     /** List of filesystems in the specified folder. */
     filesystems: Filesystem[];
     /**
@@ -73,6 +77,7 @@ export interface ListFilesystemsResponse {
 }
 
 export interface CreateFilesystemRequest {
+    $type: 'yandex.cloud.compute.v1.CreateFilesystemRequest';
     /**
      * ID of the folder to create a filesystem in.
      *
@@ -122,16 +127,19 @@ export interface CreateFilesystemRequest {
 }
 
 export interface CreateFilesystemRequest_LabelsEntry {
+    $type: 'yandex.cloud.compute.v1.CreateFilesystemRequest.LabelsEntry';
     key: string;
     value: string;
 }
 
 export interface CreateFilesystemMetadata {
+    $type: 'yandex.cloud.compute.v1.CreateFilesystemMetadata';
     /** ID of the filesystem that is being created. */
     filesystemId: string;
 }
 
 export interface UpdateFilesystemRequest {
+    $type: 'yandex.cloud.compute.v1.UpdateFilesystemRequest';
     /**
      * ID of the filesystem to update.
      *
@@ -158,16 +166,19 @@ export interface UpdateFilesystemRequest {
 }
 
 export interface UpdateFilesystemRequest_LabelsEntry {
+    $type: 'yandex.cloud.compute.v1.UpdateFilesystemRequest.LabelsEntry';
     key: string;
     value: string;
 }
 
 export interface UpdateFilesystemMetadata {
+    $type: 'yandex.cloud.compute.v1.UpdateFilesystemMetadata';
     /** ID of the filesystem that is being updated. */
     filesystemId: string;
 }
 
 export interface DeleteFilesystemRequest {
+    $type: 'yandex.cloud.compute.v1.DeleteFilesystemRequest';
     /**
      * ID of the filesystem to delete.
      *
@@ -177,11 +188,13 @@ export interface DeleteFilesystemRequest {
 }
 
 export interface DeleteFilesystemMetadata {
+    $type: 'yandex.cloud.compute.v1.DeleteFilesystemMetadata';
     /** ID of the filesystem that is being deleted. */
     filesystemId: string;
 }
 
 export interface ListFilesystemOperationsRequest {
+    $type: 'yandex.cloud.compute.v1.ListFilesystemOperationsRequest';
     /**
      * ID of the filesystem to list operations for.
      *
@@ -202,6 +215,7 @@ export interface ListFilesystemOperationsRequest {
 }
 
 export interface ListFilesystemOperationsResponse {
+    $type: 'yandex.cloud.compute.v1.ListFilesystemOperationsResponse';
     /** List of operations for the specified filesystem. */
     operations: Operation[];
     /**
@@ -214,9 +228,14 @@ export interface ListFilesystemOperationsResponse {
     nextPageToken: string;
 }
 
-const baseGetFilesystemRequest: object = { filesystemId: '' };
+const baseGetFilesystemRequest: object = {
+    $type: 'yandex.cloud.compute.v1.GetFilesystemRequest',
+    filesystemId: '',
+};
 
 export const GetFilesystemRequest = {
+    $type: 'yandex.cloud.compute.v1.GetFilesystemRequest' as const,
+
     encode(
         message: GetFilesystemRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -279,7 +298,10 @@ export const GetFilesystemRequest = {
     },
 };
 
+messageTypeRegistry.set(GetFilesystemRequest.$type, GetFilesystemRequest);
+
 const baseListFilesystemsRequest: object = {
+    $type: 'yandex.cloud.compute.v1.ListFilesystemsRequest',
     folderId: '',
     pageSize: 0,
     pageToken: '',
@@ -287,6 +309,8 @@ const baseListFilesystemsRequest: object = {
 };
 
 export const ListFilesystemsRequest = {
+    $type: 'yandex.cloud.compute.v1.ListFilesystemsRequest' as const,
+
     encode(
         message: ListFilesystemsRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -405,9 +429,16 @@ export const ListFilesystemsRequest = {
     },
 };
 
-const baseListFilesystemsResponse: object = { nextPageToken: '' };
+messageTypeRegistry.set(ListFilesystemsRequest.$type, ListFilesystemsRequest);
+
+const baseListFilesystemsResponse: object = {
+    $type: 'yandex.cloud.compute.v1.ListFilesystemsResponse',
+    nextPageToken: '',
+};
 
 export const ListFilesystemsResponse = {
+    $type: 'yandex.cloud.compute.v1.ListFilesystemsResponse' as const,
+
     encode(
         message: ListFilesystemsResponse,
         writer: _m0.Writer = _m0.Writer.create()
@@ -510,7 +541,10 @@ export const ListFilesystemsResponse = {
     },
 };
 
+messageTypeRegistry.set(ListFilesystemsResponse.$type, ListFilesystemsResponse);
+
 const baseCreateFilesystemRequest: object = {
+    $type: 'yandex.cloud.compute.v1.CreateFilesystemRequest',
     folderId: '',
     name: '',
     description: '',
@@ -521,6 +555,8 @@ const baseCreateFilesystemRequest: object = {
 };
 
 export const CreateFilesystemRequest = {
+    $type: 'yandex.cloud.compute.v1.CreateFilesystemRequest' as const,
+
     encode(
         message: CreateFilesystemRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -536,7 +572,11 @@ export const CreateFilesystemRequest = {
         }
         Object.entries(message.labels).forEach(([key, value]) => {
             CreateFilesystemRequest_LabelsEntry.encode(
-                { key: key as any, value },
+                {
+                    $type: 'yandex.cloud.compute.v1.CreateFilesystemRequest.LabelsEntry',
+                    key: key as any,
+                    value,
+                },
                 writer.uint32(34).fork()
             ).ldelim();
         });
@@ -727,9 +767,17 @@ export const CreateFilesystemRequest = {
     },
 };
 
-const baseCreateFilesystemRequest_LabelsEntry: object = { key: '', value: '' };
+messageTypeRegistry.set(CreateFilesystemRequest.$type, CreateFilesystemRequest);
+
+const baseCreateFilesystemRequest_LabelsEntry: object = {
+    $type: 'yandex.cloud.compute.v1.CreateFilesystemRequest.LabelsEntry',
+    key: '',
+    value: '',
+};
 
 export const CreateFilesystemRequest_LabelsEntry = {
+    $type: 'yandex.cloud.compute.v1.CreateFilesystemRequest.LabelsEntry' as const,
+
     encode(
         message: CreateFilesystemRequest_LabelsEntry,
         writer: _m0.Writer = _m0.Writer.create()
@@ -814,9 +862,19 @@ export const CreateFilesystemRequest_LabelsEntry = {
     },
 };
 
-const baseCreateFilesystemMetadata: object = { filesystemId: '' };
+messageTypeRegistry.set(
+    CreateFilesystemRequest_LabelsEntry.$type,
+    CreateFilesystemRequest_LabelsEntry
+);
+
+const baseCreateFilesystemMetadata: object = {
+    $type: 'yandex.cloud.compute.v1.CreateFilesystemMetadata',
+    filesystemId: '',
+};
 
 export const CreateFilesystemMetadata = {
+    $type: 'yandex.cloud.compute.v1.CreateFilesystemMetadata' as const,
+
     encode(
         message: CreateFilesystemMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -885,13 +943,21 @@ export const CreateFilesystemMetadata = {
     },
 };
 
+messageTypeRegistry.set(
+    CreateFilesystemMetadata.$type,
+    CreateFilesystemMetadata
+);
+
 const baseUpdateFilesystemRequest: object = {
+    $type: 'yandex.cloud.compute.v1.UpdateFilesystemRequest',
     filesystemId: '',
     name: '',
     description: '',
 };
 
 export const UpdateFilesystemRequest = {
+    $type: 'yandex.cloud.compute.v1.UpdateFilesystemRequest' as const,
+
     encode(
         message: UpdateFilesystemRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -913,7 +979,11 @@ export const UpdateFilesystemRequest = {
         }
         Object.entries(message.labels).forEach(([key, value]) => {
             UpdateFilesystemRequest_LabelsEntry.encode(
-                { key: key as any, value },
+                {
+                    $type: 'yandex.cloud.compute.v1.UpdateFilesystemRequest.LabelsEntry',
+                    key: key as any,
+                    value,
+                },
                 writer.uint32(42).fork()
             ).ldelim();
         });
@@ -1057,9 +1127,17 @@ export const UpdateFilesystemRequest = {
     },
 };
 
-const baseUpdateFilesystemRequest_LabelsEntry: object = { key: '', value: '' };
+messageTypeRegistry.set(UpdateFilesystemRequest.$type, UpdateFilesystemRequest);
+
+const baseUpdateFilesystemRequest_LabelsEntry: object = {
+    $type: 'yandex.cloud.compute.v1.UpdateFilesystemRequest.LabelsEntry',
+    key: '',
+    value: '',
+};
 
 export const UpdateFilesystemRequest_LabelsEntry = {
+    $type: 'yandex.cloud.compute.v1.UpdateFilesystemRequest.LabelsEntry' as const,
+
     encode(
         message: UpdateFilesystemRequest_LabelsEntry,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1144,9 +1222,19 @@ export const UpdateFilesystemRequest_LabelsEntry = {
     },
 };
 
-const baseUpdateFilesystemMetadata: object = { filesystemId: '' };
+messageTypeRegistry.set(
+    UpdateFilesystemRequest_LabelsEntry.$type,
+    UpdateFilesystemRequest_LabelsEntry
+);
+
+const baseUpdateFilesystemMetadata: object = {
+    $type: 'yandex.cloud.compute.v1.UpdateFilesystemMetadata',
+    filesystemId: '',
+};
 
 export const UpdateFilesystemMetadata = {
+    $type: 'yandex.cloud.compute.v1.UpdateFilesystemMetadata' as const,
+
     encode(
         message: UpdateFilesystemMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1215,9 +1303,19 @@ export const UpdateFilesystemMetadata = {
     },
 };
 
-const baseDeleteFilesystemRequest: object = { filesystemId: '' };
+messageTypeRegistry.set(
+    UpdateFilesystemMetadata.$type,
+    UpdateFilesystemMetadata
+);
+
+const baseDeleteFilesystemRequest: object = {
+    $type: 'yandex.cloud.compute.v1.DeleteFilesystemRequest',
+    filesystemId: '',
+};
 
 export const DeleteFilesystemRequest = {
+    $type: 'yandex.cloud.compute.v1.DeleteFilesystemRequest' as const,
+
     encode(
         message: DeleteFilesystemRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1286,9 +1384,16 @@ export const DeleteFilesystemRequest = {
     },
 };
 
-const baseDeleteFilesystemMetadata: object = { filesystemId: '' };
+messageTypeRegistry.set(DeleteFilesystemRequest.$type, DeleteFilesystemRequest);
+
+const baseDeleteFilesystemMetadata: object = {
+    $type: 'yandex.cloud.compute.v1.DeleteFilesystemMetadata',
+    filesystemId: '',
+};
 
 export const DeleteFilesystemMetadata = {
+    $type: 'yandex.cloud.compute.v1.DeleteFilesystemMetadata' as const,
+
     encode(
         message: DeleteFilesystemMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1357,13 +1462,21 @@ export const DeleteFilesystemMetadata = {
     },
 };
 
+messageTypeRegistry.set(
+    DeleteFilesystemMetadata.$type,
+    DeleteFilesystemMetadata
+);
+
 const baseListFilesystemOperationsRequest: object = {
+    $type: 'yandex.cloud.compute.v1.ListFilesystemOperationsRequest',
     filesystemId: '',
     pageSize: 0,
     pageToken: '',
 };
 
 export const ListFilesystemOperationsRequest = {
+    $type: 'yandex.cloud.compute.v1.ListFilesystemOperationsRequest' as const,
+
     encode(
         message: ListFilesystemOperationsRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1466,9 +1579,19 @@ export const ListFilesystemOperationsRequest = {
     },
 };
 
-const baseListFilesystemOperationsResponse: object = { nextPageToken: '' };
+messageTypeRegistry.set(
+    ListFilesystemOperationsRequest.$type,
+    ListFilesystemOperationsRequest
+);
+
+const baseListFilesystemOperationsResponse: object = {
+    $type: 'yandex.cloud.compute.v1.ListFilesystemOperationsResponse',
+    nextPageToken: '',
+};
 
 export const ListFilesystemOperationsResponse = {
+    $type: 'yandex.cloud.compute.v1.ListFilesystemOperationsResponse' as const,
+
     encode(
         message: ListFilesystemOperationsResponse,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1570,6 +1693,11 @@ export const ListFilesystemOperationsResponse = {
         return message;
     },
 };
+
+messageTypeRegistry.set(
+    ListFilesystemOperationsResponse.$type,
+    ListFilesystemOperationsResponse
+);
 
 /** A set of methods for managing filesystems. */
 export const FilesystemServiceService = {
@@ -1859,7 +1987,7 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 function longToNumber(long: Long): number {

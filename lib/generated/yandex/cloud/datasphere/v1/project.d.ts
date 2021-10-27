@@ -2,6 +2,7 @@ import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.datasphere.v1";
 /** A Project resource. */
 export interface Project {
+    $type: 'yandex.cloud.datasphere.v1.Project';
     /** ID of the project. */
     id: string;
     /** ID of the folder that the project belongs to. */
@@ -17,6 +18,7 @@ export interface Project {
     limits: Project_Limits | undefined;
 }
 export interface Project_Settings {
+    $type: 'yandex.cloud.datasphere.v1.Project.Settings';
     /** ID of the service account, on whose behalf all operations with clusters will be performed. */
     serviceAccountId: string;
     /**
@@ -43,12 +45,14 @@ export declare enum Project_Settings_CommitMode {
 export declare function project_Settings_CommitModeFromJSON(object: any): Project_Settings_CommitMode;
 export declare function project_Settings_CommitModeToJSON(object: Project_Settings_CommitMode): string;
 export interface Project_Limits {
+    $type: 'yandex.cloud.datasphere.v1.Project.Limits';
     /** The number of units that can be spent per hour. */
     maxUnitsPerHour: number | undefined;
     /** The number of units that can be spent on the one execution. */
     maxUnitsPerExecution: number | undefined;
 }
 export declare const Project: {
+    $type: "yandex.cloud.datasphere.v1.Project";
     encode(message: Project, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Project;
     fromJSON(object: any): Project;
@@ -56,6 +60,7 @@ export declare const Project: {
     fromPartial(object: DeepPartial<Project>): Project;
 };
 export declare const Project_Settings: {
+    $type: "yandex.cloud.datasphere.v1.Project.Settings";
     encode(message: Project_Settings, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Project_Settings;
     fromJSON(object: any): Project_Settings;
@@ -63,6 +68,7 @@ export declare const Project_Settings: {
     fromPartial(object: DeepPartial<Project_Settings>): Project_Settings;
 };
 export declare const Project_Limits: {
+    $type: "yandex.cloud.datasphere.v1.Project.Limits";
     encode(message: Project_Limits, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Project_Limits;
     fromJSON(object: any): Project_Limits;
@@ -71,6 +77,6 @@ export declare const Project_Limits: {
 };
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

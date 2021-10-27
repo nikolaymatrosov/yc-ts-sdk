@@ -1,6 +1,7 @@
 import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.marketplace.v1.metering";
 export interface UsageRecord {
+    $type: 'yandex.cloud.marketplace.v1.metering.UsageRecord';
     /** Unique identitifier of the usage record (UUID format) */
     uuid: string;
     /** Consumed Marketplace SaaS Sku ID, linked to `UsageRecord.product_id` */
@@ -11,10 +12,12 @@ export interface UsageRecord {
     timestamp: Date | undefined;
 }
 export interface AcceptedUsageRecord {
+    $type: 'yandex.cloud.marketplace.v1.metering.AcceptedUsageRecord';
     /** Unique identitifier of the usage record (UUID format) */
     uuid: string;
 }
 export interface RejectedUsageRecord {
+    $type: 'yandex.cloud.marketplace.v1.metering.RejectedUsageRecord';
     /** Unique identitifier of the usage record (UUID format) */
     uuid: string;
     /** The reason of rejection */
@@ -34,6 +37,7 @@ export declare enum RejectedUsageRecord_Reason {
 export declare function rejectedUsageRecord_ReasonFromJSON(object: any): RejectedUsageRecord_Reason;
 export declare function rejectedUsageRecord_ReasonToJSON(object: RejectedUsageRecord_Reason): string;
 export declare const UsageRecord: {
+    $type: "yandex.cloud.marketplace.v1.metering.UsageRecord";
     encode(message: UsageRecord, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UsageRecord;
     fromJSON(object: any): UsageRecord;
@@ -41,6 +45,7 @@ export declare const UsageRecord: {
     fromPartial(object: DeepPartial<UsageRecord>): UsageRecord;
 };
 export declare const AcceptedUsageRecord: {
+    $type: "yandex.cloud.marketplace.v1.metering.AcceptedUsageRecord";
     encode(message: AcceptedUsageRecord, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): AcceptedUsageRecord;
     fromJSON(object: any): AcceptedUsageRecord;
@@ -48,6 +53,7 @@ export declare const AcceptedUsageRecord: {
     fromPartial(object: DeepPartial<AcceptedUsageRecord>): AcceptedUsageRecord;
 };
 export declare const RejectedUsageRecord: {
+    $type: "yandex.cloud.marketplace.v1.metering.RejectedUsageRecord";
     encode(message: RejectedUsageRecord, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): RejectedUsageRecord;
     fromJSON(object: any): RejectedUsageRecord;
@@ -56,6 +62,6 @@ export declare const RejectedUsageRecord: {
 };
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

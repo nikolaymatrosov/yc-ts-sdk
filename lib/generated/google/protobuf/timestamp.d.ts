@@ -94,6 +94,7 @@ export declare const protobufPackage = "google.protobuf";
  * ) to obtain a formatter capable of generating timestamps in this format.
  */
 export interface Timestamp {
+    $type: 'google.protobuf.Timestamp';
     /**
      * Represents seconds of UTC time since Unix epoch
      * 1970-01-01T00:00:00Z. Must be from 0001-01-01T00:00:00Z to
@@ -109,6 +110,7 @@ export interface Timestamp {
     nanos: number;
 }
 export declare const Timestamp: {
+    $type: "google.protobuf.Timestamp";
     encode(message: Timestamp, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Timestamp;
     fromJSON(object: any): Timestamp;
@@ -117,6 +119,6 @@ export declare const Timestamp: {
 };
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

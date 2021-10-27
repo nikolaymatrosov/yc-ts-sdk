@@ -6,6 +6,7 @@ import { ChannelCredentials, ChannelOptions, UntypedServiceImplementation, handl
 import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.vpc.v1";
 export interface GetRouteTableRequest {
+    $type: 'yandex.cloud.vpc.v1.GetRouteTableRequest';
     /**
      * ID of the RouteTable resource to return.
      * To get the route table ID use a [RouteTableService.List] request.
@@ -13,6 +14,7 @@ export interface GetRouteTableRequest {
     routeTableId: string;
 }
 export interface ListRouteTablesRequest {
+    $type: 'yandex.cloud.vpc.v1.ListRouteTablesRequest';
     /**
      * ID of the folder that the route table belongs to.
      * To get the folder ID use a [yandex.cloud.resourcemanager.v1.FolderService.List] request.
@@ -40,6 +42,7 @@ export interface ListRouteTablesRequest {
     filter: string;
 }
 export interface ListRouteTablesResponse {
+    $type: 'yandex.cloud.vpc.v1.ListRouteTablesResponse';
     /** List of RouteTable resources. */
     routeTables: RouteTable[];
     /**
@@ -53,6 +56,7 @@ export interface ListRouteTablesResponse {
     nextPageToken: string;
 }
 export interface CreateRouteTableRequest {
+    $type: 'yandex.cloud.vpc.v1.CreateRouteTableRequest';
     /**
      * ID of the folder that the route table belongs to.
      * To get the folder ID use a [yandex.cloud.resourcemanager.v1.FolderService.List] request.
@@ -75,14 +79,17 @@ export interface CreateRouteTableRequest {
     staticRoutes: StaticRoute[];
 }
 export interface CreateRouteTableRequest_LabelsEntry {
+    $type: 'yandex.cloud.vpc.v1.CreateRouteTableRequest.LabelsEntry';
     key: string;
     value: string;
 }
 export interface CreateRouteTableMetadata {
+    $type: 'yandex.cloud.vpc.v1.CreateRouteTableMetadata';
     /** ID of the route table that is being created. */
     routeTableId: string;
 }
 export interface UpdateRouteTableRequest {
+    $type: 'yandex.cloud.vpc.v1.UpdateRouteTableRequest';
     /** ID of the RouteTable resource to update. */
     routeTableId: string;
     /** Field mask that specifies which fields of the RouteTable resource are going to be updated. */
@@ -102,14 +109,17 @@ export interface UpdateRouteTableRequest {
     staticRoutes: StaticRoute[];
 }
 export interface UpdateRouteTableRequest_LabelsEntry {
+    $type: 'yandex.cloud.vpc.v1.UpdateRouteTableRequest.LabelsEntry';
     key: string;
     value: string;
 }
 export interface UpdateRouteTableMetadata {
+    $type: 'yandex.cloud.vpc.v1.UpdateRouteTableMetadata';
     /** ID of the RouteTable resource that is being updated. */
     routeTableId: string;
 }
 export interface DeleteRouteTableRequest {
+    $type: 'yandex.cloud.vpc.v1.DeleteRouteTableRequest';
     /**
      * ID of the route table to delete.
      * To get the route table ID use a [RouteTableService.List] request.
@@ -117,10 +127,12 @@ export interface DeleteRouteTableRequest {
     routeTableId: string;
 }
 export interface DeleteRouteTableMetadata {
+    $type: 'yandex.cloud.vpc.v1.DeleteRouteTableMetadata';
     /** ID of the RouteTable resource that is being deleted. */
     routeTableId: string;
 }
 export interface ListRouteTableOperationsRequest {
+    $type: 'yandex.cloud.vpc.v1.ListRouteTableOperationsRequest';
     /** ID of the RouteTable resource to list operations for. */
     routeTableId: string;
     /**
@@ -136,6 +148,7 @@ export interface ListRouteTableOperationsRequest {
     pageToken: string;
 }
 export interface ListRouteTableOperationsResponse {
+    $type: 'yandex.cloud.vpc.v1.ListRouteTableOperationsResponse';
     /** List of operations for the specified RouteTable resource. */
     operations: Operation[];
     /**
@@ -147,16 +160,19 @@ export interface ListRouteTableOperationsResponse {
     nextPageToken: string;
 }
 export interface MoveRouteTableRequest {
+    $type: 'yandex.cloud.vpc.v1.MoveRouteTableRequest';
     /** ID of the RouteTable resource to move. */
     routeTableId: string;
     /** ID of the destination folder. */
     destinationFolderId: string;
 }
 export interface MoveRouteTableMetadata {
+    $type: 'yandex.cloud.vpc.v1.MoveRouteTableMetadata';
     /** ID of the RouteTable resource that is being moved. */
     routeTableId: string;
 }
 export declare const GetRouteTableRequest: {
+    $type: "yandex.cloud.vpc.v1.GetRouteTableRequest";
     encode(message: GetRouteTableRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): GetRouteTableRequest;
     fromJSON(object: any): GetRouteTableRequest;
@@ -164,6 +180,7 @@ export declare const GetRouteTableRequest: {
     fromPartial(object: DeepPartial<GetRouteTableRequest>): GetRouteTableRequest;
 };
 export declare const ListRouteTablesRequest: {
+    $type: "yandex.cloud.vpc.v1.ListRouteTablesRequest";
     encode(message: ListRouteTablesRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListRouteTablesRequest;
     fromJSON(object: any): ListRouteTablesRequest;
@@ -171,6 +188,7 @@ export declare const ListRouteTablesRequest: {
     fromPartial(object: DeepPartial<ListRouteTablesRequest>): ListRouteTablesRequest;
 };
 export declare const ListRouteTablesResponse: {
+    $type: "yandex.cloud.vpc.v1.ListRouteTablesResponse";
     encode(message: ListRouteTablesResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListRouteTablesResponse;
     fromJSON(object: any): ListRouteTablesResponse;
@@ -178,6 +196,7 @@ export declare const ListRouteTablesResponse: {
     fromPartial(object: DeepPartial<ListRouteTablesResponse>): ListRouteTablesResponse;
 };
 export declare const CreateRouteTableRequest: {
+    $type: "yandex.cloud.vpc.v1.CreateRouteTableRequest";
     encode(message: CreateRouteTableRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateRouteTableRequest;
     fromJSON(object: any): CreateRouteTableRequest;
@@ -185,6 +204,7 @@ export declare const CreateRouteTableRequest: {
     fromPartial(object: DeepPartial<CreateRouteTableRequest>): CreateRouteTableRequest;
 };
 export declare const CreateRouteTableRequest_LabelsEntry: {
+    $type: "yandex.cloud.vpc.v1.CreateRouteTableRequest.LabelsEntry";
     encode(message: CreateRouteTableRequest_LabelsEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateRouteTableRequest_LabelsEntry;
     fromJSON(object: any): CreateRouteTableRequest_LabelsEntry;
@@ -192,6 +212,7 @@ export declare const CreateRouteTableRequest_LabelsEntry: {
     fromPartial(object: DeepPartial<CreateRouteTableRequest_LabelsEntry>): CreateRouteTableRequest_LabelsEntry;
 };
 export declare const CreateRouteTableMetadata: {
+    $type: "yandex.cloud.vpc.v1.CreateRouteTableMetadata";
     encode(message: CreateRouteTableMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateRouteTableMetadata;
     fromJSON(object: any): CreateRouteTableMetadata;
@@ -199,6 +220,7 @@ export declare const CreateRouteTableMetadata: {
     fromPartial(object: DeepPartial<CreateRouteTableMetadata>): CreateRouteTableMetadata;
 };
 export declare const UpdateRouteTableRequest: {
+    $type: "yandex.cloud.vpc.v1.UpdateRouteTableRequest";
     encode(message: UpdateRouteTableRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateRouteTableRequest;
     fromJSON(object: any): UpdateRouteTableRequest;
@@ -206,6 +228,7 @@ export declare const UpdateRouteTableRequest: {
     fromPartial(object: DeepPartial<UpdateRouteTableRequest>): UpdateRouteTableRequest;
 };
 export declare const UpdateRouteTableRequest_LabelsEntry: {
+    $type: "yandex.cloud.vpc.v1.UpdateRouteTableRequest.LabelsEntry";
     encode(message: UpdateRouteTableRequest_LabelsEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateRouteTableRequest_LabelsEntry;
     fromJSON(object: any): UpdateRouteTableRequest_LabelsEntry;
@@ -213,6 +236,7 @@ export declare const UpdateRouteTableRequest_LabelsEntry: {
     fromPartial(object: DeepPartial<UpdateRouteTableRequest_LabelsEntry>): UpdateRouteTableRequest_LabelsEntry;
 };
 export declare const UpdateRouteTableMetadata: {
+    $type: "yandex.cloud.vpc.v1.UpdateRouteTableMetadata";
     encode(message: UpdateRouteTableMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateRouteTableMetadata;
     fromJSON(object: any): UpdateRouteTableMetadata;
@@ -220,6 +244,7 @@ export declare const UpdateRouteTableMetadata: {
     fromPartial(object: DeepPartial<UpdateRouteTableMetadata>): UpdateRouteTableMetadata;
 };
 export declare const DeleteRouteTableRequest: {
+    $type: "yandex.cloud.vpc.v1.DeleteRouteTableRequest";
     encode(message: DeleteRouteTableRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteRouteTableRequest;
     fromJSON(object: any): DeleteRouteTableRequest;
@@ -227,6 +252,7 @@ export declare const DeleteRouteTableRequest: {
     fromPartial(object: DeepPartial<DeleteRouteTableRequest>): DeleteRouteTableRequest;
 };
 export declare const DeleteRouteTableMetadata: {
+    $type: "yandex.cloud.vpc.v1.DeleteRouteTableMetadata";
     encode(message: DeleteRouteTableMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteRouteTableMetadata;
     fromJSON(object: any): DeleteRouteTableMetadata;
@@ -234,6 +260,7 @@ export declare const DeleteRouteTableMetadata: {
     fromPartial(object: DeepPartial<DeleteRouteTableMetadata>): DeleteRouteTableMetadata;
 };
 export declare const ListRouteTableOperationsRequest: {
+    $type: "yandex.cloud.vpc.v1.ListRouteTableOperationsRequest";
     encode(message: ListRouteTableOperationsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListRouteTableOperationsRequest;
     fromJSON(object: any): ListRouteTableOperationsRequest;
@@ -241,6 +268,7 @@ export declare const ListRouteTableOperationsRequest: {
     fromPartial(object: DeepPartial<ListRouteTableOperationsRequest>): ListRouteTableOperationsRequest;
 };
 export declare const ListRouteTableOperationsResponse: {
+    $type: "yandex.cloud.vpc.v1.ListRouteTableOperationsResponse";
     encode(message: ListRouteTableOperationsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListRouteTableOperationsResponse;
     fromJSON(object: any): ListRouteTableOperationsResponse;
@@ -248,6 +276,7 @@ export declare const ListRouteTableOperationsResponse: {
     fromPartial(object: DeepPartial<ListRouteTableOperationsResponse>): ListRouteTableOperationsResponse;
 };
 export declare const MoveRouteTableRequest: {
+    $type: "yandex.cloud.vpc.v1.MoveRouteTableRequest";
     encode(message: MoveRouteTableRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): MoveRouteTableRequest;
     fromJSON(object: any): MoveRouteTableRequest;
@@ -255,6 +284,7 @@ export declare const MoveRouteTableRequest: {
     fromPartial(object: DeepPartial<MoveRouteTableRequest>): MoveRouteTableRequest;
 };
 export declare const MoveRouteTableMetadata: {
+    $type: "yandex.cloud.vpc.v1.MoveRouteTableMetadata";
     encode(message: MoveRouteTableMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): MoveRouteTableMetadata;
     fromJSON(object: any): MoveRouteTableMetadata;
@@ -413,6 +443,6 @@ export interface RouteTableServiceClient extends Client {
 export declare const RouteTableServiceClient: new (address: string, credentials: ChannelCredentials, options?: Partial<ChannelOptions> | undefined) => RouteTableServiceClient;
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

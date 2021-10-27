@@ -8,6 +8,7 @@ import { ChannelCredentials, ChannelOptions, UntypedServiceImplementation, handl
 import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.k8s.v1";
 export interface GetNodeGroupRequest {
+    $type: 'yandex.cloud.k8s.v1.GetNodeGroupRequest';
     /**
      * ID of the node group to return.
      * To get the node group ID use a [NodeGroupService.List] request.
@@ -15,6 +16,7 @@ export interface GetNodeGroupRequest {
     nodeGroupId: string;
 }
 export interface ListNodeGroupsRequest {
+    $type: 'yandex.cloud.k8s.v1.ListNodeGroupsRequest';
     /**
      * ID of the folder to list node groups in.
      * To get the folder ID use a [yandex.cloud.resourcemanager.v1.FolderService.List] request.
@@ -43,6 +45,7 @@ export interface ListNodeGroupsRequest {
     filter: string;
 }
 export interface ListNodeGroupsResponse {
+    $type: 'yandex.cloud.k8s.v1.ListNodeGroupsResponse';
     /** List of node groups. */
     nodeGroups: NodeGroup[];
     /**
@@ -56,6 +59,7 @@ export interface ListNodeGroupsResponse {
     nextPageToken: string;
 }
 export interface ListNodeGroupNodesRequest {
+    $type: 'yandex.cloud.k8s.v1.ListNodeGroupNodesRequest';
     /**
      * ID of the node group to list.
      * To get the node group ID use a [NodeGroupService.List] request.
@@ -76,6 +80,7 @@ export interface ListNodeGroupNodesRequest {
     pageToken: string;
 }
 export interface ListNodeGroupNodesResponse {
+    $type: 'yandex.cloud.k8s.v1.ListNodeGroupNodesResponse';
     /** List of nodes. */
     nodes: Node[];
     /**
@@ -89,6 +94,7 @@ export interface ListNodeGroupNodesResponse {
     nextPageToken: string;
 }
 export interface DeleteNodeGroupRequest {
+    $type: 'yandex.cloud.k8s.v1.DeleteNodeGroupRequest';
     /**
      * ID of the node group to delete.
      * To get node group ID use a [NodeGroupService.List] request.
@@ -96,10 +102,12 @@ export interface DeleteNodeGroupRequest {
     nodeGroupId: string;
 }
 export interface DeleteNodeGroupMetadata {
+    $type: 'yandex.cloud.k8s.v1.DeleteNodeGroupMetadata';
     /** ID of the node group that is being deleted. */
     nodeGroupId: string;
 }
 export interface UpdateNodeGroupRequest {
+    $type: 'yandex.cloud.k8s.v1.UpdateNodeGroupRequest';
     /**
      * ID of the node group to update.
      * To get the node group ID use a [NodeGroupService.List] request.
@@ -150,18 +158,22 @@ export interface UpdateNodeGroupRequest {
     };
 }
 export interface UpdateNodeGroupRequest_LabelsEntry {
+    $type: 'yandex.cloud.k8s.v1.UpdateNodeGroupRequest.LabelsEntry';
     key: string;
     value: string;
 }
 export interface UpdateNodeGroupRequest_NodeLabelsEntry {
+    $type: 'yandex.cloud.k8s.v1.UpdateNodeGroupRequest.NodeLabelsEntry';
     key: string;
     value: string;
 }
 export interface UpdateNodeGroupMetadata {
+    $type: 'yandex.cloud.k8s.v1.UpdateNodeGroupMetadata';
     /** ID of the Node group that is being updated. */
     nodeGroupId: string;
 }
 export interface CreateNodeGroupRequest {
+    $type: 'yandex.cloud.k8s.v1.CreateNodeGroupRequest';
     /**
      * ID of the Kubernetes cluster to create a node group in.
      * To get the Kubernetes cluster ID, use a [ClusterService.List] request.
@@ -203,22 +215,27 @@ export interface CreateNodeGroupRequest {
     };
 }
 export interface CreateNodeGroupRequest_LabelsEntry {
+    $type: 'yandex.cloud.k8s.v1.CreateNodeGroupRequest.LabelsEntry';
     key: string;
     value: string;
 }
 export interface CreateNodeGroupRequest_NodeLabelsEntry {
+    $type: 'yandex.cloud.k8s.v1.CreateNodeGroupRequest.NodeLabelsEntry';
     key: string;
     value: string;
 }
 export interface CreateNodeGroupMetadata {
+    $type: 'yandex.cloud.k8s.v1.CreateNodeGroupMetadata';
     /** ID of the node group that is being created. */
     nodeGroupId: string;
 }
 export interface AutoUpgradeNodeGroupMetadata {
+    $type: 'yandex.cloud.k8s.v1.AutoUpgradeNodeGroupMetadata';
     /** ID of the node group that is being auto upgraded. */
     nodeGroupId: string;
 }
 export interface ListNodeGroupOperationsRequest {
+    $type: 'yandex.cloud.k8s.v1.ListNodeGroupOperationsRequest';
     /** ID of the node group to list operations for. */
     nodeGroupId: string;
     /**
@@ -240,6 +257,7 @@ export interface ListNodeGroupOperationsRequest {
     filter: string;
 }
 export interface ListNodeGroupOperationsResponse {
+    $type: 'yandex.cloud.k8s.v1.ListNodeGroupOperationsResponse';
     /** List of operations for the specified node group. */
     operations: Operation[];
     /**
@@ -251,6 +269,7 @@ export interface ListNodeGroupOperationsResponse {
     nextPageToken: string;
 }
 export declare const GetNodeGroupRequest: {
+    $type: "yandex.cloud.k8s.v1.GetNodeGroupRequest";
     encode(message: GetNodeGroupRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): GetNodeGroupRequest;
     fromJSON(object: any): GetNodeGroupRequest;
@@ -258,6 +277,7 @@ export declare const GetNodeGroupRequest: {
     fromPartial(object: DeepPartial<GetNodeGroupRequest>): GetNodeGroupRequest;
 };
 export declare const ListNodeGroupsRequest: {
+    $type: "yandex.cloud.k8s.v1.ListNodeGroupsRequest";
     encode(message: ListNodeGroupsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListNodeGroupsRequest;
     fromJSON(object: any): ListNodeGroupsRequest;
@@ -265,6 +285,7 @@ export declare const ListNodeGroupsRequest: {
     fromPartial(object: DeepPartial<ListNodeGroupsRequest>): ListNodeGroupsRequest;
 };
 export declare const ListNodeGroupsResponse: {
+    $type: "yandex.cloud.k8s.v1.ListNodeGroupsResponse";
     encode(message: ListNodeGroupsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListNodeGroupsResponse;
     fromJSON(object: any): ListNodeGroupsResponse;
@@ -272,6 +293,7 @@ export declare const ListNodeGroupsResponse: {
     fromPartial(object: DeepPartial<ListNodeGroupsResponse>): ListNodeGroupsResponse;
 };
 export declare const ListNodeGroupNodesRequest: {
+    $type: "yandex.cloud.k8s.v1.ListNodeGroupNodesRequest";
     encode(message: ListNodeGroupNodesRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListNodeGroupNodesRequest;
     fromJSON(object: any): ListNodeGroupNodesRequest;
@@ -279,6 +301,7 @@ export declare const ListNodeGroupNodesRequest: {
     fromPartial(object: DeepPartial<ListNodeGroupNodesRequest>): ListNodeGroupNodesRequest;
 };
 export declare const ListNodeGroupNodesResponse: {
+    $type: "yandex.cloud.k8s.v1.ListNodeGroupNodesResponse";
     encode(message: ListNodeGroupNodesResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListNodeGroupNodesResponse;
     fromJSON(object: any): ListNodeGroupNodesResponse;
@@ -286,6 +309,7 @@ export declare const ListNodeGroupNodesResponse: {
     fromPartial(object: DeepPartial<ListNodeGroupNodesResponse>): ListNodeGroupNodesResponse;
 };
 export declare const DeleteNodeGroupRequest: {
+    $type: "yandex.cloud.k8s.v1.DeleteNodeGroupRequest";
     encode(message: DeleteNodeGroupRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteNodeGroupRequest;
     fromJSON(object: any): DeleteNodeGroupRequest;
@@ -293,6 +317,7 @@ export declare const DeleteNodeGroupRequest: {
     fromPartial(object: DeepPartial<DeleteNodeGroupRequest>): DeleteNodeGroupRequest;
 };
 export declare const DeleteNodeGroupMetadata: {
+    $type: "yandex.cloud.k8s.v1.DeleteNodeGroupMetadata";
     encode(message: DeleteNodeGroupMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteNodeGroupMetadata;
     fromJSON(object: any): DeleteNodeGroupMetadata;
@@ -300,6 +325,7 @@ export declare const DeleteNodeGroupMetadata: {
     fromPartial(object: DeepPartial<DeleteNodeGroupMetadata>): DeleteNodeGroupMetadata;
 };
 export declare const UpdateNodeGroupRequest: {
+    $type: "yandex.cloud.k8s.v1.UpdateNodeGroupRequest";
     encode(message: UpdateNodeGroupRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateNodeGroupRequest;
     fromJSON(object: any): UpdateNodeGroupRequest;
@@ -307,6 +333,7 @@ export declare const UpdateNodeGroupRequest: {
     fromPartial(object: DeepPartial<UpdateNodeGroupRequest>): UpdateNodeGroupRequest;
 };
 export declare const UpdateNodeGroupRequest_LabelsEntry: {
+    $type: "yandex.cloud.k8s.v1.UpdateNodeGroupRequest.LabelsEntry";
     encode(message: UpdateNodeGroupRequest_LabelsEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateNodeGroupRequest_LabelsEntry;
     fromJSON(object: any): UpdateNodeGroupRequest_LabelsEntry;
@@ -314,6 +341,7 @@ export declare const UpdateNodeGroupRequest_LabelsEntry: {
     fromPartial(object: DeepPartial<UpdateNodeGroupRequest_LabelsEntry>): UpdateNodeGroupRequest_LabelsEntry;
 };
 export declare const UpdateNodeGroupRequest_NodeLabelsEntry: {
+    $type: "yandex.cloud.k8s.v1.UpdateNodeGroupRequest.NodeLabelsEntry";
     encode(message: UpdateNodeGroupRequest_NodeLabelsEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateNodeGroupRequest_NodeLabelsEntry;
     fromJSON(object: any): UpdateNodeGroupRequest_NodeLabelsEntry;
@@ -321,6 +349,7 @@ export declare const UpdateNodeGroupRequest_NodeLabelsEntry: {
     fromPartial(object: DeepPartial<UpdateNodeGroupRequest_NodeLabelsEntry>): UpdateNodeGroupRequest_NodeLabelsEntry;
 };
 export declare const UpdateNodeGroupMetadata: {
+    $type: "yandex.cloud.k8s.v1.UpdateNodeGroupMetadata";
     encode(message: UpdateNodeGroupMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateNodeGroupMetadata;
     fromJSON(object: any): UpdateNodeGroupMetadata;
@@ -328,6 +357,7 @@ export declare const UpdateNodeGroupMetadata: {
     fromPartial(object: DeepPartial<UpdateNodeGroupMetadata>): UpdateNodeGroupMetadata;
 };
 export declare const CreateNodeGroupRequest: {
+    $type: "yandex.cloud.k8s.v1.CreateNodeGroupRequest";
     encode(message: CreateNodeGroupRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateNodeGroupRequest;
     fromJSON(object: any): CreateNodeGroupRequest;
@@ -335,6 +365,7 @@ export declare const CreateNodeGroupRequest: {
     fromPartial(object: DeepPartial<CreateNodeGroupRequest>): CreateNodeGroupRequest;
 };
 export declare const CreateNodeGroupRequest_LabelsEntry: {
+    $type: "yandex.cloud.k8s.v1.CreateNodeGroupRequest.LabelsEntry";
     encode(message: CreateNodeGroupRequest_LabelsEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateNodeGroupRequest_LabelsEntry;
     fromJSON(object: any): CreateNodeGroupRequest_LabelsEntry;
@@ -342,6 +373,7 @@ export declare const CreateNodeGroupRequest_LabelsEntry: {
     fromPartial(object: DeepPartial<CreateNodeGroupRequest_LabelsEntry>): CreateNodeGroupRequest_LabelsEntry;
 };
 export declare const CreateNodeGroupRequest_NodeLabelsEntry: {
+    $type: "yandex.cloud.k8s.v1.CreateNodeGroupRequest.NodeLabelsEntry";
     encode(message: CreateNodeGroupRequest_NodeLabelsEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateNodeGroupRequest_NodeLabelsEntry;
     fromJSON(object: any): CreateNodeGroupRequest_NodeLabelsEntry;
@@ -349,6 +381,7 @@ export declare const CreateNodeGroupRequest_NodeLabelsEntry: {
     fromPartial(object: DeepPartial<CreateNodeGroupRequest_NodeLabelsEntry>): CreateNodeGroupRequest_NodeLabelsEntry;
 };
 export declare const CreateNodeGroupMetadata: {
+    $type: "yandex.cloud.k8s.v1.CreateNodeGroupMetadata";
     encode(message: CreateNodeGroupMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateNodeGroupMetadata;
     fromJSON(object: any): CreateNodeGroupMetadata;
@@ -356,6 +389,7 @@ export declare const CreateNodeGroupMetadata: {
     fromPartial(object: DeepPartial<CreateNodeGroupMetadata>): CreateNodeGroupMetadata;
 };
 export declare const AutoUpgradeNodeGroupMetadata: {
+    $type: "yandex.cloud.k8s.v1.AutoUpgradeNodeGroupMetadata";
     encode(message: AutoUpgradeNodeGroupMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): AutoUpgradeNodeGroupMetadata;
     fromJSON(object: any): AutoUpgradeNodeGroupMetadata;
@@ -363,6 +397,7 @@ export declare const AutoUpgradeNodeGroupMetadata: {
     fromPartial(object: DeepPartial<AutoUpgradeNodeGroupMetadata>): AutoUpgradeNodeGroupMetadata;
 };
 export declare const ListNodeGroupOperationsRequest: {
+    $type: "yandex.cloud.k8s.v1.ListNodeGroupOperationsRequest";
     encode(message: ListNodeGroupOperationsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListNodeGroupOperationsRequest;
     fromJSON(object: any): ListNodeGroupOperationsRequest;
@@ -370,6 +405,7 @@ export declare const ListNodeGroupOperationsRequest: {
     fromPartial(object: DeepPartial<ListNodeGroupOperationsRequest>): ListNodeGroupOperationsRequest;
 };
 export declare const ListNodeGroupOperationsResponse: {
+    $type: "yandex.cloud.k8s.v1.ListNodeGroupOperationsResponse";
     encode(message: ListNodeGroupOperationsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListNodeGroupOperationsResponse;
     fromJSON(object: any): ListNodeGroupOperationsResponse;
@@ -510,6 +546,6 @@ export interface NodeGroupServiceClient extends Client {
 export declare const NodeGroupServiceClient: new (address: string, credentials: ChannelCredentials, options?: Partial<ChannelOptions> | undefined) => NodeGroupServiceClient;
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

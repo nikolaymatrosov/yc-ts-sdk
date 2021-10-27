@@ -1,5 +1,6 @@
 /* eslint-disable */
 import { FieldMask } from '../../../../../google/protobuf/field_mask';
+import { messageTypeRegistry } from '../../../../../typeRegistry';
 import {
     Topic,
     TopicSpec,
@@ -23,6 +24,7 @@ import _m0 from 'protobufjs/minimal';
 export const protobufPackage = 'yandex.cloud.mdb.kafka.v1';
 
 export interface GetTopicRequest {
+    $type: 'yandex.cloud.mdb.kafka.v1.GetTopicRequest';
     /**
      * ID of the Apache Kafka® cluster that the topic belongs to.
      *
@@ -38,6 +40,7 @@ export interface GetTopicRequest {
 }
 
 export interface ListTopicsRequest {
+    $type: 'yandex.cloud.mdb.kafka.v1.ListTopicsRequest';
     /**
      * ID of the Apache Kafka® cluster to list topics in.
      *
@@ -59,6 +62,7 @@ export interface ListTopicsRequest {
 }
 
 export interface ListTopicsResponse {
+    $type: 'yandex.cloud.mdb.kafka.v1.ListTopicsResponse';
     /** List of Kafka topics. */
     topics: Topic[];
     /**
@@ -71,6 +75,7 @@ export interface ListTopicsResponse {
 }
 
 export interface CreateTopicRequest {
+    $type: 'yandex.cloud.mdb.kafka.v1.CreateTopicRequest';
     /**
      * ID of the Apache Kafka® cluster to create a topic in.
      *
@@ -82,6 +87,7 @@ export interface CreateTopicRequest {
 }
 
 export interface CreateTopicMetadata {
+    $type: 'yandex.cloud.mdb.kafka.v1.CreateTopicMetadata';
     /** ID of the Apache Kafka® cluster where a topic is being created. */
     clusterId: string;
     /** Name of the Kafka topic that is being created. */
@@ -89,6 +95,7 @@ export interface CreateTopicMetadata {
 }
 
 export interface UpdateTopicRequest {
+    $type: 'yandex.cloud.mdb.kafka.v1.UpdateTopicRequest';
     /**
      * ID of the Apache Kafka® cluster to update a topic in.
      *
@@ -111,6 +118,7 @@ export interface UpdateTopicRequest {
 }
 
 export interface UpdateTopicMetadata {
+    $type: 'yandex.cloud.mdb.kafka.v1.UpdateTopicMetadata';
     /** ID of the Apache Kafka® cluster where a topic is being updated. */
     clusterId: string;
     /** Name of the Kafka topic that is being updated. */
@@ -118,6 +126,7 @@ export interface UpdateTopicMetadata {
 }
 
 export interface DeleteTopicRequest {
+    $type: 'yandex.cloud.mdb.kafka.v1.DeleteTopicRequest';
     /**
      * ID of the Apache Kafka® cluster to delete a topic in.
      *
@@ -133,15 +142,22 @@ export interface DeleteTopicRequest {
 }
 
 export interface DeleteTopicMetadata {
+    $type: 'yandex.cloud.mdb.kafka.v1.DeleteTopicMetadata';
     /** ID of the Apache Kafka® cluster where a topic is being deleted. */
     clusterId: string;
     /** Name of the Kafka topic that is being deleted. */
     topicName: string;
 }
 
-const baseGetTopicRequest: object = { clusterId: '', topicName: '' };
+const baseGetTopicRequest: object = {
+    $type: 'yandex.cloud.mdb.kafka.v1.GetTopicRequest',
+    clusterId: '',
+    topicName: '',
+};
 
 export const GetTopicRequest = {
+    $type: 'yandex.cloud.mdb.kafka.v1.GetTopicRequest' as const,
+
     encode(
         message: GetTopicRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -215,13 +231,18 @@ export const GetTopicRequest = {
     },
 };
 
+messageTypeRegistry.set(GetTopicRequest.$type, GetTopicRequest);
+
 const baseListTopicsRequest: object = {
+    $type: 'yandex.cloud.mdb.kafka.v1.ListTopicsRequest',
     clusterId: '',
     pageSize: 0,
     pageToken: '',
 };
 
 export const ListTopicsRequest = {
+    $type: 'yandex.cloud.mdb.kafka.v1.ListTopicsRequest' as const,
+
     encode(
         message: ListTopicsRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -312,9 +333,16 @@ export const ListTopicsRequest = {
     },
 };
 
-const baseListTopicsResponse: object = { nextPageToken: '' };
+messageTypeRegistry.set(ListTopicsRequest.$type, ListTopicsRequest);
+
+const baseListTopicsResponse: object = {
+    $type: 'yandex.cloud.mdb.kafka.v1.ListTopicsResponse',
+    nextPageToken: '',
+};
 
 export const ListTopicsResponse = {
+    $type: 'yandex.cloud.mdb.kafka.v1.ListTopicsResponse' as const,
+
     encode(
         message: ListTopicsResponse,
         writer: _m0.Writer = _m0.Writer.create()
@@ -407,9 +435,16 @@ export const ListTopicsResponse = {
     },
 };
 
-const baseCreateTopicRequest: object = { clusterId: '' };
+messageTypeRegistry.set(ListTopicsResponse.$type, ListTopicsResponse);
+
+const baseCreateTopicRequest: object = {
+    $type: 'yandex.cloud.mdb.kafka.v1.CreateTopicRequest',
+    clusterId: '',
+};
 
 export const CreateTopicRequest = {
+    $type: 'yandex.cloud.mdb.kafka.v1.CreateTopicRequest' as const,
+
     encode(
         message: CreateTopicRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -495,9 +530,17 @@ export const CreateTopicRequest = {
     },
 };
 
-const baseCreateTopicMetadata: object = { clusterId: '', topicName: '' };
+messageTypeRegistry.set(CreateTopicRequest.$type, CreateTopicRequest);
+
+const baseCreateTopicMetadata: object = {
+    $type: 'yandex.cloud.mdb.kafka.v1.CreateTopicMetadata',
+    clusterId: '',
+    topicName: '',
+};
 
 export const CreateTopicMetadata = {
+    $type: 'yandex.cloud.mdb.kafka.v1.CreateTopicMetadata' as const,
+
     encode(
         message: CreateTopicMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -574,9 +617,17 @@ export const CreateTopicMetadata = {
     },
 };
 
-const baseUpdateTopicRequest: object = { clusterId: '', topicName: '' };
+messageTypeRegistry.set(CreateTopicMetadata.$type, CreateTopicMetadata);
+
+const baseUpdateTopicRequest: object = {
+    $type: 'yandex.cloud.mdb.kafka.v1.UpdateTopicRequest',
+    clusterId: '',
+    topicName: '',
+};
 
 export const UpdateTopicRequest = {
+    $type: 'yandex.cloud.mdb.kafka.v1.UpdateTopicRequest' as const,
+
     encode(
         message: UpdateTopicRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -705,9 +756,17 @@ export const UpdateTopicRequest = {
     },
 };
 
-const baseUpdateTopicMetadata: object = { clusterId: '', topicName: '' };
+messageTypeRegistry.set(UpdateTopicRequest.$type, UpdateTopicRequest);
+
+const baseUpdateTopicMetadata: object = {
+    $type: 'yandex.cloud.mdb.kafka.v1.UpdateTopicMetadata',
+    clusterId: '',
+    topicName: '',
+};
 
 export const UpdateTopicMetadata = {
+    $type: 'yandex.cloud.mdb.kafka.v1.UpdateTopicMetadata' as const,
+
     encode(
         message: UpdateTopicMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -784,9 +843,17 @@ export const UpdateTopicMetadata = {
     },
 };
 
-const baseDeleteTopicRequest: object = { clusterId: '', topicName: '' };
+messageTypeRegistry.set(UpdateTopicMetadata.$type, UpdateTopicMetadata);
+
+const baseDeleteTopicRequest: object = {
+    $type: 'yandex.cloud.mdb.kafka.v1.DeleteTopicRequest',
+    clusterId: '',
+    topicName: '',
+};
 
 export const DeleteTopicRequest = {
+    $type: 'yandex.cloud.mdb.kafka.v1.DeleteTopicRequest' as const,
+
     encode(
         message: DeleteTopicRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -863,9 +930,17 @@ export const DeleteTopicRequest = {
     },
 };
 
-const baseDeleteTopicMetadata: object = { clusterId: '', topicName: '' };
+messageTypeRegistry.set(DeleteTopicRequest.$type, DeleteTopicRequest);
+
+const baseDeleteTopicMetadata: object = {
+    $type: 'yandex.cloud.mdb.kafka.v1.DeleteTopicMetadata',
+    clusterId: '',
+    topicName: '',
+};
 
 export const DeleteTopicMetadata = {
+    $type: 'yandex.cloud.mdb.kafka.v1.DeleteTopicMetadata' as const,
+
     encode(
         message: DeleteTopicMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -941,6 +1016,8 @@ export const DeleteTopicMetadata = {
         return message;
     },
 };
+
+messageTypeRegistry.set(DeleteTopicMetadata.$type, DeleteTopicMetadata);
 
 /** A set of methods for managing Kafka topics. */
 export const TopicServiceService = {
@@ -1161,7 +1238,7 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 function longToNumber(long: Long): number {

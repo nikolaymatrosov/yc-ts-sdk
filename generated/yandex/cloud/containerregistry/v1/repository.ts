@@ -1,4 +1,5 @@
 /* eslint-disable */
+import { messageTypeRegistry } from '../../../../typeRegistry';
 import Long from 'long';
 import _m0 from 'protobufjs/minimal';
 
@@ -6,6 +7,7 @@ export const protobufPackage = 'yandex.cloud.containerregistry.v1';
 
 /** A Repository resource. For more information, see [Repository](/docs/cloud/container-registry/repository). */
 export interface Repository {
+    $type: 'yandex.cloud.containerregistry.v1.Repository';
     /**
      * Name of the repository.
      * The name is unique within the registry.
@@ -15,9 +17,15 @@ export interface Repository {
     id: string;
 }
 
-const baseRepository: object = { name: '', id: '' };
+const baseRepository: object = {
+    $type: 'yandex.cloud.containerregistry.v1.Repository',
+    name: '',
+    id: '',
+};
 
 export const Repository = {
+    $type: 'yandex.cloud.containerregistry.v1.Repository' as const,
+
     encode(
         message: Repository,
         writer: _m0.Writer = _m0.Writer.create()
@@ -91,6 +99,8 @@ export const Repository = {
     },
 };
 
+messageTypeRegistry.set(Repository.$type, Repository);
+
 type Builtin =
     | Date
     | Function
@@ -106,7 +116,7 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 if (_m0.util.Long !== Long) {

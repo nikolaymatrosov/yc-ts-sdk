@@ -4,6 +4,7 @@ import { ChannelCredentials, ChannelOptions, UntypedServiceImplementation, handl
 import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.dataproc.manager.v1";
 export interface ListJobsRequest {
+    $type: 'yandex.cloud.dataproc.manager.v1.ListJobsRequest';
     /** Required. ID of the cluster to list Data Proc jobs of. */
     clusterId: string;
     /**
@@ -22,6 +23,7 @@ export interface ListJobsRequest {
     filter: string;
 }
 export interface ListJobsResponse {
+    $type: 'yandex.cloud.dataproc.manager.v1.ListJobsResponse';
     /** Requested list of Data Proc jobs. */
     jobs: Job[];
     /**
@@ -34,6 +36,7 @@ export interface ListJobsResponse {
     nextPageToken: string;
 }
 export interface UpdateJobStatusRequest {
+    $type: 'yandex.cloud.dataproc.manager.v1.UpdateJobStatusRequest';
     /** Required. ID of the Data Proc cluster. */
     clusterId: string;
     /** Required. ID of the Data Proc job to update. */
@@ -44,8 +47,10 @@ export interface UpdateJobStatusRequest {
     applicationInfo: ApplicationInfo | undefined;
 }
 export interface UpdateJobStatusResponse {
+    $type: 'yandex.cloud.dataproc.manager.v1.UpdateJobStatusResponse';
 }
 export declare const ListJobsRequest: {
+    $type: "yandex.cloud.dataproc.manager.v1.ListJobsRequest";
     encode(message: ListJobsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListJobsRequest;
     fromJSON(object: any): ListJobsRequest;
@@ -53,6 +58,7 @@ export declare const ListJobsRequest: {
     fromPartial(object: DeepPartial<ListJobsRequest>): ListJobsRequest;
 };
 export declare const ListJobsResponse: {
+    $type: "yandex.cloud.dataproc.manager.v1.ListJobsResponse";
     encode(message: ListJobsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListJobsResponse;
     fromJSON(object: any): ListJobsResponse;
@@ -60,6 +66,7 @@ export declare const ListJobsResponse: {
     fromPartial(object: DeepPartial<ListJobsResponse>): ListJobsResponse;
 };
 export declare const UpdateJobStatusRequest: {
+    $type: "yandex.cloud.dataproc.manager.v1.UpdateJobStatusRequest";
     encode(message: UpdateJobStatusRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateJobStatusRequest;
     fromJSON(object: any): UpdateJobStatusRequest;
@@ -67,6 +74,7 @@ export declare const UpdateJobStatusRequest: {
     fromPartial(object: DeepPartial<UpdateJobStatusRequest>): UpdateJobStatusRequest;
 };
 export declare const UpdateJobStatusResponse: {
+    $type: "yandex.cloud.dataproc.manager.v1.UpdateJobStatusResponse";
     encode(_: UpdateJobStatusResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateJobStatusResponse;
     fromJSON(_: any): UpdateJobStatusResponse;
@@ -114,6 +122,6 @@ export interface JobServiceClient extends Client {
 export declare const JobServiceClient: new (address: string, credentials: ChannelCredentials, options?: Partial<ChannelOptions> | undefined) => JobServiceClient;
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

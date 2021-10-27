@@ -4,6 +4,7 @@ import { ChannelCredentials, ChannelOptions, UntypedServiceImplementation, handl
 import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.cdn.v1";
 export interface ActivateProviderRequest {
+    $type: 'yandex.cloud.cdn.v1.ActivateProviderRequest';
     /** ID of the folder that the activate provider belongs to. */
     folderId: string;
     /**
@@ -14,18 +15,22 @@ export interface ActivateProviderRequest {
     providerType: string;
 }
 export interface ActivateProviderMetadata {
+    $type: 'yandex.cloud.cdn.v1.ActivateProviderMetadata';
     /** ID of the folder that the activate provider belongs to. */
     folderId: string;
 }
 export interface ListActivatedProvidersRequest {
+    $type: 'yandex.cloud.cdn.v1.ListActivatedProvidersRequest';
     /** ID of the folder that the activate provider belongs to. */
     folderId: string;
 }
 export interface ListActivatedProvidersResponse {
+    $type: 'yandex.cloud.cdn.v1.ListActivatedProvidersResponse';
     /** Creates a list of providers. */
     providers: string[];
 }
 export declare const ActivateProviderRequest: {
+    $type: "yandex.cloud.cdn.v1.ActivateProviderRequest";
     encode(message: ActivateProviderRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ActivateProviderRequest;
     fromJSON(object: any): ActivateProviderRequest;
@@ -33,6 +38,7 @@ export declare const ActivateProviderRequest: {
     fromPartial(object: DeepPartial<ActivateProviderRequest>): ActivateProviderRequest;
 };
 export declare const ActivateProviderMetadata: {
+    $type: "yandex.cloud.cdn.v1.ActivateProviderMetadata";
     encode(message: ActivateProviderMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ActivateProviderMetadata;
     fromJSON(object: any): ActivateProviderMetadata;
@@ -40,6 +46,7 @@ export declare const ActivateProviderMetadata: {
     fromPartial(object: DeepPartial<ActivateProviderMetadata>): ActivateProviderMetadata;
 };
 export declare const ListActivatedProvidersRequest: {
+    $type: "yandex.cloud.cdn.v1.ListActivatedProvidersRequest";
     encode(message: ListActivatedProvidersRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListActivatedProvidersRequest;
     fromJSON(object: any): ListActivatedProvidersRequest;
@@ -47,6 +54,7 @@ export declare const ListActivatedProvidersRequest: {
     fromPartial(object: DeepPartial<ListActivatedProvidersRequest>): ListActivatedProvidersRequest;
 };
 export declare const ListActivatedProvidersResponse: {
+    $type: "yandex.cloud.cdn.v1.ListActivatedProvidersResponse";
     encode(message: ListActivatedProvidersResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListActivatedProvidersResponse;
     fromJSON(object: any): ListActivatedProvidersResponse;
@@ -95,6 +103,6 @@ export interface ProviderServiceClient extends Client {
 export declare const ProviderServiceClient: new (address: string, credentials: ChannelCredentials, options?: Partial<ChannelOptions> | undefined) => ProviderServiceClient;
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

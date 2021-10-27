@@ -6,6 +6,7 @@ import { ChannelCredentials, ChannelOptions, UntypedServiceImplementation, handl
 import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.apploadbalancer.v1";
 export interface GetVirtualHostRequest {
+    $type: 'yandex.cloud.apploadbalancer.v1.GetVirtualHostRequest';
     /**
      * ID of the HTTP router that the virtual host belongs to.
      *
@@ -20,6 +21,7 @@ export interface GetVirtualHostRequest {
     virtualHostName: string;
 }
 export interface ListVirtualHostsRequest {
+    $type: 'yandex.cloud.apploadbalancer.v1.ListVirtualHostsRequest';
     /**
      * ID of the HTTP router to list virtual hosts in.
      *
@@ -40,6 +42,7 @@ export interface ListVirtualHostsRequest {
     pageToken: string;
 }
 export interface ListVirtualHostsResponse {
+    $type: 'yandex.cloud.apploadbalancer.v1.ListVirtualHostsResponse';
     /** List of virtual hosts of the specified HTTP router. */
     virtualHosts: VirtualHost[];
     /**
@@ -52,6 +55,7 @@ export interface ListVirtualHostsResponse {
     nextPageToken: string;
 }
 export interface CreateVirtualHostRequest {
+    $type: 'yandex.cloud.apploadbalancer.v1.CreateVirtualHostRequest';
     /**
      * ID of the HTTP router to create a virtual host in.
      *
@@ -95,12 +99,14 @@ export interface CreateVirtualHostRequest {
     modifyResponseHeaders: HeaderModification[];
 }
 export interface CreateVirtualHostMetadata {
+    $type: 'yandex.cloud.apploadbalancer.v1.CreateVirtualHostMetadata';
     /** ID of the HTTP router that the virtual host is being created in. */
     httpRouterId: string;
     /** Name of the virtual host that is being created. */
     virtualHostName: string;
 }
 export interface UpdateVirtualHostRequest {
+    $type: 'yandex.cloud.apploadbalancer.v1.UpdateVirtualHostRequest';
     /**
      * ID of the HTTP router to update a virtual host in.
      *
@@ -164,12 +170,14 @@ export interface UpdateVirtualHostRequest {
     modifyResponseHeaders: HeaderModification[];
 }
 export interface UpdateVirtualHostMetadata {
+    $type: 'yandex.cloud.apploadbalancer.v1.UpdateVirtualHostMetadata';
     /** ID of the HTTP router that the virtual host is being updated in. */
     httpRouterId: string;
     /** Name of the virtual host that is being updated. */
     virtualHostName: string;
 }
 export interface DeleteVirtualHostRequest {
+    $type: 'yandex.cloud.apploadbalancer.v1.DeleteVirtualHostRequest';
     /**
      * ID of the HTTP router to delete a virtual host from.
      *
@@ -184,12 +192,14 @@ export interface DeleteVirtualHostRequest {
     virtualHostName: string;
 }
 export interface DeleteVirtualHostMetadata {
+    $type: 'yandex.cloud.apploadbalancer.v1.DeleteVirtualHostMetadata';
     /** ID of the HTTP router that the virtual host is being deleted from. */
     httpRouterId: string;
     /** Name of the virtual host that is being deleted. */
     virtualHostName: string;
 }
 export interface RemoveRouteRequest {
+    $type: 'yandex.cloud.apploadbalancer.v1.RemoveRouteRequest';
     /**
      * ID of the HTTP router to delete a route from.
      *
@@ -210,6 +220,7 @@ export interface RemoveRouteRequest {
     routeName: string;
 }
 export interface RemoveRouteMetadata {
+    $type: 'yandex.cloud.apploadbalancer.v1.RemoveRouteMetadata';
     /** ID of the HTTP router that the route is being deleted from. */
     httpRouterId: string;
     /** Name of the virtual host that the route is being deleted from. */
@@ -218,6 +229,7 @@ export interface RemoveRouteMetadata {
     routeName: string;
 }
 export interface UpdateRouteRequest {
+    $type: 'yandex.cloud.apploadbalancer.v1.UpdateRouteRequest';
     /**
      * ID of the HTTP router to update a route in.
      *
@@ -244,6 +256,7 @@ export interface UpdateRouteRequest {
     grpc: GrpcRoute | undefined;
 }
 export interface UpdateRouteMetadata {
+    $type: 'yandex.cloud.apploadbalancer.v1.UpdateRouteMetadata';
     /** ID of the HTTP router that the route is being updated in. */
     httpRouterId: string;
     /** Name of the virtual host that the route is being updated in. */
@@ -252,6 +265,7 @@ export interface UpdateRouteMetadata {
     routeName: string;
 }
 export declare const GetVirtualHostRequest: {
+    $type: "yandex.cloud.apploadbalancer.v1.GetVirtualHostRequest";
     encode(message: GetVirtualHostRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): GetVirtualHostRequest;
     fromJSON(object: any): GetVirtualHostRequest;
@@ -259,6 +273,7 @@ export declare const GetVirtualHostRequest: {
     fromPartial(object: DeepPartial<GetVirtualHostRequest>): GetVirtualHostRequest;
 };
 export declare const ListVirtualHostsRequest: {
+    $type: "yandex.cloud.apploadbalancer.v1.ListVirtualHostsRequest";
     encode(message: ListVirtualHostsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListVirtualHostsRequest;
     fromJSON(object: any): ListVirtualHostsRequest;
@@ -266,6 +281,7 @@ export declare const ListVirtualHostsRequest: {
     fromPartial(object: DeepPartial<ListVirtualHostsRequest>): ListVirtualHostsRequest;
 };
 export declare const ListVirtualHostsResponse: {
+    $type: "yandex.cloud.apploadbalancer.v1.ListVirtualHostsResponse";
     encode(message: ListVirtualHostsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListVirtualHostsResponse;
     fromJSON(object: any): ListVirtualHostsResponse;
@@ -273,6 +289,7 @@ export declare const ListVirtualHostsResponse: {
     fromPartial(object: DeepPartial<ListVirtualHostsResponse>): ListVirtualHostsResponse;
 };
 export declare const CreateVirtualHostRequest: {
+    $type: "yandex.cloud.apploadbalancer.v1.CreateVirtualHostRequest";
     encode(message: CreateVirtualHostRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateVirtualHostRequest;
     fromJSON(object: any): CreateVirtualHostRequest;
@@ -280,6 +297,7 @@ export declare const CreateVirtualHostRequest: {
     fromPartial(object: DeepPartial<CreateVirtualHostRequest>): CreateVirtualHostRequest;
 };
 export declare const CreateVirtualHostMetadata: {
+    $type: "yandex.cloud.apploadbalancer.v1.CreateVirtualHostMetadata";
     encode(message: CreateVirtualHostMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateVirtualHostMetadata;
     fromJSON(object: any): CreateVirtualHostMetadata;
@@ -287,6 +305,7 @@ export declare const CreateVirtualHostMetadata: {
     fromPartial(object: DeepPartial<CreateVirtualHostMetadata>): CreateVirtualHostMetadata;
 };
 export declare const UpdateVirtualHostRequest: {
+    $type: "yandex.cloud.apploadbalancer.v1.UpdateVirtualHostRequest";
     encode(message: UpdateVirtualHostRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateVirtualHostRequest;
     fromJSON(object: any): UpdateVirtualHostRequest;
@@ -294,6 +313,7 @@ export declare const UpdateVirtualHostRequest: {
     fromPartial(object: DeepPartial<UpdateVirtualHostRequest>): UpdateVirtualHostRequest;
 };
 export declare const UpdateVirtualHostMetadata: {
+    $type: "yandex.cloud.apploadbalancer.v1.UpdateVirtualHostMetadata";
     encode(message: UpdateVirtualHostMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateVirtualHostMetadata;
     fromJSON(object: any): UpdateVirtualHostMetadata;
@@ -301,6 +321,7 @@ export declare const UpdateVirtualHostMetadata: {
     fromPartial(object: DeepPartial<UpdateVirtualHostMetadata>): UpdateVirtualHostMetadata;
 };
 export declare const DeleteVirtualHostRequest: {
+    $type: "yandex.cloud.apploadbalancer.v1.DeleteVirtualHostRequest";
     encode(message: DeleteVirtualHostRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteVirtualHostRequest;
     fromJSON(object: any): DeleteVirtualHostRequest;
@@ -308,6 +329,7 @@ export declare const DeleteVirtualHostRequest: {
     fromPartial(object: DeepPartial<DeleteVirtualHostRequest>): DeleteVirtualHostRequest;
 };
 export declare const DeleteVirtualHostMetadata: {
+    $type: "yandex.cloud.apploadbalancer.v1.DeleteVirtualHostMetadata";
     encode(message: DeleteVirtualHostMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteVirtualHostMetadata;
     fromJSON(object: any): DeleteVirtualHostMetadata;
@@ -315,6 +337,7 @@ export declare const DeleteVirtualHostMetadata: {
     fromPartial(object: DeepPartial<DeleteVirtualHostMetadata>): DeleteVirtualHostMetadata;
 };
 export declare const RemoveRouteRequest: {
+    $type: "yandex.cloud.apploadbalancer.v1.RemoveRouteRequest";
     encode(message: RemoveRouteRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): RemoveRouteRequest;
     fromJSON(object: any): RemoveRouteRequest;
@@ -322,6 +345,7 @@ export declare const RemoveRouteRequest: {
     fromPartial(object: DeepPartial<RemoveRouteRequest>): RemoveRouteRequest;
 };
 export declare const RemoveRouteMetadata: {
+    $type: "yandex.cloud.apploadbalancer.v1.RemoveRouteMetadata";
     encode(message: RemoveRouteMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): RemoveRouteMetadata;
     fromJSON(object: any): RemoveRouteMetadata;
@@ -329,6 +353,7 @@ export declare const RemoveRouteMetadata: {
     fromPartial(object: DeepPartial<RemoveRouteMetadata>): RemoveRouteMetadata;
 };
 export declare const UpdateRouteRequest: {
+    $type: "yandex.cloud.apploadbalancer.v1.UpdateRouteRequest";
     encode(message: UpdateRouteRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateRouteRequest;
     fromJSON(object: any): UpdateRouteRequest;
@@ -336,6 +361,7 @@ export declare const UpdateRouteRequest: {
     fromPartial(object: DeepPartial<UpdateRouteRequest>): UpdateRouteRequest;
 };
 export declare const UpdateRouteMetadata: {
+    $type: "yandex.cloud.apploadbalancer.v1.UpdateRouteMetadata";
     encode(message: UpdateRouteMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateRouteMetadata;
     fromJSON(object: any): UpdateRouteMetadata;
@@ -476,6 +502,6 @@ export interface VirtualHostServiceClient extends Client {
 export declare const VirtualHostServiceClient: new (address: string, credentials: ChannelCredentials, options?: Partial<ChannelOptions> | undefined) => VirtualHostServiceClient;
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

@@ -1,5 +1,6 @@
 /* eslint-disable */
 import { Timestamp } from '../../../../google/protobuf/timestamp';
+import { messageTypeRegistry } from '../../../../typeRegistry';
 import { HealthCheck } from '../../../../yandex/cloud/loadbalancer/v1/health_check';
 import Long from 'long';
 import _m0 from 'protobufjs/minimal';
@@ -52,6 +53,7 @@ export function ipVersionToJSON(object: IpVersion): string {
 
 /** A NetworkLoadBalancer resource. For more information, see [Network Load Balancer](/docs/network-load-balancer/concepts). */
 export interface NetworkLoadBalancer {
+    $type: 'yandex.cloud.loadbalancer.v1.NetworkLoadBalancer';
     /** ID of the network load balancer. */
     id: string;
     /** ID of the folder that the network load balancer belongs to. */
@@ -248,12 +250,14 @@ export function networkLoadBalancer_SessionAffinityToJSON(
 }
 
 export interface NetworkLoadBalancer_LabelsEntry {
+    $type: 'yandex.cloud.loadbalancer.v1.NetworkLoadBalancer.LabelsEntry';
     key: string;
     value: string;
 }
 
 /** An AttachedTargetGroup resource. For more information, see [Targets and groups](/docs/network-load-balancer/concepts/target-resources). */
 export interface AttachedTargetGroup {
+    $type: 'yandex.cloud.loadbalancer.v1.AttachedTargetGroup';
     /** ID of the target group. */
     targetGroupId: string;
     /**
@@ -265,6 +269,7 @@ export interface AttachedTargetGroup {
 
 /** A Listener resource. For more information, see [Listener](/docs/network-load-balancer/concepts/listener) */
 export interface Listener {
+    $type: 'yandex.cloud.loadbalancer.v1.Listener';
     /** Name of the listener. The name must be unique for each listener on a single load balancer. 3-63 characters long. */
     name: string;
     /** IP address for the listener. */
@@ -322,6 +327,7 @@ export function listener_ProtocolToJSON(object: Listener_Protocol): string {
 
 /** State of the target that was returned after the last health check. */
 export interface TargetState {
+    $type: 'yandex.cloud.loadbalancer.v1.TargetState';
     /** ID of the subnet that the target is connected to. */
     subnetId: string;
     /** IP address of the target. */
@@ -393,6 +399,7 @@ export function targetState_StatusToJSON(object: TargetState_Status): string {
 }
 
 const baseNetworkLoadBalancer: object = {
+    $type: 'yandex.cloud.loadbalancer.v1.NetworkLoadBalancer',
     id: '',
     folderId: '',
     name: '',
@@ -404,6 +411,8 @@ const baseNetworkLoadBalancer: object = {
 };
 
 export const NetworkLoadBalancer = {
+    $type: 'yandex.cloud.loadbalancer.v1.NetworkLoadBalancer' as const,
+
     encode(
         message: NetworkLoadBalancer,
         writer: _m0.Writer = _m0.Writer.create()
@@ -428,7 +437,11 @@ export const NetworkLoadBalancer = {
         }
         Object.entries(message.labels).forEach(([key, value]) => {
             NetworkLoadBalancer_LabelsEntry.encode(
-                { key: key as any, value },
+                {
+                    $type: 'yandex.cloud.loadbalancer.v1.NetworkLoadBalancer.LabelsEntry',
+                    key: key as any,
+                    value,
+                },
                 writer.uint32(50).fork()
             ).ldelim();
         });
@@ -722,9 +735,17 @@ export const NetworkLoadBalancer = {
     },
 };
 
-const baseNetworkLoadBalancer_LabelsEntry: object = { key: '', value: '' };
+messageTypeRegistry.set(NetworkLoadBalancer.$type, NetworkLoadBalancer);
+
+const baseNetworkLoadBalancer_LabelsEntry: object = {
+    $type: 'yandex.cloud.loadbalancer.v1.NetworkLoadBalancer.LabelsEntry',
+    key: '',
+    value: '',
+};
 
 export const NetworkLoadBalancer_LabelsEntry = {
+    $type: 'yandex.cloud.loadbalancer.v1.NetworkLoadBalancer.LabelsEntry' as const,
+
     encode(
         message: NetworkLoadBalancer_LabelsEntry,
         writer: _m0.Writer = _m0.Writer.create()
@@ -809,9 +830,19 @@ export const NetworkLoadBalancer_LabelsEntry = {
     },
 };
 
-const baseAttachedTargetGroup: object = { targetGroupId: '' };
+messageTypeRegistry.set(
+    NetworkLoadBalancer_LabelsEntry.$type,
+    NetworkLoadBalancer_LabelsEntry
+);
+
+const baseAttachedTargetGroup: object = {
+    $type: 'yandex.cloud.loadbalancer.v1.AttachedTargetGroup',
+    targetGroupId: '',
+};
 
 export const AttachedTargetGroup = {
+    $type: 'yandex.cloud.loadbalancer.v1.AttachedTargetGroup' as const,
+
     encode(
         message: AttachedTargetGroup,
         writer: _m0.Writer = _m0.Writer.create()
@@ -906,7 +937,10 @@ export const AttachedTargetGroup = {
     },
 };
 
+messageTypeRegistry.set(AttachedTargetGroup.$type, AttachedTargetGroup);
+
 const baseListener: object = {
+    $type: 'yandex.cloud.loadbalancer.v1.Listener',
     name: '',
     address: '',
     port: 0,
@@ -917,6 +951,8 @@ const baseListener: object = {
 };
 
 export const Listener = {
+    $type: 'yandex.cloud.loadbalancer.v1.Listener' as const,
+
     encode(
         message: Listener,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1078,9 +1114,18 @@ export const Listener = {
     },
 };
 
-const baseTargetState: object = { subnetId: '', address: '', status: 0 };
+messageTypeRegistry.set(Listener.$type, Listener);
+
+const baseTargetState: object = {
+    $type: 'yandex.cloud.loadbalancer.v1.TargetState',
+    subnetId: '',
+    address: '',
+    status: 0,
+};
 
 export const TargetState = {
+    $type: 'yandex.cloud.loadbalancer.v1.TargetState' as const,
+
     encode(
         message: TargetState,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1172,6 +1217,8 @@ export const TargetState = {
     },
 };
 
+messageTypeRegistry.set(TargetState.$type, TargetState);
+
 declare var self: any | undefined;
 declare var window: any | undefined;
 declare var global: any | undefined;
@@ -1198,13 +1245,13 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 function toTimestamp(date: Date): Timestamp {
     const seconds = date.getTime() / 1_000;
     const nanos = (date.getTime() % 1_000) * 1_000_000;
-    return { seconds, nanos };
+    return { $type: 'google.protobuf.Timestamp', seconds, nanos };
 }
 
 function fromTimestamp(t: Timestamp): Date {

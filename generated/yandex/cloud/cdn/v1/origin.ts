@@ -1,4 +1,5 @@
 /* eslint-disable */
+import { messageTypeRegistry } from '../../../../typeRegistry';
 import Long from 'long';
 import _m0 from 'protobufjs/minimal';
 
@@ -6,6 +7,7 @@ export const protobufPackage = 'yandex.cloud.cdn.v1';
 
 /** An origin. For details about the concept, see [documentation](/docs/cdn/concepts/origins). */
 export interface Origin {
+    $type: 'yandex.cloud.cdn.v1.Origin';
     /** ID of the origin. */
     id: number;
     /** ID of the parent origin group. */
@@ -36,6 +38,7 @@ export interface Origin {
 
 /** Origin parameters. For details about the concept, see [documentation](/docs/cdn/concepts/origins). */
 export interface OriginParams {
+    $type: 'yandex.cloud.cdn.v1.OriginParams';
     /** Source: IP address or Domain name of your origin and the port (if custom). */
     source: string;
     /**
@@ -62,6 +65,7 @@ export interface OriginParams {
 
 /** Origin type. For details about the concept, see [documentation](/docs/cdn/concepts/origins). */
 export interface OriginMeta {
+    $type: 'yandex.cloud.cdn.v1.OriginMeta';
     /** A server with a domain name linked to it */
     common: OriginNamedMeta | undefined;
     /** A Yandex Object Storage bucket not configured as a static site hosting. */
@@ -77,17 +81,20 @@ export interface OriginMeta {
 
 /** Origin info. For details about the concept, see [documentation](/docs/cdn/concepts/origins). */
 export interface OriginNamedMeta {
+    $type: 'yandex.cloud.cdn.v1.OriginNamedMeta';
     /** Name of the origin. */
     name: string;
 }
 
 /** Yandex Application Load Balancer origin info. For details about the concept, see [documentation](/docs/cdn/concepts/origins). */
 export interface OriginBalancerMeta {
+    $type: 'yandex.cloud.cdn.v1.OriginBalancerMeta';
     /** ID of the origin. */
     id: string;
 }
 
 const baseOrigin: object = {
+    $type: 'yandex.cloud.cdn.v1.Origin',
     id: 0,
     originGroupId: 0,
     source: '',
@@ -96,6 +103,8 @@ const baseOrigin: object = {
 };
 
 export const Origin = {
+    $type: 'yandex.cloud.cdn.v1.Origin' as const,
+
     encode(
         message: Origin,
         writer: _m0.Writer = _m0.Writer.create()
@@ -249,9 +258,18 @@ export const Origin = {
     },
 };
 
-const baseOriginParams: object = { source: '', enabled: false, backup: false };
+messageTypeRegistry.set(Origin.$type, Origin);
+
+const baseOriginParams: object = {
+    $type: 'yandex.cloud.cdn.v1.OriginParams',
+    source: '',
+    enabled: false,
+    backup: false,
+};
 
 export const OriginParams = {
+    $type: 'yandex.cloud.cdn.v1.OriginParams' as const,
+
     encode(
         message: OriginParams,
         writer: _m0.Writer = _m0.Writer.create()
@@ -362,9 +380,13 @@ export const OriginParams = {
     },
 };
 
-const baseOriginMeta: object = {};
+messageTypeRegistry.set(OriginParams.$type, OriginParams);
+
+const baseOriginMeta: object = { $type: 'yandex.cloud.cdn.v1.OriginMeta' };
 
 export const OriginMeta = {
+    $type: 'yandex.cloud.cdn.v1.OriginMeta' as const,
+
     encode(
         message: OriginMeta,
         writer: _m0.Writer = _m0.Writer.create()
@@ -508,9 +530,16 @@ export const OriginMeta = {
     },
 };
 
-const baseOriginNamedMeta: object = { name: '' };
+messageTypeRegistry.set(OriginMeta.$type, OriginMeta);
+
+const baseOriginNamedMeta: object = {
+    $type: 'yandex.cloud.cdn.v1.OriginNamedMeta',
+    name: '',
+};
 
 export const OriginNamedMeta = {
+    $type: 'yandex.cloud.cdn.v1.OriginNamedMeta' as const,
+
     encode(
         message: OriginNamedMeta,
         writer: _m0.Writer = _m0.Writer.create()
@@ -567,9 +596,16 @@ export const OriginNamedMeta = {
     },
 };
 
-const baseOriginBalancerMeta: object = { id: '' };
+messageTypeRegistry.set(OriginNamedMeta.$type, OriginNamedMeta);
+
+const baseOriginBalancerMeta: object = {
+    $type: 'yandex.cloud.cdn.v1.OriginBalancerMeta',
+    id: '',
+};
 
 export const OriginBalancerMeta = {
+    $type: 'yandex.cloud.cdn.v1.OriginBalancerMeta' as const,
+
     encode(
         message: OriginBalancerMeta,
         writer: _m0.Writer = _m0.Writer.create()
@@ -629,6 +665,8 @@ export const OriginBalancerMeta = {
     },
 };
 
+messageTypeRegistry.set(OriginBalancerMeta.$type, OriginBalancerMeta);
+
 declare var self: any | undefined;
 declare var window: any | undefined;
 declare var global: any | undefined;
@@ -655,7 +693,7 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 function longToNumber(long: Long): number {

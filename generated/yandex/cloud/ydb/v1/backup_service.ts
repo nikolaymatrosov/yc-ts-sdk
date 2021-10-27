@@ -1,4 +1,5 @@
 /* eslint-disable */
+import { messageTypeRegistry } from '../../../../typeRegistry';
 import { Operation } from '../../../../yandex/cloud/operation/operation';
 import { Backup } from '../../../../yandex/cloud/ydb/v1/backup';
 import {
@@ -19,6 +20,7 @@ import _m0 from 'protobufjs/minimal';
 export const protobufPackage = 'yandex.cloud.ydb.v1';
 
 export interface ListPathsRequest {
+    $type: 'yandex.cloud.ydb.v1.ListPathsRequest';
     /** Required. ID of the YDB backup. */
     backupId: string;
     /**
@@ -36,16 +38,19 @@ export interface ListPathsRequest {
 }
 
 export interface ListPathsResponse {
+    $type: 'yandex.cloud.ydb.v1.ListPathsResponse';
     paths: string[];
     nextPageToken: string;
 }
 
 export interface GetBackupRequest {
+    $type: 'yandex.cloud.ydb.v1.GetBackupRequest';
     /** Required. ID of the YDB backup. */
     backupId: string;
 }
 
 export interface ListBackupsRequest {
+    $type: 'yandex.cloud.ydb.v1.ListBackupsRequest';
     folderId: string;
     /**
      * The maximum number of results per page that should be returned. If the number of available
@@ -62,6 +67,7 @@ export interface ListBackupsRequest {
 }
 
 export interface ListBackupsResponse {
+    $type: 'yandex.cloud.ydb.v1.ListBackupsResponse';
     backups: Backup[];
     /**
      * This token allows you to get the next page of results for ListBackups requests,
@@ -74,21 +80,26 @@ export interface ListBackupsResponse {
 }
 
 export interface DeleteBackupRequest {
+    $type: 'yandex.cloud.ydb.v1.DeleteBackupRequest';
     backupId: string;
 }
 
 export interface DeleteBackupMetadata {
+    $type: 'yandex.cloud.ydb.v1.DeleteBackupMetadata';
     backupId: string;
     databaseId: string;
 }
 
 const baseListPathsRequest: object = {
+    $type: 'yandex.cloud.ydb.v1.ListPathsRequest',
     backupId: '',
     pageSize: 0,
     pageToken: '',
 };
 
 export const ListPathsRequest = {
+    $type: 'yandex.cloud.ydb.v1.ListPathsRequest' as const,
+
     encode(
         message: ListPathsRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -179,9 +190,17 @@ export const ListPathsRequest = {
     },
 };
 
-const baseListPathsResponse: object = { paths: '', nextPageToken: '' };
+messageTypeRegistry.set(ListPathsRequest.$type, ListPathsRequest);
+
+const baseListPathsResponse: object = {
+    $type: 'yandex.cloud.ydb.v1.ListPathsResponse',
+    paths: '',
+    nextPageToken: '',
+};
 
 export const ListPathsResponse = {
+    $type: 'yandex.cloud.ydb.v1.ListPathsResponse' as const,
+
     encode(
         message: ListPathsResponse,
         writer: _m0.Writer = _m0.Writer.create()
@@ -269,9 +288,16 @@ export const ListPathsResponse = {
     },
 };
 
-const baseGetBackupRequest: object = { backupId: '' };
+messageTypeRegistry.set(ListPathsResponse.$type, ListPathsResponse);
+
+const baseGetBackupRequest: object = {
+    $type: 'yandex.cloud.ydb.v1.GetBackupRequest',
+    backupId: '',
+};
 
 export const GetBackupRequest = {
+    $type: 'yandex.cloud.ydb.v1.GetBackupRequest' as const,
+
     encode(
         message: GetBackupRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -328,13 +354,18 @@ export const GetBackupRequest = {
     },
 };
 
+messageTypeRegistry.set(GetBackupRequest.$type, GetBackupRequest);
+
 const baseListBackupsRequest: object = {
+    $type: 'yandex.cloud.ydb.v1.ListBackupsRequest',
     folderId: '',
     pageSize: 0,
     pageToken: '',
 };
 
 export const ListBackupsRequest = {
+    $type: 'yandex.cloud.ydb.v1.ListBackupsRequest' as const,
+
     encode(
         message: ListBackupsRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -428,9 +459,16 @@ export const ListBackupsRequest = {
     },
 };
 
-const baseListBackupsResponse: object = { nextPageToken: '' };
+messageTypeRegistry.set(ListBackupsRequest.$type, ListBackupsRequest);
+
+const baseListBackupsResponse: object = {
+    $type: 'yandex.cloud.ydb.v1.ListBackupsResponse',
+    nextPageToken: '',
+};
 
 export const ListBackupsResponse = {
+    $type: 'yandex.cloud.ydb.v1.ListBackupsResponse' as const,
+
     encode(
         message: ListBackupsResponse,
         writer: _m0.Writer = _m0.Writer.create()
@@ -525,9 +563,16 @@ export const ListBackupsResponse = {
     },
 };
 
-const baseDeleteBackupRequest: object = { backupId: '' };
+messageTypeRegistry.set(ListBackupsResponse.$type, ListBackupsResponse);
+
+const baseDeleteBackupRequest: object = {
+    $type: 'yandex.cloud.ydb.v1.DeleteBackupRequest',
+    backupId: '',
+};
 
 export const DeleteBackupRequest = {
+    $type: 'yandex.cloud.ydb.v1.DeleteBackupRequest' as const,
+
     encode(
         message: DeleteBackupRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -587,9 +632,17 @@ export const DeleteBackupRequest = {
     },
 };
 
-const baseDeleteBackupMetadata: object = { backupId: '', databaseId: '' };
+messageTypeRegistry.set(DeleteBackupRequest.$type, DeleteBackupRequest);
+
+const baseDeleteBackupMetadata: object = {
+    $type: 'yandex.cloud.ydb.v1.DeleteBackupMetadata',
+    backupId: '',
+    databaseId: '',
+};
 
 export const DeleteBackupMetadata = {
+    $type: 'yandex.cloud.ydb.v1.DeleteBackupMetadata' as const,
+
     encode(
         message: DeleteBackupMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -668,6 +721,8 @@ export const DeleteBackupMetadata = {
         return message;
     },
 };
+
+messageTypeRegistry.set(DeleteBackupMetadata.$type, DeleteBackupMetadata);
 
 /** A set of methods for managing backups. */
 export const BackupServiceService = {
@@ -853,7 +908,7 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 function longToNumber(long: Long): number {

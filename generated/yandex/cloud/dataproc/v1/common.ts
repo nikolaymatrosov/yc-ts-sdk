@@ -1,4 +1,5 @@
 /* eslint-disable */
+import { messageTypeRegistry } from '../../../../typeRegistry';
 import Long from 'long';
 import _m0 from 'protobufjs/minimal';
 
@@ -53,6 +54,7 @@ export function healthToJSON(object: Health): string {
 }
 
 export interface Resources {
+    $type: 'yandex.cloud.dataproc.v1.Resources';
     /**
      * ID of the resource preset for computational resources available to a host (CPU, memory etc.).
      * All available presets are listed in the [documentation](/docs/data-proc/concepts/instance-types).
@@ -70,12 +72,15 @@ export interface Resources {
 }
 
 const baseResources: object = {
+    $type: 'yandex.cloud.dataproc.v1.Resources',
     resourcePresetId: '',
     diskTypeId: '',
     diskSize: 0,
 };
 
 export const Resources = {
+    $type: 'yandex.cloud.dataproc.v1.Resources' as const,
+
     encode(
         message: Resources,
         writer: _m0.Writer = _m0.Writer.create()
@@ -174,6 +179,8 @@ export const Resources = {
     },
 };
 
+messageTypeRegistry.set(Resources.$type, Resources);
+
 declare var self: any | undefined;
 declare var window: any | undefined;
 declare var global: any | undefined;
@@ -200,7 +207,7 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 function longToNumber(long: Long): number {

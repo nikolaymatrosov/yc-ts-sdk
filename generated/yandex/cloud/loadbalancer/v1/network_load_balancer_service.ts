@@ -1,5 +1,6 @@
 /* eslint-disable */
 import { FieldMask } from '../../../../google/protobuf/field_mask';
+import { messageTypeRegistry } from '../../../../typeRegistry';
 import {
     NetworkLoadBalancer_Type,
     IpVersion,
@@ -33,6 +34,7 @@ import _m0 from 'protobufjs/minimal';
 export const protobufPackage = 'yandex.cloud.loadbalancer.v1';
 
 export interface GetNetworkLoadBalancerRequest {
+    $type: 'yandex.cloud.loadbalancer.v1.GetNetworkLoadBalancerRequest';
     /**
      * ID of the NetworkLoadBalancer resource to return.
      * To get the network load balancer ID, use a [NetworkLoadBalancerService.List] request.
@@ -41,6 +43,7 @@ export interface GetNetworkLoadBalancerRequest {
 }
 
 export interface ListNetworkLoadBalancersRequest {
+    $type: 'yandex.cloud.loadbalancer.v1.ListNetworkLoadBalancersRequest';
     /**
      * ID of the folder that the network load balancer belongs to.
      * To get the folder ID, use a [NetworkLoadBalancerService.List] request.
@@ -70,6 +73,7 @@ export interface ListNetworkLoadBalancersRequest {
 }
 
 export interface ListNetworkLoadBalancersResponse {
+    $type: 'yandex.cloud.loadbalancer.v1.ListNetworkLoadBalancersResponse';
     /** List of NetworkLoadBalancer resources. */
     networkLoadBalancers: NetworkLoadBalancer[];
     /**
@@ -84,6 +88,7 @@ export interface ListNetworkLoadBalancersResponse {
 }
 
 export interface CreateNetworkLoadBalancerRequest {
+    $type: 'yandex.cloud.loadbalancer.v1.CreateNetworkLoadBalancerRequest';
     /**
      * ID of the folder to create a network load balancer in.
      * To get the folder ID, use a [NetworkLoadBalancerService.List] request.
@@ -109,16 +114,19 @@ export interface CreateNetworkLoadBalancerRequest {
 }
 
 export interface CreateNetworkLoadBalancerRequest_LabelsEntry {
+    $type: 'yandex.cloud.loadbalancer.v1.CreateNetworkLoadBalancerRequest.LabelsEntry';
     key: string;
     value: string;
 }
 
 export interface CreateNetworkLoadBalancerMetadata {
+    $type: 'yandex.cloud.loadbalancer.v1.CreateNetworkLoadBalancerMetadata';
     /** ID of the network load balancer that is being created. */
     networkLoadBalancerId: string;
 }
 
 export interface UpdateNetworkLoadBalancerRequest {
+    $type: 'yandex.cloud.loadbalancer.v1.UpdateNetworkLoadBalancerRequest';
     /**
      * ID of the network load balancer to update.
      * To get the network load balancer ID, use a [NetworkLoadBalancerService.List] request.
@@ -146,16 +154,19 @@ export interface UpdateNetworkLoadBalancerRequest {
 }
 
 export interface UpdateNetworkLoadBalancerRequest_LabelsEntry {
+    $type: 'yandex.cloud.loadbalancer.v1.UpdateNetworkLoadBalancerRequest.LabelsEntry';
     key: string;
     value: string;
 }
 
 export interface UpdateNetworkLoadBalancerMetadata {
+    $type: 'yandex.cloud.loadbalancer.v1.UpdateNetworkLoadBalancerMetadata';
     /** ID of the NetworkLoadBalancer resource that is being updated. */
     networkLoadBalancerId: string;
 }
 
 export interface DeleteNetworkLoadBalancerRequest {
+    $type: 'yandex.cloud.loadbalancer.v1.DeleteNetworkLoadBalancerRequest';
     /**
      * ID of the network load balancer to delete.
      * To get the network load balancer ID, use a [NetworkLoadBalancerService.List] request.
@@ -164,11 +175,13 @@ export interface DeleteNetworkLoadBalancerRequest {
 }
 
 export interface DeleteNetworkLoadBalancerMetadata {
+    $type: 'yandex.cloud.loadbalancer.v1.DeleteNetworkLoadBalancerMetadata';
     /** ID of the NetworkLoadBalancer resource that is being deleted. */
     networkLoadBalancerId: string;
 }
 
 export interface StartNetworkLoadBalancerRequest {
+    $type: 'yandex.cloud.loadbalancer.v1.StartNetworkLoadBalancerRequest';
     /**
      * ID of the network load balancer to start.
      * To get the network load balancer ID, use a [NetworkLoadBalancerService.List] request.
@@ -177,11 +190,13 @@ export interface StartNetworkLoadBalancerRequest {
 }
 
 export interface StartNetworkLoadBalancerMetadata {
+    $type: 'yandex.cloud.loadbalancer.v1.StartNetworkLoadBalancerMetadata';
     /** ID of the NetworkLoadBalancer resource that is being started. */
     networkLoadBalancerId: string;
 }
 
 export interface StopNetworkLoadBalancerRequest {
+    $type: 'yandex.cloud.loadbalancer.v1.StopNetworkLoadBalancerRequest';
     /**
      * ID of the network load balancer to stop.
      * To get the network load balancer ID, use a [NetworkLoadBalancerService.List] request.
@@ -190,11 +205,13 @@ export interface StopNetworkLoadBalancerRequest {
 }
 
 export interface StopNetworkLoadBalancerMetadata {
+    $type: 'yandex.cloud.loadbalancer.v1.StopNetworkLoadBalancerMetadata';
     /** ID of the NetworkLoadBalancer resource that is being stopped. */
     networkLoadBalancerId: string;
 }
 
 export interface AttachNetworkLoadBalancerTargetGroupRequest {
+    $type: 'yandex.cloud.loadbalancer.v1.AttachNetworkLoadBalancerTargetGroupRequest';
     /**
      * ID of the network load balancer to attach the target group to.
      * To get the network load balancer ID, use a [NetworkLoadBalancerService.List] request.
@@ -208,6 +225,7 @@ export interface AttachNetworkLoadBalancerTargetGroupRequest {
 }
 
 export interface AttachNetworkLoadBalancerTargetGroupMetadata {
+    $type: 'yandex.cloud.loadbalancer.v1.AttachNetworkLoadBalancerTargetGroupMetadata';
     /** ID of the network load balancer that the target group is being attached to. */
     networkLoadBalancerId: string;
     /** ID of the target group. */
@@ -215,6 +233,7 @@ export interface AttachNetworkLoadBalancerTargetGroupMetadata {
 }
 
 export interface DetachNetworkLoadBalancerTargetGroupRequest {
+    $type: 'yandex.cloud.loadbalancer.v1.DetachNetworkLoadBalancerTargetGroupRequest';
     /**
      * ID of the network load balancer to detach the target group from.
      * To get the network load balancer ID, use a [NetworkLoadBalancerService.List] request.
@@ -225,6 +244,7 @@ export interface DetachNetworkLoadBalancerTargetGroupRequest {
 }
 
 export interface DetachNetworkLoadBalancerTargetGroupMetadata {
+    $type: 'yandex.cloud.loadbalancer.v1.DetachNetworkLoadBalancerTargetGroupMetadata';
     /** ID of the network load balancer that the target group is being detached from. */
     networkLoadBalancerId: string;
     /** ID of the target group. */
@@ -232,6 +252,7 @@ export interface DetachNetworkLoadBalancerTargetGroupMetadata {
 }
 
 export interface AddNetworkLoadBalancerListenerRequest {
+    $type: 'yandex.cloud.loadbalancer.v1.AddNetworkLoadBalancerListenerRequest';
     /**
      * ID of the network load balancer to add a listener to.
      * To get the network load balancer ID, use a [NetworkLoadBalancerService.List] request.
@@ -242,11 +263,13 @@ export interface AddNetworkLoadBalancerListenerRequest {
 }
 
 export interface AddNetworkLoadBalancerListenerMetadata {
+    $type: 'yandex.cloud.loadbalancer.v1.AddNetworkLoadBalancerListenerMetadata';
     /** ID of the network load balancer that the listener is being added to. */
     networkLoadBalancerId: string;
 }
 
 export interface RemoveNetworkLoadBalancerListenerRequest {
+    $type: 'yandex.cloud.loadbalancer.v1.RemoveNetworkLoadBalancerListenerRequest';
     /**
      * ID of the network load balancer to remove the listener from.
      * To get the network load balancer ID, use a [NetworkLoadBalancerService.List] request.
@@ -257,11 +280,13 @@ export interface RemoveNetworkLoadBalancerListenerRequest {
 }
 
 export interface RemoveNetworkLoadBalancerListenerMetadata {
+    $type: 'yandex.cloud.loadbalancer.v1.RemoveNetworkLoadBalancerListenerMetadata';
     /** ID of the network load balancer that the listener is being removed from. */
     networkLoadBalancerId: string;
 }
 
 export interface ListNetworkLoadBalancerOperationsRequest {
+    $type: 'yandex.cloud.loadbalancer.v1.ListNetworkLoadBalancerOperationsRequest';
     /** ID of the NetworkLoadBalancer resource to list operations for. */
     networkLoadBalancerId: string;
     /**
@@ -279,6 +304,7 @@ export interface ListNetworkLoadBalancerOperationsRequest {
 }
 
 export interface ListNetworkLoadBalancerOperationsResponse {
+    $type: 'yandex.cloud.loadbalancer.v1.ListNetworkLoadBalancerOperationsResponse';
     /** List of operations for the specified network load balancer. */
     operations: Operation[];
     /**
@@ -291,6 +317,7 @@ export interface ListNetworkLoadBalancerOperationsResponse {
 }
 
 export interface GetTargetStatesRequest {
+    $type: 'yandex.cloud.loadbalancer.v1.GetTargetStatesRequest';
     /** ID of the NetworkLoadBalancer resource with an attached target group. */
     networkLoadBalancerId: string;
     /** ID of the target group to get states of resources from. */
@@ -298,12 +325,14 @@ export interface GetTargetStatesRequest {
 }
 
 export interface GetTargetStatesResponse {
+    $type: 'yandex.cloud.loadbalancer.v1.GetTargetStatesResponse';
     /** List of states of targets within the target group that is specified in the [GetTargetStatesRequest] message. */
     targetStates: TargetState[];
 }
 
 /** External address specification that is used by [ListenerSpec]. */
 export interface ExternalAddressSpec {
+    $type: 'yandex.cloud.loadbalancer.v1.ExternalAddressSpec';
     /**
      * Public IP address for a listener.
      * If you provide a static public IP address for the [NetworkLoadBalancerService.Update]
@@ -316,6 +345,7 @@ export interface ExternalAddressSpec {
 
 /** Internal address specification that is used by [ListenerSpec]. */
 export interface InternalAddressSpec {
+    $type: 'yandex.cloud.loadbalancer.v1.InternalAddressSpec';
     /** Internal IP address for a listener. */
     address: string;
     /** ID of the subnet. */
@@ -326,6 +356,7 @@ export interface InternalAddressSpec {
 
 /** Listener specification that will be used by a network load balancer. */
 export interface ListenerSpec {
+    $type: 'yandex.cloud.loadbalancer.v1.ListenerSpec';
     /** Name of the listener. The name must be unique for each listener on a single load balancer. 3-63 characters long. */
     name: string;
     /** Port for incoming traffic. */
@@ -343,9 +374,14 @@ export interface ListenerSpec {
     targetPort: number;
 }
 
-const baseGetNetworkLoadBalancerRequest: object = { networkLoadBalancerId: '' };
+const baseGetNetworkLoadBalancerRequest: object = {
+    $type: 'yandex.cloud.loadbalancer.v1.GetNetworkLoadBalancerRequest',
+    networkLoadBalancerId: '',
+};
 
 export const GetNetworkLoadBalancerRequest = {
+    $type: 'yandex.cloud.loadbalancer.v1.GetNetworkLoadBalancerRequest' as const,
+
     encode(
         message: GetNetworkLoadBalancerRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -422,7 +458,13 @@ export const GetNetworkLoadBalancerRequest = {
     },
 };
 
+messageTypeRegistry.set(
+    GetNetworkLoadBalancerRequest.$type,
+    GetNetworkLoadBalancerRequest
+);
+
 const baseListNetworkLoadBalancersRequest: object = {
+    $type: 'yandex.cloud.loadbalancer.v1.ListNetworkLoadBalancersRequest',
     folderId: '',
     pageSize: 0,
     pageToken: '',
@@ -430,6 +472,8 @@ const baseListNetworkLoadBalancersRequest: object = {
 };
 
 export const ListNetworkLoadBalancersRequest = {
+    $type: 'yandex.cloud.loadbalancer.v1.ListNetworkLoadBalancersRequest' as const,
+
     encode(
         message: ListNetworkLoadBalancersRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -548,9 +592,19 @@ export const ListNetworkLoadBalancersRequest = {
     },
 };
 
-const baseListNetworkLoadBalancersResponse: object = { nextPageToken: '' };
+messageTypeRegistry.set(
+    ListNetworkLoadBalancersRequest.$type,
+    ListNetworkLoadBalancersRequest
+);
+
+const baseListNetworkLoadBalancersResponse: object = {
+    $type: 'yandex.cloud.loadbalancer.v1.ListNetworkLoadBalancersResponse',
+    nextPageToken: '',
+};
 
 export const ListNetworkLoadBalancersResponse = {
+    $type: 'yandex.cloud.loadbalancer.v1.ListNetworkLoadBalancersResponse' as const,
+
     encode(
         message: ListNetworkLoadBalancersResponse,
         writer: _m0.Writer = _m0.Writer.create()
@@ -663,7 +717,13 @@ export const ListNetworkLoadBalancersResponse = {
     },
 };
 
+messageTypeRegistry.set(
+    ListNetworkLoadBalancersResponse.$type,
+    ListNetworkLoadBalancersResponse
+);
+
 const baseCreateNetworkLoadBalancerRequest: object = {
+    $type: 'yandex.cloud.loadbalancer.v1.CreateNetworkLoadBalancerRequest',
     folderId: '',
     name: '',
     description: '',
@@ -672,6 +732,8 @@ const baseCreateNetworkLoadBalancerRequest: object = {
 };
 
 export const CreateNetworkLoadBalancerRequest = {
+    $type: 'yandex.cloud.loadbalancer.v1.CreateNetworkLoadBalancerRequest' as const,
+
     encode(
         message: CreateNetworkLoadBalancerRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -687,7 +749,11 @@ export const CreateNetworkLoadBalancerRequest = {
         }
         Object.entries(message.labels).forEach(([key, value]) => {
             CreateNetworkLoadBalancerRequest_LabelsEntry.encode(
-                { key: key as any, value },
+                {
+                    $type: 'yandex.cloud.loadbalancer.v1.CreateNetworkLoadBalancerRequest.LabelsEntry',
+                    key: key as any,
+                    value,
+                },
                 writer.uint32(34).fork()
             ).ldelim();
         });
@@ -918,12 +984,20 @@ export const CreateNetworkLoadBalancerRequest = {
     },
 };
 
+messageTypeRegistry.set(
+    CreateNetworkLoadBalancerRequest.$type,
+    CreateNetworkLoadBalancerRequest
+);
+
 const baseCreateNetworkLoadBalancerRequest_LabelsEntry: object = {
+    $type: 'yandex.cloud.loadbalancer.v1.CreateNetworkLoadBalancerRequest.LabelsEntry',
     key: '',
     value: '',
 };
 
 export const CreateNetworkLoadBalancerRequest_LabelsEntry = {
+    $type: 'yandex.cloud.loadbalancer.v1.CreateNetworkLoadBalancerRequest.LabelsEntry' as const,
+
     encode(
         message: CreateNetworkLoadBalancerRequest_LabelsEntry,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1008,11 +1082,19 @@ export const CreateNetworkLoadBalancerRequest_LabelsEntry = {
     },
 };
 
+messageTypeRegistry.set(
+    CreateNetworkLoadBalancerRequest_LabelsEntry.$type,
+    CreateNetworkLoadBalancerRequest_LabelsEntry
+);
+
 const baseCreateNetworkLoadBalancerMetadata: object = {
+    $type: 'yandex.cloud.loadbalancer.v1.CreateNetworkLoadBalancerMetadata',
     networkLoadBalancerId: '',
 };
 
 export const CreateNetworkLoadBalancerMetadata = {
+    $type: 'yandex.cloud.loadbalancer.v1.CreateNetworkLoadBalancerMetadata' as const,
+
     encode(
         message: CreateNetworkLoadBalancerMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1089,13 +1171,21 @@ export const CreateNetworkLoadBalancerMetadata = {
     },
 };
 
+messageTypeRegistry.set(
+    CreateNetworkLoadBalancerMetadata.$type,
+    CreateNetworkLoadBalancerMetadata
+);
+
 const baseUpdateNetworkLoadBalancerRequest: object = {
+    $type: 'yandex.cloud.loadbalancer.v1.UpdateNetworkLoadBalancerRequest',
     networkLoadBalancerId: '',
     name: '',
     description: '',
 };
 
 export const UpdateNetworkLoadBalancerRequest = {
+    $type: 'yandex.cloud.loadbalancer.v1.UpdateNetworkLoadBalancerRequest' as const,
+
     encode(
         message: UpdateNetworkLoadBalancerRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1117,7 +1207,11 @@ export const UpdateNetworkLoadBalancerRequest = {
         }
         Object.entries(message.labels).forEach(([key, value]) => {
             UpdateNetworkLoadBalancerRequest_LabelsEntry.encode(
-                { key: key as any, value },
+                {
+                    $type: 'yandex.cloud.loadbalancer.v1.UpdateNetworkLoadBalancerRequest.LabelsEntry',
+                    key: key as any,
+                    value,
+                },
                 writer.uint32(42).fork()
             ).ldelim();
         });
@@ -1342,12 +1436,20 @@ export const UpdateNetworkLoadBalancerRequest = {
     },
 };
 
+messageTypeRegistry.set(
+    UpdateNetworkLoadBalancerRequest.$type,
+    UpdateNetworkLoadBalancerRequest
+);
+
 const baseUpdateNetworkLoadBalancerRequest_LabelsEntry: object = {
+    $type: 'yandex.cloud.loadbalancer.v1.UpdateNetworkLoadBalancerRequest.LabelsEntry',
     key: '',
     value: '',
 };
 
 export const UpdateNetworkLoadBalancerRequest_LabelsEntry = {
+    $type: 'yandex.cloud.loadbalancer.v1.UpdateNetworkLoadBalancerRequest.LabelsEntry' as const,
+
     encode(
         message: UpdateNetworkLoadBalancerRequest_LabelsEntry,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1432,11 +1534,19 @@ export const UpdateNetworkLoadBalancerRequest_LabelsEntry = {
     },
 };
 
+messageTypeRegistry.set(
+    UpdateNetworkLoadBalancerRequest_LabelsEntry.$type,
+    UpdateNetworkLoadBalancerRequest_LabelsEntry
+);
+
 const baseUpdateNetworkLoadBalancerMetadata: object = {
+    $type: 'yandex.cloud.loadbalancer.v1.UpdateNetworkLoadBalancerMetadata',
     networkLoadBalancerId: '',
 };
 
 export const UpdateNetworkLoadBalancerMetadata = {
+    $type: 'yandex.cloud.loadbalancer.v1.UpdateNetworkLoadBalancerMetadata' as const,
+
     encode(
         message: UpdateNetworkLoadBalancerMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1513,11 +1623,19 @@ export const UpdateNetworkLoadBalancerMetadata = {
     },
 };
 
+messageTypeRegistry.set(
+    UpdateNetworkLoadBalancerMetadata.$type,
+    UpdateNetworkLoadBalancerMetadata
+);
+
 const baseDeleteNetworkLoadBalancerRequest: object = {
+    $type: 'yandex.cloud.loadbalancer.v1.DeleteNetworkLoadBalancerRequest',
     networkLoadBalancerId: '',
 };
 
 export const DeleteNetworkLoadBalancerRequest = {
+    $type: 'yandex.cloud.loadbalancer.v1.DeleteNetworkLoadBalancerRequest' as const,
+
     encode(
         message: DeleteNetworkLoadBalancerRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1594,11 +1712,19 @@ export const DeleteNetworkLoadBalancerRequest = {
     },
 };
 
+messageTypeRegistry.set(
+    DeleteNetworkLoadBalancerRequest.$type,
+    DeleteNetworkLoadBalancerRequest
+);
+
 const baseDeleteNetworkLoadBalancerMetadata: object = {
+    $type: 'yandex.cloud.loadbalancer.v1.DeleteNetworkLoadBalancerMetadata',
     networkLoadBalancerId: '',
 };
 
 export const DeleteNetworkLoadBalancerMetadata = {
+    $type: 'yandex.cloud.loadbalancer.v1.DeleteNetworkLoadBalancerMetadata' as const,
+
     encode(
         message: DeleteNetworkLoadBalancerMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1675,11 +1801,19 @@ export const DeleteNetworkLoadBalancerMetadata = {
     },
 };
 
+messageTypeRegistry.set(
+    DeleteNetworkLoadBalancerMetadata.$type,
+    DeleteNetworkLoadBalancerMetadata
+);
+
 const baseStartNetworkLoadBalancerRequest: object = {
+    $type: 'yandex.cloud.loadbalancer.v1.StartNetworkLoadBalancerRequest',
     networkLoadBalancerId: '',
 };
 
 export const StartNetworkLoadBalancerRequest = {
+    $type: 'yandex.cloud.loadbalancer.v1.StartNetworkLoadBalancerRequest' as const,
+
     encode(
         message: StartNetworkLoadBalancerRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1756,11 +1890,19 @@ export const StartNetworkLoadBalancerRequest = {
     },
 };
 
+messageTypeRegistry.set(
+    StartNetworkLoadBalancerRequest.$type,
+    StartNetworkLoadBalancerRequest
+);
+
 const baseStartNetworkLoadBalancerMetadata: object = {
+    $type: 'yandex.cloud.loadbalancer.v1.StartNetworkLoadBalancerMetadata',
     networkLoadBalancerId: '',
 };
 
 export const StartNetworkLoadBalancerMetadata = {
+    $type: 'yandex.cloud.loadbalancer.v1.StartNetworkLoadBalancerMetadata' as const,
+
     encode(
         message: StartNetworkLoadBalancerMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1837,11 +1979,19 @@ export const StartNetworkLoadBalancerMetadata = {
     },
 };
 
+messageTypeRegistry.set(
+    StartNetworkLoadBalancerMetadata.$type,
+    StartNetworkLoadBalancerMetadata
+);
+
 const baseStopNetworkLoadBalancerRequest: object = {
+    $type: 'yandex.cloud.loadbalancer.v1.StopNetworkLoadBalancerRequest',
     networkLoadBalancerId: '',
 };
 
 export const StopNetworkLoadBalancerRequest = {
+    $type: 'yandex.cloud.loadbalancer.v1.StopNetworkLoadBalancerRequest' as const,
+
     encode(
         message: StopNetworkLoadBalancerRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1918,11 +2068,19 @@ export const StopNetworkLoadBalancerRequest = {
     },
 };
 
+messageTypeRegistry.set(
+    StopNetworkLoadBalancerRequest.$type,
+    StopNetworkLoadBalancerRequest
+);
+
 const baseStopNetworkLoadBalancerMetadata: object = {
+    $type: 'yandex.cloud.loadbalancer.v1.StopNetworkLoadBalancerMetadata',
     networkLoadBalancerId: '',
 };
 
 export const StopNetworkLoadBalancerMetadata = {
+    $type: 'yandex.cloud.loadbalancer.v1.StopNetworkLoadBalancerMetadata' as const,
+
     encode(
         message: StopNetworkLoadBalancerMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1999,11 +2157,19 @@ export const StopNetworkLoadBalancerMetadata = {
     },
 };
 
+messageTypeRegistry.set(
+    StopNetworkLoadBalancerMetadata.$type,
+    StopNetworkLoadBalancerMetadata
+);
+
 const baseAttachNetworkLoadBalancerTargetGroupRequest: object = {
+    $type: 'yandex.cloud.loadbalancer.v1.AttachNetworkLoadBalancerTargetGroupRequest',
     networkLoadBalancerId: '',
 };
 
 export const AttachNetworkLoadBalancerTargetGroupRequest = {
+    $type: 'yandex.cloud.loadbalancer.v1.AttachNetworkLoadBalancerTargetGroupRequest' as const,
+
     encode(
         message: AttachNetworkLoadBalancerTargetGroupRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2116,12 +2282,20 @@ export const AttachNetworkLoadBalancerTargetGroupRequest = {
     },
 };
 
+messageTypeRegistry.set(
+    AttachNetworkLoadBalancerTargetGroupRequest.$type,
+    AttachNetworkLoadBalancerTargetGroupRequest
+);
+
 const baseAttachNetworkLoadBalancerTargetGroupMetadata: object = {
+    $type: 'yandex.cloud.loadbalancer.v1.AttachNetworkLoadBalancerTargetGroupMetadata',
     networkLoadBalancerId: '',
     targetGroupId: '',
 };
 
 export const AttachNetworkLoadBalancerTargetGroupMetadata = {
+    $type: 'yandex.cloud.loadbalancer.v1.AttachNetworkLoadBalancerTargetGroupMetadata' as const,
+
     encode(
         message: AttachNetworkLoadBalancerTargetGroupMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2222,12 +2396,20 @@ export const AttachNetworkLoadBalancerTargetGroupMetadata = {
     },
 };
 
+messageTypeRegistry.set(
+    AttachNetworkLoadBalancerTargetGroupMetadata.$type,
+    AttachNetworkLoadBalancerTargetGroupMetadata
+);
+
 const baseDetachNetworkLoadBalancerTargetGroupRequest: object = {
+    $type: 'yandex.cloud.loadbalancer.v1.DetachNetworkLoadBalancerTargetGroupRequest',
     networkLoadBalancerId: '',
     targetGroupId: '',
 };
 
 export const DetachNetworkLoadBalancerTargetGroupRequest = {
+    $type: 'yandex.cloud.loadbalancer.v1.DetachNetworkLoadBalancerTargetGroupRequest' as const,
+
     encode(
         message: DetachNetworkLoadBalancerTargetGroupRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2328,12 +2510,20 @@ export const DetachNetworkLoadBalancerTargetGroupRequest = {
     },
 };
 
+messageTypeRegistry.set(
+    DetachNetworkLoadBalancerTargetGroupRequest.$type,
+    DetachNetworkLoadBalancerTargetGroupRequest
+);
+
 const baseDetachNetworkLoadBalancerTargetGroupMetadata: object = {
+    $type: 'yandex.cloud.loadbalancer.v1.DetachNetworkLoadBalancerTargetGroupMetadata',
     networkLoadBalancerId: '',
     targetGroupId: '',
 };
 
 export const DetachNetworkLoadBalancerTargetGroupMetadata = {
+    $type: 'yandex.cloud.loadbalancer.v1.DetachNetworkLoadBalancerTargetGroupMetadata' as const,
+
     encode(
         message: DetachNetworkLoadBalancerTargetGroupMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2434,11 +2624,19 @@ export const DetachNetworkLoadBalancerTargetGroupMetadata = {
     },
 };
 
+messageTypeRegistry.set(
+    DetachNetworkLoadBalancerTargetGroupMetadata.$type,
+    DetachNetworkLoadBalancerTargetGroupMetadata
+);
+
 const baseAddNetworkLoadBalancerListenerRequest: object = {
+    $type: 'yandex.cloud.loadbalancer.v1.AddNetworkLoadBalancerListenerRequest',
     networkLoadBalancerId: '',
 };
 
 export const AddNetworkLoadBalancerListenerRequest = {
+    $type: 'yandex.cloud.loadbalancer.v1.AddNetworkLoadBalancerListenerRequest' as const,
+
     encode(
         message: AddNetworkLoadBalancerListenerRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2543,11 +2741,19 @@ export const AddNetworkLoadBalancerListenerRequest = {
     },
 };
 
+messageTypeRegistry.set(
+    AddNetworkLoadBalancerListenerRequest.$type,
+    AddNetworkLoadBalancerListenerRequest
+);
+
 const baseAddNetworkLoadBalancerListenerMetadata: object = {
+    $type: 'yandex.cloud.loadbalancer.v1.AddNetworkLoadBalancerListenerMetadata',
     networkLoadBalancerId: '',
 };
 
 export const AddNetworkLoadBalancerListenerMetadata = {
+    $type: 'yandex.cloud.loadbalancer.v1.AddNetworkLoadBalancerListenerMetadata' as const,
+
     encode(
         message: AddNetworkLoadBalancerListenerMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2624,12 +2830,20 @@ export const AddNetworkLoadBalancerListenerMetadata = {
     },
 };
 
+messageTypeRegistry.set(
+    AddNetworkLoadBalancerListenerMetadata.$type,
+    AddNetworkLoadBalancerListenerMetadata
+);
+
 const baseRemoveNetworkLoadBalancerListenerRequest: object = {
+    $type: 'yandex.cloud.loadbalancer.v1.RemoveNetworkLoadBalancerListenerRequest',
     networkLoadBalancerId: '',
     listenerName: '',
 };
 
 export const RemoveNetworkLoadBalancerListenerRequest = {
+    $type: 'yandex.cloud.loadbalancer.v1.RemoveNetworkLoadBalancerListenerRequest' as const,
+
     encode(
         message: RemoveNetworkLoadBalancerListenerRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2724,11 +2938,19 @@ export const RemoveNetworkLoadBalancerListenerRequest = {
     },
 };
 
+messageTypeRegistry.set(
+    RemoveNetworkLoadBalancerListenerRequest.$type,
+    RemoveNetworkLoadBalancerListenerRequest
+);
+
 const baseRemoveNetworkLoadBalancerListenerMetadata: object = {
+    $type: 'yandex.cloud.loadbalancer.v1.RemoveNetworkLoadBalancerListenerMetadata',
     networkLoadBalancerId: '',
 };
 
 export const RemoveNetworkLoadBalancerListenerMetadata = {
+    $type: 'yandex.cloud.loadbalancer.v1.RemoveNetworkLoadBalancerListenerMetadata' as const,
+
     encode(
         message: RemoveNetworkLoadBalancerListenerMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2805,13 +3027,21 @@ export const RemoveNetworkLoadBalancerListenerMetadata = {
     },
 };
 
+messageTypeRegistry.set(
+    RemoveNetworkLoadBalancerListenerMetadata.$type,
+    RemoveNetworkLoadBalancerListenerMetadata
+);
+
 const baseListNetworkLoadBalancerOperationsRequest: object = {
+    $type: 'yandex.cloud.loadbalancer.v1.ListNetworkLoadBalancerOperationsRequest',
     networkLoadBalancerId: '',
     pageSize: 0,
     pageToken: '',
 };
 
 export const ListNetworkLoadBalancerOperationsRequest = {
+    $type: 'yandex.cloud.loadbalancer.v1.ListNetworkLoadBalancerOperationsRequest' as const,
+
     encode(
         message: ListNetworkLoadBalancerOperationsRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2922,11 +3152,19 @@ export const ListNetworkLoadBalancerOperationsRequest = {
     },
 };
 
+messageTypeRegistry.set(
+    ListNetworkLoadBalancerOperationsRequest.$type,
+    ListNetworkLoadBalancerOperationsRequest
+);
+
 const baseListNetworkLoadBalancerOperationsResponse: object = {
+    $type: 'yandex.cloud.loadbalancer.v1.ListNetworkLoadBalancerOperationsResponse',
     nextPageToken: '',
 };
 
 export const ListNetworkLoadBalancerOperationsResponse = {
+    $type: 'yandex.cloud.loadbalancer.v1.ListNetworkLoadBalancerOperationsResponse' as const,
+
     encode(
         message: ListNetworkLoadBalancerOperationsResponse,
         writer: _m0.Writer = _m0.Writer.create()
@@ -3029,12 +3267,20 @@ export const ListNetworkLoadBalancerOperationsResponse = {
     },
 };
 
+messageTypeRegistry.set(
+    ListNetworkLoadBalancerOperationsResponse.$type,
+    ListNetworkLoadBalancerOperationsResponse
+);
+
 const baseGetTargetStatesRequest: object = {
+    $type: 'yandex.cloud.loadbalancer.v1.GetTargetStatesRequest',
     networkLoadBalancerId: '',
     targetGroupId: '',
 };
 
 export const GetTargetStatesRequest = {
+    $type: 'yandex.cloud.loadbalancer.v1.GetTargetStatesRequest' as const,
+
     encode(
         message: GetTargetStatesRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -3135,9 +3381,15 @@ export const GetTargetStatesRequest = {
     },
 };
 
-const baseGetTargetStatesResponse: object = {};
+messageTypeRegistry.set(GetTargetStatesRequest.$type, GetTargetStatesRequest);
+
+const baseGetTargetStatesResponse: object = {
+    $type: 'yandex.cloud.loadbalancer.v1.GetTargetStatesResponse',
+};
 
 export const GetTargetStatesResponse = {
+    $type: 'yandex.cloud.loadbalancer.v1.GetTargetStatesResponse' as const,
+
     encode(
         message: GetTargetStatesResponse,
         writer: _m0.Writer = _m0.Writer.create()
@@ -3216,9 +3468,17 @@ export const GetTargetStatesResponse = {
     },
 };
 
-const baseExternalAddressSpec: object = { address: '', ipVersion: 0 };
+messageTypeRegistry.set(GetTargetStatesResponse.$type, GetTargetStatesResponse);
+
+const baseExternalAddressSpec: object = {
+    $type: 'yandex.cloud.loadbalancer.v1.ExternalAddressSpec',
+    address: '',
+    ipVersion: 0,
+};
 
 export const ExternalAddressSpec = {
+    $type: 'yandex.cloud.loadbalancer.v1.ExternalAddressSpec' as const,
+
     encode(
         message: ExternalAddressSpec,
         writer: _m0.Writer = _m0.Writer.create()
@@ -3296,13 +3556,18 @@ export const ExternalAddressSpec = {
     },
 };
 
+messageTypeRegistry.set(ExternalAddressSpec.$type, ExternalAddressSpec);
+
 const baseInternalAddressSpec: object = {
+    $type: 'yandex.cloud.loadbalancer.v1.InternalAddressSpec',
     address: '',
     subnetId: '',
     ipVersion: 0,
 };
 
 export const InternalAddressSpec = {
+    $type: 'yandex.cloud.loadbalancer.v1.InternalAddressSpec' as const,
+
     encode(
         message: InternalAddressSpec,
         writer: _m0.Writer = _m0.Writer.create()
@@ -3397,7 +3662,10 @@ export const InternalAddressSpec = {
     },
 };
 
+messageTypeRegistry.set(InternalAddressSpec.$type, InternalAddressSpec);
+
 const baseListenerSpec: object = {
+    $type: 'yandex.cloud.loadbalancer.v1.ListenerSpec',
     name: '',
     port: 0,
     protocol: 0,
@@ -3405,6 +3673,8 @@ const baseListenerSpec: object = {
 };
 
 export const ListenerSpec = {
+    $type: 'yandex.cloud.loadbalancer.v1.ListenerSpec' as const,
+
     encode(
         message: ListenerSpec,
         writer: _m0.Writer = _m0.Writer.create()
@@ -3585,6 +3855,8 @@ export const ListenerSpec = {
         return message;
     },
 };
+
+messageTypeRegistry.set(ListenerSpec.$type, ListenerSpec);
 
 /** A set of methods for managing NetworkLoadBalancer resources. */
 export const NetworkLoadBalancerServiceService = {
@@ -4156,7 +4428,7 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 function longToNumber(long: Long): number {

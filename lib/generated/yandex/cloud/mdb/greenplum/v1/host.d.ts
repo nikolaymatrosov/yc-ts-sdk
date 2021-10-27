@@ -2,6 +2,7 @@ import { Resources } from '../../../../../yandex/cloud/mdb/greenplum/v1/config';
 import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.mdb.greenplum.v1";
 export interface Host {
+    $type: 'yandex.cloud.mdb.greenplum.v1.Host';
     /**
      * Name of the Greenplum host. The host name is assigned by MDB at creation time, and cannot be changed.
      * 1-63 characters long.
@@ -52,6 +53,7 @@ export declare enum Host_Health {
 export declare function host_HealthFromJSON(object: any): Host_Health;
 export declare function host_HealthToJSON(object: Host_Health): string;
 export declare const Host: {
+    $type: "yandex.cloud.mdb.greenplum.v1.Host";
     encode(message: Host, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Host;
     fromJSON(object: any): Host;
@@ -60,6 +62,6 @@ export declare const Host: {
 };
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

@@ -5,6 +5,7 @@ import { ChannelCredentials, ChannelOptions, UntypedServiceImplementation, handl
 import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.mdb.sqlserver.v1";
 export interface GetDatabaseRequest {
+    $type: 'yandex.cloud.mdb.sqlserver.v1.GetDatabaseRequest';
     /**
      * ID of the SQL Server cluster the database belongs to.
      *
@@ -19,6 +20,7 @@ export interface GetDatabaseRequest {
     databaseName: string;
 }
 export interface ListDatabasesRequest {
+    $type: 'yandex.cloud.mdb.sqlserver.v1.ListDatabasesRequest';
     /**
      * ID of the SQL Server cluster to list databases in.
      *
@@ -38,6 +40,7 @@ export interface ListDatabasesRequest {
     pageToken: string;
 }
 export interface ListDatabasesResponse {
+    $type: 'yandex.cloud.mdb.sqlserver.v1.ListDatabasesResponse';
     /** List of SQL Server databases. */
     databases: Database[];
     /**
@@ -49,6 +52,7 @@ export interface ListDatabasesResponse {
     nextPageToken: string;
 }
 export interface CreateDatabaseRequest {
+    $type: 'yandex.cloud.mdb.sqlserver.v1.CreateDatabaseRequest';
     /**
      * ID of the SQL Server cluster to create a database in.
      *
@@ -59,12 +63,14 @@ export interface CreateDatabaseRequest {
     databaseSpec: DatabaseSpec | undefined;
 }
 export interface CreateDatabaseMetadata {
+    $type: 'yandex.cloud.mdb.sqlserver.v1.CreateDatabaseMetadata';
     /** ID of the SQL Server cluster where the database is being created. */
     clusterId: string;
     /** Name of the SQL Server database being created. */
     databaseName: string;
 }
 export interface RestoreDatabaseMetadata {
+    $type: 'yandex.cloud.mdb.sqlserver.v1.RestoreDatabaseMetadata';
     /** ID of the SQLServer cluster where a database is being created. */
     clusterId: string;
     /** Name of the SQLServer database that is being created. */
@@ -75,6 +81,7 @@ export interface RestoreDatabaseMetadata {
     backupId: string;
 }
 export interface DeleteDatabaseRequest {
+    $type: 'yandex.cloud.mdb.sqlserver.v1.DeleteDatabaseRequest';
     /**
      * ID of the SQL Server cluster to delete a database in.
      *
@@ -89,12 +96,14 @@ export interface DeleteDatabaseRequest {
     databaseName: string;
 }
 export interface DeleteDatabaseMetadata {
+    $type: 'yandex.cloud.mdb.sqlserver.v1.DeleteDatabaseMetadata';
     /** ID of the SQL Server cluster where the database is being deleted. */
     clusterId: string;
     /** Name of the SQL Server database being deleted. */
     databaseName: string;
 }
 export interface RestoreDatabaseRequest {
+    $type: 'yandex.cloud.mdb.sqlserver.v1.RestoreDatabaseRequest';
     /**
      * Required. ID of the SQL Server cluster to restore a database in.
      * To get the cluster ID, use a [ClusterService.List] request
@@ -110,6 +119,7 @@ export interface RestoreDatabaseRequest {
     time: Date | undefined;
 }
 export declare const GetDatabaseRequest: {
+    $type: "yandex.cloud.mdb.sqlserver.v1.GetDatabaseRequest";
     encode(message: GetDatabaseRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): GetDatabaseRequest;
     fromJSON(object: any): GetDatabaseRequest;
@@ -117,6 +127,7 @@ export declare const GetDatabaseRequest: {
     fromPartial(object: DeepPartial<GetDatabaseRequest>): GetDatabaseRequest;
 };
 export declare const ListDatabasesRequest: {
+    $type: "yandex.cloud.mdb.sqlserver.v1.ListDatabasesRequest";
     encode(message: ListDatabasesRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListDatabasesRequest;
     fromJSON(object: any): ListDatabasesRequest;
@@ -124,6 +135,7 @@ export declare const ListDatabasesRequest: {
     fromPartial(object: DeepPartial<ListDatabasesRequest>): ListDatabasesRequest;
 };
 export declare const ListDatabasesResponse: {
+    $type: "yandex.cloud.mdb.sqlserver.v1.ListDatabasesResponse";
     encode(message: ListDatabasesResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListDatabasesResponse;
     fromJSON(object: any): ListDatabasesResponse;
@@ -131,6 +143,7 @@ export declare const ListDatabasesResponse: {
     fromPartial(object: DeepPartial<ListDatabasesResponse>): ListDatabasesResponse;
 };
 export declare const CreateDatabaseRequest: {
+    $type: "yandex.cloud.mdb.sqlserver.v1.CreateDatabaseRequest";
     encode(message: CreateDatabaseRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateDatabaseRequest;
     fromJSON(object: any): CreateDatabaseRequest;
@@ -138,6 +151,7 @@ export declare const CreateDatabaseRequest: {
     fromPartial(object: DeepPartial<CreateDatabaseRequest>): CreateDatabaseRequest;
 };
 export declare const CreateDatabaseMetadata: {
+    $type: "yandex.cloud.mdb.sqlserver.v1.CreateDatabaseMetadata";
     encode(message: CreateDatabaseMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateDatabaseMetadata;
     fromJSON(object: any): CreateDatabaseMetadata;
@@ -145,6 +159,7 @@ export declare const CreateDatabaseMetadata: {
     fromPartial(object: DeepPartial<CreateDatabaseMetadata>): CreateDatabaseMetadata;
 };
 export declare const RestoreDatabaseMetadata: {
+    $type: "yandex.cloud.mdb.sqlserver.v1.RestoreDatabaseMetadata";
     encode(message: RestoreDatabaseMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): RestoreDatabaseMetadata;
     fromJSON(object: any): RestoreDatabaseMetadata;
@@ -152,6 +167,7 @@ export declare const RestoreDatabaseMetadata: {
     fromPartial(object: DeepPartial<RestoreDatabaseMetadata>): RestoreDatabaseMetadata;
 };
 export declare const DeleteDatabaseRequest: {
+    $type: "yandex.cloud.mdb.sqlserver.v1.DeleteDatabaseRequest";
     encode(message: DeleteDatabaseRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteDatabaseRequest;
     fromJSON(object: any): DeleteDatabaseRequest;
@@ -159,6 +175,7 @@ export declare const DeleteDatabaseRequest: {
     fromPartial(object: DeepPartial<DeleteDatabaseRequest>): DeleteDatabaseRequest;
 };
 export declare const DeleteDatabaseMetadata: {
+    $type: "yandex.cloud.mdb.sqlserver.v1.DeleteDatabaseMetadata";
     encode(message: DeleteDatabaseMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteDatabaseMetadata;
     fromJSON(object: any): DeleteDatabaseMetadata;
@@ -166,6 +183,7 @@ export declare const DeleteDatabaseMetadata: {
     fromPartial(object: DeepPartial<DeleteDatabaseMetadata>): DeleteDatabaseMetadata;
 };
 export declare const RestoreDatabaseRequest: {
+    $type: "yandex.cloud.mdb.sqlserver.v1.RestoreDatabaseRequest";
     encode(message: RestoreDatabaseRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): RestoreDatabaseRequest;
     fromJSON(object: any): RestoreDatabaseRequest;
@@ -274,6 +292,6 @@ export interface DatabaseServiceClient extends Client {
 export declare const DatabaseServiceClient: new (address: string, credentials: ChannelCredentials, options?: Partial<ChannelOptions> | undefined) => DatabaseServiceClient;
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

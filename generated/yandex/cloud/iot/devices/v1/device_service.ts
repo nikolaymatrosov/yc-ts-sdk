@@ -1,5 +1,6 @@
 /* eslint-disable */
 import { FieldMask } from '../../../../../google/protobuf/field_mask';
+import { messageTypeRegistry } from '../../../../../typeRegistry';
 import {
     DeviceView,
     Device,
@@ -27,6 +28,7 @@ import _m0 from 'protobufjs/minimal';
 export const protobufPackage = 'yandex.cloud.iot.devices.v1';
 
 export interface GetDeviceRequest {
+    $type: 'yandex.cloud.iot.devices.v1.GetDeviceRequest';
     /**
      * ID of the device to return.
      *
@@ -41,6 +43,7 @@ export interface GetDeviceRequest {
 }
 
 export interface GetByNameDeviceRequest {
+    $type: 'yandex.cloud.iot.devices.v1.GetByNameDeviceRequest';
     /**
      * ID of the registry to get device.
      *
@@ -61,6 +64,7 @@ export interface GetByNameDeviceRequest {
 }
 
 export interface ListDevicesRequest {
+    $type: 'yandex.cloud.iot.devices.v1.ListDevicesRequest';
     /**
      * ID of the registry to list devices in.
      *
@@ -93,6 +97,7 @@ export interface ListDevicesRequest {
 }
 
 export interface ListDevicesResponse {
+    $type: 'yandex.cloud.iot.devices.v1.ListDevicesResponse';
     /** List of devices. */
     devices: Device[];
     /**
@@ -106,6 +111,7 @@ export interface ListDevicesResponse {
 }
 
 export interface CreateDeviceRequest {
+    $type: 'yandex.cloud.iot.devices.v1.CreateDeviceRequest';
     /**
      * ID of the registry to create a device in.
      *
@@ -133,22 +139,26 @@ export interface CreateDeviceRequest {
 }
 
 export interface CreateDeviceRequest_TopicAliasesEntry {
+    $type: 'yandex.cloud.iot.devices.v1.CreateDeviceRequest.TopicAliasesEntry';
     key: string;
     value: string;
 }
 
 /** Specification of a device certificate. */
 export interface CreateDeviceRequest_Certificate {
+    $type: 'yandex.cloud.iot.devices.v1.CreateDeviceRequest.Certificate';
     /** Public part of the device certificate. */
     certificateData: string;
 }
 
 export interface CreateDeviceMetadata {
+    $type: 'yandex.cloud.iot.devices.v1.CreateDeviceMetadata';
     /** ID of the device that is being created. */
     deviceId: string;
 }
 
 export interface UpdateDeviceRequest {
+    $type: 'yandex.cloud.iot.devices.v1.UpdateDeviceRequest';
     /**
      * ID of the device to update.
      *
@@ -170,16 +180,19 @@ export interface UpdateDeviceRequest {
 }
 
 export interface UpdateDeviceRequest_TopicAliasesEntry {
+    $type: 'yandex.cloud.iot.devices.v1.UpdateDeviceRequest.TopicAliasesEntry';
     key: string;
     value: string;
 }
 
 export interface UpdateDeviceMetadata {
+    $type: 'yandex.cloud.iot.devices.v1.UpdateDeviceMetadata';
     /** ID of the device that is being updated. */
     deviceId: string;
 }
 
 export interface DeleteDeviceRequest {
+    $type: 'yandex.cloud.iot.devices.v1.DeleteDeviceRequest';
     /**
      * ID of the device to delete.
      *
@@ -189,21 +202,25 @@ export interface DeleteDeviceRequest {
 }
 
 export interface DeleteDeviceMetadata {
+    $type: 'yandex.cloud.iot.devices.v1.DeleteDeviceMetadata';
     /** ID of the device that is being deleted. */
     deviceId: string;
 }
 
 export interface ListDeviceCertificatesRequest {
+    $type: 'yandex.cloud.iot.devices.v1.ListDeviceCertificatesRequest';
     /** ID of the device to list certificates for. */
     deviceId: string;
 }
 
 export interface ListDeviceCertificatesResponse {
+    $type: 'yandex.cloud.iot.devices.v1.ListDeviceCertificatesResponse';
     /** List of certificates for the specified device. */
     certificates: DeviceCertificate[];
 }
 
 export interface AddDeviceCertificateRequest {
+    $type: 'yandex.cloud.iot.devices.v1.AddDeviceCertificateRequest';
     /**
      * ID of the device for which the certificate is being added.
      *
@@ -215,6 +232,7 @@ export interface AddDeviceCertificateRequest {
 }
 
 export interface AddDeviceCertificateMetadata {
+    $type: 'yandex.cloud.iot.devices.v1.AddDeviceCertificateMetadata';
     /** ID of the device certificate that is being added. */
     deviceId: string;
     /** Fingerprint of the certificate that is being added. */
@@ -222,6 +240,7 @@ export interface AddDeviceCertificateMetadata {
 }
 
 export interface DeleteDeviceCertificateRequest {
+    $type: 'yandex.cloud.iot.devices.v1.DeleteDeviceCertificateRequest';
     /**
      * ID of the device to delete a certificate for.
      *
@@ -233,6 +252,7 @@ export interface DeleteDeviceCertificateRequest {
 }
 
 export interface DeleteDeviceCertificateMetadata {
+    $type: 'yandex.cloud.iot.devices.v1.DeleteDeviceCertificateMetadata';
     /** ID of the device certificate that is being deleted. */
     deviceId: string;
     /** Fingerprint of the certificate that is being deleted. */
@@ -240,6 +260,7 @@ export interface DeleteDeviceCertificateMetadata {
 }
 
 export interface ListDevicePasswordsRequest {
+    $type: 'yandex.cloud.iot.devices.v1.ListDevicePasswordsRequest';
     /**
      * ID of the registry to list passwords in.
      *
@@ -249,11 +270,13 @@ export interface ListDevicePasswordsRequest {
 }
 
 export interface ListDevicePasswordsResponse {
+    $type: 'yandex.cloud.iot.devices.v1.ListDevicePasswordsResponse';
     /** List of passwords for the specified device. */
     passwords: DevicePassword[];
 }
 
 export interface AddDevicePasswordRequest {
+    $type: 'yandex.cloud.iot.devices.v1.AddDevicePasswordRequest';
     /**
      * ID of the device to add a password for.
      *
@@ -269,6 +292,7 @@ export interface AddDevicePasswordRequest {
 }
 
 export interface AddDevicePasswordMetadata {
+    $type: 'yandex.cloud.iot.devices.v1.AddDevicePasswordMetadata';
     /** ID of the device for which the password is being added. */
     deviceId: string;
     /** ID of the password that is being added. */
@@ -276,6 +300,7 @@ export interface AddDevicePasswordMetadata {
 }
 
 export interface DeleteDevicePasswordRequest {
+    $type: 'yandex.cloud.iot.devices.v1.DeleteDevicePasswordRequest';
     /**
      * ID of the device to delete a password for.
      *
@@ -291,6 +316,7 @@ export interface DeleteDevicePasswordRequest {
 }
 
 export interface DeleteDevicePasswordMetadata {
+    $type: 'yandex.cloud.iot.devices.v1.DeleteDevicePasswordMetadata';
     /** ID of the device for which the password is being deleted. */
     deviceId: string;
     /** ID of the password that is being deleted. */
@@ -298,6 +324,7 @@ export interface DeleteDevicePasswordMetadata {
 }
 
 export interface ListDeviceOperationsRequest {
+    $type: 'yandex.cloud.iot.devices.v1.ListDeviceOperationsRequest';
     /**
      * ID of the device to list operations for.
      *
@@ -324,6 +351,7 @@ export interface ListDeviceOperationsRequest {
 }
 
 export interface ListDeviceOperationsResponse {
+    $type: 'yandex.cloud.iot.devices.v1.ListDeviceOperationsResponse';
     /** List of operations for the specified device certificate. */
     operations: Operation[];
     /**
@@ -336,9 +364,15 @@ export interface ListDeviceOperationsResponse {
     nextPageToken: string;
 }
 
-const baseGetDeviceRequest: object = { deviceId: '', deviceView: 0 };
+const baseGetDeviceRequest: object = {
+    $type: 'yandex.cloud.iot.devices.v1.GetDeviceRequest',
+    deviceId: '',
+    deviceView: 0,
+};
 
 export const GetDeviceRequest = {
+    $type: 'yandex.cloud.iot.devices.v1.GetDeviceRequest' as const,
+
     encode(
         message: GetDeviceRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -413,13 +447,18 @@ export const GetDeviceRequest = {
     },
 };
 
+messageTypeRegistry.set(GetDeviceRequest.$type, GetDeviceRequest);
+
 const baseGetByNameDeviceRequest: object = {
+    $type: 'yandex.cloud.iot.devices.v1.GetByNameDeviceRequest',
     registryId: '',
     deviceName: '',
     deviceView: 0,
 };
 
 export const GetByNameDeviceRequest = {
+    $type: 'yandex.cloud.iot.devices.v1.GetByNameDeviceRequest' as const,
+
     encode(
         message: GetByNameDeviceRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -524,13 +563,18 @@ export const GetByNameDeviceRequest = {
     },
 };
 
+messageTypeRegistry.set(GetByNameDeviceRequest.$type, GetByNameDeviceRequest);
+
 const baseListDevicesRequest: object = {
+    $type: 'yandex.cloud.iot.devices.v1.ListDevicesRequest',
     pageSize: 0,
     pageToken: '',
     deviceView: 0,
 };
 
 export const ListDevicesRequest = {
+    $type: 'yandex.cloud.iot.devices.v1.ListDevicesRequest' as const,
+
     encode(
         message: ListDevicesRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -660,9 +704,16 @@ export const ListDevicesRequest = {
     },
 };
 
-const baseListDevicesResponse: object = { nextPageToken: '' };
+messageTypeRegistry.set(ListDevicesRequest.$type, ListDevicesRequest);
+
+const baseListDevicesResponse: object = {
+    $type: 'yandex.cloud.iot.devices.v1.ListDevicesResponse',
+    nextPageToken: '',
+};
 
 export const ListDevicesResponse = {
+    $type: 'yandex.cloud.iot.devices.v1.ListDevicesResponse' as const,
+
     encode(
         message: ListDevicesResponse,
         writer: _m0.Writer = _m0.Writer.create()
@@ -757,7 +808,10 @@ export const ListDevicesResponse = {
     },
 };
 
+messageTypeRegistry.set(ListDevicesResponse.$type, ListDevicesResponse);
+
 const baseCreateDeviceRequest: object = {
+    $type: 'yandex.cloud.iot.devices.v1.CreateDeviceRequest',
     registryId: '',
     name: '',
     description: '',
@@ -765,6 +819,8 @@ const baseCreateDeviceRequest: object = {
 };
 
 export const CreateDeviceRequest = {
+    $type: 'yandex.cloud.iot.devices.v1.CreateDeviceRequest' as const,
+
     encode(
         message: CreateDeviceRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -786,7 +842,11 @@ export const CreateDeviceRequest = {
         }
         Object.entries(message.topicAliases).forEach(([key, value]) => {
             CreateDeviceRequest_TopicAliasesEntry.encode(
-                { key: key as any, value },
+                {
+                    $type: 'yandex.cloud.iot.devices.v1.CreateDeviceRequest.TopicAliasesEntry',
+                    key: key as any,
+                    value,
+                },
                 writer.uint32(42).fork()
             ).ldelim();
         });
@@ -951,12 +1011,17 @@ export const CreateDeviceRequest = {
     },
 };
 
+messageTypeRegistry.set(CreateDeviceRequest.$type, CreateDeviceRequest);
+
 const baseCreateDeviceRequest_TopicAliasesEntry: object = {
+    $type: 'yandex.cloud.iot.devices.v1.CreateDeviceRequest.TopicAliasesEntry',
     key: '',
     value: '',
 };
 
 export const CreateDeviceRequest_TopicAliasesEntry = {
+    $type: 'yandex.cloud.iot.devices.v1.CreateDeviceRequest.TopicAliasesEntry' as const,
+
     encode(
         message: CreateDeviceRequest_TopicAliasesEntry,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1041,9 +1106,19 @@ export const CreateDeviceRequest_TopicAliasesEntry = {
     },
 };
 
-const baseCreateDeviceRequest_Certificate: object = { certificateData: '' };
+messageTypeRegistry.set(
+    CreateDeviceRequest_TopicAliasesEntry.$type,
+    CreateDeviceRequest_TopicAliasesEntry
+);
+
+const baseCreateDeviceRequest_Certificate: object = {
+    $type: 'yandex.cloud.iot.devices.v1.CreateDeviceRequest.Certificate',
+    certificateData: '',
+};
 
 export const CreateDeviceRequest_Certificate = {
+    $type: 'yandex.cloud.iot.devices.v1.CreateDeviceRequest.Certificate' as const,
+
     encode(
         message: CreateDeviceRequest_Certificate,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1118,9 +1193,19 @@ export const CreateDeviceRequest_Certificate = {
     },
 };
 
-const baseCreateDeviceMetadata: object = { deviceId: '' };
+messageTypeRegistry.set(
+    CreateDeviceRequest_Certificate.$type,
+    CreateDeviceRequest_Certificate
+);
+
+const baseCreateDeviceMetadata: object = {
+    $type: 'yandex.cloud.iot.devices.v1.CreateDeviceMetadata',
+    deviceId: '',
+};
 
 export const CreateDeviceMetadata = {
+    $type: 'yandex.cloud.iot.devices.v1.CreateDeviceMetadata' as const,
+
     encode(
         message: CreateDeviceMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1182,13 +1267,18 @@ export const CreateDeviceMetadata = {
     },
 };
 
+messageTypeRegistry.set(CreateDeviceMetadata.$type, CreateDeviceMetadata);
+
 const baseUpdateDeviceRequest: object = {
+    $type: 'yandex.cloud.iot.devices.v1.UpdateDeviceRequest',
     deviceId: '',
     name: '',
     description: '',
 };
 
 export const UpdateDeviceRequest = {
+    $type: 'yandex.cloud.iot.devices.v1.UpdateDeviceRequest' as const,
+
     encode(
         message: UpdateDeviceRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1210,7 +1300,11 @@ export const UpdateDeviceRequest = {
         }
         Object.entries(message.topicAliases).forEach(([key, value]) => {
             UpdateDeviceRequest_TopicAliasesEntry.encode(
-                { key: key as any, value },
+                {
+                    $type: 'yandex.cloud.iot.devices.v1.UpdateDeviceRequest.TopicAliasesEntry',
+                    key: key as any,
+                    value,
+                },
                 writer.uint32(42).fork()
             ).ldelim();
         });
@@ -1345,12 +1439,17 @@ export const UpdateDeviceRequest = {
     },
 };
 
+messageTypeRegistry.set(UpdateDeviceRequest.$type, UpdateDeviceRequest);
+
 const baseUpdateDeviceRequest_TopicAliasesEntry: object = {
+    $type: 'yandex.cloud.iot.devices.v1.UpdateDeviceRequest.TopicAliasesEntry',
     key: '',
     value: '',
 };
 
 export const UpdateDeviceRequest_TopicAliasesEntry = {
+    $type: 'yandex.cloud.iot.devices.v1.UpdateDeviceRequest.TopicAliasesEntry' as const,
+
     encode(
         message: UpdateDeviceRequest_TopicAliasesEntry,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1435,9 +1534,19 @@ export const UpdateDeviceRequest_TopicAliasesEntry = {
     },
 };
 
-const baseUpdateDeviceMetadata: object = { deviceId: '' };
+messageTypeRegistry.set(
+    UpdateDeviceRequest_TopicAliasesEntry.$type,
+    UpdateDeviceRequest_TopicAliasesEntry
+);
+
+const baseUpdateDeviceMetadata: object = {
+    $type: 'yandex.cloud.iot.devices.v1.UpdateDeviceMetadata',
+    deviceId: '',
+};
 
 export const UpdateDeviceMetadata = {
+    $type: 'yandex.cloud.iot.devices.v1.UpdateDeviceMetadata' as const,
+
     encode(
         message: UpdateDeviceMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1499,9 +1608,16 @@ export const UpdateDeviceMetadata = {
     },
 };
 
-const baseDeleteDeviceRequest: object = { deviceId: '' };
+messageTypeRegistry.set(UpdateDeviceMetadata.$type, UpdateDeviceMetadata);
+
+const baseDeleteDeviceRequest: object = {
+    $type: 'yandex.cloud.iot.devices.v1.DeleteDeviceRequest',
+    deviceId: '',
+};
 
 export const DeleteDeviceRequest = {
+    $type: 'yandex.cloud.iot.devices.v1.DeleteDeviceRequest' as const,
+
     encode(
         message: DeleteDeviceRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1561,9 +1677,16 @@ export const DeleteDeviceRequest = {
     },
 };
 
-const baseDeleteDeviceMetadata: object = { deviceId: '' };
+messageTypeRegistry.set(DeleteDeviceRequest.$type, DeleteDeviceRequest);
+
+const baseDeleteDeviceMetadata: object = {
+    $type: 'yandex.cloud.iot.devices.v1.DeleteDeviceMetadata',
+    deviceId: '',
+};
 
 export const DeleteDeviceMetadata = {
+    $type: 'yandex.cloud.iot.devices.v1.DeleteDeviceMetadata' as const,
+
     encode(
         message: DeleteDeviceMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1625,9 +1748,16 @@ export const DeleteDeviceMetadata = {
     },
 };
 
-const baseListDeviceCertificatesRequest: object = { deviceId: '' };
+messageTypeRegistry.set(DeleteDeviceMetadata.$type, DeleteDeviceMetadata);
+
+const baseListDeviceCertificatesRequest: object = {
+    $type: 'yandex.cloud.iot.devices.v1.ListDeviceCertificatesRequest',
+    deviceId: '',
+};
 
 export const ListDeviceCertificatesRequest = {
+    $type: 'yandex.cloud.iot.devices.v1.ListDeviceCertificatesRequest' as const,
+
     encode(
         message: ListDeviceCertificatesRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1695,9 +1825,18 @@ export const ListDeviceCertificatesRequest = {
     },
 };
 
-const baseListDeviceCertificatesResponse: object = {};
+messageTypeRegistry.set(
+    ListDeviceCertificatesRequest.$type,
+    ListDeviceCertificatesRequest
+);
+
+const baseListDeviceCertificatesResponse: object = {
+    $type: 'yandex.cloud.iot.devices.v1.ListDeviceCertificatesResponse',
+};
 
 export const ListDeviceCertificatesResponse = {
+    $type: 'yandex.cloud.iot.devices.v1.ListDeviceCertificatesResponse' as const,
+
     encode(
         message: ListDeviceCertificatesResponse,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1776,12 +1915,20 @@ export const ListDeviceCertificatesResponse = {
     },
 };
 
+messageTypeRegistry.set(
+    ListDeviceCertificatesResponse.$type,
+    ListDeviceCertificatesResponse
+);
+
 const baseAddDeviceCertificateRequest: object = {
+    $type: 'yandex.cloud.iot.devices.v1.AddDeviceCertificateRequest',
     deviceId: '',
     certificateData: '',
 };
 
 export const AddDeviceCertificateRequest = {
+    $type: 'yandex.cloud.iot.devices.v1.AddDeviceCertificateRequest' as const,
+
     encode(
         message: AddDeviceCertificateRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1873,12 +2020,20 @@ export const AddDeviceCertificateRequest = {
     },
 };
 
+messageTypeRegistry.set(
+    AddDeviceCertificateRequest.$type,
+    AddDeviceCertificateRequest
+);
+
 const baseAddDeviceCertificateMetadata: object = {
+    $type: 'yandex.cloud.iot.devices.v1.AddDeviceCertificateMetadata',
     deviceId: '',
     fingerprint: '',
 };
 
 export const AddDeviceCertificateMetadata = {
+    $type: 'yandex.cloud.iot.devices.v1.AddDeviceCertificateMetadata' as const,
+
     encode(
         message: AddDeviceCertificateMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1964,12 +2119,20 @@ export const AddDeviceCertificateMetadata = {
     },
 };
 
+messageTypeRegistry.set(
+    AddDeviceCertificateMetadata.$type,
+    AddDeviceCertificateMetadata
+);
+
 const baseDeleteDeviceCertificateRequest: object = {
+    $type: 'yandex.cloud.iot.devices.v1.DeleteDeviceCertificateRequest',
     deviceId: '',
     fingerprint: '',
 };
 
 export const DeleteDeviceCertificateRequest = {
+    $type: 'yandex.cloud.iot.devices.v1.DeleteDeviceCertificateRequest' as const,
+
     encode(
         message: DeleteDeviceCertificateRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2055,12 +2218,20 @@ export const DeleteDeviceCertificateRequest = {
     },
 };
 
+messageTypeRegistry.set(
+    DeleteDeviceCertificateRequest.$type,
+    DeleteDeviceCertificateRequest
+);
+
 const baseDeleteDeviceCertificateMetadata: object = {
+    $type: 'yandex.cloud.iot.devices.v1.DeleteDeviceCertificateMetadata',
     deviceId: '',
     fingerprint: '',
 };
 
 export const DeleteDeviceCertificateMetadata = {
+    $type: 'yandex.cloud.iot.devices.v1.DeleteDeviceCertificateMetadata' as const,
+
     encode(
         message: DeleteDeviceCertificateMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2146,9 +2317,19 @@ export const DeleteDeviceCertificateMetadata = {
     },
 };
 
-const baseListDevicePasswordsRequest: object = { deviceId: '' };
+messageTypeRegistry.set(
+    DeleteDeviceCertificateMetadata.$type,
+    DeleteDeviceCertificateMetadata
+);
+
+const baseListDevicePasswordsRequest: object = {
+    $type: 'yandex.cloud.iot.devices.v1.ListDevicePasswordsRequest',
+    deviceId: '',
+};
 
 export const ListDevicePasswordsRequest = {
+    $type: 'yandex.cloud.iot.devices.v1.ListDevicePasswordsRequest' as const,
+
     encode(
         message: ListDevicePasswordsRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2216,9 +2397,18 @@ export const ListDevicePasswordsRequest = {
     },
 };
 
-const baseListDevicePasswordsResponse: object = {};
+messageTypeRegistry.set(
+    ListDevicePasswordsRequest.$type,
+    ListDevicePasswordsRequest
+);
+
+const baseListDevicePasswordsResponse: object = {
+    $type: 'yandex.cloud.iot.devices.v1.ListDevicePasswordsResponse',
+};
 
 export const ListDevicePasswordsResponse = {
+    $type: 'yandex.cloud.iot.devices.v1.ListDevicePasswordsResponse' as const,
+
     encode(
         message: ListDevicePasswordsResponse,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2297,9 +2487,20 @@ export const ListDevicePasswordsResponse = {
     },
 };
 
-const baseAddDevicePasswordRequest: object = { deviceId: '', password: '' };
+messageTypeRegistry.set(
+    ListDevicePasswordsResponse.$type,
+    ListDevicePasswordsResponse
+);
+
+const baseAddDevicePasswordRequest: object = {
+    $type: 'yandex.cloud.iot.devices.v1.AddDevicePasswordRequest',
+    deviceId: '',
+    password: '',
+};
 
 export const AddDevicePasswordRequest = {
+    $type: 'yandex.cloud.iot.devices.v1.AddDevicePasswordRequest' as const,
+
     encode(
         message: AddDevicePasswordRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2384,9 +2585,20 @@ export const AddDevicePasswordRequest = {
     },
 };
 
-const baseAddDevicePasswordMetadata: object = { deviceId: '', passwordId: '' };
+messageTypeRegistry.set(
+    AddDevicePasswordRequest.$type,
+    AddDevicePasswordRequest
+);
+
+const baseAddDevicePasswordMetadata: object = {
+    $type: 'yandex.cloud.iot.devices.v1.AddDevicePasswordMetadata',
+    deviceId: '',
+    passwordId: '',
+};
 
 export const AddDevicePasswordMetadata = {
+    $type: 'yandex.cloud.iot.devices.v1.AddDevicePasswordMetadata' as const,
+
     encode(
         message: AddDevicePasswordMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2472,12 +2684,20 @@ export const AddDevicePasswordMetadata = {
     },
 };
 
+messageTypeRegistry.set(
+    AddDevicePasswordMetadata.$type,
+    AddDevicePasswordMetadata
+);
+
 const baseDeleteDevicePasswordRequest: object = {
+    $type: 'yandex.cloud.iot.devices.v1.DeleteDevicePasswordRequest',
     deviceId: '',
     passwordId: '',
 };
 
 export const DeleteDevicePasswordRequest = {
+    $type: 'yandex.cloud.iot.devices.v1.DeleteDevicePasswordRequest' as const,
+
     encode(
         message: DeleteDevicePasswordRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2563,12 +2783,20 @@ export const DeleteDevicePasswordRequest = {
     },
 };
 
+messageTypeRegistry.set(
+    DeleteDevicePasswordRequest.$type,
+    DeleteDevicePasswordRequest
+);
+
 const baseDeleteDevicePasswordMetadata: object = {
+    $type: 'yandex.cloud.iot.devices.v1.DeleteDevicePasswordMetadata',
     deviceId: '',
     passwordId: '',
 };
 
 export const DeleteDevicePasswordMetadata = {
+    $type: 'yandex.cloud.iot.devices.v1.DeleteDevicePasswordMetadata' as const,
+
     encode(
         message: DeleteDevicePasswordMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2654,7 +2882,13 @@ export const DeleteDevicePasswordMetadata = {
     },
 };
 
+messageTypeRegistry.set(
+    DeleteDevicePasswordMetadata.$type,
+    DeleteDevicePasswordMetadata
+);
+
 const baseListDeviceOperationsRequest: object = {
+    $type: 'yandex.cloud.iot.devices.v1.ListDeviceOperationsRequest',
     deviceId: '',
     pageSize: 0,
     pageToken: '',
@@ -2662,6 +2896,8 @@ const baseListDeviceOperationsRequest: object = {
 };
 
 export const ListDeviceOperationsRequest = {
+    $type: 'yandex.cloud.iot.devices.v1.ListDeviceOperationsRequest' as const,
+
     encode(
         message: ListDeviceOperationsRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2780,9 +3016,19 @@ export const ListDeviceOperationsRequest = {
     },
 };
 
-const baseListDeviceOperationsResponse: object = { nextPageToken: '' };
+messageTypeRegistry.set(
+    ListDeviceOperationsRequest.$type,
+    ListDeviceOperationsRequest
+);
+
+const baseListDeviceOperationsResponse: object = {
+    $type: 'yandex.cloud.iot.devices.v1.ListDeviceOperationsResponse',
+    nextPageToken: '',
+};
 
 export const ListDeviceOperationsResponse = {
+    $type: 'yandex.cloud.iot.devices.v1.ListDeviceOperationsResponse' as const,
+
     encode(
         message: ListDeviceOperationsResponse,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2884,6 +3130,11 @@ export const ListDeviceOperationsResponse = {
         return message;
     },
 };
+
+messageTypeRegistry.set(
+    ListDeviceOperationsResponse.$type,
+    ListDeviceOperationsResponse
+);
 
 /** A set of methods for managing devices. */
 export const DeviceServiceService = {
@@ -3394,7 +3645,7 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 function longToNumber(long: Long): number {

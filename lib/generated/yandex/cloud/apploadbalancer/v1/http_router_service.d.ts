@@ -7,6 +7,7 @@ import { ChannelCredentials, ChannelOptions, UntypedServiceImplementation, handl
 import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.apploadbalancer.v1";
 export interface GetHttpRouterRequest {
+    $type: 'yandex.cloud.apploadbalancer.v1.GetHttpRouterRequest';
     /**
      * ID of the HTTP router to return.
      *
@@ -15,6 +16,7 @@ export interface GetHttpRouterRequest {
     httpRouterId: string;
 }
 export interface ListHttpRoutersRequest {
+    $type: 'yandex.cloud.apploadbalancer.v1.ListHttpRoutersRequest';
     /**
      * ID of the folder to list HTTP routers in.
      *
@@ -45,6 +47,7 @@ export interface ListHttpRoutersRequest {
     filter: string;
 }
 export interface ListHttpRoutersResponse {
+    $type: 'yandex.cloud.apploadbalancer.v1.ListHttpRoutersResponse';
     /** List of HTTP routers in the specified folder. */
     httpRouters: HttpRouter[];
     /**
@@ -57,6 +60,7 @@ export interface ListHttpRoutersResponse {
     nextPageToken: string;
 }
 export interface DeleteHttpRouterRequest {
+    $type: 'yandex.cloud.apploadbalancer.v1.DeleteHttpRouterRequest';
     /**
      * ID of the HTTP router to delete.
      *
@@ -65,10 +69,12 @@ export interface DeleteHttpRouterRequest {
     httpRouterId: string;
 }
 export interface DeleteHttpRouterMetadata {
+    $type: 'yandex.cloud.apploadbalancer.v1.DeleteHttpRouterMetadata';
     /** ID of the HTTP router that is being deleted. */
     httpRouterId: string;
 }
 export interface UpdateHttpRouterRequest {
+    $type: 'yandex.cloud.apploadbalancer.v1.UpdateHttpRouterRequest';
     /**
      * ID of the HTTP router to update.
      *
@@ -109,14 +115,17 @@ export interface UpdateHttpRouterRequest {
     virtualHosts: VirtualHost[];
 }
 export interface UpdateHttpRouterRequest_LabelsEntry {
+    $type: 'yandex.cloud.apploadbalancer.v1.UpdateHttpRouterRequest.LabelsEntry';
     key: string;
     value: string;
 }
 export interface UpdateHttpRouterMetadata {
+    $type: 'yandex.cloud.apploadbalancer.v1.UpdateHttpRouterMetadata';
     /** ID of the HTTP router that is being updated. */
     httpRouterId: string;
 }
 export interface CreateHttpRouterRequest {
+    $type: 'yandex.cloud.apploadbalancer.v1.CreateHttpRouterRequest';
     /**
      * ID of the folder to create an HTTP router in.
      *
@@ -146,14 +155,17 @@ export interface CreateHttpRouterRequest {
     virtualHosts: VirtualHost[];
 }
 export interface CreateHttpRouterRequest_LabelsEntry {
+    $type: 'yandex.cloud.apploadbalancer.v1.CreateHttpRouterRequest.LabelsEntry';
     key: string;
     value: string;
 }
 export interface CreateHttpRouterMetadata {
+    $type: 'yandex.cloud.apploadbalancer.v1.CreateHttpRouterMetadata';
     /** ID of the HTTP router that is being created. */
     httpRouterId: string;
 }
 export interface ListHttpRouterOperationsRequest {
+    $type: 'yandex.cloud.apploadbalancer.v1.ListHttpRouterOperationsRequest';
     /**
      * ID of the HTTP router to get operations for.
      *
@@ -174,6 +186,7 @@ export interface ListHttpRouterOperationsRequest {
     pageToken: string;
 }
 export interface ListHttpRouterOperationsResponse {
+    $type: 'yandex.cloud.apploadbalancer.v1.ListHttpRouterOperationsResponse';
     /** List of operations for the specified HTTP router. */
     operations: Operation[];
     /**
@@ -186,6 +199,7 @@ export interface ListHttpRouterOperationsResponse {
     nextPageToken: string;
 }
 export declare const GetHttpRouterRequest: {
+    $type: "yandex.cloud.apploadbalancer.v1.GetHttpRouterRequest";
     encode(message: GetHttpRouterRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): GetHttpRouterRequest;
     fromJSON(object: any): GetHttpRouterRequest;
@@ -193,6 +207,7 @@ export declare const GetHttpRouterRequest: {
     fromPartial(object: DeepPartial<GetHttpRouterRequest>): GetHttpRouterRequest;
 };
 export declare const ListHttpRoutersRequest: {
+    $type: "yandex.cloud.apploadbalancer.v1.ListHttpRoutersRequest";
     encode(message: ListHttpRoutersRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListHttpRoutersRequest;
     fromJSON(object: any): ListHttpRoutersRequest;
@@ -200,6 +215,7 @@ export declare const ListHttpRoutersRequest: {
     fromPartial(object: DeepPartial<ListHttpRoutersRequest>): ListHttpRoutersRequest;
 };
 export declare const ListHttpRoutersResponse: {
+    $type: "yandex.cloud.apploadbalancer.v1.ListHttpRoutersResponse";
     encode(message: ListHttpRoutersResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListHttpRoutersResponse;
     fromJSON(object: any): ListHttpRoutersResponse;
@@ -207,6 +223,7 @@ export declare const ListHttpRoutersResponse: {
     fromPartial(object: DeepPartial<ListHttpRoutersResponse>): ListHttpRoutersResponse;
 };
 export declare const DeleteHttpRouterRequest: {
+    $type: "yandex.cloud.apploadbalancer.v1.DeleteHttpRouterRequest";
     encode(message: DeleteHttpRouterRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteHttpRouterRequest;
     fromJSON(object: any): DeleteHttpRouterRequest;
@@ -214,6 +231,7 @@ export declare const DeleteHttpRouterRequest: {
     fromPartial(object: DeepPartial<DeleteHttpRouterRequest>): DeleteHttpRouterRequest;
 };
 export declare const DeleteHttpRouterMetadata: {
+    $type: "yandex.cloud.apploadbalancer.v1.DeleteHttpRouterMetadata";
     encode(message: DeleteHttpRouterMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteHttpRouterMetadata;
     fromJSON(object: any): DeleteHttpRouterMetadata;
@@ -221,6 +239,7 @@ export declare const DeleteHttpRouterMetadata: {
     fromPartial(object: DeepPartial<DeleteHttpRouterMetadata>): DeleteHttpRouterMetadata;
 };
 export declare const UpdateHttpRouterRequest: {
+    $type: "yandex.cloud.apploadbalancer.v1.UpdateHttpRouterRequest";
     encode(message: UpdateHttpRouterRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateHttpRouterRequest;
     fromJSON(object: any): UpdateHttpRouterRequest;
@@ -228,6 +247,7 @@ export declare const UpdateHttpRouterRequest: {
     fromPartial(object: DeepPartial<UpdateHttpRouterRequest>): UpdateHttpRouterRequest;
 };
 export declare const UpdateHttpRouterRequest_LabelsEntry: {
+    $type: "yandex.cloud.apploadbalancer.v1.UpdateHttpRouterRequest.LabelsEntry";
     encode(message: UpdateHttpRouterRequest_LabelsEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateHttpRouterRequest_LabelsEntry;
     fromJSON(object: any): UpdateHttpRouterRequest_LabelsEntry;
@@ -235,6 +255,7 @@ export declare const UpdateHttpRouterRequest_LabelsEntry: {
     fromPartial(object: DeepPartial<UpdateHttpRouterRequest_LabelsEntry>): UpdateHttpRouterRequest_LabelsEntry;
 };
 export declare const UpdateHttpRouterMetadata: {
+    $type: "yandex.cloud.apploadbalancer.v1.UpdateHttpRouterMetadata";
     encode(message: UpdateHttpRouterMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateHttpRouterMetadata;
     fromJSON(object: any): UpdateHttpRouterMetadata;
@@ -242,6 +263,7 @@ export declare const UpdateHttpRouterMetadata: {
     fromPartial(object: DeepPartial<UpdateHttpRouterMetadata>): UpdateHttpRouterMetadata;
 };
 export declare const CreateHttpRouterRequest: {
+    $type: "yandex.cloud.apploadbalancer.v1.CreateHttpRouterRequest";
     encode(message: CreateHttpRouterRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateHttpRouterRequest;
     fromJSON(object: any): CreateHttpRouterRequest;
@@ -249,6 +271,7 @@ export declare const CreateHttpRouterRequest: {
     fromPartial(object: DeepPartial<CreateHttpRouterRequest>): CreateHttpRouterRequest;
 };
 export declare const CreateHttpRouterRequest_LabelsEntry: {
+    $type: "yandex.cloud.apploadbalancer.v1.CreateHttpRouterRequest.LabelsEntry";
     encode(message: CreateHttpRouterRequest_LabelsEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateHttpRouterRequest_LabelsEntry;
     fromJSON(object: any): CreateHttpRouterRequest_LabelsEntry;
@@ -256,6 +279,7 @@ export declare const CreateHttpRouterRequest_LabelsEntry: {
     fromPartial(object: DeepPartial<CreateHttpRouterRequest_LabelsEntry>): CreateHttpRouterRequest_LabelsEntry;
 };
 export declare const CreateHttpRouterMetadata: {
+    $type: "yandex.cloud.apploadbalancer.v1.CreateHttpRouterMetadata";
     encode(message: CreateHttpRouterMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateHttpRouterMetadata;
     fromJSON(object: any): CreateHttpRouterMetadata;
@@ -263,6 +287,7 @@ export declare const CreateHttpRouterMetadata: {
     fromPartial(object: DeepPartial<CreateHttpRouterMetadata>): CreateHttpRouterMetadata;
 };
 export declare const ListHttpRouterOperationsRequest: {
+    $type: "yandex.cloud.apploadbalancer.v1.ListHttpRouterOperationsRequest";
     encode(message: ListHttpRouterOperationsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListHttpRouterOperationsRequest;
     fromJSON(object: any): ListHttpRouterOperationsRequest;
@@ -270,6 +295,7 @@ export declare const ListHttpRouterOperationsRequest: {
     fromPartial(object: DeepPartial<ListHttpRouterOperationsRequest>): ListHttpRouterOperationsRequest;
 };
 export declare const ListHttpRouterOperationsResponse: {
+    $type: "yandex.cloud.apploadbalancer.v1.ListHttpRouterOperationsResponse";
     encode(message: ListHttpRouterOperationsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListHttpRouterOperationsResponse;
     fromJSON(object: any): ListHttpRouterOperationsResponse;
@@ -394,6 +420,6 @@ export interface HttpRouterServiceClient extends Client {
 export declare const HttpRouterServiceClient: new (address: string, credentials: ChannelCredentials, options?: Partial<ChannelOptions> | undefined) => HttpRouterServiceClient;
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

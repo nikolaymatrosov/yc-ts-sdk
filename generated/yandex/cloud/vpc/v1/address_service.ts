@@ -1,5 +1,6 @@
 /* eslint-disable */
 import { FieldMask } from '../../../../google/protobuf/field_mask';
+import { messageTypeRegistry } from '../../../../typeRegistry';
 import { Operation } from '../../../../yandex/cloud/operation/operation';
 import {
     Address,
@@ -23,6 +24,7 @@ import _m0 from 'protobufjs/minimal';
 export const protobufPackage = 'yandex.cloud.vpc.v1';
 
 export interface GetAddressRequest {
+    $type: 'yandex.cloud.vpc.v1.GetAddressRequest';
     /**
      * ID of the Address resource to return.
      *
@@ -32,10 +34,12 @@ export interface GetAddressRequest {
 }
 
 export interface GetAddressByValueRequest {
+    $type: 'yandex.cloud.vpc.v1.GetAddressByValueRequest';
     externalIpv4Address: string | undefined;
 }
 
 export interface ListAddressesRequest {
+    $type: 'yandex.cloud.vpc.v1.ListAddressesRequest';
     /**
      * ID of the folder to list addresses in.
      *
@@ -67,6 +71,7 @@ export interface ListAddressesRequest {
 }
 
 export interface ListAddressesResponse {
+    $type: 'yandex.cloud.vpc.v1.ListAddressesResponse';
     /** List of addresses. */
     addresses: Address[];
     /**
@@ -80,6 +85,7 @@ export interface ListAddressesResponse {
 }
 
 export interface CreateAddressRequest {
+    $type: 'yandex.cloud.vpc.v1.CreateAddressRequest';
     /**
      * ID of the folder to create a address in.
      *
@@ -99,11 +105,13 @@ export interface CreateAddressRequest {
 }
 
 export interface CreateAddressRequest_LabelsEntry {
+    $type: 'yandex.cloud.vpc.v1.CreateAddressRequest.LabelsEntry';
     key: string;
     value: string;
 }
 
 export interface ExternalIpv4AddressSpec {
+    $type: 'yandex.cloud.vpc.v1.ExternalIpv4AddressSpec';
     /** Value of address. */
     address: string;
     /** Availability zone from which the address will be allocated. */
@@ -113,11 +121,13 @@ export interface ExternalIpv4AddressSpec {
 }
 
 export interface CreateAddressMetadata {
+    $type: 'yandex.cloud.vpc.v1.CreateAddressMetadata';
     /** ID of the address that is being created. */
     addressId: string;
 }
 
 export interface UpdateAddressRequest {
+    $type: 'yandex.cloud.vpc.v1.UpdateAddressRequest';
     /**
      * ID of the address to update.
      *
@@ -148,16 +158,19 @@ export interface UpdateAddressRequest {
 }
 
 export interface UpdateAddressRequest_LabelsEntry {
+    $type: 'yandex.cloud.vpc.v1.UpdateAddressRequest.LabelsEntry';
     key: string;
     value: string;
 }
 
 export interface UpdateAddressMetadata {
+    $type: 'yandex.cloud.vpc.v1.UpdateAddressMetadata';
     /** ID of the Address that is being updated. */
     addressId: string;
 }
 
 export interface DeleteAddressRequest {
+    $type: 'yandex.cloud.vpc.v1.DeleteAddressRequest';
     /**
      * ID of the address to delete.
      *
@@ -167,11 +180,13 @@ export interface DeleteAddressRequest {
 }
 
 export interface DeleteAddressMetadata {
+    $type: 'yandex.cloud.vpc.v1.DeleteAddressMetadata';
     /** ID of the address that is being deleted. */
     addressId: string;
 }
 
 export interface ListAddressOperationsRequest {
+    $type: 'yandex.cloud.vpc.v1.ListAddressOperationsRequest';
     /**
      * ID of the address to list operations for.
      *
@@ -193,6 +208,7 @@ export interface ListAddressOperationsRequest {
 }
 
 export interface ListAddressOperationsResponse {
+    $type: 'yandex.cloud.vpc.v1.ListAddressOperationsResponse';
     /** List of operations for the specified address. */
     operations: Operation[];
     /**
@@ -206,17 +222,24 @@ export interface ListAddressOperationsResponse {
 }
 
 export interface MoveAddressRequest {
+    $type: 'yandex.cloud.vpc.v1.MoveAddressRequest';
     addressId: string;
     destinationFolderId: string;
 }
 
 export interface MoveAddressMetadata {
+    $type: 'yandex.cloud.vpc.v1.MoveAddressMetadata';
     addressId: string;
 }
 
-const baseGetAddressRequest: object = { addressId: '' };
+const baseGetAddressRequest: object = {
+    $type: 'yandex.cloud.vpc.v1.GetAddressRequest',
+    addressId: '',
+};
 
 export const GetAddressRequest = {
+    $type: 'yandex.cloud.vpc.v1.GetAddressRequest' as const,
+
     encode(
         message: GetAddressRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -273,9 +296,15 @@ export const GetAddressRequest = {
     },
 };
 
-const baseGetAddressByValueRequest: object = {};
+messageTypeRegistry.set(GetAddressRequest.$type, GetAddressRequest);
+
+const baseGetAddressByValueRequest: object = {
+    $type: 'yandex.cloud.vpc.v1.GetAddressByValueRequest',
+};
 
 export const GetAddressByValueRequest = {
+    $type: 'yandex.cloud.vpc.v1.GetAddressByValueRequest' as const,
+
     encode(
         message: GetAddressByValueRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -350,7 +379,13 @@ export const GetAddressByValueRequest = {
     },
 };
 
+messageTypeRegistry.set(
+    GetAddressByValueRequest.$type,
+    GetAddressByValueRequest
+);
+
 const baseListAddressesRequest: object = {
+    $type: 'yandex.cloud.vpc.v1.ListAddressesRequest',
     folderId: '',
     pageSize: 0,
     pageToken: '',
@@ -358,6 +393,8 @@ const baseListAddressesRequest: object = {
 };
 
 export const ListAddressesRequest = {
+    $type: 'yandex.cloud.vpc.v1.ListAddressesRequest' as const,
+
     encode(
         message: ListAddressesRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -470,9 +507,16 @@ export const ListAddressesRequest = {
     },
 };
 
-const baseListAddressesResponse: object = { nextPageToken: '' };
+messageTypeRegistry.set(ListAddressesRequest.$type, ListAddressesRequest);
+
+const baseListAddressesResponse: object = {
+    $type: 'yandex.cloud.vpc.v1.ListAddressesResponse',
+    nextPageToken: '',
+};
 
 export const ListAddressesResponse = {
+    $type: 'yandex.cloud.vpc.v1.ListAddressesResponse' as const,
+
     encode(
         message: ListAddressesResponse,
         writer: _m0.Writer = _m0.Writer.create()
@@ -575,13 +619,18 @@ export const ListAddressesResponse = {
     },
 };
 
+messageTypeRegistry.set(ListAddressesResponse.$type, ListAddressesResponse);
+
 const baseCreateAddressRequest: object = {
+    $type: 'yandex.cloud.vpc.v1.CreateAddressRequest',
     folderId: '',
     name: '',
     description: '',
 };
 
 export const CreateAddressRequest = {
+    $type: 'yandex.cloud.vpc.v1.CreateAddressRequest' as const,
+
     encode(
         message: CreateAddressRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -597,7 +646,11 @@ export const CreateAddressRequest = {
         }
         Object.entries(message.labels).forEach(([key, value]) => {
             CreateAddressRequest_LabelsEntry.encode(
-                { key: key as any, value },
+                {
+                    $type: 'yandex.cloud.vpc.v1.CreateAddressRequest.LabelsEntry',
+                    key: key as any,
+                    value,
+                },
                 writer.uint32(34).fork()
             ).ldelim();
         });
@@ -751,9 +804,17 @@ export const CreateAddressRequest = {
     },
 };
 
-const baseCreateAddressRequest_LabelsEntry: object = { key: '', value: '' };
+messageTypeRegistry.set(CreateAddressRequest.$type, CreateAddressRequest);
+
+const baseCreateAddressRequest_LabelsEntry: object = {
+    $type: 'yandex.cloud.vpc.v1.CreateAddressRequest.LabelsEntry',
+    key: '',
+    value: '',
+};
 
 export const CreateAddressRequest_LabelsEntry = {
+    $type: 'yandex.cloud.vpc.v1.CreateAddressRequest.LabelsEntry' as const,
+
     encode(
         message: CreateAddressRequest_LabelsEntry,
         writer: _m0.Writer = _m0.Writer.create()
@@ -838,9 +899,20 @@ export const CreateAddressRequest_LabelsEntry = {
     },
 };
 
-const baseExternalIpv4AddressSpec: object = { address: '', zoneId: '' };
+messageTypeRegistry.set(
+    CreateAddressRequest_LabelsEntry.$type,
+    CreateAddressRequest_LabelsEntry
+);
+
+const baseExternalIpv4AddressSpec: object = {
+    $type: 'yandex.cloud.vpc.v1.ExternalIpv4AddressSpec',
+    address: '',
+    zoneId: '',
+};
 
 export const ExternalIpv4AddressSpec = {
+    $type: 'yandex.cloud.vpc.v1.ExternalIpv4AddressSpec' as const,
+
     encode(
         message: ExternalIpv4AddressSpec,
         writer: _m0.Writer = _m0.Writer.create()
@@ -955,9 +1027,16 @@ export const ExternalIpv4AddressSpec = {
     },
 };
 
-const baseCreateAddressMetadata: object = { addressId: '' };
+messageTypeRegistry.set(ExternalIpv4AddressSpec.$type, ExternalIpv4AddressSpec);
+
+const baseCreateAddressMetadata: object = {
+    $type: 'yandex.cloud.vpc.v1.CreateAddressMetadata',
+    addressId: '',
+};
 
 export const CreateAddressMetadata = {
+    $type: 'yandex.cloud.vpc.v1.CreateAddressMetadata' as const,
+
     encode(
         message: CreateAddressMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1025,7 +1104,10 @@ export const CreateAddressMetadata = {
     },
 };
 
+messageTypeRegistry.set(CreateAddressMetadata.$type, CreateAddressMetadata);
+
 const baseUpdateAddressRequest: object = {
+    $type: 'yandex.cloud.vpc.v1.UpdateAddressRequest',
     addressId: '',
     name: '',
     description: '',
@@ -1033,6 +1115,8 @@ const baseUpdateAddressRequest: object = {
 };
 
 export const UpdateAddressRequest = {
+    $type: 'yandex.cloud.vpc.v1.UpdateAddressRequest' as const,
+
     encode(
         message: UpdateAddressRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1054,7 +1138,11 @@ export const UpdateAddressRequest = {
         }
         Object.entries(message.labels).forEach(([key, value]) => {
             UpdateAddressRequest_LabelsEntry.encode(
-                { key: key as any, value },
+                {
+                    $type: 'yandex.cloud.vpc.v1.UpdateAddressRequest.LabelsEntry',
+                    key: key as any,
+                    value,
+                },
                 writer.uint32(42).fork()
             ).ldelim();
         });
@@ -1208,9 +1296,17 @@ export const UpdateAddressRequest = {
     },
 };
 
-const baseUpdateAddressRequest_LabelsEntry: object = { key: '', value: '' };
+messageTypeRegistry.set(UpdateAddressRequest.$type, UpdateAddressRequest);
+
+const baseUpdateAddressRequest_LabelsEntry: object = {
+    $type: 'yandex.cloud.vpc.v1.UpdateAddressRequest.LabelsEntry',
+    key: '',
+    value: '',
+};
 
 export const UpdateAddressRequest_LabelsEntry = {
+    $type: 'yandex.cloud.vpc.v1.UpdateAddressRequest.LabelsEntry' as const,
+
     encode(
         message: UpdateAddressRequest_LabelsEntry,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1295,9 +1391,19 @@ export const UpdateAddressRequest_LabelsEntry = {
     },
 };
 
-const baseUpdateAddressMetadata: object = { addressId: '' };
+messageTypeRegistry.set(
+    UpdateAddressRequest_LabelsEntry.$type,
+    UpdateAddressRequest_LabelsEntry
+);
+
+const baseUpdateAddressMetadata: object = {
+    $type: 'yandex.cloud.vpc.v1.UpdateAddressMetadata',
+    addressId: '',
+};
 
 export const UpdateAddressMetadata = {
+    $type: 'yandex.cloud.vpc.v1.UpdateAddressMetadata' as const,
+
     encode(
         message: UpdateAddressMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1365,9 +1471,16 @@ export const UpdateAddressMetadata = {
     },
 };
 
-const baseDeleteAddressRequest: object = { addressId: '' };
+messageTypeRegistry.set(UpdateAddressMetadata.$type, UpdateAddressMetadata);
+
+const baseDeleteAddressRequest: object = {
+    $type: 'yandex.cloud.vpc.v1.DeleteAddressRequest',
+    addressId: '',
+};
 
 export const DeleteAddressRequest = {
+    $type: 'yandex.cloud.vpc.v1.DeleteAddressRequest' as const,
+
     encode(
         message: DeleteAddressRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1429,9 +1542,16 @@ export const DeleteAddressRequest = {
     },
 };
 
-const baseDeleteAddressMetadata: object = { addressId: '' };
+messageTypeRegistry.set(DeleteAddressRequest.$type, DeleteAddressRequest);
+
+const baseDeleteAddressMetadata: object = {
+    $type: 'yandex.cloud.vpc.v1.DeleteAddressMetadata',
+    addressId: '',
+};
 
 export const DeleteAddressMetadata = {
+    $type: 'yandex.cloud.vpc.v1.DeleteAddressMetadata' as const,
+
     encode(
         message: DeleteAddressMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1499,13 +1619,18 @@ export const DeleteAddressMetadata = {
     },
 };
 
+messageTypeRegistry.set(DeleteAddressMetadata.$type, DeleteAddressMetadata);
+
 const baseListAddressOperationsRequest: object = {
+    $type: 'yandex.cloud.vpc.v1.ListAddressOperationsRequest',
     addressId: '',
     pageSize: 0,
     pageToken: '',
 };
 
 export const ListAddressOperationsRequest = {
+    $type: 'yandex.cloud.vpc.v1.ListAddressOperationsRequest' as const,
+
     encode(
         message: ListAddressOperationsRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1607,9 +1732,19 @@ export const ListAddressOperationsRequest = {
     },
 };
 
-const baseListAddressOperationsResponse: object = { nextPageToken: '' };
+messageTypeRegistry.set(
+    ListAddressOperationsRequest.$type,
+    ListAddressOperationsRequest
+);
+
+const baseListAddressOperationsResponse: object = {
+    $type: 'yandex.cloud.vpc.v1.ListAddressOperationsResponse',
+    nextPageToken: '',
+};
 
 export const ListAddressOperationsResponse = {
+    $type: 'yandex.cloud.vpc.v1.ListAddressOperationsResponse' as const,
+
     encode(
         message: ListAddressOperationsResponse,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1712,12 +1847,20 @@ export const ListAddressOperationsResponse = {
     },
 };
 
+messageTypeRegistry.set(
+    ListAddressOperationsResponse.$type,
+    ListAddressOperationsResponse
+);
+
 const baseMoveAddressRequest: object = {
+    $type: 'yandex.cloud.vpc.v1.MoveAddressRequest',
     addressId: '',
     destinationFolderId: '',
 };
 
 export const MoveAddressRequest = {
+    $type: 'yandex.cloud.vpc.v1.MoveAddressRequest' as const,
+
     encode(
         message: MoveAddressRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1801,9 +1944,16 @@ export const MoveAddressRequest = {
     },
 };
 
-const baseMoveAddressMetadata: object = { addressId: '' };
+messageTypeRegistry.set(MoveAddressRequest.$type, MoveAddressRequest);
+
+const baseMoveAddressMetadata: object = {
+    $type: 'yandex.cloud.vpc.v1.MoveAddressMetadata',
+    addressId: '',
+};
 
 export const MoveAddressMetadata = {
+    $type: 'yandex.cloud.vpc.v1.MoveAddressMetadata' as const,
+
     encode(
         message: MoveAddressMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1862,6 +2012,8 @@ export const MoveAddressMetadata = {
         return message;
     },
 };
+
+messageTypeRegistry.set(MoveAddressMetadata.$type, MoveAddressMetadata);
 
 /** A set of methods for managing Address resources. */
 export const AddressServiceService = {
@@ -2203,7 +2355,7 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 function longToNumber(long: Long): number {

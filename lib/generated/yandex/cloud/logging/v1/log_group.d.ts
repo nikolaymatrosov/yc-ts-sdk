@@ -2,6 +2,7 @@ import { Duration } from '../../../../google/protobuf/duration';
 import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.logging.v1";
 export interface LogGroup {
+    $type: 'yandex.cloud.logging.v1.LogGroup';
     /** Log group ID. */
     id: string;
     /** Log group folder ID. */
@@ -52,10 +53,12 @@ export declare enum LogGroup_Status {
 export declare function logGroup_StatusFromJSON(object: any): LogGroup_Status;
 export declare function logGroup_StatusToJSON(object: LogGroup_Status): string;
 export interface LogGroup_LabelsEntry {
+    $type: 'yandex.cloud.logging.v1.LogGroup.LabelsEntry';
     key: string;
     value: string;
 }
 export declare const LogGroup: {
+    $type: "yandex.cloud.logging.v1.LogGroup";
     encode(message: LogGroup, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): LogGroup;
     fromJSON(object: any): LogGroup;
@@ -63,6 +66,7 @@ export declare const LogGroup: {
     fromPartial(object: DeepPartial<LogGroup>): LogGroup;
 };
 export declare const LogGroup_LabelsEntry: {
+    $type: "yandex.cloud.logging.v1.LogGroup.LabelsEntry";
     encode(message: LogGroup_LabelsEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): LogGroup_LabelsEntry;
     fromJSON(object: any): LogGroup_LabelsEntry;
@@ -71,6 +75,6 @@ export declare const LogGroup_LabelsEntry: {
 };
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

@@ -6,6 +6,7 @@ export declare const protobufPackage = "yandex.cloud.mdb.postgresql.v1.config";
  * [PostgreSQL documentation](https://www.postgresql.org/docs/11/runtime-config.html).
  */
 export interface PostgresqlHostConfig11 {
+    $type: 'yandex.cloud.mdb.postgresql.v1.config.PostgresqlHostConfig11';
     /** in milliseconds. */
     recoveryMinApplyDelay: number | undefined;
     /** in bytes. */
@@ -185,6 +186,7 @@ export declare enum PostgresqlHostConfig11_BackslashQuote {
 export declare function postgresqlHostConfig11_BackslashQuoteFromJSON(object: any): PostgresqlHostConfig11_BackslashQuote;
 export declare function postgresqlHostConfig11_BackslashQuoteToJSON(object: PostgresqlHostConfig11_BackslashQuote): string;
 export declare const PostgresqlHostConfig11: {
+    $type: "yandex.cloud.mdb.postgresql.v1.config.PostgresqlHostConfig11";
     encode(message: PostgresqlHostConfig11, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): PostgresqlHostConfig11;
     fromJSON(object: any): PostgresqlHostConfig11;
@@ -193,6 +195,6 @@ export declare const PostgresqlHostConfig11: {
 };
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

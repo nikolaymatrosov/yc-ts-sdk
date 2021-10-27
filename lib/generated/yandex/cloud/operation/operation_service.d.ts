@@ -4,14 +4,17 @@ import { ChannelCredentials, ChannelOptions, UntypedServiceImplementation, handl
 import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.operation";
 export interface GetOperationRequest {
+    $type: 'yandex.cloud.operation.GetOperationRequest';
     /** ID of the Operation resource to return. */
     operationId: string;
 }
 export interface CancelOperationRequest {
+    $type: 'yandex.cloud.operation.CancelOperationRequest';
     /** ID of the operation to cancel. */
     operationId: string;
 }
 export declare const GetOperationRequest: {
+    $type: "yandex.cloud.operation.GetOperationRequest";
     encode(message: GetOperationRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): GetOperationRequest;
     fromJSON(object: any): GetOperationRequest;
@@ -19,6 +22,7 @@ export declare const GetOperationRequest: {
     fromPartial(object: DeepPartial<GetOperationRequest>): GetOperationRequest;
 };
 export declare const CancelOperationRequest: {
+    $type: "yandex.cloud.operation.CancelOperationRequest";
     encode(message: CancelOperationRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CancelOperationRequest;
     fromJSON(object: any): CancelOperationRequest;
@@ -67,6 +71,6 @@ export interface OperationServiceClient extends Client {
 export declare const OperationServiceClient: new (address: string, credentials: ChannelCredentials, options?: Partial<ChannelOptions> | undefined) => OperationServiceClient;
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

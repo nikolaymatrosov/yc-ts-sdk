@@ -2,6 +2,7 @@ import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.iam.v1";
 /** A Key resource. For more information, see [Authorized keys](/docs/iam/concepts/authorization/key). */
 export interface Key {
+    $type: 'yandex.cloud.iam.v1.Key';
     /** ID of the Key resource. */
     id: string;
     /** ID of the user account that the Key resource belongs to. */
@@ -28,6 +29,7 @@ export declare enum Key_Algorithm {
 export declare function key_AlgorithmFromJSON(object: any): Key_Algorithm;
 export declare function key_AlgorithmToJSON(object: Key_Algorithm): string;
 export declare const Key: {
+    $type: "yandex.cloud.iam.v1.Key";
     encode(message: Key, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Key;
     fromJSON(object: any): Key;
@@ -36,6 +38,6 @@ export declare const Key: {
 };
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

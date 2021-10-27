@@ -1,5 +1,6 @@
 /* eslint-disable */
 import { FieldMask } from '../../../../google/protobuf/field_mask';
+import { messageTypeRegistry } from '../../../../typeRegistry';
 import { Snapshot } from '../../../../yandex/cloud/compute/v1/snapshot';
 import { Operation } from '../../../../yandex/cloud/operation/operation';
 import {
@@ -20,6 +21,7 @@ import _m0 from 'protobufjs/minimal';
 export const protobufPackage = 'yandex.cloud.compute.v1';
 
 export interface GetSnapshotRequest {
+    $type: 'yandex.cloud.compute.v1.GetSnapshotRequest';
     /**
      * ID of the Snapshot resource to return.
      * To get the snapshot ID, use a [SnapshotService.List] request.
@@ -28,6 +30,7 @@ export interface GetSnapshotRequest {
 }
 
 export interface ListSnapshotsRequest {
+    $type: 'yandex.cloud.compute.v1.ListSnapshotsRequest';
     /**
      * ID of the folder to list snapshots in.
      * To get the folder ID, use a [yandex.cloud.resourcemanager.v1.FolderService.List] request.
@@ -56,6 +59,7 @@ export interface ListSnapshotsRequest {
 }
 
 export interface ListSnapshotsResponse {
+    $type: 'yandex.cloud.compute.v1.ListSnapshotsResponse';
     /** List of snapshots. */
     snapshots: Snapshot[];
     /**
@@ -70,6 +74,7 @@ export interface ListSnapshotsResponse {
 }
 
 export interface CreateSnapshotRequest {
+    $type: 'yandex.cloud.compute.v1.CreateSnapshotRequest';
     /**
      * ID of the folder to create a snapshot in.
      * To get the folder ID use a [yandex.cloud.resourcemanager.v1.FolderService.List] request.
@@ -89,11 +94,13 @@ export interface CreateSnapshotRequest {
 }
 
 export interface CreateSnapshotRequest_LabelsEntry {
+    $type: 'yandex.cloud.compute.v1.CreateSnapshotRequest.LabelsEntry';
     key: string;
     value: string;
 }
 
 export interface CreateSnapshotMetadata {
+    $type: 'yandex.cloud.compute.v1.CreateSnapshotMetadata';
     /** ID of the snapshot that is being created. */
     snapshotId: string;
     /** ID of the source disk used to create this snapshot. */
@@ -101,6 +108,7 @@ export interface CreateSnapshotMetadata {
 }
 
 export interface UpdateSnapshotRequest {
+    $type: 'yandex.cloud.compute.v1.UpdateSnapshotRequest';
     /**
      * ID of the Snapshot resource to update.
      * To get the snapshot ID use a [SnapshotService.List] request.
@@ -121,16 +129,19 @@ export interface UpdateSnapshotRequest {
 }
 
 export interface UpdateSnapshotRequest_LabelsEntry {
+    $type: 'yandex.cloud.compute.v1.UpdateSnapshotRequest.LabelsEntry';
     key: string;
     value: string;
 }
 
 export interface UpdateSnapshotMetadata {
+    $type: 'yandex.cloud.compute.v1.UpdateSnapshotMetadata';
     /** ID of the Snapshot resource that is being updated. */
     snapshotId: string;
 }
 
 export interface DeleteSnapshotRequest {
+    $type: 'yandex.cloud.compute.v1.DeleteSnapshotRequest';
     /**
      * ID of the snapshot to delete.
      * To get the snapshot ID, use a [SnapshotService.List] request.
@@ -139,11 +150,13 @@ export interface DeleteSnapshotRequest {
 }
 
 export interface DeleteSnapshotMetadata {
+    $type: 'yandex.cloud.compute.v1.DeleteSnapshotMetadata';
     /** ID of the snapshot that is being deleted. */
     snapshotId: string;
 }
 
 export interface ListSnapshotOperationsRequest {
+    $type: 'yandex.cloud.compute.v1.ListSnapshotOperationsRequest';
     /** ID of the Snapshot resource to list operations for. */
     snapshotId: string;
     /**
@@ -160,6 +173,7 @@ export interface ListSnapshotOperationsRequest {
 }
 
 export interface ListSnapshotOperationsResponse {
+    $type: 'yandex.cloud.compute.v1.ListSnapshotOperationsResponse';
     /** List of operations for the specified snapshot. */
     operations: Operation[];
     /**
@@ -171,9 +185,14 @@ export interface ListSnapshotOperationsResponse {
     nextPageToken: string;
 }
 
-const baseGetSnapshotRequest: object = { snapshotId: '' };
+const baseGetSnapshotRequest: object = {
+    $type: 'yandex.cloud.compute.v1.GetSnapshotRequest',
+    snapshotId: '',
+};
 
 export const GetSnapshotRequest = {
+    $type: 'yandex.cloud.compute.v1.GetSnapshotRequest' as const,
+
     encode(
         message: GetSnapshotRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -234,7 +253,10 @@ export const GetSnapshotRequest = {
     },
 };
 
+messageTypeRegistry.set(GetSnapshotRequest.$type, GetSnapshotRequest);
+
 const baseListSnapshotsRequest: object = {
+    $type: 'yandex.cloud.compute.v1.ListSnapshotsRequest',
     folderId: '',
     pageSize: 0,
     pageToken: '',
@@ -242,6 +264,8 @@ const baseListSnapshotsRequest: object = {
 };
 
 export const ListSnapshotsRequest = {
+    $type: 'yandex.cloud.compute.v1.ListSnapshotsRequest' as const,
+
     encode(
         message: ListSnapshotsRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -354,9 +378,16 @@ export const ListSnapshotsRequest = {
     },
 };
 
-const baseListSnapshotsResponse: object = { nextPageToken: '' };
+messageTypeRegistry.set(ListSnapshotsRequest.$type, ListSnapshotsRequest);
+
+const baseListSnapshotsResponse: object = {
+    $type: 'yandex.cloud.compute.v1.ListSnapshotsResponse',
+    nextPageToken: '',
+};
 
 export const ListSnapshotsResponse = {
+    $type: 'yandex.cloud.compute.v1.ListSnapshotsResponse' as const,
+
     encode(
         message: ListSnapshotsResponse,
         writer: _m0.Writer = _m0.Writer.create()
@@ -459,7 +490,10 @@ export const ListSnapshotsResponse = {
     },
 };
 
+messageTypeRegistry.set(ListSnapshotsResponse.$type, ListSnapshotsResponse);
+
 const baseCreateSnapshotRequest: object = {
+    $type: 'yandex.cloud.compute.v1.CreateSnapshotRequest',
     folderId: '',
     diskId: '',
     name: '',
@@ -467,6 +501,8 @@ const baseCreateSnapshotRequest: object = {
 };
 
 export const CreateSnapshotRequest = {
+    $type: 'yandex.cloud.compute.v1.CreateSnapshotRequest' as const,
+
     encode(
         message: CreateSnapshotRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -485,7 +521,11 @@ export const CreateSnapshotRequest = {
         }
         Object.entries(message.labels).forEach(([key, value]) => {
             CreateSnapshotRequest_LabelsEntry.encode(
-                { key: key as any, value },
+                {
+                    $type: 'yandex.cloud.compute.v1.CreateSnapshotRequest.LabelsEntry',
+                    key: key as any,
+                    value,
+                },
                 writer.uint32(50).fork()
             ).ldelim();
         });
@@ -622,9 +662,17 @@ export const CreateSnapshotRequest = {
     },
 };
 
-const baseCreateSnapshotRequest_LabelsEntry: object = { key: '', value: '' };
+messageTypeRegistry.set(CreateSnapshotRequest.$type, CreateSnapshotRequest);
+
+const baseCreateSnapshotRequest_LabelsEntry: object = {
+    $type: 'yandex.cloud.compute.v1.CreateSnapshotRequest.LabelsEntry',
+    key: '',
+    value: '',
+};
 
 export const CreateSnapshotRequest_LabelsEntry = {
+    $type: 'yandex.cloud.compute.v1.CreateSnapshotRequest.LabelsEntry' as const,
+
     encode(
         message: CreateSnapshotRequest_LabelsEntry,
         writer: _m0.Writer = _m0.Writer.create()
@@ -709,9 +757,20 @@ export const CreateSnapshotRequest_LabelsEntry = {
     },
 };
 
-const baseCreateSnapshotMetadata: object = { snapshotId: '', diskId: '' };
+messageTypeRegistry.set(
+    CreateSnapshotRequest_LabelsEntry.$type,
+    CreateSnapshotRequest_LabelsEntry
+);
+
+const baseCreateSnapshotMetadata: object = {
+    $type: 'yandex.cloud.compute.v1.CreateSnapshotMetadata',
+    snapshotId: '',
+    diskId: '',
+};
 
 export const CreateSnapshotMetadata = {
+    $type: 'yandex.cloud.compute.v1.CreateSnapshotMetadata' as const,
+
     encode(
         message: CreateSnapshotMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -797,13 +856,18 @@ export const CreateSnapshotMetadata = {
     },
 };
 
+messageTypeRegistry.set(CreateSnapshotMetadata.$type, CreateSnapshotMetadata);
+
 const baseUpdateSnapshotRequest: object = {
+    $type: 'yandex.cloud.compute.v1.UpdateSnapshotRequest',
     snapshotId: '',
     name: '',
     description: '',
 };
 
 export const UpdateSnapshotRequest = {
+    $type: 'yandex.cloud.compute.v1.UpdateSnapshotRequest' as const,
+
     encode(
         message: UpdateSnapshotRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -825,7 +889,11 @@ export const UpdateSnapshotRequest = {
         }
         Object.entries(message.labels).forEach(([key, value]) => {
             UpdateSnapshotRequest_LabelsEntry.encode(
-                { key: key as any, value },
+                {
+                    $type: 'yandex.cloud.compute.v1.UpdateSnapshotRequest.LabelsEntry',
+                    key: key as any,
+                    value,
+                },
                 writer.uint32(42).fork()
             ).ldelim();
         });
@@ -969,9 +1037,17 @@ export const UpdateSnapshotRequest = {
     },
 };
 
-const baseUpdateSnapshotRequest_LabelsEntry: object = { key: '', value: '' };
+messageTypeRegistry.set(UpdateSnapshotRequest.$type, UpdateSnapshotRequest);
+
+const baseUpdateSnapshotRequest_LabelsEntry: object = {
+    $type: 'yandex.cloud.compute.v1.UpdateSnapshotRequest.LabelsEntry',
+    key: '',
+    value: '',
+};
 
 export const UpdateSnapshotRequest_LabelsEntry = {
+    $type: 'yandex.cloud.compute.v1.UpdateSnapshotRequest.LabelsEntry' as const,
+
     encode(
         message: UpdateSnapshotRequest_LabelsEntry,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1056,9 +1132,19 @@ export const UpdateSnapshotRequest_LabelsEntry = {
     },
 };
 
-const baseUpdateSnapshotMetadata: object = { snapshotId: '' };
+messageTypeRegistry.set(
+    UpdateSnapshotRequest_LabelsEntry.$type,
+    UpdateSnapshotRequest_LabelsEntry
+);
+
+const baseUpdateSnapshotMetadata: object = {
+    $type: 'yandex.cloud.compute.v1.UpdateSnapshotMetadata',
+    snapshotId: '',
+};
 
 export const UpdateSnapshotMetadata = {
+    $type: 'yandex.cloud.compute.v1.UpdateSnapshotMetadata' as const,
+
     encode(
         message: UpdateSnapshotMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1127,9 +1213,16 @@ export const UpdateSnapshotMetadata = {
     },
 };
 
-const baseDeleteSnapshotRequest: object = { snapshotId: '' };
+messageTypeRegistry.set(UpdateSnapshotMetadata.$type, UpdateSnapshotMetadata);
+
+const baseDeleteSnapshotRequest: object = {
+    $type: 'yandex.cloud.compute.v1.DeleteSnapshotRequest',
+    snapshotId: '',
+};
 
 export const DeleteSnapshotRequest = {
+    $type: 'yandex.cloud.compute.v1.DeleteSnapshotRequest' as const,
+
     encode(
         message: DeleteSnapshotRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1198,9 +1291,16 @@ export const DeleteSnapshotRequest = {
     },
 };
 
-const baseDeleteSnapshotMetadata: object = { snapshotId: '' };
+messageTypeRegistry.set(DeleteSnapshotRequest.$type, DeleteSnapshotRequest);
+
+const baseDeleteSnapshotMetadata: object = {
+    $type: 'yandex.cloud.compute.v1.DeleteSnapshotMetadata',
+    snapshotId: '',
+};
 
 export const DeleteSnapshotMetadata = {
+    $type: 'yandex.cloud.compute.v1.DeleteSnapshotMetadata' as const,
+
     encode(
         message: DeleteSnapshotMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1269,13 +1369,18 @@ export const DeleteSnapshotMetadata = {
     },
 };
 
+messageTypeRegistry.set(DeleteSnapshotMetadata.$type, DeleteSnapshotMetadata);
+
 const baseListSnapshotOperationsRequest: object = {
+    $type: 'yandex.cloud.compute.v1.ListSnapshotOperationsRequest',
     snapshotId: '',
     pageSize: 0,
     pageToken: '',
 };
 
 export const ListSnapshotOperationsRequest = {
+    $type: 'yandex.cloud.compute.v1.ListSnapshotOperationsRequest' as const,
+
     encode(
         message: ListSnapshotOperationsRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1378,9 +1483,19 @@ export const ListSnapshotOperationsRequest = {
     },
 };
 
-const baseListSnapshotOperationsResponse: object = { nextPageToken: '' };
+messageTypeRegistry.set(
+    ListSnapshotOperationsRequest.$type,
+    ListSnapshotOperationsRequest
+);
+
+const baseListSnapshotOperationsResponse: object = {
+    $type: 'yandex.cloud.compute.v1.ListSnapshotOperationsResponse',
+    nextPageToken: '',
+};
 
 export const ListSnapshotOperationsResponse = {
+    $type: 'yandex.cloud.compute.v1.ListSnapshotOperationsResponse' as const,
+
     encode(
         message: ListSnapshotOperationsResponse,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1482,6 +1597,11 @@ export const ListSnapshotOperationsResponse = {
         return message;
     },
 };
+
+messageTypeRegistry.set(
+    ListSnapshotOperationsResponse.$type,
+    ListSnapshotOperationsResponse
+);
 
 /** A set of methods for managing Snapshot resources. */
 export const SnapshotServiceService = {
@@ -1774,7 +1894,7 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 function longToNumber(long: Long): number {

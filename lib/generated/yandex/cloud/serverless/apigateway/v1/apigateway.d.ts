@@ -1,6 +1,7 @@
 import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.serverless.apigateway.v1";
 export interface ApiGateway {
+    $type: 'yandex.cloud.serverless.apigateway.v1.ApiGateway';
     /** ID of the API gateway. Generated at creation time. */
     id: string;
     /** ID of the folder that the API gateway belongs to. */
@@ -41,10 +42,12 @@ export declare enum ApiGateway_Status {
 export declare function apiGateway_StatusFromJSON(object: any): ApiGateway_Status;
 export declare function apiGateway_StatusToJSON(object: ApiGateway_Status): string;
 export interface ApiGateway_LabelsEntry {
+    $type: 'yandex.cloud.serverless.apigateway.v1.ApiGateway.LabelsEntry';
     key: string;
     value: string;
 }
 export interface AttachedDomain {
+    $type: 'yandex.cloud.serverless.apigateway.v1.AttachedDomain';
     /** ID of the domain. */
     domainId: string;
     /** ID of the domain certificate. */
@@ -55,6 +58,7 @@ export interface AttachedDomain {
     domain: string;
 }
 export declare const ApiGateway: {
+    $type: "yandex.cloud.serverless.apigateway.v1.ApiGateway";
     encode(message: ApiGateway, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ApiGateway;
     fromJSON(object: any): ApiGateway;
@@ -62,6 +66,7 @@ export declare const ApiGateway: {
     fromPartial(object: DeepPartial<ApiGateway>): ApiGateway;
 };
 export declare const ApiGateway_LabelsEntry: {
+    $type: "yandex.cloud.serverless.apigateway.v1.ApiGateway.LabelsEntry";
     encode(message: ApiGateway_LabelsEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ApiGateway_LabelsEntry;
     fromJSON(object: any): ApiGateway_LabelsEntry;
@@ -69,6 +74,7 @@ export declare const ApiGateway_LabelsEntry: {
     fromPartial(object: DeepPartial<ApiGateway_LabelsEntry>): ApiGateway_LabelsEntry;
 };
 export declare const AttachedDomain: {
+    $type: "yandex.cloud.serverless.apigateway.v1.AttachedDomain";
     encode(message: AttachedDomain, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): AttachedDomain;
     fromJSON(object: any): AttachedDomain;
@@ -77,6 +83,6 @@ export declare const AttachedDomain: {
 };
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

@@ -16,6 +16,7 @@ import { ChannelCredentials, ChannelOptions, UntypedServiceImplementation, handl
 import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.mdb.mongodb.v1";
 export interface GetClusterRequest {
+    $type: 'yandex.cloud.mdb.mongodb.v1.GetClusterRequest';
     /**
      * ID of the MongoDB Cluster resource to return.
      * To get the cluster ID, use a [ClusterService.List] request.
@@ -23,6 +24,7 @@ export interface GetClusterRequest {
     clusterId: string;
 }
 export interface ListClustersRequest {
+    $type: 'yandex.cloud.mdb.mongodb.v1.ListClustersRequest';
     /**
      * ID of the folder to list MongoDB clusters in.
      * To get the folder ID, use a [yandex.cloud.resourcemanager.v1.FolderService.List] request.
@@ -44,6 +46,7 @@ export interface ListClustersRequest {
     filter: string;
 }
 export interface ListClustersResponse {
+    $type: 'yandex.cloud.mdb.mongodb.v1.ListClustersResponse';
     /** List of MongoDB Cluster resources. */
     clusters: Cluster[];
     /**
@@ -55,6 +58,7 @@ export interface ListClustersResponse {
     nextPageToken: string;
 }
 export interface CreateClusterRequest {
+    $type: 'yandex.cloud.mdb.mongodb.v1.CreateClusterRequest';
     /** ID of the folder to create MongoDB cluster in. */
     folderId: string;
     /** Name of the MongoDB cluster. The name must be unique within the folder. */
@@ -86,14 +90,17 @@ export interface CreateClusterRequest {
     deletionProtection: boolean;
 }
 export interface CreateClusterRequest_LabelsEntry {
+    $type: 'yandex.cloud.mdb.mongodb.v1.CreateClusterRequest.LabelsEntry';
     key: string;
     value: string;
 }
 export interface CreateClusterMetadata {
+    $type: 'yandex.cloud.mdb.mongodb.v1.CreateClusterMetadata';
     /** ID of the MongoDB cluster that is being created. */
     clusterId: string;
 }
 export interface UpdateClusterRequest {
+    $type: 'yandex.cloud.mdb.mongodb.v1.UpdateClusterRequest';
     /**
      * ID of the MongoDB Cluster resource to update.
      * To get the MongoDB cluster ID use a [ClusterService.List] request.
@@ -125,14 +132,17 @@ export interface UpdateClusterRequest {
     deletionProtection: boolean;
 }
 export interface UpdateClusterRequest_LabelsEntry {
+    $type: 'yandex.cloud.mdb.mongodb.v1.UpdateClusterRequest.LabelsEntry';
     key: string;
     value: string;
 }
 export interface UpdateClusterMetadata {
+    $type: 'yandex.cloud.mdb.mongodb.v1.UpdateClusterMetadata';
     /** ID of the MongoDB Cluster resource that is being updated. */
     clusterId: string;
 }
 export interface DeleteClusterRequest {
+    $type: 'yandex.cloud.mdb.mongodb.v1.DeleteClusterRequest';
     /**
      * ID of the MongoDB cluster to delete.
      * To get the MongoDB cluster ID, use a [ClusterService.List] request.
@@ -140,32 +150,39 @@ export interface DeleteClusterRequest {
     clusterId: string;
 }
 export interface DeleteClusterMetadata {
+    $type: 'yandex.cloud.mdb.mongodb.v1.DeleteClusterMetadata';
     /** ID of the MongoDB cluster that is being deleted. */
     clusterId: string;
 }
 export interface StartClusterRequest {
+    $type: 'yandex.cloud.mdb.mongodb.v1.StartClusterRequest';
     /** ID of the MongoDB cluster to start. */
     clusterId: string;
 }
 export interface StartClusterMetadata {
+    $type: 'yandex.cloud.mdb.mongodb.v1.StartClusterMetadata';
     /** ID of the MongoDB cluster. */
     clusterId: string;
 }
 export interface StopClusterRequest {
+    $type: 'yandex.cloud.mdb.mongodb.v1.StopClusterRequest';
     /** ID of the MongoDB cluster to stop. */
     clusterId: string;
 }
 export interface StopClusterMetadata {
+    $type: 'yandex.cloud.mdb.mongodb.v1.StopClusterMetadata';
     /** ID of the MongoDB cluster. */
     clusterId: string;
 }
 export interface MoveClusterRequest {
+    $type: 'yandex.cloud.mdb.mongodb.v1.MoveClusterRequest';
     /** ID of the MongoDB cluster to move. */
     clusterId: string;
     /** ID of the destination folder. */
     destinationFolderId: string;
 }
 export interface MoveClusterMetadata {
+    $type: 'yandex.cloud.mdb.mongodb.v1.MoveClusterMetadata';
     /** ID of the MongoDB cluster being moved. */
     clusterId: string;
     /** ID of the source folder. */
@@ -174,6 +191,7 @@ export interface MoveClusterMetadata {
     destinationFolderId: string;
 }
 export interface BackupClusterRequest {
+    $type: 'yandex.cloud.mdb.mongodb.v1.BackupClusterRequest';
     /**
      * ID of the MongoDB cluster to back up.
      * To get the MongoDB cluster ID, use a [ClusterService.List] request.
@@ -181,10 +199,12 @@ export interface BackupClusterRequest {
     clusterId: string;
 }
 export interface BackupClusterMetadata {
+    $type: 'yandex.cloud.mdb.mongodb.v1.BackupClusterMetadata';
     /** ID of the MongoDB cluster that is being backed up. */
     clusterId: string;
 }
 export interface RestoreClusterRequest {
+    $type: 'yandex.cloud.mdb.mongodb.v1.RestoreClusterRequest';
     /**
      * ID of the backup to create a cluster from.
      * To get the backup ID, use a [ClusterService.ListBackups] request.
@@ -220,20 +240,24 @@ export interface RestoreClusterRequest {
     securityGroupIds: string[];
 }
 export interface RestoreClusterRequest_LabelsEntry {
+    $type: 'yandex.cloud.mdb.mongodb.v1.RestoreClusterRequest.LabelsEntry';
     key: string;
     value: string;
 }
 export interface RestoreClusterRequest_RecoveryTargetSpec {
+    $type: 'yandex.cloud.mdb.mongodb.v1.RestoreClusterRequest.RecoveryTargetSpec';
     /** Timestamp of the recovery target */
     timestamp: number;
 }
 export interface RestoreClusterMetadata {
+    $type: 'yandex.cloud.mdb.mongodb.v1.RestoreClusterMetadata';
     /** ID of the new MongoDB cluster that is being created from a backup. */
     clusterId: string;
     /** ID of the backup that is being used for creating a cluster. */
     backupId: string;
 }
 export interface RescheduleMaintenanceRequest {
+    $type: 'yandex.cloud.mdb.mongodb.v1.RescheduleMaintenanceRequest';
     /** ID of the MongoDB cluster to reschedule the maintenance operation for. */
     clusterId: string;
     /** The type of reschedule request. */
@@ -255,12 +279,14 @@ export declare function rescheduleMaintenanceRequest_RescheduleTypeFromJSON(obje
 export declare function rescheduleMaintenanceRequest_RescheduleTypeToJSON(object: RescheduleMaintenanceRequest_RescheduleType): string;
 /** Rescheduled maintenance operation metadata. */
 export interface RescheduleMaintenanceMetadata {
+    $type: 'yandex.cloud.mdb.mongodb.v1.RescheduleMaintenanceMetadata';
     /** Required. ID of the MongoDB cluster. */
     clusterId: string;
     /** Required. The time until which this maintenance operation is to be delayed. */
     delayedUntil: Date | undefined;
 }
 export interface LogRecord {
+    $type: 'yandex.cloud.mdb.mongodb.v1.LogRecord';
     /** Log record timestamp in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format. */
     timestamp: Date | undefined;
     /** Contents of the log record. */
@@ -269,10 +295,12 @@ export interface LogRecord {
     };
 }
 export interface LogRecord_MessageEntry {
+    $type: 'yandex.cloud.mdb.mongodb.v1.LogRecord.MessageEntry';
     key: string;
     value: string;
 }
 export interface ListClusterLogsRequest {
+    $type: 'yandex.cloud.mdb.mongodb.v1.ListClusterLogsRequest';
     /**
      * ID of the MongoDB cluster to request logs for.
      * To get the MongoDB cluster ID use a [ClusterService.List] request.
@@ -307,6 +335,7 @@ export declare enum ListClusterLogsRequest_ServiceType {
 export declare function listClusterLogsRequest_ServiceTypeFromJSON(object: any): ListClusterLogsRequest_ServiceType;
 export declare function listClusterLogsRequest_ServiceTypeToJSON(object: ListClusterLogsRequest_ServiceType): string;
 export interface ListClusterLogsResponse {
+    $type: 'yandex.cloud.mdb.mongodb.v1.ListClusterLogsResponse';
     /** Requested log records. */
     logs: LogRecord[];
     /**
@@ -319,6 +348,7 @@ export interface ListClusterLogsResponse {
     nextPageToken: string;
 }
 export interface StreamLogRecord {
+    $type: 'yandex.cloud.mdb.mongodb.v1.StreamLogRecord';
     /** One of the requested log records. */
     record: LogRecord | undefined;
     /**
@@ -330,6 +360,7 @@ export interface StreamLogRecord {
     nextRecordToken: string;
 }
 export interface StreamClusterLogsRequest {
+    $type: 'yandex.cloud.mdb.mongodb.v1.StreamClusterLogsRequest';
     /** Required. ID of the MongoDB cluster. */
     clusterId: string;
     /** Columns from logs table to get in the response. */
@@ -369,6 +400,7 @@ export declare enum StreamClusterLogsRequest_ServiceType {
 export declare function streamClusterLogsRequest_ServiceTypeFromJSON(object: any): StreamClusterLogsRequest_ServiceType;
 export declare function streamClusterLogsRequest_ServiceTypeToJSON(object: StreamClusterLogsRequest_ServiceType): string;
 export interface ListClusterOperationsRequest {
+    $type: 'yandex.cloud.mdb.mongodb.v1.ListClusterOperationsRequest';
     /** ID of the MongoDB Cluster resource to list operations for. */
     clusterId: string;
     pageSize: number;
@@ -379,6 +411,7 @@ export interface ListClusterOperationsRequest {
     pageToken: string;
 }
 export interface ListClusterOperationsResponse {
+    $type: 'yandex.cloud.mdb.mongodb.v1.ListClusterOperationsResponse';
     /** List of Operation resources for the specified MongoDB cluster. */
     operations: Operation[];
     /**
@@ -390,6 +423,7 @@ export interface ListClusterOperationsResponse {
     nextPageToken: string;
 }
 export interface ListClusterBackupsRequest {
+    $type: 'yandex.cloud.mdb.mongodb.v1.ListClusterBackupsRequest';
     /**
      * ID of the MongoDB cluster.
      * To get the MongoDB cluster ID, use a [ClusterService.List] request.
@@ -403,6 +437,7 @@ export interface ListClusterBackupsRequest {
     pageToken: string;
 }
 export interface ListClusterBackupsResponse {
+    $type: 'yandex.cloud.mdb.mongodb.v1.ListClusterBackupsResponse';
     /** List of MongoDB Backup resources. */
     backups: Backup[];
     /**
@@ -414,6 +449,7 @@ export interface ListClusterBackupsResponse {
     nextPageToken: string;
 }
 export interface ListClusterHostsRequest {
+    $type: 'yandex.cloud.mdb.mongodb.v1.ListClusterHostsRequest';
     /**
      * ID of the MongoDB cluster.
      * To get the MongoDB cluster ID, use a [ClusterService.List] request.
@@ -427,6 +463,7 @@ export interface ListClusterHostsRequest {
     pageToken: string;
 }
 export interface ListClusterHostsResponse {
+    $type: 'yandex.cloud.mdb.mongodb.v1.ListClusterHostsResponse';
     /** List of Host resources. */
     hosts: Host[];
     /**
@@ -438,6 +475,7 @@ export interface ListClusterHostsResponse {
     nextPageToken: string;
 }
 export interface AddClusterHostsRequest {
+    $type: 'yandex.cloud.mdb.mongodb.v1.AddClusterHostsRequest';
     /**
      * ID of the MongoDB cluster to add hosts to.
      * To get the MongoDB cluster ID use a [ClusterService.List] request.
@@ -447,12 +485,14 @@ export interface AddClusterHostsRequest {
     hostSpecs: HostSpec[];
 }
 export interface AddClusterHostsMetadata {
+    $type: 'yandex.cloud.mdb.mongodb.v1.AddClusterHostsMetadata';
     /** ID of the MongoDB cluster to which the hosts are being added. */
     clusterId: string;
     /** Names of hosts that are being added to the cluster. */
     hostNames: string[];
 }
 export interface DeleteClusterHostsRequest {
+    $type: 'yandex.cloud.mdb.mongodb.v1.DeleteClusterHostsRequest';
     /**
      * ID of the MongoDB cluster to remove hosts from.
      * To get the MongoDB cluster ID, use a [ClusterService.List] request.
@@ -462,12 +502,14 @@ export interface DeleteClusterHostsRequest {
     hostNames: string[];
 }
 export interface DeleteClusterHostsMetadata {
+    $type: 'yandex.cloud.mdb.mongodb.v1.DeleteClusterHostsMetadata';
     /** ID of the MongoDB cluster to remove hosts from. */
     clusterId: string;
     /** Names of hosts that are being deleted. */
     hostNames: string[];
 }
 export interface EnableClusterShardingRequest {
+    $type: 'yandex.cloud.mdb.mongodb.v1.EnableClusterShardingRequest';
     /** ID of the MongoDB cluster to enable sharding for. */
     clusterId: string;
     /** mongocfg specification for sharding. */
@@ -480,22 +522,27 @@ export interface EnableClusterShardingRequest {
     mongoinfra: EnableClusterShardingRequest_MongoInfra | undefined;
 }
 export interface EnableClusterShardingRequest_MongoCfg {
+    $type: 'yandex.cloud.mdb.mongodb.v1.EnableClusterShardingRequest.MongoCfg';
     /** Resources for mongocfg hosts. */
     resources: Resources | undefined;
 }
 export interface EnableClusterShardingRequest_Mongos {
+    $type: 'yandex.cloud.mdb.mongodb.v1.EnableClusterShardingRequest.Mongos';
     /** Resources for mongos hosts. */
     resources: Resources | undefined;
 }
 export interface EnableClusterShardingRequest_MongoInfra {
+    $type: 'yandex.cloud.mdb.mongodb.v1.EnableClusterShardingRequest.MongoInfra';
     /** Resources for mongoinfra (mongos+mongocfg) hosts. */
     resources: Resources | undefined;
 }
 export interface EnableClusterShardingMetadata {
+    $type: 'yandex.cloud.mdb.mongodb.v1.EnableClusterShardingMetadata';
     /** ID of the MongoDB cluster that sharding is being enabled for. */
     clusterId: string;
 }
 export interface GetClusterShardRequest {
+    $type: 'yandex.cloud.mdb.mongodb.v1.GetClusterShardRequest';
     /**
      * ID of the MongoDB cluster that the shard belongs to.
      * To get the cluster ID use a [ClusterService.List] request.
@@ -508,6 +555,7 @@ export interface GetClusterShardRequest {
     shardName: string;
 }
 export interface ListClusterShardsRequest {
+    $type: 'yandex.cloud.mdb.mongodb.v1.ListClusterShardsRequest';
     /**
      * ID of the MongoDB cluster to list databases in.
      * To get the cluster ID, use a [ClusterService.List] request.
@@ -526,6 +574,7 @@ export interface ListClusterShardsRequest {
     pageToken: string;
 }
 export interface ListClusterShardsResponse {
+    $type: 'yandex.cloud.mdb.mongodb.v1.ListClusterShardsResponse';
     /** List of MongoDB shards. */
     shards: Shard[];
     /**
@@ -537,6 +586,7 @@ export interface ListClusterShardsResponse {
     nextPageToken: string;
 }
 export interface AddClusterShardRequest {
+    $type: 'yandex.cloud.mdb.mongodb.v1.AddClusterShardRequest';
     /**
      * ID of the MongoDB cluster to add a shard to.
      * To get the cluster ID, use a [ClusterService.List] request.
@@ -548,12 +598,14 @@ export interface AddClusterShardRequest {
     hostSpecs: HostSpec[];
 }
 export interface AddClusterShardMetadata {
+    $type: 'yandex.cloud.mdb.mongodb.v1.AddClusterShardMetadata';
     /** ID of the MongoDB cluster that a shard is being added to. */
     clusterId: string;
     /** Name of the shard being added. */
     shardName: string;
 }
 export interface DeleteClusterShardRequest {
+    $type: 'yandex.cloud.mdb.mongodb.v1.DeleteClusterShardRequest';
     /**
      * ID of the MongoDB cluster to delete a shard in.
      * To get the cluster ID, use a [ClusterService.List] request.
@@ -566,48 +618,56 @@ export interface DeleteClusterShardRequest {
     shardName: string;
 }
 export interface DeleteClusterShardMetadata {
+    $type: 'yandex.cloud.mdb.mongodb.v1.DeleteClusterShardMetadata';
     /** ID of the MongoDB cluster that a shard is being deleted in. */
     clusterId: string;
     /** Name of the shard being deleted. */
     shardName: string;
 }
 export interface ResetupHostsRequest {
+    $type: 'yandex.cloud.mdb.mongodb.v1.ResetupHostsRequest';
     /** Required. ID of the MongoDB cluster. */
     clusterId: string;
     /** Required. Name of the hosts to resetup. */
     hostNames: string[];
 }
 export interface ResetupHostsMetadata {
+    $type: 'yandex.cloud.mdb.mongodb.v1.ResetupHostsMetadata';
     /** Required. ID of the MongoDB cluster. */
     clusterId: string;
     /** Required. The name of hosts to resetup. */
     hostNames: string[];
 }
 export interface RestartHostsRequest {
+    $type: 'yandex.cloud.mdb.mongodb.v1.RestartHostsRequest';
     /** Required. ID of the MongoDB cluster. */
     clusterId: string;
     /** Required. Name of the hosts to restart. */
     hostNames: string[];
 }
 export interface RestartHostsMetadata {
+    $type: 'yandex.cloud.mdb.mongodb.v1.RestartHostsMetadata';
     /** Required. ID of the MongoDB cluster. */
     clusterId: string;
     /** Required. The name of hosts to restart. */
     hostNames: string[];
 }
 export interface StepdownHostsRequest {
+    $type: 'yandex.cloud.mdb.mongodb.v1.StepdownHostsRequest';
     /** Required. ID of the MongoDB cluster. */
     clusterId: string;
     /** Required. Name of the hosts to resetup. */
     hostNames: string[];
 }
 export interface StepdownHostsMetadata {
+    $type: 'yandex.cloud.mdb.mongodb.v1.StepdownHostsMetadata';
     /** Required. ID of the MongoDB cluster. */
     clusterId: string;
     /** Required. The name of hosts to resetup. */
     hostNames: string[];
 }
 export interface HostSpec {
+    $type: 'yandex.cloud.mdb.mongodb.v1.HostSpec';
     /**
      * ID of the availability zone where the host resides.
      * To get a list of available zones, use the [yandex.cloud.compute.v1.ZoneService.List] request.
@@ -636,6 +696,7 @@ export interface HostSpec {
     shardName: string;
 }
 export interface Mongodbspec36 {
+    $type: 'yandex.cloud.mdb.mongodb.v1.MongodbSpec3_6';
     /** Configuration and resource allocation for mongod 3.6 hosts. */
     mongod: Mongodbspec36_Mongod | undefined;
     /** Configuration and resource allocation for mongocfg 3.6 hosts. */
@@ -646,24 +707,28 @@ export interface Mongodbspec36 {
     mongoinfra: Mongodbspec36_MongoInfra | undefined;
 }
 export interface Mongodbspec36_Mongod {
+    $type: 'yandex.cloud.mdb.mongodb.v1.MongodbSpec3_6.Mongod';
     /** Configuration for mongod 3.6 hosts. */
     config: Mongodconfig36 | undefined;
     /** Resources allocated to each mongod host. */
     resources: Resources | undefined;
 }
 export interface Mongodbspec36_MongoCfg {
+    $type: 'yandex.cloud.mdb.mongodb.v1.MongodbSpec3_6.MongoCfg';
     /** Configuration for mongocfg 3.6 hosts. */
     config: Mongocfgconfig36 | undefined;
     /** Resources allocated to each mongocfg host. */
     resources: Resources | undefined;
 }
 export interface Mongodbspec36_Mongos {
+    $type: 'yandex.cloud.mdb.mongodb.v1.MongodbSpec3_6.Mongos';
     /** Configuration for mongos 3.6 hosts. */
     config: Mongosconfig36 | undefined;
     /** Resources allocated to each mongos host. */
     resources: Resources | undefined;
 }
 export interface Mongodbspec36_MongoInfra {
+    $type: 'yandex.cloud.mdb.mongodb.v1.MongodbSpec3_6.MongoInfra';
     /** Configuration for mongoinfra 3.6 hosts. */
     configMongos: Mongosconfig36 | undefined;
     configMongocfg: Mongocfgconfig36 | undefined;
@@ -671,6 +736,7 @@ export interface Mongodbspec36_MongoInfra {
     resources: Resources | undefined;
 }
 export interface Mongodbspec40 {
+    $type: 'yandex.cloud.mdb.mongodb.v1.MongodbSpec4_0';
     /** Configuration and resource allocation for mongod 4.0 hosts. */
     mongod: Mongodbspec40_Mongod | undefined;
     /** Configuration and resource allocation for mongocfg 4.0 hosts. */
@@ -681,24 +747,28 @@ export interface Mongodbspec40 {
     mongoinfra: Mongodbspec40_MongoInfra | undefined;
 }
 export interface Mongodbspec40_Mongod {
+    $type: 'yandex.cloud.mdb.mongodb.v1.MongodbSpec4_0.Mongod';
     /** Configuration for mongod 4.0 hosts. */
     config: Mongodconfig40 | undefined;
     /** Resources allocated to each mongod host. */
     resources: Resources | undefined;
 }
 export interface Mongodbspec40_MongoCfg {
+    $type: 'yandex.cloud.mdb.mongodb.v1.MongodbSpec4_0.MongoCfg';
     /** Configuration for mongocfg 4.0 hosts. */
     config: Mongocfgconfig40 | undefined;
     /** Resources allocated to each mongocfg host. */
     resources: Resources | undefined;
 }
 export interface Mongodbspec40_Mongos {
+    $type: 'yandex.cloud.mdb.mongodb.v1.MongodbSpec4_0.Mongos';
     /** Configuration for mongos 4.0 hosts. */
     config: Mongosconfig40 | undefined;
     /** Resources allocated to each mongos host. */
     resources: Resources | undefined;
 }
 export interface Mongodbspec40_MongoInfra {
+    $type: 'yandex.cloud.mdb.mongodb.v1.MongodbSpec4_0.MongoInfra';
     /** Configuration for mongoinfra 4.0 hosts. */
     configMongos: Mongosconfig40 | undefined;
     configMongocfg: Mongocfgconfig40 | undefined;
@@ -706,6 +776,7 @@ export interface Mongodbspec40_MongoInfra {
     resources: Resources | undefined;
 }
 export interface Mongodbspec42 {
+    $type: 'yandex.cloud.mdb.mongodb.v1.MongodbSpec4_2';
     /** Configuration and resource allocation for mongod 4.2 hosts. */
     mongod: Mongodbspec42_Mongod | undefined;
     /** Configuration and resource allocation for mongocfg 4.2 hosts. */
@@ -716,24 +787,28 @@ export interface Mongodbspec42 {
     mongoinfra: Mongodbspec42_MongoInfra | undefined;
 }
 export interface Mongodbspec42_Mongod {
+    $type: 'yandex.cloud.mdb.mongodb.v1.MongodbSpec4_2.Mongod';
     /** Configuration for mongod 4.2 hosts. */
     config: Mongodconfig42 | undefined;
     /** Resources allocated to each mongod host. */
     resources: Resources | undefined;
 }
 export interface Mongodbspec42_MongoCfg {
+    $type: 'yandex.cloud.mdb.mongodb.v1.MongodbSpec4_2.MongoCfg';
     /** Configuration for mongocfg 4.2 hosts. */
     config: Mongocfgconfig42 | undefined;
     /** Resources allocated to each mongocfg host. */
     resources: Resources | undefined;
 }
 export interface Mongodbspec42_Mongos {
+    $type: 'yandex.cloud.mdb.mongodb.v1.MongodbSpec4_2.Mongos';
     /** Configuration for mongos 4.2 hosts. */
     config: Mongosconfig42 | undefined;
     /** Resources allocated to each mongos host. */
     resources: Resources | undefined;
 }
 export interface Mongodbspec42_MongoInfra {
+    $type: 'yandex.cloud.mdb.mongodb.v1.MongodbSpec4_2.MongoInfra';
     /** Configuration for mongoinfra 4.2 hosts. */
     configMongos: Mongosconfig42 | undefined;
     configMongocfg: Mongocfgconfig42 | undefined;
@@ -741,6 +816,7 @@ export interface Mongodbspec42_MongoInfra {
     resources: Resources | undefined;
 }
 export interface Mongodbspec44 {
+    $type: 'yandex.cloud.mdb.mongodb.v1.MongodbSpec4_4';
     /** Configuration and resource allocation for mongod 4.4 hosts. */
     mongod: Mongodbspec44_Mongod | undefined;
     /** Configuration and resource allocation for mongocfg 4.4 hosts. */
@@ -751,24 +827,28 @@ export interface Mongodbspec44 {
     mongoinfra: Mongodbspec44_MongoInfra | undefined;
 }
 export interface Mongodbspec44_Mongod {
+    $type: 'yandex.cloud.mdb.mongodb.v1.MongodbSpec4_4.Mongod';
     /** Configuration for mongod 4.4 hosts. */
     config: Mongodconfig44 | undefined;
     /** Resources allocated to each mongod host. */
     resources: Resources | undefined;
 }
 export interface Mongodbspec44_MongoCfg {
+    $type: 'yandex.cloud.mdb.mongodb.v1.MongodbSpec4_4.MongoCfg';
     /** Configuration for mongocfg 4.4 hosts. */
     config: Mongocfgconfig44 | undefined;
     /** Resources allocated to each mongocfg host. */
     resources: Resources | undefined;
 }
 export interface Mongodbspec44_Mongos {
+    $type: 'yandex.cloud.mdb.mongodb.v1.MongodbSpec4_4.Mongos';
     /** Configuration for mongos 4.4 hosts. */
     config: Mongosconfig44 | undefined;
     /** Resources allocated to each mongos host. */
     resources: Resources | undefined;
 }
 export interface Mongodbspec44_MongoInfra {
+    $type: 'yandex.cloud.mdb.mongodb.v1.MongodbSpec4_4.MongoInfra';
     /** Configuration for mongoinfra 4.4 hosts. */
     configMongos: Mongosconfig44 | undefined;
     configMongocfg: Mongocfgconfig44 | undefined;
@@ -776,6 +856,7 @@ export interface Mongodbspec44_MongoInfra {
     resources: Resources | undefined;
 }
 export interface Mongodbspec50 {
+    $type: 'yandex.cloud.mdb.mongodb.v1.MongodbSpec5_0';
     /** Configuration and resource allocation for mongod 5.0 hosts. */
     mongod: Mongodbspec50_Mongod | undefined;
     /** Configuration and resource allocation for mongocfg 5.0 hosts. */
@@ -786,24 +867,28 @@ export interface Mongodbspec50 {
     mongoinfra: Mongodbspec50_MongoInfra | undefined;
 }
 export interface Mongodbspec50_Mongod {
+    $type: 'yandex.cloud.mdb.mongodb.v1.MongodbSpec5_0.Mongod';
     /** Configuration for mongod 5.0 hosts. */
     config: Mongodconfig50 | undefined;
     /** Resources allocated to each mongod host. */
     resources: Resources | undefined;
 }
 export interface Mongodbspec50_MongoCfg {
+    $type: 'yandex.cloud.mdb.mongodb.v1.MongodbSpec5_0.MongoCfg';
     /** Configuration for mongocfg 5.0 hosts. */
     config: Mongocfgconfig50 | undefined;
     /** Resources allocated to each mongocfg host. */
     resources: Resources | undefined;
 }
 export interface Mongodbspec50_Mongos {
+    $type: 'yandex.cloud.mdb.mongodb.v1.MongodbSpec5_0.Mongos';
     /** Configuration for mongos 5.0 hosts. */
     config: Mongosconfig50 | undefined;
     /** Resources allocated to each mongos host. */
     resources: Resources | undefined;
 }
 export interface Mongodbspec50_MongoInfra {
+    $type: 'yandex.cloud.mdb.mongodb.v1.MongodbSpec5_0.MongoInfra';
     /** Configuration for mongoinfra 5.0 hosts. */
     configMongos: Mongosconfig50 | undefined;
     configMongocfg: Mongocfgconfig50 | undefined;
@@ -811,6 +896,7 @@ export interface Mongodbspec50_MongoInfra {
     resources: Resources | undefined;
 }
 export interface ConfigSpec {
+    $type: 'yandex.cloud.mdb.mongodb.v1.ConfigSpec';
     /** Version of MongoDB used in the cluster. Possible values: `3.6`, `4.0`, `4.2`, `4.4`, `5.0`. */
     version: string;
     /**
@@ -842,6 +928,7 @@ export interface ConfigSpec {
     access: Access | undefined;
 }
 export declare const GetClusterRequest: {
+    $type: "yandex.cloud.mdb.mongodb.v1.GetClusterRequest";
     encode(message: GetClusterRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): GetClusterRequest;
     fromJSON(object: any): GetClusterRequest;
@@ -849,6 +936,7 @@ export declare const GetClusterRequest: {
     fromPartial(object: DeepPartial<GetClusterRequest>): GetClusterRequest;
 };
 export declare const ListClustersRequest: {
+    $type: "yandex.cloud.mdb.mongodb.v1.ListClustersRequest";
     encode(message: ListClustersRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListClustersRequest;
     fromJSON(object: any): ListClustersRequest;
@@ -856,6 +944,7 @@ export declare const ListClustersRequest: {
     fromPartial(object: DeepPartial<ListClustersRequest>): ListClustersRequest;
 };
 export declare const ListClustersResponse: {
+    $type: "yandex.cloud.mdb.mongodb.v1.ListClustersResponse";
     encode(message: ListClustersResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListClustersResponse;
     fromJSON(object: any): ListClustersResponse;
@@ -863,6 +952,7 @@ export declare const ListClustersResponse: {
     fromPartial(object: DeepPartial<ListClustersResponse>): ListClustersResponse;
 };
 export declare const CreateClusterRequest: {
+    $type: "yandex.cloud.mdb.mongodb.v1.CreateClusterRequest";
     encode(message: CreateClusterRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateClusterRequest;
     fromJSON(object: any): CreateClusterRequest;
@@ -870,6 +960,7 @@ export declare const CreateClusterRequest: {
     fromPartial(object: DeepPartial<CreateClusterRequest>): CreateClusterRequest;
 };
 export declare const CreateClusterRequest_LabelsEntry: {
+    $type: "yandex.cloud.mdb.mongodb.v1.CreateClusterRequest.LabelsEntry";
     encode(message: CreateClusterRequest_LabelsEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateClusterRequest_LabelsEntry;
     fromJSON(object: any): CreateClusterRequest_LabelsEntry;
@@ -877,6 +968,7 @@ export declare const CreateClusterRequest_LabelsEntry: {
     fromPartial(object: DeepPartial<CreateClusterRequest_LabelsEntry>): CreateClusterRequest_LabelsEntry;
 };
 export declare const CreateClusterMetadata: {
+    $type: "yandex.cloud.mdb.mongodb.v1.CreateClusterMetadata";
     encode(message: CreateClusterMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateClusterMetadata;
     fromJSON(object: any): CreateClusterMetadata;
@@ -884,6 +976,7 @@ export declare const CreateClusterMetadata: {
     fromPartial(object: DeepPartial<CreateClusterMetadata>): CreateClusterMetadata;
 };
 export declare const UpdateClusterRequest: {
+    $type: "yandex.cloud.mdb.mongodb.v1.UpdateClusterRequest";
     encode(message: UpdateClusterRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateClusterRequest;
     fromJSON(object: any): UpdateClusterRequest;
@@ -891,6 +984,7 @@ export declare const UpdateClusterRequest: {
     fromPartial(object: DeepPartial<UpdateClusterRequest>): UpdateClusterRequest;
 };
 export declare const UpdateClusterRequest_LabelsEntry: {
+    $type: "yandex.cloud.mdb.mongodb.v1.UpdateClusterRequest.LabelsEntry";
     encode(message: UpdateClusterRequest_LabelsEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateClusterRequest_LabelsEntry;
     fromJSON(object: any): UpdateClusterRequest_LabelsEntry;
@@ -898,6 +992,7 @@ export declare const UpdateClusterRequest_LabelsEntry: {
     fromPartial(object: DeepPartial<UpdateClusterRequest_LabelsEntry>): UpdateClusterRequest_LabelsEntry;
 };
 export declare const UpdateClusterMetadata: {
+    $type: "yandex.cloud.mdb.mongodb.v1.UpdateClusterMetadata";
     encode(message: UpdateClusterMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateClusterMetadata;
     fromJSON(object: any): UpdateClusterMetadata;
@@ -905,6 +1000,7 @@ export declare const UpdateClusterMetadata: {
     fromPartial(object: DeepPartial<UpdateClusterMetadata>): UpdateClusterMetadata;
 };
 export declare const DeleteClusterRequest: {
+    $type: "yandex.cloud.mdb.mongodb.v1.DeleteClusterRequest";
     encode(message: DeleteClusterRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteClusterRequest;
     fromJSON(object: any): DeleteClusterRequest;
@@ -912,6 +1008,7 @@ export declare const DeleteClusterRequest: {
     fromPartial(object: DeepPartial<DeleteClusterRequest>): DeleteClusterRequest;
 };
 export declare const DeleteClusterMetadata: {
+    $type: "yandex.cloud.mdb.mongodb.v1.DeleteClusterMetadata";
     encode(message: DeleteClusterMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteClusterMetadata;
     fromJSON(object: any): DeleteClusterMetadata;
@@ -919,6 +1016,7 @@ export declare const DeleteClusterMetadata: {
     fromPartial(object: DeepPartial<DeleteClusterMetadata>): DeleteClusterMetadata;
 };
 export declare const StartClusterRequest: {
+    $type: "yandex.cloud.mdb.mongodb.v1.StartClusterRequest";
     encode(message: StartClusterRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): StartClusterRequest;
     fromJSON(object: any): StartClusterRequest;
@@ -926,6 +1024,7 @@ export declare const StartClusterRequest: {
     fromPartial(object: DeepPartial<StartClusterRequest>): StartClusterRequest;
 };
 export declare const StartClusterMetadata: {
+    $type: "yandex.cloud.mdb.mongodb.v1.StartClusterMetadata";
     encode(message: StartClusterMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): StartClusterMetadata;
     fromJSON(object: any): StartClusterMetadata;
@@ -933,6 +1032,7 @@ export declare const StartClusterMetadata: {
     fromPartial(object: DeepPartial<StartClusterMetadata>): StartClusterMetadata;
 };
 export declare const StopClusterRequest: {
+    $type: "yandex.cloud.mdb.mongodb.v1.StopClusterRequest";
     encode(message: StopClusterRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): StopClusterRequest;
     fromJSON(object: any): StopClusterRequest;
@@ -940,6 +1040,7 @@ export declare const StopClusterRequest: {
     fromPartial(object: DeepPartial<StopClusterRequest>): StopClusterRequest;
 };
 export declare const StopClusterMetadata: {
+    $type: "yandex.cloud.mdb.mongodb.v1.StopClusterMetadata";
     encode(message: StopClusterMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): StopClusterMetadata;
     fromJSON(object: any): StopClusterMetadata;
@@ -947,6 +1048,7 @@ export declare const StopClusterMetadata: {
     fromPartial(object: DeepPartial<StopClusterMetadata>): StopClusterMetadata;
 };
 export declare const MoveClusterRequest: {
+    $type: "yandex.cloud.mdb.mongodb.v1.MoveClusterRequest";
     encode(message: MoveClusterRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): MoveClusterRequest;
     fromJSON(object: any): MoveClusterRequest;
@@ -954,6 +1056,7 @@ export declare const MoveClusterRequest: {
     fromPartial(object: DeepPartial<MoveClusterRequest>): MoveClusterRequest;
 };
 export declare const MoveClusterMetadata: {
+    $type: "yandex.cloud.mdb.mongodb.v1.MoveClusterMetadata";
     encode(message: MoveClusterMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): MoveClusterMetadata;
     fromJSON(object: any): MoveClusterMetadata;
@@ -961,6 +1064,7 @@ export declare const MoveClusterMetadata: {
     fromPartial(object: DeepPartial<MoveClusterMetadata>): MoveClusterMetadata;
 };
 export declare const BackupClusterRequest: {
+    $type: "yandex.cloud.mdb.mongodb.v1.BackupClusterRequest";
     encode(message: BackupClusterRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): BackupClusterRequest;
     fromJSON(object: any): BackupClusterRequest;
@@ -968,6 +1072,7 @@ export declare const BackupClusterRequest: {
     fromPartial(object: DeepPartial<BackupClusterRequest>): BackupClusterRequest;
 };
 export declare const BackupClusterMetadata: {
+    $type: "yandex.cloud.mdb.mongodb.v1.BackupClusterMetadata";
     encode(message: BackupClusterMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): BackupClusterMetadata;
     fromJSON(object: any): BackupClusterMetadata;
@@ -975,6 +1080,7 @@ export declare const BackupClusterMetadata: {
     fromPartial(object: DeepPartial<BackupClusterMetadata>): BackupClusterMetadata;
 };
 export declare const RestoreClusterRequest: {
+    $type: "yandex.cloud.mdb.mongodb.v1.RestoreClusterRequest";
     encode(message: RestoreClusterRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): RestoreClusterRequest;
     fromJSON(object: any): RestoreClusterRequest;
@@ -982,6 +1088,7 @@ export declare const RestoreClusterRequest: {
     fromPartial(object: DeepPartial<RestoreClusterRequest>): RestoreClusterRequest;
 };
 export declare const RestoreClusterRequest_LabelsEntry: {
+    $type: "yandex.cloud.mdb.mongodb.v1.RestoreClusterRequest.LabelsEntry";
     encode(message: RestoreClusterRequest_LabelsEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): RestoreClusterRequest_LabelsEntry;
     fromJSON(object: any): RestoreClusterRequest_LabelsEntry;
@@ -989,6 +1096,7 @@ export declare const RestoreClusterRequest_LabelsEntry: {
     fromPartial(object: DeepPartial<RestoreClusterRequest_LabelsEntry>): RestoreClusterRequest_LabelsEntry;
 };
 export declare const RestoreClusterRequest_RecoveryTargetSpec: {
+    $type: "yandex.cloud.mdb.mongodb.v1.RestoreClusterRequest.RecoveryTargetSpec";
     encode(message: RestoreClusterRequest_RecoveryTargetSpec, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): RestoreClusterRequest_RecoveryTargetSpec;
     fromJSON(object: any): RestoreClusterRequest_RecoveryTargetSpec;
@@ -996,6 +1104,7 @@ export declare const RestoreClusterRequest_RecoveryTargetSpec: {
     fromPartial(object: DeepPartial<RestoreClusterRequest_RecoveryTargetSpec>): RestoreClusterRequest_RecoveryTargetSpec;
 };
 export declare const RestoreClusterMetadata: {
+    $type: "yandex.cloud.mdb.mongodb.v1.RestoreClusterMetadata";
     encode(message: RestoreClusterMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): RestoreClusterMetadata;
     fromJSON(object: any): RestoreClusterMetadata;
@@ -1003,6 +1112,7 @@ export declare const RestoreClusterMetadata: {
     fromPartial(object: DeepPartial<RestoreClusterMetadata>): RestoreClusterMetadata;
 };
 export declare const RescheduleMaintenanceRequest: {
+    $type: "yandex.cloud.mdb.mongodb.v1.RescheduleMaintenanceRequest";
     encode(message: RescheduleMaintenanceRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): RescheduleMaintenanceRequest;
     fromJSON(object: any): RescheduleMaintenanceRequest;
@@ -1010,6 +1120,7 @@ export declare const RescheduleMaintenanceRequest: {
     fromPartial(object: DeepPartial<RescheduleMaintenanceRequest>): RescheduleMaintenanceRequest;
 };
 export declare const RescheduleMaintenanceMetadata: {
+    $type: "yandex.cloud.mdb.mongodb.v1.RescheduleMaintenanceMetadata";
     encode(message: RescheduleMaintenanceMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): RescheduleMaintenanceMetadata;
     fromJSON(object: any): RescheduleMaintenanceMetadata;
@@ -1017,6 +1128,7 @@ export declare const RescheduleMaintenanceMetadata: {
     fromPartial(object: DeepPartial<RescheduleMaintenanceMetadata>): RescheduleMaintenanceMetadata;
 };
 export declare const LogRecord: {
+    $type: "yandex.cloud.mdb.mongodb.v1.LogRecord";
     encode(message: LogRecord, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): LogRecord;
     fromJSON(object: any): LogRecord;
@@ -1024,6 +1136,7 @@ export declare const LogRecord: {
     fromPartial(object: DeepPartial<LogRecord>): LogRecord;
 };
 export declare const LogRecord_MessageEntry: {
+    $type: "yandex.cloud.mdb.mongodb.v1.LogRecord.MessageEntry";
     encode(message: LogRecord_MessageEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): LogRecord_MessageEntry;
     fromJSON(object: any): LogRecord_MessageEntry;
@@ -1031,6 +1144,7 @@ export declare const LogRecord_MessageEntry: {
     fromPartial(object: DeepPartial<LogRecord_MessageEntry>): LogRecord_MessageEntry;
 };
 export declare const ListClusterLogsRequest: {
+    $type: "yandex.cloud.mdb.mongodb.v1.ListClusterLogsRequest";
     encode(message: ListClusterLogsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListClusterLogsRequest;
     fromJSON(object: any): ListClusterLogsRequest;
@@ -1038,6 +1152,7 @@ export declare const ListClusterLogsRequest: {
     fromPartial(object: DeepPartial<ListClusterLogsRequest>): ListClusterLogsRequest;
 };
 export declare const ListClusterLogsResponse: {
+    $type: "yandex.cloud.mdb.mongodb.v1.ListClusterLogsResponse";
     encode(message: ListClusterLogsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListClusterLogsResponse;
     fromJSON(object: any): ListClusterLogsResponse;
@@ -1045,6 +1160,7 @@ export declare const ListClusterLogsResponse: {
     fromPartial(object: DeepPartial<ListClusterLogsResponse>): ListClusterLogsResponse;
 };
 export declare const StreamLogRecord: {
+    $type: "yandex.cloud.mdb.mongodb.v1.StreamLogRecord";
     encode(message: StreamLogRecord, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): StreamLogRecord;
     fromJSON(object: any): StreamLogRecord;
@@ -1052,6 +1168,7 @@ export declare const StreamLogRecord: {
     fromPartial(object: DeepPartial<StreamLogRecord>): StreamLogRecord;
 };
 export declare const StreamClusterLogsRequest: {
+    $type: "yandex.cloud.mdb.mongodb.v1.StreamClusterLogsRequest";
     encode(message: StreamClusterLogsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): StreamClusterLogsRequest;
     fromJSON(object: any): StreamClusterLogsRequest;
@@ -1059,6 +1176,7 @@ export declare const StreamClusterLogsRequest: {
     fromPartial(object: DeepPartial<StreamClusterLogsRequest>): StreamClusterLogsRequest;
 };
 export declare const ListClusterOperationsRequest: {
+    $type: "yandex.cloud.mdb.mongodb.v1.ListClusterOperationsRequest";
     encode(message: ListClusterOperationsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListClusterOperationsRequest;
     fromJSON(object: any): ListClusterOperationsRequest;
@@ -1066,6 +1184,7 @@ export declare const ListClusterOperationsRequest: {
     fromPartial(object: DeepPartial<ListClusterOperationsRequest>): ListClusterOperationsRequest;
 };
 export declare const ListClusterOperationsResponse: {
+    $type: "yandex.cloud.mdb.mongodb.v1.ListClusterOperationsResponse";
     encode(message: ListClusterOperationsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListClusterOperationsResponse;
     fromJSON(object: any): ListClusterOperationsResponse;
@@ -1073,6 +1192,7 @@ export declare const ListClusterOperationsResponse: {
     fromPartial(object: DeepPartial<ListClusterOperationsResponse>): ListClusterOperationsResponse;
 };
 export declare const ListClusterBackupsRequest: {
+    $type: "yandex.cloud.mdb.mongodb.v1.ListClusterBackupsRequest";
     encode(message: ListClusterBackupsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListClusterBackupsRequest;
     fromJSON(object: any): ListClusterBackupsRequest;
@@ -1080,6 +1200,7 @@ export declare const ListClusterBackupsRequest: {
     fromPartial(object: DeepPartial<ListClusterBackupsRequest>): ListClusterBackupsRequest;
 };
 export declare const ListClusterBackupsResponse: {
+    $type: "yandex.cloud.mdb.mongodb.v1.ListClusterBackupsResponse";
     encode(message: ListClusterBackupsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListClusterBackupsResponse;
     fromJSON(object: any): ListClusterBackupsResponse;
@@ -1087,6 +1208,7 @@ export declare const ListClusterBackupsResponse: {
     fromPartial(object: DeepPartial<ListClusterBackupsResponse>): ListClusterBackupsResponse;
 };
 export declare const ListClusterHostsRequest: {
+    $type: "yandex.cloud.mdb.mongodb.v1.ListClusterHostsRequest";
     encode(message: ListClusterHostsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListClusterHostsRequest;
     fromJSON(object: any): ListClusterHostsRequest;
@@ -1094,6 +1216,7 @@ export declare const ListClusterHostsRequest: {
     fromPartial(object: DeepPartial<ListClusterHostsRequest>): ListClusterHostsRequest;
 };
 export declare const ListClusterHostsResponse: {
+    $type: "yandex.cloud.mdb.mongodb.v1.ListClusterHostsResponse";
     encode(message: ListClusterHostsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListClusterHostsResponse;
     fromJSON(object: any): ListClusterHostsResponse;
@@ -1101,6 +1224,7 @@ export declare const ListClusterHostsResponse: {
     fromPartial(object: DeepPartial<ListClusterHostsResponse>): ListClusterHostsResponse;
 };
 export declare const AddClusterHostsRequest: {
+    $type: "yandex.cloud.mdb.mongodb.v1.AddClusterHostsRequest";
     encode(message: AddClusterHostsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): AddClusterHostsRequest;
     fromJSON(object: any): AddClusterHostsRequest;
@@ -1108,6 +1232,7 @@ export declare const AddClusterHostsRequest: {
     fromPartial(object: DeepPartial<AddClusterHostsRequest>): AddClusterHostsRequest;
 };
 export declare const AddClusterHostsMetadata: {
+    $type: "yandex.cloud.mdb.mongodb.v1.AddClusterHostsMetadata";
     encode(message: AddClusterHostsMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): AddClusterHostsMetadata;
     fromJSON(object: any): AddClusterHostsMetadata;
@@ -1115,6 +1240,7 @@ export declare const AddClusterHostsMetadata: {
     fromPartial(object: DeepPartial<AddClusterHostsMetadata>): AddClusterHostsMetadata;
 };
 export declare const DeleteClusterHostsRequest: {
+    $type: "yandex.cloud.mdb.mongodb.v1.DeleteClusterHostsRequest";
     encode(message: DeleteClusterHostsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteClusterHostsRequest;
     fromJSON(object: any): DeleteClusterHostsRequest;
@@ -1122,6 +1248,7 @@ export declare const DeleteClusterHostsRequest: {
     fromPartial(object: DeepPartial<DeleteClusterHostsRequest>): DeleteClusterHostsRequest;
 };
 export declare const DeleteClusterHostsMetadata: {
+    $type: "yandex.cloud.mdb.mongodb.v1.DeleteClusterHostsMetadata";
     encode(message: DeleteClusterHostsMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteClusterHostsMetadata;
     fromJSON(object: any): DeleteClusterHostsMetadata;
@@ -1129,6 +1256,7 @@ export declare const DeleteClusterHostsMetadata: {
     fromPartial(object: DeepPartial<DeleteClusterHostsMetadata>): DeleteClusterHostsMetadata;
 };
 export declare const EnableClusterShardingRequest: {
+    $type: "yandex.cloud.mdb.mongodb.v1.EnableClusterShardingRequest";
     encode(message: EnableClusterShardingRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): EnableClusterShardingRequest;
     fromJSON(object: any): EnableClusterShardingRequest;
@@ -1136,6 +1264,7 @@ export declare const EnableClusterShardingRequest: {
     fromPartial(object: DeepPartial<EnableClusterShardingRequest>): EnableClusterShardingRequest;
 };
 export declare const EnableClusterShardingRequest_MongoCfg: {
+    $type: "yandex.cloud.mdb.mongodb.v1.EnableClusterShardingRequest.MongoCfg";
     encode(message: EnableClusterShardingRequest_MongoCfg, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): EnableClusterShardingRequest_MongoCfg;
     fromJSON(object: any): EnableClusterShardingRequest_MongoCfg;
@@ -1143,6 +1272,7 @@ export declare const EnableClusterShardingRequest_MongoCfg: {
     fromPartial(object: DeepPartial<EnableClusterShardingRequest_MongoCfg>): EnableClusterShardingRequest_MongoCfg;
 };
 export declare const EnableClusterShardingRequest_Mongos: {
+    $type: "yandex.cloud.mdb.mongodb.v1.EnableClusterShardingRequest.Mongos";
     encode(message: EnableClusterShardingRequest_Mongos, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): EnableClusterShardingRequest_Mongos;
     fromJSON(object: any): EnableClusterShardingRequest_Mongos;
@@ -1150,6 +1280,7 @@ export declare const EnableClusterShardingRequest_Mongos: {
     fromPartial(object: DeepPartial<EnableClusterShardingRequest_Mongos>): EnableClusterShardingRequest_Mongos;
 };
 export declare const EnableClusterShardingRequest_MongoInfra: {
+    $type: "yandex.cloud.mdb.mongodb.v1.EnableClusterShardingRequest.MongoInfra";
     encode(message: EnableClusterShardingRequest_MongoInfra, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): EnableClusterShardingRequest_MongoInfra;
     fromJSON(object: any): EnableClusterShardingRequest_MongoInfra;
@@ -1157,6 +1288,7 @@ export declare const EnableClusterShardingRequest_MongoInfra: {
     fromPartial(object: DeepPartial<EnableClusterShardingRequest_MongoInfra>): EnableClusterShardingRequest_MongoInfra;
 };
 export declare const EnableClusterShardingMetadata: {
+    $type: "yandex.cloud.mdb.mongodb.v1.EnableClusterShardingMetadata";
     encode(message: EnableClusterShardingMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): EnableClusterShardingMetadata;
     fromJSON(object: any): EnableClusterShardingMetadata;
@@ -1164,6 +1296,7 @@ export declare const EnableClusterShardingMetadata: {
     fromPartial(object: DeepPartial<EnableClusterShardingMetadata>): EnableClusterShardingMetadata;
 };
 export declare const GetClusterShardRequest: {
+    $type: "yandex.cloud.mdb.mongodb.v1.GetClusterShardRequest";
     encode(message: GetClusterShardRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): GetClusterShardRequest;
     fromJSON(object: any): GetClusterShardRequest;
@@ -1171,6 +1304,7 @@ export declare const GetClusterShardRequest: {
     fromPartial(object: DeepPartial<GetClusterShardRequest>): GetClusterShardRequest;
 };
 export declare const ListClusterShardsRequest: {
+    $type: "yandex.cloud.mdb.mongodb.v1.ListClusterShardsRequest";
     encode(message: ListClusterShardsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListClusterShardsRequest;
     fromJSON(object: any): ListClusterShardsRequest;
@@ -1178,6 +1312,7 @@ export declare const ListClusterShardsRequest: {
     fromPartial(object: DeepPartial<ListClusterShardsRequest>): ListClusterShardsRequest;
 };
 export declare const ListClusterShardsResponse: {
+    $type: "yandex.cloud.mdb.mongodb.v1.ListClusterShardsResponse";
     encode(message: ListClusterShardsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListClusterShardsResponse;
     fromJSON(object: any): ListClusterShardsResponse;
@@ -1185,6 +1320,7 @@ export declare const ListClusterShardsResponse: {
     fromPartial(object: DeepPartial<ListClusterShardsResponse>): ListClusterShardsResponse;
 };
 export declare const AddClusterShardRequest: {
+    $type: "yandex.cloud.mdb.mongodb.v1.AddClusterShardRequest";
     encode(message: AddClusterShardRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): AddClusterShardRequest;
     fromJSON(object: any): AddClusterShardRequest;
@@ -1192,6 +1328,7 @@ export declare const AddClusterShardRequest: {
     fromPartial(object: DeepPartial<AddClusterShardRequest>): AddClusterShardRequest;
 };
 export declare const AddClusterShardMetadata: {
+    $type: "yandex.cloud.mdb.mongodb.v1.AddClusterShardMetadata";
     encode(message: AddClusterShardMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): AddClusterShardMetadata;
     fromJSON(object: any): AddClusterShardMetadata;
@@ -1199,6 +1336,7 @@ export declare const AddClusterShardMetadata: {
     fromPartial(object: DeepPartial<AddClusterShardMetadata>): AddClusterShardMetadata;
 };
 export declare const DeleteClusterShardRequest: {
+    $type: "yandex.cloud.mdb.mongodb.v1.DeleteClusterShardRequest";
     encode(message: DeleteClusterShardRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteClusterShardRequest;
     fromJSON(object: any): DeleteClusterShardRequest;
@@ -1206,6 +1344,7 @@ export declare const DeleteClusterShardRequest: {
     fromPartial(object: DeepPartial<DeleteClusterShardRequest>): DeleteClusterShardRequest;
 };
 export declare const DeleteClusterShardMetadata: {
+    $type: "yandex.cloud.mdb.mongodb.v1.DeleteClusterShardMetadata";
     encode(message: DeleteClusterShardMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteClusterShardMetadata;
     fromJSON(object: any): DeleteClusterShardMetadata;
@@ -1213,6 +1352,7 @@ export declare const DeleteClusterShardMetadata: {
     fromPartial(object: DeepPartial<DeleteClusterShardMetadata>): DeleteClusterShardMetadata;
 };
 export declare const ResetupHostsRequest: {
+    $type: "yandex.cloud.mdb.mongodb.v1.ResetupHostsRequest";
     encode(message: ResetupHostsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ResetupHostsRequest;
     fromJSON(object: any): ResetupHostsRequest;
@@ -1220,6 +1360,7 @@ export declare const ResetupHostsRequest: {
     fromPartial(object: DeepPartial<ResetupHostsRequest>): ResetupHostsRequest;
 };
 export declare const ResetupHostsMetadata: {
+    $type: "yandex.cloud.mdb.mongodb.v1.ResetupHostsMetadata";
     encode(message: ResetupHostsMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ResetupHostsMetadata;
     fromJSON(object: any): ResetupHostsMetadata;
@@ -1227,6 +1368,7 @@ export declare const ResetupHostsMetadata: {
     fromPartial(object: DeepPartial<ResetupHostsMetadata>): ResetupHostsMetadata;
 };
 export declare const RestartHostsRequest: {
+    $type: "yandex.cloud.mdb.mongodb.v1.RestartHostsRequest";
     encode(message: RestartHostsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): RestartHostsRequest;
     fromJSON(object: any): RestartHostsRequest;
@@ -1234,6 +1376,7 @@ export declare const RestartHostsRequest: {
     fromPartial(object: DeepPartial<RestartHostsRequest>): RestartHostsRequest;
 };
 export declare const RestartHostsMetadata: {
+    $type: "yandex.cloud.mdb.mongodb.v1.RestartHostsMetadata";
     encode(message: RestartHostsMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): RestartHostsMetadata;
     fromJSON(object: any): RestartHostsMetadata;
@@ -1241,6 +1384,7 @@ export declare const RestartHostsMetadata: {
     fromPartial(object: DeepPartial<RestartHostsMetadata>): RestartHostsMetadata;
 };
 export declare const StepdownHostsRequest: {
+    $type: "yandex.cloud.mdb.mongodb.v1.StepdownHostsRequest";
     encode(message: StepdownHostsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): StepdownHostsRequest;
     fromJSON(object: any): StepdownHostsRequest;
@@ -1248,6 +1392,7 @@ export declare const StepdownHostsRequest: {
     fromPartial(object: DeepPartial<StepdownHostsRequest>): StepdownHostsRequest;
 };
 export declare const StepdownHostsMetadata: {
+    $type: "yandex.cloud.mdb.mongodb.v1.StepdownHostsMetadata";
     encode(message: StepdownHostsMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): StepdownHostsMetadata;
     fromJSON(object: any): StepdownHostsMetadata;
@@ -1255,6 +1400,7 @@ export declare const StepdownHostsMetadata: {
     fromPartial(object: DeepPartial<StepdownHostsMetadata>): StepdownHostsMetadata;
 };
 export declare const HostSpec: {
+    $type: "yandex.cloud.mdb.mongodb.v1.HostSpec";
     encode(message: HostSpec, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): HostSpec;
     fromJSON(object: any): HostSpec;
@@ -1262,6 +1408,7 @@ export declare const HostSpec: {
     fromPartial(object: DeepPartial<HostSpec>): HostSpec;
 };
 export declare const Mongodbspec36: {
+    $type: "yandex.cloud.mdb.mongodb.v1.MongodbSpec3_6";
     encode(message: Mongodbspec36, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Mongodbspec36;
     fromJSON(object: any): Mongodbspec36;
@@ -1269,6 +1416,7 @@ export declare const Mongodbspec36: {
     fromPartial(object: DeepPartial<Mongodbspec36>): Mongodbspec36;
 };
 export declare const Mongodbspec36_Mongod: {
+    $type: "yandex.cloud.mdb.mongodb.v1.MongodbSpec3_6.Mongod";
     encode(message: Mongodbspec36_Mongod, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Mongodbspec36_Mongod;
     fromJSON(object: any): Mongodbspec36_Mongod;
@@ -1276,6 +1424,7 @@ export declare const Mongodbspec36_Mongod: {
     fromPartial(object: DeepPartial<Mongodbspec36_Mongod>): Mongodbspec36_Mongod;
 };
 export declare const Mongodbspec36_MongoCfg: {
+    $type: "yandex.cloud.mdb.mongodb.v1.MongodbSpec3_6.MongoCfg";
     encode(message: Mongodbspec36_MongoCfg, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Mongodbspec36_MongoCfg;
     fromJSON(object: any): Mongodbspec36_MongoCfg;
@@ -1283,6 +1432,7 @@ export declare const Mongodbspec36_MongoCfg: {
     fromPartial(object: DeepPartial<Mongodbspec36_MongoCfg>): Mongodbspec36_MongoCfg;
 };
 export declare const Mongodbspec36_Mongos: {
+    $type: "yandex.cloud.mdb.mongodb.v1.MongodbSpec3_6.Mongos";
     encode(message: Mongodbspec36_Mongos, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Mongodbspec36_Mongos;
     fromJSON(object: any): Mongodbspec36_Mongos;
@@ -1290,6 +1440,7 @@ export declare const Mongodbspec36_Mongos: {
     fromPartial(object: DeepPartial<Mongodbspec36_Mongos>): Mongodbspec36_Mongos;
 };
 export declare const Mongodbspec36_MongoInfra: {
+    $type: "yandex.cloud.mdb.mongodb.v1.MongodbSpec3_6.MongoInfra";
     encode(message: Mongodbspec36_MongoInfra, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Mongodbspec36_MongoInfra;
     fromJSON(object: any): Mongodbspec36_MongoInfra;
@@ -1297,6 +1448,7 @@ export declare const Mongodbspec36_MongoInfra: {
     fromPartial(object: DeepPartial<Mongodbspec36_MongoInfra>): Mongodbspec36_MongoInfra;
 };
 export declare const Mongodbspec40: {
+    $type: "yandex.cloud.mdb.mongodb.v1.MongodbSpec4_0";
     encode(message: Mongodbspec40, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Mongodbspec40;
     fromJSON(object: any): Mongodbspec40;
@@ -1304,6 +1456,7 @@ export declare const Mongodbspec40: {
     fromPartial(object: DeepPartial<Mongodbspec40>): Mongodbspec40;
 };
 export declare const Mongodbspec40_Mongod: {
+    $type: "yandex.cloud.mdb.mongodb.v1.MongodbSpec4_0.Mongod";
     encode(message: Mongodbspec40_Mongod, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Mongodbspec40_Mongod;
     fromJSON(object: any): Mongodbspec40_Mongod;
@@ -1311,6 +1464,7 @@ export declare const Mongodbspec40_Mongod: {
     fromPartial(object: DeepPartial<Mongodbspec40_Mongod>): Mongodbspec40_Mongod;
 };
 export declare const Mongodbspec40_MongoCfg: {
+    $type: "yandex.cloud.mdb.mongodb.v1.MongodbSpec4_0.MongoCfg";
     encode(message: Mongodbspec40_MongoCfg, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Mongodbspec40_MongoCfg;
     fromJSON(object: any): Mongodbspec40_MongoCfg;
@@ -1318,6 +1472,7 @@ export declare const Mongodbspec40_MongoCfg: {
     fromPartial(object: DeepPartial<Mongodbspec40_MongoCfg>): Mongodbspec40_MongoCfg;
 };
 export declare const Mongodbspec40_Mongos: {
+    $type: "yandex.cloud.mdb.mongodb.v1.MongodbSpec4_0.Mongos";
     encode(message: Mongodbspec40_Mongos, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Mongodbspec40_Mongos;
     fromJSON(object: any): Mongodbspec40_Mongos;
@@ -1325,6 +1480,7 @@ export declare const Mongodbspec40_Mongos: {
     fromPartial(object: DeepPartial<Mongodbspec40_Mongos>): Mongodbspec40_Mongos;
 };
 export declare const Mongodbspec40_MongoInfra: {
+    $type: "yandex.cloud.mdb.mongodb.v1.MongodbSpec4_0.MongoInfra";
     encode(message: Mongodbspec40_MongoInfra, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Mongodbspec40_MongoInfra;
     fromJSON(object: any): Mongodbspec40_MongoInfra;
@@ -1332,6 +1488,7 @@ export declare const Mongodbspec40_MongoInfra: {
     fromPartial(object: DeepPartial<Mongodbspec40_MongoInfra>): Mongodbspec40_MongoInfra;
 };
 export declare const Mongodbspec42: {
+    $type: "yandex.cloud.mdb.mongodb.v1.MongodbSpec4_2";
     encode(message: Mongodbspec42, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Mongodbspec42;
     fromJSON(object: any): Mongodbspec42;
@@ -1339,6 +1496,7 @@ export declare const Mongodbspec42: {
     fromPartial(object: DeepPartial<Mongodbspec42>): Mongodbspec42;
 };
 export declare const Mongodbspec42_Mongod: {
+    $type: "yandex.cloud.mdb.mongodb.v1.MongodbSpec4_2.Mongod";
     encode(message: Mongodbspec42_Mongod, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Mongodbspec42_Mongod;
     fromJSON(object: any): Mongodbspec42_Mongod;
@@ -1346,6 +1504,7 @@ export declare const Mongodbspec42_Mongod: {
     fromPartial(object: DeepPartial<Mongodbspec42_Mongod>): Mongodbspec42_Mongod;
 };
 export declare const Mongodbspec42_MongoCfg: {
+    $type: "yandex.cloud.mdb.mongodb.v1.MongodbSpec4_2.MongoCfg";
     encode(message: Mongodbspec42_MongoCfg, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Mongodbspec42_MongoCfg;
     fromJSON(object: any): Mongodbspec42_MongoCfg;
@@ -1353,6 +1512,7 @@ export declare const Mongodbspec42_MongoCfg: {
     fromPartial(object: DeepPartial<Mongodbspec42_MongoCfg>): Mongodbspec42_MongoCfg;
 };
 export declare const Mongodbspec42_Mongos: {
+    $type: "yandex.cloud.mdb.mongodb.v1.MongodbSpec4_2.Mongos";
     encode(message: Mongodbspec42_Mongos, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Mongodbspec42_Mongos;
     fromJSON(object: any): Mongodbspec42_Mongos;
@@ -1360,6 +1520,7 @@ export declare const Mongodbspec42_Mongos: {
     fromPartial(object: DeepPartial<Mongodbspec42_Mongos>): Mongodbspec42_Mongos;
 };
 export declare const Mongodbspec42_MongoInfra: {
+    $type: "yandex.cloud.mdb.mongodb.v1.MongodbSpec4_2.MongoInfra";
     encode(message: Mongodbspec42_MongoInfra, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Mongodbspec42_MongoInfra;
     fromJSON(object: any): Mongodbspec42_MongoInfra;
@@ -1367,6 +1528,7 @@ export declare const Mongodbspec42_MongoInfra: {
     fromPartial(object: DeepPartial<Mongodbspec42_MongoInfra>): Mongodbspec42_MongoInfra;
 };
 export declare const Mongodbspec44: {
+    $type: "yandex.cloud.mdb.mongodb.v1.MongodbSpec4_4";
     encode(message: Mongodbspec44, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Mongodbspec44;
     fromJSON(object: any): Mongodbspec44;
@@ -1374,6 +1536,7 @@ export declare const Mongodbspec44: {
     fromPartial(object: DeepPartial<Mongodbspec44>): Mongodbspec44;
 };
 export declare const Mongodbspec44_Mongod: {
+    $type: "yandex.cloud.mdb.mongodb.v1.MongodbSpec4_4.Mongod";
     encode(message: Mongodbspec44_Mongod, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Mongodbspec44_Mongod;
     fromJSON(object: any): Mongodbspec44_Mongod;
@@ -1381,6 +1544,7 @@ export declare const Mongodbspec44_Mongod: {
     fromPartial(object: DeepPartial<Mongodbspec44_Mongod>): Mongodbspec44_Mongod;
 };
 export declare const Mongodbspec44_MongoCfg: {
+    $type: "yandex.cloud.mdb.mongodb.v1.MongodbSpec4_4.MongoCfg";
     encode(message: Mongodbspec44_MongoCfg, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Mongodbspec44_MongoCfg;
     fromJSON(object: any): Mongodbspec44_MongoCfg;
@@ -1388,6 +1552,7 @@ export declare const Mongodbspec44_MongoCfg: {
     fromPartial(object: DeepPartial<Mongodbspec44_MongoCfg>): Mongodbspec44_MongoCfg;
 };
 export declare const Mongodbspec44_Mongos: {
+    $type: "yandex.cloud.mdb.mongodb.v1.MongodbSpec4_4.Mongos";
     encode(message: Mongodbspec44_Mongos, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Mongodbspec44_Mongos;
     fromJSON(object: any): Mongodbspec44_Mongos;
@@ -1395,6 +1560,7 @@ export declare const Mongodbspec44_Mongos: {
     fromPartial(object: DeepPartial<Mongodbspec44_Mongos>): Mongodbspec44_Mongos;
 };
 export declare const Mongodbspec44_MongoInfra: {
+    $type: "yandex.cloud.mdb.mongodb.v1.MongodbSpec4_4.MongoInfra";
     encode(message: Mongodbspec44_MongoInfra, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Mongodbspec44_MongoInfra;
     fromJSON(object: any): Mongodbspec44_MongoInfra;
@@ -1402,6 +1568,7 @@ export declare const Mongodbspec44_MongoInfra: {
     fromPartial(object: DeepPartial<Mongodbspec44_MongoInfra>): Mongodbspec44_MongoInfra;
 };
 export declare const Mongodbspec50: {
+    $type: "yandex.cloud.mdb.mongodb.v1.MongodbSpec5_0";
     encode(message: Mongodbspec50, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Mongodbspec50;
     fromJSON(object: any): Mongodbspec50;
@@ -1409,6 +1576,7 @@ export declare const Mongodbspec50: {
     fromPartial(object: DeepPartial<Mongodbspec50>): Mongodbspec50;
 };
 export declare const Mongodbspec50_Mongod: {
+    $type: "yandex.cloud.mdb.mongodb.v1.MongodbSpec5_0.Mongod";
     encode(message: Mongodbspec50_Mongod, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Mongodbspec50_Mongod;
     fromJSON(object: any): Mongodbspec50_Mongod;
@@ -1416,6 +1584,7 @@ export declare const Mongodbspec50_Mongod: {
     fromPartial(object: DeepPartial<Mongodbspec50_Mongod>): Mongodbspec50_Mongod;
 };
 export declare const Mongodbspec50_MongoCfg: {
+    $type: "yandex.cloud.mdb.mongodb.v1.MongodbSpec5_0.MongoCfg";
     encode(message: Mongodbspec50_MongoCfg, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Mongodbspec50_MongoCfg;
     fromJSON(object: any): Mongodbspec50_MongoCfg;
@@ -1423,6 +1592,7 @@ export declare const Mongodbspec50_MongoCfg: {
     fromPartial(object: DeepPartial<Mongodbspec50_MongoCfg>): Mongodbspec50_MongoCfg;
 };
 export declare const Mongodbspec50_Mongos: {
+    $type: "yandex.cloud.mdb.mongodb.v1.MongodbSpec5_0.Mongos";
     encode(message: Mongodbspec50_Mongos, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Mongodbspec50_Mongos;
     fromJSON(object: any): Mongodbspec50_Mongos;
@@ -1430,6 +1600,7 @@ export declare const Mongodbspec50_Mongos: {
     fromPartial(object: DeepPartial<Mongodbspec50_Mongos>): Mongodbspec50_Mongos;
 };
 export declare const Mongodbspec50_MongoInfra: {
+    $type: "yandex.cloud.mdb.mongodb.v1.MongodbSpec5_0.MongoInfra";
     encode(message: Mongodbspec50_MongoInfra, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Mongodbspec50_MongoInfra;
     fromJSON(object: any): Mongodbspec50_MongoInfra;
@@ -1437,6 +1608,7 @@ export declare const Mongodbspec50_MongoInfra: {
     fromPartial(object: DeepPartial<Mongodbspec50_MongoInfra>): Mongodbspec50_MongoInfra;
 };
 export declare const ConfigSpec: {
+    $type: "yandex.cloud.mdb.mongodb.v1.ConfigSpec";
     encode(message: ConfigSpec, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ConfigSpec;
     fromJSON(object: any): ConfigSpec;
@@ -1898,6 +2070,6 @@ export interface ClusterServiceClient extends Client {
 export declare const ClusterServiceClient: new (address: string, credentials: ChannelCredentials, options?: Partial<ChannelOptions> | undefined) => ClusterServiceClient;
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

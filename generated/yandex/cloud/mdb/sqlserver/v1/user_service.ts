@@ -1,5 +1,6 @@
 /* eslint-disable */
 import { FieldMask } from '../../../../../google/protobuf/field_mask';
+import { messageTypeRegistry } from '../../../../../typeRegistry';
 import {
     User,
     UserSpec,
@@ -24,6 +25,7 @@ import _m0 from 'protobufjs/minimal';
 export const protobufPackage = 'yandex.cloud.mdb.sqlserver.v1';
 
 export interface GetUserRequest {
+    $type: 'yandex.cloud.mdb.sqlserver.v1.GetUserRequest';
     /**
      * ID of the SQL Server cluster the user belongs to.
      *
@@ -39,6 +41,7 @@ export interface GetUserRequest {
 }
 
 export interface ListUsersRequest {
+    $type: 'yandex.cloud.mdb.sqlserver.v1.ListUsersRequest';
     /**
      * ID of the cluster to list SQL Server users in.
      *
@@ -59,6 +62,7 @@ export interface ListUsersRequest {
 }
 
 export interface ListUsersResponse {
+    $type: 'yandex.cloud.mdb.sqlserver.v1.ListUsersResponse';
     /** Requested list of SQL Server users. */
     users: User[];
     /**
@@ -71,6 +75,7 @@ export interface ListUsersResponse {
 }
 
 export interface CreateUserRequest {
+    $type: 'yandex.cloud.mdb.sqlserver.v1.CreateUserRequest';
     /**
      * ID of the SQL Server cluster to create a user for.
      *
@@ -82,6 +87,7 @@ export interface CreateUserRequest {
 }
 
 export interface CreateUserMetadata {
+    $type: 'yandex.cloud.mdb.sqlserver.v1.CreateUserMetadata';
     /** ID of the SQL Server cluster the user is being created for. */
     clusterId: string;
     /** Name of the user being created. */
@@ -89,6 +95,7 @@ export interface CreateUserMetadata {
 }
 
 export interface UpdateUserRequest {
+    $type: 'yandex.cloud.mdb.sqlserver.v1.UpdateUserRequest';
     /**
      * ID of the SQL Server cluster the user belongs to.
      *
@@ -110,6 +117,7 @@ export interface UpdateUserRequest {
 }
 
 export interface UpdateUserMetadata {
+    $type: 'yandex.cloud.mdb.sqlserver.v1.UpdateUserMetadata';
     /** ID of the SQL Server cluster the user belongs to. */
     clusterId: string;
     /** Name of the user being updated. */
@@ -117,6 +125,7 @@ export interface UpdateUserMetadata {
 }
 
 export interface DeleteUserRequest {
+    $type: 'yandex.cloud.mdb.sqlserver.v1.DeleteUserRequest';
     /**
      * ID of the SQL Server cluster the user belongs to.
      *
@@ -132,6 +141,7 @@ export interface DeleteUserRequest {
 }
 
 export interface DeleteUserMetadata {
+    $type: 'yandex.cloud.mdb.sqlserver.v1.DeleteUserMetadata';
     /** ID of the SQL Server cluster the user belongs to. */
     clusterId: string;
     /** Name of the user being deleted. */
@@ -139,6 +149,7 @@ export interface DeleteUserMetadata {
 }
 
 export interface GrantUserPermissionRequest {
+    $type: 'yandex.cloud.mdb.sqlserver.v1.GrantUserPermissionRequest';
     /**
      * ID of the SQL Server cluster the user belongs to.
      *
@@ -155,6 +166,7 @@ export interface GrantUserPermissionRequest {
 }
 
 export interface GrantUserPermissionMetadata {
+    $type: 'yandex.cloud.mdb.sqlserver.v1.GrantUserPermissionMetadata';
     /**
      * ID of the SQL Server cluster the user belongs to.
      *
@@ -166,6 +178,7 @@ export interface GrantUserPermissionMetadata {
 }
 
 export interface RevokeUserPermissionRequest {
+    $type: 'yandex.cloud.mdb.sqlserver.v1.RevokeUserPermissionRequest';
     /**
      * ID of the SQL Server cluster the user belongs to.
      *
@@ -183,15 +196,22 @@ export interface RevokeUserPermissionRequest {
 }
 
 export interface RevokeUserPermissionMetadata {
+    $type: 'yandex.cloud.mdb.sqlserver.v1.RevokeUserPermissionMetadata';
     /** ID of the SQL Server cluster the user belongs to. */
     clusterId: string;
     /** Name of the user whose permission is being revoked. */
     userName: string;
 }
 
-const baseGetUserRequest: object = { clusterId: '', userName: '' };
+const baseGetUserRequest: object = {
+    $type: 'yandex.cloud.mdb.sqlserver.v1.GetUserRequest',
+    clusterId: '',
+    userName: '',
+};
 
 export const GetUserRequest = {
+    $type: 'yandex.cloud.mdb.sqlserver.v1.GetUserRequest' as const,
+
     encode(
         message: GetUserRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -265,13 +285,18 @@ export const GetUserRequest = {
     },
 };
 
+messageTypeRegistry.set(GetUserRequest.$type, GetUserRequest);
+
 const baseListUsersRequest: object = {
+    $type: 'yandex.cloud.mdb.sqlserver.v1.ListUsersRequest',
     clusterId: '',
     pageSize: 0,
     pageToken: '',
 };
 
 export const ListUsersRequest = {
+    $type: 'yandex.cloud.mdb.sqlserver.v1.ListUsersRequest' as const,
+
     encode(
         message: ListUsersRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -362,9 +387,16 @@ export const ListUsersRequest = {
     },
 };
 
-const baseListUsersResponse: object = { nextPageToken: '' };
+messageTypeRegistry.set(ListUsersRequest.$type, ListUsersRequest);
+
+const baseListUsersResponse: object = {
+    $type: 'yandex.cloud.mdb.sqlserver.v1.ListUsersResponse',
+    nextPageToken: '',
+};
 
 export const ListUsersResponse = {
+    $type: 'yandex.cloud.mdb.sqlserver.v1.ListUsersResponse' as const,
+
     encode(
         message: ListUsersResponse,
         writer: _m0.Writer = _m0.Writer.create()
@@ -454,9 +486,16 @@ export const ListUsersResponse = {
     },
 };
 
-const baseCreateUserRequest: object = { clusterId: '' };
+messageTypeRegistry.set(ListUsersResponse.$type, ListUsersResponse);
+
+const baseCreateUserRequest: object = {
+    $type: 'yandex.cloud.mdb.sqlserver.v1.CreateUserRequest',
+    clusterId: '',
+};
 
 export const CreateUserRequest = {
+    $type: 'yandex.cloud.mdb.sqlserver.v1.CreateUserRequest' as const,
+
     encode(
         message: CreateUserRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -536,9 +575,17 @@ export const CreateUserRequest = {
     },
 };
 
-const baseCreateUserMetadata: object = { clusterId: '', userName: '' };
+messageTypeRegistry.set(CreateUserRequest.$type, CreateUserRequest);
+
+const baseCreateUserMetadata: object = {
+    $type: 'yandex.cloud.mdb.sqlserver.v1.CreateUserMetadata',
+    clusterId: '',
+    userName: '',
+};
 
 export const CreateUserMetadata = {
+    $type: 'yandex.cloud.mdb.sqlserver.v1.CreateUserMetadata' as const,
+
     encode(
         message: CreateUserMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -615,13 +662,18 @@ export const CreateUserMetadata = {
     },
 };
 
+messageTypeRegistry.set(CreateUserMetadata.$type, CreateUserMetadata);
+
 const baseUpdateUserRequest: object = {
+    $type: 'yandex.cloud.mdb.sqlserver.v1.UpdateUserRequest',
     clusterId: '',
     userName: '',
     password: '',
 };
 
 export const UpdateUserRequest = {
+    $type: 'yandex.cloud.mdb.sqlserver.v1.UpdateUserRequest' as const,
+
     encode(
         message: UpdateUserRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -766,9 +818,17 @@ export const UpdateUserRequest = {
     },
 };
 
-const baseUpdateUserMetadata: object = { clusterId: '', userName: '' };
+messageTypeRegistry.set(UpdateUserRequest.$type, UpdateUserRequest);
+
+const baseUpdateUserMetadata: object = {
+    $type: 'yandex.cloud.mdb.sqlserver.v1.UpdateUserMetadata',
+    clusterId: '',
+    userName: '',
+};
 
 export const UpdateUserMetadata = {
+    $type: 'yandex.cloud.mdb.sqlserver.v1.UpdateUserMetadata' as const,
+
     encode(
         message: UpdateUserMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -845,9 +905,17 @@ export const UpdateUserMetadata = {
     },
 };
 
-const baseDeleteUserRequest: object = { clusterId: '', userName: '' };
+messageTypeRegistry.set(UpdateUserMetadata.$type, UpdateUserMetadata);
+
+const baseDeleteUserRequest: object = {
+    $type: 'yandex.cloud.mdb.sqlserver.v1.DeleteUserRequest',
+    clusterId: '',
+    userName: '',
+};
 
 export const DeleteUserRequest = {
+    $type: 'yandex.cloud.mdb.sqlserver.v1.DeleteUserRequest' as const,
+
     encode(
         message: DeleteUserRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -921,9 +989,17 @@ export const DeleteUserRequest = {
     },
 };
 
-const baseDeleteUserMetadata: object = { clusterId: '', userName: '' };
+messageTypeRegistry.set(DeleteUserRequest.$type, DeleteUserRequest);
+
+const baseDeleteUserMetadata: object = {
+    $type: 'yandex.cloud.mdb.sqlserver.v1.DeleteUserMetadata',
+    clusterId: '',
+    userName: '',
+};
 
 export const DeleteUserMetadata = {
+    $type: 'yandex.cloud.mdb.sqlserver.v1.DeleteUserMetadata' as const,
+
     encode(
         message: DeleteUserMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1000,9 +1076,17 @@ export const DeleteUserMetadata = {
     },
 };
 
-const baseGrantUserPermissionRequest: object = { clusterId: '', userName: '' };
+messageTypeRegistry.set(DeleteUserMetadata.$type, DeleteUserMetadata);
+
+const baseGrantUserPermissionRequest: object = {
+    $type: 'yandex.cloud.mdb.sqlserver.v1.GrantUserPermissionRequest',
+    clusterId: '',
+    userName: '',
+};
 
 export const GrantUserPermissionRequest = {
+    $type: 'yandex.cloud.mdb.sqlserver.v1.GrantUserPermissionRequest' as const,
+
     encode(
         message: GrantUserPermissionRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1113,9 +1197,20 @@ export const GrantUserPermissionRequest = {
     },
 };
 
-const baseGrantUserPermissionMetadata: object = { clusterId: '', userName: '' };
+messageTypeRegistry.set(
+    GrantUserPermissionRequest.$type,
+    GrantUserPermissionRequest
+);
+
+const baseGrantUserPermissionMetadata: object = {
+    $type: 'yandex.cloud.mdb.sqlserver.v1.GrantUserPermissionMetadata',
+    clusterId: '',
+    userName: '',
+};
 
 export const GrantUserPermissionMetadata = {
+    $type: 'yandex.cloud.mdb.sqlserver.v1.GrantUserPermissionMetadata' as const,
+
     encode(
         message: GrantUserPermissionMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1200,9 +1295,20 @@ export const GrantUserPermissionMetadata = {
     },
 };
 
-const baseRevokeUserPermissionRequest: object = { clusterId: '', userName: '' };
+messageTypeRegistry.set(
+    GrantUserPermissionMetadata.$type,
+    GrantUserPermissionMetadata
+);
+
+const baseRevokeUserPermissionRequest: object = {
+    $type: 'yandex.cloud.mdb.sqlserver.v1.RevokeUserPermissionRequest',
+    clusterId: '',
+    userName: '',
+};
 
 export const RevokeUserPermissionRequest = {
+    $type: 'yandex.cloud.mdb.sqlserver.v1.RevokeUserPermissionRequest' as const,
+
     encode(
         message: RevokeUserPermissionRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1313,12 +1419,20 @@ export const RevokeUserPermissionRequest = {
     },
 };
 
+messageTypeRegistry.set(
+    RevokeUserPermissionRequest.$type,
+    RevokeUserPermissionRequest
+);
+
 const baseRevokeUserPermissionMetadata: object = {
+    $type: 'yandex.cloud.mdb.sqlserver.v1.RevokeUserPermissionMetadata',
     clusterId: '',
     userName: '',
 };
 
 export const RevokeUserPermissionMetadata = {
+    $type: 'yandex.cloud.mdb.sqlserver.v1.RevokeUserPermissionMetadata' as const,
+
     encode(
         message: RevokeUserPermissionMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1402,6 +1516,11 @@ export const RevokeUserPermissionMetadata = {
         return message;
     },
 };
+
+messageTypeRegistry.set(
+    RevokeUserPermissionMetadata.$type,
+    RevokeUserPermissionMetadata
+);
 
 /** A set of methods for managing SQL Server users. */
 export const UserServiceService = {
@@ -1683,7 +1802,7 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 function longToNumber(long: Long): number {

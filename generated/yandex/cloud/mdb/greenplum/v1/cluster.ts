@@ -1,6 +1,7 @@
 /* eslint-disable */
 import { Timestamp } from '../../../../../google/protobuf/timestamp';
 import { TimeOfDay } from '../../../../../google/type/timeofday';
+import { messageTypeRegistry } from '../../../../../typeRegistry';
 import {
     MasterSubclusterConfig,
     SegmentSubclusterConfig,
@@ -16,6 +17,7 @@ export const protobufPackage = 'yandex.cloud.mdb.greenplum.v1';
 
 /** A Greenplum Cluster resource. For more information, see the */
 export interface Cluster {
+    $type: 'yandex.cloud.mdb.greenplum.v1.Cluster';
     /**
      * ID of the Greenplum cluster.
      * This ID is assigned by MDB at creation time.
@@ -249,12 +251,14 @@ export function cluster_StatusToJSON(object: Cluster_Status): string {
 }
 
 export interface Cluster_LabelsEntry {
+    $type: 'yandex.cloud.mdb.greenplum.v1.Cluster.LabelsEntry';
     key: string;
     value: string;
 }
 
 /** Monitoring system metadata. */
 export interface Monitoring {
+    $type: 'yandex.cloud.mdb.greenplum.v1.Monitoring';
     /** Name of the monitoring system. */
     name: string;
     /** Description of the monitoring system. */
@@ -264,6 +268,7 @@ export interface Monitoring {
 }
 
 export interface GreenplumConfig {
+    $type: 'yandex.cloud.mdb.greenplum.v1.GreenplumConfig';
     /** Version of the Greenplum server software. */
     version: string;
     /** Time to start the daily backup, in the UTC timezone. */
@@ -295,6 +300,7 @@ export interface GreenplumConfig {
 }
 
 export interface Access {
+    $type: 'yandex.cloud.mdb.greenplum.v1.Access';
     /** Allow to export data from the cluster to Yandex DataLens. */
     dataLens: boolean;
     /** Allow SQL queries to the cluster databases from the Yandex.Cloud management console. */
@@ -302,6 +308,7 @@ export interface Access {
 }
 
 const baseCluster: object = {
+    $type: 'yandex.cloud.mdb.greenplum.v1.Cluster',
     id: '',
     folderId: '',
     name: '',
@@ -320,6 +327,8 @@ const baseCluster: object = {
 };
 
 export const Cluster = {
+    $type: 'yandex.cloud.mdb.greenplum.v1.Cluster' as const,
+
     encode(
         message: Cluster,
         writer: _m0.Writer = _m0.Writer.create()
@@ -350,7 +359,11 @@ export const Cluster = {
         }
         Object.entries(message.labels).forEach(([key, value]) => {
             Cluster_LabelsEntry.encode(
-                { key: key as any, value },
+                {
+                    $type: 'yandex.cloud.mdb.greenplum.v1.Cluster.LabelsEntry',
+                    key: key as any,
+                    value,
+                },
                 writer.uint32(58).fork()
             ).ldelim();
         });
@@ -925,9 +938,17 @@ export const Cluster = {
     },
 };
 
-const baseCluster_LabelsEntry: object = { key: '', value: '' };
+messageTypeRegistry.set(Cluster.$type, Cluster);
+
+const baseCluster_LabelsEntry: object = {
+    $type: 'yandex.cloud.mdb.greenplum.v1.Cluster.LabelsEntry',
+    key: '',
+    value: '',
+};
 
 export const Cluster_LabelsEntry = {
+    $type: 'yandex.cloud.mdb.greenplum.v1.Cluster.LabelsEntry' as const,
+
     encode(
         message: Cluster_LabelsEntry,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1004,9 +1025,18 @@ export const Cluster_LabelsEntry = {
     },
 };
 
-const baseMonitoring: object = { name: '', description: '', link: '' };
+messageTypeRegistry.set(Cluster_LabelsEntry.$type, Cluster_LabelsEntry);
+
+const baseMonitoring: object = {
+    $type: 'yandex.cloud.mdb.greenplum.v1.Monitoring',
+    name: '',
+    description: '',
+    link: '',
+};
 
 export const Monitoring = {
+    $type: 'yandex.cloud.mdb.greenplum.v1.Monitoring' as const,
+
     encode(
         message: Monitoring,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1098,7 +1128,10 @@ export const Monitoring = {
     },
 };
 
+messageTypeRegistry.set(Monitoring.$type, Monitoring);
+
 const baseGreenplumConfig: object = {
+    $type: 'yandex.cloud.mdb.greenplum.v1.GreenplumConfig',
     version: '',
     zoneId: '',
     subnetId: '',
@@ -1106,6 +1139,8 @@ const baseGreenplumConfig: object = {
 };
 
 export const GreenplumConfig = {
+    $type: 'yandex.cloud.mdb.greenplum.v1.GreenplumConfig' as const,
+
     encode(
         message: GreenplumConfig,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1276,9 +1311,17 @@ export const GreenplumConfig = {
     },
 };
 
-const baseAccess: object = { dataLens: false, webSql: false };
+messageTypeRegistry.set(GreenplumConfig.$type, GreenplumConfig);
+
+const baseAccess: object = {
+    $type: 'yandex.cloud.mdb.greenplum.v1.Access',
+    dataLens: false,
+    webSql: false,
+};
 
 export const Access = {
+    $type: 'yandex.cloud.mdb.greenplum.v1.Access' as const,
+
     encode(
         message: Access,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1352,6 +1395,8 @@ export const Access = {
     },
 };
 
+messageTypeRegistry.set(Access.$type, Access);
+
 declare var self: any | undefined;
 declare var window: any | undefined;
 declare var global: any | undefined;
@@ -1378,13 +1423,13 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 function toTimestamp(date: Date): Timestamp {
     const seconds = date.getTime() / 1_000;
     const nanos = (date.getTime() % 1_000) * 1_000_000;
-    return { seconds, nanos };
+    return { $type: 'google.protobuf.Timestamp', seconds, nanos };
 }
 
 function fromTimestamp(t: Timestamp): Date {

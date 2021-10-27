@@ -7,6 +7,7 @@ import { ChannelCredentials, ChannelOptions, UntypedServiceImplementation, handl
 import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.billing.v1";
 export interface GetBillingAccountRequest {
+    $type: 'yandex.cloud.billing.v1.GetBillingAccountRequest';
     /**
      * ID of the billing account to return.
      * To get the billing account ID, use [BillingAccountService.List] request.
@@ -14,6 +15,7 @@ export interface GetBillingAccountRequest {
     id: string;
 }
 export interface ListBillingAccountsRequest {
+    $type: 'yandex.cloud.billing.v1.ListBillingAccountsRequest';
     /**
      * The maximum number of results per page to return. If the number of available
      * results is larger than [page_size],
@@ -29,6 +31,7 @@ export interface ListBillingAccountsRequest {
     pageToken: string;
 }
 export interface ListBillingAccountsResponse {
+    $type: 'yandex.cloud.billing.v1.ListBillingAccountsResponse';
     /** List of billing accounts. */
     billingAccounts: BillingAccount[];
     /**
@@ -42,6 +45,7 @@ export interface ListBillingAccountsResponse {
     nextPageToken: string;
 }
 export interface ListBillableObjectBindingsRequest {
+    $type: 'yandex.cloud.billing.v1.ListBillableObjectBindingsRequest';
     /**
      * ID of the billing account to list associated billable object bindings.
      * To get the billing account ID, use [BillingAccountService.List] request.
@@ -62,6 +66,7 @@ export interface ListBillableObjectBindingsRequest {
     pageToken: string;
 }
 export interface ListBillableObjectBindingsResponse {
+    $type: 'yandex.cloud.billing.v1.ListBillableObjectBindingsResponse';
     /** List of billable object bindings. */
     billableObjectBindings: BillableObjectBinding[];
     /**
@@ -75,6 +80,7 @@ export interface ListBillableObjectBindingsResponse {
     nextPageToken: string;
 }
 export interface BindBillableObjectRequest {
+    $type: 'yandex.cloud.billing.v1.BindBillableObjectRequest';
     /**
      * ID of the billing account to bind billable object.
      * To get the billing account ID, use [BillingAccountService.List] request.
@@ -84,10 +90,12 @@ export interface BindBillableObjectRequest {
     billableObject: BillableObject | undefined;
 }
 export interface BindBillableObjectMetadata {
+    $type: 'yandex.cloud.billing.v1.BindBillableObjectMetadata';
     /** ID of the [yandex.cloud.billing.v1.BillableObject] that was bound to billing account. */
     billableObjectId: string;
 }
 export declare const GetBillingAccountRequest: {
+    $type: "yandex.cloud.billing.v1.GetBillingAccountRequest";
     encode(message: GetBillingAccountRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): GetBillingAccountRequest;
     fromJSON(object: any): GetBillingAccountRequest;
@@ -95,6 +103,7 @@ export declare const GetBillingAccountRequest: {
     fromPartial(object: DeepPartial<GetBillingAccountRequest>): GetBillingAccountRequest;
 };
 export declare const ListBillingAccountsRequest: {
+    $type: "yandex.cloud.billing.v1.ListBillingAccountsRequest";
     encode(message: ListBillingAccountsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListBillingAccountsRequest;
     fromJSON(object: any): ListBillingAccountsRequest;
@@ -102,6 +111,7 @@ export declare const ListBillingAccountsRequest: {
     fromPartial(object: DeepPartial<ListBillingAccountsRequest>): ListBillingAccountsRequest;
 };
 export declare const ListBillingAccountsResponse: {
+    $type: "yandex.cloud.billing.v1.ListBillingAccountsResponse";
     encode(message: ListBillingAccountsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListBillingAccountsResponse;
     fromJSON(object: any): ListBillingAccountsResponse;
@@ -109,6 +119,7 @@ export declare const ListBillingAccountsResponse: {
     fromPartial(object: DeepPartial<ListBillingAccountsResponse>): ListBillingAccountsResponse;
 };
 export declare const ListBillableObjectBindingsRequest: {
+    $type: "yandex.cloud.billing.v1.ListBillableObjectBindingsRequest";
     encode(message: ListBillableObjectBindingsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListBillableObjectBindingsRequest;
     fromJSON(object: any): ListBillableObjectBindingsRequest;
@@ -116,6 +127,7 @@ export declare const ListBillableObjectBindingsRequest: {
     fromPartial(object: DeepPartial<ListBillableObjectBindingsRequest>): ListBillableObjectBindingsRequest;
 };
 export declare const ListBillableObjectBindingsResponse: {
+    $type: "yandex.cloud.billing.v1.ListBillableObjectBindingsResponse";
     encode(message: ListBillableObjectBindingsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListBillableObjectBindingsResponse;
     fromJSON(object: any): ListBillableObjectBindingsResponse;
@@ -123,6 +135,7 @@ export declare const ListBillableObjectBindingsResponse: {
     fromPartial(object: DeepPartial<ListBillableObjectBindingsResponse>): ListBillableObjectBindingsResponse;
 };
 export declare const BindBillableObjectRequest: {
+    $type: "yandex.cloud.billing.v1.BindBillableObjectRequest";
     encode(message: BindBillableObjectRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): BindBillableObjectRequest;
     fromJSON(object: any): BindBillableObjectRequest;
@@ -130,6 +143,7 @@ export declare const BindBillableObjectRequest: {
     fromPartial(object: DeepPartial<BindBillableObjectRequest>): BindBillableObjectRequest;
 };
 export declare const BindBillableObjectMetadata: {
+    $type: "yandex.cloud.billing.v1.BindBillableObjectMetadata";
     encode(message: BindBillableObjectMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): BindBillableObjectMetadata;
     fromJSON(object: any): BindBillableObjectMetadata;
@@ -242,6 +256,6 @@ export interface BillingAccountServiceClient extends Client {
 export declare const BillingAccountServiceClient: new (address: string, credentials: ChannelCredentials, options?: Partial<ChannelOptions> | undefined) => BillingAccountServiceClient;
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

@@ -1,6 +1,7 @@
 /* eslint-disable */
 import { FieldMask } from '../../../../../google/protobuf/field_mask';
 import { Timestamp } from '../../../../../google/protobuf/timestamp';
+import { messageTypeRegistry } from '../../../../../typeRegistry';
 import {
     Cluster_Environment,
     Host_Type,
@@ -35,6 +36,7 @@ import _m0 from 'protobufjs/minimal';
 export const protobufPackage = 'yandex.cloud.mdb.elasticsearch.v1';
 
 export interface GetClusterRequest {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.GetClusterRequest';
     /**
      * ID of the Elasticsearch cluster to return.
      *
@@ -44,6 +46,7 @@ export interface GetClusterRequest {
 }
 
 export interface ListClustersRequest {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.ListClustersRequest';
     /**
      * ID of the folder to list Elasticsearch clusters in.
      *
@@ -74,6 +77,7 @@ export interface ListClustersRequest {
 }
 
 export interface ListClustersResponse {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.ListClustersResponse';
     /** List of Elasticsearch clusters. */
     clusters: Cluster[];
     /**
@@ -87,6 +91,7 @@ export interface ListClustersResponse {
 }
 
 export interface CreateClusterRequest {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.CreateClusterRequest';
     /** ID of the folder to create the Elasticsearch cluster in. */
     folderId: string;
     /** Name of the Elasticsearch cluster. The name must be unique within the folder. */
@@ -118,16 +123,19 @@ export interface CreateClusterRequest {
 }
 
 export interface CreateClusterRequest_LabelsEntry {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.CreateClusterRequest.LabelsEntry';
     key: string;
     value: string;
 }
 
 export interface CreateClusterMetadata {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.CreateClusterMetadata';
     /** ID of the Elasticsearch cluster that is being created. */
     clusterId: string;
 }
 
 export interface UpdateClusterRequest {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.UpdateClusterRequest';
     /**
      * ID of the Elasticsearch cluster to update.
      *
@@ -163,16 +171,19 @@ export interface UpdateClusterRequest {
 }
 
 export interface UpdateClusterRequest_LabelsEntry {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.UpdateClusterRequest.LabelsEntry';
     key: string;
     value: string;
 }
 
 export interface UpdateClusterMetadata {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.UpdateClusterMetadata';
     /** ID of the Elasticsearch cluster that is being updated. */
     clusterId: string;
 }
 
 export interface DeleteClusterRequest {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.DeleteClusterRequest';
     /**
      * ID of the Elasticsearch cluster to delete.
      *
@@ -182,11 +193,13 @@ export interface DeleteClusterRequest {
 }
 
 export interface DeleteClusterMetadata {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.DeleteClusterMetadata';
     /** ID of the Elasticsearch cluster that is being deleted. */
     clusterId: string;
 }
 
 export interface ListClusterLogsRequest {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.ListClusterLogsRequest';
     /**
      * ID of the Elasticsearch cluster to request logs for.
      *
@@ -280,6 +293,7 @@ export function listClusterLogsRequest_ServiceTypeToJSON(
 
 /** A single log record. */
 export interface LogRecord {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.LogRecord';
     /** Log record timestamp. */
     timestamp: Date | undefined;
     /** Contents of the log record. */
@@ -287,11 +301,13 @@ export interface LogRecord {
 }
 
 export interface LogRecord_MessageEntry {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.LogRecord.MessageEntry';
     key: string;
     value: string;
 }
 
 export interface ListClusterLogsResponse {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.ListClusterLogsResponse';
     /** Requested log records. */
     logs: LogRecord[];
     /**
@@ -306,6 +322,7 @@ export interface ListClusterLogsResponse {
 }
 
 export interface StreamLogRecord {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.StreamLogRecord';
     /** One of the requested log records. */
     record: LogRecord | undefined;
     /**
@@ -319,6 +336,7 @@ export interface StreamLogRecord {
 }
 
 export interface StreamClusterLogsRequest {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.StreamClusterLogsRequest';
     /**
      * ID of the Elasticsearch cluster.
      *
@@ -404,6 +422,7 @@ export function streamClusterLogsRequest_ServiceTypeToJSON(
 }
 
 export interface ListClusterOperationsRequest {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.ListClusterOperationsRequest';
     /**
      * ID of the Elasticsearch cluster to list operations for.
      *
@@ -425,6 +444,7 @@ export interface ListClusterOperationsRequest {
 }
 
 export interface ListClusterOperationsResponse {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.ListClusterOperationsResponse';
     /** List of operations for the specified Elasticsearch cluster. */
     operations: Operation[];
     /**
@@ -437,6 +457,7 @@ export interface ListClusterOperationsResponse {
 }
 
 export interface ListClusterHostsRequest {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.ListClusterHostsRequest';
     /**
      * ID of the Elasticsearch cluster.
      *
@@ -458,6 +479,7 @@ export interface ListClusterHostsRequest {
 }
 
 export interface ListClusterHostsResponse {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.ListClusterHostsResponse';
     /** List of hosts. */
     hosts: Host[];
     /**
@@ -470,6 +492,7 @@ export interface ListClusterHostsResponse {
 }
 
 export interface MoveClusterRequest {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.MoveClusterRequest';
     /**
      * ID of the Elasticsearch cluster to move.
      *
@@ -481,6 +504,7 @@ export interface MoveClusterRequest {
 }
 
 export interface MoveClusterMetadata {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.MoveClusterMetadata';
     /** ID of the Elasticsearch cluster being moved. */
     clusterId: string;
     /** ID of the source folder. */
@@ -490,6 +514,7 @@ export interface MoveClusterMetadata {
 }
 
 export interface StartClusterRequest {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.StartClusterRequest';
     /**
      * ID of the Elasticsearch cluster to start.
      *
@@ -499,11 +524,13 @@ export interface StartClusterRequest {
 }
 
 export interface StartClusterMetadata {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.StartClusterMetadata';
     /** ID of the Elasticsearch cluster. */
     clusterId: string;
 }
 
 export interface StopClusterRequest {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.StopClusterRequest';
     /**
      * ID of the Elasticsearch cluster to stop.
      *
@@ -513,11 +540,13 @@ export interface StopClusterRequest {
 }
 
 export interface StopClusterMetadata {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.StopClusterMetadata';
     /** ID of the Elasticsearch cluster. */
     clusterId: string;
 }
 
 export interface HostSpec {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.HostSpec';
     /** ID of the availability zone where the host resides. */
     zoneId: string;
     /** ID of the subnet the host resides in. */
@@ -535,6 +564,7 @@ export interface HostSpec {
 }
 
 export interface ElasticsearchSpec {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.ElasticsearchSpec';
     /** Configuration and resource allocation for Elasticsearch data nodes. */
     dataNode: ElasticsearchSpec_DataNode | undefined;
     /** Configuration and resource allocation for Elasticsearch master nodes. */
@@ -544,17 +574,20 @@ export interface ElasticsearchSpec {
 }
 
 export interface ElasticsearchSpec_DataNode {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.ElasticsearchSpec.DataNode';
     elasticsearchConfig7: ElasticsearchConfig7 | undefined;
     /** Resources allocated to Elasticsearch data nodes. */
     resources: Resources | undefined;
 }
 
 export interface ElasticsearchSpec_MasterNode {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.ElasticsearchSpec.MasterNode';
     /** Resources allocated to Elasticsearch master nodes. */
     resources: Resources | undefined;
 }
 
 export interface ConfigSpec {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.ConfigSpec';
     /** Elasticsearch version. */
     version: string;
     /** Configuration and resource allocation for Elasticsearch nodes. */
@@ -566,6 +599,7 @@ export interface ConfigSpec {
 }
 
 export interface ConfigSpecUpdate {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.ConfigSpecUpdate';
     /** Elasticsearch version. */
     version: string;
     /** Configuration and resource allocation for Elasticsearch nodes. */
@@ -577,6 +611,7 @@ export interface ConfigSpecUpdate {
 }
 
 export interface AddClusterHostsRequest {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.AddClusterHostsRequest';
     /**
      * ID of the Elasticsearch cluster.
      *
@@ -588,6 +623,7 @@ export interface AddClusterHostsRequest {
 }
 
 export interface AddClusterHostsMetadata {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.AddClusterHostsMetadata';
     /** ID of the Elasticsearch cluster. */
     clusterId: string;
     /** Names of the host that are being added. */
@@ -595,6 +631,7 @@ export interface AddClusterHostsMetadata {
 }
 
 export interface DeleteClusterHostsRequest {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.DeleteClusterHostsRequest';
     /**
      * ID of the Elasticsearch cluster.
      *
@@ -606,15 +643,21 @@ export interface DeleteClusterHostsRequest {
 }
 
 export interface DeleteClusterHostsMetadata {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.DeleteClusterHostsMetadata';
     /** ID of the Elasticsearch cluster. */
     clusterId: string;
     /** Names of the hosts that are being deleted. */
     hostNames: string[];
 }
 
-const baseGetClusterRequest: object = { clusterId: '' };
+const baseGetClusterRequest: object = {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.GetClusterRequest',
+    clusterId: '',
+};
 
 export const GetClusterRequest = {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.GetClusterRequest' as const,
+
     encode(
         message: GetClusterRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -671,7 +714,10 @@ export const GetClusterRequest = {
     },
 };
 
+messageTypeRegistry.set(GetClusterRequest.$type, GetClusterRequest);
+
 const baseListClustersRequest: object = {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.ListClustersRequest',
     folderId: '',
     pageSize: 0,
     pageToken: '',
@@ -679,6 +725,8 @@ const baseListClustersRequest: object = {
 };
 
 export const ListClustersRequest = {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.ListClustersRequest' as const,
+
     encode(
         message: ListClustersRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -789,9 +837,16 @@ export const ListClustersRequest = {
     },
 };
 
-const baseListClustersResponse: object = { nextPageToken: '' };
+messageTypeRegistry.set(ListClustersRequest.$type, ListClustersRequest);
+
+const baseListClustersResponse: object = {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.ListClustersResponse',
+    nextPageToken: '',
+};
 
 export const ListClustersResponse = {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.ListClustersResponse' as const,
+
     encode(
         message: ListClustersResponse,
         writer: _m0.Writer = _m0.Writer.create()
@@ -888,7 +943,10 @@ export const ListClustersResponse = {
     },
 };
 
+messageTypeRegistry.set(ListClustersResponse.$type, ListClustersResponse);
+
 const baseCreateClusterRequest: object = {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.CreateClusterRequest',
     folderId: '',
     name: '',
     description: '',
@@ -900,6 +958,8 @@ const baseCreateClusterRequest: object = {
 };
 
 export const CreateClusterRequest = {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.CreateClusterRequest' as const,
+
     encode(
         message: CreateClusterRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -915,7 +975,11 @@ export const CreateClusterRequest = {
         }
         Object.entries(message.labels).forEach(([key, value]) => {
             CreateClusterRequest_LabelsEntry.encode(
-                { key: key as any, value },
+                {
+                    $type: 'yandex.cloud.mdb.elasticsearch.v1.CreateClusterRequest.LabelsEntry',
+                    key: key as any,
+                    value,
+                },
                 writer.uint32(34).fork()
             ).ldelim();
         });
@@ -1229,9 +1293,17 @@ export const CreateClusterRequest = {
     },
 };
 
-const baseCreateClusterRequest_LabelsEntry: object = { key: '', value: '' };
+messageTypeRegistry.set(CreateClusterRequest.$type, CreateClusterRequest);
+
+const baseCreateClusterRequest_LabelsEntry: object = {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.CreateClusterRequest.LabelsEntry',
+    key: '',
+    value: '',
+};
 
 export const CreateClusterRequest_LabelsEntry = {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.CreateClusterRequest.LabelsEntry' as const,
+
     encode(
         message: CreateClusterRequest_LabelsEntry,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1316,9 +1388,19 @@ export const CreateClusterRequest_LabelsEntry = {
     },
 };
 
-const baseCreateClusterMetadata: object = { clusterId: '' };
+messageTypeRegistry.set(
+    CreateClusterRequest_LabelsEntry.$type,
+    CreateClusterRequest_LabelsEntry
+);
+
+const baseCreateClusterMetadata: object = {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.CreateClusterMetadata',
+    clusterId: '',
+};
 
 export const CreateClusterMetadata = {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.CreateClusterMetadata' as const,
+
     encode(
         message: CreateClusterMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1386,7 +1468,10 @@ export const CreateClusterMetadata = {
     },
 };
 
+messageTypeRegistry.set(CreateClusterMetadata.$type, CreateClusterMetadata);
+
 const baseUpdateClusterRequest: object = {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.UpdateClusterRequest',
     clusterId: '',
     description: '',
     name: '',
@@ -1396,6 +1481,8 @@ const baseUpdateClusterRequest: object = {
 };
 
 export const UpdateClusterRequest = {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.UpdateClusterRequest' as const,
+
     encode(
         message: UpdateClusterRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1414,7 +1501,11 @@ export const UpdateClusterRequest = {
         }
         Object.entries(message.labels).forEach(([key, value]) => {
             UpdateClusterRequest_LabelsEntry.encode(
-                { key: key as any, value },
+                {
+                    $type: 'yandex.cloud.mdb.elasticsearch.v1.UpdateClusterRequest.LabelsEntry',
+                    key: key as any,
+                    value,
+                },
                 writer.uint32(34).fork()
             ).ldelim();
         });
@@ -1660,9 +1751,17 @@ export const UpdateClusterRequest = {
     },
 };
 
-const baseUpdateClusterRequest_LabelsEntry: object = { key: '', value: '' };
+messageTypeRegistry.set(UpdateClusterRequest.$type, UpdateClusterRequest);
+
+const baseUpdateClusterRequest_LabelsEntry: object = {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.UpdateClusterRequest.LabelsEntry',
+    key: '',
+    value: '',
+};
 
 export const UpdateClusterRequest_LabelsEntry = {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.UpdateClusterRequest.LabelsEntry' as const,
+
     encode(
         message: UpdateClusterRequest_LabelsEntry,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1747,9 +1846,19 @@ export const UpdateClusterRequest_LabelsEntry = {
     },
 };
 
-const baseUpdateClusterMetadata: object = { clusterId: '' };
+messageTypeRegistry.set(
+    UpdateClusterRequest_LabelsEntry.$type,
+    UpdateClusterRequest_LabelsEntry
+);
+
+const baseUpdateClusterMetadata: object = {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.UpdateClusterMetadata',
+    clusterId: '',
+};
 
 export const UpdateClusterMetadata = {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.UpdateClusterMetadata' as const,
+
     encode(
         message: UpdateClusterMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1817,9 +1926,16 @@ export const UpdateClusterMetadata = {
     },
 };
 
-const baseDeleteClusterRequest: object = { clusterId: '' };
+messageTypeRegistry.set(UpdateClusterMetadata.$type, UpdateClusterMetadata);
+
+const baseDeleteClusterRequest: object = {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.DeleteClusterRequest',
+    clusterId: '',
+};
 
 export const DeleteClusterRequest = {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.DeleteClusterRequest' as const,
+
     encode(
         message: DeleteClusterRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1881,9 +1997,16 @@ export const DeleteClusterRequest = {
     },
 };
 
-const baseDeleteClusterMetadata: object = { clusterId: '' };
+messageTypeRegistry.set(DeleteClusterRequest.$type, DeleteClusterRequest);
+
+const baseDeleteClusterMetadata: object = {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.DeleteClusterMetadata',
+    clusterId: '',
+};
 
 export const DeleteClusterMetadata = {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.DeleteClusterMetadata' as const,
+
     encode(
         message: DeleteClusterMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1951,7 +2074,10 @@ export const DeleteClusterMetadata = {
     },
 };
 
+messageTypeRegistry.set(DeleteClusterMetadata.$type, DeleteClusterMetadata);
+
 const baseListClusterLogsRequest: object = {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.ListClusterLogsRequest',
     clusterId: '',
     columnFilter: '',
     pageSize: 0,
@@ -1962,6 +2088,8 @@ const baseListClusterLogsRequest: object = {
 };
 
 export const ListClusterLogsRequest = {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.ListClusterLogsRequest' as const,
+
     encode(
         message: ListClusterLogsRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2196,9 +2324,15 @@ export const ListClusterLogsRequest = {
     },
 };
 
-const baseLogRecord: object = {};
+messageTypeRegistry.set(ListClusterLogsRequest.$type, ListClusterLogsRequest);
+
+const baseLogRecord: object = {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.LogRecord',
+};
 
 export const LogRecord = {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.LogRecord' as const,
+
     encode(
         message: LogRecord,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2211,7 +2345,11 @@ export const LogRecord = {
         }
         Object.entries(message.message).forEach(([key, value]) => {
             LogRecord_MessageEntry.encode(
-                { key: key as any, value },
+                {
+                    $type: 'yandex.cloud.mdb.elasticsearch.v1.LogRecord.MessageEntry',
+                    key: key as any,
+                    value,
+                },
                 writer.uint32(18).fork()
             ).ldelim();
         });
@@ -2297,9 +2435,17 @@ export const LogRecord = {
     },
 };
 
-const baseLogRecord_MessageEntry: object = { key: '', value: '' };
+messageTypeRegistry.set(LogRecord.$type, LogRecord);
+
+const baseLogRecord_MessageEntry: object = {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.LogRecord.MessageEntry',
+    key: '',
+    value: '',
+};
 
 export const LogRecord_MessageEntry = {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.LogRecord.MessageEntry' as const,
+
     encode(
         message: LogRecord_MessageEntry,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2384,9 +2530,16 @@ export const LogRecord_MessageEntry = {
     },
 };
 
-const baseListClusterLogsResponse: object = { nextPageToken: '' };
+messageTypeRegistry.set(LogRecord_MessageEntry.$type, LogRecord_MessageEntry);
+
+const baseListClusterLogsResponse: object = {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.ListClusterLogsResponse',
+    nextPageToken: '',
+};
 
 export const ListClusterLogsResponse = {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.ListClusterLogsResponse' as const,
+
     encode(
         message: ListClusterLogsResponse,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2489,9 +2642,16 @@ export const ListClusterLogsResponse = {
     },
 };
 
-const baseStreamLogRecord: object = { nextRecordToken: '' };
+messageTypeRegistry.set(ListClusterLogsResponse.$type, ListClusterLogsResponse);
+
+const baseStreamLogRecord: object = {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.StreamLogRecord',
+    nextRecordToken: '',
+};
 
 export const StreamLogRecord = {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.StreamLogRecord' as const,
+
     encode(
         message: StreamLogRecord,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2575,7 +2735,10 @@ export const StreamLogRecord = {
     },
 };
 
+messageTypeRegistry.set(StreamLogRecord.$type, StreamLogRecord);
+
 const baseStreamClusterLogsRequest: object = {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.StreamClusterLogsRequest',
     clusterId: '',
     columnFilter: '',
     recordToken: '',
@@ -2584,6 +2747,8 @@ const baseStreamClusterLogsRequest: object = {
 };
 
 export const StreamClusterLogsRequest = {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.StreamClusterLogsRequest' as const,
+
     encode(
         message: StreamClusterLogsRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2778,13 +2943,21 @@ export const StreamClusterLogsRequest = {
     },
 };
 
+messageTypeRegistry.set(
+    StreamClusterLogsRequest.$type,
+    StreamClusterLogsRequest
+);
+
 const baseListClusterOperationsRequest: object = {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.ListClusterOperationsRequest',
     clusterId: '',
     pageSize: 0,
     pageToken: '',
 };
 
 export const ListClusterOperationsRequest = {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.ListClusterOperationsRequest' as const,
+
     encode(
         message: ListClusterOperationsRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2886,9 +3059,19 @@ export const ListClusterOperationsRequest = {
     },
 };
 
-const baseListClusterOperationsResponse: object = { nextPageToken: '' };
+messageTypeRegistry.set(
+    ListClusterOperationsRequest.$type,
+    ListClusterOperationsRequest
+);
+
+const baseListClusterOperationsResponse: object = {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.ListClusterOperationsResponse',
+    nextPageToken: '',
+};
 
 export const ListClusterOperationsResponse = {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.ListClusterOperationsResponse' as const,
+
     encode(
         message: ListClusterOperationsResponse,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2991,13 +3174,21 @@ export const ListClusterOperationsResponse = {
     },
 };
 
+messageTypeRegistry.set(
+    ListClusterOperationsResponse.$type,
+    ListClusterOperationsResponse
+);
+
 const baseListClusterHostsRequest: object = {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.ListClusterHostsRequest',
     clusterId: '',
     pageSize: 0,
     pageToken: '',
 };
 
 export const ListClusterHostsRequest = {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.ListClusterHostsRequest' as const,
+
     encode(
         message: ListClusterHostsRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -3099,9 +3290,16 @@ export const ListClusterHostsRequest = {
     },
 };
 
-const baseListClusterHostsResponse: object = { nextPageToken: '' };
+messageTypeRegistry.set(ListClusterHostsRequest.$type, ListClusterHostsRequest);
+
+const baseListClusterHostsResponse: object = {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.ListClusterHostsResponse',
+    nextPageToken: '',
+};
 
 export const ListClusterHostsResponse = {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.ListClusterHostsResponse' as const,
+
     encode(
         message: ListClusterHostsResponse,
         writer: _m0.Writer = _m0.Writer.create()
@@ -3202,12 +3400,20 @@ export const ListClusterHostsResponse = {
     },
 };
 
+messageTypeRegistry.set(
+    ListClusterHostsResponse.$type,
+    ListClusterHostsResponse
+);
+
 const baseMoveClusterRequest: object = {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.MoveClusterRequest',
     clusterId: '',
     destinationFolderId: '',
 };
 
 export const MoveClusterRequest = {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.MoveClusterRequest' as const,
+
     encode(
         message: MoveClusterRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -3291,13 +3497,18 @@ export const MoveClusterRequest = {
     },
 };
 
+messageTypeRegistry.set(MoveClusterRequest.$type, MoveClusterRequest);
+
 const baseMoveClusterMetadata: object = {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.MoveClusterMetadata',
     clusterId: '',
     sourceFolderId: '',
     destinationFolderId: '',
 };
 
 export const MoveClusterMetadata = {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.MoveClusterMetadata' as const,
+
     encode(
         message: MoveClusterMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -3405,9 +3616,16 @@ export const MoveClusterMetadata = {
     },
 };
 
-const baseStartClusterRequest: object = { clusterId: '' };
+messageTypeRegistry.set(MoveClusterMetadata.$type, MoveClusterMetadata);
+
+const baseStartClusterRequest: object = {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.StartClusterRequest',
+    clusterId: '',
+};
 
 export const StartClusterRequest = {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.StartClusterRequest' as const,
+
     encode(
         message: StartClusterRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -3467,9 +3685,16 @@ export const StartClusterRequest = {
     },
 };
 
-const baseStartClusterMetadata: object = { clusterId: '' };
+messageTypeRegistry.set(StartClusterRequest.$type, StartClusterRequest);
+
+const baseStartClusterMetadata: object = {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.StartClusterMetadata',
+    clusterId: '',
+};
 
 export const StartClusterMetadata = {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.StartClusterMetadata' as const,
+
     encode(
         message: StartClusterMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -3531,9 +3756,16 @@ export const StartClusterMetadata = {
     },
 };
 
-const baseStopClusterRequest: object = { clusterId: '' };
+messageTypeRegistry.set(StartClusterMetadata.$type, StartClusterMetadata);
+
+const baseStopClusterRequest: object = {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.StopClusterRequest',
+    clusterId: '',
+};
 
 export const StopClusterRequest = {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.StopClusterRequest' as const,
+
     encode(
         message: StopClusterRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -3593,9 +3825,16 @@ export const StopClusterRequest = {
     },
 };
 
-const baseStopClusterMetadata: object = { clusterId: '' };
+messageTypeRegistry.set(StopClusterRequest.$type, StopClusterRequest);
+
+const baseStopClusterMetadata: object = {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.StopClusterMetadata',
+    clusterId: '',
+};
 
 export const StopClusterMetadata = {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.StopClusterMetadata' as const,
+
     encode(
         message: StopClusterMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -3655,7 +3894,10 @@ export const StopClusterMetadata = {
     },
 };
 
+messageTypeRegistry.set(StopClusterMetadata.$type, StopClusterMetadata);
+
 const baseHostSpec: object = {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.HostSpec',
     zoneId: '',
     subnetId: '',
     assignPublicIp: false,
@@ -3664,6 +3906,8 @@ const baseHostSpec: object = {
 };
 
 export const HostSpec = {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.HostSpec' as const,
+
     encode(
         message: HostSpec,
         writer: _m0.Writer = _m0.Writer.create()
@@ -3796,9 +4040,16 @@ export const HostSpec = {
     },
 };
 
-const baseElasticsearchSpec: object = { plugins: '' };
+messageTypeRegistry.set(HostSpec.$type, HostSpec);
+
+const baseElasticsearchSpec: object = {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.ElasticsearchSpec',
+    plugins: '',
+};
 
 export const ElasticsearchSpec = {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.ElasticsearchSpec' as const,
+
     encode(
         message: ElasticsearchSpec,
         writer: _m0.Writer = _m0.Writer.create()
@@ -3922,9 +4173,15 @@ export const ElasticsearchSpec = {
     },
 };
 
-const baseElasticsearchSpec_DataNode: object = {};
+messageTypeRegistry.set(ElasticsearchSpec.$type, ElasticsearchSpec);
+
+const baseElasticsearchSpec_DataNode: object = {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.ElasticsearchSpec.DataNode',
+};
 
 export const ElasticsearchSpec_DataNode = {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.ElasticsearchSpec.DataNode' as const,
+
     encode(
         message: ElasticsearchSpec_DataNode,
         writer: _m0.Writer = _m0.Writer.create()
@@ -4037,9 +4294,18 @@ export const ElasticsearchSpec_DataNode = {
     },
 };
 
-const baseElasticsearchSpec_MasterNode: object = {};
+messageTypeRegistry.set(
+    ElasticsearchSpec_DataNode.$type,
+    ElasticsearchSpec_DataNode
+);
+
+const baseElasticsearchSpec_MasterNode: object = {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.ElasticsearchSpec.MasterNode',
+};
 
 export const ElasticsearchSpec_MasterNode = {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.ElasticsearchSpec.MasterNode' as const,
+
     encode(
         message: ElasticsearchSpec_MasterNode,
         writer: _m0.Writer = _m0.Writer.create()
@@ -4116,9 +4382,21 @@ export const ElasticsearchSpec_MasterNode = {
     },
 };
 
-const baseConfigSpec: object = { version: '', edition: '', adminPassword: '' };
+messageTypeRegistry.set(
+    ElasticsearchSpec_MasterNode.$type,
+    ElasticsearchSpec_MasterNode
+);
+
+const baseConfigSpec: object = {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.ConfigSpec',
+    version: '',
+    edition: '',
+    adminPassword: '',
+};
 
 export const ConfigSpec = {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.ConfigSpec' as const,
+
     encode(
         message: ConfigSpec,
         writer: _m0.Writer = _m0.Writer.create()
@@ -4252,13 +4530,18 @@ export const ConfigSpec = {
     },
 };
 
+messageTypeRegistry.set(ConfigSpec.$type, ConfigSpec);
+
 const baseConfigSpecUpdate: object = {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.ConfigSpecUpdate',
     version: '',
     edition: '',
     adminPassword: '',
 };
 
 export const ConfigSpecUpdate = {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.ConfigSpecUpdate' as const,
+
     encode(
         message: ConfigSpecUpdate,
         writer: _m0.Writer = _m0.Writer.create()
@@ -4392,9 +4675,16 @@ export const ConfigSpecUpdate = {
     },
 };
 
-const baseAddClusterHostsRequest: object = { clusterId: '' };
+messageTypeRegistry.set(ConfigSpecUpdate.$type, ConfigSpecUpdate);
+
+const baseAddClusterHostsRequest: object = {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.AddClusterHostsRequest',
+    clusterId: '',
+};
 
 export const AddClusterHostsRequest = {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.AddClusterHostsRequest' as const,
+
     encode(
         message: AddClusterHostsRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -4490,9 +4780,17 @@ export const AddClusterHostsRequest = {
     },
 };
 
-const baseAddClusterHostsMetadata: object = { clusterId: '', hostNames: '' };
+messageTypeRegistry.set(AddClusterHostsRequest.$type, AddClusterHostsRequest);
+
+const baseAddClusterHostsMetadata: object = {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.AddClusterHostsMetadata',
+    clusterId: '',
+    hostNames: '',
+};
 
 export const AddClusterHostsMetadata = {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.AddClusterHostsMetadata' as const,
+
     encode(
         message: AddClusterHostsMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -4584,9 +4882,17 @@ export const AddClusterHostsMetadata = {
     },
 };
 
-const baseDeleteClusterHostsRequest: object = { clusterId: '', hostNames: '' };
+messageTypeRegistry.set(AddClusterHostsMetadata.$type, AddClusterHostsMetadata);
+
+const baseDeleteClusterHostsRequest: object = {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.DeleteClusterHostsRequest',
+    clusterId: '',
+    hostNames: '',
+};
 
 export const DeleteClusterHostsRequest = {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.DeleteClusterHostsRequest' as const,
+
     encode(
         message: DeleteClusterHostsRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -4678,9 +4984,20 @@ export const DeleteClusterHostsRequest = {
     },
 };
 
-const baseDeleteClusterHostsMetadata: object = { clusterId: '', hostNames: '' };
+messageTypeRegistry.set(
+    DeleteClusterHostsRequest.$type,
+    DeleteClusterHostsRequest
+);
+
+const baseDeleteClusterHostsMetadata: object = {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.DeleteClusterHostsMetadata',
+    clusterId: '',
+    hostNames: '',
+};
 
 export const DeleteClusterHostsMetadata = {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.DeleteClusterHostsMetadata' as const,
+
     encode(
         message: DeleteClusterHostsMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -4771,6 +5088,11 @@ export const DeleteClusterHostsMetadata = {
         return message;
     },
 };
+
+messageTypeRegistry.set(
+    DeleteClusterHostsMetadata.$type,
+    DeleteClusterHostsMetadata
+);
 
 /** A set of methods for managing Elasticsearch clusters. */
 export const ClusterServiceService = {
@@ -5317,13 +5639,13 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 function toTimestamp(date: Date): Timestamp {
     const seconds = date.getTime() / 1_000;
     const nanos = (date.getTime() % 1_000) * 1_000_000;
-    return { seconds, nanos };
+    return { $type: 'google.protobuf.Timestamp', seconds, nanos };
 }
 
 function fromTimestamp(t: Timestamp): Date {

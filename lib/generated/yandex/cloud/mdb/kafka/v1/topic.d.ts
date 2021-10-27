@@ -6,6 +6,7 @@ export declare const protobufPackage = "yandex.cloud.mdb.kafka.v1";
  * For more information, see the [Concepts -> Topics and partitions](/docs/managed-kafka/concepts/topics) section of the documentation.
  */
 export interface Topic {
+    $type: 'yandex.cloud.mdb.kafka.v1.Topic';
     /** Name of the topic. */
     name: string;
     /**
@@ -23,6 +24,7 @@ export interface Topic {
     topicConfig28: Topicconfig28 | undefined;
 }
 export interface TopicSpec {
+    $type: 'yandex.cloud.mdb.kafka.v1.TopicSpec';
     /** Name of the topic. */
     name: string;
     /** The number of the topic's partitions. */
@@ -35,6 +37,7 @@ export interface TopicSpec {
 }
 /** A topic settings for 2.1. */
 export interface Topicconfig21 {
+    $type: 'yandex.cloud.mdb.kafka.v1.TopicConfig2_1';
     /** Retention policy to use on old log messages. */
     cleanupPolicy: Topicconfig21_CleanupPolicy;
     /** The compression type for a given topic. */
@@ -105,6 +108,7 @@ export declare function topicconfig21_CleanupPolicyFromJSON(object: any): Topicc
 export declare function topicconfig21_CleanupPolicyToJSON(object: Topicconfig21_CleanupPolicy): string;
 /** A topic settings for 2.6 */
 export interface Topicconfig26 {
+    $type: 'yandex.cloud.mdb.kafka.v1.TopicConfig2_6';
     /** Retention policy to use on old log messages. */
     cleanupPolicy: Topicconfig26_CleanupPolicy;
     /** The compression type for a given topic. */
@@ -175,6 +179,7 @@ export declare function topicconfig26_CleanupPolicyFromJSON(object: any): Topicc
 export declare function topicconfig26_CleanupPolicyToJSON(object: Topicconfig26_CleanupPolicy): string;
 /** A topic settings for 2.8 */
 export interface Topicconfig28 {
+    $type: 'yandex.cloud.mdb.kafka.v1.TopicConfig2_8';
     /** Retention policy to use on old log messages. */
     cleanupPolicy: Topicconfig28_CleanupPolicy;
     /** The compression type for a given topic. */
@@ -244,6 +249,7 @@ export declare enum Topicconfig28_CleanupPolicy {
 export declare function topicconfig28_CleanupPolicyFromJSON(object: any): Topicconfig28_CleanupPolicy;
 export declare function topicconfig28_CleanupPolicyToJSON(object: Topicconfig28_CleanupPolicy): string;
 export declare const Topic: {
+    $type: "yandex.cloud.mdb.kafka.v1.Topic";
     encode(message: Topic, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Topic;
     fromJSON(object: any): Topic;
@@ -251,6 +257,7 @@ export declare const Topic: {
     fromPartial(object: DeepPartial<Topic>): Topic;
 };
 export declare const TopicSpec: {
+    $type: "yandex.cloud.mdb.kafka.v1.TopicSpec";
     encode(message: TopicSpec, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): TopicSpec;
     fromJSON(object: any): TopicSpec;
@@ -258,6 +265,7 @@ export declare const TopicSpec: {
     fromPartial(object: DeepPartial<TopicSpec>): TopicSpec;
 };
 export declare const Topicconfig21: {
+    $type: "yandex.cloud.mdb.kafka.v1.TopicConfig2_1";
     encode(message: Topicconfig21, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Topicconfig21;
     fromJSON(object: any): Topicconfig21;
@@ -265,6 +273,7 @@ export declare const Topicconfig21: {
     fromPartial(object: DeepPartial<Topicconfig21>): Topicconfig21;
 };
 export declare const Topicconfig26: {
+    $type: "yandex.cloud.mdb.kafka.v1.TopicConfig2_6";
     encode(message: Topicconfig26, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Topicconfig26;
     fromJSON(object: any): Topicconfig26;
@@ -272,6 +281,7 @@ export declare const Topicconfig26: {
     fromPartial(object: DeepPartial<Topicconfig26>): Topicconfig26;
 };
 export declare const Topicconfig28: {
+    $type: "yandex.cloud.mdb.kafka.v1.TopicConfig2_8";
     encode(message: Topicconfig28, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Topicconfig28;
     fromJSON(object: any): Topicconfig28;
@@ -280,6 +290,6 @@ export declare const Topicconfig28: {
 };
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

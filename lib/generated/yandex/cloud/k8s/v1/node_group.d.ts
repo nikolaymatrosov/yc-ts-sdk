@@ -4,6 +4,7 @@ import { VersionInfo } from '../../../../yandex/cloud/k8s/v1/version';
 import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.k8s.v1";
 export interface NodeGroup {
+    $type: 'yandex.cloud.k8s.v1.NodeGroup';
     /** ID of the node group. */
     id: string;
     /** ID of the cluster that the node group belongs to. */
@@ -72,24 +73,29 @@ export declare enum NodeGroup_Status {
 export declare function nodeGroup_StatusFromJSON(object: any): NodeGroup_Status;
 export declare function nodeGroup_StatusToJSON(object: NodeGroup_Status): string;
 export interface NodeGroup_LabelsEntry {
+    $type: 'yandex.cloud.k8s.v1.NodeGroup.LabelsEntry';
     key: string;
     value: string;
 }
 export interface NodeGroup_NodeLabelsEntry {
+    $type: 'yandex.cloud.k8s.v1.NodeGroup.NodeLabelsEntry';
     key: string;
     value: string;
 }
 export interface ScalePolicy {
+    $type: 'yandex.cloud.k8s.v1.ScalePolicy';
     /** Fixed scale policy of the node group. */
     fixedScale: ScalePolicy_FixedScale | undefined;
     /** Auto scale policy of the node group. */
     autoScale: ScalePolicy_AutoScale | undefined;
 }
 export interface ScalePolicy_FixedScale {
+    $type: 'yandex.cloud.k8s.v1.ScalePolicy.FixedScale';
     /** Number of nodes in the node group. */
     size: number;
 }
 export interface ScalePolicy_AutoScale {
+    $type: 'yandex.cloud.k8s.v1.ScalePolicy.AutoScale';
     /** Minimum number of nodes in the node group. */
     minSize: number;
     /** Maximum number of nodes in the node group. */
@@ -98,16 +104,19 @@ export interface ScalePolicy_AutoScale {
     initialSize: number;
 }
 export interface NodeGroupAllocationPolicy {
+    $type: 'yandex.cloud.k8s.v1.NodeGroupAllocationPolicy';
     /** List of locations where resources for the node group will be allocated. */
     locations: NodeGroupLocation[];
 }
 export interface NodeGroupLocation {
+    $type: 'yandex.cloud.k8s.v1.NodeGroupLocation';
     /** ID of the availability zone where the nodes may reside. */
     zoneId: string;
     /** ID of the subnet. If a network chosen for the Kubernetes cluster has only one subnet in the specified zone, subnet ID may be omitted. */
     subnetId: string;
 }
 export interface NodeGroupMaintenancePolicy {
+    $type: 'yandex.cloud.k8s.v1.NodeGroupMaintenancePolicy';
     /**
      * If set to true, automatic updates are installed in the specified period of time with no interaction from the user.
      * If set to false, automatic upgrades are disabled.
@@ -122,6 +131,7 @@ export interface NodeGroupMaintenancePolicy {
     maintenanceWindow: MaintenanceWindow | undefined;
 }
 export interface DeployPolicy {
+    $type: 'yandex.cloud.k8s.v1.DeployPolicy';
     /**
      * The maximum number of running instances that can be taken offline (i.e.,
      * stopped or deleted) at the same time during the update process.
@@ -138,6 +148,7 @@ export interface DeployPolicy {
     maxExpansion: number;
 }
 export declare const NodeGroup: {
+    $type: "yandex.cloud.k8s.v1.NodeGroup";
     encode(message: NodeGroup, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): NodeGroup;
     fromJSON(object: any): NodeGroup;
@@ -145,6 +156,7 @@ export declare const NodeGroup: {
     fromPartial(object: DeepPartial<NodeGroup>): NodeGroup;
 };
 export declare const NodeGroup_LabelsEntry: {
+    $type: "yandex.cloud.k8s.v1.NodeGroup.LabelsEntry";
     encode(message: NodeGroup_LabelsEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): NodeGroup_LabelsEntry;
     fromJSON(object: any): NodeGroup_LabelsEntry;
@@ -152,6 +164,7 @@ export declare const NodeGroup_LabelsEntry: {
     fromPartial(object: DeepPartial<NodeGroup_LabelsEntry>): NodeGroup_LabelsEntry;
 };
 export declare const NodeGroup_NodeLabelsEntry: {
+    $type: "yandex.cloud.k8s.v1.NodeGroup.NodeLabelsEntry";
     encode(message: NodeGroup_NodeLabelsEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): NodeGroup_NodeLabelsEntry;
     fromJSON(object: any): NodeGroup_NodeLabelsEntry;
@@ -159,6 +172,7 @@ export declare const NodeGroup_NodeLabelsEntry: {
     fromPartial(object: DeepPartial<NodeGroup_NodeLabelsEntry>): NodeGroup_NodeLabelsEntry;
 };
 export declare const ScalePolicy: {
+    $type: "yandex.cloud.k8s.v1.ScalePolicy";
     encode(message: ScalePolicy, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ScalePolicy;
     fromJSON(object: any): ScalePolicy;
@@ -166,6 +180,7 @@ export declare const ScalePolicy: {
     fromPartial(object: DeepPartial<ScalePolicy>): ScalePolicy;
 };
 export declare const ScalePolicy_FixedScale: {
+    $type: "yandex.cloud.k8s.v1.ScalePolicy.FixedScale";
     encode(message: ScalePolicy_FixedScale, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ScalePolicy_FixedScale;
     fromJSON(object: any): ScalePolicy_FixedScale;
@@ -173,6 +188,7 @@ export declare const ScalePolicy_FixedScale: {
     fromPartial(object: DeepPartial<ScalePolicy_FixedScale>): ScalePolicy_FixedScale;
 };
 export declare const ScalePolicy_AutoScale: {
+    $type: "yandex.cloud.k8s.v1.ScalePolicy.AutoScale";
     encode(message: ScalePolicy_AutoScale, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ScalePolicy_AutoScale;
     fromJSON(object: any): ScalePolicy_AutoScale;
@@ -180,6 +196,7 @@ export declare const ScalePolicy_AutoScale: {
     fromPartial(object: DeepPartial<ScalePolicy_AutoScale>): ScalePolicy_AutoScale;
 };
 export declare const NodeGroupAllocationPolicy: {
+    $type: "yandex.cloud.k8s.v1.NodeGroupAllocationPolicy";
     encode(message: NodeGroupAllocationPolicy, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): NodeGroupAllocationPolicy;
     fromJSON(object: any): NodeGroupAllocationPolicy;
@@ -187,6 +204,7 @@ export declare const NodeGroupAllocationPolicy: {
     fromPartial(object: DeepPartial<NodeGroupAllocationPolicy>): NodeGroupAllocationPolicy;
 };
 export declare const NodeGroupLocation: {
+    $type: "yandex.cloud.k8s.v1.NodeGroupLocation";
     encode(message: NodeGroupLocation, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): NodeGroupLocation;
     fromJSON(object: any): NodeGroupLocation;
@@ -194,6 +212,7 @@ export declare const NodeGroupLocation: {
     fromPartial(object: DeepPartial<NodeGroupLocation>): NodeGroupLocation;
 };
 export declare const NodeGroupMaintenancePolicy: {
+    $type: "yandex.cloud.k8s.v1.NodeGroupMaintenancePolicy";
     encode(message: NodeGroupMaintenancePolicy, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): NodeGroupMaintenancePolicy;
     fromJSON(object: any): NodeGroupMaintenancePolicy;
@@ -201,6 +220,7 @@ export declare const NodeGroupMaintenancePolicy: {
     fromPartial(object: DeepPartial<NodeGroupMaintenancePolicy>): NodeGroupMaintenancePolicy;
 };
 export declare const DeployPolicy: {
+    $type: "yandex.cloud.k8s.v1.DeployPolicy";
     encode(message: DeployPolicy, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeployPolicy;
     fromJSON(object: any): DeployPolicy;
@@ -209,6 +229,6 @@ export declare const DeployPolicy: {
 };
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

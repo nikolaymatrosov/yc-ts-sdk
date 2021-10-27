@@ -5,6 +5,7 @@ import { ChannelCredentials, ChannelOptions, UntypedServiceImplementation, handl
 import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.containerregistry.v1";
 export interface ListImagesRequest {
+    $type: 'yandex.cloud.containerregistry.v1.ListImagesRequest';
     /**
      * ID of the registry to list Docker images in.
      *
@@ -51,6 +52,7 @@ export interface ListImagesRequest {
     orderBy: string;
 }
 export interface ListImagesResponse {
+    $type: 'yandex.cloud.containerregistry.v1.ListImagesResponse';
     /** List of Image resources. */
     images: Image[];
     /**
@@ -64,6 +66,7 @@ export interface ListImagesResponse {
     nextPageToken: string;
 }
 export interface GetImageRequest {
+    $type: 'yandex.cloud.containerregistry.v1.GetImageRequest';
     /**
      * ID of the Docker image resource to return.
      *
@@ -72,6 +75,7 @@ export interface GetImageRequest {
     imageId: string;
 }
 export interface DeleteImageRequest {
+    $type: 'yandex.cloud.containerregistry.v1.DeleteImageRequest';
     /**
      * ID of the Docker image to delete.
      *
@@ -80,10 +84,12 @@ export interface DeleteImageRequest {
     imageId: string;
 }
 export interface DeleteImageMetadata {
+    $type: 'yandex.cloud.containerregistry.v1.DeleteImageMetadata';
     /** ID of the Docker image that is being deleted. */
     imageId: string;
 }
 export declare const ListImagesRequest: {
+    $type: "yandex.cloud.containerregistry.v1.ListImagesRequest";
     encode(message: ListImagesRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListImagesRequest;
     fromJSON(object: any): ListImagesRequest;
@@ -91,6 +97,7 @@ export declare const ListImagesRequest: {
     fromPartial(object: DeepPartial<ListImagesRequest>): ListImagesRequest;
 };
 export declare const ListImagesResponse: {
+    $type: "yandex.cloud.containerregistry.v1.ListImagesResponse";
     encode(message: ListImagesResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListImagesResponse;
     fromJSON(object: any): ListImagesResponse;
@@ -98,6 +105,7 @@ export declare const ListImagesResponse: {
     fromPartial(object: DeepPartial<ListImagesResponse>): ListImagesResponse;
 };
 export declare const GetImageRequest: {
+    $type: "yandex.cloud.containerregistry.v1.GetImageRequest";
     encode(message: GetImageRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): GetImageRequest;
     fromJSON(object: any): GetImageRequest;
@@ -105,6 +113,7 @@ export declare const GetImageRequest: {
     fromPartial(object: DeepPartial<GetImageRequest>): GetImageRequest;
 };
 export declare const DeleteImageRequest: {
+    $type: "yandex.cloud.containerregistry.v1.DeleteImageRequest";
     encode(message: DeleteImageRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteImageRequest;
     fromJSON(object: any): DeleteImageRequest;
@@ -112,6 +121,7 @@ export declare const DeleteImageRequest: {
     fromPartial(object: DeepPartial<DeleteImageRequest>): DeleteImageRequest;
 };
 export declare const DeleteImageMetadata: {
+    $type: "yandex.cloud.containerregistry.v1.DeleteImageMetadata";
     encode(message: DeleteImageMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteImageMetadata;
     fromJSON(object: any): DeleteImageMetadata;
@@ -188,6 +198,6 @@ export interface ImageServiceClient extends Client {
 export declare const ImageServiceClient: new (address: string, credentials: ChannelCredentials, options?: Partial<ChannelOptions> | undefined) => ImageServiceClient;
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

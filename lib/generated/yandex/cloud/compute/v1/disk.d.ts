@@ -2,6 +2,7 @@ import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.compute.v1";
 /** A Disk resource. For more information, see [Disks](/docs/compute/concepts/disk). */
 export interface Disk {
+    $type: 'yandex.cloud.compute.v1.Disk';
     /** ID of the disk. */
     id: string;
     /** ID of the folder that the disk belongs to. */
@@ -60,14 +61,17 @@ export declare enum Disk_Status {
 export declare function disk_StatusFromJSON(object: any): Disk_Status;
 export declare function disk_StatusToJSON(object: Disk_Status): string;
 export interface Disk_LabelsEntry {
+    $type: 'yandex.cloud.compute.v1.Disk.LabelsEntry';
     key: string;
     value: string;
 }
 export interface DiskPlacementPolicy {
+    $type: 'yandex.cloud.compute.v1.DiskPlacementPolicy';
     /** Placement group ID. */
     placementGroupId: string;
 }
 export declare const Disk: {
+    $type: "yandex.cloud.compute.v1.Disk";
     encode(message: Disk, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Disk;
     fromJSON(object: any): Disk;
@@ -75,6 +79,7 @@ export declare const Disk: {
     fromPartial(object: DeepPartial<Disk>): Disk;
 };
 export declare const Disk_LabelsEntry: {
+    $type: "yandex.cloud.compute.v1.Disk.LabelsEntry";
     encode(message: Disk_LabelsEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Disk_LabelsEntry;
     fromJSON(object: any): Disk_LabelsEntry;
@@ -82,6 +87,7 @@ export declare const Disk_LabelsEntry: {
     fromPartial(object: DeepPartial<Disk_LabelsEntry>): Disk_LabelsEntry;
 };
 export declare const DiskPlacementPolicy: {
+    $type: "yandex.cloud.compute.v1.DiskPlacementPolicy";
     encode(message: DiskPlacementPolicy, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DiskPlacementPolicy;
     fromJSON(object: any): DiskPlacementPolicy;
@@ -90,6 +96,6 @@ export declare const DiskPlacementPolicy: {
 };
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

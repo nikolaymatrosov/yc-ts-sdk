@@ -1,6 +1,7 @@
 import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.reference";
 export interface Reference {
+    $type: 'yandex.cloud.reference.Reference';
     referrer: Referrer | undefined;
     type: Reference_Type;
 }
@@ -13,6 +14,7 @@ export declare enum Reference_Type {
 export declare function reference_TypeFromJSON(object: any): Reference_Type;
 export declare function reference_TypeToJSON(object: Reference_Type): string;
 export interface Referrer {
+    $type: 'yandex.cloud.reference.Referrer';
     /**
      * `type = compute.instance, id = <instance id>`
      * * `type = compute.instanceGroup, id = <instanceGroup id>`
@@ -24,6 +26,7 @@ export interface Referrer {
     id: string;
 }
 export declare const Reference: {
+    $type: "yandex.cloud.reference.Reference";
     encode(message: Reference, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Reference;
     fromJSON(object: any): Reference;
@@ -31,6 +34,7 @@ export declare const Reference: {
     fromPartial(object: DeepPartial<Reference>): Reference;
 };
 export declare const Referrer: {
+    $type: "yandex.cloud.reference.Referrer";
     encode(message: Referrer, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Referrer;
     fromJSON(object: any): Referrer;
@@ -39,6 +43,6 @@ export declare const Referrer: {
 };
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

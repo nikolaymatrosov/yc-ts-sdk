@@ -6,6 +6,7 @@ import { ChannelCredentials, ChannelOptions, UntypedServiceImplementation, handl
 import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.iot.devices.v1";
 export interface GetRegistryRequest {
+    $type: 'yandex.cloud.iot.devices.v1.GetRegistryRequest';
     /**
      * ID of the registry to return.
      *
@@ -14,6 +15,7 @@ export interface GetRegistryRequest {
     registryId: string;
 }
 export interface GetByNameRegistryRequest {
+    $type: 'yandex.cloud.iot.devices.v1.GetByNameRegistryRequest';
     /**
      * ID of the folder to list registries in.
      *
@@ -28,6 +30,7 @@ export interface GetByNameRegistryRequest {
     registryName: string;
 }
 export interface ListRegistriesRequest {
+    $type: 'yandex.cloud.iot.devices.v1.ListRegistriesRequest';
     /**
      * ID of the folder to list registries in.
      *
@@ -48,6 +51,7 @@ export interface ListRegistriesRequest {
     pageToken: string;
 }
 export interface ListRegistriesResponse {
+    $type: 'yandex.cloud.iot.devices.v1.ListRegistriesResponse';
     /** List of registries. */
     registries: Registry[];
     /**
@@ -60,6 +64,7 @@ export interface ListRegistriesResponse {
     nextPageToken: string;
 }
 export interface CreateRegistryRequest {
+    $type: 'yandex.cloud.iot.devices.v1.CreateRegistryRequest';
     /**
      * ID of the folder to create a registry in.
      *
@@ -84,19 +89,23 @@ export interface CreateRegistryRequest {
     password: string;
 }
 export interface CreateRegistryRequest_LabelsEntry {
+    $type: 'yandex.cloud.iot.devices.v1.CreateRegistryRequest.LabelsEntry';
     key: string;
     value: string;
 }
 /** Specification of a registry certificate. */
 export interface CreateRegistryRequest_Certificate {
+    $type: 'yandex.cloud.iot.devices.v1.CreateRegistryRequest.Certificate';
     /** Public part of the registry certificate. */
     certificateData: string;
 }
 export interface CreateRegistryMetadata {
+    $type: 'yandex.cloud.iot.devices.v1.CreateRegistryMetadata';
     /** ID of the registry that is being created. */
     registryId: string;
 }
 export interface UpdateRegistryRequest {
+    $type: 'yandex.cloud.iot.devices.v1.UpdateRegistryRequest';
     /**
      * ID of the registry to update.
      *
@@ -119,14 +128,17 @@ export interface UpdateRegistryRequest {
     };
 }
 export interface UpdateRegistryRequest_LabelsEntry {
+    $type: 'yandex.cloud.iot.devices.v1.UpdateRegistryRequest.LabelsEntry';
     key: string;
     value: string;
 }
 export interface UpdateRegistryMetadata {
+    $type: 'yandex.cloud.iot.devices.v1.UpdateRegistryMetadata';
     /** ID of the registry that is being updated. */
     registryId: string;
 }
 export interface DeleteRegistryRequest {
+    $type: 'yandex.cloud.iot.devices.v1.DeleteRegistryRequest';
     /**
      * ID of the registry to delete.
      *
@@ -135,18 +147,22 @@ export interface DeleteRegistryRequest {
     registryId: string;
 }
 export interface DeleteRegistryMetadata {
+    $type: 'yandex.cloud.iot.devices.v1.DeleteRegistryMetadata';
     /** ID of the registry that is being deleted. */
     registryId: string;
 }
 export interface ListRegistryCertificatesRequest {
+    $type: 'yandex.cloud.iot.devices.v1.ListRegistryCertificatesRequest';
     /** ID of the registry to list certificates for. */
     registryId: string;
 }
 export interface ListRegistryCertificatesResponse {
+    $type: 'yandex.cloud.iot.devices.v1.ListRegistryCertificatesResponse';
     /** List of certificates for the specified registry. */
     certificates: RegistryCertificate[];
 }
 export interface AddRegistryCertificateRequest {
+    $type: 'yandex.cloud.iot.devices.v1.AddRegistryCertificateRequest';
     /**
      * ID of the registry for which the certificate is being added.
      *
@@ -157,12 +173,14 @@ export interface AddRegistryCertificateRequest {
     certificateData: string;
 }
 export interface AddRegistryCertificateMetadata {
+    $type: 'yandex.cloud.iot.devices.v1.AddRegistryCertificateMetadata';
     /** ID of the registry certificate that is being added. */
     registryId: string;
     /** Fingerprint of the certificate that is being added. */
     fingerprint: string;
 }
 export interface DeleteRegistryCertificateRequest {
+    $type: 'yandex.cloud.iot.devices.v1.DeleteRegistryCertificateRequest';
     /**
      * ID of the registry to delete a certificate for.
      *
@@ -173,12 +191,14 @@ export interface DeleteRegistryCertificateRequest {
     fingerprint: string;
 }
 export interface DeleteRegistryCertificateMetadata {
+    $type: 'yandex.cloud.iot.devices.v1.DeleteRegistryCertificateMetadata';
     /** ID of a registry for which the certificate is being delete. */
     registryId: string;
     /** Fingerprint of the certificate to deleted. */
     fingerprint: string;
 }
 export interface ListRegistryPasswordsRequest {
+    $type: 'yandex.cloud.iot.devices.v1.ListRegistryPasswordsRequest';
     /**
      * ID of the registry to list passwords in.
      *
@@ -187,10 +207,12 @@ export interface ListRegistryPasswordsRequest {
     registryId: string;
 }
 export interface ListRegistryPasswordsResponse {
+    $type: 'yandex.cloud.iot.devices.v1.ListRegistryPasswordsResponse';
     /** List of passwords for the specified registry. */
     passwords: RegistryPassword[];
 }
 export interface AddRegistryPasswordRequest {
+    $type: 'yandex.cloud.iot.devices.v1.AddRegistryPasswordRequest';
     /**
      * ID of the registry to add a password for.
      *
@@ -205,12 +227,14 @@ export interface AddRegistryPasswordRequest {
     password: string;
 }
 export interface AddRegistryPasswordMetadata {
+    $type: 'yandex.cloud.iot.devices.v1.AddRegistryPasswordMetadata';
     /** ID of the registry for which the password is being added. */
     registryId: string;
     /** ID of a password that is being added. */
     passwordId: string;
 }
 export interface DeleteRegistryPasswordRequest {
+    $type: 'yandex.cloud.iot.devices.v1.DeleteRegistryPasswordRequest';
     /**
      * ID of the registry to delete a password for.
      *
@@ -225,6 +249,7 @@ export interface DeleteRegistryPasswordRequest {
     passwordId: string;
 }
 export interface DeleteRegistryPasswordMetadata {
+    $type: 'yandex.cloud.iot.devices.v1.DeleteRegistryPasswordMetadata';
     /** ID of a registry for which the password is being delete. */
     registryId: string;
     /**
@@ -235,6 +260,7 @@ export interface DeleteRegistryPasswordMetadata {
     passwordId: string;
 }
 export interface ListDeviceTopicAliasesRequest {
+    $type: 'yandex.cloud.iot.devices.v1.ListDeviceTopicAliasesRequest';
     /**
      * ID of the registry to list aliases for device topic.
      *
@@ -255,6 +281,7 @@ export interface ListDeviceTopicAliasesRequest {
     pageToken: string;
 }
 export interface ListDeviceTopicAliasesResponse {
+    $type: 'yandex.cloud.iot.devices.v1.ListDeviceTopicAliasesResponse';
     /** List of device aliases for the specified registry. */
     aliases: DeviceAlias[];
     /**
@@ -267,6 +294,7 @@ export interface ListDeviceTopicAliasesResponse {
     nextPageToken: string;
 }
 export interface ListRegistryOperationsRequest {
+    $type: 'yandex.cloud.iot.devices.v1.ListRegistryOperationsRequest';
     /** ID of the registry to list operations for. */
     registryId: string;
     /**
@@ -288,6 +316,7 @@ export interface ListRegistryOperationsRequest {
     filter: string;
 }
 export interface ListRegistryOperationsResponse {
+    $type: 'yandex.cloud.iot.devices.v1.ListRegistryOperationsResponse';
     /** List of operations for the specified registry. */
     operations: Operation[];
     /**
@@ -300,6 +329,7 @@ export interface ListRegistryOperationsResponse {
     nextPageToken: string;
 }
 export declare const GetRegistryRequest: {
+    $type: "yandex.cloud.iot.devices.v1.GetRegistryRequest";
     encode(message: GetRegistryRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): GetRegistryRequest;
     fromJSON(object: any): GetRegistryRequest;
@@ -307,6 +337,7 @@ export declare const GetRegistryRequest: {
     fromPartial(object: DeepPartial<GetRegistryRequest>): GetRegistryRequest;
 };
 export declare const GetByNameRegistryRequest: {
+    $type: "yandex.cloud.iot.devices.v1.GetByNameRegistryRequest";
     encode(message: GetByNameRegistryRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): GetByNameRegistryRequest;
     fromJSON(object: any): GetByNameRegistryRequest;
@@ -314,6 +345,7 @@ export declare const GetByNameRegistryRequest: {
     fromPartial(object: DeepPartial<GetByNameRegistryRequest>): GetByNameRegistryRequest;
 };
 export declare const ListRegistriesRequest: {
+    $type: "yandex.cloud.iot.devices.v1.ListRegistriesRequest";
     encode(message: ListRegistriesRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListRegistriesRequest;
     fromJSON(object: any): ListRegistriesRequest;
@@ -321,6 +353,7 @@ export declare const ListRegistriesRequest: {
     fromPartial(object: DeepPartial<ListRegistriesRequest>): ListRegistriesRequest;
 };
 export declare const ListRegistriesResponse: {
+    $type: "yandex.cloud.iot.devices.v1.ListRegistriesResponse";
     encode(message: ListRegistriesResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListRegistriesResponse;
     fromJSON(object: any): ListRegistriesResponse;
@@ -328,6 +361,7 @@ export declare const ListRegistriesResponse: {
     fromPartial(object: DeepPartial<ListRegistriesResponse>): ListRegistriesResponse;
 };
 export declare const CreateRegistryRequest: {
+    $type: "yandex.cloud.iot.devices.v1.CreateRegistryRequest";
     encode(message: CreateRegistryRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateRegistryRequest;
     fromJSON(object: any): CreateRegistryRequest;
@@ -335,6 +369,7 @@ export declare const CreateRegistryRequest: {
     fromPartial(object: DeepPartial<CreateRegistryRequest>): CreateRegistryRequest;
 };
 export declare const CreateRegistryRequest_LabelsEntry: {
+    $type: "yandex.cloud.iot.devices.v1.CreateRegistryRequest.LabelsEntry";
     encode(message: CreateRegistryRequest_LabelsEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateRegistryRequest_LabelsEntry;
     fromJSON(object: any): CreateRegistryRequest_LabelsEntry;
@@ -342,6 +377,7 @@ export declare const CreateRegistryRequest_LabelsEntry: {
     fromPartial(object: DeepPartial<CreateRegistryRequest_LabelsEntry>): CreateRegistryRequest_LabelsEntry;
 };
 export declare const CreateRegistryRequest_Certificate: {
+    $type: "yandex.cloud.iot.devices.v1.CreateRegistryRequest.Certificate";
     encode(message: CreateRegistryRequest_Certificate, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateRegistryRequest_Certificate;
     fromJSON(object: any): CreateRegistryRequest_Certificate;
@@ -349,6 +385,7 @@ export declare const CreateRegistryRequest_Certificate: {
     fromPartial(object: DeepPartial<CreateRegistryRequest_Certificate>): CreateRegistryRequest_Certificate;
 };
 export declare const CreateRegistryMetadata: {
+    $type: "yandex.cloud.iot.devices.v1.CreateRegistryMetadata";
     encode(message: CreateRegistryMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateRegistryMetadata;
     fromJSON(object: any): CreateRegistryMetadata;
@@ -356,6 +393,7 @@ export declare const CreateRegistryMetadata: {
     fromPartial(object: DeepPartial<CreateRegistryMetadata>): CreateRegistryMetadata;
 };
 export declare const UpdateRegistryRequest: {
+    $type: "yandex.cloud.iot.devices.v1.UpdateRegistryRequest";
     encode(message: UpdateRegistryRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateRegistryRequest;
     fromJSON(object: any): UpdateRegistryRequest;
@@ -363,6 +401,7 @@ export declare const UpdateRegistryRequest: {
     fromPartial(object: DeepPartial<UpdateRegistryRequest>): UpdateRegistryRequest;
 };
 export declare const UpdateRegistryRequest_LabelsEntry: {
+    $type: "yandex.cloud.iot.devices.v1.UpdateRegistryRequest.LabelsEntry";
     encode(message: UpdateRegistryRequest_LabelsEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateRegistryRequest_LabelsEntry;
     fromJSON(object: any): UpdateRegistryRequest_LabelsEntry;
@@ -370,6 +409,7 @@ export declare const UpdateRegistryRequest_LabelsEntry: {
     fromPartial(object: DeepPartial<UpdateRegistryRequest_LabelsEntry>): UpdateRegistryRequest_LabelsEntry;
 };
 export declare const UpdateRegistryMetadata: {
+    $type: "yandex.cloud.iot.devices.v1.UpdateRegistryMetadata";
     encode(message: UpdateRegistryMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateRegistryMetadata;
     fromJSON(object: any): UpdateRegistryMetadata;
@@ -377,6 +417,7 @@ export declare const UpdateRegistryMetadata: {
     fromPartial(object: DeepPartial<UpdateRegistryMetadata>): UpdateRegistryMetadata;
 };
 export declare const DeleteRegistryRequest: {
+    $type: "yandex.cloud.iot.devices.v1.DeleteRegistryRequest";
     encode(message: DeleteRegistryRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteRegistryRequest;
     fromJSON(object: any): DeleteRegistryRequest;
@@ -384,6 +425,7 @@ export declare const DeleteRegistryRequest: {
     fromPartial(object: DeepPartial<DeleteRegistryRequest>): DeleteRegistryRequest;
 };
 export declare const DeleteRegistryMetadata: {
+    $type: "yandex.cloud.iot.devices.v1.DeleteRegistryMetadata";
     encode(message: DeleteRegistryMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteRegistryMetadata;
     fromJSON(object: any): DeleteRegistryMetadata;
@@ -391,6 +433,7 @@ export declare const DeleteRegistryMetadata: {
     fromPartial(object: DeepPartial<DeleteRegistryMetadata>): DeleteRegistryMetadata;
 };
 export declare const ListRegistryCertificatesRequest: {
+    $type: "yandex.cloud.iot.devices.v1.ListRegistryCertificatesRequest";
     encode(message: ListRegistryCertificatesRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListRegistryCertificatesRequest;
     fromJSON(object: any): ListRegistryCertificatesRequest;
@@ -398,6 +441,7 @@ export declare const ListRegistryCertificatesRequest: {
     fromPartial(object: DeepPartial<ListRegistryCertificatesRequest>): ListRegistryCertificatesRequest;
 };
 export declare const ListRegistryCertificatesResponse: {
+    $type: "yandex.cloud.iot.devices.v1.ListRegistryCertificatesResponse";
     encode(message: ListRegistryCertificatesResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListRegistryCertificatesResponse;
     fromJSON(object: any): ListRegistryCertificatesResponse;
@@ -405,6 +449,7 @@ export declare const ListRegistryCertificatesResponse: {
     fromPartial(object: DeepPartial<ListRegistryCertificatesResponse>): ListRegistryCertificatesResponse;
 };
 export declare const AddRegistryCertificateRequest: {
+    $type: "yandex.cloud.iot.devices.v1.AddRegistryCertificateRequest";
     encode(message: AddRegistryCertificateRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): AddRegistryCertificateRequest;
     fromJSON(object: any): AddRegistryCertificateRequest;
@@ -412,6 +457,7 @@ export declare const AddRegistryCertificateRequest: {
     fromPartial(object: DeepPartial<AddRegistryCertificateRequest>): AddRegistryCertificateRequest;
 };
 export declare const AddRegistryCertificateMetadata: {
+    $type: "yandex.cloud.iot.devices.v1.AddRegistryCertificateMetadata";
     encode(message: AddRegistryCertificateMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): AddRegistryCertificateMetadata;
     fromJSON(object: any): AddRegistryCertificateMetadata;
@@ -419,6 +465,7 @@ export declare const AddRegistryCertificateMetadata: {
     fromPartial(object: DeepPartial<AddRegistryCertificateMetadata>): AddRegistryCertificateMetadata;
 };
 export declare const DeleteRegistryCertificateRequest: {
+    $type: "yandex.cloud.iot.devices.v1.DeleteRegistryCertificateRequest";
     encode(message: DeleteRegistryCertificateRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteRegistryCertificateRequest;
     fromJSON(object: any): DeleteRegistryCertificateRequest;
@@ -426,6 +473,7 @@ export declare const DeleteRegistryCertificateRequest: {
     fromPartial(object: DeepPartial<DeleteRegistryCertificateRequest>): DeleteRegistryCertificateRequest;
 };
 export declare const DeleteRegistryCertificateMetadata: {
+    $type: "yandex.cloud.iot.devices.v1.DeleteRegistryCertificateMetadata";
     encode(message: DeleteRegistryCertificateMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteRegistryCertificateMetadata;
     fromJSON(object: any): DeleteRegistryCertificateMetadata;
@@ -433,6 +481,7 @@ export declare const DeleteRegistryCertificateMetadata: {
     fromPartial(object: DeepPartial<DeleteRegistryCertificateMetadata>): DeleteRegistryCertificateMetadata;
 };
 export declare const ListRegistryPasswordsRequest: {
+    $type: "yandex.cloud.iot.devices.v1.ListRegistryPasswordsRequest";
     encode(message: ListRegistryPasswordsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListRegistryPasswordsRequest;
     fromJSON(object: any): ListRegistryPasswordsRequest;
@@ -440,6 +489,7 @@ export declare const ListRegistryPasswordsRequest: {
     fromPartial(object: DeepPartial<ListRegistryPasswordsRequest>): ListRegistryPasswordsRequest;
 };
 export declare const ListRegistryPasswordsResponse: {
+    $type: "yandex.cloud.iot.devices.v1.ListRegistryPasswordsResponse";
     encode(message: ListRegistryPasswordsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListRegistryPasswordsResponse;
     fromJSON(object: any): ListRegistryPasswordsResponse;
@@ -447,6 +497,7 @@ export declare const ListRegistryPasswordsResponse: {
     fromPartial(object: DeepPartial<ListRegistryPasswordsResponse>): ListRegistryPasswordsResponse;
 };
 export declare const AddRegistryPasswordRequest: {
+    $type: "yandex.cloud.iot.devices.v1.AddRegistryPasswordRequest";
     encode(message: AddRegistryPasswordRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): AddRegistryPasswordRequest;
     fromJSON(object: any): AddRegistryPasswordRequest;
@@ -454,6 +505,7 @@ export declare const AddRegistryPasswordRequest: {
     fromPartial(object: DeepPartial<AddRegistryPasswordRequest>): AddRegistryPasswordRequest;
 };
 export declare const AddRegistryPasswordMetadata: {
+    $type: "yandex.cloud.iot.devices.v1.AddRegistryPasswordMetadata";
     encode(message: AddRegistryPasswordMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): AddRegistryPasswordMetadata;
     fromJSON(object: any): AddRegistryPasswordMetadata;
@@ -461,6 +513,7 @@ export declare const AddRegistryPasswordMetadata: {
     fromPartial(object: DeepPartial<AddRegistryPasswordMetadata>): AddRegistryPasswordMetadata;
 };
 export declare const DeleteRegistryPasswordRequest: {
+    $type: "yandex.cloud.iot.devices.v1.DeleteRegistryPasswordRequest";
     encode(message: DeleteRegistryPasswordRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteRegistryPasswordRequest;
     fromJSON(object: any): DeleteRegistryPasswordRequest;
@@ -468,6 +521,7 @@ export declare const DeleteRegistryPasswordRequest: {
     fromPartial(object: DeepPartial<DeleteRegistryPasswordRequest>): DeleteRegistryPasswordRequest;
 };
 export declare const DeleteRegistryPasswordMetadata: {
+    $type: "yandex.cloud.iot.devices.v1.DeleteRegistryPasswordMetadata";
     encode(message: DeleteRegistryPasswordMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteRegistryPasswordMetadata;
     fromJSON(object: any): DeleteRegistryPasswordMetadata;
@@ -475,6 +529,7 @@ export declare const DeleteRegistryPasswordMetadata: {
     fromPartial(object: DeepPartial<DeleteRegistryPasswordMetadata>): DeleteRegistryPasswordMetadata;
 };
 export declare const ListDeviceTopicAliasesRequest: {
+    $type: "yandex.cloud.iot.devices.v1.ListDeviceTopicAliasesRequest";
     encode(message: ListDeviceTopicAliasesRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListDeviceTopicAliasesRequest;
     fromJSON(object: any): ListDeviceTopicAliasesRequest;
@@ -482,6 +537,7 @@ export declare const ListDeviceTopicAliasesRequest: {
     fromPartial(object: DeepPartial<ListDeviceTopicAliasesRequest>): ListDeviceTopicAliasesRequest;
 };
 export declare const ListDeviceTopicAliasesResponse: {
+    $type: "yandex.cloud.iot.devices.v1.ListDeviceTopicAliasesResponse";
     encode(message: ListDeviceTopicAliasesResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListDeviceTopicAliasesResponse;
     fromJSON(object: any): ListDeviceTopicAliasesResponse;
@@ -489,6 +545,7 @@ export declare const ListDeviceTopicAliasesResponse: {
     fromPartial(object: DeepPartial<ListDeviceTopicAliasesResponse>): ListDeviceTopicAliasesResponse;
 };
 export declare const ListRegistryOperationsRequest: {
+    $type: "yandex.cloud.iot.devices.v1.ListRegistryOperationsRequest";
     encode(message: ListRegistryOperationsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListRegistryOperationsRequest;
     fromJSON(object: any): ListRegistryOperationsRequest;
@@ -496,6 +553,7 @@ export declare const ListRegistryOperationsRequest: {
     fromPartial(object: DeepPartial<ListRegistryOperationsRequest>): ListRegistryOperationsRequest;
 };
 export declare const ListRegistryOperationsResponse: {
+    $type: "yandex.cloud.iot.devices.v1.ListRegistryOperationsResponse";
     encode(message: ListRegistryOperationsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListRegistryOperationsResponse;
     fromJSON(object: any): ListRegistryOperationsResponse;
@@ -745,6 +803,6 @@ export interface RegistryServiceClient extends Client {
 export declare const RegistryServiceClient: new (address: string, credentials: ChannelCredentials, options?: Partial<ChannelOptions> | undefined) => RegistryServiceClient;
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

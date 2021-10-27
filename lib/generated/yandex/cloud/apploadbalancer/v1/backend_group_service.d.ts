@@ -6,6 +6,7 @@ import { ChannelCredentials, ChannelOptions, UntypedServiceImplementation, handl
 import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.apploadbalancer.v1";
 export interface GetBackendGroupRequest {
+    $type: 'yandex.cloud.apploadbalancer.v1.GetBackendGroupRequest';
     /**
      * ID of the backend group to return.
      *
@@ -14,6 +15,7 @@ export interface GetBackendGroupRequest {
     backendGroupId: string;
 }
 export interface ListBackendGroupsRequest {
+    $type: 'yandex.cloud.apploadbalancer.v1.ListBackendGroupsRequest';
     /**
      * ID of the folder to list backend groups in.
      *
@@ -44,6 +46,7 @@ export interface ListBackendGroupsRequest {
     filter: string;
 }
 export interface ListBackendGroupsResponse {
+    $type: 'yandex.cloud.apploadbalancer.v1.ListBackendGroupsResponse';
     /** List of backend groups in the specified folder. */
     backendGroups: BackendGroup[];
     /**
@@ -56,6 +59,7 @@ export interface ListBackendGroupsResponse {
     nextPageToken: string;
 }
 export interface DeleteBackendGroupRequest {
+    $type: 'yandex.cloud.apploadbalancer.v1.DeleteBackendGroupRequest';
     /**
      * ID of the backend group to delete.
      *
@@ -64,10 +68,12 @@ export interface DeleteBackendGroupRequest {
     backendGroupId: string;
 }
 export interface DeleteBackendGroupMetadata {
+    $type: 'yandex.cloud.apploadbalancer.v1.DeleteBackendGroupMetadata';
     /** ID of the backend group that is being deleted. */
     backendGroupId: string;
 }
 export interface UpdateBackendGroupRequest {
+    $type: 'yandex.cloud.apploadbalancer.v1.UpdateBackendGroupRequest';
     /**
      * ID of the backend group to update.
      *
@@ -102,14 +108,17 @@ export interface UpdateBackendGroupRequest {
     grpc: GrpcBackendGroup | undefined;
 }
 export interface UpdateBackendGroupRequest_LabelsEntry {
+    $type: 'yandex.cloud.apploadbalancer.v1.UpdateBackendGroupRequest.LabelsEntry';
     key: string;
     value: string;
 }
 export interface UpdateBackendGroupMetadata {
+    $type: 'yandex.cloud.apploadbalancer.v1.UpdateBackendGroupMetadata';
     /** ID of the backend group that is being updated. */
     backendGroupId: string;
 }
 export interface CreateBackendGroupRequest {
+    $type: 'yandex.cloud.apploadbalancer.v1.CreateBackendGroupRequest';
     /**
      * ID of the folder to create a backend group in.
      *
@@ -136,14 +145,17 @@ export interface CreateBackendGroupRequest {
     grpc: GrpcBackendGroup | undefined;
 }
 export interface CreateBackendGroupRequest_LabelsEntry {
+    $type: 'yandex.cloud.apploadbalancer.v1.CreateBackendGroupRequest.LabelsEntry';
     key: string;
     value: string;
 }
 export interface CreateBackendGroupMetadata {
+    $type: 'yandex.cloud.apploadbalancer.v1.CreateBackendGroupMetadata';
     /** ID of the backend group that is being created. */
     backendGroupId: string;
 }
 export interface AddBackendRequest {
+    $type: 'yandex.cloud.apploadbalancer.v1.AddBackendRequest';
     /**
      * ID of the backend group to add a backend to.
      *
@@ -156,12 +168,14 @@ export interface AddBackendRequest {
     grpc: GrpcBackend | undefined;
 }
 export interface AddBackendMetadata {
+    $type: 'yandex.cloud.apploadbalancer.v1.AddBackendMetadata';
     /** ID of the backend group that the backend is being added to. */
     backendGroupId: string;
     /** Name of the backend that is being added to the backend group. */
     backendName: string;
 }
 export interface UpdateBackendRequest {
+    $type: 'yandex.cloud.apploadbalancer.v1.UpdateBackendRequest';
     /** ID of the backend group to update the backend in. */
     backendGroupId: string;
     /** Field mask that specifies which attributes of the backend should be updated. */
@@ -172,12 +186,14 @@ export interface UpdateBackendRequest {
     grpc: GrpcBackend | undefined;
 }
 export interface UpdateBackendMetadata {
+    $type: 'yandex.cloud.apploadbalancer.v1.UpdateBackendMetadata';
     /** ID of the backend group that the backend is being updated it. */
     backendGroupId: string;
     /** Name of the backend that is being updated. */
     backendName: string;
 }
 export interface RemoveBackendRequest {
+    $type: 'yandex.cloud.apploadbalancer.v1.RemoveBackendRequest';
     /**
      * ID of the backend group to remove a backend from.
      *
@@ -192,12 +208,14 @@ export interface RemoveBackendRequest {
     backendName: string;
 }
 export interface RemoveBackendMetadata {
+    $type: 'yandex.cloud.apploadbalancer.v1.RemoveBackendMetadata';
     /** ID of the backend group that the backend is being removed from. */
     backendGroupId: string;
     /** Name of the backend that is being removed. */
     backendName: string;
 }
 export interface ListBackendGroupOperationsRequest {
+    $type: 'yandex.cloud.apploadbalancer.v1.ListBackendGroupOperationsRequest';
     /**
      * ID of the backend group to get operations for.
      *
@@ -218,6 +236,7 @@ export interface ListBackendGroupOperationsRequest {
     pageToken: string;
 }
 export interface ListBackendGroupOperationsResponse {
+    $type: 'yandex.cloud.apploadbalancer.v1.ListBackendGroupOperationsResponse';
     /** List of operations for the specified backend group. */
     operations: Operation[];
     /**
@@ -230,6 +249,7 @@ export interface ListBackendGroupOperationsResponse {
     nextPageToken: string;
 }
 export declare const GetBackendGroupRequest: {
+    $type: "yandex.cloud.apploadbalancer.v1.GetBackendGroupRequest";
     encode(message: GetBackendGroupRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): GetBackendGroupRequest;
     fromJSON(object: any): GetBackendGroupRequest;
@@ -237,6 +257,7 @@ export declare const GetBackendGroupRequest: {
     fromPartial(object: DeepPartial<GetBackendGroupRequest>): GetBackendGroupRequest;
 };
 export declare const ListBackendGroupsRequest: {
+    $type: "yandex.cloud.apploadbalancer.v1.ListBackendGroupsRequest";
     encode(message: ListBackendGroupsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListBackendGroupsRequest;
     fromJSON(object: any): ListBackendGroupsRequest;
@@ -244,6 +265,7 @@ export declare const ListBackendGroupsRequest: {
     fromPartial(object: DeepPartial<ListBackendGroupsRequest>): ListBackendGroupsRequest;
 };
 export declare const ListBackendGroupsResponse: {
+    $type: "yandex.cloud.apploadbalancer.v1.ListBackendGroupsResponse";
     encode(message: ListBackendGroupsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListBackendGroupsResponse;
     fromJSON(object: any): ListBackendGroupsResponse;
@@ -251,6 +273,7 @@ export declare const ListBackendGroupsResponse: {
     fromPartial(object: DeepPartial<ListBackendGroupsResponse>): ListBackendGroupsResponse;
 };
 export declare const DeleteBackendGroupRequest: {
+    $type: "yandex.cloud.apploadbalancer.v1.DeleteBackendGroupRequest";
     encode(message: DeleteBackendGroupRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteBackendGroupRequest;
     fromJSON(object: any): DeleteBackendGroupRequest;
@@ -258,6 +281,7 @@ export declare const DeleteBackendGroupRequest: {
     fromPartial(object: DeepPartial<DeleteBackendGroupRequest>): DeleteBackendGroupRequest;
 };
 export declare const DeleteBackendGroupMetadata: {
+    $type: "yandex.cloud.apploadbalancer.v1.DeleteBackendGroupMetadata";
     encode(message: DeleteBackendGroupMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteBackendGroupMetadata;
     fromJSON(object: any): DeleteBackendGroupMetadata;
@@ -265,6 +289,7 @@ export declare const DeleteBackendGroupMetadata: {
     fromPartial(object: DeepPartial<DeleteBackendGroupMetadata>): DeleteBackendGroupMetadata;
 };
 export declare const UpdateBackendGroupRequest: {
+    $type: "yandex.cloud.apploadbalancer.v1.UpdateBackendGroupRequest";
     encode(message: UpdateBackendGroupRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateBackendGroupRequest;
     fromJSON(object: any): UpdateBackendGroupRequest;
@@ -272,6 +297,7 @@ export declare const UpdateBackendGroupRequest: {
     fromPartial(object: DeepPartial<UpdateBackendGroupRequest>): UpdateBackendGroupRequest;
 };
 export declare const UpdateBackendGroupRequest_LabelsEntry: {
+    $type: "yandex.cloud.apploadbalancer.v1.UpdateBackendGroupRequest.LabelsEntry";
     encode(message: UpdateBackendGroupRequest_LabelsEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateBackendGroupRequest_LabelsEntry;
     fromJSON(object: any): UpdateBackendGroupRequest_LabelsEntry;
@@ -279,6 +305,7 @@ export declare const UpdateBackendGroupRequest_LabelsEntry: {
     fromPartial(object: DeepPartial<UpdateBackendGroupRequest_LabelsEntry>): UpdateBackendGroupRequest_LabelsEntry;
 };
 export declare const UpdateBackendGroupMetadata: {
+    $type: "yandex.cloud.apploadbalancer.v1.UpdateBackendGroupMetadata";
     encode(message: UpdateBackendGroupMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateBackendGroupMetadata;
     fromJSON(object: any): UpdateBackendGroupMetadata;
@@ -286,6 +313,7 @@ export declare const UpdateBackendGroupMetadata: {
     fromPartial(object: DeepPartial<UpdateBackendGroupMetadata>): UpdateBackendGroupMetadata;
 };
 export declare const CreateBackendGroupRequest: {
+    $type: "yandex.cloud.apploadbalancer.v1.CreateBackendGroupRequest";
     encode(message: CreateBackendGroupRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateBackendGroupRequest;
     fromJSON(object: any): CreateBackendGroupRequest;
@@ -293,6 +321,7 @@ export declare const CreateBackendGroupRequest: {
     fromPartial(object: DeepPartial<CreateBackendGroupRequest>): CreateBackendGroupRequest;
 };
 export declare const CreateBackendGroupRequest_LabelsEntry: {
+    $type: "yandex.cloud.apploadbalancer.v1.CreateBackendGroupRequest.LabelsEntry";
     encode(message: CreateBackendGroupRequest_LabelsEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateBackendGroupRequest_LabelsEntry;
     fromJSON(object: any): CreateBackendGroupRequest_LabelsEntry;
@@ -300,6 +329,7 @@ export declare const CreateBackendGroupRequest_LabelsEntry: {
     fromPartial(object: DeepPartial<CreateBackendGroupRequest_LabelsEntry>): CreateBackendGroupRequest_LabelsEntry;
 };
 export declare const CreateBackendGroupMetadata: {
+    $type: "yandex.cloud.apploadbalancer.v1.CreateBackendGroupMetadata";
     encode(message: CreateBackendGroupMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateBackendGroupMetadata;
     fromJSON(object: any): CreateBackendGroupMetadata;
@@ -307,6 +337,7 @@ export declare const CreateBackendGroupMetadata: {
     fromPartial(object: DeepPartial<CreateBackendGroupMetadata>): CreateBackendGroupMetadata;
 };
 export declare const AddBackendRequest: {
+    $type: "yandex.cloud.apploadbalancer.v1.AddBackendRequest";
     encode(message: AddBackendRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): AddBackendRequest;
     fromJSON(object: any): AddBackendRequest;
@@ -314,6 +345,7 @@ export declare const AddBackendRequest: {
     fromPartial(object: DeepPartial<AddBackendRequest>): AddBackendRequest;
 };
 export declare const AddBackendMetadata: {
+    $type: "yandex.cloud.apploadbalancer.v1.AddBackendMetadata";
     encode(message: AddBackendMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): AddBackendMetadata;
     fromJSON(object: any): AddBackendMetadata;
@@ -321,6 +353,7 @@ export declare const AddBackendMetadata: {
     fromPartial(object: DeepPartial<AddBackendMetadata>): AddBackendMetadata;
 };
 export declare const UpdateBackendRequest: {
+    $type: "yandex.cloud.apploadbalancer.v1.UpdateBackendRequest";
     encode(message: UpdateBackendRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateBackendRequest;
     fromJSON(object: any): UpdateBackendRequest;
@@ -328,6 +361,7 @@ export declare const UpdateBackendRequest: {
     fromPartial(object: DeepPartial<UpdateBackendRequest>): UpdateBackendRequest;
 };
 export declare const UpdateBackendMetadata: {
+    $type: "yandex.cloud.apploadbalancer.v1.UpdateBackendMetadata";
     encode(message: UpdateBackendMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateBackendMetadata;
     fromJSON(object: any): UpdateBackendMetadata;
@@ -335,6 +369,7 @@ export declare const UpdateBackendMetadata: {
     fromPartial(object: DeepPartial<UpdateBackendMetadata>): UpdateBackendMetadata;
 };
 export declare const RemoveBackendRequest: {
+    $type: "yandex.cloud.apploadbalancer.v1.RemoveBackendRequest";
     encode(message: RemoveBackendRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): RemoveBackendRequest;
     fromJSON(object: any): RemoveBackendRequest;
@@ -342,6 +377,7 @@ export declare const RemoveBackendRequest: {
     fromPartial(object: DeepPartial<RemoveBackendRequest>): RemoveBackendRequest;
 };
 export declare const RemoveBackendMetadata: {
+    $type: "yandex.cloud.apploadbalancer.v1.RemoveBackendMetadata";
     encode(message: RemoveBackendMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): RemoveBackendMetadata;
     fromJSON(object: any): RemoveBackendMetadata;
@@ -349,6 +385,7 @@ export declare const RemoveBackendMetadata: {
     fromPartial(object: DeepPartial<RemoveBackendMetadata>): RemoveBackendMetadata;
 };
 export declare const ListBackendGroupOperationsRequest: {
+    $type: "yandex.cloud.apploadbalancer.v1.ListBackendGroupOperationsRequest";
     encode(message: ListBackendGroupOperationsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListBackendGroupOperationsRequest;
     fromJSON(object: any): ListBackendGroupOperationsRequest;
@@ -356,6 +393,7 @@ export declare const ListBackendGroupOperationsRequest: {
     fromPartial(object: DeepPartial<ListBackendGroupOperationsRequest>): ListBackendGroupOperationsRequest;
 };
 export declare const ListBackendGroupOperationsResponse: {
+    $type: "yandex.cloud.apploadbalancer.v1.ListBackendGroupOperationsResponse";
     encode(message: ListBackendGroupOperationsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListBackendGroupOperationsResponse;
     fromJSON(object: any): ListBackendGroupOperationsResponse;
@@ -528,6 +566,6 @@ export interface BackendGroupServiceClient extends Client {
 export declare const BackendGroupServiceClient: new (address: string, credentials: ChannelCredentials, options?: Partial<ChannelOptions> | undefined) => BackendGroupServiceClient;
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

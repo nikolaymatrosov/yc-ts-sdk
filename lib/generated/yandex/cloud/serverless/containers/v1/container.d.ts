@@ -2,6 +2,7 @@ import { Duration } from '../../../../../google/protobuf/duration';
 import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.serverless.containers.v1";
 export interface Container {
+    $type: 'yandex.cloud.serverless.containers.v1.Container';
     id: string;
     folderId: string;
     createdAt: Date | undefined;
@@ -24,10 +25,12 @@ export declare enum Container_Status {
 export declare function container_StatusFromJSON(object: any): Container_Status;
 export declare function container_StatusToJSON(object: Container_Status): string;
 export interface Container_LabelsEntry {
+    $type: 'yandex.cloud.serverless.containers.v1.Container.LabelsEntry';
     key: string;
     value: string;
 }
 export interface Revision {
+    $type: 'yandex.cloud.serverless.containers.v1.Revision';
     id: string;
     containerId: string;
     description: string;
@@ -49,6 +52,7 @@ export declare enum Revision_Status {
 export declare function revision_StatusFromJSON(object: any): Revision_Status;
 export declare function revision_StatusToJSON(object: Revision_Status): string;
 export interface Image {
+    $type: 'yandex.cloud.serverless.containers.v1.Image';
     imageUrl: string;
     imageDigest: string;
     command: Command | undefined;
@@ -59,21 +63,26 @@ export interface Image {
     workingDir: string;
 }
 export interface Image_EnvironmentEntry {
+    $type: 'yandex.cloud.serverless.containers.v1.Image.EnvironmentEntry';
     key: string;
     value: string;
 }
 export interface Command {
+    $type: 'yandex.cloud.serverless.containers.v1.Command';
     command: string[];
 }
 export interface Args {
+    $type: 'yandex.cloud.serverless.containers.v1.Args';
     args: string[];
 }
 export interface Resources {
+    $type: 'yandex.cloud.serverless.containers.v1.Resources';
     memory: number;
     cores: number;
     coreFraction: number;
 }
 export declare const Container: {
+    $type: "yandex.cloud.serverless.containers.v1.Container";
     encode(message: Container, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Container;
     fromJSON(object: any): Container;
@@ -81,6 +90,7 @@ export declare const Container: {
     fromPartial(object: DeepPartial<Container>): Container;
 };
 export declare const Container_LabelsEntry: {
+    $type: "yandex.cloud.serverless.containers.v1.Container.LabelsEntry";
     encode(message: Container_LabelsEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Container_LabelsEntry;
     fromJSON(object: any): Container_LabelsEntry;
@@ -88,6 +98,7 @@ export declare const Container_LabelsEntry: {
     fromPartial(object: DeepPartial<Container_LabelsEntry>): Container_LabelsEntry;
 };
 export declare const Revision: {
+    $type: "yandex.cloud.serverless.containers.v1.Revision";
     encode(message: Revision, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Revision;
     fromJSON(object: any): Revision;
@@ -95,6 +106,7 @@ export declare const Revision: {
     fromPartial(object: DeepPartial<Revision>): Revision;
 };
 export declare const Image: {
+    $type: "yandex.cloud.serverless.containers.v1.Image";
     encode(message: Image, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Image;
     fromJSON(object: any): Image;
@@ -102,6 +114,7 @@ export declare const Image: {
     fromPartial(object: DeepPartial<Image>): Image;
 };
 export declare const Image_EnvironmentEntry: {
+    $type: "yandex.cloud.serverless.containers.v1.Image.EnvironmentEntry";
     encode(message: Image_EnvironmentEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Image_EnvironmentEntry;
     fromJSON(object: any): Image_EnvironmentEntry;
@@ -109,6 +122,7 @@ export declare const Image_EnvironmentEntry: {
     fromPartial(object: DeepPartial<Image_EnvironmentEntry>): Image_EnvironmentEntry;
 };
 export declare const Command: {
+    $type: "yandex.cloud.serverless.containers.v1.Command";
     encode(message: Command, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Command;
     fromJSON(object: any): Command;
@@ -116,6 +130,7 @@ export declare const Command: {
     fromPartial(object: DeepPartial<Command>): Command;
 };
 export declare const Args: {
+    $type: "yandex.cloud.serverless.containers.v1.Args";
     encode(message: Args, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Args;
     fromJSON(object: any): Args;
@@ -123,6 +138,7 @@ export declare const Args: {
     fromPartial(object: DeepPartial<Args>): Args;
 };
 export declare const Resources: {
+    $type: "yandex.cloud.serverless.containers.v1.Resources";
     encode(message: Resources, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Resources;
     fromJSON(object: any): Resources;
@@ -131,6 +147,6 @@ export declare const Resources: {
 };
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

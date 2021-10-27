@@ -7,6 +7,7 @@ import { ChannelCredentials, ChannelOptions, UntypedServiceImplementation, handl
 import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.organizationmanager.v1";
 export interface GetOrganizationRequest {
+    $type: 'yandex.cloud.organizationmanager.v1.GetOrganizationRequest';
     /**
      * ID of the Organization resource to return.
      * To get the organization ID, use a [OrganizationService.List] request.
@@ -14,6 +15,7 @@ export interface GetOrganizationRequest {
     organizationId: string;
 }
 export interface ListOrganizationsRequest {
+    $type: 'yandex.cloud.organizationmanager.v1.ListOrganizationsRequest';
     /**
      * The maximum number of results per page to return. If the number of available
      * results is larger than [page_size],
@@ -38,6 +40,7 @@ export interface ListOrganizationsRequest {
     filter: string;
 }
 export interface ListOrganizationsResponse {
+    $type: 'yandex.cloud.organizationmanager.v1.ListOrganizationsResponse';
     /** List of Organization resources. */
     organizations: Organization[];
     /**
@@ -51,6 +54,7 @@ export interface ListOrganizationsResponse {
     nextPageToken: string;
 }
 export interface UpdateOrganizationRequest {
+    $type: 'yandex.cloud.organizationmanager.v1.UpdateOrganizationRequest';
     /**
      * ID of the organization to update.
      * To get the organization ID, use a [OrganizationService.List] request.
@@ -70,14 +74,17 @@ export interface UpdateOrganizationRequest {
     };
 }
 export interface UpdateOrganizationRequest_LabelsEntry {
+    $type: 'yandex.cloud.organizationmanager.v1.UpdateOrganizationRequest.LabelsEntry';
     key: string;
     value: string;
 }
 export interface UpdateOrganizationMetadata {
+    $type: 'yandex.cloud.organizationmanager.v1.UpdateOrganizationMetadata';
     /** ID of the organization that is being updated. */
     organizationId: string;
 }
 export interface ListOrganizationOperationsRequest {
+    $type: 'yandex.cloud.organizationmanager.v1.ListOrganizationOperationsRequest';
     /** ID of the Organization resource to list operations for. */
     organizationId: string;
     /**
@@ -95,6 +102,7 @@ export interface ListOrganizationOperationsRequest {
     pageToken: string;
 }
 export interface ListOrganizationOperationsResponse {
+    $type: 'yandex.cloud.organizationmanager.v1.ListOrganizationOperationsResponse';
     /** List of operations for the specified organization. */
     operations: Operation[];
     /**
@@ -106,6 +114,7 @@ export interface ListOrganizationOperationsResponse {
     nextPageToken: string;
 }
 export declare const GetOrganizationRequest: {
+    $type: "yandex.cloud.organizationmanager.v1.GetOrganizationRequest";
     encode(message: GetOrganizationRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): GetOrganizationRequest;
     fromJSON(object: any): GetOrganizationRequest;
@@ -113,6 +122,7 @@ export declare const GetOrganizationRequest: {
     fromPartial(object: DeepPartial<GetOrganizationRequest>): GetOrganizationRequest;
 };
 export declare const ListOrganizationsRequest: {
+    $type: "yandex.cloud.organizationmanager.v1.ListOrganizationsRequest";
     encode(message: ListOrganizationsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListOrganizationsRequest;
     fromJSON(object: any): ListOrganizationsRequest;
@@ -120,6 +130,7 @@ export declare const ListOrganizationsRequest: {
     fromPartial(object: DeepPartial<ListOrganizationsRequest>): ListOrganizationsRequest;
 };
 export declare const ListOrganizationsResponse: {
+    $type: "yandex.cloud.organizationmanager.v1.ListOrganizationsResponse";
     encode(message: ListOrganizationsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListOrganizationsResponse;
     fromJSON(object: any): ListOrganizationsResponse;
@@ -127,6 +138,7 @@ export declare const ListOrganizationsResponse: {
     fromPartial(object: DeepPartial<ListOrganizationsResponse>): ListOrganizationsResponse;
 };
 export declare const UpdateOrganizationRequest: {
+    $type: "yandex.cloud.organizationmanager.v1.UpdateOrganizationRequest";
     encode(message: UpdateOrganizationRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateOrganizationRequest;
     fromJSON(object: any): UpdateOrganizationRequest;
@@ -134,6 +146,7 @@ export declare const UpdateOrganizationRequest: {
     fromPartial(object: DeepPartial<UpdateOrganizationRequest>): UpdateOrganizationRequest;
 };
 export declare const UpdateOrganizationRequest_LabelsEntry: {
+    $type: "yandex.cloud.organizationmanager.v1.UpdateOrganizationRequest.LabelsEntry";
     encode(message: UpdateOrganizationRequest_LabelsEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateOrganizationRequest_LabelsEntry;
     fromJSON(object: any): UpdateOrganizationRequest_LabelsEntry;
@@ -141,6 +154,7 @@ export declare const UpdateOrganizationRequest_LabelsEntry: {
     fromPartial(object: DeepPartial<UpdateOrganizationRequest_LabelsEntry>): UpdateOrganizationRequest_LabelsEntry;
 };
 export declare const UpdateOrganizationMetadata: {
+    $type: "yandex.cloud.organizationmanager.v1.UpdateOrganizationMetadata";
     encode(message: UpdateOrganizationMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateOrganizationMetadata;
     fromJSON(object: any): UpdateOrganizationMetadata;
@@ -148,6 +162,7 @@ export declare const UpdateOrganizationMetadata: {
     fromPartial(object: DeepPartial<UpdateOrganizationMetadata>): UpdateOrganizationMetadata;
 };
 export declare const ListOrganizationOperationsRequest: {
+    $type: "yandex.cloud.organizationmanager.v1.ListOrganizationOperationsRequest";
     encode(message: ListOrganizationOperationsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListOrganizationOperationsRequest;
     fromJSON(object: any): ListOrganizationOperationsRequest;
@@ -155,6 +170,7 @@ export declare const ListOrganizationOperationsRequest: {
     fromPartial(object: DeepPartial<ListOrganizationOperationsRequest>): ListOrganizationOperationsRequest;
 };
 export declare const ListOrganizationOperationsResponse: {
+    $type: "yandex.cloud.organizationmanager.v1.ListOrganizationOperationsResponse";
     encode(message: ListOrganizationOperationsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListOrganizationOperationsResponse;
     fromJSON(object: any): ListOrganizationOperationsResponse;
@@ -295,6 +311,6 @@ export interface OrganizationServiceClient extends Client {
 export declare const OrganizationServiceClient: new (address: string, credentials: ChannelCredentials, options?: Partial<ChannelOptions> | undefined) => OrganizationServiceClient;
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

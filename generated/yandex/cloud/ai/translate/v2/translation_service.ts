@@ -1,4 +1,5 @@
 /* eslint-disable */
+import { messageTypeRegistry } from '../../../../../typeRegistry';
 import {
     TranslatedText,
     Language,
@@ -21,6 +22,7 @@ import _m0 from 'protobufjs/minimal';
 export const protobufPackage = 'yandex.cloud.ai.translate.v2';
 
 export interface TranslateRequest {
+    $type: 'yandex.cloud.ai.translate.v2.TranslateRequest';
     /**
      * The text language to translate from.
      * Specified in [ISO 639-1](https://en.wikipedia.org/wiki/ISO_639-1) format (for example, `` ru ``).
@@ -97,11 +99,13 @@ export function translateRequest_FormatToJSON(
 }
 
 export interface TranslateGlossaryConfig {
+    $type: 'yandex.cloud.ai.translate.v2.TranslateGlossaryConfig';
     /** Pass glossary data in the request. Currently, only this way to pass glossary is supported. */
     glossaryData: GlossaryData | undefined;
 }
 
 export interface GlossaryData {
+    $type: 'yandex.cloud.ai.translate.v2.GlossaryData';
     /**
      * Array of text pairs.
      *
@@ -112,6 +116,7 @@ export interface GlossaryData {
 }
 
 export interface GlossaryPair {
+    $type: 'yandex.cloud.ai.translate.v2.GlossaryPair';
     /** Text in the source language. */
     sourceText: string;
     /** Text in the target language. */
@@ -119,11 +124,13 @@ export interface GlossaryPair {
 }
 
 export interface TranslateResponse {
+    $type: 'yandex.cloud.ai.translate.v2.TranslateResponse';
     /** Array of the translations. */
     translations: TranslatedText[];
 }
 
 export interface DetectLanguageRequest {
+    $type: 'yandex.cloud.ai.translate.v2.DetectLanguageRequest';
     /** The text to detect the language for. */
     text: string;
     /**
@@ -142,6 +149,7 @@ export interface DetectLanguageRequest {
 }
 
 export interface DetectLanguageResponse {
+    $type: 'yandex.cloud.ai.translate.v2.DetectLanguageResponse';
     /**
      * The text language in [ISO 639-1](https://en.wikipedia.org/wiki/ISO_639-1) format (for example, `` ru ``).
      *
@@ -151,6 +159,7 @@ export interface DetectLanguageResponse {
 }
 
 export interface ListLanguagesRequest {
+    $type: 'yandex.cloud.ai.translate.v2.ListLanguagesRequest';
     /**
      * ID of the folder to which you have access.
      * Required for authorization with a user account (see [yandex.cloud.iam.v1.UserAccount] resource).
@@ -160,11 +169,13 @@ export interface ListLanguagesRequest {
 }
 
 export interface ListLanguagesResponse {
+    $type: 'yandex.cloud.ai.translate.v2.ListLanguagesResponse';
     /** List of supported languages. */
     languages: Language[];
 }
 
 const baseTranslateRequest: object = {
+    $type: 'yandex.cloud.ai.translate.v2.TranslateRequest',
     sourceLanguageCode: '',
     targetLanguageCode: '',
     format: 0,
@@ -174,6 +185,8 @@ const baseTranslateRequest: object = {
 };
 
 export const TranslateRequest = {
+    $type: 'yandex.cloud.ai.translate.v2.TranslateRequest' as const,
+
     encode(
         message: TranslateRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -373,9 +386,15 @@ export const TranslateRequest = {
     },
 };
 
-const baseTranslateGlossaryConfig: object = {};
+messageTypeRegistry.set(TranslateRequest.$type, TranslateRequest);
+
+const baseTranslateGlossaryConfig: object = {
+    $type: 'yandex.cloud.ai.translate.v2.TranslateGlossaryConfig',
+};
 
 export const TranslateGlossaryConfig = {
+    $type: 'yandex.cloud.ai.translate.v2.TranslateGlossaryConfig' as const,
+
     encode(
         message: TranslateGlossaryConfig,
         writer: _m0.Writer = _m0.Writer.create()
@@ -454,9 +473,15 @@ export const TranslateGlossaryConfig = {
     },
 };
 
-const baseGlossaryData: object = {};
+messageTypeRegistry.set(TranslateGlossaryConfig.$type, TranslateGlossaryConfig);
+
+const baseGlossaryData: object = {
+    $type: 'yandex.cloud.ai.translate.v2.GlossaryData',
+};
 
 export const GlossaryData = {
+    $type: 'yandex.cloud.ai.translate.v2.GlossaryData' as const,
+
     encode(
         message: GlossaryData,
         writer: _m0.Writer = _m0.Writer.create()
@@ -530,9 +555,17 @@ export const GlossaryData = {
     },
 };
 
-const baseGlossaryPair: object = { sourceText: '', translatedText: '' };
+messageTypeRegistry.set(GlossaryData.$type, GlossaryData);
+
+const baseGlossaryPair: object = {
+    $type: 'yandex.cloud.ai.translate.v2.GlossaryPair',
+    sourceText: '',
+    translatedText: '',
+};
 
 export const GlossaryPair = {
+    $type: 'yandex.cloud.ai.translate.v2.GlossaryPair' as const,
+
     encode(
         message: GlossaryPair,
         writer: _m0.Writer = _m0.Writer.create()
@@ -614,9 +647,15 @@ export const GlossaryPair = {
     },
 };
 
-const baseTranslateResponse: object = {};
+messageTypeRegistry.set(GlossaryPair.$type, GlossaryPair);
+
+const baseTranslateResponse: object = {
+    $type: 'yandex.cloud.ai.translate.v2.TranslateResponse',
+};
 
 export const TranslateResponse = {
+    $type: 'yandex.cloud.ai.translate.v2.TranslateResponse' as const,
+
     encode(
         message: TranslateResponse,
         writer: _m0.Writer = _m0.Writer.create()
@@ -684,13 +723,18 @@ export const TranslateResponse = {
     },
 };
 
+messageTypeRegistry.set(TranslateResponse.$type, TranslateResponse);
+
 const baseDetectLanguageRequest: object = {
+    $type: 'yandex.cloud.ai.translate.v2.DetectLanguageRequest',
     text: '',
     languageCodeHints: '',
     folderId: '',
 };
 
 export const DetectLanguageRequest = {
+    $type: 'yandex.cloud.ai.translate.v2.DetectLanguageRequest' as const,
+
     encode(
         message: DetectLanguageRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -805,9 +849,16 @@ export const DetectLanguageRequest = {
     },
 };
 
-const baseDetectLanguageResponse: object = { languageCode: '' };
+messageTypeRegistry.set(DetectLanguageRequest.$type, DetectLanguageRequest);
+
+const baseDetectLanguageResponse: object = {
+    $type: 'yandex.cloud.ai.translate.v2.DetectLanguageResponse',
+    languageCode: '',
+};
 
 export const DetectLanguageResponse = {
+    $type: 'yandex.cloud.ai.translate.v2.DetectLanguageResponse' as const,
+
     encode(
         message: DetectLanguageResponse,
         writer: _m0.Writer = _m0.Writer.create()
@@ -876,9 +927,16 @@ export const DetectLanguageResponse = {
     },
 };
 
-const baseListLanguagesRequest: object = { folderId: '' };
+messageTypeRegistry.set(DetectLanguageResponse.$type, DetectLanguageResponse);
+
+const baseListLanguagesRequest: object = {
+    $type: 'yandex.cloud.ai.translate.v2.ListLanguagesRequest',
+    folderId: '',
+};
 
 export const ListLanguagesRequest = {
+    $type: 'yandex.cloud.ai.translate.v2.ListLanguagesRequest' as const,
+
     encode(
         message: ListLanguagesRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -940,9 +998,15 @@ export const ListLanguagesRequest = {
     },
 };
 
-const baseListLanguagesResponse: object = {};
+messageTypeRegistry.set(ListLanguagesRequest.$type, ListLanguagesRequest);
+
+const baseListLanguagesResponse: object = {
+    $type: 'yandex.cloud.ai.translate.v2.ListLanguagesResponse',
+};
 
 export const ListLanguagesResponse = {
+    $type: 'yandex.cloud.ai.translate.v2.ListLanguagesResponse' as const,
+
     encode(
         message: ListLanguagesResponse,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1020,6 +1084,8 @@ export const ListLanguagesResponse = {
         return message;
     },
 };
+
+messageTypeRegistry.set(ListLanguagesResponse.$type, ListLanguagesResponse);
 
 /** A set of methods for the Yandex Translate service. */
 export const TranslationServiceService = {
@@ -1181,7 +1247,7 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 if (_m0.util.Long !== Long) {

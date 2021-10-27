@@ -1,6 +1,7 @@
 /* eslint-disable */
 import { Duration } from '../../../../../google/protobuf/duration';
 import { Timestamp } from '../../../../../google/protobuf/timestamp';
+import { messageTypeRegistry } from '../../../../../typeRegistry';
 import {
     LogLevel_Level,
     logLevel_LevelFromJSON,
@@ -104,6 +105,7 @@ export function triggerTypeToJSON(object: TriggerType): string {
 
 /** A trigger to invoke a serverless function. For more information, see [Triggers](/docs/functions/concepts/trigger). */
 export interface Trigger {
+    $type: 'yandex.cloud.serverless.triggers.v1.Trigger';
     /** ID of the trigger. Generated at creation time. */
     id: string;
     /** ID of the folder that the trigger belongs to. */
@@ -263,12 +265,14 @@ export function trigger_StatusToJSON(object: Trigger_Status): string {
 }
 
 export interface Trigger_LabelsEntry {
+    $type: 'yandex.cloud.serverless.triggers.v1.Trigger.LabelsEntry';
     key: string;
     value: string;
 }
 
 /** Description of a rule for trigger activation. */
 export interface Trigger_Rule {
+    $type: 'yandex.cloud.serverless.triggers.v1.Trigger.Rule';
     /** Rule for a timed trigger. */
     timer: Trigger_Timer | undefined;
     /** Rule for a message queue trigger. */
@@ -285,6 +289,7 @@ export interface Trigger_Rule {
 
 /** Rule for activating a timed trigger. */
 export interface Trigger_Timer {
+    $type: 'yandex.cloud.serverless.triggers.v1.Trigger.Timer';
     /** Description of a schedule as a [cron expression](/docs/functions/concepts/trigger/timer). */
     cronExpression: string;
     /** Instructions for invoking a function once. */
@@ -297,6 +302,7 @@ export interface Trigger_Timer {
 
 /** Rule for activating a message queue trigger. */
 export interface Trigger_MessageQueue {
+    $type: 'yandex.cloud.serverless.triggers.v1.Trigger.MessageQueue';
     /** ID of the message queue in Yandex Message Queue. */
     queueId: string;
     /** ID of the service account which has read access to the message queue. */
@@ -313,6 +319,7 @@ export interface Trigger_MessageQueue {
 
 /** Rule for activating a Yandex IoT Core trigger. */
 export interface Trigger_IoTMessage {
+    $type: 'yandex.cloud.serverless.triggers.v1.Trigger.IoTMessage';
     /** ID of the Yandex IoT Core registry. */
     registryId: string;
     /** ID of the Yandex IoT Core device in the registry. */
@@ -326,6 +333,7 @@ export interface Trigger_IoTMessage {
 }
 
 export interface Trigger_ObjectStorage {
+    $type: 'yandex.cloud.serverless.triggers.v1.Trigger.ObjectStorage';
     /** Type (name) of events, at least one value is required. */
     eventType: Trigger_ObjectStorageEventType[];
     /** ID of the bucket. */
@@ -341,6 +349,7 @@ export interface Trigger_ObjectStorage {
 }
 
 export interface Trigger_ContainerRegistry {
+    $type: 'yandex.cloud.serverless.triggers.v1.Trigger.ContainerRegistry';
     /** Type (name) of events, at least one value is required. */
     eventType: Trigger_ContainerRegistryEventType[];
     /** ID of the registry. */
@@ -356,6 +365,7 @@ export interface Trigger_ContainerRegistry {
 }
 
 export interface Trigger_CloudLogs {
+    $type: 'yandex.cloud.serverless.triggers.v1.Trigger.CloudLogs';
     /** Log group identifiers, at least one value is required. */
     logGroupId: string[];
     /** Batch settings for processing log events. */
@@ -367,6 +377,7 @@ export interface Trigger_CloudLogs {
 }
 
 export interface Trigger_Logging {
+    $type: 'yandex.cloud.serverless.triggers.v1.Trigger.Logging';
     /** Log events filter settings. */
     logGroupId: string;
     resourceType: string[];
@@ -382,6 +393,7 @@ export interface Trigger_Logging {
 
 /** A single function invocation. */
 export interface InvokeFunctionOnce {
+    $type: 'yandex.cloud.serverless.triggers.v1.InvokeFunctionOnce';
     /** ID of the function to invoke. */
     functionId: string;
     /** Version tag of the function to execute. */
@@ -392,6 +404,7 @@ export interface InvokeFunctionOnce {
 
 /** A function invocation with retries. */
 export interface InvokeFunctionWithRetry {
+    $type: 'yandex.cloud.serverless.triggers.v1.InvokeFunctionWithRetry';
     /** ID of the function to invoke. */
     functionId: string;
     /** Version tag of the function to execute. */
@@ -406,6 +419,7 @@ export interface InvokeFunctionWithRetry {
 
 /** A single container invocation. */
 export interface InvokeContainerOnce {
+    $type: 'yandex.cloud.serverless.triggers.v1.InvokeContainerOnce';
     /** ID of the container to invoke. */
     containerId: string;
     /** Endpoint HTTP path to invoke. */
@@ -416,6 +430,7 @@ export interface InvokeContainerOnce {
 
 /** A container invocation with retries. */
 export interface InvokeContainerWithRetry {
+    $type: 'yandex.cloud.serverless.triggers.v1.InvokeContainerWithRetry';
     /** ID of the container to invoke. */
     containerId: string;
     /** Endpoint HTTP path to invoke. */
@@ -429,6 +444,7 @@ export interface InvokeContainerWithRetry {
 }
 
 export interface PutQueueMessage {
+    $type: 'yandex.cloud.serverless.triggers.v1.PutQueueMessage';
     /** ID of the queue. */
     queueId: string;
     /** Service account which has write permission on the queue. */
@@ -437,6 +453,7 @@ export interface PutQueueMessage {
 
 /** Settings for batch processing of messages in a queue. */
 export interface BatchSettings {
+    $type: 'yandex.cloud.serverless.triggers.v1.BatchSettings';
     /**
      * Batch size. Trigger will send the batch of messages to the function
      * when the number of messages in the queue reaches [size], or the [cutoff] time has passed.
@@ -450,6 +467,7 @@ export interface BatchSettings {
 }
 
 export interface CloudLogsBatchSettings {
+    $type: 'yandex.cloud.serverless.triggers.v1.CloudLogsBatchSettings';
     /**
      * Batch size. Trigger will send the batch of messages to the function
      * when the number of messages in the log group reaches [size], or the [cutoff] time has passed.
@@ -463,6 +481,7 @@ export interface CloudLogsBatchSettings {
 }
 
 export interface LoggingBatchSettings {
+    $type: 'yandex.cloud.serverless.triggers.v1.LoggingBatchSettings';
     /**
      * Batch size. Trigger will send the batch of messages to the associated function
      * when the number of log events reaches this value, or the [cutoff] time has passed.
@@ -477,6 +496,7 @@ export interface LoggingBatchSettings {
 
 /** Settings for retrying to invoke a function. */
 export interface RetrySettings {
+    $type: 'yandex.cloud.serverless.triggers.v1.RetrySettings';
     /** Maximum number of retries (extra invokes) before the action is considered failed. */
     retryAttempts: number;
     /** Time in seconds to wait between individual retries. */
@@ -484,6 +504,7 @@ export interface RetrySettings {
 }
 
 export interface BillingBudget {
+    $type: 'yandex.cloud.serverless.triggers.v1.BillingBudget';
     billingAccountId: string;
     budgetId: string;
     invokeFunction: InvokeFunctionWithRetry | undefined;
@@ -491,6 +512,7 @@ export interface BillingBudget {
 }
 
 export interface DataStreamBatchSettings {
+    $type: 'yandex.cloud.serverless.triggers.v1.DataStreamBatchSettings';
     /**
      * Batch size in bytes. Trigger will send the batch of messages to the associated function
      * when size of log events reaches this value, or the [cutoff] time has passed.
@@ -504,6 +526,7 @@ export interface DataStreamBatchSettings {
 }
 
 export interface DataStream {
+    $type: 'yandex.cloud.serverless.triggers.v1.DataStream';
     /** Data stream endpoint. */
     endpoint: string;
     /** Data stream database. */
@@ -519,6 +542,7 @@ export interface DataStream {
 }
 
 const baseTrigger: object = {
+    $type: 'yandex.cloud.serverless.triggers.v1.Trigger',
     id: '',
     folderId: '',
     name: '',
@@ -527,6 +551,8 @@ const baseTrigger: object = {
 };
 
 export const Trigger = {
+    $type: 'yandex.cloud.serverless.triggers.v1.Trigger' as const,
+
     encode(
         message: Trigger,
         writer: _m0.Writer = _m0.Writer.create()
@@ -551,7 +577,11 @@ export const Trigger = {
         }
         Object.entries(message.labels).forEach(([key, value]) => {
             Trigger_LabelsEntry.encode(
-                { key: key as any, value },
+                {
+                    $type: 'yandex.cloud.serverless.triggers.v1.Trigger.LabelsEntry',
+                    key: key as any,
+                    value,
+                },
                 writer.uint32(50).fork()
             ).ldelim();
         });
@@ -735,9 +765,17 @@ export const Trigger = {
     },
 };
 
-const baseTrigger_LabelsEntry: object = { key: '', value: '' };
+messageTypeRegistry.set(Trigger.$type, Trigger);
+
+const baseTrigger_LabelsEntry: object = {
+    $type: 'yandex.cloud.serverless.triggers.v1.Trigger.LabelsEntry',
+    key: '',
+    value: '',
+};
 
 export const Trigger_LabelsEntry = {
+    $type: 'yandex.cloud.serverless.triggers.v1.Trigger.LabelsEntry' as const,
+
     encode(
         message: Trigger_LabelsEntry,
         writer: _m0.Writer = _m0.Writer.create()
@@ -814,9 +852,15 @@ export const Trigger_LabelsEntry = {
     },
 };
 
-const baseTrigger_Rule: object = {};
+messageTypeRegistry.set(Trigger_LabelsEntry.$type, Trigger_LabelsEntry);
+
+const baseTrigger_Rule: object = {
+    $type: 'yandex.cloud.serverless.triggers.v1.Trigger.Rule',
+};
 
 export const Trigger_Rule = {
+    $type: 'yandex.cloud.serverless.triggers.v1.Trigger.Rule' as const,
+
     encode(
         message: Trigger_Rule,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1127,9 +1171,16 @@ export const Trigger_Rule = {
     },
 };
 
-const baseTrigger_Timer: object = { cronExpression: '' };
+messageTypeRegistry.set(Trigger_Rule.$type, Trigger_Rule);
+
+const baseTrigger_Timer: object = {
+    $type: 'yandex.cloud.serverless.triggers.v1.Trigger.Timer',
+    cronExpression: '',
+};
 
 export const Trigger_Timer = {
+    $type: 'yandex.cloud.serverless.triggers.v1.Trigger.Timer' as const,
+
     encode(
         message: Trigger_Timer,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1307,9 +1358,17 @@ export const Trigger_Timer = {
     },
 };
 
-const baseTrigger_MessageQueue: object = { queueId: '', serviceAccountId: '' };
+messageTypeRegistry.set(Trigger_Timer.$type, Trigger_Timer);
+
+const baseTrigger_MessageQueue: object = {
+    $type: 'yandex.cloud.serverless.triggers.v1.Trigger.MessageQueue',
+    queueId: '',
+    serviceAccountId: '',
+};
 
 export const Trigger_MessageQueue = {
+    $type: 'yandex.cloud.serverless.triggers.v1.Trigger.MessageQueue' as const,
+
     encode(
         message: Trigger_MessageQueue,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1539,13 +1598,18 @@ export const Trigger_MessageQueue = {
     },
 };
 
+messageTypeRegistry.set(Trigger_MessageQueue.$type, Trigger_MessageQueue);
+
 const baseTrigger_IoTMessage: object = {
+    $type: 'yandex.cloud.serverless.triggers.v1.Trigger.IoTMessage',
     registryId: '',
     deviceId: '',
     mqttTopic: '',
 };
 
 export const Trigger_IoTMessage = {
+    $type: 'yandex.cloud.serverless.triggers.v1.Trigger.IoTMessage' as const,
+
     encode(
         message: Trigger_IoTMessage,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1712,7 +1776,10 @@ export const Trigger_IoTMessage = {
     },
 };
 
+messageTypeRegistry.set(Trigger_IoTMessage.$type, Trigger_IoTMessage);
+
 const baseTrigger_ObjectStorage: object = {
+    $type: 'yandex.cloud.serverless.triggers.v1.Trigger.ObjectStorage',
     eventType: 0,
     bucketId: '',
     prefix: '',
@@ -1720,6 +1787,8 @@ const baseTrigger_ObjectStorage: object = {
 };
 
 export const Trigger_ObjectStorage = {
+    $type: 'yandex.cloud.serverless.triggers.v1.Trigger.ObjectStorage' as const,
+
     encode(
         message: Trigger_ObjectStorage,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1930,7 +1999,10 @@ export const Trigger_ObjectStorage = {
     },
 };
 
+messageTypeRegistry.set(Trigger_ObjectStorage.$type, Trigger_ObjectStorage);
+
 const baseTrigger_ContainerRegistry: object = {
+    $type: 'yandex.cloud.serverless.triggers.v1.Trigger.ContainerRegistry',
     eventType: 0,
     registryId: '',
     imageName: '',
@@ -1938,6 +2010,8 @@ const baseTrigger_ContainerRegistry: object = {
 };
 
 export const Trigger_ContainerRegistry = {
+    $type: 'yandex.cloud.serverless.triggers.v1.Trigger.ContainerRegistry' as const,
+
     encode(
         message: Trigger_ContainerRegistry,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2149,9 +2223,19 @@ export const Trigger_ContainerRegistry = {
     },
 };
 
-const baseTrigger_CloudLogs: object = { logGroupId: '' };
+messageTypeRegistry.set(
+    Trigger_ContainerRegistry.$type,
+    Trigger_ContainerRegistry
+);
+
+const baseTrigger_CloudLogs: object = {
+    $type: 'yandex.cloud.serverless.triggers.v1.Trigger.CloudLogs',
+    logGroupId: '',
+};
 
 export const Trigger_CloudLogs = {
+    $type: 'yandex.cloud.serverless.triggers.v1.Trigger.CloudLogs' as const,
+
     encode(
         message: Trigger_CloudLogs,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2323,7 +2407,10 @@ export const Trigger_CloudLogs = {
     },
 };
 
+messageTypeRegistry.set(Trigger_CloudLogs.$type, Trigger_CloudLogs);
+
 const baseTrigger_Logging: object = {
+    $type: 'yandex.cloud.serverless.triggers.v1.Trigger.Logging',
     logGroupId: '',
     resourceType: '',
     resourceId: '',
@@ -2331,6 +2418,8 @@ const baseTrigger_Logging: object = {
 };
 
 export const Trigger_Logging = {
+    $type: 'yandex.cloud.serverless.triggers.v1.Trigger.Logging' as const,
+
     encode(
         message: Trigger_Logging,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2577,13 +2666,18 @@ export const Trigger_Logging = {
     },
 };
 
+messageTypeRegistry.set(Trigger_Logging.$type, Trigger_Logging);
+
 const baseInvokeFunctionOnce: object = {
+    $type: 'yandex.cloud.serverless.triggers.v1.InvokeFunctionOnce',
     functionId: '',
     functionTag: '',
     serviceAccountId: '',
 };
 
 export const InvokeFunctionOnce = {
+    $type: 'yandex.cloud.serverless.triggers.v1.InvokeFunctionOnce' as const,
+
     encode(
         message: InvokeFunctionOnce,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2686,13 +2780,18 @@ export const InvokeFunctionOnce = {
     },
 };
 
+messageTypeRegistry.set(InvokeFunctionOnce.$type, InvokeFunctionOnce);
+
 const baseInvokeFunctionWithRetry: object = {
+    $type: 'yandex.cloud.serverless.triggers.v1.InvokeFunctionWithRetry',
     functionId: '',
     functionTag: '',
     serviceAccountId: '',
 };
 
 export const InvokeFunctionWithRetry = {
+    $type: 'yandex.cloud.serverless.triggers.v1.InvokeFunctionWithRetry' as const,
+
     encode(
         message: InvokeFunctionWithRetry,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2875,13 +2974,18 @@ export const InvokeFunctionWithRetry = {
     },
 };
 
+messageTypeRegistry.set(InvokeFunctionWithRetry.$type, InvokeFunctionWithRetry);
+
 const baseInvokeContainerOnce: object = {
+    $type: 'yandex.cloud.serverless.triggers.v1.InvokeContainerOnce',
     containerId: '',
     path: '',
     serviceAccountId: '',
 };
 
 export const InvokeContainerOnce = {
+    $type: 'yandex.cloud.serverless.triggers.v1.InvokeContainerOnce' as const,
+
     encode(
         message: InvokeContainerOnce,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2983,13 +3087,18 @@ export const InvokeContainerOnce = {
     },
 };
 
+messageTypeRegistry.set(InvokeContainerOnce.$type, InvokeContainerOnce);
+
 const baseInvokeContainerWithRetry: object = {
+    $type: 'yandex.cloud.serverless.triggers.v1.InvokeContainerWithRetry',
     containerId: '',
     path: '',
     serviceAccountId: '',
 };
 
 export const InvokeContainerWithRetry = {
+    $type: 'yandex.cloud.serverless.triggers.v1.InvokeContainerWithRetry' as const,
+
     encode(
         message: InvokeContainerWithRetry,
         writer: _m0.Writer = _m0.Writer.create()
@@ -3171,9 +3280,20 @@ export const InvokeContainerWithRetry = {
     },
 };
 
-const basePutQueueMessage: object = { queueId: '', serviceAccountId: '' };
+messageTypeRegistry.set(
+    InvokeContainerWithRetry.$type,
+    InvokeContainerWithRetry
+);
+
+const basePutQueueMessage: object = {
+    $type: 'yandex.cloud.serverless.triggers.v1.PutQueueMessage',
+    queueId: '',
+    serviceAccountId: '',
+};
 
 export const PutQueueMessage = {
+    $type: 'yandex.cloud.serverless.triggers.v1.PutQueueMessage' as const,
+
     encode(
         message: PutQueueMessage,
         writer: _m0.Writer = _m0.Writer.create()
@@ -3254,9 +3374,16 @@ export const PutQueueMessage = {
     },
 };
 
-const baseBatchSettings: object = { size: 0 };
+messageTypeRegistry.set(PutQueueMessage.$type, PutQueueMessage);
+
+const baseBatchSettings: object = {
+    $type: 'yandex.cloud.serverless.triggers.v1.BatchSettings',
+    size: 0,
+};
 
 export const BatchSettings = {
+    $type: 'yandex.cloud.serverless.triggers.v1.BatchSettings' as const,
+
     encode(
         message: BatchSettings,
         writer: _m0.Writer = _m0.Writer.create()
@@ -3333,9 +3460,16 @@ export const BatchSettings = {
     },
 };
 
-const baseCloudLogsBatchSettings: object = { size: 0 };
+messageTypeRegistry.set(BatchSettings.$type, BatchSettings);
+
+const baseCloudLogsBatchSettings: object = {
+    $type: 'yandex.cloud.serverless.triggers.v1.CloudLogsBatchSettings',
+    size: 0,
+};
 
 export const CloudLogsBatchSettings = {
+    $type: 'yandex.cloud.serverless.triggers.v1.CloudLogsBatchSettings' as const,
+
     encode(
         message: CloudLogsBatchSettings,
         writer: _m0.Writer = _m0.Writer.create()
@@ -3423,9 +3557,16 @@ export const CloudLogsBatchSettings = {
     },
 };
 
-const baseLoggingBatchSettings: object = { size: 0 };
+messageTypeRegistry.set(CloudLogsBatchSettings.$type, CloudLogsBatchSettings);
+
+const baseLoggingBatchSettings: object = {
+    $type: 'yandex.cloud.serverless.triggers.v1.LoggingBatchSettings',
+    size: 0,
+};
 
 export const LoggingBatchSettings = {
+    $type: 'yandex.cloud.serverless.triggers.v1.LoggingBatchSettings' as const,
+
     encode(
         message: LoggingBatchSettings,
         writer: _m0.Writer = _m0.Writer.create()
@@ -3507,9 +3648,16 @@ export const LoggingBatchSettings = {
     },
 };
 
-const baseRetrySettings: object = { retryAttempts: 0 };
+messageTypeRegistry.set(LoggingBatchSettings.$type, LoggingBatchSettings);
+
+const baseRetrySettings: object = {
+    $type: 'yandex.cloud.serverless.triggers.v1.RetrySettings',
+    retryAttempts: 0,
+};
 
 export const RetrySettings = {
+    $type: 'yandex.cloud.serverless.triggers.v1.RetrySettings' as const,
+
     encode(
         message: RetrySettings,
         writer: _m0.Writer = _m0.Writer.create()
@@ -3598,9 +3746,17 @@ export const RetrySettings = {
     },
 };
 
-const baseBillingBudget: object = { billingAccountId: '', budgetId: '' };
+messageTypeRegistry.set(RetrySettings.$type, RetrySettings);
+
+const baseBillingBudget: object = {
+    $type: 'yandex.cloud.serverless.triggers.v1.BillingBudget',
+    billingAccountId: '',
+    budgetId: '',
+};
 
 export const BillingBudget = {
+    $type: 'yandex.cloud.serverless.triggers.v1.BillingBudget' as const,
+
     encode(
         message: BillingBudget,
         writer: _m0.Writer = _m0.Writer.create()
@@ -3753,9 +3909,16 @@ export const BillingBudget = {
     },
 };
 
-const baseDataStreamBatchSettings: object = { size: 0 };
+messageTypeRegistry.set(BillingBudget.$type, BillingBudget);
+
+const baseDataStreamBatchSettings: object = {
+    $type: 'yandex.cloud.serverless.triggers.v1.DataStreamBatchSettings',
+    size: 0,
+};
 
 export const DataStreamBatchSettings = {
+    $type: 'yandex.cloud.serverless.triggers.v1.DataStreamBatchSettings' as const,
+
     encode(
         message: DataStreamBatchSettings,
         writer: _m0.Writer = _m0.Writer.create()
@@ -3843,7 +4006,10 @@ export const DataStreamBatchSettings = {
     },
 };
 
+messageTypeRegistry.set(DataStreamBatchSettings.$type, DataStreamBatchSettings);
+
 const baseDataStream: object = {
+    $type: 'yandex.cloud.serverless.triggers.v1.DataStream',
     endpoint: '',
     database: '',
     stream: '',
@@ -3851,6 +4017,8 @@ const baseDataStream: object = {
 };
 
 export const DataStream = {
+    $type: 'yandex.cloud.serverless.triggers.v1.DataStream' as const,
+
     encode(
         message: DataStream,
         writer: _m0.Writer = _m0.Writer.create()
@@ -4073,6 +4241,8 @@ export const DataStream = {
     },
 };
 
+messageTypeRegistry.set(DataStream.$type, DataStream);
+
 declare var self: any | undefined;
 declare var window: any | undefined;
 declare var global: any | undefined;
@@ -4099,13 +4269,13 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 function toTimestamp(date: Date): Timestamp {
     const seconds = date.getTime() / 1_000;
     const nanos = (date.getTime() % 1_000) * 1_000_000;
-    return { seconds, nanos };
+    return { $type: 'google.protobuf.Timestamp', seconds, nanos };
 }
 
 function fromTimestamp(t: Timestamp): Date {

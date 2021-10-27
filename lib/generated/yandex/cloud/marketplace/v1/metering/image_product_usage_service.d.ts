@@ -4,6 +4,7 @@ import { ChannelCredentials, ChannelOptions, UntypedServiceImplementation, handl
 import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.marketplace.v1.metering";
 export interface WriteImageProductUsageRequest {
+    $type: 'yandex.cloud.marketplace.v1.metering.WriteImageProductUsageRequest';
     /** Checks whether you have the access required for the emit usage */
     validateOnly: boolean;
     /** Marketplace Product's ID */
@@ -12,12 +13,14 @@ export interface WriteImageProductUsageRequest {
     usageRecords: UsageRecord[];
 }
 export interface WriteImageProductUsageResponse {
+    $type: 'yandex.cloud.marketplace.v1.metering.WriteImageProductUsageResponse';
     /** List of accepted product usage records */
     accepted: AcceptedUsageRecord[];
     /** List of rejected product usage records (with reason) */
     rejected: RejectedUsageRecord[];
 }
 export declare const WriteImageProductUsageRequest: {
+    $type: "yandex.cloud.marketplace.v1.metering.WriteImageProductUsageRequest";
     encode(message: WriteImageProductUsageRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): WriteImageProductUsageRequest;
     fromJSON(object: any): WriteImageProductUsageRequest;
@@ -25,6 +28,7 @@ export declare const WriteImageProductUsageRequest: {
     fromPartial(object: DeepPartial<WriteImageProductUsageRequest>): WriteImageProductUsageRequest;
 };
 export declare const WriteImageProductUsageResponse: {
+    $type: "yandex.cloud.marketplace.v1.metering.WriteImageProductUsageResponse";
     encode(message: WriteImageProductUsageResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): WriteImageProductUsageResponse;
     fromJSON(object: any): WriteImageProductUsageResponse;
@@ -56,6 +60,6 @@ export interface ImageProductUsageServiceClient extends Client {
 export declare const ImageProductUsageServiceClient: new (address: string, credentials: ChannelCredentials, options?: Partial<ChannelOptions> | undefined) => ImageProductUsageServiceClient;
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

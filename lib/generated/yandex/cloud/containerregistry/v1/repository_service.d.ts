@@ -6,6 +6,7 @@ import { ChannelCredentials, ChannelOptions, UntypedServiceImplementation, handl
 import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.containerregistry.v1";
 export interface GetRepositoryRequest {
+    $type: 'yandex.cloud.containerregistry.v1.GetRepositoryRequest';
     /**
      * ID of the Repository resource to return.
      *
@@ -14,6 +15,7 @@ export interface GetRepositoryRequest {
     repositoryId: string;
 }
 export interface GetRepositoryByNameRequest {
+    $type: 'yandex.cloud.containerregistry.v1.GetRepositoryByNameRequest';
     /**
      * Name of the Repository resource to return.
      *
@@ -22,6 +24,7 @@ export interface GetRepositoryByNameRequest {
     repositoryName: string;
 }
 export interface ListRepositoriesRequest {
+    $type: 'yandex.cloud.containerregistry.v1.ListRepositoriesRequest';
     /**
      * ID of the registry to list repositories in.
      *
@@ -60,6 +63,7 @@ export interface ListRepositoriesRequest {
     orderBy: string;
 }
 export interface ListRepositoriesResponse {
+    $type: 'yandex.cloud.containerregistry.v1.ListRepositoriesResponse';
     /** List of Repository resources. */
     repositories: Repository[];
     /**
@@ -73,6 +77,7 @@ export interface ListRepositoriesResponse {
     nextPageToken: string;
 }
 export interface UpsertRepositoryRequest {
+    $type: 'yandex.cloud.containerregistry.v1.UpsertRepositoryRequest';
     /**
      * Name of the repository.
      *
@@ -81,18 +86,22 @@ export interface UpsertRepositoryRequest {
     name: string;
 }
 export interface UpsertRepositoryMetadata {
+    $type: 'yandex.cloud.containerregistry.v1.UpsertRepositoryMetadata';
     /** ID of the repository that is being upserted. */
     repositoryId: string;
 }
 export interface DeleteRepositoryRequest {
+    $type: 'yandex.cloud.containerregistry.v1.DeleteRepositoryRequest';
     /** ID of the repository to delete. */
     repositoryId: string;
 }
 export interface DeleteRepositoryMetadata {
+    $type: 'yandex.cloud.containerregistry.v1.DeleteRepositoryMetadata';
     /** ID of the repository that is being deleted. */
     repositoryId: string;
 }
 export declare const GetRepositoryRequest: {
+    $type: "yandex.cloud.containerregistry.v1.GetRepositoryRequest";
     encode(message: GetRepositoryRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): GetRepositoryRequest;
     fromJSON(object: any): GetRepositoryRequest;
@@ -100,6 +109,7 @@ export declare const GetRepositoryRequest: {
     fromPartial(object: DeepPartial<GetRepositoryRequest>): GetRepositoryRequest;
 };
 export declare const GetRepositoryByNameRequest: {
+    $type: "yandex.cloud.containerregistry.v1.GetRepositoryByNameRequest";
     encode(message: GetRepositoryByNameRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): GetRepositoryByNameRequest;
     fromJSON(object: any): GetRepositoryByNameRequest;
@@ -107,6 +117,7 @@ export declare const GetRepositoryByNameRequest: {
     fromPartial(object: DeepPartial<GetRepositoryByNameRequest>): GetRepositoryByNameRequest;
 };
 export declare const ListRepositoriesRequest: {
+    $type: "yandex.cloud.containerregistry.v1.ListRepositoriesRequest";
     encode(message: ListRepositoriesRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListRepositoriesRequest;
     fromJSON(object: any): ListRepositoriesRequest;
@@ -114,6 +125,7 @@ export declare const ListRepositoriesRequest: {
     fromPartial(object: DeepPartial<ListRepositoriesRequest>): ListRepositoriesRequest;
 };
 export declare const ListRepositoriesResponse: {
+    $type: "yandex.cloud.containerregistry.v1.ListRepositoriesResponse";
     encode(message: ListRepositoriesResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListRepositoriesResponse;
     fromJSON(object: any): ListRepositoriesResponse;
@@ -121,6 +133,7 @@ export declare const ListRepositoriesResponse: {
     fromPartial(object: DeepPartial<ListRepositoriesResponse>): ListRepositoriesResponse;
 };
 export declare const UpsertRepositoryRequest: {
+    $type: "yandex.cloud.containerregistry.v1.UpsertRepositoryRequest";
     encode(message: UpsertRepositoryRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpsertRepositoryRequest;
     fromJSON(object: any): UpsertRepositoryRequest;
@@ -128,6 +141,7 @@ export declare const UpsertRepositoryRequest: {
     fromPartial(object: DeepPartial<UpsertRepositoryRequest>): UpsertRepositoryRequest;
 };
 export declare const UpsertRepositoryMetadata: {
+    $type: "yandex.cloud.containerregistry.v1.UpsertRepositoryMetadata";
     encode(message: UpsertRepositoryMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpsertRepositoryMetadata;
     fromJSON(object: any): UpsertRepositoryMetadata;
@@ -135,6 +149,7 @@ export declare const UpsertRepositoryMetadata: {
     fromPartial(object: DeepPartial<UpsertRepositoryMetadata>): UpsertRepositoryMetadata;
 };
 export declare const DeleteRepositoryRequest: {
+    $type: "yandex.cloud.containerregistry.v1.DeleteRepositoryRequest";
     encode(message: DeleteRepositoryRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteRepositoryRequest;
     fromJSON(object: any): DeleteRepositoryRequest;
@@ -142,6 +157,7 @@ export declare const DeleteRepositoryRequest: {
     fromPartial(object: DeepPartial<DeleteRepositoryRequest>): DeleteRepositoryRequest;
 };
 export declare const DeleteRepositoryMetadata: {
+    $type: "yandex.cloud.containerregistry.v1.DeleteRepositoryMetadata";
     encode(message: DeleteRepositoryMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteRepositoryMetadata;
     fromJSON(object: any): DeleteRepositoryMetadata;
@@ -310,6 +326,6 @@ export interface RepositoryServiceClient extends Client {
 export declare const RepositoryServiceClient: new (address: string, credentials: ChannelCredentials, options?: Partial<ChannelOptions> | undefined) => RepositoryServiceClient;
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

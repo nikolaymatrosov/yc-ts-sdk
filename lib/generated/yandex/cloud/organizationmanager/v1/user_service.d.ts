@@ -5,6 +5,7 @@ import { ChannelCredentials, ChannelOptions, UntypedServiceImplementation, handl
 import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.organizationmanager.v1";
 export interface ListMembersRequest {
+    $type: 'yandex.cloud.organizationmanager.v1.ListMembersRequest';
     /** ID of the Organization resource to list members for. */
     organizationId: string;
     /**
@@ -22,6 +23,7 @@ export interface ListMembersRequest {
     pageToken: string;
 }
 export interface ListMembersResponse {
+    $type: 'yandex.cloud.organizationmanager.v1.ListMembersResponse';
     /** List of users for the specified organization. */
     users: ListMembersResponse_OrganizationUser[];
     /**
@@ -33,10 +35,12 @@ export interface ListMembersResponse {
     nextPageToken: string;
 }
 export interface ListMembersResponse_OrganizationUser {
+    $type: 'yandex.cloud.organizationmanager.v1.ListMembersResponse.OrganizationUser';
     /** OpenID standard claims with additional Yandex.Organization claims. */
     subjectClaims: SubjectClaims | undefined;
 }
 export interface DeleteMembershipRequest {
+    $type: 'yandex.cloud.organizationmanager.v1.DeleteMembershipRequest';
     /** ID of the organization to delete membership. */
     organizationId: string;
     /**
@@ -46,18 +50,21 @@ export interface DeleteMembershipRequest {
     subjectId: string;
 }
 export interface DeleteMembershipMetadata {
+    $type: 'yandex.cloud.organizationmanager.v1.DeleteMembershipMetadata';
     /** ID of the organization to delete membership. */
     organizationId: string;
     /** ID of the subject that is being deleted from organization. */
     subjectId: string;
 }
 export interface DeleteMembershipResponse {
+    $type: 'yandex.cloud.organizationmanager.v1.DeleteMembershipResponse';
     /** ID of the organization to delete membership. */
     organizationId: string;
     /** ID of the subject that is being deleted from organization. */
     subjectId: string;
 }
 export declare const ListMembersRequest: {
+    $type: "yandex.cloud.organizationmanager.v1.ListMembersRequest";
     encode(message: ListMembersRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListMembersRequest;
     fromJSON(object: any): ListMembersRequest;
@@ -65,6 +72,7 @@ export declare const ListMembersRequest: {
     fromPartial(object: DeepPartial<ListMembersRequest>): ListMembersRequest;
 };
 export declare const ListMembersResponse: {
+    $type: "yandex.cloud.organizationmanager.v1.ListMembersResponse";
     encode(message: ListMembersResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListMembersResponse;
     fromJSON(object: any): ListMembersResponse;
@@ -72,6 +80,7 @@ export declare const ListMembersResponse: {
     fromPartial(object: DeepPartial<ListMembersResponse>): ListMembersResponse;
 };
 export declare const ListMembersResponse_OrganizationUser: {
+    $type: "yandex.cloud.organizationmanager.v1.ListMembersResponse.OrganizationUser";
     encode(message: ListMembersResponse_OrganizationUser, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListMembersResponse_OrganizationUser;
     fromJSON(object: any): ListMembersResponse_OrganizationUser;
@@ -79,6 +88,7 @@ export declare const ListMembersResponse_OrganizationUser: {
     fromPartial(object: DeepPartial<ListMembersResponse_OrganizationUser>): ListMembersResponse_OrganizationUser;
 };
 export declare const DeleteMembershipRequest: {
+    $type: "yandex.cloud.organizationmanager.v1.DeleteMembershipRequest";
     encode(message: DeleteMembershipRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteMembershipRequest;
     fromJSON(object: any): DeleteMembershipRequest;
@@ -86,6 +96,7 @@ export declare const DeleteMembershipRequest: {
     fromPartial(object: DeepPartial<DeleteMembershipRequest>): DeleteMembershipRequest;
 };
 export declare const DeleteMembershipMetadata: {
+    $type: "yandex.cloud.organizationmanager.v1.DeleteMembershipMetadata";
     encode(message: DeleteMembershipMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteMembershipMetadata;
     fromJSON(object: any): DeleteMembershipMetadata;
@@ -93,6 +104,7 @@ export declare const DeleteMembershipMetadata: {
     fromPartial(object: DeepPartial<DeleteMembershipMetadata>): DeleteMembershipMetadata;
 };
 export declare const DeleteMembershipResponse: {
+    $type: "yandex.cloud.organizationmanager.v1.DeleteMembershipResponse";
     encode(message: DeleteMembershipResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteMembershipResponse;
     fromJSON(object: any): DeleteMembershipResponse;
@@ -141,6 +153,6 @@ export interface UserServiceClient extends Client {
 export declare const UserServiceClient: new (address: string, credentials: ChannelCredentials, options?: Partial<ChannelOptions> | undefined) => UserServiceClient;
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

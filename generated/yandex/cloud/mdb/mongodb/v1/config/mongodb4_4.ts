@@ -3,6 +3,7 @@ import {
     DoubleValue,
     Int64Value,
 } from '../../../../../../google/protobuf/wrappers';
+import { messageTypeRegistry } from '../../../../../../typeRegistry';
 import Long from 'long';
 import _m0 from 'protobufjs/minimal';
 
@@ -13,6 +14,7 @@ export const protobufPackage = 'yandex.cloud.mdb.mongodb.v1.config';
  * options described in [MongoDB documentation](https://docs.mongodb.com/v4.4/reference/configuration-options/).
  */
 export interface Mongodconfig44 {
+    $type: 'yandex.cloud.mdb.mongodb.v1.config.MongodConfig4_4';
     /** `storage` section of mongod configuration. */
     storage: Mongodconfig44_Storage | undefined;
     /** `operationProfiling` section of mongod configuration. */
@@ -22,6 +24,7 @@ export interface Mongodconfig44 {
 }
 
 export interface Mongodconfig44_Storage {
+    $type: 'yandex.cloud.mdb.mongodb.v1.config.MongodConfig4_4.Storage';
     /** Configuration of the WiredTiger storage engine. */
     wiredTiger: Mongodconfig44_Storage_WiredTiger | undefined;
     /** Configuration of the MongoDB [journal](https://docs.mongodb.com/v4.4/reference/glossary/#term-journal). */
@@ -30,6 +33,7 @@ export interface Mongodconfig44_Storage {
 
 /** Configuration of WiredTiger storage engine. */
 export interface Mongodconfig44_Storage_WiredTiger {
+    $type: 'yandex.cloud.mdb.mongodb.v1.config.MongodConfig4_4.Storage.WiredTiger';
     /** Engine configuration for WiredTiger. */
     engineConfig: Mongodconfig44_Storage_WiredTiger_EngineConfig | undefined;
     /** Collection configuration for WiredTiger. */
@@ -39,11 +43,13 @@ export interface Mongodconfig44_Storage_WiredTiger {
 }
 
 export interface Mongodconfig44_Storage_WiredTiger_EngineConfig {
+    $type: 'yandex.cloud.mdb.mongodb.v1.config.MongodConfig4_4.Storage.WiredTiger.EngineConfig';
     /** The maximum size of the internal cache that WiredTiger will use for all data. */
     cacheSizeGb: number | undefined;
 }
 
 export interface Mongodconfig44_Storage_WiredTiger_CollectionConfig {
+    $type: 'yandex.cloud.mdb.mongodb.v1.config.MongodConfig4_4.Storage.WiredTiger.CollectionConfig';
     /** Default type of compression to use for collection data. */
     blockCompressor: Mongodconfig44_Storage_WiredTiger_CollectionConfig_Compressor;
 }
@@ -100,6 +106,7 @@ export function mongodconfig44_Storage_WiredTiger_CollectionConfig_CompressorToJ
 }
 
 export interface Mongodconfig44_Storage_Journal {
+    $type: 'yandex.cloud.mdb.mongodb.v1.config.MongodConfig4_4.Storage.Journal';
     /**
      * Commit interval between journal operations, in milliseconds.
      * Default: 100.
@@ -108,6 +115,7 @@ export interface Mongodconfig44_Storage_Journal {
 }
 
 export interface Mongodconfig44_OperationProfiling {
+    $type: 'yandex.cloud.mdb.mongodb.v1.config.MongodConfig4_4.OperationProfiling';
     /** Mode which specifies operations that should be profiled. */
     mode: Mongodconfig44_OperationProfiling_Mode;
     /**
@@ -170,11 +178,13 @@ export function mongodconfig44_OperationProfiling_ModeToJSON(
 }
 
 export interface Mongodconfig44_Network {
+    $type: 'yandex.cloud.mdb.mongodb.v1.config.MongodConfig4_4.Network';
     /** The maximum number of simultaneous connections that mongod will accept. */
     maxIncomingConnections: number | undefined;
 }
 
 export interface Mongocfgconfig44 {
+    $type: 'yandex.cloud.mdb.mongodb.v1.config.MongoCfgConfig4_4';
     /** `storage` section of mongocfg configuration. */
     storage: Mongocfgconfig44_Storage | undefined;
     /** `operationProfiling` section of mongocfg configuration. */
@@ -184,22 +194,26 @@ export interface Mongocfgconfig44 {
 }
 
 export interface Mongocfgconfig44_Storage {
+    $type: 'yandex.cloud.mdb.mongodb.v1.config.MongoCfgConfig4_4.Storage';
     /** Configuration of the WiredTiger storage engine. */
     wiredTiger: Mongocfgconfig44_Storage_WiredTiger | undefined;
 }
 
 /** Configuration of WiredTiger storage engine. */
 export interface Mongocfgconfig44_Storage_WiredTiger {
+    $type: 'yandex.cloud.mdb.mongodb.v1.config.MongoCfgConfig4_4.Storage.WiredTiger';
     /** Engine configuration for WiredTiger. */
     engineConfig: Mongocfgconfig44_Storage_WiredTiger_EngineConfig | undefined;
 }
 
 export interface Mongocfgconfig44_Storage_WiredTiger_EngineConfig {
+    $type: 'yandex.cloud.mdb.mongodb.v1.config.MongoCfgConfig4_4.Storage.WiredTiger.EngineConfig';
     /** The maximum size of the internal cache that WiredTiger will use for all data. */
     cacheSizeGb: number | undefined;
 }
 
 export interface Mongocfgconfig44_OperationProfiling {
+    $type: 'yandex.cloud.mdb.mongodb.v1.config.MongoCfgConfig4_4.OperationProfiling';
     /** Mode which specifies operations that should be profiled. */
     mode: Mongocfgconfig44_OperationProfiling_Mode;
     /**
@@ -262,21 +276,25 @@ export function mongocfgconfig44_OperationProfiling_ModeToJSON(
 }
 
 export interface Mongocfgconfig44_Network {
+    $type: 'yandex.cloud.mdb.mongodb.v1.config.MongoCfgConfig4_4.Network';
     /** The maximum number of simultaneous connections that mongocfg will accept. */
     maxIncomingConnections: number | undefined;
 }
 
 export interface Mongosconfig44 {
+    $type: 'yandex.cloud.mdb.mongodb.v1.config.MongosConfig4_4';
     /** Network settings for mongos. */
     net: Mongosconfig44_Network | undefined;
 }
 
 export interface Mongosconfig44_Network {
+    $type: 'yandex.cloud.mdb.mongodb.v1.config.MongosConfig4_4.Network';
     /** The maximum number of simultaneous connections that mongos will accept. */
     maxIncomingConnections: number | undefined;
 }
 
 export interface Mongodconfigset44 {
+    $type: 'yandex.cloud.mdb.mongodb.v1.config.MongodConfigSet4_4';
     /**
      * Effective mongod settings for a MongoDB 4.4 cluster (a combination of settings defined
      * in [user_config] and [default_config]).
@@ -289,6 +307,7 @@ export interface Mongodconfigset44 {
 }
 
 export interface Mongocfgconfigset44 {
+    $type: 'yandex.cloud.mdb.mongodb.v1.config.MongoCfgConfigSet4_4';
     /**
      * Effective mongocfg settings for a MongoDB 4.4 cluster (a combination of settings defined
      * in [user_config] and [default_config]).
@@ -301,6 +320,7 @@ export interface Mongocfgconfigset44 {
 }
 
 export interface Mongosconfigset44 {
+    $type: 'yandex.cloud.mdb.mongodb.v1.config.MongosConfigSet4_4';
     /**
      * Effective mongos settings for a MongoDB 4.4 cluster (a combination of settings defined
      * in [user_config] and [default_config]).
@@ -312,9 +332,13 @@ export interface Mongosconfigset44 {
     defaultConfig: Mongosconfig44 | undefined;
 }
 
-const baseMongodconfig44: object = {};
+const baseMongodconfig44: object = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.config.MongodConfig4_4',
+};
 
 export const Mongodconfig44 = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.config.MongodConfig4_4' as const,
+
     encode(
         message: Mongodconfig44,
         writer: _m0.Writer = _m0.Writer.create()
@@ -449,9 +473,15 @@ export const Mongodconfig44 = {
     },
 };
 
-const baseMongodconfig44_Storage: object = {};
+messageTypeRegistry.set(Mongodconfig44.$type, Mongodconfig44);
+
+const baseMongodconfig44_Storage: object = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.config.MongodConfig4_4.Storage',
+};
 
 export const Mongodconfig44_Storage = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.config.MongodConfig4_4.Storage' as const,
+
     encode(
         message: Mongodconfig44_Storage,
         writer: _m0.Writer = _m0.Writer.create()
@@ -563,9 +593,15 @@ export const Mongodconfig44_Storage = {
     },
 };
 
-const baseMongodconfig44_Storage_WiredTiger: object = {};
+messageTypeRegistry.set(Mongodconfig44_Storage.$type, Mongodconfig44_Storage);
+
+const baseMongodconfig44_Storage_WiredTiger: object = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.config.MongodConfig4_4.Storage.WiredTiger',
+};
 
 export const Mongodconfig44_Storage_WiredTiger = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.config.MongodConfig4_4.Storage.WiredTiger' as const,
+
     encode(
         message: Mongodconfig44_Storage_WiredTiger,
         writer: _m0.Writer = _m0.Writer.create()
@@ -692,16 +728,28 @@ export const Mongodconfig44_Storage_WiredTiger = {
     },
 };
 
-const baseMongodconfig44_Storage_WiredTiger_EngineConfig: object = {};
+messageTypeRegistry.set(
+    Mongodconfig44_Storage_WiredTiger.$type,
+    Mongodconfig44_Storage_WiredTiger
+);
+
+const baseMongodconfig44_Storage_WiredTiger_EngineConfig: object = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.config.MongodConfig4_4.Storage.WiredTiger.EngineConfig',
+};
 
 export const Mongodconfig44_Storage_WiredTiger_EngineConfig = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.config.MongodConfig4_4.Storage.WiredTiger.EngineConfig' as const,
+
     encode(
         message: Mongodconfig44_Storage_WiredTiger_EngineConfig,
         writer: _m0.Writer = _m0.Writer.create()
     ): _m0.Writer {
         if (message.cacheSizeGb !== undefined) {
             DoubleValue.encode(
-                { value: message.cacheSizeGb! },
+                {
+                    $type: 'google.protobuf.DoubleValue',
+                    value: message.cacheSizeGb!,
+                },
                 writer.uint32(10).fork()
             ).ldelim();
         }
@@ -769,11 +817,19 @@ export const Mongodconfig44_Storage_WiredTiger_EngineConfig = {
     },
 };
 
+messageTypeRegistry.set(
+    Mongodconfig44_Storage_WiredTiger_EngineConfig.$type,
+    Mongodconfig44_Storage_WiredTiger_EngineConfig
+);
+
 const baseMongodconfig44_Storage_WiredTiger_CollectionConfig: object = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.config.MongodConfig4_4.Storage.WiredTiger.CollectionConfig',
     blockCompressor: 0,
 };
 
 export const Mongodconfig44_Storage_WiredTiger_CollectionConfig = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.config.MongodConfig4_4.Storage.WiredTiger.CollectionConfig' as const,
+
     encode(
         message: Mongodconfig44_Storage_WiredTiger_CollectionConfig,
         writer: _m0.Writer = _m0.Writer.create()
@@ -856,16 +912,28 @@ export const Mongodconfig44_Storage_WiredTiger_CollectionConfig = {
     },
 };
 
-const baseMongodconfig44_Storage_Journal: object = {};
+messageTypeRegistry.set(
+    Mongodconfig44_Storage_WiredTiger_CollectionConfig.$type,
+    Mongodconfig44_Storage_WiredTiger_CollectionConfig
+);
+
+const baseMongodconfig44_Storage_Journal: object = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.config.MongodConfig4_4.Storage.Journal',
+};
 
 export const Mongodconfig44_Storage_Journal = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.config.MongodConfig4_4.Storage.Journal' as const,
+
     encode(
         message: Mongodconfig44_Storage_Journal,
         writer: _m0.Writer = _m0.Writer.create()
     ): _m0.Writer {
         if (message.commitInterval !== undefined) {
             Int64Value.encode(
-                { value: message.commitInterval! },
+                {
+                    $type: 'google.protobuf.Int64Value',
+                    value: message.commitInterval!,
+                },
                 writer.uint32(10).fork()
             ).ldelim();
         }
@@ -939,9 +1007,19 @@ export const Mongodconfig44_Storage_Journal = {
     },
 };
 
-const baseMongodconfig44_OperationProfiling: object = { mode: 0 };
+messageTypeRegistry.set(
+    Mongodconfig44_Storage_Journal.$type,
+    Mongodconfig44_Storage_Journal
+);
+
+const baseMongodconfig44_OperationProfiling: object = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.config.MongodConfig4_4.OperationProfiling',
+    mode: 0,
+};
 
 export const Mongodconfig44_OperationProfiling = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.config.MongodConfig4_4.OperationProfiling' as const,
+
     encode(
         message: Mongodconfig44_OperationProfiling,
         writer: _m0.Writer = _m0.Writer.create()
@@ -951,7 +1029,10 @@ export const Mongodconfig44_OperationProfiling = {
         }
         if (message.slowOpThreshold !== undefined) {
             Int64Value.encode(
-                { value: message.slowOpThreshold! },
+                {
+                    $type: 'google.protobuf.Int64Value',
+                    value: message.slowOpThreshold!,
+                },
                 writer.uint32(18).fork()
             ).ldelim();
         }
@@ -1044,16 +1125,28 @@ export const Mongodconfig44_OperationProfiling = {
     },
 };
 
-const baseMongodconfig44_Network: object = {};
+messageTypeRegistry.set(
+    Mongodconfig44_OperationProfiling.$type,
+    Mongodconfig44_OperationProfiling
+);
+
+const baseMongodconfig44_Network: object = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.config.MongodConfig4_4.Network',
+};
 
 export const Mongodconfig44_Network = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.config.MongodConfig4_4.Network' as const,
+
     encode(
         message: Mongodconfig44_Network,
         writer: _m0.Writer = _m0.Writer.create()
     ): _m0.Writer {
         if (message.maxIncomingConnections !== undefined) {
             Int64Value.encode(
-                { value: message.maxIncomingConnections! },
+                {
+                    $type: 'google.protobuf.Int64Value',
+                    value: message.maxIncomingConnections!,
+                },
                 writer.uint32(10).fork()
             ).ldelim();
         }
@@ -1129,9 +1222,15 @@ export const Mongodconfig44_Network = {
     },
 };
 
-const baseMongocfgconfig44: object = {};
+messageTypeRegistry.set(Mongodconfig44_Network.$type, Mongodconfig44_Network);
+
+const baseMongocfgconfig44: object = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.config.MongoCfgConfig4_4',
+};
 
 export const Mongocfgconfig44 = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.config.MongoCfgConfig4_4' as const,
+
     encode(
         message: Mongocfgconfig44,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1266,9 +1365,15 @@ export const Mongocfgconfig44 = {
     },
 };
 
-const baseMongocfgconfig44_Storage: object = {};
+messageTypeRegistry.set(Mongocfgconfig44.$type, Mongocfgconfig44);
+
+const baseMongocfgconfig44_Storage: object = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.config.MongoCfgConfig4_4.Storage',
+};
 
 export const Mongocfgconfig44_Storage = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.config.MongoCfgConfig4_4.Storage' as const,
+
     encode(
         message: Mongocfgconfig44_Storage,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1351,9 +1456,18 @@ export const Mongocfgconfig44_Storage = {
     },
 };
 
-const baseMongocfgconfig44_Storage_WiredTiger: object = {};
+messageTypeRegistry.set(
+    Mongocfgconfig44_Storage.$type,
+    Mongocfgconfig44_Storage
+);
+
+const baseMongocfgconfig44_Storage_WiredTiger: object = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.config.MongoCfgConfig4_4.Storage.WiredTiger',
+};
 
 export const Mongocfgconfig44_Storage_WiredTiger = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.config.MongoCfgConfig4_4.Storage.WiredTiger' as const,
+
     encode(
         message: Mongocfgconfig44_Storage_WiredTiger,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1439,16 +1553,28 @@ export const Mongocfgconfig44_Storage_WiredTiger = {
     },
 };
 
-const baseMongocfgconfig44_Storage_WiredTiger_EngineConfig: object = {};
+messageTypeRegistry.set(
+    Mongocfgconfig44_Storage_WiredTiger.$type,
+    Mongocfgconfig44_Storage_WiredTiger
+);
+
+const baseMongocfgconfig44_Storage_WiredTiger_EngineConfig: object = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.config.MongoCfgConfig4_4.Storage.WiredTiger.EngineConfig',
+};
 
 export const Mongocfgconfig44_Storage_WiredTiger_EngineConfig = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.config.MongoCfgConfig4_4.Storage.WiredTiger.EngineConfig' as const,
+
     encode(
         message: Mongocfgconfig44_Storage_WiredTiger_EngineConfig,
         writer: _m0.Writer = _m0.Writer.create()
     ): _m0.Writer {
         if (message.cacheSizeGb !== undefined) {
             DoubleValue.encode(
-                { value: message.cacheSizeGb! },
+                {
+                    $type: 'google.protobuf.DoubleValue',
+                    value: message.cacheSizeGb!,
+                },
                 writer.uint32(10).fork()
             ).ldelim();
         }
@@ -1516,9 +1642,19 @@ export const Mongocfgconfig44_Storage_WiredTiger_EngineConfig = {
     },
 };
 
-const baseMongocfgconfig44_OperationProfiling: object = { mode: 0 };
+messageTypeRegistry.set(
+    Mongocfgconfig44_Storage_WiredTiger_EngineConfig.$type,
+    Mongocfgconfig44_Storage_WiredTiger_EngineConfig
+);
+
+const baseMongocfgconfig44_OperationProfiling: object = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.config.MongoCfgConfig4_4.OperationProfiling',
+    mode: 0,
+};
 
 export const Mongocfgconfig44_OperationProfiling = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.config.MongoCfgConfig4_4.OperationProfiling' as const,
+
     encode(
         message: Mongocfgconfig44_OperationProfiling,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1528,7 +1664,10 @@ export const Mongocfgconfig44_OperationProfiling = {
         }
         if (message.slowOpThreshold !== undefined) {
             Int64Value.encode(
-                { value: message.slowOpThreshold! },
+                {
+                    $type: 'google.protobuf.Int64Value',
+                    value: message.slowOpThreshold!,
+                },
                 writer.uint32(18).fork()
             ).ldelim();
         }
@@ -1621,16 +1760,28 @@ export const Mongocfgconfig44_OperationProfiling = {
     },
 };
 
-const baseMongocfgconfig44_Network: object = {};
+messageTypeRegistry.set(
+    Mongocfgconfig44_OperationProfiling.$type,
+    Mongocfgconfig44_OperationProfiling
+);
+
+const baseMongocfgconfig44_Network: object = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.config.MongoCfgConfig4_4.Network',
+};
 
 export const Mongocfgconfig44_Network = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.config.MongoCfgConfig4_4.Network' as const,
+
     encode(
         message: Mongocfgconfig44_Network,
         writer: _m0.Writer = _m0.Writer.create()
     ): _m0.Writer {
         if (message.maxIncomingConnections !== undefined) {
             Int64Value.encode(
-                { value: message.maxIncomingConnections! },
+                {
+                    $type: 'google.protobuf.Int64Value',
+                    value: message.maxIncomingConnections!,
+                },
                 writer.uint32(10).fork()
             ).ldelim();
         }
@@ -1706,9 +1857,18 @@ export const Mongocfgconfig44_Network = {
     },
 };
 
-const baseMongosconfig44: object = {};
+messageTypeRegistry.set(
+    Mongocfgconfig44_Network.$type,
+    Mongocfgconfig44_Network
+);
+
+const baseMongosconfig44: object = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.config.MongosConfig4_4',
+};
 
 export const Mongosconfig44 = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.config.MongosConfig4_4' as const,
+
     encode(
         message: Mongosconfig44,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1774,16 +1934,25 @@ export const Mongosconfig44 = {
     },
 };
 
-const baseMongosconfig44_Network: object = {};
+messageTypeRegistry.set(Mongosconfig44.$type, Mongosconfig44);
+
+const baseMongosconfig44_Network: object = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.config.MongosConfig4_4.Network',
+};
 
 export const Mongosconfig44_Network = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.config.MongosConfig4_4.Network' as const,
+
     encode(
         message: Mongosconfig44_Network,
         writer: _m0.Writer = _m0.Writer.create()
     ): _m0.Writer {
         if (message.maxIncomingConnections !== undefined) {
             Int64Value.encode(
-                { value: message.maxIncomingConnections! },
+                {
+                    $type: 'google.protobuf.Int64Value',
+                    value: message.maxIncomingConnections!,
+                },
                 writer.uint32(10).fork()
             ).ldelim();
         }
@@ -1859,9 +2028,15 @@ export const Mongosconfig44_Network = {
     },
 };
 
-const baseMongodconfigset44: object = {};
+messageTypeRegistry.set(Mongosconfig44_Network.$type, Mongosconfig44_Network);
+
+const baseMongodconfigset44: object = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.config.MongodConfigSet4_4',
+};
 
 export const Mongodconfigset44 = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.config.MongodConfigSet4_4' as const,
+
     encode(
         message: Mongodconfigset44,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1999,9 +2174,15 @@ export const Mongodconfigset44 = {
     },
 };
 
-const baseMongocfgconfigset44: object = {};
+messageTypeRegistry.set(Mongodconfigset44.$type, Mongodconfigset44);
+
+const baseMongocfgconfigset44: object = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.config.MongoCfgConfigSet4_4',
+};
 
 export const Mongocfgconfigset44 = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.config.MongoCfgConfigSet4_4' as const,
+
     encode(
         message: Mongocfgconfigset44,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2144,9 +2325,15 @@ export const Mongocfgconfigset44 = {
     },
 };
 
-const baseMongosconfigset44: object = {};
+messageTypeRegistry.set(Mongocfgconfigset44.$type, Mongocfgconfigset44);
+
+const baseMongosconfigset44: object = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.config.MongosConfigSet4_4',
+};
 
 export const Mongosconfigset44 = {
+    $type: 'yandex.cloud.mdb.mongodb.v1.config.MongosConfigSet4_4' as const,
+
     encode(
         message: Mongosconfigset44,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2284,6 +2471,8 @@ export const Mongosconfigset44 = {
     },
 };
 
+messageTypeRegistry.set(Mongosconfigset44.$type, Mongosconfigset44);
+
 type Builtin =
     | Date
     | Function
@@ -2299,7 +2488,7 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 if (_m0.util.Long !== Long) {

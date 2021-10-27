@@ -5,6 +5,7 @@ import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.mdb.greenplum.v1";
 /** A Greenplum Cluster resource. For more information, see the */
 export interface Cluster {
+    $type: 'yandex.cloud.mdb.greenplum.v1.Cluster';
     /**
      * ID of the Greenplum cluster.
      * This ID is assigned by MDB at creation time.
@@ -114,11 +115,13 @@ export declare enum Cluster_Status {
 export declare function cluster_StatusFromJSON(object: any): Cluster_Status;
 export declare function cluster_StatusToJSON(object: Cluster_Status): string;
 export interface Cluster_LabelsEntry {
+    $type: 'yandex.cloud.mdb.greenplum.v1.Cluster.LabelsEntry';
     key: string;
     value: string;
 }
 /** Monitoring system metadata. */
 export interface Monitoring {
+    $type: 'yandex.cloud.mdb.greenplum.v1.Monitoring';
     /** Name of the monitoring system. */
     name: string;
     /** Description of the monitoring system. */
@@ -127,6 +130,7 @@ export interface Monitoring {
     link: string;
 }
 export interface GreenplumConfig {
+    $type: 'yandex.cloud.mdb.greenplum.v1.GreenplumConfig';
     /** Version of the Greenplum server software. */
     version: string;
     /** Time to start the daily backup, in the UTC timezone. */
@@ -157,12 +161,14 @@ export interface GreenplumConfig {
     assignPublicIp: boolean;
 }
 export interface Access {
+    $type: 'yandex.cloud.mdb.greenplum.v1.Access';
     /** Allow to export data from the cluster to Yandex DataLens. */
     dataLens: boolean;
     /** Allow SQL queries to the cluster databases from the Yandex.Cloud management console. */
     webSql: boolean;
 }
 export declare const Cluster: {
+    $type: "yandex.cloud.mdb.greenplum.v1.Cluster";
     encode(message: Cluster, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Cluster;
     fromJSON(object: any): Cluster;
@@ -170,6 +176,7 @@ export declare const Cluster: {
     fromPartial(object: DeepPartial<Cluster>): Cluster;
 };
 export declare const Cluster_LabelsEntry: {
+    $type: "yandex.cloud.mdb.greenplum.v1.Cluster.LabelsEntry";
     encode(message: Cluster_LabelsEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Cluster_LabelsEntry;
     fromJSON(object: any): Cluster_LabelsEntry;
@@ -177,6 +184,7 @@ export declare const Cluster_LabelsEntry: {
     fromPartial(object: DeepPartial<Cluster_LabelsEntry>): Cluster_LabelsEntry;
 };
 export declare const Monitoring: {
+    $type: "yandex.cloud.mdb.greenplum.v1.Monitoring";
     encode(message: Monitoring, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Monitoring;
     fromJSON(object: any): Monitoring;
@@ -184,6 +192,7 @@ export declare const Monitoring: {
     fromPartial(object: DeepPartial<Monitoring>): Monitoring;
 };
 export declare const GreenplumConfig: {
+    $type: "yandex.cloud.mdb.greenplum.v1.GreenplumConfig";
     encode(message: GreenplumConfig, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): GreenplumConfig;
     fromJSON(object: any): GreenplumConfig;
@@ -191,6 +200,7 @@ export declare const GreenplumConfig: {
     fromPartial(object: DeepPartial<GreenplumConfig>): GreenplumConfig;
 };
 export declare const Access: {
+    $type: "yandex.cloud.mdb.greenplum.v1.Access";
     encode(message: Access, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Access;
     fromJSON(object: any): Access;
@@ -199,6 +209,6 @@ export declare const Access: {
 };
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

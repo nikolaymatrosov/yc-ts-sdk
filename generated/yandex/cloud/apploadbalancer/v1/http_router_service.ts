@@ -1,5 +1,6 @@
 /* eslint-disable */
 import { FieldMask } from '../../../../google/protobuf/field_mask';
+import { messageTypeRegistry } from '../../../../typeRegistry';
 import { HttpRouter } from '../../../../yandex/cloud/apploadbalancer/v1/http_router';
 import { VirtualHost } from '../../../../yandex/cloud/apploadbalancer/v1/virtual_host';
 import { Operation } from '../../../../yandex/cloud/operation/operation';
@@ -21,6 +22,7 @@ import _m0 from 'protobufjs/minimal';
 export const protobufPackage = 'yandex.cloud.apploadbalancer.v1';
 
 export interface GetHttpRouterRequest {
+    $type: 'yandex.cloud.apploadbalancer.v1.GetHttpRouterRequest';
     /**
      * ID of the HTTP router to return.
      *
@@ -30,6 +32,7 @@ export interface GetHttpRouterRequest {
 }
 
 export interface ListHttpRoutersRequest {
+    $type: 'yandex.cloud.apploadbalancer.v1.ListHttpRoutersRequest';
     /**
      * ID of the folder to list HTTP routers in.
      *
@@ -61,6 +64,7 @@ export interface ListHttpRoutersRequest {
 }
 
 export interface ListHttpRoutersResponse {
+    $type: 'yandex.cloud.apploadbalancer.v1.ListHttpRoutersResponse';
     /** List of HTTP routers in the specified folder. */
     httpRouters: HttpRouter[];
     /**
@@ -74,6 +78,7 @@ export interface ListHttpRoutersResponse {
 }
 
 export interface DeleteHttpRouterRequest {
+    $type: 'yandex.cloud.apploadbalancer.v1.DeleteHttpRouterRequest';
     /**
      * ID of the HTTP router to delete.
      *
@@ -83,11 +88,13 @@ export interface DeleteHttpRouterRequest {
 }
 
 export interface DeleteHttpRouterMetadata {
+    $type: 'yandex.cloud.apploadbalancer.v1.DeleteHttpRouterMetadata';
     /** ID of the HTTP router that is being deleted. */
     httpRouterId: string;
 }
 
 export interface UpdateHttpRouterRequest {
+    $type: 'yandex.cloud.apploadbalancer.v1.UpdateHttpRouterRequest';
     /**
      * ID of the HTTP router to update.
      *
@@ -127,16 +134,19 @@ export interface UpdateHttpRouterRequest {
 }
 
 export interface UpdateHttpRouterRequest_LabelsEntry {
+    $type: 'yandex.cloud.apploadbalancer.v1.UpdateHttpRouterRequest.LabelsEntry';
     key: string;
     value: string;
 }
 
 export interface UpdateHttpRouterMetadata {
+    $type: 'yandex.cloud.apploadbalancer.v1.UpdateHttpRouterMetadata';
     /** ID of the HTTP router that is being updated. */
     httpRouterId: string;
 }
 
 export interface CreateHttpRouterRequest {
+    $type: 'yandex.cloud.apploadbalancer.v1.CreateHttpRouterRequest';
     /**
      * ID of the folder to create an HTTP router in.
      *
@@ -165,16 +175,19 @@ export interface CreateHttpRouterRequest {
 }
 
 export interface CreateHttpRouterRequest_LabelsEntry {
+    $type: 'yandex.cloud.apploadbalancer.v1.CreateHttpRouterRequest.LabelsEntry';
     key: string;
     value: string;
 }
 
 export interface CreateHttpRouterMetadata {
+    $type: 'yandex.cloud.apploadbalancer.v1.CreateHttpRouterMetadata';
     /** ID of the HTTP router that is being created. */
     httpRouterId: string;
 }
 
 export interface ListHttpRouterOperationsRequest {
+    $type: 'yandex.cloud.apploadbalancer.v1.ListHttpRouterOperationsRequest';
     /**
      * ID of the HTTP router to get operations for.
      *
@@ -196,6 +209,7 @@ export interface ListHttpRouterOperationsRequest {
 }
 
 export interface ListHttpRouterOperationsResponse {
+    $type: 'yandex.cloud.apploadbalancer.v1.ListHttpRouterOperationsResponse';
     /** List of operations for the specified HTTP router. */
     operations: Operation[];
     /**
@@ -208,9 +222,14 @@ export interface ListHttpRouterOperationsResponse {
     nextPageToken: string;
 }
 
-const baseGetHttpRouterRequest: object = { httpRouterId: '' };
+const baseGetHttpRouterRequest: object = {
+    $type: 'yandex.cloud.apploadbalancer.v1.GetHttpRouterRequest',
+    httpRouterId: '',
+};
 
 export const GetHttpRouterRequest = {
+    $type: 'yandex.cloud.apploadbalancer.v1.GetHttpRouterRequest' as const,
+
     encode(
         message: GetHttpRouterRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -273,7 +292,10 @@ export const GetHttpRouterRequest = {
     },
 };
 
+messageTypeRegistry.set(GetHttpRouterRequest.$type, GetHttpRouterRequest);
+
 const baseListHttpRoutersRequest: object = {
+    $type: 'yandex.cloud.apploadbalancer.v1.ListHttpRoutersRequest',
     folderId: '',
     pageSize: 0,
     pageToken: '',
@@ -281,6 +303,8 @@ const baseListHttpRoutersRequest: object = {
 };
 
 export const ListHttpRoutersRequest = {
+    $type: 'yandex.cloud.apploadbalancer.v1.ListHttpRoutersRequest' as const,
+
     encode(
         message: ListHttpRoutersRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -399,9 +423,16 @@ export const ListHttpRoutersRequest = {
     },
 };
 
-const baseListHttpRoutersResponse: object = { nextPageToken: '' };
+messageTypeRegistry.set(ListHttpRoutersRequest.$type, ListHttpRoutersRequest);
+
+const baseListHttpRoutersResponse: object = {
+    $type: 'yandex.cloud.apploadbalancer.v1.ListHttpRoutersResponse',
+    nextPageToken: '',
+};
 
 export const ListHttpRoutersResponse = {
+    $type: 'yandex.cloud.apploadbalancer.v1.ListHttpRoutersResponse' as const,
+
     encode(
         message: ListHttpRoutersResponse,
         writer: _m0.Writer = _m0.Writer.create()
@@ -504,9 +535,16 @@ export const ListHttpRoutersResponse = {
     },
 };
 
-const baseDeleteHttpRouterRequest: object = { httpRouterId: '' };
+messageTypeRegistry.set(ListHttpRoutersResponse.$type, ListHttpRoutersResponse);
+
+const baseDeleteHttpRouterRequest: object = {
+    $type: 'yandex.cloud.apploadbalancer.v1.DeleteHttpRouterRequest',
+    httpRouterId: '',
+};
 
 export const DeleteHttpRouterRequest = {
+    $type: 'yandex.cloud.apploadbalancer.v1.DeleteHttpRouterRequest' as const,
+
     encode(
         message: DeleteHttpRouterRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -575,9 +613,16 @@ export const DeleteHttpRouterRequest = {
     },
 };
 
-const baseDeleteHttpRouterMetadata: object = { httpRouterId: '' };
+messageTypeRegistry.set(DeleteHttpRouterRequest.$type, DeleteHttpRouterRequest);
+
+const baseDeleteHttpRouterMetadata: object = {
+    $type: 'yandex.cloud.apploadbalancer.v1.DeleteHttpRouterMetadata',
+    httpRouterId: '',
+};
 
 export const DeleteHttpRouterMetadata = {
+    $type: 'yandex.cloud.apploadbalancer.v1.DeleteHttpRouterMetadata' as const,
+
     encode(
         message: DeleteHttpRouterMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -646,13 +691,21 @@ export const DeleteHttpRouterMetadata = {
     },
 };
 
+messageTypeRegistry.set(
+    DeleteHttpRouterMetadata.$type,
+    DeleteHttpRouterMetadata
+);
+
 const baseUpdateHttpRouterRequest: object = {
+    $type: 'yandex.cloud.apploadbalancer.v1.UpdateHttpRouterRequest',
     httpRouterId: '',
     name: '',
     description: '',
 };
 
 export const UpdateHttpRouterRequest = {
+    $type: 'yandex.cloud.apploadbalancer.v1.UpdateHttpRouterRequest' as const,
+
     encode(
         message: UpdateHttpRouterRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -674,7 +727,11 @@ export const UpdateHttpRouterRequest = {
         }
         Object.entries(message.labels).forEach(([key, value]) => {
             UpdateHttpRouterRequest_LabelsEntry.encode(
-                { key: key as any, value },
+                {
+                    $type: 'yandex.cloud.apploadbalancer.v1.UpdateHttpRouterRequest.LabelsEntry',
+                    key: key as any,
+                    value,
+                },
                 writer.uint32(42).fork()
             ).ldelim();
         });
@@ -846,9 +903,17 @@ export const UpdateHttpRouterRequest = {
     },
 };
 
-const baseUpdateHttpRouterRequest_LabelsEntry: object = { key: '', value: '' };
+messageTypeRegistry.set(UpdateHttpRouterRequest.$type, UpdateHttpRouterRequest);
+
+const baseUpdateHttpRouterRequest_LabelsEntry: object = {
+    $type: 'yandex.cloud.apploadbalancer.v1.UpdateHttpRouterRequest.LabelsEntry',
+    key: '',
+    value: '',
+};
 
 export const UpdateHttpRouterRequest_LabelsEntry = {
+    $type: 'yandex.cloud.apploadbalancer.v1.UpdateHttpRouterRequest.LabelsEntry' as const,
+
     encode(
         message: UpdateHttpRouterRequest_LabelsEntry,
         writer: _m0.Writer = _m0.Writer.create()
@@ -933,9 +998,19 @@ export const UpdateHttpRouterRequest_LabelsEntry = {
     },
 };
 
-const baseUpdateHttpRouterMetadata: object = { httpRouterId: '' };
+messageTypeRegistry.set(
+    UpdateHttpRouterRequest_LabelsEntry.$type,
+    UpdateHttpRouterRequest_LabelsEntry
+);
+
+const baseUpdateHttpRouterMetadata: object = {
+    $type: 'yandex.cloud.apploadbalancer.v1.UpdateHttpRouterMetadata',
+    httpRouterId: '',
+};
 
 export const UpdateHttpRouterMetadata = {
+    $type: 'yandex.cloud.apploadbalancer.v1.UpdateHttpRouterMetadata' as const,
+
     encode(
         message: UpdateHttpRouterMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1004,13 +1079,21 @@ export const UpdateHttpRouterMetadata = {
     },
 };
 
+messageTypeRegistry.set(
+    UpdateHttpRouterMetadata.$type,
+    UpdateHttpRouterMetadata
+);
+
 const baseCreateHttpRouterRequest: object = {
+    $type: 'yandex.cloud.apploadbalancer.v1.CreateHttpRouterRequest',
     folderId: '',
     name: '',
     description: '',
 };
 
 export const CreateHttpRouterRequest = {
+    $type: 'yandex.cloud.apploadbalancer.v1.CreateHttpRouterRequest' as const,
+
     encode(
         message: CreateHttpRouterRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1026,7 +1109,11 @@ export const CreateHttpRouterRequest = {
         }
         Object.entries(message.labels).forEach(([key, value]) => {
             CreateHttpRouterRequest_LabelsEntry.encode(
-                { key: key as any, value },
+                {
+                    $type: 'yandex.cloud.apploadbalancer.v1.CreateHttpRouterRequest.LabelsEntry',
+                    key: key as any,
+                    value,
+                },
                 writer.uint32(34).fork()
             ).ldelim();
         });
@@ -1177,9 +1264,17 @@ export const CreateHttpRouterRequest = {
     },
 };
 
-const baseCreateHttpRouterRequest_LabelsEntry: object = { key: '', value: '' };
+messageTypeRegistry.set(CreateHttpRouterRequest.$type, CreateHttpRouterRequest);
+
+const baseCreateHttpRouterRequest_LabelsEntry: object = {
+    $type: 'yandex.cloud.apploadbalancer.v1.CreateHttpRouterRequest.LabelsEntry',
+    key: '',
+    value: '',
+};
 
 export const CreateHttpRouterRequest_LabelsEntry = {
+    $type: 'yandex.cloud.apploadbalancer.v1.CreateHttpRouterRequest.LabelsEntry' as const,
+
     encode(
         message: CreateHttpRouterRequest_LabelsEntry,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1264,9 +1359,19 @@ export const CreateHttpRouterRequest_LabelsEntry = {
     },
 };
 
-const baseCreateHttpRouterMetadata: object = { httpRouterId: '' };
+messageTypeRegistry.set(
+    CreateHttpRouterRequest_LabelsEntry.$type,
+    CreateHttpRouterRequest_LabelsEntry
+);
+
+const baseCreateHttpRouterMetadata: object = {
+    $type: 'yandex.cloud.apploadbalancer.v1.CreateHttpRouterMetadata',
+    httpRouterId: '',
+};
 
 export const CreateHttpRouterMetadata = {
+    $type: 'yandex.cloud.apploadbalancer.v1.CreateHttpRouterMetadata' as const,
+
     encode(
         message: CreateHttpRouterMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1335,13 +1440,21 @@ export const CreateHttpRouterMetadata = {
     },
 };
 
+messageTypeRegistry.set(
+    CreateHttpRouterMetadata.$type,
+    CreateHttpRouterMetadata
+);
+
 const baseListHttpRouterOperationsRequest: object = {
+    $type: 'yandex.cloud.apploadbalancer.v1.ListHttpRouterOperationsRequest',
     httpRouterId: '',
     pageSize: 0,
     pageToken: '',
 };
 
 export const ListHttpRouterOperationsRequest = {
+    $type: 'yandex.cloud.apploadbalancer.v1.ListHttpRouterOperationsRequest' as const,
+
     encode(
         message: ListHttpRouterOperationsRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1444,9 +1557,19 @@ export const ListHttpRouterOperationsRequest = {
     },
 };
 
-const baseListHttpRouterOperationsResponse: object = { nextPageToken: '' };
+messageTypeRegistry.set(
+    ListHttpRouterOperationsRequest.$type,
+    ListHttpRouterOperationsRequest
+);
+
+const baseListHttpRouterOperationsResponse: object = {
+    $type: 'yandex.cloud.apploadbalancer.v1.ListHttpRouterOperationsResponse',
+    nextPageToken: '',
+};
 
 export const ListHttpRouterOperationsResponse = {
+    $type: 'yandex.cloud.apploadbalancer.v1.ListHttpRouterOperationsResponse' as const,
+
     encode(
         message: ListHttpRouterOperationsResponse,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1548,6 +1671,11 @@ export const ListHttpRouterOperationsResponse = {
         return message;
     },
 };
+
+messageTypeRegistry.set(
+    ListHttpRouterOperationsResponse.$type,
+    ListHttpRouterOperationsResponse
+);
 
 /** A set of methods for managing HTTP routers. */
 export const HttpRouterServiceService = {
@@ -1819,7 +1947,7 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 function longToNumber(long: Long): number {

@@ -1,4 +1,5 @@
 /* eslint-disable */
+import { messageTypeRegistry } from '../../../../../typeRegistry';
 import {
     Database,
     DatabaseSpec,
@@ -22,6 +23,7 @@ import _m0 from 'protobufjs/minimal';
 export const protobufPackage = 'yandex.cloud.mdb.mysql.v1';
 
 export interface GetDatabaseRequest {
+    $type: 'yandex.cloud.mdb.mysql.v1.GetDatabaseRequest';
     /**
      * ID of the MySQL cluster that the database belongs to.
      * To get the cluster ID use a [ClusterService.List] request.
@@ -35,6 +37,7 @@ export interface GetDatabaseRequest {
 }
 
 export interface ListDatabasesRequest {
+    $type: 'yandex.cloud.mdb.mysql.v1.ListDatabasesRequest';
     /**
      * ID of the MySQL cluster to list databases in.
      * To get the cluster ID use a [ClusterService.List] request.
@@ -54,6 +57,7 @@ export interface ListDatabasesRequest {
 }
 
 export interface ListDatabasesResponse {
+    $type: 'yandex.cloud.mdb.mysql.v1.ListDatabasesResponse';
     /** List of MySQL databases. */
     databases: Database[];
     /**
@@ -66,6 +70,7 @@ export interface ListDatabasesResponse {
 }
 
 export interface CreateDatabaseRequest {
+    $type: 'yandex.cloud.mdb.mysql.v1.CreateDatabaseRequest';
     /**
      * ID of the MySQL cluster to create a database in.
      * To get the cluster ID use a [ClusterService.List] request.
@@ -76,6 +81,7 @@ export interface CreateDatabaseRequest {
 }
 
 export interface CreateDatabaseMetadata {
+    $type: 'yandex.cloud.mdb.mysql.v1.CreateDatabaseMetadata';
     /** ID of the MySQL cluster where a database is being created. */
     clusterId: string;
     /** Name of the MySQL database that is being created. */
@@ -83,6 +89,7 @@ export interface CreateDatabaseMetadata {
 }
 
 export interface DeleteDatabaseRequest {
+    $type: 'yandex.cloud.mdb.mysql.v1.DeleteDatabaseRequest';
     /**
      * ID of the MySQL cluster to delete a database in.
      * To get the cluster ID, use a [ClusterService.List] request.
@@ -96,15 +103,22 @@ export interface DeleteDatabaseRequest {
 }
 
 export interface DeleteDatabaseMetadata {
+    $type: 'yandex.cloud.mdb.mysql.v1.DeleteDatabaseMetadata';
     /** ID of the MySQL cluster where a database is being deleted. */
     clusterId: string;
     /** Name of the MySQL database that is being deleted. */
     databaseName: string;
 }
 
-const baseGetDatabaseRequest: object = { clusterId: '', databaseName: '' };
+const baseGetDatabaseRequest: object = {
+    $type: 'yandex.cloud.mdb.mysql.v1.GetDatabaseRequest',
+    clusterId: '',
+    databaseName: '',
+};
 
 export const GetDatabaseRequest = {
+    $type: 'yandex.cloud.mdb.mysql.v1.GetDatabaseRequest' as const,
+
     encode(
         message: GetDatabaseRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -182,13 +196,18 @@ export const GetDatabaseRequest = {
     },
 };
 
+messageTypeRegistry.set(GetDatabaseRequest.$type, GetDatabaseRequest);
+
 const baseListDatabasesRequest: object = {
+    $type: 'yandex.cloud.mdb.mysql.v1.ListDatabasesRequest',
     clusterId: '',
     pageSize: 0,
     pageToken: '',
 };
 
 export const ListDatabasesRequest = {
+    $type: 'yandex.cloud.mdb.mysql.v1.ListDatabasesRequest' as const,
+
     encode(
         message: ListDatabasesRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -284,9 +303,16 @@ export const ListDatabasesRequest = {
     },
 };
 
-const baseListDatabasesResponse: object = { nextPageToken: '' };
+messageTypeRegistry.set(ListDatabasesRequest.$type, ListDatabasesRequest);
+
+const baseListDatabasesResponse: object = {
+    $type: 'yandex.cloud.mdb.mysql.v1.ListDatabasesResponse',
+    nextPageToken: '',
+};
 
 export const ListDatabasesResponse = {
+    $type: 'yandex.cloud.mdb.mysql.v1.ListDatabasesResponse' as const,
+
     encode(
         message: ListDatabasesResponse,
         writer: _m0.Writer = _m0.Writer.create()
@@ -389,9 +415,16 @@ export const ListDatabasesResponse = {
     },
 };
 
-const baseCreateDatabaseRequest: object = { clusterId: '' };
+messageTypeRegistry.set(ListDatabasesResponse.$type, ListDatabasesResponse);
+
+const baseCreateDatabaseRequest: object = {
+    $type: 'yandex.cloud.mdb.mysql.v1.CreateDatabaseRequest',
+    clusterId: '',
+};
 
 export const CreateDatabaseRequest = {
+    $type: 'yandex.cloud.mdb.mysql.v1.CreateDatabaseRequest' as const,
+
     encode(
         message: CreateDatabaseRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -487,9 +520,17 @@ export const CreateDatabaseRequest = {
     },
 };
 
-const baseCreateDatabaseMetadata: object = { clusterId: '', databaseName: '' };
+messageTypeRegistry.set(CreateDatabaseRequest.$type, CreateDatabaseRequest);
+
+const baseCreateDatabaseMetadata: object = {
+    $type: 'yandex.cloud.mdb.mysql.v1.CreateDatabaseMetadata',
+    clusterId: '',
+    databaseName: '',
+};
 
 export const CreateDatabaseMetadata = {
+    $type: 'yandex.cloud.mdb.mysql.v1.CreateDatabaseMetadata' as const,
+
     encode(
         message: CreateDatabaseMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -575,9 +616,17 @@ export const CreateDatabaseMetadata = {
     },
 };
 
-const baseDeleteDatabaseRequest: object = { clusterId: '', databaseName: '' };
+messageTypeRegistry.set(CreateDatabaseMetadata.$type, CreateDatabaseMetadata);
+
+const baseDeleteDatabaseRequest: object = {
+    $type: 'yandex.cloud.mdb.mysql.v1.DeleteDatabaseRequest',
+    clusterId: '',
+    databaseName: '',
+};
 
 export const DeleteDatabaseRequest = {
+    $type: 'yandex.cloud.mdb.mysql.v1.DeleteDatabaseRequest' as const,
+
     encode(
         message: DeleteDatabaseRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -663,9 +712,17 @@ export const DeleteDatabaseRequest = {
     },
 };
 
-const baseDeleteDatabaseMetadata: object = { clusterId: '', databaseName: '' };
+messageTypeRegistry.set(DeleteDatabaseRequest.$type, DeleteDatabaseRequest);
+
+const baseDeleteDatabaseMetadata: object = {
+    $type: 'yandex.cloud.mdb.mysql.v1.DeleteDatabaseMetadata',
+    clusterId: '',
+    databaseName: '',
+};
 
 export const DeleteDatabaseMetadata = {
+    $type: 'yandex.cloud.mdb.mysql.v1.DeleteDatabaseMetadata' as const,
+
     encode(
         message: DeleteDatabaseMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -750,6 +807,8 @@ export const DeleteDatabaseMetadata = {
         return message;
     },
 };
+
+messageTypeRegistry.set(DeleteDatabaseMetadata.$type, DeleteDatabaseMetadata);
 
 /** A set of methods for managing MySQL databases. */
 export const DatabaseServiceService = {
@@ -943,7 +1002,7 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 function longToNumber(long: Long): number {

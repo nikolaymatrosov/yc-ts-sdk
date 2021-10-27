@@ -6,6 +6,7 @@ import { ChannelCredentials, ChannelOptions, UntypedServiceImplementation, handl
 import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.mdb.elasticsearch.v1";
 export interface GetUserRequest {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.GetUserRequest';
     /**
      * ID of the Elasticsearch cluster the user belongs to.
      *
@@ -20,6 +21,7 @@ export interface GetUserRequest {
     userName: string;
 }
 export interface ListUsersRequest {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.ListUsersRequest';
     /**
      * ID of the Elasticsearch cluster to list Elasticsearch users in.
      *
@@ -40,6 +42,7 @@ export interface ListUsersRequest {
     pageToken: string;
 }
 export interface ListUsersResponse {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.ListUsersResponse';
     /** List of Elasticsearch users. */
     users: User[];
     /**
@@ -51,6 +54,7 @@ export interface ListUsersResponse {
     nextPageToken: string;
 }
 export interface CreateUserRequest {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.CreateUserRequest';
     /**
      * ID of the Elasticsearch cluster to create a user in.
      *
@@ -61,12 +65,14 @@ export interface CreateUserRequest {
     userSpec: UserSpec | undefined;
 }
 export interface CreateUserMetadata {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.CreateUserMetadata';
     /** ID of the Elasticsearch cluster the user is being created in. */
     clusterId: string;
     /** Name of the user that is being created. */
     userName: string;
 }
 export interface UpdateUserRequest {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.UpdateUserRequest';
     /**
      * ID of the Elasticsearch cluster the user belongs to.
      *
@@ -84,12 +90,14 @@ export interface UpdateUserRequest {
     password: string;
 }
 export interface UpdateUserMetadata {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.UpdateUserMetadata';
     /** ID of the Elasticsearch cluster the user belongs to. */
     clusterId: string;
     /** Name of the user that is being updated. */
     userName: string;
 }
 export interface DeleteUserRequest {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.DeleteUserRequest';
     /**
      * ID of the Elasticsearch cluster the user belongs to.
      *
@@ -104,12 +112,14 @@ export interface DeleteUserRequest {
     userName: string;
 }
 export interface DeleteUserMetadata {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.DeleteUserMetadata';
     /** ID of the Elasticsearch cluster the user belongs to. */
     clusterId: string;
     /** Name of the user that is being deleted. */
     userName: string;
 }
 export declare const GetUserRequest: {
+    $type: "yandex.cloud.mdb.elasticsearch.v1.GetUserRequest";
     encode(message: GetUserRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): GetUserRequest;
     fromJSON(object: any): GetUserRequest;
@@ -117,6 +127,7 @@ export declare const GetUserRequest: {
     fromPartial(object: DeepPartial<GetUserRequest>): GetUserRequest;
 };
 export declare const ListUsersRequest: {
+    $type: "yandex.cloud.mdb.elasticsearch.v1.ListUsersRequest";
     encode(message: ListUsersRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListUsersRequest;
     fromJSON(object: any): ListUsersRequest;
@@ -124,6 +135,7 @@ export declare const ListUsersRequest: {
     fromPartial(object: DeepPartial<ListUsersRequest>): ListUsersRequest;
 };
 export declare const ListUsersResponse: {
+    $type: "yandex.cloud.mdb.elasticsearch.v1.ListUsersResponse";
     encode(message: ListUsersResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListUsersResponse;
     fromJSON(object: any): ListUsersResponse;
@@ -131,6 +143,7 @@ export declare const ListUsersResponse: {
     fromPartial(object: DeepPartial<ListUsersResponse>): ListUsersResponse;
 };
 export declare const CreateUserRequest: {
+    $type: "yandex.cloud.mdb.elasticsearch.v1.CreateUserRequest";
     encode(message: CreateUserRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateUserRequest;
     fromJSON(object: any): CreateUserRequest;
@@ -138,6 +151,7 @@ export declare const CreateUserRequest: {
     fromPartial(object: DeepPartial<CreateUserRequest>): CreateUserRequest;
 };
 export declare const CreateUserMetadata: {
+    $type: "yandex.cloud.mdb.elasticsearch.v1.CreateUserMetadata";
     encode(message: CreateUserMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateUserMetadata;
     fromJSON(object: any): CreateUserMetadata;
@@ -145,6 +159,7 @@ export declare const CreateUserMetadata: {
     fromPartial(object: DeepPartial<CreateUserMetadata>): CreateUserMetadata;
 };
 export declare const UpdateUserRequest: {
+    $type: "yandex.cloud.mdb.elasticsearch.v1.UpdateUserRequest";
     encode(message: UpdateUserRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateUserRequest;
     fromJSON(object: any): UpdateUserRequest;
@@ -152,6 +167,7 @@ export declare const UpdateUserRequest: {
     fromPartial(object: DeepPartial<UpdateUserRequest>): UpdateUserRequest;
 };
 export declare const UpdateUserMetadata: {
+    $type: "yandex.cloud.mdb.elasticsearch.v1.UpdateUserMetadata";
     encode(message: UpdateUserMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateUserMetadata;
     fromJSON(object: any): UpdateUserMetadata;
@@ -159,6 +175,7 @@ export declare const UpdateUserMetadata: {
     fromPartial(object: DeepPartial<UpdateUserMetadata>): UpdateUserMetadata;
 };
 export declare const DeleteUserRequest: {
+    $type: "yandex.cloud.mdb.elasticsearch.v1.DeleteUserRequest";
     encode(message: DeleteUserRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteUserRequest;
     fromJSON(object: any): DeleteUserRequest;
@@ -166,6 +183,7 @@ export declare const DeleteUserRequest: {
     fromPartial(object: DeepPartial<DeleteUserRequest>): DeleteUserRequest;
 };
 export declare const DeleteUserMetadata: {
+    $type: "yandex.cloud.mdb.elasticsearch.v1.DeleteUserMetadata";
     encode(message: DeleteUserMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteUserMetadata;
     fromJSON(object: any): DeleteUserMetadata;
@@ -274,6 +292,6 @@ export interface UserServiceClient extends Client {
 export declare const UserServiceClient: new (address: string, credentials: ChannelCredentials, options?: Partial<ChannelOptions> | undefined) => UserServiceClient;
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

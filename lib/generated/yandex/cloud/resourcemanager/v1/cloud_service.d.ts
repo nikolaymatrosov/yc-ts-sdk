@@ -7,6 +7,7 @@ import { ChannelCredentials, ChannelOptions, UntypedServiceImplementation, handl
 import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.resourcemanager.v1";
 export interface GetCloudRequest {
+    $type: 'yandex.cloud.resourcemanager.v1.GetCloudRequest';
     /**
      * ID of the Cloud resource to return.
      * To get the cloud ID, use a [CloudService.List] request.
@@ -14,6 +15,7 @@ export interface GetCloudRequest {
     cloudId: string;
 }
 export interface ListCloudsRequest {
+    $type: 'yandex.cloud.resourcemanager.v1.ListCloudsRequest';
     /**
      * The maximum number of results per page to return. If the number of available
      * results is larger than [page_size],
@@ -38,6 +40,7 @@ export interface ListCloudsRequest {
     filter: string;
 }
 export interface ListCloudsResponse {
+    $type: 'yandex.cloud.resourcemanager.v1.ListCloudsResponse';
     /** List of Cloud resources. */
     clouds: Cloud[];
     /**
@@ -51,6 +54,7 @@ export interface ListCloudsResponse {
     nextPageToken: string;
 }
 export interface CreateCloudRequest {
+    $type: 'yandex.cloud.resourcemanager.v1.CreateCloudRequest';
     /**
      * ID of the organization to create a cloud in.
      * To get the organization ID, use a [yandex.cloud.organizationmanager.v1.OrganizationService.List] request.
@@ -66,14 +70,17 @@ export interface CreateCloudRequest {
     };
 }
 export interface CreateCloudRequest_LabelsEntry {
+    $type: 'yandex.cloud.resourcemanager.v1.CreateCloudRequest.LabelsEntry';
     key: string;
     value: string;
 }
 export interface CreateCloudMetadata {
+    $type: 'yandex.cloud.resourcemanager.v1.CreateCloudMetadata';
     /** ID of the cloud that is being created. */
     cloudId: string;
 }
 export interface ListCloudOperationsRequest {
+    $type: 'yandex.cloud.resourcemanager.v1.ListCloudOperationsRequest';
     /** ID of the Cloud resource to list operations for. */
     cloudId: string;
     /**
@@ -91,6 +98,7 @@ export interface ListCloudOperationsRequest {
     pageToken: string;
 }
 export interface ListCloudOperationsResponse {
+    $type: 'yandex.cloud.resourcemanager.v1.ListCloudOperationsResponse';
     /** List of operations for the specified cloud. */
     operations: Operation[];
     /**
@@ -102,6 +110,7 @@ export interface ListCloudOperationsResponse {
     nextPageToken: string;
 }
 export interface UpdateCloudRequest {
+    $type: 'yandex.cloud.resourcemanager.v1.UpdateCloudRequest';
     /**
      * ID of the cloud to update.
      * To get the cloud ID, use a [CloudService.List] request.
@@ -119,14 +128,17 @@ export interface UpdateCloudRequest {
     };
 }
 export interface UpdateCloudRequest_LabelsEntry {
+    $type: 'yandex.cloud.resourcemanager.v1.UpdateCloudRequest.LabelsEntry';
     key: string;
     value: string;
 }
 export interface UpdateCloudMetadata {
+    $type: 'yandex.cloud.resourcemanager.v1.UpdateCloudMetadata';
     /** ID of the cloud that is being updated. */
     cloudId: string;
 }
 export interface DeleteCloudRequest {
+    $type: 'yandex.cloud.resourcemanager.v1.DeleteCloudRequest';
     /**
      * ID of the cloud to delete.
      * To get the cloud ID, use a [CloudService.List] request.
@@ -143,12 +155,14 @@ export interface DeleteCloudRequest {
     deleteAfter: Date | undefined;
 }
 export interface DeleteCloudMetadata {
+    $type: 'yandex.cloud.resourcemanager.v1.DeleteCloudMetadata';
     /** ID of the cloud that is being deleted. */
     cloudId: string;
     /** The timestamp after which the process of deleting the cloud should begin. */
     deleteAfter: Date | undefined;
 }
 export declare const GetCloudRequest: {
+    $type: "yandex.cloud.resourcemanager.v1.GetCloudRequest";
     encode(message: GetCloudRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): GetCloudRequest;
     fromJSON(object: any): GetCloudRequest;
@@ -156,6 +170,7 @@ export declare const GetCloudRequest: {
     fromPartial(object: DeepPartial<GetCloudRequest>): GetCloudRequest;
 };
 export declare const ListCloudsRequest: {
+    $type: "yandex.cloud.resourcemanager.v1.ListCloudsRequest";
     encode(message: ListCloudsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListCloudsRequest;
     fromJSON(object: any): ListCloudsRequest;
@@ -163,6 +178,7 @@ export declare const ListCloudsRequest: {
     fromPartial(object: DeepPartial<ListCloudsRequest>): ListCloudsRequest;
 };
 export declare const ListCloudsResponse: {
+    $type: "yandex.cloud.resourcemanager.v1.ListCloudsResponse";
     encode(message: ListCloudsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListCloudsResponse;
     fromJSON(object: any): ListCloudsResponse;
@@ -170,6 +186,7 @@ export declare const ListCloudsResponse: {
     fromPartial(object: DeepPartial<ListCloudsResponse>): ListCloudsResponse;
 };
 export declare const CreateCloudRequest: {
+    $type: "yandex.cloud.resourcemanager.v1.CreateCloudRequest";
     encode(message: CreateCloudRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateCloudRequest;
     fromJSON(object: any): CreateCloudRequest;
@@ -177,6 +194,7 @@ export declare const CreateCloudRequest: {
     fromPartial(object: DeepPartial<CreateCloudRequest>): CreateCloudRequest;
 };
 export declare const CreateCloudRequest_LabelsEntry: {
+    $type: "yandex.cloud.resourcemanager.v1.CreateCloudRequest.LabelsEntry";
     encode(message: CreateCloudRequest_LabelsEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateCloudRequest_LabelsEntry;
     fromJSON(object: any): CreateCloudRequest_LabelsEntry;
@@ -184,6 +202,7 @@ export declare const CreateCloudRequest_LabelsEntry: {
     fromPartial(object: DeepPartial<CreateCloudRequest_LabelsEntry>): CreateCloudRequest_LabelsEntry;
 };
 export declare const CreateCloudMetadata: {
+    $type: "yandex.cloud.resourcemanager.v1.CreateCloudMetadata";
     encode(message: CreateCloudMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateCloudMetadata;
     fromJSON(object: any): CreateCloudMetadata;
@@ -191,6 +210,7 @@ export declare const CreateCloudMetadata: {
     fromPartial(object: DeepPartial<CreateCloudMetadata>): CreateCloudMetadata;
 };
 export declare const ListCloudOperationsRequest: {
+    $type: "yandex.cloud.resourcemanager.v1.ListCloudOperationsRequest";
     encode(message: ListCloudOperationsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListCloudOperationsRequest;
     fromJSON(object: any): ListCloudOperationsRequest;
@@ -198,6 +218,7 @@ export declare const ListCloudOperationsRequest: {
     fromPartial(object: DeepPartial<ListCloudOperationsRequest>): ListCloudOperationsRequest;
 };
 export declare const ListCloudOperationsResponse: {
+    $type: "yandex.cloud.resourcemanager.v1.ListCloudOperationsResponse";
     encode(message: ListCloudOperationsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListCloudOperationsResponse;
     fromJSON(object: any): ListCloudOperationsResponse;
@@ -205,6 +226,7 @@ export declare const ListCloudOperationsResponse: {
     fromPartial(object: DeepPartial<ListCloudOperationsResponse>): ListCloudOperationsResponse;
 };
 export declare const UpdateCloudRequest: {
+    $type: "yandex.cloud.resourcemanager.v1.UpdateCloudRequest";
     encode(message: UpdateCloudRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateCloudRequest;
     fromJSON(object: any): UpdateCloudRequest;
@@ -212,6 +234,7 @@ export declare const UpdateCloudRequest: {
     fromPartial(object: DeepPartial<UpdateCloudRequest>): UpdateCloudRequest;
 };
 export declare const UpdateCloudRequest_LabelsEntry: {
+    $type: "yandex.cloud.resourcemanager.v1.UpdateCloudRequest.LabelsEntry";
     encode(message: UpdateCloudRequest_LabelsEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateCloudRequest_LabelsEntry;
     fromJSON(object: any): UpdateCloudRequest_LabelsEntry;
@@ -219,6 +242,7 @@ export declare const UpdateCloudRequest_LabelsEntry: {
     fromPartial(object: DeepPartial<UpdateCloudRequest_LabelsEntry>): UpdateCloudRequest_LabelsEntry;
 };
 export declare const UpdateCloudMetadata: {
+    $type: "yandex.cloud.resourcemanager.v1.UpdateCloudMetadata";
     encode(message: UpdateCloudMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateCloudMetadata;
     fromJSON(object: any): UpdateCloudMetadata;
@@ -226,6 +250,7 @@ export declare const UpdateCloudMetadata: {
     fromPartial(object: DeepPartial<UpdateCloudMetadata>): UpdateCloudMetadata;
 };
 export declare const DeleteCloudRequest: {
+    $type: "yandex.cloud.resourcemanager.v1.DeleteCloudRequest";
     encode(message: DeleteCloudRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteCloudRequest;
     fromJSON(object: any): DeleteCloudRequest;
@@ -233,6 +258,7 @@ export declare const DeleteCloudRequest: {
     fromPartial(object: DeepPartial<DeleteCloudRequest>): DeleteCloudRequest;
 };
 export declare const DeleteCloudMetadata: {
+    $type: "yandex.cloud.resourcemanager.v1.DeleteCloudMetadata";
     encode(message: DeleteCloudMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteCloudMetadata;
     fromJSON(object: any): DeleteCloudMetadata;
@@ -405,6 +431,6 @@ export interface CloudServiceClient extends Client {
 export declare const CloudServiceClient: new (address: string, credentials: ChannelCredentials, options?: Partial<ChannelOptions> | undefined) => CloudServiceClient;
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

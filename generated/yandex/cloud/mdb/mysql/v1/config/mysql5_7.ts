@@ -4,6 +4,7 @@ import {
     DoubleValue,
     BoolValue,
 } from '../../../../../../google/protobuf/wrappers';
+import { messageTypeRegistry } from '../../../../../../typeRegistry';
 import Long from 'long';
 import _m0 from 'protobufjs/minimal';
 
@@ -11,6 +12,7 @@ export const protobufPackage = 'yandex.cloud.mdb.mysql.v1.config';
 
 /** Options and structure of `MysqlConfig5_7` reflects MySQL 5.7 configuration file */
 export interface Mysqlconfig57 {
+    $type: 'yandex.cloud.mdb.mysql.v1.config.MysqlConfig5_7';
     /**
      * Size of the InnoDB buffer pool used for caching table and index data.
      *
@@ -740,6 +742,7 @@ export function mysqlconfig57_SlaveParallelTypeToJSON(
 }
 
 export interface Mysqlconfigset57 {
+    $type: 'yandex.cloud.mdb.mysql.v1.config.MysqlConfigSet5_7';
     /**
      * Effective settings for a MySQL 5.7 cluster (a combination of settings defined
      * in [user_config] and [default_config]).
@@ -752,6 +755,7 @@ export interface Mysqlconfigset57 {
 }
 
 const baseMysqlconfig57: object = {
+    $type: 'yandex.cloud.mdb.mysql.v1.config.MysqlConfig5_7',
     sqlMode: 0,
     defaultAuthenticationPlugin: 0,
     transactionIsolation: 0,
@@ -763,37 +767,54 @@ const baseMysqlconfig57: object = {
 };
 
 export const Mysqlconfig57 = {
+    $type: 'yandex.cloud.mdb.mysql.v1.config.MysqlConfig5_7' as const,
+
     encode(
         message: Mysqlconfig57,
         writer: _m0.Writer = _m0.Writer.create()
     ): _m0.Writer {
         if (message.innodbBufferPoolSize !== undefined) {
             Int64Value.encode(
-                { value: message.innodbBufferPoolSize! },
+                {
+                    $type: 'google.protobuf.Int64Value',
+                    value: message.innodbBufferPoolSize!,
+                },
                 writer.uint32(10).fork()
             ).ldelim();
         }
         if (message.maxConnections !== undefined) {
             Int64Value.encode(
-                { value: message.maxConnections! },
+                {
+                    $type: 'google.protobuf.Int64Value',
+                    value: message.maxConnections!,
+                },
                 writer.uint32(18).fork()
             ).ldelim();
         }
         if (message.longQueryTime !== undefined) {
             DoubleValue.encode(
-                { value: message.longQueryTime! },
+                {
+                    $type: 'google.protobuf.DoubleValue',
+                    value: message.longQueryTime!,
+                },
                 writer.uint32(26).fork()
             ).ldelim();
         }
         if (message.generalLog !== undefined) {
             BoolValue.encode(
-                { value: message.generalLog! },
+                {
+                    $type: 'google.protobuf.BoolValue',
+                    value: message.generalLog!,
+                },
                 writer.uint32(34).fork()
             ).ldelim();
         }
         if (message.auditLog !== undefined) {
             BoolValue.encode(
-                { value: message.auditLog! },
+                {
+                    $type: 'google.protobuf.BoolValue',
+                    value: message.auditLog!,
+                },
                 writer.uint32(42).fork()
             ).ldelim();
         }
@@ -804,7 +825,10 @@ export const Mysqlconfig57 = {
         writer.ldelim();
         if (message.maxAllowedPacket !== undefined) {
             Int64Value.encode(
-                { value: message.maxAllowedPacket! },
+                {
+                    $type: 'google.protobuf.Int64Value',
+                    value: message.maxAllowedPacket!,
+                },
                 writer.uint32(58).fork()
             ).ldelim();
         }
@@ -813,13 +837,19 @@ export const Mysqlconfig57 = {
         }
         if (message.innodbFlushLogAtTrxCommit !== undefined) {
             Int64Value.encode(
-                { value: message.innodbFlushLogAtTrxCommit! },
+                {
+                    $type: 'google.protobuf.Int64Value',
+                    value: message.innodbFlushLogAtTrxCommit!,
+                },
                 writer.uint32(74).fork()
             ).ldelim();
         }
         if (message.innodbLockWaitTimeout !== undefined) {
             Int64Value.encode(
-                { value: message.innodbLockWaitTimeout! },
+                {
+                    $type: 'google.protobuf.Int64Value',
+                    value: message.innodbLockWaitTimeout!,
+                },
                 writer.uint32(82).fork()
             ).ldelim();
         }
@@ -828,37 +858,55 @@ export const Mysqlconfig57 = {
         }
         if (message.innodbPrintAllDeadlocks !== undefined) {
             BoolValue.encode(
-                { value: message.innodbPrintAllDeadlocks! },
+                {
+                    $type: 'google.protobuf.BoolValue',
+                    value: message.innodbPrintAllDeadlocks!,
+                },
                 writer.uint32(98).fork()
             ).ldelim();
         }
         if (message.netReadTimeout !== undefined) {
             Int64Value.encode(
-                { value: message.netReadTimeout! },
+                {
+                    $type: 'google.protobuf.Int64Value',
+                    value: message.netReadTimeout!,
+                },
                 writer.uint32(106).fork()
             ).ldelim();
         }
         if (message.netWriteTimeout !== undefined) {
             Int64Value.encode(
-                { value: message.netWriteTimeout! },
+                {
+                    $type: 'google.protobuf.Int64Value',
+                    value: message.netWriteTimeout!,
+                },
                 writer.uint32(114).fork()
             ).ldelim();
         }
         if (message.groupConcatMaxLen !== undefined) {
             Int64Value.encode(
-                { value: message.groupConcatMaxLen! },
+                {
+                    $type: 'google.protobuf.Int64Value',
+                    value: message.groupConcatMaxLen!,
+                },
                 writer.uint32(122).fork()
             ).ldelim();
         }
         if (message.tmpTableSize !== undefined) {
             Int64Value.encode(
-                { value: message.tmpTableSize! },
+                {
+                    $type: 'google.protobuf.Int64Value',
+                    value: message.tmpTableSize!,
+                },
                 writer.uint32(130).fork()
             ).ldelim();
         }
         if (message.maxHeapTableSize !== undefined) {
             Int64Value.encode(
-                { value: message.maxHeapTableSize! },
+                {
+                    $type: 'google.protobuf.Int64Value',
+                    value: message.maxHeapTableSize!,
+                },
                 writer.uint32(138).fork()
             ).ldelim();
         }
@@ -873,145 +921,217 @@ export const Mysqlconfig57 = {
         }
         if (message.innodbAdaptiveHashIndex !== undefined) {
             BoolValue.encode(
-                { value: message.innodbAdaptiveHashIndex! },
+                {
+                    $type: 'google.protobuf.BoolValue',
+                    value: message.innodbAdaptiveHashIndex!,
+                },
                 writer.uint32(170).fork()
             ).ldelim();
         }
         if (message.innodbNumaInterleave !== undefined) {
             BoolValue.encode(
-                { value: message.innodbNumaInterleave! },
+                {
+                    $type: 'google.protobuf.BoolValue',
+                    value: message.innodbNumaInterleave!,
+                },
                 writer.uint32(178).fork()
             ).ldelim();
         }
         if (message.innodbLogBufferSize !== undefined) {
             Int64Value.encode(
-                { value: message.innodbLogBufferSize! },
+                {
+                    $type: 'google.protobuf.Int64Value',
+                    value: message.innodbLogBufferSize!,
+                },
                 writer.uint32(186).fork()
             ).ldelim();
         }
         if (message.innodbLogFileSize !== undefined) {
             Int64Value.encode(
-                { value: message.innodbLogFileSize! },
+                {
+                    $type: 'google.protobuf.Int64Value',
+                    value: message.innodbLogFileSize!,
+                },
                 writer.uint32(194).fork()
             ).ldelim();
         }
         if (message.innodbIoCapacity !== undefined) {
             Int64Value.encode(
-                { value: message.innodbIoCapacity! },
+                {
+                    $type: 'google.protobuf.Int64Value',
+                    value: message.innodbIoCapacity!,
+                },
                 writer.uint32(202).fork()
             ).ldelim();
         }
         if (message.innodbIoCapacityMax !== undefined) {
             Int64Value.encode(
-                { value: message.innodbIoCapacityMax! },
+                {
+                    $type: 'google.protobuf.Int64Value',
+                    value: message.innodbIoCapacityMax!,
+                },
                 writer.uint32(210).fork()
             ).ldelim();
         }
         if (message.innodbReadIoThreads !== undefined) {
             Int64Value.encode(
-                { value: message.innodbReadIoThreads! },
+                {
+                    $type: 'google.protobuf.Int64Value',
+                    value: message.innodbReadIoThreads!,
+                },
                 writer.uint32(218).fork()
             ).ldelim();
         }
         if (message.innodbWriteIoThreads !== undefined) {
             Int64Value.encode(
-                { value: message.innodbWriteIoThreads! },
+                {
+                    $type: 'google.protobuf.Int64Value',
+                    value: message.innodbWriteIoThreads!,
+                },
                 writer.uint32(226).fork()
             ).ldelim();
         }
         if (message.innodbPurgeThreads !== undefined) {
             Int64Value.encode(
-                { value: message.innodbPurgeThreads! },
+                {
+                    $type: 'google.protobuf.Int64Value',
+                    value: message.innodbPurgeThreads!,
+                },
                 writer.uint32(234).fork()
             ).ldelim();
         }
         if (message.innodbThreadConcurrency !== undefined) {
             Int64Value.encode(
-                { value: message.innodbThreadConcurrency! },
+                {
+                    $type: 'google.protobuf.Int64Value',
+                    value: message.innodbThreadConcurrency!,
+                },
                 writer.uint32(242).fork()
             ).ldelim();
         }
         if (message.innodbTempDataFileMaxSize !== undefined) {
             Int64Value.encode(
-                { value: message.innodbTempDataFileMaxSize! },
+                {
+                    $type: 'google.protobuf.Int64Value',
+                    value: message.innodbTempDataFileMaxSize!,
+                },
                 writer.uint32(250).fork()
             ).ldelim();
         }
         if (message.threadCacheSize !== undefined) {
             Int64Value.encode(
-                { value: message.threadCacheSize! },
+                {
+                    $type: 'google.protobuf.Int64Value',
+                    value: message.threadCacheSize!,
+                },
                 writer.uint32(258).fork()
             ).ldelim();
         }
         if (message.threadStack !== undefined) {
             Int64Value.encode(
-                { value: message.threadStack! },
+                {
+                    $type: 'google.protobuf.Int64Value',
+                    value: message.threadStack!,
+                },
                 writer.uint32(266).fork()
             ).ldelim();
         }
         if (message.joinBufferSize !== undefined) {
             Int64Value.encode(
-                { value: message.joinBufferSize! },
+                {
+                    $type: 'google.protobuf.Int64Value',
+                    value: message.joinBufferSize!,
+                },
                 writer.uint32(274).fork()
             ).ldelim();
         }
         if (message.sortBufferSize !== undefined) {
             Int64Value.encode(
-                { value: message.sortBufferSize! },
+                {
+                    $type: 'google.protobuf.Int64Value',
+                    value: message.sortBufferSize!,
+                },
                 writer.uint32(282).fork()
             ).ldelim();
         }
         if (message.tableDefinitionCache !== undefined) {
             Int64Value.encode(
-                { value: message.tableDefinitionCache! },
+                {
+                    $type: 'google.protobuf.Int64Value',
+                    value: message.tableDefinitionCache!,
+                },
                 writer.uint32(290).fork()
             ).ldelim();
         }
         if (message.tableOpenCache !== undefined) {
             Int64Value.encode(
-                { value: message.tableOpenCache! },
+                {
+                    $type: 'google.protobuf.Int64Value',
+                    value: message.tableOpenCache!,
+                },
                 writer.uint32(298).fork()
             ).ldelim();
         }
         if (message.tableOpenCacheInstances !== undefined) {
             Int64Value.encode(
-                { value: message.tableOpenCacheInstances! },
+                {
+                    $type: 'google.protobuf.Int64Value',
+                    value: message.tableOpenCacheInstances!,
+                },
                 writer.uint32(306).fork()
             ).ldelim();
         }
         if (message.explicitDefaultsForTimestamp !== undefined) {
             BoolValue.encode(
-                { value: message.explicitDefaultsForTimestamp! },
+                {
+                    $type: 'google.protobuf.BoolValue',
+                    value: message.explicitDefaultsForTimestamp!,
+                },
                 writer.uint32(314).fork()
             ).ldelim();
         }
         if (message.autoIncrementIncrement !== undefined) {
             Int64Value.encode(
-                { value: message.autoIncrementIncrement! },
+                {
+                    $type: 'google.protobuf.Int64Value',
+                    value: message.autoIncrementIncrement!,
+                },
                 writer.uint32(322).fork()
             ).ldelim();
         }
         if (message.autoIncrementOffset !== undefined) {
             Int64Value.encode(
-                { value: message.autoIncrementOffset! },
+                {
+                    $type: 'google.protobuf.Int64Value',
+                    value: message.autoIncrementOffset!,
+                },
                 writer.uint32(330).fork()
             ).ldelim();
         }
         if (message.syncBinlog !== undefined) {
             Int64Value.encode(
-                { value: message.syncBinlog! },
+                {
+                    $type: 'google.protobuf.Int64Value',
+                    value: message.syncBinlog!,
+                },
                 writer.uint32(338).fork()
             ).ldelim();
         }
         if (message.binlogCacheSize !== undefined) {
             Int64Value.encode(
-                { value: message.binlogCacheSize! },
+                {
+                    $type: 'google.protobuf.Int64Value',
+                    value: message.binlogCacheSize!,
+                },
                 writer.uint32(346).fork()
             ).ldelim();
         }
         if (message.binlogGroupCommitSyncDelay !== undefined) {
             Int64Value.encode(
-                { value: message.binlogGroupCommitSyncDelay! },
+                {
+                    $type: 'google.protobuf.Int64Value',
+                    value: message.binlogGroupCommitSyncDelay!,
+                },
                 writer.uint32(354).fork()
             ).ldelim();
         }
@@ -1020,13 +1140,19 @@ export const Mysqlconfig57 = {
         }
         if (message.binlogRowsQueryLogEvents !== undefined) {
             BoolValue.encode(
-                { value: message.binlogRowsQueryLogEvents! },
+                {
+                    $type: 'google.protobuf.BoolValue',
+                    value: message.binlogRowsQueryLogEvents!,
+                },
                 writer.uint32(370).fork()
             ).ldelim();
         }
         if (message.rplSemiSyncMasterWaitForSlaveCount !== undefined) {
             Int64Value.encode(
-                { value: message.rplSemiSyncMasterWaitForSlaveCount! },
+                {
+                    $type: 'google.protobuf.Int64Value',
+                    value: message.rplSemiSyncMasterWaitForSlaveCount!,
+                },
                 writer.uint32(378).fork()
             ).ldelim();
         }
@@ -1035,43 +1161,64 @@ export const Mysqlconfig57 = {
         }
         if (message.slaveParallelWorkers !== undefined) {
             Int64Value.encode(
-                { value: message.slaveParallelWorkers! },
+                {
+                    $type: 'google.protobuf.Int64Value',
+                    value: message.slaveParallelWorkers!,
+                },
                 writer.uint32(394).fork()
             ).ldelim();
         }
         if (message.mdbPreserveBinlogBytes !== undefined) {
             Int64Value.encode(
-                { value: message.mdbPreserveBinlogBytes! },
+                {
+                    $type: 'google.protobuf.Int64Value',
+                    value: message.mdbPreserveBinlogBytes!,
+                },
                 writer.uint32(402).fork()
             ).ldelim();
         }
         if (message.interactiveTimeout !== undefined) {
             Int64Value.encode(
-                { value: message.interactiveTimeout! },
+                {
+                    $type: 'google.protobuf.Int64Value',
+                    value: message.interactiveTimeout!,
+                },
                 writer.uint32(410).fork()
             ).ldelim();
         }
         if (message.waitTimeout !== undefined) {
             Int64Value.encode(
-                { value: message.waitTimeout! },
+                {
+                    $type: 'google.protobuf.Int64Value',
+                    value: message.waitTimeout!,
+                },
                 writer.uint32(418).fork()
             ).ldelim();
         }
         if (message.mdbOfflineModeEnableLag !== undefined) {
             Int64Value.encode(
-                { value: message.mdbOfflineModeEnableLag! },
+                {
+                    $type: 'google.protobuf.Int64Value',
+                    value: message.mdbOfflineModeEnableLag!,
+                },
                 writer.uint32(426).fork()
             ).ldelim();
         }
         if (message.mdbOfflineModeDisableLag !== undefined) {
             Int64Value.encode(
-                { value: message.mdbOfflineModeDisableLag! },
+                {
+                    $type: 'google.protobuf.Int64Value',
+                    value: message.mdbOfflineModeDisableLag!,
+                },
                 writer.uint32(434).fork()
             ).ldelim();
         }
         if (message.rangeOptimizerMaxMemSize !== undefined) {
             Int64Value.encode(
-                { value: message.rangeOptimizerMaxMemSize! },
+                {
+                    $type: 'google.protobuf.Int64Value',
+                    value: message.rangeOptimizerMaxMemSize!,
+                },
                 writer.uint32(442).fork()
             ).ldelim();
         }
@@ -2436,9 +2583,15 @@ export const Mysqlconfig57 = {
     },
 };
 
-const baseMysqlconfigset57: object = {};
+messageTypeRegistry.set(Mysqlconfig57.$type, Mysqlconfig57);
+
+const baseMysqlconfigset57: object = {
+    $type: 'yandex.cloud.mdb.mysql.v1.config.MysqlConfigSet5_7',
+};
 
 export const Mysqlconfigset57 = {
+    $type: 'yandex.cloud.mdb.mysql.v1.config.MysqlConfigSet5_7' as const,
+
     encode(
         message: Mysqlconfigset57,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2576,6 +2729,8 @@ export const Mysqlconfigset57 = {
     },
 };
 
+messageTypeRegistry.set(Mysqlconfigset57.$type, Mysqlconfigset57);
+
 type Builtin =
     | Date
     | Function
@@ -2591,7 +2746,7 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 if (_m0.util.Long !== Long) {

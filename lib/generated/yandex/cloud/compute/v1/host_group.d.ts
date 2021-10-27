@@ -12,6 +12,7 @@ export declare function maintenancePolicyFromJSON(object: any): MaintenancePolic
 export declare function maintenancePolicyToJSON(object: MaintenancePolicy): string;
 /** Represents group of dedicated hosts */
 export interface HostGroup {
+    $type: 'yandex.cloud.compute.v1.HostGroup';
     /** ID of the group. */
     id: string;
     /** ID of the folder that the group belongs to. */
@@ -48,11 +49,13 @@ export declare enum HostGroup_Status {
 export declare function hostGroup_StatusFromJSON(object: any): HostGroup_Status;
 export declare function hostGroup_StatusToJSON(object: HostGroup_Status): string;
 export interface HostGroup_LabelsEntry {
+    $type: 'yandex.cloud.compute.v1.HostGroup.LabelsEntry';
     key: string;
     value: string;
 }
 /** Represents a dedicated host */
 export interface Host {
+    $type: 'yandex.cloud.compute.v1.Host';
     /** ID of the host. */
     id: string;
     /** Current status of the host. New instances are unable to start on host in DOWN status. */
@@ -69,12 +72,15 @@ export declare enum Host_Status {
 export declare function host_StatusFromJSON(object: any): Host_Status;
 export declare function host_StatusToJSON(object: Host_Status): string;
 export interface ScalePolicy {
+    $type: 'yandex.cloud.compute.v1.ScalePolicy';
     fixedScale: ScalePolicy_FixedScale | undefined;
 }
 export interface ScalePolicy_FixedScale {
+    $type: 'yandex.cloud.compute.v1.ScalePolicy.FixedScale';
     size: number;
 }
 export declare const HostGroup: {
+    $type: "yandex.cloud.compute.v1.HostGroup";
     encode(message: HostGroup, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): HostGroup;
     fromJSON(object: any): HostGroup;
@@ -82,6 +88,7 @@ export declare const HostGroup: {
     fromPartial(object: DeepPartial<HostGroup>): HostGroup;
 };
 export declare const HostGroup_LabelsEntry: {
+    $type: "yandex.cloud.compute.v1.HostGroup.LabelsEntry";
     encode(message: HostGroup_LabelsEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): HostGroup_LabelsEntry;
     fromJSON(object: any): HostGroup_LabelsEntry;
@@ -89,6 +96,7 @@ export declare const HostGroup_LabelsEntry: {
     fromPartial(object: DeepPartial<HostGroup_LabelsEntry>): HostGroup_LabelsEntry;
 };
 export declare const Host: {
+    $type: "yandex.cloud.compute.v1.Host";
     encode(message: Host, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Host;
     fromJSON(object: any): Host;
@@ -96,6 +104,7 @@ export declare const Host: {
     fromPartial(object: DeepPartial<Host>): Host;
 };
 export declare const ScalePolicy: {
+    $type: "yandex.cloud.compute.v1.ScalePolicy";
     encode(message: ScalePolicy, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ScalePolicy;
     fromJSON(object: any): ScalePolicy;
@@ -103,6 +112,7 @@ export declare const ScalePolicy: {
     fromPartial(object: DeepPartial<ScalePolicy>): ScalePolicy;
 };
 export declare const ScalePolicy_FixedScale: {
+    $type: "yandex.cloud.compute.v1.ScalePolicy.FixedScale";
     encode(message: ScalePolicy_FixedScale, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ScalePolicy_FixedScale;
     fromJSON(object: any): ScalePolicy_FixedScale;
@@ -111,6 +121,6 @@ export declare const ScalePolicy_FixedScale: {
 };
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

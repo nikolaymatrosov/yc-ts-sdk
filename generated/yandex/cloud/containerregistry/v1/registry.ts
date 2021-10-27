@@ -1,5 +1,6 @@
 /* eslint-disable */
 import { Timestamp } from '../../../../google/protobuf/timestamp';
+import { messageTypeRegistry } from '../../../../typeRegistry';
 import Long from 'long';
 import _m0 from 'protobufjs/minimal';
 
@@ -7,6 +8,7 @@ export const protobufPackage = 'yandex.cloud.containerregistry.v1';
 
 /** A Registry resource. For more information, see [Registry](/docs/cloud/containerregistry/registry). */
 export interface Registry {
+    $type: 'yandex.cloud.containerregistry.v1.Registry';
     /** Output only. ID of the registry. */
     id: string;
     /** ID of the folder that the registry belongs to. */
@@ -69,13 +71,22 @@ export function registry_StatusToJSON(object: Registry_Status): string {
 }
 
 export interface Registry_LabelsEntry {
+    $type: 'yandex.cloud.containerregistry.v1.Registry.LabelsEntry';
     key: string;
     value: string;
 }
 
-const baseRegistry: object = { id: '', folderId: '', name: '', status: 0 };
+const baseRegistry: object = {
+    $type: 'yandex.cloud.containerregistry.v1.Registry',
+    id: '',
+    folderId: '',
+    name: '',
+    status: 0,
+};
 
 export const Registry = {
+    $type: 'yandex.cloud.containerregistry.v1.Registry' as const,
+
     encode(
         message: Registry,
         writer: _m0.Writer = _m0.Writer.create()
@@ -100,7 +111,11 @@ export const Registry = {
         }
         Object.entries(message.labels).forEach(([key, value]) => {
             Registry_LabelsEntry.encode(
-                { key: key as any, value },
+                {
+                    $type: 'yandex.cloud.containerregistry.v1.Registry.LabelsEntry',
+                    key: key as any,
+                    value,
+                },
                 writer.uint32(50).fork()
             ).ldelim();
         });
@@ -243,9 +258,17 @@ export const Registry = {
     },
 };
 
-const baseRegistry_LabelsEntry: object = { key: '', value: '' };
+messageTypeRegistry.set(Registry.$type, Registry);
+
+const baseRegistry_LabelsEntry: object = {
+    $type: 'yandex.cloud.containerregistry.v1.Registry.LabelsEntry',
+    key: '',
+    value: '',
+};
 
 export const Registry_LabelsEntry = {
+    $type: 'yandex.cloud.containerregistry.v1.Registry.LabelsEntry' as const,
+
     encode(
         message: Registry_LabelsEntry,
         writer: _m0.Writer = _m0.Writer.create()
@@ -324,6 +347,8 @@ export const Registry_LabelsEntry = {
     },
 };
 
+messageTypeRegistry.set(Registry_LabelsEntry.$type, Registry_LabelsEntry);
+
 type Builtin =
     | Date
     | Function
@@ -339,13 +364,13 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 function toTimestamp(date: Date): Timestamp {
     const seconds = date.getTime() / 1_000;
     const nanos = (date.getTime() % 1_000) * 1_000_000;
-    return { seconds, nanos };
+    return { $type: 'google.protobuf.Timestamp', seconds, nanos };
 }
 
 function fromTimestamp(t: Timestamp): Date {

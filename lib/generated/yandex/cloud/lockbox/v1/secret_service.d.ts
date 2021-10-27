@@ -8,6 +8,7 @@ import { ChannelCredentials, ChannelOptions, UntypedServiceImplementation, handl
 import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.lockbox.v1";
 export interface PayloadEntryChange {
+    $type: 'yandex.cloud.lockbox.v1.PayloadEntryChange';
     /** Non-confidential key of the entry. */
     key: string;
     /** Use the field to set a text value. */
@@ -16,6 +17,7 @@ export interface PayloadEntryChange {
     binaryValue: Uint8Array | undefined;
 }
 export interface GetSecretRequest {
+    $type: 'yandex.cloud.lockbox.v1.GetSecretRequest';
     /**
      * ID of the secret to return.
      *
@@ -24,6 +26,7 @@ export interface GetSecretRequest {
     secretId: string;
 }
 export interface ListSecretsRequest {
+    $type: 'yandex.cloud.lockbox.v1.ListSecretsRequest';
     /** ID of the folder to list secrets in. */
     folderId: string;
     /**
@@ -40,6 +43,7 @@ export interface ListSecretsRequest {
     pageToken: string;
 }
 export interface ListSecretsResponse {
+    $type: 'yandex.cloud.lockbox.v1.ListSecretsResponse';
     /** List of secrets in the specified folder. */
     secrets: Secret[];
     /**
@@ -52,6 +56,7 @@ export interface ListSecretsResponse {
     nextPageToken: string;
 }
 export interface CreateSecretRequest {
+    $type: 'yandex.cloud.lockbox.v1.CreateSecretRequest';
     /** ID of the folder to create a secret in. */
     folderId: string;
     /** Name of the secret. */
@@ -75,16 +80,19 @@ export interface CreateSecretRequest {
     deletionProtection: boolean;
 }
 export interface CreateSecretRequest_LabelsEntry {
+    $type: 'yandex.cloud.lockbox.v1.CreateSecretRequest.LabelsEntry';
     key: string;
     value: string;
 }
 export interface CreateSecretMetadata {
+    $type: 'yandex.cloud.lockbox.v1.CreateSecretMetadata';
     /** ID of the secret being created. */
     secretId: string;
     /** ID of the current version of the secret being created. */
     versionId: string;
 }
 export interface UpdateSecretRequest {
+    $type: 'yandex.cloud.lockbox.v1.UpdateSecretRequest';
     /** ID of the secret to update. */
     secretId: string;
     /** Field mask that specifies which attributes of the secret are going to be updated. */
@@ -101,38 +109,47 @@ export interface UpdateSecretRequest {
     deletionProtection: boolean;
 }
 export interface UpdateSecretRequest_LabelsEntry {
+    $type: 'yandex.cloud.lockbox.v1.UpdateSecretRequest.LabelsEntry';
     key: string;
     value: string;
 }
 export interface UpdateSecretMetadata {
+    $type: 'yandex.cloud.lockbox.v1.UpdateSecretMetadata';
     /** ID of the secret being updated. */
     secretId: string;
 }
 export interface DeleteSecretRequest {
+    $type: 'yandex.cloud.lockbox.v1.DeleteSecretRequest';
     /** ID of the secret to be deleted. */
     secretId: string;
 }
 export interface DeleteSecretMetadata {
+    $type: 'yandex.cloud.lockbox.v1.DeleteSecretMetadata';
     /** ID of the secret being deleted. */
     secretId: string;
 }
 export interface ActivateSecretRequest {
+    $type: 'yandex.cloud.lockbox.v1.ActivateSecretRequest';
     /** ID of the secret to be activated. */
     secretId: string;
 }
 export interface ActivateSecretMetadata {
+    $type: 'yandex.cloud.lockbox.v1.ActivateSecretMetadata';
     /** ID of the secret being activated. */
     secretId: string;
 }
 export interface DeactivateSecretRequest {
+    $type: 'yandex.cloud.lockbox.v1.DeactivateSecretRequest';
     /** ID of the secret to be deactivated. */
     secretId: string;
 }
 export interface DeactivateSecretMetadata {
+    $type: 'yandex.cloud.lockbox.v1.DeactivateSecretMetadata';
     /** ID of the secret being deactivated. */
     secretId: string;
 }
 export interface AddVersionRequest {
+    $type: 'yandex.cloud.lockbox.v1.AddVersionRequest';
     /** ID of the secret. */
     secretId: string;
     /** Description of the version. */
@@ -143,12 +160,14 @@ export interface AddVersionRequest {
     baseVersionId: string;
 }
 export interface AddVersionMetadata {
+    $type: 'yandex.cloud.lockbox.v1.AddVersionMetadata';
     /** ID of the secret. */
     secretId: string;
     /** ID of the added version. */
     versionId: string;
 }
 export interface ListVersionsRequest {
+    $type: 'yandex.cloud.lockbox.v1.ListVersionsRequest';
     /** ID of the secret to list versions for. */
     secretId: string;
     /**
@@ -165,6 +184,7 @@ export interface ListVersionsRequest {
     pageToken: string;
 }
 export interface ListVersionsResponse {
+    $type: 'yandex.cloud.lockbox.v1.ListVersionsResponse';
     /** List of versions for the specified secret. */
     versions: Version[];
     /**
@@ -177,6 +197,7 @@ export interface ListVersionsResponse {
     nextPageToken: string;
 }
 export interface ScheduleVersionDestructionRequest {
+    $type: 'yandex.cloud.lockbox.v1.ScheduleVersionDestructionRequest';
     /** ID of the secret whose version should be scheduled for destruction. */
     secretId: string;
     /** ID of the version to be destroyed. */
@@ -188,6 +209,7 @@ export interface ScheduleVersionDestructionRequest {
     pendingPeriod: Duration | undefined;
 }
 export interface ScheduleVersionDestructionMetadata {
+    $type: 'yandex.cloud.lockbox.v1.ScheduleVersionDestructionMetadata';
     /** ID of the secret whose version is being scheduled for destruction. */
     secretId: string;
     /** ID of the version that is being scheduled for destruction. */
@@ -196,18 +218,21 @@ export interface ScheduleVersionDestructionMetadata {
     destroyAt: Date | undefined;
 }
 export interface CancelVersionDestructionRequest {
+    $type: 'yandex.cloud.lockbox.v1.CancelVersionDestructionRequest';
     /** ID of the secret to cancel a version's destruction for. */
     secretId: string;
     /** ID of the secret whose scheduled destruction should be cancelled. */
     versionId: string;
 }
 export interface CancelVersionDestructionMetadata {
+    $type: 'yandex.cloud.lockbox.v1.CancelVersionDestructionMetadata';
     /** ID of the secret whose version's destruction is being cancelled. */
     secretId: string;
     /** ID of the version whose scheduled destruction is being cancelled. */
     versionId: string;
 }
 export interface ListSecretOperationsRequest {
+    $type: 'yandex.cloud.lockbox.v1.ListSecretOperationsRequest';
     /** ID of the secret to get operations for. */
     secretId: string;
     /**
@@ -224,6 +249,7 @@ export interface ListSecretOperationsRequest {
     pageToken: string;
 }
 export interface ListSecretOperationsResponse {
+    $type: 'yandex.cloud.lockbox.v1.ListSecretOperationsResponse';
     /** List of operations for the specified secret. */
     operations: Operation[];
     /**
@@ -235,6 +261,7 @@ export interface ListSecretOperationsResponse {
     nextPageToken: string;
 }
 export declare const PayloadEntryChange: {
+    $type: "yandex.cloud.lockbox.v1.PayloadEntryChange";
     encode(message: PayloadEntryChange, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): PayloadEntryChange;
     fromJSON(object: any): PayloadEntryChange;
@@ -242,6 +269,7 @@ export declare const PayloadEntryChange: {
     fromPartial(object: DeepPartial<PayloadEntryChange>): PayloadEntryChange;
 };
 export declare const GetSecretRequest: {
+    $type: "yandex.cloud.lockbox.v1.GetSecretRequest";
     encode(message: GetSecretRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): GetSecretRequest;
     fromJSON(object: any): GetSecretRequest;
@@ -249,6 +277,7 @@ export declare const GetSecretRequest: {
     fromPartial(object: DeepPartial<GetSecretRequest>): GetSecretRequest;
 };
 export declare const ListSecretsRequest: {
+    $type: "yandex.cloud.lockbox.v1.ListSecretsRequest";
     encode(message: ListSecretsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListSecretsRequest;
     fromJSON(object: any): ListSecretsRequest;
@@ -256,6 +285,7 @@ export declare const ListSecretsRequest: {
     fromPartial(object: DeepPartial<ListSecretsRequest>): ListSecretsRequest;
 };
 export declare const ListSecretsResponse: {
+    $type: "yandex.cloud.lockbox.v1.ListSecretsResponse";
     encode(message: ListSecretsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListSecretsResponse;
     fromJSON(object: any): ListSecretsResponse;
@@ -263,6 +293,7 @@ export declare const ListSecretsResponse: {
     fromPartial(object: DeepPartial<ListSecretsResponse>): ListSecretsResponse;
 };
 export declare const CreateSecretRequest: {
+    $type: "yandex.cloud.lockbox.v1.CreateSecretRequest";
     encode(message: CreateSecretRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateSecretRequest;
     fromJSON(object: any): CreateSecretRequest;
@@ -270,6 +301,7 @@ export declare const CreateSecretRequest: {
     fromPartial(object: DeepPartial<CreateSecretRequest>): CreateSecretRequest;
 };
 export declare const CreateSecretRequest_LabelsEntry: {
+    $type: "yandex.cloud.lockbox.v1.CreateSecretRequest.LabelsEntry";
     encode(message: CreateSecretRequest_LabelsEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateSecretRequest_LabelsEntry;
     fromJSON(object: any): CreateSecretRequest_LabelsEntry;
@@ -277,6 +309,7 @@ export declare const CreateSecretRequest_LabelsEntry: {
     fromPartial(object: DeepPartial<CreateSecretRequest_LabelsEntry>): CreateSecretRequest_LabelsEntry;
 };
 export declare const CreateSecretMetadata: {
+    $type: "yandex.cloud.lockbox.v1.CreateSecretMetadata";
     encode(message: CreateSecretMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateSecretMetadata;
     fromJSON(object: any): CreateSecretMetadata;
@@ -284,6 +317,7 @@ export declare const CreateSecretMetadata: {
     fromPartial(object: DeepPartial<CreateSecretMetadata>): CreateSecretMetadata;
 };
 export declare const UpdateSecretRequest: {
+    $type: "yandex.cloud.lockbox.v1.UpdateSecretRequest";
     encode(message: UpdateSecretRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateSecretRequest;
     fromJSON(object: any): UpdateSecretRequest;
@@ -291,6 +325,7 @@ export declare const UpdateSecretRequest: {
     fromPartial(object: DeepPartial<UpdateSecretRequest>): UpdateSecretRequest;
 };
 export declare const UpdateSecretRequest_LabelsEntry: {
+    $type: "yandex.cloud.lockbox.v1.UpdateSecretRequest.LabelsEntry";
     encode(message: UpdateSecretRequest_LabelsEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateSecretRequest_LabelsEntry;
     fromJSON(object: any): UpdateSecretRequest_LabelsEntry;
@@ -298,6 +333,7 @@ export declare const UpdateSecretRequest_LabelsEntry: {
     fromPartial(object: DeepPartial<UpdateSecretRequest_LabelsEntry>): UpdateSecretRequest_LabelsEntry;
 };
 export declare const UpdateSecretMetadata: {
+    $type: "yandex.cloud.lockbox.v1.UpdateSecretMetadata";
     encode(message: UpdateSecretMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateSecretMetadata;
     fromJSON(object: any): UpdateSecretMetadata;
@@ -305,6 +341,7 @@ export declare const UpdateSecretMetadata: {
     fromPartial(object: DeepPartial<UpdateSecretMetadata>): UpdateSecretMetadata;
 };
 export declare const DeleteSecretRequest: {
+    $type: "yandex.cloud.lockbox.v1.DeleteSecretRequest";
     encode(message: DeleteSecretRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteSecretRequest;
     fromJSON(object: any): DeleteSecretRequest;
@@ -312,6 +349,7 @@ export declare const DeleteSecretRequest: {
     fromPartial(object: DeepPartial<DeleteSecretRequest>): DeleteSecretRequest;
 };
 export declare const DeleteSecretMetadata: {
+    $type: "yandex.cloud.lockbox.v1.DeleteSecretMetadata";
     encode(message: DeleteSecretMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteSecretMetadata;
     fromJSON(object: any): DeleteSecretMetadata;
@@ -319,6 +357,7 @@ export declare const DeleteSecretMetadata: {
     fromPartial(object: DeepPartial<DeleteSecretMetadata>): DeleteSecretMetadata;
 };
 export declare const ActivateSecretRequest: {
+    $type: "yandex.cloud.lockbox.v1.ActivateSecretRequest";
     encode(message: ActivateSecretRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ActivateSecretRequest;
     fromJSON(object: any): ActivateSecretRequest;
@@ -326,6 +365,7 @@ export declare const ActivateSecretRequest: {
     fromPartial(object: DeepPartial<ActivateSecretRequest>): ActivateSecretRequest;
 };
 export declare const ActivateSecretMetadata: {
+    $type: "yandex.cloud.lockbox.v1.ActivateSecretMetadata";
     encode(message: ActivateSecretMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ActivateSecretMetadata;
     fromJSON(object: any): ActivateSecretMetadata;
@@ -333,6 +373,7 @@ export declare const ActivateSecretMetadata: {
     fromPartial(object: DeepPartial<ActivateSecretMetadata>): ActivateSecretMetadata;
 };
 export declare const DeactivateSecretRequest: {
+    $type: "yandex.cloud.lockbox.v1.DeactivateSecretRequest";
     encode(message: DeactivateSecretRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeactivateSecretRequest;
     fromJSON(object: any): DeactivateSecretRequest;
@@ -340,6 +381,7 @@ export declare const DeactivateSecretRequest: {
     fromPartial(object: DeepPartial<DeactivateSecretRequest>): DeactivateSecretRequest;
 };
 export declare const DeactivateSecretMetadata: {
+    $type: "yandex.cloud.lockbox.v1.DeactivateSecretMetadata";
     encode(message: DeactivateSecretMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeactivateSecretMetadata;
     fromJSON(object: any): DeactivateSecretMetadata;
@@ -347,6 +389,7 @@ export declare const DeactivateSecretMetadata: {
     fromPartial(object: DeepPartial<DeactivateSecretMetadata>): DeactivateSecretMetadata;
 };
 export declare const AddVersionRequest: {
+    $type: "yandex.cloud.lockbox.v1.AddVersionRequest";
     encode(message: AddVersionRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): AddVersionRequest;
     fromJSON(object: any): AddVersionRequest;
@@ -354,6 +397,7 @@ export declare const AddVersionRequest: {
     fromPartial(object: DeepPartial<AddVersionRequest>): AddVersionRequest;
 };
 export declare const AddVersionMetadata: {
+    $type: "yandex.cloud.lockbox.v1.AddVersionMetadata";
     encode(message: AddVersionMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): AddVersionMetadata;
     fromJSON(object: any): AddVersionMetadata;
@@ -361,6 +405,7 @@ export declare const AddVersionMetadata: {
     fromPartial(object: DeepPartial<AddVersionMetadata>): AddVersionMetadata;
 };
 export declare const ListVersionsRequest: {
+    $type: "yandex.cloud.lockbox.v1.ListVersionsRequest";
     encode(message: ListVersionsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListVersionsRequest;
     fromJSON(object: any): ListVersionsRequest;
@@ -368,6 +413,7 @@ export declare const ListVersionsRequest: {
     fromPartial(object: DeepPartial<ListVersionsRequest>): ListVersionsRequest;
 };
 export declare const ListVersionsResponse: {
+    $type: "yandex.cloud.lockbox.v1.ListVersionsResponse";
     encode(message: ListVersionsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListVersionsResponse;
     fromJSON(object: any): ListVersionsResponse;
@@ -375,6 +421,7 @@ export declare const ListVersionsResponse: {
     fromPartial(object: DeepPartial<ListVersionsResponse>): ListVersionsResponse;
 };
 export declare const ScheduleVersionDestructionRequest: {
+    $type: "yandex.cloud.lockbox.v1.ScheduleVersionDestructionRequest";
     encode(message: ScheduleVersionDestructionRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ScheduleVersionDestructionRequest;
     fromJSON(object: any): ScheduleVersionDestructionRequest;
@@ -382,6 +429,7 @@ export declare const ScheduleVersionDestructionRequest: {
     fromPartial(object: DeepPartial<ScheduleVersionDestructionRequest>): ScheduleVersionDestructionRequest;
 };
 export declare const ScheduleVersionDestructionMetadata: {
+    $type: "yandex.cloud.lockbox.v1.ScheduleVersionDestructionMetadata";
     encode(message: ScheduleVersionDestructionMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ScheduleVersionDestructionMetadata;
     fromJSON(object: any): ScheduleVersionDestructionMetadata;
@@ -389,6 +437,7 @@ export declare const ScheduleVersionDestructionMetadata: {
     fromPartial(object: DeepPartial<ScheduleVersionDestructionMetadata>): ScheduleVersionDestructionMetadata;
 };
 export declare const CancelVersionDestructionRequest: {
+    $type: "yandex.cloud.lockbox.v1.CancelVersionDestructionRequest";
     encode(message: CancelVersionDestructionRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CancelVersionDestructionRequest;
     fromJSON(object: any): CancelVersionDestructionRequest;
@@ -396,6 +445,7 @@ export declare const CancelVersionDestructionRequest: {
     fromPartial(object: DeepPartial<CancelVersionDestructionRequest>): CancelVersionDestructionRequest;
 };
 export declare const CancelVersionDestructionMetadata: {
+    $type: "yandex.cloud.lockbox.v1.CancelVersionDestructionMetadata";
     encode(message: CancelVersionDestructionMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CancelVersionDestructionMetadata;
     fromJSON(object: any): CancelVersionDestructionMetadata;
@@ -403,6 +453,7 @@ export declare const CancelVersionDestructionMetadata: {
     fromPartial(object: DeepPartial<CancelVersionDestructionMetadata>): CancelVersionDestructionMetadata;
 };
 export declare const ListSecretOperationsRequest: {
+    $type: "yandex.cloud.lockbox.v1.ListSecretOperationsRequest";
     encode(message: ListSecretOperationsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListSecretOperationsRequest;
     fromJSON(object: any): ListSecretOperationsRequest;
@@ -410,6 +461,7 @@ export declare const ListSecretOperationsRequest: {
     fromPartial(object: DeepPartial<ListSecretOperationsRequest>): ListSecretOperationsRequest;
 };
 export declare const ListSecretOperationsResponse: {
+    $type: "yandex.cloud.lockbox.v1.ListSecretOperationsResponse";
     encode(message: ListSecretOperationsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListSecretOperationsResponse;
     fromJSON(object: any): ListSecretOperationsResponse;
@@ -693,6 +745,6 @@ export interface SecretServiceClient extends Client {
 export declare const SecretServiceClient: new (address: string, credentials: ChannelCredentials, options?: Partial<ChannelOptions> | undefined) => SecretServiceClient;
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

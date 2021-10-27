@@ -4,6 +4,7 @@ import { ChannelCredentials, ChannelOptions, UntypedServiceImplementation, handl
 import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.kms.v1";
 export interface SymmetricEncryptRequest {
+    $type: 'yandex.cloud.kms.v1.SymmetricEncryptRequest';
     /** ID of the symmetric KMS key to use for encryption. */
     keyId: string;
     /**
@@ -24,6 +25,7 @@ export interface SymmetricEncryptRequest {
     plaintext: Uint8Array;
 }
 export interface SymmetricEncryptResponse {
+    $type: 'yandex.cloud.kms.v1.SymmetricEncryptResponse';
     /** ID of the symmetric KMS key that was used for encryption. */
     keyId: string;
     /** ID of the key version that was used for encryption. */
@@ -32,6 +34,7 @@ export interface SymmetricEncryptResponse {
     ciphertext: Uint8Array;
 }
 export interface SymmetricDecryptRequest {
+    $type: 'yandex.cloud.kms.v1.SymmetricDecryptRequest';
     /** ID of the symmetric KMS key to use for decryption. */
     keyId: string;
     /**
@@ -47,6 +50,7 @@ export interface SymmetricDecryptRequest {
     ciphertext: Uint8Array;
 }
 export interface SymmetricDecryptResponse {
+    $type: 'yandex.cloud.kms.v1.SymmetricDecryptResponse';
     /** ID of the symmetric KMS key that was used for decryption. */
     keyId: string;
     /** ID of the key version that was used for decryption. */
@@ -55,6 +59,7 @@ export interface SymmetricDecryptResponse {
     plaintext: Uint8Array;
 }
 export interface GenerateDataKeyRequest {
+    $type: 'yandex.cloud.kms.v1.GenerateDataKeyRequest';
     /** ID of the symmetric KMS key that the generated data key should be encrypted with. */
     keyId: string;
     /**
@@ -77,6 +82,7 @@ export interface GenerateDataKeyRequest {
     skipPlaintext: boolean;
 }
 export interface GenerateDataKeyResponse {
+    $type: 'yandex.cloud.kms.v1.GenerateDataKeyResponse';
     /** ID of the symmetric KMS key that was used to encrypt the generated data key. */
     keyId: string;
     /** ID of the key version that was used for encryption. */
@@ -91,6 +97,7 @@ export interface GenerateDataKeyResponse {
     dataKeyCiphertext: Uint8Array;
 }
 export interface SymmetricReEncryptRequest {
+    $type: 'yandex.cloud.kms.v1.SymmetricReEncryptRequest';
     /** ID of the new key to be used for encryption. */
     keyId: string;
     /**
@@ -117,6 +124,7 @@ export interface SymmetricReEncryptRequest {
     ciphertext: Uint8Array;
 }
 export interface SymmetricReEncryptResponse {
+    $type: 'yandex.cloud.kms.v1.SymmetricReEncryptResponse';
     /** ID of the key that the ciphertext is encrypted with now. */
     keyId: string;
     /** ID of key version that was used for encryption. */
@@ -129,6 +137,7 @@ export interface SymmetricReEncryptResponse {
     ciphertext: Uint8Array;
 }
 export declare const SymmetricEncryptRequest: {
+    $type: "yandex.cloud.kms.v1.SymmetricEncryptRequest";
     encode(message: SymmetricEncryptRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): SymmetricEncryptRequest;
     fromJSON(object: any): SymmetricEncryptRequest;
@@ -136,6 +145,7 @@ export declare const SymmetricEncryptRequest: {
     fromPartial(object: DeepPartial<SymmetricEncryptRequest>): SymmetricEncryptRequest;
 };
 export declare const SymmetricEncryptResponse: {
+    $type: "yandex.cloud.kms.v1.SymmetricEncryptResponse";
     encode(message: SymmetricEncryptResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): SymmetricEncryptResponse;
     fromJSON(object: any): SymmetricEncryptResponse;
@@ -143,6 +153,7 @@ export declare const SymmetricEncryptResponse: {
     fromPartial(object: DeepPartial<SymmetricEncryptResponse>): SymmetricEncryptResponse;
 };
 export declare const SymmetricDecryptRequest: {
+    $type: "yandex.cloud.kms.v1.SymmetricDecryptRequest";
     encode(message: SymmetricDecryptRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): SymmetricDecryptRequest;
     fromJSON(object: any): SymmetricDecryptRequest;
@@ -150,6 +161,7 @@ export declare const SymmetricDecryptRequest: {
     fromPartial(object: DeepPartial<SymmetricDecryptRequest>): SymmetricDecryptRequest;
 };
 export declare const SymmetricDecryptResponse: {
+    $type: "yandex.cloud.kms.v1.SymmetricDecryptResponse";
     encode(message: SymmetricDecryptResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): SymmetricDecryptResponse;
     fromJSON(object: any): SymmetricDecryptResponse;
@@ -157,6 +169,7 @@ export declare const SymmetricDecryptResponse: {
     fromPartial(object: DeepPartial<SymmetricDecryptResponse>): SymmetricDecryptResponse;
 };
 export declare const GenerateDataKeyRequest: {
+    $type: "yandex.cloud.kms.v1.GenerateDataKeyRequest";
     encode(message: GenerateDataKeyRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): GenerateDataKeyRequest;
     fromJSON(object: any): GenerateDataKeyRequest;
@@ -164,6 +177,7 @@ export declare const GenerateDataKeyRequest: {
     fromPartial(object: DeepPartial<GenerateDataKeyRequest>): GenerateDataKeyRequest;
 };
 export declare const GenerateDataKeyResponse: {
+    $type: "yandex.cloud.kms.v1.GenerateDataKeyResponse";
     encode(message: GenerateDataKeyResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): GenerateDataKeyResponse;
     fromJSON(object: any): GenerateDataKeyResponse;
@@ -171,6 +185,7 @@ export declare const GenerateDataKeyResponse: {
     fromPartial(object: DeepPartial<GenerateDataKeyResponse>): GenerateDataKeyResponse;
 };
 export declare const SymmetricReEncryptRequest: {
+    $type: "yandex.cloud.kms.v1.SymmetricReEncryptRequest";
     encode(message: SymmetricReEncryptRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): SymmetricReEncryptRequest;
     fromJSON(object: any): SymmetricReEncryptRequest;
@@ -178,6 +193,7 @@ export declare const SymmetricReEncryptRequest: {
     fromPartial(object: DeepPartial<SymmetricReEncryptRequest>): SymmetricReEncryptRequest;
 };
 export declare const SymmetricReEncryptResponse: {
+    $type: "yandex.cloud.kms.v1.SymmetricReEncryptResponse";
     encode(message: SymmetricReEncryptResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): SymmetricReEncryptResponse;
     fromJSON(object: any): SymmetricReEncryptResponse;
@@ -267,6 +283,6 @@ export interface SymmetricCryptoServiceClient extends Client {
 export declare const SymmetricCryptoServiceClient: new (address: string, credentials: ChannelCredentials, options?: Partial<ChannelOptions> | undefined) => SymmetricCryptoServiceClient;
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

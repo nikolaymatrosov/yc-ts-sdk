@@ -1,4 +1,5 @@
 /* eslint-disable */
+import { messageTypeRegistry } from '../../../../../typeRegistry';
 import Long from 'long';
 import _m0 from 'protobufjs/minimal';
 
@@ -43,15 +44,24 @@ export function formatSchemaTypeToJSON(object: FormatSchemaType): string {
 }
 
 export interface FormatSchema {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.FormatSchema';
     name: string;
     clusterId: string;
     type: FormatSchemaType;
     uri: string;
 }
 
-const baseFormatSchema: object = { name: '', clusterId: '', type: 0, uri: '' };
+const baseFormatSchema: object = {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.FormatSchema',
+    name: '',
+    clusterId: '',
+    type: 0,
+    uri: '',
+};
 
 export const FormatSchema = {
+    $type: 'yandex.cloud.mdb.clickhouse.v1.FormatSchema' as const,
+
     encode(
         message: FormatSchema,
         writer: _m0.Writer = _m0.Writer.create()
@@ -160,6 +170,8 @@ export const FormatSchema = {
     },
 };
 
+messageTypeRegistry.set(FormatSchema.$type, FormatSchema);
+
 type Builtin =
     | Date
     | Function
@@ -175,7 +187,7 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 if (_m0.util.Long !== Long) {

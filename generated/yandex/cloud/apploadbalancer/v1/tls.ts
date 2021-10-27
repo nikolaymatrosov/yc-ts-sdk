@@ -1,4 +1,5 @@
 /* eslint-disable */
+import { messageTypeRegistry } from '../../../../typeRegistry';
 import Long from 'long';
 import _m0 from 'protobufjs/minimal';
 
@@ -6,14 +7,19 @@ export const protobufPackage = 'yandex.cloud.apploadbalancer.v1';
 
 /** A TLS validation context resource. */
 export interface ValidationContext {
+    $type: 'yandex.cloud.apploadbalancer.v1.ValidationContext';
     trustedCaId: string | undefined;
     /** X.509 certificate contents in PEM format. */
     trustedCaBytes: string | undefined;
 }
 
-const baseValidationContext: object = {};
+const baseValidationContext: object = {
+    $type: 'yandex.cloud.apploadbalancer.v1.ValidationContext',
+};
 
 export const ValidationContext = {
+    $type: 'yandex.cloud.apploadbalancer.v1.ValidationContext' as const,
+
     encode(
         message: ValidationContext,
         writer: _m0.Writer = _m0.Writer.create()
@@ -95,6 +101,8 @@ export const ValidationContext = {
     },
 };
 
+messageTypeRegistry.set(ValidationContext.$type, ValidationContext);
+
 type Builtin =
     | Date
     | Function
@@ -110,7 +118,7 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 if (_m0.util.Long !== Long) {

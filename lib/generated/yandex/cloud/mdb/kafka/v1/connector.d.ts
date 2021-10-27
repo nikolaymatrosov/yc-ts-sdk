@@ -2,6 +2,7 @@ import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.mdb.kafka.v1";
 /** An Apache Kafka® connector specification */
 export interface ConnectorSpec {
+    $type: 'yandex.cloud.mdb.kafka.v1.ConnectorSpec';
     /** Name of the connector. */
     name: string;
     /**
@@ -20,6 +21,7 @@ export interface ConnectorSpec {
     connectorConfigMirrormaker: ConnectorConfigMirrorMakerSpec | undefined;
 }
 export interface ConnectorSpec_PropertiesEntry {
+    $type: 'yandex.cloud.mdb.kafka.v1.ConnectorSpec.PropertiesEntry';
     key: string;
     value: string;
 }
@@ -28,6 +30,7 @@ export interface ConnectorSpec_PropertiesEntry {
  * connector specification.
  */
 export interface ConnectorConfigMirrorMakerSpec {
+    $type: 'yandex.cloud.mdb.kafka.v1.ConnectorConfigMirrorMakerSpec';
     /** Source cluster configuration. */
     sourceCluster: ClusterConnectionSpec | undefined;
     /** Target cluster configuration. */
@@ -44,6 +47,7 @@ export interface ConnectorConfigMirrorMakerSpec {
  * clusters.
  */
 export interface ClusterConnectionSpec {
+    $type: 'yandex.cloud.mdb.kafka.v1.ClusterConnectionSpec';
     /**
      * Alias of ClusterConnection.
      * For example: 'source', 'target', ...
@@ -69,6 +73,7 @@ export interface ClusterConnectionSpec {
  * so this spec is empty.
  */
 export interface ThisClusterSpec {
+    $type: 'yandex.cloud.mdb.kafka.v1.ThisClusterSpec';
 }
 /**
  * Specification of connection to
@@ -77,6 +82,7 @@ export interface ThisClusterSpec {
  * connect to external cluster.
  */
 export interface ExternalClusterConnectionSpec {
+    $type: 'yandex.cloud.mdb.kafka.v1.ExternalClusterConnectionSpec';
     /**
      * List bootstrap servers of cluster,
      * separated by ','.
@@ -106,6 +112,7 @@ export interface ExternalClusterConnectionSpec {
 }
 /** An Apache Kafka® connector resource. */
 export interface Connector {
+    $type: 'yandex.cloud.mdb.kafka.v1.Connector';
     /** Name of the connector. */
     name: string;
     /** Maximum number of tasks. Default is the number of brokers */
@@ -150,6 +157,7 @@ export declare enum Connector_Status {
 export declare function connector_StatusFromJSON(object: any): Connector_Status;
 export declare function connector_StatusToJSON(object: Connector_Status): string;
 export interface Connector_PropertiesEntry {
+    $type: 'yandex.cloud.mdb.kafka.v1.Connector.PropertiesEntry';
     key: string;
     value: string;
 }
@@ -158,6 +166,7 @@ export interface Connector_PropertiesEntry {
  * connector resource.
  */
 export interface ConnectorConfigMirrorMaker {
+    $type: 'yandex.cloud.mdb.kafka.v1.ConnectorConfigMirrorMaker';
     /**
      * Source cluster resource
      * settings.
@@ -181,6 +190,7 @@ export interface ConnectorConfigMirrorMaker {
  * clusters.
  */
 export interface ClusterConnection {
+    $type: 'yandex.cloud.mdb.kafka.v1.ClusterConnection';
     /**
      * Alias of ClusterConnection resource.
      * For example: 'source', 'target', ...
@@ -204,6 +214,7 @@ export interface ClusterConnection {
  * type 'this_cluster'.
  */
 export interface ThisCluster {
+    $type: 'yandex.cloud.mdb.kafka.v1.ThisCluster';
 }
 /**
  * Resource of connection to
@@ -212,6 +223,7 @@ export interface ThisCluster {
  * to external cluster.
  */
 export interface ExternalClusterConnection {
+    $type: 'yandex.cloud.mdb.kafka.v1.ExternalClusterConnection';
     /**
      * List bootstrap servers of cluster,
      * separated by ','
@@ -235,6 +247,7 @@ export interface ExternalClusterConnection {
     securityProtocol: string;
 }
 export declare const ConnectorSpec: {
+    $type: "yandex.cloud.mdb.kafka.v1.ConnectorSpec";
     encode(message: ConnectorSpec, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ConnectorSpec;
     fromJSON(object: any): ConnectorSpec;
@@ -242,6 +255,7 @@ export declare const ConnectorSpec: {
     fromPartial(object: DeepPartial<ConnectorSpec>): ConnectorSpec;
 };
 export declare const ConnectorSpec_PropertiesEntry: {
+    $type: "yandex.cloud.mdb.kafka.v1.ConnectorSpec.PropertiesEntry";
     encode(message: ConnectorSpec_PropertiesEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ConnectorSpec_PropertiesEntry;
     fromJSON(object: any): ConnectorSpec_PropertiesEntry;
@@ -249,6 +263,7 @@ export declare const ConnectorSpec_PropertiesEntry: {
     fromPartial(object: DeepPartial<ConnectorSpec_PropertiesEntry>): ConnectorSpec_PropertiesEntry;
 };
 export declare const ConnectorConfigMirrorMakerSpec: {
+    $type: "yandex.cloud.mdb.kafka.v1.ConnectorConfigMirrorMakerSpec";
     encode(message: ConnectorConfigMirrorMakerSpec, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ConnectorConfigMirrorMakerSpec;
     fromJSON(object: any): ConnectorConfigMirrorMakerSpec;
@@ -256,6 +271,7 @@ export declare const ConnectorConfigMirrorMakerSpec: {
     fromPartial(object: DeepPartial<ConnectorConfigMirrorMakerSpec>): ConnectorConfigMirrorMakerSpec;
 };
 export declare const ClusterConnectionSpec: {
+    $type: "yandex.cloud.mdb.kafka.v1.ClusterConnectionSpec";
     encode(message: ClusterConnectionSpec, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ClusterConnectionSpec;
     fromJSON(object: any): ClusterConnectionSpec;
@@ -263,6 +279,7 @@ export declare const ClusterConnectionSpec: {
     fromPartial(object: DeepPartial<ClusterConnectionSpec>): ClusterConnectionSpec;
 };
 export declare const ThisClusterSpec: {
+    $type: "yandex.cloud.mdb.kafka.v1.ThisClusterSpec";
     encode(_: ThisClusterSpec, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ThisClusterSpec;
     fromJSON(_: any): ThisClusterSpec;
@@ -270,6 +287,7 @@ export declare const ThisClusterSpec: {
     fromPartial(_: DeepPartial<ThisClusterSpec>): ThisClusterSpec;
 };
 export declare const ExternalClusterConnectionSpec: {
+    $type: "yandex.cloud.mdb.kafka.v1.ExternalClusterConnectionSpec";
     encode(message: ExternalClusterConnectionSpec, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ExternalClusterConnectionSpec;
     fromJSON(object: any): ExternalClusterConnectionSpec;
@@ -277,6 +295,7 @@ export declare const ExternalClusterConnectionSpec: {
     fromPartial(object: DeepPartial<ExternalClusterConnectionSpec>): ExternalClusterConnectionSpec;
 };
 export declare const Connector: {
+    $type: "yandex.cloud.mdb.kafka.v1.Connector";
     encode(message: Connector, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Connector;
     fromJSON(object: any): Connector;
@@ -284,6 +303,7 @@ export declare const Connector: {
     fromPartial(object: DeepPartial<Connector>): Connector;
 };
 export declare const Connector_PropertiesEntry: {
+    $type: "yandex.cloud.mdb.kafka.v1.Connector.PropertiesEntry";
     encode(message: Connector_PropertiesEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Connector_PropertiesEntry;
     fromJSON(object: any): Connector_PropertiesEntry;
@@ -291,6 +311,7 @@ export declare const Connector_PropertiesEntry: {
     fromPartial(object: DeepPartial<Connector_PropertiesEntry>): Connector_PropertiesEntry;
 };
 export declare const ConnectorConfigMirrorMaker: {
+    $type: "yandex.cloud.mdb.kafka.v1.ConnectorConfigMirrorMaker";
     encode(message: ConnectorConfigMirrorMaker, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ConnectorConfigMirrorMaker;
     fromJSON(object: any): ConnectorConfigMirrorMaker;
@@ -298,6 +319,7 @@ export declare const ConnectorConfigMirrorMaker: {
     fromPartial(object: DeepPartial<ConnectorConfigMirrorMaker>): ConnectorConfigMirrorMaker;
 };
 export declare const ClusterConnection: {
+    $type: "yandex.cloud.mdb.kafka.v1.ClusterConnection";
     encode(message: ClusterConnection, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ClusterConnection;
     fromJSON(object: any): ClusterConnection;
@@ -305,6 +327,7 @@ export declare const ClusterConnection: {
     fromPartial(object: DeepPartial<ClusterConnection>): ClusterConnection;
 };
 export declare const ThisCluster: {
+    $type: "yandex.cloud.mdb.kafka.v1.ThisCluster";
     encode(_: ThisCluster, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ThisCluster;
     fromJSON(_: any): ThisCluster;
@@ -312,6 +335,7 @@ export declare const ThisCluster: {
     fromPartial(_: DeepPartial<ThisCluster>): ThisCluster;
 };
 export declare const ExternalClusterConnection: {
+    $type: "yandex.cloud.mdb.kafka.v1.ExternalClusterConnection";
     encode(message: ExternalClusterConnection, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ExternalClusterConnection;
     fromJSON(object: any): ExternalClusterConnection;
@@ -320,6 +344,6 @@ export declare const ExternalClusterConnection: {
 };
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

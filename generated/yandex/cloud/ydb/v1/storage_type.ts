@@ -1,18 +1,27 @@
 /* eslint-disable */
+import { messageTypeRegistry } from '../../../../typeRegistry';
 import Long from 'long';
 import _m0 from 'protobufjs/minimal';
 
 export const protobufPackage = 'yandex.cloud.ydb.v1';
 
 export interface StorageType {
+    $type: 'yandex.cloud.ydb.v1.StorageType';
     id: string;
     deviceType: string;
     redundancyType: string;
 }
 
-const baseStorageType: object = { id: '', deviceType: '', redundancyType: '' };
+const baseStorageType: object = {
+    $type: 'yandex.cloud.ydb.v1.StorageType',
+    id: '',
+    deviceType: '',
+    redundancyType: '',
+};
 
 export const StorageType = {
+    $type: 'yandex.cloud.ydb.v1.StorageType' as const,
+
     encode(
         message: StorageType,
         writer: _m0.Writer = _m0.Writer.create()
@@ -111,6 +120,8 @@ export const StorageType = {
     },
 };
 
+messageTypeRegistry.set(StorageType.$type, StorageType);
+
 type Builtin =
     | Date
     | Function
@@ -126,7 +137,7 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 if (_m0.util.Long !== Long) {

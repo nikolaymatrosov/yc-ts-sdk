@@ -1,4 +1,5 @@
 /* eslint-disable */
+import { messageTypeRegistry } from '../../../../../typeRegistry';
 import Long from 'long';
 import _m0 from 'protobufjs/minimal';
 
@@ -6,6 +7,7 @@ export const protobufPackage = 'yandex.cloud.mdb.postgresql.v1';
 
 /** A ResourcePreset resource for describing hardware configuration presets. */
 export interface ResourcePreset {
+    $type: 'yandex.cloud.mdb.postgresql.v1.ResourcePreset';
     /** ID of the ResourcePreset resource. */
     id: string;
     /** IDs of availability zones where the resource preset is available. */
@@ -16,9 +18,17 @@ export interface ResourcePreset {
     memory: number;
 }
 
-const baseResourcePreset: object = { id: '', zoneIds: '', cores: 0, memory: 0 };
+const baseResourcePreset: object = {
+    $type: 'yandex.cloud.mdb.postgresql.v1.ResourcePreset',
+    id: '',
+    zoneIds: '',
+    cores: 0,
+    memory: 0,
+};
 
 export const ResourcePreset = {
+    $type: 'yandex.cloud.mdb.postgresql.v1.ResourcePreset' as const,
+
     encode(
         message: ResourcePreset,
         writer: _m0.Writer = _m0.Writer.create()
@@ -133,6 +143,8 @@ export const ResourcePreset = {
     },
 };
 
+messageTypeRegistry.set(ResourcePreset.$type, ResourcePreset);
+
 declare var self: any | undefined;
 declare var window: any | undefined;
 declare var global: any | undefined;
@@ -159,7 +171,7 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 function longToNumber(long: Long): number {

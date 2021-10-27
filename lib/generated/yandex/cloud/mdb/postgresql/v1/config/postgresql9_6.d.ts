@@ -6,6 +6,7 @@ export declare const protobufPackage = "yandex.cloud.mdb.postgresql.v1.config";
  * [PostgreSQL documentation](https://www.postgresql.org/docs/9.6/static/runtime-config).
  */
 export interface Postgresqlconfig96 {
+    $type: 'yandex.cloud.mdb.postgresql.v1.config.PostgresqlConfig9_6';
     maxConnections: number | undefined;
     /** in bytes. */
     sharedBuffers: number | undefined;
@@ -228,6 +229,7 @@ export declare enum Postgresqlconfig96_BackslashQuote {
 export declare function postgresqlconfig96_BackslashQuoteFromJSON(object: any): Postgresqlconfig96_BackslashQuote;
 export declare function postgresqlconfig96_BackslashQuoteToJSON(object: Postgresqlconfig96_BackslashQuote): string;
 export interface Postgresqlconfigset96 {
+    $type: 'yandex.cloud.mdb.postgresql.v1.config.PostgresqlConfigSet9_6';
     /**
      * Effective settings for a PostgreSQL 9.6 cluster (a combination of settings defined
      * in [user_config] and [default_config]).
@@ -239,6 +241,7 @@ export interface Postgresqlconfigset96 {
     defaultConfig: Postgresqlconfig96 | undefined;
 }
 export declare const Postgresqlconfig96: {
+    $type: "yandex.cloud.mdb.postgresql.v1.config.PostgresqlConfig9_6";
     encode(message: Postgresqlconfig96, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Postgresqlconfig96;
     fromJSON(object: any): Postgresqlconfig96;
@@ -246,6 +249,7 @@ export declare const Postgresqlconfig96: {
     fromPartial(object: DeepPartial<Postgresqlconfig96>): Postgresqlconfig96;
 };
 export declare const Postgresqlconfigset96: {
+    $type: "yandex.cloud.mdb.postgresql.v1.config.PostgresqlConfigSet9_6";
     encode(message: Postgresqlconfigset96, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Postgresqlconfigset96;
     fromJSON(object: any): Postgresqlconfigset96;
@@ -254,6 +258,6 @@ export declare const Postgresqlconfigset96: {
 };
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

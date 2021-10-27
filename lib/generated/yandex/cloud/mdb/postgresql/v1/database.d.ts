@@ -5,6 +5,7 @@ export declare const protobufPackage = "yandex.cloud.mdb.postgresql.v1";
  * the [Developer's Guide](/docs/managed-postgresql/concepts).
  */
 export interface Database {
+    $type: 'yandex.cloud.mdb.postgresql.v1.Database';
     /** Name of the database. */
     name: string;
     /** ID of the PostgreSQL cluster that the database belongs to. */
@@ -25,6 +26,7 @@ export interface Database {
     extensions: Extension[];
 }
 export interface Extension {
+    $type: 'yandex.cloud.mdb.postgresql.v1.Extension';
     /**
      * Name of the extension, e.g. `pg_trgm` or `pg_btree`.
      * Extensions supported by Managed Service for PostgreSQL are [listed in the Developer's Guide](/docs/managed-postgresql/operations/cluster-extensions).
@@ -34,6 +36,7 @@ export interface Extension {
     version: string;
 }
 export interface DatabaseSpec {
+    $type: 'yandex.cloud.mdb.postgresql.v1.DatabaseSpec';
     /** Name of the PostgreSQL database. 1-63 characters long. */
     name: string;
     /**
@@ -55,6 +58,7 @@ export interface DatabaseSpec {
     extensions: Extension[];
 }
 export declare const Database: {
+    $type: "yandex.cloud.mdb.postgresql.v1.Database";
     encode(message: Database, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Database;
     fromJSON(object: any): Database;
@@ -62,6 +66,7 @@ export declare const Database: {
     fromPartial(object: DeepPartial<Database>): Database;
 };
 export declare const Extension: {
+    $type: "yandex.cloud.mdb.postgresql.v1.Extension";
     encode(message: Extension, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Extension;
     fromJSON(object: any): Extension;
@@ -69,6 +74,7 @@ export declare const Extension: {
     fromPartial(object: DeepPartial<Extension>): Extension;
 };
 export declare const DatabaseSpec: {
+    $type: "yandex.cloud.mdb.postgresql.v1.DatabaseSpec";
     encode(message: DatabaseSpec, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DatabaseSpec;
     fromJSON(object: any): DatabaseSpec;
@@ -77,6 +83,6 @@ export declare const DatabaseSpec: {
 };
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

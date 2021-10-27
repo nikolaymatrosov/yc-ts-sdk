@@ -7,6 +7,7 @@ import { ChannelCredentials, ChannelOptions, UntypedServiceImplementation, handl
 import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.dns.v1";
 export interface GetDnsZoneRequest {
+    $type: 'yandex.cloud.dns.v1.GetDnsZoneRequest';
     /**
      * ID of the DNS zone to return.
      *
@@ -15,6 +16,7 @@ export interface GetDnsZoneRequest {
     dnsZoneId: string;
 }
 export interface ListDnsZonesRequest {
+    $type: 'yandex.cloud.dns.v1.ListDnsZonesRequest';
     /**
      * ID of the folder to list DNS zones in.
      *
@@ -44,6 +46,7 @@ export interface ListDnsZonesRequest {
     filter: string;
 }
 export interface ListDnsZonesResponse {
+    $type: 'yandex.cloud.dns.v1.ListDnsZonesResponse';
     /** List of DNS zones in the specified folder. */
     dnsZones: DnsZone[];
     /**
@@ -56,6 +59,7 @@ export interface ListDnsZonesResponse {
     nextPageToken: string;
 }
 export interface CreateDnsZoneRequest {
+    $type: 'yandex.cloud.dns.v1.CreateDnsZoneRequest';
     /**
      * ID of the folder to create DNS zones in.
      *
@@ -87,14 +91,17 @@ export interface CreateDnsZoneRequest {
     publicVisibility: PublicVisibility | undefined;
 }
 export interface CreateDnsZoneRequest_LabelsEntry {
+    $type: 'yandex.cloud.dns.v1.CreateDnsZoneRequest.LabelsEntry';
     key: string;
     value: string;
 }
 export interface CreateDnsZoneMetadata {
+    $type: 'yandex.cloud.dns.v1.CreateDnsZoneMetadata';
     /** ID of the DNS zone that is being created. */
     dnsZoneId: string;
 }
 export interface UpdateDnsZoneRequest {
+    $type: 'yandex.cloud.dns.v1.UpdateDnsZoneRequest';
     /**
      * ID of the DNS zone to update.
      *
@@ -128,14 +135,17 @@ export interface UpdateDnsZoneRequest {
     publicVisibility: PublicVisibility | undefined;
 }
 export interface UpdateDnsZoneRequest_LabelsEntry {
+    $type: 'yandex.cloud.dns.v1.UpdateDnsZoneRequest.LabelsEntry';
     key: string;
     value: string;
 }
 export interface UpdateDnsZoneMetadata {
+    $type: 'yandex.cloud.dns.v1.UpdateDnsZoneMetadata';
     /** ID of the DNS zone that is being updated. */
     dnsZoneId: string;
 }
 export interface DeleteDnsZoneRequest {
+    $type: 'yandex.cloud.dns.v1.DeleteDnsZoneRequest';
     /**
      * ID of the DNS zone to delete.
      *
@@ -144,10 +154,12 @@ export interface DeleteDnsZoneRequest {
     dnsZoneId: string;
 }
 export interface DeleteDnsZoneMetadata {
+    $type: 'yandex.cloud.dns.v1.DeleteDnsZoneMetadata';
     /** ID of the DNS zone that is being deleted. */
     dnsZoneId: string;
 }
 export interface GetDnsZoneRecordSetRequest {
+    $type: 'yandex.cloud.dns.v1.GetDnsZoneRecordSetRequest';
     /**
      * ID of the DNS zone to get record set from.
      *
@@ -160,6 +172,7 @@ export interface GetDnsZoneRecordSetRequest {
     type: string;
 }
 export interface ListDnsZoneRecordSetsRequest {
+    $type: 'yandex.cloud.dns.v1.ListDnsZoneRecordSetsRequest';
     /**
      * ID of the DNS zone to list record sets in.
      *
@@ -189,6 +202,7 @@ export interface ListDnsZoneRecordSetsRequest {
     filter: string;
 }
 export interface ListDnsZoneRecordSetsResponse {
+    $type: 'yandex.cloud.dns.v1.ListDnsZoneRecordSetsResponse';
     /** List of record sets in the specified DNS zone. */
     recordSets: RecordSet[];
     /**
@@ -201,6 +215,7 @@ export interface ListDnsZoneRecordSetsResponse {
     nextPageToken: string;
 }
 export interface UpdateRecordSetsRequest {
+    $type: 'yandex.cloud.dns.v1.UpdateRecordSetsRequest';
     /**
      * ID of the DNS zone to update record sets in.
      *
@@ -213,8 +228,10 @@ export interface UpdateRecordSetsRequest {
     additions: RecordSet[];
 }
 export interface UpdateRecordSetsMetadata {
+    $type: 'yandex.cloud.dns.v1.UpdateRecordSetsMetadata';
 }
 export interface UpsertRecordSetsRequest {
+    $type: 'yandex.cloud.dns.v1.UpsertRecordSetsRequest';
     /**
      * ID of the DNS zone to upsert record sets to.
      *
@@ -229,8 +246,10 @@ export interface UpsertRecordSetsRequest {
     merges: RecordSet[];
 }
 export interface UpsertRecordSetsMetadata {
+    $type: 'yandex.cloud.dns.v1.UpsertRecordSetsMetadata';
 }
 export interface ListDnsZoneOperationsRequest {
+    $type: 'yandex.cloud.dns.v1.ListDnsZoneOperationsRequest';
     /**
      * ID of the DNS zone to list operations for.
      *
@@ -260,6 +279,7 @@ export interface ListDnsZoneOperationsRequest {
     filter: string;
 }
 export interface ListDnsZoneOperationsResponse {
+    $type: 'yandex.cloud.dns.v1.ListDnsZoneOperationsResponse';
     /** List of operations for the specified DNS zone. */
     operations: Operation[];
     /**
@@ -272,6 +292,7 @@ export interface ListDnsZoneOperationsResponse {
     nextPageToken: string;
 }
 export declare const GetDnsZoneRequest: {
+    $type: "yandex.cloud.dns.v1.GetDnsZoneRequest";
     encode(message: GetDnsZoneRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): GetDnsZoneRequest;
     fromJSON(object: any): GetDnsZoneRequest;
@@ -279,6 +300,7 @@ export declare const GetDnsZoneRequest: {
     fromPartial(object: DeepPartial<GetDnsZoneRequest>): GetDnsZoneRequest;
 };
 export declare const ListDnsZonesRequest: {
+    $type: "yandex.cloud.dns.v1.ListDnsZonesRequest";
     encode(message: ListDnsZonesRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListDnsZonesRequest;
     fromJSON(object: any): ListDnsZonesRequest;
@@ -286,6 +308,7 @@ export declare const ListDnsZonesRequest: {
     fromPartial(object: DeepPartial<ListDnsZonesRequest>): ListDnsZonesRequest;
 };
 export declare const ListDnsZonesResponse: {
+    $type: "yandex.cloud.dns.v1.ListDnsZonesResponse";
     encode(message: ListDnsZonesResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListDnsZonesResponse;
     fromJSON(object: any): ListDnsZonesResponse;
@@ -293,6 +316,7 @@ export declare const ListDnsZonesResponse: {
     fromPartial(object: DeepPartial<ListDnsZonesResponse>): ListDnsZonesResponse;
 };
 export declare const CreateDnsZoneRequest: {
+    $type: "yandex.cloud.dns.v1.CreateDnsZoneRequest";
     encode(message: CreateDnsZoneRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateDnsZoneRequest;
     fromJSON(object: any): CreateDnsZoneRequest;
@@ -300,6 +324,7 @@ export declare const CreateDnsZoneRequest: {
     fromPartial(object: DeepPartial<CreateDnsZoneRequest>): CreateDnsZoneRequest;
 };
 export declare const CreateDnsZoneRequest_LabelsEntry: {
+    $type: "yandex.cloud.dns.v1.CreateDnsZoneRequest.LabelsEntry";
     encode(message: CreateDnsZoneRequest_LabelsEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateDnsZoneRequest_LabelsEntry;
     fromJSON(object: any): CreateDnsZoneRequest_LabelsEntry;
@@ -307,6 +332,7 @@ export declare const CreateDnsZoneRequest_LabelsEntry: {
     fromPartial(object: DeepPartial<CreateDnsZoneRequest_LabelsEntry>): CreateDnsZoneRequest_LabelsEntry;
 };
 export declare const CreateDnsZoneMetadata: {
+    $type: "yandex.cloud.dns.v1.CreateDnsZoneMetadata";
     encode(message: CreateDnsZoneMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateDnsZoneMetadata;
     fromJSON(object: any): CreateDnsZoneMetadata;
@@ -314,6 +340,7 @@ export declare const CreateDnsZoneMetadata: {
     fromPartial(object: DeepPartial<CreateDnsZoneMetadata>): CreateDnsZoneMetadata;
 };
 export declare const UpdateDnsZoneRequest: {
+    $type: "yandex.cloud.dns.v1.UpdateDnsZoneRequest";
     encode(message: UpdateDnsZoneRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateDnsZoneRequest;
     fromJSON(object: any): UpdateDnsZoneRequest;
@@ -321,6 +348,7 @@ export declare const UpdateDnsZoneRequest: {
     fromPartial(object: DeepPartial<UpdateDnsZoneRequest>): UpdateDnsZoneRequest;
 };
 export declare const UpdateDnsZoneRequest_LabelsEntry: {
+    $type: "yandex.cloud.dns.v1.UpdateDnsZoneRequest.LabelsEntry";
     encode(message: UpdateDnsZoneRequest_LabelsEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateDnsZoneRequest_LabelsEntry;
     fromJSON(object: any): UpdateDnsZoneRequest_LabelsEntry;
@@ -328,6 +356,7 @@ export declare const UpdateDnsZoneRequest_LabelsEntry: {
     fromPartial(object: DeepPartial<UpdateDnsZoneRequest_LabelsEntry>): UpdateDnsZoneRequest_LabelsEntry;
 };
 export declare const UpdateDnsZoneMetadata: {
+    $type: "yandex.cloud.dns.v1.UpdateDnsZoneMetadata";
     encode(message: UpdateDnsZoneMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateDnsZoneMetadata;
     fromJSON(object: any): UpdateDnsZoneMetadata;
@@ -335,6 +364,7 @@ export declare const UpdateDnsZoneMetadata: {
     fromPartial(object: DeepPartial<UpdateDnsZoneMetadata>): UpdateDnsZoneMetadata;
 };
 export declare const DeleteDnsZoneRequest: {
+    $type: "yandex.cloud.dns.v1.DeleteDnsZoneRequest";
     encode(message: DeleteDnsZoneRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteDnsZoneRequest;
     fromJSON(object: any): DeleteDnsZoneRequest;
@@ -342,6 +372,7 @@ export declare const DeleteDnsZoneRequest: {
     fromPartial(object: DeepPartial<DeleteDnsZoneRequest>): DeleteDnsZoneRequest;
 };
 export declare const DeleteDnsZoneMetadata: {
+    $type: "yandex.cloud.dns.v1.DeleteDnsZoneMetadata";
     encode(message: DeleteDnsZoneMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteDnsZoneMetadata;
     fromJSON(object: any): DeleteDnsZoneMetadata;
@@ -349,6 +380,7 @@ export declare const DeleteDnsZoneMetadata: {
     fromPartial(object: DeepPartial<DeleteDnsZoneMetadata>): DeleteDnsZoneMetadata;
 };
 export declare const GetDnsZoneRecordSetRequest: {
+    $type: "yandex.cloud.dns.v1.GetDnsZoneRecordSetRequest";
     encode(message: GetDnsZoneRecordSetRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): GetDnsZoneRecordSetRequest;
     fromJSON(object: any): GetDnsZoneRecordSetRequest;
@@ -356,6 +388,7 @@ export declare const GetDnsZoneRecordSetRequest: {
     fromPartial(object: DeepPartial<GetDnsZoneRecordSetRequest>): GetDnsZoneRecordSetRequest;
 };
 export declare const ListDnsZoneRecordSetsRequest: {
+    $type: "yandex.cloud.dns.v1.ListDnsZoneRecordSetsRequest";
     encode(message: ListDnsZoneRecordSetsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListDnsZoneRecordSetsRequest;
     fromJSON(object: any): ListDnsZoneRecordSetsRequest;
@@ -363,6 +396,7 @@ export declare const ListDnsZoneRecordSetsRequest: {
     fromPartial(object: DeepPartial<ListDnsZoneRecordSetsRequest>): ListDnsZoneRecordSetsRequest;
 };
 export declare const ListDnsZoneRecordSetsResponse: {
+    $type: "yandex.cloud.dns.v1.ListDnsZoneRecordSetsResponse";
     encode(message: ListDnsZoneRecordSetsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListDnsZoneRecordSetsResponse;
     fromJSON(object: any): ListDnsZoneRecordSetsResponse;
@@ -370,6 +404,7 @@ export declare const ListDnsZoneRecordSetsResponse: {
     fromPartial(object: DeepPartial<ListDnsZoneRecordSetsResponse>): ListDnsZoneRecordSetsResponse;
 };
 export declare const UpdateRecordSetsRequest: {
+    $type: "yandex.cloud.dns.v1.UpdateRecordSetsRequest";
     encode(message: UpdateRecordSetsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateRecordSetsRequest;
     fromJSON(object: any): UpdateRecordSetsRequest;
@@ -377,6 +412,7 @@ export declare const UpdateRecordSetsRequest: {
     fromPartial(object: DeepPartial<UpdateRecordSetsRequest>): UpdateRecordSetsRequest;
 };
 export declare const UpdateRecordSetsMetadata: {
+    $type: "yandex.cloud.dns.v1.UpdateRecordSetsMetadata";
     encode(_: UpdateRecordSetsMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateRecordSetsMetadata;
     fromJSON(_: any): UpdateRecordSetsMetadata;
@@ -384,6 +420,7 @@ export declare const UpdateRecordSetsMetadata: {
     fromPartial(_: DeepPartial<UpdateRecordSetsMetadata>): UpdateRecordSetsMetadata;
 };
 export declare const UpsertRecordSetsRequest: {
+    $type: "yandex.cloud.dns.v1.UpsertRecordSetsRequest";
     encode(message: UpsertRecordSetsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpsertRecordSetsRequest;
     fromJSON(object: any): UpsertRecordSetsRequest;
@@ -391,6 +428,7 @@ export declare const UpsertRecordSetsRequest: {
     fromPartial(object: DeepPartial<UpsertRecordSetsRequest>): UpsertRecordSetsRequest;
 };
 export declare const UpsertRecordSetsMetadata: {
+    $type: "yandex.cloud.dns.v1.UpsertRecordSetsMetadata";
     encode(_: UpsertRecordSetsMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpsertRecordSetsMetadata;
     fromJSON(_: any): UpsertRecordSetsMetadata;
@@ -398,6 +436,7 @@ export declare const UpsertRecordSetsMetadata: {
     fromPartial(_: DeepPartial<UpsertRecordSetsMetadata>): UpsertRecordSetsMetadata;
 };
 export declare const ListDnsZoneOperationsRequest: {
+    $type: "yandex.cloud.dns.v1.ListDnsZoneOperationsRequest";
     encode(message: ListDnsZoneOperationsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListDnsZoneOperationsRequest;
     fromJSON(object: any): ListDnsZoneOperationsRequest;
@@ -405,6 +444,7 @@ export declare const ListDnsZoneOperationsRequest: {
     fromPartial(object: DeepPartial<ListDnsZoneOperationsRequest>): ListDnsZoneOperationsRequest;
 };
 export declare const ListDnsZoneOperationsResponse: {
+    $type: "yandex.cloud.dns.v1.ListDnsZoneOperationsResponse";
     encode(message: ListDnsZoneOperationsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListDnsZoneOperationsResponse;
     fromJSON(object: any): ListDnsZoneOperationsResponse;
@@ -671,6 +711,6 @@ export interface DnsZoneServiceClient extends Client {
 export declare const DnsZoneServiceClient: new (address: string, credentials: ChannelCredentials, options?: Partial<ChannelOptions> | undefined) => DnsZoneServiceClient;
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

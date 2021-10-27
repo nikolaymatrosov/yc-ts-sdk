@@ -1,4 +1,5 @@
 /* eslint-disable */
+import { messageTypeRegistry } from '../../../../../typeRegistry';
 import Long from 'long';
 import _m0 from 'protobufjs/minimal';
 
@@ -9,6 +10,7 @@ export const protobufPackage = 'yandex.cloud.mdb.postgresql.v1';
  * the [Developer's Guide](/docs/managed-postgresql/concepts).
  */
 export interface Database {
+    $type: 'yandex.cloud.mdb.postgresql.v1.Database';
     /** Name of the database. */
     name: string;
     /** ID of the PostgreSQL cluster that the database belongs to. */
@@ -30,6 +32,7 @@ export interface Database {
 }
 
 export interface Extension {
+    $type: 'yandex.cloud.mdb.postgresql.v1.Extension';
     /**
      * Name of the extension, e.g. `pg_trgm` or `pg_btree`.
      * Extensions supported by Managed Service for PostgreSQL are [listed in the Developer's Guide](/docs/managed-postgresql/operations/cluster-extensions).
@@ -40,6 +43,7 @@ export interface Extension {
 }
 
 export interface DatabaseSpec {
+    $type: 'yandex.cloud.mdb.postgresql.v1.DatabaseSpec';
     /** Name of the PostgreSQL database. 1-63 characters long. */
     name: string;
     /**
@@ -62,6 +66,7 @@ export interface DatabaseSpec {
 }
 
 const baseDatabase: object = {
+    $type: 'yandex.cloud.mdb.postgresql.v1.Database',
     name: '',
     clusterId: '',
     owner: '',
@@ -70,6 +75,8 @@ const baseDatabase: object = {
 };
 
 export const Database = {
+    $type: 'yandex.cloud.mdb.postgresql.v1.Database' as const,
+
     encode(
         message: Database,
         writer: _m0.Writer = _m0.Writer.create()
@@ -222,9 +229,17 @@ export const Database = {
     },
 };
 
-const baseExtension: object = { name: '', version: '' };
+messageTypeRegistry.set(Database.$type, Database);
+
+const baseExtension: object = {
+    $type: 'yandex.cloud.mdb.postgresql.v1.Extension',
+    name: '',
+    version: '',
+};
 
 export const Extension = {
+    $type: 'yandex.cloud.mdb.postgresql.v1.Extension' as const,
+
     encode(
         message: Extension,
         writer: _m0.Writer = _m0.Writer.create()
@@ -298,7 +313,10 @@ export const Extension = {
     },
 };
 
+messageTypeRegistry.set(Extension.$type, Extension);
+
 const baseDatabaseSpec: object = {
+    $type: 'yandex.cloud.mdb.postgresql.v1.DatabaseSpec',
     name: '',
     owner: '',
     lcCollate: '',
@@ -306,6 +324,8 @@ const baseDatabaseSpec: object = {
 };
 
 export const DatabaseSpec = {
+    $type: 'yandex.cloud.mdb.postgresql.v1.DatabaseSpec' as const,
+
     encode(
         message: DatabaseSpec,
         writer: _m0.Writer = _m0.Writer.create()
@@ -441,6 +461,8 @@ export const DatabaseSpec = {
     },
 };
 
+messageTypeRegistry.set(DatabaseSpec.$type, DatabaseSpec);
+
 type Builtin =
     | Date
     | Function
@@ -456,7 +478,7 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 if (_m0.util.Long !== Long) {

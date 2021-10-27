@@ -6,6 +6,7 @@ export declare const protobufPackage = "yandex.cloud.mdb.postgresql.v1.config";
  * [PostgreSQL documentation](https://www.postgresql.org/docs/11/runtime-config.html).
  */
 export interface PostgresqlConfig11 {
+    $type: 'yandex.cloud.mdb.postgresql.v1.config.PostgresqlConfig11';
     maxConnections: number | undefined;
     /** in bytes. */
     sharedBuffers: number | undefined;
@@ -283,6 +284,7 @@ export declare enum PostgresqlConfig11_SharedPreloadLibraries {
 export declare function postgresqlConfig11_SharedPreloadLibrariesFromJSON(object: any): PostgresqlConfig11_SharedPreloadLibraries;
 export declare function postgresqlConfig11_SharedPreloadLibrariesToJSON(object: PostgresqlConfig11_SharedPreloadLibraries): string;
 export interface PostgresqlConfigSet11 {
+    $type: 'yandex.cloud.mdb.postgresql.v1.config.PostgresqlConfigSet11';
     /**
      * Effective settings for a PostgreSQL 11 cluster (a combination of settings defined
      * in [user_config] and [default_config]).
@@ -294,6 +296,7 @@ export interface PostgresqlConfigSet11 {
     defaultConfig: PostgresqlConfig11 | undefined;
 }
 export declare const PostgresqlConfig11: {
+    $type: "yandex.cloud.mdb.postgresql.v1.config.PostgresqlConfig11";
     encode(message: PostgresqlConfig11, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): PostgresqlConfig11;
     fromJSON(object: any): PostgresqlConfig11;
@@ -301,6 +304,7 @@ export declare const PostgresqlConfig11: {
     fromPartial(object: DeepPartial<PostgresqlConfig11>): PostgresqlConfig11;
 };
 export declare const PostgresqlConfigSet11: {
+    $type: "yandex.cloud.mdb.postgresql.v1.config.PostgresqlConfigSet11";
     encode(message: PostgresqlConfigSet11, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): PostgresqlConfigSet11;
     fromJSON(object: any): PostgresqlConfigSet11;
@@ -309,6 +313,6 @@ export declare const PostgresqlConfigSet11: {
 };
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

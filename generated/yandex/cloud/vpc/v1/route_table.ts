@@ -1,5 +1,6 @@
 /* eslint-disable */
 import { Timestamp } from '../../../../google/protobuf/timestamp';
+import { messageTypeRegistry } from '../../../../typeRegistry';
 import Long from 'long';
 import _m0 from 'protobufjs/minimal';
 
@@ -7,6 +8,7 @@ export const protobufPackage = 'yandex.cloud.vpc.v1';
 
 /** A RouteTable resource. For more information, see [Static Routes](/docs/vpc/concepts/static-routes). */
 export interface RouteTable {
+    $type: 'yandex.cloud.vpc.v1.RouteTable';
     /** ID of the route table. */
     id: string;
     /** ID of the folder that the route table belongs to. */
@@ -26,12 +28,14 @@ export interface RouteTable {
 }
 
 export interface RouteTable_LabelsEntry {
+    $type: 'yandex.cloud.vpc.v1.RouteTable.LabelsEntry';
     key: string;
     value: string;
 }
 
 /** A StaticRoute resource. For more information, see [Static Routes](/docs/vpc/concepts/static-routes). */
 export interface StaticRoute {
+    $type: 'yandex.cloud.vpc.v1.StaticRoute';
     /** Destination subnet in CIDR notation */
     destinationPrefix: string | undefined;
     /** Next hop IP address */
@@ -41,11 +45,13 @@ export interface StaticRoute {
 }
 
 export interface StaticRoute_LabelsEntry {
+    $type: 'yandex.cloud.vpc.v1.StaticRoute.LabelsEntry';
     key: string;
     value: string;
 }
 
 const baseRouteTable: object = {
+    $type: 'yandex.cloud.vpc.v1.RouteTable',
     id: '',
     folderId: '',
     name: '',
@@ -54,6 +60,8 @@ const baseRouteTable: object = {
 };
 
 export const RouteTable = {
+    $type: 'yandex.cloud.vpc.v1.RouteTable' as const,
+
     encode(
         message: RouteTable,
         writer: _m0.Writer = _m0.Writer.create()
@@ -78,7 +86,11 @@ export const RouteTable = {
         }
         Object.entries(message.labels).forEach(([key, value]) => {
             RouteTable_LabelsEntry.encode(
-                { key: key as any, value },
+                {
+                    $type: 'yandex.cloud.vpc.v1.RouteTable.LabelsEntry',
+                    key: key as any,
+                    value,
+                },
                 writer.uint32(50).fork()
             ).ldelim();
         });
@@ -266,9 +278,17 @@ export const RouteTable = {
     },
 };
 
-const baseRouteTable_LabelsEntry: object = { key: '', value: '' };
+messageTypeRegistry.set(RouteTable.$type, RouteTable);
+
+const baseRouteTable_LabelsEntry: object = {
+    $type: 'yandex.cloud.vpc.v1.RouteTable.LabelsEntry',
+    key: '',
+    value: '',
+};
 
 export const RouteTable_LabelsEntry = {
+    $type: 'yandex.cloud.vpc.v1.RouteTable.LabelsEntry' as const,
+
     encode(
         message: RouteTable_LabelsEntry,
         writer: _m0.Writer = _m0.Writer.create()
@@ -353,9 +373,13 @@ export const RouteTable_LabelsEntry = {
     },
 };
 
-const baseStaticRoute: object = {};
+messageTypeRegistry.set(RouteTable_LabelsEntry.$type, RouteTable_LabelsEntry);
+
+const baseStaticRoute: object = { $type: 'yandex.cloud.vpc.v1.StaticRoute' };
 
 export const StaticRoute = {
+    $type: 'yandex.cloud.vpc.v1.StaticRoute' as const,
+
     encode(
         message: StaticRoute,
         writer: _m0.Writer = _m0.Writer.create()
@@ -368,7 +392,11 @@ export const StaticRoute = {
         }
         Object.entries(message.labels).forEach(([key, value]) => {
             StaticRoute_LabelsEntry.encode(
-                { key: key as any, value },
+                {
+                    $type: 'yandex.cloud.vpc.v1.StaticRoute.LabelsEntry',
+                    key: key as any,
+                    value,
+                },
                 writer.uint32(26).fork()
             ).ldelim();
         });
@@ -479,9 +507,17 @@ export const StaticRoute = {
     },
 };
 
-const baseStaticRoute_LabelsEntry: object = { key: '', value: '' };
+messageTypeRegistry.set(StaticRoute.$type, StaticRoute);
+
+const baseStaticRoute_LabelsEntry: object = {
+    $type: 'yandex.cloud.vpc.v1.StaticRoute.LabelsEntry',
+    key: '',
+    value: '',
+};
 
 export const StaticRoute_LabelsEntry = {
+    $type: 'yandex.cloud.vpc.v1.StaticRoute.LabelsEntry' as const,
+
     encode(
         message: StaticRoute_LabelsEntry,
         writer: _m0.Writer = _m0.Writer.create()
@@ -566,6 +602,8 @@ export const StaticRoute_LabelsEntry = {
     },
 };
 
+messageTypeRegistry.set(StaticRoute_LabelsEntry.$type, StaticRoute_LabelsEntry);
+
 type Builtin =
     | Date
     | Function
@@ -581,13 +619,13 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 function toTimestamp(date: Date): Timestamp {
     const seconds = date.getTime() / 1_000;
     const nanos = (date.getTime() % 1_000) * 1_000_000;
-    return { seconds, nanos };
+    return { $type: 'google.protobuf.Timestamp', seconds, nanos };
 }
 
 function fromTimestamp(t: Timestamp): Date {

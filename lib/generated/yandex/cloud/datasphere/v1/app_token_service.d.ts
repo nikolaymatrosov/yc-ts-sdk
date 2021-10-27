@@ -4,10 +4,12 @@ import { ChannelCredentials, ChannelOptions, UntypedServiceImplementation, handl
 import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.datasphere.v1";
 export interface AppTokenValidateRequest {
+    $type: 'yandex.cloud.datasphere.v1.AppTokenValidateRequest';
     /** App token to validate. */
     token: string;
 }
 export declare const AppTokenValidateRequest: {
+    $type: "yandex.cloud.datasphere.v1.AppTokenValidateRequest";
     encode(message: AppTokenValidateRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): AppTokenValidateRequest;
     fromJSON(object: any): AppTokenValidateRequest;
@@ -40,6 +42,6 @@ export interface AppTokenServiceClient extends Client {
 export declare const AppTokenServiceClient: new (address: string, credentials: ChannelCredentials, options?: Partial<ChannelOptions> | undefined) => AppTokenServiceClient;
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

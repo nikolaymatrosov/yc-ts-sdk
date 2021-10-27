@@ -6,6 +6,7 @@ import { ChannelCredentials, ChannelOptions, UntypedServiceImplementation, handl
 import _m0 from 'protobufjs/minimal';
 export declare const protobufPackage = "yandex.cloud.compute.v1";
 export interface GetSnapshotRequest {
+    $type: 'yandex.cloud.compute.v1.GetSnapshotRequest';
     /**
      * ID of the Snapshot resource to return.
      * To get the snapshot ID, use a [SnapshotService.List] request.
@@ -13,6 +14,7 @@ export interface GetSnapshotRequest {
     snapshotId: string;
 }
 export interface ListSnapshotsRequest {
+    $type: 'yandex.cloud.compute.v1.ListSnapshotsRequest';
     /**
      * ID of the folder to list snapshots in.
      * To get the folder ID, use a [yandex.cloud.resourcemanager.v1.FolderService.List] request.
@@ -40,6 +42,7 @@ export interface ListSnapshotsRequest {
     filter: string;
 }
 export interface ListSnapshotsResponse {
+    $type: 'yandex.cloud.compute.v1.ListSnapshotsResponse';
     /** List of snapshots. */
     snapshots: Snapshot[];
     /**
@@ -53,6 +56,7 @@ export interface ListSnapshotsResponse {
     nextPageToken: string;
 }
 export interface CreateSnapshotRequest {
+    $type: 'yandex.cloud.compute.v1.CreateSnapshotRequest';
     /**
      * ID of the folder to create a snapshot in.
      * To get the folder ID use a [yandex.cloud.resourcemanager.v1.FolderService.List] request.
@@ -73,16 +77,19 @@ export interface CreateSnapshotRequest {
     };
 }
 export interface CreateSnapshotRequest_LabelsEntry {
+    $type: 'yandex.cloud.compute.v1.CreateSnapshotRequest.LabelsEntry';
     key: string;
     value: string;
 }
 export interface CreateSnapshotMetadata {
+    $type: 'yandex.cloud.compute.v1.CreateSnapshotMetadata';
     /** ID of the snapshot that is being created. */
     snapshotId: string;
     /** ID of the source disk used to create this snapshot. */
     diskId: string;
 }
 export interface UpdateSnapshotRequest {
+    $type: 'yandex.cloud.compute.v1.UpdateSnapshotRequest';
     /**
      * ID of the Snapshot resource to update.
      * To get the snapshot ID use a [SnapshotService.List] request.
@@ -104,14 +111,17 @@ export interface UpdateSnapshotRequest {
     };
 }
 export interface UpdateSnapshotRequest_LabelsEntry {
+    $type: 'yandex.cloud.compute.v1.UpdateSnapshotRequest.LabelsEntry';
     key: string;
     value: string;
 }
 export interface UpdateSnapshotMetadata {
+    $type: 'yandex.cloud.compute.v1.UpdateSnapshotMetadata';
     /** ID of the Snapshot resource that is being updated. */
     snapshotId: string;
 }
 export interface DeleteSnapshotRequest {
+    $type: 'yandex.cloud.compute.v1.DeleteSnapshotRequest';
     /**
      * ID of the snapshot to delete.
      * To get the snapshot ID, use a [SnapshotService.List] request.
@@ -119,10 +129,12 @@ export interface DeleteSnapshotRequest {
     snapshotId: string;
 }
 export interface DeleteSnapshotMetadata {
+    $type: 'yandex.cloud.compute.v1.DeleteSnapshotMetadata';
     /** ID of the snapshot that is being deleted. */
     snapshotId: string;
 }
 export interface ListSnapshotOperationsRequest {
+    $type: 'yandex.cloud.compute.v1.ListSnapshotOperationsRequest';
     /** ID of the Snapshot resource to list operations for. */
     snapshotId: string;
     /**
@@ -138,6 +150,7 @@ export interface ListSnapshotOperationsRequest {
     pageToken: string;
 }
 export interface ListSnapshotOperationsResponse {
+    $type: 'yandex.cloud.compute.v1.ListSnapshotOperationsResponse';
     /** List of operations for the specified snapshot. */
     operations: Operation[];
     /**
@@ -149,6 +162,7 @@ export interface ListSnapshotOperationsResponse {
     nextPageToken: string;
 }
 export declare const GetSnapshotRequest: {
+    $type: "yandex.cloud.compute.v1.GetSnapshotRequest";
     encode(message: GetSnapshotRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): GetSnapshotRequest;
     fromJSON(object: any): GetSnapshotRequest;
@@ -156,6 +170,7 @@ export declare const GetSnapshotRequest: {
     fromPartial(object: DeepPartial<GetSnapshotRequest>): GetSnapshotRequest;
 };
 export declare const ListSnapshotsRequest: {
+    $type: "yandex.cloud.compute.v1.ListSnapshotsRequest";
     encode(message: ListSnapshotsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListSnapshotsRequest;
     fromJSON(object: any): ListSnapshotsRequest;
@@ -163,6 +178,7 @@ export declare const ListSnapshotsRequest: {
     fromPartial(object: DeepPartial<ListSnapshotsRequest>): ListSnapshotsRequest;
 };
 export declare const ListSnapshotsResponse: {
+    $type: "yandex.cloud.compute.v1.ListSnapshotsResponse";
     encode(message: ListSnapshotsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListSnapshotsResponse;
     fromJSON(object: any): ListSnapshotsResponse;
@@ -170,6 +186,7 @@ export declare const ListSnapshotsResponse: {
     fromPartial(object: DeepPartial<ListSnapshotsResponse>): ListSnapshotsResponse;
 };
 export declare const CreateSnapshotRequest: {
+    $type: "yandex.cloud.compute.v1.CreateSnapshotRequest";
     encode(message: CreateSnapshotRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateSnapshotRequest;
     fromJSON(object: any): CreateSnapshotRequest;
@@ -177,6 +194,7 @@ export declare const CreateSnapshotRequest: {
     fromPartial(object: DeepPartial<CreateSnapshotRequest>): CreateSnapshotRequest;
 };
 export declare const CreateSnapshotRequest_LabelsEntry: {
+    $type: "yandex.cloud.compute.v1.CreateSnapshotRequest.LabelsEntry";
     encode(message: CreateSnapshotRequest_LabelsEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateSnapshotRequest_LabelsEntry;
     fromJSON(object: any): CreateSnapshotRequest_LabelsEntry;
@@ -184,6 +202,7 @@ export declare const CreateSnapshotRequest_LabelsEntry: {
     fromPartial(object: DeepPartial<CreateSnapshotRequest_LabelsEntry>): CreateSnapshotRequest_LabelsEntry;
 };
 export declare const CreateSnapshotMetadata: {
+    $type: "yandex.cloud.compute.v1.CreateSnapshotMetadata";
     encode(message: CreateSnapshotMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CreateSnapshotMetadata;
     fromJSON(object: any): CreateSnapshotMetadata;
@@ -191,6 +210,7 @@ export declare const CreateSnapshotMetadata: {
     fromPartial(object: DeepPartial<CreateSnapshotMetadata>): CreateSnapshotMetadata;
 };
 export declare const UpdateSnapshotRequest: {
+    $type: "yandex.cloud.compute.v1.UpdateSnapshotRequest";
     encode(message: UpdateSnapshotRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateSnapshotRequest;
     fromJSON(object: any): UpdateSnapshotRequest;
@@ -198,6 +218,7 @@ export declare const UpdateSnapshotRequest: {
     fromPartial(object: DeepPartial<UpdateSnapshotRequest>): UpdateSnapshotRequest;
 };
 export declare const UpdateSnapshotRequest_LabelsEntry: {
+    $type: "yandex.cloud.compute.v1.UpdateSnapshotRequest.LabelsEntry";
     encode(message: UpdateSnapshotRequest_LabelsEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateSnapshotRequest_LabelsEntry;
     fromJSON(object: any): UpdateSnapshotRequest_LabelsEntry;
@@ -205,6 +226,7 @@ export declare const UpdateSnapshotRequest_LabelsEntry: {
     fromPartial(object: DeepPartial<UpdateSnapshotRequest_LabelsEntry>): UpdateSnapshotRequest_LabelsEntry;
 };
 export declare const UpdateSnapshotMetadata: {
+    $type: "yandex.cloud.compute.v1.UpdateSnapshotMetadata";
     encode(message: UpdateSnapshotMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UpdateSnapshotMetadata;
     fromJSON(object: any): UpdateSnapshotMetadata;
@@ -212,6 +234,7 @@ export declare const UpdateSnapshotMetadata: {
     fromPartial(object: DeepPartial<UpdateSnapshotMetadata>): UpdateSnapshotMetadata;
 };
 export declare const DeleteSnapshotRequest: {
+    $type: "yandex.cloud.compute.v1.DeleteSnapshotRequest";
     encode(message: DeleteSnapshotRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteSnapshotRequest;
     fromJSON(object: any): DeleteSnapshotRequest;
@@ -219,6 +242,7 @@ export declare const DeleteSnapshotRequest: {
     fromPartial(object: DeepPartial<DeleteSnapshotRequest>): DeleteSnapshotRequest;
 };
 export declare const DeleteSnapshotMetadata: {
+    $type: "yandex.cloud.compute.v1.DeleteSnapshotMetadata";
     encode(message: DeleteSnapshotMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DeleteSnapshotMetadata;
     fromJSON(object: any): DeleteSnapshotMetadata;
@@ -226,6 +250,7 @@ export declare const DeleteSnapshotMetadata: {
     fromPartial(object: DeepPartial<DeleteSnapshotMetadata>): DeleteSnapshotMetadata;
 };
 export declare const ListSnapshotOperationsRequest: {
+    $type: "yandex.cloud.compute.v1.ListSnapshotOperationsRequest";
     encode(message: ListSnapshotOperationsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListSnapshotOperationsRequest;
     fromJSON(object: any): ListSnapshotOperationsRequest;
@@ -233,6 +258,7 @@ export declare const ListSnapshotOperationsRequest: {
     fromPartial(object: DeepPartial<ListSnapshotOperationsRequest>): ListSnapshotOperationsRequest;
 };
 export declare const ListSnapshotOperationsResponse: {
+    $type: "yandex.cloud.compute.v1.ListSnapshotOperationsResponse";
     encode(message: ListSnapshotOperationsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ListSnapshotOperationsResponse;
     fromJSON(object: any): ListSnapshotOperationsResponse;
@@ -381,6 +407,6 @@ export interface SnapshotServiceClient extends Client {
 export declare const SnapshotServiceClient: new (address: string, credentials: ChannelCredentials, options?: Partial<ChannelOptions> | undefined) => SnapshotServiceClient;
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

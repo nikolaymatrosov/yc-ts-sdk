@@ -5,10 +5,12 @@ export declare const protobufPackage = "google.protobuf";
  * files it parses.
  */
 export interface FileDescriptorSet {
+    $type: 'google.protobuf.FileDescriptorSet';
     file: FileDescriptorProto[];
 }
 /** Describes a complete .proto file. */
 export interface FileDescriptorProto {
+    $type: 'google.protobuf.FileDescriptorProto';
     /** file name, relative to root of source tree */
     name: string;
     /** e.g. "foo", "foo.bar", etc. */
@@ -43,6 +45,7 @@ export interface FileDescriptorProto {
 }
 /** Describes a message type. */
 export interface DescriptorProto {
+    $type: 'google.protobuf.DescriptorProto';
     name: string;
     field: FieldDescriptorProto[];
     extension: FieldDescriptorProto[];
@@ -59,6 +62,7 @@ export interface DescriptorProto {
     reservedName: string[];
 }
 export interface DescriptorProto_ExtensionRange {
+    $type: 'google.protobuf.DescriptorProto.ExtensionRange';
     /** Inclusive. */
     start: number;
     /** Exclusive. */
@@ -71,17 +75,20 @@ export interface DescriptorProto_ExtensionRange {
  * not overlap.
  */
 export interface DescriptorProto_ReservedRange {
+    $type: 'google.protobuf.DescriptorProto.ReservedRange';
     /** Inclusive. */
     start: number;
     /** Exclusive. */
     end: number;
 }
 export interface ExtensionRangeOptions {
+    $type: 'google.protobuf.ExtensionRangeOptions';
     /** The parser stores options it doesn't recognize here. See above. */
     uninterpretedOption: UninterpretedOption[];
 }
 /** Describes a field within a message. */
 export interface FieldDescriptorProto {
+    $type: 'google.protobuf.FieldDescriptorProto';
     name: string;
     number: number;
     label: FieldDescriptorProto_Label;
@@ -205,11 +212,13 @@ export declare function fieldDescriptorProto_LabelFromJSON(object: any): FieldDe
 export declare function fieldDescriptorProto_LabelToJSON(object: FieldDescriptorProto_Label): string;
 /** Describes a oneof. */
 export interface OneofDescriptorProto {
+    $type: 'google.protobuf.OneofDescriptorProto';
     name: string;
     options: OneofOptions | undefined;
 }
 /** Describes an enum type. */
 export interface EnumDescriptorProto {
+    $type: 'google.protobuf.EnumDescriptorProto';
     name: string;
     value: EnumValueDescriptorProto[];
     options: EnumOptions | undefined;
@@ -234,6 +243,7 @@ export interface EnumDescriptorProto {
  * domain.
  */
 export interface EnumDescriptorProto_EnumReservedRange {
+    $type: 'google.protobuf.EnumDescriptorProto.EnumReservedRange';
     /** Inclusive. */
     start: number;
     /** Inclusive. */
@@ -241,18 +251,21 @@ export interface EnumDescriptorProto_EnumReservedRange {
 }
 /** Describes a value within an enum. */
 export interface EnumValueDescriptorProto {
+    $type: 'google.protobuf.EnumValueDescriptorProto';
     name: string;
     number: number;
     options: EnumValueOptions | undefined;
 }
 /** Describes a service. */
 export interface ServiceDescriptorProto {
+    $type: 'google.protobuf.ServiceDescriptorProto';
     name: string;
     method: MethodDescriptorProto[];
     options: ServiceOptions | undefined;
 }
 /** Describes a method of a service. */
 export interface MethodDescriptorProto {
+    $type: 'google.protobuf.MethodDescriptorProto';
     name: string;
     /**
      * Input and output type names.  These are resolved in the same way as
@@ -267,6 +280,7 @@ export interface MethodDescriptorProto {
     serverStreaming: boolean;
 }
 export interface FileOptions {
+    $type: 'google.protobuf.FileOptions';
     /**
      * Sets the Java package where classes generated from this .proto will be
      * placed.  By default, the proto package is used, but this is often
@@ -399,6 +413,7 @@ export declare enum FileOptions_OptimizeMode {
 export declare function fileOptions_OptimizeModeFromJSON(object: any): FileOptions_OptimizeMode;
 export declare function fileOptions_OptimizeModeToJSON(object: FileOptions_OptimizeMode): string;
 export interface MessageOptions {
+    $type: 'google.protobuf.MessageOptions';
     /**
      * Set true to use the old proto1 MessageSet wire format for extensions.
      * This is provided for backwards-compatibility with the MessageSet wire
@@ -461,6 +476,7 @@ export interface MessageOptions {
     uninterpretedOption: UninterpretedOption[];
 }
 export interface FieldOptions {
+    $type: 'google.protobuf.FieldOptions';
     /**
      * The ctype option instructs the C++ code generator to use a different
      * representation of the field than it normally would.  See the specific
@@ -554,10 +570,12 @@ export declare enum FieldOptions_JSType {
 export declare function fieldOptions_JSTypeFromJSON(object: any): FieldOptions_JSType;
 export declare function fieldOptions_JSTypeToJSON(object: FieldOptions_JSType): string;
 export interface OneofOptions {
+    $type: 'google.protobuf.OneofOptions';
     /** The parser stores options it doesn't recognize here. See above. */
     uninterpretedOption: UninterpretedOption[];
 }
 export interface EnumOptions {
+    $type: 'google.protobuf.EnumOptions';
     /**
      * Set this option to true to allow mapping different tag names to the same
      * value.
@@ -574,6 +592,7 @@ export interface EnumOptions {
     uninterpretedOption: UninterpretedOption[];
 }
 export interface EnumValueOptions {
+    $type: 'google.protobuf.EnumValueOptions';
     /**
      * Is this enum value deprecated?
      * Depending on the target platform, this can emit Deprecated annotations
@@ -585,6 +604,7 @@ export interface EnumValueOptions {
     uninterpretedOption: UninterpretedOption[];
 }
 export interface ServiceOptions {
+    $type: 'google.protobuf.ServiceOptions';
     /**
      * Is this service deprecated?
      * Depending on the target platform, this can emit Deprecated annotations
@@ -596,6 +616,7 @@ export interface ServiceOptions {
     uninterpretedOption: UninterpretedOption[];
 }
 export interface MethodOptions {
+    $type: 'google.protobuf.MethodOptions';
     /**
      * Is this method deprecated?
      * Depending on the target platform, this can emit Deprecated annotations
@@ -631,6 +652,7 @@ export declare function methodOptions_IdempotencyLevelToJSON(object: MethodOptio
  * in them.
  */
 export interface UninterpretedOption {
+    $type: 'google.protobuf.UninterpretedOption';
     name: UninterpretedOption_NamePart[];
     /**
      * The value of the uninterpreted option, in whatever type the tokenizer
@@ -651,6 +673,7 @@ export interface UninterpretedOption {
  * "foo.(bar.baz).qux".
  */
 export interface UninterpretedOption_NamePart {
+    $type: 'google.protobuf.UninterpretedOption.NamePart';
     namePart: string;
     isExtension: boolean;
 }
@@ -659,6 +682,7 @@ export interface UninterpretedOption_NamePart {
  * FileDescriptorProto was generated.
  */
 export interface SourceCodeInfo {
+    $type: 'google.protobuf.SourceCodeInfo';
     /**
      * A Location identifies a piece of source code in a .proto file which
      * corresponds to a particular definition.  This information is intended
@@ -707,6 +731,7 @@ export interface SourceCodeInfo {
     location: SourceCodeInfo_Location[];
 }
 export interface SourceCodeInfo_Location {
+    $type: 'google.protobuf.SourceCodeInfo.Location';
     /**
      * Identifies which part of the FileDescriptorProto was defined at this
      * location.
@@ -800,6 +825,7 @@ export interface SourceCodeInfo_Location {
  * source file, but may contain references to different source .proto files.
  */
 export interface GeneratedCodeInfo {
+    $type: 'google.protobuf.GeneratedCodeInfo';
     /**
      * An Annotation connects some span of text in generated code to an element
      * of its generating .proto file.
@@ -807,6 +833,7 @@ export interface GeneratedCodeInfo {
     annotation: GeneratedCodeInfo_Annotation[];
 }
 export interface GeneratedCodeInfo_Annotation {
+    $type: 'google.protobuf.GeneratedCodeInfo.Annotation';
     /**
      * Identifies the element in the original source .proto file. This field
      * is formatted the same as SourceCodeInfo.Location.path.
@@ -827,6 +854,7 @@ export interface GeneratedCodeInfo_Annotation {
     end: number;
 }
 export declare const FileDescriptorSet: {
+    $type: "google.protobuf.FileDescriptorSet";
     encode(message: FileDescriptorSet, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): FileDescriptorSet;
     fromJSON(object: any): FileDescriptorSet;
@@ -834,6 +862,7 @@ export declare const FileDescriptorSet: {
     fromPartial(object: DeepPartial<FileDescriptorSet>): FileDescriptorSet;
 };
 export declare const FileDescriptorProto: {
+    $type: "google.protobuf.FileDescriptorProto";
     encode(message: FileDescriptorProto, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): FileDescriptorProto;
     fromJSON(object: any): FileDescriptorProto;
@@ -841,6 +870,7 @@ export declare const FileDescriptorProto: {
     fromPartial(object: DeepPartial<FileDescriptorProto>): FileDescriptorProto;
 };
 export declare const DescriptorProto: {
+    $type: "google.protobuf.DescriptorProto";
     encode(message: DescriptorProto, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DescriptorProto;
     fromJSON(object: any): DescriptorProto;
@@ -848,6 +878,7 @@ export declare const DescriptorProto: {
     fromPartial(object: DeepPartial<DescriptorProto>): DescriptorProto;
 };
 export declare const DescriptorProto_ExtensionRange: {
+    $type: "google.protobuf.DescriptorProto.ExtensionRange";
     encode(message: DescriptorProto_ExtensionRange, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DescriptorProto_ExtensionRange;
     fromJSON(object: any): DescriptorProto_ExtensionRange;
@@ -855,6 +886,7 @@ export declare const DescriptorProto_ExtensionRange: {
     fromPartial(object: DeepPartial<DescriptorProto_ExtensionRange>): DescriptorProto_ExtensionRange;
 };
 export declare const DescriptorProto_ReservedRange: {
+    $type: "google.protobuf.DescriptorProto.ReservedRange";
     encode(message: DescriptorProto_ReservedRange, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): DescriptorProto_ReservedRange;
     fromJSON(object: any): DescriptorProto_ReservedRange;
@@ -862,6 +894,7 @@ export declare const DescriptorProto_ReservedRange: {
     fromPartial(object: DeepPartial<DescriptorProto_ReservedRange>): DescriptorProto_ReservedRange;
 };
 export declare const ExtensionRangeOptions: {
+    $type: "google.protobuf.ExtensionRangeOptions";
     encode(message: ExtensionRangeOptions, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ExtensionRangeOptions;
     fromJSON(object: any): ExtensionRangeOptions;
@@ -869,6 +902,7 @@ export declare const ExtensionRangeOptions: {
     fromPartial(object: DeepPartial<ExtensionRangeOptions>): ExtensionRangeOptions;
 };
 export declare const FieldDescriptorProto: {
+    $type: "google.protobuf.FieldDescriptorProto";
     encode(message: FieldDescriptorProto, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): FieldDescriptorProto;
     fromJSON(object: any): FieldDescriptorProto;
@@ -876,6 +910,7 @@ export declare const FieldDescriptorProto: {
     fromPartial(object: DeepPartial<FieldDescriptorProto>): FieldDescriptorProto;
 };
 export declare const OneofDescriptorProto: {
+    $type: "google.protobuf.OneofDescriptorProto";
     encode(message: OneofDescriptorProto, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): OneofDescriptorProto;
     fromJSON(object: any): OneofDescriptorProto;
@@ -883,6 +918,7 @@ export declare const OneofDescriptorProto: {
     fromPartial(object: DeepPartial<OneofDescriptorProto>): OneofDescriptorProto;
 };
 export declare const EnumDescriptorProto: {
+    $type: "google.protobuf.EnumDescriptorProto";
     encode(message: EnumDescriptorProto, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): EnumDescriptorProto;
     fromJSON(object: any): EnumDescriptorProto;
@@ -890,6 +926,7 @@ export declare const EnumDescriptorProto: {
     fromPartial(object: DeepPartial<EnumDescriptorProto>): EnumDescriptorProto;
 };
 export declare const EnumDescriptorProto_EnumReservedRange: {
+    $type: "google.protobuf.EnumDescriptorProto.EnumReservedRange";
     encode(message: EnumDescriptorProto_EnumReservedRange, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): EnumDescriptorProto_EnumReservedRange;
     fromJSON(object: any): EnumDescriptorProto_EnumReservedRange;
@@ -897,6 +934,7 @@ export declare const EnumDescriptorProto_EnumReservedRange: {
     fromPartial(object: DeepPartial<EnumDescriptorProto_EnumReservedRange>): EnumDescriptorProto_EnumReservedRange;
 };
 export declare const EnumValueDescriptorProto: {
+    $type: "google.protobuf.EnumValueDescriptorProto";
     encode(message: EnumValueDescriptorProto, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): EnumValueDescriptorProto;
     fromJSON(object: any): EnumValueDescriptorProto;
@@ -904,6 +942,7 @@ export declare const EnumValueDescriptorProto: {
     fromPartial(object: DeepPartial<EnumValueDescriptorProto>): EnumValueDescriptorProto;
 };
 export declare const ServiceDescriptorProto: {
+    $type: "google.protobuf.ServiceDescriptorProto";
     encode(message: ServiceDescriptorProto, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ServiceDescriptorProto;
     fromJSON(object: any): ServiceDescriptorProto;
@@ -911,6 +950,7 @@ export declare const ServiceDescriptorProto: {
     fromPartial(object: DeepPartial<ServiceDescriptorProto>): ServiceDescriptorProto;
 };
 export declare const MethodDescriptorProto: {
+    $type: "google.protobuf.MethodDescriptorProto";
     encode(message: MethodDescriptorProto, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): MethodDescriptorProto;
     fromJSON(object: any): MethodDescriptorProto;
@@ -918,6 +958,7 @@ export declare const MethodDescriptorProto: {
     fromPartial(object: DeepPartial<MethodDescriptorProto>): MethodDescriptorProto;
 };
 export declare const FileOptions: {
+    $type: "google.protobuf.FileOptions";
     encode(message: FileOptions, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): FileOptions;
     fromJSON(object: any): FileOptions;
@@ -925,6 +966,7 @@ export declare const FileOptions: {
     fromPartial(object: DeepPartial<FileOptions>): FileOptions;
 };
 export declare const MessageOptions: {
+    $type: "google.protobuf.MessageOptions";
     encode(message: MessageOptions, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): MessageOptions;
     fromJSON(object: any): MessageOptions;
@@ -932,6 +974,7 @@ export declare const MessageOptions: {
     fromPartial(object: DeepPartial<MessageOptions>): MessageOptions;
 };
 export declare const FieldOptions: {
+    $type: "google.protobuf.FieldOptions";
     encode(message: FieldOptions, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): FieldOptions;
     fromJSON(object: any): FieldOptions;
@@ -939,6 +982,7 @@ export declare const FieldOptions: {
     fromPartial(object: DeepPartial<FieldOptions>): FieldOptions;
 };
 export declare const OneofOptions: {
+    $type: "google.protobuf.OneofOptions";
     encode(message: OneofOptions, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): OneofOptions;
     fromJSON(object: any): OneofOptions;
@@ -946,6 +990,7 @@ export declare const OneofOptions: {
     fromPartial(object: DeepPartial<OneofOptions>): OneofOptions;
 };
 export declare const EnumOptions: {
+    $type: "google.protobuf.EnumOptions";
     encode(message: EnumOptions, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): EnumOptions;
     fromJSON(object: any): EnumOptions;
@@ -953,6 +998,7 @@ export declare const EnumOptions: {
     fromPartial(object: DeepPartial<EnumOptions>): EnumOptions;
 };
 export declare const EnumValueOptions: {
+    $type: "google.protobuf.EnumValueOptions";
     encode(message: EnumValueOptions, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): EnumValueOptions;
     fromJSON(object: any): EnumValueOptions;
@@ -960,6 +1006,7 @@ export declare const EnumValueOptions: {
     fromPartial(object: DeepPartial<EnumValueOptions>): EnumValueOptions;
 };
 export declare const ServiceOptions: {
+    $type: "google.protobuf.ServiceOptions";
     encode(message: ServiceOptions, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ServiceOptions;
     fromJSON(object: any): ServiceOptions;
@@ -967,6 +1014,7 @@ export declare const ServiceOptions: {
     fromPartial(object: DeepPartial<ServiceOptions>): ServiceOptions;
 };
 export declare const MethodOptions: {
+    $type: "google.protobuf.MethodOptions";
     encode(message: MethodOptions, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): MethodOptions;
     fromJSON(object: any): MethodOptions;
@@ -974,6 +1022,7 @@ export declare const MethodOptions: {
     fromPartial(object: DeepPartial<MethodOptions>): MethodOptions;
 };
 export declare const UninterpretedOption: {
+    $type: "google.protobuf.UninterpretedOption";
     encode(message: UninterpretedOption, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UninterpretedOption;
     fromJSON(object: any): UninterpretedOption;
@@ -981,6 +1030,7 @@ export declare const UninterpretedOption: {
     fromPartial(object: DeepPartial<UninterpretedOption>): UninterpretedOption;
 };
 export declare const UninterpretedOption_NamePart: {
+    $type: "google.protobuf.UninterpretedOption.NamePart";
     encode(message: UninterpretedOption_NamePart, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): UninterpretedOption_NamePart;
     fromJSON(object: any): UninterpretedOption_NamePart;
@@ -988,6 +1038,7 @@ export declare const UninterpretedOption_NamePart: {
     fromPartial(object: DeepPartial<UninterpretedOption_NamePart>): UninterpretedOption_NamePart;
 };
 export declare const SourceCodeInfo: {
+    $type: "google.protobuf.SourceCodeInfo";
     encode(message: SourceCodeInfo, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): SourceCodeInfo;
     fromJSON(object: any): SourceCodeInfo;
@@ -995,6 +1046,7 @@ export declare const SourceCodeInfo: {
     fromPartial(object: DeepPartial<SourceCodeInfo>): SourceCodeInfo;
 };
 export declare const SourceCodeInfo_Location: {
+    $type: "google.protobuf.SourceCodeInfo.Location";
     encode(message: SourceCodeInfo_Location, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): SourceCodeInfo_Location;
     fromJSON(object: any): SourceCodeInfo_Location;
@@ -1002,6 +1054,7 @@ export declare const SourceCodeInfo_Location: {
     fromPartial(object: DeepPartial<SourceCodeInfo_Location>): SourceCodeInfo_Location;
 };
 export declare const GeneratedCodeInfo: {
+    $type: "google.protobuf.GeneratedCodeInfo";
     encode(message: GeneratedCodeInfo, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): GeneratedCodeInfo;
     fromJSON(object: any): GeneratedCodeInfo;
@@ -1009,6 +1062,7 @@ export declare const GeneratedCodeInfo: {
     fromPartial(object: DeepPartial<GeneratedCodeInfo>): GeneratedCodeInfo;
 };
 export declare const GeneratedCodeInfo_Annotation: {
+    $type: "google.protobuf.GeneratedCodeInfo.Annotation";
     encode(message: GeneratedCodeInfo_Annotation, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): GeneratedCodeInfo_Annotation;
     fromJSON(object: any): GeneratedCodeInfo_Annotation;
@@ -1017,6 +1071,6 @@ export declare const GeneratedCodeInfo_Annotation: {
 };
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

@@ -1,4 +1,5 @@
 /* eslint-disable */
+import { messageTypeRegistry } from '../../../../../typeRegistry';
 import { Backup } from '../../../../../yandex/cloud/mdb/sqlserver/v1/backup';
 import {
     makeGenericClientConstructor,
@@ -18,6 +19,7 @@ import _m0 from 'protobufjs/minimal';
 export const protobufPackage = 'yandex.cloud.mdb.sqlserver.v1';
 
 export interface GetBackupRequest {
+    $type: 'yandex.cloud.mdb.sqlserver.v1.GetBackupRequest';
     /**
      * ID of the backup to return information about.
      *
@@ -27,6 +29,7 @@ export interface GetBackupRequest {
 }
 
 export interface ListBackupsRequest {
+    $type: 'yandex.cloud.mdb.sqlserver.v1.ListBackupsRequest';
     /**
      * ID of the folder to list backups in.
      *
@@ -47,6 +50,7 @@ export interface ListBackupsRequest {
 }
 
 export interface ListBackupsResponse {
+    $type: 'yandex.cloud.mdb.sqlserver.v1.ListBackupsResponse';
     /** List of SQL Server backups. */
     backups: Backup[];
     /**
@@ -58,9 +62,14 @@ export interface ListBackupsResponse {
     nextPageToken: string;
 }
 
-const baseGetBackupRequest: object = { backupId: '' };
+const baseGetBackupRequest: object = {
+    $type: 'yandex.cloud.mdb.sqlserver.v1.GetBackupRequest',
+    backupId: '',
+};
 
 export const GetBackupRequest = {
+    $type: 'yandex.cloud.mdb.sqlserver.v1.GetBackupRequest' as const,
+
     encode(
         message: GetBackupRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -117,13 +126,18 @@ export const GetBackupRequest = {
     },
 };
 
+messageTypeRegistry.set(GetBackupRequest.$type, GetBackupRequest);
+
 const baseListBackupsRequest: object = {
+    $type: 'yandex.cloud.mdb.sqlserver.v1.ListBackupsRequest',
     folderId: '',
     pageSize: 0,
     pageToken: '',
 };
 
 export const ListBackupsRequest = {
+    $type: 'yandex.cloud.mdb.sqlserver.v1.ListBackupsRequest' as const,
+
     encode(
         message: ListBackupsRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -217,9 +231,16 @@ export const ListBackupsRequest = {
     },
 };
 
-const baseListBackupsResponse: object = { nextPageToken: '' };
+messageTypeRegistry.set(ListBackupsRequest.$type, ListBackupsRequest);
+
+const baseListBackupsResponse: object = {
+    $type: 'yandex.cloud.mdb.sqlserver.v1.ListBackupsResponse',
+    nextPageToken: '',
+};
 
 export const ListBackupsResponse = {
+    $type: 'yandex.cloud.mdb.sqlserver.v1.ListBackupsResponse' as const,
+
     encode(
         message: ListBackupsResponse,
         writer: _m0.Writer = _m0.Writer.create()
@@ -313,6 +334,8 @@ export const ListBackupsResponse = {
         return message;
     },
 };
+
+messageTypeRegistry.set(ListBackupsResponse.$type, ListBackupsResponse);
 
 /** A set of methods for managing SQL Server backups. */
 export const BackupServiceService = {
@@ -443,7 +466,7 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 function longToNumber(long: Long): number {

@@ -1,5 +1,6 @@
 /* eslint-disable */
 import { FieldMask } from '../../../../google/protobuf/field_mask';
+import { messageTypeRegistry } from '../../../../typeRegistry';
 import { DiskPlacementPolicy } from '../../../../yandex/cloud/compute/v1/disk';
 import {
     IpVersion,
@@ -63,6 +64,7 @@ export function instanceViewToJSON(object: InstanceView): string {
 }
 
 export interface GetInstanceRequest {
+    $type: 'yandex.cloud.compute.v1.GetInstanceRequest';
     /**
      * ID of the Instance resource to return.
      * To get the instance ID, use a [InstanceService.List] request.
@@ -73,6 +75,7 @@ export interface GetInstanceRequest {
 }
 
 export interface ListInstancesRequest {
+    $type: 'yandex.cloud.compute.v1.ListInstancesRequest';
     /**
      * ID of the Folder to list instances in.
      * To get the folder ID, use a [yandex.cloud.resourcemanager.v1.FolderService.List] request.
@@ -102,6 +105,7 @@ export interface ListInstancesRequest {
 }
 
 export interface ListInstancesResponse {
+    $type: 'yandex.cloud.compute.v1.ListInstancesResponse';
     /** List of Instance resources. */
     instances: Instance[];
     /**
@@ -116,6 +120,7 @@ export interface ListInstancesResponse {
 }
 
 export interface CreateInstanceRequest {
+    $type: 'yandex.cloud.compute.v1.CreateInstanceRequest';
     /**
      * ID of the folder to create an instance in.
      * To get the folder ID, use a [yandex.cloud.resourcemanager.v1.FolderService.List] request.
@@ -198,21 +203,25 @@ export interface CreateInstanceRequest {
 }
 
 export interface CreateInstanceRequest_LabelsEntry {
+    $type: 'yandex.cloud.compute.v1.CreateInstanceRequest.LabelsEntry';
     key: string;
     value: string;
 }
 
 export interface CreateInstanceRequest_MetadataEntry {
+    $type: 'yandex.cloud.compute.v1.CreateInstanceRequest.MetadataEntry';
     key: string;
     value: string;
 }
 
 export interface CreateInstanceMetadata {
+    $type: 'yandex.cloud.compute.v1.CreateInstanceMetadata';
     /** ID of the instance that is being created. */
     instanceId: string;
 }
 
 export interface UpdateInstanceRequest {
+    $type: 'yandex.cloud.compute.v1.UpdateInstanceRequest';
     /**
      * ID of the Instance resource to update.
      * To get the instance ID, use a [InstanceService.List] request.
@@ -269,21 +278,25 @@ export interface UpdateInstanceRequest {
 }
 
 export interface UpdateInstanceRequest_LabelsEntry {
+    $type: 'yandex.cloud.compute.v1.UpdateInstanceRequest.LabelsEntry';
     key: string;
     value: string;
 }
 
 export interface UpdateInstanceRequest_MetadataEntry {
+    $type: 'yandex.cloud.compute.v1.UpdateInstanceRequest.MetadataEntry';
     key: string;
     value: string;
 }
 
 export interface UpdateInstanceMetadata {
+    $type: 'yandex.cloud.compute.v1.UpdateInstanceMetadata';
     /** ID of the Instance resource that is being updated. */
     instanceId: string;
 }
 
 export interface DeleteInstanceRequest {
+    $type: 'yandex.cloud.compute.v1.DeleteInstanceRequest';
     /**
      * ID of the instance to delete.
      * To get the instance ID, use a [InstanceService.List] request.
@@ -292,11 +305,13 @@ export interface DeleteInstanceRequest {
 }
 
 export interface DeleteInstanceMetadata {
+    $type: 'yandex.cloud.compute.v1.DeleteInstanceMetadata';
     /** ID of the instance that is being deleted. */
     instanceId: string;
 }
 
 export interface UpdateInstanceMetadataRequest {
+    $type: 'yandex.cloud.compute.v1.UpdateInstanceMetadataRequest';
     /** ID of the instance that is being updated. */
     instanceId: string;
     /** List of keys to be deleted. */
@@ -306,16 +321,19 @@ export interface UpdateInstanceMetadataRequest {
 }
 
 export interface UpdateInstanceMetadataRequest_UpsertEntry {
+    $type: 'yandex.cloud.compute.v1.UpdateInstanceMetadataRequest.UpsertEntry';
     key: string;
     value: string;
 }
 
 export interface UpdateInstanceMetadataMetadata {
+    $type: 'yandex.cloud.compute.v1.UpdateInstanceMetadataMetadata';
     /** ID of the instance that is being updated. */
     instanceId: string;
 }
 
 export interface GetInstanceSerialPortOutputRequest {
+    $type: 'yandex.cloud.compute.v1.GetInstanceSerialPortOutputRequest';
     /** ID of the instance to return the serial port output for. */
     instanceId: string;
     /** Serial port to retrieve data from. The default is 1. */
@@ -323,6 +341,7 @@ export interface GetInstanceSerialPortOutputRequest {
 }
 
 export interface GetInstanceSerialPortOutputResponse {
+    $type: 'yandex.cloud.compute.v1.GetInstanceSerialPortOutputResponse';
     /**
      * The contents of the serial port output, starting from the time when the instance
      * started to boot.
@@ -331,6 +350,7 @@ export interface GetInstanceSerialPortOutputResponse {
 }
 
 export interface StopInstanceRequest {
+    $type: 'yandex.cloud.compute.v1.StopInstanceRequest';
     /**
      * ID of the instance to stop.
      * To get the instance ID, use a [InstanceService.List] request.
@@ -339,11 +359,13 @@ export interface StopInstanceRequest {
 }
 
 export interface StopInstanceMetadata {
+    $type: 'yandex.cloud.compute.v1.StopInstanceMetadata';
     /** ID of the instance that is being deleted. */
     instanceId: string;
 }
 
 export interface StartInstanceRequest {
+    $type: 'yandex.cloud.compute.v1.StartInstanceRequest';
     /**
      * ID of the instance to start.
      * To get the instance ID, use a [InstanceService.List] request.
@@ -352,11 +374,13 @@ export interface StartInstanceRequest {
 }
 
 export interface StartInstanceMetadata {
+    $type: 'yandex.cloud.compute.v1.StartInstanceMetadata';
     /** ID of the instance. */
     instanceId: string;
 }
 
 export interface RestartInstanceRequest {
+    $type: 'yandex.cloud.compute.v1.RestartInstanceRequest';
     /**
      * ID of the instance to restart.
      * To get the instance ID, use a [InstanceService.List] request.
@@ -365,11 +389,13 @@ export interface RestartInstanceRequest {
 }
 
 export interface RestartInstanceMetadata {
+    $type: 'yandex.cloud.compute.v1.RestartInstanceMetadata';
     /** ID of the instance. */
     instanceId: string;
 }
 
 export interface AttachInstanceDiskRequest {
+    $type: 'yandex.cloud.compute.v1.AttachInstanceDiskRequest';
     /**
      * ID of the instance to attach the disk to.
      * To get the instance ID, use a [InstanceService.List] request.
@@ -380,6 +406,7 @@ export interface AttachInstanceDiskRequest {
 }
 
 export interface AttachInstanceDiskMetadata {
+    $type: 'yandex.cloud.compute.v1.AttachInstanceDiskMetadata';
     /** ID of the instance. */
     instanceId: string;
     /** ID of the disk. */
@@ -387,6 +414,7 @@ export interface AttachInstanceDiskMetadata {
 }
 
 export interface DetachInstanceDiskRequest {
+    $type: 'yandex.cloud.compute.v1.DetachInstanceDiskRequest';
     /**
      * ID of the instance to detach the disk from.
      * To get the instance ID, use a [InstanceService.List] request.
@@ -402,6 +430,7 @@ export interface DetachInstanceDiskRequest {
 }
 
 export interface DetachInstanceDiskMetadata {
+    $type: 'yandex.cloud.compute.v1.DetachInstanceDiskMetadata';
     /** ID of the instance. */
     instanceId: string;
     /** ID of the disk. */
@@ -409,6 +438,7 @@ export interface DetachInstanceDiskMetadata {
 }
 
 export interface AttachInstanceFilesystemRequest {
+    $type: 'yandex.cloud.compute.v1.AttachInstanceFilesystemRequest';
     /**
      * ID of the instance to attach the filesystem to.
      *
@@ -420,6 +450,7 @@ export interface AttachInstanceFilesystemRequest {
 }
 
 export interface AttachInstanceFilesystemMetadata {
+    $type: 'yandex.cloud.compute.v1.AttachInstanceFilesystemMetadata';
     /** ID of the instance that the filesystem is being attached to. */
     instanceId: string;
     /** ID of the filesystem that is being attached to the instance. */
@@ -427,6 +458,7 @@ export interface AttachInstanceFilesystemMetadata {
 }
 
 export interface DetachInstanceFilesystemRequest {
+    $type: 'yandex.cloud.compute.v1.DetachInstanceFilesystemRequest';
     /**
      * ID of the instance to detach the filesystem from.
      *
@@ -440,6 +472,7 @@ export interface DetachInstanceFilesystemRequest {
 }
 
 export interface DetachInstanceFilesystemMetadata {
+    $type: 'yandex.cloud.compute.v1.DetachInstanceFilesystemMetadata';
     /** ID of the instance that the filesystem is being detached from. */
     instanceId: string;
     /** ID of the filesystem that is being detached from the instance. */
@@ -448,6 +481,7 @@ export interface DetachInstanceFilesystemMetadata {
 
 /** Enables One-to-one NAT on the network interface. */
 export interface AddInstanceOneToOneNatRequest {
+    $type: 'yandex.cloud.compute.v1.AddInstanceOneToOneNatRequest';
     /** ID of the instance to enable One-to-One NAT on. */
     instanceId: string;
     /** The index of the network interface to enable One-to-One NAT on. */
@@ -462,11 +496,13 @@ export interface AddInstanceOneToOneNatRequest {
 }
 
 export interface AddInstanceOneToOneNatMetadata {
+    $type: 'yandex.cloud.compute.v1.AddInstanceOneToOneNatMetadata';
     /** ID of the instance. */
     instanceId: string;
 }
 
 export interface RemoveInstanceOneToOneNatRequest {
+    $type: 'yandex.cloud.compute.v1.RemoveInstanceOneToOneNatRequest';
     /** ID of the instance to remove One-to-one NAT. */
     instanceId: string;
     /** The index of the network interface to remove One-to-One NAT from. */
@@ -476,11 +512,13 @@ export interface RemoveInstanceOneToOneNatRequest {
 }
 
 export interface RemoveInstanceOneToOneNatMetadata {
+    $type: 'yandex.cloud.compute.v1.RemoveInstanceOneToOneNatMetadata';
     /** ID of the instance. */
     instanceId: string;
 }
 
 export interface UpdateInstanceNetworkInterfaceRequest {
+    $type: 'yandex.cloud.compute.v1.UpdateInstanceNetworkInterfaceRequest';
     /** ID of the network interface that is being updated. */
     instanceId: string;
     /** The index of the network interface to be updated. */
@@ -498,6 +536,7 @@ export interface UpdateInstanceNetworkInterfaceRequest {
 }
 
 export interface UpdateInstanceNetworkInterfaceMetadata {
+    $type: 'yandex.cloud.compute.v1.UpdateInstanceNetworkInterfaceMetadata';
     /** ID of the instant network interface that is being updated. */
     instanceId: string;
     /** The index of the network interface. */
@@ -505,6 +544,7 @@ export interface UpdateInstanceNetworkInterfaceMetadata {
 }
 
 export interface ListInstanceOperationsRequest {
+    $type: 'yandex.cloud.compute.v1.ListInstanceOperationsRequest';
     /** ID of the Instance resource to list operations for. */
     instanceId: string;
     /**
@@ -521,6 +561,7 @@ export interface ListInstanceOperationsRequest {
 }
 
 export interface ListInstanceOperationsResponse {
+    $type: 'yandex.cloud.compute.v1.ListInstanceOperationsResponse';
     /** List of operations for the specified instance. */
     operations: Operation[];
     /**
@@ -533,6 +574,7 @@ export interface ListInstanceOperationsResponse {
 }
 
 export interface ResourcesSpec {
+    $type: 'yandex.cloud.compute.v1.ResourcesSpec';
     /** The amount of memory available to the instance, specified in bytes. */
     memory: number;
     /** The number of cores available to the instance. */
@@ -550,6 +592,7 @@ export interface ResourcesSpec {
 }
 
 export interface AttachedDiskSpec {
+    $type: 'yandex.cloud.compute.v1.AttachedDiskSpec';
     /** The mode in which to attach this disk. */
     mode: AttachedDiskSpec_Mode;
     /**
@@ -613,6 +656,7 @@ export function attachedDiskSpec_ModeToJSON(
 }
 
 export interface AttachedDiskSpec_DiskSpec {
+    $type: 'yandex.cloud.compute.v1.AttachedDiskSpec.DiskSpec';
     /** Name of the disk. */
     name: string;
     /** Description of the disk. */
@@ -635,6 +679,7 @@ export interface AttachedDiskSpec_DiskSpec {
 }
 
 export interface AttachedFilesystemSpec {
+    $type: 'yandex.cloud.compute.v1.AttachedFilesystemSpec';
     /** Mode of access to the filesystem that should be attached. */
     mode: AttachedFilesystemSpec_Mode;
     /**
@@ -695,6 +740,7 @@ export function attachedFilesystemSpec_ModeToJSON(
 }
 
 export interface NetworkInterfaceSpec {
+    $type: 'yandex.cloud.compute.v1.NetworkInterfaceSpec';
     /** ID of the subnet. */
     subnetId: string;
     /** Primary IPv4 address that will be assigned to the instance for this network interface. */
@@ -706,6 +752,7 @@ export interface NetworkInterfaceSpec {
 }
 
 export interface PrimaryAddressSpec {
+    $type: 'yandex.cloud.compute.v1.PrimaryAddressSpec';
     /**
      * An IPv4 internal network address that is assigned to the instance for this network interface.
      * If not specified by the user, an unused internal IP is assigned by the system.
@@ -721,6 +768,7 @@ export interface PrimaryAddressSpec {
 }
 
 export interface OneToOneNatSpec {
+    $type: 'yandex.cloud.compute.v1.OneToOneNatSpec';
     /** External IP address version. */
     ipVersion: IpVersion;
     /** set static IP by value */
@@ -730,6 +778,7 @@ export interface OneToOneNatSpec {
 }
 
 export interface DnsRecordSpec {
+    $type: 'yandex.cloud.compute.v1.DnsRecordSpec';
     /** FQDN (required) */
     fqdn: string;
     /** DNS zone id (optional, if not set, private zone used) */
@@ -740,9 +789,15 @@ export interface DnsRecordSpec {
     ptr: boolean;
 }
 
-const baseGetInstanceRequest: object = { instanceId: '', view: 0 };
+const baseGetInstanceRequest: object = {
+    $type: 'yandex.cloud.compute.v1.GetInstanceRequest',
+    instanceId: '',
+    view: 0,
+};
 
 export const GetInstanceRequest = {
+    $type: 'yandex.cloud.compute.v1.GetInstanceRequest' as const,
+
     encode(
         message: GetInstanceRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -821,7 +876,10 @@ export const GetInstanceRequest = {
     },
 };
 
+messageTypeRegistry.set(GetInstanceRequest.$type, GetInstanceRequest);
+
 const baseListInstancesRequest: object = {
+    $type: 'yandex.cloud.compute.v1.ListInstancesRequest',
     folderId: '',
     pageSize: 0,
     pageToken: '',
@@ -829,6 +887,8 @@ const baseListInstancesRequest: object = {
 };
 
 export const ListInstancesRequest = {
+    $type: 'yandex.cloud.compute.v1.ListInstancesRequest' as const,
+
     encode(
         message: ListInstancesRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -941,9 +1001,16 @@ export const ListInstancesRequest = {
     },
 };
 
-const baseListInstancesResponse: object = { nextPageToken: '' };
+messageTypeRegistry.set(ListInstancesRequest.$type, ListInstancesRequest);
+
+const baseListInstancesResponse: object = {
+    $type: 'yandex.cloud.compute.v1.ListInstancesResponse',
+    nextPageToken: '',
+};
 
 export const ListInstancesResponse = {
+    $type: 'yandex.cloud.compute.v1.ListInstancesResponse' as const,
+
     encode(
         message: ListInstancesResponse,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1046,7 +1113,10 @@ export const ListInstancesResponse = {
     },
 };
 
+messageTypeRegistry.set(ListInstancesResponse.$type, ListInstancesResponse);
+
 const baseCreateInstanceRequest: object = {
+    $type: 'yandex.cloud.compute.v1.CreateInstanceRequest',
     folderId: '',
     name: '',
     description: '',
@@ -1057,6 +1127,8 @@ const baseCreateInstanceRequest: object = {
 };
 
 export const CreateInstanceRequest = {
+    $type: 'yandex.cloud.compute.v1.CreateInstanceRequest' as const,
+
     encode(
         message: CreateInstanceRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1072,7 +1144,11 @@ export const CreateInstanceRequest = {
         }
         Object.entries(message.labels).forEach(([key, value]) => {
             CreateInstanceRequest_LabelsEntry.encode(
-                { key: key as any, value },
+                {
+                    $type: 'yandex.cloud.compute.v1.CreateInstanceRequest.LabelsEntry',
+                    key: key as any,
+                    value,
+                },
                 writer.uint32(34).fork()
             ).ldelim();
         });
@@ -1090,7 +1166,11 @@ export const CreateInstanceRequest = {
         }
         Object.entries(message.metadata).forEach(([key, value]) => {
             CreateInstanceRequest_MetadataEntry.encode(
-                { key: key as any, value },
+                {
+                    $type: 'yandex.cloud.compute.v1.CreateInstanceRequest.MetadataEntry',
+                    key: key as any,
+                    value,
+                },
                 writer.uint32(66).fork()
             ).ldelim();
         });
@@ -1596,9 +1676,17 @@ export const CreateInstanceRequest = {
     },
 };
 
-const baseCreateInstanceRequest_LabelsEntry: object = { key: '', value: '' };
+messageTypeRegistry.set(CreateInstanceRequest.$type, CreateInstanceRequest);
+
+const baseCreateInstanceRequest_LabelsEntry: object = {
+    $type: 'yandex.cloud.compute.v1.CreateInstanceRequest.LabelsEntry',
+    key: '',
+    value: '',
+};
 
 export const CreateInstanceRequest_LabelsEntry = {
+    $type: 'yandex.cloud.compute.v1.CreateInstanceRequest.LabelsEntry' as const,
+
     encode(
         message: CreateInstanceRequest_LabelsEntry,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1683,9 +1771,20 @@ export const CreateInstanceRequest_LabelsEntry = {
     },
 };
 
-const baseCreateInstanceRequest_MetadataEntry: object = { key: '', value: '' };
+messageTypeRegistry.set(
+    CreateInstanceRequest_LabelsEntry.$type,
+    CreateInstanceRequest_LabelsEntry
+);
+
+const baseCreateInstanceRequest_MetadataEntry: object = {
+    $type: 'yandex.cloud.compute.v1.CreateInstanceRequest.MetadataEntry',
+    key: '',
+    value: '',
+};
 
 export const CreateInstanceRequest_MetadataEntry = {
+    $type: 'yandex.cloud.compute.v1.CreateInstanceRequest.MetadataEntry' as const,
+
     encode(
         message: CreateInstanceRequest_MetadataEntry,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1770,9 +1869,19 @@ export const CreateInstanceRequest_MetadataEntry = {
     },
 };
 
-const baseCreateInstanceMetadata: object = { instanceId: '' };
+messageTypeRegistry.set(
+    CreateInstanceRequest_MetadataEntry.$type,
+    CreateInstanceRequest_MetadataEntry
+);
+
+const baseCreateInstanceMetadata: object = {
+    $type: 'yandex.cloud.compute.v1.CreateInstanceMetadata',
+    instanceId: '',
+};
 
 export const CreateInstanceMetadata = {
+    $type: 'yandex.cloud.compute.v1.CreateInstanceMetadata' as const,
+
     encode(
         message: CreateInstanceMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1841,7 +1950,10 @@ export const CreateInstanceMetadata = {
     },
 };
 
+messageTypeRegistry.set(CreateInstanceMetadata.$type, CreateInstanceMetadata);
+
 const baseUpdateInstanceRequest: object = {
+    $type: 'yandex.cloud.compute.v1.UpdateInstanceRequest',
     instanceId: '',
     name: '',
     description: '',
@@ -1850,6 +1962,8 @@ const baseUpdateInstanceRequest: object = {
 };
 
 export const UpdateInstanceRequest = {
+    $type: 'yandex.cloud.compute.v1.UpdateInstanceRequest' as const,
+
     encode(
         message: UpdateInstanceRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1871,7 +1985,11 @@ export const UpdateInstanceRequest = {
         }
         Object.entries(message.labels).forEach(([key, value]) => {
             UpdateInstanceRequest_LabelsEntry.encode(
-                { key: key as any, value },
+                {
+                    $type: 'yandex.cloud.compute.v1.UpdateInstanceRequest.LabelsEntry',
+                    key: key as any,
+                    value,
+                },
                 writer.uint32(42).fork()
             ).ldelim();
         });
@@ -1886,7 +2004,11 @@ export const UpdateInstanceRequest = {
         }
         Object.entries(message.metadata).forEach(([key, value]) => {
             UpdateInstanceRequest_MetadataEntry.encode(
-                { key: key as any, value },
+                {
+                    $type: 'yandex.cloud.compute.v1.UpdateInstanceRequest.MetadataEntry',
+                    key: key as any,
+                    value,
+                },
                 writer.uint32(66).fork()
             ).ldelim();
         });
@@ -2201,9 +2323,17 @@ export const UpdateInstanceRequest = {
     },
 };
 
-const baseUpdateInstanceRequest_LabelsEntry: object = { key: '', value: '' };
+messageTypeRegistry.set(UpdateInstanceRequest.$type, UpdateInstanceRequest);
+
+const baseUpdateInstanceRequest_LabelsEntry: object = {
+    $type: 'yandex.cloud.compute.v1.UpdateInstanceRequest.LabelsEntry',
+    key: '',
+    value: '',
+};
 
 export const UpdateInstanceRequest_LabelsEntry = {
+    $type: 'yandex.cloud.compute.v1.UpdateInstanceRequest.LabelsEntry' as const,
+
     encode(
         message: UpdateInstanceRequest_LabelsEntry,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2288,9 +2418,20 @@ export const UpdateInstanceRequest_LabelsEntry = {
     },
 };
 
-const baseUpdateInstanceRequest_MetadataEntry: object = { key: '', value: '' };
+messageTypeRegistry.set(
+    UpdateInstanceRequest_LabelsEntry.$type,
+    UpdateInstanceRequest_LabelsEntry
+);
+
+const baseUpdateInstanceRequest_MetadataEntry: object = {
+    $type: 'yandex.cloud.compute.v1.UpdateInstanceRequest.MetadataEntry',
+    key: '',
+    value: '',
+};
 
 export const UpdateInstanceRequest_MetadataEntry = {
+    $type: 'yandex.cloud.compute.v1.UpdateInstanceRequest.MetadataEntry' as const,
+
     encode(
         message: UpdateInstanceRequest_MetadataEntry,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2375,9 +2516,19 @@ export const UpdateInstanceRequest_MetadataEntry = {
     },
 };
 
-const baseUpdateInstanceMetadata: object = { instanceId: '' };
+messageTypeRegistry.set(
+    UpdateInstanceRequest_MetadataEntry.$type,
+    UpdateInstanceRequest_MetadataEntry
+);
+
+const baseUpdateInstanceMetadata: object = {
+    $type: 'yandex.cloud.compute.v1.UpdateInstanceMetadata',
+    instanceId: '',
+};
 
 export const UpdateInstanceMetadata = {
+    $type: 'yandex.cloud.compute.v1.UpdateInstanceMetadata' as const,
+
     encode(
         message: UpdateInstanceMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2446,9 +2597,16 @@ export const UpdateInstanceMetadata = {
     },
 };
 
-const baseDeleteInstanceRequest: object = { instanceId: '' };
+messageTypeRegistry.set(UpdateInstanceMetadata.$type, UpdateInstanceMetadata);
+
+const baseDeleteInstanceRequest: object = {
+    $type: 'yandex.cloud.compute.v1.DeleteInstanceRequest',
+    instanceId: '',
+};
 
 export const DeleteInstanceRequest = {
+    $type: 'yandex.cloud.compute.v1.DeleteInstanceRequest' as const,
+
     encode(
         message: DeleteInstanceRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2517,9 +2675,16 @@ export const DeleteInstanceRequest = {
     },
 };
 
-const baseDeleteInstanceMetadata: object = { instanceId: '' };
+messageTypeRegistry.set(DeleteInstanceRequest.$type, DeleteInstanceRequest);
+
+const baseDeleteInstanceMetadata: object = {
+    $type: 'yandex.cloud.compute.v1.DeleteInstanceMetadata',
+    instanceId: '',
+};
 
 export const DeleteInstanceMetadata = {
+    $type: 'yandex.cloud.compute.v1.DeleteInstanceMetadata' as const,
+
     encode(
         message: DeleteInstanceMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2588,12 +2753,17 @@ export const DeleteInstanceMetadata = {
     },
 };
 
+messageTypeRegistry.set(DeleteInstanceMetadata.$type, DeleteInstanceMetadata);
+
 const baseUpdateInstanceMetadataRequest: object = {
+    $type: 'yandex.cloud.compute.v1.UpdateInstanceMetadataRequest',
     instanceId: '',
     delete: '',
 };
 
 export const UpdateInstanceMetadataRequest = {
+    $type: 'yandex.cloud.compute.v1.UpdateInstanceMetadataRequest' as const,
+
     encode(
         message: UpdateInstanceMetadataRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2606,7 +2776,11 @@ export const UpdateInstanceMetadataRequest = {
         }
         Object.entries(message.upsert).forEach(([key, value]) => {
             UpdateInstanceMetadataRequest_UpsertEntry.encode(
-                { key: key as any, value },
+                {
+                    $type: 'yandex.cloud.compute.v1.UpdateInstanceMetadataRequest.UpsertEntry',
+                    key: key as any,
+                    value,
+                },
                 writer.uint32(26).fork()
             ).ldelim();
         });
@@ -2723,12 +2897,20 @@ export const UpdateInstanceMetadataRequest = {
     },
 };
 
+messageTypeRegistry.set(
+    UpdateInstanceMetadataRequest.$type,
+    UpdateInstanceMetadataRequest
+);
+
 const baseUpdateInstanceMetadataRequest_UpsertEntry: object = {
+    $type: 'yandex.cloud.compute.v1.UpdateInstanceMetadataRequest.UpsertEntry',
     key: '',
     value: '',
 };
 
 export const UpdateInstanceMetadataRequest_UpsertEntry = {
+    $type: 'yandex.cloud.compute.v1.UpdateInstanceMetadataRequest.UpsertEntry' as const,
+
     encode(
         message: UpdateInstanceMetadataRequest_UpsertEntry,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2813,9 +2995,19 @@ export const UpdateInstanceMetadataRequest_UpsertEntry = {
     },
 };
 
-const baseUpdateInstanceMetadataMetadata: object = { instanceId: '' };
+messageTypeRegistry.set(
+    UpdateInstanceMetadataRequest_UpsertEntry.$type,
+    UpdateInstanceMetadataRequest_UpsertEntry
+);
+
+const baseUpdateInstanceMetadataMetadata: object = {
+    $type: 'yandex.cloud.compute.v1.UpdateInstanceMetadataMetadata',
+    instanceId: '',
+};
 
 export const UpdateInstanceMetadataMetadata = {
+    $type: 'yandex.cloud.compute.v1.UpdateInstanceMetadataMetadata' as const,
+
     encode(
         message: UpdateInstanceMetadataMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2884,12 +3076,20 @@ export const UpdateInstanceMetadataMetadata = {
     },
 };
 
+messageTypeRegistry.set(
+    UpdateInstanceMetadataMetadata.$type,
+    UpdateInstanceMetadataMetadata
+);
+
 const baseGetInstanceSerialPortOutputRequest: object = {
+    $type: 'yandex.cloud.compute.v1.GetInstanceSerialPortOutputRequest',
     instanceId: '',
     port: 0,
 };
 
 export const GetInstanceSerialPortOutputRequest = {
+    $type: 'yandex.cloud.compute.v1.GetInstanceSerialPortOutputRequest' as const,
+
     encode(
         message: GetInstanceSerialPortOutputRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -2975,9 +3175,19 @@ export const GetInstanceSerialPortOutputRequest = {
     },
 };
 
-const baseGetInstanceSerialPortOutputResponse: object = { contents: '' };
+messageTypeRegistry.set(
+    GetInstanceSerialPortOutputRequest.$type,
+    GetInstanceSerialPortOutputRequest
+);
+
+const baseGetInstanceSerialPortOutputResponse: object = {
+    $type: 'yandex.cloud.compute.v1.GetInstanceSerialPortOutputResponse',
+    contents: '',
+};
 
 export const GetInstanceSerialPortOutputResponse = {
+    $type: 'yandex.cloud.compute.v1.GetInstanceSerialPortOutputResponse' as const,
+
     encode(
         message: GetInstanceSerialPortOutputResponse,
         writer: _m0.Writer = _m0.Writer.create()
@@ -3045,9 +3255,19 @@ export const GetInstanceSerialPortOutputResponse = {
     },
 };
 
-const baseStopInstanceRequest: object = { instanceId: '' };
+messageTypeRegistry.set(
+    GetInstanceSerialPortOutputResponse.$type,
+    GetInstanceSerialPortOutputResponse
+);
+
+const baseStopInstanceRequest: object = {
+    $type: 'yandex.cloud.compute.v1.StopInstanceRequest',
+    instanceId: '',
+};
 
 export const StopInstanceRequest = {
+    $type: 'yandex.cloud.compute.v1.StopInstanceRequest' as const,
+
     encode(
         message: StopInstanceRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -3108,9 +3328,16 @@ export const StopInstanceRequest = {
     },
 };
 
-const baseStopInstanceMetadata: object = { instanceId: '' };
+messageTypeRegistry.set(StopInstanceRequest.$type, StopInstanceRequest);
+
+const baseStopInstanceMetadata: object = {
+    $type: 'yandex.cloud.compute.v1.StopInstanceMetadata',
+    instanceId: '',
+};
 
 export const StopInstanceMetadata = {
+    $type: 'yandex.cloud.compute.v1.StopInstanceMetadata' as const,
+
     encode(
         message: StopInstanceMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -3173,9 +3400,16 @@ export const StopInstanceMetadata = {
     },
 };
 
-const baseStartInstanceRequest: object = { instanceId: '' };
+messageTypeRegistry.set(StopInstanceMetadata.$type, StopInstanceMetadata);
+
+const baseStartInstanceRequest: object = {
+    $type: 'yandex.cloud.compute.v1.StartInstanceRequest',
+    instanceId: '',
+};
 
 export const StartInstanceRequest = {
+    $type: 'yandex.cloud.compute.v1.StartInstanceRequest' as const,
+
     encode(
         message: StartInstanceRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -3238,9 +3472,16 @@ export const StartInstanceRequest = {
     },
 };
 
-const baseStartInstanceMetadata: object = { instanceId: '' };
+messageTypeRegistry.set(StartInstanceRequest.$type, StartInstanceRequest);
+
+const baseStartInstanceMetadata: object = {
+    $type: 'yandex.cloud.compute.v1.StartInstanceMetadata',
+    instanceId: '',
+};
 
 export const StartInstanceMetadata = {
+    $type: 'yandex.cloud.compute.v1.StartInstanceMetadata' as const,
+
     encode(
         message: StartInstanceMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -3309,9 +3550,16 @@ export const StartInstanceMetadata = {
     },
 };
 
-const baseRestartInstanceRequest: object = { instanceId: '' };
+messageTypeRegistry.set(StartInstanceMetadata.$type, StartInstanceMetadata);
+
+const baseRestartInstanceRequest: object = {
+    $type: 'yandex.cloud.compute.v1.RestartInstanceRequest',
+    instanceId: '',
+};
 
 export const RestartInstanceRequest = {
+    $type: 'yandex.cloud.compute.v1.RestartInstanceRequest' as const,
+
     encode(
         message: RestartInstanceRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -3380,9 +3628,16 @@ export const RestartInstanceRequest = {
     },
 };
 
-const baseRestartInstanceMetadata: object = { instanceId: '' };
+messageTypeRegistry.set(RestartInstanceRequest.$type, RestartInstanceRequest);
+
+const baseRestartInstanceMetadata: object = {
+    $type: 'yandex.cloud.compute.v1.RestartInstanceMetadata',
+    instanceId: '',
+};
 
 export const RestartInstanceMetadata = {
+    $type: 'yandex.cloud.compute.v1.RestartInstanceMetadata' as const,
+
     encode(
         message: RestartInstanceMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -3451,9 +3706,16 @@ export const RestartInstanceMetadata = {
     },
 };
 
-const baseAttachInstanceDiskRequest: object = { instanceId: '' };
+messageTypeRegistry.set(RestartInstanceMetadata.$type, RestartInstanceMetadata);
+
+const baseAttachInstanceDiskRequest: object = {
+    $type: 'yandex.cloud.compute.v1.AttachInstanceDiskRequest',
+    instanceId: '',
+};
 
 export const AttachInstanceDiskRequest = {
+    $type: 'yandex.cloud.compute.v1.AttachInstanceDiskRequest' as const,
+
     encode(
         message: AttachInstanceDiskRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -3558,9 +3820,20 @@ export const AttachInstanceDiskRequest = {
     },
 };
 
-const baseAttachInstanceDiskMetadata: object = { instanceId: '', diskId: '' };
+messageTypeRegistry.set(
+    AttachInstanceDiskRequest.$type,
+    AttachInstanceDiskRequest
+);
+
+const baseAttachInstanceDiskMetadata: object = {
+    $type: 'yandex.cloud.compute.v1.AttachInstanceDiskMetadata',
+    instanceId: '',
+    diskId: '',
+};
 
 export const AttachInstanceDiskMetadata = {
+    $type: 'yandex.cloud.compute.v1.AttachInstanceDiskMetadata' as const,
+
     encode(
         message: AttachInstanceDiskMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -3646,9 +3919,19 @@ export const AttachInstanceDiskMetadata = {
     },
 };
 
-const baseDetachInstanceDiskRequest: object = { instanceId: '' };
+messageTypeRegistry.set(
+    AttachInstanceDiskMetadata.$type,
+    AttachInstanceDiskMetadata
+);
+
+const baseDetachInstanceDiskRequest: object = {
+    $type: 'yandex.cloud.compute.v1.DetachInstanceDiskRequest',
+    instanceId: '',
+};
 
 export const DetachInstanceDiskRequest = {
+    $type: 'yandex.cloud.compute.v1.DetachInstanceDiskRequest' as const,
+
     encode(
         message: DetachInstanceDiskRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -3752,9 +4035,20 @@ export const DetachInstanceDiskRequest = {
     },
 };
 
-const baseDetachInstanceDiskMetadata: object = { instanceId: '', diskId: '' };
+messageTypeRegistry.set(
+    DetachInstanceDiskRequest.$type,
+    DetachInstanceDiskRequest
+);
+
+const baseDetachInstanceDiskMetadata: object = {
+    $type: 'yandex.cloud.compute.v1.DetachInstanceDiskMetadata',
+    instanceId: '',
+    diskId: '',
+};
 
 export const DetachInstanceDiskMetadata = {
+    $type: 'yandex.cloud.compute.v1.DetachInstanceDiskMetadata' as const,
+
     encode(
         message: DetachInstanceDiskMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -3840,9 +4134,19 @@ export const DetachInstanceDiskMetadata = {
     },
 };
 
-const baseAttachInstanceFilesystemRequest: object = { instanceId: '' };
+messageTypeRegistry.set(
+    DetachInstanceDiskMetadata.$type,
+    DetachInstanceDiskMetadata
+);
+
+const baseAttachInstanceFilesystemRequest: object = {
+    $type: 'yandex.cloud.compute.v1.AttachInstanceFilesystemRequest',
+    instanceId: '',
+};
 
 export const AttachInstanceFilesystemRequest = {
+    $type: 'yandex.cloud.compute.v1.AttachInstanceFilesystemRequest' as const,
+
     encode(
         message: AttachInstanceFilesystemRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -3945,12 +4249,20 @@ export const AttachInstanceFilesystemRequest = {
     },
 };
 
+messageTypeRegistry.set(
+    AttachInstanceFilesystemRequest.$type,
+    AttachInstanceFilesystemRequest
+);
+
 const baseAttachInstanceFilesystemMetadata: object = {
+    $type: 'yandex.cloud.compute.v1.AttachInstanceFilesystemMetadata',
     instanceId: '',
     filesystemId: '',
 };
 
 export const AttachInstanceFilesystemMetadata = {
+    $type: 'yandex.cloud.compute.v1.AttachInstanceFilesystemMetadata' as const,
+
     encode(
         message: AttachInstanceFilesystemMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -4037,9 +4349,19 @@ export const AttachInstanceFilesystemMetadata = {
     },
 };
 
-const baseDetachInstanceFilesystemRequest: object = { instanceId: '' };
+messageTypeRegistry.set(
+    AttachInstanceFilesystemMetadata.$type,
+    AttachInstanceFilesystemMetadata
+);
+
+const baseDetachInstanceFilesystemRequest: object = {
+    $type: 'yandex.cloud.compute.v1.DetachInstanceFilesystemRequest',
+    instanceId: '',
+};
 
 export const DetachInstanceFilesystemRequest = {
+    $type: 'yandex.cloud.compute.v1.DetachInstanceFilesystemRequest' as const,
+
     encode(
         message: DetachInstanceFilesystemRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -4144,12 +4466,20 @@ export const DetachInstanceFilesystemRequest = {
     },
 };
 
+messageTypeRegistry.set(
+    DetachInstanceFilesystemRequest.$type,
+    DetachInstanceFilesystemRequest
+);
+
 const baseDetachInstanceFilesystemMetadata: object = {
+    $type: 'yandex.cloud.compute.v1.DetachInstanceFilesystemMetadata',
     instanceId: '',
     filesystemId: '',
 };
 
 export const DetachInstanceFilesystemMetadata = {
+    $type: 'yandex.cloud.compute.v1.DetachInstanceFilesystemMetadata' as const,
+
     encode(
         message: DetachInstanceFilesystemMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -4236,13 +4566,21 @@ export const DetachInstanceFilesystemMetadata = {
     },
 };
 
+messageTypeRegistry.set(
+    DetachInstanceFilesystemMetadata.$type,
+    DetachInstanceFilesystemMetadata
+);
+
 const baseAddInstanceOneToOneNatRequest: object = {
+    $type: 'yandex.cloud.compute.v1.AddInstanceOneToOneNatRequest',
     instanceId: '',
     networkInterfaceIndex: '',
     internalAddress: '',
 };
 
 export const AddInstanceOneToOneNatRequest = {
+    $type: 'yandex.cloud.compute.v1.AddInstanceOneToOneNatRequest' as const,
+
     encode(
         message: AddInstanceOneToOneNatRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -4397,9 +4735,19 @@ export const AddInstanceOneToOneNatRequest = {
     },
 };
 
-const baseAddInstanceOneToOneNatMetadata: object = { instanceId: '' };
+messageTypeRegistry.set(
+    AddInstanceOneToOneNatRequest.$type,
+    AddInstanceOneToOneNatRequest
+);
+
+const baseAddInstanceOneToOneNatMetadata: object = {
+    $type: 'yandex.cloud.compute.v1.AddInstanceOneToOneNatMetadata',
+    instanceId: '',
+};
 
 export const AddInstanceOneToOneNatMetadata = {
+    $type: 'yandex.cloud.compute.v1.AddInstanceOneToOneNatMetadata' as const,
+
     encode(
         message: AddInstanceOneToOneNatMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -4468,13 +4816,21 @@ export const AddInstanceOneToOneNatMetadata = {
     },
 };
 
+messageTypeRegistry.set(
+    AddInstanceOneToOneNatMetadata.$type,
+    AddInstanceOneToOneNatMetadata
+);
+
 const baseRemoveInstanceOneToOneNatRequest: object = {
+    $type: 'yandex.cloud.compute.v1.RemoveInstanceOneToOneNatRequest',
     instanceId: '',
     networkInterfaceIndex: '',
     internalAddress: '',
 };
 
 export const RemoveInstanceOneToOneNatRequest = {
+    $type: 'yandex.cloud.compute.v1.RemoveInstanceOneToOneNatRequest' as const,
+
     encode(
         message: RemoveInstanceOneToOneNatRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -4593,9 +4949,19 @@ export const RemoveInstanceOneToOneNatRequest = {
     },
 };
 
-const baseRemoveInstanceOneToOneNatMetadata: object = { instanceId: '' };
+messageTypeRegistry.set(
+    RemoveInstanceOneToOneNatRequest.$type,
+    RemoveInstanceOneToOneNatRequest
+);
+
+const baseRemoveInstanceOneToOneNatMetadata: object = {
+    $type: 'yandex.cloud.compute.v1.RemoveInstanceOneToOneNatMetadata',
+    instanceId: '',
+};
 
 export const RemoveInstanceOneToOneNatMetadata = {
+    $type: 'yandex.cloud.compute.v1.RemoveInstanceOneToOneNatMetadata' as const,
+
     encode(
         message: RemoveInstanceOneToOneNatMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -4664,7 +5030,13 @@ export const RemoveInstanceOneToOneNatMetadata = {
     },
 };
 
+messageTypeRegistry.set(
+    RemoveInstanceOneToOneNatMetadata.$type,
+    RemoveInstanceOneToOneNatMetadata
+);
+
 const baseUpdateInstanceNetworkInterfaceRequest: object = {
+    $type: 'yandex.cloud.compute.v1.UpdateInstanceNetworkInterfaceRequest',
     instanceId: '',
     networkInterfaceIndex: '',
     subnetId: '',
@@ -4672,6 +5044,8 @@ const baseUpdateInstanceNetworkInterfaceRequest: object = {
 };
 
 export const UpdateInstanceNetworkInterfaceRequest = {
+    $type: 'yandex.cloud.compute.v1.UpdateInstanceNetworkInterfaceRequest' as const,
+
     encode(
         message: UpdateInstanceNetworkInterfaceRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -4911,12 +5285,20 @@ export const UpdateInstanceNetworkInterfaceRequest = {
     },
 };
 
+messageTypeRegistry.set(
+    UpdateInstanceNetworkInterfaceRequest.$type,
+    UpdateInstanceNetworkInterfaceRequest
+);
+
 const baseUpdateInstanceNetworkInterfaceMetadata: object = {
+    $type: 'yandex.cloud.compute.v1.UpdateInstanceNetworkInterfaceMetadata',
     instanceId: '',
     networkInterfaceIndex: '',
 };
 
 export const UpdateInstanceNetworkInterfaceMetadata = {
+    $type: 'yandex.cloud.compute.v1.UpdateInstanceNetworkInterfaceMetadata' as const,
+
     encode(
         message: UpdateInstanceNetworkInterfaceMetadata,
         writer: _m0.Writer = _m0.Writer.create()
@@ -5011,13 +5393,21 @@ export const UpdateInstanceNetworkInterfaceMetadata = {
     },
 };
 
+messageTypeRegistry.set(
+    UpdateInstanceNetworkInterfaceMetadata.$type,
+    UpdateInstanceNetworkInterfaceMetadata
+);
+
 const baseListInstanceOperationsRequest: object = {
+    $type: 'yandex.cloud.compute.v1.ListInstanceOperationsRequest',
     instanceId: '',
     pageSize: 0,
     pageToken: '',
 };
 
 export const ListInstanceOperationsRequest = {
+    $type: 'yandex.cloud.compute.v1.ListInstanceOperationsRequest' as const,
+
     encode(
         message: ListInstanceOperationsRequest,
         writer: _m0.Writer = _m0.Writer.create()
@@ -5120,9 +5510,19 @@ export const ListInstanceOperationsRequest = {
     },
 };
 
-const baseListInstanceOperationsResponse: object = { nextPageToken: '' };
+messageTypeRegistry.set(
+    ListInstanceOperationsRequest.$type,
+    ListInstanceOperationsRequest
+);
+
+const baseListInstanceOperationsResponse: object = {
+    $type: 'yandex.cloud.compute.v1.ListInstanceOperationsResponse',
+    nextPageToken: '',
+};
 
 export const ListInstanceOperationsResponse = {
+    $type: 'yandex.cloud.compute.v1.ListInstanceOperationsResponse' as const,
+
     encode(
         message: ListInstanceOperationsResponse,
         writer: _m0.Writer = _m0.Writer.create()
@@ -5225,7 +5625,13 @@ export const ListInstanceOperationsResponse = {
     },
 };
 
+messageTypeRegistry.set(
+    ListInstanceOperationsResponse.$type,
+    ListInstanceOperationsResponse
+);
+
 const baseResourcesSpec: object = {
+    $type: 'yandex.cloud.compute.v1.ResourcesSpec',
     memory: 0,
     cores: 0,
     coreFraction: 0,
@@ -5233,6 +5639,8 @@ const baseResourcesSpec: object = {
 };
 
 export const ResourcesSpec = {
+    $type: 'yandex.cloud.compute.v1.ResourcesSpec' as const,
+
     encode(
         message: ResourcesSpec,
         writer: _m0.Writer = _m0.Writer.create()
@@ -5341,13 +5749,18 @@ export const ResourcesSpec = {
     },
 };
 
+messageTypeRegistry.set(ResourcesSpec.$type, ResourcesSpec);
+
 const baseAttachedDiskSpec: object = {
+    $type: 'yandex.cloud.compute.v1.AttachedDiskSpec',
     mode: 0,
     deviceName: '',
     autoDelete: false,
 };
 
 export const AttachedDiskSpec = {
+    $type: 'yandex.cloud.compute.v1.AttachedDiskSpec' as const,
+
     encode(
         message: AttachedDiskSpec,
         writer: _m0.Writer = _m0.Writer.create()
@@ -5488,7 +5901,10 @@ export const AttachedDiskSpec = {
     },
 };
 
+messageTypeRegistry.set(AttachedDiskSpec.$type, AttachedDiskSpec);
+
 const baseAttachedDiskSpec_DiskSpec: object = {
+    $type: 'yandex.cloud.compute.v1.AttachedDiskSpec.DiskSpec',
     name: '',
     description: '',
     typeId: '',
@@ -5497,6 +5913,8 @@ const baseAttachedDiskSpec_DiskSpec: object = {
 };
 
 export const AttachedDiskSpec_DiskSpec = {
+    $type: 'yandex.cloud.compute.v1.AttachedDiskSpec.DiskSpec' as const,
+
     encode(
         message: AttachedDiskSpec_DiskSpec,
         writer: _m0.Writer = _m0.Writer.create()
@@ -5704,13 +6122,21 @@ export const AttachedDiskSpec_DiskSpec = {
     },
 };
 
+messageTypeRegistry.set(
+    AttachedDiskSpec_DiskSpec.$type,
+    AttachedDiskSpec_DiskSpec
+);
+
 const baseAttachedFilesystemSpec: object = {
+    $type: 'yandex.cloud.compute.v1.AttachedFilesystemSpec',
     mode: 0,
     deviceName: '',
     filesystemId: '',
 };
 
 export const AttachedFilesystemSpec = {
+    $type: 'yandex.cloud.compute.v1.AttachedFilesystemSpec' as const,
+
     encode(
         message: AttachedFilesystemSpec,
         writer: _m0.Writer = _m0.Writer.create()
@@ -5815,9 +6241,17 @@ export const AttachedFilesystemSpec = {
     },
 };
 
-const baseNetworkInterfaceSpec: object = { subnetId: '', securityGroupIds: '' };
+messageTypeRegistry.set(AttachedFilesystemSpec.$type, AttachedFilesystemSpec);
+
+const baseNetworkInterfaceSpec: object = {
+    $type: 'yandex.cloud.compute.v1.NetworkInterfaceSpec',
+    subnetId: '',
+    securityGroupIds: '',
+};
 
 export const NetworkInterfaceSpec = {
+    $type: 'yandex.cloud.compute.v1.NetworkInterfaceSpec' as const,
+
     encode(
         message: NetworkInterfaceSpec,
         writer: _m0.Writer = _m0.Writer.create()
@@ -5981,9 +6415,16 @@ export const NetworkInterfaceSpec = {
     },
 };
 
-const basePrimaryAddressSpec: object = { address: '' };
+messageTypeRegistry.set(NetworkInterfaceSpec.$type, NetworkInterfaceSpec);
+
+const basePrimaryAddressSpec: object = {
+    $type: 'yandex.cloud.compute.v1.PrimaryAddressSpec',
+    address: '',
+};
 
 export const PrimaryAddressSpec = {
+    $type: 'yandex.cloud.compute.v1.PrimaryAddressSpec' as const,
+
     encode(
         message: PrimaryAddressSpec,
         writer: _m0.Writer = _m0.Writer.create()
@@ -6113,9 +6554,17 @@ export const PrimaryAddressSpec = {
     },
 };
 
-const baseOneToOneNatSpec: object = { ipVersion: 0, address: '' };
+messageTypeRegistry.set(PrimaryAddressSpec.$type, PrimaryAddressSpec);
+
+const baseOneToOneNatSpec: object = {
+    $type: 'yandex.cloud.compute.v1.OneToOneNatSpec',
+    ipVersion: 0,
+    address: '',
+};
 
 export const OneToOneNatSpec = {
+    $type: 'yandex.cloud.compute.v1.OneToOneNatSpec' as const,
+
     encode(
         message: OneToOneNatSpec,
         writer: _m0.Writer = _m0.Writer.create()
@@ -6224,7 +6673,10 @@ export const OneToOneNatSpec = {
     },
 };
 
+messageTypeRegistry.set(OneToOneNatSpec.$type, OneToOneNatSpec);
+
 const baseDnsRecordSpec: object = {
+    $type: 'yandex.cloud.compute.v1.DnsRecordSpec',
     fqdn: '',
     dnsZoneId: '',
     ttl: 0,
@@ -6232,6 +6684,8 @@ const baseDnsRecordSpec: object = {
 };
 
 export const DnsRecordSpec = {
+    $type: 'yandex.cloud.compute.v1.DnsRecordSpec' as const,
+
     encode(
         message: DnsRecordSpec,
         writer: _m0.Writer = _m0.Writer.create()
@@ -6338,6 +6792,8 @@ export const DnsRecordSpec = {
         return message;
     },
 };
+
+messageTypeRegistry.set(DnsRecordSpec.$type, DnsRecordSpec);
 
 /** A set of methods for managing Instance resources. */
 export const InstanceServiceService = {
@@ -7083,7 +7539,7 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 function longToNumber(long: Long): number {

@@ -51,6 +51,7 @@ export declare function loadBalancingModeToJSON(object: LoadBalancingMode): stri
  * For details about the concept, see [documentation](/docs/application-load-balancer/concepts/backend-group).
  */
 export interface BackendGroup {
+    $type: 'yandex.cloud.apploadbalancer.v1.BackendGroup';
     /** ID of the backend group. Generated at creation time. */
     id: string;
     /** Name of the backend group. The name is unique within the folder. The string length in characters is 3-63. */
@@ -77,16 +78,19 @@ export interface BackendGroup {
     createdAt: Date | undefined;
 }
 export interface BackendGroup_LabelsEntry {
+    $type: 'yandex.cloud.apploadbalancer.v1.BackendGroup.LabelsEntry';
     key: string;
     value: string;
 }
 /** A Stream backend group resource. */
 export interface StreamBackendGroup {
+    $type: 'yandex.cloud.apploadbalancer.v1.StreamBackendGroup';
     backends: StreamBackend[];
     connection: ConnectionSessionAffinity | undefined;
 }
 /** An HTTP backend group resource. */
 export interface HttpBackendGroup {
+    $type: 'yandex.cloud.apploadbalancer.v1.HttpBackendGroup';
     /** List of HTTP backends. */
     backends: HttpBackend[];
     /**
@@ -102,6 +106,7 @@ export interface HttpBackendGroup {
 }
 /** A gRPC backend group resource. */
 export interface GrpcBackendGroup {
+    $type: 'yandex.cloud.apploadbalancer.v1.GrpcBackendGroup';
     /** List of gRPC backends. */
     backends: GrpcBackend[];
     /**
@@ -117,11 +122,13 @@ export interface GrpcBackendGroup {
 }
 /** A resource for HTTP-header-field-based session affinity configuration. */
 export interface HeaderSessionAffinity {
+    $type: 'yandex.cloud.apploadbalancer.v1.HeaderSessionAffinity';
     /** Name of the HTTP header field that is used for session affinity. */
     headerName: string;
 }
 /** A resource for cookie-based session affinity configuration. */
 export interface CookieSessionAffinity {
+    $type: 'yandex.cloud.apploadbalancer.v1.CookieSessionAffinity';
     /** Name of the cookie that is used for session affinity. */
     name: string;
     /**
@@ -134,11 +141,13 @@ export interface CookieSessionAffinity {
 }
 /** A resource for connection-based session affinity configuration. */
 export interface ConnectionSessionAffinity {
+    $type: 'yandex.cloud.apploadbalancer.v1.ConnectionSessionAffinity';
     /** Specifies whether an IP address of the client is used to define a connection for session affinity. */
     sourceIp: boolean;
 }
 /** A load balancing configuration resource. */
 export interface LoadBalancingConfig {
+    $type: 'yandex.cloud.apploadbalancer.v1.LoadBalancingConfig';
     /**
      * Threshold for panic mode.
      *
@@ -187,6 +196,7 @@ export interface LoadBalancingConfig {
 }
 /** A stream backend resource. */
 export interface StreamBackend {
+    $type: 'yandex.cloud.apploadbalancer.v1.StreamBackend';
     name: string;
     /** If not set, backend will be disabled. */
     backendWeight: number | undefined;
@@ -199,6 +209,7 @@ export interface StreamBackend {
 }
 /** An HTTP backend resource. */
 export interface HttpBackend {
+    $type: 'yandex.cloud.apploadbalancer.v1.HttpBackend';
     /** Name of the backend. */
     name: string;
     /**
@@ -251,6 +262,7 @@ export interface HttpBackend {
 }
 /** A gRPC backend resource. */
 export interface GrpcBackend {
+    $type: 'yandex.cloud.apploadbalancer.v1.GrpcBackend';
     /** Name of the backend. */
     name: string;
     /**
@@ -286,6 +298,7 @@ export interface GrpcBackend {
 }
 /** A resource for target groups that belong to the backend. */
 export interface TargetGroupsBackend {
+    $type: 'yandex.cloud.apploadbalancer.v1.TargetGroupsBackend';
     /**
      * List of ID's of target groups that belong to the backend.
      *
@@ -295,6 +308,7 @@ export interface TargetGroupsBackend {
 }
 /** A resource for backend TLS settings. */
 export interface BackendTls {
+    $type: 'yandex.cloud.apploadbalancer.v1.BackendTls';
     /** Server Name Indication (SNI) string for TLS connections. */
     sni: string;
     /** Validation context for TLS connections. */
@@ -305,6 +319,7 @@ export interface BackendTls {
  * see [documentation](/docs/storage/concepts/bucket).
  */
 export interface StorageBucketBackend {
+    $type: 'yandex.cloud.apploadbalancer.v1.StorageBucketBackend';
     /** Name of the bucket. */
     bucket: string;
 }
@@ -313,6 +328,7 @@ export interface StorageBucketBackend {
  * For details about the concept, see [documentation](/docs/application-load-balancer/concepts/backend-group#health-checks).
  */
 export interface HealthCheck {
+    $type: 'yandex.cloud.apploadbalancer.v1.HealthCheck';
     /**
      * Health check timeout.
      *
@@ -359,6 +375,7 @@ export interface HealthCheck {
 }
 /** A resource for TCP stream health check settings. */
 export interface HealthCheck_StreamHealthCheck {
+    $type: 'yandex.cloud.apploadbalancer.v1.HealthCheck.StreamHealthCheck';
     /**
      * Message sent to targets during TCP data transfer.
      *
@@ -374,6 +391,7 @@ export interface HealthCheck_StreamHealthCheck {
 }
 /** A resource for HTTP health check settings. */
 export interface HealthCheck_HttpHealthCheck {
+    $type: 'yandex.cloud.apploadbalancer.v1.HealthCheck.HttpHealthCheck';
     /** Value for the HTTP/1.1 `Host` header or the HTTP/2 `:authority` pseudo-header used in requests to targets. */
     host: string;
     /**
@@ -390,6 +408,7 @@ export interface HealthCheck_HttpHealthCheck {
 }
 /** A resource for gRPC health check settings. */
 export interface HealthCheck_GrpcHealthCheck {
+    $type: 'yandex.cloud.apploadbalancer.v1.HealthCheck.GrpcHealthCheck';
     /**
      * Name of the gRPC service to be checked.
      *
@@ -400,6 +419,7 @@ export interface HealthCheck_GrpcHealthCheck {
     serviceName: string;
 }
 export declare const BackendGroup: {
+    $type: "yandex.cloud.apploadbalancer.v1.BackendGroup";
     encode(message: BackendGroup, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): BackendGroup;
     fromJSON(object: any): BackendGroup;
@@ -407,6 +427,7 @@ export declare const BackendGroup: {
     fromPartial(object: DeepPartial<BackendGroup>): BackendGroup;
 };
 export declare const BackendGroup_LabelsEntry: {
+    $type: "yandex.cloud.apploadbalancer.v1.BackendGroup.LabelsEntry";
     encode(message: BackendGroup_LabelsEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): BackendGroup_LabelsEntry;
     fromJSON(object: any): BackendGroup_LabelsEntry;
@@ -414,6 +435,7 @@ export declare const BackendGroup_LabelsEntry: {
     fromPartial(object: DeepPartial<BackendGroup_LabelsEntry>): BackendGroup_LabelsEntry;
 };
 export declare const StreamBackendGroup: {
+    $type: "yandex.cloud.apploadbalancer.v1.StreamBackendGroup";
     encode(message: StreamBackendGroup, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): StreamBackendGroup;
     fromJSON(object: any): StreamBackendGroup;
@@ -421,6 +443,7 @@ export declare const StreamBackendGroup: {
     fromPartial(object: DeepPartial<StreamBackendGroup>): StreamBackendGroup;
 };
 export declare const HttpBackendGroup: {
+    $type: "yandex.cloud.apploadbalancer.v1.HttpBackendGroup";
     encode(message: HttpBackendGroup, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): HttpBackendGroup;
     fromJSON(object: any): HttpBackendGroup;
@@ -428,6 +451,7 @@ export declare const HttpBackendGroup: {
     fromPartial(object: DeepPartial<HttpBackendGroup>): HttpBackendGroup;
 };
 export declare const GrpcBackendGroup: {
+    $type: "yandex.cloud.apploadbalancer.v1.GrpcBackendGroup";
     encode(message: GrpcBackendGroup, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): GrpcBackendGroup;
     fromJSON(object: any): GrpcBackendGroup;
@@ -435,6 +459,7 @@ export declare const GrpcBackendGroup: {
     fromPartial(object: DeepPartial<GrpcBackendGroup>): GrpcBackendGroup;
 };
 export declare const HeaderSessionAffinity: {
+    $type: "yandex.cloud.apploadbalancer.v1.HeaderSessionAffinity";
     encode(message: HeaderSessionAffinity, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): HeaderSessionAffinity;
     fromJSON(object: any): HeaderSessionAffinity;
@@ -442,6 +467,7 @@ export declare const HeaderSessionAffinity: {
     fromPartial(object: DeepPartial<HeaderSessionAffinity>): HeaderSessionAffinity;
 };
 export declare const CookieSessionAffinity: {
+    $type: "yandex.cloud.apploadbalancer.v1.CookieSessionAffinity";
     encode(message: CookieSessionAffinity, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): CookieSessionAffinity;
     fromJSON(object: any): CookieSessionAffinity;
@@ -449,6 +475,7 @@ export declare const CookieSessionAffinity: {
     fromPartial(object: DeepPartial<CookieSessionAffinity>): CookieSessionAffinity;
 };
 export declare const ConnectionSessionAffinity: {
+    $type: "yandex.cloud.apploadbalancer.v1.ConnectionSessionAffinity";
     encode(message: ConnectionSessionAffinity, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ConnectionSessionAffinity;
     fromJSON(object: any): ConnectionSessionAffinity;
@@ -456,6 +483,7 @@ export declare const ConnectionSessionAffinity: {
     fromPartial(object: DeepPartial<ConnectionSessionAffinity>): ConnectionSessionAffinity;
 };
 export declare const LoadBalancingConfig: {
+    $type: "yandex.cloud.apploadbalancer.v1.LoadBalancingConfig";
     encode(message: LoadBalancingConfig, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): LoadBalancingConfig;
     fromJSON(object: any): LoadBalancingConfig;
@@ -463,6 +491,7 @@ export declare const LoadBalancingConfig: {
     fromPartial(object: DeepPartial<LoadBalancingConfig>): LoadBalancingConfig;
 };
 export declare const StreamBackend: {
+    $type: "yandex.cloud.apploadbalancer.v1.StreamBackend";
     encode(message: StreamBackend, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): StreamBackend;
     fromJSON(object: any): StreamBackend;
@@ -470,6 +499,7 @@ export declare const StreamBackend: {
     fromPartial(object: DeepPartial<StreamBackend>): StreamBackend;
 };
 export declare const HttpBackend: {
+    $type: "yandex.cloud.apploadbalancer.v1.HttpBackend";
     encode(message: HttpBackend, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): HttpBackend;
     fromJSON(object: any): HttpBackend;
@@ -477,6 +507,7 @@ export declare const HttpBackend: {
     fromPartial(object: DeepPartial<HttpBackend>): HttpBackend;
 };
 export declare const GrpcBackend: {
+    $type: "yandex.cloud.apploadbalancer.v1.GrpcBackend";
     encode(message: GrpcBackend, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): GrpcBackend;
     fromJSON(object: any): GrpcBackend;
@@ -484,6 +515,7 @@ export declare const GrpcBackend: {
     fromPartial(object: DeepPartial<GrpcBackend>): GrpcBackend;
 };
 export declare const TargetGroupsBackend: {
+    $type: "yandex.cloud.apploadbalancer.v1.TargetGroupsBackend";
     encode(message: TargetGroupsBackend, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): TargetGroupsBackend;
     fromJSON(object: any): TargetGroupsBackend;
@@ -491,6 +523,7 @@ export declare const TargetGroupsBackend: {
     fromPartial(object: DeepPartial<TargetGroupsBackend>): TargetGroupsBackend;
 };
 export declare const BackendTls: {
+    $type: "yandex.cloud.apploadbalancer.v1.BackendTls";
     encode(message: BackendTls, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): BackendTls;
     fromJSON(object: any): BackendTls;
@@ -498,6 +531,7 @@ export declare const BackendTls: {
     fromPartial(object: DeepPartial<BackendTls>): BackendTls;
 };
 export declare const StorageBucketBackend: {
+    $type: "yandex.cloud.apploadbalancer.v1.StorageBucketBackend";
     encode(message: StorageBucketBackend, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): StorageBucketBackend;
     fromJSON(object: any): StorageBucketBackend;
@@ -505,6 +539,7 @@ export declare const StorageBucketBackend: {
     fromPartial(object: DeepPartial<StorageBucketBackend>): StorageBucketBackend;
 };
 export declare const HealthCheck: {
+    $type: "yandex.cloud.apploadbalancer.v1.HealthCheck";
     encode(message: HealthCheck, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): HealthCheck;
     fromJSON(object: any): HealthCheck;
@@ -512,6 +547,7 @@ export declare const HealthCheck: {
     fromPartial(object: DeepPartial<HealthCheck>): HealthCheck;
 };
 export declare const HealthCheck_StreamHealthCheck: {
+    $type: "yandex.cloud.apploadbalancer.v1.HealthCheck.StreamHealthCheck";
     encode(message: HealthCheck_StreamHealthCheck, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): HealthCheck_StreamHealthCheck;
     fromJSON(object: any): HealthCheck_StreamHealthCheck;
@@ -519,6 +555,7 @@ export declare const HealthCheck_StreamHealthCheck: {
     fromPartial(object: DeepPartial<HealthCheck_StreamHealthCheck>): HealthCheck_StreamHealthCheck;
 };
 export declare const HealthCheck_HttpHealthCheck: {
+    $type: "yandex.cloud.apploadbalancer.v1.HealthCheck.HttpHealthCheck";
     encode(message: HealthCheck_HttpHealthCheck, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): HealthCheck_HttpHealthCheck;
     fromJSON(object: any): HealthCheck_HttpHealthCheck;
@@ -526,6 +563,7 @@ export declare const HealthCheck_HttpHealthCheck: {
     fromPartial(object: DeepPartial<HealthCheck_HttpHealthCheck>): HealthCheck_HttpHealthCheck;
 };
 export declare const HealthCheck_GrpcHealthCheck: {
+    $type: "yandex.cloud.apploadbalancer.v1.HealthCheck.GrpcHealthCheck";
     encode(message: HealthCheck_GrpcHealthCheck, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): HealthCheck_GrpcHealthCheck;
     fromJSON(object: any): HealthCheck_GrpcHealthCheck;
@@ -534,6 +572,6 @@ export declare const HealthCheck_GrpcHealthCheck: {
 };
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

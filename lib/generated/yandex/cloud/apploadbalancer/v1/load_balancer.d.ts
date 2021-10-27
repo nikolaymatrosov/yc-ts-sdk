@@ -6,6 +6,7 @@ export declare const protobufPackage = "yandex.cloud.apploadbalancer.v1";
  * For details about the concept, see [documentation](/docs/application-load-balancer/concepts/application-load-balancer).
  */
 export interface LoadBalancer {
+    $type: 'yandex.cloud.apploadbalancer.v1.LoadBalancer';
     /** ID of the application load balancer. Generated at creation time. */
     id: string;
     /** Name of the application load balancer. The name is unique within the folder. */
@@ -78,11 +79,13 @@ export declare enum LoadBalancer_Status {
 export declare function loadBalancer_StatusFromJSON(object: any): LoadBalancer_Status;
 export declare function loadBalancer_StatusToJSON(object: LoadBalancer_Status): string;
 export interface LoadBalancer_LabelsEntry {
+    $type: 'yandex.cloud.apploadbalancer.v1.LoadBalancer.LabelsEntry';
     key: string;
     value: string;
 }
 /** An endpoint address resource. */
 export interface Address {
+    $type: 'yandex.cloud.apploadbalancer.v1.Address';
     /** Public IPv4 endpoint address. */
     externalIpv4Address: ExternalIpv4Address | undefined;
     /**
@@ -96,11 +99,13 @@ export interface Address {
 }
 /** A public (external) IPv4 endpoint address resource. */
 export interface ExternalIpv4Address {
+    $type: 'yandex.cloud.apploadbalancer.v1.ExternalIpv4Address';
     /** IPv4 address. */
     address: string;
 }
 /** An internal IPv4 endpoint address resource. */
 export interface InternalIpv4Address {
+    $type: 'yandex.cloud.apploadbalancer.v1.InternalIpv4Address';
     /** IPv4 address. */
     address: string;
     /** ID of the subnet that the address belongs to. */
@@ -108,6 +113,7 @@ export interface InternalIpv4Address {
 }
 /** A public (external) IPv4 endpoint address resource. */
 export interface ExternalIpv6Address {
+    $type: 'yandex.cloud.apploadbalancer.v1.ExternalIpv6Address';
     /** IPv6 address. */
     address: string;
 }
@@ -117,6 +123,7 @@ export interface ExternalIpv6Address {
  * For details about the concept, see [documentation](/docs/application-load-balancer/concepts/application-load-balancer#lb-location).
  */
 export interface Location {
+    $type: 'yandex.cloud.apploadbalancer.v1.Location';
     /**
      * ID of the availability zone where the application load balancer resides.
      *
@@ -136,6 +143,7 @@ export interface Location {
 }
 /** A locality settings (allocation policy) resource. */
 export interface AllocationPolicy {
+    $type: 'yandex.cloud.apploadbalancer.v1.AllocationPolicy';
     /** Availability zones and subnets that the application load balancer resides. */
     locations: Location[];
 }
@@ -145,6 +153,7 @@ export interface AllocationPolicy {
  * For details about the concept, see [documentation](/docs/application-load-balancer/concepts/application-load-balancer#listener).
  */
 export interface Listener {
+    $type: 'yandex.cloud.apploadbalancer.v1.Listener';
     /**
      * Name of the listener. The name is unique within the application load balancer.
      * The string length in characters is 3-63.
@@ -165,6 +174,7 @@ export interface Listener {
 }
 /** An endpoint resource. */
 export interface Endpoint {
+    $type: 'yandex.cloud.apploadbalancer.v1.Endpoint';
     /** Endpoint public (external) and internal addresses. */
     addresses: Address[];
     /** Endpoint ports. */
@@ -172,6 +182,7 @@ export interface Endpoint {
 }
 /** An HTTP listener resource. */
 export interface HttpListener {
+    $type: 'yandex.cloud.apploadbalancer.v1.HttpListener';
     /**
      * Settings for handling HTTP requests.
      *
@@ -187,6 +198,7 @@ export interface HttpListener {
 }
 /** An HTTPS (HTTP over TLS) listener resource. */
 export interface TlsListener {
+    $type: 'yandex.cloud.apploadbalancer.v1.TlsListener';
     /**
      * Settings for handling HTTPS requests by default,
      * with Server Name Indication (SNI) not matching any of the [sni_handlers].
@@ -200,19 +212,23 @@ export interface TlsListener {
 }
 /** A TCP listener resource. */
 export interface TcpListener {
+    $type: 'yandex.cloud.apploadbalancer.v1.TcpListener';
     handler: StreamHandler | undefined;
 }
 /** An HTTP/2 options resource. */
 export interface Http2Options {
+    $type: 'yandex.cloud.apploadbalancer.v1.Http2Options';
     /** Maximum number of concurrent HTTP/2 streams in a connection. */
     maxConcurrentStreams: number;
 }
 /** A stream handler resource. */
 export interface StreamHandler {
+    $type: 'yandex.cloud.apploadbalancer.v1.StreamHandler';
     backendGroupId: string;
 }
 /** An HTTP handler resource. */
 export interface HttpHandler {
+    $type: 'yandex.cloud.apploadbalancer.v1.HttpHandler';
     /**
      * ID of the HTTP router processing requests.
      *
@@ -230,6 +246,7 @@ export interface HttpHandler {
 }
 /** A listener redirects resource. */
 export interface Redirects {
+    $type: 'yandex.cloud.apploadbalancer.v1.Redirects';
     /**
      * Redirects all unencrypted HTTP requests to the same URI with scheme changed to `https`.
      *
@@ -240,6 +257,7 @@ export interface Redirects {
 }
 /** A SNI handler resource. */
 export interface SniMatch {
+    $type: 'yandex.cloud.apploadbalancer.v1.SniMatch';
     /** Name of the SNI handler. */
     name: string;
     /** Server names that are matched by the SNI handler. */
@@ -249,6 +267,7 @@ export interface SniMatch {
 }
 /** An HTTPS (HTTP over TLS) handler resource. */
 export interface TlsHandler {
+    $type: 'yandex.cloud.apploadbalancer.v1.TlsHandler';
     /** HTTP handler. */
     httpHandler: HttpHandler | undefined;
     /** Stream handler */
@@ -262,6 +281,7 @@ export interface TlsHandler {
 }
 /** A target state resource. */
 export interface TargetState {
+    $type: 'yandex.cloud.apploadbalancer.v1.TargetState';
     /** Health of the target, i.e. its statuses in all availability zones. */
     status: TargetState_HealthcheckStatus | undefined;
     /** Target. */
@@ -296,11 +316,13 @@ export declare function targetState_StatusFromJSON(object: any): TargetState_Sta
 export declare function targetState_StatusToJSON(object: TargetState_Status): string;
 /** Health of the target. */
 export interface TargetState_HealthcheckStatus {
+    $type: 'yandex.cloud.apploadbalancer.v1.TargetState.HealthcheckStatus';
     /** Statuses of the target in its availability zones. */
     zoneStatuses: TargetState_ZoneHealthcheckStatus[];
 }
 /** Health of the target in the availability zone. */
 export interface TargetState_ZoneHealthcheckStatus {
+    $type: 'yandex.cloud.apploadbalancer.v1.TargetState.ZoneHealthcheckStatus';
     /** ID of the availability zone. */
     zoneId: string;
     /** Status of the target in the availability zone. */
@@ -316,6 +338,7 @@ export interface TargetState_ZoneHealthcheckStatus {
     failedActiveHc: boolean;
 }
 export declare const LoadBalancer: {
+    $type: "yandex.cloud.apploadbalancer.v1.LoadBalancer";
     encode(message: LoadBalancer, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): LoadBalancer;
     fromJSON(object: any): LoadBalancer;
@@ -323,6 +346,7 @@ export declare const LoadBalancer: {
     fromPartial(object: DeepPartial<LoadBalancer>): LoadBalancer;
 };
 export declare const LoadBalancer_LabelsEntry: {
+    $type: "yandex.cloud.apploadbalancer.v1.LoadBalancer.LabelsEntry";
     encode(message: LoadBalancer_LabelsEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): LoadBalancer_LabelsEntry;
     fromJSON(object: any): LoadBalancer_LabelsEntry;
@@ -330,6 +354,7 @@ export declare const LoadBalancer_LabelsEntry: {
     fromPartial(object: DeepPartial<LoadBalancer_LabelsEntry>): LoadBalancer_LabelsEntry;
 };
 export declare const Address: {
+    $type: "yandex.cloud.apploadbalancer.v1.Address";
     encode(message: Address, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Address;
     fromJSON(object: any): Address;
@@ -337,6 +362,7 @@ export declare const Address: {
     fromPartial(object: DeepPartial<Address>): Address;
 };
 export declare const ExternalIpv4Address: {
+    $type: "yandex.cloud.apploadbalancer.v1.ExternalIpv4Address";
     encode(message: ExternalIpv4Address, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ExternalIpv4Address;
     fromJSON(object: any): ExternalIpv4Address;
@@ -344,6 +370,7 @@ export declare const ExternalIpv4Address: {
     fromPartial(object: DeepPartial<ExternalIpv4Address>): ExternalIpv4Address;
 };
 export declare const InternalIpv4Address: {
+    $type: "yandex.cloud.apploadbalancer.v1.InternalIpv4Address";
     encode(message: InternalIpv4Address, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): InternalIpv4Address;
     fromJSON(object: any): InternalIpv4Address;
@@ -351,6 +378,7 @@ export declare const InternalIpv4Address: {
     fromPartial(object: DeepPartial<InternalIpv4Address>): InternalIpv4Address;
 };
 export declare const ExternalIpv6Address: {
+    $type: "yandex.cloud.apploadbalancer.v1.ExternalIpv6Address";
     encode(message: ExternalIpv6Address, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): ExternalIpv6Address;
     fromJSON(object: any): ExternalIpv6Address;
@@ -358,6 +386,7 @@ export declare const ExternalIpv6Address: {
     fromPartial(object: DeepPartial<ExternalIpv6Address>): ExternalIpv6Address;
 };
 export declare const Location: {
+    $type: "yandex.cloud.apploadbalancer.v1.Location";
     encode(message: Location, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Location;
     fromJSON(object: any): Location;
@@ -365,6 +394,7 @@ export declare const Location: {
     fromPartial(object: DeepPartial<Location>): Location;
 };
 export declare const AllocationPolicy: {
+    $type: "yandex.cloud.apploadbalancer.v1.AllocationPolicy";
     encode(message: AllocationPolicy, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): AllocationPolicy;
     fromJSON(object: any): AllocationPolicy;
@@ -372,6 +402,7 @@ export declare const AllocationPolicy: {
     fromPartial(object: DeepPartial<AllocationPolicy>): AllocationPolicy;
 };
 export declare const Listener: {
+    $type: "yandex.cloud.apploadbalancer.v1.Listener";
     encode(message: Listener, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Listener;
     fromJSON(object: any): Listener;
@@ -379,6 +410,7 @@ export declare const Listener: {
     fromPartial(object: DeepPartial<Listener>): Listener;
 };
 export declare const Endpoint: {
+    $type: "yandex.cloud.apploadbalancer.v1.Endpoint";
     encode(message: Endpoint, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Endpoint;
     fromJSON(object: any): Endpoint;
@@ -386,6 +418,7 @@ export declare const Endpoint: {
     fromPartial(object: DeepPartial<Endpoint>): Endpoint;
 };
 export declare const HttpListener: {
+    $type: "yandex.cloud.apploadbalancer.v1.HttpListener";
     encode(message: HttpListener, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): HttpListener;
     fromJSON(object: any): HttpListener;
@@ -393,6 +426,7 @@ export declare const HttpListener: {
     fromPartial(object: DeepPartial<HttpListener>): HttpListener;
 };
 export declare const TlsListener: {
+    $type: "yandex.cloud.apploadbalancer.v1.TlsListener";
     encode(message: TlsListener, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): TlsListener;
     fromJSON(object: any): TlsListener;
@@ -400,6 +434,7 @@ export declare const TlsListener: {
     fromPartial(object: DeepPartial<TlsListener>): TlsListener;
 };
 export declare const TcpListener: {
+    $type: "yandex.cloud.apploadbalancer.v1.TcpListener";
     encode(message: TcpListener, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): TcpListener;
     fromJSON(object: any): TcpListener;
@@ -407,6 +442,7 @@ export declare const TcpListener: {
     fromPartial(object: DeepPartial<TcpListener>): TcpListener;
 };
 export declare const Http2Options: {
+    $type: "yandex.cloud.apploadbalancer.v1.Http2Options";
     encode(message: Http2Options, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Http2Options;
     fromJSON(object: any): Http2Options;
@@ -414,6 +450,7 @@ export declare const Http2Options: {
     fromPartial(object: DeepPartial<Http2Options>): Http2Options;
 };
 export declare const StreamHandler: {
+    $type: "yandex.cloud.apploadbalancer.v1.StreamHandler";
     encode(message: StreamHandler, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): StreamHandler;
     fromJSON(object: any): StreamHandler;
@@ -421,6 +458,7 @@ export declare const StreamHandler: {
     fromPartial(object: DeepPartial<StreamHandler>): StreamHandler;
 };
 export declare const HttpHandler: {
+    $type: "yandex.cloud.apploadbalancer.v1.HttpHandler";
     encode(message: HttpHandler, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): HttpHandler;
     fromJSON(object: any): HttpHandler;
@@ -428,6 +466,7 @@ export declare const HttpHandler: {
     fromPartial(object: DeepPartial<HttpHandler>): HttpHandler;
 };
 export declare const Redirects: {
+    $type: "yandex.cloud.apploadbalancer.v1.Redirects";
     encode(message: Redirects, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): Redirects;
     fromJSON(object: any): Redirects;
@@ -435,6 +474,7 @@ export declare const Redirects: {
     fromPartial(object: DeepPartial<Redirects>): Redirects;
 };
 export declare const SniMatch: {
+    $type: "yandex.cloud.apploadbalancer.v1.SniMatch";
     encode(message: SniMatch, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): SniMatch;
     fromJSON(object: any): SniMatch;
@@ -442,6 +482,7 @@ export declare const SniMatch: {
     fromPartial(object: DeepPartial<SniMatch>): SniMatch;
 };
 export declare const TlsHandler: {
+    $type: "yandex.cloud.apploadbalancer.v1.TlsHandler";
     encode(message: TlsHandler, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): TlsHandler;
     fromJSON(object: any): TlsHandler;
@@ -449,6 +490,7 @@ export declare const TlsHandler: {
     fromPartial(object: DeepPartial<TlsHandler>): TlsHandler;
 };
 export declare const TargetState: {
+    $type: "yandex.cloud.apploadbalancer.v1.TargetState";
     encode(message: TargetState, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): TargetState;
     fromJSON(object: any): TargetState;
@@ -456,6 +498,7 @@ export declare const TargetState: {
     fromPartial(object: DeepPartial<TargetState>): TargetState;
 };
 export declare const TargetState_HealthcheckStatus: {
+    $type: "yandex.cloud.apploadbalancer.v1.TargetState.HealthcheckStatus";
     encode(message: TargetState_HealthcheckStatus, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): TargetState_HealthcheckStatus;
     fromJSON(object: any): TargetState_HealthcheckStatus;
@@ -463,6 +506,7 @@ export declare const TargetState_HealthcheckStatus: {
     fromPartial(object: DeepPartial<TargetState_HealthcheckStatus>): TargetState_HealthcheckStatus;
 };
 export declare const TargetState_ZoneHealthcheckStatus: {
+    $type: "yandex.cloud.apploadbalancer.v1.TargetState.ZoneHealthcheckStatus";
     encode(message: TargetState_ZoneHealthcheckStatus, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number | undefined): TargetState_ZoneHealthcheckStatus;
     fromJSON(object: any): TargetState_ZoneHealthcheckStatus;
@@ -471,6 +515,6 @@ export declare const TargetState_ZoneHealthcheckStatus: {
 };
 declare type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 export declare type DeepPartial<T> = T extends Builtin ? T : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
-    [K in keyof T]?: DeepPartial<T[K]>;
+    [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]>;
 } : Partial<T>;
 export {};

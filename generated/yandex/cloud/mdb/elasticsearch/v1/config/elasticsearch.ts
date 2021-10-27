@@ -1,5 +1,6 @@
 /* eslint-disable */
 import { Int64Value } from '../../../../../../google/protobuf/wrappers';
+import { messageTypeRegistry } from '../../../../../../typeRegistry';
 import Long from 'long';
 import _m0 from 'protobufjs/minimal';
 
@@ -13,6 +14,7 @@ export const protobufPackage = 'yandex.cloud.mdb.elasticsearch.v1.config';
  * Any options that are not listed here are not supported.
  */
 export interface ElasticsearchConfig7 {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.config.ElasticsearchConfig7';
     /**
      * The maximum number of clauses a boolean query can contain.
      *
@@ -39,6 +41,7 @@ export interface ElasticsearchConfig7 {
 
 /** Elasticsearch 7.x data node configuration. */
 export interface ElasticsearchConfigSet7 {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.config.ElasticsearchConfigSet7';
     /** Effective settings for an Elasticsearch cluster (a combination of settings defined in [user_config] and [default_config]). */
     effectiveConfig: ElasticsearchConfig7 | undefined;
     /** User-defined settings for an Elasticsearch cluster. */
@@ -47,16 +50,24 @@ export interface ElasticsearchConfigSet7 {
     defaultConfig: ElasticsearchConfig7 | undefined;
 }
 
-const baseElasticsearchConfig7: object = { fielddataCacheSize: '' };
+const baseElasticsearchConfig7: object = {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.config.ElasticsearchConfig7',
+    fielddataCacheSize: '',
+};
 
 export const ElasticsearchConfig7 = {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.config.ElasticsearchConfig7' as const,
+
     encode(
         message: ElasticsearchConfig7,
         writer: _m0.Writer = _m0.Writer.create()
     ): _m0.Writer {
         if (message.maxClauseCount !== undefined) {
             Int64Value.encode(
-                { value: message.maxClauseCount! },
+                {
+                    $type: 'google.protobuf.Int64Value',
+                    value: message.maxClauseCount!,
+                },
                 writer.uint32(26).fork()
             ).ldelim();
         }
@@ -148,9 +159,15 @@ export const ElasticsearchConfig7 = {
     },
 };
 
-const baseElasticsearchConfigSet7: object = {};
+messageTypeRegistry.set(ElasticsearchConfig7.$type, ElasticsearchConfig7);
+
+const baseElasticsearchConfigSet7: object = {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.config.ElasticsearchConfigSet7',
+};
 
 export const ElasticsearchConfigSet7 = {
+    $type: 'yandex.cloud.mdb.elasticsearch.v1.config.ElasticsearchConfigSet7' as const,
+
     encode(
         message: ElasticsearchConfigSet7,
         writer: _m0.Writer = _m0.Writer.create()
@@ -303,6 +320,8 @@ export const ElasticsearchConfigSet7 = {
     },
 };
 
+messageTypeRegistry.set(ElasticsearchConfigSet7.$type, ElasticsearchConfigSet7);
+
 type Builtin =
     | Date
     | Function
@@ -318,7 +337,7 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 if (_m0.util.Long !== Long) {

@@ -1,5 +1,6 @@
 /* eslint-disable */
 import { Int64Value, BoolValue } from '../../../../../google/protobuf/wrappers';
+import { messageTypeRegistry } from '../../../../../typeRegistry';
 import {
     CompressionType,
     compressionTypeFromJSON,
@@ -15,6 +16,7 @@ export const protobufPackage = 'yandex.cloud.mdb.kafka.v1';
  * For more information, see the [Concepts -> Topics and partitions](/docs/managed-kafka/concepts/topics) section of the documentation.
  */
 export interface Topic {
+    $type: 'yandex.cloud.mdb.kafka.v1.Topic';
     /** Name of the topic. */
     name: string;
     /**
@@ -33,6 +35,7 @@ export interface Topic {
 }
 
 export interface TopicSpec {
+    $type: 'yandex.cloud.mdb.kafka.v1.TopicSpec';
     /** Name of the topic. */
     name: string;
     /** The number of the topic's partitions. */
@@ -46,6 +49,7 @@ export interface TopicSpec {
 
 /** A topic settings for 2.1. */
 export interface Topicconfig21 {
+    $type: 'yandex.cloud.mdb.kafka.v1.TopicConfig2_1';
     /** Retention policy to use on old log messages. */
     cleanupPolicy: Topicconfig21_CleanupPolicy;
     /** The compression type for a given topic. */
@@ -156,6 +160,7 @@ export function topicconfig21_CleanupPolicyToJSON(
 
 /** A topic settings for 2.6 */
 export interface Topicconfig26 {
+    $type: 'yandex.cloud.mdb.kafka.v1.TopicConfig2_6';
     /** Retention policy to use on old log messages. */
     cleanupPolicy: Topicconfig26_CleanupPolicy;
     /** The compression type for a given topic. */
@@ -266,6 +271,7 @@ export function topicconfig26_CleanupPolicyToJSON(
 
 /** A topic settings for 2.8 */
 export interface Topicconfig28 {
+    $type: 'yandex.cloud.mdb.kafka.v1.TopicConfig2_8';
     /** Retention policy to use on old log messages. */
     cleanupPolicy: Topicconfig28_CleanupPolicy;
     /** The compression type for a given topic. */
@@ -374,9 +380,15 @@ export function topicconfig28_CleanupPolicyToJSON(
     }
 }
 
-const baseTopic: object = { name: '', clusterId: '' };
+const baseTopic: object = {
+    $type: 'yandex.cloud.mdb.kafka.v1.Topic',
+    name: '',
+    clusterId: '',
+};
 
 export const Topic = {
+    $type: 'yandex.cloud.mdb.kafka.v1.Topic' as const,
+
     encode(
         message: Topic,
         writer: _m0.Writer = _m0.Writer.create()
@@ -389,13 +401,19 @@ export const Topic = {
         }
         if (message.partitions !== undefined) {
             Int64Value.encode(
-                { value: message.partitions! },
+                {
+                    $type: 'google.protobuf.Int64Value',
+                    value: message.partitions!,
+                },
                 writer.uint32(26).fork()
             ).ldelim();
         }
         if (message.replicationFactor !== undefined) {
             Int64Value.encode(
-                { value: message.replicationFactor! },
+                {
+                    $type: 'google.protobuf.Int64Value',
+                    value: message.replicationFactor!,
+                },
                 writer.uint32(34).fork()
             ).ldelim();
         }
@@ -612,9 +630,16 @@ export const Topic = {
     },
 };
 
-const baseTopicSpec: object = { name: '' };
+messageTypeRegistry.set(Topic.$type, Topic);
+
+const baseTopicSpec: object = {
+    $type: 'yandex.cloud.mdb.kafka.v1.TopicSpec',
+    name: '',
+};
 
 export const TopicSpec = {
+    $type: 'yandex.cloud.mdb.kafka.v1.TopicSpec' as const,
+
     encode(
         message: TopicSpec,
         writer: _m0.Writer = _m0.Writer.create()
@@ -624,13 +649,19 @@ export const TopicSpec = {
         }
         if (message.partitions !== undefined) {
             Int64Value.encode(
-                { value: message.partitions! },
+                {
+                    $type: 'google.protobuf.Int64Value',
+                    value: message.partitions!,
+                },
                 writer.uint32(18).fork()
             ).ldelim();
         }
         if (message.replicationFactor !== undefined) {
             Int64Value.encode(
-                { value: message.replicationFactor! },
+                {
+                    $type: 'google.protobuf.Int64Value',
+                    value: message.replicationFactor!,
+                },
                 writer.uint32(26).fork()
             ).ldelim();
         }
@@ -833,9 +864,17 @@ export const TopicSpec = {
     },
 };
 
-const baseTopicconfig21: object = { cleanupPolicy: 0, compressionType: 0 };
+messageTypeRegistry.set(TopicSpec.$type, TopicSpec);
+
+const baseTopicconfig21: object = {
+    $type: 'yandex.cloud.mdb.kafka.v1.TopicConfig2_1',
+    cleanupPolicy: 0,
+    compressionType: 0,
+};
 
 export const Topicconfig21 = {
+    $type: 'yandex.cloud.mdb.kafka.v1.TopicConfig2_1' as const,
+
     encode(
         message: Topicconfig21,
         writer: _m0.Writer = _m0.Writer.create()
@@ -848,67 +887,100 @@ export const Topicconfig21 = {
         }
         if (message.deleteRetentionMs !== undefined) {
             Int64Value.encode(
-                { value: message.deleteRetentionMs! },
+                {
+                    $type: 'google.protobuf.Int64Value',
+                    value: message.deleteRetentionMs!,
+                },
                 writer.uint32(26).fork()
             ).ldelim();
         }
         if (message.fileDeleteDelayMs !== undefined) {
             Int64Value.encode(
-                { value: message.fileDeleteDelayMs! },
+                {
+                    $type: 'google.protobuf.Int64Value',
+                    value: message.fileDeleteDelayMs!,
+                },
                 writer.uint32(34).fork()
             ).ldelim();
         }
         if (message.flushMessages !== undefined) {
             Int64Value.encode(
-                { value: message.flushMessages! },
+                {
+                    $type: 'google.protobuf.Int64Value',
+                    value: message.flushMessages!,
+                },
                 writer.uint32(42).fork()
             ).ldelim();
         }
         if (message.flushMs !== undefined) {
             Int64Value.encode(
-                { value: message.flushMs! },
+                {
+                    $type: 'google.protobuf.Int64Value',
+                    value: message.flushMs!,
+                },
                 writer.uint32(50).fork()
             ).ldelim();
         }
         if (message.minCompactionLagMs !== undefined) {
             Int64Value.encode(
-                { value: message.minCompactionLagMs! },
+                {
+                    $type: 'google.protobuf.Int64Value',
+                    value: message.minCompactionLagMs!,
+                },
                 writer.uint32(58).fork()
             ).ldelim();
         }
         if (message.retentionBytes !== undefined) {
             Int64Value.encode(
-                { value: message.retentionBytes! },
+                {
+                    $type: 'google.protobuf.Int64Value',
+                    value: message.retentionBytes!,
+                },
                 writer.uint32(66).fork()
             ).ldelim();
         }
         if (message.retentionMs !== undefined) {
             Int64Value.encode(
-                { value: message.retentionMs! },
+                {
+                    $type: 'google.protobuf.Int64Value',
+                    value: message.retentionMs!,
+                },
                 writer.uint32(74).fork()
             ).ldelim();
         }
         if (message.maxMessageBytes !== undefined) {
             Int64Value.encode(
-                { value: message.maxMessageBytes! },
+                {
+                    $type: 'google.protobuf.Int64Value',
+                    value: message.maxMessageBytes!,
+                },
                 writer.uint32(82).fork()
             ).ldelim();
         }
         if (message.minInsyncReplicas !== undefined) {
             Int64Value.encode(
-                { value: message.minInsyncReplicas! },
+                {
+                    $type: 'google.protobuf.Int64Value',
+                    value: message.minInsyncReplicas!,
+                },
                 writer.uint32(90).fork()
             ).ldelim();
         }
         if (message.segmentBytes !== undefined) {
             Int64Value.encode(
-                { value: message.segmentBytes! },
+                {
+                    $type: 'google.protobuf.Int64Value',
+                    value: message.segmentBytes!,
+                },
                 writer.uint32(98).fork()
             ).ldelim();
         }
         if (message.preallocate !== undefined) {
             BoolValue.encode(
-                { value: message.preallocate! },
+                {
+                    $type: 'google.protobuf.BoolValue',
+                    value: message.preallocate!,
+                },
                 writer.uint32(106).fork()
             ).ldelim();
         }
@@ -1236,9 +1308,17 @@ export const Topicconfig21 = {
     },
 };
 
-const baseTopicconfig26: object = { cleanupPolicy: 0, compressionType: 0 };
+messageTypeRegistry.set(Topicconfig21.$type, Topicconfig21);
+
+const baseTopicconfig26: object = {
+    $type: 'yandex.cloud.mdb.kafka.v1.TopicConfig2_6',
+    cleanupPolicy: 0,
+    compressionType: 0,
+};
 
 export const Topicconfig26 = {
+    $type: 'yandex.cloud.mdb.kafka.v1.TopicConfig2_6' as const,
+
     encode(
         message: Topicconfig26,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1251,67 +1331,100 @@ export const Topicconfig26 = {
         }
         if (message.deleteRetentionMs !== undefined) {
             Int64Value.encode(
-                { value: message.deleteRetentionMs! },
+                {
+                    $type: 'google.protobuf.Int64Value',
+                    value: message.deleteRetentionMs!,
+                },
                 writer.uint32(26).fork()
             ).ldelim();
         }
         if (message.fileDeleteDelayMs !== undefined) {
             Int64Value.encode(
-                { value: message.fileDeleteDelayMs! },
+                {
+                    $type: 'google.protobuf.Int64Value',
+                    value: message.fileDeleteDelayMs!,
+                },
                 writer.uint32(34).fork()
             ).ldelim();
         }
         if (message.flushMessages !== undefined) {
             Int64Value.encode(
-                { value: message.flushMessages! },
+                {
+                    $type: 'google.protobuf.Int64Value',
+                    value: message.flushMessages!,
+                },
                 writer.uint32(42).fork()
             ).ldelim();
         }
         if (message.flushMs !== undefined) {
             Int64Value.encode(
-                { value: message.flushMs! },
+                {
+                    $type: 'google.protobuf.Int64Value',
+                    value: message.flushMs!,
+                },
                 writer.uint32(50).fork()
             ).ldelim();
         }
         if (message.minCompactionLagMs !== undefined) {
             Int64Value.encode(
-                { value: message.minCompactionLagMs! },
+                {
+                    $type: 'google.protobuf.Int64Value',
+                    value: message.minCompactionLagMs!,
+                },
                 writer.uint32(58).fork()
             ).ldelim();
         }
         if (message.retentionBytes !== undefined) {
             Int64Value.encode(
-                { value: message.retentionBytes! },
+                {
+                    $type: 'google.protobuf.Int64Value',
+                    value: message.retentionBytes!,
+                },
                 writer.uint32(66).fork()
             ).ldelim();
         }
         if (message.retentionMs !== undefined) {
             Int64Value.encode(
-                { value: message.retentionMs! },
+                {
+                    $type: 'google.protobuf.Int64Value',
+                    value: message.retentionMs!,
+                },
                 writer.uint32(74).fork()
             ).ldelim();
         }
         if (message.maxMessageBytes !== undefined) {
             Int64Value.encode(
-                { value: message.maxMessageBytes! },
+                {
+                    $type: 'google.protobuf.Int64Value',
+                    value: message.maxMessageBytes!,
+                },
                 writer.uint32(82).fork()
             ).ldelim();
         }
         if (message.minInsyncReplicas !== undefined) {
             Int64Value.encode(
-                { value: message.minInsyncReplicas! },
+                {
+                    $type: 'google.protobuf.Int64Value',
+                    value: message.minInsyncReplicas!,
+                },
                 writer.uint32(90).fork()
             ).ldelim();
         }
         if (message.segmentBytes !== undefined) {
             Int64Value.encode(
-                { value: message.segmentBytes! },
+                {
+                    $type: 'google.protobuf.Int64Value',
+                    value: message.segmentBytes!,
+                },
                 writer.uint32(98).fork()
             ).ldelim();
         }
         if (message.preallocate !== undefined) {
             BoolValue.encode(
-                { value: message.preallocate! },
+                {
+                    $type: 'google.protobuf.BoolValue',
+                    value: message.preallocate!,
+                },
                 writer.uint32(106).fork()
             ).ldelim();
         }
@@ -1639,9 +1752,17 @@ export const Topicconfig26 = {
     },
 };
 
-const baseTopicconfig28: object = { cleanupPolicy: 0, compressionType: 0 };
+messageTypeRegistry.set(Topicconfig26.$type, Topicconfig26);
+
+const baseTopicconfig28: object = {
+    $type: 'yandex.cloud.mdb.kafka.v1.TopicConfig2_8',
+    cleanupPolicy: 0,
+    compressionType: 0,
+};
 
 export const Topicconfig28 = {
+    $type: 'yandex.cloud.mdb.kafka.v1.TopicConfig2_8' as const,
+
     encode(
         message: Topicconfig28,
         writer: _m0.Writer = _m0.Writer.create()
@@ -1654,67 +1775,100 @@ export const Topicconfig28 = {
         }
         if (message.deleteRetentionMs !== undefined) {
             Int64Value.encode(
-                { value: message.deleteRetentionMs! },
+                {
+                    $type: 'google.protobuf.Int64Value',
+                    value: message.deleteRetentionMs!,
+                },
                 writer.uint32(26).fork()
             ).ldelim();
         }
         if (message.fileDeleteDelayMs !== undefined) {
             Int64Value.encode(
-                { value: message.fileDeleteDelayMs! },
+                {
+                    $type: 'google.protobuf.Int64Value',
+                    value: message.fileDeleteDelayMs!,
+                },
                 writer.uint32(34).fork()
             ).ldelim();
         }
         if (message.flushMessages !== undefined) {
             Int64Value.encode(
-                { value: message.flushMessages! },
+                {
+                    $type: 'google.protobuf.Int64Value',
+                    value: message.flushMessages!,
+                },
                 writer.uint32(42).fork()
             ).ldelim();
         }
         if (message.flushMs !== undefined) {
             Int64Value.encode(
-                { value: message.flushMs! },
+                {
+                    $type: 'google.protobuf.Int64Value',
+                    value: message.flushMs!,
+                },
                 writer.uint32(50).fork()
             ).ldelim();
         }
         if (message.minCompactionLagMs !== undefined) {
             Int64Value.encode(
-                { value: message.minCompactionLagMs! },
+                {
+                    $type: 'google.protobuf.Int64Value',
+                    value: message.minCompactionLagMs!,
+                },
                 writer.uint32(58).fork()
             ).ldelim();
         }
         if (message.retentionBytes !== undefined) {
             Int64Value.encode(
-                { value: message.retentionBytes! },
+                {
+                    $type: 'google.protobuf.Int64Value',
+                    value: message.retentionBytes!,
+                },
                 writer.uint32(66).fork()
             ).ldelim();
         }
         if (message.retentionMs !== undefined) {
             Int64Value.encode(
-                { value: message.retentionMs! },
+                {
+                    $type: 'google.protobuf.Int64Value',
+                    value: message.retentionMs!,
+                },
                 writer.uint32(74).fork()
             ).ldelim();
         }
         if (message.maxMessageBytes !== undefined) {
             Int64Value.encode(
-                { value: message.maxMessageBytes! },
+                {
+                    $type: 'google.protobuf.Int64Value',
+                    value: message.maxMessageBytes!,
+                },
                 writer.uint32(82).fork()
             ).ldelim();
         }
         if (message.minInsyncReplicas !== undefined) {
             Int64Value.encode(
-                { value: message.minInsyncReplicas! },
+                {
+                    $type: 'google.protobuf.Int64Value',
+                    value: message.minInsyncReplicas!,
+                },
                 writer.uint32(90).fork()
             ).ldelim();
         }
         if (message.segmentBytes !== undefined) {
             Int64Value.encode(
-                { value: message.segmentBytes! },
+                {
+                    $type: 'google.protobuf.Int64Value',
+                    value: message.segmentBytes!,
+                },
                 writer.uint32(98).fork()
             ).ldelim();
         }
         if (message.preallocate !== undefined) {
             BoolValue.encode(
-                { value: message.preallocate! },
+                {
+                    $type: 'google.protobuf.BoolValue',
+                    value: message.preallocate!,
+                },
                 writer.uint32(106).fork()
             ).ldelim();
         }
@@ -2042,6 +2196,8 @@ export const Topicconfig28 = {
     },
 };
 
+messageTypeRegistry.set(Topicconfig28.$type, Topicconfig28);
+
 type Builtin =
     | Date
     | Function
@@ -2057,7 +2213,7 @@ export type DeepPartial<T> = T extends Builtin
     : T extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    ? { [K in Exclude<keyof T, '$type'>]?: DeepPartial<T[K]> }
     : Partial<T>;
 
 if (_m0.util.Long !== Long) {
