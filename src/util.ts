@@ -1,5 +1,5 @@
 import { Any } from 'generated/google/protobuf/any';
-import { messageTypeRegistry } from 'generated/typeRegistry';
+import { messageTypeRegistry } from '../generated/typeRegistry';
 import jsutil from 'util';
 
 type IServiceInstance = {
