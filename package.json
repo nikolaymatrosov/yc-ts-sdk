@@ -61,7 +61,7 @@
     "protoUpdate": "npm run generate && npm run build",
     "prepublishOnly": "npm test && npm run lint",
     "preversion": "npm run lint && npm run build",
-    "version": "npm run format && git add -A src",
+    "version": "npm run format && git add .",
     "postversion": "git push && git push --tags",
     "test": "jest --config jest.config.js --passWithNoTests",
     "build": "tsc --project tsconfig.json && tsc-alias -p tsconfig.json",
