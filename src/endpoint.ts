@@ -290,7 +290,7 @@ export class EndpointResolver {
     async updateEndpointList(cloudApiEndpoint: string) {
         const channel = createChannel(
             cloudApiEndpoint,
-            credentials.createSsl(),
+            credentials.createSsl()
         );
         const client = createClient(ApiEndpointServiceService, channel);
         const result = await client.list(ListApiEndpointsRequest.fromJSON({}));
