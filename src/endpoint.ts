@@ -43,6 +43,14 @@ const defaultEndpoints = [
         address: 'alb.api.cloud.yandex.net:443',
     },
     {
+        id: 'billing',
+        address: 'billing.api.cloud.yandex.net:443',
+    },
+    {
+        id: 'cdn',
+        address: 'cdn.api.cloud.yandex.net:443',
+    },
+    {
         id: 'certificate-manager',
         address: 'certificate-manager.api.cloud.yandex.net:443',
     },
@@ -69,6 +77,10 @@ const defaultEndpoints = [
     {
         id: 'datasphere',
         address: 'datasphere.api.cloud.yandex.net:443',
+    },
+    {
+        id: 'datatransfer',
+        address: 'datatransfer.api.cloud.yandex.net:443',
     },
     {
         id: 'dns',
@@ -105,6 +117,10 @@ const defaultEndpoints = [
     {
         id: 'load-balancer',
         address: 'load-balancer.api.cloud.yandex.net:443',
+    },
+    {
+        id: 'loadtesting',
+        address: 'loadtesting.api.cloud.yandex.net:443',
     },
     {
         id: 'locator',
@@ -274,7 +290,7 @@ export class EndpointResolver {
     async updateEndpointList(cloudApiEndpoint: string) {
         const channel = createChannel(
             cloudApiEndpoint,
-            credentials.createSsl()
+            credentials.createSsl(),
         );
         const client = createClient(ApiEndpointServiceService, channel);
         const result = await client.list(ListApiEndpointsRequest.fromJSON({}));
