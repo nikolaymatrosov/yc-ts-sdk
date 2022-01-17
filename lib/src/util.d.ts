@@ -1,4 +1,4 @@
-import { Any } from 'generated/google/protobuf/any';
+import { Any } from '../generated/google/protobuf/any';
 declare type IServiceInstance = {
     [key: string]: () => Promise<any> | any;
 };
