@@ -1,4 +1,5 @@
 /// <reference types="node" />
+import { Buffer } from 'buffer';
 export interface IStorageObject {
     bucketName: string;
     bufferPromise: Promise<Buffer>;
