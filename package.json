@@ -1,6 +1,6 @@
 {
   "name": "@nikolay.matrosov/yc-ts-sdk",
-  "version": "1.6.3",
+  "version": "1.6.4",
   "description": "Yandex Cloud SDK rewritten in TypeScript",
   "keywords": [
     "yandex-cloud",
